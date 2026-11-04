@@ -49,6 +49,7 @@ confirm which parts you already own.
 | **Backup of the model files** | restic to the home NAS. Run **`cad/backup-models.sh --verify`** (alias `vt350-backup`) after model changes; old snapshots are pruned automatically (last 10, daily for 30 days, monthly for a year). Target and password are local config (`~/.config/vt350/backup.env`), not in this public repo; keep the restic password in the password manager too. First backup 2026-11-04: 52 files, 4.09 GB, test restore byte-identical |
 | How the model files were made + how to redo it | `cad/README.md`, `cad/scripts/` |
 | Cut list (draft) | `notes/cut-list.md` |
+| Parts already owned + design impact | `notes/parts-owned.md` |
 | Source STEP files (frame variants, toolheads, boards) | `~/Documents/VT350/` |
 | FreeCAD | `~/FreeCAD/FreeCAD_26.3rc2-Linux-x86_64.AppImage`, launched from `~/Desktop/freecad-26.3rc2.desktop` (on the RTX 2070) |
 | Tracking | GitHub project "3D Printer Projects"; label `build-stage` |
