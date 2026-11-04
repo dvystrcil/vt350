@@ -1,0 +1,28 @@
+[   75.5s] opened 2661
+[   75.5s] rod -> d=8 Leadscrew (rod)
+[   75.5s] rod -> d=8 Leadscrew001 (rod)
+[   75.5s] rod -> d=8 Leadscrew002 (rod)
+[   75.5s] moved +100: 71
+[   75.5s] bar 2040: 640.00 -> 740.00 mm (profile faces 4 wires)
+[   75.6s] bar 4040: 640.00 -> 740.00 mm (profile faces 2 wires)
+[   75.6s] bar 4040(Mirror): 640.00 -> 740.00 mm (profile faces 2 wires)
+[   75.7s] bar 2040(Mirror): 640.00 -> 740.00 mm (profile faces 4 wires)
+[   75.7s] bar 2040 (1): 640.00 -> 740.00 mm (profile faces 4 wires)
+[   75.7s] bar 2040 (1)(Mirror): 640.00 -> 740.00 mm (profile faces 4 wires)
+[   77.6s] spliced Back Panel: z -18.9..556.1 -> -18.9..656.1, solids 1, valid True, volume 831450 -> 976050
+[  149.0s] verify: 0 problems
+[  183.6s] CUT LIST (profile, length mm, assembly, qty):
+[  183.6s]   2020    332.0  x1   4040-350 VT Frame v12 / Bed frame
+[  183.6s]   2020    340.0  x1   4040-350 VT Frame v12 / Gantry
+[  183.6s]   2020    380.0  x1   4040-350 VT Frame v12 / Verticals
+[  183.6s]   2020    470.0  x1   4040-350 VT Frame v12 / Bed frame
+[  183.6s]   2040    470.0  x2   4040-350 VT Frame v12 / Gantry
+[  183.6s]   2040    470.0  x2   4040-350 VT Frame v12 / Horizontals
+[  183.6s]   2040    470.0  x2   Door (1) (1) / Door Frame
+[  183.6s]   2040    470.0  x1   Electronics Cabinet
+[  183.6s]   2040    740.0  x2   4040-350 VT Frame v12 / Verticals
+[  183.6s]   2040    740.0  x2   Door (1) (1) / Door Frame
+[  183.6s]   4040    470.0  x6   4040-350 VT Frame v12 / Horizontals
+[  183.6s]   4040    740.0  x2   4040-350 VT Frame v12 / Verticals
+[  247.3s] overall Z -50.0..699.1
+[  266.0s] SAVED /home/dan/Documents/VT350/vt350-lite-3.FCStd 141953421

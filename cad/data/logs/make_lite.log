@@ -1,0 +1,11 @@
+[  434.6s] opened 17357 objects
+[  454.9s] PCB  'Nitehawk-36_V1.4 3D Model v1': 341 shapes -> box 51.4 x 45.2 x 12.5
+[  474.9s] PCB  'Nitehawk-36_V1.4 3D Model v001': 341 shapes -> box 51.4 x 45.2 x 12.5
+[  520.1s] PCB  'Octopus_Pro - beta v1': 1186 shapes -> box 162.2 x 100.0 x 19.4
+[  520.2s] LEAD 'Leadscrew': -> rod d=10.5 L=333.0
+[  520.3s] LEAD 'Leadscrew001': -> rod d=10.5 L=333.0
+[  520.3s] LEAD 'Leadscrew002': -> rod d=10.5 L=333.0
+[  521.3s] fasteners removed: 507
+[  521.8s] empty containers removed: 90
+[  521.8s] objects now: 2088
+[  541.2s] SAVED /home/dan/Documents/VT350/vt350-lite.FCStd 139418014
