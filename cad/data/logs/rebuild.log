@@ -1,0 +1,33 @@
+[   54.6s] opened 2088 objects; 507 records
+[   78.0s] placement check by type:
+[   78.0s]   ISO10642       ok                                 6
+[   78.0s]   ISO4026        ok                                 8
+[   78.0s]   ISO4032        ok                                 2
+[   78.0s]   ISO4035        ok                                 1
+[   78.0s]   ISO4762        FAIL                               18
+[   78.0s]   ISO4762        ok                                 121
+[   78.0s]   ISO7089        ok                                 117
+[   78.0s]   ISO7380-1      ok                                 148
+[   78.0s]   IUTHeatInsert  ok                                 21
+[   78.0s] fasteners made 442, originals kept 65, already present 0
+[   78.0s] length fallbacks 0:
+[   78.0s] placement check failures 18 of 442:
+[   78.0s]   M5x50-Screw (91290A198_NO THREADS_Alloy Steel Socket Head Screw): COM off 1.90 mm along axis (limit 3.75), 0.60 mm radial
+[   78.0s]   M5x50-Screw004 (91290A198_NO THREADS_Alloy Steel Socket Head Screw(Mirror) (2)(Mirror)): COM off 1.90 mm along axis (limit 3.75), 0.60 mm radial
+[   78.0s]   M5x50-Screw006 (91290A198_NO THREADS_Alloy Steel Socket Head Screw(Mirror)(Mirror)): COM off 1.90 mm along axis (limit 3.75), 0.60 mm radial
+[   78.0s]   M5x50-Screw007 (91290A198_NO THREADS_Alloy Steel Socket Head Screw(Mirror)(Mirror) (1)): COM off 1.90 mm along axis (limit 3.75), 0.60 mm radial
+[   78.0s]   M5x50-Screw010 (91290A198_NO THREADS_Alloy Steel Socket Head Screw(Mirror)(Mirror)(Mirror)(Mirror)): COM off 1.90 mm along axis (limit 3.75), 0.60 mm radial
+[   78.0s]   M5x50-Screw011 (91290A198_NO THREADS_Alloy Steel Socket Head Screw(Mirror) (2)(Mirror) (1)): COM off 1.90 mm along axis (limit 3.75), 0.60 mm radial
+[   78.0s]   M5x50-Screw013 (91290A198_NO THREADS_Alloy Steel Socket Head Screw(Mirror)(Mirror) (2)): COM off 1.90 mm along axis (limit 3.75), 0.60 mm radial
+[   78.0s]   M5x50-Screw014 (91290A198_NO THREADS_Alloy Steel Socket Head Screw(Mirror) (1)(Mirror)): COM off 1.90 mm along axis (limit 3.75), 0.60 mm radial
+[   78.0s]   M5x50-Screw017 (91290A198_NO THREADS_Alloy Steel Socket Head Screw(Mirror)(Mirror)(Mirror)(Mirror) (1)): COM off 1.90 mm along axis (limit 3.75), 0.60 mm radial
+[   78.0s]   M5x50-Screw018 (91290A198_NO THREADS_Alloy Steel Socket Head Screw(Mirror)(Mirror) (1)(Mirror)(Mirror)): COM off 1.90 mm along axis (limit 3.75), 0.60 mm radial
+[   78.0s]   M5x50-Screw020 (91290A198_NO THREADS_Alloy Steel Socket Head Screw(Mirror) (2)(Mirror) (2)): COM off 1.90 mm along axis (limit 3.75), 0.60 mm radial
+[   78.0s]   M5x50-Screw021 (91290A198_NO THREADS_Alloy Steel Socket Head Screw(Mirror) (3)(Mirror)): COM off 1.90 mm along axis (limit 3.75), 0.60 mm radial
+[   78.0s]   M5x50-Screw024 (91290A198_NO THREADS_Alloy Steel Socket Head Screw001): COM off 1.90 mm along axis (limit 3.75), 0.60 mm radial
+[   78.0s]   M5x50-Screw027 (91290A198_NO THREADS_Alloy Steel Socket Head Screw(Mirror) (1)(Mirror)001): COM off 1.90 mm along axis (limit 3.75), 0.60 mm radial
+[   78.0s]   M5x50-Screw029 (91290A198_NO THREADS_Alloy Steel Socket Head Screw(Mirror)(Mirror) (3)): COM off 1.90 mm along axis (limit 3.75), 0.60 mm radial
+[   78.0s]   M5x50-Screw030 (91290A198_NO THREADS_Alloy Steel Socket Head Screw(Mirror) (5)(Mirror) (1)): COM off 1.90 mm along axis (limit 3.75), 0.60 mm radial
+[   78.0s]   M5x50-Screw032 (91290A198_NO THREADS_Alloy Steel Socket Head Screw(Mirror)(Mirror) (3)(Mirror)(Mirror)): COM off 1.90 mm along axis (limit 3.75), 0.60 mm radial
+[   78.0s]   M5x50-Screw035 (91290A198_NO THREADS_Alloy Steel Socket Head Screw(Mirror) (5)(Mirror)): COM off 1.90 mm along axis (limit 3.75), 0.60 mm radial
+[   98.6s] SAVED /home/dan/Documents/VT350/vt350-lite-2.FCStd 143316532

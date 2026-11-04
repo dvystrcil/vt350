@@ -1,0 +1,10 @@
+[   92.8s] bottom hinge z -9.90..100.10; bottom gap 0.10; top rail underside 650.00
+[   92.8s] offsets: middle +274.90, top +549.80
+[   95.1s] Middle Hinge: copied 36 objects
+[   95.8s] Top Hinge: copied 36 objects
+[   95.8s] removed loose pin M5x50 Dowel Pin (1)
+[   95.8s] removed loose pin M5x50 Dowel Pin (1)001
+[   96.7s] Middle Hinge: z 265.00..375.00 (want 265.00..375.00), x -533.55..-514.05 (bottom -533.55..-514.05), solids 7
+[   96.8s] Top Hinge: z 539.90..649.90 (want 539.90..649.90), x -533.55..-514.05 (bottom -533.55..-514.05), solids 7
+[   96.8s] verify: 0 problems []
+[  114.5s] SAVED /home/dan/Documents/VT350/vt350-lite-4.FCStd 142133054
