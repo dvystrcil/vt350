@@ -5,6 +5,8 @@
 #   cad/backup-models.sh --verify   # back up, then restore the newest model
 #                                   # file to a temp dir and compare checksums
 #
+# After each successful backup, old snapshots are pruned (see "Retention" below).
+#
 # Where the backup goes is local, per-machine config, deliberately NOT in this
 # public repo: ~/.config/vt350/backup.env must set
 #   RESTIC_REPOSITORY, RESTIC_PASSWORD_FILE, VT350_MODELS
@@ -22,6 +24,14 @@ source "$CONF"; set +a
 command -v restic >/dev/null || PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 
 restic backup --tag vt350 "$VT350_MODELS"
+
+# Retention: runs only after a successful backup (set -e), only on vt350-tagged
+# snapshots. Default keeps the last 10 runs, one per day for 30 days, and one per
+# month for a year. Override with VT350_KEEP in the config, e.g.
+#   VT350_KEEP="--keep-last 20 --keep-monthly 24"
+read -r -a keep <<< "${VT350_KEEP:---keep-last 10 --keep-daily 30 --keep-monthly 12}"
+restic forget --tag vt350 "${keep[@]}" --prune
+
 restic snapshots --compact --tag vt350
 
 if [[ "${1:-}" == "--verify" ]]; then

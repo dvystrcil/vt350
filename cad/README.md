@@ -39,6 +39,11 @@ Where it backs up to is local config (`~/.config/vt350/backup.env`), kept out
 of this public repo. Without the restic password the backup cannot be opened,
 so keep it in the password manager as well.
 
+After each successful backup the script prunes old snapshots: it keeps the
+last 10 runs, one per day for 30 days, and one per month for 12 months
+(override with `VT350_KEEP` in the local config). On this laptop the alias
+`vt350-backup` runs `cad/backup-models.sh --verify` from any directory.
+
 ## Why the original was unusable, and what fixed it
 
 Measured from the original file's internal data (2026-11-04):
