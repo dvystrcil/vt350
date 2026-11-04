@@ -1,0 +1,29 @@
+[   80.7s] splice 2040: z -50.0..590.0 -> -50.0..690.0, side-hole faces 52 -> 52, solids 1, valid True, vol 231146 (want 231146)
+[   83.3s] splice 4040: z -50.0..590.0 -> -50.0..690.0, side-hole faces 60 -> 60, solids 1, valid True, vol 355384 (want 355384)
+[   86.0s] splice 4040(Mirror): z -50.0..590.0 -> -50.0..690.0, side-hole faces 60 -> 60, solids 1, valid True, vol 355384 (want 355384)
+[   87.8s] splice 2040(Mirror): z -50.0..590.0 -> -50.0..690.0, side-hole faces 52 -> 52, solids 1, valid True, vol 231146 (want 231146)
+[   89.0s] splice 2040 (1): z -50.0..590.0 -> -50.0..690.0, side-hole faces 32 -> 32, solids 1, valid True, vol 231787 (want 231787)
+[   90.0s] splice 2040 (1)(Mirror): z -50.0..590.0 -> -50.0..690.0, side-hole faces 32 -> 32, solids 1, valid True, vol 231787 (want 231787)
+[  170.5s] opened lite-4 2737
+[  240.4s] swapped 2040: now Bar006 in Verticals
+[  240.5s] swapped 4040: now Bar in Verticals
+[  240.6s] swapped 4040(Mirror): now Bar007 in Verticals
+[  240.7s] swapped 2040(Mirror): now Bar008 in Verticals
+[  240.7s] swapped 2040 (1): now Bar009 in Door Frame
+[  240.8s] swapped 2040 (1)(Mirror): now Bar010 in Door Frame
+[  240.8s] removed INDX DUMMY
+[  240.8s] removed NOZZLE TOOL
+[  240.8s] removed empty container INDX_simplified_1.0 v1
+[  240.9s] removed 15 M5x16 BHCS + washers with no drilled hole (rear 4040 corners)
+[  307.1s] tube Left: checked against 3 nearby parts
+[  309.4s] tube Left: inlet -399.0,30.0,456.3 -> exit -399.0,460.0,690.0; length 568 mm, min bend R 119.4 mm, solid valid True, frame hits none
+[  373.7s] tube Right: checked against 3 nearby parts
+[  375.9s] tube Right: inlet -92.0,30.0,456.3 -> exit -92.0,460.0,690.0; length 568 mm, min bend R 119.4 mm, solid valid True, frame hits none
+[  439.1s] check 2040: 52 side-hole faces, z -50.0..690.0
+[  439.3s] check 4040: 60 side-hole faces, z -50.0..690.0
+[  439.5s] check 4040(Mirror): 60 side-hole faces, z -50.0..690.0
+[  439.6s] check 2040(Mirror): 52 side-hole faces, z -50.0..690.0
+[  439.6s] check 2040 (1): 32 side-hole faces, z -50.0..690.0
+[  439.7s] check 2040 (1)(Mirror): 32 side-hole faces, z -50.0..690.0
+[  439.7s] verify: 0 problems
+[  459.8s] SAVED /home/dan/Documents/VT350/vt350-lite-5.FCStd 142329208
