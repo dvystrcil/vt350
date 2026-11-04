@@ -36,7 +36,7 @@ Status key:
 | `ElectronicsBay/raspberrypi_bracket.stl` | decide | Pi 5 + NVMe HAT. Check the stack height (#5). |
 | `ElectronicsBay/` DIN mounts, PSU brackets, deck supports, cable anchors, WAGO mount | decide | Pack location and PSU model (#5) |
 | `Exhaust_Filter/*` | decide | Chamber thermal design (#4) |
-| `Panels/Front_Doors/*` (hinges, handles, latch) | decide | The model has its own 2040 door with 3 hinges. Check whether those are these STLs. |
+| `Panels/Front_Doors/*` (hinges, handles, latch) | replaced | The [Clicky-Clack fridge door](https://github.com/tanaes/whopping_Voron_mods/tree/main/clickyclacky_door) is used instead (see below) |
 | `Panels/*panel_clip*` 4 mm / 6 mm | decide | Panel thickness (#4). The 4040's 6 mm slot takes the stock clips. |
 | `Panels/bottom_panel_*`, `wire_cover_*` | decide | Pack location (#5) |
 | `Skirt/350/*`, skirt corners, fan grills, keystone, power inlet | custom | The 4040 frame is 550 mm outside (stock 350 is 510), so stock skirts don't fit. Feet and skirt need a custom design. |
@@ -56,10 +56,11 @@ Status key:
 | [MadMax](https://github.com/zruncho3d/madmax) | shuttle, docks, dock mounts | shuttle ×1, dock **per tool** | print. Dock mount style waits on #19 (2WD, so not the AWD front support). |
 | [A4T](https://github.com/Armchair-Heavy-Industries/A4T) | toolhead body + Orbiter 2.5 / O2S / OSS / Crossbow adapters | **per tool** | print |
 | [EMU](https://github.com/DW-Tas/EMU) | separate unit; its own configurator | per lane | print, tracked separately |
+| [Clicky-Clack fridge door](https://github.com/tanaes/whopping_Voron_mods/tree/main/clickyclacky_door) (tanaes) | `Hinge-L-solid`, `Hinge-L-sleeve` (each **×3**, one per hinge; upstream ships ×2), `Handle`, `Handle-Hinge_Top`, `Handle-Hinge_Bottom`, `Latch`, `Panel_Clip` | 3 hinges | print. The model's door already follows this design: `Bottom Hinge`, `Latch Handle`, `Panel_Clip` and M5×50 dowel pins are all in it. Upstream hardware for 2 hinges is 6 M5×7×8 split bushings, 4 M5 dowel pins (40–50 mm), 4 M3×20 SHCS, 12 M3×8 SHCS, 12 6×3 magnets, 1 M3×8 BHCS, 1 M3 heat-set insert, 4 M5×16 BHCS, the HSCPF3H-B-2000 retainer strip and a 3 mm acrylic panel. The third hinge adds 1 dowel pin and 2 bushings. **This build differs from upstream:** the door frame is 2040 at full frame height (in the frame order, #7), not upstream's 2020 at 470 × 500 mm, so the panel size and retainer length must come from the model. |
 | custom | Pad 7 quick-release mount, skirts and feet, Z chain anchor for the Backbone | — | custom |
 
 ## Next steps
 1. Confirm what the kinematic mount kit includes (does it replace `z_bed_*`?).
 2. Work out how the MadMax shuttle and the Monolith belt clamps fit together, and its endstop or sensorless homing.
-3. Check whether the model's door hinges and latch are the stock STLs.
+3. Door: get the acrylic panel size and retainer strip length from the model's 2040 door frame. Check that a 3 mm acrylic panel suits the 60/70 °C chamber (#4).
 4. Get the per-tool A4T and MadMax file list for the chosen variants.
