@@ -32,8 +32,12 @@ flowchart LR
 | `vt350-lite-3.FCStd` | **+100 mm between the gantry and the top of the frame** (cut plane Z = 534). Verticals 640 → 740 mm, rebuilt as `Part::Extrusion` of their own end profile; back panel spliced; 71 parts above the cut moved +100 mm; leadscrew rods 8 mm | `data/logs/frame_plus100.log`: 0 problems; every untouched part unchanged within 1 µm |
 | `vt350-lite-4.FCStd` | Door: **3 identical hinges** (copies of the complete bottom hinge) at −9.9…100.1, 265…375, 539.9…649.9; two loose top pins removed | `data/logs/door_hinges.log`: 0 problems |
 
-Back up `~/Documents/VT350/` somewhere other than this laptop. Git only has
-the recipe, not the models.
+Git only has the recipe, not the models. The models are backed up to the home
+NAS with restic: run **`cad/backup-models.sh --verify`** after any model
+change (back up, then restore the newest `.FCStd` and compare checksums).
+Where it backs up to is local config (`~/.config/vt350/backup.env`), kept out
+of this public repo. Without the restic password the backup cannot be opened,
+so keep it in the password manager as well.
 
 ## Why the original was unusable, and what fixed it
 

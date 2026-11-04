@@ -46,6 +46,7 @@ confirm which parts you already own.
 | What | Where |
 |---|---|
 | Model files (not in git) | `~/Documents/VT350/`. Current working copy **`vt350-lite-4.FCStd`**; untouched original `vt350-good.FCStd` |
+| **Backup of the model files** | restic to the home NAS. Run **`cad/backup-models.sh --verify`** after model changes. Target and password are local config (`~/.config/vt350/backup.env`), not in this public repo; keep the restic password in the password manager too. First backup 2026-11-04: 52 files, 4.09 GB, test restore byte-identical |
 | How the model files were made + how to redo it | `cad/README.md`, `cad/scripts/` |
 | Cut list (draft) | `notes/cut-list.md` |
 | Source STEP files (frame variants, toolheads, boards) | `~/Documents/VT350/` |
@@ -54,7 +55,7 @@ confirm which parts you already own.
 
 ## Not in this repo / not done yet
 
-- **The model files are only on the laptop.** Back up `~/Documents/VT350/`.
+- The model backup is on the home NAS, which is not off-site.
 - `~/Documents/3D Files/ebox/ebox.FCStd` is **not** this printer's ebox (most
   likely the Neptune's portable power supply). The VT350 electronics are the
   `Electronics` group inside the model.
