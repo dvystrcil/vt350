@@ -13,7 +13,8 @@ flowchart LR
     L1["vt350-lite<br/>139 MB · 2,088 objects"]
     L2["vt350-lite-2<br/>Fasteners parts"]
     L3["vt350-lite-3<br/>+100 mm frame"]
-    L4["vt350-lite-4<br/>3 door hinges<br/><b>current</b>"]
+    L4["vt350-lite-4<br/>3 door hinges"]
+    L5["vt350-lite-5<br/>drilled verticals, bowden<br/><b>current</b>"]
     G -->|make_lite.py| L1
     G -.->|extract_fasteners.py<br/>read-only| J[(fasteners.json)]
     L1 -->|rebuild_fasteners.py| L2
@@ -22,6 +23,8 @@ flowchart LR
     L2 -->|frame_plus100.py| L3
     M --> L3
     L3 -->|door_hinges.py| L4
+    L4 -->|lite5.py| L5
+    L2 -.->|drilled bars| L5
 ```
 
 | File | What changed | Verified by |
@@ -31,6 +34,7 @@ flowchart LR
 | `vt350-lite-2.FCStd` | 442 parametric **Fasteners workbench** parts (`Thread = False`) put where the STEP fasteners were; 65 originals kept (T-nuts, square washers, self-tappers: no matching standard type) | `data/logs/rebuild.log`: 424/442 match the original's centre of mass; the other 18 are explained below |
 | `vt350-lite-3.FCStd` | **+100 mm between the gantry and the top of the frame** (cut plane Z = 534). Verticals 640 → 740 mm, rebuilt as `Part::Extrusion` of their own end profile; back panel spliced; 71 parts above the cut moved +100 mm; leadscrew rods 8 mm | `data/logs/frame_plus100.log`: 0 problems; every untouched part unchanged within 1 µm |
 | `vt350-lite-4.FCStd` | Door: **3 identical hinges** (copies of the complete bottom hinge) at −9.9…100.1, 265…375, 539.9…649.9; two loose top pins removed | `data/logs/door_hinges.log`: 0 problems |
+| `vt350-lite-5.FCStd` | **6 verticals get their drilled side holes back**: lite-3's extrusions had lost them all, so the original drilled bars from lite-2 are spliced at Z = 534 (+100 mm of their own cross-section). **INDX parts removed.** **Rear 4040 corners follow the drilled holes**: each joint keeps its 2 staggered M5×50 through-bolts; 15 M5×16 BHCS + washers with no hole are removed. **Bowden tubes**: solid Ø4.12 mm (measured OD) from each Orbiter inlet to a top-rear exit (Y 460, Z 690, tilted 45° to the rear, for the EMU), 568 mm, tightest bend 119 mm at the docked pose; route parameters are stored on each tube | `data/logs/lite5.log`: 0 problems; hole faces 52/60/60/52/32/32 match lite-2; every untouched part unchanged |
 
 Git only has the recipe, not the models. The models are backed up to the home
 NAS with restic: run **`cad/backup-models.sh --verify`** after any model
@@ -102,6 +106,8 @@ $NV $APP $PWD/cad/scripts/make_lite.py
 | `frame_map.py` | headless, read-only | Z extents of every shape → `data/frame_map/frame_map.json` |
 | `frame_plus100.py` | GUI, writes | lite-2 → lite-3; also prints the cut list |
 | `door_hinges.py` | GUI, writes | lite-3 → lite-4 |
+| `lite5.py` | GUI writes; headless = dry run, never saves | lite-4 (+ drilled bars from lite-2) → lite-5 |
+| `bowden_study.py` | headless (FreeCAD's Python for numpy) | bend radius vs exit position and tube length; results on #3 |
 | `fs_probe.py` | headless | probes the Fasteners workbench API and screw orientation |
 | `analyze.py`, `cats.py`, `tree.py`, `fastener_review.py` | plain Python | read an `.FCStd`'s `Document.xml` (unzip it first): sizes, categories, assembly tree, fastener classification |
 
