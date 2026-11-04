@@ -34,6 +34,20 @@ Sizes are the bounding boxes of the published files. Plate width is the X footpr
 
 So **the Crossbow mount adds ~10 mm** of head width. Not yet modeled: O2S/OSS (#6, AC9).
 
+## A4Tv2 (decided 2026-11-04): head width
+The user switched to [A4Tv2](https://github.com/DW-Tas/A4Tv2) (a prerelease) and is keeping the Crossbow. Measured from upstream `CAD/A4Tv2_assembly.step`, our variant is `main-body_dragon-rapido-UHF_o2_xol` + `[a]_orbiter-crossbow-adapter_o2_xol` + ducts, fans, hotend and Crossbow:
+
+| | X width | Y depth | Z height |
+|---|---|---|---|
+| A4Tv2, our variant | **73.4** (Crossbow X −38.1, ducts ±35.4) | 67.1 | 112.8 |
+| A4T v1 as modeled (with Crossbow) | 80.3 | 80.4 | 131.1 |
+
+- The Crossbow now sits almost inside the head: it sticks out only 2.7 mm past the ducts, against 10.3 mm on v1.
+- The measurement is an upper bound. The assembly STEP overlays every extruder variant, and some extruder parts aren't named per variant, so the union can only be wider than the real head.
+- **Not included:** O2S/OSS (#6), and the MadMax plate's dock-screw bracket. The bracket is covered by the 3 mm in the spacing rule.
+
+So the spacing is **78.4 mm** (73.4 + 3 + 2), and the **"go deep" amount is ≈ 6 + 4 + 67 ≈ 77 mm** of Y.
+
 ## Tool count
 
 Spacing p = head width + 3 + 2. *Span* = how far apart the outermost docked heads' centres can be. It's limited by X carriage travel; it was 307 mm between the model's current docks, and must be measured with the real Monolith gantry (#19 AC1). N = floor(span / p) + 1.
@@ -42,6 +56,7 @@ Spacing p = head width + 3 + 2. *Span* = how far apart the outermost docked head
 |---|---|---|---|---|---|
 | 80.3 (A4T + Crossbow as modeled) | 85.3 | 4 | 5 (needs ≥ 341) | 5 | 427 |
 | 70.0 (Crossbow inside the A4T width) | 75.0 | **5** (needs ≥ 300) | 5 | 5 | 375 |
+| **73.4 (A4Tv2 + Crossbow, chosen)** | **78.4** | 4 (5 needs ≥ 314) | **5** | **5** | 392 |
 
 - **5 tools looks feasible** with a front crossbar and slim docks. That's either with the Crossbow tucked inside the A4T width (fits even at the current span), or with the X span measured at ≥ 341 mm.
 - **6 tools** needs a span of 375 mm (70 mm heads) or 427 mm (80 mm heads). That's beyond a 350's X travel. The options are a wider frame, which means a new X beam (the Carbonara only comes in 250/300/350, and the 350 one is 430 mm), or narrower heads (the DragonBurner is 54 mm per the MadMax docs).
