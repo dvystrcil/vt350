@@ -16,7 +16,8 @@ flowchart LR
     L4["vt350-lite-4<br/>3 door hinges"]
     L5["vt350-lite-5<br/>drilled verticals, bowden"]
     L5D["vt350-lite-5-dan<br/>user hand edit"]
-    L6["vt350-lite-6<br/>+80 mm Y at the front,<br/>Monolith milled, Carbonara<br/><b>current</b>"]
+    L6["vt350-lite-6<br/>+80 mm Y at the front,<br/>Monolith milled, Carbonara"]
+    L7["vt350-lite-7<br/>belts on the 2WD milled path<br/><b>current</b>"]
     G -->|make_lite.py| L1
     G -.->|extract_fasteners.py<br/>read-only| J[(fasteners.json)]
     L1 -->|rebuild_fasteners.py| L2
@@ -29,6 +30,7 @@ flowchart LR
     L2 -.->|drilled bars| L5
     L5 -->|FreeCAD by hand| L5D
     L5D -->|lite6.py| L6
+    L6 -->|lite7_belts.py| L7
 ```
 
 | File | What changed | Verified by |
@@ -40,6 +42,7 @@ flowchart LR
 | `vt350-lite-4.FCStd` | Door: **3 identical hinges** (copies of the complete bottom hinge) at −9.9…100.1, 265…375, 539.9…649.9; two loose top pins removed | `data/logs/door_hinges.log`: 0 problems |
 | `vt350-lite-5.FCStd` | **6 verticals get their drilled side holes back**: lite-3's extrusions had lost them all, so the original drilled bars from lite-2 are spliced at Z = 534 (+100 mm of their own cross-section). **INDX parts removed.** **Rear 4040 corners follow the drilled holes**: each joint keeps its 2 staggered M5×50 through-bolts; 15 M5×16 BHCS + washers with no hole are removed. **Bowden tubes**: solid Ø4.12 mm (measured OD) from each Orbiter inlet to a top-rear exit (Y 460, Z 690, tilted 45° to the rear, for the EMU), 568 mm, tightest bend 119 mm at the docked pose; route parameters are stored on each tube | `data/logs/lite5.log`: 0 problems; hole faces 52/60/60/52/32/32 match lite-2; every untouched part unchanged |
 | `vt350-lite-6.FCStd` | From `lite-5-dan`. **+80 mm of Y at the front** for the parked heads (#19 AC9: A4Tv2 + O2S head, deepest slice 68.6 mm with the plate → 6 + 4 + 68.6 ≈ 79). Everything in front of Y = 10 moves −80; the 4 side 4040s, 2 gantry 2040s and the cabinet 2040 are spliced (+80 of their own section). The old front 2040 verticals carry the front Z rails, so they **stay as Z posts** (Z −10…370); new front verticals and a new bottom front 2040 go 80 mm forward; the old bottom front 2040 stays for the Backbone. **Placeholder dock crossbar** (2040) between the new front verticals, 5 mm above the docked heads. **LDO Monolith milled 2WD VT 9 mm** (front 2WD_VT, rear VT **NP**, XY 2WD), aligned on the printed parts' pulley axes; **MGN9 × 470** Y rails; **Carbonara 20×20 CF X beam, 430 mm**; belts spliced with a copy of their own toothed stretch; both **Z cable anchors removed**; bowden tubes regenerated | `data/logs/lite6.log`: 0 problems; 999 original shapes unchanged or moved exactly −80; Monolith axes within 0.01 mm; collisions vs a lite-5-dan baseline: 5 new (below) |
+| `vt350-lite-7.FCStd` | From lite-6. **Both XY belts re-drawn** on the Monolith 2WD path through the milled parts' pulleys and idlers: straight tangents plus wraps on the GT2 pitch line (pulley OD + 0.254 mm on the tooth side, 695 OD + 1.126 mm where the belt's back rides). Each end stops at its carriage belt clip's outer edge. **Printed Y endstop removed** with its hardware (8 solids): it sat in the lower belt's rear run and shared a slot with the milled rear mount | `data/logs/lite7_belts.log`: 0 problems. Belts are valid single solids touching nothing except their clips; every other part unchanged. **Belt length 1941.7 mm each** (pitch, clip edge to clip edge) + tuck-in |
 
 Git only has the recipe, not the models. The models are backed up to the home
 NAS with restic: run **`cad/backup-models.sh --verify`** after any model
@@ -113,6 +116,7 @@ $NV $APP $PWD/cad/scripts/make_lite.py
 | `door_hinges.py` | GUI, writes | lite-3 → lite-4 |
 | `lite5.py` | GUI writes; headless = dry run, never saves | lite-4 (+ drilled bars from lite-2) → lite-5 |
 | `lite6.py` | GUI writes; headless = dry run, never saves | lite-5-dan → lite-6. Needs the Monolith/Carbonara STEPs (below) under `VT350_DL` |
+| `lite7_belts.py` | GUI writes; headless = dry run, never saves | lite-6 → lite-7: belt path, belt length |
 | `ac9_head_envelope.py` | headless, read-only | #19 AC9: A4Tv2 + Orbiter/OSS/O2S head, width and exact depth at each height |
 | `bowden_study.py` | headless (FreeCAD's Python for numpy) | bend radius vs exit position and tube length; results on #3 |
 | `fs_probe.py` | headless | probes the Fasteners workbench API and screw orientation |
@@ -167,11 +171,11 @@ $NV $APP $PWD/cad/scripts/make_lite.py
 
 | Parts | mm³ | Why / action |
 |---|---|---|
-| Belts × XY joint idlers (both sides) | 37.6 | The belts were drawn for the printed AWD joints, which are 2.2–2.8 mm off. Re-draw the belt path for 2WD milled before measuring belt length |
-| Belts × rear mount M5×13 spacers | 8.9 | Same cause |
-| Rear-right mount T-nut × Y-endstop T-nut | 17.8 | Both want the same spot in the slot: move the Y endstop or use the kit's endstop option |
+| Belts × XY joint idlers (both sides) | 37.6 | The belts were drawn for the printed AWD joints, which are 2.2–2.8 mm off. **Fixed in lite-7** (belts re-drawn) |
+| Belts × rear mount M5×13 spacers | 8.9 | Same cause. **Fixed in lite-7** |
+| Rear-right mount T-nut × Y-endstop T-nut | 17.8 | Both want the same spot in the slot. **lite-7 removes the printed Y endstop** (it was also in the belt path); a Y endstop that fits the milled rear mount still has to be chosen |
 
-**Also still open:** the lite-5 belts already stopped ~58 mm short of the front idlers. Each belt is +160 mm (two Y runs × 80), but measure the real length only after the 2WD re-draw.
+**Belt path (lite-7):** each belt runs clip → XY-joint idler → front pulley (223° wrap) → front idler → rear motor (180°) → rear idler → far toothed rear idler → far XY pulley → clip. That order is this script's reading of the Monolith 2WD path; no LDO belt drawing for this frame was available to compare it against. The collision check proves it's clear of every part, but not that it's LDO's routing, so look at the corners in lite-7. The carriage's clips are labelled "4mm Gap 6mm Belt", while these belts are 9 mm: check the clips before building.
 
 ## Model notes that affect the build
 

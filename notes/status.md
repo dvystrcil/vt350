@@ -47,7 +47,7 @@ confirm which parts you already own.
 
 | What | Where |
 |---|---|
-| Model files (not in git) | `~/Documents/VT350/`. Current working copy **`vt350-lite-6.FCStd`** (from the user's `vt350-lite-5-dan`); untouched original `vt350-good.FCStd` |
+| Model files (not in git) | `~/Documents/VT350/`. Current working copy **`vt350-lite-7.FCStd`** (lite-6 + belts re-drawn for the milled 2WD path); untouched original `vt350-good.FCStd` |
 | **Backup of the model files** | restic to the home NAS. Run **`cad/backup-models.sh --verify`** (alias `vt350-backup`) after model changes; old snapshots are pruned automatically (last 10, daily for 30 days, monthly for a year). Target and password are local config (`~/.config/vt350/backup.env`), not in this public repo; keep the restic password in the password manager too. First backup 2026-11-04: 52 files, 4.09 GB, test restore byte-identical |
 | How the model files were made + how to redo it | `cad/README.md`, `cad/scripts/` |
 | Cut list (draft) | `notes/cut-list.md` |
