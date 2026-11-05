@@ -1,0 +1,16 @@
+[   67.0s] opened /home/dan/Documents/VT350/vt350-lite-10.FCStd 2467
+[  130.2s] orphan M3x8-Screw041: Z 368.6..374.1, touches nothing
+[  130.2s] orphan M3x8-Screw042: Z 313.6..319.1, touches nothing
+[  130.2s] orphan M3x8-Screw043: Z 343.6..349.1, touches nothing
+[  130.2s] orphan M3x8-Screw044: Z 288.6..294.1, touches nothing
+[  130.2s] removed 4 orphan screws and their group
+[  130.2s] Hinge_Bottom top Z 424.90, handle bottom Z 435.10: moving Hinge_Bottom up +10.20
+[  130.4s] latch magnets: bottom pair gap 0.40 mm (top pair, Hinge_Top vs handle: for comparison)
+[  130.5s] tube Left: was Z 541.8..748.2; inlet 506.3 (coupler top 506.3); off by +35.5
+[  134.7s]    rebuilt: Z 506.30..712.67 (starts -0.00 from the inlet), min bend R 105.1, valid True
+[  134.8s] tube Right: was Z 541.8..748.2; inlet 506.3 (coupler top 506.3); off by +35.5
+[  137.3s]    rebuilt: Z 506.30..712.67 (starts -0.00 from the inlet), min bend R 105.1, valid True
+[  201.4s] tubes: 0 overlaps > 1 mm3 with other parts
+[  202.0s] Hinge_Bottom after the move: 0 overlaps > 1 mm3
+[  202.0s] verify: 0 problems
+[  222.0s] SAVED /home/dan/Documents/VT350/vt350-lite-11.FCStd 157924492
