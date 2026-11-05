@@ -24,6 +24,7 @@ Plus heated bed), Octopus Pro + Pi 5, fully enclosed.
 | 2026-11-04 | Toolheads: **Orbitool O2S + OSS**; **Nitehawk-36 not used** | #6 |
 | 2026-11-04 | **Go deep: +80 mm of Y at the front** (A4Tv2 + O2S head, deepest slice 68.6 mm). Backbone, Z, bed and rear frame stay; the old front verticals become Z posts | #19, `cad/README.md` (lite-6) |
 | 2026-11-04 | Gantry: **LDO Monolith milled, 2WD, VT 9 mm, rear NP** (FT hits the rear gantry 2020); **MGN9 × 470 Y rails**; **Carbonara 430 CF X beam** | #11, #19 |
+| 2026-11-04 | **Taller Z: gantry +50 mm in the same 740 mm frame; Z rails and lead screws 400** (~348 mm print height). The 400 integrated motor is in stock at West3D | `cad/README.md` (lite-10) |
 
 ## Open decisions (blocking)
 
@@ -47,7 +48,7 @@ confirm which parts you already own.
 
 | What | Where |
 |---|---|
-| Model files (not in git) | `~/Documents/VT350/`. Current working copy **`vt350-lite-9.FCStd`** (owned MGN9 400 Y rails + 74 mm front extensions); untouched original `vt350-good.FCStd` |
+| Model files (not in git) | `~/Documents/VT350/`. Current working copy **`vt350-lite-10.FCStd`** (gantry +50 mm, Z 400 rails + screws, ~348 mm print height); untouched original `vt350-good.FCStd` |
 | **Backup of the model files** | restic to the home NAS. Run **`cad/backup-models.sh --verify`** (alias `vt350-backup`) after model changes; old snapshots are pruned automatically (last 10, daily for 30 days, monthly for a year). Target and password are local config (`~/.config/vt350/backup.env`), not in this public repo; keep the restic password in the password manager too. First backup 2026-11-04: 52 files, 4.09 GB, test restore byte-identical |
 | How the model files were made + how to redo it | `cad/README.md`, `cad/scripts/` |
 | Cut list (draft) | `notes/cut-list.md` |
