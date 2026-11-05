@@ -24,7 +24,7 @@ Lengths are the bar's long axis in mm.
 | 2020 | 332 | 1 | Bed frame | |
 
 Not extrusions, but part of the same order:
-- **Y rails: 2 × MGN9, 470 mm** (were MGN12 × 400).
+- **Y rails: the owned 2 × Berserker MGN9H 400** (rear-flush) **+ 2 × 73.9 mm front extensions** (printed or cut steel; lite-9). They were MGN12 × 400.
 - **X beam: Carbonara 350, 430 mm** CF tube (replaces the 2020).
 
 **Totals:** 4040: 2 × 740 + 4 × 550 + 2 × 470. 2040: 4 × 740 + 3 × 550 + 6 × 470 + 2 × 380. 2020: 470, 380, 340, 332.
