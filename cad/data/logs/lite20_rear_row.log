@@ -1,0 +1,28 @@
+[   58.2s] opened /home/dan/Documents/VT350/vt350-lite-19.FCStd 2086
+[  117.2s]   ok   lite-19 plate at (-422.50, 28.00, 275.76), 10.00 thick
+[  118.9s]   ok   new plate is one valid solid
+[  118.9s]   ok   plate volume unchanged by moving holes (1258228.5 -> 1258228.5)
+[  119.1s]   ok   heater pad is one valid solid
+[  119.1s] heater pad volume 182326.0 -> 182071.0 (rear strip 1.0 deeper over 170 x 1.5 = 255.0 less)
+[  119.1s]   ok   pad lost exactly the extra rear-strip strip
+[  119.1s]   ok   rear: 2 dowel pins
+[  119.1s] rear: hole Y 376.50 vs lite-19 ball Y 377.50; slide +1.00 along the groove (0.000, -1.000); ball -1.70 -> -0.70 from the pins' middle (pins +-10)
+[  119.1s]   ok   rear ball still within the pins
+[  119.1s]   ok   rear ball under REAR_C (0.10 off)
+[  119.1s] rear spring re-aimed -0.00 deg about H's tapped hole
+[  119.1s]   ok   rear ball bolt still lands on the spring
+[  178.6s]   ok   same solids (907 -> 907)
+[  178.6s]   ok   no other solid moved ([])
+[  350.2s]   FIND     0.36 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, photo outline +-1 mm) x Trident kinematic J leaf spring, front left (flat, before preload)
+[  350.3s]   FIND     2.04 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, photo outline +-1 mm) x Trident kinematic J leaf spring, front right (flat, before preload)
+[  528.2s] front left: spring on the pad 0.9 mm2, 8.7 x 14.2, Y 72.8..87.1
+[  528.2s] front right: spring on the pad 5.4 mm2, 10.4 x 14.4, Y 54.9..69.3
+[  528.3s] rear: spring clear of the pad
+[  528.3s] FINDINGS:
+[  528.3s]   CLASH     0.36 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, photo outline +-1 mm) x Trident kinematic J leaf spring, front left (flat, before preload)
+[  528.3s]   CLASH     2.04 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, photo outline +-1 mm) x Trident kinematic J leaf spring, front right (flat, before preload)
+[  528.3s]   front left: spring corner on the pad, 0.9 mm2 (8.7 x 14.2)
+[  528.3s]   front right: spring corner on the pad, 5.4 mm2 (10.4 x 14.4)
+[  528.3s]   rear: spring clear of the pad
+[  528.3s] verify: 0 problems
+[  546.5s] SAVED /home/dan/Documents/VT350/vt350-lite-20.FCStd 139596568
