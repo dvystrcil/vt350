@@ -24,3 +24,5 @@ dual-license setup (MIT for code/configs + CC-BY-4.0 for prose) per the
 ## License
 
 [MIT](LICENSE).
+
+The exception is `cad/derived/`: modified third-party parts, each under its original licence. `cad/derived/madmax-andrewmcgr-dock-arm/` is **GPL-3.0**; see the README in that folder.
