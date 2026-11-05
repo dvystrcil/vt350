@@ -1,0 +1,8 @@
+[   64.6s] opened /home/dan/Documents/VT350/vt350-lite-20.FCStd 2086
+[   67.4s]   ok   exactly one 'case display 7 hdmi BTT v1.2 v1' (1)
+[   67.4s]   ok   nothing but its group references it ([])
+[   67.4s] removing Part__Feature1675 case display 7 hdmi BTT v1.2 v1 (56.5, 65.0, 391.3734, 245.5, 142.748, 533.5)
+[   70.1s]   ok   only the screen is gone (907 -> 906)
+[   70.1s]   ok   no other solid moved ([])
+[   70.1s] verify: 0 problems
+[   90.5s] SAVED /home/dan/Documents/VT350/vt350-lite-21.FCStd 139517279

@@ -88,9 +88,9 @@ Holes are given in plate coordinates: the origin is the front-left corner, viewe
 |---|---|---|---|
 | F150 L/R | 102.5 / 252.5 | 6.5 | in 35 × 10 pad notches, about 36 mm in front of the front bed extrusion, so tanaes's C/E can't reach them |
 | **K341 L/R** | 7 / 348 | 43 | **the front kinematic balls**, in 11-wide pad strips (28–59 from the front) |
-| **Rear centre** | 177.5 | 349.5 (photo, ±1) | **the rear ball**, which slides 1.5 mm back along G's groove from lite-17 |
-| R150 L/R | 102.5 / 252.5 | 349.5 | in the rear pad strip (92.5–262.5, 11.3 deep) |
-| Fuse / lock washer | 121.5 / 233.5 | 349.5 | screws already fitted: a 15 A fuse and a lock washer |
+| **Rear centre** | 177.5 | **348.5** (lite-20; lite-18 had 349.5) | **the rear ball**, 0.5 mm back along G's groove from lite-17 |
+| R150 L/R | 102.5 / 252.5 | 348.5 | in the rear pad strip (92.5–262.5, **12.3** deep) |
+| Fuse / lock washer | 122.1 / 232.8 | 348.5 | screws already fitted: a 15 A fuse and a lock washer |
 
 **Findings:**
 - **The springs fit the pad cut-outs.** Only about a third of each spring is under the plate. The rest hangs
@@ -104,6 +104,31 @@ Holes are given in plate coordinates: the origin is the front-left corner, viewe
   of thread. Under the head the stack is the 5.1 floor + 0.38 spring + 1.8 nut = 7.28, which makes 9.3–10.3 the
   right length, and 10 mm leaves 2.7 mm sticking out. lite-18's 14 mm assumed the bolt could run deep into the ball.
   The model's sphere nut is a plain solid, so it can't show how deep the real one is threaded.
+
+## lite-20: the rear hole row, re-measured (2026-11-05)
+
+Two ruler photos of the underside (Immich export `immich-20261105_133334.zip`: `PXL_20261105_212953005` with the
+ruler along the rear strip, `PXL_20261105_213013523` across it). The cm ticks were located by pixel-column
+profiles, not by eye. `cad/scripts/lite20_rear_row.py` applies the result to lite-19.
+
+| Measured | Value | lite-18/19 |
+|---|---|---|
+| Pad edge → rear hole centre | 5.75 | 5.8 |
+| Plate's rear edge → pad edge (rear strip depth) | **12.3** | 11.3 |
+| Plate's rear edge → rear hole centre | **6.55 → row at 348.5** | 5.5 (349.5) |
+| R150 pair, about the centre hole | ±75.0 (raw 148.8 C-C, scaled to 150.0: the ruler sits above the plate) | ±75 |
+| Fuse / lock-washer screws, from the centre hole | −55.4 / +54.7 → 122.1 / 232.8 | 121.5 / 233.5 |
+| Rear strip length | 169.9, centred on the centre hole within 0.5 | 170 |
+
+The plate's edge has a ~1 mm chamfer (a grey, unbrushed band in the photo). The first photo estimate measured to its
+inside edge, so it read about 1 mm short, the same bias as the front row (photo 5.8, ruler 6.5). The rear row now
+also sits 6.5 from its edge, so the two rows are symmetric.
+
+The rear ball, thin nut and spring slide 1.0 mm forward along G's groove (it runs front-to-back), to Y 376.5.
+
+**Still not measured with calipers:** the K341 front-ball holes (7 / 43), the side strips (11 wide, 28–59) and the
+front notches (35 × 10.3); whether the centre hole is centred between the plate's side edges; and which end the fuse
+is on seen from the magnet side (lite-18's assignment is kept).
 
 ## Fastener stacks through the C/D/H sandwiches (measured in lite-18)
 
