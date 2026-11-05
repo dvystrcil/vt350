@@ -83,6 +83,15 @@ last 10 runs, one per day for 30 days, and one per month for 12 months
 (override with `VT350_KEEP` in the local config). On this laptop the alias
 `vt350-backup` runs `cad/backup-models.sh --verify` from any directory.
 
+## Renders (lite-16)
+
+Blender Cycles renders of `vt350-lite-16.FCStd`, made with `render/export_meshes.py` + `render/render.py`
+(see the script table under "Running the scripts"). They show lite-16 only and are re-rendered when worth it, not on every pass.
+
+| What the Obico camera sees (LED strips only, 3800 K) | Outside, front 3/4 |
+|---|---|
+| ![View from the Nocturne camera at the top front centre](renders/vt350-lite-16-obico.jpg) | ![Front 3/4 view of the printer](renders/vt350-lite-16-outside.jpg) |
+
 ## Why the original was unusable, and what fixed it
 
 Measured from the original file's internal data (2026-11-04):
