@@ -11,6 +11,8 @@ those listings or the project READMEs linked from them.
 | [Monolith CNC Gantry by LDO](https://west3d.com/products/monolith-cnc-gantry-by-ldo-systems-v2-4-and-trident-compatible-with-2wd-and-awd) | 1 | The kit does both 2WD and AWD and supports 9/10 mm belts. Its X rail faces the front (needed for MadMax). It includes "AWD front extrusion support for toolchangers", but this build runs **2WD**, so the MadMax docks need another mount (#19 AC7). The model still has the **printed** Monolith joints (#19). |
 | [Carbonara carbon-fibre X beam](https://west3d.com/products/carbonara-carbon-fiber-x-beam-for-voron-3d-printers?variant=46478960656596) | 1 | The 350 size is 430 mm and 84.3 g. Rated 110 °C short-term. CAD: [Monolith MISC/CF_tube_mounting](https://github.com/Monolith3D/MISC/tree/main/CF_tube_mounting). |
 | [Gates GT2 closed-loop belt 2.4 m, 9 mm RF](https://west3d.com/products/gates-gt2-closed-loop-belt-2-4m-ll-2gt-6-6mm-wide-rf-reinforced?variant=47586401616084) | 2 | 9 mm belts for the Monolith. Cut open to length. |
+| [Berserker MGN9H-1R 400 mm, with carriages](https://west3d.com/products/berserker-mgn9h-1r-150-300-350-400-linear-rails-viking-skis-with-carriages) | 2 | **Y rails.** lite-9 uses them rear-flush (Y 40…440) plus a 73.9 mm front extension per side, which the blocks only ride while docking. Printed or cut steel is still open. 450 is the longest MGN9 West3D sells, and 500 won't fit in the 473.9 mm gap between the milled mounts. |
+| [Berserker MGN12H-1R 400 mm, with carriage](https://west3d.com/products/berserker-mgn12h-1r-300-350-400-linear-rails-viking-skis-with-carriages) | 1 | **X rail** on the Carbonara beam. It matches the model's MGN12 × 400. |
 | [LDO 42STH48-2504AH (S55) high-temp NEMA 17](https://west3d.com/products/ldo-motors-42sth48-2504ah-s55-super-power-high-temp-nema-17-stepper-motor-high-performance-high-temperature-55mm-shaft) | 2 | XY motors. The 55 mm shaft is over Monolith's 37 mm minimum for 9 mm belts. **Decision (2026-11-04): 2WD.** AWD isn't planned; it would need 2 more motors and 2 more drivers. |
 | [Trident Backbone by clee, 350](https://west3d.com/products/trident-backbone-by-clee) | 1 | Replaces the three printed Z motor mounts with one steel plate. **"NOT COMPATIBLE WITH TRIDENT R2"**, and it conflicts with an inverted-electronics layout (#5). It was designed for the stock Trident frame and bolts "in the same locations as the printed parts". **Decision: Trident R1.** **Checked in lite-5:** the model already has it (`backbone-350 v2`). All 13 holes match the [DXF](https://github.com/clee/TridentBackbone) within 0.1 mm. Every M5 hole lands on a 4040/2040 slot centre, so it needs no frame machining. The stock Z cable anchors collide with it and need replacing (#7). |
 
@@ -28,6 +30,7 @@ those listings or the project READMEs linked from them.
 |---|---|---|
 | [Orbitool O2S toolhead PCB](https://west3d.com/products/orbitool-toolhead-pcb-board-for-orbiter-2-o2-and-smart-orbiter-3-so3-by-ldo-motors?variant=45224824832212) | 1 | Mounts on the Orbiter and raises the bowden inlet; not modeled yet (#6). **One set covers one head.** Every extra MadMax tool needs another (#19). |
 | [Orbiter Smart Filament Sensor (OSS) kit](https://west3d.com/products/orbiter-filament-sensor-complete-kit-for-orbiter-extruder-v20-by-ldo-motors) | 1 | Same as the O2S: one per head. |
+| [LDO Orbiter V2.5](https://west3d.com/products/ldo-orbiter-extruder-v2-5-orbiter-v2-5-and-v2-0-to-v2-5-upgrade-kit) | not yet recorded | The extruder the O2S and OSS mount on. One per head. |
 
 ## Electronics
 
@@ -39,6 +42,11 @@ those listings or the project READMEs linked from them.
 | [Omron G3NA-210B UTU DC5-24 SSR](https://west3d.com/search?type=product&q=Omron+G3NA-210B+UTU+DC5+24V+Solid+State+Relay+%28SSR%29) | 1 | Switches the bed heater. |
 | Raspberry Pi 5 + NVMe HAT + drive | 1 | Klipper host (#5). |
 | [BTT Pad 7](https://west3d.com/products/raspberry-pad-7-touch-screen-display-and-pi-adapter-7-inch-pad7-btt) | 1 | Shared with the Neptune over KlipperScreen's multi-printer config. Needs a quick-release mount (#5). |
+| BOSYTRO 600 W adjustable PSU, 0–60 V, 0–10 A (Amazon, bought 2025-11-21) | 1 | For the motor supply (Octopus Pro H723 60 V, TMC5160T Plus). Adjustable, so **set it with a meter, e.g. 48 V, rather than at its 60 V maximum**: motors push voltage back into the supply when they decelerate, and the drivers' rated maximum (check BTT's spec) needs margin. Lock or cover the knobs. The 24 V supply will be the same brand's 600 W 0–24 V unit (to buy, #22). |
+| [Nitehawk Hexa 6+1 USB adapter](https://west3d.com/search?type=product&q=Nitehawk+Hexa) | 1 | USB hub for toolhead boards (link is a search, not the product page). |
+| Wago lever connectors | — | Owned. |
+| SSR DIN clamp with heatsink | 1 | For the Omron SSR above. |
+| DIN holders | — | **To print** for any part that needs one. |
 
 ## Filament
 
