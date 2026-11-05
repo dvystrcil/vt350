@@ -26,6 +26,10 @@ Plus heated bed), Octopus Pro + Pi 5, fully enclosed.
 | 2026-11-04 | Gantry: **LDO Monolith milled, 2WD, VT 9 mm, rear NP** (FT hits the rear gantry 2020); **MGN9 × 470 Y rails**; **Carbonara 430 CF X beam** | #11, #19 |
 | 2026-11-04 | **Taller Z: gantry +50 mm in the same 740 mm frame; Z rails and lead screws 400** (~348 mm print height). The 400 integrated motor is in stock at West3D | `cad/README.md` (lite-10) |
 | 2026-11-04 | **A4Tv2 needs the 3 mm spacer** between the hotend top and the shroud ceiling (confirmed by the A4Tv2's creator). The nozzle sits 3 mm lower; model it when the A4Tv2 replaces the A4T v1 | #19 |
+| 2026-11-05 | **Insulation:** the 3 owned carbon-felt pads (10 mm), sealed in aluminium; roof and back outside their panels, right wall between the panel and the electronics. **Test a pad for conductivity first.** | #14 |
+| 2026-11-05 | **Camera: Nocturne USB** (Luke's Lab / West3D, 96°, rated to 70 °C, which is the chamber peak with no margin) inside, top front centre; stream MJPEG (ustreamer): a Pi 5 has no H.264 encoder, and current C920s have none either | #14 |
+| 2026-11-05 | **Lights: 24 V warm white, 3500–4000 K, CRI ≥ 90**, COB in aluminium channel, switched from an Octopus output; no 5 V lighting | #14 |
+| 2026-11-05 | **Kinematic bed: tanaes's Trident set** (owned, West3D). The model still has his V2.4 parts, with the front pair floating; see `notes/kinematic-bed.md` | #10 |
 | 2026-11-04 | **Crossbow: the all-metal (aluminium CNC) version from West3D**, DW-Tas's current design. The A4Tv2 assembly already models it. The older Crossbow in lite-14 and earlier is gone from lite-15 | #12 |
 | 2026-11-04 | **A4Tv2: its creator says to modify it as needed.** Licences decide where changes go. The A4Tv2 is [CC BY-NC-SA 4.0](https://github.com/DW-Tas/A4Tv2): remixes are allowed with attribution, non-commercially, under the same licence. The MadMax plate and dock parts are GPL-3.0. The two licences don't mix, so keep any fit changes **on the MadMax plate side (GPL-3.0, like `cad/derived/`)**, and keep any A4Tv2 changes in their own CC BY-NC-SA 4.0 folder. **Correction (lite-15):** the first hole check compared the wrong holes (the extruder mounting pattern). The proper check, in lite-15, finds all three XOL carriage-screw pairs of the A4Tv2 on andrewmcgr's plate, so **the plate fits unmodified**. Open: the left head's Crossbow lever hits the left dock brackets, and the length of the upper carriage screws | #19 |
 
@@ -51,7 +55,7 @@ confirm which parts you already own.
 
 | What | Where |
 |---|---|
-| Model files (not in git) | `~/Documents/VT350/`. Current working copy **`vt350-lite-15.FCStd`** (lite-14 + A4Tv2 and CNC Crossbow); untouched original `vt350-good.FCStd` |
+| Model files (not in git) | `~/Documents/VT350/`. Current working copy **`vt350-lite-16.FCStd`** (lite-15 + insulation, camera, LED strips); untouched original `vt350-good.FCStd` |
 | **Backup of the model files** | restic to the home NAS. Run **`cad/backup-models.sh --verify`** (alias `vt350-backup`) after model changes; old snapshots are pruned automatically (last 10, daily for 30 days, monthly for a year). Target and password are local config (`~/.config/vt350/backup.env`), not in this public repo; keep the restic password in the password manager too. First backup 2026-11-04: 52 files, 4.09 GB, test restore byte-identical |
 | How the model files were made + how to redo it | `cad/README.md`, `cad/scripts/` |
 | Cut list (draft) | `notes/cut-list.md` |

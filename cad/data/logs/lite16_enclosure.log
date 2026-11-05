@@ -1,0 +1,23 @@
+[  239.4s] opened /home/dan/Documents/VT350/vt350-lite-15.FCStd 2405
+[  301.6s] Roof felt (pad 1): 508 x 470 mm, area 0.239 m2
+[  301.6s] Roof felt strip (pad 3): 470 x 42 mm, area 0.020 m2
+[  301.6s] Back felt (pad 2): 508 x 470 mm, area 0.239 m2
+[  301.6s] Right wall felt (pad 3): 508 x 466 mm, area 0.237 m2
+[  301.6s] pad 1: 0.239 of 0.258 m2 used
+[  301.6s] pad 2: 0.239 of 0.258 m2 used
+[  301.6s] pad 3: 0.256 of 0.258 m2 used
+[  302.4s] camera aim search: best frames 81/81 of the plate at worst bed height
+[  411.2s] new parts vs the printer: 6 overlaps > 1 mm3
+[  411.2s]    pass-through needed: Bowden Right crosses Roof felt strip (pad 3)
+[  411.2s]    pass-through needed: Bowden Left crosses Roof felt strip (pad 3)
+[  411.2s]    pass-through needed: Bowden Left crosses Roof felt strip liner, outer
+[  411.2s]    pass-through needed: Bowden Left crosses Roof felt strip liner, inner
+[  411.2s]    pass-through needed: Bowden Right crosses Roof felt strip liner, inner
+[  411.2s]    pass-through needed: Bowden Right crosses Roof felt strip liner, outer
+[  413.2s] camera at (-245, -52, 628), aimed at (-245, 118, 363); 16:9 FOV 88.1 x 57.1 deg (from 96.0 deg diagonal)
+[ 2764.8s] plate at Z 271.0: 81/81 grid points in frame, 81 visible; blocked by: nothing
+[ 4706.4s] plate at Z 380.6: 81/81 grid points in frame, 63 visible; blocked by: Gantry assembly 9, 4040-350x350x250 Voron Trident v4 v33 9
+[ 7550.0s] plate at Z 33.0: 81/81 grid points in frame, 72 visible; blocked by: Bed frame 6, front_right_sandwich_3 2, front_left_sandwich_3 1
+[ 7550.0s] added 20 parts
+[ 7550.0s] verify: 0 problems
+[ 7570.2s] SAVED /home/dan/Documents/VT350/vt350-lite-16.FCStd 156381243
