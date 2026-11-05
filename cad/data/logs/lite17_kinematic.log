@@ -1,0 +1,59 @@
+[   72.5s] opened /home/dan/Documents/VT350/vt350-lite-16.FCStd 2443
+[  139.0s] GE5C centres L Vector (-470.25029985466506, 48.80002504212, 263.8500000001761)  R Vector (-20.250299854658977, 48.80002504212, 263.85000000010973)  rear Vector (-244.90029985460401, 426.10150762525774, 259.450000000071); outer ring height 4.0
+[  139.0s]   ok   GE5C outer ring is 4 mm tall (GE5C: B 6, C 4)
+[  139.0s] front extrusion X -480.0..-10.0, slot centreline Y 70.80, top Z 260.00000000000176; spine X centre -245.00, Y 80.8..412.8, top Z 260.0000001000003
+[  139.0s] plate BoundBox (-422.5, 28, 265, -67.5, 388.5, 271); front mount holes [(-415.5, 71.0), (-74.5, 71.0)]; rear [(-245.0, 376.0)]
+[  139.0s] tanaes sphere nut: 9.00 wide, flat 4.03 above centre; thin hex nut 1.80 thick
+[  139.0s]   ok   front GE5Cs level (263.85 / 263.85)
+[  139.0s] GE5C centre: front 263.85 -> 261.00 (-2.85); rear 259.45 -> 261.00 (+1.55)
+[  139.0s]   ok   18 holder solids/screws to delete (18)
+[  139.0s] deleting: SOLID028, M5x10-Screw, M5x10-Screw001, M3x6-Screw015, M3x6-Screw016, M3x6-Screw017, SOLID036, M5x10-Screw004, M5x10-Screw005, M3x6-Screw024, M3x6-Screw025, M3x6-Screw026, SOLID033, M5x10-Screw002, M5x10-Screw003, M3x6-Screw018, M3x6-Screw019, M3x6-Screw020 | V2.4: front_left_sandwich_3, pin_3, pin_001, front_support_top_3, front_support_bottom_3, Leaf_spring, Ball, Fasteners066, M3-Nut001, front_right_sandwich_3, pin_3(Mirror), pin_3(Mirror)001, front_support_3(Mirror), front_support_bottom_3(Mirror), Ball(Mirror), Leaf_spring001, M3 thin hex nut001, back_sandwich, pin_002, pin_003, back_support_3_top, Leaf_spring002, Ball001, M3 thin hex nut002
+[  139.1s] left: rail carriage MGN9H (2) (38.3 mm from the GE5C)
+[  139.1s] right: rail carriage MGN9H (4) (38.5 mm from the GE5C)
+[  139.1s] rear: rail carriage MGN9H (3) (47.9 mm from the GE5C)
+[  139.1s]    rear: the Z cable chain (bolted to this carriage) moves with it; chain extent BoundBox (-333.5, 480.885, 1, -257.05, 498.885, 308.227)
+[  147.5s] hole checks (bearing plates):
+[  147.5s]   ok   A bore on the GE5C (-470.25, 48.80)
+[  147.5s]   ok   B bore on the GE5C (-20.25, 48.80)
+[  147.5s]   ok   G bore on the GE5C (-244.90, 426.10)
+[  147.5s]   ok   A M5 at (-450.50, 70.80) on the front slot
+[  147.5s]   ok   A M5 at (-474.50, 70.80) on the front slot
+[  147.5s]   ok   B M5 at (-40.00, 70.80) on the front slot
+[  147.5s]   ok   B M5 at (-16.00, 70.80) on the front slot
+[  147.5s]   ok   G M3 at (-244.90, 403.80) on the spine slot (+0.10 off its centreline)
+[  147.5s]   ok   G M3 at (-244.90, 390.40) on the spine slot (+0.10 off its centreline)
+[  147.5s]   ok   G M3 at (-244.90, 361.20) on the spine slot (+0.10 off its centreline)
+[  147.5s]   ok   I's 6 holes on A's 6 tapped holes (worst 0.000)
+[  147.5s]   ok   I's 6 holes on B's 6 tapped holes (worst 0.000)
+[  147.5s]   ok   I's 6 holes on G's 6 tapped holes (worst 0.000)
+[  147.6s] C: cutout edge 0.100 from the pin axes, so it rests on the pins 4.10 above the bottom plate
+[  147.6s]   ok   E end hole (-435.48, 70.80) on the front slot
+[  147.6s]   ok   E end hole (-396.06, 70.80) on the front slot
+[  147.6s]   ok   C's clamp holes on E's tapped pair (worst 0.000)
+[  147.6s]   ok   C's end holes on E's (worst 0.000)
+[  147.7s] D: cutout edge 0.100 from the pin axes, so it rests on the pins 4.10 above the bottom plate
+[  147.7s]   ok   F end hole (-54.52, 70.80) on the front slot
+[  147.7s]   ok   F end hole (-93.94, 70.80) on the front slot
+[  147.7s]   ok   D's clamp holes on F's tapped pair (worst 0.000)
+[  147.7s]   ok   D's end holes on F's (worst 0.000)
+[  147.7s] H: cutout edge 0.100 from the pin axes, so it rests on the pins 4.10 above the bottom plate
+[  147.7s]   ok   H's 4 holes on G's holes (worst 0.000)
+[  147.9s] front left: ball (-415.50, 71.00, 269.55); bed hole (-415.50, 71.00), off by 0.00; -0.34 along the groove from its middle (pins +-10); pins 9.90 apart, centres Z 264.60; groove 36.3 deg, toward the 3-ball centroid 30.8 deg; tapped hole to ball 28.3 mm; ball bolt inside the spring: True
+[  147.9s]   ok   front left ball under the bed's mount hole
+[  147.9s]   ok   front left ball within the pins
+[  148.0s] front right: ball (-74.50, 71.00, 269.55); bed hole (-74.50, 71.00), off by 0.00; +0.34 along the groove from its middle (pins +-10); pins 9.90 apart, centres Z 264.60; groove 143.7 deg, toward the 3-ball centroid 149.2 deg; tapped hole to ball 28.3 mm; ball bolt inside the spring: True
+[  148.0s]   ok   front right ball under the bed's mount hole
+[  148.0s]   ok   front right ball within the pins
+[  148.1s] rear: ball (-244.90, 376.00, 269.55); bed hole (-245.00, 376.00), off by 0.10; -0.20 along the groove from its middle (pins +-10); pins 9.90 apart, centres Z 264.60; groove 90.0 deg, toward the 3-ball centroid 90.0 deg; tapped hole to ball 27.8 mm; ball bolt inside the spring: True
+[  148.1s]   ok   rear ball under the bed's mount hole
+[  148.1s]   ok   rear ball within the pins
+[  148.1s]   ok   the three spring tops are level (275.761..275.761)
+[  148.2s]   ok   plate now 10.00 mm, one solid
+[  148.2s] plate: bottom 265.00 -> 275.76, top 271.00 -> 285.76; relative to the front Z carriages the top moved +17.61 (rear carriage +13.21)
+[  221.0s]      (already overlapping before the move: Leadscrew Nut001 x Leadscrew002 (rod) 63.76 mm3)
+[  222.3s] overlaps > 0.5 mm3 involving new/moved parts: 0
+[  224.2s] contacts broken by the moves: 0
+[  224.2s] deleted 38 solids
+[  224.3s] added 26 parts, moved 106
+[  224.3s] verify: 0 problems
+[  245.5s] SAVED /home/dan/Documents/VT350/vt350-lite-17.FCStd 156262382
