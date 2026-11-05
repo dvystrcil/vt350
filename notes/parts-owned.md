@@ -42,7 +42,7 @@ those listings or the project READMEs linked from them.
 | [Omron G3NA-210B UTU DC5-24 SSR](https://west3d.com/search?type=product&q=Omron+G3NA-210B+UTU+DC5+24V+Solid+State+Relay+%28SSR%29) | 1 | Switches the bed heater. |
 | Raspberry Pi 5 + NVMe HAT + drive | 1 | Klipper host (#5). |
 | [BTT Pad 7](https://west3d.com/products/raspberry-pad-7-touch-screen-display-and-pi-adapter-7-inch-pad7-btt) | 1 | Shared with the Neptune over KlipperScreen's multi-printer config. Needs a quick-release mount (#5). |
-| 60 V PSU (model not yet recorded) | 1 | For the 60 V side (Octopus Pro H723 60 V, TMC5160T Plus). Check the TMC5160T Plus's rated maximum input against this PSU's actual output. |
+| BOSYTRO 600 W adjustable PSU, 0–60 V, 0–10 A (Amazon, bought 2025-11-21) | 1 | For the motor supply (Octopus Pro H723 60 V, TMC5160T Plus). Adjustable, so **set it with a meter, e.g. 48 V, rather than at its 60 V maximum**: motors push voltage back into the supply when they decelerate, and the drivers' rated maximum (check BTT's spec) needs margin. Lock or cover the knobs. The 24 V supply will be the same brand's 600 W 0–24 V unit (to buy, #22). |
 | [Nitehawk Hexa 6+1 USB adapter](https://west3d.com/search?type=product&q=Nitehawk+Hexa) | 1 | USB hub for toolhead boards (link is a search, not the product page). |
 | Wago lever connectors | — | Owned. |
 | SSR DIN clamp with heatsink | 1 | For the Omron SSR above. |
