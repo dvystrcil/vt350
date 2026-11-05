@@ -34,11 +34,34 @@ The corner bearings are still on the **printed** Trident holders (`Z_Bed_Left/Ri
 Also from the BOM: 3 × 9 mm M3 sphere nuts (the balls), 6 × M5x20 dowel pins, and 28 ga spring-steel leaf springs.
 The README says to **lengthen the Z endstop pin by about 8 mm**.
 
-## Open before modelling the front pair
+## Front position: resolved (lite-17, 2026-11-05)
 
-- **Where are the bed's front mount holes?** The bed is a Kobra Plus heater on the
-  `Universal Build Plate 350`. If the bed has no holes where the front mounts need them, tanaes ships drill guides
-  (`STLs/drill_guide_standard.stl`, `drill_guide_slots.stl`).
-- Alternatively, take the front-mount position from his Fusion assembly. Someone with Fusion would need to export a STEP.
+The bed is the user's **LDO 350 plate kit** (heater label `LDO-SHPAC-350-120-750`; `notes/parts-owned.md`), not a
+Kobra Plus. Its aluminium is about **10 mm** thick (user's measurement; 13.5 mm with the heater and magnet sheet).
 
-The bearing plates (A/B, G/H, I) are anchored by their holes and can go in now. That's the next pass.
+Where the front balls go:
+
+- tanaes's README: each ball hangs from one of the bed's own mount points ("front left and right standard V2 mount points,
+  rear center mount point"). The bolt carries the leaf spring, a thin nut and the sphere nut.
+- The model plate's front holes are at (−415.5, 71) and (−74.5, 71): 7 mm in from each side and 43 mm back from the front
+  edge, right over the front extrusion's slot (Y 70.8). Rear hole: (−245, 376), on the spine.
+- The user's photo of the underside (ruler along the front) shows the same pair. They are small holes in heater cut-outs on
+  the left and right edges, about 6–7.6 mm in and 41–43 mm back (photo scale, ±1–2 mm). They are partly under the ruler, so
+  **measure them before drilling or ordering anything**. The plate also has holes in the front-edge cut-outs (±75 from
+  centre, 6 mm from the edge) and four corner holes 20.7 mm in. Those are not the Trident mount points.
+- With E's end holes on the slot centreline, the pin groove passes through the bed hole at exactly one position along the
+  extrusion. That position puts C/E **54.7 mm inboard of A's bore**, the same spacing the A and C DXFs are drawn at. The
+  front sources agree to 0.1 mm. The leaf spring checks out too: its oval end lands on C's tapped hole 28.3 mm from the
+  ball.
+
+What lite-17 found (`cad/data/logs/lite17_kinematic.log`):
+
+| | |
+|---|---|
+| Bearing height | GE5C goes in from below with I on top, so the outer ring's top is level with A/B/G's top. The bearing centre is 1 mm above the bed frame, which moves the front Z carriages −2.85 mm and the rear +1.55 mm relative to the bed frame. That's fine with three independent Z motors; z-tilt absorbs it. |
+| C/D/H height | Their cut-out ends bear on the pins, so they sit **4.1 mm above** E/F/G rather than flat on them. A BOM M3x8 BHCS then reaches only about 1.9 mm into E's 3 mm tapped hole. **Check the thread engagement when assembling**; M3x10 if it's thin. |
+| Grooves | Front 36.3° / 143.7°, rear 90°. The directions to the three-ball centroid are 30.8° / 149.2° / 90°, so the front grooves are about 5.5° off radial. That's tanaes's design and is unchanged here. |
+| Plate height | Plate top moves **+17.6 mm** relative to the front Z carriages: 4 mm from the thicker plate, the rest from the kinematic stack and bearing seat. tanaes quotes about 8 mm against a stock Trident. The old model's plate sat only 5 mm above the bed frame, so the difference may be in that baseline. lite-10's max print height (347.8 mm) needs re-checking. |
+| Bed bolts | M3 SHCS through the plate: (plate below its counterbore) + 0.38 spring + 1.8 nut + 2–3 mm protruding. The counterbore depth on the real plate isn't known, so measure it before buying the 3 bolts. |
+
+Still to do: the README says to lengthen the Z endstop pin by about 8 mm. Fasteners aren't modelled in lite-17.

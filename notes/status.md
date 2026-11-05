@@ -7,8 +7,8 @@ Last updated **2026-11-04**.
 A Voron Trident 350 derivative on a **4040 frame**: MGN12 rails on X/Y, three
 MGN9 rails on Z with integrated-leadscrew NEMA17s (T8, 8 mm), 250 mm Z travel,
 **MadMax toolchanger** with two toolheads (A4T + Dragon Rapido UHF, Orbiter 2.5
-+ **Orbitool O2S** + **Orbiter Smart Filament Sensor**), kinematic bed (Kobra
-Plus heated bed), Octopus Pro + Pi 5, fully enclosed.
++ **Orbitool O2S** + **Orbiter Smart Filament Sensor**), kinematic bed (LDO
+350 plate kit, tanaes Trident mounts), Octopus Pro + Pi 5, fully enclosed.
 
 ## Decisions made
 
@@ -55,7 +55,7 @@ confirm which parts you already own.
 
 | What | Where |
 |---|---|
-| Model files (not in git) | `~/Documents/VT350/`. Current working copy **`vt350-lite-16.FCStd`** (lite-15 + insulation, camera, LED strips); untouched original `vt350-good.FCStd` |
+| Model files (not in git) | `~/Documents/VT350/`. Current working copy **`vt350-lite-17.FCStd`** (lite-16 + tanaes Trident kinematic bed, 10 mm plate); untouched original `vt350-good.FCStd` |
 | **Backup of the model files** | restic to the home NAS. Run **`cad/backup-models.sh --verify`** (alias `vt350-backup`) after model changes; old snapshots are pruned automatically (last 10, daily for 30 days, monthly for a year). Target and password are local config (`~/.config/vt350/backup.env`), not in this public repo; keep the restic password in the password manager too. First backup 2026-11-04: 52 files, 4.09 GB, test restore byte-identical |
 | How the model files were made + how to redo it | `cad/README.md`, `cad/scripts/` |
 | Cut list (draft) | `notes/cut-list.md` |
