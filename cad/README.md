@@ -215,7 +215,7 @@ What this leaves open:
 | Nozzle tip (E3D v6 stand-in) | Z 330.8 | Z 380.8 |
 | Z rails / lead screws | 300 / 300 | **400 / 400** |
 | Bed's highest position | **45 mm under the nozzle** (Z blocks reach the rail ends) | reaches the nozzle; 5 mm left before the rail stops |
-| Bed's lowest position | — | plate top Z 33.0: the rear Z carriage's lock nuts come within 0 mm of the Backbone (bounding-box estimate; booleans show no interference) |
+| Bed's lowest position | — | plate top Z 33.0, where the rear Z carriage's lock nuts reach the Backbone (bounding-box estimate; a boolean check at that pose finds no interference) |
 | **Max print height** | — | **347.8 mm** |
 | Gantry over the lead screws | — | 21.3 mm clear (left and right); the rear screw is never under the gantry |
 | Bowden, tightest bend | R 105.2 | R 105.1, using the best handles (290, 175); lite-5's handles would give R 95.9 |
