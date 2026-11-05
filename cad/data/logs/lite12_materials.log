@@ -1,0 +1,51 @@
+[   65.7s] opened /home/dan/Documents/VT350/vt350-lite-11.FCStd 2453
+[   66.3s] appearance restored on 494 objects the material card had recoloured
+[   86.5s] category                         material              n  model vol cm3  model mass g
+[   86.5s] frame extrusion                  Aluminum-6061-T6       27       5158.4         13928
+[   86.5s] build plate                      Aluminum-Generic        1        755.1          2039
+[   86.5s] printed part                     ABS-Generic            41        456.0           483
+[   86.5s]       (40 kinds) A4T HE Fan Duct - Rapido [A4T HE Fan Duct -Rapido v001]; A4T HE Fan Duct - Rapido [A4T HE Fan Duct -Rapido v2]; Alternate Bracket v1 [Left Dock]; Alternate Bracket v1 [Right Dock]; COMPOUND [MadMaxCarriage (1)]; COMPOUND [MadMaxCarriage(Mirror)]; COMPOUND [MadMaxCarriage]; COMPOUND [Z_Carriage_Left]; COMPOUND [Z_Carriage_Right]; Clip (1) [4mm Gap 6mm Belt v1 (1) (1)]; Clip (1) [4mm Gap 6mm Belt v1 (2)]; Clip [4mm Gap 6mm Belt v1 (1)]; Clip [4mm Gap 6mm Belt v1(Mirror)]; Clip [4mm Gap 6mm Belt v1]; Clip(Mirror) [4mm Gap 6mm Belt v1 (1)(Mirr]; Dock Arm v1 Bottom [Left Dock]; Dock Arm v1 Bottom [Right Dock]; LED_diffuser [A4T LED Diffuser[translucent]; Part  [A4T LED Filter[opaque] v001]; Part 46 [A4T LED Filter[opaque] v1]; SOLID [Handle (1)]; SOLID [Hinge_Bottom (1)]; SOLID [Hinge_Left_sleeve (1)001]; SOLID [Hinge_Left_sleeve (1)002]; SOLID [Hinge_Left_sleeve (1)]; SOLID [Hinge_Left_solid (1) (1)001]; SOLID [Hinge_Left_solid (1) (1)002]; SOLID [Hinge_Left_solid (1) (1)]; SOLID [Hinge_Top (1)]; SOLID [Latch (1) (2)]; SOLID [Z_Bed_Left]; SOLID [Z_Bed_Rear]; SOLID [Z_Bed_Right]; SOLID [Z_Carriage_Rear_2-hole (IGUS]; SOLID [Z_Carriage_Rear_3-Hole (Gene]; SOLID [rail_stop (1)]; SOLID [rail_stop (2)]; SOLID [rail_stop]; Top Cap [Crossbow integration CAD v00]; Top Cap [Crossbow integration CAD v1]
+[   86.5s] Monolith milled part             Aluminum-6061-T6       18        224.7           607
+[   86.5s] fastener / pin / shaft           Steel-Generic         453        184.0          1454
+[   86.5s] printed A4T cowling              ABS-Generic             2         96.6           102
+[   86.5s] linear rail                      Steel-Generic           3         78.8           622
+[   86.5s] linear rail (Z)                  Steel-Generic           3         60.5           478
+[   86.5s] rail carriage                    Steel-Generic          18         30.4           240
+[   86.5s] bowden tube                      PTFE-Generic            2         17.4            36
+[   86.5s] bearing                          Steel-Generic          68         15.4           122
+[   86.5s] spring / pin / ball / shaft      Steel-Generic          19          4.4            34
+[   86.5s] electronics                      Default (UNASSIGNED)   63       1202.2 
+[   86.5s]       (59 kinds) 2.0_PIN_HEADER [RASPBERRY_PI_5_1 v1]; 221- [3x WAGO_221-415_mount]; 2xUSB_2.0_PORT [RASPBERRY_PI_5_1 v1]; 2xUSB_3.0_PORT [RASPBERRY_PI_5_1 v1]; 3.0_PIN_HEADER_10 [RASPBERRY_PI_5_1 v1]; 9FD77_D9WHV [RASPBERRY_PI_5_1 v1]; BROADCOM_1 [RASPBERRY_PI_5_1 v1]; BUTTON_2 [RASPBERRY_PI_5_1 v1]
+[   86.5s] backbone (?)                     Default (UNASSIGNED)    1       1049.6 
+[   86.5s]       (1 kinds) backbone-350 v2 [4040-350x350x250 Voron Tride]
+[   86.5s] back panel (ACM / acrylic?)      Default (UNASSIGNED)    1        976.0 
+[   86.5s]       (1 kinds) Back Panel [4040-350 VT Frame v12]
+[   86.5s] stepper motor                    Default (UNASSIGNED)   49        392.6 
+[   86.5s]       (42 kinds) Component [LDO Stepper (1) (1)]; Component18 (1) [LDO Stepper (1) (1) (1)]; Component18 [LDO Stepper (1) (1)]; Component19 (1) [LDO Stepper (1) (1) (1)]; Component19 [LDO Stepper (1) (1)]; Component20 (1) [LDO Stepper (1) (1) (1)]; Component20 [LDO Stepper (1) (1)]; Component21 (1) [LDO Stepper (1) (1) (1)]
+[   86.5s] UNCLASSIFIED                     Default (UNASSIGNED)   46        190.0 
+[   86.5s]       (27 kinds) 10x11 Chain Link [10x11 Chain Z]; 10x11 Fixed End [10x11 Chain Z]; 10x11 Unfixed End [10x11 Chain Z]; 4mm Bowden Coupler v1 (1) (1) [BrassCouplerRing 4mm PFTE v1]; 4mm Bowden Coupler v1 (1) [BrassCouplerRing 4mm PFTE v1]; Ball [back_sandwich]; Cutter [Crossbow integration CAD v00]; Cutter [Crossbow integration CAD v1]; Dock Asembly [MadMax 4 XOL v11 v1(Mirror)]; Dock Asembly [MadMax 4 XOL v11 v1]; Dock Bracket [MadMax 4 XOL v11 v1(Mirror)]; Dock Bracket [MadMax 4 XOL v11 v1]; HubHousing V5 With Logo (1) (1) [Orbiter V2.0 Mockup (1) v1 (]; HubHousing V5 With Logo (1) [Orbiter V2.0 Mockup (1) v1]; Latch (1) (1) (1) [Orbiter V2.0 Mockup (1) v1 (]; Latch (1) (1) [Orbiter V2.0 Mockup (1) v1]; Molded Gear Housing (65 teeth) v1 (1) (1 [Gearset (1) (1)]; Molded Gear Housing (65 teeth) v1 (1) [Gearset (1)]; Plate Back [MadMax 4 XOL v11 v1(Mirror)]; Plate Back [MadMax 4 XOL v11 v1]; Plate [Plate Assembly(Mirror)]; Plate [Plate Assembly]; back_support_3_top [back_sandwich]; front_support_3 [front_right_sandwich_3]; front_support_bottom_3 [front_left_sandwich_3]; front_support_bottom_3 [front_right_sandwich_3]; front_support_top_3 [front_left_sandwich_3]
+[   86.5s] belt (rubber + glass fibre)      Default (UNASSIGNED)    2         48.3 
+[   86.5s]       (2 kinds) GT2 9mm belt, lower (Monolith 2WD) [_11_9mm_2WD_belts_FT_FT v1]; GT2 9mm belt, upper (Monolith 2WD) [_11_9mm_2WD_belts_FT_FT v1]
+[   86.5s] CF tube (no card)                Default (UNASSIGNED)    1         47.7 
+[   86.5s]       (1 kinds) Carbonara CF X beam 20x20  [4040-350x350x250 Voron Tride]
+[   86.5s] hotend metal / stand-in          Default (UNASSIGNED)   44         20.5 
+[   86.5s]       (24 kinds) D2.3L7.5-\X\D1\X\F5\X\BB\X\AF\X\EF\X\AF\ [TL-dragon-Ace-mouckup v001]; D2.3L7.5-\X\D1\X\F5\X\BB\X\AF\X\EF\X\AF\ [TL-dragon-Ace-mouckup v1]; E3D v6 HotEnd - Nozzle [TL-dragon-Ace-mouckup v001]; E3D v6 HotEnd - Nozzle [TL-dragon-Ace-mouckup v1]; TL-dragon-SF\X\BA\X\ED\X\B9\X\DC\X\C9\X\ [TL-dragon-Ace-mouckup v001]; TL-dragon-SF\X\BA\X\ED\X\B9\X\DC\X\C9\X\ [TL-dragon-Ace-mouckup v1]; TL-dragon-\X\B9\X\E8\X\BD\X\BA\X\CC\X\D [TL-dragon-Ace-mouckup v001]; TL-dragon-\X\B9\X\E8\X\BD\X\BA\X\CC\X\D7 [TL-dragon-Ace-mouckup v1]
+[   86.5s] pulley (steel or Al?)            Default (UNASSIGNED)   24         14.4 
+[   86.5s]       (14 kinds) _GT2 20T toothed core [GT2 20T 9mm live shaft pulle]; _GT2 20T toothed core [GT2 20T 9mm pulley001]; _GT2 20T toothed core [GT2 20T 9mm pulley002]; _GT2 20T toothed core [GT2 20T 9mm pulley003]; _GT2 20T toothed core [GT2 20T 9mm pulley]; _Pulley flange 15x10x1.5mm [GT2 20T 9mm live shaft pulle]; _Pulley flange 15x10x1.5mm [GT2 20T 9mm pulley001]; _Pulley flange 15x10x1.5mm [GT2 20T 9mm pulley002]
+[   86.5s] Y rail front extension           Default (UNASSIGNED)    2          8.2 
+[   86.5s]       (2 kinds) MGN9 Y rail front extension (L) - 73.9 m [4040-350x350x250 Voron Tride]; MGN9 Y rail front extension (R) - 73.9 m [4040-350x350x250 Voron Tride]
+[   86.5s] metal spacer (Al or steel?)      Default (UNASSIGNED)   16          7.7 
+[   86.5s]       (10 kinds) M3x25mm spacer (6mm OD, no threads) [Rear left: _Rear_left]; M3x25mm spacer (6mm OD, no threads) [Rear right: _Rear_right]; M5x13 spacer (8mm OD, no threads) [Rear left: _Rear_left]; M5x13 spacer (8mm OD, no threads) [Rear right: _Rear_right]; M5x13 spacer (8mm OD, no threads) [XY left: _XY_left]; M5x13 spacer (8mm OD, no threads) [XY right: _XY_right]; M5x7 spacer (8mm OD, no threads) [Front left: _Front_left]; M5x7 spacer (8mm OD, no threads) [Front right: _Front_right]
+[   86.5s] leadscrew nut (brass or POM?)    Default (UNASSIGNED)    3          4.4 
+[   86.5s]       (3 kinds) Leadscrew Nut [Z_Carriage_Left]; Leadscrew Nut [Z_Carriage_Rear_3-Hole (Gene]; Leadscrew Nut [Z_Carriage_Right]
+[   86.5s] standoff                         Default (UNASSIGNED)    8          3.5 
+[   86.5s]       (8 kinds) Custom M3x24mm standoff (5mm OD, F-F thr [Rear left: _Rear_left]; Custom M3x24mm standoff (5mm OD, F-F thr [Rear right: _Rear_right]; Custom M3x30 standoff (5mm OD, F-F threa [Front left: _Front_left]; Custom M3x30 standoff (5mm OD, F-F threa [Front right: _Front_right]; Custom M3x30 standoff (5mm OD, F-F threa [XY left: _XY_left]; Custom M3x30 standoff (5mm OD, F-F threa [XY right: _XY_right]; M3x30mm standoff (5mm OD, F-F threads) [Front left: _Front_left]; M3x30mm standoff (5mm OD, F-F threads) [Front right: _Front_right]
+[   86.5s] magnet (NdFeB, no card)          Default (UNASSIGNED)   12          1.0 
+[   86.5s]       (4 kinds) 6x3mm magnet v2 (1) [Fasteners (2)]; 6x3mm magnet v2 (1) [Fasteners (3)]; 6x3mm magnet v2 (1) [Fasteners]; 6x3mm magnet v2 (1) [fasteners]
+[   86.5s] heat-set insert (brass)          Default (UNASSIGNED)    5          0.3 
+[   86.5s]       (2 kinds) M3x5.74-Insert [Z_Carriage_Rear_2-hole (IGUS]; M3x5.74-Insert [Z_Carriage_Rear_3-Hole (Gene]
+[   86.5s] brass coupler ring               Default (UNASSIGNED)    2          0.1 
+[   86.5s]       (2 kinds) BrassCouplerRing (1) (1) [BrassCouplerRing 4mm PFTE v1]; BrassCouplerRing (1) [BrassCouplerRing 4mm PFTE v1]
+[   86.5s] assigned model mass total 20.14 kg
+[   86.9s] verify: 0 problems
+[  108.8s] SAVED /home/dan/Documents/VT350/vt350-lite-12.FCStd 157946991
