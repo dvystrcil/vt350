@@ -11,7 +11,7 @@ Lengths are the bar's long axis in mm.
 | 4040 | **550** | 4 | Frame horizontals, sides (top + bottom) | was 470 |
 | 4040 | 470 | 2 | Frame horizontals, rear (top + bottom) | |
 | 2040 | 740 | 2 | Frame verticals (front) | moved 80 mm forward |
-| 2040 | **380** | 2 | **Z posts** (the old front verticals' position; carry the front Z rails) | **new** |
+| 2040 | **430** | 2 | **Z posts** (the old front verticals' position; carry the front Z rails) | **new**; 380 → 430 in lite-10 (gantry +50) |
 | 2040 | 740 | 2 | Door frame verticals | |
 | 2040 | **550** | 2 | Gantry (sides) | was 470 |
 | 2040 | 470 | **3** | Frame horizontals, front: top, bottom (new front), bottom (stays under the Backbone's front holes) | **+1** |
@@ -19,15 +19,17 @@ Lengths are the bar's long axis in mm.
 | 2040 | 470 | 2 | Door frame rails (top + bottom) | |
 | 2040 | **550** | 1 | Electronics cabinet | was 470 |
 | 2020 | 470 | 1 | Bed frame | |
-| 2020 | 380 | 1 | Rear vertical (below the gantry) | |
+| 2020 | **430** | 1 | Rear vertical (below the gantry) | was 380 (lite-10: gantry +50) |
 | 2020 | 340 | 1 | Gantry (rear) | |
 | 2020 | 332 | 1 | Bed frame | |
 
 Not extrusions, but part of the same order:
-- **Y rails: 2 × MGN9, 470 mm** (were MGN12 × 400).
+- **Y rails: the owned 2 × Berserker MGN9H 400** (rear-flush) **+ 2 × 73.9 mm front extensions** (printed or cut steel; lite-9). They were MGN12 × 400.
 - **X beam: Carbonara 350, 430 mm** CF tube (replaces the 2020).
+- **Z rails: 3 × MGN9 400; Z motors: 3 × 400 mm integrated lead screw** (lite-10).
+- **Machining: re-drill the 4 gantry-joint holes in the verticals 50 mm higher** (lite-10 raises the gantry to Z 420–440).
 
-**Totals:** 4040: 2 × 740 + 4 × 550 + 2 × 470. 2040: 4 × 740 + 3 × 550 + 6 × 470 + 2 × 380. 2020: 470, 380, 340, 332.
+**Totals:** 4040: 2 × 740 + 4 × 550 + 2 × 470. 2040: 4 × 740 + 3 × 550 + 6 × 470 + 2 × 430. 2020: 470, 430, 340, 332.
 
 ## Before ordering (stage issue #7)
 

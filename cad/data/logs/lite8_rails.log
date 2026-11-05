@@ -1,0 +1,16 @@
+[   65.5s] opened /home/dan/Documents/VT350/vt350-lite-7.FCStd 2492 RAIL_PLACE = rear
+[   69.2s] gap between front and rear mounts: Y -33.96..439.96 (473.9 mm); 470 rails at Y -32.00..438.00
+[   69.2s] at the model's gantry pose: Y blocks 247.17..287.83 (40.7 long); XY joints 243.22..294.54; carriage mating face Y 256.00
+[   69.5s] Left head docked: mating face Y -28.00; nozzle (lowest solid 'E3D v6 HotEnd - Nozzle', Z 330.8) at Y -49.08 = 21.1 mm in front of the mating face
+[   69.8s] Right head docked: mating face Y -28.00; nozzle (lowest solid 'E3D v6 HotEnd - Nozzle001', Z 330.8) at Y -49.08 = 21.1 mm in front of the mating face
+[   69.8s] build plate Y 28.00..388.50
+[   69.8s] rail option     rail Y            front limit (by)       carriage face  pickup margin L / R     rear limit (by)       nozzle rear  vs plate rear
+[   69.8s]   470 (lite-7)   -32.00.. 438.00   -277.19 (joint/mount)    -21.19      -6.81 /  -6.81       +145.43 (joint/mount)    380.35     -8.15
+[   69.8s]   450 front      -33.96.. 416.04   -277.19 (joint/mount)    -21.19      -6.81 /  -6.81       +128.20 (rail end   )    363.13    -25.37
+[   69.8s]   450 centre     -22.00.. 428.00   -269.17 (rail end   )    -13.17     -14.83 / -14.83       +140.17 (rail end   )    375.09    -13.41
+[   69.8s]   450 rear       -10.04.. 439.96   -257.20 (rail end   )     -1.20     -26.80 / -26.80       +145.43 (joint/mount)    380.35     -8.15
+[   69.8s]   (pickup margin < 0: the carriage stops short of that docked head by that much; plate rear > 0: nozzle passes the plate's rear edge)
+[   71.7s] Y rail R: MGN9 450 at Y -10.04..439.96, valid True, solids 1, volume 24846.9 (want 24846.9)
+[   71.8s] Y rail L: MGN9 450 at Y -10.04..439.96, valid True, solids 1, volume 24846.9 (want 24846.9)
+[   75.0s] verify: 0 problems
+[   94.5s] SAVED /home/dan/Documents/VT350/vt350-lite-8.FCStd 158014351

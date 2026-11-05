@@ -1,0 +1,935 @@
+label	group path	category	ShapeMaterial	model volume cm3	model mass g
+10x11 Chain Link	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	UNCLASSIFIED	Default	1.70	
+10x11 Chain Link001	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	UNCLASSIFIED	Default	1.70	
+10x11 Chain Link002	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	UNCLASSIFIED	Default	1.70	
+10x11 Chain Link003	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	UNCLASSIFIED	Default	1.70	
+10x11 Chain Link004	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	UNCLASSIFIED	Default	1.70	
+10x11 Chain Link005	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	UNCLASSIFIED	Default	1.70	
+10x11 Chain Link006	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	UNCLASSIFIED	Default	1.70	
+10x11 Chain Link007	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	UNCLASSIFIED	Default	1.70	
+10x11 Chain Link008	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	UNCLASSIFIED	Default	1.70	
+10x11 Chain Link009	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	UNCLASSIFIED	Default	1.70	
+10x11 Chain Link010	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	UNCLASSIFIED	Default	1.70	
+10x11 Chain Link011	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	UNCLASSIFIED	Default	1.70	
+10x11 Chain Link012	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	UNCLASSIFIED	Default	1.70	
+10x11 Chain Link013	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	UNCLASSIFIED	Default	1.70	
+10x11 Chain Link014	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	UNCLASSIFIED	Default	1.70	
+10x11 Chain Link015	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	UNCLASSIFIED	Default	1.70	
+10x11 Chain Link016	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	UNCLASSIFIED	Default	1.70	
+10x11 Chain Link017	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	UNCLASSIFIED	Default	1.70	
+10x11 Chain Link018	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	UNCLASSIFIED	Default	1.70	
+10x11 Chain Link019	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	UNCLASSIFIED	Default	1.70	
+10x11 Fixed End	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	UNCLASSIFIED	Default	1.48	
+10x11 Unfixed End	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	UNCLASSIFIED	Default	1.21	
+2.0_PIN_HEADER	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	0.07	
+2020	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Gantry	frame extrusion	Aluminum-6061-T6	59.89	161.7
+2020 (1)	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Bed frame	frame extrusion	Aluminum-6061-T6	82.81	223.6
+2020 (2)	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Bed frame	frame extrusion	Aluminum-6061-T6	60.34	162.9
+2020 (3)	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Verticals	frame extrusion	Aluminum-6061-T6	78.32	211.5
+2040	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Verticals	frame extrusion	Aluminum-6061-T6	231.15	624.1
+2040 (1)	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Door Frame	frame extrusion	Aluminum-6061-T6	231.79	625.8
+2040 (1)(Mirror)	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Door Frame	frame extrusion	Aluminum-6061-T6	231.79	625.8
+2040 (2)	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Horizontals	frame extrusion	Aluminum-6061-T6	152.78	412.5
+2040 (2) (1)	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Door Frame	frame extrusion	Aluminum-6061-T6	152.78	412.5
+2040 (2) (1)001	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Door Frame	frame extrusion	Aluminum-6061-T6	152.78	412.5
+2040 (2) (2)	4040-350x350x250 Voron Trident v4 v33 / Electronics Cabinet	frame extrusion	Aluminum-6061-T6	178.82	482.8
+2040 (2) (new front)	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Horizontals	frame extrusion	Aluminum-6061-T6	152.78	412.5
+2040 (2)001	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Horizontals	frame extrusion	Aluminum-6061-T6	152.78	412.5
+2040 (3)	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Gantry	frame extrusion	Aluminum-6061-T6	178.82	482.8
+2040 (3)001	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Gantry	frame extrusion	Aluminum-6061-T6	178.82	482.8
+2040 Z post (R)	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Verticals	frame extrusion	Aluminum-6061-T6	135.18	365.0
+2040(Mirror)	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Verticals	frame extrusion	Aluminum-6061-T6	231.15	624.1
+2040(Mirror) Z post (L)	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Verticals	frame extrusion	Aluminum-6061-T6	135.18	365.0
+221-415	4040-350x350x250 Voron Trident v4 v33 / Electronics / 3x WAGO_221-415_mount	electronics	Default	4.16	
+221-416	4040-350x350x250 Voron Trident v4 v33 / Electronics / 3x WAGO_221-415_mount	electronics	Default	4.16	
+221-417	4040-350x350x250 Voron Trident v4 v33 / Electronics / 3x WAGO_221-415_mount	electronics	Default	4.16	
+2xUSB_2.0_PORT	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	2.60	
+2xUSB_3.0_PORT	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	2.71	
+3.0_PIN_HEADER_10	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	0.69	
+4040	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Verticals	frame extrusion	Aluminum-6061-T6	355.38	959.5
+4040 (1)	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Horizontals	frame extrusion	Aluminum-6061-T6	265.03	715.6
+4040 (1)001	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Horizontals	frame extrusion	Aluminum-6061-T6	265.03	715.6
+4040 (1)002	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Horizontals	frame extrusion	Aluminum-6061-T6	265.03	715.6
+4040 (1)003	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Horizontals	frame extrusion	Aluminum-6061-T6	265.03	715.6
+4040 (1)004	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Horizontals	frame extrusion	Aluminum-6061-T6	226.43	611.4
+4040 (2)	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Horizontals	frame extrusion	Aluminum-6061-T6	230.40	622.1
+4040(Mirror)	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Verticals	frame extrusion	Aluminum-6061-T6	355.38	959.5
+4mm Bowden Coupler v1 (1)	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / BrassCouplerRing 4mm PFTE v1 (1)	UNCLASSIFIED	Default	0.06	
+4mm Bowden Coupler v1 (1) (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / BrassCouplerRing 4mm PFTE v1 (1) (1)	UNCLASSIFIED	Default	0.06	
+695 W5 bearing	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	bearing	Steel-Generic	0.52	4.1
+695 W5 bearing001	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	bearing	Steel-Generic	0.52	4.1
+695 W5 bearing002	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	bearing	Steel-Generic	0.52	4.1
+695 W5 bearing003	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	bearing	Steel-Generic	0.52	4.1
+695 W5 bearing004	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	bearing	Steel-Generic	0.52	4.1
+695 W5 bearing005	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	bearing	Steel-Generic	0.52	4.1
+6x3mm magnet v2 (1)	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Latch Handle (1) / Handle (1) / Fasteners (3)	magnet (NdFeB, no card)	Default	0.08	
+6x3mm magnet v2 (1)001	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Latch Handle (1) / Handle (1) / Fasteners (3)	magnet (NdFeB, no card)	Default	0.08	
+6x3mm magnet v2 (1)002	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Latch Handle (1) / Handle (1) / Fasteners (3)	magnet (NdFeB, no card)	Default	0.08	
+6x3mm magnet v2 (1)003	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Latch Handle (1) / Handle (1) / Fasteners (3)	magnet (NdFeB, no card)	Default	0.08	
+6x3mm magnet v2 (1)004	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Latch Handle (1) / Handle (1) / Fasteners (3)	magnet (NdFeB, no card)	Default	0.08	
+6x3mm magnet v2 (1)005	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Latch Handle (1) / Handle (1) / Fasteners (3)	magnet (NdFeB, no card)	Default	0.08	
+6x3mm magnet v2 (1)006	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Latch Handle (1) / Hinge_Top (1) / Fasteners (2)	magnet (NdFeB, no card)	Default	0.08	
+6x3mm magnet v2 (1)007	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Latch (1) (2) / fasteners	magnet (NdFeB, no card)	Default	0.08	
+6x3mm magnet v2 (1)008	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Latch (1) (2) / fasteners	magnet (NdFeB, no card)	Default	0.08	
+6x3mm magnet v2 (1)009	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Latch (1) (2) / fasteners	magnet (NdFeB, no card)	Default	0.08	
+6x3mm magnet v2 (1)010	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Latch (1) (2) / fasteners	magnet (NdFeB, no card)	Default	0.08	
+6x3mm magnet v2 (1)011	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Hinge_Bottom (1) / Fasteners	magnet (NdFeB, no card)	Default	0.08	
+90940A412 (1)	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Orbiter 2.7 LDO Molding_CaptiveTensioner v10 v1 (1) / Sping (1)	spring / pin / ball / shaft	Steel-Generic	0.05	0.4
+90940A412 (1) (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Orbiter 2.7 LDO Molding_CaptiveTensioner v10 v1 (1) (1) / Sping (1) (1)	spring / pin / ball / shaft	Steel-Generic	0.05	0.4
+92125A138 (1)	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Orbiter 2.7 LDO Molding_CaptiveTensioner v10 v1 (1)	spring / pin / ball / shaft	Steel-Generic	0.11	0.9
+92125A138 (1) (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Orbiter 2.7 LDO Molding_CaptiveTensioner v10 v1 (1) (1)	spring / pin / ball / shaft	Steel-Generic	0.11	0.9
+9FD77_D9WHV	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	0.12	
+A4T Cowling - Dragon-Rapido UHF [cw2-tap]	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / A4T Cowling - Dragon-Rapido UHF [cw2-tap] v3	printed A4T cowling	ABS-Generic	48.29	51.2
+A4T Cowling - Dragon-Rapido UHF [cw2-tap]001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / A4T Cowling - Dragon-Rapido UHF [cw2-tap] v001	printed A4T cowling	ABS-Generic	48.29	51.2
+A4T HE Fan Duct - Rapido	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / A4T HE Fan Duct -Rapido v2	printed part	ABS-Generic	5.27	5.6
+A4T HE Fan Duct - Rapido001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / A4T HE Fan Duct -Rapido v001	printed part	ABS-Generic	5.27	5.6
+Alternate Bracket v1	4040-350x350x250 Voron Trident v4 v33 / Left Dock	printed part	ABS-Generic	7.94	8.4
+Alternate Bracket v1(Mirror)	4040-350x350x250 Voron Trident v4 v33 / Right Dock	printed part	ABS-Generic	7.94	8.4
+BROADCOM_1	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	0.51	
+BUTTON_2	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	0.04	
+BUTTON_MINI	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	0.00	
+Back Panel001	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	back panel (ACM / acrylic?)	Default	976.05	
+Ball	4040-350x350x250 Voron Trident v4 v33 / kinematic bed mount v1 / Kinematic bed mount / front_left_sandwich_3	spring / pin / ball / shaft	Steel-Generic	0.35	2.7
+Ball(Mirror)	4040-350x350x250 Voron Trident v4 v33 / kinematic bed mount v1 / Kinematic bed mount / front_right_sandwich_3	spring / pin / ball / shaft	Steel-Generic	0.35	2.7
+Ball001	4040-350x350x250 Voron Trident v4 v33 / kinematic bed mount v1 / Kinematic bed mount / back_sandwich	UNCLASSIFIED	Default	0.35	
+Bowden Left	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / BrassCouplerRing 4mm PFTE v1 (1)	bowden tube	PTFE-Generic	8.70	18.0
+Bowden Right	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / BrassCouplerRing 4mm PFTE v1 (1)	bowden tube	PTFE-Generic	8.70	18.0
+BrassCouplerRing (1)	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / BrassCouplerRing 4mm PFTE v1 (1)	brass coupler ring	Default	0.07	
+BrassCouplerRing (1) (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / BrassCouplerRing 4mm PFTE v1 (1) (1)	brass coupler ring	Default	0.07	
+CAMERA_DISPLAY_001	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	0.14	
+CAMERA_DISPLAY_1	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	0.11	
+CAMERA_DISPLAY_2	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	0.14	
+CARD_SLOT_METAL_PIN	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1 / SLOT_CARD_ASM	electronics	Default	0.00	
+COMPOUND	4040-350x350x250 Voron Trident v4 v33 / Carriage (1) / MadMaxCarriage (1)	printed part	ABS-Generic	18.43	19.5
+COMPOUND001	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / Z_Carriage_Left	printed part	ABS-Generic	32.47	34.4
+COMPOUND002	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / Z_Carriage_Right	printed part	ABS-Generic	32.47	34.4
+COMPOUND003	4040-350x350x250 Voron Trident v4 v33 / Left Dock / MadMax 4 XOL v11 v1 / Carriage / MadMaxCarriage	printed part	ABS-Generic	18.43	19.5
+COMPOUND004	4040-350x350x250 Voron Trident v4 v33 / Right Dock / MadMax 4 XOL v11 v1(Mirror) / Carriage(Mirror) / MadMaxCarriage(Mirror)	printed part	ABS-Generic	18.43	19.5
+COMPOUND005	4040-350x350x250 Voron Trident v4 v33 / Electronics / Meanwell RS-25	electronics	Default	9.07	
+COMPOUND006	4040-350x350x250 Voron Trident v4 v33 / Electronics / Meanwell LRS-200-24	electronics	Default	143.83	
+CONNECT_V1	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	0.10	
+Carbonara CF X beam 20x20 430	4040-350x350x250 Voron Trident v4 v33	CF tube (no card)	Default	47.73	
+Clip	4040-350x350x250 Voron Trident v4 v33 / Left Dock / MadMax 4 XOL v11 v1 / Carriage / MadMaxCarriage / Belt Clips / 4mm Gap 6mm Belt v1	printed part	ABS-Generic	1.20	1.3
+Clip (1)	4040-350x350x250 Voron Trident v4 v33 / Carriage (1) / MadMaxCarriage (1) / Belt Clips (1) / 4mm Gap 6mm Belt v1 (2)	printed part	ABS-Generic	1.20	1.3
+Clip (1)001	4040-350x350x250 Voron Trident v4 v33 / Carriage (1) / MadMaxCarriage (1) / Belt Clips (1) / 4mm Gap 6mm Belt v1 (1) (1)	printed part	ABS-Generic	1.20	1.3
+Clip(Mirror)	4040-350x350x250 Voron Trident v4 v33 / Right Dock / MadMax 4 XOL v11 v1(Mirror) / Carriage(Mirror) / MadMaxCarriage(Mirror) / Belt Clips(Mirror) / 4mm Gap 6mm Belt v1(Mirror)	printed part	ABS-Generic	1.20	1.3
+Clip(Mirror)001	4040-350x350x250 Voron Trident v4 v33 / Right Dock / MadMax 4 XOL v11 v1(Mirror) / Carriage(Mirror) / MadMaxCarriage(Mirror) / Belt Clips(Mirror) / 4mm Gap 6mm Belt v1 (1)(Mirror)	printed part	ABS-Generic	1.20	1.3
+Clip001	4040-350x350x250 Voron Trident v4 v33 / Left Dock / MadMax 4 XOL v11 v1 / Carriage / MadMaxCarriage / Belt Clips / 4mm Gap 6mm Belt v1 (1)	printed part	ABS-Generic	1.20	1.3
+Component001	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / LDO_36STH17-1004AHG v6 (1) / LDO Stepper (1) (1)	stepper motor	Default	0.48	
+Component002	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / LDO_36STH17-1004AHG v6 (1) / LDO Stepper (1) (1)	stepper motor	Default	0.48	
+Component003	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / LDO_36STH17-1004AHG v6 (1) / LDO Stepper (1) (1)	stepper motor	Default	0.48	
+Component004	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / LDO_36STH17-1004AHG v6 (1) / LDO Stepper (1) (1)	stepper motor	Default	0.48	
+Component18	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / LDO_36STH17-1004AHG v6 (1) / LDO Stepper (1) (1)	stepper motor	Default	5.73	
+Component18 (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / LDO_36STH17-1004AHG v6 (1) (1) / LDO Stepper (1) (1) (1)	stepper motor	Default	5.73	
+Component19	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / LDO_36STH17-1004AHG v6 (1) / LDO Stepper (1) (1)	stepper motor	Default	5.73	
+Component19 (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / LDO_36STH17-1004AHG v6 (1) (1) / LDO Stepper (1) (1) (1)	stepper motor	Default	5.73	
+Component20	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / LDO_36STH17-1004AHG v6 (1) / LDO Stepper (1) (1)	stepper motor	Default	0.38	
+Component20 (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / LDO_36STH17-1004AHG v6 (1) (1) / LDO Stepper (1) (1) (1)	stepper motor	Default	0.38	
+Component21	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / LDO_36STH17-1004AHG v6 (1) / LDO Stepper (1) (1)	stepper motor	Default	0.48	
+Component21 (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / LDO_36STH17-1004AHG v6 (1) (1) / LDO Stepper (1) (1) (1)	stepper motor	Default	0.48	
+Component22	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / LDO_36STH17-1004AHG v6 (1) / LDO Stepper (1) (1)	stepper motor	Default	0.48	
+Component22 (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / LDO_36STH17-1004AHG v6 (1) (1) / LDO Stepper (1) (1) (1)	stepper motor	Default	0.48	
+Component23	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / LDO_36STH17-1004AHG v6 (1) / LDO Stepper (1) (1)	stepper motor	Default	0.48	
+Component23 (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / LDO_36STH17-1004AHG v6 (1) (1) / LDO Stepper (1) (1) (1)	stepper motor	Default	0.48	
+Component24	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / LDO_36STH17-1004AHG v6 (1) / LDO Stepper (1) (1)	stepper motor	Default	0.48	
+Component24 (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / LDO_36STH17-1004AHG v6 (1) (1) / LDO Stepper (1) (1) (1)	stepper motor	Default	0.48	
+Component25	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / LDO_36STH17-1004AHG v6 (1) / LDO Stepper (1) (1)	stepper motor	Default	0.48	
+Component25 (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / LDO_36STH17-1004AHG v6 (1) (1) / LDO Stepper (1) (1) (1)	stepper motor	Default	0.48	
+Component26	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / LDO_36STH17-1004AHG v6 (1) / LDO Stepper (1) (1)	stepper motor	Default	0.48	
+Component26 (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / LDO_36STH17-1004AHG v6 (1) (1) / LDO Stepper (1) (1) (1)	stepper motor	Default	0.48	
+Component27	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / LDO_36STH17-1004AHG v6 (1) / LDO Stepper (1) (1)	stepper motor	Default	0.48	
+Component27 (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / LDO_36STH17-1004AHG v6 (1) (1) / LDO Stepper (1) (1) (1)	stepper motor	Default	0.48	
+Component28	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / LDO_36STH17-1004AHG v6 (1) / LDO Stepper (1) (1)	stepper motor	Default	0.48	
+Component28 (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / LDO_36STH17-1004AHG v6 (1) (1) / LDO Stepper (1) (1) (1)	stepper motor	Default	0.48	
+Component29	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / LDO_36STH17-1004AHG v6 (1) / LDO Stepper (1) (1)	stepper motor	Default	0.48	
+Component29 (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / LDO_36STH17-1004AHG v6 (1) (1) / LDO Stepper (1) (1) (1)	stepper motor	Default	0.48	
+Component29 (1)001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / LDO_36STH17-1004AHG v6 (1) (1) / LDO Stepper (1) (1) (1)	stepper motor	Default	0.48	
+Component30	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / LDO_36STH17-1004AHG v6 (1) / LDO Stepper (1) (1)	stepper motor	Default	0.48	
+Component30 (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / LDO_36STH17-1004AHG v6 (1) (1) / LDO Stepper (1) (1) (1)	stepper motor	Default	0.48	
+Component30 (1)001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / LDO_36STH17-1004AHG v6 (1) (1) / LDO Stepper (1) (1) (1)	stepper motor	Default	0.48	
+Component31	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / LDO_36STH17-1004AHG v6 (1) / LDO Stepper (1) (1)	stepper motor	Default	0.48	
+Component31 (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / LDO_36STH17-1004AHG v6 (1) (1) / LDO Stepper (1) (1) (1)	stepper motor	Default	0.48	
+Component31 (1)001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / LDO_36STH17-1004AHG v6 (1) (1) / LDO Stepper (1) (1) (1)	stepper motor	Default	0.48	
+Component32	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / LDO_36STH17-1004AHG v6 (1) / LDO Stepper (1) (1)	stepper motor	Default	0.48	
+Component32 (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / LDO_36STH17-1004AHG v6 (1) (1) / LDO Stepper (1) (1) (1)	stepper motor	Default	0.48	
+Component32 (1)001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / LDO_36STH17-1004AHG v6 (1) (1) / LDO Stepper (1) (1) (1)	stepper motor	Default	0.48	
+Component33	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / LDO_36STH17-1004AHG v6 (1) / LDO Stepper (1) (1)	stepper motor	Default	0.05	
+Component33 (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / LDO_36STH17-1004AHG v6 (1) (1) / LDO Stepper (1) (1) (1)	stepper motor	Default	0.05	
+Custom M3x24mm standoff (5mm OD, F-F threads)	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	standoff	Default	0.34	
+Custom M3x24mm standoff (5mm OD, F-F threads)001	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	standoff	Default	0.34	
+Custom M3x30 standoff (5mm OD, F-F threads)	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	standoff	Default	0.50	
+Custom M3x30 standoff (5mm OD, F-F threads)001	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	standoff	Default	0.50	
+Custom M3x30 standoff (5mm OD, F-F threads)002	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	standoff	Default	0.50	
+Custom M3x30 standoff (5mm OD, F-F threads)003	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	standoff	Default	0.50	
+Cutter	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Crossbow integration CAD v1	UNCLASSIFIED	Default	6.88	
+Cutter001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Crossbow integration CAD v001	UNCLASSIFIED	Default	6.88	
+D2.3L7.5-\X\D1\X\F5\X\BB\X\AF\X\EF\X\AF\X\CC\X\D5\X\B4\X\C9\X\D6\X\F001	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / TL-dragon-Ace-mouckup v1	hotend metal / stand-in	Default	0.03	
+D2.3L7.5-\X\D1\X\F5\X\BB\X\AF\X\EF\X\AF\X\CC\X\D5\X\B4\X\C9\X\D6\X\F002	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / TL-dragon-Ace-mouckup v1	hotend metal / stand-in	Default	0.03	
+D2.3L7.5-\X\D1\X\F5\X\BB\X\AF\X\EF\X\AF\X\CC\X\D5\X\B4\X\C9\X\D6\X\F003	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / TL-dragon-Ace-mouckup v1	hotend metal / stand-in	Default	0.03	
+D2.3L7.5-\X\D1\X\F5\X\BB\X\AF\X\EF\X\AF\X\CC\X\D5\X\B4\X\C9\X\D6\X\F004	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / TL-dragon-Ace-mouckup v001	hotend metal / stand-in	Default	0.03	
+D2.3L7.5-\X\D1\X\F5\X\BB\X\AF\X\EF\X\AF\X\CC\X\D5\X\B4\X\C9\X\D6\X\F005	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / TL-dragon-Ace-mouckup v001	hotend metal / stand-in	Default	0.03	
+D2.3L7.5-\X\D1\X\F5\X\BB\X\AF\X\EF\X\AF\X\CC\X\D5\X\B4\X\C9\X\D6\X\F006	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / TL-dragon-Ace-mouckup v001	hotend metal / stand-in	Default	0.03	
+D2.3L7.5-\X\D1\X\F5\X\BB\X\AF\X\EF\X\AF\X\CC\X\D5\X\B4\X\C9\X\D6\X\F007	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / TL-dragon-Ace-mouckup v001	hotend metal / stand-in	Default	0.03	
+D2.3L7.5-\X\D1\X\F5\X\BB\X\AF\X\EF\X\AF\X\CC\X\D5\X\B4\X\C9\X\D6\X\F9	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / TL-dragon-Ace-mouckup v1	hotend metal / stand-in	Default	0.03	
+D5x36mm pin	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	fastener / pin / shaft	Steel-Generic	0.71	5.6
+D5x36mm pin001	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	fastener / pin / shaft	Steel-Generic	0.71	5.6
+DIN3 Rail	4040-350x350x250 Voron Trident v4 v33 / Electronics	electronics	Default	16.05	
+DIN3 Rail001	4040-350x350x250 Voron Trident v4 v33 / Electronics	electronics	Default	16.05	
+Din_Mount Foam Tape (1mm)	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Mount	electronics	Default	0.29	
+Din_Mount Foam Tape (1mm)001	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Mount (1)	electronics	Default	0.29	
+Din_Mount Foam Tape (1mm)002	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Mount (2)	electronics	Default	0.29	
+Din_Mount Foam Tape (1mm)003	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Mount (3)	electronics	Default	0.29	
+Dock Arm v1 Bottom	4040-350x350x250 Voron Trident v4 v33 / Left Dock	printed part	ABS-Generic	24.79	26.3
+Dock Arm v1 Bottom(Mirror)	4040-350x350x250 Voron Trident v4 v33 / Right Dock	printed part	ABS-Generic	24.79	26.3
+Dock Asembly	4040-350x350x250 Voron Trident v4 v33 / Left Dock / MadMax 4 XOL v11 v1	UNCLASSIFIED	Default	10.98	
+Dock Asembly(Mirror)	4040-350x350x250 Voron Trident v4 v33 / Right Dock / MadMax 4 XOL v11 v1(Mirror)	UNCLASSIFIED	Default	10.98	
+Dock Bracket	4040-350x350x250 Voron Trident v4 v33 / Left Dock / MadMax 4 XOL v11 v1	UNCLASSIFIED	Default	4.92	
+Dock Bracket(Mirror)	4040-350x350x250 Voron Trident v4 v33 / Right Dock / MadMax 4 XOL v11 v1(Mirror)	UNCLASSIFIED	Default	4.92	
+Dock crossbar (placeholder, 2040)	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Horizontals	frame extrusion	Aluminum-6061-T6	152.78	412.5
+E3D v6 HotEnd - Nozzle	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / TL-dragon-Ace-mouckup v1	hotend metal / stand-in	Default	0.29	
+E3D v6 HotEnd - Nozzle001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / TL-dragon-Ace-mouckup v001	hotend metal / stand-in	Default	0.29	
+F695 flanged bearing	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing001	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing002	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing003	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing004	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing005	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing006	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing007	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing008	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing009	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing010	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing011	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing012	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing013	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing014	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing015	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing016	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing017	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing018	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing019	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing020	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing021	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing022	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing023	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing024	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	bearing	Steel-Generic	0.45	3.6
+F695 flanged bearing025	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	bearing	Steel-Generic	0.45	3.6
+FEMALE_MICRO_HDMI_CONNECTOR	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	0.07	
+FEMALE_MICRO_HDMI_CONNECTOR001	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	0.07	
+FEMALE_USB_CONNECTOR	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	0.13	
+FlyShaft2 (1)	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Nuts&Bolts (1) / Orbiter 8MM GoblinHubs V3 v3 (1)	spring / pin / ball / shaft	Steel-Generic	0.20	1.6
+FlyShaft2 (1) (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Nuts&Bolts (1) (1) / Orbiter 8MM GoblinHubs V3 v3 (1) (1)	spring / pin / ball / shaft	Steel-Generic	0.20	1.6
+Foam Tape (1mm) (3)	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Center_Support	electronics	Default	0.14	
+Foam Tape (1mm) (3)001	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Center_Support001	electronics	Default	0.14	
+GE5C	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / Z_Bed_Left	fastener / pin / shaft	Steel-Generic	0.62	4.9
+GE5C001	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Bed_Rear	fastener / pin / shaft	Steel-Generic	0.62	4.9
+GE5C002	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / Z_Bed_Right	fastener / pin / shaft	Steel-Generic	0.62	4.9
+GIGABIT_ETHERNET_PORT	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	3.47	
+GIGABIT_ETHERNET_TRANSCEIVER	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	0.04	
+GT2 9mm belt, lower (Monolith 2WD)	4040-350x350x250 Voron Trident v4 v33 / _11_9mm_2WD_belts_FT_FT v1	belt (rubber + glass fibre)	Default	24.15	
+GT2 9mm belt, upper (Monolith 2WD)	4040-350x350x250 Voron Trident v4 v33 / _11_9mm_2WD_belts_FT_FT v1	belt (rubber + glass fibre)	Default	24.15	
+HubHousing V5 With Logo (1)	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1	UNCLASSIFIED	Default	16.83	
+HubHousing V5 With Logo (1) (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1)	UNCLASSIFIED	Default	16.83	
+KnurledNut (1)	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Orbiter 2.7 LDO Molding_CaptiveTensioner v10 v1 (1)	fastener / pin / shaft	Steel-Generic	0.50	4.0
+KnurledNut (1) (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Orbiter 2.7 LDO Molding_CaptiveTensioner v10 v1 (1) (1)	fastener / pin / shaft	Steel-Generic	0.50	4.0
+LED_diffuser	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / A4T LED / A4T LED Diffuser[translucent] v1	printed part	ABS-Generic	0.20	0.2
+LED_diffuser001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / A4T LED001 / A4T LED Diffuser[translucent] v001	printed part	ABS-Generic	0.20	0.2
+Latch (1) (1)	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1	UNCLASSIFIED	Default	3.94	
+Latch (1) (1) (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1)	UNCLASSIFIED	Default	3.94	
+LatchShaft (1)	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Nuts&Bolts (1)	fastener / pin / shaft	Steel-Generic	0.11	0.9
+LatchShaft (1) (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Nuts&Bolts (1) (1)	fastener / pin / shaft	Steel-Generic	0.11	0.9
+Leadscrew (rod)	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Left / NEMA17 Leadscrew 400mm	fastener / pin / shaft	Steel-Generic	21.76	171.9
+Leadscrew Nut	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / Z_Carriage_Left	leadscrew nut (brass or POM?)	Default	1.48	
+Leadscrew Nut001	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Carriage_Rear_3-Hole (Generic)	leadscrew nut (brass or POM?)	Default	1.48	
+Leadscrew Nut002	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / Z_Carriage_Right	leadscrew nut (brass or POM?)	Default	1.48	
+Leadscrew001 (rod)	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Right / NEMA17 Leadscrew 400mm (1)	fastener / pin / shaft	Steel-Generic	21.76	171.9
+Leadscrew002 (rod)	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Rear / NEMA17 Leadscrew 400mm (2)	fastener / pin / shaft	Steel-Generic	21.76	171.9
+Leaf_spring	4040-350x350x250 Voron Trident v4 v33 / kinematic bed mount v1 / Kinematic bed mount / front_left_sandwich_3	spring / pin / ball / shaft	Steel-Generic	0.30	2.4
+Leaf_spring001	4040-350x350x250 Voron Trident v4 v33 / kinematic bed mount v1 / Kinematic bed mount / front_right_sandwich_3	spring / pin / ball / shaft	Steel-Generic	0.30	2.4
+Leaf_spring002	4040-350x350x250 Voron Trident v4 v33 / kinematic bed mount v1 / Kinematic bed mount / back_sandwich	spring / pin / ball / shaft	Steel-Generic	0.30	2.4
+Logo raspberry	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	0.00	
+M2.5x14-Screw	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Nuts&Bolts (1)	fastener / pin / shaft	Steel-Generic	0.10	0.8
+M2.5x14-Screw001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Nuts&Bolts (1) (1)	fastener / pin / shaft	Steel-Generic	0.10	0.8
+M2x10 Selftapping screw	4040-350x350x250 Voron Trident v4 v33 / Electronics / Controllers / Octopus / DIN Clip	fastener / pin / shaft	Steel-Generic	0.05	0.4
+M2x10 Selftapping screw001	4040-350x350x250 Voron Trident v4 v33 / Electronics / Controllers / Octopus / DIN Clip	fastener / pin / shaft	Steel-Generic	0.05	0.4
+M2x10 Selftapping screw002	4040-350x350x250 Voron Trident v4 v33 / Electronics / Controllers / Octopus / DIN Clip (1)	fastener / pin / shaft	Steel-Generic	0.05	0.4
+M2x10 Selftapping screw003	4040-350x350x250 Voron Trident v4 v33 / Electronics / Controllers / Octopus / DIN Clip (1)	fastener / pin / shaft	Steel-Generic	0.05	0.4
+M2x10 Selftapping screw004	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / DIN Clip (2)	fastener / pin / shaft	Steel-Generic	0.05	0.4
+M2x10 Selftapping screw005	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / DIN Clip (2)	fastener / pin / shaft	Steel-Generic	0.05	0.4
+M2x10 Selftapping screw006	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly	fastener / pin / shaft	Steel-Generic	0.05	0.4
+M2x10 Selftapping screw007	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly	fastener / pin / shaft	Steel-Generic	0.05	0.4
+M2x10 Selftapping screw008	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly	fastener / pin / shaft	Steel-Generic	0.05	0.4
+M2x10 Selftapping screw009	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly	fastener / pin / shaft	Steel-Generic	0.05	0.4
+M3 Hammerhead T-Nut	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / rail_stop (1)	fastener / pin / shaft	Steel-Generic	0.18	1.5
+M3 Hammerhead T-Nut001	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / rail_stop	fastener / pin / shaft	Steel-Generic	0.18	1.5
+M3 Hammerhead T-Nut002	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / rail_stop (2)	fastener / pin / shaft	Steel-Generic	0.18	1.5
+M3 Locknut	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / Z_Carriage_Left	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3 Locknut001	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / Z_Carriage_Left	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3 Locknut002	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Carriage_Rear_3-Hole (Generic)	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3 Locknut003	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Carriage_Rear_3-Hole (Generic)	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3 Locknut004	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / Z_Carriage_Right	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3 Locknut005	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / Z_Carriage_Right	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3 thin hex nut001	4040-350x350x250 Voron Trident v4 v33 / kinematic bed mount v1 / Kinematic bed mount / front_right_sandwich_3	fastener / pin / shaft	Steel-Generic	0.04	0.3
+M3 thin hex nut002	4040-350x350x250 Voron Trident v4 v33 / kinematic bed mount v1 / Kinematic bed mount / back_sandwich	fastener / pin / shaft	Steel-Generic	0.04	0.3
+M3-Nut001	4040-350x350x250 Voron Trident v4 v33 / kinematic bed mount v1 / Kinematic bed mount / front_left_sandwich_3	fastener / pin / shaft	Steel-Generic	0.04	0.3
+M3x12-Screw002	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / Z_Carriage_Left	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw003	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / Z_Carriage_Left	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw004	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / Z_Carriage_Left	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw005	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / Z_Carriage_Left	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw006	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / Z_Carriage_Left	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw007	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / Z_Carriage_Left	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw008	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Carriage_Rear_3-Hole (Generic)	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw009	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Carriage_Rear_3-Hole (Generic)	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw010	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / Z_Carriage_Right	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw011	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / Z_Carriage_Right	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw012	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / Z_Carriage_Right	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw013	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / Z_Carriage_Right	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw014	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / Z_Carriage_Right	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw015	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / Z_Carriage_Right	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw016	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Left	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw017	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Left	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw018	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Left	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw019	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Left	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw020	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Right	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw021	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Right	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw022	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Right	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw023	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Right	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw024	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Rear	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw025	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Rear	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw026	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Rear	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x12-Screw027	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Rear	fastener / pin / shaft	Steel-Generic	0.15	1.2
+M3x20-Screw	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Latch Handle (1) / Hinge_Top (1) / Fasteners (2)	fastener / pin / shaft	Steel-Generic	0.20	1.6
+M3x20-Screw001	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Latch Handle (1) / Hinge_Top (1) / Fasteners (2)	fastener / pin / shaft	Steel-Generic	0.20	1.6
+M3x20-Screw002	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Hinge_Bottom (1) / Fasteners	fastener / pin / shaft	Steel-Generic	0.20	1.6
+M3x20-Screw003	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Hinge_Bottom (1) / Fasteners	fastener / pin / shaft	Steel-Generic	0.20	1.6
+M3x25mm spacer (6mm OD, no threads)	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	metal spacer (Al or steel?)	Default	0.52	
+M3x25mm spacer (6mm OD, no threads)001	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	metal spacer (Al or steel?)	Default	0.52	
+M3x25mm spacer (6mm OD, no threads)002	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	metal spacer (Al or steel?)	Default	0.52	
+M3x25mm spacer (6mm OD, no threads)003	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	metal spacer (Al or steel?)	Default	0.52	
+M3x25mm spacer (6mm OD, no threads)004	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	metal spacer (Al or steel?)	Default	0.52	
+M3x25mm spacer (6mm OD, no threads)005	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	metal spacer (Al or steel?)	Default	0.52	
+M3x30mm standoff (5mm OD, F-F threads)	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	standoff	Default	0.44	
+M3x30mm standoff (5mm OD, F-F threads)001	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	standoff	Default	0.44	
+M3x4 special BHCS	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x4 special BHCS001	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x4 special BHCS002	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x4 special BHCS003	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x40 FHCS	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.30	2.3
+M3x40 FHCS001	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.30	2.3
+M3x40 FHCS002	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.30	2.3
+M3x40 FHCS003	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.30	2.3
+M3x40 FHCS004	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.30	2.3
+M3x40 FHCS005	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.30	2.3
+M3x5 LP SHCS	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.08	0.6
+M3x5 LP SHCS001	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.08	0.6
+M3x5.74-Insert010	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Carriage_Rear_3-Hole (Generic)	heat-set insert (brass)	Default	0.05	
+M3x5.74-Insert011	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Carriage_Rear_3-Hole (Generic)	heat-set insert (brass)	Default	0.05	
+M3x5.74-Insert012	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Carriage_Rear_3-Hole (Generic)	heat-set insert (brass)	Default	0.05	
+M3x5.74-Insert013	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Carriage_Rear_2-hole (IGUS)	heat-set insert (brass)	Default	0.05	
+M3x5.74-Insert014	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Carriage_Rear_2-hole (IGUS)	heat-set insert (brass)	Default	0.05	
+M3x6 FHCS	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M3x6 FHCS001	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M3x6 FHCS002	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M3x6 FHCS003	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M3x6 FHCS004	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M3x6 FHCS005	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M3x6 FHCS006	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M3x6 FHCS007	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M3x6-Screw012	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / Z_Carriage_Left	fastener / pin / shaft	Steel-Generic	0.06	0.5
+M3x6-Screw013	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / Z_Carriage_Left	fastener / pin / shaft	Steel-Generic	0.06	0.5
+M3x6-Screw014	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / Z_Carriage_Left	fastener / pin / shaft	Steel-Generic	0.06	0.5
+M3x6-Screw015	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / Z_Bed_Left	fastener / pin / shaft	Steel-Generic	0.06	0.5
+M3x6-Screw016	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / Z_Bed_Left	fastener / pin / shaft	Steel-Generic	0.06	0.5
+M3x6-Screw017	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / Z_Bed_Left	fastener / pin / shaft	Steel-Generic	0.06	0.5
+M3x6-Screw018	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Bed_Rear	fastener / pin / shaft	Steel-Generic	0.06	0.5
+M3x6-Screw019	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Bed_Rear	fastener / pin / shaft	Steel-Generic	0.06	0.5
+M3x6-Screw020	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Bed_Rear	fastener / pin / shaft	Steel-Generic	0.06	0.5
+M3x6-Screw021	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / Z_Carriage_Right	fastener / pin / shaft	Steel-Generic	0.06	0.5
+M3x6-Screw022	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / Z_Carriage_Right	fastener / pin / shaft	Steel-Generic	0.06	0.5
+M3x6-Screw023	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / Z_Carriage_Right	fastener / pin / shaft	Steel-Generic	0.06	0.5
+M3x6-Screw024	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / Z_Bed_Right	fastener / pin / shaft	Steel-Generic	0.06	0.5
+M3x6-Screw025	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / Z_Bed_Right	fastener / pin / shaft	Steel-Generic	0.06	0.5
+M3x6-Screw026	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / Z_Bed_Right	fastener / pin / shaft	Steel-Generic	0.06	0.5
+M3x6-Screw027	4040-350x350x250 Voron Trident v4 v33 / Electronics / Meanwell RS-25	fastener / pin / shaft	Steel-Generic	0.06	0.5
+M3x6-Screw028	4040-350x350x250 Voron Trident v4 v33 / Electronics / Meanwell RS-25	fastener / pin / shaft	Steel-Generic	0.06	0.5
+M3x8 FHCS	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS001	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS002	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS003	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS004	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS005	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS006	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS007	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS008	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS009	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS010	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS011	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS012	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS013	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS014	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS015	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS016	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS017	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS018	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS019	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS020	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS021	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS022	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8 FHCS023	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8-Screw	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / MGN9 - 400mm (2)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw001	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / MGN9 - 400mm (2)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw002	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / MGN9 - 400mm (2)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw003	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / MGN9 - 400mm (2)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw004	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / MGN9 - 400mm (2)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw005	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / MGN9 - 400mm (2)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw006	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / MGN9 - 400mm (2)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw007	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / MGN9 - 400mm (2)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw008	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / rail_stop (1)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw009	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Carriage_Rear_3-Hole (Generic)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw010	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Carriage_Rear_3-Hole (Generic)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw011	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Carriage_Rear_3-Hole (Generic)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw012	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Carriage_Rear_3-Hole (Generic)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw013	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / MGN9 - 400mm (4)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw014	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / MGN9 - 400mm (4)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw015	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / MGN9 - 400mm (4)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw016	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / MGN9 - 400mm (4)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw017	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / MGN9 - 400mm (4)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw018	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / MGN9 - 400mm (4)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw019	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / MGN9 - 400mm (4)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw020	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / MGN9 - 400mm (4)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw021	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / rail_stop	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw022	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / MGN9 - 400mm (3)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw023	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / MGN9 - 400mm (3)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw024	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / MGN9 - 400mm (3)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw025	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / MGN9 - 400mm (3)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw026	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / MGN9 - 400mm (3)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw027	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / MGN9 - 400mm (3)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw028	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / MGN9 - 400mm (3)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw029	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / MGN9 - 400mm (3)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw030	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / rail_stop (2)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw033	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8-Screw034	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8-Screw035	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8-Screw036	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8-Screw037	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8-Screw038	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z	fastener / pin / shaft	Steel-Generic	0.07	0.6
+M3x8-Screw039	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Latch Handle (1) / Handle (1) / Fasteners (3)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw040	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Latch Handle (1) / Handle (1) / Fasteners (3)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw045	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Bottom Hinge (1) / Hinge_Left_sleeve (1)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw046	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Bottom Hinge (1) / Hinge_Left_sleeve (1)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw047	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Bottom Hinge (1) / Hinge_Left_solid (1) (1)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw048	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Bottom Hinge (1) / Hinge_Left_solid (1) (1)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw050	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Latch (1) (2) / fasteners	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw051	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Latch (1) (2) / fasteners	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw052	4040-350x350x250 Voron Trident v4 v33 / Electronics / Controllers / Octopus	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw053	4040-350x350x250 Voron Trident v4 v33 / Electronics / Controllers / Octopus	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw054	4040-350x350x250 Voron Trident v4 v33 / Electronics / Controllers / Octopus	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw055	4040-350x350x250 Voron Trident v4 v33 / Electronics / Controllers / Octopus	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw056	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Mount	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw057	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Mount (1)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw058	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Mount (2)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw059	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Mount (3)	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw069	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Middle Hinge / Hinge_Left_sleeve (1)001 / Fasteners067	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw070	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Middle Hinge / Hinge_Left_sleeve (1)001 / Fasteners067	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw071	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Middle Hinge / Hinge_Left_solid (1) (1)001 / Fasteners068	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw072	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Middle Hinge / Hinge_Left_solid (1) (1)001 / Fasteners068	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw073	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Top Hinge / Hinge_Left_sleeve (1)002 / Fasteners069	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw074	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Top Hinge / Hinge_Left_sleeve (1)002 / Fasteners069	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw075	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Top Hinge / Hinge_Left_solid (1) (1)002 / Fasteners070	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M3x8-Screw076	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Top Hinge / Hinge_Left_solid (1) (1)002 / Fasteners070	fastener / pin / shaft	Steel-Generic	0.12	0.9
+M4x6-Screw	4040-350x350x250 Voron Trident v4 v33 / Electronics / Meanwell LRS-200-24 / PSU_Stabilizer	fastener / pin / shaft	Steel-Generic	0.13	1.0
+M4x6-Screw001	4040-350x350x250 Voron Trident v4 v33 / Electronics / Meanwell LRS-200-24 / LRS PSU Bracket	fastener / pin / shaft	Steel-Generic	0.13	1.0
+M4x6-Screw002	4040-350x350x250 Voron Trident v4 v33 / Electronics / Meanwell LRS-200-24 / LRS PSU Bracket	fastener / pin / shaft	Steel-Generic	0.13	1.0
+M4x6-Screw003	4040-350x350x250 Voron Trident v4 v33 / Electronics / Meanwell LRS-200-24 / LRS PSU Bracket (1)	fastener / pin / shaft	Steel-Generic	0.13	1.0
+M4x6-Screw004	4040-350x350x250 Voron Trident v4 v33 / Electronics / Meanwell LRS-200-24 / LRS PSU Bracket (1)	fastener / pin / shaft	Steel-Generic	0.13	1.0
+M4x6-Screw005	4040-350x350x250 Voron Trident v4 v33 / Electronics / SSR	fastener / pin / shaft	Steel-Generic	0.13	1.0
+M4x6-Screw006	4040-350x350x250 Voron Trident v4 v33 / Electronics / SSR	fastener / pin / shaft	Steel-Generic	0.13	1.0
+M5 2020 drop-in T-nut	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut001	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut002	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut003	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut004	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut005	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut006	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut007	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut008	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut009	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut010	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut011	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut012	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut013	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut014	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut015	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut016	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut017	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut018	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut019	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut020	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut021	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut022	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 2020 drop-in T-nut023	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.27	2.2
+M5 Hex Nut001	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Carriage_Rear_3-Hole (Generic)	fastener / pin / shaft	Steel-Generic	0.14	1.1
+M5 Hex Nut002	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / Z_Carriage_Right	fastener / pin / shaft	Steel-Generic	0.14	1.1
+M5 disc spring	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	fastener / pin / shaft	Steel-Generic	0.01	0.1
+M5 disc spring001	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	fastener / pin / shaft	Steel-Generic	0.01	0.1
+M5 disc spring002	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	fastener / pin / shaft	Steel-Generic	0.01	0.1
+M5 disc spring003	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	fastener / pin / shaft	Steel-Generic	0.01	0.1
+M5 disc spring004	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.01	0.1
+M5 disc spring005	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.01	0.1
+M5 disc spring006	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.01	0.1
+M5 disc spring007	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.01	0.1
+M5 disc spring008	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.01	0.1
+M5 disc spring009	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.01	0.1
+M5 disc spring010	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	fastener / pin / shaft	Steel-Generic	0.01	0.1
+M5 disc spring011	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	fastener / pin / shaft	Steel-Generic	0.01	0.1
+M5 disc spring012	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	fastener / pin / shaft	Steel-Generic	0.01	0.1
+M5 disc spring013	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	fastener / pin / shaft	Steel-Generic	0.01	0.1
+M5-Nut	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / Z_Carriage_Left	fastener / pin / shaft	Steel-Generic	0.19	1.5
+M5-Washer	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer001	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer002	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer003	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer005	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer006	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer007	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer008	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer009	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer010	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer011	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer012	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer013	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer022	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer026	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer030	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer031	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer032	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer033	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer034	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer035	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer036	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer037	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer046	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer050	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer054	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer055	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer056	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer058	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer062	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer095	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Door Frame	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer096	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Door Frame	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer097	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Door Frame	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer098	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Door Frame	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer103	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer104	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer105	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer106	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer107	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer108	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer111	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer112	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer114	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer115	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer116	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer117	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer118	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer119	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer120	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer123	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer124	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer126	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer128	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer130	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer131	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Door Frame	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer132	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Door Frame	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer133	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Door Frame	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5-Washer134	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Door Frame	fastener / pin / shaft	Steel-Generic	0.06	0.4
+M5x0.5mm shim	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.02	0.1
+M5x0.5mm shim001	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.02	0.1
+M5x0.5mm shim002	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.02	0.1
+M5x0.5mm shim003	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.02	0.1
+M5x0.5mm shim004	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.02	0.1
+M5x0.5mm shim005	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.02	0.1
+M5x0.5mm shim006	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	fastener / pin / shaft	Steel-Generic	0.02	0.1
+M5x0.5mm shim007	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	fastener / pin / shaft	Steel-Generic	0.02	0.1
+M5x10 LP SHCS	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS001	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS002	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS003	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS004	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS005	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS006	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS007	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS008	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS009	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS010	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS011	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS012	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS013	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS014	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS015	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS016	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS017	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS018	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS019	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS020	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS021	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS022	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 LP SHCS023	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.37	2.9
+M5x10 ULP SHCS	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x10 ULP SHCS001	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x10-Screw	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / Z_Bed_Left	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x10-Screw001	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / Z_Bed_Left	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x10-Screw002	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Bed_Rear	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x10-Screw003	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Bed_Rear	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x10-Screw004	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / Z_Bed_Right	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x10-Screw005	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / Z_Bed_Right	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x10-Screw006	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Left	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x10-Screw007	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Left	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x10-Screw008	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Left	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x10-Screw009	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Left	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x10-Screw010	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Right	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x10-Screw011	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Right	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x10-Screw012	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Right	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x10-Screw013	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Right	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x10-Screw014	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Rear	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x10-Screw015	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Rear	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x10-Screw016	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Rear	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x10-Screw017	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Rear	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x10-Screw018	4040-350x350x250 Voron Trident v4 v33 / Electronics / Meanwell LRS-200-24 / PSU_Stabilizer	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x10-Screw019	4040-350x350x250 Voron Trident v4 v33 / Electronics / 3x WAGO_221-415_mount	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x10-Screw020	4040-350x350x250 Voron Trident v4 v33 / Electronics / 3x WAGO_221-415_mount	fastener / pin / shaft	Steel-Generic	0.30	2.4
+M5x13 spacer (8mm OD, no threads)	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	metal spacer (Al or steel?)	Default	0.39	
+M5x13 spacer (8mm OD, no threads)001	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	metal spacer (Al or steel?)	Default	0.39	
+M5x13 spacer (8mm OD, no threads)002	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	metal spacer (Al or steel?)	Default	0.39	
+M5x13 spacer (8mm OD, no threads)003	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	metal spacer (Al or steel?)	Default	0.39	
+M5x16-Screw	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw001	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw002	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw004	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw005	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw006	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw007	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw008	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw018	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw019	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw020	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw021	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw022	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw023	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw067	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / Z_Bed_Left	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw068	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Bed_Rear	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw069	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / Z_Bed_Right	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw070	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Mount	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw071	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Mount	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw072	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Mount (1)	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw073	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Mount (1)	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw074	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Mount (2)	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw075	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Mount (2)	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw076	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Mount (3)	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw077	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Mount (3)	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw078	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw079	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw080	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw081	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw085	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw086	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw087	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x16-Screw088	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	0.42	3.3
+M5x40 LP SHCS	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	fastener / pin / shaft	Steel-Generic	0.96	7.6
+M5x40 LP SHCS001	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	fastener / pin / shaft	Steel-Generic	0.96	7.6
+M5x50 Dowel Pin (1)002	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Bottom Hinge (1)	fastener / pin / shaft	Steel-Generic	0.98	7.7
+M5x50 Dowel Pin (1)003	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Middle Hinge	fastener / pin / shaft	Steel-Generic	0.98	7.7
+M5x50 Dowel Pin (1)004	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Top Hinge	fastener / pin / shaft	Steel-Generic	0.98	7.7
+M5x50-Screw	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw001	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw002	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw003	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw004	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw007	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw009	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw012	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw013	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw016	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw018	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw020	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw021	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw022	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw024	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw026	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw028	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Door Frame	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw029	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Door Frame	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw030	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Door Frame	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw031	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Door Frame	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw036	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw037	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw038	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw039	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw040	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw041	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw042	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw043	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw044	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw045	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw046	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw047	4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw048	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Door Frame	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw049	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Door Frame	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw050	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Door Frame	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x50-Screw051	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Door Frame	fastener / pin / shaft	Steel-Generic	1.22	9.6
+M5x7 spacer (8mm OD, no threads)	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	metal spacer (Al or steel?)	Default	0.21	
+M5x7 spacer (8mm OD, no threads)001	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	metal spacer (Al or steel?)	Default	0.21	
+METAL_PLATE.	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	0.04	
+MGN12-400mm v002	4040-350x350x250 Voron Trident v4 v33 / Gantry assembly	linear rail	Steel-Generic	34.58	273.2
+MGN9 Y rail front extension (L) - 73.9 mm, printed or cut steel (docking only)	4040-350x350x250 Voron Trident v4 v33	Y rail front extension	Default	4.08	
+MGN9 Y rail front extension (R) - 73.9 mm, printed or cut steel (docking only)	4040-350x350x250 Voron Trident v4 v33	Y rail front extension	Default	4.08	
+MGN9-400mm Y rail (L) - owned Berserker, steel	4040-350x350x250 Voron Trident v4 v33	linear rail	Steel-Generic	22.09	174.5
+MGN9-400mm Y rail (R) - owned Berserker, steel	4040-350x350x250 Voron Trident v4 v33	linear rail	Steel-Generic	22.09	174.5
+MGN9H - Carriage_body (1)	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / MGN9H (2)	rail carriage	Steel-Generic	3.25	25.7
+MGN9H - Carriage_body (1)001	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Bed_Rear / MGN9H (3)	rail carriage	Steel-Generic	3.25	25.7
+MGN9H - Carriage_body (1)002	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / MGN9H (4)	rail carriage	Steel-Generic	3.25	25.7
+MGN9H - Carriage_end (1)	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / MGN9H (2)	rail carriage	Steel-Generic	0.44	3.5
+MGN9H - Carriage_end (1)001	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / MGN9H (2)	rail carriage	Steel-Generic	0.44	3.5
+MGN9H - Carriage_end (1)002	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Bed_Rear / MGN9H (3)	rail carriage	Steel-Generic	0.44	3.5
+MGN9H - Carriage_end (1)003	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Bed_Rear / MGN9H (3)	rail carriage	Steel-Generic	0.44	3.5
+MGN9H - Carriage_end (1)004	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / MGN9H (4)	rail carriage	Steel-Generic	0.44	3.5
+MGN9H - Carriage_end (1)005	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / MGN9H (4)	rail carriage	Steel-Generic	0.44	3.5
+MGN9H - Carriage_end_cap (1)	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / MGN9H (2)	rail carriage	Steel-Generic	0.09	0.7
+MGN9H - Carriage_end_cap (1)001	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / MGN9H (2)	rail carriage	Steel-Generic	0.09	0.7
+MGN9H - Carriage_end_cap (1)002	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Bed_Rear / MGN9H (3)	rail carriage	Steel-Generic	0.09	0.7
+MGN9H - Carriage_end_cap (1)003	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Bed_Rear / MGN9H (3)	rail carriage	Steel-Generic	0.09	0.7
+MGN9H - Carriage_end_cap (1)004	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / MGN9H (4)	rail carriage	Steel-Generic	0.09	0.7
+MGN9H - Carriage_end_cap (1)005	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / MGN9H (4)	rail carriage	Steel-Generic	0.09	0.7
+MGN9H - Carriage_end_cap_screw (1)	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / MGN9H (2)	fastener / pin / shaft	Steel-Generic	0.00	0.0
+MGN9H - Carriage_end_cap_screw (1)001	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / MGN9H (2)	fastener / pin / shaft	Steel-Generic	0.00	0.0
+MGN9H - Carriage_end_cap_screw (1)002	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / MGN9H (2)	fastener / pin / shaft	Steel-Generic	0.00	0.0
+MGN9H - Carriage_end_cap_screw (1)003	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / MGN9H (2)	fastener / pin / shaft	Steel-Generic	0.00	0.0
+MGN9H - Carriage_end_cap_screw (1)004	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Bed_Rear / MGN9H (3)	fastener / pin / shaft	Steel-Generic	0.00	0.0
+MGN9H - Carriage_end_cap_screw (1)005	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Bed_Rear / MGN9H (3)	fastener / pin / shaft	Steel-Generic	0.00	0.0
+MGN9H - Carriage_end_cap_screw (1)006	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Bed_Rear / MGN9H (3)	fastener / pin / shaft	Steel-Generic	0.00	0.0
+MGN9H - Carriage_end_cap_screw (1)007	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Bed_Rear / MGN9H (3)	fastener / pin / shaft	Steel-Generic	0.00	0.0
+MGN9H - Carriage_end_cap_screw (1)008	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / MGN9H (4)	fastener / pin / shaft	Steel-Generic	0.00	0.0
+MGN9H - Carriage_end_cap_screw (1)009	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / MGN9H (4)	fastener / pin / shaft	Steel-Generic	0.00	0.0
+MGN9H - Carriage_end_cap_screw (1)010	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / MGN9H (4)	fastener / pin / shaft	Steel-Generic	0.00	0.0
+MGN9H - Carriage_end_cap_screw (1)011	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / MGN9H (4)	fastener / pin / shaft	Steel-Generic	0.00	0.0
+MGN_12_H_CARRAGE v1	4040-350x350x250 Voron Trident v4 v33	rail carriage	Steel-Generic	8.87	70.1
+Main Relay Body	4040-350x350x250 Voron Trident v4 v33 / Electronics / SSR	electronics	Default	51.23	
+Molded Gear Housing (65 teeth) v1 (1)	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Gearset (1)	UNCLASSIFIED	Default	8.01	
+Molded Gear Housing (65 teeth) v1 (1) (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Gearset (1) (1)	UNCLASSIFIED	Default	8.01	
+Motor_Body	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Left / NEMA17 Leadscrew 400mm	stepper motor	Default	63.53	
+Motor_Body001	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Right / NEMA17 Leadscrew 400mm (1)	stepper motor	Default	63.53	
+Motor_Body002	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Motors / Z_Motor_Rear / NEMA17 Leadscrew 400mm (2)	stepper motor	Default	63.53	
+MxL	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	0.02	
+Nitehawk-36_V1.4 3D Model v001 (simplified box)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead	electronics	Default	29.02	
+Nitehawk-36_V1.4 3D Model v1 (simplified box)	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead	electronics	Default	29.02	
+Octopus Bracket	4040-350x350x250 Voron Trident v4 v33 / Electronics / Controllers / Octopus	electronics	Default	7.56	
+Octopus_Pro - beta v1 (simplified box)	4040-350x350x250 Voron Trident v4 v33	electronics	Default	314.71	
+Orbiter Spider Shaft v4 (1)	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1	fastener / pin / shaft	Steel-Generic	0.93	7.4
+Orbiter Spider Shaft v4 (1) (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1)	fastener / pin / shaft	Steel-Generic	0.93	7.4
+PART3_V1	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1 / SLOT_CARD_ASM	electronics	Default	0.02	
+PLATE_RASPBERRY_PI_5	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	6.82	
+Part 001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / A4T LED001 / A4T LED Filter[opaque] v001	printed part	ABS-Generic	0.04	0.0
+Part 46	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / A4T LED / A4T LED Filter[opaque] v1	printed part	ABS-Generic	0.04	0.0
+Plate	4040-350x350x250 Voron Trident v4 v33 / Left Dock / MadMax 4 XOL v11 v1 / Plate Assembly	UNCLASSIFIED	Default	18.25	
+Plate Back	4040-350x350x250 Voron Trident v4 v33 / Left Dock / MadMax 4 XOL v11 v1	UNCLASSIFIED	Default	1.11	
+Plate Back(Mirror)	4040-350x350x250 Voron Trident v4 v33 / Right Dock / MadMax 4 XOL v11 v1(Mirror)	UNCLASSIFIED	Default	1.11	
+Plate(Mirror)	4040-350x350x250 Voron Trident v4 v33 / Right Dock / MadMax 4 XOL v11 v1(Mirror) / Plate Assembly(Mirror)	UNCLASSIFIED	Default	18.25	
+RP1_CO_CONTROLLER	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	0.09	
+RS-25 PSU Bracket	4040-350x350x250 Voron Trident v4 v33 / Electronics / Meanwell RS-25	electronics	Default	5.64	
+Raspberry_Bracket	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly	electronics	Default	4.77	
+SD_CARD_V1	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1 / SLOT_CARD_ASM	electronics	Default	0.06	
+SOLID028	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / Z_Bed_Left	printed part	ABS-Generic	9.82	10.4
+SOLID029	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / MGN9 - 400mm (2)	linear rail (Z)	Steel-Generic	20.16	159.3
+SOLID030	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Left / rail_stop (1)	printed part	ABS-Generic	0.74	0.8
+SOLID031	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Carriage_Rear_3-Hole (Generic)	printed part	ABS-Generic	25.90	27.5
+SOLID032	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Carriage_Rear_2-hole (IGUS)	printed part	ABS-Generic	26.03	27.6
+SOLID033	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / Z_Bed_Rear	printed part	ABS-Generic	10.13	10.7
+SOLID034	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / MGN9 - 400mm (4)	linear rail (Z)	Steel-Generic	20.16	159.3
+SOLID035	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Rear / rail_stop	printed part	ABS-Generic	0.74	0.8
+SOLID036	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / Z_Bed_Right	printed part	ABS-Generic	9.82	10.4
+SOLID037	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / MGN9 - 400mm (3)	linear rail (Z)	Steel-Generic	20.16	159.3
+SOLID038	4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / Z_Right / rail_stop (2)	printed part	ABS-Generic	0.74	0.8
+SOLID041	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Latch Handle (1) / Handle (1)	printed part	ABS-Generic	47.63	50.5
+SOLID042	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Latch Handle (1) / Hinge_Top (1)	printed part	ABS-Generic	24.01	25.5
+SOLID043	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Bottom Hinge (1) / Hinge_Left_sleeve (1)	printed part	ABS-Generic	10.44	11.1
+SOLID044	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Bottom Hinge (1) / Hinge_Left_solid (1) (1)	printed part	ABS-Generic	10.68	11.3
+SOLID053	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Latch (1) (2)	printed part	ABS-Generic	8.66	9.2
+SOLID054	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Hinge_Bottom (1)	printed part	ABS-Generic	24.01	25.5
+SOLID055	4040-350x350x250 Voron Trident v4 v33 / Electronics / Controllers / Octopus / DIN Clip	electronics	Default	5.41	
+SOLID056	4040-350x350x250 Voron Trident v4 v33 / Electronics / Controllers / Octopus / DIN Clip (1)	electronics	Default	5.41	
+SOLID057	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / DIN Clip (2)	electronics	Default	5.41	
+SOLID058	4040-350x350x250 Voron Trident v4 v33 / Electronics / Meanwell LRS-200-24 / PSU_Stabilizer	electronics	Default	3.70	
+SOLID059	4040-350x350x250 Voron Trident v4 v33 / Electronics / Meanwell LRS-200-24 / LRS PSU Bracket	electronics	Default	7.41	
+SOLID060	4040-350x350x250 Voron Trident v4 v33 / Electronics / Meanwell LRS-200-24 / LRS PSU Bracket (1)	electronics	Default	7.41	
+SOLID061	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Mount	electronics	Default	7.50	
+SOLID062	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Center_Support	electronics	Default	0.74	
+SOLID063	4040-350x350x250 Voron Trident v4 v33 / Electronics / 3x WAGO_221-415_mount	electronics	Default	10.20	
+SOLID064	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Mount (1)	electronics	Default	7.50	
+SOLID065	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Mount (2)	electronics	Default	7.50	
+SOLID066	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Mount (3)	electronics	Default	7.50	
+SOLID067	4040-350x350x250 Voron Trident v4 v33 / Electronics / DIN_Center_Support001	electronics	Default	0.74	
+SOLID068	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Middle Hinge / Hinge_Left_sleeve (1)001	printed part	ABS-Generic	10.44	11.1
+SOLID069	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Middle Hinge / Hinge_Left_solid (1) (1)001	printed part	ABS-Generic	10.68	11.3
+SOLID070	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Top Hinge / Hinge_Left_sleeve (1)002	printed part	ABS-Generic	10.44	11.1
+SOLID071	4040-350x350x250 Voron Trident v4 v33 / Door (1) (1) / Top Hinge / Hinge_Left_solid (1) (1)002	printed part	ABS-Generic	10.68	11.3
+SSR Mount Bracket	4040-350x350x250 Voron Trident v4 v33 / Electronics / SSR	electronics	Default	7.02	
+STOCK_1	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	0.04	
+STOCK_2	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	0.03	
+STOCK_3	4040-350x350x250 Voron Trident v4 v33 / Electronics / Pi Assembly / RASPBERRY_PI_5_1 v1	electronics	Default	0.03	
+Spring v1 (1)	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Orbiter 2.7 LDO Molding_CaptiveTensioner v10 v1 (1) / Sping (1)	spring / pin / ball / shaft	Steel-Generic	0.07	0.6
+Spring v1 (1) (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Orbiter 2.7 LDO Molding_CaptiveTensioner v10 v1 (1) (1) / Sping (1) (1)	spring / pin / ball / shaft	Steel-Generic	0.07	0.6
+Square Washer, Large	4040-350x350x250 Voron Trident v4 v33 / Electronics / SSR	fastener / pin / shaft	Steel-Generic	0.20	1.6
+Square Washer, Large001	4040-350x350x250 Voron Trident v4 v33 / Electronics / SSR	fastener / pin / shaft	Steel-Generic	0.20	1.6
+Square Washer, Small	4040-350x350x250 Voron Trident v4 v33 / Electronics / SSR	fastener / pin / shaft	Steel-Generic	0.12	1.0
+Square Washer, Small001	4040-350x350x250 Voron Trident v4 v33 / Electronics / SSR	fastener / pin / shaft	Steel-Generic	0.12	1.0
+T10 SpurGear (1)	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / LDO_36STH17-1004AHG v6 (1)	stepper motor	Default	0.06	
+T10 SpurGear (1) (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / LDO_36STH17-1004AHG v6 (1) (1)	stepper motor	Default	0.06	
+TL-dragon-SF\X\BA\X\ED\X\B9\X\DC\X\C9\X\A2\X\C8\X\C8\X\B6\X\CE-\X\B0\X\AB-\X\B5\X\E6\X\C6\X\AC	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / TL-dragon-Ace-mouckup v1	hotend metal / stand-in	Default	0.82	
+TL-dragon-SF\X\BA\X\ED\X\B9\X\DC\X\C9\X\A2\X\C8\X\C8\X\B6\X\CE-\X\B0\X\AB-\X\B5\X\E6\X\C6\X\AC001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / TL-dragon-Ace-mouckup v001	hotend metal / stand-in	Default	0.82	
+TL-dragon-\X\B9\X\E8\X\BD\X\BA\X\CC\X\D001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / TL-dragon-Ace-mouckup v001	hotend metal / stand-in	Default	2.47	
+TL-dragon-\X\B9\X\E8\X\BD\X\BA\X\CC\X\D002	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / TL-dragon-Ace-mouckup v001	hotend metal / stand-in	Default	0.35	
+TL-dragon-\X\B9\X\E8\X\BD\X\BA\X\CC\X\D7	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / TL-dragon-Ace-mouckup v1	hotend metal / stand-in	Default	2.47	
+TL-dragon-\X\B9\X\E8\X\BD\X\BA\X\CC\X\D73	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / TL-dragon-Ace-mouckup v1	hotend metal / stand-in	Default	0.35	
+TL-dragon-\X\CD\X\E2\X\BF\X\F2-\X\B0\X\AB	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / TL-dragon-Ace-mouckup v1	hotend metal / stand-in	Default	2.93	
+TL-dragon-\X\CD\X\E2\X\BF\X\F2-\X\B0\X\AB001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / TL-dragon-Ace-mouckup v001	hotend metal / stand-in	Default	2.93	
+Top Cap	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Crossbow integration CAD v1	printed part	ABS-Generic	0.22	0.2
+Top Cap001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Crossbow integration CAD v001	printed part	ABS-Generic	0.22	0.2
+Universal Build Plate 350 v1	4040-350x350x250 Voron Trident v4 v33	build plate	Aluminum-Generic	755.07	2038.7
+V6\X\D4\X\F6\X\C1\X\F7\X\C2\X\DD\X\CB\X\BF-mockup	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / TL-dragon-Ace-mouckup v1	hotend metal / stand-in	Default	0.61	
+V6\X\D4\X\F6\X\C1\X\F7\X\C2\X\DD\X\CB\X\BF-mockup001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / TL-dragon-Ace-mouckup v001	hotend metal / stand-in	Default	0.61	
+V6\X\D4\X\F6\X\C1\X\F7\X\C2\X\DD\X\CB\X\BF\X\D7\X\B0\X\C5\X\E4\X\CC\X\E5-\X\B9\X\E8\X\BD\X\BA\X\CC\X\D001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / TL-dragon-Ace-mouckup v001	hotend metal / stand-in	Default	0.55	
+V6\X\D4\X\F6\X\C1\X\F7\X\C2\X\DD\X\CB\X\BF\X\D7\X\B0\X\C5\X\E4\X\CC\X\E5-\X\B9\X\E8\X\BD\X\BA\X\CC\X\D7	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / TL-dragon-Ace-mouckup v1	hotend metal / stand-in	Default	0.55	
+VC9-JLA	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	Monolith milled part	Aluminum-6061-T6	6.94	18.7
+VC9-JLB	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	Monolith milled part	Aluminum-6061-T6	4.92	13.3
+VC9-JRA	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	Monolith milled part	Aluminum-6061-T6	6.94	18.7
+VC9-JRB	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	Monolith milled part	Aluminum-6061-T6	4.92	13.3
+VC9-JSC	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	Monolith milled part	Aluminum-6061-T6	4.35	11.7
+VC9-JSC001	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	Monolith milled part	Aluminum-6061-T6	4.35	11.7
+VC9-RTA	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	Monolith milled part	Aluminum-6061-T6	11.75	31.7
+VC9-RTA001	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	Monolith milled part	Aluminum-6061-T6	11.75	31.7
+VC9-RTB	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	Monolith milled part	Aluminum-6061-T6	2.94	7.9
+VC9-RTB001	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	Monolith milled part	Aluminum-6061-T6	2.94	7.9
+VT9-FIA	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	Monolith milled part	Aluminum-6061-T6	12.14	32.8
+VT9-FIA001	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	Monolith milled part	Aluminum-6061-T6	12.14	32.8
+VT9-FIB	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right	Monolith milled part	Aluminum-6061-T6	11.26	30.4
+VT9-FIB001	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left	Monolith milled part	Aluminum-6061-T6	11.26	30.4
+VT9-RLA	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	Monolith milled part	Aluminum-6061-T6	26.24	70.8
+VT9-RLB	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	Monolith milled part	Aluminum-6061-T6	31.80	85.8
+VT9-RRA	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	Monolith milled part	Aluminum-6061-T6	30.78	83.1
+VT9-RRB	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	Monolith milled part	Aluminum-6061-T6	27.25	73.6
+VT_NP_spacer	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	metal spacer (Al or steel?)	Default	0.66	
+VT_NP_spacer001	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right	metal spacer (Al or steel?)	Default	0.66	
+VT_NP_spacer002	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	metal spacer (Al or steel?)	Default	0.66	
+VT_NP_spacer003	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left	metal spacer (Al or steel?)	Default	0.66	
+\X\C1\X\FA-\X\CC\X\D5\X\B4\X\C9\X\BC\X\D3\X\C8\X\C8\X\C6\X\AC-\X\BB\X\F0\X\C9\X\BD\X\BC\X\D3\X\C8\X\C8\X\BF\X\E001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / TL-dragon-Ace-mouckup v001	hotend metal / stand-in	Default	1.90	
+\X\C1\X\FA-\X\CC\X\D5\X\B4\X\C9\X\BC\X\D3\X\C8\X\C8\X\C6\X\AC-\X\BB\X\F0\X\C9\X\BD\X\BC\X\D3\X\C8\X\C8\X\BF\X\E9	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / TL-dragon-Ace-mouckup v1	hotend metal / stand-in	Default	1.90	
+_GT2 20T toothed core	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right / GT2 20T 9mm pulley	pulley (steel or Al?)	Default	1.40	
+_GT2 20T toothed core001	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left / GT2 20T 9mm pulley001	pulley (steel or Al?)	Default	1.40	
+_GT2 20T toothed core002	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right / GT2 20T 9mm live shaft pulley assembly	pulley (steel or Al?)	Default	1.09	
+_GT2 20T toothed core003	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right / GT2 20T 9mm pulley002	pulley (steel or Al?)	Default	1.40	
+_GT2 20T toothed core004	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left / GT2 20T 9mm live shaft pulley assembly001	pulley (steel or Al?)	Default	1.09	
+_GT2 20T toothed core005	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left / GT2 20T 9mm pulley003	pulley (steel or Al?)	Default	1.40	
+_GT2 20T toothed core006	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right / GT2 20T 9mm live shaft pulley assembly002	pulley (steel or Al?)	Default	1.09	
+_GT2 20T toothed core007	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left / GT2 20T 9mm live shaft pulley assembly003	pulley (steel or Al?)	Default	1.09	
+_LDO 5 mm shaft	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right / GT2 20T 9mm live shaft pulley assembly	fastener / pin / shaft	Steel-Generic	0.71	5.6
+_LDO 5 mm shaft001	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left / GT2 20T 9mm live shaft pulley assembly001	fastener / pin / shaft	Steel-Generic	0.71	5.6
+_LDO 5 mm shaft002	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right / GT2 20T 9mm live shaft pulley assembly002	fastener / pin / shaft	Steel-Generic	0.71	5.6
+_LDO 5 mm shaft003	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left / GT2 20T 9mm live shaft pulley assembly003	fastener / pin / shaft	Steel-Generic	0.71	5.6
+_M4x4 set screw	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right / GT2 20T 9mm pulley	fastener / pin / shaft	Steel-Generic	0.04	0.3
+_M4x4 set screw001	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right / GT2 20T 9mm pulley	fastener / pin / shaft	Steel-Generic	0.04	0.3
+_M4x4 set screw002	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left / GT2 20T 9mm pulley001	fastener / pin / shaft	Steel-Generic	0.04	0.3
+_M4x4 set screw003	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left / GT2 20T 9mm pulley001	fastener / pin / shaft	Steel-Generic	0.04	0.3
+_M4x4 set screw004	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right / GT2 20T 9mm pulley002	fastener / pin / shaft	Steel-Generic	0.04	0.3
+_M4x4 set screw005	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right / GT2 20T 9mm pulley002	fastener / pin / shaft	Steel-Generic	0.04	0.3
+_M4x4 set screw006	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left / GT2 20T 9mm pulley003	fastener / pin / shaft	Steel-Generic	0.04	0.3
+_M4x4 set screw007	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left / GT2 20T 9mm pulley003	fastener / pin / shaft	Steel-Generic	0.04	0.3
+_MGN9H	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right	rail carriage	Steel-Generic	4.31	34.1
+_MGN9H001	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left	rail carriage	Steel-Generic	4.31	34.1
+_MR148ZZ Ball	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Bearings (1) / MR148ZZ v1	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Bearings (1) (1) / MR148ZZ v1 (1)	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball (1)001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Bearings (1) (1) / MR148ZZ v1 (1)	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball (1)002	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Bearings (1) (1) / MR148ZZ v1 (1)	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball (1)003	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Bearings (1) (1) / MR148ZZ v1 (1)	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball (1)004	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Bearings (1) (1) / MR148ZZ v1 (1)	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball (1)005	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Bearings (1) (1) / MR148ZZ v1 (1)	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball (1)006	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Bearings (1) (1) / MR148ZZ v1 (1)	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball (1)007	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Bearings (1) (1) / MR148ZZ v1 (1)	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball (1)008	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Bearings (1) (1) / MR148ZZ v1 (1)	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball (1)009	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Bearings (1) (1) / MR148ZZ v1 (1)	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball (1)010	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Bearings (1) (1) / MR148ZZ v1 (1)	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball (1)011	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Bearings (1) (1) / MR148ZZ v1 (1)	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball (1)012	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Bearings (1) (1) / MR148ZZ v1 (1)	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball (1)013	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Bearings (1) (1) / MR148ZZ v1 (1)	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball001	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Bearings (1) / MR148ZZ v1	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball002	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Bearings (1) / MR148ZZ v1	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball003	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Bearings (1) / MR148ZZ v1	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball004	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Bearings (1) / MR148ZZ v1	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball005	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Bearings (1) / MR148ZZ v1	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball006	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Bearings (1) / MR148ZZ v1	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball007	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Bearings (1) / MR148ZZ v1	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball008	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Bearings (1) / MR148ZZ v1	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball009	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Bearings (1) / MR148ZZ v1	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball010	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Bearings (1) / MR148ZZ v1	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball011	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Bearings (1) / MR148ZZ v1	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball012	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Bearings (1) / MR148ZZ v1	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Ball013	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Bearings (1) / MR148ZZ v1	bearing	Steel-Generic	0.00	0.0
+_MR148ZZ Inner Ring	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Bearings (1) / MR148ZZ v1	bearing	Steel-Generic	0.09	0.7
+_MR148ZZ Inner Ring (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Bearings (1) (1) / MR148ZZ v1 (1)	bearing	Steel-Generic	0.09	0.7
+_MR148ZZ Outer Ring	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Bearings (1) / MR148ZZ v1	bearing	Steel-Generic	0.13	1.0
+_MR148ZZ Outer Ring (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Bearings (1) (1) / MR148ZZ v1 (1)	bearing	Steel-Generic	0.13	1.0
+_MR148ZZ Shield1	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Bearings (1) / MR148ZZ v1	bearing	Steel-Generic	0.01	0.1
+_MR148ZZ Shield1 (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Bearings (1) (1) / MR148ZZ v1 (1)	bearing	Steel-Generic	0.01	0.1
+_MR148ZZ Shield2	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1 / Bearings (1) / MR148ZZ v1	bearing	Steel-Generic	0.01	0.1
+_MR148ZZ Shield2 (1)	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / Orbiter 2.5 (1) / Orbiter V2.0 Mockup (1) v1 (1) / Bearings (1) (1) / MR148ZZ v1 (1)	bearing	Steel-Generic	0.01	0.1
+_Pulley flange 15x10x1.5mm	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right / GT2 20T 9mm pulley	pulley (steel or Al?)	Default	0.15	
+_Pulley flange 15x10x1.5mm001	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left / GT2 20T 9mm pulley001	pulley (steel or Al?)	Default	0.15	
+_Pulley flange 15x10x1.5mm002	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right / GT2 20T 9mm live shaft pulley assembly	pulley (steel or Al?)	Default	0.15	
+_Pulley flange 15x10x1.5mm003	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right / GT2 20T 9mm live shaft pulley assembly	pulley (steel or Al?)	Default	0.15	
+_Pulley flange 15x10x1.5mm004	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right / GT2 20T 9mm pulley002	pulley (steel or Al?)	Default	0.15	
+_Pulley flange 15x10x1.5mm005	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left / GT2 20T 9mm live shaft pulley assembly001	pulley (steel or Al?)	Default	0.15	
+_Pulley flange 15x10x1.5mm006	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left / GT2 20T 9mm live shaft pulley assembly001	pulley (steel or Al?)	Default	0.15	
+_Pulley flange 15x10x1.5mm007	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left / GT2 20T 9mm pulley003	pulley (steel or Al?)	Default	0.15	
+_Pulley flange 15x10x1.5mm008	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right / GT2 20T 9mm live shaft pulley assembly002	pulley (steel or Al?)	Default	0.15	
+_Pulley flange 15x10x1.5mm009	4040-350x350x250 Voron Trident v4 v33 / XY right: _XY_right / GT2 20T 9mm live shaft pulley assembly002	pulley (steel or Al?)	Default	0.15	
+_Pulley flange 15x10x1.5mm010	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left / GT2 20T 9mm live shaft pulley assembly003	pulley (steel or Al?)	Default	0.15	
+_Pulley flange 15x10x1.5mm011	4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left / GT2 20T 9mm live shaft pulley assembly003	pulley (steel or Al?)	Default	0.15	
+_Pulley removable hub 15x10x7.5mm	4040-350x350x250 Voron Trident v4 v33 / Front right: _Front_right / GT2 20T 9mm pulley	pulley (steel or Al?)	Default	0.69	
+_Pulley removable hub 15x10x7.5mm001	4040-350x350x250 Voron Trident v4 v33 / Front left: _Front_left / GT2 20T 9mm pulley001	pulley (steel or Al?)	Default	0.69	
+_Pulley removable hub 15x10x7.5mm002	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right / GT2 20T 9mm pulley002	pulley (steel or Al?)	Default	0.69	
+_Pulley removable hub 15x10x7.5mm003	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left / GT2 20T 9mm pulley003	pulley (steel or Al?)	Default	0.69	
+_Stepper_shaft_S45R	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right / NEMA17 with 45mm long shaft	stepper motor	Default	1.76	
+_Stepper_shaft_S45R001	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left / NEMA17 with 45mm long shaft001	stepper motor	Default	1.76	
+_Stepper_stator	4040-350x350x250 Voron Trident v4 v33 / Rear right: _Rear_right / NEMA17 with 45mm long shaft	stepper motor	Default	79.70	
+_Stepper_stator001	4040-350x350x250 Voron Trident v4 v33 / Rear left: _Rear_left / NEMA17 with 45mm long shaft001	stepper motor	Default	79.70	
+back_support_3_top	4040-350x350x250 Voron Trident v4 v33 / kinematic bed mount v1 / Kinematic bed mount / back_sandwich	UNCLASSIFIED	Default	2.36	
+backbone-350 v2	4040-350x350x250 Voron Trident v4 v33	backbone (?)	Default	1049.65	
+case display 7 hdmi BTT v1.2 v1	4040-350x350x250 Voron Trident v4 v33	electronics	Default	459.78	
+front_support_3(Mirror)	4040-350x350x250 Voron Trident v4 v33 / kinematic bed mount v1 / Kinematic bed mount / front_right_sandwich_3	UNCLASSIFIED	Default	1.91	
+front_support_bottom_3	4040-350x350x250 Voron Trident v4 v33 / kinematic bed mount v1 / Kinematic bed mount / front_left_sandwich_3	UNCLASSIFIED	Default	2.45	
+front_support_bottom_3(Mirror)	4040-350x350x250 Voron Trident v4 v33 / kinematic bed mount v1 / Kinematic bed mount / front_right_sandwich_3	UNCLASSIFIED	Default	2.45	
+front_support_top_3	4040-350x350x250 Voron Trident v4 v33 / kinematic bed mount v1 / Kinematic bed mount / front_left_sandwich_3	UNCLASSIFIED	Default	1.91	
+outline hexagons	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / A4T Cowling - Dragon-Rapido UHF [cw2-tap] v3	hotend metal / stand-in	Default	0.03	
+outline hexagons (1)	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / A4T Cowling - Dragon-Rapido UHF [cw2-tap] v3	hotend metal / stand-in	Default	0.01	
+outline hexagons (1)001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / A4T Cowling - Dragon-Rapido UHF [cw2-tap] v001	hotend metal / stand-in	Default	0.01	
+outline hexagons001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / A4T Cowling - Dragon-Rapido UHF [cw2-tap] v001	hotend metal / stand-in	Default	0.03	
+pin_001	4040-350x350x250 Voron Trident v4 v33 / kinematic bed mount v1 / Kinematic bed mount / front_left_sandwich_3	spring / pin / ball / shaft	Steel-Generic	0.31	2.5
+pin_002	4040-350x350x250 Voron Trident v4 v33 / kinematic bed mount v1 / Kinematic bed mount / back_sandwich	spring / pin / ball / shaft	Steel-Generic	0.31	2.5
+pin_003	4040-350x350x250 Voron Trident v4 v33 / kinematic bed mount v1 / Kinematic bed mount / back_sandwich	spring / pin / ball / shaft	Steel-Generic	0.31	2.5
+pin_3	4040-350x350x250 Voron Trident v4 v33 / kinematic bed mount v1 / Kinematic bed mount / front_left_sandwich_3	spring / pin / ball / shaft	Steel-Generic	0.31	2.5
+pin_3(Mirror)	4040-350x350x250 Voron Trident v4 v33 / kinematic bed mount v1 / Kinematic bed mount / front_right_sandwich_3	spring / pin / ball / shaft	Steel-Generic	0.31	2.5
+pin_3(Mirror)001	4040-350x350x250 Voron Trident v4 v33 / kinematic bed mount v1 / Kinematic bed mount / front_right_sandwich_3	spring / pin / ball / shaft	Steel-Generic	0.31	2.5
+solid hexagons	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / A4T Cowling - Dragon-Rapido UHF [cw2-tap] v3	hotend metal / stand-in	Default	0.02	
+solid hexagons (1)	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / A4T Cowling - Dragon-Rapido UHF [cw2-tap] v3	hotend metal / stand-in	Default	0.02	
+solid hexagons (1)001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / A4T Cowling - Dragon-Rapido UHF [cw2-tap] v001	hotend metal / stand-in	Default	0.02	
+solid hexagons (2)	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / A4T Cowling - Dragon-Rapido UHF [cw2-tap] v3	hotend metal / stand-in	Default	0.01	
+solid hexagons (2)001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / A4T Cowling - Dragon-Rapido UHF [cw2-tap] v001	hotend metal / stand-in	Default	0.01	
+solid hexagons (3)	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / A4T Cowling - Dragon-Rapido UHF [cw2-tap] v3	hotend metal / stand-in	Default	0.02	
+solid hexagons (3)001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / A4T Cowling - Dragon-Rapido UHF [cw2-tap] v001	hotend metal / stand-in	Default	0.02	
+solid hexagons (4)	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / A4T Cowling - Dragon-Rapido UHF [cw2-tap] v3	hotend metal / stand-in	Default	0.02	
+solid hexagons (4)001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / A4T Cowling - Dragon-Rapido UHF [cw2-tap] v001	hotend metal / stand-in	Default	0.02	
+solid hexagons (5)	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / A4T Cowling - Dragon-Rapido UHF [cw2-tap] v3	hotend metal / stand-in	Default	0.02	
+solid hexagons (5)001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / A4T Cowling - Dragon-Rapido UHF [cw2-tap] v001	hotend metal / stand-in	Default	0.02	
+solid hexagons (6)	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / A4T Cowling - Dragon-Rapido UHF [cw2-tap] v3	hotend metal / stand-in	Default	0.02	
+solid hexagons (6)001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / A4T Cowling - Dragon-Rapido UHF [cw2-tap] v001	hotend metal / stand-in	Default	0.02	
+solid hexagons (7)	4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / A4T Assembly fixed v1 / A4T Cowling - Dragon-Rapido UHF [cw2-tap] v3	hotend metal / stand-in	Default	0.00	
+solid hexagons (7)001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / A4T Cowling - Dragon-Rapido UHF [cw2-tap] v001	hotend metal / stand-in	Default	0.00	
+solid hexagons001	4040-350x350x250 Voron Trident v4 v33 / Right Toolhead / A4T Assembly fixed v001 / A4T Cowling - Dragon-Rapido UHF [cw2-tap] v001	hotend metal / stand-in	Default	0.02	

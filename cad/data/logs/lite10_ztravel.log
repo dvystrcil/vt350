@@ -1,0 +1,89 @@
+[   67.2s] opened /home/dan/Documents/VT350/vt350-lite-9.FCStd 2494
+[  128.3s] removing _1_X_endstop v1 (14 solids): ['KW10 microswitch', 'M2x10 self-tapping screw', 'M2x10 self-tapping screw001', 'M3 2020 drop-in T-nut004', 'M3 2020 drop-in T-nut005', 'M3x30-Screw', 'M3x30-Screw001', 'X_endstop_housing']
+[  128.4s] loose frame hardware at gantry level: 16 touch a gantry bar (moved up with it), 40 at the top frame bars (fixed)
+[  128.4s]    after following bolts: 16 loose hardware parts move up
+[  128.4s] moving up 50: 448 solids; bowden tubes regenerated: 2
+[  128.4s] Z posts: ['2040 Z post (R)', '2040(Mirror) Z post (L)']; rear vertical under the gantry: [('2020 (3)', -10.0, 370.0)]
+[  144.4s] baseline overlaps in lite-9 among the parts this pass touches: 11
+[  145.1s] 2040 Z post (R): Z -10.0..370.0 -> ..420.0 (cut at Z 367.0, section 314.4 mm2), valid True, volume ok True
+[  146.3s] 2040(Mirror) Z post (L): Z -10.0..370.0 -> ..420.0 (cut at Z 367.0, section 314.4 mm2), valid True, volume ok True
+[  146.7s] 2020 (3): Z -10.0..370.0 -> ..420.0 (cut at Z 367.0, section 182.1 mm2), valid True, volume ok True
+[  147.8s] Z rail Left: Z 2.4..302.4 -> ..402.4 (MGN9 400; cut at Z 288.4), valid True, volume ok True
+[  147.8s]    M3x8-Screw: in the rail's top piece above the cut, moved +100 with it
+[  148.7s] Z rail Rear: Z -1.0..299.0 -> ..399.0 (MGN9 400; cut at Z 285.0), valid True, volume ok True
+[  148.8s]    M3x8-Screw013: in the rail's top piece above the cut, moved +100 with it
+[  149.7s] Z rail Right: Z 2.4..302.4 -> ..402.4 (MGN9 400; cut at Z 288.4), valid True, volume ok True
+[  149.7s]    M3x8-Screw022: in the rail's top piece above the cut, moved +100 with it
+[  149.9s] rail stop Left: Z 302.4..314.4 -> on the rail top 402.4 (moved +100.0)
+[  150.1s] rail stop Rear: Z 299.0..311.0 -> on the rail top 399.0 (moved +100.0)
+[  150.4s] rail stop Right: Z 342.4..354.4 -> on the rail top 402.4 (moved +60.0; it was floating 40.0 mm above the 300 rail)
+[  150.5s] lead screw Left: Z -42.9..290.1 -> ..390.1, valid True, volume ok True
+[  150.5s] lead screw Right: Z -42.8..290.2 -> ..390.2, valid True, volume ok True
+[  150.6s] lead screw Rear: Z -43.8..289.2 -> ..389.2, valid True, volume ok True
+[  157.6s] hardware sitting in bed parts at the model pose, moved with the bed: 2 ['M5x16-Screw001 (in the bed frame)', 'M5-Washer001 (in the bed frame)']
+[  157.6s] plate top Z 271.00 (model pose); nozzle tip Z 380.80 after the raise; gap 109.80
+[  189.0s] Z travel limits from the model pose (dZ of the bed):
+[  189.0s]    up     +35.00  (300 screw) Left nut top reaches the screw's top
+[  189.0s]    up     +35.10  (300 screw) Right nut top reaches the screw's top
+[  189.0s]    up     +41.50  (300 screw) Rear nut top reaches the screw's top
+[  189.0s]    up    +109.80  plate reaches the nozzle
+[  189.0s]    up    +114.77  Rear Z block reaches its rail stop
+[  189.0s]    up    +114.77  Left Z block reaches its rail stop
+[  189.0s]    up    +114.77  Right Z block reaches its rail stop
+[  189.0s]    up    +135.00  Left nut top reaches its 400 screw's top
+[  189.0s]    up    +135.10  Right nut top reaches its 400 screw's top
+[  189.0s]    up    +141.50  Rear nut top reaches its 400 screw's top
+[  189.0s]    down  -237.95  M3 Locknut002 lands on backbone-350 v2
+[  189.0s]    down  -237.95  M3x12-Screw009 lands on backbone-350 v2
+[  189.0s]    down  -237.95  M3x12-Screw008 lands on backbone-350 v2
+[  189.0s]    down  -237.95  M3 Locknut003 lands on backbone-350 v2
+[  189.0s]    down  -238.20  Leadscrew Nut001 lands on backbone-350 v2
+[  189.0s]    down  -242.00  2020 (2) lands on backbone-350 v2
+[  189.0s]    down  -242.00  2020 (1) lands on backbone-350 v2
+[  189.0s]    down  -244.35  M3x12-Screw014 lands on backbone-350 v2
+[  189.0s] TOP: bed stops at dZ +109.80 (plate reaches the nozzle); BOTTOM: dZ -237.95 (M3 Locknut002 lands on backbone-350 v2, bounding-box estimate)
+[  189.0s] MAX PRINT HEIGHT (nozzle tip to plate top at the bottom of travel): 347.8 mm (plate top at Z 33.0); bed reaches the nozzle: True
+[  189.0s] 300 mm lead screws instead: the bed tops out at dZ +35.00, i.e. 74.8 mm under the nozzle (needs the bed raised on its carriages, or a lower gantry)
+[  213.6s] bed at the top (plate at the nozzle): 0 overlaps > 1 mm3 with fixed or gantry parts
+[  216.1s] bed at the bottom: 0 overlaps > 1 mm3 with fixed or gantry parts
+[  217.1s] gantry swept over its full Y travel: smallest vertical clearance above each Z part it passes over
+[  217.1s]      +21.30 mm  lead screw Right  under VC9-JRB
+[  217.1s]      +21.40 mm  lead screw Left  under VC9-JLB
+[  217.1s]    (never under the gantry) lead screw Rear
+[  217.1s]    (never under the gantry) rail stop Left
+[  217.1s]    (never under the gantry) rail stop Left
+[  217.1s]    (never under the gantry) rail stop Left
+[  217.1s]    (never under the gantry) rail stop Left
+[  217.1s]    (never under the gantry) rail stop Left
+[  217.1s]    (never under the gantry) rail stop Rear
+[  217.1s]    (never under the gantry) rail stop Rear
+[  217.1s]    (never under the gantry) rail stop Rear
+[  217.1s]    (never under the gantry) rail stop Rear
+[  217.1s]    (never under the gantry) rail stop Rear
+[  217.1s]    (never under the gantry) rail stop Right
+[  217.1s]    (never under the gantry) rail stop Right
+[  217.1s]    (never under the gantry) rail stop Right
+[  217.1s]    (never under the gantry) rail stop Right
+[  217.1s]    (never under the gantry) rail stop Right
+[  217.1s]    (never under the gantry) 2040 Z post (R)
+[  217.1s]    (never under the gantry) 2040(Mirror) Z post (L)
+[  217.1s]    (never under the gantry) 2020 (3)
+[  217.1s]    (never under the gantry) Z rail Left
+[  217.1s]    (never under the gantry) Z rail Rear
+[  217.1s]    (never under the gantry) Z rail Right
+[  218.1s] tube Left: inlet Z 506.3 (lite-9: 456.3), rise to the exit 183.7 mm. lite-9 tube: min bend R 105.2. lite-5 handles (240.0, 160.0): R 95.9, top of curve Z 690.0. Best handles (290, 175): R 105.1
+[  220.6s]    Bowden Left: length 646 mm, min bend R 105.1 mm, valid True
+[  221.6s] tube Right: inlet Z 506.3 (lite-9: 456.3), rise to the exit 183.7 mm. lite-9 tube: min bend R 105.2. lite-5 handles (240.0, 160.0): R 95.9, top of curve Z 690.0. Best handles (290, 175): R 105.1
+[  224.0s]    Bowden Right: length 646 mm, min bend R 105.1 mm, valid True
+[  225.2s] bowden tubes: 0 overlaps > 1 mm3 with other parts
+[  238.4s] collisions > 1 mm3 among touched parts: 19; 11 already in lite-9; 8 new
+[  238.4s]    hardware    183.7 mm3  M5x50-Screw003 [4040-350 VT Frame v12] x 4040 [Verticals]
+[  238.4s]    hardware    183.7 mm3  M5x50-Screw004 [4040-350 VT Frame v12] x 4040 [Verticals]
+[  238.4s]    hardware    183.1 mm3  M5x50-Screw022 [4040-350 VT Frame v12] x 4040(Mirror) [Verticals]
+[  238.4s]    hardware    183.1 mm3  M5x50-Screw021 [4040-350 VT Frame v12] x 4040(Mirror) [Verticals]
+[  238.4s]    hardware     15.8 mm3  M5-Washer056 [4040-350 VT Frame v12] x 4040(Mirror) [Verticals]
+[  238.4s]    hardware     15.8 mm3  M5-Washer055 [4040-350 VT Frame v12] x 4040(Mirror) [Verticals]
+[  238.4s]    hardware      3.8 mm3  M5-Washer013 [4040-350 VT Frame v12] x 4040 [Verticals]
+[  238.4s]    hardware      3.8 mm3  M5-Washer012 [4040-350 VT Frame v12] x 4040 [Verticals]
+[  238.4s] verify: 0 problems
+[  257.3s] SAVED /home/dan/Documents/VT350/vt350-lite-10.FCStd 157956263

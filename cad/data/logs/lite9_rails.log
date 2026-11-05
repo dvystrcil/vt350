@@ -1,0 +1,17 @@
+[   64.1s] opened /home/dan/Documents/VT350/vt350-lite-8.FCStd 2492
+[   68.0s] gap between front and rear mounts: Y -33.96..439.96 (473.9 mm); lite-8 450 rails at Y -10.04..439.96
+[   68.0s] steel 400 at Y 39.96..439.96; front extension Y -33.96..39.96 (73.93 mm)
+[   68.0s] at the model's gantry pose: Y blocks 247.17..287.83 (40.7 long); XY joints 243.22..294.54; carriage mating face Y 256.00
+[   68.3s] Left head docked: mating face Y -28.00; nozzle (lowest solid 'E3D v6 HotEnd - Nozzle', Z 330.8) at Y -49.08 = 21.1 mm in front of the mating face
+[   68.5s] Right head docked: mating face Y -28.00; nozzle (lowest solid 'E3D v6 HotEnd - Nozzle001', Z 330.8) at Y -49.08 = 21.1 mm in front of the mating face
+[   68.5s] build plate Y 28.00..388.50
+[   68.5s] front limit dY -277.19 (joint/mount): carriage face Y -21.19; pickup margin Left -6.81 / Right -6.81 (< 0: docks must move back by that much)
+[   68.5s] rear limit dY +145.43 (joint/mount): nozzle reaches Y 380.35; vs plate rear edge -8.15
+[   68.5s] Left head: nozzle at the plate's front edge (Y 28.00) puts the block front at Y 40.24: +0.28 mm on steel
+[   68.5s] Right head: nozzle at the plate's front edge (Y 28.00) puts the block front at Y 40.24: +0.28 mm on steel
+[   70.4s] MGN9-400mm Y rail (R) - owned Berserker, steel: Y 39.96..439.96, valid True, solids 1, volume 22086.1 (want 22086.1)
+[   70.5s] MGN9 Y rail front extension (R) - 73.9 mm, printed or cut steel (docking only): Y -33.96..39.96, valid True, solids 1, volume 4082.0 (want 4082.0)
+[   70.7s] MGN9-400mm Y rail (L) - owned Berserker, steel: Y 39.96..439.96, valid True, solids 1, volume 22086.1 (want 22086.1)
+[   70.8s] MGN9 Y rail front extension (L) - 73.9 mm, printed or cut steel (docking only): Y -33.96..39.96, valid True, solids 1, volume 4082.0 (want 4082.0)
+[   74.1s] verify: 0 problems
+[   93.3s] SAVED /home/dan/Documents/VT350/vt350-lite-9.FCStd 158042901

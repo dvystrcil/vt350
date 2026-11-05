@@ -1,0 +1,20 @@
+[   66.3s] opened /home/dan/Documents/VT350/vt350-lite-6.FCStd 2519
+[  126.3s] lower belt (z 368.75..377.75): pitch length 1941.7 mm outer clip edge to outer clip edge; solid valid True, solids 1, volume 24150 mm3 (expected ~24116)
+[  126.3s]      XY right idler             back  pitch R  7.63  wrap   90.1 deg
+[  126.3s]      front right pulley         tooth pitch R  6.36  wrap  222.9 deg
+[  126.3s]      front right idler          back  pitch R  7.63  wrap   42.9 deg
+[  126.3s]      rear right MOTOR           tooth pitch R  6.36  wrap  180.0 deg
+[  126.3s]      rear right idler           back  pitch R  7.63  wrap   90.0 deg
+[  126.3s]      rear left toothed idler    tooth pitch R  6.36  wrap   90.1 deg
+[  126.3s]      XY left pulley             tooth pitch R  6.36  wrap   90.0 deg
+[  126.3s] upper belt (z 382.25..391.25): pitch length 1941.7 mm outer clip edge to outer clip edge; solid valid True, solids 1, volume 24150 mm3 (expected ~24116)
+[  126.3s]      XY left idler              back  pitch R  7.63  wrap   90.1 deg
+[  126.3s]      front left pulley          tooth pitch R  6.36  wrap  222.9 deg
+[  126.3s]      front left idler           back  pitch R  7.63  wrap   42.9 deg
+[  126.3s]      rear left MOTOR            tooth pitch R  6.36  wrap  180.0 deg
+[  126.3s]      rear left idler            back  pitch R  7.63  wrap   90.0 deg
+[  126.3s]      rear right toothed idler   tooth pitch R  6.36  wrap   90.1 deg
+[  126.3s]      XY right pulley            tooth pitch R  6.36  wrap   90.0 deg
+[  126.4s] removing _1_Y_endstop_FT v1: 11 objects (8 solids): ['KW10 microswitch001', 'M2x10 self-tapping screw002', 'M2x10 self-tapping screw003', 'M3 2020 drop-in T-nut006', 'M3 2020 drop-in T-nut007', 'M3x12-Screw', 'M3x12-Screw001', 'Y_endstop_housing']
+[  315.2s] verify: 0 problems
+[  334.4s] SAVED /home/dan/Documents/VT350/vt350-lite-7.FCStd 157996393
