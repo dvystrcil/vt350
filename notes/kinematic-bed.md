@@ -65,3 +65,41 @@ What lite-17 found (`cad/data/logs/lite17_kinematic.log`):
 | Bed bolts | M3 SHCS through the plate: (plate below its counterbore) + 0.38 spring + 1.8 nut + 2–3 mm protruding. The counterbore depth on the real plate isn't known, so measure it before buying the 3 bolts. |
 
 Still to do: the README says to lengthen the Z endstop pin by about 8 mm. Fasteners aren't modelled in lite-17.
+
+## lite-18: the real build plate (measured 2026-11-05)
+
+The model's plate (`Universal Build Plate 350`) was a generic one. It had edge notches and rear corner ears, and a
+pair of holes the real plate doesn't have. lite-18 (`cad/scripts/lite18_plate.py`) replaces it with the user's
+LDO plate. The measurements came from calipers, a depth gauge, and a photo of the underside (scale 7.76 px/mm,
+±1 mm). The hole sketch is `~/Documents/VT350/bed-plate-holes-5.FCStd`, which is local and not committed.
+
+| Item | Value | How it was measured |
+|---|---|---|
+| Plate | 355 × 355 × 10, square, edges chamfered | calipers |
+| Holes | all Ø3.4 through, Ø6.5 counterbore on the magnet face, 4.9 deep in the aluminium (6.3 with the magnet on) | calipers: 153.4 outside / 146.6 inside → 150.0 C-C, Ø3.4 |
+| Magnet sheet | 1.4 | 11.4 plate + magnet |
+| PEI spring-steel print sheet | 1.0 | user; not modelled in lite-18 |
+| Heater pad | 1.5 (LDO-SHPAC-350-120-750) | depth gauge |
+| Pad hold-downs | 4 pan head + washer, Ø~12, 2.0 tall; 3.8 below the aluminium | 15.2 from the top of the magnet to the head |
+
+Holes are given in plate coordinates: the origin is the front-left corner, viewed from the magnet side, and the rear is the wire exit.
+
+| Hole | From left | From front | Notes |
+|---|---|---|---|
+| F150 L/R | 102.5 / 252.5 | 6.5 | in 35 × 10 pad notches, about 36 mm in front of the front bed extrusion, so tanaes's C/E can't reach them |
+| **K341 L/R** | 7 / 348 | 43 | **the front kinematic balls**, in 11-wide pad strips (28–59 from the front) |
+| **Rear centre** | 177.5 | 349.5 (photo, ±1) | **the rear ball**, which slides 1.5 mm back along G's groove from lite-17 |
+| R150 L/R | 102.5 / 252.5 | 349.5 | in the rear pad strip (92.5–262.5, 11.3 deep) |
+| Fuse / lock washer | 121.5 / 233.5 | 349.5 | screws already fitted: a 15 A fuse and a lock washer |
+
+**Findings:**
+- **The springs fit the pad cut-outs.** Only about a third of each spring is under the plate. The rest hangs
+  outboard toward C/D/H. The part under the plate lies inside the cut-out. The overlaps with the pad are slivers
+  along the cut-out edges: 0.9 / 5.4 / 1.7 mm², under 0.5 mm into the pad, which is below the photo's ±1 mm. Check
+  by eye at assembly, and trim the pad's edge by 1 mm if a spring corner sits on the silicone.
+- The front hold-downs are 3.5 mm clear of C/D. The rear ones are about 135 mm from any mount.
+- **Bed bolts are M3 SHCS, 14 mm.** Under the head the bolt passes through a 5.1 floor, a 0.38 spring, a 1.8 thin
+  nut, then the sphere nut (8.5 of thread, top 7.28 below the counterbore floor). 14 mm gives 6.7 mm of engagement
+  and stays inside the ball. 12 mm gives 4.7 mm. 16 mm sticks out 0.2 mm below the ball, with 2.05 of room under it.
+- The print surface is **2.4 mm above the aluminium**: 1.4 of magnet plus 1.0 of PEI sheet. lite-18 models the magnet
+  only. The max print height re-check has to include both.
