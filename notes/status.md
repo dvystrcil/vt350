@@ -49,7 +49,7 @@ confirm which parts you already own.
 
 | What | Where |
 |---|---|
-| Model files (not in git) | `~/Documents/VT350/`. Current working copy **`vt350-lite-13.FCStd`** (lite-12 + confirmed materials); untouched original `vt350-good.FCStd` |
+| Model files (not in git) | `~/Documents/VT350/`. Current working copy **`vt350-lite-14.FCStd`** (lite-13 + docks 5 mm back, dock arms +5 mm); untouched original `vt350-good.FCStd` |
 | **Backup of the model files** | restic to the home NAS. Run **`cad/backup-models.sh --verify`** (alias `vt350-backup`) after model changes; old snapshots are pruned automatically (last 10, daily for 30 days, monthly for a year). Target and password are local config (`~/.config/vt350/backup.env`), not in this public repo; keep the restic password in the password manager too. First backup 2026-11-04: 52 files, 4.09 GB, test restore byte-identical |
 | How the model files were made + how to redo it | `cad/README.md`, `cad/scripts/` |
 | Cut list (draft) | `notes/cut-list.md` |
@@ -67,3 +67,4 @@ confirm which parts you already own.
 - Splitting the model into per-assembly files with `App::Link` (would make it
   lighter still).
 - Klipper config (`config/`): starts in stage #15.
+- Wiring documentation for the electronics (stage #13): candidate tool [WireViz](https://github.com/wireviz/WireViz). It turns wiring described in YAML into diagrams and a bill of materials, so the docs can be versioned like the rest of the repo.

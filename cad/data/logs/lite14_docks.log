@@ -1,0 +1,18 @@
+[   68.0s] opened /home/dan/Documents/VT350/vt350-lite-13.FCStd 2453
+[  133.1s] docked carriage copy COMPOUND003: front face Y -24.00; reach -21.19 -> margin -2.81
+[  133.1s] docked carriage copy COMPOUND004: front face Y -24.00; reach -21.19 -> margin -2.81
+[  141.4s] lite-13 overlaps of the moving parts with the rest: 1
+[  142.1s] Dock Arm v1 Bottom: section 193.2 mm2 at Y -53.61; volume 24794.5 -> 25760.7 (want 25760.7); valid True, solids 2 (was 2)
+[  142.3s]    STL stl/dock_arm_v1_bottom_plus5mm.stl: 9608 facets
+[  143.0s] Dock Arm v1 Bottom(Mirror): section 193.2 mm2 at Y -53.61; volume 24794.5 -> 25760.7 (want 25760.7); valid True, solids 2 (was 2)
+[  143.3s]    STL stl/dock_arm_v1_bottom_plus5mm_mirror.stl: 9608 facets
+[  143.5s] docked carriage copy COMPOUND003: front face now Y -19.00; margin to the hard stop +2.19
+[  143.6s] docked carriage copy COMPOUND004: front face now Y -19.00; margin to the hard stop +2.19
+[  143.6s] tube Left: coupler top now -399.00,-45.00,506.30 (was -399.00,-50.00,506.30)
+[  146.0s]    rebuilt: starts -0.00 from the coupler top; min bend R 104.5; length 641.7; valid True
+[  146.0s] tube Right: coupler top now -92.00,-45.00,506.30 (was -92.00,-50.00,506.30)
+[  148.3s]    rebuilt: starts -0.00 from the coupler top; min bend R 104.5; length 641.7; valid True
+[  215.9s] moving parts vs the rest: 1 overlaps (0 new or larger than in lite-13)
+[  216.7s] tubes: 0 overlaps
+[  216.7s] verify: 0 problems
+[  236.7s] SAVED /home/dan/Documents/VT350/vt350-lite-14.FCStd 157970007
