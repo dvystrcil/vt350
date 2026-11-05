@@ -1,0 +1,34 @@
+[   76.5s] A4Tv2 assembly: picked 58 solids from 13 groups: Standard_main_bodies_UHF 1, Ducts_PCF 2, Ducts_HEF_UHF 1, HEF_UHF 1, LED_low 3, Extruder_Adapters_Crossbow 1, crossbow 10, Dragon_Ace 17, Hardware_Xol-Carriage 4, Hardware_Carriage 6, Hardware_HEF_UHF 2, Hardware_PCF_Ducts 8, Hardware_Orbiter 2
+[  143.8s] opened /home/dan/Documents/VT350/vt350-lite-14.FCStd 2453
+[  207.9s] Left Toolhead: plate XOL pair centre x -399.00, z 441.10; A4Tv2 translation (-399.00, -44.96, 446.80)
+[  207.9s]    A4Tv2 screw pair +-15.50 at z 441.10: plate hole found
+[  207.9s]    A4Tv2 screw pair +-16.20 at z 449.47: plate hole found
+[  207.9s]    A4Tv2 screw pair +-16.25 at z 397.80: plate hole found
+[  211.5s]    nozzle: v1 (-399.00, -44.08, 380.80) -> A4Tv2 (-399.00, -44.96, 380.80)
+[  224.3s]    Orbiter: moved (-0.00, -0.89, -7.40) to sit on the new adapter
+[  225.4s] Right Toolhead: plate XOL pair centre x -92.00, z 441.10; A4Tv2 translation (-92.00, -44.96, 446.80)
+[  225.4s]    A4Tv2 screw pair +-15.50 at z 441.10: plate hole found
+[  225.4s]    A4Tv2 screw pair +-16.20 at z 449.47: plate hole found
+[  225.4s]    A4Tv2 screw pair +-16.25 at z 397.80: plate hole found
+[  229.0s]    nozzle: v1 (-92.00, -44.08, 380.80) -> A4Tv2 (-92.00, -44.96, 380.80)
+[  240.4s]    Orbiter: moved (-0.00, -0.89, -7.40) to sit on the new adapter
+[  243.0s] tube Left: inlet (-399.00, -45.88, 498.90); starts -0.00 from it; min bend R 107.4; valid True
+[  245.5s] tube Right: inlet (-92.00, -45.88, 498.90); starts -0.00 from it; min bend R 107.4; valid True
+[  322.2s] A4Tv2 parts vs the rest of the printer: 8 overlaps > 1 mm3
+[  322.3s]      PART         54.7 mm3  Crossbow - Lever x Dock Bracket [MadMax 4 XOL v11 v1]
+[  322.3s]               ^ KNOWN design conflict, left visible in the model
+[  322.3s]      PART         53.7 mm3  Crossbow - Lever x Alternate Bracket v1 [Left Dock]
+[  322.3s]               ^ KNOWN design conflict, left visible in the model
+[  322.3s]      hardware     32.2 mm3  Hex socket head cap screw M3x0.50 x 018 x Alternate Bracket v1(Mirror) [Right Dock]
+[  322.3s]      hardware     32.2 mm3  Hex socket head cap screw M3x0.50 x 015 x Alternate Bracket v1 [Left Dock]
+[  322.3s]      hardware      7.6 mm3  Hex socket head cap screw M3x0.50 x 014 x Plate [Plate Assembly]
+[  322.3s]      hardware      7.6 mm3  Hex socket head cap screw M3x0.50 x 018 x Plate(Mirror) [Plate Assembly(Mirror)]
+[  322.3s]      hardware      7.6 mm3  Hex socket head cap screw M3x0.50 x 019 x Plate(Mirror) [Plate Assembly(Mirror)]
+[  322.3s]      hardware      7.6 mm3  Hex socket head cap screw M3x0.50 x 015 x Plate [Plate Assembly]
+[  322.9s] tubes: 0 overlaps
+[  322.9s] Left Toolhead: nozzle bottom Z 380.80 (-0.00 vs v1) -> max print height ~347.8 mm (was 347.8)
+[  322.9s] Right Toolhead: nozzle bottom Z 380.80 (-0.00 vs v1) -> max print height ~347.8 mm (was 347.8)
+[  322.9s] nozzle Y vs v1: -0.88 mm (negative = further forward of the carriage): on-steel margin at the plate front +0.28 -> +1.16; nozzle vs plate rear edge -8.2 -> -9.08
+[  322.9s] removed 56 v1 solids, added 116 A4Tv2 solids
+[  322.9s] verify: 0 problems
+[  342.7s] SAVED /home/dan/Documents/VT350/vt350-lite-15.FCStd 156300507
