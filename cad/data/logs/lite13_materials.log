@@ -1,0 +1,14 @@
+[   72.9s] opened /home/dan/Documents/VT350/vt350-lite-12.FCStd 2453
+[   73.3s]   backbone-350 v2                    Default          -> Steel-Generic
+[   73.3s]   front_support_top_3                Default          -> Aluminum-Generic
+[   73.3s]   front_support_bottom_3             Default          -> Aluminum-Generic
+[   73.3s]   front_support_3(Mirror)            Default          -> Aluminum-Generic
+[   73.3s]   front_support_bottom_3(Mirror)     Default          -> Aluminum-Generic
+[   73.3s]   back_support_3_top                 Default          -> Aluminum-Generic
+[   73.3s]   Ball                               Steel-Generic    -> Steel-Generic
+[   73.3s]   Ball(Mirror)                       Steel-Generic    -> Steel-Generic
+[   73.3s]   Ball001                            Default          -> Steel-Generic
+[   73.4s] 9 materials set; appearance restored on 0
+[   73.7s] solids still on Default: 272 of 934
+[   73.7s] verify: 0 problems
+[   95.9s] SAVED /home/dan/Documents/VT350/vt350-lite-13.FCStd 157942996
