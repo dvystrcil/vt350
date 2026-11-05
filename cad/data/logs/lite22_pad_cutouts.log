@@ -1,0 +1,25 @@
+[   68.3s] opened /home/dan/Documents/VT350/vt350-lite-21.FCStd 2085
+[  131.5s]   ok   lite-21 plate at (-422.50, 28.00, 275.76), 10.00 thick
+[  133.4s]   ok   new plate is one valid solid
+[  133.4s]   ok   plate volume unchanged by moving holes (1258228.5 -> 1258228.5)
+[  133.6s]   ok   heater pad is one valid solid
+[  133.6s] heater pad volume 182071.0 -> 181907.5 (polygon says 181907.5)
+[  133.6s]   ok   pad volume matches the measured outline
+[  133.6s]   ok   front left ball under K341_L (0.00 off)
+[  133.6s]   ok   front right ball under K341_R (0.00 off)
+[  133.6s]   ok   rear ball under REAR_C (0.10 off)
+[  197.8s]   ok   same solids (906 -> 906)
+[  197.8s]   ok   no other solid moved ([])
+[  389.8s]   FIND     0.63 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, outline measured with calipers) x Trident kinematic J leaf spring, front left (flat, before preload)
+[  389.9s]   FIND     2.58 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, outline measured with calipers) x Trident kinematic J leaf spring, front right (flat, before preload)
+[  389.9s] front left: spring on the pad 1.7 mm2, 4.1 x 0.6, Y 86.5..87.1
+[  390.0s] front right: spring on the pad 6.8 mm2, 5.2 x 1.6, Y 54.9..56.5
+[  390.0s] rear: spring clear of the pad
+[  390.0s] FINDINGS:
+[  390.0s]   CLASH     0.63 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, outline measured with calipers) x Trident kinematic J leaf spring, front left (flat, before preload)
+[  390.0s]   CLASH     2.58 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, outline measured with calipers) x Trident kinematic J leaf spring, front right (flat, before preload)
+[  390.0s]   front left: spring corner on the pad, 1.7 mm2 (4.1 x 0.6)
+[  390.0s]   front right: spring corner on the pad, 6.8 mm2 (5.2 x 1.6)
+[  390.0s]   rear: spring clear of the pad
+[  390.0s] verify: 0 problems
+[  410.7s] SAVED /home/dan/Documents/VT350/vt350-lite-22.FCStd 139516136

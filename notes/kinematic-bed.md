@@ -86,11 +86,11 @@ Holes are given in plate coordinates: the origin is the front-left corner, viewe
 
 | Hole | From left | From front | Notes |
 |---|---|---|---|
-| F150 L/R | 102.5 / 252.5 | 6.5 | in 35 × 10 pad notches, about 36 mm in front of the front bed extrusion, so tanaes's C/E can't reach them |
-| **K341 L/R** | 7 / 348 | 43 | **the front kinematic balls**, in 11-wide pad strips (28–59 from the front) |
+| F150 L/R | 102.5 / 252.5 | 6.5 | in 30 × 12.5 pad notches (87–117 from the side edge, lite-22), about 36 mm in front of the front bed extrusion, so tanaes's C/E can't reach them |
+| **K341 L/R** | 7 / 348 | 43 (calipers, lite-22) | **the front kinematic balls**, in 12.5-wide pad strips (28.5–58.5 from the front) |
 | **Rear centre** | 177.5 | **348.5** (lite-20; lite-18 had 349.5) | **the rear ball**, 0.5 mm back along G's groove from lite-17 |
 | R150 L/R | 102.5 / 252.5 | 348.5 | in the rear pad strip (92.5–262.5, **12.3** deep) |
-| Fuse / lock washer | 122.1 / 232.8 | 348.5 | screws already fitted: a 15 A fuse and a lock washer |
+| Fuse / lock washer | 122.5 / 232.5 | 348.5 | screws already fitted: a 15 A fuse and a lock washer, 55 from the centre each (calipers, lite-22) |
 
 **Findings:**
 - **The springs fit the pad cut-outs.** Only about a third of each spring is under the plate. The rest hangs
@@ -126,9 +126,30 @@ also sits 6.5 from its edge, so the two rows are symmetric.
 
 The rear ball, thin nut and spring slide 1.0 mm forward along G's groove (it runs front-to-back), to Y 376.5.
 
-**Still not measured with calipers:** the K341 front-ball holes (7 / 43), the side strips (11 wide, 28–59) and the
-front notches (35 × 10.3); whether the centre hole is centred between the plate's side edges; and which end the fuse
-is on seen from the magnet side (lite-18's assignment is kept).
+## lite-22: the pad cut-outs and the front-ball holes, measured with calipers (2026-11-05)
+
+Measured by the user from the plate's outer edge, heater side up, front edge nearest.
+`cad/scripts/lite22_pad_cutouts.py` applies them to lite-21.
+
+| Measured | Calipers | Photo estimate (lite-18) |
+|---|---|---|
+| K341 holes: side edge / front edge | **7 / 43** (confirmed) | 7 / 43 |
+| Side strips: width | **12.5** | 11 |
+| Side strips: front end / rear end, from the front edge | **28.5 / 58.5** | 28 / 59 |
+| Front notches: from the nearest side edge | **87–117** (30 wide, centred on F150) | 85–120 |
+| Front notches: depth | **12.5** (F150 at 6.5 sits mid-depth) | 10.3 |
+| Fuse / lock-washer screws | **55 from the centre each** | 55.4 / 54.7 |
+
+All the photo estimates of pad edges came out 1.5–2 mm short, like the rear strip in lite-20: the edge chamfer.
+The fuse is right of the centre seen heater-side up with the front nearest (photo `PXL_20261105_212953005`), as modelled.
+
+With the measured strips, the front springs overlap the pad by 1.7 / 6.8 mm² (lite-18: 0.9 / 5.4), slivers under
+1.6 mm wide at the strips' front ends. The springs are drawn flat, before preload. Check at assembly; trim the
+strip's front end by about 2 mm if a corner sits on the silicone.
+
+The rear R150 pair stays at 102.5 / 252.5. A first reading of "112" didn't fit. The user's follow-up photo
+`PXL_20261105_233549490` (ruler zeroed on the lock-washer screw) gives: R150 ~19, centre hole ~54.6, fuse screw 110,
+far R150 ~131. That is 150 C-C about the centre hole, matching lite-20, and 110 screw-to-screw.
 
 ## Fastener stacks through the C/D/H sandwiches (measured in lite-18)
 
