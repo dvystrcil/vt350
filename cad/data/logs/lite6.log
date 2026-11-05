@@ -1,0 +1,46 @@
+[   74.7s] opened /home/dan/Documents/VT350/vt350-lite-5-dan.FCStd 2690 objects
+[  133.1s] 999 shapes snapshotted; root = 4040-350x350x250 Voron Trident v4 v33
+[  133.2s] removed Z_Cable_Anchor: 20 shapes (17 objects)
+[  133.4s] removed _16_Printed_VT_9mm_rear_motor_mounts_NP_0 v5: 241 shapes (165 objects)
+[  133.5s] removed _4_Printed_VT_9mm_front_motorless_mounts_FT v1: 102 shapes (75 objects)
+[  133.6s] removed _4_Printed_9mm_AWD_X_axis v2: 89 shapes (74 objects)
+[  133.6s] removed MGN12-400mm v1
+[  133.6s] removed MGN12-400mm v001
+[  133.6s] front move: 56 loose shapes + 251 shapes in 5 groups
+[  486.2s] baseline: 133 overlaps > 1 mm3 already in lite-5-dan among moved/rebuilt parts and their neighbours
+[  498.1s] splice 4040 (1) at Y=35.0 (section 482.5 mm2): y 9.7..480.3 -> -70.3..480.3, side holes 0->0, solids 1, valid True, vol 265028 (want 265027)
+[  509.7s] splice 4040 (1)001 at Y=35.0 (section 482.5 mm2): y 9.7..480.3 -> -70.3..480.3, side holes 0->0, solids 1, valid True, vol 265028 (want 265027)
+[  521.4s] splice 4040 (1)002 at Y=35.0 (section 482.5 mm2): y 9.7..480.3 -> -70.3..480.3, side holes 0->0, solids 1, valid True, vol 265028 (want 265027)
+[  533.4s] splice 4040 (1)003 at Y=35.0 (section 482.5 mm2): y 9.7..480.3 -> -70.3..480.3, side holes 0->0, solids 1, valid True, vol 265028 (want 265027)
+[  553.6s] splice 2040 (3) at Y=130.0 (section 325.5 mm2): y 9.7..480.3 -> -70.3..480.3, side holes 0->0, solids 1, valid True, vol 178817 (want 178816)
+[  573.7s] splice 2040 (3)001 at Y=130.0 (section 325.5 mm2): y 9.7..480.3 -> -70.3..480.3, side holes 0->0, solids 1, valid True, vol 178817 (want 178816)
+[  584.0s] splice 2040 (2) (2) at Y=50.0 (section 325.5 mm2): y 9.7..480.3 -> -70.3..480.3, side holes 0->0, solids 1, valid True, vol 178818 (want 178816)
+[  584.9s] 2040: Z post z -10..370 (front Z rail stays on it); new front vertical y -90.0..-70.0
+[  585.2s] 2040(Mirror): Z post z -10..370 (front Z rail stays on it); new front vertical y -90.0..-70.0
+[  592.7s] bottom front 2040 stays for the Backbone; copy at y -90.0..-70.0
+[  627.0s] dock crossbar: x -480..-10 y -90..-70 z 466.9..506.9 (docked parts top at z 461.9)
+[  627.7s] Monolith Front right: 30 solids; D5x36mm pin axis at (-23.51, -75.60), printed part's at (-23.50, -75.60): off 0.01 mm
+[  628.4s] Monolith Front left: 30 solids; D5x36mm pin axis at (-466.49, -75.60), printed part's at (-466.50, -75.60): off 0.01 mm
+[  630.4s] Monolith Rear right: 60 solids; _Stepper_shaft_S45R axis at (-32.50, 479.00), printed part's at (-32.50, 479.00): off 0.00 mm
+[  632.6s] Monolith Rear left: 60 solids; _Stepper_shaft_S45R axis at (-457.50, 479.00), printed part's at (-457.50, 479.00): off 0.00 mm
+[  634.0s] Monolith XY right: 34 solids; _LDO 5 mm shaft axis at (-32.50, 265.00), printed part's at (-35.30, 265.00): off 2.80 mm
+[  635.3s] Monolith XY left: 34 solids; _LDO 5 mm shaft axis at (-457.50, 265.00), printed part's at (-455.30, 265.00): off 2.20 mm
+[  636.6s] XY joints: dropped 12 slot T-nuts/screws that would sit inside the CF tube: ['M5 2020 drop-in T-nut', 'M5x10 LP SHCS']
+[  636.6s] Carbonara beam: section 111.0 mm2 (hollow: 2 wires), x -457.8..-27.8 y 273.5..293.5 z 370.0..390.0
+[  637.3s] Y rail R: gap between mounts y -34.2..440.2 (474.4) -> MGN9 470 mm at y -32.0..438.0, x -16.5..-10.0, z 375.5..384.5, valid True
+[  638.0s] Y rail L: gap between mounts y -34.2..440.2 (474.4) -> MGN9 470 mm at y -32.0..438.0, x -480.0..-473.5, z 375.5..384.5, valid True
+[  645.4s] belt _9mm_2WD_belt_FT_FT spliced at Y=[100.0]: 1 strand(s) cut at y [100.0] and lengthened with a copy of their own 80 mm, y 62.7..454.7 -> -17.3..454.7, solids 2->2, vol 14359 (want 14359)
+[  657.4s] belt _9mm_2WD_belt_FT_FT001 spliced at Y=[100.0]: 1 strand(s) cut at y [100.0] and lengthened with a copy of their own 80 mm, y 62.7..454.7 -> -17.3..454.7, solids 2->2, vol 14359 (want 14359)
+[  664.2s] tube Left: inlet -399.0,-50.0,456.3; length 641 mm (lite-5: 568), min bend R 105.2 mm, valid True
+[  666.4s] tube Right: inlet -92.0,-50.0,456.3; length 641 mm (lite-5: 568), min bend R 105.2 mm, valid True
+[  705.4s] unchanged/moved check over 999 original shapes done
+[ 1145.7s] collisions > 1 mm3: 136 total; 131 already in lite-5-dan (unchanged); 4 new part-part; 1 new involving hardware (screws/T-nuts in holes and slots)
+[ 1145.7s]    PART         37.6 mm3  _GT2 20T toothed core007 [XY left]  x  _9mm_2WD_belt_FT_FT [ron Trident v4 v33/_11_9mm_2WD_belts_FT_FT v1]
+[ 1145.7s]    PART         37.6 mm3  _GT2 20T toothed core006 [XY right]  x  _9mm_2WD_belt_FT_FT001 [ron Trident v4 v33/_11_9mm_2WD_belts_FT_FT v1]
+[ 1145.7s]    hardware     17.8 mm3  M5 2020 drop-in T-nut010 [Rear right]  x  M3 2020 drop-in T-nut007 [v4 v33/_1_Y_endstop_FT v1/_Y_endstop_hardware]
+[ 1145.7s]    PART          8.9 mm3  M5x13 spacer (8mm OD, no threads) [Rear right]  x  _9mm_2WD_belt_FT_FT [ron Trident v4 v33/_11_9mm_2WD_belts_FT_FT v1]
+[ 1145.7s]    PART          8.9 mm3  M5x13 spacer (8mm OD, no threads)001 [Rear left]  x  _9mm_2WD_belt_FT_FT001 [ron Trident v4 v33/_11_9mm_2WD_belts_FT_FT v1]
+[ 1145.7s] NOTE XY right: milled axis 2.80 mm from the printed AWD part's (2WD vs AWD joint geometry)
+[ 1145.7s] NOTE XY left: milled axis 2.20 mm from the printed AWD part's (2WD vs AWD joint geometry)
+[ 1145.7s] verify: 0 problems
+[ 1166.9s] SAVED /home/dan/Documents/VT350/vt350-lite-6.FCStd 159520742

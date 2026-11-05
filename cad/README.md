@@ -14,7 +14,9 @@ flowchart LR
     L2["vt350-lite-2<br/>Fasteners parts"]
     L3["vt350-lite-3<br/>+100 mm frame"]
     L4["vt350-lite-4<br/>3 door hinges"]
-    L5["vt350-lite-5<br/>drilled verticals, bowden<br/><b>current</b>"]
+    L5["vt350-lite-5<br/>drilled verticals, bowden"]
+    L5D["vt350-lite-5-dan<br/>user hand edit"]
+    L6["vt350-lite-6<br/>+80 mm Y at the front,<br/>Monolith milled, Carbonara<br/><b>current</b>"]
     G -->|make_lite.py| L1
     G -.->|extract_fasteners.py<br/>read-only| J[(fasteners.json)]
     L1 -->|rebuild_fasteners.py| L2
@@ -25,6 +27,8 @@ flowchart LR
     L3 -->|door_hinges.py| L4
     L4 -->|lite5.py| L5
     L2 -.->|drilled bars| L5
+    L5 -->|FreeCAD by hand| L5D
+    L5D -->|lite6.py| L6
 ```
 
 | File | What changed | Verified by |
@@ -35,6 +39,7 @@ flowchart LR
 | `vt350-lite-3.FCStd` | **+100 mm between the gantry and the top of the frame** (cut plane Z = 534). Verticals 640 → 740 mm, rebuilt as `Part::Extrusion` of their own end profile; back panel spliced; 71 parts above the cut moved +100 mm; leadscrew rods 8 mm | `data/logs/frame_plus100.log`: 0 problems; every untouched part unchanged within 1 µm |
 | `vt350-lite-4.FCStd` | Door: **3 identical hinges** (copies of the complete bottom hinge) at −9.9…100.1, 265…375, 539.9…649.9; two loose top pins removed | `data/logs/door_hinges.log`: 0 problems |
 | `vt350-lite-5.FCStd` | **6 verticals get their drilled side holes back**: lite-3's extrusions had lost them all, so the original drilled bars from lite-2 are spliced at Z = 534 (+100 mm of their own cross-section). **INDX parts removed.** **Rear 4040 corners follow the drilled holes**: each joint keeps its 2 staggered M5×50 through-bolts; 15 M5×16 BHCS + washers with no hole are removed. **Bowden tubes**: solid Ø4.12 mm (measured OD) from each Orbiter inlet to a top-rear exit (Y 460, Z 690, tilted 45° to the rear, for the EMU), 568 mm, tightest bend 119 mm at the docked pose; route parameters are stored on each tube | `data/logs/lite5.log`: 0 problems; hole faces 52/60/60/52/32/32 match lite-2; every untouched part unchanged |
+| `vt350-lite-6.FCStd` | From `lite-5-dan`. **+80 mm of Y at the front** for the parked heads (#19 AC9: A4Tv2 + O2S head, deepest slice 68.6 mm with the plate → 6 + 4 + 68.6 ≈ 79). Everything in front of Y = 10 moves −80; the 4 side 4040s, 2 gantry 2040s and the cabinet 2040 are spliced (+80 of their own section). The old front 2040 verticals carry the front Z rails, so they **stay as Z posts** (Z −10…370); new front verticals and a new bottom front 2040 go 80 mm forward; the old bottom front 2040 stays for the Backbone. **Placeholder dock crossbar** (2040) between the new front verticals, 5 mm above the docked heads. **LDO Monolith milled 2WD VT 9 mm** (front 2WD_VT, rear VT **NP**, XY 2WD), aligned on the printed parts' pulley axes; **MGN9 × 470** Y rails; **Carbonara 20×20 CF X beam, 430 mm**; belts spliced with a copy of their own toothed stretch; both **Z cable anchors removed**; bowden tubes regenerated | `data/logs/lite6.log`: 0 problems; 999 original shapes unchanged or moved exactly −80; Monolith axes within 0.01 mm; collisions vs a lite-5-dan baseline: 5 new (below) |
 
 Git only has the recipe, not the models. The models are backed up to the home
 NAS with restic: run **`cad/backup-models.sh --verify`** after any model
@@ -107,6 +112,7 @@ $NV $APP $PWD/cad/scripts/make_lite.py
 | `frame_plus100.py` | GUI, writes | lite-2 → lite-3; also prints the cut list |
 | `door_hinges.py` | GUI, writes | lite-3 → lite-4 |
 | `lite5.py` | GUI writes; headless = dry run, never saves | lite-4 (+ drilled bars from lite-2) → lite-5 |
+| `lite6.py` | GUI writes; headless = dry run, never saves | lite-5-dan → lite-6. Needs the Monolith/Carbonara STEPs (below) under `VT350_DL` |
 | `ac9_head_envelope.py` | headless, read-only | #19 AC9: A4Tv2 + Orbiter/OSS/O2S head, width and exact depth at each height |
 | `bowden_study.py` | headless (FreeCAD's Python for numpy) | bend radius vs exit position and tube length; results on #3 |
 | `fs_probe.py` | headless | probes the Fasteners workbench API and screw orientation |
@@ -135,6 +141,37 @@ $NV $APP $PWD/cad/scripts/make_lite.py
 - Removing an `App::Part` already removes its Origin; touching the Origin
   afterwards raises `ReferenceError`.
 - `Base.Rotation` has `inverted()`; `Placement` has `inverse()`.
+
+## lite-6: inputs, choices and what is left open
+
+**Downloaded inputs** (not in git; `lite6.py` reads them from `$VT350_DL`):
+- [LDO_Monolith_Gantry_Kits](https://github.com/Monolith3D/LDO_Monolith_Gantry_Kits) `CAD/`: `Front_{left,right}/LDO_2WD_VT_9mm.step`, `Rear_{left,right}/LDO_VT_9mm_0_NP.step`, `XY_{left,right}/LDO_2WD_9mm.step`. Their checksums don't match `CAD/manifest.json`, and neither do the byte sizes, so the manifest looks out of date.
+- [Monolith3D/MISC](https://github.com/Monolith3D/MISC/tree/main/CF_tube_mounting) `CF_tube_mounting v6.step`: the 20×20×17 CF tube section, extruded to the Carbonara 350's 430 mm.
+
+**How the kit was placed.** The kit's STEPs share one printer-centred frame, but this 4040 frame is ~100 mm wider and longer than the kit's reference printer. Each station is translated on its own, with no rotation:
+
+| Station | Matched axis | Offset (X, Y, Z) | Residual |
+|---|---|---|---|
+| Front R / L | idler pulley pin | (−195 / −295, +115, +380): +195 minus the 80 mm move | 0.01 mm |
+| Rear R / L | stepper shaft (NP) | (−195 / −295, +295, +380) | 0.00 mm |
+| XY R / L | live-shaft pulley | (−195 / −295, +260, +380): the gantry stays at the printed pose | 2.8 / 2.2 mm from the printed **AWD** joints, as expected for 2WD |
+
+**Choices made in the script (review these):**
+- **Rear mounts NP, not FT.** FT sits 4 mm further back and puts the VC9-RTA tensioners 4 mm into this frame's rear gantry 2020 (911 mm³). NP is what the printed mounts were.
+- **Z posts.** The front Z rails bolt to the old front verticals' rear face, so those verticals stay as posts between the bottom side bar and the gantry side bar. They need new joints (corner brackets or blind joints into the side bars mid-length); none are modelled yet.
+- **Dock crossbar** is a placeholder 2040 above the parked heads (Z 467…507). Its real height and position come from the dock design.
+- **Y rails** are 470 mm, the longest 10 mm step that fits the 474 mm between the front and rear mounts.
+- The XY joints' slot T-nuts and M5×10 into the beam are dropped. A CF tube is through-bolted with printed inserts (M5 BHCS + nuts, per the Monolith README); that hardware isn't modelled.
+
+**New collisions in lite-6** (vs the same check on lite-5-dan, where 131 overlaps already existed):
+
+| Parts | mm³ | Why / action |
+|---|---|---|
+| Belts × XY joint idlers (both sides) | 37.6 | The belts were drawn for the printed AWD joints, which are 2.2–2.8 mm off. Re-draw the belt path for 2WD milled before measuring belt length |
+| Belts × rear mount M5×13 spacers | 8.9 | Same cause |
+| Rear-right mount T-nut × Y-endstop T-nut | 17.8 | Both want the same spot in the slot: move the Y endstop or use the kit's endstop option |
+
+**Also still open:** the lite-5 belts already stopped ~58 mm short of the front idlers. Each belt is +160 mm (two Y runs × 80), but measure the real length only after the 2WD re-draw.
 
 ## Model notes that affect the build
 

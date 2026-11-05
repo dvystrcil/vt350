@@ -22,6 +22,8 @@ Plus heated bed), Octopus Pro + Pi 5, fully enclosed.
 | 2026-11-04 | Active chamber heater; PC/PC-CF printed parts; electronics outside the chamber; motor cooling (all decided at 80 °C: **revisit** at 60 °C) | #4 |
 | 2026-11-04 | 140 mm Noctua ceiling fans to push hot air down; **separate insulated roof panel** | #5 |
 | 2026-11-04 | Toolheads: **Orbitool O2S + OSS**; **Nitehawk-36 not used** | #6 |
+| 2026-11-04 | **Go deep: +80 mm of Y at the front** (A4Tv2 + O2S head, deepest slice 68.6 mm). Backbone, Z, bed and rear frame stay; the old front verticals become Z posts | #19, `cad/README.md` (lite-6) |
+| 2026-11-04 | Gantry: **LDO Monolith milled, 2WD, VT 9 mm, rear NP** (FT hits the rear gantry 2020); **MGN9 × 470 Y rails**; **Carbonara 430 CF X beam** | #11, #19 |
 
 ## Open decisions (blocking)
 
@@ -45,7 +47,7 @@ confirm which parts you already own.
 
 | What | Where |
 |---|---|
-| Model files (not in git) | `~/Documents/VT350/`. Current working copy **`vt350-lite-5.FCStd`**; untouched original `vt350-good.FCStd` |
+| Model files (not in git) | `~/Documents/VT350/`. Current working copy **`vt350-lite-6.FCStd`** (from the user's `vt350-lite-5-dan`); untouched original `vt350-good.FCStd` |
 | **Backup of the model files** | restic to the home NAS. Run **`cad/backup-models.sh --verify`** (alias `vt350-backup`) after model changes; old snapshots are pruned automatically (last 10, daily for 30 days, monthly for a year). Target and password are local config (`~/.config/vt350/backup.env`), not in this public repo; keep the restic password in the password manager too. First backup 2026-11-04: 52 files, 4.09 GB, test restore byte-identical |
 | How the model files were made + how to redo it | `cad/README.md`, `cad/scripts/` |
 | Cut list (draft) | `notes/cut-list.md` |
