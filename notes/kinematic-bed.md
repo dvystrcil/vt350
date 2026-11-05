@@ -98,8 +98,24 @@ Holes are given in plate coordinates: the origin is the front-left corner, viewe
   along the cut-out edges: 0.9 / 5.4 / 1.7 mm², under 0.5 mm into the pad, which is below the photo's ±1 mm. Check
   by eye at assembly, and trim the pad's edge by 1 mm if a spring corner sits on the silicone.
 - The front hold-downs are 3.5 mm clear of C/D. The rear ones are about 135 mm from any mount.
-- **Bed bolts are M3 SHCS, 14 mm.** Under the head the bolt passes through a 5.1 floor, a 0.38 spring, a 1.8 thin
-  nut, then the sphere nut (8.5 of thread, top 7.28 below the counterbore floor). 14 mm gives 6.7 mm of engagement
-  and stays inside the ball. 12 mm gives 4.7 mm. 16 mm sticks out 0.2 mm below the ball, with 2.05 of room under it.
+- **Bed bolts are M3 SHCS, 10 mm.** This corrects lite-18's log and PR #42, which said 14 mm. tanaes's README
+  (Step 1) says to fit the spring with the thin hex nut so that **2–3 mm of thread sticks out past the nut**, then
+  to thread the sphere nut on "until it bottoms out on the hex nut". So the sphere nut is only meant to take 2–3 mm
+  of thread. Under the head the stack is the 5.1 floor + 0.38 spring + 1.8 nut = 7.28, which makes 9.3–10.3 the
+  right length, and 10 mm leaves 2.7 mm sticking out. lite-18's 14 mm assumed the bolt could run deep into the ball.
+  The model's sphere nut is a plain solid, so it can't show how deep the real one is threaded.
+
+## Fastener stacks through the C/D/H sandwiches (measured in lite-18)
+
+At all three mounts the top plate is 2.0 mm and rests on the dowel pins **4.10 mm above** the 3.0 mm bottom plate.
+
+| Screw (README / BOM) | Path | Thread engaged | What's below | Use |
+|---|---|---|---|---|
+| M3x8 BHCS clamp, C/E and D/F (2 each) | 2 + 4.1 gap, into E/F's tapped hole | 1.9 mm (about 4 threads) of 3 | The tapped holes sit on the front extrusion's edge (Y 60.77 / 80.83 vs 60.8 / 80.8) | **M3x8** as specified. A 10 would stick out 0.9 onto the extrusion's corner. M3x9, if you can get it, gives 2.9 and stays inside E/F. |
+| M3x8 BHCS clamp, H/G (2) | 2 + 4.1, into G's tapped hole | 1.9 of 3 | Nothing: the holes are 11.4 off the spine's centre, outside the 20 mm extrusion | **M3x10**: the full 3 mm of thread, and the 0.9 that sticks out is in air |
+| M3x14 BHCS to the channel nuts (C/E and D/F ends, 2 of H/G's holes) | 2 + 4.1 + 3 = 9.1, then the slot | 4.9 below the bottom plate | The slot floor is 6.3 below | **M3x14**, as the README says. The BOM lists M3x12, which leaves little thread in the channel nut |
+| M3x6 SHCS preload screw (spring tip) | spring 0.38, into C/D/H's tapped hole | 2 (the plate's full thickness) | Air or slot, more than 4 mm clear | as specified |
+
+Source: `README_trident_assembly.md` steps 1–5 and `DXFs/Trident/trident_kinematic-BOM.txt`, as of 2026-11-05.
 - The print surface is **2.4 mm above the aluminium**: 1.4 of magnet plus 1.0 of PEI sheet. lite-18 models the magnet
   only. The max print height re-check has to include both.
