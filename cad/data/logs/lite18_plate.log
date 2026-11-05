@@ -1,0 +1,47 @@
+[   77.3s] opened /home/dan/Documents/VT350/vt350-lite-17.FCStd 2403
+[   77.3s]   ok   lite-17 plate is 10.00 thick
+[   77.3s]   ok   lite-17 plate front-left corner at (-422.50, 28.00)
+[   79.2s]   ok   new plate is one valid solid
+[   79.4s]   ok   heater pad is one valid solid
+[   79.5s]   ok   front left: 2 dowel pins (['Trident kinematic M5x20 dowel pin, front left', 'Trident kinematic M5x20 dowel pin, front left001'])
+[   79.5s]   ok   front left ball under K341_L (0.00 off)
+[   79.5s]   ok   front right: 2 dowel pins (['Trident kinematic M5x20 dowel pin, front right', 'Trident kinematic M5x20 dowel pin, front right001'])
+[   79.6s]   ok   front right ball under K341_R (0.00 off)
+[   79.6s]   ok   rear: 2 dowel pins (['Trident kinematic M5x20 dowel pin, rear', 'Trident kinematic M5x20 dowel pin, rear001'])
+[   79.6s] rear: hole Y 377.50 vs lite-17 ball Y 376.00; slide -1.50 along the groove (0.000, -1.000); ball -0.20 -> -1.70 from the pins' middle (pins +-10)
+[   79.6s]   ok   rear ball still within the pins
+[   79.6s]   ok   rear ball under REAR_C (0.10 off)
+[   79.6s] rear spring re-aimed +0.00 deg about H's tapped hole
+[   79.6s]   ok   rear ball bolt still lands on the spring
+[   79.6s] bolt stack below the counterbore floor: floor 5.10 + spring 0.38 + thin nut 1.80
+[   79.8s] front left: under-head length to the ball's top 7.28, through the ball 15.81; gap ball bottom -> bottom plate 2.05; need 10.28..17.36 -> stock M3 SHCS [12, 14, 16]
+[   80.0s] front right: under-head length to the ball's top 7.28, through the ball 15.81; gap ball bottom -> bottom plate 2.05; need 10.28..17.36 -> stock M3 SHCS [12, 14, 16]
+[   80.1s] rear: under-head length to the ball's top 7.28, through the ball 15.81; gap ball bottom -> bottom plate 2.05; need 10.28..17.36 -> stock M3 SHCS [12, 14, 16]
+[  283.0s]   FIND     0.36 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, photo outline +-1 mm) x Trident kinematic J leaf spring, front left (flat, before preload)
+[  283.0s]   FIND     2.04 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, photo outline +-1 mm) x Trident kinematic J leaf spring, front right (flat, before preload)
+[  283.1s]   FIND     0.64 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, photo outline +-1 mm) x Trident kinematic J leaf spring, rear (flat, before preload)
+[  563.9s]   nearest to Heater pad hold-down 1 (pan head + washe: 3.52 mm Trident kinematic C left top (2 mm); 9.19 mm Trident kinematic E left bottom (3 mm)
+[  574.0s]   nearest to Heater pad hold-down 2 (pan head + washe: 3.52 mm Trident kinematic D right top (2 mm); 9.19 mm Trident kinematic F right bottom (3 mm)
+[  577.6s]   nearest to Heater pad hold-down 3 (pan head + washe: 136.16 mm Trident kinematic H back top (2 mm); 136.42 mm Trident kinematic G back bottom (3 mm)
+[  583.3s]   nearest to Heater pad hold-down 4 (pan head + washe: 135.17 mm Trident kinematic J leaf spring, rear (flat, before preload); 135.96 mm Trident kinematic H back top (2 mm)
+[  585.5s]   nearest to Heater pad LDO-SHPAC-350-120-750 (1.5 mm: 0.00 mm Trident kinematic J leaf spring, front left (flat, before preload); 0.00 mm Trident kinematic J leaf spring, front right (flat, before preload)
+[  585.5s] front left: spring 33% under the plate footprint; on the pad: 0.9 mm2, 8.7 x 14.2 mm, 4.4..16.6 mm from the ball, X -419.8..-411.1 Y 72.8..87.1
+[  585.6s] front right: spring 33% under the plate footprint; on the pad: 5.4 mm2, 10.4 x 14.4 mm, 4.4..16.9 mm from the ball, X -78.9..-68.5 Y 54.9..69.3
+[  585.6s] rear: spring 35% under the plate footprint; on the pad: 1.7 mm2, 4.5 x 0.6 mm, 6.0..8.3 mm from the ball, X -243.5..-239.0 Y 371.1..371.7
+[  585.6s] plate top (aluminium) Z 285.76, magnet top 287.16 (lite-17 plate top 285.76)
+[  585.6s] FINDINGS:
+[  585.6s]   bolt front left: M3 SHCS [12, 14, 16] (min 10.28 for 3 mm in the sphere nut, max 17.36)
+[  585.6s]   bolt front right: M3 SHCS [12, 14, 16] (min 10.28 for 3 mm in the sphere nut, max 17.36)
+[  585.6s]   bolt rear: M3 SHCS [12, 14, 16] (min 10.28 for 3 mm in the sphere nut, max 17.36)
+[  585.6s]   CLASH     0.36 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, photo outline +-1 mm) x Trident kinematic J leaf spring, front left (flat, before preload)
+[  585.6s]   CLASH     2.04 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, photo outline +-1 mm) x Trident kinematic J leaf spring, front right (flat, before preload)
+[  585.6s]   CLASH     0.64 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, photo outline +-1 mm) x Trident kinematic J leaf spring, rear (flat, before preload)
+[  585.6s]   Heater pad hold-down: nearest kinematic part 3.52 mm (Trident kinematic C left top (2 mm))
+[  585.6s]   Heater pad hold-down: nearest kinematic part 3.52 mm (Trident kinematic D right top (2 mm))
+[  585.6s]   Heater pad hold-down: nearest kinematic part 136.16 mm (Trident kinematic H back top (2 mm))
+[  585.6s]   Heater pad hold-down: nearest kinematic part 135.17 mm (Trident kinematic J leaf spring, rear (flat, before preload))
+[  585.6s]   front left: spring corner on the pad, 0.9 mm2 (8.7 x 14.2), 4.4..16.6 mm from the ball
+[  585.6s]   front right: spring corner on the pad, 5.4 mm2 (10.4 x 14.4), 4.4..16.9 mm from the ball
+[  585.6s]   rear: spring corner on the pad, 1.7 mm2 (4.5 x 0.6), 6.0..8.3 mm from the ball
+[  585.6s] verify: 0 problems
+[  608.0s] SAVED /home/dan/Documents/VT350/vt350-lite-18.FCStd 156271623
