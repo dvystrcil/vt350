@@ -107,6 +107,7 @@ $NV $APP $PWD/cad/scripts/make_lite.py
 | `frame_plus100.py` | GUI, writes | lite-2 → lite-3; also prints the cut list |
 | `door_hinges.py` | GUI, writes | lite-3 → lite-4 |
 | `lite5.py` | GUI writes; headless = dry run, never saves | lite-4 (+ drilled bars from lite-2) → lite-5 |
+| `ac9_head_envelope.py` | headless, read-only | #19 AC9: A4Tv2 + Orbiter/OSS/O2S head, width and exact depth at each height |
 | `bowden_study.py` | headless (FreeCAD's Python for numpy) | bend radius vs exit position and tube length; results on #3 |
 | `fs_probe.py` | headless | probes the Fasteners workbench API and screw orientation |
 | `analyze.py`, `cats.py`, `tree.py`, `fastener_review.py` | plain Python | read an `.FCStd`'s `Document.xml` (unzip it first): sizes, categories, assembly tree, fastener classification |

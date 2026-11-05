@@ -34,6 +34,31 @@ Sizes are the bounding boxes of the published files. Plate width is the X footpr
 
 So **the Crossbow mount adds ~10 mm** of head width. Not yet modeled: O2S/OSS (#6, AC9).
 
+## A4Tv2 (decided 2026-11-04): head size, with the Orbiter, OSS and O2S (#19 AC9)
+The user switched to [A4Tv2](https://github.com/DW-Tas/A4Tv2) (a prerelease) and is keeping the Crossbow.
+
+Head = upstream `CAD/A4Tv2_assembly.step`, taking only our parts by exact name:
+- `main-body_dragon-rapido-UHF_o2_xol`, `[a]_orbiter-crossbow-adapter_o2_xol`;
+- 4010 part-cooling ducts, UHF hotend fan and duct, part fans, LEDs, Crossbow;
+- carriage, Orbiter, duct and Xol hardware.
+
+Then the official Orbiter 2.5 + Smart Sensor + O2S assembly (`Orbiter v2.5_SmartSensor and O2S Toolboard.step`, RobertLorincz/Orbiter-Toolboards) is seated on the adapter. Script: `cad/scripts/ac9_head_envelope.py`.
+
+- **Seating:** the Orbiter's two M3 holes land on the adapter's (−19.5 / +17.5 mm) within 0.01 mm, with the filament axes coincident. The hole pattern is asymmetric, so the motor and O2S can only face the rear. The housing touches the adapter after a 1.6 mm drop. No O2S part overlaps any A4Tv2 part.
+- **Correction:** the first version of this section measured 73.4 × 67.1 × 112.8 for "our variant". It filtered out `wwbmg`, but the STEP labels that extruder `WW-BMG`, so the WW-BMG extruder and its NEMA14 stood in for the Orbiter. The assembly STEP has no Orbiter at all.
+- **Hotend:** the assembly has no Dragon Rapido UHF (or Ace Volcano). Its Dragon Ace stands in, which only affects how far the nozzle hangs below the body (Z), not the depth.
+- `Support_Main-body-UHF` is left out: it is a print support (no separate STL; it sits on top of the body).
+
+| | X width | Y depth: overall box | Y depth: worst single height | Z height |
+|---|---|---|---|---|
+| **A4Tv2 + Orbiter + OSS + O2S** | **73.4** (Crossbow −38.1, ducts +35.4) | 88.1 (Y −34.2 … 53.8) | **68.0** (at Z +23…+37, the O2S band) | 169.6 (nozzle tip to O2S wire restraint) |
+| A4T v1 as modeled (with Crossbow) | 80.3 | 80.4 | — | 131.1 |
+
+- **Width is unchanged by the O2S** (it stays within ±30.3 mm), so the spacing is still **78.4 mm** (73.4 + 3 + 2).
+- **Depth:** the O2S board sits 32 mm behind the body's rear face, but only above Z +11.7, where the head's front is set back to Y −14 (the body's front is at −34 lower down). Docked heads and the active head are at the same height, so what matters is the deepest single 1 mm slice, not the overall box. That slice is 68.0 mm. A bounding-box version of the same profile read 86 mm at Z 9–11; that was a box artefact, and real slices show 47.8 there.
+- **The MadMax plate** (from the model's docked v1 plate) sticks out 3.5 mm behind the body over its height and 13 mm over its top 9 mm. That raises the worst slice to **68.6 mm** at Z 0…1.
+- **"Go deep" amount = 6 + 4 + 68.6 ≈ 79 mm → 80 mm** of Y at the front (lite-6).
+
 ## Tool count
 
 Spacing p = head width + 3 + 2. *Span* = how far apart the outermost docked heads' centres can be. It's limited by X carriage travel; it was 307 mm between the model's current docks, and must be measured with the real Monolith gantry (#19 AC1). N = floor(span / p) + 1.
@@ -42,13 +67,14 @@ Spacing p = head width + 3 + 2. *Span* = how far apart the outermost docked head
 |---|---|---|---|---|---|
 | 80.3 (A4T + Crossbow as modeled) | 85.3 | 4 | 5 (needs ≥ 341) | 5 | 427 |
 | 70.0 (Crossbow inside the A4T width) | 75.0 | **5** (needs ≥ 300) | 5 | 5 | 375 |
+| **73.4 (A4Tv2 + Crossbow + O2S, chosen)** | **78.4** | 4 (5 needs ≥ 314) | **5** | **5** | 392 |
 
 - **5 tools looks feasible** with a front crossbar and slim docks. That's either with the Crossbow tucked inside the A4T width (fits even at the current span), or with the X span measured at ≥ 341 mm.
 - **6 tools** needs a span of 375 mm (70 mm heads) or 427 mm (80 mm heads). That's beyond a 350's X travel. The options are a wider frame, which means a new X beam (the Carbonara only comes in 250/300/350, and the 350 one is 430 mm), or narrower heads (the DragonBurner is 54 mm per the MadMax docs).
 
 ## Y: printable area lost to parked heads
 Docked heads hang over the bed's front strip, and their nozzles sit at the same height as the active nozzle. Model: bed plate Y 28.0 … 388.5; docked heads Y −1.9 … 78.5. With docks across the whole front, the strip is lost for every multi-tool print, not just the corners:
-- **Loss ≈ 6 mm dock slide + 4 mm screw stick-out + head depth (80 mm) ≈ 90 mm**, versus 360 mm of bed.
+- **Loss ≈ 6 mm dock slide + 4 mm screw stick-out + head depth (80 mm) ≈ 90 mm**, versus 360 mm of bed (A4T v1 as modeled; for the A4Tv2 + O2S head it is ≈ 79 mm, see above).
 - The MadMax answer is **"going deep"**: lengthen Y by that amount.
 - This only touches Y parts: the side extrusions (not ordered yet, #7), the Y rails (MGN9, being bought anyway), belts and side panels. **The X beam and Monolith kit are unaffected.**
 
