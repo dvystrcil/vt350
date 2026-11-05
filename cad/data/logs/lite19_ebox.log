@@ -1,0 +1,17 @@
+[   71.6s] opened /home/dan/Documents/VT350/vt350-lite-18.FCStd 2409
+[   71.6s]   ok   both under 4040-350x350x250 Voron Trident v4 v33
+[   71.8s] ebox: 324 objects, 102 solids (printer total 1008)
+[   71.8s]   ok   no outside references into the ebox []
+[   71.8s]   ok   the ebox depends on nothing outside it []
+[   77.5s] envelope X 45.0..102.1  Y -70.3..510.0  Z -50.0..364.6
+[  104.8s]   ok   every ebox object copied under its own name (324) []
+[  104.8s]   ok   nothing else came along []
+[  104.8s] view properties copied: 1812
+[  109.1s]   ok   all 102 copied solids match their originals (global placement, bounding box, volume) []
+[  109.1s]   ok   ebox document solid count
+[  109.6s]   ok   envelope lands at the ebox's global position
+[  109.7s]   ok   printer solids 1008 -> 907 (-102 +1 envelope)
+[  109.7s]   ok   no ebox object left in the printer
+[  109.7s] verify: 0 problems
+[  112.5s] SAVED /home/dan/Documents/VT350/vt350-ebox.FCStd 16675074
+[  130.7s] SAVED /home/dan/Documents/VT350/vt350-lite-19.FCStd 139595024
