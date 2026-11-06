@@ -3,7 +3,8 @@
 #     $APP freecadcmd /home/dan/Code/vt350/cad/render/export_pose.py
 # Uses sweep_toolhead.plan() for the groups and the pose, so the picture shows exactly what the sweep checked.
 # Colours are by ROLE, not the model's own (headless has no GuiDocument colours): carried head, plate, the two
-# plate-bracket variants, carriage, gantry, bed, frame, and the overlap volumes themselves in red.
+# plate-bracket variants (lite-22 and before), carriage, Beacon (lite-24), belts (the gantry part, as the sweep
+# clips it), gantry, bed, frame, and the overlap volumes themselves in red.
 # Left out so the cameras can see in: door, roof and side panels, insulation, camera housing, ebox envelope.
 # scene.json gets "views" (close-ups on the clash), which render.py renders instead of its default views.
 import FreeCAD, Mesh, MeshPart, os, sys, json, time, traceback, tempfile
@@ -34,8 +35,10 @@ try:
     put(plan["carriage"], "carriage", (0.18, 0.18, 0.2), "Default", 0.0, "carriage")
     put(t["head"], "head", (0.78, 0.78, 0.8), "Default", 0.0, "head")
     put(t["plate"], "plate", (0.55, 0.2, 0.7), "Default", 0.0, "head")
-    put([x for x in t["std"]], "bracket_std", (1.0, 0.5, 0.05), "Default", 0.0, "head")
-    put(t["alt"], "bracket_alt", (1.0, 0.9, 0.1), "Default", 0.6, "head")
+    put(t.get("std", []), "bracket_std", (1.0, 0.5, 0.05), "Default", 0.0, "head")
+    put(t.get("alt", []), "bracket_alt", (1.0, 0.9, 0.1), "Default", 0.6, "head")
+    put(plan.get("belt", []), "belt", (0.1, 0.1, 0.1), "Default", 0.0, "belt")
+    clipb = {n: getattr(sw, "BELT_CLIP", None) for n in plan.get("belt", [])}
     other = [h for h in plan["heads"] if h != head][0]
     put([n for n in plan["heads"][other]], "parked_head", (0.6, 0.6, 0.62), "Default", 0.0, None)
     excl = set(plan["exclude"]) | {plan["tubes"][head]}
@@ -47,7 +50,11 @@ try:
         if path & SKIP_PATHS or o.Label.startswith(SKIP_LABEL_PREFIX): n_skip += 1; continue
         bucket, col, mat, trn, grp = role.get(o.Name, ("frame", (0.62, 0.63, 0.66), "Aluminum", 0.0, None))
         if o.Label.startswith("Bowden"): bucket, col, mat = "bowden", (0.92, 0.92, 0.85), "PTFE"
+        if o.Label.startswith(getattr(sw, "BEAM", "\0")): bucket, col = "beacon", (0.1, 0.35, 0.8)
         s = o.Shape.copy(); s.Placement = o.getGlobalPlacement()
+        if clipb.get(o.Name):
+            import Part
+            x0, y0, z0, x1, y1, z1 = clipb[o.Name]; s = s.common(Part.makeBox(x1 - x0, y1 - y0, z1 - z0, V(x0, y0, z0)))
         if grp: s.translate(V(*tr.get(grp, (0, 0, 0))))
         moved[o.Name] = (s, grp, o.Label)
         b = buckets.setdefault(bucket, {"mesh": Mesh.Mesh(), "color": col, "material": mat, "transparency": trn, "labels": []})
@@ -60,15 +67,24 @@ try:
     for na, (sa, ga, la) in mov:
         ba = sa.BoundBox
         for nb, (sb, gb, lb) in rest:
+            if gb == "belt" and ga == "carriage": continue        # clamped in the carriage (the sweep skips it too)
             if not ba.intersect(sb.BoundBox): continue
             try: c = sa.common(sb)
             except Exception: continue
             if c.Volume > 0.01:
                 found.append((c.Volume, la, lb)); clash.addMesh(MeshPart.meshFromShape(Shape=c, LinearDeflection=0.05, AngularDeflection=0.3, Relative=False))
+    # belts (gantry-rigid part) against the PARKED head: the sweep checks these too (attach slide, #53)
+    parked = {n for n in plan["heads"][other]}
+    for na, (sa, ga, la) in [(n, v) for n, v in moved.items() if v[1] == "belt"]:
+        for nb, (sb, gb, lb) in [(n, v) for n, v in moved.items() if n in parked]:
+            if not sa.BoundBox.intersect(sb.BoundBox): continue
+            c = sa.common(sb)
+            if c.Volume > 0.01:
+                found.append((c.Volume, la, lb)); clash.addMesh(MeshPart.meshFromShape(Shape=c, LinearDeflection=0.05, AngularDeflection=0.3, Relative=False))
     if found:
         buckets["clash"] = {"mesh": clash, "color": (0.95, 0.05, 0.05), "material": "Default", "transparency": 0.0, "labels": ["overlap volumes"]}
     for v, la, lb in sorted(found, reverse=True): log(f"   overlap {v:8.2f} mm3  {la} x {lb}")
-    scene = {"model": f"vt350-lite-22-{head}-{pid.replace(', ', '-').replace(' ', '-')}.FCStd", "buckets": {}, "lights": [], "camera": None}
+    scene = {"model": f"{os.path.basename(sw.MODEL)[:-6]}-{head}-{pid.replace(', ', '-').replace(' ', '-')}.FCStd", "buckets": {}, "lights": [], "camera": None}
     for k, b in buckets.items():
         b["mesh"].write(os.path.join(OUT, k + ".stl"))
         scene["buckets"][k] = {"color": b["color"], "material": b["material"], "transparency": b["transparency"],
