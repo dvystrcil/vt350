@@ -1,0 +1,32 @@
+[  251.4s] opened /home/dan/Documents/VT350/vt350-lite-23.FCStd 2081
+[  308.4s] Left: dock carriage copy = gantry carriage + (-154.000, -262.500, 0.315)
+[  308.4s] Right: dock carriage copy = gantry carriage + (153.014, -262.500, 0.315)
+[  308.4s] carriage probe holes at X -260.80 / -229.20 (span 31.60), Y 260.94; pocket ceiling Z 385.15; carriage underside Z 382.15
+[  308.4s] carried nozzle tips Z {'Left': 380.48499989993456, 'Right': 380.4849998206851}; using 380.485
+[  308.4s] coil face target Z 383.085 (tip + 2.6); board top 387.295; ceiling raise DZ 2.145 (as drilled: face +0.455 above the tip)
+[  308.4s] M3 pilot holes keep 5.36 mm above the new ceiling
+[  333.0s] candidate Normal, connector front: carriage material removed 274.8 mm3; carriage valid True solids 2; 0 overlaps
+[  349.3s] candidate Normal, connector rear: carriage material removed 274.8 mm3; carriage valid True solids 2; 0 overlaps
+[  380.6s] candidate LowProfile, connector front: carriage material removed 274.8 mm3; carriage valid True solids 2; 6 overlaps
+      plug way-in, Left head carried: TL-dragon-¹è½ºÌ× 318.33 mm3
+      plug way-in, Left head carried: Heat Block 402.56 mm3
+      plug way-in, Left head carried: E3D v6 HotEnd - Nozzle 211.56 mm3
+      plug way-in, Right head carried: TL-dragon-¹è½ºÌ×001 318.33 mm3
+      plug way-in, Right head carried: Heat Block001 402.56 mm3
+      plug way-in, Right head carried: E3D v6 HotEnd - Nozzle001 211.56 mm3
+[  397.1s] candidate LowProfile, connector rear: carriage material removed 274.8 mm3; carriage valid True solids 2; 0 overlaps
+[  397.1s] chosen: Beacon RevH Normal, connector to the rear (removes 274.8 mm3 of carriage)
+[  404.7s] Left copy: removed 274.8 mm3 (gantry carriage 274.8); valid True
+[  411.6s] Right copy: removed 274.8 mm3 (gantry carriage 274.8); valid True
+[  411.9s] Beacon: X -264.00..-226.00 Y 248.93..276.44 Z 383.08..395.79; coil face +2.599 above the carried tip
+[  411.9s] Left head carried: Beacon coil centre at x_offset +0.00, y_offset +27.40 from the nozzle
+[  412.0s] Right head carried: Beacon coil centre at x_offset +0.01, y_offset +27.40 from the nozzle
+[  463.8s] inside Beacon's 20 mm keep-out cylinder over the coil (model pose): nothing
+[  464.2s] STL stl/madmax_carriage_beacon_pocket.stl: 24604 facets
+[  464.2s] FINDINGS:
+[  464.2s]   Beacon RevH Normal, connector rear; coil face 2.6 mm above the carried nozzle tip; carriage pocket ceiling raised 2.14 mm
+[  464.2s]   Left head: Beacon x_offset +0.00, y_offset +27.40 (Klipper [beacon], +Y = rear)
+[  464.2s]   Right head: Beacon x_offset +0.01, y_offset +27.40 (Klipper [beacon], +Y = rear)
+[  464.2s]   inside the keep-out cylinder: nothing (printed carriage plastic is fine; metal isn't)
+[  464.2s] verify: 0 problems
+[  480.4s] SAVED /home/dan/Documents/VT350/vt350-lite-24.FCStd 139904411
