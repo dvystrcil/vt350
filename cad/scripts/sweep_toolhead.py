@@ -1,4 +1,4 @@
-# #19 AC5 / #53 AC4: toolhead collision sweep on the SAVED vt350-lite-25.FCStd (#58: 9 mm belt pockets + clips). Headless, read-only: never saves.
+# #19 AC5 / #53 AC4: toolhead collision sweep on the SAVED vt350-lite-26.FCStd (#61: carriage on the MGN12H block). Headless, read-only: never saves.
 #   python3 /home/dan/Code/vt350/cad/scripts/sweep_toolhead.py [n_workers]
 # Two stages, both from this file:
 #  1. plan (freecadcmd, env SWEEP_PLAN=<json>): classify the moving groups, find each head's carried offset, the
@@ -31,7 +31,7 @@
 import json, os, subprocess, sys, time
 
 WORK = os.environ.get("VT350_WORK", "/home/dan/Code/vt350/cad/data")
-MODEL = "/home/dan/Documents/VT350/vt350-lite-25.FCStd"
+MODEL = "/home/dan/Documents/VT350/vt350-lite-26.FCStd"
 HERE = os.path.abspath(__file__)
 Y_TRAVEL = (-277.19, 145.43)           # gantry dY limits, lite9_rails.log (joint/mount hard stops; Z moves since keep them)
 PLATE_X0, PLATE_Y0, PLATE_W, PRINT_W = -422.5, 28.0, 355.0, 350.0

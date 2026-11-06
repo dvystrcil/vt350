@@ -1,0 +1,43 @@
+[  119.0s] opened /home/dan/Documents/VT350/vt350-lite-25.FCStd 2082
+[  189.7s] under 'Carriage (1)': 4 solids: ['SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)', 'SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001', 'COMPOUND', 'Beacon RevH Normal (Beacon CAD, MIT)']
+[  189.9s] carriage Y 256.000..268.600; block Y 260.825..270.825 X -269.15..-218.75 Z 416.15..443.15; rail Y 265.500..273.500 Z 423.78..435.78
+[  228.4s] block top: 52/63 rays, Y 260.825..262.113
+[  228.4s] carriage recess floor: 36/63 rays hit within 5 mm of the back, Y 265.400..265.600 (3.000..3.200 in from the back; upstream core STEP 3.0 / 3.2)
+[  228.4s] recess floor vs the rail's front face 265.500: +0.100; vs the block top 260.825: +4.775
+[  228.4s] dY = -4.775
+[  228.4s] block top ray hits at Y 260.83: 20, X -256.15..-231.75
+[  228.4s] block top ray hits at Y 261.33: 25, X -262.25..-225.65
+[  228.4s] block top ray hits at Y 262.03: 4, X -262.25..-225.65
+[  228.4s] block top ray hits at Y 262.10: 2, X -268.35..-268.35
+[  228.4s] block top ray hits at Y 262.11: 1, X -219.55..-219.55
+[  228.4s] mounting face = highest plane 260.825: 20 rays over X -256.15..-231.75 (block X -269.15..-218.75); HIWIN MGN12H H = 13 would put it at 260.500 (model block +0.325)
+[  285.8s] after: recess floor 260.825, block top 260.825: gap +0.0001
+[  285.8s] carriage x rail: 25.68 -> 0.00 mm3
+[  285.8s] clips x rail: 82.25 -> 0.00 mm3
+[  285.8s] carriage x block: 3529.96 -> 0.00 mm3
+[  285.8s] belts x carriage: 0.00 -> 0.00 mm3
+[  285.8s] belts x clips: 0.42 -> 0.00 mm3
+[  288.3s]    left end +1, lower (Monolith 2WD) belt Y 257.51..258.89 (Z 423.25): carriage Y -; clip Y 252.14..257.71
+[  290.8s]    left end +3, lower (Monolith 2WD) belt Y 257.51..258.89 (Z 423.25): carriage Y 251.22..252.12; clip Y 252.07..257.72
+[  293.4s]    left end +6, lower (Monolith 2WD) belt Y 257.51..258.89 (Z 423.25): carriage Y 251.22..252.12; clip Y 252.10..255.45
+[  295.9s]    left end +1, upper (Monolith 2WD) belt Y 258.26..259.64 (Z 436.75): carriage Y -; clip Y 252.13..257.71
+[  298.5s]    left end +3, upper (Monolith 2WD) belt Y 258.26..259.64 (Z 436.75): carriage Y 251.22..252.12; clip Y 252.07..257.72
+[  301.1s]    left end +6, upper (Monolith 2WD) belt Y 258.26..259.64 (Z 436.75): carriage Y 251.22..252.12; clip Y 252.10..255.42
+[  303.7s]    right end +1, lower (Monolith 2WD) belt Y 258.26..259.64 (Z 423.25): carriage Y -; clip Y 252.13..257.71
+[  306.0s]    right end +3, lower (Monolith 2WD) belt Y 258.26..259.64 (Z 423.25): carriage Y 251.22..252.12; clip Y 252.07..257.72
+[  308.3s]    right end +6, lower (Monolith 2WD) belt Y 258.26..259.64 (Z 423.25): carriage Y 251.22..252.12; clip Y 252.10..255.41
+[  310.6s]    right end +1, upper (Monolith 2WD) belt Y 257.51..258.89 (Z 436.75): carriage Y -; clip Y 252.14..257.71
+[  312.9s]    right end +3, upper (Monolith 2WD) belt Y 257.51..258.89 (Z 436.75): carriage Y 251.22..252.12; clip Y 252.07..257.72
+[  315.4s]    right end +6, upper (Monolith 2WD) belt Y 257.51..258.89 (Z 436.75): carriage Y 251.22..252.12; clip Y 252.10..255.44
+[  315.4s] Left: pickup gantry dY -262.50 -> -257.73; margin to the front stop at the large opening +8.69 -> +13.46; carried nozzle Y reach -47.15..375.47 -> -51.93..370.69 (print square 30.5..380.5)
+[  315.4s] Left: Beacon box centre - carried nozzle (-0.000, +32.647) -> (-0.000, +32.647)
+[  315.4s] Right: pickup gantry dY -262.50 -> -257.73; margin to the front stop at the large opening +8.69 -> +13.46; carried nozzle Y reach -47.15..375.47 -> -51.93..370.69 (print square 30.5..380.5)
+[  315.4s] Right: Beacon box centre - carried nozzle (+0.014, +32.647) -> (+0.014, +32.647)
+[  383.1s] applied: 4 solids moved, 899 checked unchanged
+[  383.1s] FINDINGS:
+[  383.1s]   carriage group moved dY -4.775: recess floor from the rail face (265.60) onto the block top (260.83); carriage x rail 25.68 -> 0.00, clips x rail 82.25 -> 0.00, carriage x block 3529.96 -> 0.00 mm3
+[  383.1s]   Left: pickup margin +8.69 -> +13.46; nozzle rear reach 375.47 -> 370.69 (print square rear 380.5)
+[  383.1s]   Right: pickup margin +8.69 -> +13.46; nozzle rear reach 375.47 -> 370.69 (print square rear 380.5)
+[  383.1s]   Beacon offset from the carried nozzle unchanged (Klipper x 0, y +27.4 stands)
+[  383.1s] verify: 0 problems
+[  408.0s] SAVED /home/dan/Documents/VT350/vt350-lite-26.FCStd 173053642
