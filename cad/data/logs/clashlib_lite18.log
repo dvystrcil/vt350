@@ -1,0 +1,20 @@
+[    0.0s] reference (/home/dan/Code/vt350/cad/data/logs/lite18_plate.log): 3 clashes
+[    0.0s]        0.36 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, photo outline +-1 mm) x Trident kinematic J leaf spring, front left (flat, before preload)
+[    0.0s]        2.04 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, photo outline +-1 mm) x Trident kinematic J leaf spring, front right (flat, before preload)
+[    0.0s]        0.64 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, photo outline +-1 mm) x Trident kinematic J leaf spring, rear (flat, before preload)
+[    0.0s] clashlib: 1 workers on vt350-lite-18.FCStd, 1 poses, job dir /tmp/clashlib-ixou4271
+[   72.5s] clashlib: done in 72.5s (load <= 6.1s, check <= 65.7s); 7013 pair-poses, 10 box hits, 3 overlaps > 0.01 mm3, 0 errors
+[   72.5s] n=1: wall 72.5s; load 6.1s; clash stage (slowest worker) 65.7s, sum over workers 65.7s; 1008 leaves, 7013 pairs, 10 box hits
+[   72.5s]    n=1:     2.0368 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, photo outline +-1 mm) x Trident kinematic J leaf spring, front right (flat, before preload)
+[   72.5s]    n=1:     0.6441 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, photo outline +-1 mm) x Trident kinematic J leaf spring, rear (flat, before preload)
+[   72.5s]    n=1:     0.3565 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, photo outline +-1 mm) x Trident kinematic J leaf spring, front left (flat, before preload)
+[   72.5s] n=1: 3 clashes, 0 mismatches vs lite-18
+[   72.5s] clashlib: 10 workers on vt350-lite-18.FCStd, 1 poses, job dir /tmp/clashlib-9b48gl7z
+[  101.2s] clashlib: done in 28.8s (load <= 12.7s, check <= 15.1s); 7013 pair-poses, 10 box hits, 3 overlaps > 0.01 mm3, 0 errors
+[  101.2s] n=10: wall 28.8s; load 12.7s; clash stage (slowest worker) 15.1s, sum over workers 108.7s; 1008 leaves, 7013 pairs, 10 box hits
+[  101.2s]    n=10:     2.0368 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, photo outline +-1 mm) x Trident kinematic J leaf spring, front right (flat, before preload)
+[  101.2s]    n=10:     0.6441 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, photo outline +-1 mm) x Trident kinematic J leaf spring, rear (flat, before preload)
+[  101.2s]    n=10:     0.3565 mm3  Heater pad LDO-SHPAC-350-120-750 (1.5 mm, photo outline +-1 mm) x Trident kinematic J leaf spring, front left (flat, before preload)
+[  101.2s] n=10: 3 clashes, 0 mismatches vs lite-18
+[  101.2s] AC2: clash stage serial 65.7s vs 10 workers 15.1s (x4.4); wall 72.5s vs 28.8s (lite-18's own serial loop: ~480s, 80 -> ~560s in lite18_plate.log)
+[  101.2s] AC1: PASS, same pairs and volumes as lite-18
