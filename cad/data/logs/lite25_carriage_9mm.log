@@ -1,0 +1,42 @@
+[   58.8s] opened /home/dan/Documents/VT350/vt350-lite-24.FCStd 2082
+[  116.7s] Left: dock carriage copy = gantry carriage + (-154.000, -262.500, 0.315)
+[  116.7s] Right: dock carriage copy = gantry carriage + (153.013, -262.500, 0.315)
+[  116.8s] gantry carriage: 2 solids, volume 18150.9; X -272.20..-217.80 Y 256.00..268.60 Z 382.15..445.65
+[  116.8s] STL andrewmcgr: 54.40 x 63.50 x 12.60, 33768 facets
+[  116.8s] STL 6mm: 54.40 x 63.50 x 12.60, 31180 facets
+[  116.8s] STL 9mm: 54.40 x 63.50 x 12.60, 30632 facets
+[  116.9s] andrewmcgr's changes vs the stock 6 mm carriage: 1435 vertices, 0 inside R (+0.3)
+[  671.8s] 6-vs-9 mm differences: 1242 / 968 vertices; outside R 14 / 14, of which 0 are off the other carriage's surface by > 0.02 mm (the rest are re-triangulation of the same faces)
+[  712.5s] stock carriage volumes: 6 mm 19575.9, 9 mm 18309.6; in R: 6 mm 3504.7, 9 mm 2238.5
+[  734.4s] frame proper: 421 sample vertices; above the Beacon pocket max 0.0064 median 0.0012; all max 2.1550
+[  756.1s] frame mirrored X: 421 sample vertices; above the Beacon pocket max 0.2000 median 0.0012; all max 2.1550
+[  756.1s] carriage STL frame: proper (max 0.0064 mm)
+[  765.1s] gantry carriage: in R before 3504.4, 9 mm pockets in R 2238.5; after 16885.0 (expected 16885.0); valid True, solids 2 (was 2)
+[ 1058.2s] gantry carriage in R after vs the 9 mm pockets: 0 of 1600 sample points disagree
+[ 1124.0s] Left copy as gantry carriage offset: inside R copy 3504.4 mm3; 0 of 600 sample points disagree
+[ 1238.7s] Left copy as gantry carriage mirror: inside R copy 3504.4 mm3; 0 of 600 sample points disagree
+[ 1241.9s] Left copy (offset) after: 16885.0 (expected 16885.0), valid True, solids 2
+[ 1309.0s] Right copy as gantry carriage offset: inside R copy 3504.4 mm3; 0 of 600 sample points disagree
+[ 1418.6s] Right copy as gantry carriage mirror: inside R copy 3504.4 mm3; 0 of 600 sample points disagree
+[ 1421.7s] Right copy (offset) after: 16885.0 (expected 16885.0), valid True, solids 2
+[ 1435.7s] old clips: 6: ['Clip (1)', 'Clip (1)001', 'Clip', 'Clip001', 'Clip(Mirror)', 'Clip(Mirror)001']
+[ 1498.4s] Clip (1): registered to SpeedClip_4mm_Gap.stl (as is): 1508 points, median 0.0078, 95% 0.0663, max 0.9305; the 158 points > 0.05 lie in STL X 0.00..10.10 Y 0.87..18.68 Z 0.00..5.70
+[ 1504.3s]    9 mm clip: Z 416.65..442.67 (old 419.65..439.65); overlap with its carriage 3.81 mm3 (old clip in old carriage 0.12)
+[ 1570.9s] Clip (1)001: registered to SpeedClip_4mm_Gap.stl (as is): 1508 points, median 0.0078, 95% 0.0663, max 0.9305; the 158 points > 0.05 lie in STL X 0.00..10.10 Y 0.87..18.68 Z 0.00..5.70
+[ 1574.7s]    9 mm clip: Z 416.63..442.65 (old 419.65..439.65); overlap with its carriage 3.81 mm3 (old clip in old carriage 0.12)
+[ 1649.1s] Clip: registered to SpeedClip_4mm_Gap.stl (as is): 1508 points, median 0.0078, 95% 0.0663, max 0.9305; the 158 points > 0.05 lie in STL X 0.00..10.10 Y 0.87..18.68 Z 0.00..5.70
+[ 1652.7s]    9 mm clip: Z 416.97..442.98 (old 419.96..439.96); overlap with its carriage 3.81 mm3 (old clip in old carriage 0.12)
+[ 1720.4s] Clip001: registered to SpeedClip_4mm_Gap.stl (as is): 1508 points, median 0.0078, 95% 0.0663, max 0.9305; the 158 points > 0.05 lie in STL X 0.00..10.10 Y 0.87..18.68 Z 0.00..5.70
+[ 1724.1s]    9 mm clip: Z 416.95..442.96 (old 419.96..439.96); overlap with its carriage 3.81 mm3 (old clip in old carriage 0.12)
+[ 1792.0s] Clip(Mirror): registered to SpeedClip_4mm_Gap.stl (as is): 1508 points, median 0.0078, 95% 0.0663, max 0.9305; the 159 points > 0.05 lie in STL X 0.00..10.10 Y 0.87..18.68 Z 0.00..5.70
+[ 1796.0s]    9 mm clip: Z 416.95..442.96 (old 419.96..439.96); overlap with its carriage 3.81 mm3 (old clip in old carriage 0.12)
+[ 1863.6s] Clip(Mirror)001: registered to SpeedClip_4mm_Gap.stl (as is): 1508 points, median 0.0078, 95% 0.0663, max 0.9305; the 159 points > 0.05 lie in STL X 0.00..10.10 Y 0.87..18.68 Z 0.00..5.70
+[ 1871.9s]    9 mm clip: Z 416.97..442.98 (old 419.96..439.96); overlap with its carriage 3.81 mm3 (old clip in old carriage 0.12)
+[ 1873.1s] GT2 9mm belt, lower (Monolith 2WD): overlap with the gantry carriage 0.00 -> 0.00 mm3
+[ 1874.3s] GT2 9mm belt, upper (Monolith 2WD): overlap with the gantry carriage 0.00 -> 0.00 mm3
+[ 1941.8s] printable carriage: 53519 facets, 54.40 x 63.50 x 12.60, volume 16885.0
+[ 1941.8s] wrote cad/derived/madmax-andrewmcgr-carriage-beacon/MadMaxCarriage Beacon RevH pocket 9mm belts.stl
+[ 1941.8s] FINDINGS:
+[ 1941.8s]   carriage: belt-clip pockets swapped for upstream's 9 mm ones (3504.4 -> 2238.5 mm3 in the pocket boxes; part 18150.9 -> 16885.0 mm3)
+[ 1941.8s] verify: 0 problems
+[ 1966.8s] SAVED /home/dan/Documents/VT350/vt350-lite-25.FCStd 173018546

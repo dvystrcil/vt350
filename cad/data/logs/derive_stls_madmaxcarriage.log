@@ -1,3 +1,3 @@
-[   74.8s] MadMaxCarriage Beacon RevH pocket.stl: old part = component 0 of MadMaxCarriage.stl (volume 18413.7 vs 18425.7); rotation 90.00 deg; max vertex distance 0.0155 mm (median 0.0034)
-[   76.0s]    wrote cad/derived/madmax-andrewmcgr-carriage-beacon/MadMaxCarriage Beacon RevH pocket.stl: 51922 facets, 54.42 x 63.52 x 12.60 mm, volume 18150.9 (old 18425.7); solid valid True
-[   76.2s] done: 1 of 1 written
+[   44.8s] MadMaxCarriage Beacon RevH pocket.stl: old part = component 0 of MadMaxCarriage.stl (volume 18413.7 vs 18425.7); rotation 90.00 deg; max vertex distance 0.0155 mm (median 0.0034)
+[   45.9s]    wrote cad/derived/madmax-andrewmcgr-carriage-beacon/MadMaxCarriage Beacon RevH pocket.stl: 51922 facets, 54.42 x 63.52 x 12.60 mm, volume 18150.9 (old 18425.7); solid valid True
+[   46.1s] done: 1 of 1 written
