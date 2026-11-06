@@ -8,23 +8,26 @@
 import FreeCAD, Part, Mesh, MeshPart, os, time, traceback
 import numpy as np
 V = FreeCAD.Vector
-REPO = "/home/dan/Code/vt350"
+REPO = os.environ.get("VT350_REPO", "/home/dan/Code/vt350")
 UP = os.environ.get("VT350_UPSTREAM", "/home/dan/Documents/VT350/downloads/upstream")
-OLD = "/home/dan/Documents/VT350/vt350-lite-22.FCStd"
-NEW = "/home/dan/Documents/VT350/vt350-lite-23.FCStd"
+M = "/home/dan/Documents/VT350/vt350-lite-{}.FCStd"
 TOL = 0.05
 DUCTS = f"{REPO}/cad/derived/a4tv2-duct-4010-madmax-dock"
 ARMS = f"{REPO}/cad/derived/madmax-andrewmcgr-dock-arm"
-# (output, upstream STL, old label + group, new label + group, which solid of a compound: "low" = lowest Z)
+CARRIAGE = f"{REPO}/cad/derived/madmax-andrewmcgr-carriage-beacon"
+ONLY = os.environ.get("VT350_ONLY")          # write only the jobs whose output name contains this
+# (old model, new model, output, upstream STL, old label + group, new label + group, which solid: "low" = lowest Z)
 JOBS = [
-    (f"{DUCTS}/A4Tv2 Duct-4010-left MadMax dock.stl", f"{UP}/A4Tv2_4010_Ducts.stl",
+    (22, 23, f"{DUCTS}/A4Tv2 Duct-4010-left MadMax dock.stl", f"{UP}/A4Tv2_4010_Ducts.stl",
      ("[a]_Duct-4010-left", "Left Toolhead"), ("[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)", "Left Toolhead"), None),
-    (f"{DUCTS}/A4Tv2 Duct-4010-right MadMax dock.stl", f"{UP}/A4Tv2_4010_Ducts.stl",
+    (22, 23, f"{DUCTS}/A4Tv2 Duct-4010-right MadMax dock.stl", f"{UP}/A4Tv2_4010_Ducts.stl",
      ("[a]_Duct-4010-right001", "Right Toolhead"), ("[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)", "Right Toolhead"), None),
-    (f"{ARMS}/Dock Arm {{net}}.stl", f"{ARMS}/Dock Arm +5mm.stl",
+    (22, 23, f"{ARMS}/Dock Arm {{net}}.stl", f"{ARMS}/Dock Arm +5mm.stl",
      ("Dock Arm v1 Bottom +5mm", "Left Dock"), ("Dock Arm v1 Bottom *", "Left Dock"), "low"),
+    (23, 24, f"{CARRIAGE}/MadMaxCarriage Beacon RevH pocket.stl", f"{UP}/MadMaxCarriage.stl",
+     ("COMPOUND", "Carriage (1)"), ("COMPOUND", "Carriage (1)"), None),
 ]
-log_f = open(f"{REPO}/cad/data/logs/derive_stls.log", "w"); t0 = time.time()
+log_f = open(f"{REPO}/cad/data/logs/derive_stls" + (f"_{ONLY.split()[0].lower()}" if ONLY else "") + ".log", "w"); t0 = time.time()
 def log(*a):
     log_f.write(f"[{time.time()-t0:7.1f}s] " + " ".join(str(x) for x in a) + "\n"); log_f.flush()
 def mesh_inertia(m):
@@ -41,8 +44,14 @@ def mesh_inertia(m):
     C = (C * (v / 20.0)[:, None, None]).sum(0)
     return V_, cen, np.trace(C) * np.eye(3) - C
 def shape_inertia(sh):
-    M = sh.MatrixOfInertia; c = sh.CenterOfMass
-    return sh.Volume, np.array([c.x, c.y, c.z]), np.array([[M.A11, M.A12, M.A13], [M.A21, M.A22, M.A23], [M.A31, M.A32, M.A33]])
+    """volume, centroid, inertia tensor about the centroid; a compound sums its solids (parallel-axis theorem)"""
+    parts = []
+    for x in sh.Solids:
+        M = x.MatrixOfInertia; c = x.CenterOfMass
+        parts.append((x.Volume, np.array([c.x, c.y, c.z]), np.array([[M.A11, M.A12, M.A13], [M.A21, M.A22, M.A23], [M.A31, M.A32, M.A33]])))
+    V_ = sum(v for v, _, _ in parts); cen = sum(v * c for v, c, _ in parts) / V_
+    I = sum(Ii + v * (np.dot(c - cen, c - cen) * np.eye(3) - np.outer(c - cen, c - cen)) for v, c, Ii in parts)
+    return V_, cen, I
 def mat(R, t):
     M = FreeCAD.Matrix()
     M.A11, M.A12, M.A13, M.A14 = R[0, 0], R[0, 1], R[0, 2], t[0]
@@ -90,10 +99,14 @@ def part(doc, label, group, which):
     if which == "low": s = min(s.Solids, key=lambda x: x.BoundBox.ZMin)
     return s, c[0].Label
 try:
-    old = FreeCAD.openDocument(OLD); new = FreeCAD.openDocument(NEW)
+    docs = {}
+    def model(n):
+        if n not in docs: docs[n] = FreeCAD.openDocument(M.format(n))
+        return docs[n]
     res = []
-    for out, up, (ol, og), (nl, ng), which in JOBS:
-        so, _ = part(old, ol, og, which); sn, nlab = part(new, nl, ng, which)
+    for mo, mn, out, up, (ol, og), (nl, ng), which in JOBS:
+        if ONLY and ONLY not in out: continue
+        so, _ = part(model(mo), ol, og, which); sn, nlab = part(model(mn), nl, ng, which)
         out = out.replace("{net}", nlab.split()[-1])
         comps = [c for c in Mesh.Mesh(up).getSeparateComponents() if c.CountFacets >= 50]
         # the upstream component with the same volume (the A4Tv2 STL holds both ducts)
