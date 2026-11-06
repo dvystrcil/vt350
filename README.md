@@ -25,4 +25,4 @@ dual-license setup (MIT for code/configs + CC-BY-4.0 for prose) per the
 
 [MIT](LICENSE).
 
-The exception is `cad/derived/`: modified third-party parts, each under its original licence. `cad/derived/madmax-andrewmcgr-dock-arm/` is **GPL-3.0**; see the README in that folder.
+The exception is `cad/derived/`: modified third-party parts, each under its original licence. `cad/derived/madmax-andrewmcgr-dock-arm/` is **GPL-3.0** and `cad/derived/a4tv2-duct-4010-madmax-dock/` is **CC BY-NC-SA 4.0** (non-commercial); see the README in each folder.

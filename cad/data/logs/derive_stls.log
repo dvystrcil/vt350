@@ -1,0 +1,7 @@
+[  134.6s] A4Tv2 Duct-4010-left MadMax dock.stl: old part = component 0 of A4Tv2_4010_Ducts.stl (volume 10243.7 vs 10242.7); rotation 114.40 deg; max vertex distance 0.0064 mm (median 0.0001)
+[  135.2s]    wrote cad/derived/a4tv2-duct-4010-madmax-dock/A4Tv2 Duct-4010-left MadMax dock.stl: 30870 facets, 48.95 x 63.32 x 35.19 mm, volume 11568.7 (old 10242.7); solid valid True
+[  259.6s] A4Tv2 Duct-4010-right MadMax dock.stl: old part = component 1 of A4Tv2_4010_Ducts.stl (volume 10271.1 vs 10270.1); rotation 114.40 deg; max vertex distance 0.0050 mm (median 0.0003)
+[  260.2s]    wrote cad/derived/a4tv2-duct-4010-madmax-dock/A4Tv2 Duct-4010-right MadMax dock.stl: 32440 facets, 48.95 x 63.32 x 35.19 mm, volume 11589.1 (old 10270.1); solid valid True
+[  300.2s] Dock Arm -9.06mm.stl: old part = component 0 of Dock Arm +5mm.stl (volume 12880.2 vs 12880.3); rotation 0.00 deg; max vertex distance 0.0001 mm (median 0.0000)
+[  300.5s]    wrote cad/derived/madmax-andrewmcgr-dock-arm/Dock Arm -9.06mm.stl: 10298 facets, 36.50 x 48.67 x 30.00 mm, volume 11521.8 (old 12880.3); solid valid True
+[  300.5s] done: 3 of 3 written
