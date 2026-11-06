@@ -1,5 +1,7 @@
 # Printed parts: first pass (#8 AC2)
 
+**The files are in [`parts/printed/`](../parts/printed/)** (#63): every "print" row below, pinned to an upstream commit, with its licence and a sha256. `parts/check-printed.py` fails if a "print" row here has no part or link there.
+
 Source for stock parts: **Voron Trident R1** STLs at tag
 [`VTr1`](https://github.com/VoronDesign/Voron-Trident/tree/VTr1/STLs) (last
 updated 2026-05-31). `main` in the Voron repo is now **R2** (released
@@ -21,7 +23,7 @@ Status key:
 | `Gantry/AB_Drive_Units/*` (a/b drive frames, wire cover, Y endstop) | replaced | Monolith CNC kit (rear motor mounts) |
 | `Gantry/Front_Idlers/*` | replaced | Monolith CNC kit (front motorless mounts) |
 | `Gantry/X_Axis/XY_Joints/*` (MGN12 joints, cable bridges, endstop pods) | replaced | Monolith milled XY joints. **Note: they use MGN9H Y-carriages**, so the Y rails are MGN9, not the model's MGN12. The endstop approach is still open: see [Toolheads for Monolith](https://github.com/Monolith3D/Toolheads_for_Monolith). |
-| `Gantry/X_Axis/X_Carriage/*` | replaced | MadMax shuttle on the front X rail (#19). **Print the 9 mm-belt versions** (#58): carriage = `cad/derived/madmax-andrewmcgr-carriage-beacon/MadMaxCarriage Beacon RevH pocket 9mm belts.stl` (andrewmcgr's Beacon/Cartographer carriage with upstream's 9 mm belt pockets); belt clips = upstream [`STL/SpeedClip_4mm_Gap_9mm.stl`](https://github.com/zruncho3d/madmax/blob/6bf670de9adcc5924e2fb552978161d7a9c7b1c8/STL/SpeedClip_4mm_Gap_9mm.stl) ×2, unmodified. The 6 mm-belt carriage and `SpeedClip_4mm_Gap` don't fit the 9 mm belts |
+| `Gantry/X_Axis/X_Carriage/*` | replaced | MadMax shuttle on the front X rail (#19). **Print the 9 mm-belt versions** (#58): carriage = `parts/printed/vt350/madmax-andrewmcgr-carriage-beacon/MadMaxCarriage Beacon RevH pocket 9mm belts.stl` (copied from `cad/derived/`; andrewmcgr's Beacon/Cartographer carriage with upstream's 9 mm belt pockets); belt clips = upstream [`STL/SpeedClip_4mm_Gap_9mm.stl`](https://github.com/zruncho3d/madmax/blob/6bf670de9adcc5924e2fb552978161d7a9c7b1c8/STL/SpeedClip_4mm_Gap_9mm.stl) ×2, unmodified (`parts/printed/madmax/`). The 6 mm-belt carriage and `SpeedClip_4mm_Gap` don't fit the 9 mm belts |
 | `Gantry/chain_wire_anchor_*` | decide | Toolchanger cable routing: per-tool umbilicals or chains (#19) |
 | `Z_Assembly/z_stepper_left/right/rear` | replaced | Trident Backbone plate |
 | `Z_Assembly/z_cable_chain_mount_2hole/3hole` | decide | Collides with the Backbone (#7 comment). Needs a Backbone-compatible anchor. |
@@ -53,10 +55,11 @@ Status key:
 | [LDO Monolith kit STLs](https://github.com/Monolith3D/LDO_Monolith_Gantry_Kits/tree/main/STLs) | `Cable_management_clip_S/M/L` | per the manual | print |
 | same | `LDO_9mm_VT_NP_spacer` | — | only if using No Protrusion mode |
 | [Toolheads for Monolith](https://github.com/Monolith3D/Toolheads_for_Monolith) | belt clamp / belt alignment helper | 1 | decide: how the MadMax shuttle takes the belts |
-| [MadMax](https://github.com/zruncho3d/madmax) | shuttle, docks, dock mounts | shuttle ×1, dock **per tool** | print. Dock mount style waits on #19 (2WD, so not the AWD front support). |
-| [A4T](https://github.com/Armchair-Heavy-Industries/A4T) | toolhead body + Orbiter 2.5 / O2S / OSS / Crossbow adapters | **per tool** | print |
+| [MadMax](https://github.com/zruncho3d/madmax) | shuttle, docks, dock mounts. This build uses andrewmcgr's XOL-A4T-Cartographer mod: `Plate Assembly` + `Plate Back` (on each head) and `Dock Asembly` (the keyslot plate, per dock); the carriage and the 4 dock arms are our remixes (`parts/printed/vt350/`). The Dock Brackets are replaced by bosses on the A4Tv2 ducts (lite-23, #53) | shuttle ×1, dock **per tool** | print. Dock mount style waits on #19 (2WD, so not the AWD front support). |
+| [A4Tv2](https://github.com/DW-Tas/A4Tv2) | toolhead body + Crossbow adapter. The model's heads are A4Tv2 since lite-15 (they replaced the [A4T](https://github.com/Armchair-Heavy-Industries/A4T) v1): Dragon Rapido UHF / Orbiter (`o2`) / XOL main body, `[a]_orbiter-crossbow-adapter_o2_xol`, `Duct-HEF-Dragon-UHF`, LED carrier + diffuser. The 4010 ducts are our remix with dock bosses (`parts/printed/vt350/`). The O2S / OSS have no A4Tv2 printed part | **per tool** | print |
 | [EMU](https://github.com/DW-Tas/EMU) | separate unit; its own configurator | per lane | print, tracked separately |
 | [Clicky-Clack fridge door](https://github.com/tanaes/whopping_Voron_mods/tree/main/clickyclacky_door) (tanaes) | `Hinge-L-solid`, `Hinge-L-sleeve` (each **×3**, one per hinge; upstream ships ×2), `Handle`, `Handle-Hinge_Top`, `Handle-Hinge_Bottom`, `Latch`, `Panel_Clip` | 3 hinges | print. The model's door already follows this design: `Bottom Hinge`, `Latch Handle`, `Panel_Clip` and M5×50 dowel pins are all in it. Upstream hardware for 2 hinges is 6 M5×7×8 split bushings, 4 M5 dowel pins (40–50 mm), 4 M3×20 SHCS, 12 M3×8 SHCS, 12 6×3 magnets, 1 M3×8 BHCS, 1 M3 heat-set insert, 4 M5×16 BHCS, the HSCPF3H-B-2000 retainer strip and a 3 mm acrylic panel. The third hinge adds 1 dowel pin and 2 bushings. **This build differs from upstream:** the door frame is 2040 at full frame height (in the frame order, #7), not upstream's 2020 at 470 × 500 mm, so the panel size and retainer length must come from the model. |
+| vt350 (this repo) | BTT TMC5160T Plus base (`btt5160-base-4-middle-screws`, the user's own design, MIT) | 1 | print |
 | custom | Pad 7 quick-release mount, skirts and feet, Z chain anchor for the Backbone | — | custom |
 
 ## Next steps
