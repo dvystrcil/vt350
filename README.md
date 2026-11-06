@@ -26,3 +26,5 @@ dual-license setup (MIT for code/configs + CC-BY-4.0 for prose) per the
 [MIT](LICENSE).
 
 The exception is `cad/derived/`: modified third-party parts, each under its original licence. `cad/derived/madmax-andrewmcgr-dock-arm/` and `cad/derived/madmax-andrewmcgr-carriage-beacon/` are **GPL-3.0** and `cad/derived/a4tv2-duct-4010-madmax-dock/` is **CC BY-NC-SA 4.0** (non-commercial); see the README in each folder.
+
+`parts/printed/` is the other exception: third-party printed parts copied unchanged, each folder with its upstream `LICENSE` (GPL-3.0 or CC BY-NC-SA 4.0), plus copies of the `cad/derived/` remixes. The licence of each source is in [`parts/printed/README.md`](parts/printed/README.md).
