@@ -1,0 +1,89 @@
+[  251.9s] opened /home/dan/Documents/VT350/vt350-lite-22.FCStd 2085
+[  310.7s] Left: docked nozzle tip (-399.00, -44.96, 380.80); old dock screws (head Y, Z) {'rear-top': (17.761, 67.276), 'rear-bottom': (17.761, 13.276), 'front-top': (-2.239, 67.276)}; keyslot plate moves (0.00, -14.06, -5.78)
+[  310.7s] Right: docked nozzle tip (-92.00, -44.96, 380.80); old dock screws (head Y, Z) {'rear-top': (17.761, 67.276), 'rear-bottom': (17.761, 13.276), 'front-top': (-2.239, 67.276)}; keyslot plate moves (0.00, -14.06, -5.78)
+[  554.6s] lite-22 overlaps of the parts that move or change with the rest: 7
+[  554.6s]         928.3 mm3  Plate Back(Mirror) x Alternate Bracket v1(Mirror)
+[  554.6s]         928.3 mm3  Plate Back x Alternate Bracket v1
+[  554.6s]          54.7 mm3  Crossbow - Lever x Dock Bracket
+[  554.6s]          53.7 mm3  Crossbow - Lever x Alternate Bracket v1
+[  554.6s]          32.2 mm3  Hex socket head cap screw M3x0.50 x 018 x Alternate Bracket v1(Mirror)
+[  554.6s]          32.2 mm3  Hex socket head cap screw M3x0.50 x 015 x Alternate Bracket v1
+[  554.6s]           1.7 mm3  Dock Arm v1 Bottom +5mm x 2040(Mirror)
+[  554.6s] Left duct: body-screw counterbore r3.0 at head Z 62.00: inner end head (X -28.14, Y 5.04), at the boss plane head Y 3.13
+[  554.6s] Left duct: body-screw counterbore r3.0 at head Z 62.00: inner end head (X -23.97, Y -18.59), at the boss plane head Y -21.24
+[  751.7s] Left rear-top (head Y -8.8, Z 61.5): duct face 7.04..13.37 mm in from the plane, solid wall ends 12.87..23.16; boss 12.67 long, fused over 91% of its footprint; 0 footprint points with no duct behind them
+[  751.7s]    rear-top: 4.76 mm from a body-screw counterbore (or its way in)
+[  751.7s]    rear-top: 3.06 mm from a body-screw counterbore (or its way in)
+[  948.9s] Left rear-bottom (head Y -8.8, Z 7.5): duct face 7.04..14.30 mm in from the plane, solid wall ends 10.37..19.32; boss 10.17 long, fused over 45% of its footprint; 0 footprint points with no duct behind them
+[  948.9s]    rear-bottom: 48.75 mm from a body-screw counterbore (or its way in)
+[  948.9s]    rear-bottom: 48.50 mm from a body-screw counterbore (or its way in)
+[ 1146.1s] Left front-top (head Y -28.8, Z 61.5): duct face 10.56..16.90 mm in from the plane, solid wall ends 16.40..26.24; boss 16.20 long, fused over 89% of its footprint; 1 footprint points with no duct behind them
+[ 1146.1s]    front-top: 24.45 mm from a body-screw counterbore (or its way in)
+[ 1146.1s]    front-top: 0.46 mm from a body-screw counterbore (or its way in)
+[ 1159.3s] Left duct: volume 10242.7 -> 11568.7 (bosses 1962.2, into the wall 314.2, holes 322.1; want 11568.7); valid True, solids 1
+[ 1159.6s]    STL stl/a4tv2_duct_4010_left_madmax_dock.stl: 13250 facets
+[ 1159.7s] Right duct: body-screw counterbore r3.0 at head Z 62.00: inner end head (X 28.14, Y 5.04), at the boss plane head Y 3.13
+[ 1159.7s] Right duct: body-screw counterbore r3.0 at head Z 62.00: inner end head (X 23.97, Y -18.59), at the boss plane head Y -21.24
+[ 1356.4s] Right rear-top (head Y -8.8, Z 61.5): duct face 7.04..13.37 mm in from the plane, solid wall ends 12.87..23.16; boss 12.67 long, fused over 91% of its footprint; 0 footprint points with no duct behind them
+[ 1356.4s]    rear-top: 4.76 mm from a body-screw counterbore (or its way in)
+[ 1356.4s]    rear-top: 3.06 mm from a body-screw counterbore (or its way in)
+[ 1553.7s] Right rear-bottom (head Y -8.8, Z 7.5): duct face 7.04..14.30 mm in from the plane, solid wall ends 10.11..19.32; boss 9.91 long, fused over 41% of its footprint; 0 footprint points with no duct behind them
+[ 1553.7s]    rear-bottom: 48.75 mm from a body-screw counterbore (or its way in)
+[ 1553.7s]    rear-bottom: 48.51 mm from a body-screw counterbore (or its way in)
+[ 1751.1s] Right front-top (head Y -28.8, Z 61.5): duct face 10.56..16.90 mm in from the plane, solid wall ends 16.40..26.24; boss 16.20 long, fused over 89% of its footprint; 1 footprint points with no duct behind them
+[ 1751.1s]    front-top: 24.45 mm from a body-screw counterbore (or its way in)
+[ 1751.1s]    front-top: 0.46 mm from a body-screw counterbore (or its way in)
+[ 1765.3s] Right duct: volume 10270.1 -> 11589.1 (bosses 1949.1, into the wall 308.0, holes 322.1; want 11589.1); valid True, solids 1
+[ 1765.6s]    STL stl/a4tv2_duct_4010_right_madmax_dock.stl: 13314 facets
+[ 1765.6s] delete Dock Bracket
+[ 1765.6s] delete Alternate Bracket v1
+[ 1765.6s] delete Dock Bracket(Mirror)
+[ 1765.6s] delete Alternate Bracket v1(Mirror)
+[ 2127.7s] Left arm: constant section 193.2 mm2 over Y -58.70..-44.05 (14.65 mm); shorten 14.06
+[ 2131.7s]    cut at Y -58.41 and -44.34; sections differ by 0.0000 mm2
+[ 2135.0s]    volume 25760.7 -> 23043.6 (want 23043.6); valid True, solids 2 (was 2)
+[ 2135.3s]    STL stl/dock_arm_v1_bottom_minus9.06mm.stl: 9608 facets
+[ 2497.4s] Right arm: constant section 193.2 mm2 over Y -58.70..-44.05 (14.65 mm); shorten 14.06
+[ 2501.3s]    cut at Y -58.41 and -44.34; sections differ by 0.0000 mm2
+[ 2504.6s]    volume 25760.7 -> 23043.6 (want 23043.6); valid True, solids 2 (was 2)
+[ 2504.9s]    STL stl/dock_arm_v1_bottom_minus9.06mm_mirror.stl: 9608 facets
+[ 2504.9s] Left rear-top: pocket axis (Y -41.261, Z 442.300) vs moved keyslot (Y -41.261, Z 442.300): 0.0004 mm
+[ 2504.9s] Left rear-bottom: pocket axis (Y -41.261, Z 388.300) vs moved keyslot (Y -41.261, Z 388.300): 0.0004 mm
+[ 2504.9s] Left front-top: pocket axis (Y -61.261, Z 442.300) vs moved keyslot (Y -61.261, Z 442.300): 0.0004 mm
+[ 2504.9s] Left: parked carriage copy front face Y -6.50; at the large opening -12.50; reach -21.19 -> margin +8.69
+[ 2504.9s] Left: bosses reach head Y -4.80 (joint band starts at 13.0)
+[ 2505.0s] Right rear-top: pocket axis (Y -41.261, Z 442.300) vs moved keyslot (Y -41.261, Z 442.300): 0.0004 mm
+[ 2505.0s] Right rear-bottom: pocket axis (Y -41.261, Z 388.300) vs moved keyslot (Y -41.261, Z 388.300): 0.0004 mm
+[ 2505.0s] Right front-top: pocket axis (Y -61.261, Z 442.300) vs moved keyslot (Y -61.261, Z 442.300): 0.0004 mm
+[ 2505.0s] Right: parked carriage copy front face Y -6.50; at the large opening -12.50; reach -21.19 -> margin +8.69
+[ 2505.0s] Right: bosses reach head Y -4.80 (joint band starts at 13.0)
+[ 2505.1s] tube Left: coupler top now -399.00,-33.38,498.90 (was -399.00,-45.88,498.90)
+[ 2507.4s]    rebuilt: starts -0.00 from the coupler top; min bend R 105.9; length 632.3; valid True
+[ 2507.5s] tube Right: coupler top now -92.00,-33.38,498.90 (was -92.00,-45.88,498.90)
+[ 2509.5s]    rebuilt: starts +0.00 from the coupler top; min bend R 105.9; length 632.3; valid True
+[ 2687.7s] moving/changed parts vs the rest: 1 overlaps (0 new or larger than in lite-22; 6 gone)
+[ 2687.7s]      gone    928.3 mm3  Plate Back(Mirror) x Alternate Bracket v1(Mirror)
+[ 2687.7s]      gone    928.3 mm3  Plate Back x Alternate Bracket v1
+[ 2687.7s]      gone     54.7 mm3  Crossbow - Lever x Dock Bracket
+[ 2687.7s]      gone     53.7 mm3  Crossbow - Lever x Alternate Bracket v1
+[ 2687.7s]      gone     32.2 mm3  Hex socket head cap screw M3x0.50 x 018 x Alternate Bracket v1(Mirror)
+[ 2687.7s]      gone     32.2 mm3  Hex socket head cap screw M3x0.50 x 015 x Alternate Bracket v1
+[ 2709.6s] tubes: 6 overlaps
+[ 2710.6s]    pass-through Bowden Left x Roof felt strip (pad 3): 188.5 mm3, centre (-399.0, 468.5, 698.5)
+[ 2711.6s]    pass-through Bowden Left x Roof felt strip liner, inner: 9.4 mm3, centre (-399.0, 463.3, 693.3)
+[ 2712.6s]    pass-through Bowden Left x Roof felt strip liner, outer: 9.4 mm3, centre (-399.0, 473.8, 703.8)
+[ 2713.6s]    pass-through Bowden Right x Roof felt strip (pad 3): 188.5 mm3, centre (-92.0, 468.5, 698.5)
+[ 2714.6s]    pass-through Bowden Right x Roof felt strip liner, inner: 9.4 mm3, centre (-92.0, 463.3, 693.3)
+[ 2715.6s]    pass-through Bowden Right x Roof felt strip liner, outer: 9.4 mm3, centre (-92.0, 473.8, 703.8)
+[ 2715.6s] moved: 234 solids; deleted 4; remixed 4
+[ 2715.6s] FINDINGS:
+[ 2715.6s]   Left: pickup at the keyslots' large opening has +8.69 mm before the hard stop (lite-22: -3.81)
+[ 2715.6s]   Right: pickup at the keyslots' large opening has +8.69 mm before the hard stop (lite-22: -3.81)
+[ 2715.6s]   Bowden Left still crosses Roof felt strip (pad 3) (lite-16 pass-through); centre Y 468.5
+[ 2715.6s]   Bowden Left still crosses Roof felt strip liner, inner (lite-16 pass-through); centre Y 463.3
+[ 2715.6s]   Bowden Left still crosses Roof felt strip liner, outer (lite-16 pass-through); centre Y 473.8
+[ 2715.6s]   Bowden Right still crosses Roof felt strip (pad 3) (lite-16 pass-through); centre Y 468.5
+[ 2715.6s]   Bowden Right still crosses Roof felt strip liner, inner (lite-16 pass-through); centre Y 463.3
+[ 2715.6s]   Bowden Right still crosses Roof felt strip liner, outer (lite-16 pass-through); centre Y 473.8
+[ 2715.6s] verify: 0 problems
+[ 2732.1s] SAVED /home/dan/Documents/VT350/vt350-lite-23.FCStd 139525452
