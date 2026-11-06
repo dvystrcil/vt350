@@ -1,894 +1,804 @@
-[   52.2s] model /home/dan/Documents/VT350/vt350-lite-22.FCStd (read-only)
-[   52.2s] groups: bed 115, gantry 58, carriage 4, Left head 115, Right head 115 solids; excluded 36; 906 leaves
-[   52.2s] Left: pickup carriage offset (-154.000, -275.000, 0.315) from the gantry carriage; same part: volume diff 0.000 mm3, box residual 0.000 mm
-[   52.2s]    NOTE Left: the dock expects the carriage +0.315 mm off the gantry carriage's Z
-[   52.2s] Right: pickup carriage offset (153.014, -275.000, 0.315) from the gantry carriage; same part: volume diff 0.000 mm3, box residual 0.005 mm
-[   52.2s]    NOTE Right: the dock expects the carriage +0.315 mm off the gantry carriage's Z
-[   52.2s] Left: docked nozzle tip (-399.00, -44.96, 380.80)
-[   52.2s] Right: docked nozzle tip (-92.00, -44.96, 380.80)
-[   52.2s] bed bottom: dZ -239.50 (M3 Locknut002 lands on backbone-350 v2, bounding-box estimate); next: -239.50 M3x12-Screw009 on backbone-350 v2; -239.50 M3x12-Screw008 on backbone-350 v2; -239.50 M3 Locknut003 on backbone-350 v2
-[   52.2s] Left carried: nozzle tip Z 380.48; bed top dZ +93.32 (magnet top 287.16 -> 380.48); nozzle Y reach -47.15 .. 375.47 (print square Y 30.5 .. 380.5)
-[   52.2s] Right carried: nozzle tip Z 380.48; bed top dZ +93.32 (magnet top 287.16 -> 380.48); nozzle Y reach -47.15 .. 375.47 (print square Y 30.5 .. 380.5)
-[   52.2s] excluded from every check: docks' carriage copies, both belts, the Z drag chain, the carried head's own bowden tube; USB cables are not in the model
-[   52.3s] clashlib: 10 workers on vt350-lite-22.FCStd, 13 poses, job dir /tmp/clashlib-pw7z0fwu
-[  124.6s] clashlib: done in 72.4s (load <= 10.8s, check <= 63.7s); 2550613 pair-poses, 1266 box hits, 324 overlaps > 0.01 mm3, 0 errors
-[  124.6s] === Left head on the carriage (Right head parked in its dock): 324 overlaps, 0 common() errors
-[  124.6s] -- Left / front-left, top: front-left corner, bed top; nozzle (-420.0, 30.5, 380.48) bed dZ +93.32: 40 overlaps
-[  124.6s]        411.06 mm3  gantry: VC9-JLA  x  head: Alternate Bracket v1
-[  124.6s]        242.37 mm3  gantry: VC9-JLB  x  head: Dock Bracket
-[  124.6s]        230.07 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  head: Alternate Bracket v1
-[  124.6s]        230.04 mm3  gantry: VC9-JLB  x  head: Alternate Bracket v1
-[  124.6s]        212.30 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  head: Dock Bracket
-[  124.6s]        193.96 mm3  gantry: F695 flanged bearing022  x  head: Alternate Bracket v1
-[  124.6s]        174.00 mm3  gantry: F695 flanged bearing022  x  head: Dock Bracket
-[  124.6s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[  124.6s]        169.11 mm3  gantry: 695 W5 bearing005  x  head: Alternate Bracket v1
-[  124.6s]        164.51 mm3  gantry: 695 W5 bearing005  x  head: Dock Bracket
-[  124.6s]        146.27 mm3  gantry: VC9-JLA  x  head: Dock Bracket
-[  124.6s]        120.59 mm3  gantry: F695 flanged bearing025  x  head: Alternate Bracket v1
-[  124.6s]        120.11 mm3  gantry: F695 flanged bearing025  x  head: Dock Bracket
-[  124.6s]         65.55 mm3  gantry: M3x8 FHCS018  x  head: Alternate Bracket v1
-[  124.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  124.6s]         61.28 mm3  gantry: M3x8 FHCS019  x  head: Alternate Bracket v1
-[  124.6s]         58.55 mm3  gantry: M3x8 FHCS019  x  head: Dock Bracket
-[  124.6s]         52.59 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
-[  124.6s]         31.37 mm3  gantry: F695 flanged bearing024  x  head: Alternate Bracket v1
-[  124.6s]         29.44 mm3  gantry: M3x8 FHCS018  x  head: Dock Bracket
-[  124.6s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
-[  124.6s]         24.22 mm3  gantry: VC9-JLB  x  head: Plate
-[  124.6s]         23.53 mm3  gantry: _LDO 5 mm shaft003  x  head: Alternate Bracket v1
-[  124.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
-[  124.6s]         13.77 mm3  gantry: M5x13 spacer (8mm OD, no threads)003  x  head: Alternate Bracket v1
-[  124.6s]          6.86 mm3  gantry: F695 flanged bearing025  x  head: Plate
-[  124.6s]          0.80 mm3  gantry: M5x0.5mm shim007  x  head: Alternate Bracket v1
-[  124.6s]          0.39 mm3  gantry: F695 flanged bearing025  x  carriage: Clip (1)001
-[  124.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
-[  124.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.02 mm3  gantry: 695 W5 bearing005  x  head: Plate
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s] -- Left / front-right, top: front-right corner, bed top; nozzle (-70.0, 30.5, 380.48) bed dZ +93.32: 21 overlaps
-[  124.6s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[  124.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  124.6s]         52.59 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
-[  124.6s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
-[  124.6s]         24.22 mm3  gantry: VC9-JRB  x  head: Plate
-[  124.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
-[  124.6s]          7.38 mm3  gantry: F695 flanged bearing021  x  head: Plate
-[  124.6s]          6.63 mm3  gantry: F695 flanged bearing018  x  head: Plate
-[  124.6s]          2.87 mm3  gantry: 695 W5 bearing004  x  head: Plate
-[  124.6s]          0.29 mm3  gantry: F695 flanged bearing021  x  carriage: Clip (1)
-[  124.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
-[  124.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s] -- Left / rear-left, top: rear-left corner (Y clamped to reach 375.47), bed top; nozzle (-420.0, 375.5, 380.48) bed dZ +93.32: 40 overlaps
-[  124.6s]        411.06 mm3  gantry: VC9-JLA  x  head: Alternate Bracket v1
-[  124.6s]        242.37 mm3  gantry: VC9-JLB  x  head: Dock Bracket
-[  124.6s]        230.07 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  head: Alternate Bracket v1
-[  124.6s]        230.04 mm3  gantry: VC9-JLB  x  head: Alternate Bracket v1
-[  124.6s]        212.30 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  head: Dock Bracket
-[  124.6s]        193.96 mm3  gantry: F695 flanged bearing022  x  head: Alternate Bracket v1
-[  124.6s]        174.00 mm3  gantry: F695 flanged bearing022  x  head: Dock Bracket
-[  124.6s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[  124.6s]        169.11 mm3  gantry: 695 W5 bearing005  x  head: Alternate Bracket v1
-[  124.6s]        164.51 mm3  gantry: 695 W5 bearing005  x  head: Dock Bracket
-[  124.6s]        146.27 mm3  gantry: VC9-JLA  x  head: Dock Bracket
-[  124.6s]        120.59 mm3  gantry: F695 flanged bearing025  x  head: Alternate Bracket v1
-[  124.6s]        120.11 mm3  gantry: F695 flanged bearing025  x  head: Dock Bracket
-[  124.6s]         65.55 mm3  gantry: M3x8 FHCS018  x  head: Alternate Bracket v1
-[  124.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  124.6s]         61.28 mm3  gantry: M3x8 FHCS019  x  head: Alternate Bracket v1
-[  124.6s]         58.55 mm3  gantry: M3x8 FHCS019  x  head: Dock Bracket
-[  124.6s]         52.59 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
-[  124.6s]         31.37 mm3  gantry: F695 flanged bearing024  x  head: Alternate Bracket v1
-[  124.6s]         29.44 mm3  gantry: M3x8 FHCS018  x  head: Dock Bracket
-[  124.6s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
-[  124.6s]         24.22 mm3  gantry: VC9-JLB  x  head: Plate
-[  124.6s]         23.53 mm3  gantry: _LDO 5 mm shaft003  x  head: Alternate Bracket v1
-[  124.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
-[  124.6s]         13.77 mm3  gantry: M5x13 spacer (8mm OD, no threads)003  x  head: Alternate Bracket v1
-[  124.6s]          6.86 mm3  gantry: F695 flanged bearing025  x  head: Plate
-[  124.6s]          0.80 mm3  gantry: M5x0.5mm shim007  x  head: Alternate Bracket v1
-[  124.6s]          0.39 mm3  gantry: F695 flanged bearing025  x  carriage: Clip (1)001
-[  124.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
-[  124.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.02 mm3  gantry: 695 W5 bearing005  x  head: Plate
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s] -- Left / rear-right, top: rear-right corner (Y clamped to reach 375.47), bed top; nozzle (-70.0, 375.5, 380.48) bed dZ +93.32: 21 overlaps
-[  124.6s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[  124.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  124.6s]         52.59 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
-[  124.6s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
-[  124.6s]         24.22 mm3  gantry: VC9-JRB  x  head: Plate
-[  124.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
-[  124.6s]          7.38 mm3  gantry: F695 flanged bearing021  x  head: Plate
-[  124.6s]          6.63 mm3  gantry: F695 flanged bearing018  x  head: Plate
-[  124.6s]          2.87 mm3  gantry: 695 W5 bearing004  x  head: Plate
-[  124.6s]          0.29 mm3  gantry: F695 flanged bearing021  x  carriage: Clip (1)
-[  124.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
-[  124.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s] -- Left / centre, top: centre corner, bed top; nozzle (-245.0, 205.5, 380.48) bed dZ +93.32: 16 overlaps
-[  124.6s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[  124.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  124.6s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
-[  124.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
-[  124.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
-[  124.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
-[  124.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s] -- Left / dock pickup, top: own dock pickup, bed top; nozzle (-399.0, -45.0, 380.48) bed dZ +93.32: 16 overlaps
-[  124.6s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[  124.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  124.6s]         27.52 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND
-[  124.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
-[  124.6s]         11.61 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001
-[  124.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail front extension (R) - 73.9 mm, printed or cut steel (docking only)
-[  124.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail front extension (L) - 73.9 mm, printed or cut steel (docking only)
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s] -- Left / front-left, bottom: front-left corner, bed bottom; nozzle (-420.0, 30.5, 380.48) bed dZ -239.50: 40 overlaps
-[  124.6s]        411.06 mm3  gantry: VC9-JLA  x  head: Alternate Bracket v1
-[  124.6s]        242.37 mm3  gantry: VC9-JLB  x  head: Dock Bracket
-[  124.6s]        230.07 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  head: Alternate Bracket v1
-[  124.6s]        230.04 mm3  gantry: VC9-JLB  x  head: Alternate Bracket v1
-[  124.6s]        212.30 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  head: Dock Bracket
-[  124.6s]        193.96 mm3  gantry: F695 flanged bearing022  x  head: Alternate Bracket v1
-[  124.6s]        174.00 mm3  gantry: F695 flanged bearing022  x  head: Dock Bracket
-[  124.6s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[  124.6s]        169.11 mm3  gantry: 695 W5 bearing005  x  head: Alternate Bracket v1
-[  124.6s]        164.51 mm3  gantry: 695 W5 bearing005  x  head: Dock Bracket
-[  124.6s]        146.27 mm3  gantry: VC9-JLA  x  head: Dock Bracket
-[  124.6s]        120.59 mm3  gantry: F695 flanged bearing025  x  head: Alternate Bracket v1
-[  124.6s]        120.11 mm3  gantry: F695 flanged bearing025  x  head: Dock Bracket
-[  124.6s]         65.55 mm3  gantry: M3x8 FHCS018  x  head: Alternate Bracket v1
-[  124.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  124.6s]         61.28 mm3  gantry: M3x8 FHCS019  x  head: Alternate Bracket v1
-[  124.6s]         58.55 mm3  gantry: M3x8 FHCS019  x  head: Dock Bracket
-[  124.6s]         52.59 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
-[  124.6s]         31.37 mm3  gantry: F695 flanged bearing024  x  head: Alternate Bracket v1
-[  124.6s]         29.44 mm3  gantry: M3x8 FHCS018  x  head: Dock Bracket
-[  124.6s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
-[  124.6s]         24.22 mm3  gantry: VC9-JLB  x  head: Plate
-[  124.6s]         23.53 mm3  gantry: _LDO 5 mm shaft003  x  head: Alternate Bracket v1
-[  124.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
-[  124.6s]         13.77 mm3  gantry: M5x13 spacer (8mm OD, no threads)003  x  head: Alternate Bracket v1
-[  124.6s]          6.86 mm3  gantry: F695 flanged bearing025  x  head: Plate
-[  124.6s]          0.80 mm3  gantry: M5x0.5mm shim007  x  head: Alternate Bracket v1
-[  124.6s]          0.39 mm3  gantry: F695 flanged bearing025  x  carriage: Clip (1)001
-[  124.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
-[  124.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.02 mm3  gantry: 695 W5 bearing005  x  head: Plate
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  124.6s] -- Left / front-right, bottom: front-right corner, bed bottom; nozzle (-70.0, 30.5, 380.48) bed dZ -239.50: 21 overlaps
-[  124.6s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[  124.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  124.6s]         52.59 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
-[  124.6s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
-[  124.6s]         24.22 mm3  gantry: VC9-JRB  x  head: Plate
-[  124.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
-[  124.6s]          7.38 mm3  gantry: F695 flanged bearing021  x  head: Plate
-[  124.6s]          6.63 mm3  gantry: F695 flanged bearing018  x  head: Plate
-[  124.6s]          2.87 mm3  gantry: 695 W5 bearing004  x  head: Plate
-[  124.6s]          0.29 mm3  gantry: F695 flanged bearing021  x  carriage: Clip (1)
-[  124.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
-[  124.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  124.6s] -- Left / rear-left, bottom: rear-left corner (Y clamped to reach 375.47), bed bottom; nozzle (-420.0, 375.5, 380.48) bed dZ -239.50: 40 overlaps
-[  124.6s]        411.06 mm3  gantry: VC9-JLA  x  head: Alternate Bracket v1
-[  124.6s]        242.37 mm3  gantry: VC9-JLB  x  head: Dock Bracket
-[  124.6s]        230.07 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  head: Alternate Bracket v1
-[  124.6s]        230.04 mm3  gantry: VC9-JLB  x  head: Alternate Bracket v1
-[  124.6s]        212.30 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  head: Dock Bracket
-[  124.6s]        193.96 mm3  gantry: F695 flanged bearing022  x  head: Alternate Bracket v1
-[  124.6s]        174.00 mm3  gantry: F695 flanged bearing022  x  head: Dock Bracket
-[  124.6s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[  124.6s]        169.11 mm3  gantry: 695 W5 bearing005  x  head: Alternate Bracket v1
-[  124.6s]        164.51 mm3  gantry: 695 W5 bearing005  x  head: Dock Bracket
-[  124.6s]        146.27 mm3  gantry: VC9-JLA  x  head: Dock Bracket
-[  124.6s]        120.59 mm3  gantry: F695 flanged bearing025  x  head: Alternate Bracket v1
-[  124.6s]        120.11 mm3  gantry: F695 flanged bearing025  x  head: Dock Bracket
-[  124.6s]         65.55 mm3  gantry: M3x8 FHCS018  x  head: Alternate Bracket v1
-[  124.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  124.6s]         61.28 mm3  gantry: M3x8 FHCS019  x  head: Alternate Bracket v1
-[  124.6s]         58.55 mm3  gantry: M3x8 FHCS019  x  head: Dock Bracket
-[  124.6s]         52.59 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
-[  124.6s]         31.37 mm3  gantry: F695 flanged bearing024  x  head: Alternate Bracket v1
-[  124.6s]         29.44 mm3  gantry: M3x8 FHCS018  x  head: Dock Bracket
-[  124.6s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
-[  124.6s]         24.22 mm3  gantry: VC9-JLB  x  head: Plate
-[  124.6s]         23.53 mm3  gantry: _LDO 5 mm shaft003  x  head: Alternate Bracket v1
-[  124.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
-[  124.6s]         13.77 mm3  gantry: M5x13 spacer (8mm OD, no threads)003  x  head: Alternate Bracket v1
-[  124.6s]          6.86 mm3  gantry: F695 flanged bearing025  x  head: Plate
-[  124.6s]          0.80 mm3  gantry: M5x0.5mm shim007  x  head: Alternate Bracket v1
-[  124.6s]          0.39 mm3  gantry: F695 flanged bearing025  x  carriage: Clip (1)001
-[  124.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
-[  124.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.02 mm3  gantry: 695 W5 bearing005  x  head: Plate
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  124.6s] -- Left / rear-right, bottom: rear-right corner (Y clamped to reach 375.47), bed bottom; nozzle (-70.0, 375.5, 380.48) bed dZ -239.50: 21 overlaps
-[  124.6s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[  124.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  124.6s]         52.59 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
-[  124.6s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
-[  124.6s]         24.22 mm3  gantry: VC9-JRB  x  head: Plate
-[  124.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
-[  124.6s]          7.38 mm3  gantry: F695 flanged bearing021  x  head: Plate
-[  124.6s]          6.63 mm3  gantry: F695 flanged bearing018  x  head: Plate
-[  124.6s]          2.87 mm3  gantry: 695 W5 bearing004  x  head: Plate
-[  124.6s]          0.29 mm3  gantry: F695 flanged bearing021  x  carriage: Clip (1)
-[  124.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
-[  124.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  124.6s] -- Left / centre, bottom: centre corner, bed bottom; nozzle (-245.0, 205.5, 380.48) bed dZ -239.50: 16 overlaps
-[  124.6s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[  124.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  124.6s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
-[  124.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
-[  124.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
-[  124.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
-[  124.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  124.6s] -- Left / dock pickup, bottom: own dock pickup, bed bottom; nozzle (-399.0, -45.0, 380.48) bed dZ -239.50: 16 overlaps
-[  124.6s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[  124.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  124.6s]         27.52 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND
-[  124.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
-[  124.6s]         11.61 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001
-[  124.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail front extension (R) - 73.9 mm, printed or cut steel (docking only)
-[  124.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail front extension (L) - 73.9 mm, printed or cut steel (docking only)
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  124.6s] -- Left / model: saved model pose (baseline: nothing moved, both heads docked);: 16 overlaps
-[  124.6s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[  124.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)
-[  124.6s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND
-[  124.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)
-[  124.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001
-[  124.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel
-[  124.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037
-[  124.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034
-[  124.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029
-[  124.6s] clashlib: 10 workers on vt350-lite-22.FCStd, 82 poses, job dir /tmp/clashlib-d7xupe2g
-[  277.3s] clashlib: done in 152.7s (load <= 11.5s, check <= 140.6s); 10647372 pair-poses, 1707 box hits, 693 overlaps > 0.01 mm3, 0 errors
-[  277.3s] -- Left X scan, left side (nozzle X, Y at the centre; overlaps not already in the saved model):
-[  277.3s]    X  -420.0: 25 overlaps,  2782.76 mm3; moving parts: Alternate Bracket v1, COMPOUND, Clip (1)001, Dock Bracket, Plate
-[  277.3s]    X  -419.0: 23 overlaps,  2646.21 mm3; moving parts: Alternate Bracket v1, COMPOUND, Dock Bracket, Plate
-[  277.3s]    X  -418.0: 20 overlaps,  2527.13 mm3; moving parts: Alternate Bracket v1, Dock Bracket
-[  277.3s]    X  -417.0: 20 overlaps,  2408.93 mm3; moving parts: Alternate Bracket v1, Dock Bracket
-[  277.3s]    X  -416.0: 19 overlaps,  2166.50 mm3; moving parts: Alternate Bracket v1, Dock Bracket
-[  277.3s]    X  -415.0: 19 overlaps,  1852.36 mm3; moving parts: Alternate Bracket v1, Dock Bracket
-[  277.3s]    X  -414.0: 17 overlaps,  1585.88 mm3; moving parts: Alternate Bracket v1, Dock Bracket
-[  277.3s]    X  -413.0: 17 overlaps,  1295.92 mm3; moving parts: Alternate Bracket v1, Dock Bracket
-[  277.3s]    X  -412.0: 17 overlaps,   946.94 mm3; moving parts: Alternate Bracket v1, Dock Bracket
-[  277.3s]    X  -411.0: 12 overlaps,   664.46 mm3; moving parts: Alternate Bracket v1, Dock Bracket
-[  277.3s]    X  -410.0: 10 overlaps,   448.82 mm3; moving parts: Alternate Bracket v1, Dock Bracket
-[  277.3s]    X  -409.0: 10 overlaps,   276.59 mm3; moving parts: Alternate Bracket v1, Dock Bracket
-[  277.3s]    X  -408.0: 10 overlaps,   121.25 mm3; moving parts: Alternate Bracket v1, Dock Bracket
-[  277.3s]    X  -407.0:  8 overlaps,    17.49 mm3; moving parts: Alternate Bracket v1, Dock Bracket
-[  277.3s]    X  -406.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -405.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -404.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -403.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -402.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -401.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -400.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -399.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -398.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -397.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -396.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -395.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -394.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -393.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -392.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -391.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -390.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -389.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -388.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -387.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -386.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -385.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -384.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -383.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -382.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -381.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -380.0:  0 overlaps,     0.00 mm3
-[  277.3s]    Left head, left side, std bracket (Dock Bracket + Plate Back): first nozzle X with no new overlap -406.0 (print square edge -420.0)
-[  277.3s]    Left head, left side, Alternate Bracket: first nozzle X with no new overlap -406.0 (print square edge -420.0)
-[  277.3s] -- Left X scan, right side (nozzle X, Y at the centre; overlaps not already in the saved model):
-[  277.3s]    X   -70.0:  6 overlaps,    93.96 mm3; moving parts: COMPOUND, Clip (1), Plate
-[  277.3s]    X   -71.0:  4 overlaps,    19.19 mm3; moving parts: COMPOUND, Plate
-[  277.3s]    X   -72.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -73.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -74.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -75.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -76.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -77.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -78.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -79.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -80.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -81.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -82.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -83.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -84.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -85.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -86.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -87.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -88.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -89.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -90.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -91.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -92.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -93.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -94.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -95.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -96.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -97.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -98.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X   -99.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -100.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -101.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -102.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -103.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -104.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -105.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -106.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -107.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -108.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -109.0:  0 overlaps,     0.00 mm3
-[  277.3s]    X  -110.0:  0 overlaps,     0.00 mm3
-[  277.3s]    Left head, right side, std bracket (Dock Bracket + Plate Back): first nozzle X with no new overlap -72.0 (print square edge -70.0)
-[  277.3s]    Left head, right side, Alternate Bracket: first nozzle X with no new overlap -72.0 (print square edge -70.0)
-[  277.3s] clashlib: 4 workers on vt350-lite-22.FCStd, 1 poses, job dir /tmp/clashlib-3gmzee10
-[  295.0s] clashlib: done in 17.7s (load <= 6.0s, check <= 11.2s); 447 pair-poses, 65 box hits, 6 overlaps > 0.01 mm3, 0 errors
-[  295.0s] -- Left tool-internal (head vs MadMax plate and each bracket variant; std = Dock Bracket + Plate Back, alt = Alternate Bracket):
-[  295.0s]         54.66 mm3  head: Crossbow - Lever  x  std: Dock Bracket
-[  295.0s]         53.73 mm3  head: Crossbow - Lever  x  alt: Alternate Bracket v1
-[  295.0s]         32.20 mm3  head: Hex socket head cap screw M3x0.50 x 015  x  alt: Alternate Bracket v1
-[  295.0s]          7.61 mm3  head: Hex socket head cap screw M3x0.50 x 014  x  plate: Plate
-[  295.0s]          7.61 mm3  head: Hex socket head cap screw M3x0.50 x 015  x  plate: Plate
-[  295.0s]          0.62 mm3  plate: Plate  x  alt: Alternate Bracket v1
-[  295.0s] clashlib: 10 workers on vt350-lite-22.FCStd, 13 poses, job dir /tmp/clashlib-47m3niio
-[  372.6s] clashlib: done in 77.6s (load <= 11.5s, check <= 65.2s); 2550613 pair-poses, 1266 box hits, 328 overlaps > 0.01 mm3, 0 errors
-[  372.6s] === Right head on the carriage (Left head parked in its dock): 328 overlaps, 0 common() errors
-[  372.6s] -- Right / front-left, top: front-left corner, bed top; nozzle (-420.0, 30.5, 380.48) bed dZ +93.32: 20 overlaps
-[  372.6s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[  372.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  372.6s]         52.03 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
-[  372.6s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
-[  372.6s]         24.22 mm3  gantry: VC9-JLB  x  head: Plate(Mirror)
-[  372.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
-[  372.6s]          6.86 mm3  gantry: F695 flanged bearing025  x  head: Plate(Mirror)
-[  372.6s]          0.38 mm3  gantry: F695 flanged bearing025  x  carriage: Clip (1)001
-[  372.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
-[  372.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.02 mm3  gantry: 695 W5 bearing005  x  head: Plate(Mirror)
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s] -- Right / front-right, top: front-right corner, bed top; nozzle (-70.0, 30.5, 380.48) bed dZ +93.32: 42 overlaps
-[  372.6s]        411.06 mm3  gantry: VC9-JRA  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        242.37 mm3  gantry: VC9-JRB  x  head: Dock Bracket(Mirror)
-[  372.6s]        233.75 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        230.04 mm3  gantry: VC9-JRB  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        208.47 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  head: Dock Bracket(Mirror)
-[  372.6s]        181.29 mm3  gantry: F695 flanged bearing018  x  head: Dock Bracket(Mirror)
-[  372.6s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[  372.6s]        168.77 mm3  gantry: F695 flanged bearing018  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        146.27 mm3  gantry: VC9-JRA  x  head: Dock Bracket(Mirror)
-[  372.6s]        125.84 mm3  gantry: 695 W5 bearing004  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        123.80 mm3  gantry: 695 W5 bearing004  x  head: Dock Bracket(Mirror)
-[  372.6s]        104.34 mm3  gantry: F695 flanged bearing021  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        102.76 mm3  gantry: F695 flanged bearing021  x  head: Dock Bracket(Mirror)
-[  372.6s]         65.55 mm3  gantry: M3x8 FHCS016  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  372.6s]         61.28 mm3  gantry: M3x8 FHCS017  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]         58.55 mm3  gantry: M3x8 FHCS017  x  head: Dock Bracket(Mirror)
-[  372.6s]         53.15 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
-[  372.6s]         31.37 mm3  gantry: F695 flanged bearing019  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]         29.44 mm3  gantry: M3x8 FHCS016  x  head: Dock Bracket(Mirror)
-[  372.6s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
-[  372.6s]         24.44 mm3  gantry: _LDO 5 mm shaft002  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]         24.22 mm3  gantry: VC9-JRB  x  head: Plate(Mirror)
-[  372.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
-[  372.6s]         21.43 mm3  gantry: _GT2 20T toothed core006  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]          8.56 mm3  gantry: _Pulley flange 15x10x1.5mm008  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]          7.38 mm3  gantry: F695 flanged bearing021  x  head: Plate(Mirror)
-[  372.6s]          6.63 mm3  gantry: F695 flanged bearing018  x  head: Plate(Mirror)
-[  372.6s]          2.87 mm3  gantry: 695 W5 bearing004  x  head: Plate(Mirror)
-[  372.6s]          0.57 mm3  gantry: M5 disc spring010  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]          0.29 mm3  gantry: F695 flanged bearing021  x  carriage: Clip (1)
-[  372.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
-[  372.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s] -- Right / rear-left, top: rear-left corner (Y clamped to reach 375.47), bed top; nozzle (-420.0, 375.5, 380.48) bed dZ +93.32: 20 overlaps
-[  372.6s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[  372.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  372.6s]         52.03 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
-[  372.6s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
-[  372.6s]         24.22 mm3  gantry: VC9-JLB  x  head: Plate(Mirror)
-[  372.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
-[  372.6s]          6.86 mm3  gantry: F695 flanged bearing025  x  head: Plate(Mirror)
-[  372.6s]          0.38 mm3  gantry: F695 flanged bearing025  x  carriage: Clip (1)001
-[  372.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
-[  372.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.02 mm3  gantry: 695 W5 bearing005  x  head: Plate(Mirror)
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s] -- Right / rear-right, top: rear-right corner (Y clamped to reach 375.47), bed top; nozzle (-70.0, 375.5, 380.48) bed dZ +93.32: 42 overlaps
-[  372.6s]        411.06 mm3  gantry: VC9-JRA  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        242.37 mm3  gantry: VC9-JRB  x  head: Dock Bracket(Mirror)
-[  372.6s]        233.75 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        230.04 mm3  gantry: VC9-JRB  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        208.47 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  head: Dock Bracket(Mirror)
-[  372.6s]        181.29 mm3  gantry: F695 flanged bearing018  x  head: Dock Bracket(Mirror)
-[  372.6s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[  372.6s]        168.77 mm3  gantry: F695 flanged bearing018  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        146.27 mm3  gantry: VC9-JRA  x  head: Dock Bracket(Mirror)
-[  372.6s]        125.84 mm3  gantry: 695 W5 bearing004  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        123.80 mm3  gantry: 695 W5 bearing004  x  head: Dock Bracket(Mirror)
-[  372.6s]        104.34 mm3  gantry: F695 flanged bearing021  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        102.76 mm3  gantry: F695 flanged bearing021  x  head: Dock Bracket(Mirror)
-[  372.6s]         65.55 mm3  gantry: M3x8 FHCS016  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  372.6s]         61.28 mm3  gantry: M3x8 FHCS017  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]         58.55 mm3  gantry: M3x8 FHCS017  x  head: Dock Bracket(Mirror)
-[  372.6s]         53.15 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
-[  372.6s]         31.37 mm3  gantry: F695 flanged bearing019  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]         29.44 mm3  gantry: M3x8 FHCS016  x  head: Dock Bracket(Mirror)
-[  372.6s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
-[  372.6s]         24.44 mm3  gantry: _LDO 5 mm shaft002  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]         24.22 mm3  gantry: VC9-JRB  x  head: Plate(Mirror)
-[  372.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
-[  372.6s]         21.43 mm3  gantry: _GT2 20T toothed core006  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]          8.56 mm3  gantry: _Pulley flange 15x10x1.5mm008  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]          7.38 mm3  gantry: F695 flanged bearing021  x  head: Plate(Mirror)
-[  372.6s]          6.63 mm3  gantry: F695 flanged bearing018  x  head: Plate(Mirror)
-[  372.6s]          2.87 mm3  gantry: 695 W5 bearing004  x  head: Plate(Mirror)
-[  372.6s]          0.57 mm3  gantry: M5 disc spring010  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]          0.29 mm3  gantry: F695 flanged bearing021  x  carriage: Clip (1)
-[  372.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
-[  372.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s] -- Right / centre, top: centre corner, bed top; nozzle (-245.0, 205.5, 380.48) bed dZ +93.32: 16 overlaps
-[  372.6s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[  372.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  372.6s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
-[  372.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
-[  372.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
-[  372.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
-[  372.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s] -- Right / dock pickup, top: own dock pickup, bed top; nozzle (-92.0, -45.0, 380.48) bed dZ +93.32: 16 overlaps
-[  372.6s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[  372.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  372.6s]         24.89 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND
-[  372.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
-[  372.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
-[  372.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail front extension (R) - 73.9 mm, printed or cut steel (docking only)
-[  372.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail front extension (L) - 73.9 mm, printed or cut steel (docking only)
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s] -- Right / front-left, bottom: front-left corner, bed bottom; nozzle (-420.0, 30.5, 380.48) bed dZ -239.50: 20 overlaps
-[  372.6s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[  372.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  372.6s]         52.03 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
-[  372.6s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
-[  372.6s]         24.22 mm3  gantry: VC9-JLB  x  head: Plate(Mirror)
-[  372.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
-[  372.6s]          6.86 mm3  gantry: F695 flanged bearing025  x  head: Plate(Mirror)
-[  372.6s]          0.38 mm3  gantry: F695 flanged bearing025  x  carriage: Clip (1)001
-[  372.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
-[  372.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.02 mm3  gantry: 695 W5 bearing005  x  head: Plate(Mirror)
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  372.6s] -- Right / front-right, bottom: front-right corner, bed bottom; nozzle (-70.0, 30.5, 380.48) bed dZ -239.50: 42 overlaps
-[  372.6s]        411.06 mm3  gantry: VC9-JRA  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        242.37 mm3  gantry: VC9-JRB  x  head: Dock Bracket(Mirror)
-[  372.6s]        233.75 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        230.04 mm3  gantry: VC9-JRB  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        208.47 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  head: Dock Bracket(Mirror)
-[  372.6s]        181.29 mm3  gantry: F695 flanged bearing018  x  head: Dock Bracket(Mirror)
-[  372.6s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[  372.6s]        168.77 mm3  gantry: F695 flanged bearing018  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        146.27 mm3  gantry: VC9-JRA  x  head: Dock Bracket(Mirror)
-[  372.6s]        125.84 mm3  gantry: 695 W5 bearing004  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        123.80 mm3  gantry: 695 W5 bearing004  x  head: Dock Bracket(Mirror)
-[  372.6s]        104.34 mm3  gantry: F695 flanged bearing021  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        102.76 mm3  gantry: F695 flanged bearing021  x  head: Dock Bracket(Mirror)
-[  372.6s]         65.55 mm3  gantry: M3x8 FHCS016  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  372.6s]         61.28 mm3  gantry: M3x8 FHCS017  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]         58.55 mm3  gantry: M3x8 FHCS017  x  head: Dock Bracket(Mirror)
-[  372.6s]         53.15 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
-[  372.6s]         31.37 mm3  gantry: F695 flanged bearing019  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]         29.44 mm3  gantry: M3x8 FHCS016  x  head: Dock Bracket(Mirror)
-[  372.6s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
-[  372.6s]         24.44 mm3  gantry: _LDO 5 mm shaft002  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]         24.22 mm3  gantry: VC9-JRB  x  head: Plate(Mirror)
-[  372.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
-[  372.6s]         21.43 mm3  gantry: _GT2 20T toothed core006  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]          8.56 mm3  gantry: _Pulley flange 15x10x1.5mm008  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]          7.38 mm3  gantry: F695 flanged bearing021  x  head: Plate(Mirror)
-[  372.6s]          6.63 mm3  gantry: F695 flanged bearing018  x  head: Plate(Mirror)
-[  372.6s]          2.87 mm3  gantry: 695 W5 bearing004  x  head: Plate(Mirror)
-[  372.6s]          0.57 mm3  gantry: M5 disc spring010  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]          0.29 mm3  gantry: F695 flanged bearing021  x  carriage: Clip (1)
-[  372.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
-[  372.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  372.6s] -- Right / rear-left, bottom: rear-left corner (Y clamped to reach 375.47), bed bottom; nozzle (-420.0, 375.5, 380.48) bed dZ -239.50: 20 overlaps
-[  372.6s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[  372.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  372.6s]         52.03 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
-[  372.6s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
-[  372.6s]         24.22 mm3  gantry: VC9-JLB  x  head: Plate(Mirror)
-[  372.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
-[  372.6s]          6.86 mm3  gantry: F695 flanged bearing025  x  head: Plate(Mirror)
-[  372.6s]          0.38 mm3  gantry: F695 flanged bearing025  x  carriage: Clip (1)001
-[  372.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
-[  372.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.02 mm3  gantry: 695 W5 bearing005  x  head: Plate(Mirror)
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  372.6s] -- Right / rear-right, bottom: rear-right corner (Y clamped to reach 375.47), bed bottom; nozzle (-70.0, 375.5, 380.48) bed dZ -239.50: 42 overlaps
-[  372.6s]        411.06 mm3  gantry: VC9-JRA  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        242.37 mm3  gantry: VC9-JRB  x  head: Dock Bracket(Mirror)
-[  372.6s]        233.75 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        230.04 mm3  gantry: VC9-JRB  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        208.47 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  head: Dock Bracket(Mirror)
-[  372.6s]        181.29 mm3  gantry: F695 flanged bearing018  x  head: Dock Bracket(Mirror)
-[  372.6s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[  372.6s]        168.77 mm3  gantry: F695 flanged bearing018  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        146.27 mm3  gantry: VC9-JRA  x  head: Dock Bracket(Mirror)
-[  372.6s]        125.84 mm3  gantry: 695 W5 bearing004  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        123.80 mm3  gantry: 695 W5 bearing004  x  head: Dock Bracket(Mirror)
-[  372.6s]        104.34 mm3  gantry: F695 flanged bearing021  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]        102.76 mm3  gantry: F695 flanged bearing021  x  head: Dock Bracket(Mirror)
-[  372.6s]         65.55 mm3  gantry: M3x8 FHCS016  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  372.6s]         61.28 mm3  gantry: M3x8 FHCS017  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]         58.55 mm3  gantry: M3x8 FHCS017  x  head: Dock Bracket(Mirror)
-[  372.6s]         53.15 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
-[  372.6s]         31.37 mm3  gantry: F695 flanged bearing019  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]         29.44 mm3  gantry: M3x8 FHCS016  x  head: Dock Bracket(Mirror)
-[  372.6s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
-[  372.6s]         24.44 mm3  gantry: _LDO 5 mm shaft002  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]         24.22 mm3  gantry: VC9-JRB  x  head: Plate(Mirror)
-[  372.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
-[  372.6s]         21.43 mm3  gantry: _GT2 20T toothed core006  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]          8.56 mm3  gantry: _Pulley flange 15x10x1.5mm008  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]          7.38 mm3  gantry: F695 flanged bearing021  x  head: Plate(Mirror)
-[  372.6s]          6.63 mm3  gantry: F695 flanged bearing018  x  head: Plate(Mirror)
-[  372.6s]          2.87 mm3  gantry: 695 W5 bearing004  x  head: Plate(Mirror)
-[  372.6s]          0.57 mm3  gantry: M5 disc spring010  x  head: Alternate Bracket v1(Mirror)
-[  372.6s]          0.29 mm3  gantry: F695 flanged bearing021  x  carriage: Clip (1)
-[  372.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
-[  372.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  372.6s] -- Right / centre, bottom: centre corner, bed bottom; nozzle (-245.0, 205.5, 380.48) bed dZ -239.50: 16 overlaps
-[  372.6s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[  372.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  372.6s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
-[  372.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
-[  372.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
-[  372.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
-[  372.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  372.6s] -- Right / dock pickup, bottom: own dock pickup, bed bottom; nozzle (-92.0, -45.0, 380.48) bed dZ -239.50: 16 overlaps
-[  372.6s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[  372.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  372.6s]         24.89 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND
-[  372.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
-[  372.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
-[  372.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail front extension (R) - 73.9 mm, printed or cut steel (docking only)
-[  372.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail front extension (L) - 73.9 mm, printed or cut steel (docking only)
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  372.6s] -- Right / model: saved model pose (baseline: nothing moved, both heads docked);: 16 overlaps
-[  372.6s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[  372.6s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)
-[  372.6s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND
-[  372.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)
-[  372.6s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001
-[  372.6s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel
-[  372.6s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037
-[  372.6s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034
-[  372.6s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029
-[  372.6s] clashlib: 10 workers on vt350-lite-22.FCStd, 82 poses, job dir /tmp/clashlib-56483gi_
-[  505.2s] clashlib: done in 132.6s (load <= 11.4s, check <= 120.9s); 10647372 pair-poses, 1707 box hits, 705 overlaps > 0.01 mm3, 0 errors
-[  505.2s] -- Right X scan, left side (nozzle X, Y at the centre; overlaps not already in the saved model):
-[  505.2s]    X  -420.0:  5 overlaps,    83.51 mm3; moving parts: COMPOUND, Clip (1)001, Plate(Mirror)
-[  505.2s]    X  -419.0:  3 overlaps,    18.14 mm3; moving parts: COMPOUND, Plate(Mirror)
-[  505.2s]    X  -418.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -417.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -416.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -415.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -414.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -413.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -412.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -411.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -410.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -409.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -408.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -407.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -406.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -405.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -404.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -403.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -402.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -401.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -400.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -399.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -398.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -397.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -396.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -395.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -394.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -393.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -392.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -391.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -390.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -389.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -388.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -387.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -386.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -385.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -384.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -383.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -382.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -381.0:  0 overlaps,     0.00 mm3
-[  505.2s]    X  -380.0:  0 overlaps,     0.00 mm3
-[  505.2s]    Right head, left side, std bracket (Dock Bracket + Plate Back): first nozzle X with no new overlap -418.0 (print square edge -420.0)
-[  505.2s]    Right head, left side, Alternate Bracket: first nozzle X with no new overlap -418.0 (print square edge -420.0)
-[  505.3s] -- Right X scan, right side (nozzle X, Y at the centre; overlaps not already in the saved model):
-[  505.3s]    X   -70.0: 27 overlaps,  2674.52 mm3; moving parts: Alternate Bracket v1(Mirror), COMPOUND, Clip (1), Dock Bracket(Mirror), Plate(Mirror)
-[  505.3s]    X   -71.0: 25 overlaps,  2576.62 mm3; moving parts: Alternate Bracket v1(Mirror), COMPOUND, Dock Bracket(Mirror), Plate(Mirror)
-[  505.3s]    X   -72.0: 21 overlaps,  2479.75 mm3; moving parts: Alternate Bracket v1(Mirror), Dock Bracket(Mirror)
-[  505.3s]    X   -73.0: 21 overlaps,  2380.22 mm3; moving parts: Alternate Bracket v1(Mirror), Dock Bracket(Mirror)
-[  505.3s]    X   -74.0: 20 overlaps,  2178.61 mm3; moving parts: Alternate Bracket v1(Mirror), Dock Bracket(Mirror)
-[  505.3s]    X   -75.0: 20 overlaps,  1910.90 mm3; moving parts: Alternate Bracket v1(Mirror), Dock Bracket(Mirror)
-[  505.3s]    X   -76.0: 20 overlaps,  1676.34 mm3; moving parts: Alternate Bracket v1(Mirror), Dock Bracket(Mirror)
-[  505.3s]    X   -77.0: 19 overlaps,  1398.61 mm3; moving parts: Alternate Bracket v1(Mirror), Dock Bracket(Mirror)
-[  505.3s]    X   -78.0: 18 overlaps,  1029.65 mm3; moving parts: Alternate Bracket v1(Mirror), Dock Bracket(Mirror)
-[  505.3s]    X   -79.0: 12 overlaps,   723.28 mm3; moving parts: Alternate Bracket v1(Mirror), Dock Bracket(Mirror)
-[  505.3s]    X   -80.0: 10 overlaps,   477.64 mm3; moving parts: Alternate Bracket v1(Mirror), Dock Bracket(Mirror)
-[  505.3s]    X   -81.0: 10 overlaps,   282.46 mm3; moving parts: Alternate Bracket v1(Mirror), Dock Bracket(Mirror)
-[  505.3s]    X   -82.0: 10 overlaps,   115.09 mm3; moving parts: Alternate Bracket v1(Mirror), Dock Bracket(Mirror)
-[  505.3s]    X   -83.0:  8 overlaps,    16.88 mm3; moving parts: Alternate Bracket v1(Mirror), Dock Bracket(Mirror)
-[  505.3s]    X   -84.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X   -85.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X   -86.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X   -87.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X   -88.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X   -89.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X   -90.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X   -91.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X   -92.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X   -93.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X   -94.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X   -95.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X   -96.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X   -97.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X   -98.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X   -99.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X  -100.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X  -101.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X  -102.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X  -103.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X  -104.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X  -105.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X  -106.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X  -107.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X  -108.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X  -109.0:  0 overlaps,     0.00 mm3
-[  505.3s]    X  -110.0:  0 overlaps,     0.00 mm3
-[  505.3s]    Right head, right side, std bracket (Dock Bracket + Plate Back): first nozzle X with no new overlap -84.0 (print square edge -70.0)
-[  505.3s]    Right head, right side, Alternate Bracket: first nozzle X with no new overlap -84.0 (print square edge -70.0)
-[  505.3s] clashlib: 4 workers on vt350-lite-22.FCStd, 1 poses, job dir /tmp/clashlib-srak2qpl
-[  522.7s] clashlib: done in 17.5s (load <= 6.1s, check <= 10.8s); 447 pair-poses, 63 box hits, 4 overlaps > 0.01 mm3, 0 errors
-[  522.7s] -- Right tool-internal (head vs MadMax plate and each bracket variant; std = Dock Bracket + Plate Back, alt = Alternate Bracket):
-[  522.7s]         32.23 mm3  head: Hex socket head cap screw M3x0.50 x 018  x  alt: Alternate Bracket v1(Mirror)
-[  522.7s]          7.61 mm3  head: Hex socket head cap screw M3x0.50 x 018  x  plate: Plate(Mirror)
-[  522.7s]          7.61 mm3  head: Hex socket head cap screw M3x0.50 x 019  x  plate: Plate(Mirror)
-[  522.7s]          0.62 mm3  plate: Plate(Mirror)  x  alt: Alternate Bracket v1(Mirror)
-[  522.7s] timing: Left: wall 72.4s, 2550613 pair-poses, 1266 box hits; Left X scan: wall 152.7s, 10647372 pair-poses, 1707 box hits; Right: wall 77.6s, 2550613 pair-poses, 1266 box hits; Right X scan: wall 132.6s, 10647372 pair-poses, 1707 box hits
-[  522.7s] done (read-only, nothing saved)
+[   46.4s] model /home/dan/Documents/VT350/vt350-lite-24.FCStd (read-only)
+[   46.4s] Beacon 'Beacon RevH Normal (Beacon CAD, MIT)' rides with the carriage
+[   46.4s] groups: bed 115, gantry 58, carriage 5, Left head 113, Right head 113 solids; excluded 34; 903 leaves
+[   46.4s] Left: pickup carriage offset (-154.000, -262.500, 0.315) from the gantry carriage; same part: volume diff 0.000 mm3, box residual 0.000 mm
+[   46.4s]    NOTE Left: the dock expects the carriage +0.315 mm off the gantry carriage's Z
+[   46.4s] Right: pickup carriage offset (153.013, -262.500, 0.315) from the gantry carriage; same part: volume diff 0.000 mm3, box residual 0.004 mm
+[   46.4s]    NOTE Right: the dock expects the carriage +0.315 mm off the gantry carriage's Z
+[   46.4s] Left: docked nozzle tip (-399.00, -32.46, 380.80)
+[   46.4s] Right: docked nozzle tip (-92.00, -32.46, 380.80)
+[   46.4s] bed bottom: dZ -239.50 (M3 Locknut002 lands on backbone-350 v2, bounding-box estimate); next: -239.50 M3x12-Screw009 on backbone-350 v2; -239.50 M3x12-Screw008 on backbone-350 v2; -239.50 M3 Locknut003 on backbone-350 v2
+[   46.4s] Left carried: nozzle tip Z 380.48; bed top dZ +93.32 (magnet top 287.16 -> 380.48); nozzle Y reach -47.15 .. 375.47 (print square Y 30.5 .. 380.5)
+[   46.4s] Right carried: nozzle tip Z 380.49; bed top dZ +93.32 (magnet top 287.16 -> 380.49); nozzle Y reach -47.15 .. 375.47 (print square Y 30.5 .. 380.5)
+[   46.4s] excluded from every check: docks' carriage copies, the belts' side runs (outside the XY joints' Y band), the Z drag chain, the carried head's own bowden tube; the Beacon's USB cable is not in the model
+[   46.4s] belts: clipped to X -480.0..-10.0, Y 243.2..294.5 and moved with the gantry; not checked against the gantry or carriage
+[   46.4s] clashlib: 10 workers on vt350-lite-24.FCStd, 15 poses, job dir /tmp/clashlib-m1xvru10
+[  136.7s] clashlib: done in 90.3s (load <= 10.5s, check <= 78.8s); 2948700 pair-poses, 1434 box hits, 282 overlaps > 0.01 mm3, 0 errors
+[  136.7s] === Left head on the carriage (Right head parked in its dock): 282 overlaps, 0 common() errors
+[  136.7s] -- Left / front-left, top: front-left corner, bed top; nozzle (-420.0, 30.5, 380.48) bed dZ +93.32: 20 overlaps
+[  136.7s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  136.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  136.7s]         52.59 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
+[  136.7s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
+[  136.7s]         24.22 mm3  gantry: VC9-JLB  x  head: Plate
+[  136.7s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
+[  136.7s]          6.86 mm3  gantry: F695 flanged bearing025  x  head: Plate
+[  136.7s]          0.39 mm3  gantry: F695 flanged bearing025  x  carriage: Clip (1)001
+[  136.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
+[  136.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.02 mm3  gantry: 695 W5 bearing005  x  head: Plate
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s] -- Left / front-right, top: front-right corner, bed top; nozzle (-70.0, 30.5, 380.48) bed dZ +93.32: 22 overlaps
+[  136.7s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[  136.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  136.7s]         61.14 mm3  head: HubHousing V5 With Logo (1)  x  fixed: Nitehawk-36_V1.4 3D Model v001 (simplified box)
+[  136.7s]         52.59 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
+[  136.7s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
+[  136.7s]         24.22 mm3  gantry: VC9-JRB  x  head: Plate
+[  136.7s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
+[  136.7s]          7.38 mm3  gantry: F695 flanged bearing021  x  head: Plate
+[  136.7s]          6.63 mm3  gantry: F695 flanged bearing018  x  head: Plate
+[  136.7s]          2.87 mm3  gantry: 695 W5 bearing004  x  head: Plate
+[  136.7s]          0.29 mm3  gantry: F695 flanged bearing021  x  carriage: Clip (1)
+[  136.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
+[  136.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s] -- Left / rear-left, top: rear-left corner (Y clamped to reach 375.47), bed top; nozzle (-420.0, 375.5, 380.48) bed dZ +93.32: 20 overlaps
+[  136.7s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  136.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  136.7s]         52.59 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
+[  136.7s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
+[  136.7s]         24.22 mm3  gantry: VC9-JLB  x  head: Plate
+[  136.7s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
+[  136.7s]          6.86 mm3  gantry: F695 flanged bearing025  x  head: Plate
+[  136.7s]          0.39 mm3  gantry: F695 flanged bearing025  x  carriage: Clip (1)001
+[  136.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
+[  136.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.02 mm3  gantry: 695 W5 bearing005  x  head: Plate
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s] -- Left / rear-right, top: rear-right corner (Y clamped to reach 375.47), bed top; nozzle (-70.0, 375.5, 380.48) bed dZ +93.32: 21 overlaps
+[  136.7s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[  136.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  136.7s]         52.59 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
+[  136.7s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
+[  136.7s]         24.22 mm3  gantry: VC9-JRB  x  head: Plate
+[  136.7s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
+[  136.7s]          7.38 mm3  gantry: F695 flanged bearing021  x  head: Plate
+[  136.7s]          6.63 mm3  gantry: F695 flanged bearing018  x  head: Plate
+[  136.7s]          2.87 mm3  gantry: 695 W5 bearing004  x  head: Plate
+[  136.7s]          0.29 mm3  gantry: F695 flanged bearing021  x  carriage: Clip (1)
+[  136.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
+[  136.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s] -- Left / centre, top: centre corner, bed top; nozzle (-245.0, 205.5, 380.48) bed dZ +93.32: 16 overlaps
+[  136.7s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  136.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  136.7s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
+[  136.7s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
+[  136.7s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
+[  136.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
+[  136.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s] -- Left / dock pickup, top: own dock pickup (parked), bed top; nozzle (-399.0, -32.5, 380.48) bed dZ +93.32: 16 overlaps
+[  136.7s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  136.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  136.7s]         27.52 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND
+[  136.7s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
+[  136.7s]         11.61 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001
+[  136.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail front extension (L) - 73.9 mm, printed or cut steel (docking only)
+[  136.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail front extension (R) - 73.9 mm, printed or cut steel (docking only)
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s] -- Left / dock pickup at the large opening, top: own dock pickup slid 6.0 mm forward to the keyslots' large opening, bed top; nozzle (-399.0, -38.5, 380.48) bed dZ +93.32: 18 overlaps
+[  136.7s]        482.25 mm3  belt: GT2 9mm belt, upper (Monolith 2WD)  x  fixed: Plate(Mirror)
+[  136.7s]        319.43 mm3  belt: GT2 9mm belt, lower (Monolith 2WD)  x  fixed: Plate(Mirror)
+[  136.7s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  136.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  136.7s]         27.52 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND
+[  136.7s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
+[  136.7s]         11.61 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001
+[  136.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail front extension (R) - 73.9 mm, printed or cut steel (docking only)
+[  136.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail front extension (L) - 73.9 mm, printed or cut steel (docking only)
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s] -- Left / front-left, bottom: front-left corner, bed bottom; nozzle (-420.0, 30.5, 380.48) bed dZ -239.50: 20 overlaps
+[  136.7s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  136.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  136.7s]         52.59 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
+[  136.7s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
+[  136.7s]         24.22 mm3  gantry: VC9-JLB  x  head: Plate
+[  136.7s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
+[  136.7s]          6.86 mm3  gantry: F695 flanged bearing025  x  head: Plate
+[  136.7s]          0.39 mm3  gantry: F695 flanged bearing025  x  carriage: Clip (1)001
+[  136.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
+[  136.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.02 mm3  gantry: 695 W5 bearing005  x  head: Plate
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  136.7s] -- Left / front-right, bottom: front-right corner, bed bottom; nozzle (-70.0, 30.5, 380.48) bed dZ -239.50: 22 overlaps
+[  136.7s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[  136.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  136.7s]         61.14 mm3  head: HubHousing V5 With Logo (1)  x  fixed: Nitehawk-36_V1.4 3D Model v001 (simplified box)
+[  136.7s]         52.59 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
+[  136.7s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
+[  136.7s]         24.22 mm3  gantry: VC9-JRB  x  head: Plate
+[  136.7s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
+[  136.7s]          7.38 mm3  gantry: F695 flanged bearing021  x  head: Plate
+[  136.7s]          6.63 mm3  gantry: F695 flanged bearing018  x  head: Plate
+[  136.7s]          2.87 mm3  gantry: 695 W5 bearing004  x  head: Plate
+[  136.7s]          0.29 mm3  gantry: F695 flanged bearing021  x  carriage: Clip (1)
+[  136.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
+[  136.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  136.7s] -- Left / rear-left, bottom: rear-left corner (Y clamped to reach 375.47), bed bottom; nozzle (-420.0, 375.5, 380.48) bed dZ -239.50: 20 overlaps
+[  136.7s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  136.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  136.7s]         52.59 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
+[  136.7s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
+[  136.7s]         24.22 mm3  gantry: VC9-JLB  x  head: Plate
+[  136.7s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
+[  136.7s]          6.86 mm3  gantry: F695 flanged bearing025  x  head: Plate
+[  136.7s]          0.39 mm3  gantry: F695 flanged bearing025  x  carriage: Clip (1)001
+[  136.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
+[  136.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.02 mm3  gantry: 695 W5 bearing005  x  head: Plate
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  136.7s] -- Left / rear-right, bottom: rear-right corner (Y clamped to reach 375.47), bed bottom; nozzle (-70.0, 375.5, 380.48) bed dZ -239.50: 21 overlaps
+[  136.7s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[  136.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  136.7s]         52.59 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
+[  136.7s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
+[  136.7s]         24.22 mm3  gantry: VC9-JRB  x  head: Plate
+[  136.7s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
+[  136.7s]          7.38 mm3  gantry: F695 flanged bearing021  x  head: Plate
+[  136.7s]          6.63 mm3  gantry: F695 flanged bearing018  x  head: Plate
+[  136.7s]          2.87 mm3  gantry: 695 W5 bearing004  x  head: Plate
+[  136.7s]          0.29 mm3  gantry: F695 flanged bearing021  x  carriage: Clip (1)
+[  136.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
+[  136.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  136.7s] -- Left / centre, bottom: centre corner, bed bottom; nozzle (-245.0, 205.5, 380.48) bed dZ -239.50: 16 overlaps
+[  136.7s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  136.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  136.7s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
+[  136.7s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
+[  136.7s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
+[  136.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
+[  136.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  136.7s] -- Left / dock pickup, bottom: own dock pickup (parked), bed bottom; nozzle (-399.0, -32.5, 380.48) bed dZ -239.50: 16 overlaps
+[  136.7s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  136.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  136.7s]         27.52 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND
+[  136.7s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
+[  136.7s]         11.61 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001
+[  136.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail front extension (L) - 73.9 mm, printed or cut steel (docking only)
+[  136.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail front extension (R) - 73.9 mm, printed or cut steel (docking only)
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  136.7s] -- Left / dock pickup at the large opening, bottom: own dock pickup slid 6.0 mm forward to the keyslots' large opening, bed bottom; nozzle (-399.0, -38.5, 380.48) bed dZ -239.50: 18 overlaps
+[  136.7s]        482.25 mm3  belt: GT2 9mm belt, upper (Monolith 2WD)  x  fixed: Plate(Mirror)
+[  136.7s]        319.43 mm3  belt: GT2 9mm belt, lower (Monolith 2WD)  x  fixed: Plate(Mirror)
+[  136.7s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  136.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  136.7s]         27.52 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND
+[  136.7s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
+[  136.7s]         11.61 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001
+[  136.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail front extension (R) - 73.9 mm, printed or cut steel (docking only)
+[  136.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail front extension (L) - 73.9 mm, printed or cut steel (docking only)
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  136.7s] -- Left / model: saved model pose (baseline: nothing moved, both heads docked);: 16 overlaps
+[  136.7s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[  136.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)
+[  136.7s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND
+[  136.7s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)
+[  136.7s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001
+[  136.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel
+[  136.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037
+[  136.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034
+[  136.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029
+[  136.7s] clashlib: 10 workers on vt350-lite-24.FCStd, 82 poses, job dir /tmp/clashlib-cllp3nbe
+[  291.5s] clashlib: done in 154.8s (load <= 10.9s, check <= 144.1s); 10697310 pair-poses, 2160 box hits, 474 overlaps > 0.01 mm3, 0 errors
+[  291.5s] -- Left X scan, left side (nozzle X, Y at the centre; overlaps not already in the saved model):
+[  291.5s]    X  -420.0:  5 overlaps,    84.08 mm3; moving parts: COMPOUND, Clip (1)001, Plate
+[  291.5s]    X  -419.0:  3 overlaps,    18.63 mm3; moving parts: COMPOUND, Plate
+[  291.5s]    X  -418.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -417.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -416.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -415.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -414.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -413.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -412.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -411.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -410.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -409.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -408.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -407.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -406.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -405.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -404.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -403.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -402.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -401.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -400.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -399.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -398.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -397.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -396.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -395.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -394.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -393.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -392.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -391.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -390.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -389.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -388.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -387.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -386.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -385.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -384.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -383.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -382.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -381.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -380.0:  0 overlaps,     0.00 mm3
+[  291.5s]    Left head, left side: first nozzle X with no new overlap -418.0 (print square edge -420.0)
+[  291.5s] -- Left X scan, right side (nozzle X, Y at the centre; overlaps not already in the saved model):
+[  291.5s]    X   -70.0:  6 overlaps,    93.96 mm3; moving parts: COMPOUND, Clip (1), Plate
+[  291.5s]    X   -71.0:  4 overlaps,    19.19 mm3; moving parts: COMPOUND, Plate
+[  291.5s]    X   -72.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -73.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -74.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -75.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -76.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -77.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -78.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -79.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -80.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -81.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -82.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -83.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -84.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -85.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -86.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -87.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -88.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -89.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -90.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -91.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -92.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -93.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -94.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -95.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -96.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -97.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -98.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X   -99.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -100.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -101.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -102.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -103.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -104.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -105.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -106.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -107.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -108.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -109.0:  0 overlaps,     0.00 mm3
+[  291.5s]    X  -110.0:  0 overlaps,     0.00 mm3
+[  291.5s]    Left head, right side: first nozzle X with no new overlap -72.0 (print square edge -70.0)
+[  291.5s] clashlib: 4 workers on vt350-lite-24.FCStd, 1 poses, job dir /tmp/clashlib-5wwgfitp
+[  306.0s] clashlib: done in 14.5s (load <= 5.8s, check <= 8.1s); 222 pair-poses, 14 box hits, 2 overlaps > 0.01 mm3, 0 errors
+[  306.0s] -- Left tool-internal (head vs MadMax Plate + Plate Back):
+[  306.0s]          7.61 mm3  head: Hex socket head cap screw M3x0.50 x 014  x  plate: Plate
+[  306.0s]          7.61 mm3  head: Hex socket head cap screw M3x0.50 x 015  x  plate: Plate
+[  306.0s] clashlib: 10 workers on vt350-lite-24.FCStd, 15 poses, job dir /tmp/clashlib-lef97jqs
+[  395.1s] clashlib: done in 89.1s (load <= 11.0s, check <= 80.9s); 2948700 pair-poses, 1432 box hits, 284 overlaps > 0.01 mm3, 0 errors
+[  395.1s] === Right head on the carriage (Left head parked in its dock): 284 overlaps, 0 common() errors
+[  395.1s] -- Right / front-left, top: front-left corner, bed top; nozzle (-420.0, 30.5, 380.49) bed dZ +93.32: 22 overlaps
+[  395.1s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  395.1s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  395.1s]         52.07 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
+[  395.1s]         44.80 mm3  head: HubHousing V5 With Logo (1) (1)  x  fixed: Nitehawk-36_V1.4 3D Model v1 (simplified box)
+[  395.1s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
+[  395.1s]         24.22 mm3  gantry: VC9-JLB  x  head: Plate(Mirror)
+[  395.1s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
+[  395.1s]          6.86 mm3  gantry: F695 flanged bearing025  x  head: Plate(Mirror)
+[  395.1s]          0.38 mm3  gantry: F695 flanged bearing025  x  carriage: Clip (1)001
+[  395.1s]          0.19 mm3  head: main-body_dragon-rapido-UHF_o2_xol001  x  fixed: Plate Back
+[  395.1s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
+[  395.1s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.02 mm3  gantry: 695 W5 bearing005  x  head: Plate(Mirror)
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s] -- Right / front-right, top: front-right corner, bed top; nozzle (-70.0, 30.5, 380.49) bed dZ +93.32: 21 overlaps
+[  395.1s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[  395.1s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  395.1s]         53.11 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
+[  395.1s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
+[  395.1s]         24.22 mm3  gantry: VC9-JRB  x  head: Plate(Mirror)
+[  395.1s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
+[  395.1s]          7.38 mm3  gantry: F695 flanged bearing021  x  head: Plate(Mirror)
+[  395.1s]          6.63 mm3  gantry: F695 flanged bearing018  x  head: Plate(Mirror)
+[  395.1s]          2.87 mm3  gantry: 695 W5 bearing004  x  head: Plate(Mirror)
+[  395.1s]          0.29 mm3  gantry: F695 flanged bearing021  x  carriage: Clip (1)
+[  395.1s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
+[  395.1s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s] -- Right / rear-left, top: rear-left corner (Y clamped to reach 375.47), bed top; nozzle (-420.0, 375.5, 380.49) bed dZ +93.32: 20 overlaps
+[  395.1s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  395.1s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  395.1s]         52.07 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
+[  395.1s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
+[  395.1s]         24.22 mm3  gantry: VC9-JLB  x  head: Plate(Mirror)
+[  395.1s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
+[  395.1s]          6.86 mm3  gantry: F695 flanged bearing025  x  head: Plate(Mirror)
+[  395.1s]          0.38 mm3  gantry: F695 flanged bearing025  x  carriage: Clip (1)001
+[  395.1s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
+[  395.1s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.02 mm3  gantry: 695 W5 bearing005  x  head: Plate(Mirror)
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s] -- Right / rear-right, top: rear-right corner (Y clamped to reach 375.47), bed top; nozzle (-70.0, 375.5, 380.49) bed dZ +93.32: 21 overlaps
+[  395.1s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[  395.1s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  395.1s]         53.11 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
+[  395.1s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
+[  395.1s]         24.22 mm3  gantry: VC9-JRB  x  head: Plate(Mirror)
+[  395.1s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
+[  395.1s]          7.38 mm3  gantry: F695 flanged bearing021  x  head: Plate(Mirror)
+[  395.1s]          6.63 mm3  gantry: F695 flanged bearing018  x  head: Plate(Mirror)
+[  395.1s]          2.87 mm3  gantry: 695 W5 bearing004  x  head: Plate(Mirror)
+[  395.1s]          0.29 mm3  gantry: F695 flanged bearing021  x  carriage: Clip (1)
+[  395.1s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
+[  395.1s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s] -- Right / centre, top: centre corner, bed top; nozzle (-245.0, 205.5, 380.49) bed dZ +93.32: 16 overlaps
+[  395.1s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  395.1s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  395.1s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
+[  395.1s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
+[  395.1s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
+[  395.1s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
+[  395.1s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s] -- Right / dock pickup, top: own dock pickup (parked), bed top; nozzle (-92.0, -32.5, 380.49) bed dZ +93.32: 16 overlaps
+[  395.1s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  395.1s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  395.1s]         24.89 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND
+[  395.1s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
+[  395.1s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
+[  395.1s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail front extension (L) - 73.9 mm, printed or cut steel (docking only)
+[  395.1s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail front extension (R) - 73.9 mm, printed or cut steel (docking only)
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s] -- Right / dock pickup at the large opening, top: own dock pickup slid 6.0 mm forward to the keyslots' large opening, bed top; nozzle (-92.0, -38.5, 380.49) bed dZ +93.32: 18 overlaps
+[  395.1s]        480.67 mm3  belt: GT2 9mm belt, upper (Monolith 2WD)  x  fixed: Plate
+[  395.1s]        282.86 mm3  belt: GT2 9mm belt, lower (Monolith 2WD)  x  fixed: Plate
+[  395.1s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  395.1s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  395.1s]         24.89 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND
+[  395.1s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
+[  395.1s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
+[  395.1s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail front extension (R) - 73.9 mm, printed or cut steel (docking only)
+[  395.1s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail front extension (L) - 73.9 mm, printed or cut steel (docking only)
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s] -- Right / front-left, bottom: front-left corner, bed bottom; nozzle (-420.0, 30.5, 380.49) bed dZ -239.50: 22 overlaps
+[  395.1s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  395.1s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  395.1s]         52.07 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
+[  395.1s]         44.80 mm3  head: HubHousing V5 With Logo (1) (1)  x  fixed: Nitehawk-36_V1.4 3D Model v1 (simplified box)
+[  395.1s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
+[  395.1s]         24.22 mm3  gantry: VC9-JLB  x  head: Plate(Mirror)
+[  395.1s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
+[  395.1s]          6.86 mm3  gantry: F695 flanged bearing025  x  head: Plate(Mirror)
+[  395.1s]          0.38 mm3  gantry: F695 flanged bearing025  x  carriage: Clip (1)001
+[  395.1s]          0.19 mm3  head: main-body_dragon-rapido-UHF_o2_xol001  x  fixed: Plate Back
+[  395.1s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
+[  395.1s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.02 mm3  gantry: 695 W5 bearing005  x  head: Plate(Mirror)
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  395.1s] -- Right / front-right, bottom: front-right corner, bed bottom; nozzle (-70.0, 30.5, 380.49) bed dZ -239.50: 21 overlaps
+[  395.1s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[  395.1s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  395.1s]         53.11 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
+[  395.1s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
+[  395.1s]         24.22 mm3  gantry: VC9-JRB  x  head: Plate(Mirror)
+[  395.1s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
+[  395.1s]          7.38 mm3  gantry: F695 flanged bearing021  x  head: Plate(Mirror)
+[  395.1s]          6.63 mm3  gantry: F695 flanged bearing018  x  head: Plate(Mirror)
+[  395.1s]          2.87 mm3  gantry: 695 W5 bearing004  x  head: Plate(Mirror)
+[  395.1s]          0.29 mm3  gantry: F695 flanged bearing021  x  carriage: Clip (1)
+[  395.1s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
+[  395.1s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  395.1s] -- Right / rear-left, bottom: rear-left corner (Y clamped to reach 375.47), bed bottom; nozzle (-420.0, 375.5, 380.49) bed dZ -239.50: 20 overlaps
+[  395.1s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  395.1s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  395.1s]         52.07 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
+[  395.1s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
+[  395.1s]         24.22 mm3  gantry: VC9-JLB  x  head: Plate(Mirror)
+[  395.1s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
+[  395.1s]          6.86 mm3  gantry: F695 flanged bearing025  x  head: Plate(Mirror)
+[  395.1s]          0.38 mm3  gantry: F695 flanged bearing025  x  carriage: Clip (1)001
+[  395.1s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
+[  395.1s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.02 mm3  gantry: 695 W5 bearing005  x  head: Plate(Mirror)
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  395.1s] -- Right / rear-right, bottom: rear-right corner (Y clamped to reach 375.47), bed bottom; nozzle (-70.0, 375.5, 380.49) bed dZ -239.50: 21 overlaps
+[  395.1s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[  395.1s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  395.1s]         53.11 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
+[  395.1s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
+[  395.1s]         24.22 mm3  gantry: VC9-JRB  x  head: Plate(Mirror)
+[  395.1s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
+[  395.1s]          7.38 mm3  gantry: F695 flanged bearing021  x  head: Plate(Mirror)
+[  395.1s]          6.63 mm3  gantry: F695 flanged bearing018  x  head: Plate(Mirror)
+[  395.1s]          2.87 mm3  gantry: 695 W5 bearing004  x  head: Plate(Mirror)
+[  395.1s]          0.29 mm3  gantry: F695 flanged bearing021  x  carriage: Clip (1)
+[  395.1s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
+[  395.1s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  395.1s] -- Right / centre, bottom: centre corner, bed bottom; nozzle (-245.0, 205.5, 380.49) bed dZ -239.50: 16 overlaps
+[  395.1s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  395.1s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  395.1s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND  [same in the saved model]
+[  395.1s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
+[  395.1s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
+[  395.1s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel  [same in the saved model]
+[  395.1s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  395.1s] -- Right / dock pickup, bottom: own dock pickup (parked), bed bottom; nozzle (-92.0, -32.5, 380.49) bed dZ -239.50: 16 overlaps
+[  395.1s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  395.1s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  395.1s]         24.89 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND
+[  395.1s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
+[  395.1s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
+[  395.1s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail front extension (L) - 73.9 mm, printed or cut steel (docking only)
+[  395.1s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail front extension (R) - 73.9 mm, printed or cut steel (docking only)
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  395.1s] -- Right / dock pickup at the large opening, bottom: own dock pickup slid 6.0 mm forward to the keyslots' large opening, bed bottom; nozzle (-92.0, -38.5, 380.49) bed dZ -239.50: 18 overlaps
+[  395.1s]        480.67 mm3  belt: GT2 9mm belt, upper (Monolith 2WD)  x  fixed: Plate
+[  395.1s]        282.86 mm3  belt: GT2 9mm belt, lower (Monolith 2WD)  x  fixed: Plate
+[  395.1s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  395.1s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  395.1s]         24.89 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND
+[  395.1s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)  [same in the saved model]
+[  395.1s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001  [same in the saved model]
+[  395.1s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail front extension (R) - 73.9 mm, printed or cut steel (docking only)
+[  395.1s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail front extension (L) - 73.9 mm, printed or cut steel (docking only)
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  395.1s] -- Right / model: saved model pose (baseline: nothing moved, both heads docked);: 16 overlaps
+[  395.1s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[  395.1s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)
+[  395.1s]         25.68 mm3  gantry: MGN12-400mm v002  x  carriage: COMPOUND
+[  395.1s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)
+[  395.1s]         23.24 mm3  gantry: MGN12-400mm v002  x  carriage: Clip (1)001
+[  395.1s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9-400mm Y rail (L) - owned Berserker, steel
+[  395.1s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9-400mm Y rail (R) - owned Berserker, steel
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037
+[  395.1s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034
+[  395.1s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029
+[  395.1s] clashlib: 10 workers on vt350-lite-24.FCStd, 82 poses, job dir /tmp/clashlib-gpdx9xn1
+[  550.2s] clashlib: done in 155.1s (load <= 10.9s, check <= 143.2s); 10697310 pair-poses, 2157 box hits, 474 overlaps > 0.01 mm3, 0 errors
+[  550.2s] -- Right X scan, left side (nozzle X, Y at the centre; overlaps not already in the saved model):
+[  550.2s]    X  -420.0:  5 overlaps,    83.54 mm3; moving parts: COMPOUND, Clip (1)001, Plate(Mirror)
+[  550.2s]    X  -419.0:  3 overlaps,    18.17 mm3; moving parts: COMPOUND, Plate(Mirror)
+[  550.2s]    X  -418.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -417.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -416.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -415.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -414.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -413.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -412.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -411.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -410.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -409.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -408.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -407.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -406.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -405.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -404.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -403.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -402.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -401.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -400.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -399.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -398.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -397.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -396.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -395.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -394.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -393.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -392.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -391.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -390.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -389.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -388.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -387.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -386.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -385.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -384.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -383.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -382.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -381.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -380.0:  0 overlaps,     0.00 mm3
+[  550.2s]    Right head, left side: first nozzle X with no new overlap -418.0 (print square edge -420.0)
+[  550.2s] -- Right X scan, right side (nozzle X, Y at the centre; overlaps not already in the saved model):
+[  550.2s]    X   -70.0:  6 overlaps,    94.49 mm3; moving parts: COMPOUND, Clip (1), Plate(Mirror)
+[  550.2s]    X   -71.0:  4 overlaps,    19.64 mm3; moving parts: COMPOUND, Plate(Mirror)
+[  550.2s]    X   -72.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -73.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -74.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -75.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -76.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -77.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -78.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -79.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -80.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -81.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -82.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -83.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -84.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -85.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -86.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -87.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -88.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -89.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -90.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -91.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -92.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -93.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -94.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -95.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -96.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -97.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -98.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X   -99.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -100.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -101.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -102.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -103.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -104.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -105.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -106.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -107.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -108.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -109.0:  0 overlaps,     0.00 mm3
+[  550.2s]    X  -110.0:  0 overlaps,     0.00 mm3
+[  550.2s]    Right head, right side: first nozzle X with no new overlap -72.0 (print square edge -70.0)
+[  550.2s] clashlib: 4 workers on vt350-lite-24.FCStd, 1 poses, job dir /tmp/clashlib-e8dmhzun
+[  564.6s] clashlib: done in 14.5s (load <= 5.8s, check <= 8.1s); 222 pair-poses, 14 box hits, 2 overlaps > 0.01 mm3, 0 errors
+[  564.6s] -- Right tool-internal (head vs MadMax Plate + Plate Back):
+[  564.6s]          7.61 mm3  head: Hex socket head cap screw M3x0.50 x 019  x  plate: Plate(Mirror)
+[  564.6s]          7.61 mm3  head: Hex socket head cap screw M3x0.50 x 018  x  plate: Plate(Mirror)
+[  564.6s] timing: Left: wall 90.3s, 2948700 pair-poses, 1434 box hits; Left X scan: wall 154.8s, 10697310 pair-poses, 2160 box hits; Right: wall 89.1s, 2948700 pair-poses, 1432 box hits; Right X scan: wall 155.1s, 10697310 pair-poses, 2157 box hits
+[  564.6s] done (read-only, nothing saved)

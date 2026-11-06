@@ -32,14 +32,17 @@ def default_n():
 
 
 def run(model, groups, poses=None, fixed=None, exclude=(), skip_group_pairs=(), n=None, tol=0.01, log=print,
-        keep_dir=None, timeout=7200):
-    """Run the check on n workers; returns dict(results=[...], errors=[...], stats={...})."""
+        keep_dir=None, timeout=7200, clip=None):
+    """Run the check on n workers; returns dict(results=[...], errors=[...], stats={...}).
+    clip: {ref: (xmin, ymin, zmin, xmax, ymax, zmax)}: that solid is cut down to the box (global, at the model pose)
+    before anything else, e.g. the part of a belt that rides rigidly with the gantry."""
     n = n or default_n()
     poses = poses or {"model": {}}
     job = dict(model=os.path.abspath(model), groups={g: list(v) for g, v in groups.items()},
                poses={p: {g: list(map(float, t)) for g, t in d.items()} for p, d in poses.items()},
                fixed=None if fixed is None else list(fixed), exclude=list(exclude),
-               skip_group_pairs=[list(x) for x in skip_group_pairs], n=n, tol=tol)
+               skip_group_pairs=[list(x) for x in skip_group_pairs], n=n, tol=tol,
+               clip={r: list(map(float, b)) for r, b in (clip or {}).items()})
     for p, d in job["poses"].items():
         bad = set(d) - set(groups)
         if bad: raise ValueError(f"pose {p}: unknown groups {sorted(bad)}")
@@ -110,6 +113,7 @@ def _worker():
             if o.Name in gof and gof[o.Name] != g: raise RuntimeError(f"{o.Label} is in groups {gof[o.Name]} and {g}")
             gof[o.Name] = g
     excl = {resolve(r).Name for r in job["exclude"]}
+    clipb = {resolve(r).Name: b for r, b in job.get("clip", {}).items()}
     if job["fixed"] is None: fixed = [o for o in leaves if o.Name not in gof and o.Name not in excl]
     else: fixed = [resolve(r) for r in job["fixed"]]
     idx = {o.Name: i for i, o in enumerate(leaves)}
@@ -131,7 +135,12 @@ def _worker():
 
     def gs(o):
         if o.Name not in shape:
-            s = o.Shape.copy(); s.Placement = o.getGlobalPlacement(); shape[o.Name] = s
+            s = o.Shape.copy(); s.Placement = o.getGlobalPlacement()
+            if o.Name in clipb:
+                import Part
+                x0, y0, z0, x1, y1, z1 = clipb[o.Name]
+                s = s.common(Part.makeBox(x1 - x0, y1 - y0, z1 - z0, V(x0, y0, z0)))
+            shape[o.Name] = s
             try: bb = s.optimalBoundingBox(True, False)
             except Exception: bb = s.BoundBox
             bb = FreeCAD.BoundBox(bb); bb.enlarge(BOX_MARGIN); box[o.Name] = bb

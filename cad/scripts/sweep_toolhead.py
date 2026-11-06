@@ -1,4 +1,4 @@
-# #19 AC5: toolhead collision sweep on the SAVED vt350-lite-22.FCStd. Headless, read-only: never saves.
+# #19 AC5 / #53 AC4: toolhead collision sweep on the SAVED vt350-lite-24.FCStd. Headless, read-only: never saves.
 #   python3 /home/dan/Code/vt350/cad/scripts/sweep_toolhead.py [n_workers]
 # Two stages, both from this file:
 #  1. plan (freecadcmd, env SWEEP_PLAN=<json>): classify the moving groups, find each head's carried offset, the
@@ -11,32 +11,39 @@
 # and with the carriage translated by Tc, the carried head moves Tc - T_pick (its own docked pose at pickup).
 #
 # Moving groups (translations only): bed (Z), gantry (Y), carriage (X+Y), head (X+Y, rigid on the carriage).
-# The MadMax tool plate (Plate + Plate Back, filed under each dock) is bolted to the head and moves with it.
+# The MadMax tool plate (Plate + Plate Back, filed under each dock) is bolted to the head and moves with it. Since
+# lite-23 the dock screws are on bosses on the head's duct (no Dock/Alternate Bracket). The Beacon (lite-24) is under
+# the carriage and moves with it.
+# Belts (#53 AC4): the part of each belt inside the XY joints' Y band (the idler wraps and the runs out to the carriage
+# clamps) rides rigidly with the gantry: it's its own group, clipped to BELT_CLIP, moved with the gantry, and not checked
+# against the gantry or the carriage (it wraps the joints' idlers and is clamped in the carriage). Limitation: the
+# drawn runs end at the carriage's model-pose X, so near the clamps they are approximate. The side (Y) runs are left out.
 # Left out of every check, and said so in the report:
 #  - the docks' carriage copies (they ARE the carriage at pickup; the moving carriage takes their place),
-#  - the two belts (drawn once along their full path; their gantry run can't move rigidly),
+#  - the belts' side runs, outside BELT_CLIP (they change length with gantry Y),
 #  - the Z drag chain (links posed for one bed height),
 #  - the carried head's own bowden tube (a rigid route from its docked pose; the parked head's tube stays in, fixed).
 # USB cables are not in the model.
 # Poses per head: nozzle at the 4 corners of the 350 print square (plate inset 2.5 mm; rear clamped to the gantry's Y
 # reach) + the centre, each with the bed at the top (magnet sheet at the nozzle tip: Z0, no steel sheet modelled) and
-# at the bottom; plus the head's own dock pickup at both bed heights; plus the saved model pose (baseline).
+# at the bottom; plus the head's own dock pickup at both bed heights, at the parked position and at the keyslots'
+# large opening (SLIDE forward: the attach move, #52); plus the saved model pose (baseline).
 import json, os, subprocess, sys, time
 
 WORK = os.environ.get("VT350_WORK", "/home/dan/Code/vt350/cad/data")
-MODEL = "/home/dan/Documents/VT350/vt350-lite-22.FCStd"
+MODEL = "/home/dan/Documents/VT350/vt350-lite-24.FCStd"
 HERE = os.path.abspath(__file__)
 Y_TRAVEL = (-277.19, 145.43)           # gantry dY limits, lite9_rails.log (joint/mount hard stops; Z moves since keep them)
 PLATE_X0, PLATE_Y0, PLATE_W, PRINT_W = -422.5, 28.0, 355.0, 350.0
-# Tool side of each dock (andrewmcgr XOL-A4T README: "'Alternate Bracket' merges the dock bracket and toolhead board
-# standoff from the plate"): the plate, plus EITHER Dock Bracket + Plate Back (standard) OR Alternate Bracket. The
-# model holds both variants on top of each other; both ride with the head here, and the tool-internal check reports
-# each variant against the head on its own.
+# Tool side of each dock: the MadMax plate + Plate Back (the brackets were removed in lite-23).
 HEADS = {"Left": dict(group="Left Toolhead", dock="Left Dock", tube="Bowden Left", copy="COMPOUND003",
-                      plate="Plate", std=["Dock Bracket", "Plate Back"], alt=["Alternate Bracket v1"]),
+                      plate=["Plate", "Plate Back"]),
          "Right": dict(group="Right Toolhead", dock="Right Dock", tube="Bowden Right", copy="COMPOUND004",
-                       plate="Plate(Mirror)", std=["Dock Bracket(Mirror)", "Plate Back(Mirror)"],
-                       alt=["Alternate Bracket v1(Mirror)"])}
+                       plate=["Plate(Mirror)", "Plate Back(Mirror)"])}
+SLIDE = 6.0                            # keyslot slide, parked -> large opening (#52, sliced)
+BEAM = "Beacon RevH"                   # label prefix of the Beacon (lite-24); must be in the carriage group
+BELTS = ("GT2 9mm belt, lower (Monolith 2WD)", "GT2 9mm belt, upper (Monolith 2WD)")
+BELT_CLIP = (-480.0, 243.2, 400.0, -10.0, 294.5, 460.0)   # XY joints' Y band (VC9-J* plates), lite-23 probe
 X_SCAN = 40.0, 1.0                     # nozzle X scanned inward from each side of the print square: span, step (mm)
 CARRIAGE_PART = ("Carriage (1)", "COMPOUND")          # (group, label) of the gantry's MadMax carriage body
 BED_PATHS = {"Bed frame", "Z_Bed_Left", "Z_Bed_Right", "Z_Bed_Rear", "Z_Carriage_Left", "Z_Carriage_Right",
@@ -48,7 +55,7 @@ GANTRY_PATHS = {"XY left: _XY_left", "XY right: _XY_right", "Gantry assembly"}
 GANTRY_LABELS = ("Carbonara CF X beam 20x20 430",)
 CARRIAGE_PATHS = {"Carriage (1)"}
 CARRIAGE_LABELS = ("MGN_12_H_CARRAGE v1",)
-EXCLUDE_PATHS = {"_11_9mm_2WD_belts_FT_FT v1", "10x11 Chain Z"}
+EXCLUDE_PATHS = {"10x11 Chain Z"}
 NOZZLE = "E3D v6 HotEnd - Nozzle"
 
 
@@ -82,6 +89,7 @@ def plan(out):
     notes = []
     tubes = {h: one(d["tube"]) for h, d in HEADS.items()}
     copies = {h: one(d["copy"], d["dock"]) for h, d in HEADS.items()}
+    belts = [one(l).Name for l in BELTS]
     exclude = [o.Name for o in leaves if P[o.Name] & EXCLUDE_PATHS] + \
               [c.Name for c in copies.values()]
     # the whole carriage copy in each dock: everything under the dock's "Carriage" sub-assembly
@@ -91,13 +99,15 @@ def plan(out):
     bed = [o.Name for o in leaves if (P[o.Name] & BED_PATHS or o.Label.startswith(BED_LABEL_PREFIX) or o.Label in BED_LOOSE)]
     gantry = [o.Name for o in leaves if P[o.Name] & GANTRY_PATHS or o.Label in GANTRY_LABELS]
     carriage = [o.Name for o in leaves if P[o.Name] & CARRIAGE_PATHS or o.Label in CARRIAGE_LABELS]
+    beacon = [o for o in leaves if o.Label.startswith(BEAM)]
+    if len(beacon) != 1 or beacon[0].Name not in carriage: raise RuntimeError(f"Beacon: {len(beacon)} found / not in the carriage group")
+    notes.append(f"Beacon {beacon[0].Label!r} rides with the carriage")
     heads, tool = {}, {}
     for h, d in HEADS.items():
         tool[h] = dict(head=[o.Name for o in leaves if d["group"] in P[o.Name] and o.Name not in (tubes["Left"].Name, tubes["Right"].Name)],
-                       plate=[one(d["plate"], d["dock"]).Name], std=[one(l, d["dock"]).Name for l in d["std"]],
-                       alt=[one(l, d["dock"]).Name for l in d["alt"]])
-        heads[h] = tool[h]["head"] + tool[h]["plate"] + tool[h]["std"] + tool[h]["alt"]
-    allg = bed + gantry + carriage + heads["Left"] + heads["Right"]
+                       plate=[one(l, d["dock"]).Name for l in d["plate"]])
+        heads[h] = tool[h]["head"] + tool[h]["plate"]
+    allg = bed + gantry + carriage + heads["Left"] + heads["Right"] + belts
     if len(allg) != len(set(allg)): raise RuntimeError("a solid is in two moving groups")
     if set(allg) & set(exclude): raise RuntimeError(f"moving solids excluded: {set(allg) & set(exclude)}")
     lab = {o.Name: o.Label for o in leaves}
@@ -167,14 +177,14 @@ def plan(out):
         notes.append(f"{h} carried: nozzle tip Z {tip_z:.2f}; bed top dZ {dz_top:+.2f} (magnet top {mag.ZMax:.2f} -> "
                      f"{mag.ZMax + dz_top:.2f}); nozzle Y reach {y_front:.2f} .. {y_reach:.2f} (print square Y {y_lo:.1f} .. {y_hi:.1f})")
         poses[h] = {}
-        def add(pid, nozzle_xy, dz, what):
+        def add(pid, nozzle_xy, dz, what, slide=0.0):
             if nozzle_xy is None:
-                tc = (tx, ty, 0.0)                         # pickup: head at its docked pose
+                tc = (tx, ty - slide, 0.0)                 # pickup: head at its docked pose (or slid to the large opening)
             else:
                 tc = (nozzle_xy[0] - nx + tx, nozzle_xy[1] - ny + ty, 0.0)
             th = (tc[0] - tx, tc[1] - ty, tc[2] - tz)
             if not (Y_TRAVEL[0] - 1e-6 <= tc[1] <= Y_TRAVEL[1] + 1e-6): raise RuntimeError(f"{pid}: gantry dY {tc[1]:.2f} out of travel")
-            poses[h][pid] = {"bed": (0, 0, dz), "gantry": (0, tc[1], 0), "carriage": tc, "head": th}
+            poses[h][pid] = {"bed": (0, 0, dz), "gantry": (0, tc[1], 0), "belt": (0, tc[1], 0), "carriage": tc, "head": th}
             meta[f"{h}:{pid}"] = dict(what=what, nozzle=(nx + th[0], ny + th[1], nz + th[2]), bed_dz=dz, carriage=tc)
         for zname, dz in (("bed top", dz_top), ("bed bottom", dz_bottom)):
             zt = "top" if zname == "bed top" else "bottom"
@@ -182,7 +192,9 @@ def plan(out):
                                   ("rear-right", (x_hi, y_hi)), ("centre", ((x_lo + x_hi) / 2, (y_lo + y_hi) / 2))):
                 yc = min(y, y_reach)
                 add(f"{cname}, {zt}", (x, yc), dz, f"{cname} corner{' (Y clamped to reach %.2f)' % yc if yc < y else ''}, {zname}")
-            add(f"dock pickup, {zt}", None, dz, f"own dock pickup, {zname}")
+            add(f"dock pickup, {zt}", None, dz, f"own dock pickup (parked), {zname}")
+            add(f"dock pickup at the large opening, {zt}", None, dz,
+                f"own dock pickup slid {SLIDE} mm forward to the keyslots' large opening, {zname}", slide=SLIDE)
         xs = {}
         span, step = X_SCAN
         for side, x0, sgn in (("left", x_lo, 1), ("right", x_hi, -1)):
@@ -190,9 +202,9 @@ def plan(out):
                 x = x0 + sgn * i * step
                 pid = f"X scan {side} {x:.1f}"
                 tc = (x - nx + tx, (y_lo + y_hi) / 2 - ny + ty, 0.0)
-                xs[pid] = {"gantry": (0, tc[1], 0), "carriage": tc, "head": (tc[0] - tx, tc[1] - ty, tc[2] - tz)}
+                xs[pid] = {"gantry": (0, tc[1], 0), "belt": (0, tc[1], 0), "carriage": tc, "head": (tc[0] - tx, tc[1] - ty, tc[2] - tz)}
         poses[h + " X scan"] = xs
-    json.dump(dict(bed=bed, gantry=gantry, carriage=carriage, heads=heads, tool=tool, exclude=exclude,
+    json.dump(dict(bed=bed, gantry=gantry, belt=belts, carriage=carriage, heads=heads, tool=tool, exclude=exclude,
                    tubes={h: t.Name for h, t in tubes.items()}, poses=poses, meta=meta, notes=notes, labels=lab),
               open(out, "w"))
 
@@ -215,15 +227,19 @@ def main():
     log(f"model {MODEL} (read-only)")
     for s in plan_["notes"]: log(s)
     lab = plan_["labels"]
-    log("excluded from every check: docks' carriage copies, both belts, the Z drag chain, the carried head's own "
-        "bowden tube; USB cables are not in the model")
+    log("excluded from every check: docks' carriage copies, the belts' side runs (outside the XY joints' Y band), the Z "
+        "drag chain, the carried head's own bowden tube; the Beacon's USB cable is not in the model")
+    log(f"belts: clipped to X {BELT_CLIP[0]}..{BELT_CLIP[3]}, Y {BELT_CLIP[1]}..{BELT_CLIP[4]} and moved with the gantry; "
+        "not checked against the gantry or carriage")
+    clip = {b: BELT_CLIP for b in plan_["belt"]}
+    BSKIP = [("belt", "gantry"), ("belt", "carriage")]
     summary = {}
     for h in HEADS:
         other = [x for x in HEADS if x != h][0]
-        groups = dict(bed=plan_["bed"], gantry=plan_["gantry"], carriage=plan_["carriage"], head=plan_["heads"][h])
+        groups = dict(bed=plan_["bed"], gantry=plan_["gantry"], belt=plan_["belt"], carriage=plan_["carriage"], head=plan_["heads"][h])
         poses = dict(plan_["poses"][h]); poses["model"] = {}
         res = clashlib.run(MODEL, groups=groups, poses=poses, exclude=plan_["exclude"] + [plan_["tubes"][h]], n=n,
-                           tol=0.01, log=log)
+                           tol=0.01, log=log, clip=clip, skip_group_pairs=BSKIP)
         log(f"=== {h} head on the carriage ({other} head parked in its dock): {len(res['results'])} overlaps, "
             f"{len(res['errors'])} common() errors")
         for e in res["errors"]: log(f"   ERROR {e['pose']}: {e['la']} x {e['lb']}: {e['error']}")
@@ -245,33 +261,27 @@ def main():
                 log(f"   {r['volume']:10.2f} mm3  {r['ga']}: {r['la']}  x  {r['gb'] or 'fixed'}: {r['lb']}{tag}")
         summary[h] = res["stats"]
         # X reach: carriage + this head scanned inward from each side of the print square (bed at its model pose)
-        xres = clashlib.run(MODEL, groups=dict(gantry=plan_["gantry"], carriage=plan_["carriage"], head=plan_["heads"][h]),
+        xres = clashlib.run(MODEL, groups=dict(gantry=plan_["gantry"], belt=plan_["belt"], carriage=plan_["carriage"], head=plan_["heads"][h]),
                             poses=plan_["poses"][h + " X scan"], exclude=plan_["exclude"] + [plan_["tubes"][h]],
-                            n=n, tol=0.01, log=log)
+                            n=n, tol=0.01, log=log, clip=clip, skip_group_pairs=BSKIP)
         const = {(r["a"], r["b"]) for r in res["results"] if r["pose"] == "model"}      # sliding fits already in the saved model
         for side in ("left", "right"):
             pids = [p for p in plan_["poses"][h + " X scan"] if f" {side} " in p]
             log(f"-- {h} X scan, {side} side (nozzle X, Y at the centre; overlaps not already in the saved model):")
-            t = plan_["tool"][h]
-            variants = {"std bracket (Dock Bracket + Plate Back)": set(t["alt"]), "Alternate Bracket": set(t["std"])}
-            first_clear = {v: None for v in variants}
+            first_clear = None
             for pid in pids:
                 rows = [r for r in xres["results"] if r["pose"] == pid and (r["a"], r["b"]) not in const
                         and not (r["la"].startswith("MGN12-400mm") or r["lb"].startswith("MGN12-400mm"))]
                 parts = sorted({(r["la"] if r["ga"] in ("carriage", "head") else r["lb"]) for r in rows})
                 log(f"   X {pid.split()[-1]:>7}: {len(rows):2} overlaps, {sum(r['volume'] for r in rows):8.2f} mm3"
                     + (f"; moving parts: {', '.join(parts)}" if parts else ""))
-                for v, ignore in variants.items():          # a variant ignores the other variant's parts
-                    if first_clear[v] is None and not [r for r in rows if r["a"] not in ignore and r["b"] not in ignore]:
-                        first_clear[v] = pid.split()[-1]
-            for v, x in first_clear.items():
-                log(f"   {h} head, {side} side, {v}: first nozzle X with no new overlap {x} (print square edge {pids[0].split()[-1]})")
+                if first_clear is None and not rows: first_clear = pid.split()[-1]
+            log(f"   {h} head, {side} side: first nozzle X with no new overlap {first_clear} (print square edge {pids[0].split()[-1]})")
         summary[h + " X scan"] = xres["stats"]
-        # tool-internal: the head against each plate-bracket variant (they move together, so this is pose-independent)
+        # tool-internal: the head against its plate (they move together, so this is pose-independent)
         t = plan_["tool"][h]
-        ires = clashlib.run(MODEL, groups=dict(head=t["head"], plate=t["plate"], std=t["std"], alt=t["alt"]), fixed=[],
-                            skip_group_pairs=[("std", "alt")], n=min(n, 4), tol=0.01, log=log)
-        log(f"-- {h} tool-internal (head vs MadMax plate and each bracket variant; std = Dock Bracket + Plate Back, alt = Alternate Bracket):")
+        ires = clashlib.run(MODEL, groups=dict(head=t["head"], plate=t["plate"]), fixed=[], n=min(n, 4), tol=0.01, log=log)
+        log(f"-- {h} tool-internal (head vs MadMax Plate + Plate Back):")
         for r in ires["results"]: log(f"   {r['volume']:10.2f} mm3  {r['ga']}: {r['la']}  x  {r['gb']}: {r['lb']}")
     log("timing: " + "; ".join(f"{h}: wall {s['wall_s']}s, {s['pair_poses']} pair-poses, {s['box_hits']} box hits" for h, s in summary.items()))
     log("done (read-only, nothing saved)")
