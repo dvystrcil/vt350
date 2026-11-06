@@ -39,6 +39,8 @@ def material(name, color, kind, transparency=0.0):
     metal = kind in ("aluminium", "steel", "brass")
     p.inputs["Metallic"].default_value = 1.0 if metal else 0.0
     p.inputs["Roughness"].default_value = {"aluminium": 0.35, "steel": 0.3, "brass": 0.3, "felt": 0.95, "ptfe": 0.4}.get(kind, 0.5)
+    if kind == "glow":                               # overlap volumes in export_pose.py scenes: visible inside anything
+        p.inputs["Emission Color"].default_value = (*color, 1); p.inputs["Emission Strength"].default_value = 8.0
     if kind == "emitter":
         p.inputs["Emission Color"].default_value = (*kelvin_rgb(LED_K), 1); p.inputs["Emission Strength"].default_value = 60.0
     if transparency > 0:
@@ -57,7 +59,7 @@ for key, b in scene_j["buckets"].items():
     if not os.path.exists(path): continue
     bpy.ops.wm.stl_import(filepath=path, global_scale=S)
     ob = bpy.context.selected_objects[0]; ob.name = key
-    kind = "emitter" if key == "LED_emitter" else kind_of(b["material"], (b["labels"] or [""])[0])
+    kind = "emitter" if key == "LED_emitter" else "glow" if key == "clash" else kind_of(b["material"], (b["labels"] or [""])[0])
     col = tuple(b["color"])
     if kind in ("aluminium", "steel"): col = tuple(min(1, max(0.55, c)) for c in col)
     ob.data.materials.append(material(key, col, kind, b.get("transparency", 0)))
@@ -84,15 +86,29 @@ def add_cam(name, pos, look, fov_diag=None, lens_mm=None, sensor=36.0):
     return co
 views = []
 c = scene_j["camera"]
-if c:
+if scene_j.get("views"):                             # explicit cameras (export_pose.py): render only these, key-lit
+    for v in scene_j["views"]:
+        views.append((v["name"], add_cam(v["name"], v["pos"], v["look"], lens_mm=v.get("lens_mm", 35)), 1.0, v.get("ev", -0.5)))
+elif c:
     pos = Vector(c["pos"]) + Vector(c["dir"]) * 1.0        # just in front of the lens
     views.append(("obico", add_cam("obico", pos, pos + Vector(c["dir"]) * 100, fov_diag=c["fov_diag_deg"]), 0.15, -1.6))
-views.append(("outside", add_cam("outside", (480, -1500, 1150), (-245, 215, 300), lens_mm=35), 1.0, -1.0))
+if not scene_j.get("views"):
+    views.append(("outside", add_cam("outside", (480, -1500, 1150), (-245, 215, 300), lens_mm=35), 1.0, -1.0))
+VIEWDEF = {v["name"]: v for v in scene_j.get("views", [])}
+def apply_view(name):                                # per-view "hide": [bucket], "alpha": {bucket: alpha}
+    v = VIEWDEF.get(name, {})
+    for key, b in scene_j["buckets"].items():
+        ob = bpy.data.objects.get(key)
+        if ob is None: continue
+        ob.hide_render = key in v.get("hide", [])
+        a = v.get("alpha", {}).get(key, 1 - b.get("transparency", 0))
+        ob.data.materials[0].node_tree.nodes["Principled BSDF"].inputs["Alpha"].default_value = a
 # key light for the outside view only
 bpy.ops.object.light_add(type='AREA', location=(0.6, -1.4, 1.6)); key = bpy.context.object
 key.data.size = 1.2; key.data.energy = 500; key.rotation_euler = (math.radians(55), 0, math.radians(20))
 for name, cam, room, ev in views:
     sc.camera = cam; sc.view_settings.exposure = ev; bg.inputs["Strength"].default_value = 0.4 * room
     key.hide_render = name == "obico"
+    apply_view(name)
     sc.render.filepath = os.path.join(OUT, f"{scene_j['model'].replace('.FCStd', '')}-{name}.png")
     bpy.ops.render.render(write_still=True); print("wrote", sc.render.filepath)
