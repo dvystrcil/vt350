@@ -1,5 +1,17 @@
 # MadMax carriage with a deeper Beacon RevH pocket (derived from MadMax / andrewmcgr)
 
+**Print `MadMaxCarriage Beacon RevH pocket 9mm belts.stl`.** This build runs 9 mm belts (#58). The older file without
+"9mm belts" in its name has andrewmcgr's stock **6 mm**-belt clip pockets, and it's kept only as the lite-24 record.
+
+| 9 mm-belt version | |
+|---|---|
+| Made | 2026-11-06, by Daniel Vystrcil (with Claude Code), `cad/scripts/lite25_carriage_9mm.py` |
+| Change | Same as below, plus: **both belt-clip pockets replaced with upstream's 9 mm ones**, taken from [`STL/Carriage_MGN12H_9mm.stl`](https://github.com/zruncho3d/madmax/blob/6bf670de9adcc5924e2fb552978161d7a9c7b1c8/STL/Carriage_MGN12H_9mm.stl) @ `6bf670d` (GPL-3.0). The pockets are 26 mm tall instead of 20, on the same centre line, with the same depth. Swap boxes (STL frame, from the bounding-box minimum): X −1…12.5 and 41.9…55.4, height 1.5…31 from the top, full depth. They hold every 6-vs-9 mm difference and none of andrewmcgr's changes (checked by vertex sets). 18 150.9 → 16 885.0 mm³ |
+| Clips | upstream `STL/SpeedClip_4mm_Gap_9mm.stl`, unmodified (not in this folder) |
+| Frame | the original `MadMaxCarriage.stl`'s frame (same print orientation) |
+
+## 6 mm-belt version (lite-24)
+
 **This folder is licensed GPL-3.0 (see `LICENSE` here), not MIT like the rest of this repo.**
 It's a modified version of a GPL-3.0 part.
 

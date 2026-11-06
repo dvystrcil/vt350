@@ -21,7 +21,7 @@ Status key:
 | `Gantry/AB_Drive_Units/*` (a/b drive frames, wire cover, Y endstop) | replaced | Monolith CNC kit (rear motor mounts) |
 | `Gantry/Front_Idlers/*` | replaced | Monolith CNC kit (front motorless mounts) |
 | `Gantry/X_Axis/XY_Joints/*` (MGN12 joints, cable bridges, endstop pods) | replaced | Monolith milled XY joints. **Note: they use MGN9H Y-carriages**, so the Y rails are MGN9, not the model's MGN12. The endstop approach is still open: see [Toolheads for Monolith](https://github.com/Monolith3D/Toolheads_for_Monolith). |
-| `Gantry/X_Axis/X_Carriage/*` | replaced | MadMax shuttle on the front X rail (#19) |
+| `Gantry/X_Axis/X_Carriage/*` | replaced | MadMax shuttle on the front X rail (#19). **Print the 9 mm-belt versions** (#58): carriage = `cad/derived/madmax-andrewmcgr-carriage-beacon/MadMaxCarriage Beacon RevH pocket 9mm belts.stl` (andrewmcgr's Beacon/Cartographer carriage with upstream's 9 mm belt pockets); belt clips = upstream [`STL/SpeedClip_4mm_Gap_9mm.stl`](https://github.com/zruncho3d/madmax/blob/6bf670de9adcc5924e2fb552978161d7a9c7b1c8/STL/SpeedClip_4mm_Gap_9mm.stl) ×2, unmodified. The 6 mm-belt carriage and `SpeedClip_4mm_Gap` don't fit the 9 mm belts |
 | `Gantry/chain_wire_anchor_*` | decide | Toolchanger cable routing: per-tool umbilicals or chains (#19) |
 | `Z_Assembly/z_stepper_left/right/rear` | replaced | Trident Backbone plate |
 | `Z_Assembly/z_cable_chain_mount_2hole/3hole` | decide | Collides with the Backbone (#7 comment). Needs a Backbone-compatible anchor. |
