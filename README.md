@@ -11,6 +11,7 @@ Created 2026-05-17 to centralize the build before construction begins.
 | Path | Purpose |
 |---|---|
 | `notes/status.md` | Where the build stands: decisions, open questions, where every file lives |
+| `notes/scripts.md` | **Scripts at your command:** what to run, when, and how (refresh chain, backups, checks, renders, handoff lanes) |
 | `notes/cut-list.md` | Extrusion cut list measured from the model (draft) |
 | `cad/README.md` | The FreeCAD model files (kept outside git), how each was made, and FreeCAD performance setup |
 | `cad/scripts/` | FreeCAD scripts that produced each model working copy, with their checks |
