@@ -7,7 +7,7 @@
 # colour map gives a role goes in that role's bucket (#38). The rest bucket by (material, model colour) as before.
 # Never saves the model.
 import FreeCAD, Mesh, MeshPart, os, json, time, traceback, re, sys
-sys.path.insert(0, "/home/dan/Code/vt350/cad/render")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))   # colours.py sits next to this script (laptop or a gpu-batch pod)
 import colours
 MODEL = os.environ.get("VT350_MODEL", "/home/dan/Documents/VT350/vt350-lite-16.FCStd")
 OUT = os.environ.get("VT350_RENDER_OUT", "/tmp/claude-1000/-home-dan-Code/49170e9e-d71c-4cd7-8f69-23f113691ee5/scratchpad/render")
