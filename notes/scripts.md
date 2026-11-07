@@ -33,6 +33,7 @@ flowchart TD
 | Changed a file in `parts/printed/` or `manifest.csv` | `python3 parts/check-printed.py` (add `--write-index` to rebuild the README table) | seconds |
 | Checking pinned upstream STLs haven't drifted | `python3 parts/check-printed.py --upstream` (network; CI doesn't run it) | ~1 min |
 | See what refresh *would* do, writing nothing | `python3 cad/scripts/refresh.py N --dry-run` | seconds |
+| Full colour renders of the whole printer, here on the laptop | `cad/render/render_full.sh [N] [samples]` (below) | ~6 min; prints the image paths |
 | A render of a sweep pose (clash in red) | `export_pose.py`, then `gpu-batch-submit.py` (below) | ~5 min, result posted to the issue |
 | A new model change (lite-N) | a GUI pass script: Claude writes it, you click **Wait** | 5–40 min |
 
@@ -96,7 +97,23 @@ VT350_ONLY=MadMaxCarriage $APP freecadcmd $PWD/cad/scripts/derive_stls.py   # on
 Each remixed part is moved into its upstream part's print orientation. Its JOBS table pins which model each remix
 comes from.
 
-### Renders: `cad/render/` + the GPU batch lane (node-03)
+### `cad/render/render_full.sh`: full colour renders on this laptop (#38)
+
+```bash
+cad/render/render_full.sh                 # lite-26 + vt350-ebox.FCStd, 128 samples
+cad/render/render_full.sh 27 256          # another lite-N, more samples
+VT350_REUSE_EXPORT=<run>/export cad/render/render_full.sh   # changed only a role's colour: skip the export
+```
+
+- **What happens:** a FreeCAD window opens and closes by itself (click **Wait** if GNOME asks), then Blender renders on the RTX 2070.
+- **Output:** the last lines are the full image paths, then `render_full: OK`. Each run gets `~/Documents/VT350/renders/<model>-<UTC>/` with `out/` (images), `export/` (meshes, `export.log`) and the raw logs.
+- **Colours** live in `cad/render/colours.json`: role colours plus ordered rules on label, group and material.
+  - Changed only a role's hex? Re-run with `VT350_REUSE_EXPORT`.
+  - Added or changed a rule? Run a full export.
+  - `export.log` lists the parts no rule coloured.
+  - Photo references: #75.
+
+### Sweep-pose renders: `cad/render/` + the GPU batch lane (node-03)
 
 ```bash
 VT350_POSE="Left:front-left, top" VT350_RENDER_OUT=/tmp/pose $APP freecadcmd $PWD/cad/render/export_pose.py
