@@ -31,7 +31,7 @@
 import json, os, subprocess, sys, time
 
 WORK = os.environ.get("VT350_WORK", "/home/dan/Code/vt350/cad/data")
-MODEL = "/home/dan/Documents/VT350/vt350-lite-26.FCStd"
+MODEL = os.environ.get("VT350_MODEL", "/home/dan/Documents/VT350/vt350-lite-26.FCStd")   # refresh.py sets it (#69)
 HERE = os.path.abspath(__file__)
 Y_TRAVEL = (-277.19, 145.43)           # gantry dY limits, lite9_rails.log (joint/mount hard stops; Z moves since keep them)
 PLATE_X0, PLATE_Y0, PLATE_W, PRINT_W = -422.5, 28.0, 355.0, 350.0

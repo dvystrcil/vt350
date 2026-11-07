@@ -159,6 +159,23 @@ $APP freecadcmd $PWD/cad/scripts/frame_map.py
 $NV $APP $PWD/cad/scripts/make_lite.py
 ```
 
+### After a model change: `refresh.py` (#69)
+
+One command for everything a new lite-N (or a `derive_stls` change) has to be followed by. Plain `python3`; it never
+writes a model and never commits, so opencode or CI can run it and the caller commits the result:
+
+```bash
+python3 cad/scripts/refresh.py 26 --dry-run       # the steps, and which parts/printed copies would change
+python3 cad/scripts/refresh.py 26                 # ~15-20 min: derive_stls -> sync_printed -> check_printed -> sweep -> print_area -> test_print_area
+python3 cad/scripts/refresh.py 26 --from sweep    # start part-way
+```
+
+It stops at the first failed step (exit code **or** a missing completion marker) and names the step and its log. The
+summary goes to stdout and `data/logs/refresh.log`: STLs re-copied (only their `sha256` cell in `manifest.csv` changes,
+by text edit), the reach compared with the committed sweep log, and the print area. Then `git diff --stat` and commit.
+A new lite-N that remixes a part also needs its `derive_stls.py` JOBS row; a new parts/printed copy needs its manifest
+row first (refresh only updates existing rows).
+
 - **Pass absolute script paths.** In testing, a relative path produced no
   output and no error, while the same script by absolute path ran.
 - **Model-writing passes must run in GUI mode.** A headless save drops
@@ -200,6 +217,7 @@ $NV $APP $PWD/cad/scripts/make_lite.py
 | `clash_lite18_repro.py` | plain `python3` (spawns the workers) | #45 AC1/AC2: re-runs lite-18's clash rule on the saved lite-18, with 1 worker and with N, and matches `lite18_plate.log`'s pairs and volumes (`data/logs/clashlib_lite18.log`) |
 | `sweep_toolhead.py` | plain `python3`; plan stage headless, read-only, never saves | #19 AC5 / #53 AC4 on **lite-26** (was lite-25): each A4Tv2 head is put on the MadMax carriage by transform, using the dock's carriage copy at its pickup pose. Bed (Z), gantry (Y), carriage + head + plate + Beacon (X+Y) move. **Belts:** the part inside the XY joints' Y band rides with the gantry (clashlib `clip`), not checked against gantry/carriage; the side runs are left out. Poses: the 4 corners + centre of the 350 square × bed top/bottom, the head's own dock pickup parked **and slid 6 mm to the keyslots' large opening**, an X scan from each side, and head vs plate. Runs on `clashlib`; log `data/logs/sweep_toolhead.log`. lite-24 result: both heads reach nozzle X −418…−72 (print square −420…−70; lite-22 left −406, right −84), now limited by the carriage meeting the XY joint. (lite-24/25, superseded by lite-26 below:) At the attach slide the belts run 3.2 mm into the OTHER head's parked plate (2 mm clear at contact): **contact by design** (#58), since MadMax's own core puts the plate's coupling magnets at belt height and the ~6 mm slide is upstream's. The belt deflects around the plate (~1–2.5 N, belt tension assumed). **Now runs on lite-26** (#61, carriage on the MGN12H block; lite-25 changed nothing but the clips × rail overlap, 23.24 → 41.12 mm³). lite-26 result: clips × rail and carriage × rail are gone at every pose. X reach is **−416…−74** for both heads (lite-25 −418…−72), now limited by the SpeedClips' outer ends meeting the XY joints' front idler bearings (695 / F695): the carriage sits 4.775 mm further forward, in the idlers' Y band. Rear Y reach is 370.69. **The attach-slide belt × parked-plate contact is gone:** at pickup the gantry stops 4.775 mm further back, so the belts clear both parked plates by ≥ 0.79 mm at the large opening (6.8 mm parked). lite-25 had up to 4.0 mm into them. The #58 "contact by design" reading came from the carriage error |
 | `belt_plate_gap.py` | headless, read-only | #61: the belts (XY-joint band, moved with the gantry) vs both parked MadMax plates at the dock pickup, parked and at the large opening, on lite-25 and lite-26. Clearance by `distToShape`; on overlap, the Y depth. lite-26: ≥ 0.79 mm clear at the large opening, ≥ 6.79 mm parked (lite-25: 3.25–4.0 mm into the plates). Log `data/logs/belt_plate_gap.log` |
+| `refresh.py` | plain `python3`; runs the read-only steps, never saves or commits | #69: the after-a-model-change chain above. `test_refresh.py` (CI `refresh-chain`) tests the sync, the step runner and the summary |
 | `print_area.py` | plain `python3`, no FreeCAD | #67: draws `data/print-area.svg`: the 355 plate, the 350 print square and the area the carried nozzle reaches (tightest head per side, clamped to the square). It reads the reach from `data/logs/sweep_toolhead.log` and the plate constants from `sweep_toolhead.py`, so **re-run it after every sweep**. `test_print_area.py` fails in CI when the drawing is stale. lite-26: **342.0 × 340.19** (plate X 6.5…348.5, Y 2.5…342.69; left/right −4, rear −9.81, front 0). The user accepts a smaller print area (2026-11-06): printing to the plate edge cools faster and curls |
 | `../render/export_meshes.py` + `../render/render.py` | GUI export (never saves), then `blender -b -P render.py -- <export> <out>`, or on node-03 (see "Rendering on node-03") | Cycles renders: the Obico camera's view lit only by the LED strips, plus an outside 3/4 view |
 | `../render/export_pose.py` + `../render/render.py` | headless export (never saves), then render locally or on node-03 | One `sweep_toolhead.py` pose (`VT350_POSE="Left:front-left, top"`). Parts are coloured by role (head, plate, standard vs Alternate bracket, carriage, gantry), the overlap volumes glow red, and the door, panels and insulation are left out. `scene.json` carries its own `views`, with per-view `hide` and `alpha`; `render.py` renders those in place of the obico/outside views |
