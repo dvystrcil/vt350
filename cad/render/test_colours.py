@@ -82,5 +82,15 @@ class TheCommittedMap(unittest.TestCase):
         self.assertEqual(co.role_of(m, "backbone-350 v2", "4040-350x350x250 Voron Trident v4 v33", "Steel-Generic"), "backbone")
 
 
+
+class Portable(unittest.TestCase):
+    """The render scripts run in the gpu-batch pods (homelab#1961 AC5) as well as
+    on this laptop: they find colours.py next to themselves, never at a home path."""
+    def test_scripts_import_colours_from_their_own_dir(self):
+        for name in ("export_meshes.py", "render.py"):
+            src = open(os.path.join(HERE, name)).read()
+            self.assertNotIn("/home/dan/Code", src.split("import colours")[0], name)
+            self.assertIn("sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))", src, name)
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
