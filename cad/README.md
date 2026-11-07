@@ -86,14 +86,36 @@ last 10 runs, one per day for 30 days, and one per month for 12 months
 (override with `VT350_KEEP` in the local config). On this laptop the alias
 `vt350-backup` runs `cad/backup-models.sh --verify` from any directory.
 
-## Renders (lite-16)
+## Renders (lite-26, in colour)
 
-Blender Cycles renders of `vt350-lite-16.FCStd`, made with `render/export_meshes.py` + `render/render.py`
-(see the script table under "Running the scripts"). They show lite-16 only and are re-rendered when worth it, not on every pass.
+Blender Cycles renders of `vt350-lite-26.FCStd` + `vt350-ebox.FCStd`, made with `render/render_full.sh` (below), in the
+chosen colours (#38): seafoam green powder-coated frame, PET-GF white printed parts, PET-GF orange accents. They are
+re-rendered when worth it, not on every pass. The lite-16 renders (model colours) are in git history.
 
 | What the Obico camera sees (LED strips only, 3800 K) | Outside, front 3/4 |
 |---|---|
-| ![View from the Nocturne camera at the top front centre](renders/vt350-lite-16-obico.jpg) | ![Front 3/4 view of the printer](renders/vt350-lite-16-outside.jpg) |
+| ![View from the Nocturne camera at the top front centre](renders/vt350-lite-26-obico.jpg) | ![Front 3/4 view of the printer](renders/vt350-lite-26-outside.jpg) |
+
+### Full colour renders on this laptop: `render/render_full.sh` (#38)
+
+```bash
+cad/render/render_full.sh                 # lite-26 + vt350-ebox.FCStd, 128 samples
+cad/render/render_full.sh 27 256          # another lite-N, more samples
+VT350_REUSE_EXPORT=<run>/export cad/render/render_full.sh   # after changing colours.json only: skip the export
+```
+
+- **What it does:** runs the FreeCAD GUI export (the window opens and closes by itself; click **Wait** if GNOME asks), then Blender Cycles on the RTX 2070 (OPTIX).
+- **Output:** `~/Documents/VT350/renders/<model>-<UTC>/`.
+- **Colours** come from `render/colours.json` (user, 2026-11-06), applied at render time, so the model is never edited:
+
+  | Role | Colour |
+  |---|---|
+  | frame extrusions | seafoam green powder coat |
+  | printed parts (ShapeMaterial ABS) | PET-GF white |
+  | Voron `[a]_` accents | PET-GF orange |
+
+  Parts no rule matches keep the model's colour. `export.log` lists every `Default`-material part left uncoloured. Add a rule for any that are printed.
+- **Tests:** `render/colours.py` holds the shared rule matcher, tested by `render/test_colours.py` (CI `render-colours`).
 
 ### Rendering on node-03 (fire and forget)
 

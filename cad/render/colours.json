@@ -1,0 +1,14 @@
+{
+  "_doc": "Render-time colours (#38), applied by export_meshes.py + render.py; first matching rule wins, unmatched parts keep the model's colour. Hex = sRGB. Decided by the user 2026-11-06.",
+  "roles": {
+    "frame":   {"hex": "#93E9BE", "kind": "paint",   "roughness": 0.45, "note": "seafoam green powder coat (approximate shade: tune here)"},
+    "accent":  {"hex": "#E2662A", "kind": "plastic", "roughness": 0.65, "note": "PET-GF orange, Voron [a]_ accent parts (tentative)"},
+    "printed": {"hex": "#E6E4DE", "kind": "plastic", "roughness": 0.65, "note": "PET-GF white (glass fill = matte off-white)"}
+  },
+  "rules": [
+    {"role": "frame",   "group": "VT Frame|Door Frame|Electronics Cabinet", "material": "Alumin", "label": "^(2020|2040|4040)"},
+    {"role": "accent",  "label": "^\\[a\\]_"},
+    {"role": "printed", "material": "ABS"},
+    {"role": "printed", "label": "^Camera housing (front|back)"}
+  ]
+}

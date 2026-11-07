@@ -1,0 +1,17 @@
+name: render-colours
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+      - name: Test the render colour map (rules, sRGB conversion, colours.json)
+        run: python3 cad/render/test_colours.py 2>&1 | tee test.log
+      - name: Confirm every test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test.log && tail -1 test.log | grep -qx 'OK'
