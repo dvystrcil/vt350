@@ -31,6 +31,7 @@ flowchart TD
 | **After every new lite-N or remix change** | `python3 cad/scripts/refresh.py N` | ~18 min |
 | Only the reach changed (sweep re-run by hand) | `python3 cad/scripts/refresh.py N --from print_area` | seconds |
 | Changed a file in `parts/printed/` or `manifest.csv` | `python3 parts/check-printed.py` (add `--write-index` to rebuild the README table) | seconds |
+| Will a part print without supports? (before any PETG test-fit) | `python3 parts/slice-check.py <stl…>`: report + red-support preview; see `parts/slice/README.md` | ~1 s/part, up to ~1 min for big ones |
 | Checking pinned upstream STLs haven't drifted | `python3 parts/check-printed.py --upstream` (network; CI doesn't run it) | ~1 min |
 | See what refresh *would* do, writing nothing | `python3 cad/scripts/refresh.py N --dry-run` | seconds |
 | Full colour renders of the whole printer, here on the laptop | `cad/render/render_full.sh [N] [samples]` (below) | ~6 min; prints the image paths |
@@ -148,7 +149,7 @@ $APP freecadcmd $PWD/cad/scripts/liteNN_<what>.py   # headless = dry run: all ch
 | GPU batch | **live** (homelab#1935) | Blender renders on node-03 | `~/Code/homelab/bin/gpu-batch-submit.py` |
 | dmf edit | **live** (homelab#1856) | a small, bounded edit to one file by the local model. A guard decides if it lands, and you read only the diff | `~/Code/homelab/bin/dmf-edit.py FILE -i "instruction" --allow 40-55 [--expect TOKEN] [--write]` |
 | dmf handoff | **live** | a one-shot text task from a prompt file, response saved | `cd ~/Code/homelab && DMF_MODEL=automation-tool-free bin/dmf-handoff.sh prompts/dmf-tasks/<task>.md` |
-| slicer check | planned: [#70](https://github.com/dvystrcil/vt350/issues/70) | supports/overhangs + preview of each printed part, headless | not yet |
+| slicer check | **live** (#70) | supports, time, warnings, keep-out boxes + preview of each printed part, headless | `python3 parts/slice-check.py <stl…>` |
 | dmf status drafter | planned: [homelab#1962](https://github.com/dvystrcil/homelab/issues/1962) | turn a run log into a guarded AC status comment draft | not yet |
 | CAD batch lane | planned: [homelab#1961](https://github.com/dvystrcil/homelab/issues/1961) | sweeps/clash checks off the laptop, result posted to the issue | not yet |
 
@@ -163,6 +164,7 @@ $APP freecadcmd $PWD/cad/scripts/liteNN_<what>.py   # headless = dry run: all ch
 |---|---|---|
 | `printed-parts` | `parts/test_check_printed.py`, `parts/check-printed.py` | manifest, sha256 or BOM drift |
 | `print-area` | `cad/scripts/test_print_area.py` | `print-area.svg` is stale against the sweep log |
+| `slice-check` | `parts/test_slice_check.py`, `keepout.json` validity | the G-code parser, keep-out or report logic breaks |
 | `refresh-chain` | `cad/scripts/test_refresh.py` | the chain's sync, step runner or markers break |
 | `secret-scan` | gitleaks | a secret in the diff |
 
