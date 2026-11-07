@@ -15,3 +15,7 @@ jobs:
         run: python3 cad/scripts/test_refresh.py 2>&1 | tee test.log
       - name: Confirm every test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test.log && tail -1 test.log | grep -qx 'OK'
+      - name: Test where derive_stls reads its models from (the batch lane sets VT350_MODELS)
+        run: python3 cad/scripts/test_derive_stls.py 2>&1 | tee test-derive.log
+      - name: Confirm every derive_stls test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-derive.log && tail -1 test-derive.log | grep -qx 'OK'

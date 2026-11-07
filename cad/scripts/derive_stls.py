@@ -1,5 +1,6 @@
 # Printable STLs of remixed parts, in the UPSTREAM part's print orientation.   (headless, read-only on the models)
 #   VT350_UPSTREAM=<dir with the upstream STLs> freecadcmd /home/dan/Code/vt350/cad/scripts/derive_stls.py
+#   VT350_MODELS=<dir with vt350-lite-N.FCStd> (default ~/Documents/VT350), VT350_REPO=<checkout> (homelab#1961)
 # For each part: the part as it sat in the OLD model (before the remix) is matched to the upstream STL by a rigid
 # transform: principal axes of inertia (old solid vs the upstream mesh, 4 proper sign choices), refined by closest-point
 # iterations (Kabsch), then checked: every sampled upstream vertex within TOL of the transformed old part. Upstream
@@ -10,7 +11,7 @@ import numpy as np
 V = FreeCAD.Vector
 REPO = os.environ.get("VT350_REPO", "/home/dan/Code/vt350")
 UP = os.environ.get("VT350_UPSTREAM", "/home/dan/Documents/VT350/downloads/upstream")
-M = "/home/dan/Documents/VT350/vt350-lite-{}.FCStd"
+M = os.environ.get("VT350_MODELS", "/home/dan/Documents/VT350") + "/vt350-lite-{}.FCStd"   # dir; the batch lane sets it
 TOL = 0.05
 DUCTS = f"{REPO}/cad/derived/a4tv2-duct-4010-madmax-dock"
 ARMS = f"{REPO}/cad/derived/madmax-andrewmcgr-dock-arm"

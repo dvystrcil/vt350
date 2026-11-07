@@ -165,7 +165,7 @@ $APP freecadcmd $PWD/cad/scripts/liteNN_<what>.py   # headless = dry run: all ch
 | `printed-parts` | `parts/test_check_printed.py`, `parts/check-printed.py` | manifest, sha256 or BOM drift |
 | `print-area` | `cad/scripts/test_print_area.py` | `print-area.svg` is stale against the sweep log |
 | `slice-check` | `parts/test_slice_check.py`, `keepout.json` validity | the G-code parser, keep-out or report logic breaks |
-| `refresh-chain` | `cad/scripts/test_refresh.py` | the chain's sync, step runner or markers break |
+| `refresh-chain` | `cad/scripts/test_refresh.py`, `cad/scripts/test_derive_stls.py` | the chain's sync, step runner or markers break, or `derive_stls` stops honouring `VT350_MODELS` |
 | `secret-scan` | gitleaks | a secret in the diff |
 
 ## One-off and investigation scripts
