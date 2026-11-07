@@ -4,6 +4,8 @@
 #        "outside" = 3/4 front view, studio light plus the LED strips.
 # Units: model mm -> scene metres (x 0.001).
 import bpy, json, math, os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import colours                                       # #38: role colours from colours.json (via scene.json)
 from mathutils import Vector
 argv = sys.argv[sys.argv.index("--") + 1:]
 SRC, OUT = argv[0], argv[1]; SAMPLES = int(argv[2]) if len(argv) > 2 else 128
@@ -32,13 +34,14 @@ def kelvin_rgb(k):   # Tanner Helland's approximation, good enough for a strip c
     b = 255 if t >= 66 else (0 if t <= 19 else 138.5177312231 * math.log(t - 10) - 305.0447927307)
     return tuple(max(0, min(255, c)) / 255 for c in (r, g, b))
 LED_K = 3800
-def material(name, color, kind, transparency=0.0):
+def material(name, color, kind, transparency=0.0, roughness=None):
     m = bpy.data.materials.new(name); m.use_nodes = True
     p = m.node_tree.nodes["Principled BSDF"]
     p.inputs["Base Color"].default_value = (*color, 1)
     metal = kind in ("aluminium", "steel", "brass")
     p.inputs["Metallic"].default_value = 1.0 if metal else 0.0
-    p.inputs["Roughness"].default_value = {"aluminium": 0.35, "steel": 0.3, "brass": 0.3, "felt": 0.95, "ptfe": 0.4}.get(kind, 0.5)
+    p.inputs["Roughness"].default_value = roughness if roughness is not None else \
+        {"aluminium": 0.35, "steel": 0.3, "brass": 0.3, "felt": 0.95, "ptfe": 0.4}.get(kind, 0.5)
     if kind == "glow":                               # overlap volumes in export_pose.py scenes: visible inside anything
         p.inputs["Emission Color"].default_value = (*color, 1); p.inputs["Emission Strength"].default_value = 8.0
     if kind == "emitter":
@@ -60,9 +63,12 @@ for key, b in scene_j["buckets"].items():
     bpy.ops.wm.stl_import(filepath=path, global_scale=S)
     ob = bpy.context.selected_objects[0]; ob.name = key
     kind = "emitter" if key == "LED_emitter" else "glow" if key == "clash" else kind_of(b["material"], (b["labels"] or [""])[0])
-    col = tuple(b["color"])
-    if kind in ("aluminium", "steel"): col = tuple(min(1, max(0.55, c)) for c in col)
-    ob.data.materials.append(material(key, col, kind, b.get("transparency", 0)))
+    col = tuple(b["color"]); rough = None
+    role = scene_j.get("roles", {}).get(b.get("role") or "")
+    if role:                                         # colour map role (#38): sRGB hex -> linear, its own finish
+        col = colours.linear(role["hex"]); kind = role.get("kind", "plastic"); rough = role.get("roughness")
+    elif kind in ("aluminium", "steel"): col = tuple(min(1, max(0.55, c)) for c in col)
+    ob.data.materials.append(material(key, col, kind, b.get("transparency", 0), rough))
     bpy.ops.object.shade_auto_smooth(angle=math.radians(35)) if hasattr(bpy.ops.object, "shade_auto_smooth") else None
 # LED strips: also a real area light under each channel, facing down, so the strip lights the chamber
 for L in scene_j["lights"]:
