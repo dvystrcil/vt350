@@ -57,6 +57,9 @@ def kind_of(mat, label0):
     if "ptfe" in m: return "ptfe"
     if "felt" in label0.lower(): return "felt"
     return "plastic"
+# role colours: the CURRENT colours.json (so a colour-only edit re-renders from an old export), else the export's copy
+try: ROLES = dict(scene_j.get("roles", {}), **colours.load()["roles"])
+except Exception as e: print("colours.json not loaded:", e); ROLES = scene_j.get("roles", {})
 for key, b in scene_j["buckets"].items():
     path = os.path.join(SRC, key + ".stl")
     if not os.path.exists(path): continue
@@ -64,7 +67,7 @@ for key, b in scene_j["buckets"].items():
     ob = bpy.context.selected_objects[0]; ob.name = key
     kind = "emitter" if key == "LED_emitter" else "glow" if key == "clash" else kind_of(b["material"], (b["labels"] or [""])[0])
     col = tuple(b["color"]); rough = None
-    role = scene_j.get("roles", {}).get(b.get("role") or "")
+    role = ROLES.get(b.get("role") or "")
     if role:                                         # colour map role (#38): sRGB hex -> linear, its own finish
         col = colours.linear(role["hex"]); kind = role.get("kind", "plastic"); rough = role.get("roughness")
     elif kind in ("aluminium", "steel"): col = tuple(min(1, max(0.55, c)) for c in col)

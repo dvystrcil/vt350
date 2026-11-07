@@ -3,9 +3,17 @@
   "roles": {
     "frame":   {"hex": "#93E9BE", "kind": "paint",   "roughness": 0.45, "note": "seafoam green powder coat (approximate shade: tune here)"},
     "accent":  {"hex": "#E2662A", "kind": "plastic", "roughness": 0.65, "note": "PET-GF orange, Voron [a]_ accent parts (tentative)"},
+    "backbone": {"hex": "#1A1A1A", "kind": "paint",  "roughness": 0.8,  "note": "bed backbone (steel), matte black (user, 2026-11-06)"},
+    "belt":     {"hex": "#2E2119", "kind": "plastic", "roughness": 0.75, "note": "GT2 belts, brown almost black (user, 2026-11-06)"},
+    "monolith": {"hex": "#161616", "kind": "paint",   "roughness": 0.7,  "note": "LDO Monolith milled parts (VC9-*/VT9-*), matte black (user, 2026-11-06)"},
+    "bearing":  {"hex": "#E4E6EA", "kind": "steel",   "roughness": 0.12, "note": "ball bearings, chrome-ish (user, 2026-11-06)"},
     "printed": {"hex": "#E6E4DE", "kind": "plastic", "roughness": 0.65, "note": "PET-GF white (glass fill = matte off-white)"}
   },
   "rules": [
+    {"role": "backbone", "label": "^backbone-350"},
+    {"role": "belt",     "label": "^GT2 9mm belt"},
+    {"role": "monolith", "label": "^V[CT]9-", "material": "Alumin"},
+    {"role": "bearing",  "label": "(?i)(^|\\s)F?695 .*bearing|^_?MR\\d+ZZ "},
     {"role": "frame",   "group": "VT Frame|Door Frame|Electronics Cabinet", "material": "Alumin", "label": "^(2020|2040|4040)"},
     {"role": "accent",  "label": "^\\[a\\]_"},
     {"role": "printed", "material": "ABS"},
