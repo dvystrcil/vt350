@@ -89,7 +89,7 @@ last 10 runs, one per day for 30 days, and one per month for 12 months
 ## Renders (lite-26, in colour)
 
 Blender Cycles renders of `vt350-lite-26.FCStd` + `vt350-ebox.FCStd`, made with `render/render_full.sh` (below), in the
-chosen colours (#38): seafoam green powder-coated frame, PET-GF white printed parts, PET-GF orange accents. They are
+chosen colours (#38): seafoam green powder-coated frame, PET-GF white printed parts, PET-GF orange accents, matte black backbone and Monolith parts, brown belts, chrome bearings. Photo references for the rest: #75. They are
 re-rendered when worth it, not on every pass. The lite-16 renders (model colours) are in git history.
 
 | What the Obico camera sees (LED strips only, 3800 K) | Outside, front 3/4 |
@@ -101,7 +101,7 @@ re-rendered when worth it, not on every pass. The lite-16 renders (model colours
 ```bash
 cad/render/render_full.sh                 # lite-26 + vt350-ebox.FCStd, 128 samples
 cad/render/render_full.sh 27 256          # another lite-N, more samples
-VT350_REUSE_EXPORT=<run>/export cad/render/render_full.sh   # after changing colours.json only: skip the export
+VT350_REUSE_EXPORT=<run>/export cad/render/render_full.sh   # changed only a role's colour/finish: skip the export (a new RULE needs a full run)
 ```
 
 - **What it does:** runs the FreeCAD GUI export (the window opens and closes by itself; click **Wait** if GNOME asks), then Blender Cycles on the RTX 2070 (OPTIX).
@@ -113,6 +113,10 @@ VT350_REUSE_EXPORT=<run>/export cad/render/render_full.sh   # after changing col
   | frame extrusions | seafoam green powder coat |
   | printed parts (ShapeMaterial ABS) | PET-GF white |
   | Voron `[a]_` accents | PET-GF orange |
+  | bed backbone | matte black |
+  | GT2 belts | brown, almost black |
+  | LDO Monolith milled parts (`VC9-*`, `VT9-*`) | matte black |
+  | ball bearings (695, F695, MR148ZZ) | chrome |
 
   Parts no rule matches keep the model's colour. `export.log` lists every `Default`-material part left uncoloured. Add a rule for any that are printed.
 - **Tests:** `render/colours.py` holds the shared rule matcher, tested by `render/test_colours.py` (CI `render-colours`).

@@ -73,6 +73,13 @@ class TheCommittedMap(unittest.TestCase):
         self.assertEqual(co.role_of(m, "Camera housing front (Printables 305428, public domain)",
                                     "Enclosure extras (lite-16)", "Default"), "printed")
         self.assertIsNone(co.role_of(m, "Nocturne lens", "Enclosure extras (lite-16)", "Default"))
+        self.assertEqual(co.role_of(m, "GT2 9mm belt, lower (Monolith 2WD)", "4040-350x350x250 Voron Trident v4 v33", "Default"), "belt")
+        for lab in ("VC9-JLA", "VT9-RRB", "VT9-FIA001"):
+            self.assertEqual(co.role_of(m, lab, "4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left", "Aluminum-6061-T6"), "monolith")
+        for lab in ("695 W5 bearing005", "F695 flanged bearing022", "_MR148ZZ Outer Ring (1)", "_MR148ZZ Ball013"):
+            self.assertEqual(co.role_of(m, lab, "x", "Steel-Generic"), "bearing", lab)
+        self.assertIsNone(co.role_of(m, "D5x36mm pin001", "x", "Steel-Generic"))
+        self.assertEqual(co.role_of(m, "backbone-350 v2", "4040-350x350x250 Voron Trident v4 v33", "Steel-Generic"), "backbone")
 
 
 if __name__ == "__main__":
