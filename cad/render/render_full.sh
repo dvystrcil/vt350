@@ -9,7 +9,8 @@
 #    window opens and closes by itself; if GNOME says "Not Responding", click Wait.
 # 2. Blender (snap, headless) renders the "obico" (chamber camera) and "outside" (3/4 front) views on the RTX 2070.
 # Output: ~/Documents/VT350/renders/<model>-<UTC>/{export,out}. Never saves a model, writes nothing to git.
-# Colours: edit colours.json and re-run (the export is the slow part: VT350_REUSE_EXPORT=<dir> skips it).
+# Colours: edit colours.json and re-run. Changed only a role's hex/finish? VT350_REUSE_EXPORT=<run>/export skips the
+# slow export. Changed or added a RULE? Run a full export: roles are assigned when parts are exported.
 set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
 APP="${VT350_APP:-/home/dan/FreeCAD/FreeCAD_26.3rc2-Linux-x86_64.AppImage}"
