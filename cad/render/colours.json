@@ -17,7 +17,7 @@
     {"role": "belt",     "label": "^GT2 9mm belt"},
     {"role": "monolith", "label": "^V[CT]9-", "material": "Alumin"},
     {"role": "bearing",  "label": "(?i)(^|\\s)F?695 .*bearing|^_?MR\\d+ZZ "},
-    {"role": "frame",   "group": "VT Frame|Door Frame|Electronics Cabinet", "material": "Alumin", "label": "^(2020|2040|4040)"},
+    {"role": "frame",   "group": "VT Frame|Door Frame|Electronics Cabinet", "material": "Alumin", "label": "^(2020|2040|4040)|^Dock crossbar"},
     {"role": "accent",  "label": "^\\[a\\]_"},
     {"role": "printed", "material": "ABS"},
     {"role": "printed", "label": "^Camera housing (front|back)"},

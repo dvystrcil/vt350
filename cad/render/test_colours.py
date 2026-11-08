@@ -68,6 +68,7 @@ class TheCommittedMap(unittest.TestCase):
         frame = "4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Horizontals"
         self.assertEqual(co.role_of(m, "2040 (2) (new front)", frame, "Aluminum-6061-T6"), "frame")
         self.assertIsNone(co.role_of(m, "Dock", frame, "Aluminum-6061-T6"))           # milled dock, not extrusion
+        self.assertEqual(co.role_of(m, "Dock crossbar (placeholder, 2040)", frame, "Aluminum-6061-T6"), "frame")  # user, 2026-11-08
         self.assertEqual(co.role_of(m, "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
                                     "Left Toolhead", "ABS-Generic"), "accent")
         self.assertEqual(co.role_of(m, "Camera housing front (Printables 305428, public domain)",
