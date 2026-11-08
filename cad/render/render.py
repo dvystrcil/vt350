@@ -109,8 +109,10 @@ if not scene_j.get("views"):
     # a model on its stand (lite-27: levelling feet + base board, #83) also gets two low views of the base and the
     # filter recessed under the backbone (#74), camera just above the board top (Z -100)
     if any(lab.startswith("Base board") for b in scene_j["buckets"].values() for lab in b.get("labels", [])):
-        views.append(("low_front", add_cam("low_front", (330, -1050, -40), (-245, 230, -60), lens_mm=30), 1.0, -0.6))
-        views.append(("low_side", add_cam("low_side", (-1450, -150, -45), (-245, 235, -60), lens_mm=30), 1.0, -0.6))
+        # framed on the base: board (Z -118..-100) in the lower third, frame bottom (Z -50) mid-frame, camera
+        # 30 mm above the board so the filter shows between the feet under the bottom extrusions
+        views.append(("low_front", add_cam("low_front", (105, -555, -70), (-245, 225, -15), lens_mm=35), 1.0, -0.6))
+        views.append(("low_side", add_cam("low_side", (-1145, -25, -70), (-245, 225, 5), lens_mm=35), 1.0, 0.4))   # unlit side: +1 EV
 VIEWDEF = {v["name"]: v for v in scene_j.get("views", [])}
 def apply_view(name):                                # per-view "hide": [bucket], "alpha": {bucket: alpha}
     v = VIEWDEF.get(name, {})
