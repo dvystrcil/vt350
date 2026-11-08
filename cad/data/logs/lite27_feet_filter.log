@@ -1,0 +1,30 @@
+[  109.7s] opened /home/dan/Documents/VT350/vt350-lite-26.FCStd
+[  170.9s] lowest solids: [(-50.00000010000029, '2040 (2)'), (-50.00000010000029, '2040 (2) (1)001'), (-50.00000010000029, '2040 (2) (new front)'), (-50.000000100000015, '4040 (2)')]
+[  170.9s] ok   printer's lowest point is the frame bottom: -50.00
+[  397.7s] STEP loaded 898
+[  414.4s] ok   all 22 core parts found (missing [])
+[  477.3s] filter placed: X -398.8..-91.2 Y 81.9..388.5 Z -79.97..-4.36
+[  477.3s] ok   filter top -4.36 <= -4.0
+[  477.4s] ok   filter parts that reach the backbone's level fit the cutout with >= 5 mm []
+[  477.4s] cutout margins: X 21.2 / 21.2, Y 11.9 / 11.5
+[  491.4s] ok   filter x printer at the model pose: 0 overlaps []
+[  491.4s] ok   bed 2020 T at the bottom of travel: Z -1.98, 2.38 above the filter
+[  491.4s] ok   filter bottom -79.97 is 20.0 above the board (>= 15.0)
+[  492.5s] ok   Levelling foot 1 T-slot bracket (4040, placeholder) touches nothing in the printer []
+[  492.5s] ok   Levelling foot 1 M8 stud (placeholder) touches nothing in the printer []
+[  492.5s] ok   Levelling foot pad 1 (rubber, placeholder D50) touches nothing in the printer []
+[  492.9s] ok   Levelling foot 2 T-slot bracket (4040, placeholder) touches nothing in the printer []
+[  492.9s] ok   Levelling foot 2 M8 stud (placeholder) touches nothing in the printer []
+[  492.9s] ok   Levelling foot pad 2 (rubber, placeholder D50) touches nothing in the printer []
+[  493.5s] ok   Levelling foot 3 T-slot bracket (4040, placeholder) touches nothing in the printer []
+[  493.5s] ok   Levelling foot 3 M8 stud (placeholder) touches nothing in the printer []
+[  493.5s] ok   Levelling foot pad 3 (rubber, placeholder D50) touches nothing in the printer []
+[  494.0s] ok   Levelling foot 4 T-slot bracket (4040, placeholder) touches nothing in the printer []
+[  494.1s] ok   Levelling foot 4 M8 stud (placeholder) touches nothing in the printer []
+[  494.1s] ok   Levelling foot pad 4 (rubber, placeholder D50) touches nothing in the printer []
+[  494.1s] ok   Base board (18 mm, plywood/MDF, placeholder) touches nothing in the printer []
+[  494.1s] ok   each bracket's whole top face sits under a bottom extrusion: [True, True, True, True]
+[  494.3s] ok   printer solids 903 -> 917 (+13 stand, +1 envelope)
+[  494.3s] verify: 0 problems
+[  501.5s] SAVED /home/dan/Documents/VT350/vt350-filter.FCStd 48600915
+[  525.2s] SAVED /home/dan/Documents/VT350/vt350-lite-27.FCStd 173073937

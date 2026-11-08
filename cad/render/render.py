@@ -2,7 +2,9 @@
 #   blender -b -P cad/render/render.py -- <export dir> <output dir> [samples]
 # Writes <model>-<view>.png (master) and <model>-<view>.jpg (quality 85: the README image, cad/renders/).
 # Views: "obico"   = what the Nocturne camera sees, chamber lit only by the LED strips (room dim);
-#        "outside" = 3/4 front view, studio light plus the LED strips.
+#        "outside" = 3/4 front view, studio light plus the LED strips;
+#        "low_front", "low_side" = only for a model on its stand (a "Base board" part, lite-27): the feet, board and
+#        the filter recessed under the backbone, seen from just above the board.
 # Units: model mm -> scene metres (x 0.001).
 import bpy, json, math, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -104,6 +106,11 @@ elif c:
     views.append(("obico", add_cam("obico", pos, pos + Vector(c["dir"]) * 100, fov_diag=c["fov_diag_deg"]), 0.15, -1.6))
 if not scene_j.get("views"):
     views.append(("outside", add_cam("outside", (480, -1500, 1150), (-245, 215, 300), lens_mm=35), 1.0, -1.0))
+    # a model on its stand (lite-27: levelling feet + base board, #83) also gets two low views of the base and the
+    # filter recessed under the backbone (#74), camera just above the board top (Z -100)
+    if any(lab.startswith("Base board") for b in scene_j["buckets"].values() for lab in b.get("labels", [])):
+        views.append(("low_front", add_cam("low_front", (330, -1050, -40), (-245, 230, -60), lens_mm=30), 1.0, -0.6))
+        views.append(("low_side", add_cam("low_side", (-1450, -150, -45), (-245, 235, -60), lens_mm=30), 1.0, -0.6))
 VIEWDEF = {v["name"]: v for v in scene_j.get("views", [])}
 def apply_view(name):                                # per-view "hide": [bucket], "alpha": {bucket: alpha}
     v = VIEWDEF.get(name, {})

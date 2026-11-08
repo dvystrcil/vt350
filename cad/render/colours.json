@@ -7,7 +7,10 @@
     "belt":     {"hex": "#2E2119", "kind": "plastic", "roughness": 0.75, "note": "GT2 belts, brown almost black (user, 2026-11-06)"},
     "monolith": {"hex": "#161616", "kind": "paint",   "roughness": 0.7,  "note": "LDO Monolith milled parts (VC9-*/VT9-*), matte black (user, 2026-11-06)"},
     "bearing":  {"hex": "#E4E6EA", "kind": "steel",   "roughness": 0.12, "note": "ball bearings, chrome-ish (user, 2026-11-06)"},
-    "printed": {"hex": "#E6E4DE", "kind": "plastic", "roughness": 0.65, "note": "PET-GF white (glass fill = matte off-white)"}
+    "printed": {"hex": "#E6E4DE", "kind": "plastic", "roughness": 0.65, "note": "PET-GF white (glass fill = matte off-white)"},
+    "foot_metal": {"hex": "#C9CDD2", "kind": "aluminium", "roughness": 0.4, "note": "levelling feet brackets + studs (#83, placeholder until a product is picked)"},
+    "rubber": {"hex": "#141414", "kind": "plastic", "roughness": 0.9, "note": "levelling foot pads (#83)"},
+    "board": {"hex": "#B58B5A", "kind": "plastic", "roughness": 0.85, "note": "base board, plywood/MDF (#83, placeholder)"}
   },
   "rules": [
     {"role": "backbone", "label": "^backbone-350"},
@@ -17,6 +20,11 @@
     {"role": "frame",   "group": "VT Frame|Door Frame|Electronics Cabinet", "material": "Alumin", "label": "^(2020|2040|4040)"},
     {"role": "accent",  "label": "^\\[a\\]_"},
     {"role": "printed", "material": "ABS"},
-    {"role": "printed", "label": "^Camera housing (front|back)"}
+    {"role": "printed", "label": "^Camera housing (front|back)"},
+    {"role": "foot_metal", "label": "^Levelling foot \\d+ (T-slot bracket|M8 stud)"},
+    {"role": "rubber",  "label": "^Levelling foot pad"},
+    {"role": "board",   "label": "^Base board"},
+    {"role": "accent",  "label": "^StealthMax .*(Latch|LogoCap|Hinge)"},
+    {"role": "printed", "label": "^StealthMax (M_|3\\.|1\\.)"}
   ]
 }

@@ -13,7 +13,7 @@ V = FreeCAD.Vector
 POSE = os.environ.get("VT350_POSE", "Left:front-left, top")
 OUT = os.environ.get("VT350_RENDER_OUT", "/tmp/vt350-pose-render")
 SKIP_PATHS = {"Door (1) (1)", "Insulation: carbon felt sealed in aluminium"}
-SKIP_LABEL_PREFIX = ("Roof panel", "Right side panel", "Camera housing", "Nocturne", "Ebox envelope")
+SKIP_LABEL_PREFIX = ("Roof panel", "Right side panel", "Camera housing", "Nocturne", "Ebox envelope", "Filter envelope")
 os.makedirs(OUT, exist_ok=True)
 logf = open(os.path.join(OUT, "export.log"), "w"); t0 = time.time()
 def log(*a): logf.write(f"[{time.time() - t0:7.1f}s] " + " ".join(str(x) for x in a) + "\n"); logf.flush()
