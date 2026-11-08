@@ -93,8 +93,17 @@ class TheCommittedMap(unittest.TestCase):
             self.assertEqual(co.role_of(m, lab, sm, "Default"), "printed", lab)
         for lab in ("StealthMax 3.3_LidLatch001", "StealthMax M_2.5a_LogoCap", "StealthMax 3.2_LidFrontHinge"):
             self.assertEqual(co.role_of(m, lab, sm, "Default"), "accent", lab)
+        self.assertEqual(co.role_of(m, "StealthMax hanger lip, left (remix concept)", sm, "Default"), "accent")
         self.assertIsNone(co.role_of(m, "StealthMax Acrylic Panel", sm, "Default"))
         self.assertIsNone(co.role_of(m, "StealthMax fan (Delta BFB0712HF)", sm, "Default"))
+
+    def test_drag_chains_are_orange(self):
+        """User, 2026-11-08: all drag chains, the Z chain included, in the orange accent; their screws are not."""
+        m = co.load()
+        z = "4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z"
+        for lab in ("10x11 Chain Link", "10x11 Chain Link017", "10x11 Fixed End", "10x11 Unfixed End"):
+            self.assertEqual(co.role_of(m, lab, z, "Default"), "accent", lab)
+        self.assertIsNone(co.role_of(m, "M3x8-Screw034", z, "Default"))
 
 
 

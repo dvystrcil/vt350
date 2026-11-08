@@ -1,0 +1,27 @@
+[   67.8s] opened /home/dan/Documents/VT350/vt350-lite-27.FCStd
+[   81.2s] opened /home/dan/Documents/VT350/vt350-filter.FCStd
+[  182.3s] filter: BoundBox (-398.676, 81.9129, -80.6717, -91.3237, 388.379, -4.5)
+[  188.6s] main chamber: BoundBox (-390.15, 90.1449, -64.9075, -99.8501, 379.855, -10.9073) lid frame: BoundBox (-389.152, 81.9131, -13.9075, -100.848, 379.098, -4.90748)
+[  189.0s] ok   left: one lid latch on this side (1)
+[  189.2s] left: hanger BoundBox (-430, 90, -21.9075, -387.15, 390, 2); latch Y 212.8..256.7 -> gap 209.8..259.7
+[  189.2s] ok   left: lip bottom face on the backbone top Z -2.0
+[  189.2s] ok   left: lip footprint over backbone material 92% (slots allowed)
+[  189.2s] ok   left: clear of the 2020 T's landing (Y >= 86.0, off the spine)
+[  190.3s] ok   left: arm reaches onto the filter body (overlap 479 mm3, to be fused in the remix)
+[  190.4s] ok   left: hanger keeps 3.00 mm off the lid latch
+[  280.6s] ok   left: hanger keeps >= 0.5 mm off every other filter part (lid, latches, access latches) []
+[  280.6s] ok   right: one lid latch on this side (1)
+[  280.8s] right: hanger BoundBox (-102.85, 90, -21.9075, -60, 390, 2); latch Y 212.8..256.7 -> gap 209.8..259.7
+[  280.8s] ok   right: lip bottom face on the backbone top Z -2.0
+[  280.8s] ok   right: lip footprint over backbone material 92% (slots allowed)
+[  280.8s] ok   right: clear of the 2020 T's landing (Y >= 86.0, off the spine)
+[  281.7s] ok   right: arm reaches onto the filter body (overlap 479 mm3, to be fused in the remix)
+[  281.8s] ok   right: hanger keeps 3.00 mm off the lid latch
+[  358.8s] ok   right: hanger keeps >= 0.5 mm off every other filter part (lid, latches, access latches) []
+[  358.8s] ok   bed at the bottom of travel vs hangers: closest 27.98 (left vs Heater pad hold-down 3 (pan head + washer envelope, 3.8 below plate))
+[  359.1s] ok   hangers x printer at the model pose: []
+[  359.2s] envelope: BoundBox (-430, 81.9129, -80.6717, -60, 390, 2)
+[  359.4s] ok   printer solid count unchanged
+[  359.4s] verify: 0 problems
+[  366.1s] SAVED /home/dan/Documents/VT350/vt350-filter-2.FCStd 48608656
+[  388.7s] SAVED /home/dan/Documents/VT350/vt350-lite-28.FCStd 173064072
