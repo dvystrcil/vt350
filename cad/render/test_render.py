@@ -57,7 +57,7 @@ def jpeg_info(data):
     return (dims[0], dims[1], luma) if dims and luma else None
 
 
-def write_fixture(src):
+def write_fixture(src, labels=("box",)):
     """A scene.json + one 200 mm box, the shape export_meshes.py writes."""
     x0, y0, z0, s = -345.0, 50.0, 200.0, 200.0
     v = [(x0 + dx * s, y0 + dy * s, z0 + dz * s) for dx in (0, 1) for dy in (0, 1) for dz in (0, 1)]
@@ -72,7 +72,7 @@ def write_fixture(src):
             f.write("endloop\nendfacet\n")
         f.write("endsolid box\n")
     scene = {"model": "fixture.FCStd",
-             "buckets": {"box": {"material": "", "labels": ["box"], "color": [0.6, 0.6, 0.6]}},
+             "buckets": {"box": {"material": "", "labels": list(labels), "color": [0.6, 0.6, 0.6]}},
              "lights": [{"label": "strip", "bbox": [-445, -45, 500, 516, 640, 648]}],
              "camera": {"pos": [-245, -52, 628], "dir": [0, 0.6, -0.8], "fov_diag_deg": 96}}
     with open(os.path.join(src, "scene.json"), "w") as f:
@@ -114,6 +114,28 @@ class RenderWritesReadmeImages(unittest.TestCase):
         for view in ("obico", "outside"):
             for ext in ("png", "jpg"):
                 self.assertIn(f"wrote {os.path.join(self.out, f'fixture-{view}.{ext}')}", self.blender.stdout)
+
+    def test_no_low_views_without_a_stand(self):
+        self.assertFalse([n for n in os.listdir(self.out) if "-low_" in n])
+
+
+class LowViewsWhenTheModelStandsOnABoard(unittest.TestCase):
+    """#83/#74: a model with the stand (base board + feet) also gets two low views of the base and the
+    recessed filter (low_front, low_side); the README pair is unchanged."""
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = tempfile.mkdtemp(prefix="vt350-render-test-")
+        src, cls.out = os.path.join(cls.tmp, "export"), os.path.join(cls.tmp, "out")
+        os.makedirs(src)
+        write_fixture(src, labels=("Base board (18 mm, plywood/MDF, placeholder)",))
+        cls.blender = subprocess.run(BLENDER + ["-b", "--python-exit-code", "1", "-P", os.path.join(HERE, "render.py"),
+                                            "--", src, cls.out, "1"], capture_output=True, text=True)
+
+    def test_low_views_written(self):
+        self.assertEqual(self.blender.returncode, 0, self.blender.stdout[-3000:] + self.blender.stderr[-3000:])
+        for view in ("obico", "outside", "low_front", "low_side"):
+            for ext in ("png", "jpg"):
+                self.assertTrue(os.path.isfile(os.path.join(self.out, f"fixture-{view}.{ext}")), (view, ext))
 
 
 class JpegInfoReadsTheReadmeImages(unittest.TestCase):

@@ -1,0 +1,53 @@
+{
+ "filter_bbox": [
+  -398.82101239190513,
+  81.87135432437816,
+  -79.97350427293674,
+  -91.17898760764231,
+  388.5235935778846,
+  -4.355219760489914
+ ],
+ "board_top": -100.0,
+ "feet": [
+  [
+   -500.0,
+   -50.0
+  ],
+  [
+   10.0,
+   -50.0
+  ],
+  [
+   -500.0,
+   460.0
+  ],
+  [
+   10.0,
+   460.0
+  ]
+ ],
+ "parts": [
+  "StealthMax 1.2_AirExhaustSlider",
+  "StealthMax 3.2_LidFrontHinge",
+  "StealthMax 3.3_LidLatch",
+  "StealthMax 3.3_LidLatch001",
+  "StealthMax 3.3_LidLatch002",
+  "StealthMax 3mm sponge cord",
+  "StealthMax Acrylic Panel",
+  "StealthMax HEPA Filter",
+  "StealthMax HubSupport",
+  "StealthMax M_1a.0_Body_BPM",
+  "StealthMax M_1a.1_AirExhaustWheel_BPM",
+  "StealthMax M_2.0_Body",
+  "StealthMax M_2.1_CarbonBasket",
+  "StealthMax M_2.2a_CarbonBasketLid",
+  "StealthMax M_2.3_HEPACover",
+  "StealthMax M_2.5a_LogoCap",
+  "StealthMax M_2.6a_PicoAccessLatch",
+  "StealthMax M_2.7_IntakeSensorStackAccessLatch",
+  "StealthMax M_2.8_BowdenTubeAccessLatch",
+  "StealthMax M_3.0_Body",
+  "StealthMax M_3.1_LidPanelHolder",
+  "StealthMax fan (Delta BFB0712HF)"
+ ]
+}

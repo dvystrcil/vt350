@@ -33,7 +33,7 @@ try:
       for o in leaves.values():
         vo = o.ViewObject if FreeCAD.GuiUp else None
         if vo is not None and not vo.isVisible(): hidden += 1; continue
-        if EXTRA and o.Label.startswith("Ebox envelope"): continue    # placeholder for the ebox file merged in (lite-19)
+        if EXTRA and o.Label.startswith(("Ebox envelope", "Filter envelope")): continue   # placeholders for vt350-ebox / vt350-filter merged in (lite-19, lite-27)
         if any(o2.isDerivedFrom('Part::Feature') and o2.Name in leaves for o2 in o.InList if o2.TypeId != 'App::Part'):
             continue    # consumed by a feature that is itself a leaf
         try:

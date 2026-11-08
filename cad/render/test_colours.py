@@ -81,6 +81,21 @@ class TheCommittedMap(unittest.TestCase):
         self.assertIsNone(co.role_of(m, "D5x36mm pin001", "x", "Steel-Generic"))
         self.assertEqual(co.role_of(m, "backbone-350 v2", "4040-350x350x250 Voron Trident v4 v33", "Steel-Generic"), "backbone")
 
+    def test_committed_rules_on_lite27_stand_and_filter(self):
+        m = co.load()
+        stand = "4040-350x350x250 Voron Trident v4 v33 / Stand: levelling feet + base board (#83, placeholders)"
+        self.assertEqual(co.role_of(m, "Base board (18 mm, plywood/MDF, placeholder)", stand, "Default"), "board")
+        self.assertEqual(co.role_of(m, "Levelling foot pad 3 (rubber, placeholder D50)", stand, "Default"), "rubber")
+        self.assertEqual(co.role_of(m, "Levelling foot 1 T-slot bracket (4040, placeholder)", stand, "Default"), "foot_metal")
+        self.assertEqual(co.role_of(m, "Levelling foot 4 M8 stud (placeholder)", stand, "Default"), "foot_metal")
+        sm = "StealthMax 300 (nevermore3d a3451c5, GPL-3.0), recessed concept"
+        for lab in ("StealthMax M_2.0_Body", "StealthMax M_3.0_Body", "StealthMax M_1a.0_Body_BPM", "StealthMax M_2.1_CarbonBasket"):
+            self.assertEqual(co.role_of(m, lab, sm, "Default"), "printed", lab)
+        for lab in ("StealthMax 3.3_LidLatch001", "StealthMax M_2.5a_LogoCap", "StealthMax 3.2_LidFrontHinge"):
+            self.assertEqual(co.role_of(m, lab, sm, "Default"), "accent", lab)
+        self.assertIsNone(co.role_of(m, "StealthMax Acrylic Panel", sm, "Default"))
+        self.assertIsNone(co.role_of(m, "StealthMax fan (Delta BFB0712HF)", sm, "Default"))
+
 
 
 class Portable(unittest.TestCase):
