@@ -124,7 +124,7 @@ VT350_POSE="Left:front-left, top" VT350_RENDER_OUT=/tmp/pose $APP freecadcmd $PW
 ```
 
 - **How it reports:** fire and forget. n8n posts the outputs and their sha256 to the `--notify` issue.
-- **Where the images land:** `/mnt/nfs/media/gpu-batch/<job>/out/` (the Desktop launcher "VT350 Renders" opens it).
+- **Where the images land:** `/mnt/nfs/media/gpu-batch/<job>-render/out/`. The Desktop launcher "VT350 Renders" runs an installed copy of `cad/render/open-latest-render.sh`, which opens the newest finished one (`--print` shows the path instead). The copy keeps the launcher working whatever branch this clone is on. Install or update it with `install -m755 cad/render/open-latest-render.sh ~/.local/bin/vt350-open-latest-render`; the launcher has `Exec=/home/dan/.local/bin/vt350-open-latest-render`.
 - **While Neptune is printing:** the job refuses to start. If Neptune is off but Obico still shows a print, add `--printer-off`.
 - **Full model renders:** `export_meshes.py` (GUI) → `render.py` (`blender -b -P …`).
 
