@@ -1,5 +1,6 @@
 # Blender (Cycles) render of the meshes written by export_meshes.py.
 #   blender -b -P cad/render/render.py -- <export dir> <output dir> [samples]
+# Writes <model>-<view>.png (master) and <model>-<view>.jpg (quality 85: the README image, cad/renders/).
 # Views: "obico"   = what the Nocturne camera sees, chamber lit only by the LED strips (room dim);
 #        "outside" = 3/4 front view, studio light plus the LED strips.
 # Units: model mm -> scene metres (x 0.001).
@@ -121,3 +122,9 @@ for name, cam, room, ev in views:
     apply_view(name)
     sc.render.filepath = os.path.join(OUT, f"{scene_j['model'].replace('.FCStd', '')}-{name}.png")
     bpy.ops.render.render(write_still=True); print("wrote", sc.render.filepath)
+    # The README image (homelab#1961 AC8): the same render as a quality-85 JPEG, the format cad/renders/ holds,
+    # so a render here or in the batch lane drops straight into the README. The PNG stays the lossless master.
+    jpg, im = sc.render.filepath[:-len(".png")] + ".jpg", sc.render.image_settings
+    im.file_format, im.quality = 'JPEG', 85
+    bpy.data.images["Render Result"].save_render(jpg, scene=sc); print("wrote", jpg)
+    im.file_format = 'PNG'

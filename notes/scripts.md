@@ -107,7 +107,7 @@ VT350_REUSE_EXPORT=<run>/export cad/render/render_full.sh   # changed only a rol
 ```
 
 - **What happens:** a FreeCAD window opens and closes by itself (click **Wait** if GNOME asks), then Blender renders on the RTX 2070.
-- **Output:** the last lines are the full image paths, then `render_full: OK`. Each run gets `~/Documents/VT350/renders/<model>-<UTC>/` with `out/` (images), `export/` (meshes, `export.log`) and the raw logs.
+- **Output:** the last lines are the full image paths, then `render_full: OK`. Each run gets `~/Documents/VT350/renders/<model>-<UTC>/` with `out/` (each view as a PNG master plus the quality-85 JPEG that `cad/renders/` and the README use), `export/` (meshes, `export.log`) and the raw logs.
 - **Colours** live in `cad/render/colours.json`: role colours plus ordered rules on label, group and material.
   - Changed only a role's hex? Re-run with `VT350_REUSE_EXPORT`.
   - Added or changed a rule? Run a full export.

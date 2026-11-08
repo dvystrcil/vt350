@@ -105,7 +105,8 @@ VT350_REUSE_EXPORT=<run>/export cad/render/render_full.sh   # changed only a rol
 ```
 
 - **What it does:** runs the FreeCAD GUI export (the window opens and closes by itself; click **Wait** if GNOME asks), then Blender Cycles on the RTX 2070 (OPTIX).
-- **Output:** `~/Documents/VT350/renders/<model>-<UTC>/`.
+- **Output:** `~/Documents/VT350/renders/<model>-<UTC>/`. Each view is written twice: `<model>-<view>.png` (lossless master) and `<model>-<view>.jpg` (quality 85), the file that goes in `cad/renders/` for this README. The batch lane's `vt350-render` chain (homelab#1961) writes the same pair.
+- **Test:** `python3 cad/render/test_render.py` renders a one-box fixture at 1 sample and checks both files per view (needs Blender; `VT350_BLENDER="docker run … gpu-batch-blender:<tag>"` runs it in the lane's image).
 - **Colours** come from `render/colours.json` (user, 2026-11-06), applied at render time, so the model is never edited:
 
   | Role | Colour |
