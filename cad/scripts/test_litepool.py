@@ -121,12 +121,16 @@ class MemoryCap(unittest.TestCase):
 class ClashlibCount(unittest.TestCase):
     def test_clashlib_uses_the_same_worker_count(self):                 # its sweeps run in batch-lane pods too
         import clashlib
-        old = os.environ.get("VT350_WORKERS")
-        try:
-            os.environ["VT350_WORKERS"] = "3"; self.assertEqual(clashlib.default_n(), 3)
+        keys = ("VT350_WORKERS", "VT350_RESERVE_MB", "VT350_WORKER_MB")
+        old = {k: os.environ.get(k) for k in keys}
+        try:                                    # no memory cap here: the CI runner (~7 GB) would cap 3 to 1, correctly
+            os.environ.update(VT350_WORKERS="3", VT350_RESERVE_MB="0", VT350_WORKER_MB="1")
+            self.assertEqual(clashlib.default_n(), 3)
             del os.environ["VT350_WORKERS"]; self.assertEqual(clashlib.default_n(), litepool.worker_count())
         finally:
-            if old is not None: os.environ["VT350_WORKERS"] = old
+            for k, v in old.items():
+                if v is None: os.environ.pop(k, None)
+                else: os.environ[k] = v
 
 
 class PoolTest(unittest.TestCase):
