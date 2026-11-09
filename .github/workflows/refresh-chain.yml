@@ -27,3 +27,7 @@ jobs:
         run: python3 cad/scripts/test_prove_parallel.py 2>&1 | tee test-prove.log
       - name: Confirm every prove_parallel test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-prove.log && tail -1 test-prove.log | grep -qx 'OK'
+      - name: Test the per-part box index's schema, staleness and --check (part_index, #90; no FreeCAD)
+        run: python3 cad/scripts/test_part_index.py 2>&1 | tee test-part-index.log
+      - name: Confirm every part_index test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-part-index.log && tail -1 test-part-index.log | grep -qx 'OK'
