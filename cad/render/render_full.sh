@@ -14,7 +14,7 @@
 set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
 APP="${VT350_APP:-/home/dan/FreeCAD/FreeCAD_26.3rc2-Linux-x86_64.AppImage}"
-DOCS=/home/dan/Documents/VT350
+DOCS="${VT350_DOCS:-/home/dan/Documents/VT350}"
 arg="${1:-26}"; SAMPLES="${2:-128}"
 if [[ "$arg" =~ ^[0-9]+$ ]]; then MODEL="$DOCS/vt350-lite-$arg.FCStd"; else MODEL="$arg"; fi
 EXTRA="${VT350_EXTRA-$DOCS/vt350-ebox.FCStd}"
@@ -32,7 +32,8 @@ else
     env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia \
         VT350_MODEL="$MODEL" VT350_EXTRA="$EXTRA" VT350_RENDER_OUT="$EXP" \
         "$APP" "$HERE/export_meshes.py" >"$RUN/freecad.out" 2>&1 || true   # FreeCAD's exit code is meaningless (os._exit)
-    if grep -q "FAILED" "$EXP/export.log" 2>/dev/null || ! grep -q "] done: " "$EXP/export.log" 2>/dev/null; then
+    # "index: FAILED ..." is the part-index hook's, non-fatal by design (#90): only other FAILED lines fail the export
+    if grep -v "] index: " "$EXP/export.log" 2>/dev/null | grep -q "FAILED" || ! grep -q "] done: " "$EXP/export.log" 2>/dev/null; then
         echo "render_full: export FAILED; see $EXP/export.log and $RUN/freecad.out" >&2; exit 1
     fi
     grep -E "colour map:|done: " "$EXP/export.log" | sed 's/^\[ *[0-9.]*s\] /  /'

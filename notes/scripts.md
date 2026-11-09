@@ -201,6 +201,7 @@ $APP freecadcmd $PWD/cad/scripts/liteNN_<what>.py   # headless = dry run: all ch
 | `print-area` | `cad/scripts/test_print_area.py` | `print-area.svg` is stale against the sweep log |
 | `slice-check` | `parts/test_slice_check.py`, `keepout.json` validity | the G-code parser, keep-out or report logic breaks |
 | `refresh-chain` | `cad/scripts/test_refresh.py`, `cad/scripts/test_derive_stls.py`, `test_litepool.py`, `test_prove_parallel.py`, `test_part_index.py` | the chain's sync, step runner or markers break, `derive_stls` stops honouring `VT350_MODELS`, or the part index's schema/staleness check breaks |
+| `render-colours` | `cad/render/test_colours.py`, `cad/render/test_render_full.py` | the colour rules break, or `render_full.sh` misjudges the export (a real `FAILED` passes, or the index hook's `index: FAILED` fails it) |
 | `secret-scan` | gitleaks | a secret in the diff |
 
 ## One-off and investigation scripts
