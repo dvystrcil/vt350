@@ -13,6 +13,7 @@
 #   holed   Part::Cut of base (box) by tool (cylinder): base and tool are leaves too, marked consumed
 # and, outside the App::Part, "loose": a box with no group (path []), XMin -5.123456 (rounds to -5.1235).
 import hashlib, json, os, subprocess, sys, tempfile, traceback, unittest
+import shutil
 
 HERE = os.path.dirname(os.path.abspath(__file__)) if "__file__" in globals() else \
     os.path.join(os.environ.get("VT350_REPO", "/home/dan/Code/vt350"), "cad/scripts")
@@ -61,6 +62,7 @@ class Base(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.tmp = tempfile.mkdtemp(prefix="part-index-fc-")
+        cls.addClassCleanup(shutil.rmtree, cls.tmp, True)
         cls.master = os.path.join(cls.tmp, "fixture-master.FCStd")
         build_fixture(cls.master)
 

@@ -2,6 +2,7 @@
 # run in CI:   python3 cad/scripts/test_litepool.py      # "Ran N tests" + "OK"
 # The FreeCAD side (litelib's checks through the pool, bit-identical to serial) is in test_litelib.py.
 import os, sys, tempfile, time, unittest
+import shutil
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
@@ -22,6 +23,13 @@ def op_trims(): return sys.modules["__main__"].TRIMS            # the worker's o
 BIG = 10 ** 9                                   # MB: no memory cap
 
 
+def tmpdir(test):
+    """A temp dir removed when the test ends."""
+    d = tempfile.mkdtemp(prefix="litepool-test-")
+    test.addCleanup(shutil.rmtree, d, True)
+    return d
+
+
 def cgroup(tmp, cpu_max=None, v1=None):
     """A fake cgroup root: v2 cpu.max text, or v1 (quota_us, period_us)."""
     d = tempfile.mkdtemp(dir=tmp)
@@ -34,7 +42,7 @@ def cgroup(tmp, cpu_max=None, v1=None):
 
 
 class Cpus(unittest.TestCase):
-    def setUp(self): self.tmp = tempfile.mkdtemp(prefix="litepool-test-")
+    def setUp(self): self.tmp = tmpdir(self)
 
     def test_affinity_without_a_quota(self):
         self.assertEqual(litepool.available_cpus(affinity=set(range(12)), root=cgroup(self.tmp, "max 100000")), 12)
@@ -75,13 +83,15 @@ class Cpus(unittest.TestCase):
 
 class MemoryCap(unittest.TestCase):
     """#45: each worker opens its own copy of the documents, so the count is also capped by free memory."""
+    def setUp(self): self.tmp = tmpdir(self)
+
     def test_available_mb_reads_memavailable(self):
-        f = os.path.join(tempfile.mkdtemp(), "meminfo")
+        f = os.path.join(tempfile.mkdtemp(dir=self.tmp), "meminfo")
         open(f, "w").write("MemTotal:       32144636 kB\nMemFree:  1 kB\nMemAvailable:   21504000 kB\n")
         self.assertEqual(litepool.available_mb(f), 21000)
 
     def test_a_cgroup_memory_limit_caps_it_in_a_pod(self):               # /proc/meminfo is the HOST's in a pod
-        d = tempfile.mkdtemp(); f = os.path.join(d, "meminfo")
+        d = tempfile.mkdtemp(dir=self.tmp); f = os.path.join(d, "meminfo")
         open(f, "w").write("MemAvailable:   21504000 kB\n")
         open(os.path.join(d, "memory.max"), "w").write(f"{8 * 1024 ** 3}\n")
         open(os.path.join(d, "memory.current"), "w").write(f"{3 * 1024 ** 3}\n")

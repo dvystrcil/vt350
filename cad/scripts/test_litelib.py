@@ -11,6 +11,7 @@
 #   envelope  a 1 mm cube far away, the part every no_overlap test excludes
 #   post      X 90..100 Y 0..10 Z 240..600: its base is in the bed band but it reaches above it, so it is not bed
 import os, sys, math, tempfile, traceback, unittest
+import shutil
 
 HERE = os.path.dirname(os.path.abspath(__file__)) if "__file__" in globals() else \
     os.path.join(os.environ.get("VT350_REPO", "/home/dan/Code/vt350"), "cad/scripts")
@@ -44,6 +45,7 @@ class Base(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.tmp = tempfile.mkdtemp(prefix="litelib-test-")
+        cls.addClassCleanup(shutil.rmtree, cls.tmp, True)
         cls.fixture = os.path.join(cls.tmp, "fixture.FCStd")
         build_fixture(cls.fixture)
 
