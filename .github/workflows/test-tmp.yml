@@ -1,4 +1,4 @@
-name: Tests clean up their temp dirs
+name: Tests and tools clean up their temp dirs
 on:
   pull_request:
   push:
@@ -18,3 +18,12 @@ jobs:
       - name: Assert the completion marker
         run: |
           grep -qx 'check-test-tmp: OK' check.log
+      # The tools themselves (most need FreeCAD, so they can't run here) are checked by reading them: every
+      # mkdtemp/mkstemp/mktemp needs a cleanup in the same function or file, or a `# tmp-kept: <reason>` marker.
+      - name: Check every tool removes the temp dirs it makes
+        run: |
+          set -o pipefail
+          python3 cad/scripts/check_tool_tmp.py 2>&1 | tee check-tool.log
+      - name: Assert the tool check's completion marker
+        run: |
+          grep -qE '^check-tool-tmp: OK \([1-9][0-9]* files\)$' check-tool.log

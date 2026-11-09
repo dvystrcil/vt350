@@ -70,6 +70,7 @@ def main():
     ap.add_argument("--out", default=None, help="output dir (default: a new temp dir)")
     ap.add_argument("--scripts", default=HERE)
     a = ap.parse_args()
+    # tmp-kept: the default --out is the run's output (summary.json, logs); its path is printed for the user
     out = a.out or tempfile.mkdtemp(prefix="prove-parallel-")
     res = prove(a.passes, a.workers, out, scripts=a.scripts)
     for p in res["passes"]:
