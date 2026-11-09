@@ -35,6 +35,14 @@ jobs:
         run: python3 cad/scripts/test_prove_parallel.py 2>&1 | tee test-prove.log
       - name: Confirm every prove_parallel test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-prove.log && tail -1 test-prove.log | grep -qx 'OK'
+      - name: Test the Z sweep's contact search (contact.py, #82; no FreeCAD)
+        run: python3 cad/scripts/test_contact.py 2>&1 | tee test-contact.log
+      - name: Confirm every contact test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-contact.log && tail -1 test-contact.log | grep -qx 'OK'
+      - name: Test the Z sweep's envelope documents, probe grid and limit lines (z_sweep.py, #82; no FreeCAD)
+        run: python3 cad/scripts/test_z_sweep.py 2>&1 | tee test-z-sweep.log
+      - name: Confirm every z_sweep test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-z-sweep.log && tail -1 test-z-sweep.log | grep -qx 'OK'
       - name: Test the per-part box index's schema, staleness and --check (part_index, #90; no FreeCAD)
         run: python3 cad/scripts/test_part_index.py 2>&1 | tee test-part-index.log
       - name: Confirm every part_index test ran

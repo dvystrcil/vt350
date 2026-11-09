@@ -170,6 +170,35 @@ def _t_above(s, col, part, z0, grid, k=0, n=1):
     return above_material(_wpieces[key][1], part, z0, grid, k, n)
 
 
+def _moved(s, v):
+    """A copy that shares the geometry, with the placement moved by v (clashlib's _shifted)."""
+    c = s.copy(False); c.Placement = FreeCAD.Placement(v, FreeCAD.Rotation()).multiply(s.Placement); return c
+
+
+def _t_contact(a, b, direction, lo, hi, ta=(0.0, 0.0, 0.0), tb=(0.0, 0.0, 0.0), step=None, eps=None, tol=None):
+    """#82: `a` moved by ta, then `direction` (-1 down, +1 up) * d along Z, against `b` moved by tb: contact.py's
+    first_contact over d in [lo, hi], each probe a common() volume. -> {"kind": "contact"|"clear"|"start", ...}"""
+    import contact
+    sa, sb = _S(a), _S(b)
+    if any(tb): sb = _moved(sb, V(*tb))
+    t = V(*ta)
+    def probe(d):
+        return _moved(sa, t + V(0, 0, direction * d)).common(sb).Volume
+    kw = {k: v for k, v in (("step", step), ("eps", eps), ("tol", tol)) if v is not None}
+    return contact.first_contact(probe, lo, hi, **kw)
+
+
+def _t_zspan(s, pts, z0, z1):
+    """#82 ray probes: vertical lines at pts [(x, y)] from z1 down to z0; (lowest, highest) Z of `s`'s material on
+    them, or None if no line meets it."""
+    s = _S(s)
+    zs = []
+    for x, y in pts:
+        for e in Part.makeLine(V(x, y, z1), V(x, y, z0)).common(s).Edges:
+            zs += [v.Point.z for v in e.Vertexes]
+    return (min(zs), max(zs)) if zs else None
+
+
 def grid_columns(lo, hi, grid, k=0, n=1):
     """The grid's column centres from lo to hi (accumulated exactly as the serial loop did), every n-th from k."""
     xs, x = [], lo + grid / 2

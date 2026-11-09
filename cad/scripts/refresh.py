@@ -14,11 +14,13 @@ Steps, in order. It stops at the first failure and names the step and its log:
                    rest of the file, quoting and row order stay byte-identical)
   check_printed    parts/check-printed.py (must print "check-printed: OK")
   sweep            cad/scripts/sweep_toolhead.py on vt350-lite-<N>.FCStd (VT350_MODEL), ~11 min
+  z_sweep          cad/scripts/z_sweep.py (FreeCAD, headless, read-only, #82): the bed's Z travel, both ends, by
+                   boolean contact, with the documents the model's envelopes name (envelope_docs) -> cad/data/logs/z_sweep.log
   print_area       cad/scripts/print_area.py -> cad/data/print-area.svg
   test_print_area  cad/scripts/test_print_area.py
 
 It never writes a model file (every step is read-only on the .FCStd) and never commits. Committing and the PR stay with
-the caller. The summary (STLs changed, reach vs the committed sweep log, print area) goes to stdout and to
+the caller. The summary (STLs changed, reach vs the committed sweep log, Z travel vs the committed z_sweep log, print area) goes to stdout and to
 cad/data/logs/refresh.log. Every step is checked for a completion marker as well as its exit code, because a step can
 crash and still exit 0, and a marker read from a separate log only counts if this run rewrote that log.
 
@@ -46,7 +48,8 @@ THIS_REPO = "dvystrcil/vt350"
 MANIFEST = "parts/printed/manifest.csv"
 PRINTED = "parts/printed"
 SWEEP_LOG = "cad/data/logs/sweep_toolhead.log"
-ORDER = ["part_index", "derive_stls", "sync_printed", "check_printed", "sweep", "print_area", "test_print_area"]
+Z_LOG = "cad/data/logs/z_sweep.log"
+ORDER = ["part_index", "derive_stls", "sync_printed", "check_printed", "sweep", "z_sweep", "print_area", "test_print_area"]
 
 
 class StepError(RuntimeError):
@@ -117,6 +120,19 @@ def companions(model):
     return out
 
 
+def _module(name):
+    spec = importlib.util.spec_from_file_location(name, os.path.join(HERE, f"{name}.py"))
+    m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+    return m
+
+
+def envelope_docs(model):
+    """The documents model's envelopes name ("Filter envelope (contents in vt350-filter-3.FCStd)"), beside it: what
+    z_sweep opens with the model, so what the batch lane must ship (#82). Read from the file, no FreeCAD."""
+    sys.path.insert(0, HERE)
+    return _module("z_sweep").envelope_paths(model)
+
+
 def plan(n, root=REPO, app=APP, start=None, models=MODELS_DIR):
     if start is not None and start not in ORDER:
         raise ValueError(f"unknown step {start!r}; steps are {ORDER}")
@@ -138,6 +154,10 @@ def plan(n, root=REPO, app=APP, start=None, models=MODELS_DIR):
              env=dict(VT350_MODEL=model, FREECADCMD=" ".join(fc), VT350_WORK=os.path.join(root, "cad/data")),
              log=os.path.join(logs, "refresh_sweep.out"),
              marker=r"(?m)done \(read-only, nothing saved\)$", marker_in=os.path.join(root, SWEEP_LOG)),
+        Step("z_sweep", cmd=fc + [os.path.join(root, "cad/scripts/z_sweep.py")],
+             env=dict(VT350_MODEL=model, FREECADCMD=" ".join(fc), VT350_WORK=os.path.join(root, "cad/data")),
+             log=os.path.join(logs, "refresh_z_sweep.out"),
+             marker=r"(?m)^\[ *\d+\.\ds\] z_sweep: done \(read-only, nothing saved\)$", marker_in=os.path.join(root, Z_LOG)),
         Step("print_area", cmd=[sys.executable, os.path.join(root, "cad/scripts/print_area.py")],
              log=os.path.join(logs, "refresh_print_area.out"), marker=r"printable [\d.]+ x [\d.]+ mm"),
         Step("test_print_area", cmd=[sys.executable, os.path.join(root, "cad/scripts/test_print_area.py")],
@@ -178,7 +198,7 @@ def _print_area():
     return m
 
 
-def summary(changed, sweep_log, prev_sweep_log, area_line=None, index=None):
+def summary(changed, sweep_log, prev_sweep_log, area_line=None, index=None, z_log=None, prev_z_log=None):
     out = []
     if index:
         out.append("part index: " + ", ".join(f"{os.path.basename(m)[:-len('.FCStd')]} {st}" for m, st in index))
@@ -198,6 +218,17 @@ def summary(changed, sweep_log, prev_sweep_log, area_line=None, index=None):
         line += f", Y {r['y_min']} .. {r['y_max']}"
         if p: line += f" (was {p['y_min']} .. {p['y_max']}, {p['model']})"
         out.append(line)
+    if z_log is None:
+        out.append("z sweep not run")
+    else:
+        ct = _module("contact"); z = ct.parse(z_log)
+        line = (f"Z travel: plate top {z['z_lower_limit_mm']:.2f} .. {z['z_upper_limit_mm']:.2f}, "
+                f"print height {z['print_height_mm']:.2f}")
+        try: w = ct.parse(prev_z_log or "")
+        except ValueError: w = None
+        if w: line += (f" (was {w['z_lower_limit_mm']:.2f} .. {w['z_upper_limit_mm']:.2f}, "
+                       f"{w['print_height_mm']:.2f})")
+        out.append(line)
     if area_line:
         out.append("print area: " + area_line)
     return "\n".join(out)
@@ -216,9 +247,10 @@ def main():
         for c in sync_printed(REPO, write=False):
             print(f"would re-copy {c['path']} ({c['old'][:12]} -> {c['new'][:12]})")
         return 0
-    if any(s.name in ("part_index", "sweep") for s in steps) and not os.path.isfile(MODELS.format(a.lite)):
+    if any(s.name in ("part_index", "sweep", "z_sweep") for s in steps) and not os.path.isfile(MODELS.format(a.lite)):
         print(f"refresh: FAILED: no model {MODELS.format(a.lite)}"); return 1
     prev = subprocess.run(["git", "-C", REPO, "show", f"HEAD:{SWEEP_LOG}"], capture_output=True, text=True).stdout
+    prev_z = subprocess.run(["git", "-C", REPO, "show", f"HEAD:{Z_LOG}"], capture_output=True, text=True).stdout
     t0 = time.time()
     try:
         run(steps, on_step=lambda s: print(f"[{time.time() - t0:6.0f}s] {s.name}", flush=True))
@@ -227,6 +259,7 @@ def main():
     by = {s.name: s for s in steps}
     changed = by["sync_printed"].result if "sync_printed" in by else []
     sweep = open(os.path.join(REPO, SWEEP_LOG), encoding="utf-8").read() if "sweep" in by else None
+    z_log = open(os.path.join(REPO, Z_LOG), encoding="utf-8").read() if "z_sweep" in by else None
     area = None
     if "print_area" in by:
         area = open(by["print_area"].log, encoding="utf-8").read().strip().splitlines()[-1]
@@ -235,7 +268,7 @@ def main():
         spec = importlib.util.spec_from_file_location("part_index", os.path.join(HERE, "part_index.py"))
         pi = importlib.util.module_from_spec(spec); spec.loader.exec_module(pi)
         index = [(m, pi.status(m)) for m in by["part_index"].env["VT350_INDEX_MODELS"].split(":")]
-    s = summary(changed or [], sweep, prev, area, index)
+    s = summary(changed or [], sweep, prev, area, index, z_log, prev_z)
     with open(os.path.join(REPO, "cad/data/logs/refresh.log"), "w", encoding="utf-8") as f:
         f.write(s + f"\nsteps: {', '.join(by)}; {time.time() - t0:.0f} s\nrefresh: OK\n")
     print(s); print("refresh: OK")
