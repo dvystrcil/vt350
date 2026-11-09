@@ -23,6 +23,14 @@ jobs:
         run: python3 cad/scripts/test_litepool.py 2>&1 | tee test-litepool.log
       - name: Confirm every litepool test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-litepool.log && tail -1 test-litepool.log | grep -qx 'OK'
+      - name: Test clashlib's job dir is removed on every path (fake workers)
+        run: python3 cad/scripts/test_clashlib.py 2>&1 | tee test-clashlib.log
+      - name: Confirm every clashlib test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-clashlib.log && tail -1 test-clashlib.log | grep -qx 'OK'
+      - name: Test sweep_toolhead's plan stage removes its temp dir (fake freecadcmd)
+        run: python3 cad/scripts/test_sweep_toolhead.py 2>&1 | tee test-sweep.log
+      - name: Confirm every sweep_toolhead test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-sweep.log && tail -1 test-sweep.log | grep -qx 'OK'
       - name: Test the serial-vs-parallel proof runner (prove_parallel, #45; fake freecadcmd)
         run: python3 cad/scripts/test_prove_parallel.py 2>&1 | tee test-prove.log
       - name: Confirm every prove_parallel test ran

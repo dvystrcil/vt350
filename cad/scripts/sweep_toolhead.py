@@ -209,6 +209,19 @@ def plan(out):
               open(out, "w"))
 
 
+def plan_stage(freecadcmd):
+    """Run stage 1 (freecadcmd) and return its plan. Its temp dir is removed on every path."""
+    import tempfile
+    with tempfile.TemporaryDirectory(prefix="sweep-") as d:
+        pj = os.path.join(d, "plan.json")
+        subprocess.run(freecadcmd + [HERE], env=dict(os.environ, SWEEP_PLAN=pj), stdout=subprocess.DEVNULL,
+                       stderr=subprocess.DEVNULL, cwd="/tmp")
+        if not os.path.exists(pj): raise SystemExit("plan stage wrote nothing")
+        plan_ = json.load(open(pj))
+    if "fatal" in plan_: raise SystemExit("plan stage failed:\n" + plan_["fatal"])
+    return plan_
+
+
 # ------------------------------------------------------------------------------------------------ stage 2: check
 def main():
     sys.path.insert(0, os.path.dirname(HERE)); import clashlib
@@ -217,13 +230,7 @@ def main():
     log_f = open(WORK + "/logs/sweep_toolhead.log", "w"); t0 = time.time()
     def log(*a):
         s = f"[{time.time()-t0:7.1f}s] " + " ".join(str(x) for x in a); print(s, flush=True); log_f.write(s + "\n"); log_f.flush()
-    import tempfile
-    pj = os.path.join(tempfile.mkdtemp(prefix="sweep-"), "plan.json")
-    env = dict(os.environ, SWEEP_PLAN=pj)
-    subprocess.run(clashlib.FREECADCMD + [HERE], env=env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, cwd="/tmp")
-    if not os.path.exists(pj): raise SystemExit("plan stage wrote nothing")
-    plan_ = json.load(open(pj))
-    if "fatal" in plan_: raise SystemExit("plan stage failed:\n" + plan_["fatal"])
+    plan_ = plan_stage(clashlib.FREECADCMD)
     log(f"model {MODEL} (read-only)")
     for s in plan_["notes"]: log(s)
     lab = plan_["labels"]

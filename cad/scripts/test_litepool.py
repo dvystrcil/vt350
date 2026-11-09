@@ -1,7 +1,7 @@
 # Unit tests for litepool.py (#45): worker count + the worker pool, with plain python3 workers (no FreeCAD), so they
 # run in CI:   python3 cad/scripts/test_litepool.py      # "Ran N tests" + "OK"
 # The FreeCAD side (litelib's checks through the pool, bit-identical to serial) is in test_litelib.py.
-import os, sys, tempfile, time, unittest
+import os, subprocess, sys, tempfile, time, unittest
 import shutil
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -196,6 +196,42 @@ class PoolTest(unittest.TestCase):
         procs = list(p.procs); p.close()
         self.assertTrue(all(pr.poll() is not None for pr in procs))
         p.close()                                                           # twice is fine
+
+    def test_close_removes_the_pool_dir(self):
+        p = litepool.Pool(1, cmd=[sys.executable], path=[HERE])
+        d = p.dir; p.close()
+        self.assertFalse(os.path.exists(d))
+
+    def test_a_dropped_pool_removes_its_dir_and_ends_its_workers(self):
+        p = litepool.Pool(2, cmd=[sys.executable], path=[HERE])
+        d, procs = p.dir, list(p.procs)
+        del p; import gc; gc.collect()
+        self.assertFalse(os.path.exists(d))
+        for pr in procs: pr.wait(timeout=30)
+
+    def test_a_pool_never_closed_is_removed_at_exit(self):
+        # a pass that dies (or a caller that forgets close()) must not leave litepool-* behind
+        tmp = tmpdir(self)
+        code = (f"import sys; sys.path.insert(0, {os.path.dirname(os.path.abspath(litepool.__file__))!r}); "
+                f"import litepool; p = litepool.Pool(1, cmd=[sys.executable], path=[{HERE!r}]); "
+                f"p.map('test_litepool', 'op_add', [(1, 2), (3, 4)]); raise SystemExit(3)")
+        r = subprocess.run([sys.executable, "-c", code], env=dict(os.environ, TMPDIR=tmp), capture_output=True, text=True)
+        self.assertEqual(r.returncode, 3, r.stderr)
+        self.assertEqual(os.listdir(tmp), [])
+
+    def test_a_worker_still_busy_at_exit_is_ended(self):
+        # exiting without close() while a worker is mid-task: the worker must not live on by itself
+        tmp = tmpdir(self)
+        code = (f"import sys; sys.path.insert(0, {os.path.dirname(os.path.abspath(litepool.__file__))!r}); "
+                f"import litepool; p = litepool.Pool(1, cmd=[sys.executable], path=[{HERE!r}]); "
+                f"p.conns[0].send((0, 'test_litepool', 'op_sleep_then', (0, 30))); print(p.procs[0].pid)")
+        r = subprocess.run([sys.executable, "-c", code], env=dict(os.environ, TMPDIR=tmp), capture_output=True, text=True)
+        pid = int(r.stdout.split()[-1])
+        try: os.kill(pid, 0); running = True
+        except ProcessLookupError: running = False
+        if running: os.kill(pid, 9)
+        self.assertFalse(running, "the busy worker outlived its pool")
+        self.assertEqual(os.listdir(tmp), [])
 
 
 if __name__ == "__main__":

@@ -19,7 +19,7 @@
 # Pairs are split by the non-moving member's index (round-robin), so each fixed solid's bounding box is computed by
 # one worker only. Prefilter: optimalBoundingBox (triangulation) enlarged by BOX_MARGIN, so a chord-short box can't
 # drop a real overlap; then Shape.common().Volume. A common() that throws is reported as an error, not skipped.
-import json, os, subprocess, sys, tempfile, time
+import json, os, shutil, subprocess, sys, tempfile, time
 
 APP = os.environ.get("FREECAD_APPIMAGE", "/home/dan/FreeCAD/FreeCAD_26.3rc2-Linux-x86_64.AppImage")
 FREECADCMD = os.environ.get("FREECADCMD", f"{APP} freecadcmd").split()
@@ -51,14 +51,24 @@ def run(model, groups, poses=None, fixed=None, exclude=(), skip_group_pairs=(), 
         if bad: raise ValueError(f"pose {p}: unknown groups {sorted(bad)}")
     tmp = keep_dir or tempfile.mkdtemp(prefix="clashlib-")
     os.makedirs(tmp, exist_ok=True)
+    procs = []
+    try:                                       # the job dir goes on every exit path, unless keep_dir asked for it
+        return _run(job, tmp, n, tol, log, timeout, procs)
+    finally:
+        for p in procs:
+            if p.poll() is None: p.kill(); p.wait()
+        if not keep_dir: shutil.rmtree(tmp, ignore_errors=True)
+
+
+def _run(job, tmp, n, tol, log, timeout, procs):
     jpath = os.path.join(tmp, "job.json")
     json.dump(job, open(jpath, "w"))
-    t0 = time.time(); procs = []
+    t0 = time.time()
     for k in range(n):
         env = dict(os.environ, CLASHLIB_JOB=jpath, CLASHLIB_K=str(k), CLASHLIB_OUT=os.path.join(tmp, f"w{k}.json"))
         procs.append(subprocess.Popen(FREECADCMD + [HERE], env=env, stdout=subprocess.DEVNULL,
                                       stderr=open(os.path.join(tmp, f"w{k}.err"), "w"), cwd="/tmp"))
-    log(f"clashlib: {n} workers on {os.path.basename(model)}, {len(job['poses'])} poses, job dir {tmp}")
+    log(f"clashlib: {n} workers on {os.path.basename(job['model'])}, {len(job['poses'])} poses, job dir {tmp}")
     for p in procs: p.wait(timeout=timeout)
     wall = time.time() - t0
     results, errors, wstats = [], [], []
