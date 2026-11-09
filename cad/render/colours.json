@@ -24,7 +24,7 @@
     {"role": "foot_metal", "label": "^Levelling foot \\d+ (T-slot bracket|M8 stud)"},
     {"role": "rubber",  "label": "^Levelling foot pad"},
     {"role": "board",   "label": "^Base board"},
-    {"role": "accent",  "label": "^StealthMax .*(Latch|LogoCap|Hinge|hanger)"},
+    {"role": "accent",  "label": "^StealthMax .*(Latch|LogoCap|Hinge|hanger|cradle)"},
     {"role": "accent",  "group": "Chain", "label": "Chain Link|Fixed End|Unfixed End"},
     {"role": "printed", "label": "^StealthMax (M_|3\\.|1\\.)"}
   ]
