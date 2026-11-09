@@ -139,6 +139,12 @@ The first query answers (checked against FreeCAD's own boxes, 2026-11-09) `M_1a.
   (another `.FCStd` saved within 10 min of it, e.g. `vt350-filter-3` with lite-29); the summary prints `part index: ... fresh`.
   `render_full.sh`'s export (`export_meshes.py`) also refreshes the index of every model it exports
   (`index: written|fresh ...` in `export.log`).
+- **From the batch lane:** the `vt350-refresh` chain indexes lite-N + its companions on max-01 (headless), and the
+  `vt350-render` chain's export does the same as `render_full.sh` (GUI under xvfb, so `bbox.mode` is `gui`). Both leave the
+  index in the job's `out/index/`; copy it beside your model with
+  `python3 ~/Code/vt350/cad/scripts/part_index.py --adopt /mnt/nfs/media/gpu-batch/<chain id>-*/out/index/*.parts.json`.
+  It is copied only when your model still has the exact bytes (size + sha256) the pod indexed, and never over an index
+  that is already fresh. Prints `adopted`, `fresh` or `skipped` + why for each one (exit 1 if any was skipped).
 - **Stale index?** `--check` says `stale` when the model's bytes changed since the index was made; re-run the writer.
 - **GUI vs headless:** `.bbox.mode` says which made the boxes; they differ by up to ~0.14 mm on STEP parts.
 

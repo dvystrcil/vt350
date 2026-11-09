@@ -205,6 +205,142 @@ class Cli(Base):
             rc, _, err = self.run_cli(*args)
             self.assertEqual(rc, 2, args); self.assertIn("usage", err.lower(), args)
 
+    def test_adopt_with_no_index_or_a_missing_models_dir_exits_2(self):
+        for args in (["--adopt"], ["--adopt", "--models"], ["--adopt", "--models", os.path.join(self.tmp, "nope"), "x"]):
+            rc, _, err = self.run_cli(*args)
+            self.assertEqual(rc, 2, args); self.assertTrue(err, args)
+
+
+class Adopt(Base):
+    """--adopt: an index made elsewhere (a batch-lane pod, #90 AC3) is copied beside the local model only when it was
+    made from the same bytes (size + sha256)."""
+    def setUp(self):
+        super().setUp()
+        self.pod = os.path.join(self.tmp, "pod")                       # the job's out/index/
+        os.makedirs(self.pod)
+        self.made = os.path.join(self.pod, "vt350-x-1.parts.json")
+        part_index.write(an_index(self.model, parts=[a_part(), a_part(name="B2")]), self.made)
+
+    def run_cli(self, *args):
+        r = subprocess.run([sys.executable, os.path.join(HERE, "part_index.py"), "--adopt", "--models", self.tmp, *args],
+                           capture_output=True, text=True)
+        return r.returncode, r.stdout, r.stderr
+
+    def test_adopts_an_index_of_the_same_bytes_when_none_is_beside_the_model(self):
+        rc, out, err = self.run_cli(self.made)
+        self.assertEqual(rc, 0, err)
+        self.assertEqual(part_index.load(part_index.sidecar(self.model)), part_index.load(self.made))
+        self.assertEqual(part_index.status(self.model), "fresh")
+        self.assertIn(f"adopted  {self.made} -> {part_index.sidecar(self.model)}", out)
+        self.assertIn("headless, 2 parts", out)
+
+    def test_replaces_a_stale_or_invalid_local_index(self):
+        old = os.path.join(self.tmp, "old.FCStd"); open(old, "wb").write(b"older bytes")
+        stale = an_index(old); stale["model"] = "vt350-x-1.FCStd"
+        part_index.write(stale, part_index.sidecar(self.model))
+        self.assertEqual(part_index.status(self.model), "stale")
+        self.assertEqual(self.run_cli(self.made)[0], 0)
+        self.assertEqual(part_index.status(self.model), "fresh")
+        open(part_index.sidecar(self.model), "w").write("{broken")
+        self.assertEqual(self.run_cli(self.made)[0], 0)
+        self.assertEqual(part_index.load(part_index.sidecar(self.model)), part_index.load(self.made))
+
+    def test_never_replaces_a_fresh_local_index(self):
+        mine = an_index(self.model, mode="gui")
+        part_index.write(mine, part_index.sidecar(self.model))
+        before = open(part_index.sidecar(self.model), "rb").read()
+        rc, out, _ = self.run_cli(self.made)
+        self.assertEqual(rc, 0)
+        self.assertIn(f"fresh    {self.made}: {part_index.sidecar(self.model)} is already fresh", out)
+        self.assertEqual(open(part_index.sidecar(self.model), "rb").read(), before)
+
+    def test_refuses_an_index_made_from_other_bytes(self):
+        open(self.model, "wb").write(b"the laptop saved it again" * 100)
+        rc, out, _ = self.run_cli(self.made)
+        self.assertEqual(rc, 1)
+        self.assertIn(f"skipped  {self.made}: made from other bytes than {self.model}", out)
+        self.assertFalse(os.path.exists(part_index.sidecar(self.model)))
+
+    def test_refuses_the_same_size_with_another_sha256(self):
+        data = bytearray(open(self.model, "rb").read()); data[0] ^= 1
+        open(self.model, "wb").write(bytes(data))
+        rc, out, _ = self.run_cli(self.made)
+        self.assertEqual(rc, 1); self.assertIn("made from other bytes", out)
+        self.assertFalse(os.path.exists(part_index.sidecar(self.model)))
+
+    def test_refuses_another_size_with_the_same_sha256(self):
+        idx = part_index.load(self.made); idx["source"]["size"] += 1
+        json.dump(idx, open(self.made, "w"))
+        rc, out, _ = self.run_cli(self.made)
+        self.assertEqual(rc, 1); self.assertIn("made from other bytes", out)
+        self.assertFalse(os.path.exists(part_index.sidecar(self.model)))
+
+    def test_skips_an_index_whose_model_is_not_here(self):
+        os.remove(self.model)
+        rc, out, _ = self.run_cli(self.made)
+        self.assertEqual(rc, 1); self.assertIn(f"skipped  {self.made}: no model {self.model}", out)
+        self.assertEqual(os.listdir(self.tmp), ["pod"])
+
+    def test_skips_an_invalid_or_unreadable_index(self):
+        bad = os.path.join(self.pod, "bad.parts.json"); open(bad, "w").write("{not json")
+        off = os.path.join(self.pod, "off.parts.json")
+        idx = part_index.load(self.made); idx["bbox"]["mode"] = "guess"; json.dump(idx, open(off, "w"))
+        rc, out, _ = self.run_cli(bad, off)
+        self.assertEqual(rc, 1)
+        self.assertIn(f"skipped  {bad}: not an index", out)
+        self.assertIn(f"skipped  {off}: invalid", out)
+        self.assertFalse(os.path.exists(part_index.sidecar(self.model)))
+
+    def test_a_model_name_that_leaves_the_folder_is_refused(self):
+        # The index comes from a pod; its "model" names the file to write beside, so it must be a bare .FCStd name.
+        outside = os.path.join(os.path.dirname(self.tmp), os.path.basename(self.tmp) + "-out.FCStd")
+        open(outside, "wb").write(open(self.model, "rb").read())
+        self.addCleanup(os.remove, outside)
+        for name in ("../" + os.path.basename(outside), outside, "sub/vt350-x-1.FCStd", "vt350-x-1.txt", ".FCStd", ""):
+            idx = part_index.load(self.made); idx["model"] = name
+            json.dump(idx, open(self.made, "w"))
+            rc, out, _ = self.run_cli(self.made)
+            self.assertEqual(rc, 1, name); self.assertIn("not a bare .FCStd name", out, name)
+        self.assertFalse(os.path.exists(part_index.sidecar(outside)))
+        self.assertFalse(os.path.exists(part_index.sidecar(self.model)))
+
+    def test_one_line_per_index_and_exit_1_if_any_was_not_adopted(self):
+        other = os.path.join(self.tmp, "vt350-y.FCStd"); open(other, "wb").write(b"y")
+        made2 = os.path.join(self.pod, "vt350-y.parts.json"); part_index.write(an_index(other), made2)
+        os.remove(other)
+        rc, out, _ = self.run_cli(self.made, made2)
+        self.assertEqual(rc, 1)
+        self.assertEqual(len(out.strip().splitlines()), 2, out)
+        self.assertEqual(part_index.status(self.model), "fresh")
+
+    def test_never_touches_a_model_file(self):
+        before = {f: open(os.path.join(self.tmp, f), "rb").read() for f in os.listdir(self.tmp) if f.endswith(".FCStd")}
+        mt = os.stat(self.model).st_mtime_ns
+        self.run_cli(self.made)
+        after = {f: open(os.path.join(self.tmp, f), "rb").read() for f in os.listdir(self.tmp) if f.endswith(".FCStd")}
+        self.assertEqual(before, after); self.assertEqual(os.stat(self.model).st_mtime_ns, mt)
+
+    def test_models_defaults_to_the_vt350_folder(self):
+        self.assertEqual(part_index.MODELS_DIR, "/home/dan/Documents/VT350")
+        saved = part_index.MODELS_DIR
+        part_index.MODELS_DIR = self.tmp                              # without --models, MODELS_DIR is where it looks
+        try:
+            with redirect_stdout(io.StringIO()) as out: rc = part_index.main(["--adopt", self.made])
+        finally:
+            part_index.MODELS_DIR = saved
+        self.assertEqual(rc, 0, out.getvalue()); self.assertEqual(part_index.status(self.model), "fresh")
+
+    def test_models_with_no_index_after_it_exits_2(self):
+        r = subprocess.run([sys.executable, os.path.join(HERE, "part_index.py"), "--adopt", "--models", self.tmp],
+                           capture_output=True, text=True)
+        self.assertEqual(r.returncode, 2); self.assertIn("usage", r.stderr.lower())
+
+    def test_adopt_function_returns_the_verdict(self):
+        self.assertEqual(part_index.adopt(self.made, self.tmp)[0], "adopted")
+        self.assertEqual(part_index.adopt(self.made, self.tmp)[0], "fresh")
+
+
+class Imports(Base):
     def test_importing_does_not_need_freecad(self):
         r = subprocess.run([sys.executable, "-c", "import sys; sys.path.insert(0, %r); import part_index; "
                             "print('FreeCAD' in sys.modules)" % HERE], capture_output=True, text=True)
