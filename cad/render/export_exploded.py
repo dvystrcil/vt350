@@ -14,9 +14,10 @@ OUT = os.environ.get("VT350_RENDER_OUT", "/tmp/vt350-exploded")
 CROP = (-470.0, -20.0, 20.0, 450.0)            # backbone crop X0 X1 Y0 Y1: the cutout (X -420..-70, Y 70..400) + 50
 ORANGE, TPU, GREY, STEEL = (0.89, 0.4, 0.16), (0.12, 0.12, 0.13), (0.72, 0.72, 0.74), (0.25, 0.25, 0.27)
 # key: (offset Z, offset X, colour, material, transparency)
-LAYERS = {"ring": (0, 0, ORANGE, "PET-GF", 0.0), "tray_seal": (60, 0, TPU, "TPU", 0.0),
-          "filter": (140, 0, GREY, "PETG", 0.0), "seal_left": (270, -25, TPU, "TPU", 0.0),
-          "seal_right": (270, 25, TPU, "TPU", 0.0), "backbone": (340, 0, STEEL, "Steel-Generic", 0.35)}
+# The tray seal sits 77 mm down inside the tub (Z -80 vs the collar top -3): it needs > 90 to clear the ring at all.
+LAYERS = {"ring": (0, 0, ORANGE, "PET-GF", 0.0), "tray_seal": (120, 0, TPU, "TPU", 0.0),
+          "filter": (230, 0, GREY, "PETG", 0.0), "seal_left": (360, -25, TPU, "TPU", 0.0),
+          "seal_right": (360, 25, TPU, "TPU", 0.0), "backbone": (430, 0, STEEL, "Steel-Generic", 0.35)}
 os.makedirs(OUT, exist_ok=True)
 logf = open(os.path.join(OUT, "export.log"), "w"); t0 = time.time()
 def log(*a): logf.write(f"[{time.time() - t0:7.1f}s] " + " ".join(str(x) for x in a) + "\n"); logf.flush()
@@ -43,11 +44,11 @@ try:
         scene["buckets"][k] = {"color": col, "material": mat, "transparency": tr, "n": len(shapes[k]),
                                "facets": m.CountFacets, "labels": [k]}
         log(f"{k}: {len(shapes[k])} solids, {m.CountFacets} facets, dZ {dz}, dX {dx}")
-    c = V(-245, 235, 130)                         # centre of the stack
+    c = V(-245, 235, 170)                         # centre of the stack
     scene["views"] = [
-        {"name": "exploded_front", "pos": [c.x + 520, c.y - 820, c.z + 420], "look": [c.x, c.y, c.z], "lens_mm": 35},
-        {"name": "exploded_side", "pos": [c.x - 900, c.y - 120, c.z + 260], "look": [c.x, c.y, c.z], "lens_mm": 35},
-        {"name": "exploded_under", "pos": [c.x + 450, c.y - 700, c.z - 420], "look": [c.x, c.y, c.z + 40], "lens_mm": 35},
+        {"name": "exploded_front", "pos": [c.x + 620, c.y - 980, c.z + 480], "look": [c.x, c.y, c.z], "lens_mm": 35},
+        {"name": "exploded_side", "pos": [c.x - 1080, c.y - 140, c.z + 280], "look": [c.x, c.y, c.z], "lens_mm": 35},
+        {"name": "exploded_under", "pos": [c.x + 540, c.y - 840, c.z - 480], "look": [c.x, c.y, c.z + 40], "lens_mm": 35},
     ]
     json.dump(scene, open(os.path.join(OUT, "scene.json"), "w"), indent=1)
     log("done")
