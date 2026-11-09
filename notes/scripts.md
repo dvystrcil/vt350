@@ -138,6 +138,7 @@ $APP freecadcmd $PWD/cad/scripts/liteNN_<what>.py   # headless = dry run: all ch
 - **Each pass saves a NEW file.** It refuses to save if a check fails. Never save over `vt350-good.FCStd`. Hand edits go in a `-dan` copy (File → Save As).
 - **"FreeCAD Not Responding"** during a pass means **click Wait**, not Force Quit.
 - **Closing FreeCAD:** use File → Quit. A killed window leaves recovery files behind.
+- **New passes are built on `cad/scripts/litelib.py`** (#93): a short spec of parts plus named checks. See "Writing a new lite-N pass" in `cad/README.md`.
 - **Who writes them:** these are geometry and design work, so Claude writes them. Every `liteNN_*.py` already in
   `cad/scripts/` is a historical record of how its model was made, not something to re-run.
 
@@ -179,4 +180,4 @@ re-running one:
 | fasteners | `extract_fasteners.py`, `fastener_review.py`, `rebuild_fasteners.py` |
 | one-time studies | `ac9_head_envelope.py`, `bowden_study.py`, `belt_plate_gap.py`, `clash_lite18_repro.py`, `door_hinges.py` |
 | model building blocks | `make_lite.py`, `frame_plus100.py`, `lite*.py`, `tanaes_dxf2json.py` |
-| libraries (imported, not run) | `clashlib.py` (parallel clash checks), `reglib.py` (STL registration) |
+| libraries (imported, not run) | `clashlib.py` (parallel clash checks), `reglib.py` (STL registration), `litelib.py` (lite-N pass skeleton + named checks; tests: `test_litelib.py` under `freecadcmd`) |

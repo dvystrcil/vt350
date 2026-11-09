@@ -244,6 +244,8 @@ row first (refresh only updates existing rows).
 | `derive_stls.py` | headless, read-only on the models | (Registration lives in `reglib.py`, shared with lite-25.) Printable copies of remixed parts into `cad/derived/` (`VT350_ONLY=<name>` writes just one; `VT350_REPO` picks the checkout): matches each part as it sat in the old model to the upstream STL (principal axes + closest-point refinement, every sampled vertex ≤ 0.05 mm), then applies that transform to the remixed part. Log `data/logs/derive_stls.log` |
 | `lite22_pad_cutouts.py` | GUI writes; headless = dry run, never saves | lite-21 → lite-22: the heater pad's side strips and front notches and the fuse/lock-washer screws, as measured with calipers; K341 holes confirmed. Checks the pad volume against the measured outline and that no other solid moved |
 | `clashlib.py` | library; read-only workers (headless) | Parallel clash checks (#45): `clashlib.run(model, groups, poses, ...)` starts N = cores − 2 headless `freecadcmd` workers on the **saved** model. Pairs are moving group × fixed solids, or group × group, at each pose (translations only). They're split round-robin by the fixed solid, so each solid's bounding box is computed once. Each pair gets an `optimalBoundingBox` + 0.1 mm prefilter, then `Shape.common()`. The parent merges the JSON results. Workers never save, and model-writing passes stay single GUI runs. `FREECADCMD` overrides the command |
+| `litelib.py` | library, imported by lite-N passes (#93) | The shared skeleton of a model-writing pass, so a new pass is a short spec: inputs, the new parts, and **named checks**. `Pass(name)` opens the log (`data/logs/<name>.log`), `p.open(path)` gives a `Model` (leaf solids, global shapes, optimal boxes), and `p.finish([(doc, path), ...])` writes the verify summary and saves only in GUI mode with no failed check. Named checks, each one `ok`/`FAIL` line: `on_face`, `over_material`, `clear_of_bed_travel` (`BED_LOWEST_DZ` −241.98), `no_overlap`, `min_distance`, `lift_out_clear`; anything else goes through `p.check`. `no_overlap`'s booleans go through `Pass.volumes(pairs)`, the hook for a parallel runner (#45). lite-28 and lite-29 use it. **How to write a new pass:** see below the table |
+| `test_litelib.py` | headless (`freecadcmd`), builds its own fixture | litelib's unit tests on a box fixture: `$APP freecadcmd $PWD/cad/scripts/test_litelib.py` prints `Ran N tests` and `OK`, exit code 0/1. Not in CI (the CI runners have no FreeCAD) |
 | `clash_lite18_repro.py` | plain `python3` (spawns the workers) | #45 AC1/AC2: re-runs lite-18's clash rule on the saved lite-18, with 1 worker and with N, and matches `lite18_plate.log`'s pairs and volumes (`data/logs/clashlib_lite18.log`) |
 | `sweep_toolhead.py` | plain `python3`; plan stage headless, read-only, never saves | #19 AC5 / #53 AC4 on **lite-26** (was lite-25): each A4Tv2 head is put on the MadMax carriage by transform, using the dock's carriage copy at its pickup pose. Bed (Z), gantry (Y), carriage + head + plate + Beacon (X+Y) move. **Belts:** the part inside the XY joints' Y band rides with the gantry (clashlib `clip`), not checked against gantry/carriage; the side runs are left out. Poses: the 4 corners + centre of the 350 square × bed top/bottom, the head's own dock pickup parked **and slid 6 mm to the keyslots' large opening**, an X scan from each side, and head vs plate. Runs on `clashlib`; log `data/logs/sweep_toolhead.log`. lite-24 result: both heads reach nozzle X −418…−72 (print square −420…−70; lite-22 left −406, right −84), now limited by the carriage meeting the XY joint. (lite-24/25, superseded by lite-26 below:) At the attach slide the belts run 3.2 mm into the OTHER head's parked plate (2 mm clear at contact): **contact by design** (#58), since MadMax's own core puts the plate's coupling magnets at belt height and the ~6 mm slide is upstream's. The belt deflects around the plate (~1–2.5 N, belt tension assumed). **Now runs on lite-26** (#61, carriage on the MGN12H block; lite-25 changed nothing but the clips × rail overlap, 23.24 → 41.12 mm³). lite-26 result: clips × rail and carriage × rail are gone at every pose. X reach is **−416…−74** for both heads (lite-25 −418…−72), now limited by the SpeedClips' outer ends meeting the XY joints' front idler bearings (695 / F695): the carriage sits 4.775 mm further forward, in the idlers' Y band. Rear Y reach is 370.69. **The attach-slide belt × parked-plate contact is gone:** at pickup the gantry stops 4.775 mm further back, so the belts clear both parked plates by ≥ 0.79 mm at the large opening (6.8 mm parked). lite-25 had up to 4.0 mm into them. The #58 "contact by design" reading came from the carriage error |
 | `belt_plate_gap.py` | headless, read-only | #61: the belts (XY-joint band, moved with the gantry) vs both parked MadMax plates at the dock pickup, parked and at the large opening, on lite-25 and lite-26. Clearance by `distToShape`; on overlap, the Y depth. lite-26: ≥ 0.79 mm clear at the large opening, ≥ 6.79 mm parked (lite-25: 3.25–4.0 mm into the plates). Log `data/logs/belt_plate_gap.log` |
@@ -259,6 +261,42 @@ row first (refresh only updates existing rows).
 | `bowden_study.py` | headless (FreeCAD's Python for numpy) | bend radius vs exit position and tube length; results on #3 |
 | `fs_probe.py` | headless | probes the Fasteners workbench API and screw orientation |
 | `analyze.py`, `cats.py`, `tree.py`, `fastener_review.py` | plain Python | read an `.FCStd`'s `Document.xml` (unzip it first): sizes, categories, assembly tree, fastener classification |
+
+### Writing a new lite-N pass on `litelib.py` (#93)
+
+Start from `lite29_filter_cradle.py`, the shortest complete example. A pass is:
+
+```python
+# GUI pass: vt350-lite-NN + ... -> vt350-lite-MM   (headless = dry run, never saves)
+# <issue, what the user decided, and every check in words>
+import FreeCAD, Part, os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) if "__file__" in globals()
+                else os.path.join(os.environ.get("VT350_REPO", "/home/dan/Code/vt350"), "cad/scripts"))
+import litelib
+from litelib import box, obb, is_leaf, MODELS
+SRC, DST = f"{MODELS}/vt350-lite-NN.FCStd", f"{MODELS}/vt350-lite-MM.FCStd"
+
+def main(p):
+    pr = p.open(SRC)                                   # Model: .leaves .shapes (global) .boxes (optimal) .leaf("label prefix")
+    part = box(x0, x1, y0, y1, z0, z1)                 # the new geometry
+    p.on_face(part, -2.0, "sits on the backbone top", top=2.0)
+    p.clear_of_bed_travel([("part", part)], pr, lambda r: f"bed at the bottom of travel: {r.gap:.2f} ({r.who})")
+    p.no_overlap([("part", part)], pr, lambda r: f"part x printer: {r.hits[:5]}")
+    p.check(some_condition, "anything without a named check")
+    # ... p.add_solids(...), p.resize_envelope(...), p.dump({...}) ...
+    p.finish([(pr.doc, DST)])                          # verify summary; saves only in GUI mode and only with 0 FAIL
+
+litelib.Pass("liteMM_what").run(main)                  # log: $VT350_WORK/logs/liteMM_what.log
+```
+
+- **Every check is one log line.** A named check takes its message as a string, or as a `lambda r: ...` that gets the
+  result, so the line can show the numbers (`r.frac`, `r.gap`, `r.who`, `r.hits`, `r.near`, `r.d`, `r.blocked`).
+  It returns that result, truthy when the check passed.
+- **Dry-run it headless first.** `$APP freecadcmd $PWD/cad/scripts/liteMM_what.py` runs every check and never saves;
+  read the log, then run it in GUI mode to write the model.
+- **A refactor of an existing pass** must leave its headless log the same, line for line, apart from the
+  `[  t.s]` timestamps (that's how lite-28 and lite-29 were moved onto the module).
+- After the GUI run, `refresh.py MM` (above).
 
 ## Gotchas hit while doing this (so they aren't hit twice)
 
