@@ -7,6 +7,7 @@
 import FreeCAD, Part, Mesh, MeshPart, os, sys, json, time, traceback
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import colours                                   # #38 role colours: the filter's accents, the black backbone
+import logos                                     # Voron logos: orange, white inset (shared with export_meshes.py)
 V = FreeCAD.Vector
 MODELS = "/home/dan/Documents/VT350"
 PRINTER = os.environ.get("VT350_PRINTER", f"{MODELS}/vt350-lite-29.FCStd")
@@ -27,24 +28,6 @@ LAYERS = {"backbone": (0, 0, STEEL, "Steel-Generic", 0.35), "seal_left": (40, -2
 # is "other": the acrylic panel is see-through, the rest (fan, HEPA, hub, sponge cord) dark.
 ROLE_OF = {"backbone": "backbone", "ring": "accent"}
 CLEAR, DARK = (0.85, 0.9, 0.95), (0.18, 0.18, 0.19)
-# Voron logos (user, 2026-11-09): orange, the inset white. Each is one solid, so the inset is picked by face: the
-# three slash floors (planar, facing out along N, at depth LEVEL, measured) plus every face touching a floor that
-# lies between the floor and the logo face (the slash walls and chamfers). Exactly 3 floors, or the export fails.
-LOGOS = {"StealthMax 3.2_LidFrontHinge": (V(0, -1, 0), -85.1),    # hexagon on the front; face at -84.1
-         "StealthMax M_2.5a_LogoCap": (V(0, 0, 1), -11.5)}        # round cap on top; face at -10.9
-def logo_inset(s, n, level):
-    def lv(f): return f.CenterOfMass.dot(n)
-    def facing(f):
-        try: return f.normalAt(*f.Surface.parameter(f.CenterOfMass)).dot(n) > 0.95
-        except Exception: return False
-    floors = [f for f in s.Faces if f.Surface.__class__.__name__ == "Plane" and facing(f) and abs(lv(f) - level) < 0.05]
-    if len(floors) != 3: raise RuntimeError(f"logo: {len(floors)} slash floors at {level}, expected 3")
-    fe = [e for f in floors for e in f.Edges]
-    walls = [f for f in s.Faces if f not in floors and level - 0.05 < lv(f) < level + 1.5 and not facing(f)
-             and any(e.isSame(g) for e in f.Edges for g in fe)]
-    inset = floors + walls
-    rest = [f for f in s.Faces if not any(f.isSame(g) for g in inset)]
-    return inset, rest
 os.makedirs(OUT, exist_ok=True)
 logf = open(os.path.join(OUT, "export.log"), "w"); t0 = time.time()
 def log(*a): logf.write(f"[{time.time() - t0:7.1f}s] " + " ".join(str(x) for x in a) + "\n"); logf.flush()
@@ -68,8 +51,9 @@ try:
     shapes["filter"] = [gshape(o) for o in fobjs]
     split = {}                                     # logo label -> (inset faces, rest faces)
     for o in fobjs:
-        if o.Label in LOGOS:
-            s = gshape(o); inset, rest = logo_inset(s, *LOGOS[o.Label]); split[o.Label] = (inset, rest)
+        r = logos.split(o.Label, gshape(o))
+        if r:
+            inset, rest = r; split[o.Label] = r
             log(f"logo {o.Label}: {len(inset)} inset faces ({sum(f.Area for f in inset):.0f} mm2) white, {len(rest)} orange")
     pd = FreeCAD.openDocument(PRINTER); log("opened", PRINTER)
     bb = next(o for o in pd.Objects if leaf(o) and o.Label.startswith("backbone-350"))
@@ -99,7 +83,8 @@ try:
         # logo close-ups (filter lifted 340): the front hinge hexagon, and the cap on top
         {"name": "logo_front", "pos": [-245 + 70, 86 - 260, -26 + 340 + 70], "look": [-245, 86, -26 + 340], "lens_mm": 50,
          "hide": ["backbone", "seal_left", "seal_right"]},
-        {"name": "logo_top", "pos": [-245 + 40, 235 - 120, -11 + 340 + 260], "look": [-245, 235, -11 + 340], "lens_mm": 50},
+        {"name": "logo_top", "pos": [-245 + 40, 235 - 120, -11 + 340 + 260], "look": [-245, 235, -11 + 340], "lens_mm": 50,
+         "hide": ["filter_clear"], "ev": -1.6},     # the cap sits under the acrylic panel; white parts over-expose
         {"name": "exploded_under", "pos": [c.x + 540, c.y - 840, c.z - 480], "look": [c.x, c.y, c.z + 40], "lens_mm": 35},
     ]
     json.dump(scene, open(os.path.join(OUT, "scene.json"), "w"), indent=1)

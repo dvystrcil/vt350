@@ -6,9 +6,10 @@
 # FreeCAD material card, labels, colour-map role), plus the camera / LED positions found in the model. A part the
 # colour map gives a role goes in that role's bucket (#38). The rest bucket by (material, model colour) as before.
 # Never saves the model.
-import FreeCAD, Mesh, MeshPart, os, json, time, traceback, re, sys
+import FreeCAD, Part, Mesh, MeshPart, os, json, time, traceback, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))   # colours.py sits next to this script (laptop or a gpu-batch pod)
 import colours
+import logos                                       # Voron logos: orange, white inset (shared with export_exploded.py)
 MODEL = os.environ.get("VT350_MODEL", "/home/dan/Documents/VT350/vt350-lite-16.FCStd")
 OUT = os.environ.get("VT350_RENDER_OUT", "/tmp/claude-1000/-home-dan-Code/49170e9e-d71c-4cd7-8f69-23f113691ee5/scratchpad/render")
 EXTRA = [p for p in os.environ.get("VT350_EXTRA", "").split(":") if p]
@@ -50,6 +51,14 @@ try:
             elif mat == "Default" and tr == 0: uncoloured[o.Label] = gpath(o)
         b = buckets.setdefault(key, {"mesh": Mesh.Mesh(), "color": col, "material": mat, "transparency": tr, "labels": [], "role": role})
         s = o.Shape.copy(); s.Placement = o.getGlobalPlacement()
+        lg = logos.split(o.Label, s) if CMAP else None
+        if lg:                                       # the inset goes to the printed (white) role's bucket
+            ib = buckets.setdefault(f"role_printed_t{int(tr*100)}", {"mesh": Mesh.Mesh(), "color": col, "material": mat,
+                                    "transparency": tr, "labels": [], "role": "printed"})
+            ib["mesh"].addMesh(MeshPart.meshFromShape(Shape=Part.Compound(lg[0]),
+                               LinearDeflection=0.08, AngularDeflection=0.35, Relative=False))
+            ib["labels"].append(o.Label + " (logo inset)"); s = Part.Compound(lg[1])
+            log(f"logo {o.Label}: {len(lg[0])} inset faces white, {len(lg[1])} {role}")
         b["mesh"].addMesh(MeshPart.meshFromShape(Shape=s, LinearDeflection=0.08, AngularDeflection=0.35, Relative=False))
         b["labels"].append(o.Label)
         if o.Label.startswith("LED channel"):
