@@ -95,6 +95,7 @@ class TheCommittedMap(unittest.TestCase):
         for lab in ("StealthMax 3.3_LidLatch001", "StealthMax M_2.5a_LogoCap", "StealthMax 3.2_LidFrontHinge"):
             self.assertEqual(co.role_of(m, lab, sm, "Default"), "accent", lab)
         self.assertEqual(co.role_of(m, "StealthMax hanger lip, left (remix concept)", sm, "Default"), "accent")
+        self.assertEqual(co.role_of(m, "StealthMax cradle half, right (remix concept)", sm, "Default"), "accent")  # lite-29
         self.assertIsNone(co.role_of(m, "StealthMax Acrylic Panel", sm, "Default"))
         self.assertIsNone(co.role_of(m, "StealthMax fan (Delta BFB0712HF)", sm, "Default"))
 

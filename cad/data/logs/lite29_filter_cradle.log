@@ -1,0 +1,34 @@
+[   74.4s] opened /home/dan/Documents/VT350/vt350-lite-28.FCStd
+[   90.4s] opened /home/dan/Documents/VT350/vt350-filter-2.FCStd
+[  160.3s] ok   two lite-28 hangers to replace (2)
+[  273.2s] filter: BoundBox (-398.676, 81.9129, -80.6717, -91.3237, 388.379, -4.5)
+[  273.2s] bottom tray (support): BoundBox (-388.221, 91.4821, -80.6717, -101.779, 377.924, -64.0276)
+[  275.3s] tray underside under the ledge strips (left, right): [-79.89, -79.89]
+[  275.3s] ok   tray underside level on both sides [-79.8895198616752, -79.88951986167501]
+[  275.4s] ok   left: cradle half is one solid (1)
+[  275.4s] left: cradle BoundBox (-430, 90, -83.8895, -373.221, 390, 2)
+[  275.5s] ok   left: lip footprint over backbone material 92% (slots allowed)
+[  275.5s] ok   left: clear of the 2020 T's landing (Y >= 86.0, off the spine)
+[  275.5s] ok   left: ledge reaches 15.0 mm under the bottom tray (Z -79.89)
+[  275.9s] ok   left: cradle x bottom tray interpenetration 0.00 mm3
+[  278.2s] ok   left: bottom tray rests on the ledge (distance 0.00)
+[  389.1s] ok   left: >= 0.5 mm off every other filter part []
+[  389.3s] ok   left: lift-out path clear (cradle in the column above a filter part: [])
+[  389.3s] ok   left: ledge bottom -83.9 is 16.1 above the board
+[  389.3s] ok   right: cradle half is one solid (1)
+[  389.3s] right: cradle BoundBox (-116.779, 90, -83.8895, -60, 390, 2)
+[  389.3s] ok   right: lip footprint over backbone material 92% (slots allowed)
+[  389.3s] ok   right: clear of the 2020 T's landing (Y >= 86.0, off the spine)
+[  389.3s] ok   right: ledge reaches 15.0 mm under the bottom tray (Z -79.89)
+[  389.7s] ok   right: cradle x bottom tray interpenetration 0.00 mm3
+[  391.2s] ok   right: bottom tray rests on the ledge (distance 0.00)
+[  448.1s] ok   right: >= 0.5 mm off every other filter part []
+[  448.2s] ok   right: lift-out path clear (cradle in the column above a filter part: [])
+[  448.2s] ok   right: ledge bottom -83.9 is 16.1 above the board
+[  448.2s] ok   bed at the bottom of travel vs cradle: closest 27.98 (left vs Heater pad hold-down 3 (pan head + washer envelope, 3.8 below plate))
+[  448.3s] ok   cradle x printer at the model pose: []
+[  448.4s] envelope: BoundBox (-430, 81.9129, -83.8895, -60, 390, 2)
+[  448.7s] ok   printer solid count unchanged
+[  448.7s] verify: 0 problems
+[  455.9s] SAVED /home/dan/Documents/VT350/vt350-filter-3.FCStd 48606588
+[  481.6s] SAVED /home/dan/Documents/VT350/vt350-lite-29.FCStd 173074346
