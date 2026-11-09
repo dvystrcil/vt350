@@ -20,8 +20,8 @@ def log(*a): logf.write(f"[{time.time() - t0:7.1f}s] " + " ".join(str(x) for x i
 try:
     import sweep_toolhead as sw
     head, pid = POSE.split(":", 1)
-    pj = os.path.join(tempfile.mkdtemp(prefix="pose-"), "plan.json")
-    sw.plan(pj); plan = json.load(open(pj))
+    with tempfile.TemporaryDirectory(prefix="pose-") as d:        # the plan JSON is read once, then removed
+        pj = os.path.join(d, "plan.json"); sw.plan(pj); plan = json.load(open(pj))
     doc = FreeCAD.ActiveDocument
     tr = plan["poses"][head][pid]
     meta = plan["meta"][f"{head}:{pid}"]
