@@ -1,0 +1,20 @@
+name: Tests clean up their temp dirs
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+      # Each test file runs with its own empty TMPDIR. Anything left behind fails the check: leaked test dirs once
+      # filled the laptop's /tmp (a tmpfs, 1M inodes).
+      - name: Run every python3 test file with an empty TMPDIR
+        run: bash cad/scripts/check_test_tmp.sh 2>&1 | tee check.log
+      - name: Assert the completion marker
+        run: |
+          grep -qx 'check-test-tmp: OK' check.log

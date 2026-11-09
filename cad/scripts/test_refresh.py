@@ -4,6 +4,7 @@
 Run: python3 cad/scripts/test_refresh.py
 """
 import hashlib
+import shutil
 import importlib.util
 import os
 import sys
@@ -175,6 +176,7 @@ class Companions(unittest.TestCase):
 
     def folder(self, files):
         d = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, d, True)
         for name, dt in files.items():
             p = os.path.join(d, name); open(p, "wb").write(b"x"); os.utime(p, (self.T + dt, self.T + dt))
         return d

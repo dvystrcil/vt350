@@ -1,6 +1,7 @@
 # Tests for prove_parallel.py (#45), with a fake freecadcmd (plain python3) so they run in CI:
 #   python3 cad/scripts/test_prove_parallel.py
 import json, os, subprocess, sys, tempfile, textwrap, unittest
+import shutil
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
@@ -26,6 +27,7 @@ FAKE = textwrap.dedent('''
 class Prove(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.mkdtemp(prefix="prove-test-")
+        self.addCleanup(shutil.rmtree, self.tmp, True)
         fake = os.path.join(self.tmp, "fake.py"); open(fake, "w").write(FAKE)
         self.cmd = [sys.executable, fake]
         self.scripts = os.path.join(self.tmp, "scripts"); os.makedirs(self.scripts)

@@ -15,6 +15,7 @@ Needs Blender, so it is not in the render-colours CI job (that one is stdlib-onl
 It renders a one-box fixture scene at 1 sample on the CPU (~1 min), not a model.
 """
 import json, os, shlex, struct, subprocess, sys, tempfile, unittest
+import shutil
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 BLENDER = shlex.split(os.environ.get("VT350_BLENDER", "blender"))
@@ -83,6 +84,7 @@ class RenderWritesReadmeImages(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.tmp = tempfile.mkdtemp(prefix="vt350-render-test-")
+        cls.addClassCleanup(shutil.rmtree, cls.tmp, True)
         src, cls.out = os.path.join(cls.tmp, "export"), os.path.join(cls.tmp, "out")
         os.makedirs(src)
         write_fixture(src)
@@ -125,6 +127,7 @@ class LowViewsWhenTheModelStandsOnABoard(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.tmp = tempfile.mkdtemp(prefix="vt350-render-test-")
+        cls.addClassCleanup(shutil.rmtree, cls.tmp, True)
         src, cls.out = os.path.join(cls.tmp, "export"), os.path.join(cls.tmp, "out")
         os.makedirs(src)
         write_fixture(src, labels=("Base board (18 mm, plywood/MDF, placeholder)",))
