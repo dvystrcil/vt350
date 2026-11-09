@@ -3,6 +3,7 @@
 # The export is judged by export.log, not FreeCAD's exit code. The part-index hook's "index: FAILED ..." line is
 # non-fatal by design (export_meshes.py), so it must not fail the render; a real "FAILED" must.
 import os, subprocess, tempfile, textwrap, unittest
+import shutil
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SCRIPT = os.path.join(HERE, "render_full.sh")
@@ -28,6 +29,7 @@ DONE = "[   80.0s] done: 12 buckets, 0 hidden solids skipped\n"
 class RenderFull(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.mkdtemp(prefix="render-full-test-")
+        self.addCleanup(shutil.rmtree, self.tmp, True)
         self.docs = os.path.join(self.tmp, "docs"); os.makedirs(self.docs)
         self.model = os.path.join(self.docs, "vt350-lite-99.FCStd"); open(self.model, "wb").write(b"model")
         bin_ = os.path.join(self.tmp, "bin"); os.makedirs(bin_)

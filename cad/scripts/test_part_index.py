@@ -2,6 +2,7 @@
 # FreeCAD, so they run in CI:   python3 cad/scripts/test_part_index.py      # "Ran N tests" + "OK"
 # The FreeCAD side (the boxes against FreeCAD's own, on a fixture document) is in test_part_index_fc.py.
 import copy, hashlib, io, json, os, subprocess, sys, tempfile, unittest
+import shutil
 from contextlib import redirect_stdout
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -24,6 +25,7 @@ def an_index(model, parts=None, mode="headless"):
 class Base(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.mkdtemp(prefix="part-index-test-")
+        self.addCleanup(shutil.rmtree, self.tmp, True)
         self.model = os.path.join(self.tmp, "vt350-x-1.FCStd")
         open(self.model, "wb").write(b"not really a FreeCAD file" * 100)
 
