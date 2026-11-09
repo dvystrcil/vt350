@@ -118,5 +118,37 @@ class Portable(unittest.TestCase):
             self.assertNotIn("/home/dan/Code", src.split("import colours")[0], name)
             self.assertIn("sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))", src, name)
 
+class Aligned(unittest.TestCase):
+    """Every view of the printer looks the same (user, 2026-11-09): each export colours parts from the ONE colour map
+    (colours.role_of) and the ONE logo split (logos.split), never its own copy. A diagnostic view that colours by a
+    different scheme on purpose is listed in DIAGNOSTIC. A new export_*.py on neither list fails here, so it can't
+    drift unnoticed."""
+    SHARED = {"export_meshes.py", "export_exploded.py"}
+    DIAGNOSTIC = {"export_pose.py": "colours by sweep role (head, plate, clash volumes), not the printer's look"}
+
+    def exports(self):
+        return sorted(f for f in os.listdir(HERE) if f.startswith("export_") and f.endswith(".py"))
+
+    def test_every_export_is_classified(self):
+        for f in self.exports():
+            self.assertIn(f, self.SHARED | set(self.DIAGNOSTIC), f"{f}: add it to SHARED (uses colours + logos) "
+                          "or DIAGNOSTIC (with the reason) in test_colours.Aligned")
+
+    def test_shared_exports_use_the_colour_map_and_the_logo_split(self):
+        for f in self.SHARED:
+            src = open(os.path.join(HERE, f)).read()
+            for call in ("import colours", "import logos", "colours.role_of(", "logos.split("):
+                self.assertIn(call, src, f"{f} must use {call}")
+
+    def test_no_export_keeps_its_own_logo_table(self):
+        for f in self.exports():
+            src = open(os.path.join(HERE, f)).read()
+            self.assertNotIn("LidFrontHinge", src, f"{f}: logo parts belong in logos.LOGOS")
+            self.assertNotIn("LogoCap", src, f"{f}: logo parts belong in logos.LOGOS")
+
+    def test_lists_name_real_files(self):
+        for f in self.SHARED | set(self.DIAGNOSTIC):
+            self.assertTrue(os.path.exists(os.path.join(HERE, f)), f)
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

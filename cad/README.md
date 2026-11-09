@@ -121,6 +121,7 @@ VT350_REUSE_EXPORT=<run>/export cad/render/render_full.sh   # changed only a rol
 
   Parts no rule matches keep the model's colour. `export.log` lists every `Default`-material part left uncoloured. Add a rule for any that are printed.
 - **Tests:** `render/colours.py` holds the shared rule matcher, tested by `render/test_colours.py` (CI `render-colours`).
+- **Voron logos** (the filter's front hinge and top cap) render orange with the recessed part white: `render/logos.py` picks the inset faces (tested by `render/test_logos.py`, FreeCAD: `$APP freecadcmd $PWD/cad/render/test_logos.py`). Every export that shows the printer's look (`export_meshes.py`, `export_exploded.py`) must use `colours.role_of` and `logos.split`; `test_colours.Aligned` fails CI if one doesn't, or if a new `export_*.py` isn't classified.
 
 ### Rendering on node-03 (fire and forget)
 

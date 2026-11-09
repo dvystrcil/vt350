@@ -7,6 +7,7 @@
 import FreeCAD, Part, Mesh, MeshPart, os, sys, json, time, traceback
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import colours                                   # #38 role colours: the filter's accents, the black backbone
+import logos                                     # Voron logos: orange, white inset (shared with export_meshes.py)
 V = FreeCAD.Vector
 MODELS = "/home/dan/Documents/VT350"
 PRINTER = os.environ.get("VT350_PRINTER", f"{MODELS}/vt350-lite-29.FCStd")
@@ -48,6 +49,12 @@ try:
         froles.setdefault(r, []).append(o)
     for r, os_ in froles.items(): log(f"filter {r}: {sorted(o.Label for o in os_)}")
     shapes["filter"] = [gshape(o) for o in fobjs]
+    split = {}                                     # logo label -> (inset faces, rest faces)
+    for o in fobjs:
+        r = logos.split(o.Label, gshape(o))
+        if r:
+            inset, rest = r; split[o.Label] = r
+            log(f"logo {o.Label}: {len(inset)} inset faces ({sum(f.Area for f in inset):.0f} mm2) white, {len(rest)} orange")
     pd = FreeCAD.openDocument(PRINTER); log("opened", PRINTER)
     bb = next(o for o in pd.Objects if leaf(o) and o.Label.startswith("backbone-350"))
     shapes["backbone"] = [gshape(bb).common(Part.makeBox(CROP[1] - CROP[0], CROP[3] - CROP[2], 40, V(CROP[0], CROP[2], -30)))]
@@ -57,7 +64,9 @@ try:
         if k != "filter": layers[k] = (v, ROLE_OF.get(k), shapes[k]); continue
         for r, os_ in froles.items():            # one bucket per role, so each gets its own material
             vv = {"clear": (v[0], v[1], CLEAR, v[3], 0.6), "other": (v[0], v[1], DARK, v[3], 0.0)}.get(r, v)
-            layers[f"filter_{r}"] = (vv, None if r in ("clear", "other") else r, [gshape(o) for o in os_])
+            shs = [Part.Compound(split[o.Label][1]) if o.Label in split else gshape(o) for o in os_]
+            layers[f"filter_{r}"] = (vv, None if r in ("clear", "other") else r, shs)
+        layers["filter_logo_inset"] = (v, "printed", [Part.Compound(i) for i, _ in split.values()])
     for k, ((dz, dx, col, mat, tr), role, shs) in layers.items():
         m = Mesh.Mesh()
         for s in shs:
@@ -71,6 +80,11 @@ try:
     scene["views"] = [
         {"name": "exploded_front", "pos": [c.x + 620, c.y - 980, c.z + 480], "look": [c.x, c.y, c.z], "lens_mm": 35},
         {"name": "exploded_side", "pos": [c.x - 1080, c.y - 140, c.z + 280], "look": [c.x, c.y, c.z], "lens_mm": 35},
+        # logo close-ups (filter lifted 340): the front hinge hexagon, and the cap on top
+        {"name": "logo_front", "pos": [-245 + 70, 86 - 260, -26 + 340 + 70], "look": [-245, 86, -26 + 340], "lens_mm": 50,
+         "hide": ["backbone", "seal_left", "seal_right"]},
+        {"name": "logo_top", "pos": [-245 + 40, 235 - 120, -11 + 340 + 260], "look": [-245, 235, -11 + 340], "lens_mm": 50,
+         "hide": ["filter_clear"], "ev": -1.6},     # the cap sits under the acrylic panel; white parts over-expose
         {"name": "exploded_under", "pos": [c.x + 540, c.y - 840, c.z - 480], "look": [c.x, c.y, c.z + 40], "lens_mm": 35},
     ]
     json.dump(scene, open(os.path.join(OUT, "scene.json"), "w"), indent=1)
