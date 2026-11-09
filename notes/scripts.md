@@ -139,6 +139,12 @@ The first query answers (checked against FreeCAD's own boxes, 2026-11-09) `M_1a.
   (another `.FCStd` saved within 10 min of it, e.g. `vt350-filter-3` with lite-29); the summary prints `part index: ... fresh`.
   `render_full.sh`'s export (`export_meshes.py`) also refreshes the index of every model it exports
   (`index: written|fresh ...` in `export.log`).
+- **From the batch lane:** the `vt350-refresh` chain indexes lite-N + its companions on max-01 (headless), and the
+  `vt350-render` chain's export does the same as `render_full.sh` (GUI under xvfb, so `bbox.mode` is `gui`). Both leave the
+  index in the job's `out/index/`; copy it beside your model with
+  `python3 ~/Code/vt350/cad/scripts/part_index.py --adopt /mnt/nfs/media/gpu-batch/<chain id>-*/out/index/*.parts.json`.
+  It is copied only when your model still has the exact bytes (size + sha256) the pod indexed, and never over an index
+  that is already fresh. Prints `adopted`, `fresh` or `skipped` + why for each one (exit 1 if any was skipped).
 - **Stale index?** `--check` says `stale` when the model's bytes changed since the index was made; re-run the writer.
 - **GUI vs headless:** `.bbox.mode` says which made the boxes; they differ by up to ~0.14 mm on STEP parts.
 
@@ -195,6 +201,7 @@ $APP freecadcmd $PWD/cad/scripts/liteNN_<what>.py   # headless = dry run: all ch
 | `print-area` | `cad/scripts/test_print_area.py` | `print-area.svg` is stale against the sweep log |
 | `slice-check` | `parts/test_slice_check.py`, `keepout.json` validity | the G-code parser, keep-out or report logic breaks |
 | `refresh-chain` | `cad/scripts/test_refresh.py`, `cad/scripts/test_derive_stls.py`, `test_litepool.py`, `test_prove_parallel.py`, `test_part_index.py` | the chain's sync, step runner or markers break, `derive_stls` stops honouring `VT350_MODELS`, or the part index's schema/staleness check breaks |
+| `render-colours` | `cad/render/test_colours.py`, `cad/render/test_render_full.py` | the colour rules break, or `render_full.sh` misjudges the export (a real `FAILED` passes, or the index hook's `index: FAILED` fails it) |
 | `secret-scan` | gitleaks | a secret in the diff |
 
 ## One-off and investigation scripts

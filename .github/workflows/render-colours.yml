@@ -15,3 +15,7 @@ jobs:
         run: python3 cad/render/test_colours.py 2>&1 | tee test.log
       - name: Confirm every test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test.log && tail -1 test.log | grep -qx 'OK'
+      - name: Test render_full.sh's export judgement (stub FreeCAD + Blender; the index hook is non-fatal, #90)
+        run: python3 cad/render/test_render_full.py 2>&1 | tee test-render-full.log
+      - name: Confirm every render_full test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-render-full.log && tail -1 test-render-full.log | grep -qx 'OK'

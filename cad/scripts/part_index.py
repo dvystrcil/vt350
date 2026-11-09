@@ -8,6 +8,12 @@
 #                                                                 # "part_index: done" (exit code means nothing)
 #   Check (plain python3, no FreeCAD, ~0.3 s per 170 MB):
 #     python3 cad/scripts/part_index.py --check MODEL.FCStd ...   # fresh/stale/missing/invalid; exit 0 = all fresh
+#   Adopt an index made elsewhere (a batch-lane pod: the vt350-refresh / vt350-render chains write <job>/out/index/,
+#   homelab gpu-batch-submit.py; plain python3): copied beside DIR/<its model> only when that model has the size and
+#   sha256 the index was made from, and only when the local index isn't already fresh (so a fresh one is never replaced).
+#     python3 cad/scripts/part_index.py --adopt [--models DIR] /mnt/nfs/media/gpu-batch/<chain>-*/out/index/*.parts.json
+#     # DIR defaults to /home/dan/Documents/VT350; one line per index (adopted/fresh/skipped + why); exit 0 = every
+#     # index's model now has a fresh sidecar, 1 = some were skipped, 2 = usage
 #   Query:
 #     jq -r '.parts[] | select(.bbox.zmax < -60) | .label' ~/Documents/VT350/vt350-filter-3.parts.json
 #
@@ -37,6 +43,7 @@ BOX_KEYS = ("xmin", "ymin", "zmin", "xmax", "ymax", "zmax")
 PART_KEYS = {"name": str, "label": str, "path": list, "material": str, "consumed": bool, "bbox": dict}
 TOP_KEYS = ("format", "model", "source", "bbox", "generated", "seconds", "parts")
 ROUND = 4
+MODELS_DIR = "/home/dan/Documents/VT350"
 
 
 # ---- plain python3: names, fingerprint, schema, staleness
@@ -142,10 +149,46 @@ def is_fresh(model):
     return status(model) == "fresh"
 
 
+def adopt(index_path, models_dir):
+    """Copy the index at index_path beside models_dir/<its model> if it was made from that file's exact bytes.
+    -> (verdict, why): 'adopted' | 'fresh' (local one already fresh, left alone) | 'skipped'. Never touches a model."""
+    idx = load(index_path)
+    if idx is None: return "skipped", "not an index (missing or not JSON)"
+    bad = validate(idx)
+    if bad: return "skipped", f"invalid: {'; '.join(bad[:3])}"
+    name = idx["model"]
+    if os.path.basename(name) != name or not name.endswith(".FCStd") or name == ".FCStd" or name in (".", ".."):
+        return "skipped", f"model {name!r} is not a bare .FCStd name"
+    model = os.path.join(models_dir, name)
+    if not os.path.isfile(model): return "skipped", f"no model {model}"
+    src = idx["source"]
+    if src["size"] != os.path.getsize(model) or src["sha256"] != _sha256(model):
+        return "skipped", f"made from other bytes than {model} (sha256 {src['sha256'][:12]}, size {src['size']})"
+    if status(model) == "fresh": return "fresh", f"{sidecar(model)} is already fresh"
+    write(idx, sidecar(model))
+    return "adopted", f"-> {sidecar(model)} ({idx['bbox']['mode']}, {len(idx['parts'])} parts, sha256 {src['sha256'][:12]})"
+
+
+USAGE = ("usage: part_index.py --check MODEL.FCStd [...]\n"
+         "       part_index.py --adopt [--models DIR] INDEX.parts.json [...]\n"
+         "(writing an index needs FreeCAD: see the header)")
+
+
 def main(argv):
+    if len(argv) >= 2 and argv[0] == "--adopt":
+        rest, models_dir = argv[1:], MODELS_DIR
+        if rest[0] == "--models":
+            if len(rest) < 3: print(USAGE, file=sys.stderr); return 2
+            models_dir, rest = rest[1], rest[2:]
+        if not os.path.isdir(models_dir): print(f"part_index: no such folder {models_dir}", file=sys.stderr); return 2
+        rc = 0
+        for f in rest:
+            verdict, why = adopt(f, models_dir)
+            print(f"{verdict:<8} {f} {why}" if verdict == "adopted" else f"{verdict:<8} {f}: {why}")
+            if verdict == "skipped": rc = 1
+        return rc
     if len(argv) < 2 or argv[0] != "--check":
-        print("usage: part_index.py --check MODEL.FCStd [...]   (writing an index needs FreeCAD: see the header)",
-              file=sys.stderr)
+        print(USAGE, file=sys.stderr)
         return 2
     rc = 0
     for m in argv[1:]:
