@@ -2,8 +2,8 @@
 #   1. dry-run the pass with VT350_EXPORT=<parts dir> so it writes its new parts (ring, seal halves, tray seal) as BREP;
 #   2. VT350_PARTS=<parts dir> VT350_RENDER_OUT=<dir> $APP freecadcmd /home/dan/Code/vt350/cad/render/export_exploded.py
 #   3. blender -b -P cad/render/render.py -- <dir> <out>      (or the GPU batch lane on node-03)
-# Stacked bottom to top in assembly order, each pulled straight up by its OFFSET (mm): ring, tray seal, filter,
-# cutout seal halves (also pulled apart in X), backbone (cropped to the cutout and a margin, so the camera sees in).
+# Stacked bottom to top in assembly order, each pulled straight up by its OFFSET (mm): backbone (cropped to the
+# cutout and a margin), cutout seal halves (also pulled apart in X), cradle, tray seal, filter.
 import FreeCAD, Part, Mesh, MeshPart, os, json, time, traceback
 V = FreeCAD.Vector
 MODELS = "/home/dan/Documents/VT350"
@@ -14,10 +14,12 @@ OUT = os.environ.get("VT350_RENDER_OUT", "/tmp/vt350-exploded")
 CROP = (-470.0, -20.0, 20.0, 450.0)            # backbone crop X0 X1 Y0 Y1: the cutout (X -420..-70, Y 70..400) + 50
 ORANGE, TPU, GREY, STEEL = (0.89, 0.4, 0.16), (0.12, 0.12, 0.13), (0.72, 0.72, 0.74), (0.25, 0.25, 0.27)
 # key: (offset Z, offset X, colour, material, transparency)
-# The tray seal sits 77 mm down inside the tub (Z -80 vs the collar top -3): it needs > 90 to clear the ring at all.
-LAYERS = {"ring": (0, 0, ORANGE, "PET-GF", 0.0), "tray_seal": (120, 0, TPU, "TPU", 0.0),
-          "filter": (230, 0, GREY, "PETG", 0.0), "seal_left": (360, -25, TPU, "TPU", 0.0),
-          "seal_right": (360, 25, TPU, "TPU", 0.0), "backbone": (430, 0, STEEL, "Steel-Generic", 0.35)}
+# Assembly order, bottom to top (user, 2026-11-09): backbone, cutout seal halves (laid on the backbone), cradle
+# (the ring, dropped in so its lips land on the seal), tray seal (laid in the tub), filter. Gaps ~35-40 mm: the
+# cradle hangs 89 mm below its own lips and the tray seal sits 77 mm down in the tub, hence the big jumps.
+LAYERS = {"backbone": (0, 0, STEEL, "Steel-Generic", 0.35), "seal_left": (40, -25, TPU, "TPU", 0.0),
+          "seal_right": (40, 25, TPU, "TPU", 0.0), "ring": (170, 0, ORANGE, "PET-GF", 0.0),
+          "tray_seal": (300, 0, TPU, "TPU", 0.0), "filter": (340, 0, GREY, "PETG", 0.0)}
 os.makedirs(OUT, exist_ok=True)
 logf = open(os.path.join(OUT, "export.log"), "w"); t0 = time.time()
 def log(*a): logf.write(f"[{time.time() - t0:7.1f}s] " + " ".join(str(x) for x in a) + "\n"); logf.flush()
@@ -44,7 +46,7 @@ try:
         scene["buckets"][k] = {"color": col, "material": mat, "transparency": tr, "n": len(shapes[k]),
                                "facets": m.CountFacets, "labels": [k]}
         log(f"{k}: {len(shapes[k])} solids, {m.CountFacets} facets, dZ {dz}, dX {dx}")
-    c = V(-245, 235, 170)                         # centre of the stack
+    c = V(-245, 235, 165)                         # centre of the stack
     scene["views"] = [
         {"name": "exploded_front", "pos": [c.x + 620, c.y - 980, c.z + 480], "look": [c.x, c.y, c.z], "lens_mm": 35},
         {"name": "exploded_side", "pos": [c.x - 1080, c.y - 140, c.z + 280], "look": [c.x, c.y, c.z], "lens_mm": 35},
