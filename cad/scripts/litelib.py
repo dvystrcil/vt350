@@ -30,16 +30,33 @@
 #   min_distance(shape, others, what, min_d)       shape keeps >= min_d off each of `others` (r.near, r.d)
 #   lift_out_clear(shape, boxes, what, ...)        nothing of `shape` in the column above any of `boxes` (r.blocked)
 #
-# Parallel clash checks (#45, clashlib.py) run on a SAVED model; a pass checks shapes it has not saved yet. The hot
-# spot is no_overlap's boolean step, so it goes through Pass.volumes(pairs) -> [volume, ...], which a pass can replace
-# (Pass(..., volumes=f)) with a parallel runner without touching the checks.
+# Parallel (#45): the named checks' heavy work goes through ONE hook, Pass.map(fn, tasks) -> [fn(*task), ...], with
+# fn one of the module-level ops below: _t_vol (no_overlap's booleans, via Pass.volumes), _t_dist (min_distance),
+# _t_col + _t_above (lift_out_clear's column booleans and its exact line grid, split into strips) and _t_obb
+# (Model.boxes, the only heavy work in clear_of_bed_travel). With workers > 1 (Pass(workers=N), else VT350_WORKERS,
+# else available CPUs - 2, see litepool.py) map runs the tasks on N persistent headless freecadcmd workers.
+# Results are bit-identical to serial: a shape that comes from a saved document is NOT serialised (a binary BREP
+# round trip moved one StealthMax part's placement by 1 ulp); the worker opens the same file and rebuilds it with
+# gshape(), the same code as Model. Only shapes the pass made itself (a box, a fused ring) travel as binary BREP.
+# Every shipped shape carries a fingerprint (placement matrix + plain BoundBox); a worker whose copy doesn't match
+# (the pass changed the document in memory, or a GUI tessellation changed the box) answers Stale and the parent
+# redoes that task itself (counted in Pass.stale). Logging stays in the parent, in order, so a parallel run's log is
+# line-for-line the serial one. Pass.volumes(pairs) is kept; Pass(volumes=f) still replaces it.
+# In a GUI pass the workers are headless: an optimalBoundingBox they compute is the headless one (see Gotchas).
+# Memory: each worker opens its own copy of every document it needs. So a task on a shape of a document bigger than
+# worker_doc_mb (default WORKER_DOC_MB, env VT350_WORKER_DOC_MB) runs in the parent: the workers never open the
+# printer model. A distance (_t_dist) to a shape with more than heavy_faces faces (default HEAVY_FACES, env
+# VT350_HEAVY_FACES) also runs in the parent, so at most one such 10 GB task runs at a time, as in serial. Workers
+# give freed memory back after every task (litepool.trim). The worker count is capped by free memory
+# (litepool.worker_count): each worker <= ~1.5 GB, the reserve covers the parent at its serial peak.
 #
 # Gotchas: optimalBoundingBox differs slightly GUI vs headless (tessellation, ~0.14 mm on the StealthMax STEP); some
 # STEP parts have a polluted plain BoundBox (StealthMax M_1a.0_Body_BPM: Y to -419, Z to -372). Use obb(), or slice
 # with common(), for anything that matters.
-import json, os, time, traceback
+import json, os, sys, time, traceback
 
 import FreeCAD, Part
+import litepool
 
 V = FreeCAD.Vector
 REPO = os.environ.get("VT350_REPO", "/home/dan/Code/vt350")
@@ -47,6 +64,14 @@ WORK = os.environ.get("VT350_WORK", f"{REPO}/cad/data")
 MODELS = "/home/dan/Documents/VT350"
 BED_LOWEST_DZ = -241.98       # the bed's bottom of Z travel from the model pose (#74, boolean vs the backbone)
 BED_Z = (230.0, 300.0)        # bed-side solids at the model pose: ZMin in this band and ZMax <= its top
+HERE = os.path.dirname(os.path.abspath(__file__))
+APP = os.environ.get("FREECAD_APPIMAGE", "/home/dan/FreeCAD/FreeCAD_26.3rc2-Linux-x86_64.AppImage")
+FREECADCMD = os.environ.get("FREECADCMD", f"{APP} freecadcmd").split()
+WORKER_DOC_MB = 100.0         # tasks on shapes of a saved document bigger than this run in the parent (#45): a worker
+                              # that opens the 173 MB printer model costs GBs; the 49 MB filter document is fine
+HEAVY_FACES = 10000           # a distance to a shape with more faces runs in the parent (#45): distToShape(ring,
+                              # StealthMax carbon basket, 18,651 faces) took 10.2 GB and 239 s; every other op on
+                              # every lite-30 part stayed under 1.5 GB. One at a time, as serial would.
 
 
 def gshape(o):
@@ -83,6 +108,97 @@ def overlaps_xy(a, b):
     return a.XMin < b.XMax and a.XMax > b.XMin and a.YMin < b.YMax and a.YMax > b.YMin
 
 
+# ---- the ops Pass.map runs (in the parent, or by name in a worker). Arguments are shapes, or in a worker the
+# references _S() turns back into shapes.
+class _Err:
+    """An op that raised: its message, as map returns it."""
+    def __init__(self, msg): self.msg = msg
+
+    def __repr__(self): return f"_Err({self.msg!r})"
+
+
+_wshapes, _wdocs, _wpieces = {}, {}, {}      # worker side: shape key -> shape (or None = stale), path -> doc, pieces
+_STALE = object()
+
+
+def _fp(s):
+    b = s.BoundBox
+    return tuple(s.Placement.Matrix.A), (b.XMin, b.YMin, b.ZMin, b.XMax, b.YMax, b.ZMax)
+
+
+def _S(x):
+    """A shape reference from the parent -> the shape (loaded once per worker); anything else unchanged."""
+    if not (isinstance(x, tuple) and len(x) == 5 and x[0] == "__shape__"): return x
+    _, key, kind, src, fp = x
+    s = _wshapes.get(key)
+    if s is None:
+        if kind == "doc":
+            path, name = src
+            if path not in _wdocs: _wdocs[path] = FreeCAD.openDocument(path)
+            o = _wdocs[path].getObject(name)
+            s = gshape(o) if o is not None else _STALE
+        else:
+            s = Part.Shape(); s.importBinary(src)
+        if s is not _STALE and _fp(s) != fp: s = _STALE
+        _wshapes[key] = s
+    if s is _STALE: raise litepool.Stale(f"shape {key} ({kind} {src}) differs from the parent's")
+    return s
+
+
+def _t_vol(a, b):
+    return _S(a).common(_S(b)).Volume
+
+
+def _t_dist(a, b):
+    return _S(a).distToShape(_S(b))[0]
+
+
+def _t_obb(s):
+    b = obb(_S(s)); return b.XMin, b.YMin, b.ZMin, b.XMax, b.YMax, b.ZMax
+
+
+def _t_col(s, col):
+    """col (x0, x1, y0, y1, z0, z1): volume of `s` inside that box."""
+    return _S(s).common(box(*col)).Volume
+
+
+def _t_above(s, col, part, z0, grid, k=0, n=1):
+    """above_material for the piece of `s` inside col, on strip k of n."""
+    s, part = _S(s), _S(part)
+    key = (id(s), col)
+    if key not in _wpieces: _wpieces[key] = (s, s.common(box(*col)))   # s kept: its id can't be reused
+    return above_material(_wpieces[key][1], part, z0, grid, k, n)
+
+
+def grid_columns(lo, hi, grid, k=0, n=1):
+    """The grid's column centres from lo to hi (accumulated exactly as the serial loop did), every n-th from k."""
+    xs, x = [], lo + grid / 2
+    while x < hi:
+        xs.append(x); x += grid
+    return xs[k::n]
+
+
+def above_material(piece, part, z0, grid, k=0, n=1):
+    """True if, on any vertical line of the grid over `piece`, a stretch of `piece` lies above a stretch of
+    `part` (both above z0): lifting the part straight up would run into the piece there. k/n: only the grid's
+    X columns k, k+n, ... (a strip of the work; any() over all strips is the answer)."""
+    bb = piece.BoundBox
+    if not piece.Solids: return False
+    pb = part.BoundBox
+    def zs(line, s):
+        return [(min(v.Point.z for v in e.Vertexes), max(v.Point.z for v in e.Vertexes)) for e in line.common(s).Edges]
+    for x in grid_columns(bb.XMin, bb.XMax, grid, k, n):
+        y = bb.YMin + grid / 2
+        while y < bb.YMax:
+            ln = Part.makeLine(V(x, y, max(bb.ZMax, pb.ZMax) + 1), V(x, y, min(z0, pb.ZMin) - 1))
+            rz = zs(ln, piece)
+            if rz:
+                pz = [(a, b) for a, b in zs(ln, part) if b > z0 + 1e-6]
+                if any(r0 >= p1 - 1e-6 for r0, _ in rz for _, p1 in pz): return True
+            y += grid
+    return False
+
+
 class Result:
     """A check's outcome: truthy when it passed; the measured values are attributes."""
     def __init__(self, ok, **kw):
@@ -94,19 +210,30 @@ class Result:
 
 
 class Model:
-    """An opened document: its leaf solids, their global shapes and (lazily) their optimal bounding boxes."""
-    def __init__(self, doc):
-        self.doc = doc
+    """An opened document: its leaf solids, their global shapes and (lazily) their optimal bounding boxes.
+    Opened through a Pass (p.open), the boxes are computed through p.map, and its shapes are known to come from
+    the saved file (so a worker can rebuild them from it instead of receiving them)."""
+    def __init__(self, doc, p=None):
+        self.doc, self.p = doc, p
         self.refresh()
 
     def refresh(self):
         self.leaves = [o for o in self.doc.Objects if is_leaf(o)]
         self.shapes = {o.Name: gshape(o) for o in self.leaves}
         self._boxes = None
+        if self.p is not None and self.doc.FileName:
+            mb = os.path.getsize(self.doc.FileName) / 2 ** 20
+            for n, s in self.shapes.items(): self.p._origin[id(s)] = (s, self.doc.FileName, n, mb)
 
     @property
     def boxes(self):
-        if self._boxes is None: self._boxes = {n: obb(s) for n, s in self.shapes.items()}
+        if self._boxes is None:
+            names = list(self.shapes)
+            vals = (self.p.map(_t_obb, [(self.shapes[n],) for n in names]) if self.p is not None
+                    else [_t_obb(self.shapes[n]) for n in names])
+            bad = [(n, v.msg) for n, v in zip(names, vals) if isinstance(v, _Err)]
+            if bad: raise RuntimeError(f"optimal boxes failed: {bad[:3]}")
+            self._boxes = {n: FreeCAD.BoundBox(*v) for n, v in zip(names, vals)}
         return self._boxes
 
     def root(self, prefix):
@@ -120,10 +247,17 @@ class Model:
 
 
 class Pass:
-    def __init__(self, name, work=None, dry=None, volumes=None):
+    def __init__(self, name, work=None, dry=None, volumes=None, workers=None, worker_doc_mb=None, heavy_faces=None):
         self.name = name
         self.work = work or WORK
         self.dry = (not FreeCAD.GuiUp) if dry is None else dry
+        self.workers = litepool.worker_count() if workers is None else int(workers)
+        if self.workers < 1: raise ValueError(f"workers={workers} must be >= 1")
+        self.worker_doc_mb = float(worker_doc_mb if worker_doc_mb is not None
+                                   else os.environ.get("VT350_WORKER_DOC_MB", WORKER_DOC_MB))
+        self.heavy_faces = int(heavy_faces if heavy_faces is not None else os.environ.get("VT350_HEAVY_FACES", HEAVY_FACES))
+        self.parent_tasks, self._faces = 0, {}
+        self._pool, self._origin, self._refs, self.stale = None, {}, {}, 0
         os.makedirs(self.work + "/logs", exist_ok=True)
         self.log_path = f"{self.work}/logs/{name}.log"
         self.log_f = open(self.log_path, "w"); self.t0 = time.time()
@@ -144,19 +278,82 @@ class Pass:
         return res
 
     def close(self):
+        if self._pool is not None:
+            self._pool.close(); self._pool = None
         if not self.log_f.closed: self.log_f.close()
 
     def vol(self, a, b):
         try: return a.common(b).Volume
         except Exception as e: self.log("  boolean failed:", e); return float("inf")
 
+    # ---- the parallel hook (#45)
+    def map(self, fn, tasks):
+        """[fn(*task), ...] in order, an op that raises -> _Err(message). fn: a module-level op of this module.
+        Serial (in this process) with workers == 1 or fewer than 2 tasks; else on the worker pool."""
+        tasks = [tuple(t) for t in tasks]
+        if self.workers == 1: return [self._inline(fn, t) for t in tasks]
+        if sys.modules[__name__].__dict__.get(fn.__name__) is not fn: raise ValueError(f"{fn!r} is not a litelib op")
+        far = [i for i, t in enumerate(tasks) if not self._big(t) and not self._heavy(fn, t)]   # the rest stays here
+        if len(far) < 2: return [self._inline(fn, t) for t in tasks]
+        if self._pool is None:
+            self._pool = litepool.Pool(self.workers, cmd=FREECADCMD, path=[HERE])
+            print(f"litelib: {self.workers} workers for {self.name}", file=sys.stderr, flush=True)
+        res = dict(zip(far, self._pool.map(__name__, fn.__name__, [tuple(self._enc(a) for a in tasks[i]) for i in far])))
+        out = []
+        for i, t in enumerate(tasks):
+            if i not in res: self.parent_tasks += 1; out.append(self._inline(fn, t)); continue
+            st, v = res[i]
+            if st == "ok": out.append(v)
+            elif st == "err": out.append(_Err(v))
+            else: self.stale += 1; out.append(self._inline(fn, t))
+        return out
+
+    def _heavy(self, fn, t):
+        """True for a distance to a shape with more than heavy_faces faces (counted once per shape)."""
+        if fn is not _t_dist: return False
+        for a in t:
+            if isinstance(a, Part.Shape):
+                e = self._faces.get(id(a))
+                if e is None or e[0] is not a: e = self._faces[id(a)] = (a, len(a.Faces))
+                if e[1] > self.heavy_faces: return True
+        return False
+
+    def _big(self, t):
+        """True if a shape in task t comes from a saved document over worker_doc_mb."""
+        for a in t:
+            org = self._origin.get(id(a)) if isinstance(a, Part.Shape) else None
+            if org is not None and org[0] is a and org[3] > self.worker_doc_mb: return True
+        return False
+
+    @staticmethod
+    def _inline(fn, t):
+        try: return fn(*t)
+        except Exception as e: return _Err(str(e))
+
+    def _enc(self, x):
+        if isinstance(x, Part.Shape):
+            e = self._refs.get(id(x))
+            if e is None or e[0] is not x:                       # e[0] keeps x alive, so its id stays unique
+                key = len(self._refs)
+                org = self._origin.get(id(x))
+                if org is not None and org[0] is x: kind, src = "doc", (org[1], org[2])
+                else:
+                    src = os.path.join(self._pool.dir, f"s{key}.brp"); x.exportBinary(src); kind = "brep"
+                e = (x, ("__shape__", key, kind, src, _fp(x))); self._refs[id(x)] = e
+            return e[1]
+        return x
+
     def volumes(self, pairs):
-        """[(a, b), ...] -> [common volume, ...]. Replace (Pass(volumes=...)) to run the booleans in parallel (#45)."""
-        return [self.vol(a, b) for a, b in pairs]
+        """[(a, b), ...] -> [common volume, ...] through map (a failed boolean: logged, inf). Pass(volumes=f) replaces it."""
+        out = []
+        for v in self.map(_t_vol, pairs):
+            if isinstance(v, _Err): self.log("  boolean failed:", v.msg); v = float("inf")
+            out.append(v)
+        return out
 
     def open(self, path):
         doc = FreeCAD.openDocument(path); self.log("opened", path)
-        return Model(doc)
+        return Model(doc, self)
 
     def run(self, body, exit=True):
         """body(self) inside the pass's try/except: an exception is logged as FAILED + traceback, never raised.
@@ -216,9 +413,9 @@ class Pass:
         """others {key: shape}: r.near [(key, distance rounded to 0.01)] for those closer than min_d; r.d = the
         smallest distance (inf with none)."""
         near, dmin = [], float("inf")
-        for k, s in others.items():
-            if k in skip: continue
-            d = shape.distToShape(s)[0]
+        keys = [k for k in others if k not in skip]
+        for k, d in zip(keys, self.map(_t_dist, [(shape, others[k]) for k in keys])):
+            if isinstance(d, _Err): raise RuntimeError(f"distToShape failed for {k}: {d.msg}")
             dmin = min(dmin, d)
             if d < min_d: near.append((k, round(d, 2)))
         return self._named(Result(not near, near=near, d=dmin), what)
@@ -231,36 +428,22 @@ class Pass:
         through the piece of `shape` in its column; blocked only where that piece lies above the part's own material
         (above start_z)."""
         start_z = start_z or {}
-        blocked = []
-        for k, b in boxes.items():
-            z0 = start_z.get(k, b.ZMin)
-            col = box(b.XMin, b.XMax, b.YMin, b.YMax, z0, b.ZMin + height)
-            v = self.vol(shape, col)
-            if v > tol and parts is not None and k in parts:
-                if not self._above_material(shape.common(col), parts[k], z0, grid): continue
-            if v > tol: blocked.append((k, round(v, 1)))
+        keys = list(boxes)
+        cols = [(b.XMin, b.XMax, b.YMin, b.YMax, start_z.get(k, b.ZMin), b.ZMin + height)
+                for k, b in ((k, boxes[k]) for k in keys)]
+        vs = []
+        for v in self.map(_t_col, [(shape, c) for c in cols]):
+            if isinstance(v, _Err): self.log("  boolean failed:", v.msg); v = float("inf")
+            vs.append(v)
+        exact = [i for i, k in enumerate(keys) if vs[i] > tol and parts is not None and k in parts]
+        n = 1 if self.workers == 1 else 2 * self.workers                 # strips per part for the exact stage
+        res = self.map(_t_above, [(shape, cols[i], parts[keys[i]], cols[i][4], grid, j, n) for i in exact for j in range(n)]) \
+            if exact else []
+        bad = [r.msg for r in res if isinstance(r, _Err)]
+        if bad: raise RuntimeError(f"lift-out exact stage failed: {bad[0]}")
+        above = {i: any(res[j * n:(j + 1) * n]) for j, i in enumerate(exact)}
+        blocked = [(k, round(vs[i], 1)) for i, k in enumerate(keys) if vs[i] > tol and above.get(i, True)]
         return self._named(Result(not blocked, blocked=blocked), what)
-
-    @staticmethod
-    def _above_material(piece, part, z0, grid):
-        """True if, on any vertical line of the grid over `piece`, a stretch of `piece` lies above a stretch of
-        `part` (both above z0): lifting the part straight up would run into the piece there."""
-        bb = piece.BoundBox
-        if not piece.Solids: return False
-        def zs(line, s):
-            return [(min(v.Point.z for v in e.Vertexes), max(v.Point.z for v in e.Vertexes)) for e in line.common(s).Edges]
-        x = bb.XMin + grid / 2
-        while x < bb.XMax:
-            y = bb.YMin + grid / 2
-            while y < bb.YMax:
-                ln = Part.makeLine(V(x, y, max(bb.ZMax, part.BoundBox.ZMax) + 1), V(x, y, min(z0, part.BoundBox.ZMin) - 1))
-                rz = zs(ln, piece)
-                if rz:
-                    pz = [(a, b) for a, b in zs(ln, part) if b > z0 + 1e-6]
-                    if any(r0 >= p1 - 1e-6 for r0, _ in rz for _, p1 in pz): return True
-                y += grid
-            x += grid
-        return False
 
     def fits_print_area(self, shape, what, area=None, margin=0.0):
         """A part printed flat (as modelled, Z up) fits the VT350's printable area, either way round, with `margin`

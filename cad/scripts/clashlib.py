@@ -28,7 +28,10 @@ HERE = os.path.abspath(__file__)
 
 
 def default_n():
-    return max(1, (os.cpu_count() or 4) - 2)
+    """VT350_WORKERS, else the CPUs this process may use (cgroup quota + affinity, not os.cpu_count()) - 2."""
+    sys.path.insert(0, os.path.dirname(HERE))
+    import litepool
+    return litepool.worker_count()
 
 
 def run(model, groups, poses=None, fixed=None, exclude=(), skip_group_pairs=(), n=None, tol=0.01, log=print,

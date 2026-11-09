@@ -19,3 +19,11 @@ jobs:
         run: python3 cad/scripts/test_derive_stls.py 2>&1 | tee test-derive.log
       - name: Confirm every derive_stls test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-derive.log && tail -1 test-derive.log | grep -qx 'OK'
+      - name: Test the check workers' pool and worker count (litepool, #45; plain python3 workers)
+        run: python3 cad/scripts/test_litepool.py 2>&1 | tee test-litepool.log
+      - name: Confirm every litepool test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-litepool.log && tail -1 test-litepool.log | grep -qx 'OK'
+      - name: Test the serial-vs-parallel proof runner (prove_parallel, #45; fake freecadcmd)
+        run: python3 cad/scripts/test_prove_parallel.py 2>&1 | tee test-prove.log
+      - name: Confirm every prove_parallel test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-prove.log && tail -1 test-prove.log | grep -qx 'OK'
