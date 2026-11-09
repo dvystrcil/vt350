@@ -223,16 +223,44 @@ class Pass:
             if d < min_d: near.append((k, round(d, 2)))
         return self._named(Result(not near, near=near, d=dmin), what)
 
-    def lift_out_clear(self, shape, boxes, what, height=200.0, start_z=None, tol=1e-3):
+    def lift_out_clear(self, shape, boxes, what, height=200.0, start_z=None, tol=1e-3, parts=None, grid=1.0):
         """boxes {key: BoundBox}: nothing of `shape` (> tol mm3) in the column over each box's XY, from its ZMin (or
-        start_z[key]) up to ZMin + height, so each part lifts straight out. r.blocked [(key, volume rounded to 0.1)]."""
+        start_z[key]) up to ZMin + height, so each part lifts straight out. r.blocked [(key, volume rounded to 0.1)].
+        The box column is conservative: a part's box also covers XY it has no material over (a chamfered corner, an
+        L). With parts {key: shape}, a flagged part gets an exact second stage: vertical lines on a `grid` mm grid
+        through the piece of `shape` in its column; blocked only where that piece lies above the part's own material
+        (above start_z)."""
         start_z = start_z or {}
         blocked = []
         for k, b in boxes.items():
-            col = box(b.XMin, b.XMax, b.YMin, b.YMax, start_z.get(k, b.ZMin), b.ZMin + height)
+            z0 = start_z.get(k, b.ZMin)
+            col = box(b.XMin, b.XMax, b.YMin, b.YMax, z0, b.ZMin + height)
             v = self.vol(shape, col)
+            if v > tol and parts is not None and k in parts:
+                if not self._above_material(shape.common(col), parts[k], z0, grid): continue
             if v > tol: blocked.append((k, round(v, 1)))
         return self._named(Result(not blocked, blocked=blocked), what)
+
+    @staticmethod
+    def _above_material(piece, part, z0, grid):
+        """True if, on any vertical line of the grid over `piece`, a stretch of `piece` lies above a stretch of
+        `part` (both above z0): lifting the part straight up would run into the piece there."""
+        bb = piece.BoundBox
+        if not piece.Solids: return False
+        def zs(line, s):
+            return [(min(v.Point.z for v in e.Vertexes), max(v.Point.z for v in e.Vertexes)) for e in line.common(s).Edges]
+        x = bb.XMin + grid / 2
+        while x < bb.XMax:
+            y = bb.YMin + grid / 2
+            while y < bb.YMax:
+                ln = Part.makeLine(V(x, y, max(bb.ZMax, part.BoundBox.ZMax) + 1), V(x, y, min(z0, part.BoundBox.ZMin) - 1))
+                rz = zs(ln, piece)
+                if rz:
+                    pz = [(a, b) for a, b in zs(ln, part) if b > z0 + 1e-6]
+                    if any(r0 >= p1 - 1e-6 for r0, _ in rz for _, p1 in pz): return True
+                y += grid
+            x += grid
+        return False
 
     def fits_print_area(self, shape, what, area=None, margin=0.0):
         """A part printed flat (as modelled, Z up) fits the VT350's printable area, either way round, with `margin`

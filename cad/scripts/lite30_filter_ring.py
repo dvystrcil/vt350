@@ -39,6 +39,16 @@ COLLAR_TOP, COLLAR_Z0 = BB_TOP - 1.0, BB_BOT - 6.0
 SPLIT_X, LAP = -245.0, 10.0                     # the halves meet on the cutout's centre line
 Y0, Y1 = 90.0, 390.0                            # lips (lite-28/29)
 BOARD_TOP = -100.0
+# duct (user 2026-11-09: tub + side intakes). Intake = the two floor ports at the front of the tray; outlet = the
+# rear-edge opening. Both measured on vt350-filter.FCStd (#74 airflow trace).
+PLENUM_H, FLOOR_T = 8.0, 3.0                    # plenum under the tray; tub floor
+TRAY_SEAL_T, TRAY_SEAL_W, TRAY_SEAL_IN = 1.5, 3.0, 4.0   # TPU strip the tray rests on (squeezed), its width, how far in
+SLOTS_Y = ((110.0, 170.0), (190.0, 280.0), (290.0, 335.0))   # slots in the side ledges (intake side, Y < BAFFLE_Y)
+BAFFLE_Y, BAFFLE_T = 340.0, 3.0                 # rear-corner baffles: rear of this = outlet pocket
+REAR_LEDGE_IN = 8.0                             # rear ledge reaches this far under the tray's rear edge
+INTAKE_AREA = 2 * 36.0 * 44.0                   # two floor ports, ~36 x 44 each (4 mm ray grid, coarse)
+OUTLET_AREA = 31.0 * 11.0                       # rear-edge opening X -260.7..-229.7, Z -77..-66 (1 mm rays)
+BOARD_MIN = 5.0
 TRAY = "StealthMax M_1a.0_Body_BPM"
 
 
@@ -80,12 +90,18 @@ def main(p):
     for x0, x1 in ((mainb.XMin, mainb.XMin + LEDGE_IN), (mainb.XMax - LEDGE_IN, mainb.XMax)):
         floors.append(chamber.common(box(x0, x1, Y0, Y1, mainb.ZMin - 5, mainb.ZMax)).BoundBox.ZMin)
     p.log("tray underside under the side ledges (left, right):", [round(f, 2) for f in floors])
-    floor = min(floors); LZ0 = floor - LEDGE_T
+    floor = min(floors)
+    ltop = floor - TRAY_SEAL_T                     # ledges sit under the TPU strip the tray rests on
+    LZ0 = ltop - LEDGE_T
+    TUB_Z0 = floor - PLENUM_H - FLOOR_T
+    y_rear = chamber.common(box(-335, -325, 300, 400, floor - 1, floor + 1)).BoundBox.YMax   # off the rear tabs
+    p.log(f"tray rear edge Y {y_rear:.2f}; tub floor Z {TUB_Z0:.2f}..{TUB_Z0 + FLOOR_T:.2f}")
 
     # ---- ring: collar + left/right cradles, channel for the cord
     wall_in = SEAL_GAP + WALL_T
-    collar = rect_frame(SEAL_GAP, wall_in, COLLAR_Z0, COLLAR_TOP)
-    parts = [collar]
+    collar = rect_frame(SEAL_GAP, wall_in, TUB_Z0, COLLAR_TOP)
+    parts = [collar, rrect(SEAL_GAP + 0.5, TUB_Z0, TUB_Z0 + FLOOR_T)]
+    slots, baffles = [], []
     for side in ("left", "right"):
         if side == "left":
             lip = (CUT[0] - LIP_W, CUT[0] + SEAL_GAP); wall = (CUT[0] + SEAL_GAP, CUT[0] + wall_in)
@@ -94,9 +110,28 @@ def main(p):
             lip = (CUT[2] - SEAL_GAP, CUT[2] + LIP_W); wall = (CUT[2] - wall_in, CUT[2] - SEAL_GAP)
             ledge = (mainb.XMax - LEDGE_IN, wall[1]); ridge = (mainb.XMax + RIDGE_GAP, mainb.XMax + RIDGE_GAP + RIDGE_W)
         parts += [box(*lip, Y0, Y1, BB_TOP, BB_TOP + LIP_T), box(*wall, Y0, Y1, LZ0, BB_TOP + LIP_T),
-                  box(*ledge, Y0, Y1, LZ0, floor), box(*ridge, Y0, Y1, floor, floor + RIDGE_H)]
+                  box(*ledge, Y0, Y1, LZ0, ltop), box(*ridge, Y0, Y1, ltop, floor + RIDGE_H)]
+        sx = (wall[1], ridge[0] - 0.5) if side == "left" else (ridge[1] + 0.5, wall[0])
+        slots += [box(*sx, a, b, LZ0 - 1, ltop + 1) for a, b in SLOTS_Y]
+        # baffle across the gap at BAFFLE_Y, from the collar to 0.5 mm off the filter, ledge to collar top
+        sl = box(wall[1] if side == "left" else -245, -245 if side == "left" else wall[0], BAFFLE_Y, BAFFLE_Y + BAFFLE_T,
+                 ltop, COLLAR_TOP)
+        hit = [s.common(sl).BoundBox for s in fparts.values() if s.BoundBox.intersect(sl.BoundBox)]
+        hit = [b for b in hit if b.isValid() and b.XLength > 0]
+        fx = min(b.XMin for b in hit) - 0.5 if side == "left" else max(b.XMax for b in hit) + 0.5
+        baffles.append(box(wall[1] if side == "left" else fx, fx if side == "left" else wall[0],
+                           BAFFLE_Y, BAFFLE_Y + BAFFLE_T, ltop, COLLAR_TOP))
+        p.log(f"{side}: baffle X {baffles[-1].BoundBox.XMin:.1f}..{baffles[-1].BoundBox.XMax:.1f} at Y {BAFFLE_Y}")
+    parts += baffles
+    parts.append(box(CUT[0] + wall_in - 0.5, CUT[2] - wall_in + 0.5, y_rear - REAR_LEDGE_IN, CUT[3] - wall_in + 0.5,
+                     LZ0, ltop))                    # rear ledge: floor of the outlet pocket
     channel = rect_frame(SEAL_GAP - 0.01, SEAL_GAP + GROOVE, SEAL_Z - CORD / 2, SEAL_Z + CORD / 2)
-    ring = parts[0].fuse(parts[1:]).removeSplitter().cut(channel).removeSplitter()
+    ring = parts[0].fuse(parts[1:]).removeSplitter().cut(Part.makeCompound(slots)).cut(channel).removeSplitter()
+    # TPU strip the tray rests on: U along the side ledges and the rear ledge, so the pocket's floor is sealed
+    xl, xr = mainb.XMin + TRAY_SEAL_IN, mainb.XMax - TRAY_SEAL_IN
+    yr = y_rear - TRAY_SEAL_IN
+    tray_seal = box(xl, xl + TRAY_SEAL_W, Y0, yr, ltop, floor).fuse(
+        [box(xr - TRAY_SEAL_W, xr, Y0, yr, ltop, floor), box(xl, xr, yr - TRAY_SEAL_W, yr, ltop, floor)]).removeSplitter()
     p.check(len(ring.Solids) == 1, f"ring is one solid ({len(ring.Solids)})")
     p.log("ring:", ring.BoundBox)
 
@@ -142,15 +177,44 @@ def main(p):
     pen = p.vol(ring, chamber)
     p.check(pen <= 1.0, f"ring x bottom tray interpenetration {pen:.2f} mm3")
     p.lift_out_clear(ring, fboxes, lambda r: f"lift-out path clear (ring in the column above a filter part: {r.blocked[:4]})",
-                     start_z={TRAY: floor + 0.01})
-    p.check(LZ0 - BOARD_TOP >= 15.0, f"ledge bottom {LZ0:.1f} is {LZ0 - BOARD_TOP:.1f} above the board")
-    p.no_overlap([("ring", ring), ("seal", seal)], pr, lambda r: f"ring + seal x printer at the model pose: {r.hits[:5]}",
+                     start_z={TRAY: floor + 0.01}, parts=fparts)
+    p.check(TUB_Z0 - BOARD_TOP >= BOARD_MIN, f"tub bottom {TUB_Z0:.1f} is {TUB_Z0 - BOARD_TOP:.1f} above the board (>= {BOARD_MIN})")
+    # ---- duct: the tray seal, and the free area of each path at the collar (Z -6), the narrowest level
+    p.check(len(tray_seal.Solids) == 1, f"tray seal is one solid ({len(tray_seal.Solids)})")
+    d = tray_seal.distToShape(chamber)[0]
+    p.check(d <= 0.05, f"tray rests on the tray seal (gap {d:.2f})")
+    p.fits_print_area(tray_seal, lambda r: f"tray seal prints in one piece: {r.size[0]:.1f} x {r.size[1]:.1f}", margin=2.0)
+    at6 = [s for k, s in fparts.items() if fboxes[k].ZMin < -5.5 and fboxes[k].ZMax > -6.5]   # parts crossing Z -6
+    p.log("filter parts at Z -6:", [k for k in fparts if fboxes[k].ZMin < -5.5 and fboxes[k].ZMax > -6.5])
+    def free(y0, y1):
+        lvl = rrect(wall_in, -6.5, -5.5).common(box(-1000, 1000, y0, y1, -10, 0))
+        return lvl.Volume - sum(p.vol(lvl, s) for s in at6)
+    a_in, a_out = free(-1000, BAFFLE_Y), free(BAFFLE_Y + BAFFLE_T, 1000)
+    a_slots = sum(s.common(box(-1000, 1000, -1000, 1000, LZ0, ltop)).common(rrect(wall_in - 0.5, LZ0, ltop)).Volume
+                  for s in slots) / LEDGE_T
+    p.check(a_in >= INTAKE_AREA, f"intake path: {a_in:.0f} mm2 free at the collar >= ports {INTAKE_AREA:.0f}")
+    p.check(a_slots >= INTAKE_AREA, f"intake path: ledge slots {a_slots:.0f} mm2 >= ports {INTAKE_AREA:.0f}")
+    p.check(a_out >= 2 * OUTLET_AREA, f"outlet pocket: {a_out:.0f} mm2 free at the collar >= 2 x outlet {2 * OUTLET_AREA:.0f}")
+    # the air leaving the outlet: its opening extruded from the tray's rear edge to the collar; no ring in it
+    jet = box(-260.7, -229.7, y_rear, CUT[3] - wall_in, -77, -66)
+    v = p.vol(ring, jet)
+    p.check(v < 1e-3 and BAFFLE_Y + BAFFLE_T < y_rear,
+            f"outlet jet (Y {y_rear:.1f}..{CUT[3] - wall_in:.1f}) clear of the ring ({v:.2f} mm3), behind the baffles (Y {BAFFLE_Y + BAFFLE_T:.0f})")
+    p.no_overlap([("ring", ring), ("seal", seal), ("tray seal", tray_seal)], pr, lambda r: f"ring + seal x printer at the model pose: {r.hits[:5]}",
                  exclude=(env.Name,))
 
+    # ---- new parts as BREP for the exploded view (cad/render/export_exploded.py); read-only, also in a dry run
+    exp = os.environ.get("VT350_EXPORT")
+    if exp:
+        os.makedirs(exp, exist_ok=True)
+        for n, s in (("ring", ring), ("seal_left", halves[0]), ("seal_right", halves[1]), ("tray_seal", tray_seal)):
+            s.exportBrep(os.path.join(exp, n + ".brep"))
+        p.log("exported", exp)
     # ---- write
     p.add_solids(fm.doc, grp, [("ring", ring)], 'Ring', "StealthMax cradle {} (remix concept, PET-GF)")
     p.add_solids(fm.doc, grp, [("left", halves[0]), ("right", halves[1])], 'Seal',
                  "StealthMax cutout seal, {} half (TPU)", color=(0.15, 0.15, 0.15))
+    p.add_solids(fm.doc, grp, [("tray", tray_seal)], 'Seal', "StealthMax {} seal (TPU)", color=(0.15, 0.15, 0.15))
     nb = FreeCAD.BoundBox(fb); nb.add(ring.BoundBox); nb.add(seal.BoundBox)
     p.resize_envelope(pr, env, nb, "Filter envelope (contents in vt350-filter-4.FCStd)")
     p.check(sum(1 for o in pr.doc.Objects if is_leaf(o)) == len(pr.leaves), "printer solid count unchanged")

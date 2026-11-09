@@ -235,6 +235,35 @@ class FitsPrintArea(Base):
         self.assertTrue(self.p.fits_print_area(litelib.box(0, 336, 0, 100, 0, 3), "x", area=(342.0, 340.19), margin=2.5))
 
 
+class LiftOutExact(Base):
+    # an L-shaped part: its bounding box covers X/Y 0..10, but its material only the two arms 0..3
+    L = staticmethod(lambda: litelib.box(0, 10, 0, 3, 0, 5).fuse(litelib.box(0, 3, 0, 10, 0, 5)).removeSplitter())
+
+    def test_beside_the_material_but_inside_its_box_is_clear_with_parts(self):
+        part = self.L(); boxes = {"L": part.BoundBox}
+        block = litelib.box(6, 9, 6, 9, 10, 12)                              # over the L's empty corner
+        self.assertFalse(self.p.lift_out_clear(block, boxes, "box only"))      # the box test flags it
+        r = self.p.lift_out_clear(block, boxes, lambda r: f"exact {r.blocked}", parts={"L": part})
+        self.assertTrue(r); self.assertEqual(r.blocked, [])
+
+    def test_over_the_material_is_still_blocked_with_parts(self):
+        part = self.L(); boxes = {"L": part.BoundBox}
+        block = litelib.box(0.5, 2.5, 6, 9, 10, 12)                          # over the arm along Y
+        r = self.p.lift_out_clear(block, boxes, "x", parts={"L": part})
+        self.assertFalse(r); self.assertEqual([k for k, _ in r.blocked], ["L"])
+
+    def test_under_an_overhang_does_not_block(self):                         # in the column, but below the material
+        part = litelib.box(0, 10, 0, 3, 0, 8).fuse(litelib.box(0, 3, 0, 10, 5, 8)).removeSplitter()
+        block = litelib.box(0.5, 2.5, 6, 9, 1, 3)                            # under the arm that floats at Z 5..8
+        self.assertFalse(self.p.lift_out_clear(block, {"P": part.BoundBox}, "box only"))
+        self.assertTrue(self.p.lift_out_clear(block, {"P": part.BoundBox}, "x", parts={"P": part}))
+
+    def test_material_below_the_part_does_not_block(self):                   # a ledge UNDER the part is fine
+        part = self.L(); boxes = {"L": part.BoundBox}
+        ledge = litelib.box(0, 3, 0, 10, -4, 0)
+        self.assertTrue(self.p.lift_out_clear(ledge, boxes, "x", parts={"L": part}))
+
+
 class WriteAndFinish(Base):
     def test_add_solids_puts_shapes_in_the_group(self):
         doc = self.m.doc; g = doc.addObject('App::DocumentObjectGroup', 'G')
