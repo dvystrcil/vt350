@@ -16,7 +16,7 @@ cd ~/Code/vt350
 flowchart TD
     A[About to change a model] --> B["cad/backup-models.sh --verify"]
     B --> C["lite-N pass (GUI script, saves a NEW file)"]
-    C --> D["refresh.py N<br/>derive → parts/printed → check → sweep → print area"]
+    C --> D["refresh.py N<br/>part index → derive → parts/printed → check → sweep → print area"]
     D --> E{refresh: OK?}
     E -- no --> F[fix the named step, then<br/>refresh.py N --from STEP]
     F --> E
@@ -44,12 +44,12 @@ flowchart TD
 ### `cad/scripts/refresh.py`: after a model change
 
 ```bash
-python3 cad/scripts/refresh.py 26                # all 6 steps
+python3 cad/scripts/refresh.py 26                # all 7 steps
 python3 cad/scripts/refresh.py 26 --from sweep   # start part-way
 python3 cad/scripts/refresh.py 26 --dry-run      # plan + which parts/printed copies would change
 ```
 
-- **What it runs, in order:** `derive_stls` → `sync_printed` → `check_printed` → `sweep` → `print_area` → `test_print_area`.
+- **What it runs, in order:** `part_index` (the model's box index and its companions', below; skipped if fresh) → `derive_stls` → `sync_printed` → `check_printed` → `sweep` → `print_area` → `test_print_area`.
 - **When a step fails:** it stops and prints `refresh: FAILED: step X …`, naming the log to read. A missing completion line also counts as a failure.
 - **On success:** it prints `refresh: OK` and a summary: STLs re-copied, reach vs the committed sweep, and print area. The summary is also saved to `cad/data/logs/refresh.log`.
 - **What it never does:** save a model or commit. Afterwards, `git diff --stat` shows what changed, and you commit it.
@@ -135,7 +135,9 @@ The first query answers (checked against FreeCAD's own boxes, 2026-11-09) `M_1a.
 - **Writing or refreshing an index** (headless, never saves the model; skips a fresh one, `VT350_INDEX_FORCE=1` rewrites):
   `VT350_WORKERS=1 VT350_INDEX_MODELS=$HOME/Documents/VT350/vt350-lite-29.FCStd $APP freecadcmd $PWD/cad/scripts/part_index.py`.
   It takes ~2 min for lite-29 + filter-3 + ebox. The log is `cad/data/logs/part_index.log`, ending `part_index: done`.
-- **Automatically:** `render_full.sh`'s export (`export_meshes.py`) refreshes the index of every model it exports
+- **Automatically:** `refresh.py N`'s first step indexes `vt350-lite-N` and every companion the same pass saved
+  (another `.FCStd` saved within 10 min of it, e.g. `vt350-filter-3` with lite-29); the summary prints `part index: ... fresh`.
+  `render_full.sh`'s export (`export_meshes.py`) also refreshes the index of every model it exports
   (`index: written|fresh ...` in `export.log`).
 - **Stale index?** `--check` says `stale` when the model's bytes changed since the index was made; re-run the writer.
 - **GUI vs headless:** `.bbox.mode` says which made the boxes; they differ by up to ~0.14 mm on STEP parts.

@@ -194,13 +194,15 @@ writes a model and never commits, so opencode or CI can run it and the caller co
 
 ```bash
 python3 cad/scripts/refresh.py 26 --dry-run       # the steps, and which parts/printed copies would change
-python3 cad/scripts/refresh.py 26                 # ~15-20 min: derive_stls -> sync_printed -> check_printed -> sweep -> print_area -> test_print_area
+python3 cad/scripts/refresh.py 26                 # ~15-20 min: part_index -> derive_stls -> sync_printed -> check_printed -> sweep -> print_area -> test_print_area
 python3 cad/scripts/refresh.py 26 --from sweep    # start part-way
 ```
 
 It stops at the first failed step (exit code **or** a missing completion marker) and names the step and its log. The
 summary goes to stdout and `data/logs/refresh.log`: STLs re-copied (only their `sha256` cell in `manifest.csv` changes,
-by text edit), the reach compared with the committed sweep log, and the print area. Then `git diff --stat` and commit.
+by text edit), the reach compared with the committed sweep log, the print area, and the status of each model's box index
+(`part_index`, #90: `vt350-lite-N` plus each companion `.FCStd` the pass saved within 10 min of it, never another lite-N).
+A completion marker read from a separate log (derive_stls, sweep, part_index) only counts if this run rewrote that log. Then `git diff --stat` and commit.
 A new lite-N that remixes a part also needs its `derive_stls.py` JOBS row; a new parts/printed copy needs its manifest
 row first (refresh only updates existing rows).
 

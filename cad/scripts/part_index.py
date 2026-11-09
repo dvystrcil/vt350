@@ -11,7 +11,8 @@
 #   Query:
 #     jq -r '.parts[] | select(.bbox.zmax < -60) | .label' ~/Documents/VT350/vt350-filter-3.parts.json
 #
-# Also written by cad/render/export_meshes.py for the model and every VT350_EXTRA file it exports (non-fatal there).
+# Also written by refresh.py's first step (vt350-lite-N + the companions its pass saved) and by
+# cad/render/export_meshes.py for the model and every VT350_EXTRA file it exports (non-fatal there).
 #
 # Format "vt350-part-index/1":
 #   model      the .FCStd basename

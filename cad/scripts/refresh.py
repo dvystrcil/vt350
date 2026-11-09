@@ -4,6 +4,10 @@
   python3 cad/scripts/refresh.py <lite-N number> [--from STEP] [--dry-run]
 
 Steps, in order. It stops at the first failure and names the step and its log:
+  part_index       cad/scripts/part_index.py (FreeCAD, headless, read-only, #90): the per-part box index beside
+                   vt350-lite-<N>.FCStd AND each companion the same pass saved (any other .FCStd in the folder saved
+                   within COMPANION_S of it, never another lite-N: lite-28 wrote vt350-filter-2 in the same minute).
+                   Skips a model whose <model>.parts.json is fresh
   derive_stls      cad/scripts/derive_stls.py (FreeCAD, headless, read-only): remixes -> cad/derived/
   sync_printed     every parts/printed row copied from this repo (repo = dvystrcil/vt350, upstream_path set) whose
                    source changed is re-copied, and ONLY its sha256 cell in manifest.csv is rewritten (text edit: the
@@ -16,7 +20,7 @@ Steps, in order. It stops at the first failure and names the step and its log:
 It never writes a model file (every step is read-only on the .FCStd) and never commits. Committing and the PR stay with
 the caller. The summary (STLs changed, reach vs the committed sweep log, print area) goes to stdout and to
 cad/data/logs/refresh.log. Every step is checked for a completion marker as well as its exit code, because a step can
-crash and still exit 0.
+crash and still exit 0, and a marker read from a separate log only counts if this run rewrote that log.
 
 Plain python3 (stdlib). FreeCAD comes from VT350_APP (default: the 26.3rc2 AppImage).
 """
@@ -35,12 +39,14 @@ import time
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
 APP = os.environ.get("VT350_APP", "/home/dan/FreeCAD/FreeCAD_26.3rc2-Linux-x86_64.AppImage")
-MODELS = "/home/dan/Documents/VT350/vt350-lite-{}.FCStd"
+MODELS_DIR = "/home/dan/Documents/VT350"
+MODELS = MODELS_DIR + "/vt350-lite-{}.FCStd"
+COMPANION_S = 600             # a pass saves its documents seconds apart (finish()); 10 min still excludes the next pass
 THIS_REPO = "dvystrcil/vt350"
 MANIFEST = "parts/printed/manifest.csv"
 PRINTED = "parts/printed"
 SWEEP_LOG = "cad/data/logs/sweep_toolhead.log"
-ORDER = ["derive_stls", "sync_printed", "check_printed", "sweep", "print_area", "test_print_area"]
+ORDER = ["part_index", "derive_stls", "sync_printed", "check_printed", "sweep", "print_area", "test_print_area"]
 
 
 class StepError(RuntimeError):
@@ -99,12 +105,29 @@ def sync_printed(root, write=True):
     return changed
 
 
-def plan(n, root=REPO, app=APP, start=None):
+def companions(model):
+    """The other .FCStd files in model's folder saved within COMPANION_S of it, sorted; never another vt350-lite-N."""
+    if not os.path.isfile(model): return []
+    d, t = os.path.dirname(model), os.path.getmtime(model)
+    out = []
+    for f in sorted(os.listdir(d)):
+        p = os.path.join(d, f)
+        if not f.endswith(".FCStd") or p == model or re.match(r"vt350-lite-\d", f): continue
+        if abs(os.path.getmtime(p) - t) <= COMPANION_S: out.append(p)
+    return out
+
+
+def plan(n, root=REPO, app=APP, start=None, models=MODELS_DIR):
     if start is not None and start not in ORDER:
         raise ValueError(f"unknown step {start!r}; steps are {ORDER}")
     logs = os.path.join(root, "cad", "data", "logs")
     fc = app.split() + ["freecadcmd"]
+    model = os.path.join(models, f"vt350-lite-{n}.FCStd")
     steps = [
+        Step("part_index", cmd=fc + [os.path.join(root, "cad/scripts/part_index.py")],
+             env=dict(VT350_INDEX_MODELS=":".join([model] + companions(model)), VT350_WORK=os.path.join(root, "cad/data")),
+             log=os.path.join(logs, "refresh_part_index.out"),
+             marker=r"(?m)part_index: done \(\d+ models\)$", marker_in=os.path.join(logs, "part_index.log")),
         Step("derive_stls", cmd=fc + [os.path.join(root, "cad/scripts/derive_stls.py")], env=dict(VT350_REPO=root),
              log=os.path.join(logs, "refresh_derive_stls.out"),
              marker=r"done: (\d+) of \1 written", marker_in=os.path.join(logs, "derive_stls.log")),
@@ -112,7 +135,7 @@ def plan(n, root=REPO, app=APP, start=None):
         Step("check_printed", cmd=[sys.executable, os.path.join(root, "parts/check-printed.py"), "--root", root],
              log=os.path.join(logs, "refresh_check_printed.out"), marker=r"(?m)^check-printed: OK$"),
         Step("sweep", cmd=[sys.executable, os.path.join(root, "cad/scripts/sweep_toolhead.py")],
-             env=dict(VT350_MODEL=MODELS.format(n), FREECADCMD=" ".join(fc), VT350_WORK=os.path.join(root, "cad/data")),
+             env=dict(VT350_MODEL=model, FREECADCMD=" ".join(fc), VT350_WORK=os.path.join(root, "cad/data")),
              log=os.path.join(logs, "refresh_sweep.out"),
              marker=r"(?m)done \(read-only, nothing saved\)$", marker_in=os.path.join(root, SWEEP_LOG)),
         Step("print_area", cmd=[sys.executable, os.path.join(root, "cad/scripts/print_area.py")],
@@ -134,6 +157,7 @@ def run(steps, cwd=REPO, root=REPO, on_step=None):
             continue
         log = s.log if os.path.isabs(s.log) else os.path.join(cwd, s.log)
         os.makedirs(os.path.dirname(log), exist_ok=True)
+        t0 = time.time()
         with open(log, "w") as lf:
             rc = subprocess.call(s.cmd, cwd=cwd, stdout=lf, stderr=subprocess.STDOUT, env=dict(os.environ, **s.env))
         if rc != 0:
@@ -142,6 +166,8 @@ def run(steps, cwd=REPO, root=REPO, on_step=None):
             mi = s.marker_in or log
             mi = mi if os.path.isabs(mi) else os.path.join(cwd, mi)
             body = open(mi, encoding="utf-8", errors="replace").read() if os.path.isfile(mi) else ""
+            if body and mi != log and os.path.getmtime(mi) < t0 - 1:
+                raise StepError(f"step {s.name} failed: {mi} was not written by this run (an old log; exit was 0); see {log}")
             if not re.search(s.marker, body):
                 raise StepError(f"step {s.name} failed: completion marker /{s.marker}/ not in {mi} (exit was 0); see {log}")
 
@@ -152,8 +178,11 @@ def _print_area():
     return m
 
 
-def summary(changed, sweep_log, prev_sweep_log, area_line=None):
-    out = [f"{len(changed)} STL{'' if len(changed) == 1 else 's'} changed"]
+def summary(changed, sweep_log, prev_sweep_log, area_line=None, index=None):
+    out = []
+    if index:
+        out.append("part index: " + ", ".join(f"{os.path.basename(m)[:-len('.FCStd')]} {st}" for m, st in index))
+    out.append(f"{len(changed)} STL{'' if len(changed) == 1 else 's'} changed")
     for c in changed:
         out.append(f"  {c['path']}: {c['old'][:12]} -> {c['new'][:12]}")
     if sweep_log is None:
@@ -187,7 +216,7 @@ def main():
         for c in sync_printed(REPO, write=False):
             print(f"would re-copy {c['path']} ({c['old'][:12]} -> {c['new'][:12]})")
         return 0
-    if any(s.name == "sweep" for s in steps) and not os.path.isfile(MODELS.format(a.lite)):
+    if any(s.name in ("part_index", "sweep") for s in steps) and not os.path.isfile(MODELS.format(a.lite)):
         print(f"refresh: FAILED: no model {MODELS.format(a.lite)}"); return 1
     prev = subprocess.run(["git", "-C", REPO, "show", f"HEAD:{SWEEP_LOG}"], capture_output=True, text=True).stdout
     t0 = time.time()
@@ -201,7 +230,12 @@ def main():
     area = None
     if "print_area" in by:
         area = open(by["print_area"].log, encoding="utf-8").read().strip().splitlines()[-1]
-    s = summary(changed or [], sweep, prev, area)
+    index = None
+    if "part_index" in by:
+        spec = importlib.util.spec_from_file_location("part_index", os.path.join(HERE, "part_index.py"))
+        pi = importlib.util.module_from_spec(spec); spec.loader.exec_module(pi)
+        index = [(m, pi.status(m)) for m in by["part_index"].env["VT350_INDEX_MODELS"].split(":")]
+    s = summary(changed or [], sweep, prev, area, index)
     with open(os.path.join(REPO, "cad/data/logs/refresh.log"), "w", encoding="utf-8") as f:
         f.write(s + f"\nsteps: {', '.join(by)}; {time.time() - t0:.0f} s\nrefresh: OK\n")
     print(s); print("refresh: OK")

@@ -101,9 +101,30 @@ class Sync(unittest.TestCase):
 class Steps(unittest.TestCase):
     def test_plan_order_and_model(self):
         names = [s.name for s in rf.plan(26, root="/r", app="/app")]
-        self.assertEqual(names, ["derive_stls", "sync_printed", "check_printed", "sweep", "print_area", "test_print_area"])
+        self.assertEqual(names, ["part_index", "derive_stls", "sync_printed", "check_printed", "sweep", "print_area",
+                                 "test_print_area"])
         sweep = next(s for s in rf.plan(26, root="/r", app="/app") if s.name == "sweep")
         self.assertEqual(sweep.env["VT350_MODEL"], "/home/dan/Documents/VT350/vt350-lite-26.FCStd")
+
+    def test_part_index_step_indexes_the_model_headless_into_the_repo_log(self):
+        pi = next(s for s in rf.plan(26, root="/r", app="/app") if s.name == "part_index")
+        self.assertEqual(pi.cmd, ["/app", "freecadcmd", "/r/cad/scripts/part_index.py"])
+        self.assertEqual(pi.env["VT350_INDEX_MODELS"].split(":")[0], "/home/dan/Documents/VT350/vt350-lite-26.FCStd")
+        self.assertEqual(pi.env["VT350_WORK"], "/r/cad/data")
+        self.assertEqual(pi.marker_in, "/r/cad/data/logs/part_index.log")
+
+    def test_part_index_step_also_indexes_the_companions(self):
+        with tempfile.TemporaryDirectory() as d:
+            t = 1_800_000_000
+            for name, dt in (("vt350-lite-29", 0), ("vt350-filter-3", -40)):
+                open(os.path.join(d, name + ".FCStd"), "wb").write(b"x"); os.utime(os.path.join(d, name + ".FCStd"), (t + dt, t + dt))
+            pi = next(s for s in rf.plan(29, root="/r", app="/app", models=d) if s.name == "part_index")
+        self.assertEqual(pi.env["VT350_INDEX_MODELS"], f"{d}/vt350-lite-29.FCStd:{d}/vt350-filter-3.FCStd")
+
+    def test_order_is_the_plan_and_from_derive_stls_skips_the_index(self):
+        self.assertEqual(rf.ORDER, [s.name for s in rf.plan(26, root="/r", app="/app")])
+        self.assertEqual([s.name for s in rf.plan(26, root="/r", app="/app", start="derive_stls")][:2],
+                         ["derive_stls", "sync_printed"])
 
     def test_from_step_skips_earlier_steps(self):
         names = [s.name for s in rf.plan(26, root="/r", app="/app", start="sweep")]
@@ -125,6 +146,19 @@ class Steps(unittest.TestCase):
         self.assertIn("two", str(e.exception))
         self.assertIn("two.log", str(e.exception))
 
+    def test_a_marker_in_a_log_left_from_an_earlier_run_does_not_count(self):
+        # the step crashed before rewriting its log: the old log still has the marker
+        with tempfile.TemporaryDirectory() as d:
+            old = os.path.join(d, "old.log"); open(old, "w").write("part_index: done (1 models)\n")
+            os.utime(old, (1_000_000_000, 1_000_000_000))
+            st = rf.Step("crashed", cmd=[sys.executable, "-c", "pass"], log="c.out", marker="part_index: done", marker_in=old)
+            with self.assertRaises(rf.StepError) as e:
+                rf.run([st], cwd=d)
+            self.assertIn("not written by this run", str(e.exception))
+            fresh = rf.Step("ok", cmd=[sys.executable, "-c", f"open({old!r}, 'w').write('part_index: done (1 models)')"],
+                            log="o.out", marker="part_index: done", marker_in=old)
+            rf.run([fresh], cwd=d)                                             # rewritten by the step: passes
+
     def test_a_step_that_must_print_a_marker_fails_without_it(self):
         # a step can crash yet exit 0: require its completion marker in the log
         quiet = rf.Step("quiet", cmd=[sys.executable, "-c", "print('hi')"], log="q.log", marker="check-printed: OK")
@@ -132,6 +166,32 @@ class Steps(unittest.TestCase):
             with self.assertRaises(rf.StepError) as e:
                 rf.run([quiet], cwd=d)
         self.assertIn("marker", str(e.exception))
+
+
+class Companions(unittest.TestCase):
+    """the other models a lite-N pass saved with it (lite-28 -> vt350-filter-2, lite-19 -> vt350-ebox): saved within
+    COMPANION_S of the lite-N, never another lite-N"""
+    T = 1_800_000_000
+
+    def folder(self, files):
+        d = tempfile.mkdtemp()
+        for name, dt in files.items():
+            p = os.path.join(d, name); open(p, "wb").write(b"x"); os.utime(p, (self.T + dt, self.T + dt))
+        return d
+
+    def test_files_saved_with_the_model_are_companions(self):
+        d = self.folder({"vt350-lite-29.FCStd": 0, "vt350-filter-3.FCStd": -40, "vt350-ebox.FCStd": 120,
+                         "vt350-lite-28.FCStd": 30, "vt350-filter-2.FCStd": -3 * 3600, "vt350-good.FCStd": 86400,
+                         "vt350-lite-29.parts.json": 1, "vt350-filter-3.parts.json": 2})
+        self.assertEqual(rf.companions(os.path.join(d, "vt350-lite-29.FCStd")),
+                         [os.path.join(d, "vt350-ebox.FCStd"), os.path.join(d, "vt350-filter-3.FCStd")])
+
+    def test_the_window_edge(self):
+        d = self.folder({"vt350-lite-29.FCStd": 0, "a.FCStd": rf.COMPANION_S, "b.FCStd": -rf.COMPANION_S - 1})
+        self.assertEqual(rf.companions(os.path.join(d, "vt350-lite-29.FCStd")), [os.path.join(d, "a.FCStd")])
+
+    def test_a_missing_model_has_none(self):
+        self.assertEqual(rf.companions("/nonexistent/vt350-lite-1.FCStd"), [])
 
 
 SWEEP = """\
@@ -153,6 +213,10 @@ class Summary(unittest.TestCase):
         self.assertIn("vt350-lite-26", s)
         self.assertIn("X -416.0 .. -74.0 (was -418.0 .. -74.0)", s)
         self.assertIn("Y -51.93 .. 370.69", s)
+
+    def test_index_status_of_each_model_is_listed(self):
+        s = rf.summary([], None, None, index=[("/d/vt350-lite-29.FCStd", "fresh"), ("/d/vt350-filter-3.FCStd", "stale")])
+        self.assertIn("part index: vt350-lite-29 fresh, vt350-filter-3 stale", s)
 
     def test_changed_stls_are_listed(self):
         s = rf.summary(changed=[dict(path="vt350/d/c.stl", old="a" * 64, new="b" * 64)], sweep_log=None, prev_sweep_log=None)
@@ -181,6 +245,12 @@ class MarkersMatchTheRealTools(unittest.TestCase):
     def test_check_printed_marker(self):
         out = self.real_output(os.path.join(self.ROOT, "parts/check-printed.py"), "--root", self.ROOT)
         self.assertRegex(out, self.marker_of("check_printed"))
+
+    def test_part_index_marker(self):
+        # needs FreeCAD to produce, so: the committed log of a real run (cad/data/logs/part_index.log, 2026-11-09)
+        log = open(os.path.join(self.ROOT, "cad/data/logs/part_index.log")).read()
+        self.assertRegex(log, self.marker_of("part_index"))
+        self.assertNotRegex("[  1.0s] FAILED\nTraceback ... cad/scripts/part_index.py, in run\n", self.marker_of("part_index"))
 
     def test_print_area_marker(self):
         with tempfile.TemporaryDirectory() as d:
