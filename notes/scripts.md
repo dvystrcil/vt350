@@ -180,4 +180,4 @@ re-running one:
 | fasteners | `extract_fasteners.py`, `fastener_review.py`, `rebuild_fasteners.py` |
 | one-time studies | `ac9_head_envelope.py`, `bowden_study.py`, `belt_plate_gap.py`, `clash_lite18_repro.py`, `door_hinges.py` |
 | model building blocks | `make_lite.py`, `frame_plus100.py`, `lite*.py`, `tanaes_dxf2json.py` |
-| libraries (imported, not run) | `clashlib.py` (parallel clash checks), `reglib.py` (STL registration), `litelib.py` (lite-N pass skeleton + named checks; tests: `test_litelib.py` under `freecadcmd`) |
+| libraries (imported, not run) | `clashlib.py` (parallel clash checks), `reglib.py` (STL registration), `litelib.py` (lite-N pass skeleton + named checks, on parallel workers; tests: `test_litelib.py` under `freecadcmd`), `litepool.py` (worker pool + worker count, `VT350_WORKERS`; tests: `test_litepool.py`, in CI) |
