@@ -66,6 +66,19 @@ def box(x0, x1, y0, y1, z0, z1):
     return Part.makeBox(x1 - x0, y1 - y0, z1 - z0, V(x0, y0, z0))
 
 
+def print_area(log=None, src=None):
+    """(width, depth) in mm the VT350 can print, as print_area.py computes it from the committed sweep log
+    (data/logs/sweep_toolhead.log) and sweep_toolhead.py's plate constants."""
+    import importlib.util
+    here = os.path.dirname(os.path.abspath(__file__))
+    spec = importlib.util.spec_from_file_location("print_area", os.path.join(here, "print_area.py"))
+    pa = importlib.util.module_from_spec(spec); spec.loader.exec_module(pa)
+    log = log or os.path.join(os.path.dirname(here), "data", "logs", "sweep_toolhead.log")
+    src = src or os.path.join(here, "sweep_toolhead.py")
+    a = pa.printable(pa.parse_reach(open(log).read()), pa.parse_plate(open(src).read()))
+    return a["width"], a["depth"]
+
+
 def overlaps_xy(a, b):
     return a.XMin < b.XMax and a.XMax > b.XMin and a.YMin < b.YMax and a.YMax > b.YMin
 
@@ -220,6 +233,16 @@ class Pass:
             v = self.vol(shape, col)
             if v > tol: blocked.append((k, round(v, 1)))
         return self._named(Result(not blocked, blocked=blocked), what)
+
+    def fits_print_area(self, shape, what, area=None, margin=0.0):
+        """A part printed flat (as modelled, Z up) fits the VT350's printable area, either way round, with `margin`
+        spare on every side. area (width, depth): default print_area(). r.size (dx, dy), r.area, r.rotated."""
+        area = area or print_area()
+        bb = obb(shape); dx, dy = bb.XLength, bb.YLength
+        w, d = area[0] - 2 * margin, area[1] - 2 * margin
+        straight, turned = dx <= w and dy <= d, dy <= w and dx <= d
+        return self._named(Result(straight or turned, size=(round(dx, 2), round(dy, 2)), area=tuple(area),
+                                  rotated=not straight and turned), what)
 
     # ---- writing
     def add_solids(self, doc, group, items, name, label, color=(0.89, 0.4, 0.16)):

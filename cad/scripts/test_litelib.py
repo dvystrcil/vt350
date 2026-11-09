@@ -215,6 +215,26 @@ class LiftOutClear(Base):
                                               start_z={"tray": 0.51}))
 
 
+class FitsPrintArea(Base):
+    def test_print_area_comes_from_the_sweep_log(self):
+        w, d = litelib.print_area()
+        self.assertTrue(300 < w <= 350 and 300 < d <= 350, (w, d))   # inside the 350 print square
+
+    def test_flat_part_fits_either_way_round(self):
+        area = (342.0, 340.19)
+        r = self.p.fits_print_area(litelib.box(0, 341, 0, 100, 0, 3), lambda r: f"fits {r.size}", area=area)
+        self.assertTrue(r); self.assertFalse(r.rotated)
+        r = self.p.fits_print_area(litelib.box(0, 100, 0, 341, 0, 3), "x", area=(341.5, 120.0))   # needs turning
+        self.assertTrue(r); self.assertTrue(r.rotated)
+        r = self.p.fits_print_area(litelib.box(0, 100, 0, 100, 0, 3), "x", area=area)               # fits both ways
+        self.assertTrue(r); self.assertFalse(r.rotated)
+
+    def test_too_big_fails_and_margin_counts(self):
+        self.assertFalse(self.p.fits_print_area(litelib.box(0, 343, 0, 100, 0, 3), "x", area=(342.0, 340.19)))
+        self.assertFalse(self.p.fits_print_area(litelib.box(0, 340, 0, 100, 0, 3), "x", area=(342.0, 340.19), margin=2.5))
+        self.assertTrue(self.p.fits_print_area(litelib.box(0, 336, 0, 100, 0, 3), "x", area=(342.0, 340.19), margin=2.5))
+
+
 class WriteAndFinish(Base):
     def test_add_solids_puts_shapes_in_the_group(self):
         doc = self.m.doc; g = doc.addObject('App::DocumentObjectGroup', 'G')
