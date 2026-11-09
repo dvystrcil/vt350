@@ -20,6 +20,7 @@
 # memory.current (in a pod /proc/meminfo is the host's). VT350_WORKER_MB / VT350_RESERVE_MB override the budget.
 # (#45: 4 workers that each opened the 173 MB printer model and the filter took the laptop to ~1 GB free.)
 import math, os, pickle, shutil, socket, subprocess, sys, tempfile
+import weakref
 from multiprocessing.connection import Connection, wait
 
 HERE = os.path.abspath(__file__) if "__file__" in globals() else None
@@ -90,11 +91,21 @@ def worker_count(env=None, cpus=None, mem_mb=None, per_worker_mb=None, reserve_m
     return max(1, min(n, (mem - res) // per))
 
 
+def _discard(procs, d):
+    """Pool clean-up that needs no Pool: end any worker still running, remove the dir."""
+    for pr in procs:
+        if pr.poll() is None:
+            pr.kill(); pr.wait()
+    shutil.rmtree(d, ignore_errors=True)
+
+
 class Pool:
     def __init__(self, n, cmd, path=(), cwd=None, env=None):
         self.n = n
         self.dir = tempfile.mkdtemp(prefix="litepool-")
         self.procs, self.conns, self.errs = [], [], []
+        # close() is the normal path; this also runs if the pool is dropped or the process exits without close()
+        self._discard = weakref.finalize(self, _discard, self.procs, self.dir)
         base = dict(os.environ if env is None else env, LITEPOOL_PATH=os.pathsep.join(path))
         for k in range(n):
             a, b = socket.socketpair()
@@ -148,7 +159,7 @@ class Pool:
             try: c.close()
             except OSError: pass
         self.conns = []
-        shutil.rmtree(self.dir, ignore_errors=True)
+        self._discard()
 
 
 # ----------------------------------------------------------------------------------------------------- worker side
