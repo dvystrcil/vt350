@@ -5,6 +5,8 @@
 # Writes one binary STL per bucket in global coordinates (mm) and scene.json describing each bucket (colour,
 # FreeCAD material card, labels, colour-map role), plus the camera / LED positions found in the model. A part the
 # colour map gives a role goes in that role's bucket (#38). The rest bucket by (material, model colour) as before.
+# Also writes each model's per-part box index beside it, <model>.parts.json (cad/scripts/part_index.py, #90),
+# unless it is fresh; a failure there is logged as "index: FAILED" and does not fail the export.
 # Never saves the model.
 import FreeCAD, Part, Mesh, MeshPart, os, json, time, traceback, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))   # colours.py sits next to this script (laptop or a gpu-batch pod)
@@ -72,6 +74,13 @@ try:
                                "n": len(b["labels"]), "facets": b["mesh"].CountFacets, "labels": sorted(set(b["labels"]))[:40]}
         log(f"{k}: {len(b['labels'])} solids, {b['mesh'].CountFacets} facets")
     json.dump(scene, open(os.path.join(OUT, "scene.json"), "w"), indent=1)
+    for path_ in [MODEL] + EXTRA:                  # per-part box index beside each model (#90); never fails the export
+        try:
+            sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scripts"))
+            import part_index
+            doc = next(d for d in FreeCAD.listDocuments().values() if os.path.realpath(d.FileName) == os.path.realpath(path_))
+            log(f"index: {part_index.refresh(doc, path_)} {part_index.sidecar(path_)}")
+        except Exception as e: log(f"index: FAILED for {path_}: {type(e).__name__}: {e}")
     log(f"colour map: {n_role or 'off'}; {len(uncoloured)} solids with material Default kept the model's colour "
         "(printed parts among them need a rule in colours.json):")
     for lab, g in sorted(uncoloured.items(), key=lambda kv: (kv[1], kv[0])): log(f"   uncoloured  {lab}   [{g}]")

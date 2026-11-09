@@ -35,6 +35,7 @@ flowchart TD
 | Checking pinned upstream STLs haven't drifted | `python3 parts/check-printed.py --upstream` (network; CI doesn't run it) | ~1 min |
 | See what refresh *would* do, writing nothing | `python3 cad/scripts/refresh.py N --dry-run` | seconds |
 | Full colour renders of the whole printer, here on the laptop | `cad/render/render_full.sh [N] [samples]` (below) | ~6 min; prints the image paths |
+| Where is part X? What sits below/above Z? (no FreeCAD) | `jq` on `~/Documents/VT350/<model>.parts.json` (below; `part_index.py --check` first) | instant |
 | A render of a sweep pose (clash in red) | `export_pose.py`, then `gpu-batch-submit.py` (below) | ~5 min, result posted to the issue |
 | A new model change (lite-N) | a GUI pass script: Claude writes it, you click **Wait** | 5–40 min |
 
@@ -114,6 +115,31 @@ VT350_REUSE_EXPORT=<run>/export cad/render/render_full.sh   # changed only a rol
   - `export.log` lists the parts no rule coloured.
   - Photo references: #75.
 
+### `cad/scripts/part_index.py`: layout questions with `jq`, not FreeCAD (#90)
+
+Each model has a per-part box index beside it, `~/Documents/VT350/<model>.parts.json`: label, group `path`,
+`material`, `consumed`, and the global `optimalBoundingBox(True, False)` in mm. Answer "what sits where" from the index:
+
+```bash
+cd ~/Documents/VT350
+python3 ~/Code/vt350/cad/scripts/part_index.py --check vt350-filter-3.FCStd    # fresh? (exit 0 = yes)
+jq -r '.parts[] | select(.bbox.zmax < -60) | .label' vt350-filter-3.parts.json  # parts of the filter wholly below Z -60
+jq -r '.parts[] | select(.bbox.zmin < -60) | .label' vt350-filter-3.parts.json  # ... or reaching below it
+jq -r '.parts[] | select(.path | index("Electronics")) | .label' vt350-ebox.parts.json  # everything in a group
+jq '.bbox' vt350-lite-29.parts.json                                             # which mode made the boxes
+```
+
+The first query answers (checked against FreeCAD's own boxes, 2026-11-09) `M_1a.0_Body_BPM`, `M_1a.1_AirExhaustWheel_BPM`,
+`M_2.6a_PicoAccessLatch`, `M_2.7_IntakeSensorStackAccessLatch`, `M_2.8_BowdenTubeAccessLatch` (all `StealthMax ...`).
+
+- **Writing or refreshing an index** (headless, never saves the model; skips a fresh one, `VT350_INDEX_FORCE=1` rewrites):
+  `VT350_WORKERS=1 VT350_INDEX_MODELS=$HOME/Documents/VT350/vt350-lite-29.FCStd $APP freecadcmd $PWD/cad/scripts/part_index.py`.
+  It takes ~2 min for lite-29 + filter-3 + ebox. The log is `cad/data/logs/part_index.log`, ending `part_index: done`.
+- **Automatically:** `render_full.sh`'s export (`export_meshes.py`) refreshes the index of every model it exports
+  (`index: written|fresh ...` in `export.log`).
+- **Stale index?** `--check` says `stale` when the model's bytes changed since the index was made; re-run the writer.
+- **GUI vs headless:** `.bbox.mode` says which made the boxes; they differ by up to ~0.14 mm on STEP parts.
+
 ### Sweep-pose renders: `cad/render/` + the GPU batch lane (node-03)
 
 ```bash
@@ -166,7 +192,7 @@ $APP freecadcmd $PWD/cad/scripts/liteNN_<what>.py   # headless = dry run: all ch
 | `printed-parts` | `parts/test_check_printed.py`, `parts/check-printed.py` | manifest, sha256 or BOM drift |
 | `print-area` | `cad/scripts/test_print_area.py` | `print-area.svg` is stale against the sweep log |
 | `slice-check` | `parts/test_slice_check.py`, `keepout.json` validity | the G-code parser, keep-out or report logic breaks |
-| `refresh-chain` | `cad/scripts/test_refresh.py`, `cad/scripts/test_derive_stls.py` | the chain's sync, step runner or markers break, or `derive_stls` stops honouring `VT350_MODELS` |
+| `refresh-chain` | `cad/scripts/test_refresh.py`, `cad/scripts/test_derive_stls.py`, `test_litepool.py`, `test_prove_parallel.py`, `test_part_index.py` | the chain's sync, step runner or markers break, `derive_stls` stops honouring `VT350_MODELS`, or the part index's schema/staleness check breaks |
 | `secret-scan` | gitleaks | a secret in the diff |
 
 ## One-off and investigation scripts
