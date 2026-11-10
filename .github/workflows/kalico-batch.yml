@@ -1,0 +1,38 @@
+name: kalico-batch
+# printer.cfg against the CAD logs, then the same config through real Kalico batch mode in the kalisim image
+# (vt350#116 AC1-AC3, run here for AC6). See cad/klipper/README.md.
+on:
+  pull_request:
+    paths:
+      - cad/klipper/**
+      - cad/data/logs/z_sweep.log
+      - cad/data/logs/sweep_toolhead.log
+      - .github/workflows/kalico-batch.yml
+  push:
+    branches: [main]
+    paths:
+      - cad/klipper/**
+      - cad/data/logs/z_sweep.log
+      - cad/data/logs/sweep_toolhead.log
+      - .github/workflows/kalico-batch.yml
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+      - name: Test printer.cfg's limits against the CAD logs (limits.py; no Kalico)
+        run: python3 cad/klipper/test_limits.py 2>&1 | tee test-limits.log
+      - name: Confirm every limits test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-limits.log && tail -1 test-limits.log | grep -qx 'OK'
+      - name: Test the batch-mode runner against a fake klippy (kalisim; no Kalico)
+        run: python3 cad/klipper/kalisim/test_kalisim.py 2>&1 | tee test-kalisim.log
+      - name: Confirm every kalisim test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-kalisim.log && tail -1 test-kalisim.log | grep -qx 'OK'
+      - name: Build the kalisim image and run the Kalico batch-mode tests in it
+        run: bash cad/klipper/kalisim/test_in_container.sh 2>&1 | tee test-batch.log
+      - name: Confirm the batch-mode run reached the end
+        run: |
+          tail -1 test-batch.log | grep -qx 'kalico-batch: OK'

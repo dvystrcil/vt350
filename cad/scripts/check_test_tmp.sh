@@ -6,15 +6,16 @@
 #   cad/scripts/check_test_tmp.sh [test_file.py ...]     # default: every test_*.py that runs under plain python3
 #
 # Prints "check-test-tmp: OK" on success, exit 0; otherwise 1. Files that need FreeCAD or Blender are skipped with a
-# line saying so; run those by hand under freecadcmd with TMPDIR set.
+# line saying so; run those by hand under freecadcmd with TMPDIR set. "Needs Kalico" files run in the kalisim
+# container: cad/klipper/kalisim/test_in_container.sh checks their TMPDIR the same way.
 set -uo pipefail
 cd "$(git -C "$(dirname "$0")" rev-parse --show-toplevel)"
 if (( $# )); then files=("$@"); else mapfile -t files < <(git ls-files '*test_*.py'); fi
 base=$(mktemp -d); trap 'rm -rf "$base"' EXIT
 fail=0; ran=0
 for f in "${files[@]}"; do
-    if grep -qE '^(import|from) (FreeCAD|bpy)\b' "$f" || head -15 "$f" | grep -q 'Needs Blender'; then
-        echo "skip   $f (needs FreeCAD or Blender)"; continue
+    if grep -qE '^(import|from) (FreeCAD|bpy)\b' "$f" || head -15 "$f" | grep -qE 'Needs (Blender|Kalico)'; then
+        echo "skip   $f (needs FreeCAD, Blender or Kalico)"; continue
     fi
     t="$base/$(echo "$f" | tr / _)"; mkdir -p "$t"
     out=$(cd "$(dirname "$f")" && TMPDIR="$t" python3 "$(basename "$f")" 2>&1)

@@ -1,0 +1,6 @@
+{
+  "status": "PROPOSED in https://github.com/dvystrcil/vt350/issues/116, not yet confirmed by the user",
+  "about": "Model-to-printer XY mapping: printer = sign * (model - origin). The origin is the print square's front-left corner (cad/data/logs/sweep_toolhead.log 'print square').",
+  "origin_model_xy": [-420.0, 30.5],
+  "sign_xy": [1, 1]
+}
