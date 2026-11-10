@@ -1,5 +1,5 @@
 {
- "model": "/work/vt350-lite-29-20261110t005338-0686-sweep/in/vt350-lite-29.FCStd",
+ "model": "/work/vt350-lite-29-20261110t041309-1456-sweep/in/vt350-lite-29.FCStd",
  "plate_top": 285.76060992516267,
  "magnet_top": 287.16060992516265,
  "lower": {
@@ -24,6 +24,7 @@
  },
  "klipper": {
   "position_max": 335.3322023747735,
+  "position_max_configured": 330.3322023747735,
   "z_negative": -20.271703675206936,
   "travel": 355.6039060499804
  },
