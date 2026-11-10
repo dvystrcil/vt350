@@ -269,11 +269,15 @@ class Lines(unittest.TestCase):
            "[  80.2s] z_lower_limit_mm=43.78 (bed dZ -241.98; 2020 (1) lands on backbone-350 v2)\n"
            "[  99.0s] z_upper_limit_mm=380.81 (bed dZ +95.05; Left head carried)\n"
            "[  99.1s] print_height_mm=337.03 (Left head)\n"
+           "[  99.1s] klipper_position_max_mm=337.03 (x)\n"
+           "[  99.1s] z_negative_limit_mm=-17.50 (y)\n"
+           "[  99.1s] z_travel_mm=354.53 (z)\n"
            "[  99.2s] z_sweep: done (read-only, nothing saved)\n")
 
     def test_parse_reads_the_three_numbers(self):
         self.assertEqual(contact.parse(self.LOG), {"z_lower_limit_mm": 43.78, "z_upper_limit_mm": 380.81,
-                                                   "print_height_mm": 337.03})
+                                                   "print_height_mm": 337.03, "klipper_position_max_mm": 337.03,
+                                                   "z_negative_limit_mm": -17.5, "z_travel_mm": 354.53})
 
     def test_parse_takes_the_last_line_of_each(self):
         log = self.LOG + "[ 1s] z_lower_limit_mm=1.5 (again)\n"
@@ -293,8 +297,16 @@ class Lines(unittest.TestCase):
     def test_line_formats_two_decimals(self):
         self.assertEqual(contact.line("z_lower_limit_mm", 43.784, "why"), "z_lower_limit_mm=43.78 (why)")
         self.assertEqual(contact.parse("x z_lower_limit_mm=43.78 (w)\nz_upper_limit_mm=1.00 (w)\n"
-                                       "print_height_mm=2.50\nz_sweep: done (read-only, nothing saved)\n"),
-                         {"z_lower_limit_mm": 43.78, "z_upper_limit_mm": 1.0, "print_height_mm": 2.5})
+                                       "print_height_mm=2.50\nklipper_position_max_mm=2.50\nz_negative_limit_mm=-1.00\n"
+                                       "z_travel_mm=3.50\nz_sweep: done (read-only, nothing saved)\n"),
+                         {"z_lower_limit_mm": 43.78, "z_upper_limit_mm": 1.0, "print_height_mm": 2.5,
+                          "klipper_position_max_mm": 2.5, "z_negative_limit_mm": -1.0, "z_travel_mm": 3.5})
+
+    def test_parse_can_ask_for_fewer_keys(self):                # an older log, before the full-travel lines (#82 AC6)
+        old = "z_lower_limit_mm=1.00\nz_upper_limit_mm=2.00\nprint_height_mm=3.00\nz_sweep: done (read-only, nothing saved)\n"
+        self.assertEqual(contact.parse(old, keys=contact.KEYS[:3]),
+                         {"z_lower_limit_mm": 1.0, "z_upper_limit_mm": 2.0, "print_height_mm": 3.0})
+        with self.assertRaisesRegex(ValueError, "klipper_position_max_mm"): contact.parse(old)
 
 
 if __name__ == "__main__":

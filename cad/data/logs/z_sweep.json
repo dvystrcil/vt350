@@ -1,5 +1,5 @@
 {
- "model": "/work/vt350-lite-29-20261109t235001-3d73-sweep/in/vt350-lite-29.FCStd",
+ "model": "/work/vt350-lite-29-20261110t005338-0686-sweep/in/vt350-lite-29.FCStd",
  "plate_top": 285.76060992516267,
  "magnet_top": 287.16060992516265,
  "lower": {
@@ -16,6 +16,20 @@
  "print_height": {
   "Left": 335.3322023747735,
   "Right": 335.33220254238415
+ },
+ "top": {
+  "dz": 113.59999989998136,
+  "plate_top": 399.360609825144,
+  "why": "the top end of MGN9H (3) reaches the top end of SOLID034"
+ },
+ "klipper": {
+  "position_max": 335.3322023747735,
+  "z_negative": -20.271703675206936,
+  "travel": 355.6039060499804
+ },
+ "parked": {
+  "Left": 113.6039061499813,
+  "Right": 113.6039061499813
  },
  "rails_lower": [
   [
@@ -598,6 +612,100 @@
     100.22829639245145,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "Heat Block001"
+   ]
+  ],
+  "parked Left": [
+   [
+    113.6039061499813,
+    "MGN9H - Carriage_end_cap (1)003",
+    "SOLID035"
+   ],
+   [
+    114.50390614998037,
+    "MGN9H - Carriage_end (1)003",
+    "SOLID035"
+   ],
+   [
+    118.00390625014705,
+    "MGN9H - Carriage_end_cap (1)001",
+    "SOLID030"
+   ],
+   [
+    118.00390625014785,
+    "MGN9H - Carriage_end_cap (1)005",
+    "SOLID038"
+   ],
+   [
+    118.6038372991066,
+    "MGN9H - Carriage_body (1)001",
+    "SOLID035"
+   ],
+   [
+    118.90390625014783,
+    "MGN9H - Carriage_end (1)005",
+    "SOLID038"
+   ],
+   [
+    118.903906250148,
+    "MGN9H - Carriage_end (1)001",
+    "SOLID030"
+   ],
+   [
+    123.0038373992711,
+    "MGN9H - Carriage_body (1)002",
+    "SOLID038"
+   ],
+   [
+    123.0038373992727,
+    "MGN9H - Carriage_body (1)",
+    "SOLID030"
+   ]
+  ],
+  "parked Right": [
+   [
+    113.6039061499813,
+    "MGN9H - Carriage_end_cap (1)003",
+    "SOLID035"
+   ],
+   [
+    114.50390614998037,
+    "MGN9H - Carriage_end (1)003",
+    "SOLID035"
+   ],
+   [
+    118.00390625014705,
+    "MGN9H - Carriage_end_cap (1)001",
+    "SOLID030"
+   ],
+   [
+    118.00390625014785,
+    "MGN9H - Carriage_end_cap (1)005",
+    "SOLID038"
+   ],
+   [
+    118.6038372991066,
+    "MGN9H - Carriage_body (1)001",
+    "SOLID035"
+   ],
+   [
+    118.90390625014783,
+    "MGN9H - Carriage_end (1)005",
+    "SOLID038"
+   ],
+   [
+    118.903906250148,
+    "MGN9H - Carriage_end (1)001",
+    "SOLID030"
+   ],
+   [
+    123.0038373992711,
+    "MGN9H - Carriage_body (1)002",
+    "SOLID038"
+   ],
+   [
+    123.0038373992727,
+    "MGN9H - Carriage_body (1)",
+    "SOLID030"
    ]
   ]
  }

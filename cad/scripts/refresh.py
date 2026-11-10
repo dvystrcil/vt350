@@ -223,11 +223,14 @@ def summary(changed, sweep_log, prev_sweep_log, area_line=None, index=None, z_lo
     else:
         ct = _module("contact"); z = ct.parse(z_log)
         line = (f"Z travel: plate top {z['z_lower_limit_mm']:.2f} .. {z['z_upper_limit_mm']:.2f}, "
-                f"print height {z['print_height_mm']:.2f}")
-        try: w = ct.parse(prev_z_log or "")
+                f"print height {z['print_height_mm']:.2f}, full travel {z['z_travel_mm']:.2f} "
+                f"(Klipper Z {z['klipper_position_max_mm']:.2f} .. {z['z_negative_limit_mm']:.2f})")
+        try: w = ct.parse(prev_z_log or "", keys=ct.KEYS[:3])     # a log from before #82 AC6 has only these
         except ValueError: w = None
-        if w: line += (f" (was {w['z_lower_limit_mm']:.2f} .. {w['z_upper_limit_mm']:.2f}, "
-                       f"{w['print_height_mm']:.2f})")
+        if w:
+            try: t = f", full travel {ct.parse(prev_z_log)['z_travel_mm']:.2f}"
+            except ValueError: t = ""
+            line += f" (was {w['z_lower_limit_mm']:.2f} .. {w['z_upper_limit_mm']:.2f}, {w['print_height_mm']:.2f}{t})"
         out.append(line)
     if area_line:
         out.append("print area: " + area_line)
