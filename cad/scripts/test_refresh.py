@@ -301,6 +301,10 @@ class MarkersMatchTheRealTools(unittest.TestCase):
         self.assertRegex(f"[  99.2s] {contact.DONE}\n", self.marker_of("z_sweep"))
         self.assertNotRegex("[  9.0s] FAILED\nTraceback ...\n", self.marker_of("z_sweep"))
         self.assertNotRegex(f"[  9.0s] {contact.DONE} or not\n", self.marker_of("z_sweep"))
+        # and the committed log of a real run (batch lane, lite-29, 2026-11-09) passes it and parses
+        log = open(os.path.join(self.ROOT, "cad/data/logs/z_sweep.log")).read()
+        self.assertRegex(log, self.marker_of("z_sweep"))
+        self.assertEqual(contact.parse(log)["z_lower_limit_mm"], 43.76)
 
     def test_print_area_marker(self):
         with tempfile.TemporaryDirectory() as d:

@@ -1,0 +1,604 @@
+{
+ "model": "/work/vt350-lite-29-20261109t235001-3d73-sweep/in/vt350-lite-29.FCStd",
+ "plate_top": 285.76060992516267,
+ "magnet_top": 287.16060992516265,
+ "lower": {
+  "dz": -242.00390614999904,
+  "plate_top": 43.75670377516363,
+  "why": "2020 (2) lands on backbone-350 v2"
+ },
+ "upper": {
+  "dz": 93.32829622477442,
+  "plate_top": 379.0889061499371,
+  "head": "Left",
+  "why": "Magnetic sheet (1.4 mm) touches E3D v6 HotEnd - Nozzle"
+ },
+ "print_height": {
+  "Left": 335.3322023747735,
+  "Right": 335.33220254238415
+ },
+ "rails_lower": [
+  [
+   242.1000688506996,
+   "MGN9H (2)",
+   "SOLID029 (MGN9 - 400mm (2))"
+  ],
+  [
+   246.50006895088828,
+   "MGN9H (3)",
+   "SOLID034 (MGN9 - 400mm (4))"
+  ],
+  [
+   242.10006885072647,
+   "MGN9H (4)",
+   "SOLID037 (MGN9 - 400mm (3))"
+  ]
+ ],
+ "rails_upper": [
+  [
+   118.00000000017025,
+   "MGN9H (2)",
+   "SOLID029"
+  ],
+  [
+   113.59999989998136,
+   "MGN9H (3)",
+   "SOLID034"
+  ],
+  [
+   118.00000000014785,
+   "MGN9H (4)",
+   "SOLID037"
+  ]
+ ],
+ "docked_upper": 94.99329632479106,
+ "problems": [],
+ "contacts": {
+  "down": [
+   [
+    242.00390614999904,
+    "2020 (2)",
+    "backbone-350 v2"
+   ],
+   [
+    242.0039062499989,
+    "2020 (1)",
+    "backbone-350 v2"
+   ],
+   [
+    243.30390624992955,
+    "COMPOUND002",
+    "M3x12-Screw023"
+   ],
+   [
+    243.3039062499307,
+    "COMPOUND002",
+    "M3x12-Screw022"
+   ],
+   [
+    243.40390624998997,
+    "COMPOUND001",
+    "M3x12-Screw019"
+   ],
+   [
+    243.40390624999003,
+    "COMPOUND001",
+    "M3x12-Screw018"
+   ],
+   [
+    243.56171874993274,
+    "COMPOUND002",
+    "M5x10-Screw011"
+   ],
+   [
+    243.66171874998696,
+    "COMPOUND001",
+    "M5x10-Screw008"
+   ],
+   [
+    244.07968749993606,
+    "M3x6-Screw021",
+    "M5x10-Screw011"
+   ],
+   [
+    244.1796874999913,
+    "M3x6-Screw014",
+    "M5x10-Screw008"
+   ],
+   [
+    244.30390634998827,
+    "SOLID031",
+    "M3x12-Screw025"
+   ],
+   [
+    244.30390634998946,
+    "SOLID031",
+    "M3x12-Screw024"
+   ],
+   [
+    244.3039063499901,
+    "SOLID032",
+    "M3x12-Screw025"
+   ],
+   [
+    244.30390634999128,
+    "SOLID032",
+    "M3x12-Screw024"
+   ],
+   [
+    244.50390614999904,
+    "2020 (2)",
+    "StealthMax 3.3_LidLatch001"
+   ],
+   [
+    244.61139011294563,
+    "2020 (2)",
+    "StealthMax 3.2_LidFrontHinge"
+   ],
+   [
+    244.9113893696361,
+    "2020 (2)",
+    "StealthMax M_3.0_Body"
+   ],
+   [
+    245.77272510080385,
+    "MGN9H - Carriage_end_cap (1)004",
+    "M5x10-Screw011"
+   ],
+   [
+    245.87272510086157,
+    "MGN9H - Carriage_end_cap (1)",
+    "M5x10-Screw008"
+   ],
+   [
+    246.11139011294583,
+    "2020 (2)",
+    "StealthMax Acrylic Panel"
+   ],
+   [
+    246.16013956282507,
+    "MGN9H - Carriage_end_cap_screw (1)008",
+    "backbone-350 v2"
+   ],
+   [
+    246.16013956282507,
+    "MGN9H - Carriage_end_cap_screw (1)009",
+    "backbone-350 v2"
+   ],
+   [
+    246.1601395629086,
+    "MGN9H - Carriage_end_cap_screw (1)",
+    "backbone-350 v2"
+   ],
+   [
+    246.16013956291155,
+    "MGN9H - Carriage_end_cap_screw (1)001",
+    "backbone-350 v2"
+   ],
+   [
+    246.3039071510921,
+    "M3 Locknut002",
+    "Motor_Body002"
+   ],
+   [
+    246.30390715109777,
+    "M3x12-Screw009",
+    "Motor_Body002"
+   ],
+   [
+    246.30390715110073,
+    "M3x12-Screw008",
+    "Motor_Body002"
+   ],
+   [
+    246.3039071511021,
+    "M3 Locknut003",
+    "Motor_Body002"
+   ],
+   [
+    246.47350635080383,
+    "MGN9H - Carriage_end (1)004",
+    "M5x10-Screw011"
+   ],
+   [
+    246.50390624993403,
+    "COMPOUND002",
+    "backbone-350 v2"
+   ],
+   [
+    246.50390625001546,
+    "COMPOUND001",
+    "backbone-350 v2"
+   ],
+   [
+    246.50397510080515,
+    "MGN9H - Carriage_end_cap (1)004",
+    "backbone-350 v2"
+   ],
+   [
+    246.50397510089007,
+    "MGN9H - Carriage_end_cap (1)",
+    "backbone-350 v2"
+   ],
+   [
+    246.5539070510928,
+    "Leadscrew Nut001",
+    "Motor_Body002"
+   ],
+   [
+    246.57350635086155,
+    "MGN9H - Carriage_end (1)",
+    "M5x10-Screw008"
+   ],
+   [
+    246.80390624992987,
+    "M5x16-Screw069",
+    "M3x12-Screw022"
+   ],
+   [
+    246.86171874993735,
+    "M3x6-Screw021",
+    "backbone-350 v2"
+   ],
+   [
+    246.86171874993735,
+    "M3x6-Screw022",
+    "backbone-350 v2"
+   ],
+   [
+    246.86171874993735,
+    "M3x6-Screw023",
+    "backbone-350 v2"
+   ],
+   [
+    246.86171875001693,
+    "M3x6-Screw012",
+    "backbone-350 v2"
+   ],
+   [
+    246.86171875001716,
+    "M3x6-Screw013",
+    "backbone-350 v2"
+   ],
+   [
+    246.8617187500198,
+    "M3x6-Screw014",
+    "backbone-350 v2"
+   ],
+   [
+    246.90390624999213,
+    "M5x16-Screw067",
+    "M3x12-Screw019"
+   ],
+   [
+    247.16013966293983,
+    "MGN9H - Carriage_end_cap_screw (1)005",
+    "backbone-350 v2"
+   ],
+   [
+    247.16013966294386,
+    "MGN9H - Carriage_end_cap_screw (1)004",
+    "backbone-350 v2"
+   ],
+   [
+    247.30390614992947,
+    "M5 Hex Nut002",
+    "M3x12-Screw022"
+   ],
+   [
+    247.30390705096502,
+    "M3x12-Screw014",
+    "Motor_Body001"
+   ],
+   [
+    247.30390705096502,
+    "M3x12-Screw015",
+    "Motor_Body001"
+   ],
+   [
+    247.31139011294584,
+    "2020 (2)",
+    "StealthMax M_3.1_LidPanelHolder"
+   ],
+   [
+    247.4039062499922,
+    "M5-Nut",
+    "M3x12-Screw019"
+   ],
+   [
+    247.4039070510353,
+    "M3x12-Screw006",
+    "Motor_Body"
+   ],
+   [
+    247.4039070510378,
+    "M3x12-Screw007",
+    "Motor_Body"
+   ],
+   [
+    247.40397510080513,
+    "MGN9H - Carriage_end (1)004",
+    "backbone-350 v2"
+   ],
+   [
+    247.40397510089005,
+    "MGN9H - Carriage_end (1)",
+    "backbone-350 v2"
+   ],
+   [
+    247.50390634999644,
+    "SOLID031",
+    "backbone-350 v2"
+   ],
+   [
+    247.50390634999826,
+    "SOLID032",
+    "backbone-350 v2"
+   ],
+   [
+    247.50397520092085,
+    "MGN9H - Carriage_end_cap (1)002",
+    "backbone-350 v2"
+   ],
+   [
+    248.3039070509668,
+    "M3 Locknut004",
+    "Motor_Body001"
+   ],
+   [
+    248.303907050967,
+    "M3 Locknut005",
+    "Motor_Body001"
+   ],
+   [
+    248.40390705103763,
+    "M3 Locknut001",
+    "Motor_Body"
+   ],
+   [
+    248.40390705103914,
+    "M3 Locknut",
+    "Motor_Body"
+   ],
+   [
+    248.40397520092085,
+    "MGN9H - Carriage_end (1)002",
+    "backbone-350 v2"
+   ],
+   [
+    248.55781320097196,
+    "Leadscrew Nut002",
+    "Motor_Body001"
+   ],
+   [
+    248.65781320103775,
+    "Leadscrew Nut",
+    "Motor_Body"
+   ],
+   [
+    249.41139001294584,
+    "2020 (2)",
+    "StealthMax 3mm sponge cord"
+   ],
+   [
+    250.0039062499332,
+    "M5x16-Screw069",
+    "backbone-350 v2"
+   ],
+   [
+    250.00390625001762,
+    "M5x16-Screw067",
+    "backbone-350 v2"
+   ],
+   [
+    250.0039063500002,
+    "M5x16-Screw068",
+    "backbone-350 v2"
+   ],
+   [
+    250.11138944646171,
+    "2020 (2)",
+    "StealthMax M_2.2a_CarbonBasketLid"
+   ],
+   [
+    250.50390614993282,
+    "M5 Hex Nut002",
+    "backbone-350 v2"
+   ],
+   [
+    250.50390625000057,
+    "M5 Hex Nut001",
+    "backbone-350 v2"
+   ],
+   [
+    250.50390625001768,
+    "M5-Nut",
+    "backbone-350 v2"
+   ],
+   [
+    250.57350635080385,
+    "MGN9H - Carriage_body (1)002",
+    "M5x10-Screw011"
+   ],
+   [
+    250.67350635086154,
+    "MGN9H - Carriage_body (1)",
+    "M5x10-Screw008"
+   ],
+   [
+    250.91121562108228,
+    "2020 (2)",
+    "StealthMax M_2.5a_LogoCap"
+   ],
+   [
+    250.91122062859066,
+    "2020 (2)",
+    "StealthMax M_2.0_Body"
+   ],
+   [
+    250.91139001292575,
+    "2020 (2)",
+    "StealthMax M_2.1_CarbonBasket"
+   ],
+   [
+    251.01122062858505,
+    "2020 (2)",
+    "StealthMax M_2.3_HEPACover"
+   ],
+   [
+    251.50397510080515,
+    "MGN9H - Carriage_body (1)002",
+    "backbone-350 v2"
+   ],
+   [
+    251.50397510089005,
+    "MGN9H - Carriage_body (1)",
+    "backbone-350 v2"
+   ]
+  ],
+  "up Left": [
+   [
+    93.32829622477442,
+    "Magnetic sheet (1.4 mm)",
+    "E3D v6 HotEnd - Nozzle"
+   ],
+   [
+    94.7282962247744,
+    "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
+    "E3D v6 HotEnd - Nozzle"
+   ],
+   [
+    94.99329632479106,
+    "Magnetic sheet (1.4 mm)",
+    "COMPOUND"
+   ],
+   [
+    95.76055299726255,
+    "Magnetic sheet (1.4 mm)",
+    "[a]_Duct-4010-right"
+   ],
+   [
+    95.76055299726676,
+    "Magnetic sheet (1.4 mm)",
+    "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
+   ],
+   [
+    95.92749172477193,
+    "Magnetic sheet (1.4 mm)",
+    "Beacon RevH Normal (Beacon CAD, MIT)"
+   ],
+   [
+    96.02829622483785,
+    "Magnetic sheet (1.4 mm)",
+    "TL-dragon-\u00b9\u00e8\u00bd\u00ba\u00cc\u00d7"
+   ],
+   [
+    96.39329632479104,
+    "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
+    "COMPOUND"
+   ],
+   [
+    97.16055299726253,
+    "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
+    "[a]_Duct-4010-right"
+   ],
+   [
+    97.16055299726673,
+    "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
+    "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
+   ],
+   [
+    97.3274917247719,
+    "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
+    "Beacon RevH Normal (Beacon CAD, MIT)"
+   ],
+   [
+    97.42829622483782,
+    "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
+    "TL-dragon-\u00b9\u00e8\u00bd\u00ba\u00cc\u00d7"
+   ],
+   [
+    98.82829622484081,
+    "Magnetic sheet (1.4 mm)",
+    "Heat Block"
+   ],
+   [
+    100.22829622484079,
+    "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
+    "Heat Block"
+   ]
+  ],
+  "up Right": [
+   [
+    93.32829639238508,
+    "Magnetic sheet (1.4 mm)",
+    "E3D v6 HotEnd - Nozzle001"
+   ],
+   [
+    94.72829639238506,
+    "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
+    "E3D v6 HotEnd - Nozzle001"
+   ],
+   [
+    94.99329632479106,
+    "Magnetic sheet (1.4 mm)",
+    "COMPOUND"
+   ],
+   [
+    95.76055316487322,
+    "Magnetic sheet (1.4 mm)",
+    "[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
+   ],
+   [
+    95.76055316487742,
+    "Magnetic sheet (1.4 mm)",
+    "[a]_Duct-4010-left001"
+   ],
+   [
+    95.92749172477193,
+    "Magnetic sheet (1.4 mm)",
+    "Beacon RevH Normal (Beacon CAD, MIT)"
+   ],
+   [
+    96.02829639244851,
+    "Magnetic sheet (1.4 mm)",
+    "TL-dragon-\u00b9\u00e8\u00bd\u00ba\u00cc\u00d7001"
+   ],
+   [
+    96.39329632479104,
+    "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
+    "COMPOUND"
+   ],
+   [
+    97.16055316487319,
+    "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
+    "[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
+   ],
+   [
+    97.1605531648774,
+    "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
+    "[a]_Duct-4010-left001"
+   ],
+   [
+    97.3274917247719,
+    "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
+    "Beacon RevH Normal (Beacon CAD, MIT)"
+   ],
+   [
+    97.42829639244849,
+    "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
+    "TL-dragon-\u00b9\u00e8\u00bd\u00ba\u00cc\u00d7001"
+   ],
+   [
+    98.82829639245148,
+    "Magnetic sheet (1.4 mm)",
+    "Heat Block001"
+   ],
+   [
+    100.22829639245145,
+    "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
+    "Heat Block001"
+   ]
+  ]
+ }
+}

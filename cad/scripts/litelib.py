@@ -62,7 +62,8 @@ V = FreeCAD.Vector
 REPO = os.environ.get("VT350_REPO", "/home/dan/Code/vt350")
 WORK = os.environ.get("VT350_WORK", f"{REPO}/cad/data")
 MODELS = "/home/dan/Documents/VT350"
-BED_LOWEST_DZ = -241.98       # the bed's bottom of Z travel from the model pose (#74, boolean vs the backbone)
+BED_LOWEST_DZ = -242.00       # the bed's bottom of Z travel from the model pose: the bed-frame 2020 T on the
+                              # backbone (#82 z_sweep, data/logs/z_sweep.log; #74's bisection gave -241.98)
 BED_Z = (230.0, 300.0)        # bed-side solids at the model pose: ZMin in this band and ZMax <= its top
 HERE = os.path.dirname(os.path.abspath(__file__))
 APP = os.environ.get("FREECAD_APPIMAGE", "/home/dan/FreeCAD/FreeCAD_26.3rc2-Linux-x86_64.AppImage")
