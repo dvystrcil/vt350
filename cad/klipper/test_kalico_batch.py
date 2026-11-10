@@ -119,9 +119,15 @@ class Envelope(Base):
         ok, report = kalisim.check_envelope(CFG, read(HERE, "envelope.gcode"), dicts(), KALICO)
         print("\n".join(report), file=sys.stderr)
         self.assertTrue(ok, report)
-        self.assertEqual(report[0], "in-range: 8 moves accepted")
+        self.assertEqual(report[0], "in-range: 9 moves accepted")   # 8 corners + Z position_min (-15)
         refused = [l.split(":")[0] for l in report if ": refused: Move out of range" in l]
         self.assertEqual(refused, [f"past {a}_{e}" for a in "xyz" for e in ("min", "max")])
+
+    def test_walk_visits_the_negative_z_position_min(self):     # vt350#116: accepted by real Kalico in test_envelope
+        zmin = float(re.search(r"(?ms)^\[stepper_z\].*?^position_min: *(-?[0-9.]+)", read(HERE, "printer.cfg")).group(1))
+        self.assertLess(zmin, 0)
+        zs = [t["z"] for t in kalisim.move_targets(kalisim.parse_blocks(read(HERE, "envelope.gcode"))["in-range"])]
+        self.assertIn(zmin, zs)
 
     def test_walk_reaches_the_z_sweep_floor(self):
         want = re.findall(r"klipper_position_max_configured_mm=([0-9.]+)", read(ROOT, "cad/data/logs/z_sweep.log"))

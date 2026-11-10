@@ -95,9 +95,13 @@ def cad_limits(sweep_log, z_log, mapping):
 
 
 def differences(cfg_lim, cad_lim):
+    """Every limit must equal the CAD's, except Z position_min, which may sit below the CAD floor: Z0 comes from the
+    Beacon nozzle tap and shifts per nozzle, so a negative min is a software allowance for tool offsets (vt350#116)."""
     out = []
     for a in AXES:
         for i, key in enumerate(("position_min", "position_max")):
+            if (a, i) == ("z", 0) and cfg_lim[a][i] <= cad_lim[a][i]:
+                continue
             if cfg_lim[a][i] != cad_lim[a][i]:
                 out.append(f"{a} {key}: printer.cfg {cfg_lim[a][i]}, CAD {cad_lim[a][i]}")
     return out
@@ -117,9 +121,11 @@ def envelope_gcode(cfg):
              "; @setup + each @past block alone, its move refused with \"Move out of range\".",
              "; @setup", "G28", "G90", "G1 F6000",
              "; @in-range", "; the four corners at each Z end"]
-    for z in (z0, z1):
+    for z in (max(z0, 0.0), z1):                         # corners on the plate (Z0), not at a negative allowance
         for x, y in ((x0, y0), (x0, y1), (x1, y1), (x1, y0)):
             lines.append(f"G1 X{_fmt(x)} Y{_fmt(y)} Z{_fmt(z)}")  # front-left, rear-left, rear-right, front-right
+    if z0 < 0:
+        lines += ["; Z position_min: the allowance below the plate for tool offsets", f"G1 Z{_fmt(z0)}"]
     for a in AXES:
         step = step_distance(cfg, a)
         for end, sign in (("min", -1), ("max", 1)):

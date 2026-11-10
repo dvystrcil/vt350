@@ -126,9 +126,17 @@ class CadLimits(unittest.TestCase):
     def test_check_reports_each_difference(self):
         cad = {"x": (4.0, 346.0), "y": (-82.43, 340.19), "z": (0.0, 330.33)}
         self.assertEqual(limits.differences(cad, cad), [])
-        cfg = dict(cad, x=(4.0, 346.01), z=(-1.0, 330.33))
+        cfg = dict(cad, x=(4.0, 346.01), z=(1.0, 330.33))
         self.assertEqual(limits.differences(cfg, cad), ["x position_max: printer.cfg 346.01, CAD 346.0",
-                                                        "z position_min: printer.cfg -1.0, CAD 0.0"])
+                                                        "z position_min: printer.cfg 1.0, CAD 0.0"])
+
+    def test_z_min_may_go_below_the_cad_floor(self):
+        # Z0 is set by the Beacon nozzle tap and moves by fractions of a mm per nozzle; a negative position_min is a
+        # software allowance for per-tool offsets, not a CAD limit (vt350#116). Only above the floor is wrong.
+        cad = {"x": (4.0, 346.0), "y": (-82.43, 340.19), "z": (0.0, 330.33)}
+        self.assertEqual(limits.differences(dict(cad, z=(-15.0, 330.33)), cad), [])
+        self.assertEqual(limits.differences(dict(cad, x=(3.0, 346.0), y=(-83.0, 340.19)), cad),
+                         ["x position_min: printer.cfg 3.0, CAD 4.0", "y position_min: printer.cfg -83.0, CAD -82.43"])
 
 
 class Envelope(unittest.TestCase):
@@ -157,6 +165,10 @@ class Envelope(unittest.TestCase):
                 for y in (-82.43, 340.19):
                     self.assertIn((x, y, z), pts, (x, y, z))
 
+    def test_zero_z_min_adds_no_extra_move(self):
+        moves = [l for l in self.blocks()["in-range"] if l.startswith("G1 ")]
+        self.assertEqual(len(moves), 8)
+
     def test_consecutive_in_range_moves_differ(self):
         moves = [l for l in self.blocks()["in-range"] if l.startswith("G1 ")]
         for a, b in zip(moves, moves[1:]):
@@ -169,6 +181,18 @@ class Envelope(unittest.TestCase):
                 "past y_min": f"G1 Y{-82.43 - 40 / 6400:.4f}", "past y_max": f"G1 Y{340.19 + 40 / 6400:.4f}",
                 "past z_min": f"G1 Z{0.0 - sz:.4f}", "past z_max": f"G1 Z{330.33 + sz:.4f}"}
         self.assertEqual({k: v for k, v in b.items() if k.startswith("past")}, {k: [v] for k, v in want.items()})
+
+    def test_negative_z_min_keeps_corners_on_the_plate_and_visits_the_min(self):
+        text = limits.envelope_gcode(limits.parse_cfg(CFG.replace("position_min: 0\n", "position_min: -15\n")))
+        self.text = text
+        b = self.blocks()
+        pts = [tuple(float(v) for v in re.findall(r"[XYZ](-?[0-9.]+)", l)) for l in b["in-range"]]
+        for z in (0.0, 330.33):
+            for x in (4.0, 346.0):
+                for y in (-82.43, 340.19):
+                    self.assertIn((x, y, z), pts, (x, y, z))
+        self.assertEqual(b["in-range"][-1], "G1 Z-15.0000")
+        self.assertEqual(b["past z_min"], [f"G1 Z{-15.0 - 8 / 3200:.4f}"])
 
     def test_step_is_not_rounded_back_inside(self):
         # 4 decimals must still be past the limit: a step of 0.00004 would round back onto it
@@ -198,8 +222,13 @@ class Committed(unittest.TestCase):
             body = re.search(rf"(?ms)^\[{sec}\]\n(.*?)(?=^\[|\Z)", text).group(1)
             for key in ("position_min", "position_max"):
                 before = body[:body.index(f"\n{key}:")]
-                self.assertRegex(before.split("\n# source:")[-1] if "# source:" in before else "",
-                                 r"cad/data/logs/\w+\.log", f"{sec} {key}")
+                want = (r"zruncho3d/madmax@[0-9a-f]{40}" if (sec, key) == ("stepper_z", "position_min")
+                        else r"cad/data/logs/\w+\.log")
+                self.assertRegex(before.split("\n# source:")[-1] if "# source:" in before else "", want,
+                                 f"{sec} {key}")
+
+    def test_z_min_is_the_reference_configs_allowance(self):   # vt350#116, owner 2026-11-10
+        self.assertEqual(float(self.cfg["stepper_z"]["position_min"]), -15.0)
 
     def test_committed_envelope_is_current(self):
         self.assertEqual(read(HERE, "envelope.gcode"), limits.envelope_gcode(self.cfg),
