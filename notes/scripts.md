@@ -85,6 +85,8 @@ It fails on:
 
 ```bash
 python3 cad/studies/sweep_toolhead.py           # ~11 min, 10 headless workers; VT350_MODEL=<.FCStd> to pick the model
+python3 cad/motion/rig.py --check               # rig.json vs the CAD logs and toolchanger.cfg; "rig: OK" (vt350#135)
+python3 platform/freecad/timeline.py --timeline cad/klipper/toolchange_timeline.jsonl --rig cad/motion/rig.json --moves   # frames, one per move
 python3 cad/studies/print_area.py               # redraw cad/data/print-area.svg from the sweep log
 python3 cad/studies/test_print_area.py          # CI fails if the drawing is stale: re-run print_area after EVERY sweep
 ```
