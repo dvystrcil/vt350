@@ -35,6 +35,7 @@ SWEEP_LOG = os.path.join(ROOT, "cad", "data", "logs", "sweep_toolhead.log")
 RIG = os.path.join(HERE, "rig.json")
 TIMELINE = os.path.join(ROOT, "cad", "klipper", "toolchange_timeline.jsonl")
 MODELS = "/home/dan/Documents/VT350"
+FORMAT = "2"                     # the groups file's format, in the cache key: 2 added "clip" (the belts)
 WORK = os.environ.get("VT350_WORK", os.path.join(ROOT, "cad", "data"))
 
 
@@ -64,18 +65,24 @@ def _sha(path):
 def groups_file(model, rig, work, run_plan):
     """The player's groups file for this model, from the cache or a fresh plan. -> its path."""
     msha = _sha(model)
-    key = hashlib.sha256((msha + _sha(SWEEP) + json.dumps(rig, sort_keys=True)).encode()).hexdigest()[:16]
+    key = hashlib.sha256((FORMAT + msha + _sha(SWEEP) + json.dumps(rig, sort_keys=True)).encode()).hexdigest()[:16]
     d = os.path.join(work, "motion")
     os.makedirs(d, exist_ok=True)
     path = os.path.join(d, f"groups-{os.path.splitext(os.path.basename(model))[0]}-{key}.json")
     if os.path.exists(path):
         return path
-    groups = groups_from_plan(run_plan(model), rig)
+    plan = run_plan(model)
+    groups = groups_from_plan(plan, rig)
+    sys.path.insert(0, os.path.dirname(SWEEP))
+    import sweep_toolhead
+    # a belt is one loop: its side runs change length with gantry Y, so only the part in the XY joints' Y band moves
+    # rigidly with the gantry. Show that part, as the sweep checks it (vt350#135: the whole loop shot out the front)
+    clip = {n: list(sweep_toolhead.BELT_CLIP) for n in plan["belt"]}
     fd, tmp = tempfile.mkstemp(dir=d, prefix=".groups-")
     try:
         with os.fdopen(fd, "w") as f:
             json.dump({"model": model, "model_sha256": msha, "from": "cad/studies/sweep_toolhead.py plan stage",
-                       "groups": groups}, f, indent=1)
+                       "groups": groups, "clip": clip}, f, indent=1)
         os.replace(tmp, path)
     except BaseException:
         os.unlink(tmp)

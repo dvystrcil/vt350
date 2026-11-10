@@ -179,6 +179,27 @@ class CheckGroups(unittest.TestCase):
             player.check_groups({"bed": ["A"], "Left": []}, self.FR)
 
 
+class CheckClip(unittest.TestCase):
+    """clip {Name: [xmin, ymin, zmin, xmax, ymax, zmax]}: a part shown cut down to a box (global, at the model pose),
+    because the whole part doesn't move rigidly (a belt loop: its side runs change length)."""
+    G = {"belt": ["B1", "B2"], "bed": ["A"]}
+
+    def test_ok(self):
+        player.check_clip({"B1": [0, 0, 0, 1, 1, 1]}, self.G)
+
+    def test_a_name_in_no_group(self):
+        with self.assertRaisesRegex(ValueError, "Z"):
+            player.check_clip({"Z": [0, 0, 0, 1, 1, 1]}, self.G)
+
+    def test_a_box_without_six_numbers(self):
+        with self.assertRaisesRegex(ValueError, "B1"):
+            player.check_clip({"B1": [0, 0, 0, 1, 1]}, self.G)
+
+    def test_an_empty_box(self):
+        with self.assertRaisesRegex(ValueError, "B1"):
+            player.check_clip({"B1": [0, 0, 0, 1, -1, 1]}, self.G)
+
+
 class Resolve(unittest.TestCase):
     class Doc:
         def __init__(self, names): self.names = names
@@ -302,17 +323,23 @@ class Load(unittest.TestCase):
                                                  *(h["group"] for h in rig["heads"].values())]}
         self.gpath = os.path.join(self.tmp, "groups.json")
 
-    def cfg(self, groups):
+    def cfg(self, groups, **extra):
         with open(self.gpath, "w") as f:
-            json.dump({"model": "x", "groups": groups}, f)
+            json.dump(dict({"model": "x", "groups": groups}, **extra), f)
         return dict(player.config({"MOTION_MODEL": "/m", "MOTION_GROUPS": self.gpath, "MOTION_TIMELINE": self.timeline,
                                    "MOTION_RIG": self.rig}), fps=10.0)
 
     def test_the_committed_timeline_loads(self):
-        frames, groups = player.load(self.cfg(self.groups))
-        self.assertEqual(groups, self.groups)
+        frames, groups, clip = player.load(self.cfg(self.groups))
+        self.assertEqual((groups, clip), (self.groups, {}))
         self.assertGreater(len(frames), 10)
         self.assertEqual({fr_["carried"] for fr_ in frames}, {None, "Left", "Right"})
+
+    def test_the_clips_are_loaded_and_checked(self):
+        _, _, clip = player.load(self.cfg(self.groups, clip={"belt-obj": [0, 0, 0, 1, 2, 3]}))
+        self.assertEqual(clip, {"belt-obj": [0, 0, 0, 1, 2, 3]})
+        with self.assertRaisesRegex(ValueError, "nope"):
+            player.load(self.cfg(self.groups, clip={"nope": [0, 0, 0, 1, 2, 3]}))
 
     def test_a_groups_file_without_a_rig_group_is_refused(self):
         g = dict(self.groups); del g["Right"]

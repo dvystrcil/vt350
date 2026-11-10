@@ -29,6 +29,9 @@ def build_fixture(path):
         o = doc.addObject('Part::Feature', name); o.Shape = Part.makeBox(10, 20, 30)
         o.Placement = FreeCAD.Placement(V(1, 2, 3), FreeCAD.Rotation(V(1, 0, 0), 30))
         if into: into.addObject(o)
+    belt = doc.addObject('Part::Feature', 'Belt')             # a long loop: global Y -100 .. 500, stored local to root
+    s = Part.makeBox(10, 600, 5, V(0, -100, 0)); s.Placement = ROOT_PL.inverse().multiply(s.Placement)
+    belt.Shape = s; belt.Label = "belt (fixture)"; grp.addObject(belt)
     doc.recompute(); doc.saveAs(path); FreeCAD.closeDocument(doc.Name)
 
 
@@ -96,9 +99,46 @@ class FreeCADMover(unittest.TestCase):
         self.assertNotEqual(os.path.dirname(self.doc.FileName), self.tmp)
 
 
+class Clip(unittest.TestCase):
+    """A clipped object is shown cut down to its box, moves with its group, and the original never moves."""
+    BOX = [-50.0, 243.2, -10.0, 60.0, 294.5, 20.0]
+
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp(prefix="player-fc-")
+        self.addCleanup(shutil.rmtree, self.tmp, True)
+        model = os.path.join(self.tmp, "fixture.FCStd"); build_fixture(model)
+        copy, cleanup = player.private_copy(model); self.addCleanup(cleanup)
+        self.doc = FreeCAD.openDocument(copy)
+        self.addCleanup(lambda: FreeCAD.closeDocument(self.doc.Name))
+        self.belt = self.doc.getObject("Belt")
+        self.pl0 = self.belt.Placement.copy()
+        self.objs = player.clip_objects(self.doc, player.resolve(self.doc, {"belt": ["Belt"], "bed": ["Bed"]}),
+                                        {"Belt": self.BOX})
+
+    def test_the_fixture_belt_runs_past_the_box(self):           # else clipping proves nothing
+        b = gbox(self.belt)
+        self.assertLess(b[1], self.BOX[1]); self.assertGreater(b[4], self.BOX[4])
+
+    def test_the_group_holds_the_clipped_part_in_the_belts_place(self):
+        (c,) = self.objs["belt"]
+        self.assertNotEqual(c.Name, "Belt")
+        for a, b in zip(gbox(c), (0.0, 243.2, 0.0, 10.0, 294.5, 5.0)):
+            self.assertAlmostEqual(a, b, places=6)
+        self.assertEqual([o.Name for o in self.objs["bed"]], ["Bed"])
+
+    def test_the_clipped_part_moves_and_the_original_does_not(self):
+        m = player.Mover(self.objs, player.FreeCADBackend())
+        m.apply({"groups": {"belt": [0.0, -263.725, 0.0]}})
+        self.assertAlmostEqual(gbox(self.objs["belt"][0])[1], 243.2 - 263.725, places=6)
+        self.assertTrue(self.belt.Placement.isSame(self.pl0, 1e-12))
+        m.restore()
+        self.assertAlmostEqual(gbox(self.objs["belt"][0])[1], 243.2, places=6)
+
+
 if __name__ in ("__main__", "test_player_fc"):           # freecadcmd runs a script as module "test_player_fc"
     try:
-        r = unittest.TextTestRunner(stream=sys.stdout, verbosity=2).run(unittest.defaultTestLoader.loadTestsFromTestCase(FreeCADMover))
+        r = unittest.TextTestRunner(stream=sys.stdout, verbosity=2).run(unittest.TestSuite(
+            unittest.defaultTestLoader.loadTestsFromTestCase(c) for c in (FreeCADMover, Clip)))
         print("OK" if r.wasSuccessful() else "FAILED")
         code = 0 if r.wasSuccessful() else 1
     except Exception:
