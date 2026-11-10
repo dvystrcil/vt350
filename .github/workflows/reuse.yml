@@ -1,0 +1,33 @@
+name: reuse
+# Every file must carry copyright + licence information (REUSE 3.3): REUSE.toml labels the files, LICENSES/ holds the
+# texts. An unlabelled or mislabelled file fails here (vt350#122 AC2). reuse 6.2.0: pinned, released 2025-10-27.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install the REUSE tool
+        run: |
+          python3 -m venv "$RUNNER_TEMP/reuse"
+          "$RUNNER_TEMP/reuse/bin/pip" install --quiet 'reuse==6.2.0'
+      - name: reuse lint
+        run: |
+          set -o pipefail
+          "$RUNNER_TEMP/reuse/bin/reuse" lint | tee lint.log
+      - name: Confirm the lint ran to the end and passed
+        run: grep -q 'Congratulations! Your project is compliant' lint.log
+      # lint only proves every file HAS a label; this proves each folder with its own LICENSE has its OWN label
+      - name: Test the label cross-check
+        run: python3 .github/scripts/test_check_reuse_labels.py
+      - name: Every folder with its own licence text has a matching REUSE.toml annotation
+        run: |
+          set -o pipefail
+          python3 .github/scripts/check_reuse_labels.py | tee labels.log
+          tail -1 labels.log | grep -qx 'check-reuse-labels: OK'

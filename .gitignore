@@ -1,3 +1,9 @@
 
 # refresh.py (#69) step output; the summary is cad/data/logs/refresh.log
 cad/data/logs/refresh_*.out
+
+# Derived and local-only (vt350#122 phase 1)
+cad/data/stl/
+cad/data/logs/refresh.log
+__pycache__/
+*.pyc

@@ -1,0 +1,10 @@
+Provenance unverified: no licence is granted by this repository.
+
+These files were copied out of a third-party CAD assembly, and which upstream
+source each one came from has not been recorded. Until it is, this repository
+does not claim to own them and does not license them to you: any rights in them
+belong to their original authors under the original terms.
+
+They are kept because the repository's CAD scripts use them. Before relying on
+or redistributing one, establish where it came from and the licence it was
+published under. Tracked in https://github.com/dvystrcil/vt350/issues/122.
