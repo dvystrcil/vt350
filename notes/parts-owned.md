@@ -30,13 +30,15 @@ those listings or the project READMEs linked from them.
 |---|---|---|
 | [Orbitool O2S toolhead PCB](https://west3d.com/products/orbitool-toolhead-pcb-board-for-orbiter-2-o2-and-smart-orbiter-3-so3-by-ldo-motors?variant=45224824832212) | 1 | **2 needed** (one per head; both heads have it in the model since lite-30, #6). Mounts on the Orbiter; with the Smart Sensor the bowden inlet is 18.25 mm higher (the sensor's collet top). The Nitehawk-36 it replaces is **not used** (2 removed from the model in lite-30). Every extra MadMax tool needs another (#19). |
 | [Orbiter Smart Filament Sensor (OSS) kit](https://west3d.com/products/orbiter-filament-sensor-complete-kit-for-orbiter-extruder-v20-by-ldo-motors) | 1 | **2 needed**, one per head (in the model since lite-30, #6). Plugs into the O2S. |
-| [LDO Orbiter V2.5](https://west3d.com/products/ldo-orbiter-extruder-v2-5-orbiter-v2-5-and-v2-0-to-v2-5-upgrade-kit) | not yet recorded | The extruder the O2S and OSS mount on. One per head. |
+| [LDO Orbiter V2.5](https://west3d.com/products/ldo-orbiter-extruder-v2-5-orbiter-v2-5-and-v2-0-to-v2-5-upgrade-kit) | not yet recorded | The extruder the O2S and OSS mount on. One per head. **Motor: LDO 36STH20** (user checked the owned part, 2026-11-10). The model has the v2.0 mockup's 36STH17, and the O2S manual (v1.5 §3.12) calls for **18 mm** board standoffs with the 36STH20 + Smart Sensor (model: 14 mm). Fix the model before the parked-head clash (https://github.com/dvystrcil/vt350/issues/121). |
+| LDO Nitehawk-36 toolboard | 1 | Found in stock 2026-11-10; board version not recorded. **Not in the design**: the O2S was chosen (#6 AC1) and re-examined 2026-11-10 in [notes/reference/toolboard-o2s-vs-nitehawk36.html](reference/toolboard-o2s-vs-nitehawk36.html) (recommendation: keep the O2S; the Nitehawk is rated 65 °C with no fan-cooled figure and has no Smart Sensor port). The final choice is still open in https://github.com/dvystrcil/vt350/issues/6. |
 
 ## Electronics
 
 | Part | Qty | Design impact |
 |---|---|---|
 | [BTT Octopus Pro H723, 60 V](https://west3d.com/products/btt-48v-octopus-pro-controller-board-3d-printer-control-system?variant=45102508474580) | 1 | Main MCU. The model has an Octopus Pro box in the electronics cabinet. |
+| LDO LCP300-24D5 PSU | 1 | Owned (user, 2026-11-10); role not decided. A candidate for the 24 V supply that is otherwise still to buy (https://github.com/dvystrcil/vt350/issues/22). Its datasheet (outputs, current, 5 V rail) has not been checked yet. |
 | [BTT TMC5160T Plus (with case)](https://west3d.com/products/tmc5160t-plus-with-case-high-voltage-stepper-motor-driver-btt) | 2 | High-voltage drivers for the 2 XY motors. |
 | [BTT TMC2226](https://west3d.com/products/tmc2226-stepper-motor-driver-drivers-btt) | 3 | Drivers for the 3 Z motors. Extruders run from the toolhead boards. |
 | [Omron G3NA-210B UTU DC5-24 SSR](https://west3d.com/search?type=product&q=Omron+G3NA-210B+UTU+DC5+24V+Solid+State+Relay+%28SSR%29) | 1 | Switches the bed heater. |

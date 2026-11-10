@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Orbiter Hub Housing</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; each render is a full-width figure with its caption under it. */
+:root {
+  --bg: #eef0f2; --fg: #1d2126; --muted: #5a626c; --line: #cfd4da; --panel: #ffffff; --accent: #d9622b;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #16191d; --fg: #e4e7eb; --muted: #9aa3ad; --line: #2c3238; --panel: #1e2227; --accent: #f08a5a; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #16191d; --fg: #e4e7eb; --muted: #9aa3ad; --line: #2c3238; --panel: #1e2227; --accent: #f08a5a; color-scheme: dark }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.55 var(--sans); }
+main { max-width: 900px; margin: 0 auto; padding-block: 32px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 28px; }
+h1 { font-size: 1.9rem; line-height: 1.2; margin: 0; text-wrap: balance; }
+h2 { font-size: 1.15rem; margin: 0 0 6px; text-wrap: balance; }
+p { margin: 0; max-width: 68ch; }
+.lede { display: grid; gap: 10px; }
+.eyebrow { font: 500 0.78rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+code { font: 0.9em var(--mono); }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 14px 16px; background: var(--panel);
+  border: 1px solid var(--line); border-radius: 6px; }
+.legend span { display: inline-flex; align-items: center; gap: 8px; font-size: 0.92rem; }
+.sw { width: 14px; height: 14px; border-radius: 3px; border: 1px solid rgba(0,0,0,.25); flex: none; }
+figure { margin: 0; display: grid; gap: 10px; }
+figure img { width: 100%; height: auto; border-radius: 6px; display: block; border: 1px solid var(--line); }
+figcaption { display: grid; gap: 4px; }
+figcaption p { color: var(--fg); }
+.key { color: var(--accent); font-weight: 600; }
+.notes { display: grid; gap: 12px; padding-top: 8px; border-top: 1px solid var(--line); }
+.notes ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; max-width: 68ch; }
+.src { font: 0.8rem var(--mono); color: var(--muted); }
+a { color: var(--accent); }
+</style>
+
+</head>
+<body>
+<main>
+  <header class="lede">
+    <div class="eyebrow">VT350 · lite-30 · left toolhead</div>
+    <h1>The Orbiter hub housing</h1>
+    <p>In the model the part is named <code>HubHousing V5 With Logo</code>. It is the <span class="key">orange body with the ORBITER and LDO lettering</span>: the front half of the Orbiter 2.5 extruder. Its flat base screws onto the blue Crossbow adapter. The filament inlet and latch are on its front, and the grey motor and gear housing bolt onto its back.</p>
+  </header>
+
+  <div class="legend" aria-label="Colour key">
+    <span><i class="sw" style="background:#f39a74"></i>Hub housing</span>
+    <span><i class="sw" style="background:#efe0a0"></i>Latch, latch shaft, MR148ZZ bearings</span>
+    <span><i class="sw" style="background:#c9cacd"></i>Motor + gear housing</span>
+    <span><i class="sw" style="background:#a9c8f0"></i>Crossbow adapter</span>
+    <span><i class="sw" style="background:#a6d8a8"></i>O2S toolboard</span>
+    <span><i class="sw" style="background:#d9b6e6"></i>Smart Sensor (OSS)</span>
+    <span><i class="sw" style="background:#e9ecef"></i>A4Tv2 cowl (see-through)</span>
+  </div>
+
+  <figure>
+    <img src="orbiter-hub/1_in_place.jpg" alt="Orbiter on the left toolhead: orange hub housing on the blue adapter, lilac Smart Sensor on top, green O2S board behind, see-through cowl below" width="1200" height="900">
+    <figcaption>
+      <h2>Assembled, as in lite-30</h2>
+      <p>Seen from the front left, above the nozzle. The Smart Sensor caps the top and takes the bowden tube. The O2S board sits behind the motor, with the USB cable stub going up.</p>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="orbiter-hub/2_exploded.jpg" alt="Exploded view along the front-to-back axis: hub housing pulled forward, motor and gear housing in place, O2S board pulled back, Smart Sensor lifted up" width="1200" height="900">
+    <figcaption>
+      <h2>Pulled apart, front to back</h2>
+      <p>Same parts. The hub housing is moved 45 mm forward, the board 45 mm back, and the sensor 55 mm up; the motor and gear housing stay where they are. The blue adapter is under both the housing and the motor.</p>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="orbiter-hub/3_hub_closeup.jpg" alt="Close-up: see-through orange hub housing on the blue adapter, with the yellow latch and bearing visible inside" width="1200" height="900">
+    <figcaption>
+      <h2>The housing alone, see-through</h2>
+      <p>The yellow parts sit in and on the housing: the latch lever, its shaft, and the MR148ZZ bearings. The base plate shows how the housing lands on the adapter.</p>
+    </figcaption>
+  </figure>
+
+  <section class="notes">
+    <h2>Why it came up</h2>
+    <ul>
+      <li><strong>The 2 mm correction.</strong> In lite-29, the grey motor and gear housing sat 2.000 mm higher than the vendor's STEP puts it relative to the orange housing, so the parts ran into each other. The orange housing sits flush on the adapter, so it stayed put and the grey stack moved down 2 mm.</li>
+      <li><strong>The corner clash.</strong> When one head is at the front corner beside the other head's dock, this orange housing and its latch run into the parked head's green O2S board (up to 168 mm³). Tracked in <a href="https://github.com/dvystrcil/vt350/issues/121">vt350#121</a>.</li>
+    </ul>
+    <h2>Checked against LDO's own model</h2>
+    <p>LDO's <code>Orbiter v2.0 mockup.step</code> (the 2.5 body is unchanged) was fitted to the hub housing group alone. Then I measured where the motor landed. In lite-29 it sat <strong>2.82 mm too high</strong> and the gear housing 1.94 mm too high. In lite-30 the motor is within <strong>0.04 mm</strong> of LDO's position, and the gear housing, spur gear and spider shaft within 0.03 mm. The motor sits where LDO puts it.</p>
+    <p class="src">Rendered from vt350-lite-30.FCStd, opened read-only (file unchanged), with Blender Cycles. Board and sensor CAD: Orbiter-Toolboards @ 52a5a33 (CC0-1.0). The Orbiter geometry is Orbiter Projects / LDO design (the Orbiter site and LDO's <code>Orbiter v2.0 mockup</code> are CC BY-NC-SA 4.0), so these renders are shared non-commercially, with attribution. Written 2026-11-10 for vt350#6.</p>
+  </section>
+</main>
+</body>
+</html>
