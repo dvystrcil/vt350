@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>O2S or Nitehawk-36</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; a verdict up top, then one comparison table, then what a switch would cost. */
+:root {
+  --bg: #eef0f2; --fg: #1d2126; --muted: #5a626c; --line: #cfd4da; --panel: #ffffff;
+  --o2s: #1f7a3a; --nh: #8a4fb0; --good: #1f7a3a; --warn: #a86400; --bad: #b3261e; --accent: #d9622b;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #16191d; --fg: #e4e7eb; --muted: #9aa3ad; --line: #2c3238; --panel: #1e2227;
+  --o2s: #6fcf8a; --nh: #c79be6; --good: #6fcf8a; --warn: #f0b35a; --bad: #f28b82; --accent: #f08a5a; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #16191d; --fg: #e4e7eb; --muted: #9aa3ad; --line: #2c3238; --panel: #1e2227;
+  --o2s: #6fcf8a; --nh: #c79be6; --good: #6fcf8a; --warn: #f0b35a; --bad: #f28b82; --accent: #f08a5a; color-scheme: dark }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.55 var(--sans); }
+main { max-width: 960px; margin: 0 auto; padding-block: 32px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 28px; }
+h1 { font-size: 1.9rem; line-height: 1.2; margin: 0; text-wrap: balance; }
+h2 { font-size: 1.2rem; margin: 0; text-wrap: balance; }
+p { margin: 0; max-width: 70ch; }
+.eyebrow { font: 500 0.78rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+code { font: 0.9em var(--mono); }
+section { display: grid; gap: 12px; }
+.verdict { background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--o2s); border-radius: 6px;
+  padding: 16px 18px; display: grid; gap: 8px; }
+.verdict strong { color: var(--o2s); }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); }
+table { border-collapse: collapse; width: 100%; min-width: 720px; font-size: 0.92rem; }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+thead th { font: 600 0.8rem var(--mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+thead th.o2s { color: var(--o2s); } thead th.nh { color: var(--nh); }
+tbody tr:last-child td { border-bottom: none; }
+td:first-child { font-weight: 600; width: 17%; }
+.pill { display: inline-block; font: 600 0.72rem var(--mono); letter-spacing: 0.03em; padding: 1px 7px; border-radius: 99px;
+  border: 1px solid currentColor; margin-right: 6px; white-space: nowrap; }
+.win { color: var(--good); } .tie { color: var(--muted); } .risk { color: var(--bad); } .note { color: var(--warn); }
+ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; max-width: 70ch; }
+.src { font: 0.8rem var(--mono); color: var(--muted); display: grid; gap: 4px; }
+.src a, a { color: var(--accent); overflow-wrap: anywhere; }
+</style>
+
+</head>
+<body>
+<main>
+  <header style="display:grid;gap:10px">
+    <div class="eyebrow">VT350 · vt350#6 · toolboard on each Orbiter 2.5</div>
+    <h1>O2S or Nitehawk-36</h1>
+    <p>Both are USB toolboards that sit on the back of the Orbiter's motor, with one XT30 cable carrying 24 V and USB. They differ in four places that matter for this printer: heat, the Smart Sensor, the CAD, and work already done.</p>
+  </header>
+
+  <div class="verdict">
+    <p><strong>Recommendation: keep the O2S.</strong> It is the only one of the two rated past 65 °C (80 °C with a fan), which your 70 °C chamber peak needs. It is the only one with a port for the Smart Sensor. It is already in the model and the Klipper simulation.</p>
+    <p>The Nitehawk you found isn't wasted. It can run a second head until a second O2S is bought, or go on a future third tool. Running one of each means two firmware builds, two configs, and a lopsided model.</p>
+  </div>
+
+  <section>
+    <h2>Side by side</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Topic</th><th class="o2s">Orbitool O2S v3.3</th><th class="nh">Nitehawk-36</th></tr></thead>
+        <tbody>
+          <tr><td>Chamber rating</td>
+            <td><span class="pill win">better</span>Operating −20 … <strong>65 °C</strong> passive, <strong>80 °C with active cooling</strong>; absolute max 85 °C.</td>
+            <td><span class="pill risk">short</span>"Tested … up to <strong>65 °C</strong>", a nominal rating (it was once listed as 85 °C, now corrected). No rating with a fan.</td></tr>
+          <tr><td>vs. your chamber (60 sustained / 70 peak)</td>
+            <td>60 °C OK. 70 °C needs the fan, or the motor current lowered (manual: e.g. 0.55 A above 60 °C).</td>
+            <td>60 °C OK. 70 °C is past its rating, and LDO gives no figure for a fan-cooled board.</td></tr>
+          <tr><td>Stepper driver</td>
+            <td><span class="pill win">better</span>TMC2240, lower losses than the TMC2209 (manual). Up to 0.85 A at a 60 °C chamber; 0.5–0.6 A at 80 °C.</td>
+            <td>TMC2209. LDO: keep it below 0.7 A, and above 0.6 A the board heats.</td></tr>
+          <tr><td>Smart Sensor (OSS)</td>
+            <td><span class="pill win">native</span>Has a dedicated sensor connector, and the kit includes the "Orbiter Sensor connecting bridge". The official config gives the pins: PA8 sense, PA9 unload/tangle.</td>
+            <td><span class="pill risk">adapter</span>One 2-pin filament port, "switch based sensors only", with no power pin. The OSS needs power plus two signals, so it would need custom wiring. Check the signal voltage: the RP2040 is a 3.3 V part, and the OSS can be powered at 5 V.</td></tr>
+          <tr><td>Mount on the Orbiter</td>
+            <td>Made for the Orbiter v2/v2.5: standoffs to the motor, a 4–5 mm gap. With your 36STH20 and the sensor, use 18 mm standoffs.</td>
+            <td>Needs a printed mount: "Generic Orbiter 2" or "Xol + O2" (your Crossbow adapter's file name ends in <code>o2_xol</code>; its fit is unchecked). Not checked against the Smart Sensor, which also sits on top and reaches back.</td></tr>
+          <tr><td>Cable to the Pi</td>
+            <td><span class="pill tie">same</span>XT30 (2+2): 24 V and USB in one cable, through a protected USB adapter board.</td>
+            <td><span class="pill tie">same</span>XT30 (2+2) flex umbilical cable, rated for drag chains, plus a USB adapter board.</td></tr>
+          <tr><td>Second USB port</td>
+            <td><span class="pill tie">same</span>Yes, for a nozzle camera or bed scanner.</td>
+            <td><span class="pill tie">same</span>Yes, for a nozzle camera or eddy probe.</td></tr>
+          <tr><td>Two boards on one Pi</td>
+            <td><span class="pill note">set up</span>Both enumerate as <code>…Orbitool_O2S-if00</code>, so each needs its own USB serial number in its firmware build. Already planned in vt350#116.</td>
+            <td><span class="pill win">easier</span>The RP2040's unique ID is part of the default serial path, so two boards don't collide.</td></tr>
+          <tr><td>Firmware updates</td>
+            <td><span class="pill tie">same</span>Bootloader flashing and updates from Mainsail; DFU for the first flash.</td>
+            <td><span class="pill tie">same</span>Katapult bootloader, or <code>make flash</code>.</td></tr>
+          <tr><td>Fans and extras</td>
+            <td>Part fan 2 A, 2/3/4-wire, voltage selectable. Hotend fan DC-DC with tacho. I2C port (OrbiScan). ADXL345.</td>
+            <td>Fans 1 A each, 5/24 V jumpers. Hotend fan with tacho. 3-pin probe port. Neopixel. ADXL345.</td></tr>
+          <tr><td>CAD</td>
+            <td><span class="pill win">done</span>Full STEP, CC0-1.0. In lite-30 on both heads, with overlaps checked and swept.</td>
+            <td><span class="pill risk">missing</span>The repo has a DXF outline and PDF layouts, no STEP, and <strong>no licence file</strong>. lite-29 only had a box.</td></tr>
+          <tr><td>Work already done</td>
+            <td><span class="pill win">done</span>lite-30, the sweeps, and #116's config and simulation (two STM32F072 boards).</td>
+            <td>A switch means a new lite pass, new sweeps, and #116's config and dictionaries redone for the RP2040.</td></tr>
+          <tr><td>On hand</td>
+            <td>1 owned, 2 needed.</td>
+            <td>1 found, 2 needed.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>What a switch would cost</h2>
+    <ul>
+      <li>A new lite pass: the Nitehawk modelled from its DXF outline (the repo has no STEP and no licence), a printed mount, and the Smart Sensor re-fitted around them. Then the overlap checks and the batch-lane sweeps again.</li>
+      <li>The Smart Sensor's tangle and unload button need an extra input and a power feed that the Nitehawk's filament port doesn't have.</li>
+      <li>Redo #116's <code>printer.cfg</code> and the RP2040 firmware dictionaries for the simulation.</li>
+      <li>The 70 °C chamber peak stays unsolved: LDO rates the Nitehawk to 65 °C and gives no fan-cooled figure.</li>
+    </ul>
+    <p>What a switch would gain: no USB serial setup, and maybe a smaller board behind the motor, which could help the parked-head clash (vt350#121). Neither board's outline has been compared yet.</p>
+  </section>
+
+  <section>
+    <h2>Either way</h2>
+    <ul>
+      <li>Your motor is an LDO <strong>36STH20</strong>; the model has a 36STH17. The model needs the real motor and the matching standoffs (18 mm for the O2S) before #121 is fixed.</li>
+      <li>The Smart Sensor's own temperature rating is still unknown (AC4).</li>
+    </ul>
+  </section>
+
+  <div class="src">
+    <span>Written 2026-11-10 for vt350#6 (https://github.com/dvystrcil/vt350/issues/6). The board choice is still open; this page is reference.</span>
+    <span>Sources:</span>
+    <a href="https://github.com/LorinczElectronics/Orbiter-Toolboards">Orbitool O2S User Manual v1.5 — LorinczElectronics/Orbiter-Toolboards @ 52a5a33 (§3.2, §3.3, §3.12, §5.6, §7)</a>
+    <a href="https://docs.ldomotors.com/en/Toolboard/nitehawk-36">LDO docs: Nitehawk-36 (edited 12/22/2025)</a>
+    <a href="https://github.com/MotorDynamicsLab/Nitehawk-36">MotorDynamicsLab/Nitehawk-36 @ feae221 (README, Configs/nitehawk-36.cfg)</a>
+    <a href="https://github.com/LorinczElectronics/Orbiter-2-Smart-Sensor">LorinczElectronics/Orbiter-2-Smart-Sensor @ b0ca047 (sensor connector, config)</a>
+  </div>
+</main>
+</body>
+</html>
