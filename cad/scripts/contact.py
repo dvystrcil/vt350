@@ -18,7 +18,8 @@ MARGIN = 0.5        # mm each box grows by before windows are taken (optimal box
 REPORT = 10.0       # mm past the first contact that the runners-up are still listed
 BATCH = 16          # pairs per round of the pruned search
 DONE = "z_sweep: done (read-only, nothing saved)"
-KEYS = ("z_lower_limit_mm", "z_upper_limit_mm", "print_height_mm")
+KEYS = ("z_lower_limit_mm", "z_upper_limit_mm", "print_height_mm",
+        "klipper_position_max_mm", "z_negative_limit_mm", "z_travel_mm")     # the last three: #82 AC6
 
 
 def window(a, b, direction, margin=MARGIN, cap=None):
@@ -99,11 +100,12 @@ def line(key, value, why=None):
     return f"{key}={value:.2f}" + (f" ({why})" if why else "")
 
 
-def parse(log):
-    """The last value of each of KEYS in a finished z_sweep log -> {key: float}."""
+def parse(log, keys=KEYS):
+    """The last value of each of keys in a finished z_sweep log -> {key: float}. keys=KEYS[:3] reads a log from
+    before the full-travel lines."""
     if not any(l.endswith(DONE) for l in log.splitlines()): raise ValueError(f"z_sweep log not finished: no {DONE!r} line")
     out = {}
-    for k in KEYS:
+    for k in keys:
         m = re.findall(rf"\b{k}=(-?\d+(?:\.\d+)?)", log)
         if not m: raise ValueError(f"z_sweep log has no {k}=")
         out[k] = float(m[-1])

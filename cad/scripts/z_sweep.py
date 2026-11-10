@@ -1,7 +1,8 @@
 # #82: the bed's Z travel, both ends, measured on the SAVED model. Headless, read-only, never saves:
 #   VT350_MODEL=/home/dan/Documents/VT350/vt350-lite-29.FCStd $APP freecadcmd cad/scripts/z_sweep.py
 # Log: $VT350_WORK/logs/z_sweep.log (+ z_sweep.json), ending "z_sweep: done (read-only, nothing saved)" when every
-# check passed. Its z_lower_limit_mm= / z_upper_limit_mm= / print_height_mm= lines are what refresh.py reports.
+# check passed. Its z_lower_limit_mm= / z_upper_limit_mm= / print_height_mm= / klipper_position_max_mm= /
+# z_negative_limit_mm= / z_travel_mm= lines are what refresh.py reports.
 #
 # Moving group: the bed, exactly as sweep_toolhead.py classifies it (its plan() runs here, on the same document).
 # Everything else is fixed, plus the solids of every document an envelope names ("Filter envelope (contents in
@@ -14,6 +15,10 @@
 #             gantry, carriage and that head translated; its own bowden tube and the belts left out), against
 #             everything. The first touch must be the magnet sheet on that head's nozzle; anything else is a FAIL.
 #             With nothing over the bed (model pose, heads docked) the mechanical stop is logged as well.
+#  full travel (AC6): the bed moves up with the toolhead parked at each dock (sweep_toolhead's "dock pickup, top":
+#             gantry and carriage translated, both heads docked, belts left out). The mechanical top is the higher
+#             parking's first touch, or a Z block's top end reaching its rail's, whichever comes first. In Klipper's
+#             terms Z0 is the nozzle on the magnet sheet, so the lower stop is position_max and the top is negative Z.
 #
 # Contact = common() volume > contact.TOL, scanned every contact.STEP mm and bisected to contact.EPS (contact.py).
 # Rail ends, the plate top and the magnet top come from vertical Part.makeLine ray probes (litelib._t_zspan).
@@ -32,6 +37,7 @@ PLATE, MAGNET, NOZZLE = "LDO 350 build plate", "Magnetic sheet", "E3D v6 HotEnd 
 BLOCK_GROUP, BLOCK_PART, RAIL_GROUP = "MGN9H (", "MGN9H - Carriage", "MGN9 - 400mm"
 RAY_GRID = 0.5          # mm between ray probes over a block or rail footprint
 CARRIED_POSE = "centre, top"
+PARKED_POSE = "dock pickup, top"   # sweep_toolhead's: gantry and carriage at a head's own dock, both heads docked (#82 AC6)
 
 
 # ------------------------------------------------------------------------------------------- plain python (tested)
@@ -72,11 +78,14 @@ def grid(x0, x1, y0, y1, step):
     return [(x, y) for x in axis(x0, x1) for y in axis(y0, y1)]
 
 
-def limits(plate_top, lower_contact, rails, uppers):
+def limits(plate_top, lower_contact, rails, uppers, top_contact, rails_up=()):
     """plate_top: LDO plate top Z at the model pose. lower_contact: (travel, (bed label, fixed label)) | None.
     rails: [(travel, block, rail)] to each Z block's bottom end reaching its rail's. uppers: {head: (travel, (bed
-    label, other label)) | None}, the first touch with that head carried. -> {lower, upper, print_height, lines,
-    problems}; lines are the log's limit lines (contact.line), problems the checks that fail."""
+    label, other label)) | None}, the first touch with that head carried. top_contact: (travel, (bed label, other
+    label)) | None, the first touch going up with the toolhead parked off the bed; rails_up: [(travel, block, rail)] to
+    each Z block's top end reaching its rail's. -> {lower, upper, top, print_height, klipper, lines, problems}; lines
+    are the log's limit lines (contact.line), problems the checks that fail. Klipper's Z0 is the nozzle on the magnet
+    sheet, so the mechanical top is negative Z (#82 AC6)."""
     cands = [(lower_contact[0], f"{lower_contact[1][0]} lands on {lower_contact[1][1]}")] if lower_contact else []
     cands += [(d, f"the bottom end of {b} reaches the bottom end of {r}") for d, b, r in rails]
     if not cands: raise RuntimeError("no lower limit: no contact and no rail end")
@@ -99,7 +108,30 @@ def limits(plate_top, lower_contact, rails, uppers):
     lines.append(contact.line("z_upper_limit_mm", plate_top + d,
                               f"LDO plate top; bed dZ +{d:.2f} from the model pose: {h} head carried, {a} touches {b}"))
     lines.append(contact.line("print_height_mm", d + dl, f"magnet-sheet top, from the lower stop to the {h} nozzle"))
-    return {"lower": lower, "upper": upper, "print_height": heights, "lines": lines, "problems": problems}
+    tops = [(top_contact[0], f"{top_contact[1][0]} touches {top_contact[1][1]}")] if top_contact else []
+    tops += [(t, f"the top end of {b} reaches the top end of {r}") for t, b, r in rails_up]
+    if not tops: raise RuntimeError("no mechanical top: no contact and no rail end with the toolhead parked")
+    dt, twhy = min(tops, key=lambda c: c[0])
+    top = {"dz": dt, "plate_top": plate_top + dt, "why": twhy}
+    if dt < d:
+        problems.append(f"the mechanical top (bed dZ +{dt:.2f}, {twhy}) is below the nozzle touch (+{d:.2f})")
+    klipper = {"position_max": d + dl, "z_negative": d - dt, "travel": dt + dl}
+    lines.append(contact.line("klipper_position_max_mm", d + dl, "Klipper Z at the lower stop; Z0 = the nozzle on the "
+                              "magnet sheet (with a steel sheet, subtract its thickness)"))
+    lines.append(contact.line("z_negative_limit_mm", d - dt, "Klipper Z at the mechanical top, toolhead parked off the "
+                              f"bed: bed dZ +{dt:.2f}, {twhy}"))
+    lines.append(contact.line("z_travel_mm", dt + dl, "the bed's full travel, lower stop to mechanical top"))
+    return {"lower": lower, "upper": upper, "top": top, "print_height": heights, "klipper": klipper, "lines": lines,
+            "problems": problems}
+
+
+def parked_top(found):
+    """found: {head: (travel, (bed label, other label)) | None}, the first touch going up with the carriage parked at
+    that head's dock. The toolhead can park at either, so -> the higher touch, or None when some parking meets nothing
+    within the search (the rail ends are then the top)."""
+    if not found: raise RuntimeError("no parking searched")
+    if any(v is None for v in found.values()): return None
+    return max(found.values(), key=lambda v: v[0])
 
 
 # ------------------------------------------------------------------------------------------------ FreeCAD (main)
@@ -224,20 +256,31 @@ def main(p):
               f"by its box; belts and its own bowden tube left out")
         ups[h], report[h], _ = sweep(f"bed up, {h} head carried over the centre", +1, cands, cap_hi)
     docked, rdock, _ = sweep("bed up, both heads docked (model pose)", +1, [(k, zero) for k in others], cap_hi)
+    parked, rpark = {}, {}
+    for h in sweep_toolhead.HEADS:                                     # the full travel's top (#82 AC6)
+        pose = plan["poses"][h][PARKED_POSE]
+        g = {**{n: pose["gantry"] for n in plan["gantry"]}, **{n: pose["carriage"] for n in plan["carriage"]}}
+        cands = [(k, tuple(g.get(k[1], zero)) if k[0] == "printer" else zero) for k in others
+                 if not (k[0] == "printer" and k[1] in belts)]
+        p.log(f"toolhead parked at the {h} dock pickup: gantry dY {pose['gantry'][1]:.2f}, carriage "
+              f"({pose['carriage'][0]:.2f}, {pose['carriage'][1]:.2f}); both heads docked, belts left out")
+        parked[h], rpark[h], _ = sweep(f"bed up, toolhead parked at the {h} dock", +1, cands, cap_hi)
     p.log("mechanical upper stop with nothing over the bed: " +
           (f"bed dZ +{docked[0]:.2f}, {docked[1][0]} touches {docked[1][1]}" if docked else "none within the cap") +
           "; rail top ends: " + "; ".join(f"{g} +{d:.2f}" for d, g, _ in rails_hi))
-    L = limits(tops[PLATE], low, rails_lo, ups)
+    L = limits(tops[PLATE], low, rails_lo, ups, parked_top(parked), rails_hi)
     for l in L["lines"]: p.log(l)
     p.log(f"magnet-sheet top at the model pose {tops[MAGNET]:.3f}: lower stop {tops[MAGNET] + L['lower']['dz']:.2f}, "
           f"upper stop {tops[MAGNET] + L['upper']['dz']:.2f} (no steel sheet modelled)")
     for x in L["problems"]: p.check(False, x)
     p.check(True, "every limit measured by boolean contact or ray probe")
     p.dump(dict(model=MODEL, plate_top=tops[PLATE], magnet_top=tops[MAGNET], lower=L["lower"], upper=L["upper"],
-                print_height=L["print_height"], rails_lower=rails_lo, rails_upper=rails_hi,
+                print_height=L["print_height"], top=L["top"], klipper=L["klipper"],
+                parked={h: v[0] if v else None for h, v in parked.items()}, rails_lower=rails_lo, rails_upper=rails_hi,
                 docked_upper=docked[0] if docked else None, problems=L["problems"],
                 contacts={"down": [(d, lab[k[0]], lab[k[1]]) for d, k in rlow["contacts"]],
-                          **{f"up {h}": [(d, lab[k[0]], lab[k[1]]) for d, k in report[h]["contacts"]] for h in report}}))
+                          **{f"up {h}": [(d, lab[k[0]], lab[k[1]]) for d, k in report[h]["contacts"]] for h in report},
+                          **{f"parked {h}": [(d, lab[k[0]], lab[k[1]]) for d, k in rpark[h]["contacts"]] for h in rpark}}))
     p.finish([])                                                       # nothing to save, ever
     if not p.errs: p.log(contact.DONE)
 

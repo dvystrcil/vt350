@@ -220,7 +220,10 @@ ZLOG = """\
 [   80.2s] z_lower_limit_mm=43.78 (LDO plate top; bed dZ -241.98 from the model pose: 2020 (1) lands on backbone-350 v2)
 [   99.0s] z_upper_limit_mm=379.10 (LDO plate top; bed dZ +93.34 from the model pose: Left head carried, x touches y)
 [   99.1s] print_height_mm=335.32 (magnet-sheet top, from the lower stop to the Left nozzle)
-[   99.2s] z_sweep: done (read-only, nothing saved)
+[  120.0s] klipper_position_max_mm=335.32 (Klipper Z at the lower stop)
+[  120.0s] z_negative_limit_mm=-17.15 (Klipper Z at the mechanical top)
+[  120.0s] z_travel_mm=352.47 (the bed's full travel)
+[  120.1s] z_sweep: done (read-only, nothing saved)
 """
 
 
@@ -239,11 +242,18 @@ class Summary(unittest.TestCase):
     def test_z_travel_compared_with_the_previous_run(self):                   # #82
         prev = ZLOG.replace("43.78", "33.00").replace("335.32", "347.80")
         s = rf.summary([], None, None, z_log=ZLOG, prev_z_log=prev)
-        self.assertIn("Z travel: plate top 43.78 .. 379.10, print height 335.32 (was 33.00 .. 379.10, 347.80)", s)
+        self.assertIn("Z travel: plate top 43.78 .. 379.10, print height 335.32, full travel 352.47 "
+                      "(Klipper Z 335.32 .. -17.15) (was 33.00 .. 379.10, 347.80, full travel 352.47)", s)
+
+    def test_z_travel_against_a_log_from_before_the_full_travel(self):    # the committed log before #82 AC6
+        old = "\n".join(l for l in ZLOG.splitlines() if not l.split("] ")[1].startswith(("klipper", "z_neg", "z_trav")))
+        s = rf.summary([], None, None, z_log=ZLOG, prev_z_log=old.replace("43.78", "43.76"))
+        self.assertIn("(Klipper Z 335.32 .. -17.15) (was 43.76 .. 379.10, 335.32)", s)
 
     def test_z_travel_without_a_usable_previous_log(self):
         s = rf.summary([], None, None, z_log=ZLOG, prev_z_log="")
-        self.assertIn("Z travel: plate top 43.78 .. 379.10, print height 335.32", s)
+        self.assertIn("Z travel: plate top 43.78 .. 379.10, print height 335.32, full travel 352.47 "
+                      "(Klipper Z 335.32 .. -17.15)", s)
         self.assertNotIn("was", s.split("Z travel")[1])
 
     def test_z_sweep_not_run(self):
