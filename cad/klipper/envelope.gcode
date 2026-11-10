@@ -15,6 +15,8 @@ G1 X4.0000 Y-82.4300 Z330.3300
 G1 X4.0000 Y340.1900 Z330.3300
 G1 X346.0000 Y340.1900 Z330.3300
 G1 X346.0000 Y-82.4300 Z330.3300
+; Z position_min: the allowance below the plate for tool offsets
+G1 Z-15.0000
 ; @past x_min
 G1 X3.9875
 ; @past x_max
@@ -24,6 +26,6 @@ G1 Y-82.4425
 ; @past y_max
 G1 Y340.2025
 ; @past z_min
-G1 Z-0.0025
+G1 Z-15.0025
 ; @past z_max
 G1 Z330.3325

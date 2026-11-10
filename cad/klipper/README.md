@@ -7,7 +7,7 @@ The firmware is [Kalico](https://github.com/KalicoCrew/kalico) (user, 2026-11-09
 | `printer.cfg` | The Kalico config: corexy, steppers, three Z, limits, the Octopus Pro and both O2S toolboards. `PLACEHOLDER` marks values nobody has decided yet |
 | `xy_mapping.json` | Model → printer XY: origin and axis directions. **Proposed** in [#116](https://github.com/dvystrcil/vt350/issues/116), not confirmed |
 | `limits.py` | VT350-specific. Derives each limit from the committed CAD logs, checks `printer.cfg` against them, and writes `envelope.gcode` |
-| `envelope.gcode` | Generated. Walks the envelope: the four corners at Z 0 and at the Z floor, then one step past each limit |
+| `envelope.gcode` | Generated. Walks the envelope: the four corners at Z 0 and at the Z floor, then the negative Z `position_min`, then one step past each limit |
 | `kalisim/` | The generic core. Runs Kalico batch mode and returns a timeline of planned moves. No FreeCAD, no VT350 knowledge. GPL-3.0 |
 | `test_limits.py` | `printer.cfg` against the logs, plus the envelope generator. Plain python3 |
 | `test_kalico_batch.py` | Real Kalico, in the container: the pinned commit, one dictionary per MCU, and the envelope walk |
@@ -20,9 +20,11 @@ The firmware is [Kalico](https://github.com/KalicoCrew/kalico) (user, 2026-11-09
 |---|---|---|---|
 | X | 4.00 | 346.00 | `sweep_toolhead.log`: "first nozzle X with no new overlap" −416.0 / −74.0, both heads |
 | Y | −82.43 | 340.19 | `sweep_toolhead.log`: "nozzle Y reach −51.93 .. 370.69", both heads |
-| Z | 0 | 330.33 | `z_sweep.log`: Z0 = the nozzle on the magnet sheet; `klipper_position_max_configured_mm` |
+| Z | −15 | 330.33 | min: not a CAD limit (see below); max: `z_sweep.log` `klipper_position_max_configured_mm` |
 
 X and Y are mapped by the proposed `xy_mapping.json`: origin at the print square's front-left corner, model (−420.0, 30.5); X+ = model +X, Y+ = model +Y. With that mapping the CAD gives a 342 × 422.6 mm XY box, so it is **not** the 350 mm square. The nozzle stops 4 mm short of each X edge of the print square and 9.81 mm short of its rear edge (Y 340.19 of 350), while Y below 0 reaches the docks.
+
+**Z `position_min` is the one limit not taken from a CAD log.** Z0 comes from the Beacon nozzle tap (`z_sweep.log`: the nozzle on the magnet sheet) and shifts by fractions of a mm per nozzle. `position_min` only sets how far below Z0 Kalico accepts a command, so per-tool Z offsets and calibration moves aren't refused. −15 matches the AC4 macro source, MadMax `r2pdx_config-v2-Kalico-Beacon` at `zruncho3d/madmax@277a63c` ([vt350#116](https://github.com/dvystrcil/vt350/issues/116)). `limits.py` only requires it to be at or below the CAD floor of 0.
 
 When a CAD log changes, run `python3 cad/klipper/limits.py --check`. If it fails, update `printer.cfg` and regenerate the G-code with `python3 cad/klipper/limits.py --gcode > cad/klipper/envelope.gcode`.
 
