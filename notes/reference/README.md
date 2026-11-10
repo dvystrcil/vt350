@@ -9,17 +9,27 @@ stands alone, with its CSS inline, light and dark themes, and its sources listed
 
 ## Viewing a page rendered
 
-GitHub shows `.html` files as source. To see the page:
+**Online:** https://dvystrcil.github.io/vt350/
 
-- **From a clone:** open the file in a browser, e.g. `xdg-open notes/reference/toolboard-o2s-vs-nitehawk36.html`.
-  It works offline; without network access the fonts fall back to system fonts.
-- **Online, no clone:**
-  https://htmlpreview.github.io/?https://github.com/dvystrcil/vt350/blob/main/notes/reference/toolboard-o2s-vs-nitehawk36.html
-  This is a third-party previewer that works on public repos.
+- The `pages` workflow (`.github/workflows/pages.yml`) publishes this folder, and only this folder, on every push
+  to `main` that touches it.
+- Pull requests run its check without publishing.
+
+**From a clone:** open the file in a browser, e.g. `xdg-open notes/reference/toolboard-o2s-vs-nitehawk36.html`. It
+works offline; without network access the fonts fall back to system fonts.
+
+GitHub itself shows `.html` files as source.
 
 ## Adding a page
 
-Same structure as this one:
+**Link it from `index.html`** as well as from the table above. The workflow's check
+(`.github/scripts/check_index.py`, tested by `test_check_index.py`) fails the build if any of these is missing:
+- the index doesn't link a page;
+- the index links a page that doesn't exist;
+- a page lacks `<!doctype html>`, `<meta charset="utf-8">` or a `<title>`. Without the charset, °C shows as
+  garbage when the file is opened from a clone.
+
+Same structure as the existing page:
 - `<title>` = the subject's name;
 - colours as `:root` tokens with dark-mode overrides;
 - one reading column;

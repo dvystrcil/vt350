@@ -1,0 +1,59 @@
+name: Publish the reference pages
+# Publishes notes/reference/ (and nothing else in the repo) to GitHub Pages:
+# https://dvystrcil.github.io/vt350/
+# Pull requests run the build job only (the index check); a push to main also deploys.
+on:
+  pull_request:
+    paths:
+      - notes/reference/**
+      - .github/scripts/*check_index.py
+      - .github/workflows/pages.yml
+  push:
+    branches: [main]
+    paths:
+      - notes/reference/**
+      - .github/scripts/*check_index.py
+      - .github/workflows/pages.yml
+  workflow_dispatch:
+
+# One deployment at a time; never cancel one that is already running.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+      - name: Test the index check
+        run: python3 .github/scripts/test_check_index.py 2>&1 | tee test-check-index.log
+      - name: Confirm every index-check test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-check-index.log && tail -1 test-check-index.log | grep -qx 'OK'
+      - name: Check the index links every page, and every page stands alone
+        run: python3 .github/scripts/check_index.py notes/reference 2>&1 | tee check-index.log
+      - name: Assert the completion marker
+        run: |
+          grep -qx 'check-index: OK' check-index.log
+      - if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@v6
+      - if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: notes/reference
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
