@@ -1,11 +1,12 @@
 # Headless export of an EXPLODED view of the filter holder (#74, lite-30) for Blender (render.py). Read-only.
 #   1. dry-run the pass with VT350_EXPORT=<parts dir> so it writes its new parts (ring, seal halves, tray seal) as BREP;
 #   2. VT350_PARTS=<parts dir> VT350_RENDER_OUT=<dir> $APP freecadcmd /home/dan/Code/vt350/cad/render/export_exploded.py
-#   3. blender -b -P cad/render/render.py -- <dir> <out>      (or the GPU batch lane on node-03)
+#   3. blender -b -P platform/render/render.py -- <dir> <out>      (or the GPU batch lane on node-03)
 # Stacked bottom to top in assembly order, each pulled straight up by its OFFSET (mm): backbone (cropped to the
 # cutout and a margin), cutout seal halves (also pulled apart in X), cradle, tray seal, filter.
 import FreeCAD, Part, Mesh, MeshPart, os, sys, json, time, traceback
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+_HERE = os.path.dirname(os.path.abspath(__file__))   # then the checkout's code folders (vt350#122); a gpu-batch pod stages all flat in _HERE
+sys.path[:0] = [_HERE] + [p for p in (os.path.join(os.path.dirname(os.path.dirname(_HERE)), d) for d in ('platform/render',)) if os.path.isdir(p)]
 import colours                                   # #38 role colours: the filter's accents, the black backbone
 import logos                                     # Voron logos: orange, white inset (shared with export_meshes.py)
 V = FreeCAD.Vector

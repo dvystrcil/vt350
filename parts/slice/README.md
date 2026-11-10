@@ -1,11 +1,11 @@
-# Slicer check: `parts/slice-check.py` (#70)
+# Slicer check: `platform/parts/slice-check.py` (#70)
 
 Headless PrusaSlicer slice of print-oriented STLs. It reports support, time, filament and the slicer's warnings,
 fails if support lands in a keep-out box, and plots each part's G-code.
 
 ```bash
-python3 parts/slice-check.py parts/printed/vt350/a4tv2-duct-4010-madmax-dock/*.stl        # report + previews
-python3 parts/slice-check.py <stl…> --keepout parts/slice/keepout.json --out <dir>         # explicit
+python3 platform/parts/slice-check.py parts/printed/vt350/a4tv2-duct-4010-madmax-dock/*.stl        # report + previews
+python3 platform/parts/slice-check.py <stl…> --keepout parts/slice/keepout.json --out <dir>         # explicit
 ```
 
 - **Output:** `~/Documents/VT350/slice/<UTC>/`, holding `report.md` (one row per part), `<part>.png` (top, front and side views; support **red**, keep-out boxes **blue**), the `.gcode` and the slicer log. The last line is `slice-check: OK`, or `slice-check: FAILED …` with exit 1. ~1 s to slice a small part; the largest A4Tv2 body takes ~1 min with its plot.

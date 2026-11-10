@@ -30,9 +30,9 @@ flowchart TD
 | Before any model edit, and after saving a new lite-N | `cad/backup-models.sh --verify` | minutes (restic) |
 | **After every new lite-N or remix change** | `python3 cad/scripts/refresh.py N` | ~18 min |
 | Only the reach changed (sweep re-run by hand) | `python3 cad/scripts/refresh.py N --from print_area` | seconds |
-| Changed a file in `parts/printed/` or `manifest.csv` | `python3 parts/check-printed.py` (add `--write-index` to rebuild the README table) | seconds |
-| Will a part print without supports? (before any PETG test-fit) | `python3 parts/slice-check.py <stl…>`: report + red-support preview; see `parts/slice/README.md` | ~1 s/part, up to ~1 min for big ones |
-| Checking pinned upstream STLs haven't drifted | `python3 parts/check-printed.py --upstream` (network; CI doesn't run it) | ~1 min |
+| Changed a file in `parts/printed/` or `manifest.csv` | `python3 platform/parts/check-printed.py` (add `--write-index` to rebuild the README table) | seconds |
+| Will a part print without supports? (before any PETG test-fit) | `python3 platform/parts/slice-check.py <stl…>`: report + red-support preview; see `parts/slice/README.md` | ~1 s/part, up to ~1 min for big ones |
+| Checking pinned upstream STLs haven't drifted | `python3 platform/parts/check-printed.py --upstream` (network; CI doesn't run it) | ~1 min |
 | See what refresh *would* do, writing nothing | `python3 cad/scripts/refresh.py N --dry-run` | seconds |
 | Full colour renders of the whole printer, here on the laptop | `cad/render/render_full.sh [N] [samples]` (below) | ~6 min; prints the image paths |
 | Where is part X? What sits below/above Z? (no FreeCAD) | `jq` on `~/Documents/VT350/<model>.parts.json` (below; `part_index.py --check` first) | instant |
@@ -68,12 +68,12 @@ cad/backup-models.sh --verify   # back up, then restore the newest model and com
 Run it before and after any model-writing pass. The target and password are in `~/.config/vt350/backup.env`, which
 exists only on this machine. The password is escrowed in Infisical.
 
-### `parts/check-printed.py`: the printed-parts reference
+### `platform/parts/check-printed.py`: the printed-parts reference
 
 ```bash
-python3 parts/check-printed.py                  # what CI runs; must end "check-printed: OK"
-python3 parts/check-printed.py --write-index    # rewrite the generated table in parts/printed/README.md
-python3 parts/check-printed.py --upstream       # also re-download every upstream part at its pinned commit
+python3 platform/parts/check-printed.py                  # what CI runs; must end "check-printed: OK"
+python3 platform/parts/check-printed.py --write-index    # rewrite the generated table in parts/printed/README.md
+python3 platform/parts/check-printed.py --upstream       # also re-download every upstream part at its pinned commit
 ```
 
 It fails on:
@@ -84,9 +84,9 @@ It fails on:
 ### Sweep and print area (run by refresh; you can also run them alone)
 
 ```bash
-python3 cad/scripts/sweep_toolhead.py           # ~11 min, 10 headless workers; VT350_MODEL=<.FCStd> to pick the model
-python3 cad/scripts/print_area.py               # redraw cad/data/print-area.svg from the sweep log
-python3 cad/scripts/test_print_area.py          # CI fails if the drawing is stale: re-run print_area after EVERY sweep
+python3 cad/studies/sweep_toolhead.py           # ~11 min, 10 headless workers; VT350_MODEL=<.FCStd> to pick the model
+python3 cad/studies/print_area.py               # redraw cad/data/print-area.svg from the sweep log
+python3 cad/studies/test_print_area.py          # CI fails if the drawing is stale: re-run print_area after EVERY sweep
 ```
 
 ### `cad/scripts/derive_stls.py`: printable STLs of remixed parts
@@ -115,14 +115,14 @@ VT350_REUSE_EXPORT=<run>/export cad/render/render_full.sh   # changed only a rol
   - `export.log` lists the parts no rule coloured.
   - Photo references: #75.
 
-### `cad/scripts/part_index.py`: layout questions with `jq`, not FreeCAD (#90)
+### `platform/freecad/part_index.py`: layout questions with `jq`, not FreeCAD (#90)
 
 Each model has a per-part box index beside it, `~/Documents/VT350/<model>.parts.json`: label, group `path`,
 `material`, `consumed`, and the global `optimalBoundingBox(True, False)` in mm. Answer "what sits where" from the index:
 
 ```bash
 cd ~/Documents/VT350
-python3 ~/Code/vt350/cad/scripts/part_index.py --check vt350-filter-3.FCStd    # fresh? (exit 0 = yes)
+python3 ~/Code/vt350/platform/freecad/part_index.py --check vt350-filter-3.FCStd    # fresh? (exit 0 = yes)
 jq -r '.parts[] | select(.bbox.zmax < -60) | .label' vt350-filter-3.parts.json  # parts of the filter wholly below Z -60
 jq -r '.parts[] | select(.bbox.zmin < -60) | .label' vt350-filter-3.parts.json  # ... or reaching below it
 jq -r '.parts[] | select(.path | index("Electronics")) | .label' vt350-ebox.parts.json  # everything in a group
@@ -133,7 +133,7 @@ The first query answers (checked against FreeCAD's own boxes, 2026-11-09) `M_1a.
 `M_2.6a_PicoAccessLatch`, `M_2.7_IntakeSensorStackAccessLatch`, `M_2.8_BowdenTubeAccessLatch` (all `StealthMax ...`).
 
 - **Writing or refreshing an index** (headless, never saves the model; skips a fresh one, `VT350_INDEX_FORCE=1` rewrites):
-  `VT350_WORKERS=1 VT350_INDEX_MODELS=$HOME/Documents/VT350/vt350-lite-29.FCStd $APP freecadcmd $PWD/cad/scripts/part_index.py`.
+  `VT350_WORKERS=1 VT350_INDEX_MODELS=$HOME/Documents/VT350/vt350-lite-29.FCStd $APP freecadcmd $PWD/platform/freecad/part_index.py`.
   It takes ~2 min for lite-29 + filter-3 + ebox. The log is `cad/data/logs/part_index.log`, ending `part_index: done`.
 - **Automatically:** `refresh.py N`'s first step indexes `vt350-lite-N` and every companion the same pass saved
   (another `.FCStd` saved within 10 min of it, e.g. `vt350-filter-3` with lite-29); the summary prints `part index: ... fresh`.
@@ -142,39 +142,39 @@ The first query answers (checked against FreeCAD's own boxes, 2026-11-09) `M_1a.
 - **From the batch lane:** the `vt350-refresh` chain indexes lite-N + its companions on max-01 (headless), and the
   `vt350-render` chain's export does the same as `render_full.sh` (GUI under xvfb, so `bbox.mode` is `gui`). Both leave the
   index in the job's `out/index/`; copy it beside your model with
-  `python3 ~/Code/vt350/cad/scripts/part_index.py --adopt /mnt/nfs/media/gpu-batch/<chain id>-*/out/index/*.parts.json`.
+  `python3 ~/Code/vt350/platform/freecad/part_index.py --adopt /mnt/nfs/media/gpu-batch/<chain id>-*/out/index/*.parts.json`.
   It is copied only when your model still has the exact bytes (size + sha256) the pod indexed, and never over an index
   that is already fresh. Prints `adopted`, `fresh` or `skipped` + why for each one (exit 1 if any was skipped).
 - **Stale index?** `--check` says `stale` when the model's bytes changed since the index was made; re-run the writer.
 - **GUI vs headless:** `.bbox.mode` says which made the boxes; they differ by up to ~0.14 mm on STEP parts.
 
-### Sweep-pose renders: `cad/render/` + the GPU batch lane (node-03)
+### Sweep-pose renders: `cad/render/export_pose.py`, `platform/render/` + the GPU batch lane (node-03)
 
 ```bash
 VT350_POSE="Left:front-left, top" VT350_RENDER_OUT=/tmp/pose $APP freecadcmd $PWD/cad/render/export_pose.py
 ~/Code/homelab/bin/gpu-batch-submit.py blender --input /tmp/pose \
-    --script ~/Code/vt350/cad/render/render.py --notify dvystrcil/vt350#<issue> -- 128
+    --script ~/Code/vt350/platform/render/render.py --notify dvystrcil/vt350#<issue> -- 128
 ~/Code/homelab/bin/gpu-batch-submit.py status <job-id>        # once, later; the issue comment usually arrives first
 ```
 
 - **How it reports:** fire and forget. n8n posts the outputs and their sha256 to the `--notify` issue.
-- **Where the images land:** `/mnt/nfs/media/gpu-batch/<job>-render/out/`. The Desktop launcher "VT350 Renders" runs an installed copy of `cad/render/open-latest-render.sh`, which opens the newest finished one (`--print` shows the path instead). The copy keeps the launcher working whatever branch this clone is on. Install or update it with `install -m755 cad/render/open-latest-render.sh ~/.local/bin/vt350-open-latest-render`; the launcher has `Exec=/home/dan/.local/bin/vt350-open-latest-render`.
+- **Where the images land:** `/mnt/nfs/media/gpu-batch/<job>-render/out/`. The Desktop launcher "VT350 Renders" runs an installed copy of `platform/render/open-latest-render.sh`, which opens the newest finished one (`--print` shows the path instead). The copy keeps the launcher working whatever branch this clone is on. Install or update it with `install -m755 platform/render/open-latest-render.sh ~/.local/bin/vt350-open-latest-render`; the launcher has `Exec=/home/dan/.local/bin/vt350-open-latest-render`.
 - **While Neptune is printing:** the job refuses to start. If Neptune is off but Obico still shows a print, add `--printer-off`.
 - **Full model renders:** `export_meshes.py` (GUI) → `render.py` (`blender -b -P …`).
 
 ## Model-writing passes (lite-N): Claude writes, you supervise
 
 ```bash
-$NV $APP $PWD/cad/scripts/liteNN_<what>.py      # GUI mode: keeps colours; saves vt350-lite-NN.FCStd only if every check passes
-$APP freecadcmd $PWD/cad/scripts/liteNN_<what>.py   # headless = dry run: all checks, never saves
+$NV $APP $PWD/cad/passes/liteNN_<what>.py      # GUI mode: keeps colours; saves vt350-lite-NN.FCStd only if every check passes
+$APP freecadcmd $PWD/cad/passes/liteNN_<what>.py   # headless = dry run: all checks, never saves
 ```
 
 - **Each pass saves a NEW file.** It refuses to save if a check fails. Never save over `vt350-good.FCStd`. Hand edits go in a `-dan` copy (File → Save As).
 - **"FreeCAD Not Responding"** during a pass means **click Wait**, not Force Quit.
 - **Closing FreeCAD:** use File → Quit. A killed window leaves recovery files behind.
-- **New passes are built on `cad/scripts/litelib.py`** (#93): a short spec of parts plus named checks. See "Writing a new lite-N pass" in `cad/README.md`.
+- **New passes are built on `platform/freecad/litelib.py`** (#93): a short spec of parts plus named checks. See "Writing a new lite-N pass" in `cad/README.md`.
 - **Who writes them:** these are geometry and design work, so Claude writes them. Every `liteNN_*.py` already in
-  `cad/scripts/` is a historical record of how its model was made, not something to re-run.
+  `cad/passes/` is a historical record of how its model was made, not something to re-run.
 
 ## Handing work off (homelab lanes)
 
@@ -184,7 +184,7 @@ $APP freecadcmd $PWD/cad/scripts/liteNN_<what>.py   # headless = dry run: all ch
 | GPU batch | **live** (homelab#1935) | Blender renders on node-03 | `~/Code/homelab/bin/gpu-batch-submit.py` |
 | dmf edit | **live** (homelab#1856) | a small, bounded edit to one file by the local model. A guard decides if it lands, and you read only the diff | `~/Code/homelab/bin/dmf-edit.py FILE -i "instruction" --allow 40-55 [--expect TOKEN] [--write]` |
 | dmf handoff | **live** | a one-shot text task from a prompt file, response saved | `cd ~/Code/homelab && DMF_MODEL=automation-tool-free bin/dmf-handoff.sh prompts/dmf-tasks/<task>.md` |
-| slicer check | **live** (#70) | supports, time, warnings, keep-out boxes + preview of each printed part, headless | `python3 parts/slice-check.py <stl…>` |
+| slicer check | **live** (#70) | supports, time, warnings, keep-out boxes + preview of each printed part, headless | `python3 platform/parts/slice-check.py <stl…>` |
 | dmf status drafter | planned: [homelab#1962](https://github.com/dvystrcil/homelab/issues/1962) | turn a run log into a guarded AC status comment draft | not yet |
 | CAD batch lane | planned: [homelab#1961](https://github.com/dvystrcil/homelab/issues/1961) | sweeps/clash checks off the laptop, result posted to the issue | not yet |
 
@@ -197,11 +197,11 @@ $APP freecadcmd $PWD/cad/scripts/liteNN_<what>.py   # headless = dry run: all ch
 
 | Workflow | Runs | Fails when |
 |---|---|---|
-| `printed-parts` | `parts/test_check_printed.py`, `parts/check-printed.py` | manifest, sha256 or BOM drift |
-| `print-area` | `cad/scripts/test_print_area.py` | `print-area.svg` is stale against the sweep log |
-| `slice-check` | `parts/test_slice_check.py`, `keepout.json` validity | the G-code parser, keep-out or report logic breaks |
+| `printed-parts` | `platform/parts/test_check_printed.py`, `platform/parts/check-printed.py` | manifest, sha256 or BOM drift |
+| `print-area` | `cad/studies/test_print_area.py` | `print-area.svg` is stale against the sweep log |
+| `slice-check` | `platform/parts/test_slice_check.py`, `keepout.json` validity | the G-code parser, keep-out or report logic breaks |
 | `refresh-chain` | `cad/scripts/test_refresh.py`, `cad/scripts/test_derive_stls.py`, `test_litepool.py`, `test_prove_parallel.py`, `test_part_index.py` | the chain's sync, step runner or markers break, `derive_stls` stops honouring `VT350_MODELS`, or the part index's schema/staleness check breaks |
-| `render-colours` | `cad/render/test_colours.py`, `cad/render/test_render_full.py` | the colour rules break, or `render_full.sh` misjudges the export (a real `FAILED` passes, or the index hook's `index: FAILED` fails it) |
+| `render-colours` | `platform/render/test_colours.py`, `cad/render/test_render_full.py` | the colour rules break, or `render_full.sh` misjudges the export (a real `FAILED` passes, or the index hook's `index: FAILED` fails it) |
 | `secret-scan` | gitleaks | a secret in the diff |
 
 ## One-off and investigation scripts

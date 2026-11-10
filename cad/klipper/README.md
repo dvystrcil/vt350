@@ -32,7 +32,7 @@ When a CAD log changes, run `python3 cad/klipper/limits.py --check`. If it fails
 
 ```sh
 python3 cad/klipper/test_limits.py                 # no Docker: printer.cfg vs the CAD logs
-bash cad/klipper/kalisim/test_in_container.sh      # Docker: builds the image, runs the Kalico tests; "kalico-batch: OK"
+bash cad/klipper/test_in_container.sh      # Docker: builds the image, runs the Kalico tests; "kalico-batch: OK"
 ```
 
 The `kalico-batch` workflow runs both on every change to `cad/klipper/` or to the Z sweep log.
@@ -40,7 +40,7 @@ The `kalico-batch` workflow runs both on every change to `cad/klipper/` or to th
 To run your own G-code through the config:
 
 ```sh
-docker build -t vt350-kalisim cad/klipper/kalisim
+docker build -t vt350-kalisim platform/kalisim
 docker run --rm -v "$PWD:/repo:ro" vt350-kalisim sh -c 'cd /repo/cad/klipper && $KALISIM_PYTHON -m kalisim run \
     --config printer.cfg --gcode envelope.gcode -d /opt/dicts/octopus-pro-h723.dict \
     -d o2s_left=/opt/dicts/o2s-left.dict -d o2s_right=/opt/dicts/o2s-right.dict'

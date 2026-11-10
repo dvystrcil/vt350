@@ -42,7 +42,7 @@ Head = upstream `CAD/A4Tv2_assembly.step`, taking only our parts by exact name:
 - 4010 part-cooling ducts, UHF hotend fan and duct, part fans, LEDs, Crossbow;
 - carriage, Orbiter, duct and Xol hardware.
 
-Then the official Orbiter 2.5 + Smart Sensor + O2S assembly (`Orbiter v2.5_SmartSensor and O2S Toolboard.step`, RobertLorincz/Orbiter-Toolboards) is seated on the adapter. Script: `cad/scripts/ac9_head_envelope.py`.
+Then the official Orbiter 2.5 + Smart Sensor + O2S assembly (`Orbiter v2.5_SmartSensor and O2S Toolboard.step`, RobertLorincz/Orbiter-Toolboards) is seated on the adapter. Script: `cad/studies/ac9_head_envelope.py`.
 
 - **Seating:** the Orbiter's two M3 holes land on the adapter's (−19.5 / +17.5 mm) within 0.01 mm, with the filament axes coincident. The hole pattern is asymmetric, so the motor and O2S can only face the rear. The housing touches the adapter after a 1.6 mm drop. No O2S part overlaps any A4Tv2 part.
 - **Correction:** the first version of this section measured 73.4 × 67.1 × 112.8 for "our variant". It filtered out `wwbmg`, but the STEP labels that extruder `WW-BMG`, so the WW-BMG extruder and its NEMA14 stood in for the Orbiter. The assembly STEP has no Orbiter at all.

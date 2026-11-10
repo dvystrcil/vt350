@@ -16,4 +16,4 @@ From the `clickyclacky_door/` folder. This build has **3 hinges** (#9 AC4), so t
 | `Latch.stl` | [`clickyclacky_door/STLs/Latch.stl`](https://github.com/tanaes/whopping_Voron_mods/blob/62268ed817878e54d6a1186882060aa8368d4f0f/clickyclacky_door/STLs/Latch.stl) | 1 | none |
 | `Panel_Clip.stl` | [`clickyclacky_door/STLs/Panel_Clip.stl`](https://github.com/tanaes/whopping_Voron_mods/blob/62268ed817878e54d6a1186882060aa8368d4f0f/clickyclacky_door/STLs/Panel_Clip.stl) | 1 | none |
 
-Each file's sha256 is in `../manifest.csv`; `parts/check-printed.py --upstream` re-downloads every file at its commit and compares.
+Each file's sha256 is in `../manifest.csv`; `platform/parts/check-printed.py --upstream` re-downloads every file at its commit and compares.

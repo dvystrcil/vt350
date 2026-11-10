@@ -12,9 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Test the printed-parts check
-        run: python3 parts/test_check_printed.py
+        run: python3 platform/parts/test_check_printed.py
       - name: Check parts/printed against its manifest and bom/printed-parts.md
-        run: python3 parts/check-printed.py | tee check.log
+        run: python3 platform/parts/check-printed.py | tee check.log
       - name: Confirm the check ran to the end
         run: |
           grep -qx 'check-printed: OK' check.log

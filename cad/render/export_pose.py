@@ -8,7 +8,8 @@
 # Left out so the cameras can see in: door, roof and side panels, insulation, camera housing, ebox envelope.
 # scene.json gets "views" (close-ups on the clash), which render.py renders instead of its default views.
 import FreeCAD, Mesh, MeshPart, os, sys, json, time, traceback, tempfile
-sys.path.insert(0, "/home/dan/Code/vt350/cad/scripts")
+_HERE = os.path.dirname(os.path.abspath(__file__))   # then the checkout's code folders (vt350#122); a gpu-batch pod stages all flat in _HERE
+sys.path[:0] = [_HERE] + [p for p in (os.path.join(os.path.dirname(os.path.dirname(_HERE)), d) for d in ('cad/studies', 'cad/scripts', 'platform/freecad')) if os.path.isdir(p)]
 V = FreeCAD.Vector
 POSE = os.environ.get("VT350_POSE", "Left:front-left, top")
 OUT = os.environ.get("VT350_RENDER_OUT", "/tmp/vt350-pose-render")

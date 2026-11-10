@@ -31,7 +31,7 @@ JOBS = [
 log_f = open(f"{REPO}/cad/data/logs/derive_stls" + (f"_{ONLY.split()[0].lower()}" if ONLY else "") + ".log", "w"); t0 = time.time()
 def log(*a):
     log_f.write(f"[{time.time()-t0:7.1f}s] " + " ".join(str(x) for x in a) + "\n"); log_f.flush()
-import sys; sys.path.insert(0, f"{REPO}/cad/scripts")
+import sys; sys.path[:0] = [f"{REPO}/cad/scripts", f"{REPO}/platform/freecad"]   # reglib: beside this (a gpu-batch pod), or platform/ (vt350#122)
 from reglib import mesh_inertia, shape_inertia, mat, moved, dists, register   # noqa: F401 (moved there)
 def part(doc, label, group, which):
     """(shape, label); a label ending in ' *' matches by prefix (and must not be the old part's exact label)"""

@@ -24,7 +24,7 @@ GitHub itself shows `.html` files as source.
 ## Adding a page
 
 **Link it from `index.html`** as well as from the table above. The workflow's check
-(`.github/scripts/check_index.py`, tested by `test_check_index.py`) fails the build if any of these is missing:
+(`platform/pages/check_index.py`, tested by `test_check_index.py`) fails the build if any of these is missing:
 - the index doesn't link a page;
 - the index links a page that doesn't exist;
 - a page lacks `<!doctype html>`, `<meta charset="utf-8">` or a `<title>`. Without the charset, °C shows as

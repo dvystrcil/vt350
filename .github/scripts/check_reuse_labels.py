@@ -12,7 +12,7 @@ does an override whose licence family (GPL-3.0 vs CC BY-NC-SA 4.0) differs from 
 import os, re, subprocess, sys, tomllib
 
 LICENCE_FILES = ("LICENSE", "COPYING")
-HEADER_LABELLED = ("cad/klipper/kalisim",)   # folders whose files carry SPDX headers instead of an annotation
+HEADER_LABELLED = ("platform/kalisim",)   # folders whose files carry SPDX headers instead of an annotation
 
 
 def parse(toml_text):

@@ -22,4 +22,4 @@ Pinned to tag `VTr1` (R1). `main` upstream is R2, which the Trident Backbone doe
 | `MGN9_rail_guide_x2.stl` | [`STLs/Tools/MGN9_rail_guide_x2.stl`](https://github.com/VoronDesign/Voron-Trident/blob/86eae85057df4e3d1a07fe7eae44d6126724fe00/STLs/Tools/MGN9_rail_guide_x2.stl) | 2 | none |
 | `MGN12_rail_guide_x2.stl` | [`STLs/Tools/MGN12_rail_guide_x2.stl`](https://github.com/VoronDesign/Voron-Trident/blob/86eae85057df4e3d1a07fe7eae44d6126724fe00/STLs/Tools/MGN12_rail_guide_x2.stl) | 2 | none |
 
-Each file's sha256 is in `../manifest.csv`; `parts/check-printed.py --upstream` re-downloads every file at its commit and compares.
+Each file's sha256 is in `../manifest.csv`; `platform/parts/check-printed.py --upstream` re-downloads every file at its commit and compares.

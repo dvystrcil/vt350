@@ -1,5 +1,5 @@
 # Licensing of every file, read by `reuse lint` (https://reuse.software/spec-3.3/; CI: .github/workflows/reuse.yml).
-# Files with their own SPDX header keep it (cad/klipper/kalisim/). Otherwise the LAST matching [[annotations]] wins,
+# Files with their own SPDX header keep it (platform/kalisim/). Otherwise the LAST matching [[annotations]] wins,
 # so the repo default comes first and each third-party or derived folder overrides it below. vt350#122.
 # Per-folder LICENSE files stay for people (REUSE ignores LICENSE/COPYING files); the texts live in LICENSES/.
 version = 1

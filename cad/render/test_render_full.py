@@ -12,12 +12,14 @@ FAKE_FREECAD = textwrap.dedent("""\
     #!/usr/bin/env python3
     import os, sys
     out = os.environ["VT350_RENDER_OUT"]
+    open(os.environ["FAKE_ARGS"] + ".freecad", "w").write("\\n".join(sys.argv[1:]) + "\\n" + os.environ.get("VT350_COLOURS", ""))
     open(os.path.join(out, "export.log"), "w").write(open(os.environ["FAKE_EXPORT_LOG"]).read())
     """)
 FAKE_BLENDER = textwrap.dedent("""\
     #!/usr/bin/env python3
     import os, sys
     rest = sys.argv[sys.argv.index("--") + 1:]
+    open(os.environ["FAKE_ARGS"] + ".blender", "w").write(sys.argv[sys.argv.index("-P") + 1] + "\\n" + os.environ.get("VT350_COLOURS", ""))
     os.makedirs(rest[1], exist_ok=True)
     open(os.path.join(rest[1], "m-obico.png"), "wb").write(b"png")
     print("GPU: fake")
@@ -37,7 +39,8 @@ class RenderFull(unittest.TestCase):
             p = os.path.join(bin_, name); open(p, "w").write(text); os.chmod(p, 0o755)
         self.log = os.path.join(self.tmp, "export.log")
         self.env = dict(os.environ, VT350_APP=os.path.join(bin_, "freecad"), VT350_DOCS=self.docs, VT350_EXTRA="",
-                        PATH=bin_ + os.pathsep + os.environ["PATH"], FAKE_EXPORT_LOG=self.log)
+                        PATH=bin_ + os.pathsep + os.environ["PATH"], FAKE_EXPORT_LOG=self.log,
+                        FAKE_ARGS=os.path.join(self.tmp, "args"))
 
     def render(self, log):
         open(self.log, "w").write(log)
@@ -46,6 +49,17 @@ class RenderFull(unittest.TestCase):
     def test_a_done_log_renders(self):
         r = self.render("[    0.4s] opened m\n" + DONE)
         self.assertEqual(r.returncode, 0, r.stderr); self.assertIn("render_full: OK", r.stdout)
+
+    def test_it_runs_the_real_export_and_render_scripts_with_this_printers_colour_map(self):
+        # the generic scripts live in platform/render, the VT350's colour map beside this script (vt350#122)
+        self.render("[    0.4s] opened m\n" + DONE)
+        root = os.path.dirname(os.path.dirname(HERE))
+        fc = open(os.path.join(self.tmp, "args.freecad")).read().split("\n")
+        bl = open(os.path.join(self.tmp, "args.blender")).read().split("\n")
+        self.assertEqual(os.path.realpath(fc[0]), os.path.join(root, "platform", "render", "export_meshes.py"))
+        self.assertEqual(os.path.realpath(bl[0]), os.path.join(root, "platform", "render", "render.py"))
+        for colours in (fc[-1], bl[-1]):
+            self.assertEqual(os.path.realpath(colours), os.path.join(HERE, "colours.json"))
 
     def test_runs_go_under_the_docs_folder(self):
         self.render("[    0.4s] opened m\n" + DONE)

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Needs Kalico: runs printer.cfg through real Kalico batch mode in the kalisim container (vt350#116 AC1, AC3).
 
-    bash cad/klipper/kalisim/test_in_container.sh      # builds the image, runs this file in it, prints "kalico-batch: OK"
+    bash cad/klipper/test_in_container.sh      # builds the image, runs this file in it, prints "kalico-batch: OK"
 
 Inside the image: $KALICO_DIR is Kalico, $KALISIM_DICTS holds one dictionary per MCU. Without them this file fails
 instead of skipping: a skipped run would look green. check_test_tmp.sh skips it ("Needs Kalico" above).
@@ -14,15 +14,16 @@ import tempfile
 import unittest
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, HERE)
+ROOT = os.path.dirname(os.path.dirname(HERE))
+KALISIM = os.path.join(ROOT, "platform", "kalisim")     # the generic runner (vt350#122); this file is the VT350's
+sys.path[:0] = [HERE, os.path.join(ROOT, "platform")]
 import kalisim  # noqa: E402
 import limits  # noqa: E402
 
-ROOT = os.path.dirname(os.path.dirname(HERE))
 KALICO = os.environ.get("KALICO_DIR")
 DICTS = os.environ.get("KALISIM_DICTS")
 CFG = os.path.join(HERE, "printer.cfg")
-# printer.cfg's MCU name -> the kconfig fragment (kalisim/kconfig/<name>.config) its dictionary is built from
+# printer.cfg's MCU name -> the kconfig fragment (cad/klipper/kconfig/<name>.config) its dictionary is built from
 MCUS = {"mcu": "octopus-pro-h723", "o2s_left": "o2s-left", "o2s_right": "o2s-right"}
 CHIPS = {"octopus-pro-h723": "stm32h723xx", "o2s-left": "stm32f072xb", "o2s-right": "stm32f072xb"}
 
@@ -41,20 +42,20 @@ class Base(unittest.TestCase):
     def setUpClass(cls):
         if not (KALICO and DICTS):
             raise RuntimeError("KALICO_DIR and KALISIM_DICTS are unset: run in the kalisim image "
-                               "(cad/klipper/kalisim/test_in_container.sh)")
+                               "(cad/klipper/test_in_container.sh)")
 
 
 class PinnedKalico(Base):
     """AC1: a pinned Kalico, one dictionary per MCU in the real wiring."""
 
     def test_runtime_and_dictionaries_are_the_pinned_commit(self):
-        sha = re.search(r"(?m)^ARG KALICO_SHA=([0-9a-f]{40})$", read(HERE, "kalisim", "Dockerfile")).group(1)
+        sha = re.search(r"(?m)^ARG KALICO_SHA=([0-9a-f]{40})$", read(KALISIM, "Dockerfile")).group(1)
         self.assertEqual(read(DICTS, "KALICO_SHA").strip(), sha)
         self.assertIn(f"-g{sha[:8]}", read(KALICO, "klippy", ".version"))
 
     def test_plugin_in_the_image_is_this_repo_s(self):
         self.assertEqual(read(KALICO, "klippy", "plugins", "move_timeline.py"),
-                         read(HERE, "kalisim", "plugins", "move_timeline.py"))
+                         read(KALISIM, "plugins", "move_timeline.py"))
 
     def test_one_dictionary_per_mcu_for_its_chip(self):
         cfg = limits.parse_cfg(read(CFG))
@@ -67,7 +68,7 @@ class PinnedKalico(Base):
 
     def test_each_dictionary_was_built_with_its_fragment(self):
         for frag in CHIPS:
-            want = [l for l in read(HERE, "kalisim", "kconfig", f"{frag}.config").splitlines()
+            want = [l for l in read(HERE, "kconfig", f"{frag}.config").splitlines()
                     if l.startswith("CONFIG_") or re.match(r"# CONFIG_\w+ is not set", l)]
             got = read(DICTS, f"{frag}.config").splitlines()
             with self.subTest(frag=frag):

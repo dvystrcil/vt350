@@ -12,4 +12,4 @@ Only the cable management clips are printed. The kit's `LDO_9mm_VT_NP_spacer` is
 | `Cable_management_clip_M.stl` | [`STLs/Cable_management/Cable_management_clip_M.stl`](https://github.com/Monolith3D/LDO_Monolith_Gantry_Kits/blob/95cb5fc3957369aeb1e631f4656880bdb69ea770/STLs/Cable_management/Cable_management_clip_M.stl) | as-needed | none |
 | `Cable_management_clip_L.stl` | [`STLs/Cable_management/Cable_management_clip_L.stl`](https://github.com/Monolith3D/LDO_Monolith_Gantry_Kits/blob/95cb5fc3957369aeb1e631f4656880bdb69ea770/STLs/Cable_management/Cable_management_clip_L.stl) | as-needed | none |
 
-Each file's sha256 is in `../manifest.csv`; `parts/check-printed.py --upstream` re-downloads every file at its commit and compares.
+Each file's sha256 is in `../manifest.csv`; `platform/parts/check-printed.py --upstream` re-downloads every file at its commit and compares.
