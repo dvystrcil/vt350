@@ -1,7 +1,3 @@
-[    2.3s] opened /home/dan/Documents/VT350/vt350-filter-3.FCStd
-[   45.3s] written /home/dan/Documents/VT350/vt350-filter-3.parts.json  24 parts, headless boxes in 42.92 s, 9016 bytes
-[   46.3s] opened /home/dan/Documents/VT350/vt350-ebox.FCStd
-[   53.5s] written /home/dan/Documents/VT350/vt350-ebox.parts.json  102 parts, headless boxes in 7.14 s, 35216 bytes
-[   61.0s] opened /home/dan/Documents/VT350/vt350-lite-29.FCStd
-[  121.5s] written /home/dan/Documents/VT350/vt350-lite-29.parts.json  917 parts, headless boxes in 60.08 s, 370643 bytes
-[  121.8s] part_index: done (3 models)
+[    5.1s] opened /work/vt350-lite-30-20261110t071220-43b4-sweep/in/vt350-lite-30.FCStd
+[   44.7s] written /work/vt350-lite-30-20261110t071220-43b4-sweep/in/vt350-lite-30.parts.json  919 parts, headless boxes in 39.4 s, 371264 bytes
+[   45.2s] part_index: done (1 models)
