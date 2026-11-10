@@ -318,7 +318,7 @@ class MarkersMatchTheRealTools(unittest.TestCase):
         z = contact.parse(log)
         # cad/klipper/printer.cfg carries the configured floor the committed log measured (user 2026-11-09)
         cfg = open(os.path.join(self.ROOT, "cad/klipper/printer.cfg")).read()
-        pm = re.search(r"(?m)^position_max:\s*([0-9.]+)", cfg)
+        pm = re.search(r"(?ms)^\[stepper_z\]\n.*?^position_max:\s*([0-9.]+)", cfg)  # [stepper_z]'s, not the first
         want = re.findall(r"klipper_position_max_configured_mm=([0-9.]+)", log)
         self.assertTrue(pm and want, (pm, want))
         self.assertEqual(float(pm.group(1)), float(want[-1]))
