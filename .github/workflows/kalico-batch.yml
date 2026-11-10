@@ -1,6 +1,6 @@
 name: kalico-batch
 # printer.cfg against the CAD logs, then the same config through real Kalico batch mode in the kalisim image
-# (vt350#116 AC1-AC3, run here for AC6). See cad/klipper/README.md.
+# (vt350#116 AC1-AC4, run here for AC6). See cad/klipper/README.md.
 on:
   pull_request:
     paths:
@@ -29,6 +29,10 @@ jobs:
         run: python3 cad/klipper/test_limits.py 2>&1 | tee test-limits.log
       - name: Confirm every limits test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-limits.log && tail -1 test-limits.log | grep -qx 'OK'
+      - name: Test the tool-change params against the CAD dock poses (dock_params.py; no Kalico)
+        run: python3 cad/klipper/test_dock_params.py 2>&1 | tee test-dock-params.log
+      - name: Confirm every dock-params test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-dock-params.log && tail -1 test-dock-params.log | grep -qx 'OK'
       - name: Test the batch-mode runner against a fake klippy (kalisim; no Kalico)
         run: python3 platform/kalisim/test_kalisim.py 2>&1 | tee test-kalisim.log
       - name: Confirm every kalisim test ran

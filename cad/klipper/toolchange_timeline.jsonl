@@ -1,0 +1,47 @@
+{"seq": 1, "kind": "set_position", "pos": [-167.0, 0.0, 0.0, 0.0], "tool": "extruder"}
+{"seq": 2, "kind": "set_position", "pos": [346.0, 0.0, 0.0, 0.0], "tool": "extruder"}
+{"seq": 3, "kind": "move", "pos": [341.0, 0.0, 0.0, 0.0], "speed": 50.0, "tool": "extruder"}
+{"seq": 4, "kind": "set_position", "pos": [336.0, 0.0, 0.0, 0.0], "tool": "extruder"}
+{"seq": 5, "kind": "set_position", "pos": [346.0, 0.0, 0.0, 0.0], "tool": "extruder"}
+{"seq": 6, "kind": "set_position", "pos": [346.0, -293.74, 0.0, 0.0], "tool": "extruder"}
+{"seq": 7, "kind": "set_position", "pos": [346.0, 340.19, 0.0, 0.0], "tool": "extruder"}
+{"seq": 8, "kind": "move", "pos": [346.0, 335.19, 0.0, 0.0], "speed": 50.0, "tool": "extruder"}
+{"seq": 9, "kind": "set_position", "pos": [346.0, 330.19, 0.0, 0.0], "tool": "extruder"}
+{"seq": 10, "kind": "set_position", "pos": [346.0, 340.19, 0.0, 0.0], "tool": "extruder"}
+{"seq": 11, "kind": "set_position", "pos": [346.0, 340.19, 495.495, 0.0], "tool": "extruder"}
+{"seq": 12, "kind": "set_position", "pos": [346.0, 340.19, 0.0, 0.0], "tool": "extruder"}
+{"seq": 13, "kind": "move", "pos": [346.0, 340.19, 5.0, 0.0], "speed": 8.0, "tool": "extruder"}
+{"seq": 14, "kind": "set_position", "pos": [346.0, 340.19, 10.0, 0.0], "tool": "extruder"}
+{"seq": 15, "kind": "set_position", "pos": [346.0, 340.19, 0.0, 0.0], "tool": "extruder"}
+{"seq": 16, "kind": "move", "pos": [175.0, 175.0, 10.0, 0.0], "speed": 100.0, "tool": "extruder"}
+{"seq": 17, "kind": "move", "pos": [175.0, -26.96, 10.0, 0.0], "speed": 266.666667, "tool": "extruder"}
+{"seq": 18, "kind": "move", "pos": [21.0, -26.96, 10.0, 0.0], "speed": 266.666667, "tool": "extruder"}
+{"seq": 19, "kind": "move", "pos": [21.0, -46.96, 10.0, 0.0], "speed": 266.666667, "tool": "extruder"}
+{"seq": 20, "kind": "move", "pos": [21.0, -68.96, 10.0, 0.0], "speed": 50.0, "tool": "extruder"}
+{"seq": 21, "kind": "move", "pos": [26.0, -68.96, 10.0, 0.0], "speed": 50.0, "tool": "extruder"}
+{"seq": 22, "kind": "move", "pos": [26.0, 48.04, 10.0, 0.0], "speed": 266.666667, "tool": "extruder"}
+{"seq": 23, "kind": "move", "pos": [26.0, 48.04, 11.0, 0.0], "speed": 266.666667, "tool": "extruder"}
+{"seq": 24, "kind": "move", "pos": [175.0, 48.04, 11.0, 0.0], "speed": 266.666667, "tool": "extruder"}
+{"seq": 25, "kind": "move", "pos": [175.0, 175.0, 11.0, 0.0], "speed": 266.666667, "tool": "extruder"}
+{"seq": 26, "kind": "move", "pos": [175.0, 175.0, 10.0, 0.0], "speed": 266.666667, "tool": "extruder"}
+{"seq": 27, "kind": "move", "pos": [175.0, 175.0, 11.0, 0.0], "speed": 266.666667, "tool": "extruder"}
+{"seq": 28, "kind": "move", "pos": [26.0, 48.04, 11.0, 0.0], "speed": 266.666667, "tool": "extruder"}
+{"seq": 29, "kind": "move", "pos": [26.0, -68.96, 11.0, 0.0], "speed": 266.666667, "tool": "extruder"}
+{"seq": 30, "kind": "move", "pos": [21.0, -68.96, 11.0, 0.0], "speed": 50.0, "tool": "extruder"}
+{"seq": 31, "kind": "move", "pos": [21.0, -46.96, 11.0, 0.0], "speed": 50.0, "tool": "extruder"}
+{"seq": 32, "kind": "move", "pos": [21.0, -26.96, 11.0, 0.0], "speed": 266.666667, "tool": "extruder"}
+{"seq": 33, "kind": "move", "pos": [328.0, -26.96, 11.0, 0.0], "speed": 266.666667, "tool": "extruder1"}
+{"seq": 34, "kind": "move", "pos": [328.0, -46.96, 11.0, 0.0], "speed": 266.666667, "tool": "extruder1"}
+{"seq": 35, "kind": "move", "pos": [328.0, -68.96, 11.0, 0.0], "speed": 50.0, "tool": "extruder1"}
+{"seq": 36, "kind": "move", "pos": [323.0, -68.96, 11.0, 0.0], "speed": 50.0, "tool": "extruder1"}
+{"seq": 37, "kind": "move", "pos": [323.0, 48.04, 11.0, 0.0], "speed": 266.666667, "tool": "extruder1"}
+{"seq": 38, "kind": "move", "pos": [175.0, 48.04, 11.0, 0.0], "speed": 266.666667, "tool": "extruder1"}
+{"seq": 39, "kind": "move", "pos": [175.0, 175.0, 11.0, 0.0], "speed": 266.666667, "tool": "extruder1"}
+{"seq": 40, "kind": "move", "pos": [175.0, 175.0, 10.0, 0.0], "speed": 266.666667, "tool": "extruder1"}
+{"seq": 41, "kind": "move", "pos": [175.0, 175.0, 11.0, 0.0], "speed": 266.666667, "tool": "extruder1"}
+{"seq": 42, "kind": "move", "pos": [323.0, 48.04, 11.0, 0.0], "speed": 266.666667, "tool": "extruder1"}
+{"seq": 43, "kind": "move", "pos": [323.0, -68.96, 11.0, 0.0], "speed": 266.666667, "tool": "extruder1"}
+{"seq": 44, "kind": "move", "pos": [328.0, -68.96, 11.0, 0.0], "speed": 50.0, "tool": "extruder1"}
+{"seq": 45, "kind": "move", "pos": [328.0, -46.96, 11.0, 0.0], "speed": 50.0, "tool": "extruder1"}
+{"seq": 46, "kind": "move", "pos": [328.0, -26.96, 11.0, 0.0], "speed": 266.666667, "tool": "extruder1"}
+{"seq": 47, "kind": "move", "pos": [175.0, 175.0, 10.0, 0.0], "speed": 100.0, "tool": "extruder1"}
