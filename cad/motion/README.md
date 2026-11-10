@@ -7,12 +7,24 @@ Kalico batch mode (`cad/klipper/`) gives a **timeline**: every move the firmware
 | `rig.json` | Generated. The VT350's rig for `platform/freecad/timeline.py`: the XY mapping, the bed's Z, and each head's docked nozzle, pickup offset and dock |
 | `rig.py` | VT350-specific. Derives `rig.json` from `cad/data/logs/sweep_toolhead.log`, `cad/klipper/xy_mapping.json` and `cad/klipper/toolchanger.cfg`; `--check` fails if it differs |
 | `test_rig.py` | The derivation, and the committed tool-change timeline played through the rig. Plain python3 |
+| `play.py` | VT350-specific. Opens the FreeCAD GUI player (`platform/freecad/player.py`) on the model. It gets the groups from `cad/studies/sweep_toolhead.py`'s plan stage and caches them in `$VT350_WORK/motion/` |
+| `test_play.py` | The plan's groups named the way the rig names them, the cache, the default model and the FreeCAD command. Plain python3 |
 
 ```sh
 python3 cad/motion/rig.py --check              # "rig: OK"
 python3 cad/motion/rig.py --write              # after a CAD log or toolchanger.cfg changes
 python3 platform/freecad/timeline.py --timeline cad/klipper/toolchange_timeline.jsonl --rig cad/motion/rig.json --fps 30
+python3 cad/motion/play.py                     # watch it in FreeCAD: play/pause, step, speed, stop
+python3 cad/motion/play.py --speed 0.25        # start in slow motion
 ```
+
+## The FreeCAD player
+
+`play.py` opens FreeCAD with a **Motion player** panel on the right. **Play/Pause** plays the timeline at the speed factor. **|<** and **>|** step one frame (1/30 s of timeline) and pause. The slider scrubs. **Stop** puts every Placement back and returns to the first frame. The panel shows the frame's time, timeline seq, printer X/Y/Z and which head is on the carriage.
+
+The player opens a **private copy** of the model in a temp dir, never the model itself. Even File → Save only writes the copy, and the copy is removed when the panel closes. The first run on a model takes about a minute, for the plan stage. After that, the groups come from the cache.
+
+Don't recompute while it plays. Some moved parts feed a boolean or compound, and a recompute would rebuild those from the moved inputs. Press Stop first.
 
 ## How the model moves
 
