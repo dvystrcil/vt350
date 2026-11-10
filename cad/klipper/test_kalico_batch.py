@@ -9,6 +9,7 @@ instead of skipping: a skipped run would look green. check_test_tmp.sh skips it 
 import json
 import os
 import re
+import shutil
 import sys
 import tempfile
 import unittest
@@ -16,8 +17,9 @@ import unittest
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 KALISIM = os.path.join(ROOT, "platform", "kalisim")     # the generic runner (vt350#122); this file is the VT350's
-sys.path[:0] = [HERE, os.path.join(ROOT, "platform")]
+sys.path[:0] = [HERE, os.path.join(ROOT, "platform"), os.path.join(ROOT, "platform", "klipper")]
 import dock_params  # noqa: E402
+import frontend  # noqa: E402
 import kalisim  # noqa: E402
 import limits  # noqa: E402
 
@@ -214,6 +216,32 @@ class Toolchange(Base):
     def test_committed_timeline_is_current(self):
         want = [json.loads(l) for l in read(HERE, "toolchange_timeline.jsonl").splitlines() if l.strip()]
         self.assertEqual(self.r.timeline, want, "regenerate: see cad/klipper/README.md, 'The tool changes'")
+
+
+class Frontends(Base):
+    """Fluidd is the VT350's front end (owner, 2026-11-10); switching to Mainsail must still load and run the same."""
+
+    def test_each_front_end_runs_the_tool_changes(self):
+        want = [json.loads(l) for l in read(HERE, "toolchange_timeline.jsonl").splitlines() if l.strip()]
+        # client.cfg-only commands: they exist only if the front end's macros loaded
+        extra = ["SET_PAUSE_NEXT_LAYER ENABLE=0", "SET_PAUSE_AT_LAYER ENABLE=0"]
+        for name in sorted(frontend.FRONTENDS):
+            with self.subTest(front_end=name), tempfile.TemporaryDirectory() as d:
+                # a copy of the repo layout, so frontend.cfg's relative include still resolves
+                shutil.copytree(HERE, os.path.join(d, "cad", "klipper"))
+                os.symlink(os.path.join(ROOT, "platform"), os.path.join(d, "platform"))
+                cfg = os.path.join(d, "cad", "klipper", "frontend.cfg")
+                frontend.main(["--config", cfg, "--use", name])
+                r = kalisim.run(os.path.join(d, "cad", "klipper", "printer.cfg"),
+                                read(HERE, "toolchange.gcode").splitlines() + extra, dicts(), KALICO)
+                self.assertEqual(r.returncode, 0, r.log[-2000:])
+                # the logged config shows which client.cfg loaded: the two differ only in spacing, e.g. CANCEL_PRINT's
+                # "client.park_at_cancel | default(false)" (Fluidd) vs "client.park_at_cancel|default(false)" (Mainsail)
+                marker = {"fluidd": "park_at_cancel | default(false)", "mainsail": "park_at_cancel|default(false)"}
+                self.assertIn(marker[name], read(frontend.client_cfg(name)))
+                self.assertIn(marker[name], r.log)
+                self.assertNotIn("SET_PAUSE", " ".join(re.findall(r'(?m)^Unknown command:"(\w+)"$', r.log)))
+                self.assertEqual(r.timeline, want)
 
 
 if __name__ == "__main__":

@@ -6,6 +6,7 @@ The firmware is [Kalico](https://github.com/KalicoCrew/kalico) (user, 2026-11-09
 |---|---|
 | `printer.cfg` | The Kalico config: corexy, steppers, three Z, limits, the Octopus Pro and both O2S toolboards. `PLACEHOLDER` marks values nobody has decided yet |
 | `xy_mapping.json` | Model → printer XY: origin and axis directions. **Proposed** in [#116](https://github.com/dvystrcil/vt350/issues/116), not confirmed |
+| `frontend.cfg` | The web front end: **Fluidd** (owner, 2026-11-10). One include of a vendored client config in `platform/klipper/frontends/`; `python3 platform/klipper/frontend.py --config cad/klipper/frontend.cfg --use mainsail` switches it |
 | `toolchanger.cfg` | The tool changer: includes MadMax's macros (`madmax/`, unchanged) and sets the VT350's dock positions and two `[tool]`s. Included by `printer.cfg` |
 | `madmax/` | MadMax's `toolchanger.cfg` and `toolchanger_macros.cfg`, vendored unchanged from `zruncho3d/madmax@277a63c` (GPL-3.0) |
 | `dock_params.py` | VT350-specific. Derives every `params_*` in `toolchanger.cfg` from the CAD dock poses and checks the file against them |
@@ -33,6 +34,16 @@ X and Y are mapped by the proposed `xy_mapping.json`: origin at the print square
 **Z `position_min` is the one limit not taken from a CAD log.** Z0 comes from the Beacon nozzle tap (`z_sweep.log`: the nozzle on the magnet sheet) and shifts by fractions of a mm per nozzle. `position_min` only sets how far below Z0 Kalico accepts a command, so per-tool Z offsets and calibration moves aren't refused. −15 matches the AC4 macro source, MadMax `r2pdx_config-v2-Kalico-Beacon` at `zruncho3d/madmax@277a63c` ([vt350#116](https://github.com/dvystrcil/vt350/issues/116)). `limits.py` only requires it to be at or below the CAD floor of 0.
 
 When a CAD log changes, run `python3 cad/klipper/limits.py --check`. If it fails, update `printer.cfg` and regenerate the G-code with `python3 cad/klipper/limits.py --gcode > cad/klipper/envelope.gcode`.
+
+## The web front end
+
+**Fluidd** (owner, 2026-11-10). Mainsail is the other supported choice. Both are Moonraker clients, and each ships a client config with the same sections (`[virtual_sdcard]` with path `~/printer_data/gcodes`, `[pause_resume]`, `[display_status]`, `[respond]`) and the same `PAUSE` / `RESUME` / `CANCEL_PRINT` macros. Both are vendored unchanged in `platform/klipper/frontends/<name>/client.cfg`, pinned by commit and checked by git blob id. `frontend.cfg` includes exactly one of them. To switch, run:
+
+```sh
+python3 platform/klipper/frontend.py --config cad/klipper/frontend.cfg --use mainsail   # or --use fluidd
+```
+
+`test_kalico_batch.py` runs the tool changes under each front end and checks that they give the same timeline. On the Pi, the usual install (`ln -sf ~/fluidd-config/fluidd.cfg ~/printer_data/config/fluidd.cfg`, then `[include fluidd.cfg]`) gives the same file. How this repo's config reaches the Pi isn't decided yet.
 
 ## The tool changes (#116 AC4)
 
@@ -72,6 +83,7 @@ docker run --rm -v "$PWD:/repo:ro" vt350-kalisim sh -c 'cd /repo/platform && $KA
 ```sh
 python3 cad/klipper/test_limits.py                 # no Docker: printer.cfg vs the CAD logs
 python3 cad/klipper/test_dock_params.py            # no Docker: toolchanger.cfg vs the CAD dock poses
+python3 platform/klipper/test_frontend.py          # no Docker: the front-end switch and the vendored client configs
 bash cad/klipper/test_in_container.sh      # Docker: builds the image, runs the Kalico tests; "kalico-batch: OK"
 ```
 
