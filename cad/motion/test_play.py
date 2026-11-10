@@ -68,6 +68,13 @@ class GroupsFile(unittest.TestCase):
         self.assertEqual(g["groups"]["Left"], ["L1", "LP"])
         self.assertEqual(g["model"], self.model)
 
+    def test_each_belt_is_clipped_to_the_sweeps_band(self):     # the whole loop shot out of the frame (vt350#135)
+        sys.path.insert(0, os.path.join(ROOT, "cad", "studies"))
+        import sweep_toolhead
+        with open(self.get()) as f:
+            g = json.load(f)
+        self.assertEqual(g["clip"], {"E1": list(sweep_toolhead.BELT_CLIP)})
+
     def test_new_model_bytes_run_the_plan_again(self):
         p1 = self.get(); write(self.model, b"other bytes"); p2 = self.get()
         self.assertNotEqual(p1, p2)

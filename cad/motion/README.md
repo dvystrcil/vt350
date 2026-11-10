@@ -24,6 +24,8 @@ python3 cad/motion/play.py --speed 0.25        # start in slow motion
 
 The player opens a **private copy** of the model in a temp dir, never the model itself. Even File → Save only writes the copy, and the copy is removed when the panel closes. The first run on a model takes about a minute, for the plan stage. After that, the groups come from the cache.
 
+**The belts are clipped.** Each belt is one loop, and its side runs change length as the gantry moves in Y, so the whole loop can't move rigidly. The player shows only the part in the XY joints' Y band (the X runs and the idler wraps, `sweep_toolhead.BELT_CLIP`), the same part the clash sweep checks, and it moves with the gantry. The side runs are hidden while the player is open. Before this, the whole loop moved with the gantry and shot out the front of the frame.
+
 Don't recompute while it plays. Some moved parts feed a boolean or compound, and a recompute would rebuild those from the moved inputs. Press Stop first.
 
 ## How the model moves

@@ -6,8 +6,11 @@
 A printer's launcher sets these (the VT350's is cad/motion/play.py). The environment:
     MOTION_MODEL     the model (.FCStd). The player opens a PRIVATE COPY in a temp dir, so nothing it or a stray
                      File > Save does can change the model; the copy is removed when the player closes
-    MOTION_GROUPS    JSON {"groups": {group: [object Name, ...]}}: the leaf objects each moving group translates. Every
-                     group the rig moves must be there, and no object may be in two groups
+    MOTION_GROUPS    JSON {"groups": {group: [object Name, ...]}, "clip": {Name: [xmin, ymin, zmin, xmax, ymax, zmax]}}:
+                     the leaf objects each moving group translates. Every group the rig moves must be there, and no
+                     object may be in two groups. "clip" (optional): objects that don't move rigidly as a whole (a
+                     belt loop, whose side runs change length) are shown cut down to a global box at the model pose;
+                     the rest is hidden while the player is open
     MOTION_TIMELINE  the kalisim timeline (JSONL);  MOTION_RIG  the rig file (JSON). timeline.py turns them into frames
     MOTION_FPS       frames per second of timeline time (default 30);  MOTION_SPEED  the starting speed factor (1)
     MOTION_CARRIED   the head on the carriage at the start (default none)
@@ -155,6 +158,46 @@ def check_groups(groups, frames):
             seen[n] = g
 
 
+def check_clip(clip, groups):
+    """clip {Name: [xmin, ymin, zmin, xmax, ymax, zmax]}: each Name is in a group, each box has a volume."""
+    names = {n for ns in groups.values() for n in ns}
+    for n, box in clip.items():
+        if n not in names:
+            raise ValueError(f"clip: object {n} is in no group")
+        if len(box) != 6 or not all(box[i] < box[i + 3] for i in range(3)):
+            raise ValueError(f"clip: {n}'s box {box} isn't [xmin, ymin, zmin, xmax, ymax, zmax] with min < max")
+
+
+def clip_objects(doc, objects, clip):
+    """Show each clipped object cut down to its box: a new Part::Feature in the (private copy of the) document holds
+    the global shape's common with the box, and takes the object's place in its group; the original is hidden and
+    never moves. -> the new {group: [object]}."""
+    import FreeCAD
+    import Part
+    out = {}
+    for g, objs in objects.items():
+        out[g] = []
+        for o in objs:
+            if o.Name not in clip:
+                out[g].append(o)
+                continue
+            x0, y0, z0, x1, y1, z1 = clip[o.Name]
+            s = o.Shape.copy(); s.Placement = o.getGlobalPlacement()
+            c = doc.addObject("Part::Feature", o.Name + "_PlayerClip")
+            c.Shape = s.common(Part.makeBox(x1 - x0, y1 - y0, z1 - z0, FreeCAD.Vector(x0, y0, z0)))
+            c.Label = o.Label + " (player: clipped)"
+            if getattr(o, "ViewObject", None) is not None and getattr(c, "ViewObject", None) is not None:
+                for prop in ("ShapeAppearance", "DiffuseColor", "ShapeColor", "LineColor"):
+                    if hasattr(o.ViewObject, prop) and hasattr(c.ViewObject, prop):
+                        try:
+                            setattr(c.ViewObject, prop, getattr(o.ViewObject, prop))
+                        except Exception:
+                            pass
+                o.ViewObject.Visibility = False
+            out[g].append(c)
+    return out
+
+
 def resolve(doc, groups):
     """{group: [Name]} -> {group: [object]}; a Name the document doesn't have is refused."""
     out = {}
@@ -197,16 +240,18 @@ def config(env):
 
 
 def load(cfg):
-    """-> (frames, {group: [Name]}), checked against each other."""
+    """-> (frames, {group: [Name]}, clip {Name: box}), checked against each other."""
     with open(cfg["rig"]) as f:
         rig = json.load(f)
     with open(cfg["timeline"]) as f:
         records = [json.loads(line) for line in f if line.strip()]
     frames = timeline.frames(rig, records, cfg["fps"], cfg["carried"])
     with open(cfg["groups"]) as f:
-        groups = json.load(f)["groups"]
+        data = json.load(f)
+    groups, clip = data["groups"], data.get("clip", {})
     check_groups(groups, frames)
-    return frames, groups
+    check_clip(clip, groups)
+    return frames, groups, clip
 
 
 # ------------------------------------------------------------------------------------------------ the GUI
@@ -225,12 +270,12 @@ class Panel:
         import FreeCADGui
         from PySide import QtCore, QtWidgets
         self.cfg, self.time = cfg, time.monotonic
-        self.frames, groups = load(cfg)
+        self.frames, groups, clip = load(cfg)
         self.copy, self.cleanup = private_copy(cfg["model"], cfg["copy_dir"])
         try:
             self.doc = FreeCAD.openDocument(self.copy)
             self.doc.Label = self.doc.Label + " (player copy: read-only, never saved)"
-            objects = resolve(self.doc, groups)
+            objects = clip_objects(self.doc, resolve(self.doc, groups), clip)
             # every Placement as opened, before anything moves: the autotest checks Stop against this, not the
             # Mover's own record
             self.opened = {o.Name: o.Placement.copy() for objs in objects.values() for o in objs}
