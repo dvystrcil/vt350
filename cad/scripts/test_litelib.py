@@ -425,6 +425,63 @@ class Strips(Base):
         self.assertEqual(cols[0], cols[1]); self.assertEqual(len(cols[0]), 10)
 
 
+def litepool_mb(workers):
+    """free MB that litepool's default budget turns into exactly `workers` workers"""
+    return litelib.litepool.RESERVE_MB + workers * litelib.litepool.WORKER_MB
+
+
+class ZContact(Base):
+    """#82: _t_contact moves `a` along Z until common() with `b` first exceeds tol; _t_zspan probes along Z lines."""
+    def test_the_bed_lands_on_the_backbone(self):
+        r = litelib._t_contact(self.m.shapes["Bed"], self.m.shapes["Backbone"], -1, 240.0, 270.0)
+        self.assertEqual(r["kind"], "contact")
+        self.assertGreaterEqual(r["d"], 252.0); self.assertLess(r["d"] - 252.0, 0.006)
+
+    def test_a_key_narrower_than_the_slot_drops_through(self):
+        key = litelib.box(49, 51, 0, 100, 250, 260)              # X 49..51 is inside the slot at 48..52
+        self.assertEqual(litelib._t_contact(key, self.m.shapes["Backbone"], -1, 0.0, 280.0)["kind"], "clear")
+        wide = litelib.box(47, 53, 0, 100, 250, 260)
+        self.assertEqual(litelib._t_contact(wide, self.m.shapes["Backbone"], -1, 0.0, 280.0)["kind"], "contact")
+
+    def test_upward_and_with_the_parts_translated_first(self):
+        lid = litelib.box(0, 100, 0, 100, 300, 310)
+        r = litelib._t_contact(self.m.shapes["Bed"], lid, +1, 0.0, 60.0)
+        self.assertAlmostEqual(r["d"], 40.0, delta=0.006)
+        r = litelib._t_contact(self.m.shapes["Bed"], lid, +1, 0.0, 60.0, ta=(0, 0, 5.0))
+        self.assertAlmostEqual(r["d"], 35.0, delta=0.006)
+        r = litelib._t_contact(self.m.shapes["Bed"], lid, +1, 0.0, 60.0, tb=(0, 0, -10.0))
+        self.assertAlmostEqual(r["d"], 30.0, delta=0.006)
+        self.assertEqual(litelib._t_contact(self.m.shapes["Bed"], lid, +1, 0.0, 60.0, tb=(500, 0, 0))["kind"], "clear")
+
+    def test_already_overlapping_is_a_start(self):
+        r = litelib._t_contact(self.m.shapes["Bed"], self.m.shapes["Post"], -1, 0.0, 10.0)
+        self.assertEqual(r["kind"], "start"); self.assertAlmostEqual(r["volume"], 10 * 10 * 10)
+
+    def test_zspan_is_the_material_along_the_lines(self):
+        bb = self.m.shapes["Backbone"]
+        self.assertEqual(litelib._t_zspan(bb, [(10.0, 50.0)], -100.0, 100.0), (-10.0, -2.0))
+        self.assertIsNone(litelib._t_zspan(bb, [(50.0, 50.0)], -100.0, 100.0))               # in the slot
+        self.assertEqual(litelib._t_zspan(self.m.shapes["Post"], [(95.0, 5.0), (50.0, 50.0)], 0.0, 1000.0), (240.0, 600.0))
+
+    def test_zspan_ignores_material_outside_its_z_range(self):
+        self.assertEqual(litelib._t_zspan(self.m.shapes["Post"], [(95.0, 5.0)], 0.0, 300.0), (240.0, 300.0))
+
+    def test_parallel_contacts_are_identical_to_serial(self):
+        p2 = litelib.Pass("zc", work=self.work, dry=True, workers=2)
+        self.addCleanup(p2.close)
+        m2 = p2.open(self.fixture)
+        key = litelib.box(47, 53, 0, 100, 250, 260)
+        def tasks(m): return [(m.shapes["Bed"], m.shapes["Backbone"], -1, 240.0, 270.0),
+                              (key, m.shapes["Backbone"], -1, 0.0, 280.0),
+                              (m.shapes["Bed"], m.shapes["Post"], -1, 0.0, 10.0)]
+        a, b = self.p.map(litelib._t_contact, tasks(self.m)), p2.map(litelib._t_contact, tasks(m2))
+        self.assertEqual(a, b)
+        self.assertIsNotNone(p2._pool); self.assertEqual(p2.stale, 0)
+        sa = self.p.map(litelib._t_zspan, [(self.m.shapes["Post"], [(95.0, 5.0)], 0.0, 1000.0)] * 2)
+        sb = p2.map(litelib._t_zspan, [(m2.shapes["Post"], [(95.0, 5.0)], 0.0, 1000.0)] * 2)
+        self.assertEqual(sa, sb)
+
+
 class Parallel(Base):
     """workers=2: the same checks on the same saved fixture give bit-identical results and log lines to serial."""
     def par(self, name="par"):
@@ -549,15 +606,30 @@ class Parallel(Base):
         self.assertTrue(all(pr.poll() is not None for pr in procs))
         self.assertIsNone(p2._pool)
 
-    def test_worker_count_defaults_to_the_env_pin(self):
-        old = os.environ.get("VT350_WORKERS")
+    def pinned(self, free_mb):
+        """Pass("w") with VT350_WORKERS=3 and the memory read faked to free_mb (#111: the real read made the test
+        depend on the host's free RAM). The budget env vars are cleared so the defaults apply."""
+        keys = ("VT350_WORKERS", "VT350_WORKER_MB", "VT350_RESERVE_MB")
+        old = {k: os.environ.get(k) for k in keys}
+        real = litelib.litepool.available_mb
+        for k in keys[1:]: os.environ.pop(k, None)
         os.environ["VT350_WORKERS"] = "3"
+        litelib.litepool.available_mb = lambda *a, **kw: free_mb
         try:
             p = litelib.Pass("w", work=self.work, dry=True); p.close()
         finally:
-            if old is None: del os.environ["VT350_WORKERS"]
-            else: os.environ["VT350_WORKERS"] = old
-        self.assertEqual(p.workers, 3)
+            litelib.litepool.available_mb = real
+            for k, v in old.items():
+                if v is None: os.environ.pop(k, None)
+                else: os.environ[k] = v
+        return p.workers
+
+    def test_worker_count_defaults_to_the_env_pin(self):
+        self.assertEqual(self.pinned(litepool_mb(10)), 3)
+
+    def test_the_env_pin_is_still_capped_by_free_memory(self):           # the read the test above fakes is used
+        self.assertEqual(self.pinned(litepool_mb(2)), 2)
+        self.assertEqual(self.pinned(0), 1)
 
 
 if __name__ in ("__main__", "test_litelib"):        # freecadcmd runs a script as module "test_litelib"

@@ -62,7 +62,8 @@ V = FreeCAD.Vector
 REPO = os.environ.get("VT350_REPO", "/home/dan/Code/vt350")
 WORK = os.environ.get("VT350_WORK", f"{REPO}/cad/data")
 MODELS = "/home/dan/Documents/VT350"
-BED_LOWEST_DZ = -241.98       # the bed's bottom of Z travel from the model pose (#74, boolean vs the backbone)
+BED_LOWEST_DZ = -242.00       # the bed's bottom of Z travel from the model pose: the bed-frame 2020 T on the
+                              # backbone (#82 z_sweep, data/logs/z_sweep.log; #74's bisection gave -241.98)
 BED_Z = (230.0, 300.0)        # bed-side solids at the model pose: ZMin in this band and ZMax <= its top
 HERE = os.path.dirname(os.path.abspath(__file__))
 APP = os.environ.get("FREECAD_APPIMAGE", "/home/dan/FreeCAD/FreeCAD_26.3rc2-Linux-x86_64.AppImage")
@@ -168,6 +169,35 @@ def _t_above(s, col, part, z0, grid, k=0, n=1):
     key = (id(s), col)
     if key not in _wpieces: _wpieces[key] = (s, s.common(box(*col)))   # s kept: its id can't be reused
     return above_material(_wpieces[key][1], part, z0, grid, k, n)
+
+
+def _moved(s, v):
+    """A copy that shares the geometry, with the placement moved by v (clashlib's _shifted)."""
+    c = s.copy(False); c.Placement = FreeCAD.Placement(v, FreeCAD.Rotation()).multiply(s.Placement); return c
+
+
+def _t_contact(a, b, direction, lo, hi, ta=(0.0, 0.0, 0.0), tb=(0.0, 0.0, 0.0), step=None, eps=None, tol=None):
+    """#82: `a` moved by ta, then `direction` (-1 down, +1 up) * d along Z, against `b` moved by tb: contact.py's
+    first_contact over d in [lo, hi], each probe a common() volume. -> {"kind": "contact"|"clear"|"start", ...}"""
+    import contact
+    sa, sb = _S(a), _S(b)
+    if any(tb): sb = _moved(sb, V(*tb))
+    t = V(*ta)
+    def probe(d):
+        return _moved(sa, t + V(0, 0, direction * d)).common(sb).Volume
+    kw = {k: v for k, v in (("step", step), ("eps", eps), ("tol", tol)) if v is not None}
+    return contact.first_contact(probe, lo, hi, **kw)
+
+
+def _t_zspan(s, pts, z0, z1):
+    """#82 ray probes: vertical lines at pts [(x, y)] from z1 down to z0; (lowest, highest) Z of `s`'s material on
+    them, or None if no line meets it."""
+    s = _S(s)
+    zs = []
+    for x, y in pts:
+        for e in Part.makeLine(V(x, y, z1), V(x, y, z0)).common(s).Edges:
+            zs += [v.Point.z for v in e.Vertexes]
+    return (min(zs), max(zs)) if zs else None
 
 
 def grid_columns(lo, hi, grid, k=0, n=1):

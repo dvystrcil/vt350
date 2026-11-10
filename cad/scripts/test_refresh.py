@@ -102,8 +102,8 @@ class Sync(unittest.TestCase):
 class Steps(unittest.TestCase):
     def test_plan_order_and_model(self):
         names = [s.name for s in rf.plan(26, root="/r", app="/app")]
-        self.assertEqual(names, ["part_index", "derive_stls", "sync_printed", "check_printed", "sweep", "print_area",
-                                 "test_print_area"])
+        self.assertEqual(names, ["part_index", "derive_stls", "sync_printed", "check_printed", "sweep", "z_sweep",
+                                 "print_area", "test_print_area"])
         sweep = next(s for s in rf.plan(26, root="/r", app="/app") if s.name == "sweep")
         self.assertEqual(sweep.env["VT350_MODEL"], "/home/dan/Documents/VT350/vt350-lite-26.FCStd")
 
@@ -129,7 +129,16 @@ class Steps(unittest.TestCase):
 
     def test_from_step_skips_earlier_steps(self):
         names = [s.name for s in rf.plan(26, root="/r", app="/app", start="sweep")]
-        self.assertEqual(names, ["sweep", "print_area", "test_print_area"])
+        self.assertEqual(names, ["sweep", "z_sweep", "print_area", "test_print_area"])
+
+    def test_z_sweep_step_runs_headless_on_the_model_into_the_repo_log(self):        # #82
+        z = next(s for s in rf.plan(26, root="/r", app="/app") if s.name == "z_sweep")
+        self.assertEqual(z.cmd, ["/app", "freecadcmd", "/r/cad/scripts/z_sweep.py"])
+        self.assertEqual(z.env["VT350_MODEL"], "/home/dan/Documents/VT350/vt350-lite-26.FCStd")
+        self.assertEqual(z.env["VT350_WORK"], "/r/cad/data")
+        self.assertEqual(z.env["FREECADCMD"], "/app freecadcmd")
+        self.assertEqual(z.marker_in, "/r/cad/data/logs/z_sweep.log")
+        self.assertEqual(z.log, "/r/cad/data/logs/refresh_z_sweep.out")
 
     def test_unknown_from_step_is_rejected(self):
         with self.assertRaises(ValueError):
@@ -207,7 +216,39 @@ SWEEP = """\
 """
 
 
+ZLOG = """\
+[   80.2s] z_lower_limit_mm=43.78 (LDO plate top; bed dZ -241.98 from the model pose: 2020 (1) lands on backbone-350 v2)
+[   99.0s] z_upper_limit_mm=379.10 (LDO plate top; bed dZ +93.34 from the model pose: Left head carried, x touches y)
+[   99.1s] print_height_mm=335.32 (magnet-sheet top, from the lower stop to the Left nozzle)
+[   99.2s] z_sweep: done (read-only, nothing saved)
+"""
+
+
+class EnvelopeDocs(unittest.TestCase):
+    def test_the_documents_the_envelopes_name_beside_the_model(self):       # #82: homelab ships these
+        import zipfile
+        d = tempfile.mkdtemp(); self.addCleanup(shutil.rmtree, d, True)
+        m = os.path.join(d, "vt350-lite-29.FCStd")
+        with zipfile.ZipFile(m, "w") as z:
+            z.writestr("Document.xml", '<Property name="Label" type="App::PropertyString">'
+                                       '<String value="Ebox envelope (contents in vt350-ebox.FCStd)"/></Property>')
+        self.assertEqual(rf.envelope_docs(m), [os.path.join(d, "vt350-ebox.FCStd")])
+
+
 class Summary(unittest.TestCase):
+    def test_z_travel_compared_with_the_previous_run(self):                   # #82
+        prev = ZLOG.replace("43.78", "33.00").replace("335.32", "347.80")
+        s = rf.summary([], None, None, z_log=ZLOG, prev_z_log=prev)
+        self.assertIn("Z travel: plate top 43.78 .. 379.10, print height 335.32 (was 33.00 .. 379.10, 347.80)", s)
+
+    def test_z_travel_without_a_usable_previous_log(self):
+        s = rf.summary([], None, None, z_log=ZLOG, prev_z_log="")
+        self.assertIn("Z travel: plate top 43.78 .. 379.10, print height 335.32", s)
+        self.assertNotIn("was", s.split("Z travel")[1])
+
+    def test_z_sweep_not_run(self):
+        self.assertIn("z sweep not run", rf.summary([], None, None))
+
     def test_reach_compared_with_the_previous_run(self):
         prev = SWEEP.replace("-416.0", "-418.0")
         s = rf.summary(changed=[], sweep_log=SWEEP, prev_sweep_log=prev)
@@ -253,6 +294,17 @@ class MarkersMatchTheRealTools(unittest.TestCase):
         log = open(os.path.join(self.ROOT, "cad/data/logs/part_index.log")).read()
         self.assertRegex(log, self.marker_of("part_index"))
         self.assertNotRegex("[  1.0s] FAILED\nTraceback ... cad/scripts/part_index.py, in run\n", self.marker_of("part_index"))
+
+    def test_z_sweep_marker(self):
+        # z_sweep needs FreeCAD; its last line is contact.DONE, logged by a litelib Pass (timestamp prefix)
+        sys.path.insert(0, HERE); import contact
+        self.assertRegex(f"[  99.2s] {contact.DONE}\n", self.marker_of("z_sweep"))
+        self.assertNotRegex("[  9.0s] FAILED\nTraceback ...\n", self.marker_of("z_sweep"))
+        self.assertNotRegex(f"[  9.0s] {contact.DONE} or not\n", self.marker_of("z_sweep"))
+        # and the committed log of a real run (batch lane, lite-29, 2026-11-09) passes it and parses
+        log = open(os.path.join(self.ROOT, "cad/data/logs/z_sweep.log")).read()
+        self.assertRegex(log, self.marker_of("z_sweep"))
+        self.assertEqual(contact.parse(log)["z_lower_limit_mm"], 43.76)
 
     def test_print_area_marker(self):
         with tempfile.TemporaryDirectory() as d:
