@@ -60,6 +60,26 @@ NOZZLE = "E3D v6 HotEnd - Nozzle"
 
 
 # ------------------------------------------------------------------------------------------------ stage 1: plan
+def bed_bottom(land, measured, floor):
+    """land: [(drop, bed label, fixed label)], the bounding-box drops to each landing. -> (dz, note): the bed-bottom
+    poses use the CONFIGURED floor (litelib.BED_FLOOR_DZ: printer.cfg stops the bed contact.FLOOR_MARGIN above the
+    measured lower stop, litelib.BED_LOWEST_DZ, from z_sweep's boolean contact; vt350#82). The box estimate is only
+    logged: an envelope box is not its contents (lite-29 landed the 2020 on the filter envelope at -238.00). A box can
+    only land early, so an estimate below the measured stop means one of them is wrong."""
+    if not land: raise RuntimeError("bed bottom: nothing lands under the bed")
+    land = sorted(land)
+    est = -land[0][0]
+    if est < measured - 1e-6:
+        raise RuntimeError(f"bed bottom: the bounding-box estimate {est:.2f} is below the measured lower stop "
+                           f"{measured:.2f}; re-run z_sweep.py")
+    if floor < measured - 1e-6:
+        raise RuntimeError(f"bed bottom: the configured floor {floor:.2f} is below the measured lower stop {measured:.2f}")
+    return floor, (f"bed bottom: dZ {floor:.2f} (the configured floor, litelib.BED_FLOOR_DZ: printer.cfg stops the bed "
+                   f"{floor - measured:.2f} mm above the measured lower stop {measured:.2f} from z_sweep.py); "
+                   f"bounding-box estimate {est:.2f} ({land[0][1]} lands on {land[0][2]}), next: "
+                      + "; ".join(f"{-g:.2f} {a} on {c}" for g, a, c in land[1:4]))
+
+
 def plan(out):
     import FreeCAD
     V = FreeCAD.Vector
@@ -160,10 +180,9 @@ def plan(out):
             if g.ZMax > b.ZMin + 0.01: continue
             if min(b.XMax, g.XMax) - max(b.XMin, g.XMin) <= 0.01 or min(b.YMax, g.YMax) - max(b.YMin, g.YMin) <= 0.01: continue
             land.append((b.ZMin - g.ZMax, lab[nb], f.Label))
-    land.sort()
-    dz_bottom = -land[0][0]
-    notes.append(f"bed bottom: dZ {dz_bottom:.2f} ({land[0][1]} lands on {land[0][2]}, bounding-box estimate); next: "
-                 + "; ".join(f"{-g:.2f} {a} on {c}" for g, a, c in land[1:4]))
+    from litelib import BED_LOWEST_DZ, BED_FLOOR_DZ         # FreeCAD-only module; plan() runs under freecadcmd
+    dz_bottom, note = bed_bottom(land, BED_LOWEST_DZ, BED_FLOOR_DZ)
+    notes.append(note)
     # poses
     poses, meta = {}, {}
     x_lo, x_hi = PLATE_X0 + (PLATE_W - PRINT_W) / 2, PLATE_X0 + (PLATE_W + PRINT_W) / 2

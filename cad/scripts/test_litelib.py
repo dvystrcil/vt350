@@ -430,6 +430,13 @@ def litepool_mb(workers):
     return litelib.litepool.RESERVE_MB + workers * litelib.litepool.WORKER_MB
 
 
+class BedConstants(Base):
+    def test_the_floor_is_the_lower_stop_plus_the_printer_cfg_margin(self):     # user 2026-11-09
+        import contact
+        self.assertEqual(litelib.BED_FLOOR_DZ, litelib.BED_LOWEST_DZ + contact.FLOOR_MARGIN)
+        self.assertEqual((litelib.BED_LOWEST_DZ, litelib.BED_FLOOR_DZ), (-242.0, -237.0))
+
+
 class ZContact(Base):
     """#82: _t_contact moves `a` along Z until common() with `b` first exceeds tol; _t_zspan probes along Z lines."""
     def test_the_bed_lands_on_the_backbone(self):

@@ -204,6 +204,18 @@ class FullTravel(unittest.TestCase):
         return lim(self.PLATE, hit(low, "2020 (1)", "backbone"), [], {"Left": hit(up, self.MAG, self.NOZ)},
                    top=top, rails_up=list(rails_up))
 
+    def test_the_configured_floor_is_5_mm_above_the_lower_stop(self):   # user 2026-11-09: printer.cfg
+        r = self.r()
+        self.assertEqual(contact.FLOOR_MARGIN, 5.0)
+        self.assertAlmostEqual(r["klipper"]["position_max_configured"], 93.33 + 242.0 - 5.0)
+        self.assertAlmostEqual(r["floor"]["dz"], -237.0)
+        self.assertAlmostEqual(r["floor"]["plate_top"], self.PLATE - 237.0)
+        self.assertIn(contact.line("klipper_position_max_configured_mm", 93.33 + 242.0 - 5.0,
+                                   "printer.cfg [stepper_z] position_max: the bed stops 5.00 mm above the lower stop "
+                                   "(bed dZ -237.00, plate top 48.76); minus the steel sheet's thickness"), r["lines"])
+        # not a required key: a log without it still parses (KEYS unchanged)
+        self.assertNotIn("klipper_position_max_configured_mm", contact.KEYS)
+
     def test_klipper_numbers(self):
         r = self.r()
         self.assertAlmostEqual(r["klipper"]["position_max"], 93.33 + 242.0)
