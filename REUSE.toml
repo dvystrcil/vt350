@@ -30,6 +30,12 @@ SPDX-FileCopyrightText = "zruncho3d and the MadMax contributors"
 SPDX-License-Identifier = "GPL-3.0-only"
 
 [[annotations]]
+path = "platform/klipper/frontends/**"
+precedence = "override"
+SPDX-FileCopyrightText = "Alex Zellner and the Fluidd / Mainsail contributors"
+SPDX-License-Identifier = "GPL-3.0-only"
+
+[[annotations]]
 path = "parts/printed/madmax/andrewmcgr/**"
 precedence = "override"
 SPDX-FileCopyrightText = ["andrewmcgr", "zruncho3d and the MadMax contributors"]

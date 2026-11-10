@@ -6,6 +6,7 @@ on:
     paths:
       - cad/klipper/**
       - platform/kalisim/**
+      - platform/klipper/**
       - cad/data/logs/z_sweep.log
       - cad/data/logs/sweep_toolhead.log
       - .github/workflows/kalico-batch.yml
@@ -14,6 +15,7 @@ on:
     paths:
       - cad/klipper/**
       - platform/kalisim/**
+      - platform/klipper/**
       - cad/data/logs/z_sweep.log
       - cad/data/logs/sweep_toolhead.log
       - .github/workflows/kalico-batch.yml
@@ -33,6 +35,10 @@ jobs:
         run: python3 cad/klipper/test_dock_params.py 2>&1 | tee test-dock-params.log
       - name: Confirm every dock-params test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-dock-params.log && tail -1 test-dock-params.log | grep -qx 'OK'
+      - name: Test the front-end switch and the vendored client configs (frontend.py; no Kalico)
+        run: python3 platform/klipper/test_frontend.py 2>&1 | tee test-frontend.log
+      - name: Confirm every front-end test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-frontend.log && tail -1 test-frontend.log | grep -qx 'OK'
       - name: Test the batch-mode runner against a fake klippy (kalisim; no Kalico)
         run: python3 platform/kalisim/test_kalisim.py 2>&1 | tee test-kalisim.log
       - name: Confirm every kalisim test ran

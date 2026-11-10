@@ -14,6 +14,7 @@ MGN9 rails on Z with integrated-leadscrew NEMA17s (T8, 8 mm), 250 mm Z travel,
 
 | Date | Decision | Where |
 |---|---|---|
+| 2026-11-10 | **Web front end: Fluidd** (Mainsail stays a one-line switch: `platform/klipper/frontend.py --use mainsail`). Firmware is Kalico; tool-change macros are MadMax's `r2pdx_config-v2-Kalico-Beacon` on klipper-toolchanger | `cad/klipper/README.md`, #116 |
 | 2026-11-04 | **+100 mm between the gantry and the frame top**, for bowden/USB clearance; gantry height and Z travel unchanged | `cad/README.md` |
 | 2026-11-04 | Frame bars crossing the change are **re-extruded from their end profile** (parametric), not cut-and-spliced | `cad/README.md` |
 | 2026-11-04 | Door gets **3 identical hinges** | `cad/README.md` |
