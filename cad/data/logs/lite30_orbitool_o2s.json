@@ -1,0 +1,194 @@
+{
+ "heads": {
+  "Left": {
+   "as_found": {
+    "n": 15,
+    "com_max": 1.8074646325380457,
+    "com_rms": 0.4908528299681004,
+    "com_worst": "HubHousing V5 With Logo",
+    "vol_max": 0.3334559651884774
+   },
+   "stack": {
+    "n": 14,
+    "com_max": 0.00025494617577288245,
+    "com_rms": 7.729390907716249e-05,
+    "t": [
+     -400.33657166237634,
+     -25.509914638722123,
+     467.90365956808535
+    ]
+   },
+   "hub_dz": -2.000017264518751,
+   "after": {
+    "n": 15,
+    "com_max": 0.0002602821777446698,
+    "com_rms": 9.464167267204983e-05,
+    "vol_max": 0.3334559651884774,
+    "t": [
+     -400.3365598557552,
+     -25.509924504190366,
+     465.9036152350171
+    ]
+   },
+   "hub_mates_before": {
+    "Molded Gear Housing (65 teeth) v1 (1)": 40.74,
+    "LatchShaft (1)": 64.99,
+    "Orbiter Spider Shaft v4 (1)": 45.95
+   },
+   "hub_mates_after": {
+    "Molded Gear Housing (65 teeth) v1 (1)": 0.0,
+    "LatchShaft (1)": 65.03,
+    "Orbiter Spider Shaft v4 (1)": 0.0
+   },
+   "moved": 49,
+   "new": {
+    "board": [
+     456.897,
+     503.341
+    ],
+    "usb": [
+     496.341,
+     549.341
+    ],
+    "mount": [
+     460.95,
+     488.85
+    ],
+    "sensor": [
+     460.387,
+     517.15
+    ]
+   }
+  },
+  "Right": {
+   "as_found": {
+    "n": 15,
+    "com_max": 1.807464632538222,
+    "com_rms": 0.49085282996812746,
+    "com_worst": "HubHousing V5 With Logo",
+    "vol_max": 0.3334559651957534
+   },
+   "stack": {
+    "n": 14,
+    "com_max": 0.0002549461743501127,
+    "com_rms": 7.729390875608649e-05,
+    "t": [
+     -93.3365716623783,
+     -25.50991463872191,
+     467.90365956808756
+    ]
+   },
+   "hub_dz": -2.000017264519092,
+   "after": {
+    "n": 15,
+    "com_max": 0.00026028217628889616,
+    "com_rms": 9.464167238653995e-05,
+    "vol_max": 0.3334559651957534,
+    "t": [
+     -93.33655985575709,
+     -25.50992450419012,
+     465.90361523501906
+    ]
+   },
+   "hub_mates_before": {
+    "Molded Gear Housing (65 teeth) v1 (1) (1)": 40.74,
+    "LatchShaft (1) (1)": 64.99,
+    "Orbiter Spider Shaft v4 (1) (1)": 45.95
+   },
+   "hub_mates_after": {
+    "Molded Gear Housing (65 teeth) v1 (1) (1)": 0.0,
+    "LatchShaft (1) (1)": 65.03,
+    "Orbiter Spider Shaft v4 (1) (1)": 0.0
+   },
+   "moved": 49,
+   "new": {
+    "board": [
+     456.897,
+     503.341
+    ],
+    "usb": [
+     496.341,
+     549.341
+    ],
+    "mount": [
+     460.95,
+     488.85
+    ],
+    "sensor": [
+     460.387,
+     517.15
+    ]
+   }
+  }
+ },
+ "tubes": {
+  "Left": {
+   "inlet_z": [
+    498.9,
+    517.15
+   ],
+   "r": [
+    105.9,
+    100.4
+   ],
+   "handles": [
+    [
+     290.0,
+     175.0
+    ],
+    [
+     290.0,
+     170.0
+    ]
+   ],
+   "length": [
+    632.3,
+    629.0
+   ]
+  },
+  "Right": {
+   "inlet_z": [
+    498.9,
+    517.15
+   ],
+   "r": [
+    105.9,
+    100.4
+   ],
+   "handles": [
+    [
+     290.0,
+     175.0
+    ],
+    [
+     290.0,
+     170.0
+    ]
+   ],
+   "length": [
+    632.3,
+    629.0
+   ]
+  }
+ },
+ "hits": {
+  "the A4Tv2 cowl": [],
+  "the Crossbow adapter": [],
+  "the MadMax carriage (gantry + dock copies)": [],
+  "both docks": [],
+  "everything else": []
+ },
+ "own_orbiter": {
+  "Left sensor x HubHousing V5 With Logo (1)": [
+   77.214,
+   64.121
+  ],
+  "Right sensor x HubHousing V5 With Logo (1) (1)": [
+   0.003,
+   64.121
+  ]
+ },
+ "design": {
+  "sensor x HubHousing V5 With Logo": 64.12064323900871
+ }
+}

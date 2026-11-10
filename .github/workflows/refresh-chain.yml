@@ -39,6 +39,14 @@ jobs:
         run: python3 cad/scripts/test_contact.py 2>&1 | tee test-contact.log
       - name: Confirm every contact test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-contact.log && tail -1 test-contact.log | grep -qx 'OK'
+      - name: Test the STEP-to-model registration (register.py, #6; no FreeCAD)
+        run: python3 cad/scripts/test_register.py 2>&1 | tee test-register.log
+      - name: Confirm every register test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-register.log && tail -1 test-register.log | grep -qx 'OK'
+      - name: Test the bowden tube's route curve and handle search (bezier.py, #6; no FreeCAD)
+        run: python3 cad/scripts/test_bezier.py 2>&1 | tee test-bezier.log
+      - name: Confirm every bezier test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-bezier.log && tail -1 test-bezier.log | grep -qx 'OK'
       - name: Test the Z sweep's envelope documents, probe grid and limit lines (z_sweep.py, #82; no FreeCAD)
         run: python3 cad/scripts/test_z_sweep.py 2>&1 | tee test-z-sweep.log
       - name: Confirm every z_sweep test ran
