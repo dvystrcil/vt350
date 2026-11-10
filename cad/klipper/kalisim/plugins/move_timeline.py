@@ -24,7 +24,6 @@ class MoveTimeline:
         self.seq = 0
         self.fh = open(self.path, "w", buffering=1)
         self.printer.register_event_handler("klippy:connect", self._connect)
-        self.printer.register_event_handler("klippy:disconnect", self._close)
 
     def _write(self, rec):
         self.seq += 1
@@ -52,10 +51,6 @@ class MoveTimeline:
                          "tool": self._tool(toolhead)})
 
         toolhead.move, toolhead.set_position = logged_move, logged_set_position
-
-    def _close(self):
-        if not self.fh.closed:
-            self.fh.close()
 
 
 def load_config(config):

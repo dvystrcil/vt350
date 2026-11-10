@@ -88,6 +88,23 @@ class PinnedKalico(Base):
         self.assertEqual(r.moves()[-1], [100.0, 100.0, 10.0])
         self.assertEqual(outputs, ["out.serial", "out.serial-o2s_left", "out.serial-o2s_right"])
 
+    def test_timeline_records(self):
+        # the plugin's contract (plugins/move_timeline.py): numbered records, homing as set_position, one move per
+        # planned move (a no-op isn't planned), each with its speed and the active tool
+        r = kalisim.run(CFG, ["G28", "G90", "G1 X100 Y100 Z10 F6000", "G1 X100 Y100 Z10",
+                              "ACTIVATE_EXTRUDER EXTRUDER=extruder1", "G1 X110 F3000"], dicts(), KALICO)
+        self.assertEqual(r.returncode, 0, r.log[-2000:])
+        self.assertEqual([e["seq"] for e in r.timeline], list(range(1, len(r.timeline) + 1)))
+        homing = r.timeline[:-2]
+        self.assertEqual(homing[0]["kind"], "set_position", homing)
+        self.assertEqual(sorted(homing[-1]), ["kind", "pos", "seq", "tool"])
+        self.assertEqual(r.timeline[-2:], [
+            {"seq": len(r.timeline) - 1, "kind": "move", "pos": [100.0, 100.0, 10.0, 0.0], "speed": 100.0,
+             "tool": "extruder"},
+            {"seq": len(r.timeline), "kind": "move", "pos": [110.0, 100.0, 10.0, 0.0], "speed": 50.0,
+             "tool": "extruder1"}])
+        self.assertEqual([e for e in homing if e["kind"] == "set_position"][-1]["pos"][:3], [346.0, 340.19, 0.0])
+
     def test_a_missing_toolboard_dictionary_fails(self):
         # the dictionaries are really read: without o2s_right's, the config can't load
         r = kalisim.run(CFG, ["G28"], dicts(["mcu", "o2s_left"]), KALICO)
