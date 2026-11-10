@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Needs Kalico: runs printer.cfg through real Kalico batch mode in the kalisim container (vt350#116 AC1, AC3).
+"""Needs Kalico: runs printer.cfg through real Kalico batch mode in the kalisim container (vt350#116 AC1, AC3, AC4).
 
     bash cad/klipper/test_in_container.sh      # builds the image, runs this file in it, prints "kalico-batch: OK"
 
@@ -17,6 +17,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 KALISIM = os.path.join(ROOT, "platform", "kalisim")     # the generic runner (vt350#122); this file is the VT350's
 sys.path[:0] = [HERE, os.path.join(ROOT, "platform")]
+import dock_params  # noqa: E402
 import kalisim  # noqa: E402
 import limits  # noqa: E402
 
@@ -135,6 +136,84 @@ class Envelope(Base):
         zs = [t["z"] for t in kalisim.move_targets(kalisim.parse_blocks(read(HERE, "envelope.gcode"))["in-range"])]
         self.assertEqual(max(zs), float(want[-1]))
         self.assertEqual(float(limits.parse_cfg(read(CFG))["stepper_z"]["position_max"]), float(want[-1]))
+
+
+TOOLCHANGER = os.environ.get("KALISIM_TOOLCHANGER", "/opt/toolchanger")
+TC_MODULES = ("toolchanger.py", "tool.py", "tool_probe.py", "tool_probe_endstop.py")
+
+
+def dock_path(p, tool, kind):
+    """The XY waypoints MadMax's pickup_gcode / dropoff_gcode (madmax/toolchanger.cfg) pass through, in order."""
+    t, tc = p["tools"][tool], p["toolchanger"]
+    park, detach = t["params_park_x"], t["params_detach_x"]
+    if kind == "pickup":
+        return [(park, tc["params_safe_shuttle_y"]), (park, tc["params_close_y"]), (park, tc["params_attach_y"]),
+                (detach, tc["params_attach_y"]), (detach, tc["params_safe_toolhead_y"])]
+    return [(detach, tc["params_safe_toolhead_y"]), (detach, tc["params_attach_y"]), (park, tc["params_attach_y"]),
+            (park, tc["params_close_y"]), (park, tc["params_safe_shuttle_y"])]
+
+
+class Toolchange(Base):
+    """AC4: MadMax's tool-change macros, on klipper-toolchanger, through a pickup and a dock for each head."""
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.p = dock_params.derive_committed()
+        cls.r = kalisim.run(CFG, read(HERE, "toolchange.gcode").splitlines(), dicts(), KALICO)
+
+    def test_module_is_the_pinned_klipper_toolchanger(self):
+        sha = re.search(r"(?m)^ARG TOOLCHANGER_SHA=([0-9a-f]{40})$", read(KALISIM, "Dockerfile")).group(1)
+        self.assertEqual(read(TOOLCHANGER, "SHA").strip(), sha)
+        for m in TC_MODULES:
+            with self.subTest(m=m):
+                self.assertEqual(read(KALICO, "klippy", "extras", m), read(TOOLCHANGER, "klipper", "extras", m))
+
+    def test_kalico_s_own_tools_calibrate_is_kept(self):
+        # klipper-toolchanger's install.sh would replace it; Kalico ships its own (vt350#116, option A)
+        self.assertNotEqual(read(KALICO, "klippy", "extras", "tools_calibrate.py"),
+                            read(TOOLCHANGER, "klipper", "extras", "tools_calibrate.py"))
+
+    def test_runs_to_the_end(self):
+        self.assertEqual(self.r.returncode, 0, self.r.log[-3000:])
+        done = re.findall(r"(?m)^(toolchanger initialized, active None|Selected tool \d \(tool T\d\)|Tool unselected)$",
+                          self.r.log)
+        self.assertEqual(done, ["toolchanger initialized, active None", "Selected tool 0 (tool T0)",
+                                "Selected tool 1 (tool T1)", "Tool unselected"])
+
+    def test_only_the_known_unknown_commands(self):
+        # Kalico answers an unknown command with a message and carries on, so these don't stop a tool change. Both come
+        # from MadMax's macros: after_change_gcode calls SET_INPUT_SHAPER (needs an [input_shaper], not configured
+        # yet), and dropoff_gcode calls STOP_TOOL_PROBE_CRASH_DETECTION, which only [tool_probe_endstop] registers
+        # (MadMax's own Beacon config leaves it out too: tool_detection.cfg "tool_probes cause errors when using
+        # Beacon"). A new one fails here.
+        unknown = re.findall(r'(?m)^Unknown command:"(\w+)"$', self.r.log)
+        self.assertEqual(sorted(set(unknown)), ["SET_INPUT_SHAPER", "STOP_TOOL_PROBE_CRASH_DETECTION"])
+
+    def test_each_head_passes_its_dock_waypoints_in_order(self):
+        xy = [tuple(m[:2]) for m in self.r.moves()]
+        i = 0
+        for tool, kind in (("T0", "pickup"), ("T0", "dropoff"), ("T1", "pickup"), ("T1", "dropoff")):
+            for w in dock_path(self.p, tool, kind):
+                with self.subTest(tool=tool, kind=kind, waypoint=w):
+                    hits = [j for j in range(i, len(xy)) if abs(xy[j][0] - w[0]) < 1e-6 and abs(xy[j][1] - w[1]) < 1e-6]
+                    self.assertTrue(hits, f"{tool} {kind}: no move to {w} after move {i}: {xy[i:i + 8]}")
+                    i = hits[0] + 1
+
+    def test_dock_zone_only_at_the_dock_xs_or_the_shuttle_line(self):
+        # printer.cfg lets Y below 0 anywhere along X (the box limit). The macros go there only at a dock's park or
+        # detach X, or on the empty carriage's travel line, Y = params_safe_shuttle_y (-26.96 on the VT350: MadMax's
+        # distance from the parked heads, which AC5 clash-checks)
+        docks = {v for t in self.p["tools"].values() for v in (t["params_park_x"], t["params_detach_x"])}
+        shuttle = self.p["toolchanger"]["params_safe_shuttle_y"]
+        zone = [(x, y) for x, y, _ in self.r.moves() if y < 0]
+        self.assertTrue(zone, "no move below Y 0: the run didn't reach a dock")
+        for x, y in zone:
+            self.assertTrue(any(abs(x - d) < 1e-6 for d in docks) or abs(y - shuttle) < 1e-6, (x, y))
+
+    def test_committed_timeline_is_current(self):
+        want = [json.loads(l) for l in read(HERE, "toolchange_timeline.jsonl").splitlines() if l.strip()]
+        self.assertEqual(self.r.timeline, want, "regenerate: see cad/klipper/README.md, 'The tool changes'")
 
 
 if __name__ == "__main__":
