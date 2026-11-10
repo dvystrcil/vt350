@@ -9,7 +9,7 @@ Fails (exit 1) when:
   - a row has no stage, or a stage outside the stage issues #7-#15 (#40);
   - a row's qty isn't a whole number or "as-needed";
   - a row has neither a path nor a link, or a path appears twice;
-  - a committed part has no LICENSE (unless it's MIT, the repo's licence) or no README.md
+  - a committed part has no LICENSE (unless it's the user's own design, under the root LICENSE) or no README.md
     in its folder or a parent folder under parts/printed/;
   - a copy of an in-repo part (repo = this repo, upstream_path set) differs from its source;
   - the generated table in parts/printed/README.md is out of date (rewrite it with --write-index).
@@ -30,6 +30,7 @@ import urllib.parse
 import urllib.request
 
 THIS_REPO = "dvystrcil/vt350"
+REPO_LICENSE = "GPL-3.0-or-later"   # the root LICENSE: the user's own work (vt350#122)
 PRINTED = "parts/printed"
 MANIFEST = f"{PRINTED}/manifest.csv"
 README = f"{PRINTED}/README.md"
@@ -196,7 +197,10 @@ def check(root):
         if got != r["sha256"]:
             errs.append(f"{where}: sha256 mismatch (manifest {r['sha256'][:12]}, file {got[:12]})")
         folder = os.path.dirname(r["path"])
-        if r["license"] != "MIT" and not find_up(root, folder, "LICENSE"):
+        own = r["repo"] == THIS_REPO and not r["upstream_path"]   # the user's own design, not a copy or remix
+        if own and r["license"] != REPO_LICENSE:
+            errs.append(f"{where}: own design must carry the repo licence {REPO_LICENSE}, not {r['license']!r}")
+        if not own and not find_up(root, folder, "LICENSE"):
             errs.append(f"{where}: no LICENSE in its folder or a parent under {PRINTED}/")
         if not find_up(root, folder, "README.md"):
             errs.append(f"{where}: no README.md in its folder or a parent under {PRINTED}/")

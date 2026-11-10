@@ -164,11 +164,29 @@ class CheckPrinted(unittest.TestCase):
         os.remove(os.path.join(self.fx.root, "parts/printed/src/LICENSE"))
         self.assertFails("LICENSE")
 
-    def test_mit_part_needs_no_licence_file(self):
+    def test_own_design_needs_no_licence_file(self):
+        # the user's own design (this repo, no upstream) is covered by the root LICENSE (vt350#122: GPL-3.0)
         os.remove(os.path.join(self.fx.root, "parts/printed/src/LICENSE"))
-        self.fx.rows[0]["license"] = "MIT"
+        for r in self.fx.rows:
+            r.update(repo=cp.THIS_REPO, commit="", upstream_path="", license=cp.REPO_LICENSE)
         self.fx.save()
         self.assertEqual(self.fx.errors(), [])
+
+    def test_third_party_part_under_the_repo_licence_still_needs_its_licence_file(self):
+        # the old "MIT needs no LICENSE" rule keyed on the licence string; GPL-3.0 parts from upstream must still ship
+        # their own LICENSE even though the repo is GPL now
+        os.remove(os.path.join(self.fx.root, "parts/printed/src/LICENSE"))
+        self.fx.rows[0]["license"] = cp.REPO_LICENSE
+        self.fx.save()
+        self.assertEqual(self.fx.errors(), ["parts/printed/manifest.csv:2 (src/widget.stl): no LICENSE in its folder "
+                                            "or a parent under parts/printed/"])
+
+    def test_own_design_must_carry_the_repo_licence(self):
+        r = self.fx.rows[0]
+        r.update(repo=cp.THIS_REPO, commit="", upstream_path="", license="MIT")
+        self.fx.save()
+        self.assertEqual(self.fx.errors(), ["parts/printed/manifest.csv:2 (src/widget.stl): own design must carry the "
+                                            "repo licence GPL-3.0-or-later, not 'MIT'"])
 
     def test_missing_readme_fails(self):
         os.remove(os.path.join(self.fx.root, "parts/printed/src/README.md"))

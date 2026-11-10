@@ -1,6 +1,6 @@
 # Dock Arm, lengthened 5 mm (derived from MadMax / andrewmcgr)
 
-**This folder is licensed GPL-3.0 (see `LICENSE` here), not MIT like the rest of this repo.**
+**This folder is licensed GPL-3.0 (see `LICENSE` here), the licence of the part it was made from (the rest of this repo is GPL-3.0-or-later).**
 It's a modified version of a GPL-3.0 part.
 
 | | |

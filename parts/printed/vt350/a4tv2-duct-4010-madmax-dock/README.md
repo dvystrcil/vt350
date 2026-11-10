@@ -2,7 +2,7 @@
 
 # A4Tv2 4010 ducts with MadMax dock bosses (derived from DW-Tas's A4Tv2)
 
-**This folder is licensed CC BY-NC-SA 4.0 (see `LICENSE` here), not MIT like the rest of this repo.** It's a modified
+**This folder is licensed CC BY-NC-SA 4.0 (see `LICENSE` here), not GPL-3.0 like the rest of this repo.** It's a modified
 version of a CC BY-NC-SA 4.0 part: attribution required, **non-commercial only**, and derivatives under the same licence.
 
 | | |

@@ -59,4 +59,4 @@ This prints one JSON line per planned move (`plugins/move_timeline.py`). A move 
 
 ## Licence
 
-`kalisim/` is **GPL-3.0-or-later**. `plugins/move_timeline.py` runs inside Kalico (GPL-3.0), and the core is meant to become a GPL-3.0 FreeCAD add-on (#116, "Design direction"). Every other file in this folder is MIT, like the rest of the repo. Kalico itself isn't vendored: the image fetches it.
+`kalisim/` is **GPL-3.0-or-later**. `plugins/move_timeline.py` runs inside Kalico (GPL-3.0), and the core is meant to become a GPL-3.0 FreeCAD add-on (#116, "Design direction"). Every other file in this folder is GPL-3.0-or-later too, like the rest of the repo's own work. Kalico itself isn't vendored: the image fetches it.

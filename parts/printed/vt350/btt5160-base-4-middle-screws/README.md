@@ -1,6 +1,6 @@
 # BTT TMC5160T Plus base (4 middle screws)
 
-**The user's own design**, under this repo's MIT licence (see the root `LICENSE`). Made in Fusion 360 (STEP exported
+**The user's own design**, under this repo's GPL-3.0-or-later licence (see the root `LICENSE`). Made in Fusion 360 (STEP exported
 2026-05-16), before the FreeCAD model pipeline, so it doesn't come from any `vt350-lite-N` model.
 
 | File | What |

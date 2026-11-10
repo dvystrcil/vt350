@@ -1,7 +1,7 @@
 # Our remixes (vt350)
 
 The current printable version of each part this build changes. Each folder keeps the licence of the part it was made
-from: **GPL-3.0** for the MadMax / andrewmcgr parts, **CC BY-NC-SA 4.0** for the A4Tv2 ducts, and this repo's MIT for
+from: **GPL-3.0** for the MadMax / andrewmcgr parts, **CC BY-NC-SA 4.0** for the A4Tv2 ducts, and this repo's GPL-3.0-or-later for
 the user's own BTT base.
 
 | Folder | Part | From model | Made by |

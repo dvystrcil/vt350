@@ -1,0 +1,70 @@
+# Licensing of every file, read by `reuse lint` (https://reuse.software/spec-3.3/; CI: .github/workflows/reuse.yml).
+# Files with their own SPDX header keep it (cad/klipper/kalisim/). Otherwise the LAST matching [[annotations]] wins,
+# so the repo default comes first and each third-party or derived folder overrides it below. vt350#122.
+# Per-folder LICENSE files stay for people (REUSE ignores LICENSE/COPYING files); the texts live in LICENSES/.
+version = 1
+
+# The user's own work: code, configs, notes, CAD data and logs, renders, the BTT base.
+[[annotations]]
+path = "**"
+SPDX-FileCopyrightText = "2026 Daniel Vystrcil"
+SPDX-License-Identifier = "GPL-3.0-or-later"
+
+# Unchanged upstream printed parts (parts/printed/README.md has the pinned commits).
+[[annotations]]
+path = "parts/printed/voron-trident/**"
+precedence = "override"
+SPDX-FileCopyrightText = "Voron Design"
+SPDX-License-Identifier = "GPL-3.0-only"
+
+[[annotations]]
+path = "parts/printed/madmax/**"
+precedence = "override"
+SPDX-FileCopyrightText = "zruncho3d and the MadMax contributors"
+SPDX-License-Identifier = "GPL-3.0-only"
+
+[[annotations]]
+path = "parts/printed/madmax/andrewmcgr/**"
+precedence = "override"
+SPDX-FileCopyrightText = ["andrewmcgr", "zruncho3d and the MadMax contributors"]
+SPDX-License-Identifier = "GPL-3.0-only"
+
+[[annotations]]
+path = "parts/printed/clicky-clack/**"
+precedence = "override"
+SPDX-FileCopyrightText = "tanaes (whopping_Voron_mods)"
+SPDX-License-Identifier = "GPL-3.0-only"
+
+[[annotations]]
+path = "parts/printed/a4tv2/**"
+precedence = "override"
+SPDX-FileCopyrightText = "DW-Tas"
+SPDX-License-Identifier = "CC-BY-NC-SA-4.0"
+
+[[annotations]]
+path = "parts/printed/ldo-monolith/**"
+precedence = "override"
+SPDX-FileCopyrightText = "Monolith3D"
+SPDX-License-Identifier = "CC-BY-NC-SA-4.0"
+
+# Our remixes keep the licence of the part they were made from (the generated copy in cad/derived/ and the curated
+# copy in parts/printed/vt350/).
+[[annotations]]
+path = ["cad/derived/madmax-andrewmcgr-*/**", "parts/printed/vt350/madmax-andrewmcgr-*/**"]
+precedence = "override"
+SPDX-FileCopyrightText = ["andrewmcgr", "zruncho3d and the MadMax contributors", "2026 Daniel Vystrcil"]
+SPDX-License-Identifier = "GPL-3.0-only"
+
+[[annotations]]
+path = ["cad/derived/a4tv2-duct-4010-madmax-dock/**", "parts/printed/vt350/a4tv2-duct-4010-madmax-dock/**"]
+precedence = "override"
+SPDX-FileCopyrightText = ["DW-Tas", "2026 Daniel Vystrcil"]
+SPDX-License-Identifier = "CC-BY-NC-SA-4.0"
+
+# Fastener solids copied out of the original STEP-based model (vt350-good.FCStd) by extract_fasteners.py. Which
+# upstream STEP each came from isn't recorded, so no licence is claimed for them. See the licence text.
+[[annotations]]
+path = "cad/data/fasteners/keep/**"
+precedence = "override"
+SPDX-FileCopyrightText = "unknown: upstream STEP assemblies in vt350-good.FCStd"
+SPDX-License-Identifier = "LicenseRef-provenance-unverified"

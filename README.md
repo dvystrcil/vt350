@@ -19,13 +19,13 @@ Created 2026-05-17 to centralize the build before construction begins.
 | `cad/data/` | Script inputs/outputs: fastener records, frame map, kept fastener solids, run logs |
 | `config/` | Klipper / Mainsail / Moonraker configuration (from build stage #15) |
 
-If the prose under `notes/` grows substantial, this repo will move to a
-dual-license setup (MIT for code/configs + CC-BY-4.0 for prose) per the
-[repo-protections convention](https://github.com/dvystrcil/skills/tree/main/repo-protections).
-
 ## License
 
-[MIT](LICENSE).
+Our own work is **GPL-3.0-or-later** ([`LICENSE`](LICENSE)). That covers the code, configs, notes, CAD data and our own designs. Third-party parts keep their own licences, and so do our remixes of them; the exceptions are listed below.
+
+Every file's licence is machine-readable: [`REUSE.toml`](REUSE.toml) labels each file, the licence texts are in [`LICENSES/`](LICENSES/), and CI runs `reuse lint` ([REUSE 3.3](https://reuse.software/spec-3.3/)), so an unlabelled file fails the build ([#122](https://github.com/dvystrcil/vt350/issues/122)).
+
+The fastener solids in `cad/data/fasteners/keep/` were copied out of a third-party STEP assembly whose sources weren't recorded. No licence is claimed for them (`LicenseRef-provenance-unverified`).
 
 The exception is `cad/derived/`: modified third-party parts, each under its original licence. `cad/derived/madmax-andrewmcgr-dock-arm/` and `cad/derived/madmax-andrewmcgr-carriage-beacon/` are **GPL-3.0** and `cad/derived/a4tv2-duct-4010-madmax-dock/` is **CC BY-NC-SA 4.0** (non-commercial); see the README in each folder.
 
