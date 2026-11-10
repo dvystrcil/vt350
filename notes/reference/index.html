@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VT350 Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; a list of pages, newest first, each with its date and the issue it serves. */
+:root {
+  --bg: #eef0f2; --fg: #1d2126; --muted: #5a626c; --line: #cfd4da; --panel: #ffffff; --accent: #d9622b;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #16191d; --fg: #e4e7eb; --muted: #9aa3ad; --line: #2c3238; --panel: #1e2227; --accent: #f08a5a; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #16191d; --fg: #e4e7eb; --muted: #9aa3ad; --line: #2c3238; --panel: #1e2227; --accent: #f08a5a; color-scheme: dark }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.55 var(--sans); }
+main { max-width: 820px; margin: 0 auto; padding-block: 40px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 24px; }
+h1 { font-size: 1.9rem; line-height: 1.2; margin: 0; }
+p { margin: 0; max-width: 68ch; }
+.eyebrow { font: 500 0.78rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+ul.pages { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+ul.pages li { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 14px 16px; display: grid; gap: 4px; }
+ul.pages a { color: var(--fg); font-weight: 600; font-size: 1.05rem; text-decoration: none; }
+ul.pages a:hover, ul.pages a:focus-visible { color: var(--accent); text-decoration: underline; }
+.meta { font: 0.8rem var(--mono); color: var(--muted); }
+footer { font-size: 0.85rem; color: var(--muted); display: grid; gap: 4px; }
+footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <header style="display:grid;gap:8px">
+    <div class="eyebrow">VT350 · notes/reference</div>
+    <h1>VT350 reference pages</h1>
+    <p>Comparisons and part explainers for the VT350 build, made from vendor manuals and the CAD model. Each page lists its sources at the bottom.</p>
+  </header>
+
+  <ul class="pages">
+    <li>
+      <a href="toolboard-o2s-vs-nitehawk36.html">O2S or Nitehawk-36</a>
+      <p>Orbitool O2S vs LDO Nitehawk-36 on the Orbiter 2.5: chamber rating, Smart Sensor, CAD, and what a switch would cost.</p>
+      <span class="meta">2026-11-10 · vt350#6</span>
+    </li>
+  </ul>
+
+  <footer>
+    <span>Source: <a href="https://github.com/dvystrcil/vt350/tree/main/notes/reference">dvystrcil/vt350 · notes/reference</a>, published by the <code>pages</code> workflow on every change to that folder.</span>
+    <span>Third-party material keeps its own licence; each page names its sources.</span>
+  </footer>
+</main>
+</body>
+</html>
