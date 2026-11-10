@@ -60,11 +60,3 @@ path = ["cad/derived/a4tv2-duct-4010-madmax-dock/**", "parts/printed/vt350/a4tv2
 precedence = "override"
 SPDX-FileCopyrightText = ["DW-Tas", "2026 Daniel Vystrcil"]
 SPDX-License-Identifier = "CC-BY-NC-SA-4.0"
-
-# Fastener solids copied out of the original STEP-based model (vt350-good.FCStd) by extract_fasteners.py. Which
-# upstream STEP each came from isn't recorded, so no licence is claimed for them. See the licence text.
-[[annotations]]
-path = "cad/data/fasteners/keep/**"
-precedence = "override"
-SPDX-FileCopyrightText = "unknown: upstream STEP assemblies in vt350-good.FCStd"
-SPDX-License-Identifier = "LicenseRef-provenance-unverified"
