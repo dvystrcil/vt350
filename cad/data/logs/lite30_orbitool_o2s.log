@@ -1,0 +1,83 @@
+[   63.0s] opened /home/dan/Documents/VT350/vt350-lite-29.FCStd
+[   67.5s] ok   STEP is the pinned file: 25950842 bytes, sha256 0140eb363daff456
+[   93.5s] STEP: 287 solids
+[   95.8s] STEP: hub overlaps with its stack (as designed): {'Molded Gear Housing (65 teeth) v1': 0.0, 'LatchShaft': 65.03, 'Orbiter Spider Shaft v4': 0.0}
+[   95.8s] ok   STEP Orbiter: 53 solids, 1 hub
+[   97.5s] ok   STEP: one ColletClip in the Smart Sensor (1)
+[   97.5s] ok   every STEP solid is the Orbiter (53), added (232: board 187, usb 1, mount 6, sensor 38) or skipped (2 wire restraint)
+[  107.5s] STEP overlaps of the new parts with its own Orbiter (as designed): {'sensor x HubHousing V5 With Logo': 64.12}
+[  107.5s] ok   Left: one hub in the mockup (1)
+[  108.6s] Left: all pairs, as found: n 15, COM max 1.8075 (HubHousing V5 With Logo), rms 0.4909, volume max 0.333 (HubHousing V5 With Logo)
+[  108.6s] ok   Left: the stack (all pairs but the hub) fits the STEP: n 14, COM max 0.0003 (92125A), rms 0.0001, volume max 0.019, rotation off identity 9.0e-07, t (-400.337, -25.510, 467.904)
+[  108.7s] ok   Left: hub offset from the stack is Z only: 6 faces moved dZ -2.0000, XY 0.0000
+[  108.7s] ok   Left: one Crossbow adapter (1)
+[  110.0s] ok   Left: hub seated on the Crossbow adapter: distance 0.0000, overlap 0.0000 mm3
+[  116.0s] ok   Left: after moving 49 stack solids dZ -2.0000, all 15 pairs fit: COM max 0.0003 (92125A), rms 0.0001, volume max 0.333 (HubHousing V5 With Logo), t (-400.337, -25.510, 465.904)
+[  116.1s] ok   Left: the head's hub coincides with the STEP's hub at the registration pose (horizontal faces dZ +0.0000, XY 0.0000): the new parts meet it as the STEP designs
+[  116.5s] ok   Left: hub vs its stack now as in the STEP: before {'Molded Gear Housing (65 teeth) v1 (1)': 40.74, 'LatchShaft (1)': 64.99, 'Orbiter Spider Shaft v4 (1)': 45.95}, after {'Molded Gear Housing (65 teeth) v1 (1)': 0.0, 'LatchShaft (1)': 65.03, 'Orbiter Spider Shaft v4 (1)': 0.0} 
+[  122.4s] ok   Left: board lands where registered (box off by 0.0e+00); Z 456.90..503.34, 225 solids
+[  122.5s] ok   Left: usb lands where registered (box off by 0.0e+00); Z 496.34..549.34, 1 solids
+[  122.5s] ok   Left: mount lands where registered (box off by 0.0e+00); Z 460.95..488.85, 8 solids
+[  122.7s] ok   Left: sensor lands where registered (box off by 0.0e+00); Z 460.39..517.15, 51 solids
+[  122.7s] ok   Left: the old inlet's 2 parts (bowden coupler, brass ring) to remove
+[  122.7s] Left: remove BrassCouplerRing (1) (the Smart Sensor's coupler and collet take the inlet)
+[  122.7s] Left: remove 4mm Bowden Coupler v1 (1) (the Smart Sensor's coupler and collet take the inlet)
+[  129.8s] ok   Right: one hub in the mockup (1)
+[  130.9s] Right: all pairs, as found: n 15, COM max 1.8075 (HubHousing V5 With Logo), rms 0.4909, volume max 0.333 (HubHousing V5 With Logo)
+[  130.9s] ok   Right: the stack (all pairs but the hub) fits the STEP: n 14, COM max 0.0003 (92125A), rms 0.0001, volume max 0.019, rotation off identity 9.0e-07, t (-93.337, -25.510, 467.904)
+[  131.0s] ok   Right: hub offset from the stack is Z only: 6 faces moved dZ -2.0000, XY 0.0000
+[  131.0s] ok   Right: one Crossbow adapter (1)
+[  132.3s] ok   Right: hub seated on the Crossbow adapter: distance 0.0000, overlap 0.0000 mm3
+[  139.5s] ok   Right: after moving 49 stack solids dZ -2.0000, all 15 pairs fit: COM max 0.0003 (92125A), rms 0.0001, volume max 0.333 (HubHousing V5 With Logo), t (-93.337, -25.510, 465.904)
+[  139.6s] ok   Right: the head's hub coincides with the STEP's hub at the registration pose (horizontal faces dZ +0.0000, XY 0.0000): the new parts meet it as the STEP designs
+[  140.0s] ok   Right: hub vs its stack now as in the STEP: before {'Molded Gear Housing (65 teeth) v1 (1) (1)': 40.74, 'LatchShaft (1) (1)': 64.99, 'Orbiter Spider Shaft v4 (1) (1)': 45.95}, after {'Molded Gear Housing (65 teeth) v1 (1) (1)': 0.0, 'LatchShaft (1) (1)': 65.03, 'Orbiter Spider Shaft v4 (1) (1)': 0.0} 
+[  146.4s] ok   Right: board lands where registered (box off by 2.8e-14); Z 456.90..503.34, 225 solids
+[  146.5s] ok   Right: usb lands where registered (box off by 2.8e-14); Z 496.34..549.34, 1 solids
+[  146.5s] ok   Right: mount lands where registered (box off by 2.8e-14); Z 460.95..488.85, 8 solids
+[  146.7s] ok   Right: sensor lands where registered (box off by 2.8e-14); Z 460.39..517.15, 51 solids
+[  146.7s] ok   Right: the old inlet's 2 parts (bowden coupler, brass ring) to remove
+[  146.7s] Right: remove BrassCouplerRing (1) (1) (the Smart Sensor's coupler and collet take the inlet)
+[  146.7s] Right: remove 4mm Bowden Coupler v1 (1) (1) (the Smart Sensor's coupler and collet take the inlet)
+[  155.1s] ok   two Nitehawk-36 placeholder boxes to remove (2)
+[  155.1s] remove Nitehawk-36_V1.4 3D Model v1 (simplified box)
+[  155.1s] remove Nitehawk-36_V1.4 3D Model v001 (simplified box)
+[  161.5s] ok   no Nitehawk left in the model
+[  261.7s] tubes before the rebuild hit: {'Bowden Left': ['Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)', 'Roof felt strip (pad 3)', 'Roof felt strip liner, inner', 'Roof felt strip liner, outer'], 'Bowden Right': ['Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0)', 'Roof felt strip (pad 3)', 'Roof felt strip liner, inner', 'Roof felt strip liner, outer']}
+[  261.7s] ok   one 'Roof panel (3 mm)' (1)
+[  261.7s] ok   Bowden Left: exit point Z 690.000 is on the Roof panel (3 mm) underside (690.000), heading up: the route exits through it
+[  261.7s] ok   Bowden Right: exit point Z 690.000 is on the Roof panel (3 mm) underside (690.000), heading up: the route exits through it
+[  262.2s] ok   one tube 'Bowden Left' (1)
+[  262.2s] ok   Bowden Left: stored inlet (-399.001, -33.383, 498.9) is the old coupler top (0.000 off)
+[  262.2s] ok   Bowden Left: the Smart Sensor's collet is on the old filament axis (XY 0.000 mm off); inlet Z 498.90 -> 517.15 (+18.25)
+[  262.2s] ok   Bowden Left: bezier.py gives the stored route's bend R 105.88 (stored 105.88)
+[  268.4s] Bowden Left: from the collet top with the old handles (290, 175) R 98.7; 1 grid pairs reach R >= 100, best (290, 170) R 100.4
+[  270.6s] Bowden Left: tried [((290.0, 170.0), 100.4, [])]
+[  270.6s] ok   Bowden Left: a handle pair with R >= 100 that hits nothing the lite-29 tube didn't (base ['Roof felt strip (pad 3)', 'Roof felt strip liner, inner', 'Roof felt strip liner, outer', 'Roof panel (3 mm)'])
+[  270.6s] ok   Bowden Left: FreeCAD's curve agrees with bezier.py: R 100.353 vs 100.353
+[  273.0s] ok   Bowden Left: rebuilt from the collet top: starts +0.000, min bend R 105.9 -> 100.4 (>= 100), length 632.3 -> 629.0, valid True
+[  273.5s] ok   one tube 'Bowden Right' (1)
+[  273.5s] ok   Bowden Right: stored inlet (-92.001, -33.383, 498.9) is the old coupler top (0.000 off)
+[  273.5s] ok   Bowden Right: the Smart Sensor's collet is on the old filament axis (XY 0.000 mm off); inlet Z 498.90 -> 517.15 (+18.25)
+[  273.5s] ok   Bowden Right: bezier.py gives the stored route's bend R 105.88 (stored 105.88)
+[  279.9s] Bowden Right: from the collet top with the old handles (290, 175) R 98.7; 1 grid pairs reach R >= 100, best (290, 170) R 100.4
+[  282.2s] Bowden Right: tried [((290.0, 170.0), 100.4, [])]
+[  282.2s] ok   Bowden Right: a handle pair with R >= 100 that hits nothing the lite-29 tube didn't (base ['Roof felt strip (pad 3)', 'Roof felt strip liner, inner', 'Roof felt strip liner, outer', 'Roof panel (3 mm)'])
+[  282.2s] ok   Bowden Right: FreeCAD's curve agrees with bezier.py: R 100.353 vs 100.353
+[  284.7s] ok   Bowden Right: rebuilt from the collet top: starts +0.000, min bend R 105.9 -> 100.4 (>= 100), length 632.3 -> 629.0, valid True
+[  356.1s] ok   rebuilt tubes hit nothing the lite-29 tubes didn't: now {'Bowden Left': ['Roof felt strip (pad 3)', 'Roof felt strip liner, inner', 'Roof felt strip liner, outer', 'Roof panel (3 mm)'], 'Bowden Right': ['Roof felt strip (pad 3)', 'Roof felt strip liner, inner', 'Roof felt strip liner, outer', 'Roof panel (3 mm)']}, new {'Bowden Left': [], 'Bowden Right': []}
+[  356.1s] the A4Tv2 cowl: 106 solids
+[  372.1s] ok   O2S + Smart Sensor vs the A4Tv2 cowl: overlaps []
+[  372.1s] the Crossbow adapter: 2 solids
+[  372.5s] ok   O2S + Smart Sensor vs the Crossbow adapter: overlaps []
+[  372.5s] the MadMax carriage (gantry + dock copies): 10 solids
+[  374.0s] ok   O2S + Smart Sensor vs the MadMax carriage (gantry + dock copies): overlaps []
+[  374.1s] both docks: 8 solids
+[  375.3s] ok   O2S + Smart Sensor vs both docks: overlaps []
+[  498.1s] ok   O2S + Smart Sensor vs every other solid in the printer: []
+[  506.8s]    Left sensor solid vol 6360.89 z 460.39..513.31 x HubHousing V5 With Logo (1): 0.002
+[  506.8s]    Left sensor solid vol 754.30 z 482.40..502.50 x HubHousing V5 With Logo (1): 77.211
+[  515.3s]    Right sensor solid vol 6360.89 z 460.39..513.31 x HubHousing V5 With Logo (1) (1): 0.002
+[  515.3s] new parts x own Orbiter (model, STEP): {'Left sensor x HubHousing V5 With Logo (1)': (77.214, 64.121), 'Right sensor x HubHousing V5 With Logo (1) (1)': (0.003, 64.121)}
+[  515.3s] info (common() unreliable on the coupler vs hub pair): differs from the STEP's own overlaps: [('Left', 'sensor', 'HubHousing V5 With Logo (1)', 77.214, 64.121), ('Right', 'sensor', 'HubHousing V5 With Logo (1) (1)', 0.003, 64.121)]
+[  515.5s] verify: 0 problems
+[  538.8s] SAVED /home/dan/Documents/VT350/vt350-lite-30.FCStd 183601021

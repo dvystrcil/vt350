@@ -28,8 +28,8 @@ those listings or the project READMEs linked from them.
 
 | Part | Qty | Design impact |
 |---|---|---|
-| [Orbitool O2S toolhead PCB](https://west3d.com/products/orbitool-toolhead-pcb-board-for-orbiter-2-o2-and-smart-orbiter-3-so3-by-ldo-motors?variant=45224824832212) | 1 | Mounts on the Orbiter and raises the bowden inlet; not modeled yet (#6). **One set covers one head.** Every extra MadMax tool needs another (#19). |
-| [Orbiter Smart Filament Sensor (OSS) kit](https://west3d.com/products/orbiter-filament-sensor-complete-kit-for-orbiter-extruder-v20-by-ldo-motors) | 1 | Same as the O2S: one per head. |
+| [Orbitool O2S toolhead PCB](https://west3d.com/products/orbitool-toolhead-pcb-board-for-orbiter-2-o2-and-smart-orbiter-3-so3-by-ldo-motors?variant=45224824832212) | 1 | **2 needed** (one per head; both heads have it in the model since lite-30, #6). Mounts on the Orbiter; with the Smart Sensor the bowden inlet is 18.25 mm higher (the sensor's collet top). The Nitehawk-36 it replaces is **not used** (2 removed from the model in lite-30). Every extra MadMax tool needs another (#19). |
+| [Orbiter Smart Filament Sensor (OSS) kit](https://west3d.com/products/orbiter-filament-sensor-complete-kit-for-orbiter-extruder-v20-by-ldo-motors) | 1 | **2 needed**, one per head (in the model since lite-30, #6). Plugs into the O2S. |
 | [LDO Orbiter V2.5](https://west3d.com/products/ldo-orbiter-extruder-v2-5-orbiter-v2-5-and-v2-0-to-v2-5-upgrade-kit) | not yet recorded | The extruder the O2S and OSS mount on. One per head. |
 
 ## Electronics
