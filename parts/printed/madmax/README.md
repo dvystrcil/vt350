@@ -13,4 +13,4 @@ andrewmcgr's mod lives in the same repository under `User Mods/andrewmcgr/XOL-A4
 | `andrewmcgr/Plate Back.stl` | [`User Mods/andrewmcgr/XOL-A4T-Cartographer/STL/Plate Back.stl`](https://github.com/zruncho3d/madmax/blob/6bf670de9adcc5924e2fb552978161d7a9c7b1c8/User%20Mods/andrewmcgr/XOL-A4T-Cartographer/STL/Plate%20Back.stl) | 2 | none |
 | `andrewmcgr/Dock Asembly.stl` | [`User Mods/andrewmcgr/XOL-A4T-Cartographer/STL/Dock Asembly.stl`](https://github.com/zruncho3d/madmax/blob/6bf670de9adcc5924e2fb552978161d7a9c7b1c8/User%20Mods/andrewmcgr/XOL-A4T-Cartographer/STL/Dock%20Asembly.stl) | 2 | none |
 
-Each file's sha256 is in `../manifest.csv`; `parts/check-printed.py --upstream` re-downloads every file at its commit and compares.
+Each file's sha256 is in `../manifest.csv`; `platform/parts/check-printed.py --upstream` re-downloads every file at its commit and compares.

@@ -4,7 +4,7 @@
   python3 cad/scripts/refresh.py <lite-N number> [--from STEP] [--dry-run]
 
 Steps, in order. It stops at the first failure and names the step and its log:
-  part_index       cad/scripts/part_index.py (FreeCAD, headless, read-only, #90): the per-part box index beside
+  part_index       platform/freecad/part_index.py (FreeCAD, headless, read-only, #90): the per-part box index beside
                    vt350-lite-<N>.FCStd AND each companion the same pass saved (any other .FCStd in the folder saved
                    within COMPANION_S of it, never another lite-N: lite-28 wrote vt350-filter-2 in the same minute).
                    Skips a model whose <model>.parts.json is fresh
@@ -12,12 +12,12 @@ Steps, in order. It stops at the first failure and names the step and its log:
   sync_printed     every parts/printed row copied from this repo (repo = dvystrcil/vt350, upstream_path set) whose
                    source changed is re-copied, and ONLY its sha256 cell in manifest.csv is rewritten (text edit: the
                    rest of the file, quoting and row order stay byte-identical)
-  check_printed    parts/check-printed.py (must print "check-printed: OK")
-  sweep            cad/scripts/sweep_toolhead.py on vt350-lite-<N>.FCStd (VT350_MODEL), ~11 min
-  z_sweep          cad/scripts/z_sweep.py (FreeCAD, headless, read-only, #82): the bed's Z travel, both ends, by
+  check_printed    platform/parts/check-printed.py (must print "check-printed: OK")
+  sweep            cad/studies/sweep_toolhead.py on vt350-lite-<N>.FCStd (VT350_MODEL), ~11 min
+  z_sweep          cad/studies/z_sweep.py (FreeCAD, headless, read-only, #82): the bed's Z travel, both ends, by
                    boolean contact, with the documents the model's envelopes name (envelope_docs) -> cad/data/logs/z_sweep.log
-  print_area       cad/scripts/print_area.py -> cad/data/print-area.svg
-  test_print_area  cad/scripts/test_print_area.py
+  print_area       cad/studies/print_area.py -> cad/data/print-area.svg
+  test_print_area  cad/studies/test_print_area.py
 
 It never writes a model file (every step is read-only on the .FCStd) and never commits. Committing and the PR stay with
 the caller. The summary (STLs changed, reach vs the committed sweep log, Z travel vs the committed z_sweep log, print area) goes to stdout and to
@@ -45,6 +45,13 @@ MODELS_DIR = "/home/dan/Documents/VT350"
 MODELS = MODELS_DIR + "/vt350-lite-{}.FCStd"
 COMPANION_S = 600             # a pass saves its documents seconds apart (finish()); 10 min still excludes the next pass
 THIS_REPO = "dvystrcil/vt350"
+# Where each step's tool lives (vt350#122: generic tools under platform/, the VT350's own studies under cad/studies/).
+TOOLS = {"part_index": "platform/freecad/part_index.py", "derive_stls": "cad/scripts/derive_stls.py",
+         "check_printed": "platform/parts/check-printed.py", "sweep": "cad/studies/sweep_toolhead.py",
+         "z_sweep": "cad/studies/z_sweep.py", "print_area": "cad/studies/print_area.py",
+         "test_print_area": "cad/studies/test_print_area.py"}
+# Code folders, searched after this file's own folder (where a gpu-batch pod stages everything flat).
+CODE_DIRS = ("cad/scripts", "cad/studies", "platform/freecad")
 MANIFEST = "parts/printed/manifest.csv"
 PRINTED = "parts/printed"
 SWEEP_LOG = "cad/data/logs/sweep_toolhead.log"
@@ -120,8 +127,16 @@ def companions(model):
     return out
 
 
+def _code_path():
+    """This file's folder, then the checkout's code folders that exist."""
+    dirs = [HERE] + [os.path.join(REPO, d) for d in CODE_DIRS]
+    return [d for i, d in enumerate(dirs) if os.path.isdir(d) and os.path.realpath(d) not in
+            [os.path.realpath(x) for x in dirs[:i]]]
+
+
 def _module(name):
-    spec = importlib.util.spec_from_file_location(name, os.path.join(HERE, f"{name}.py"))
+    path = next(p for p in (os.path.join(d, f"{name}.py") for d in _code_path()) if os.path.isfile(p))
+    spec = importlib.util.spec_from_file_location(name, path)
     m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
     return m
 
@@ -129,7 +144,7 @@ def _module(name):
 def envelope_docs(model):
     """The documents model's envelopes name ("Filter envelope (contents in vt350-filter-3.FCStd)"), beside it: what
     z_sweep opens with the model, so what the batch lane must ship (#82). Read from the file, no FreeCAD."""
-    sys.path.insert(0, HERE)
+    sys.path[:0] = _code_path()
     return _module("z_sweep").envelope_paths(model)
 
 
@@ -140,27 +155,27 @@ def plan(n, root=REPO, app=APP, start=None, models=MODELS_DIR):
     fc = app.split() + ["freecadcmd"]
     model = os.path.join(models, f"vt350-lite-{n}.FCStd")
     steps = [
-        Step("part_index", cmd=fc + [os.path.join(root, "cad/scripts/part_index.py")],
+        Step("part_index", cmd=fc + [os.path.join(root, TOOLS["part_index"])],
              env=dict(VT350_INDEX_MODELS=":".join([model] + companions(model)), VT350_WORK=os.path.join(root, "cad/data")),
              log=os.path.join(logs, "refresh_part_index.out"),
              marker=r"(?m)part_index: done \(\d+ models\)$", marker_in=os.path.join(logs, "part_index.log")),
-        Step("derive_stls", cmd=fc + [os.path.join(root, "cad/scripts/derive_stls.py")], env=dict(VT350_REPO=root),
+        Step("derive_stls", cmd=fc + [os.path.join(root, TOOLS["derive_stls"])], env=dict(VT350_REPO=root),
              log=os.path.join(logs, "refresh_derive_stls.out"),
              marker=r"done: (\d+) of \1 written", marker_in=os.path.join(logs, "derive_stls.log")),
         Step("sync_printed", fn=sync_printed),
-        Step("check_printed", cmd=[sys.executable, os.path.join(root, "parts/check-printed.py"), "--root", root],
+        Step("check_printed", cmd=[sys.executable, os.path.join(root, TOOLS["check_printed"]), "--root", root],
              log=os.path.join(logs, "refresh_check_printed.out"), marker=r"(?m)^check-printed: OK$"),
-        Step("sweep", cmd=[sys.executable, os.path.join(root, "cad/scripts/sweep_toolhead.py")],
+        Step("sweep", cmd=[sys.executable, os.path.join(root, TOOLS["sweep"])],
              env=dict(VT350_MODEL=model, FREECADCMD=" ".join(fc), VT350_WORK=os.path.join(root, "cad/data")),
              log=os.path.join(logs, "refresh_sweep.out"),
              marker=r"(?m)done \(read-only, nothing saved\)$", marker_in=os.path.join(root, SWEEP_LOG)),
-        Step("z_sweep", cmd=fc + [os.path.join(root, "cad/scripts/z_sweep.py")],
+        Step("z_sweep", cmd=fc + [os.path.join(root, TOOLS["z_sweep"])],
              env=dict(VT350_MODEL=model, FREECADCMD=" ".join(fc), VT350_WORK=os.path.join(root, "cad/data")),
              log=os.path.join(logs, "refresh_z_sweep.out"),
              marker=r"(?m)^\[ *\d+\.\ds\] z_sweep: done \(read-only, nothing saved\)$", marker_in=os.path.join(root, Z_LOG)),
-        Step("print_area", cmd=[sys.executable, os.path.join(root, "cad/scripts/print_area.py")],
+        Step("print_area", cmd=[sys.executable, os.path.join(root, TOOLS["print_area"])],
              log=os.path.join(logs, "refresh_print_area.out"), marker=r"printable [\d.]+ x [\d.]+ mm"),
-        Step("test_print_area", cmd=[sys.executable, os.path.join(root, "cad/scripts/test_print_area.py")],
+        Step("test_print_area", cmd=[sys.executable, os.path.join(root, TOOLS["test_print_area"])],
              log=os.path.join(logs, "refresh_test_print_area.out"), marker=r"(?m)^Ran [1-9]\d* tests? in [\d.]+s\n\nOK$"),
     ]
     return steps[ORDER.index(start):] if start else steps
@@ -193,9 +208,7 @@ def run(steps, cwd=REPO, root=REPO, on_step=None):
 
 
 def _print_area():
-    spec = importlib.util.spec_from_file_location("print_area", os.path.join(HERE, "print_area.py"))
-    m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
-    return m
+    return _module("print_area")
 
 
 def summary(changed, sweep_log, prev_sweep_log, area_line=None, index=None, z_log=None, prev_z_log=None):

@@ -110,7 +110,7 @@ class Steps(unittest.TestCase):
 
     def test_part_index_step_indexes_the_model_headless_into_the_repo_log(self):
         pi = next(s for s in rf.plan(26, root="/r", app="/app") if s.name == "part_index")
-        self.assertEqual(pi.cmd, ["/app", "freecadcmd", "/r/cad/scripts/part_index.py"])
+        self.assertEqual(pi.cmd, ["/app", "freecadcmd", "/r/platform/freecad/part_index.py"])
         self.assertEqual(pi.env["VT350_INDEX_MODELS"].split(":")[0], "/home/dan/Documents/VT350/vt350-lite-26.FCStd")
         self.assertEqual(pi.env["VT350_WORK"], "/r/cad/data")
         self.assertEqual(pi.marker_in, "/r/cad/data/logs/part_index.log")
@@ -134,7 +134,7 @@ class Steps(unittest.TestCase):
 
     def test_z_sweep_step_runs_headless_on_the_model_into_the_repo_log(self):        # #82
         z = next(s for s in rf.plan(26, root="/r", app="/app") if s.name == "z_sweep")
-        self.assertEqual(z.cmd, ["/app", "freecadcmd", "/r/cad/scripts/z_sweep.py"])
+        self.assertEqual(z.cmd, ["/app", "freecadcmd", "/r/cad/studies/z_sweep.py"])
         self.assertEqual(z.env["VT350_MODEL"], "/home/dan/Documents/VT350/vt350-lite-26.FCStd")
         self.assertEqual(z.env["VT350_WORK"], "/r/cad/data")
         self.assertEqual(z.env["FREECADCMD"], "/app freecadcmd")
@@ -293,22 +293,22 @@ class MarkersMatchTheRealTools(unittest.TestCase):
         return r.stdout + r.stderr
 
     def test_test_print_area_marker(self):
-        out = self.real_output(os.path.join(HERE, "test_print_area.py"))
+        out = self.real_output(os.path.join(self.ROOT, "cad/studies/test_print_area.py"))
         self.assertRegex(out, self.marker_of("test_print_area"))
 
     def test_check_printed_marker(self):
-        out = self.real_output(os.path.join(self.ROOT, "parts/check-printed.py"), "--root", self.ROOT)
+        out = self.real_output(os.path.join(self.ROOT, "platform/parts/check-printed.py"), "--root", self.ROOT)
         self.assertRegex(out, self.marker_of("check_printed"))
 
     def test_part_index_marker(self):
         # needs FreeCAD to produce, so: the committed log of a real run (cad/data/logs/part_index.log, 2026-11-09)
         log = open(os.path.join(self.ROOT, "cad/data/logs/part_index.log")).read()
         self.assertRegex(log, self.marker_of("part_index"))
-        self.assertNotRegex("[  1.0s] FAILED\nTraceback ... cad/scripts/part_index.py, in run\n", self.marker_of("part_index"))
+        self.assertNotRegex("[  1.0s] FAILED\nTraceback ... platform/freecad/part_index.py, in run\n", self.marker_of("part_index"))
 
     def test_z_sweep_marker(self):
         # z_sweep needs FreeCAD; its last line is contact.DONE, logged by a litelib Pass (timestamp prefix)
-        sys.path.insert(0, HERE); import contact
+        sys.path.insert(0, os.path.join(self.ROOT, "platform/freecad")); import contact
         self.assertRegex(f"[  99.2s] {contact.DONE}\n", self.marker_of("z_sweep"))
         self.assertNotRegex("[  9.0s] FAILED\nTraceback ...\n", self.marker_of("z_sweep"))
         self.assertNotRegex(f"[  9.0s] {contact.DONE} or not\n", self.marker_of("z_sweep"))
@@ -327,7 +327,7 @@ class MarkersMatchTheRealTools(unittest.TestCase):
 
     def test_print_area_marker(self):
         with tempfile.TemporaryDirectory() as d:
-            out = self.real_output(os.path.join(HERE, "print_area.py"), "--out", os.path.join(d, "a.svg"))
+            out = self.real_output(os.path.join(self.ROOT, "cad/studies/print_area.py"), "--out", os.path.join(d, "a.svg"))
         self.assertRegex(out, self.marker_of("print_area"))
 
 

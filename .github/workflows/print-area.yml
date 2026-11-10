@@ -12,6 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Test the print-area drawing against the sweep log
-        run: python3 cad/scripts/test_print_area.py 2>&1 | tee test.log
+        run: python3 cad/studies/test_print_area.py 2>&1 | tee test.log
       - name: Confirm every test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test.log && tail -1 test.log | grep -qx 'OK'

@@ -58,7 +58,7 @@ confirm which parts you already own.
 |---|---|
 | Model files (not in git) | `~/Documents/VT350/`. Current working copy **`vt350-lite-22.FCStd`** (lite-19 + the re-measured rear hole row (lite-20), BTT Pad 7 screen removed (lite-21), pad cut-outs measured with calipers (lite-22); electronics in `vt350-ebox.FCStd`, same global frame); untouched original `vt350-good.FCStd` |
 | **Backup of the model files** | restic to the home NAS. Run **`cad/backup-models.sh --verify`** (alias `vt350-backup`) after model changes; old snapshots are pruned automatically (last 10, daily for 30 days, monthly for a year). Target and password are local config (`~/.config/vt350/backup.env`), not in this public repo; keep the restic password in the password manager too. First backup 2026-11-04: 52 files, 4.09 GB, test restore byte-identical |
-| How the model files were made + how to redo it | `cad/README.md`, `cad/scripts/` |
+| How the model files were made + how to redo it | `cad/README.md`, `cad/passes/` |
 | Cut list (draft) | `notes/cut-list.md` |
 | Parts already owned + design impact | `notes/parts-owned.md` |
 | Source STEP files (frame variants, toolheads, boards) | `~/Documents/VT350/` |

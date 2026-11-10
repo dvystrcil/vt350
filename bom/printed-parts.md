@@ -1,6 +1,6 @@
 # Printed parts: first pass (#8 AC2)
 
-**The files are in [`parts/printed/`](../parts/printed/)** (#63): every "print" row below, pinned to an upstream commit, with its licence and a sha256. `parts/check-printed.py` fails if a "print" row here has no part or link there.
+**The files are in [`parts/printed/`](../parts/printed/)** (#63): every "print" row below, pinned to an upstream commit, with its licence and a sha256. `platform/parts/check-printed.py` fails if a "print" row here has no part or link there.
 
 Source for stock parts: **Voron Trident R1** STLs at tag
 [`VTr1`](https://github.com/VoronDesign/Voron-Trident/tree/VTr1/STLs) (last

@@ -1,3 +1,3 @@
 {
-  "_doc": "Keep-out boxes for parts/slice-check.py (#70), in each STL's OWN coordinates (as the file sits in parts/printed or cad/derived): {\"<stl file name>\": [{\"name\": \"air channel\", \"min\": [x, y, z], \"max\": [x, y, z]}]}. Support G-code inside a box fails the check. The A4Tv2 duct's air channel goes here once #59 picks the print orientation."
+  "_doc": "Keep-out boxes for platform/parts/slice-check.py (#70), in each STL's OWN coordinates (as the file sits in parts/printed or cad/derived): {\"<stl file name>\": [{\"name\": \"air channel\", \"min\": [x, y, z], \"max\": [x, y, z]}]}. Support G-code inside a box fails the check. The A4Tv2 duct's air channel goes here once #59 picks the print orientation."
 }

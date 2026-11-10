@@ -69,7 +69,7 @@ Still to do: the README says to lengthen the Z endstop pin by about 8 mm. Fasten
 ## lite-18: the real build plate (measured 2026-11-05)
 
 The model's plate (`Universal Build Plate 350`) was a generic one. It had edge notches and rear corner ears, and a
-pair of holes the real plate doesn't have. lite-18 (`cad/scripts/lite18_plate.py`) replaces it with the user's
+pair of holes the real plate doesn't have. lite-18 (`cad/passes/lite18_plate.py`) replaces it with the user's
 LDO plate. The measurements came from calipers, a depth gauge, and a photo of the underside (scale 7.76 px/mm,
 ±1 mm). The hole sketch is `~/Documents/VT350/bed-plate-holes-5.FCStd`, which is local and not committed.
 
@@ -109,7 +109,7 @@ Holes are given in plate coordinates: the origin is the front-left corner, viewe
 
 Two ruler photos of the underside (Immich export `immich-20261105_133334.zip`: `PXL_20261105_212953005` with the
 ruler along the rear strip, `PXL_20261105_213013523` across it). The cm ticks were located by pixel-column
-profiles, not by eye. `cad/scripts/lite20_rear_row.py` applies the result to lite-19.
+profiles, not by eye. `cad/passes/lite20_rear_row.py` applies the result to lite-19.
 
 | Measured | Value | lite-18/19 |
 |---|---|---|
@@ -129,7 +129,7 @@ The rear ball, thin nut and spring slide 1.0 mm forward along G's groove (it run
 ## lite-22: the pad cut-outs and the front-ball holes, measured with calipers (2026-11-05)
 
 Measured by the user from the plate's outer edge, heater side up, front edge nearest.
-`cad/scripts/lite22_pad_cutouts.py` applies them to lite-21.
+`cad/passes/lite22_pad_cutouts.py` applies them to lite-21.
 
 | Measured | Calipers | Photo estimate (lite-18) |
 |---|---|---|

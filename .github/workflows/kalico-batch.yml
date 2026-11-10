@@ -5,6 +5,7 @@ on:
   pull_request:
     paths:
       - cad/klipper/**
+      - platform/kalisim/**
       - cad/data/logs/z_sweep.log
       - cad/data/logs/sweep_toolhead.log
       - .github/workflows/kalico-batch.yml
@@ -12,6 +13,7 @@ on:
     branches: [main]
     paths:
       - cad/klipper/**
+      - platform/kalisim/**
       - cad/data/logs/z_sweep.log
       - cad/data/logs/sweep_toolhead.log
       - .github/workflows/kalico-batch.yml
@@ -28,11 +30,11 @@ jobs:
       - name: Confirm every limits test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-limits.log && tail -1 test-limits.log | grep -qx 'OK'
       - name: Test the batch-mode runner against a fake klippy (kalisim; no Kalico)
-        run: python3 cad/klipper/kalisim/test_kalisim.py 2>&1 | tee test-kalisim.log
+        run: python3 platform/kalisim/test_kalisim.py 2>&1 | tee test-kalisim.log
       - name: Confirm every kalisim test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-kalisim.log && tail -1 test-kalisim.log | grep -qx 'OK'
       - name: Build the kalisim image and run the Kalico batch-mode tests in it
-        run: bash cad/klipper/kalisim/test_in_container.sh 2>&1 | tee test-batch.log
+        run: bash cad/klipper/test_in_container.sh 2>&1 | tee test-batch.log
       - name: Confirm the batch-mode run reached the end
         run: |
           tail -1 test-batch.log | grep -qx 'kalico-batch: OK'

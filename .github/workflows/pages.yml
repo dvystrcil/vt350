@@ -6,13 +6,13 @@ on:
   pull_request:
     paths:
       - notes/reference/**
-      - .github/scripts/*check_index.py
+      - platform/pages/*check_index.py
       - .github/workflows/pages.yml
   push:
     branches: [main]
     paths:
       - notes/reference/**
-      - .github/scripts/*check_index.py
+      - platform/pages/*check_index.py
       - .github/workflows/pages.yml
   workflow_dispatch:
 
@@ -29,11 +29,11 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Test the index check
-        run: python3 .github/scripts/test_check_index.py 2>&1 | tee test-check-index.log
+        run: python3 platform/pages/test_check_index.py 2>&1 | tee test-check-index.log
       - name: Confirm every index-check test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-check-index.log && tail -1 test-check-index.log | grep -qx 'OK'
       - name: Check the index links every page, and every page stands alone
-        run: python3 .github/scripts/check_index.py notes/reference 2>&1 | tee check-index.log
+        run: python3 platform/pages/check_index.py notes/reference 2>&1 | tee check-index.log
       - name: Assert the completion marker
         run: |
           grep -qx 'check-index: OK' check-index.log

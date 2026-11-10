@@ -14,4 +14,4 @@ Variant for this build (lite-15): Dragon Rapido UHF body, Orbiter (`o2`), XOL ca
 | `LED_Carrier.stl` | [`STL/led_carrier/LED_Carrier.stl`](https://github.com/DW-Tas/A4Tv2/blob/888755a97da9e1bd3062c35c914538342ef7d6f2/STL/led_carrier/LED_Carrier.stl) | 2 | none |
 | `[t]_LED_diffuser.stl` | [`STL/led_carrier/[t]_LED_diffuser.stl`](https://github.com/DW-Tas/A4Tv2/blob/888755a97da9e1bd3062c35c914538342ef7d6f2/STL/led_carrier/%5Bt%5D_LED_diffuser.stl) | 2 | none |
 
-Each file's sha256 is in `../manifest.csv`; `parts/check-printed.py --upstream` re-downloads every file at its commit and compares.
+Each file's sha256 is in `../manifest.csv`; `platform/parts/check-printed.py --upstream` re-downloads every file at its commit and compares.

@@ -241,7 +241,7 @@ class Committed(unittest.TestCase):
 
     def test_o2s_serials_match_their_firmware_configs(self):
         for side in ("left", "right"):
-            kc = read(HERE, "kalisim", "kconfig", f"o2s-{side}.config")
+            kc = read(HERE, "kconfig", f"o2s-{side}.config")
             sn = re.search(r'(?m)^CONFIG_USB_SERIAL_NUMBER="([^"]+)"', kc).group(1)
             self.assertIn("# CONFIG_USB_SERIAL_NUMBER_CHIPID is not set", kc)
             self.assertEqual(self.cfg[f"mcu o2s_{side}"]["serial"],

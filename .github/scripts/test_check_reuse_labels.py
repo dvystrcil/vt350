@@ -121,7 +121,7 @@ class Main(unittest.TestCase):
 
     def test_ok(self):
         d = self.repo({"REUSE.toml": TOML, "LICENSE": GPL, "parts/a/LICENSE": GPL,
-                       "cad/klipper/kalisim/COPYING": GPL, "untracked/LICENSE": CC})
+                       "platform/kalisim/COPYING": GPL, "untracked/LICENSE": CC})
         self.assertEqual(self.run_main(d), (0, ["check-reuse-labels: OK"]))
 
     def test_failure_lists_each_error_and_counts_them(self):

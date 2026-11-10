@@ -11,7 +11,7 @@ The CAD limits:
      in z_sweep.log
 mapped from model to printer XY by xy_mapping.json: printer = sign * (model - origin).
 
-This file is VT350-specific. The generic batch-mode runner is kalisim/ (no FreeCAD, no VT350 knowledge).
+This file is VT350-specific. The generic batch-mode runner is platform/kalisim/ (no FreeCAD, no VT350 knowledge).
 Plain python3, standard library only.
 """
 import json

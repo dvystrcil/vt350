@@ -1,8 +1,8 @@
 # Extrusion cut list (draft)
 
 Measured from the model `vt350-lite-4.FCStd` on 2026-11-04 by
-`cad/scripts/frame_plus100.py` (see `cad/data/logs/frame_plus100.log`), then
-updated for **lite-6** (+80 mm of Y at the front, `cad/scripts/lite6.py`).
+`cad/passes/frame_plus100.py` (see `cad/data/logs/frame_plus100.log`), then
+updated for **lite-6** (+80 mm of Y at the front, `cad/passes/lite6.py`).
 Lengths are the bar's long axis in mm.
 
 | Profile | Length | Qty | Where in the model | lite-6 change |

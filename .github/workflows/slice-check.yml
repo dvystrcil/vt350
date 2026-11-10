@@ -12,8 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Test the slicer check (G-code parsing, keep-out boxes, report, preview)
-        run: python3 parts/test_slice_check.py 2>&1 | tee test.log
+        run: python3 platform/parts/test_slice_check.py 2>&1 | tee test.log
       - name: Confirm every test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test.log && tail -1 test.log | grep -qx 'OK'
       - name: The committed keep-out file is valid
-        run: python3 -c "import importlib.util as u,json; s=u.spec_from_file_location('s','parts/slice-check.py'); m=u.module_from_spec(s); s.loader.exec_module(m); m.validate_keepout(json.load(open('parts/slice/keepout.json'))); print('keepout OK')" | grep -qx 'keepout OK'
+        run: python3 -c "import importlib.util as u,json; s=u.spec_from_file_location('s','platform/parts/slice-check.py'); m=u.module_from_spec(s); s.loader.exec_module(m); m.validate_keepout(json.load(open('parts/slice/keepout.json'))); print('keepout OK')" | grep -qx 'keepout OK'

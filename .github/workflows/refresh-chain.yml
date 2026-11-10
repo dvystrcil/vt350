@@ -20,38 +20,38 @@ jobs:
       - name: Confirm every derive_stls test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-derive.log && tail -1 test-derive.log | grep -qx 'OK'
       - name: Test the check workers' pool and worker count (litepool, #45; plain python3 workers)
-        run: python3 cad/scripts/test_litepool.py 2>&1 | tee test-litepool.log
+        run: python3 platform/freecad/test_litepool.py 2>&1 | tee test-litepool.log
       - name: Confirm every litepool test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-litepool.log && tail -1 test-litepool.log | grep -qx 'OK'
       - name: Test clashlib's job dir is removed on every path (fake workers)
-        run: python3 cad/scripts/test_clashlib.py 2>&1 | tee test-clashlib.log
+        run: python3 platform/freecad/test_clashlib.py 2>&1 | tee test-clashlib.log
       - name: Confirm every clashlib test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-clashlib.log && tail -1 test-clashlib.log | grep -qx 'OK'
       - name: Test sweep_toolhead's plan stage removes its temp dir (fake freecadcmd)
-        run: python3 cad/scripts/test_sweep_toolhead.py 2>&1 | tee test-sweep.log
+        run: python3 cad/studies/test_sweep_toolhead.py 2>&1 | tee test-sweep.log
       - name: Confirm every sweep_toolhead test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-sweep.log && tail -1 test-sweep.log | grep -qx 'OK'
       - name: Test the serial-vs-parallel proof runner (prove_parallel, #45; fake freecadcmd)
-        run: python3 cad/scripts/test_prove_parallel.py 2>&1 | tee test-prove.log
+        run: python3 cad/studies/test_prove_parallel.py 2>&1 | tee test-prove.log
       - name: Confirm every prove_parallel test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-prove.log && tail -1 test-prove.log | grep -qx 'OK'
       - name: Test the Z sweep's contact search (contact.py, #82; no FreeCAD)
-        run: python3 cad/scripts/test_contact.py 2>&1 | tee test-contact.log
+        run: python3 platform/freecad/test_contact.py 2>&1 | tee test-contact.log
       - name: Confirm every contact test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-contact.log && tail -1 test-contact.log | grep -qx 'OK'
       - name: Test the STEP-to-model registration (register.py, #6; no FreeCAD)
-        run: python3 cad/scripts/test_register.py 2>&1 | tee test-register.log
+        run: python3 platform/freecad/test_register.py 2>&1 | tee test-register.log
       - name: Confirm every register test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-register.log && tail -1 test-register.log | grep -qx 'OK'
       - name: Test the bowden tube's route curve and handle search (bezier.py, #6; no FreeCAD)
-        run: python3 cad/scripts/test_bezier.py 2>&1 | tee test-bezier.log
+        run: python3 platform/freecad/test_bezier.py 2>&1 | tee test-bezier.log
       - name: Confirm every bezier test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-bezier.log && tail -1 test-bezier.log | grep -qx 'OK'
       - name: Test the Z sweep's envelope documents, probe grid and limit lines (z_sweep.py, #82; no FreeCAD)
-        run: python3 cad/scripts/test_z_sweep.py 2>&1 | tee test-z-sweep.log
+        run: python3 cad/studies/test_z_sweep.py 2>&1 | tee test-z-sweep.log
       - name: Confirm every z_sweep test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-z-sweep.log && tail -1 test-z-sweep.log | grep -qx 'OK'
       - name: Test the per-part box index's schema, staleness and --check (part_index, #90; no FreeCAD)
-        run: python3 cad/scripts/test_part_index.py 2>&1 | tee test-part-index.log
+        run: python3 platform/freecad/test_part_index.py 2>&1 | tee test-part-index.log
       - name: Confirm every part_index test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-part-index.log && tail -1 test-part-index.log | grep -qx 'OK'

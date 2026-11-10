@@ -15,7 +15,10 @@ Created 2026-05-17 to centralize the build before construction begins.
 | `notes/cut-list.md` | Extrusion cut list measured from the model (draft) |
 | `notes/reference/` | Styled HTML reference pages (comparisons, part explainers), published at https://dvystrcil.github.io/vt350/ |
 | `cad/README.md` | The FreeCAD model files (kept outside git), how each was made, and FreeCAD performance setup |
-| `cad/scripts/` | FreeCAD scripts that produced each model working copy, with their checks |
+| `platform/` | The generic tools: FreeCAD clash and pass library, renders, Kalico simulation, parts and pages checks. They take a printer's data and work unchanged for another printer ([#122](https://github.com/dvystrcil/vt350/issues/122)); see [`platform/README.md`](platform/README.md) |
+| `cad/passes/` | The VT350's model-writing passes (lite-N): how each working copy was made, with its checks |
+| `cad/studies/` | The VT350's studies: toolhead and Z sweeps, print area, frame map, one-off investigations |
+| `cad/scripts/` | The VT350's refresh chain (`refresh.py`) and STL derivation (`derive_stls.py`) |
 | `cad/data/` | Script inputs/outputs: fastener records, frame map, kept fastener solids, run logs |
 | `config/` | Klipper / Mainsail / Moonraker configuration (from build stage #15) |
 
