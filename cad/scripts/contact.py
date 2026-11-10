@@ -15,6 +15,7 @@ STEP = 0.5          # mm, scan step
 EPS = 0.005         # mm, bisection stops when the clear..overlapping bracket is this narrow
 TOL = 1e-3          # mm3, a common() volume above this is an overlap (litelib no_overlap's tol)
 MARGIN = 0.5        # mm each box grows by before windows are taken (optimal boxes come from a triangulation)
+FLOOR_MARGIN = 5.0  # mm: printer.cfg stops the bed this far above its measured lower stop (user 2026-11-09)
 REPORT = 10.0       # mm past the first contact that the runners-up are still listed
 BATCH = 16          # pairs per round of the pruned search
 DONE = "z_sweep: done (read-only, nothing saved)"

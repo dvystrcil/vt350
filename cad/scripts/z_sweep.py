@@ -115,13 +115,19 @@ def limits(plate_top, lower_contact, rails, uppers, top_contact, rails_up=()):
     top = {"dz": dt, "plate_top": plate_top + dt, "why": twhy}
     if dt < d:
         problems.append(f"the mechanical top (bed dZ +{dt:.2f}, {twhy}) is below the nozzle touch (+{d:.2f})")
-    klipper = {"position_max": d + dl, "z_negative": d - dt, "travel": dt + dl}
+    fm = contact.FLOOR_MARGIN
+    klipper = {"position_max": d + dl, "position_max_configured": d + dl - fm, "z_negative": d - dt, "travel": dt + dl}
+    floor = {"dz": -dl + fm, "plate_top": plate_top - dl + fm}
     lines.append(contact.line("klipper_position_max_mm", d + dl, "Klipper Z at the lower stop; Z0 = the nozzle on the "
                               "magnet sheet (with a steel sheet, subtract its thickness)"))
     lines.append(contact.line("z_negative_limit_mm", d - dt, "Klipper Z at the mechanical top, toolhead parked off the "
                               f"bed: bed dZ +{dt:.2f}, {twhy}"))
     lines.append(contact.line("z_travel_mm", dt + dl, "the bed's full travel, lower stop to mechanical top"))
-    return {"lower": lower, "upper": upper, "top": top, "print_height": heights, "klipper": klipper, "lines": lines,
+    lines.append(contact.line("klipper_position_max_configured_mm", d + dl - fm,
+                              f"printer.cfg [stepper_z] position_max: the bed stops {fm:.2f} mm above the lower stop "
+                              f"(bed dZ {-dl + fm:.2f}, plate top {plate_top - dl + fm:.2f}); minus the steel sheet's "
+                              "thickness"))
+    return {"lower": lower, "upper": upper, "top": top, "floor": floor, "print_height": heights, "klipper": klipper, "lines": lines,
             "problems": problems}
 
 

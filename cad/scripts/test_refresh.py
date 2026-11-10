@@ -7,6 +7,7 @@ import hashlib
 import shutil
 import importlib.util
 import os
+import re
 import sys
 import tempfile
 import unittest
@@ -315,6 +316,12 @@ class MarkersMatchTheRealTools(unittest.TestCase):
         log = open(os.path.join(self.ROOT, "cad/data/logs/z_sweep.log")).read()
         self.assertRegex(log, self.marker_of("z_sweep"))
         z = contact.parse(log)
+        # cad/klipper/printer.cfg carries the configured floor the committed log measured (user 2026-11-09)
+        cfg = open(os.path.join(self.ROOT, "cad/klipper/printer.cfg")).read()
+        pm = re.search(r"(?m)^position_max:\s*([0-9.]+)", cfg)
+        want = re.findall(r"klipper_position_max_configured_mm=([0-9.]+)", log)
+        self.assertTrue(pm and want, (pm, want))
+        self.assertEqual(float(pm.group(1)), float(want[-1]))
         self.assertEqual((z["z_lower_limit_mm"], z["klipper_position_max_mm"], z["z_negative_limit_mm"], z["z_travel_mm"]),
                          (43.76, 335.33, -20.27, 355.6))
 

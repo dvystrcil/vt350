@@ -64,6 +64,8 @@ WORK = os.environ.get("VT350_WORK", f"{REPO}/cad/data")
 MODELS = "/home/dan/Documents/VT350"
 BED_LOWEST_DZ = -242.00       # the bed's bottom of Z travel from the model pose: the bed-frame 2020 T on the
                               # backbone (#82 z_sweep, data/logs/z_sweep.log; #74's bisection gave -241.98)
+BED_FLOOR_DZ = BED_LOWEST_DZ + 5.0  # where printer.cfg stops the bed (position_max): contact.FLOOR_MARGIN above
+                              # the lower stop, both bed-frame 2020s 5 mm above the backbone (user 2026-11-09)
 BED_Z = (230.0, 300.0)        # bed-side solids at the model pose: ZMin in this band and ZMax <= its top
 HERE = os.path.dirname(os.path.abspath(__file__))
 APP = os.environ.get("FREECAD_APPIMAGE", "/home/dan/FreeCAD/FreeCAD_26.3rc2-Linux-x86_64.AppImage")
