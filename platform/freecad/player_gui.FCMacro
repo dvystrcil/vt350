@@ -1,0 +1,10 @@
+# FreeCAD GUI macro: starts the motion player (player.py, vt350#135 AC3) from the MOTION_* environment.
+#   MOTION_MODEL=... MOTION_GROUPS=... MOTION_TIMELINE=... MOTION_RIG=... freecad platform/freecad/player_gui.FCMacro
+# A separate file because FreeCAD runs a script as a module named after its file, not "__main__": player.py is also
+# imported by its tests, so it can't start the GUI on import. An .FCMacro, not a .py: FreeCAD 26.3's GUI runs an
+# .FCMacro given on its command line but only lists a .py under Recent Files (seen 2026-11-10, under xvfb).
+import os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) if "__file__" in globals() else
+                os.path.join(os.environ.get("VT350_REPO", "/home/dan/Code/vt350"), "platform/freecad"))
+import player
+player.gui_main()

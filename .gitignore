@@ -7,3 +7,6 @@ cad/data/stl/
 cad/data/logs/refresh.log
 __pycache__/
 *.pyc
+
+# the motion player's cached groups (cad/motion/play.py, vt350#135)
+cad/data/motion/
