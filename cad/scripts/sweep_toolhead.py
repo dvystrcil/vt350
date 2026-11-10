@@ -60,6 +60,22 @@ NOZZLE = "E3D v6 HotEnd - Nozzle"
 
 
 # ------------------------------------------------------------------------------------------------ stage 1: plan
+def bed_bottom(land, measured):
+    """land: [(drop, bed label, fixed label)], the bounding-box drops to each landing. -> (dz, note): the bed-bottom
+    poses use the MEASURED lower stop (z_sweep's boolean contact, litelib.BED_LOWEST_DZ; vt350#82). The box estimate is
+    only logged: an envelope box is not its contents (lite-29 landed the 2020 on the filter envelope at -238.00). A
+    box can only land early, so an estimate below the measured stop means one of them is wrong."""
+    if not land: raise RuntimeError("bed bottom: nothing lands under the bed")
+    land = sorted(land)
+    est = -land[0][0]
+    if est < measured - 1e-6:
+        raise RuntimeError(f"bed bottom: the bounding-box estimate {est:.2f} is below the measured lower stop "
+                           f"{measured:.2f}; re-run z_sweep.py")
+    return measured, (f"bed bottom: dZ {measured:.2f} (the measured lower stop, litelib.BED_LOWEST_DZ from z_sweep.py); "
+                      f"bounding-box estimate {est:.2f} ({land[0][1]} lands on {land[0][2]}), next: "
+                      + "; ".join(f"{-g:.2f} {a} on {c}" for g, a, c in land[1:4]))
+
+
 def plan(out):
     import FreeCAD
     V = FreeCAD.Vector
@@ -160,10 +176,9 @@ def plan(out):
             if g.ZMax > b.ZMin + 0.01: continue
             if min(b.XMax, g.XMax) - max(b.XMin, g.XMin) <= 0.01 or min(b.YMax, g.YMax) - max(b.YMin, g.YMin) <= 0.01: continue
             land.append((b.ZMin - g.ZMax, lab[nb], f.Label))
-    land.sort()
-    dz_bottom = -land[0][0]
-    notes.append(f"bed bottom: dZ {dz_bottom:.2f} ({land[0][1]} lands on {land[0][2]}, bounding-box estimate); next: "
-                 + "; ".join(f"{-g:.2f} {a} on {c}" for g, a, c in land[1:4]))
+    from litelib import BED_LOWEST_DZ                       # FreeCAD-only module; plan() runs under freecadcmd
+    dz_bottom, note = bed_bottom(land, BED_LOWEST_DZ)
+    notes.append(note)
     # poses
     poses, meta = {}, {}
     x_lo, x_hi = PLATE_X0 + (PLATE_W - PRINT_W) / 2, PLATE_X0 + (PLATE_W + PRINT_W) / 2
