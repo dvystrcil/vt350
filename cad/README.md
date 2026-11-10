@@ -390,13 +390,25 @@ What this leaves open:
 
 ## Z travel (lite-29, measured)
 
-Both ends are measured on the saved model by `cad/scripts/z_sweep.py` (#82). It's headless and read-only. The bed moves against every other solid plus the documents the envelopes name (`vt350-filter-3`, `vt350-ebox`). Contact is a `common()` volume, found by a 0.5 mm scan then bisected to 0.005 mm. Rail ends and plate tops come from vertical ray probes, never bounding boxes. Log: `data/logs/z_sweep.log` (+ `.json`), from the vt350-refresh batch-lane chain `vt350-lite-29-20261109t235001-3d73`. lite-26 gives the same numbers.
+Both ends are measured on the saved model by `cad/scripts/z_sweep.py` (#82). It's headless and read-only. The bed moves against every other solid plus the documents the envelopes name (`vt350-filter-3`, `vt350-ebox`). Contact is a `common()` volume, found by a 0.5 mm scan then bisected to 0.005 mm. Rail ends and plate tops come from vertical ray probes, never bounding boxes. Log: `data/logs/z_sweep.log` (+ `.json`), from the vt350-refresh batch-lane chain `vt350-lite-29-20261110t005338-0686`. The lite-26 run of the first two ends gives the same numbers.
 
 | | Bed dZ from the model pose | LDO plate top Z | What limits it |
 |---|---|---|---|
 | **Lowest** | **−242.00** | **43.76** | the bed-frame 2020 T (front bar and spine) lands on `backbone-350 v2` |
-| **Highest** (a head carried over the print centre) | **+93.33** | **379.09** | the magnet sheet touches the nozzle; Left and Right heads the same |
+| **Nozzle touch** (a head carried over the print centre) | **+93.33** | **379.09** | the magnet sheet touches the nozzle; Left and Right heads the same |
+| **Mechanical top** (toolhead parked at either dock) | **+113.60** | **399.36** | the rear Z block's end cap reaches its `rail_stop`, ray probe and boolean agree (113.60 / 113.604); the left and right blocks would reach theirs at +118.00 |
 | **Max print height** | | | **335.33 mm**, magnet-sheet top from the lower stop to the nozzle (no steel sheet modelled; with one, subtract its thickness) |
+| **Full travel** | | | **355.60 mm**, lower stop to mechanical top |
+
+**In Klipper's terms** (#82 AC6). Z0 is the nozzle touching the print surface, and on a Trident Z goes negative above it:
+
+| Klipper Z | Bed position | Limited by |
+|---|---|---|
+| **+335.33** (`position_max`) | the lower stop | the 2020 T on the backbone |
+| 0 | the nozzle touches the magnet sheet | — |
+| **−20.27** | the mechanical top, with the toolhead parked | the rear Z block on its rail stop |
+
+With a steel sheet of thickness *t*, Z0 moves up by *t*: `position_max` becomes 335.33 − *t* and the top −20.27 − *t*. `position_min` must stay above the top with margin. Below Z0 the bed only clears the toolhead when the toolhead is parked: with a head (or the empty carriage) over the bed, the bed meets it at Z 0 / −1.66.
 
 Runners-up, i.e. what would limit next:
 - **Bottom, Z rails:** the left and right Z blocks' bottom end caps reach their rails' bottom ends at dZ −242.10. That's only **0.10 mm** past the stop: the blocks stay on the rails, just. The rear block has 4.50 mm.
@@ -408,9 +420,10 @@ Runners-up, i.e. what would limit next:
   - the Beacon at +2.60.
 
   The carriage body only 1.66 mm above the nozzle tip looks too close; check the carried-head offset before trusting it.
-- **Heads docked** (nothing over the bed): the same carriage body is the first thing above the bed, at +94.99. The Z blocks reach their rail tops only at +113.60 (rear) and +118.00.
+- **Heads docked, carriage at the model pose** (over the middle of the bed): the same carriage body is the first thing above the bed, at +94.99 (Klipper Z −1.66).
+- **Toolhead parked** (gantry dY −257.73, carriage at the Left or Right dock pickup): no part of the toolhead, gantry or frame reaches the bed before the Z rail stops; both parkings give the same contacts. That's 110 pairs searched each, 0 boolean errors.
 
-Left out of the sweep, and listed in its log: the Z drag chain (its links are posed for one bed height), the docks' carriage copies, and with a head carried, the belts and that head's own bowden tube. Pairs already overlapping at the model pose are listed, not limits. There are 13: the Z blocks' 0.002–0.07 mm³ overlaps with their own rails, and the rear lead-screw nut on its rod (63.8 mm³).
+Left out of the sweep, and listed in its log: the Z drag chain (its links are posed for one bed height), the docks' carriage copies, with a head carried, the belts and that head's own bowden tube, and with the toolhead parked, the belts. Pairs already overlapping at the model pose are listed, not limits. There are 13: the Z blocks' 0.002–0.07 mm³ overlaps with their own rails, and the rear lead-screw nut on its rod (63.8 mm³).
 
 `litelib.BED_LOWEST_DZ` (−242.00) is this lower stop. #74's bisection found the same contact at −241.98, but the part index puts both faces at exactly 242.00 apart. `refresh.py` re-runs the sweep after every model change (its `z_sweep` step) and reports the Z travel against the committed log.
 

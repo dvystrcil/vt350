@@ -314,7 +314,9 @@ class MarkersMatchTheRealTools(unittest.TestCase):
         # and the committed log of a real run (batch lane, lite-29, 2026-11-09) passes it and parses
         log = open(os.path.join(self.ROOT, "cad/data/logs/z_sweep.log")).read()
         self.assertRegex(log, self.marker_of("z_sweep"))
-        self.assertEqual(contact.parse(log)["z_lower_limit_mm"], 43.76)
+        z = contact.parse(log)
+        self.assertEqual((z["z_lower_limit_mm"], z["klipper_position_max_mm"], z["z_negative_limit_mm"], z["z_travel_mm"]),
+                         (43.76, 335.33, -20.27, 355.6))
 
     def test_print_area_marker(self):
         with tempfile.TemporaryDirectory() as d:
