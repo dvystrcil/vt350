@@ -10,7 +10,9 @@ A printer's launcher sets these (the VT350's is cad/motion/play.py). The environ
                      the leaf objects each moving group translates. Every group the rig moves must be there, and no
                      object may be in two groups. "clip" (optional): objects that don't move rigidly as a whole (a
                      belt loop, whose side runs change length) are shown cut down to a global box at the model pose;
-                     the rest is hidden while the player is open
+                     the rest is hidden while the player is open. "hide" (optional): [Name], parts that stay put
+                     but shouldn't show while the player is open (a dock's copy of the carriage at its pickup pose:
+                     the moving carriage takes its place)
     MOTION_TIMELINE  the kalisim timeline (JSONL);  MOTION_RIG  the rig file (JSON). timeline.py turns them into frames
     MOTION_FPS       frames per second of timeline time (default 30);  MOTION_SPEED  the starting speed factor (1)
     MOTION_CARRIED   the head on the carriage at the start (default none)
@@ -168,6 +170,26 @@ def check_clip(clip, groups):
             raise ValueError(f"clip: {n}'s box {box} isn't [xmin, ymin, zmin, xmax, ymax, zmax] with min < max")
 
 
+def check_hide(hide, groups):
+    """A hidden object must not be in a moving group."""
+    where = {n: g for g, ns in groups.items() for n in ns}
+    moving = [f"{n} ({where[n]})" for n in hide if n in where]
+    if moving:
+        raise ValueError(f"hide: {', '.join(moving)} moves; hide only parts that stay put")
+
+
+def hide_objects(objects):
+    """Hide each object's view (none without the GUI). -> restore(), which shows the ones that were visible."""
+    shown = [o for o in objects if getattr(o, "ViewObject", None) is not None and o.ViewObject.Visibility]
+    for o in shown:
+        o.ViewObject.Visibility = False
+
+    def restore():
+        for o in shown:
+            o.ViewObject.Visibility = True
+    return restore
+
+
 def clip_objects(doc, objects, clip):
     """Show each clipped object cut down to its box: a new Part::Feature in the (private copy of the) document holds
     the global shape's common with the box, and takes the object's place in its group; the original is hidden and
@@ -240,7 +262,7 @@ def config(env):
 
 
 def load(cfg):
-    """-> (frames, {group: [Name]}, clip {Name: box}), checked against each other."""
+    """-> (frames, {group: [Name]}, clip {Name: box}, hide [Name]), checked against each other."""
     with open(cfg["rig"]) as f:
         rig = json.load(f)
     with open(cfg["timeline"]) as f:
@@ -248,10 +270,11 @@ def load(cfg):
     frames = timeline.frames(rig, records, cfg["fps"], cfg["carried"])
     with open(cfg["groups"]) as f:
         data = json.load(f)
-    groups, clip = data["groups"], data.get("clip", {})
+    groups, clip, hide = data["groups"], data.get("clip", {}), data.get("hide", [])
     check_groups(groups, frames)
     check_clip(clip, groups)
-    return frames, groups, clip
+    check_hide(hide, groups)
+    return frames, groups, clip, hide
 
 
 # ------------------------------------------------------------------------------------------------ the GUI
@@ -270,12 +293,13 @@ class Panel:
         import FreeCADGui
         from PySide import QtCore, QtWidgets
         self.cfg, self.time = cfg, time.monotonic
-        self.frames, groups, clip = load(cfg)
+        self.frames, groups, clip, hide = load(cfg)
         self.copy, self.cleanup = private_copy(cfg["model"], cfg["copy_dir"])
         try:
             self.doc = FreeCAD.openDocument(self.copy)
             self.doc.Label = self.doc.Label + " (player copy: read-only, never saved)"
             objects = clip_objects(self.doc, resolve(self.doc, groups), clip)
+            self.unhide = hide_objects(resolve(self.doc, {"hide": hide})["hide"])
             # every Placement as opened, before anything moves: the autotest checks Stop against this, not the
             # Mover's own record
             self.opened = {o.Name: o.Placement.copy() for objs in objects.values() for o in objs}
@@ -352,6 +376,7 @@ class Panel:
         self.closed = True
         try:
             self.stop()
+            self.unhide()
         finally:
             try:
                 FreeCAD.closeDocument(self.doc.Name)

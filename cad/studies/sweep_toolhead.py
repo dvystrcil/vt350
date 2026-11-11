@@ -112,12 +112,13 @@ def plan(out):
     tubes = {h: one(d["tube"]) for h, d in HEADS.items()}
     copies = {h: one(d["copy"], d["dock"]) for h, d in HEADS.items()}
     belts = [one(l).Name for l in BELTS]
-    exclude = [o.Name for o in leaves if P[o.Name] & EXCLUDE_PATHS] + \
-              [c.Name for c in copies.values()]
-    # the whole carriage copy in each dock: everything under the dock's "Carriage" sub-assembly
+    # the whole carriage copy in each dock: everything under the dock's "Carriage" sub-assembly (the motion player
+    # hides these: the moving carriage takes their place, vt350#135)
+    dock_copies = [c.Name for c in copies.values()]
     for h, d in HEADS.items():
-        exclude += [o.Name for o in leaves if d["dock"] in P[o.Name] and ("Carriage" in P[o.Name] or "Carriage(Mirror)" in P[o.Name])]
-    exclude = sorted(set(exclude))
+        dock_copies += [o.Name for o in leaves if d["dock"] in P[o.Name] and ("Carriage" in P[o.Name] or "Carriage(Mirror)" in P[o.Name])]
+    dock_copies = sorted(set(dock_copies))
+    exclude = sorted(set([o.Name for o in leaves if P[o.Name] & EXCLUDE_PATHS] + dock_copies))
     bed = [o.Name for o in leaves if (P[o.Name] & BED_PATHS or o.Label.startswith(BED_LABEL_PREFIX) or o.Label in BED_LOOSE)]
     gantry = [o.Name for o in leaves if P[o.Name] & GANTRY_PATHS or o.Label in GANTRY_LABELS]
     carriage = [o.Name for o in leaves if P[o.Name] & CARRIAGE_PATHS or o.Label in CARRIAGE_LABELS]
@@ -225,7 +226,7 @@ def plan(out):
                 tc = (x - nx + tx, (y_lo + y_hi) / 2 - ny + ty, 0.0)
                 xs[pid] = {"gantry": (0, tc[1], 0), "belt": (0, tc[1], 0), "carriage": tc, "head": (tc[0] - tx, tc[1] - ty, tc[2] - tz)}
         poses[h + " X scan"] = xs
-    json.dump(dict(bed=bed, gantry=gantry, belt=belts, carriage=carriage, heads=heads, tool=tool, exclude=exclude,
+    json.dump(dict(bed=bed, gantry=gantry, belt=belts, carriage=carriage, heads=heads, tool=tool, exclude=exclude, dock_copies=dock_copies,
                    tubes={h: t.Name for h, t in tubes.items()}, poses=poses, meta=meta, notes=notes, labels=lab),
               open(out, "w"))
 

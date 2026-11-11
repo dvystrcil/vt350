@@ -19,7 +19,7 @@ import play  # noqa: E402
 with open(os.path.join(HERE, "rig.json")) as _f:
     RIG = json.load(_f)
 PLAN = {"bed": ["B1", "B2"], "gantry": ["G1"], "belt": ["E1"], "carriage": ["C1"],
-        "heads": {"Left": ["L1", "LP"], "Right": ["R1"]}, "exclude": ["X"], "poses": {}, "labels": {"B1": "bed frame"}}
+        "heads": {"Left": ["L1", "LP"], "Right": ["R1"]}, "exclude": ["X", "D1", "D2"], "dock_copies": ["D1", "D2"], "poses": {}, "labels": {"B1": "bed frame"}}
 
 
 def write(path, data):
@@ -74,6 +74,15 @@ class GroupsFile(unittest.TestCase):
         with open(self.get()) as f:
             g = json.load(f)
         self.assertEqual(g["clip"], {"E1": list(sweep_toolhead.BELT_CLIP)})
+
+    def test_the_docks_carriage_copies_are_hidden(self):        # they stayed behind as a ghost carriage (vt350#135)
+        with open(self.get()) as f:
+            self.assertEqual(json.load(f)["hide"], ["D1", "D2"])
+
+    def test_a_plan_without_dock_copies_is_refused(self):       # an older sweep_toolhead.py
+        plan = {k: v for k, v in PLAN.items() if k != "dock_copies"}
+        with self.assertRaisesRegex(ValueError, "dock_copies"):
+            play.groups_file(self.model, RIG, self.tmp, lambda m: plan)
 
     def test_new_model_bytes_run_the_plan_again(self):
         p1 = self.get(); write(self.model, b"other bytes"); p2 = self.get()
