@@ -21,7 +21,8 @@ A printer's launcher sets these (the VT350's is cad/motion/play.py). The environ
                      there and quit FreeCAD (for testing the GUI under xvfb)
 
 The panel: Play/Pause, Step back/forward (one frame), Stop (restore every Placement, back to the first frame), a speed
-factor, and a slider to scrub. Closing the panel restores, closes the copy and removes it. It never saves.
+factor, and a slider to scrub. Closing the panel restores, closes the copy and removes it; so does quitting FreeCAD with
+the panel open (the main window's close event closes the panel before FreeCAD asks to save the copy). It never saves.
 
 How a frame moves the model: each group's translation (model coordinates, from the saved pose) is added to every
 object's SAVED Placement, turned into the object's parent frame first, so an object inside a rotated App::Part still
@@ -277,6 +278,57 @@ def load(cfg):
     return frames, groups, clip, hide
 
 
+def shut(doc_open, restore, close_doc, cleanup):
+    """Close the panel's copy: restore and close its document if it is still open, then ALWAYS remove the copy.
+    Quitting FreeCAD may have closed the document already, and touching its objects then raises ReferenceError."""
+    try:
+        if doc_open():
+            try:
+                restore()
+            finally:
+                close_doc()
+    finally:
+        cleanup()
+
+
+class CloseFirst:
+    """Event-filter logic for FreeCAD's main window: its close event (any quit: the window's X, File > Exit, Ctrl+Q)
+    closes the panel first. FreeCAD's own close handler runs after the filter: it asks whether to save every modified
+    document, the player's copy included, and closes them, so a panel closed after it finds its copy gone. Lets the
+    event through; a quit that is then cancelled leaves FreeCAD open without the player."""
+
+    def __init__(self, close, close_type):
+        self.close, self.close_type, self.done, self.error = close, close_type, False, None
+
+    def handle(self, event_type):
+        if event_type == self.close_type and not self.done:
+            self.done = True
+            try:
+                self.close()
+            except Exception:                    # an exception out of an event filter is lost; keep it to read
+                import traceback
+                self.error = traceback.format_exc()
+                print(f"motion player: closing on quit failed:\n{self.error}", file=sys.stderr)
+        return False
+
+
+def _close_filter(window, close):
+    """A QObject that runs CloseFirst on the window's events; installed on it. -> the filter (keep a reference)."""
+    from PySide import QtCore
+
+    class Filter(QtCore.QObject):
+        def __init__(self):
+            super().__init__(window)
+            self.logic = CloseFirst(close, QtCore.QEvent.Close)
+
+        def eventFilter(self, obj, event):
+            return self.logic.handle(event.type()) if obj is window else False
+
+    f = Filter()
+    window.installEventFilter(f)
+    return f
+
+
 # ------------------------------------------------------------------------------------------------ the GUI
 def describe(frame, i, n, speed):
     p = frame["pos"]
@@ -297,6 +349,7 @@ class Panel:
         self.copy, self.cleanup = private_copy(cfg["model"], cfg["copy_dir"])
         try:
             self.doc = FreeCAD.openDocument(self.copy)
+            self.doc_name = self.doc.Name
             self.doc.Label = self.doc.Label + " (player copy: read-only, never saved)"
             objects = clip_objects(self.doc, resolve(self.doc, groups), clip)
             self.unhide = hide_objects(resolve(self.doc, {"hide": hide})["hide"])
@@ -333,7 +386,10 @@ class Panel:
         self.slider.sliderMoved.connect(lambda i: self.show(self.clock.step(i - self.clock.index)))
         self.dock.visibilityChanged.connect(lambda v: None if v or self.closed else self.close())
         self.timer = QtCore.QTimer(); self.timer.timeout.connect(self.tick)
-        FreeCADGui.getMainWindow().addDockWidget(QtCore.Qt.RightDockWidgetArea, self.dock)
+        self.window = FreeCADGui.getMainWindow()
+        self.window.addDockWidget(QtCore.Qt.RightDockWidgetArea, self.dock)
+        # quitting FreeCAD with the panel open: close it before FreeCAD's "save changes?" step reaches the copy
+        self.quit_filter = _close_filter(self.window, self.close)
         FreeCADGui.SendMsgToActiveView("ViewFit")
         self.show(0)
 
@@ -369,20 +425,23 @@ class Panel:
         return n
 
     def close(self):
-        """Restore, close the copy without saving, remove it."""
+        """Restore, close the copy without saving, remove it. Also run by the main window's close event (quitting
+        FreeCAD), before FreeCAD closes the documents itself."""
         import FreeCAD
         if self.closed:
             return
         self.closed = True
-        try:
+
+        def restore():
+            self.timer.stop()
             self.stop()
             self.unhide()
+        try:
+            shut(lambda: self.doc_name in FreeCAD.listDocuments(), restore,
+                 lambda: FreeCAD.closeDocument(self.doc_name), self.cleanup)
         finally:
-            try:
-                FreeCAD.closeDocument(self.doc.Name)
-            finally:
-                self.cleanup()
-                self.dock.deleteLater()
+            self.window.removeEventFilter(self.quit_filter)
+            self.dock.deleteLater()
 
 
 def autotest(panel, out):

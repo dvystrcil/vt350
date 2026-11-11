@@ -365,5 +365,61 @@ class Load(unittest.TestCase):
             player.load(self.cfg(g))
 
 
+class Shut(unittest.TestCase):
+    """Closing the panel: restore, close the copy, remove it. Quitting FreeCAD can close the copy's document first
+    (its "save changes?" step), so a document that is already gone must not stop the removal (vt350#135)."""
+    def setUp(self):
+        self.calls = []
+
+    def step(self, name, fail=False):
+        def f():
+            self.calls.append(name)
+            if fail:
+                raise ReferenceError(f"Cannot access attribute of deleted object ({name})")
+        return f
+
+    def test_an_open_document_is_restored_closed_and_removed_in_that_order(self):
+        player.shut(lambda: True, self.step("restore"), self.step("close_doc"), self.step("cleanup"))
+        self.assertEqual(self.calls, ["restore", "close_doc", "cleanup"])
+
+    def test_a_document_already_closed_is_not_touched_and_the_copy_is_still_removed(self):
+        player.shut(lambda: False, self.step("restore", True), self.step("close_doc", True), self.step("cleanup"))
+        self.assertEqual(self.calls, ["cleanup"])
+
+    def test_a_failing_restore_still_closes_and_removes_then_raises(self):
+        with self.assertRaises(ReferenceError):
+            player.shut(lambda: True, self.step("restore", True), self.step("close_doc"), self.step("cleanup"))
+        self.assertEqual(self.calls, ["restore", "close_doc", "cleanup"])
+
+
+class CloseFirst(unittest.TestCase):
+    """The main window's close event closes the panel BEFORE FreeCAD's own close handler runs: that handler asks to
+    save every modified document (the player's copy included) and closes them, so after it the copy is gone."""
+    CLOSE = 19                                           # QEvent.Close; the filter is given the number, no Qt here
+
+    def setUp(self):
+        self.closed = []
+        self.f = player.CloseFirst(lambda: self.closed.append(1), self.CLOSE)
+
+    def test_the_close_event_closes_the_panel_and_lets_the_event_through(self):
+        self.assertFalse(self.f.handle(self.CLOSE))
+        self.assertEqual(self.closed, [1])
+
+    def test_other_events_do_nothing(self):
+        for t in (0, 12, 18, 24):
+            self.assertFalse(self.f.handle(t))
+        self.assertEqual(self.closed, [])
+
+    def test_a_second_close_event_does_not_close_again(self):     # a cancelled quit, then another
+        self.f.handle(self.CLOSE); self.f.handle(self.CLOSE)
+        self.assertEqual(self.closed, [1])
+
+    def test_a_failing_close_does_not_block_the_quit(self):
+        def boom(): raise RuntimeError("boom")
+        f = player.CloseFirst(boom, self.CLOSE)
+        self.assertFalse(f.handle(self.CLOSE))                     # an exception out of an event filter would be lost
+        self.assertIn("boom", f.error)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=1)
