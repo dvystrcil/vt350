@@ -35,7 +35,7 @@ SWEEP_LOG = os.path.join(ROOT, "cad", "data", "logs", "sweep_toolhead.log")
 RIG = os.path.join(HERE, "rig.json")
 TIMELINE = os.path.join(ROOT, "cad", "klipper", "toolchange_timeline.jsonl")
 MODELS = "/home/dan/Documents/VT350"
-FORMAT = "2"                     # the groups file's format, in the cache key: 2 added "clip" (the belts)
+FORMAT = "3"                     # the groups file's format, in the cache key: 2 added "clip" (the belts), 3 "hide"
 WORK = os.environ.get("VT350_WORK", os.path.join(ROOT, "cad", "data"))
 
 
@@ -73,6 +73,8 @@ def groups_file(model, rig, work, run_plan):
         return path
     plan = run_plan(model)
     groups = groups_from_plan(plan, rig)
+    if "dock_copies" not in plan:
+        raise ValueError("the plan has no dock_copies (sweep_toolhead.py from before vt350#135's ghost-carriage fix)")
     sys.path.insert(0, os.path.dirname(SWEEP))
     import sweep_toolhead
     # a belt is one loop: its side runs change length with gantry Y, so only the part in the XY joints' Y band moves
@@ -82,7 +84,10 @@ def groups_file(model, rig, work, run_plan):
     try:
         with os.fdopen(fd, "w") as f:
             json.dump({"model": model, "model_sha256": msha, "from": "cad/studies/sweep_toolhead.py plan stage",
-                       "groups": groups, "clip": clip}, f, indent=1)
+                       "groups": groups, "clip": clip,
+                       # each dock's carriage copy at its pickup pose: it stayed behind as a ghost once the moving
+                       # carriage left (vt350#135)
+                       "hide": list(plan["dock_copies"])}, f, indent=1)
         os.replace(tmp, path)
     except BaseException:
         os.unlink(tmp)

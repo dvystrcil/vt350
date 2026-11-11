@@ -200,6 +200,19 @@ class CheckClip(unittest.TestCase):
             player.check_clip({"B1": [0, 0, 0, 1, -1, 1]}, self.G)
 
 
+class CheckHide(unittest.TestCase):
+    """hide [Name]: objects shown nowhere while the player is open (a copy of a moving part, e.g. the carriage copy
+    each dock holds at its pickup pose, which would stay behind as a ghost). A hidden object must not move."""
+    G = {"carriage": ["C1"], "bed": ["A"]}
+
+    def test_ok(self):
+        player.check_hide(["D1", "D2"], self.G)
+
+    def test_a_moving_object_is_refused(self):
+        with self.assertRaisesRegex(ValueError, "C1.*carriage"):
+            player.check_hide(["D1", "C1"], self.G)
+
+
 class Resolve(unittest.TestCase):
     class Doc:
         def __init__(self, names): self.names = names
@@ -330,16 +343,21 @@ class Load(unittest.TestCase):
                                    "MOTION_RIG": self.rig}), fps=10.0)
 
     def test_the_committed_timeline_loads(self):
-        frames, groups, clip = player.load(self.cfg(self.groups))
-        self.assertEqual((groups, clip), (self.groups, {}))
+        frames, groups, clip, hide = player.load(self.cfg(self.groups))
+        self.assertEqual((groups, clip, hide), (self.groups, {}, []))
         self.assertGreater(len(frames), 10)
         self.assertEqual({fr_["carried"] for fr_ in frames}, {None, "Left", "Right"})
 
     def test_the_clips_are_loaded_and_checked(self):
-        _, _, clip = player.load(self.cfg(self.groups, clip={"belt-obj": [0, 0, 0, 1, 2, 3]}))
+        _, _, clip, _ = player.load(self.cfg(self.groups, clip={"belt-obj": [0, 0, 0, 1, 2, 3]}))
         self.assertEqual(clip, {"belt-obj": [0, 0, 0, 1, 2, 3]})
         with self.assertRaisesRegex(ValueError, "nope"):
             player.load(self.cfg(self.groups, clip={"nope": [0, 0, 0, 1, 2, 3]}))
+
+    def test_the_hidden_objects_are_loaded_and_checked(self):
+        self.assertEqual(player.load(self.cfg(self.groups, hide=["dock-copy"]))[3], ["dock-copy"])
+        with self.assertRaisesRegex(ValueError, "bed-obj"):
+            player.load(self.cfg(self.groups, hide=["bed-obj"]))
 
     def test_a_groups_file_without_a_rig_group_is_refused(self):
         g = dict(self.groups); del g["Right"]

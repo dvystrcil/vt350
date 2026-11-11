@@ -26,6 +26,8 @@ The player opens a **private copy** of the model in a temp dir, never the model 
 
 **The belts are clipped.** Each belt is one loop, and its side runs change length as the gantry moves in Y, so the whole loop can't move rigidly. The player shows only the part in the XY joints' Y band (the X runs and the idler wraps, `sweep_toolhead.BELT_CLIP`), the same part the clash sweep checks, and it moves with the gantry. The side runs are hidden while the player is open. Before this, the whole loop moved with the gantry and shot out the front of the frame.
 
+**The docks' carriage copies are hidden.** Each dock holds a copy of the carriage at its pickup pose (the plan stage gets the pickup offset from it). The moving carriage takes its place, so the player hides both copies (`dock_copies` in the plan: the two carriage compounds and their SpeedClips). Before this, a ghost carriage stayed in the dock once the real one left.
+
 Don't recompute while it plays. Some moved parts feed a boolean or compound, and a recompute would rebuild those from the moved inputs. Press Stop first.
 
 ## How the model moves
