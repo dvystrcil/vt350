@@ -9,6 +9,8 @@ Kalico batch mode (`cad/klipper/`) gives a **timeline**: every move the firmware
 | `test_rig.py` | The derivation, and the committed tool-change timeline played through the rig. Plain python3 |
 | `play.py` | VT350-specific. Opens the FreeCAD GUI player (`platform/freecad/player.py`) on the model. It gets the groups from `cad/studies/sweep_toolhead.py`'s plan stage and caches them in `$VT350_WORK/motion/` |
 | `test_play.py` | The plan's groups named the way the rig names them, the cache, the default model and the FreeCAD command. Plain python3 |
+| `render_frames.py` | VT350-specific. Real-renderer (Blender) frames of the timeline and a video of the dock moves: one grouped mesh export, `frames.json`, the batch-lane job, the MP4. Everything in `$VT350_WORK/motion/` |
+| `test_render_frames.py` | The export's cache key and judgement, the docks camera, the frames, the batch-lane command. Plain python3 |
 
 ```sh
 python3 cad/motion/rig.py --check              # "rig: OK"
@@ -29,6 +31,17 @@ The player opens a **private copy** of the model in a temp dir, never the model 
 **The docks' carriage copies are hidden.** Each dock holds a copy of the carriage at its pickup pose (the plan stage gets the pickup offset from it). The moving carriage takes its place, so the player hides both copies (`dock_copies` in the plan: the two carriage compounds and their SpeedClips). Before this, a ghost carriage stayed in the dock once the real one left.
 
 Don't recompute while it plays. Some moved parts feed a boolean or compound, and a recompute would rebuild those from the moved inputs. Press Stop first.
+
+## Real-renderer frames and video
+
+```sh
+python3 cad/motion/render_frames.py prepare                  # groups + ONE mesh export (FreeCAD GUI, xvfb) + frames.json
+python3 cad/motion/render_frames.py submit                   # Blender frames in the batch lane; result comment on #135
+python3 cad/motion/render_frames.py encode <job>/out         # frames -> notes/reference/toolchange-docks.mp4
+python3 cad/motion/render_frames.py stills --at 21,-68.96    # full-size stills at the move ends at a printer XY
+```
+
+The meshes are exported **once**, at the model pose, with the player's groups (`play.py`'s cached groups file: clipped belts, dock copies left out). Each group's parts go in buckets of their own (`platform/render/export_meshes.py` with `VT350_GROUPS`), so Blender moves each group's objects by the frame's translation (`platform/render/render.py --frames`). Nothing is re-exported per frame. The export is cached in `$VT350_WORK/motion/render-<model>-<key>/export`, keyed by the groups file, the exporter and the colour map. That directory is also the batch-lane input: `prepare` copies `colours.py`, `colours.json` and `motion.py` into it, since the lane stages only the script. The camera, `docks`, is computed from the rig: aimed at the middle of the docked nozzles.
 
 ## How the model moves
 
