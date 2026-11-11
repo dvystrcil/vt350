@@ -5,6 +5,7 @@ stands alone, with its CSS inline, light and dark themes, and its sources listed
 
 | Page | What it covers |
 |---|---|
+| [toolchange-docks.html](toolchange-docks.html) | The tool-change timeline on lite-30, rendered with Blender: a 16 s video of both docks (241 frames, 15 fps) and two 1920×1080 stills of the T0 pickup at park X 21 / attach Y −68.96. Media in `toolchange-docks/` (https://github.com/dvystrcil/vt350/issues/135, 2026-11-10) |
 | [orbiter-hub.html](orbiter-hub.html) | What the Orbiter 2.5's hub housing is: renders from lite-30 (in place, pulled apart, alone), checked against LDO's model. Images in `orbiter-hub/` (https://github.com/dvystrcil/vt350/issues/6, 2026-11-10) |
 | [toolboard-o2s-vs-nitehawk36.html](toolboard-o2s-vs-nitehawk36.html) | Orbitool O2S vs LDO Nitehawk-36 on the Orbiter 2.5: chamber rating, Smart Sensor, CAD, and what a switch would cost (https://github.com/dvystrcil/vt350/issues/6, 2026-11-10) |
 

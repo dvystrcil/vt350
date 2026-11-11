@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tool-Change Docks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; the video first, then each still as a full-width figure with its caption under it. */
+:root {
+  --bg: #eef0f2; --fg: #1d2126; --muted: #5a626c; --line: #cfd4da; --panel: #ffffff; --accent: #d9622b;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #16191d; --fg: #e4e7eb; --muted: #9aa3ad; --line: #2c3238; --panel: #1e2227; --accent: #f08a5a; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #16191d; --fg: #e4e7eb; --muted: #9aa3ad; --line: #2c3238; --panel: #1e2227; --accent: #f08a5a; color-scheme: dark }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.55 var(--sans); }
+main { max-width: 900px; margin: 0 auto; padding-block: 32px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 28px; }
+h1 { font-size: 1.9rem; line-height: 1.2; margin: 0; text-wrap: balance; }
+h2 { font-size: 1.15rem; margin: 0 0 6px; text-wrap: balance; }
+p { margin: 0; max-width: 68ch; }
+.lede { display: grid; gap: 10px; }
+.eyebrow { font: 500 0.78rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+code { font: 0.9em var(--mono); }
+figure { margin: 0; display: grid; gap: 10px; }
+figure img, figure video { width: 100%; height: auto; border-radius: 6px; display: block; border: 1px solid var(--line); background: #000; }
+figcaption { display: grid; gap: 4px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
+th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-weight: 600; color: var(--muted); }
+td.num { font-family: var(--mono); white-space: nowrap; }
+.wrap { overflow-x: auto; }
+.notes { display: grid; gap: 12px; padding-top: 8px; border-top: 1px solid var(--line); }
+.notes ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; max-width: 68ch; }
+.src { font: 0.8rem var(--mono); color: var(--muted); }
+a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <header class="lede">
+    <div class="eyebrow">VT350 · lite-30 · tool-change timeline</div>
+    <h1>The tool changes, at the docks</h1>
+    <p>The committed tool-change macro sequence played on the lite-30 model and rendered with Blender Cycles. The carriage fetches the left head (T0), carries it out and back, returns it, then does the same with the right head (T1). It goes empty → Left → empty → Right → empty. Which head is on the carriage comes from the dock geometry, not from the timeline's <code>tool</code> field.</p>
+  </header>
+
+  <figure>
+    <video src="toolchange-docks/toolchange-docks.mp4" poster="toolchange-docks/1_t0-pickup-seq20.jpg" controls loop muted playsinline preload="metadata" width="1280" height="720"></video>
+    <figcaption>
+      <h2>The whole sequence, 16 s</h2>
+      <p>Seen from the front, looking at both docks. 241 frames at 15 fps, 1280×720: every second frame of the 30 fps timeline. The timing follows the commanded speeds, without acceleration.</p>
+    </figcaption>
+  </figure>
+
+  <div class="wrap">
+    <table>
+      <thead><tr><th>Time</th><th>Move</th><th>Carriage holds</th></tr></thead>
+      <tbody>
+        <tr><td class="num">0.0 s</td><td>start, carriage empty</td><td>none</td></tr>
+        <tr><td class="num">5.0 s</td><td>seq 20: push into the left dock to attach Y −68.96, T0 couples</td><td>Left</td></tr>
+        <tr><td class="num">8.1 s</td><td>seq 31: pull out of the left dock, T0 stays</td><td>none</td></tr>
+        <tr><td class="num">10.0 s</td><td>seq 35: push into the right dock, T1 couples</td><td>Right</td></tr>
+        <tr><td class="num">13.1 s</td><td>seq 45: pull out of the right dock, T1 stays</td><td>none</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <figure>
+    <img src="toolchange-docks/1_t0-pickup-seq20.jpg" alt="Front view of both docks: the left head at its dock on the carriage, the right head parked in its dock, the bed below" width="1920" height="1080">
+    <figcaption>
+      <h2>T0 pickup: park X 21, attach Y −68.96 (seq 20)</h2>
+      <p>The end of the slow push into the left dock. The carriage is at the dock and the left head is on it, 6 mm forward of where it rests: the push to the keyslots' large opening. The right head stays in its dock.</p>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="toolchange-docks/2_t0-return-seq30.jpg" alt="The same front view one move later in the sequence: the left head back at its dock on the carriage, bed 1 mm lower" width="1920" height="1080">
+    <figcaption>
+      <h2>T0 return: the same pose, 1 mm higher (seq 30)</h2>
+      <p>The carriage brings the left head back to the same X and Y at Z 11, still carrying it. The next move, seq 31, pulls out and leaves the head in the dock. At this distance the 1 mm in Z barely shows. The bed sits 1 mm lower than in the pickup still.</p>
+    </figcaption>
+  </figure>
+
+  <section class="notes">
+    <h2>How it is made</h2>
+    <ul>
+      <li><strong>Frames:</strong> <code>platform/freecad/timeline.py</code> turns <code>cad/klipper/toolchange_timeline.jsonl</code> into group translations through the rig, <code>cad/motion/rig.json</code>.</li>
+      <li><strong>Meshes:</strong> exported once at the model pose. Each moving group (bed, gantry, belt, carriage, Left, Right) is in buckets of its own. Blender moves the groups per frame; nothing is re-exported. The belts show only their rigidly moving part, as in the FreeCAD player, and the docks' carriage copies are left out.</li>
+      <li><strong>Render:</strong> <code>platform/render/render.py --frames</code>, Cycles on a GPU. The video uses 32 samples, denoised. The stills use 128 samples at 1920×1080, from the same export and camera.</li>
+      <li><strong>Rerun it:</strong> <code>python3 cad/motion/render_frames.py prepare</code>, then <code>submit</code> (batch lane), <code>encode</code> and <code>stills --at 21,-68.96</code>.</li>
+    </ul>
+    <p class="src">Rendered from vt350-lite-30.FCStd, opened read-only (file unchanged), with Blender Cycles, export key e88719a2ba210c88. Timeline and rig as of a508403. The model includes Orbiter Projects / LDO geometry (CC BY-NC-SA 4.0), so these renders are shared non-commercially, with attribution. Written 2026-11-10 for vt350#135 (AC4, AC5).</p>
+  </section>
+</main>
+</body>
+</html>
