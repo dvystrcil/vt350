@@ -5,13 +5,24 @@
 #        "outside" = 3/4 front view, studio light plus the LED strips;
 #        "low_front", "low_side" = only for a model on its stand (a "Base board" part, lite-27): the feet, board and
 #        the filter recessed under the backbone, seen from just above the board.
+# Motion frames (vt350#135 AC4): an export made with VT350_GROUPS (each moving group's parts in buckets of their own)
+#   blender -b -P render.py -- <export dir> <output dir> [samples] --frames <frames.json, relative: in the export dir>
+#       [--view NAME] [--size WxH] [--first N] [--count N]
+# renders one PNG per frame, frame-NNNNN.png, from the scene's explicit view NAME (default its first), moving each
+# group's objects by the frame's translation (platform/render/motion.py). Frames already in the output dir are skipped,
+# so a run cut short resumes. --first/--count take a slice of the frames list (to split a long run).
 # Units: model mm -> scene metres (x 0.001).
 import bpy, json, math, os, sys
+argv = sys.argv[sys.argv.index("--") + 1:]
+OPTS = {}
+while any(a.startswith("--") for a in argv):
+    i = next(i for i, a in enumerate(argv) if a.startswith("--")); OPTS[argv[i][2:]] = argv[i + 1]; del argv[i:i + 2]
+SRC, OUT = argv[0], argv[1]; SAMPLES = int(argv[2]) if len(argv) > 2 else 128
+# colours.py (and motion.py) sit next to this script; a single-script batch-lane job stages them in the export dir
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(os.path.abspath(SRC))
 import colours                                       # #38: role colours from colours.json (via scene.json)
 from mathutils import Vector
-argv = sys.argv[sys.argv.index("--") + 1:]
-SRC, OUT = argv[0], argv[1]; SAMPLES = int(argv[2]) if len(argv) > 2 else 128
 os.makedirs(OUT, exist_ok=True)
 scene_j = json.load(open(os.path.join(SRC, "scene.json")))
 S = 0.001
@@ -63,11 +74,12 @@ def kind_of(mat, label0):
 # role colours: the CURRENT colours.json (so a colour-only edit re-renders from an old export), else the export's copy
 try: ROLES = dict(scene_j.get("roles", {}), **colours.load()["roles"])
 except Exception as e: print("colours.json not loaded:", e); ROLES = scene_j.get("roles", {})
+OBJ = {}                                             # bucket -> its object (Blender cuts names at 63 bytes)
 for key, b in scene_j["buckets"].items():
     path = os.path.join(SRC, key + ".stl")
     if not os.path.exists(path): continue
     bpy.ops.wm.stl_import(filepath=path, global_scale=S)
-    ob = bpy.context.selected_objects[0]; ob.name = key
+    ob = bpy.context.selected_objects[0]; ob.name = key; OBJ[key] = ob
     kind = "emitter" if key == "LED_emitter" else "glow" if key == "clash" else kind_of(b["material"], (b["labels"] or [""])[0])
     col = tuple(b["color"]); rough = None
     role = ROLES.get(b.get("role") or "")
@@ -125,6 +137,30 @@ def apply_view(name):                                # per-view "hide": [bucket]
 # key light for the outside view only
 bpy.ops.object.light_add(type='AREA', location=(0.6, -1.4, 1.6)); key = bpy.context.object
 key.data.size = 1.2; key.data.energy = 500; key.rotation_euler = (math.radians(55), 0, math.radians(20))
+if "frames" in OPTS:                                 # motion frames (vt350#135 AC4), then stop
+    import motion
+    fp = OPTS["frames"] if os.path.isabs(OPTS["frames"]) else os.path.join(SRC, OPTS["frames"])   # a lane job: in/
+    ff = json.load(open(fp))
+    motion.check_scene(ff, scene_j)
+    pick = [v for v in views if v[0] == OPTS.get("view", views[0][0])]
+    if not pick: raise SystemExit(f"render: no view {OPTS['view']!r} in scene.json (have {[v[0] for v in views]})")
+    name, cam, room, ev = pick[0]
+    sc.camera = cam; sc.view_settings.exposure = ev; bg.inputs["Strength"].default_value = 0.4 * room
+    key.hide_render = name == "obico"
+    apply_view(name)
+    if "size" in OPTS: sc.render.resolution_x, sc.render.resolution_y = (int(v) for v in OPTS["size"].lower().split("x"))
+    sc.render.use_persistent_data = True             # only locations change between frames
+    sc.render.image_settings.file_format = 'PNG'
+    first = int(OPTS.get("first", 0)); frames = ff["frames"][first:first + int(OPTS.get("count", len(ff["frames"])))]
+    todo = [f for f in frames if not os.path.exists(os.path.join(OUT, motion.frame_name(f["i"])))]
+    print(f"frames: {len(frames)} in the slice, {len(frames) - len(todo)} already rendered, {len(todo)} to render")
+    for f in todo:
+        for k, d in motion.offsets(f, scene_j["buckets"]).items():
+            if k in OBJ: OBJ[k].location = Vector(d) * S
+        sc.render.filepath = os.path.join(OUT, motion.frame_name(f["i"]))
+        bpy.ops.render.render(write_still=True); print("wrote", sc.render.filepath, flush=True)
+    print(f"frames: done, {len(frames)} in {OUT}")
+    raise SystemExit(0)
 for name, cam, room, ev in views:
     sc.camera = cam; sc.view_settings.exposure = ev; bg.inputs["Strength"].default_value = 0.4 * room
     key.hide_render = name == "obico"
