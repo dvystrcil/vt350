@@ -42,7 +42,7 @@ RIG, TIMELINE, WORK = play.RIG, play.TIMELINE, play.WORK
 COLOURS = os.path.join(ROOT, "cad", "render", "colours.json")
 HOMELAB = os.environ.get("HOMELAB", os.path.join(os.path.dirname(ROOT), "homelab"))
 EXPORT_CODE = [os.path.join(RENDER, f) for f in ("export_meshes.py", "colours.py", "logos.py", "motion.py")] + [COLOURS]
-VIDEO = os.path.join(ROOT, "notes", "reference", "toolchange-docks.mp4")
+VIDEO = os.path.join(ROOT, "notes", "reference", "toolchange-docks", "toolchange-docks.mp4")
 NOTIFY = "dvystrcil/vt350#135"
 
 
@@ -163,7 +163,7 @@ def main(argv):
     ap.add_argument("--deadline", type=int, default=4 * 3600)
     ap.add_argument("--notify", default=NOTIFY)
     ap.add_argument("--dry-run", action="store_true")
-    ap.add_argument("--out", default=VIDEO, help="encode: the MP4 (default notes/reference/toolchange-docks.mp4)")
+    ap.add_argument("--out", default=VIDEO, help="encode: the MP4 (default notes/reference/toolchange-docks/toolchange-docks.mp4)")
     ap.add_argument("--at", help="stills: printer X,Y")
     a = ap.parse_args(argv)
     with open(a.rig) as f:
@@ -172,9 +172,8 @@ def main(argv):
         if not a.frames_dir:
             ap.error("encode needs the frames dir")
         exp, ff = prepare(a, rig)
-        cmd, listing = motion.encode_cmd(a.frames_dir, ff, a.out)
         os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
-        subprocess.run(cmd, input=listing, text=True, check=True)
+        motion.encode(a.frames_dir, ff, a.out)
         print(f"wrote {a.out} ({os.path.getsize(a.out) / 1e6:.1f} MB, {len(ff['frames'])} frames)")
         return 0
     exp, ff = prepare(a, rig)

@@ -128,8 +128,8 @@ class Encode(unittest.TestCase):
         self.assertIn("libx264", cmd)
         self.assertIn("yuv420p", cmd)                # plays in browsers
         self.assertEqual([l.split("'")[1] for l in listing.splitlines() if l.startswith("file")],
-                         # the concat demuxer ignores the last entry's duration unless the file is listed again
-                         [os.path.join(d, motion.frame_name(i)) for i in (0, 4, 8, 8)])
+                         # each frame once: listing the last again adds a frame (EncodeWithFfmpeg)
+                         [os.path.join(d, motion.frame_name(i)) for i in (0, 4, 8)])
         self.assertIn("duration %s" % (1 / 7.5), listing)
 
     def test_a_missing_frame_is_refused(self):
@@ -137,6 +137,51 @@ class Encode(unittest.TestCase):
         self.addCleanup(shutil.rmtree, d, True)
         with self.assertRaisesRegex(ValueError, "frame-00004"):
             motion.encode_cmd(d, {"fps": 30, "frames": [{"i": 4}]}, "/x/out.mp4")
+
+    def test_the_listing_is_read_from_a_file_not_stdin(self):
+        # ffmpeg 9 resolves a stdin listing's entries against fd:, which can't open them (vt350#135, 2026-11-10)
+        d = tempfile.mkdtemp(prefix="motion-test-")
+        self.addCleanup(shutil.rmtree, d, True)
+        open(os.path.join(d, motion.frame_name(0)), "w").close()
+        cmd, listing = motion.encode_cmd(d, {"fps": 30, "frames": [{"i": 0}]}, "/x/out.mp4")
+        src = cmd[cmd.index("-i") + 1]
+        self.assertEqual(src, os.path.join(d, motion.LISTING))
+        self.assertNotEqual(src, "-")
+
+
+def png(path, w=16, h=16, rgb=(200, 80, 40)):
+    """A tiny solid-colour PNG, stdlib only."""
+    import struct
+    import zlib
+
+    def chunk(kind, data):
+        return struct.pack(">I", len(data)) + kind + data + struct.pack(">I", zlib.crc32(kind + data) & 0xffffffff)
+    raw = b"".join(b"\0" + bytes(rgb) * w for _ in range(h))
+    with open(path, "wb") as f:
+        f.write(b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">IIBBBBB", w, h, 8, 2, 0, 0, 0))
+                + chunk(b"IDAT", zlib.compress(raw)) + chunk(b"IEND", b""))
+
+
+@unittest.skipUnless(shutil.which("ffmpeg") and shutil.which("ffprobe"), "needs ffmpeg + ffprobe")
+class EncodeWithFfmpeg(unittest.TestCase):
+    """The real ffmpeg: the command's shape passing proves nothing about whether ffmpeg accepts it."""
+
+    def test_three_frames_make_a_three_frame_video(self):
+        d = tempfile.mkdtemp(prefix="motion-test-")
+        self.addCleanup(shutil.rmtree, d, True)
+        for i in (0, 2, 4):
+            png(os.path.join(d, motion.frame_name(i)))
+        out = os.path.join(d, "out.mp4")
+        motion.encode(d, {"fps": 15, "frames": [{"i": 0}, {"i": 2}, {"i": 4}]}, out)
+        import subprocess
+        n = subprocess.run(["ffprobe", "-v", "error", "-count_frames", "-select_streams", "v:0", "-show_entries",
+                            "stream=nb_read_frames,r_frame_rate", "-of", "default=nw=1", out],
+                           capture_output=True, text=True, check=True).stdout
+        self.assertIn("nb_read_frames=3", n)             # one per rendered frame, no extra copy of the last
+        self.assertIn("r_frame_rate=15/1", n)
+        dur = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", out],
+                             capture_output=True, text=True, check=True).stdout
+        self.assertAlmostEqual(float(dur), 3 / 15, places=3)
 
 
 if __name__ == "__main__":

@@ -8,8 +8,10 @@ so each is one Blender object that a frame moves by its group's translation; not
 Stdlib only: FreeCAD, Blender and the tests all import it. Generic: no printer's names or numbers.
 """
 import os
+import subprocess
 
 SEP = "__"
+LISTING = "frames.ffconcat"                          # encode()'s ffmpeg listing, written beside the frames
 
 
 class Assign:
@@ -99,8 +101,20 @@ def encode_cmd(frames_dir, ff, out, crf=23):
         raise ValueError(f"{len(gone)} frames not rendered in {frames_dir}: {', '.join(gone[:5])}")
     dur = 1 / ff["fps"]
     files = [os.path.join(frames_dir, frame_name(f["i"])) for f in ff["frames"]]
-    listing = "".join(f"file '{p}'\nduration {dur}\n" for p in files) + f"file '{files[-1]}'\n"
-    cmd = ["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", "-",
+    # every entry with its duration, the last one too; listing the last file again (the old concat workaround for a
+    # dropped last duration) adds a frame on ffmpeg 9: 3 frames came out as 4 (vt350#135)
+    listing = "".join(f"file '{p}'\nduration {dur}\n" for p in files)
+    # the listing goes in a file beside the frames: ffmpeg 9 resolves a stdin listing's entries against fd:, which
+    # cannot open them ("Protocol 'fd' not on whitelist", vt350#135)
+    cmd = ["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", os.path.join(frames_dir, LISTING),
            "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", str(crf), "-r", f"{ff['fps']:g}",
            "-movflags", "+faststart", out]
     return cmd, listing
+
+
+def encode(frames_dir, ff, out, crf=23):
+    """Write the frames' listing beside them and run ffmpeg: the frames -> an H.264 MP4 at out."""
+    cmd, listing = encode_cmd(frames_dir, ff, out, crf)
+    with open(os.path.join(frames_dir, LISTING), "w") as f:
+        f.write(listing)
+    subprocess.run(cmd, check=True)

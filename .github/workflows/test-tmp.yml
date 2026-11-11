@@ -11,6 +11,10 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v7
+      # ffmpeg: platform/render/test_motion.py encodes a real video (vt350#135). Without it that test skips, and a
+      # skip is not the bare "OK" the check below accepts.
+      - name: Install ffmpeg
+        run: sudo apt-get update -q && sudo apt-get install -y -q --no-install-recommends ffmpeg
       # Each test file runs with its own empty TMPDIR. Anything left behind fails the check: leaked test dirs once
       # filled the laptop's /tmp (a tmpfs, 1M inodes).
       - name: Run every python3 test file with an empty TMPDIR
