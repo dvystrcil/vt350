@@ -1,7 +1,7 @@
 {
   "_doc": "Render-time colours (#38), applied by export_meshes.py + render.py; first matching rule wins, unmatched parts keep the model's colour. Hex = sRGB. Decided by the user 2026-11-06.",
   "roles": {
-    "frame":   {"hex": "#93E9BE", "kind": "paint",   "roughness": 0.45, "note": "seafoam green powder coat (approximate shade: tune here)"},
+    "frame":   {"hex": "#4F7942", "kind": "paint",   "roughness": 0.45, "note": "TENTATIVE: DLLPDF in-stock RAL 6011 (Dull Green), Prismatic gloss; confirm against the physical sample, https://github.com/dvystrcil/vt350/issues/102"},
     "accent":  {"hex": "#E2662A", "kind": "plastic", "roughness": 0.65, "note": "PET-GF orange, Voron [a]_ accent parts (tentative)"},
     "backbone": {"hex": "#1A1A1A", "kind": "paint",  "roughness": 0.8,  "note": "bed backbone (steel), matte black (user, 2026-11-06)"},
     "belt":     {"hex": "#2E2119", "kind": "plastic", "roughness": 0.75, "note": "GT2 belts, brown almost black (user, 2026-11-06)"},

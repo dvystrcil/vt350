@@ -89,7 +89,7 @@ last 10 runs, one per day for 30 days, and one per month for 12 months
 ## Renders (lite-26, in colour)
 
 Blender Cycles renders of `vt350-lite-26.FCStd` + `vt350-ebox.FCStd`, made with `render/render_full.sh` (below), in the
-chosen colours (#38): seafoam green powder-coated frame, PET-GF white printed parts, PET-GF orange accents, matte black backbone and Monolith parts, brown belts, chrome bearings. Photo references for the rest: #75. They are
+chosen colours (#38): RAL 6011 green powder-coated frame (tentative: DLLPDF Dull Green, rendered #4F7942 until the #102 sample is matched, #101), PET-GF white printed parts, PET-GF orange accents, matte black backbone and Monolith parts, brown belts, chrome bearings. Photo references for the rest: #75. They are
 re-rendered when worth it, not on every pass. The lite-16 renders (model colours) are in git history.
 
 | What the Obico camera sees (LED strips only, 3800 K) | Outside, front 3/4 |
@@ -111,7 +111,7 @@ VT350_REUSE_EXPORT=<run>/export cad/render/render_full.sh   # changed only a rol
 
   | Role | Colour |
   |---|---|
-  | frame extrusions | seafoam green powder coat |
+  | frame extrusions | RAL 6011 green powder coat (tentative, #4F7942, #101) |
   | printed parts (ShapeMaterial ABS) | PET-GF white |
   | Voron `[a]_` accents | PET-GF orange |
   | bed backbone | matte black |
