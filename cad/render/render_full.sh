@@ -4,7 +4,7 @@
 #   cad/render/render_full.sh [N | model.FCStd] [samples]      # default: lite-26 + vt350-ebox.FCStd, 128 samples
 #
 # 1. FreeCAD GUI (needed: hidden parts and the model's own colours only exist in GUI mode) runs export_meshes.py on
-#    the model plus the ebox file (VT350_EXTRA). Parts are coloured by cad/render/colours.json: frame seafoam powder
+#    the model plus the ebox file (VT350_EXTRA). Parts are coloured by cad/render/colours.json: frame RAL 6011 green powder
 #    coat, printed PET-GF white, [a]_ accents PET-GF orange. Anything else keeps the model's colour. A FreeCAD
 #    window opens and closes by itself; if GNOME says "Not Responding", click Wait.
 # 2. Blender (snap, headless) renders the "obico" (chamber camera) and "outside" (3/4 front) views on the RTX 2070.

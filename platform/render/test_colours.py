@@ -67,6 +67,14 @@ class TheCommittedMap(unittest.TestCase):
         co.validate(m)
         self.assertTrue({"frame", "printed", "accent"} <= set(m["roles"]))
 
+    def test_frame_is_the_tentative_ral_6011_render(self):
+        # vt350#101 AC1: Fern green render of DLLPDF's in-stock RAL 6011, tentative until the #102 sample arrives
+        frame = json.load(open(os.path.join(PRINTER_RENDER, "colours.json")))["roles"]["frame"]
+        self.assertEqual(frame["hex"], "#4F7942")
+        self.assertIn("TENTATIVE", frame["note"])
+        self.assertIn("RAL 6011", frame["note"])
+        self.assertIn("issues/102", frame["note"])
+
     def test_committed_rules_on_real_lite26_labels(self):
         m = co.load()
         frame = "4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Horizontals"
