@@ -10,6 +10,8 @@
 # colour map gives a role goes in that role's bucket (#38). The rest bucket by (material, model colour) as before.
 # Also writes each model's per-part box index beside it, <model>.parts.json (platform/freecad/part_index.py, #90),
 # unless it is fresh; a failure there is logged as "index: FAILED" and does not fail the export.
+# Writes colour-audit.txt (vt350#91): every part the colour map matched no rule for, whatever its material, grouped
+# by group path and material with counts (colours.audit). From the full part list: scene.json keeps 40 labels a bucket.
 # Never saves the model.
 import FreeCAD, Part, Mesh, MeshPart, os, json, time, traceback, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))   # colours.py sits next to this script (laptop or a gpu-batch pod)
@@ -32,7 +34,7 @@ def log(*a): logf.write(f"[{time.time() - t0:7.1f}s] " + " ".join(str(x) for x i
 try:
     buckets, scene = {}, {"model": os.path.basename(MODEL), "extra": [os.path.basename(p) for p in EXTRA], "buckets": {},
                           "lights": [], "camera": None, "roles": CMAP["roles"] if CMAP else {}}
-    hidden = 0; uncoloured = {}; n_role = {}; n_motion = {"hide": 0, "clip": 0, "moving": 0}
+    hidden = 0; seen = []; n_role = {}; n_motion = {"hide": 0, "clip": 0, "moving": 0}
     if os.environ.get("VT350_GROUPS"): scene["groups_file"] = os.environ["VT350_GROUPS"]
     for path_ in [MODEL] + EXTRA:
       doc = FreeCAD.openDocument(path_); log("opened", path_)
@@ -61,9 +63,9 @@ try:
         role = None
         if o.Label.startswith("LED channel"): key = "LED_emitter"
         elif CMAP:
-            role = colours.role_of(CMAP, o.Label, gpath(o), mat)
+            gp = gpath(o); seen.append((o.Label, gp, mat))   # the audit's input: every part the map is asked about
+            role = colours.role_of(CMAP, o.Label, gp, mat)
             if role: key = f"role_{role}_t{int(tr*100)}"; n_role[role] = n_role.get(role, 0) + 1
-            elif mat == "Default" and tr == 0: uncoloured[o.Label] = gpath(o)
         key, grp = G.bucket(o.Name, key)
         if grp: n_motion["moving"] += 1
         b = buckets.setdefault(key, {"mesh": Mesh.Mesh(), "color": col, "material": mat, "transparency": tr, "labels": [],
@@ -104,9 +106,9 @@ try:
             doc = next(d for d in FreeCAD.listDocuments().values() if os.path.realpath(d.FileName) == os.path.realpath(path_))
             log(f"index: {part_index.refresh(doc, path_)} {part_index.sidecar(path_)}")
         except Exception as e: log(f"index: FAILED for {path_}: {type(e).__name__}: {e}")
-    log(f"colour map: {n_role or 'off'}; {len(uncoloured)} solids with material Default kept the model's colour "
-        "(printed parts among them need a rule in colours.json):")
-    for lab, g in sorted(uncoloured.items(), key=lambda kv: (kv[1], kv[0])): log(f"   uncoloured  {lab}   [{g}]")
+    audit = colours.audit_text(colours.audit(CMAP, seen) if CMAP else None, len(seen))
+    open(os.path.join(OUT, "colour-audit.txt"), "w").write(audit)
+    log(f"colour map: {n_role or 'off'}; {audit.splitlines()[0]} (colour-audit.txt)")
     if os.environ.get("VT350_GROUPS"):
         log(f"motion groups: {n_motion['moving']} moving solids, {n_motion['clip']} clipped, {n_motion['hide']} left out")
     log(f"done: {len(buckets)} buckets, {hidden} hidden solids skipped")
