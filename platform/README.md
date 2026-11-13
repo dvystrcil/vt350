@@ -16,7 +16,7 @@ code. The printer side imports from here, not the other way round.
 | `freecad/` | The pass library (`litelib.py`: parts plus named checks, run on workers by `litepool.py`), clash checks (`clashlib.py`), boolean contact (`contact.py`), the per-part box index (`part_index.py`), mesh registration (`reglib.py`, `register.py`), Bézier paths (`bezier.py`), FCStd inspectors (`analyze.py`, `cats.py`, `tree.py`), the motion player's core (`timeline.py`: a kalisim timeline + a rig file → frames of group translations, with the dock handover), and its FreeCAD GUI player (`player.py`, started by `player_gui.FCMacro`: plays the frames on a private copy of the model, play/pause/step/speed, restores every Placement on stop, never saves) | FreeCAD `freecadcmd`; the `test_*.py` files without `import FreeCAD` run in plain `python3` |
 | `render/` | FreeCAD mesh export (`export_meshes.py`), Blender render (`render.py`), the colour-map engine (`colours.py`) and logo split (`logos.py`) | FreeCAD, then Blender |
 | `kalisim/` | Kalico batch mode with no hardware: run G-code through the real firmware and check the moves. The image includes klipper-toolchanger (pinned), for printers whose config uses it | `docker` (Kalico's published image, pinned by digest) |
-| `parts/` | `check-printed.py` (printed parts against their manifest and the BOM) and `slice-check.py` (supports and keep-outs, via PrusaSlicer) | `python3`; slice-check also needs PrusaSlicer |
+| `parts/` | `check-printed.py` (printed parts against their manifest and the BOM) and `slice-check.py` (supports, keep-outs and print estimates, via OrcaSlicer or `--slicer prusa`) | `python3`; slice-check also needs the Orca (or PrusaSlicer) flatpak |
 | `klipper/` | The web front end's client config, Fluidd or Mainsail, vendored unchanged; `frontend.py` reports which one a printer's config includes and switches it | `python3` |
 | `pages/` | `check_index.py`: the guard that runs before the reference pages are published | `python3` |
 | `testing/` | `check_test_tmp.sh`: every plain-python test must leave its `TMPDIR` empty | `bash` |
@@ -51,7 +51,7 @@ The printer passes its data to these tools by path or environment variable:
 | `klipper/frontend.py` | the config that includes the front end | `--config` (the VT350's: `cad/klipper/frontend.cfg`) |
 | `kalisim/Dockerfile` | the MCU Kconfig fragments | the `kconfig` build context: `docker build --build-context kconfig=cad/klipper/kconfig platform/kalisim` |
 | `parts/check-printed.py` | the manifest and BOM | `--root` (default: this checkout), reads `parts/printed/manifest.csv` and `bom/printed-parts.md` |
-| `parts/slice-check.py` | the slicer profile and keep-out boxes | `parts/slice/petg-0.4-0.2.ini`, `parts/slice/keepout.json` (`--profile`, `--keepout`) |
+| `parts/slice-check.py` | the slicer presets and keep-out boxes | `parts/slice/orca/orca.json` (the Neptune presets), `parts/slice/petg-0.4-0.2.ini` (`--slicer prusa`), `parts/slice/keepout.json` (`--orca`, `--profile`, `--keepout`) |
 | `pages/check_index.py` | the pages folder | its argument (default `notes/reference`) |
 
 ## Still VT350-specific (phase 3 of #122)

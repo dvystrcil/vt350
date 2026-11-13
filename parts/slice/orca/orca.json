@@ -1,0 +1,8 @@
+{
+  "_doc": "OrcaSlicer presets for platform/parts/slice-check.py --slicer orca (gpu-batch-docker#13): the ones the user prints the Neptune with (picked 2026-11-07), exported from ~/.var/app/com.orcaslicer.OrcaSlicer/config/OrcaSlicer/user/default/ with print_host blanked. They hold only overrides; `inherits` resolves against the vendors' system profiles of the Orca that runs (2.5.0), which slice-check installs from that Orca's own resources. support_check is applied to the process only: supports on everywhere for overhangs flatter than 45 deg, as in petg-0.4-0.2.ini; the user's preset leaves supports off and turns them on per plate.",
+  "vendors": ["Elegoo", "OrcaFilamentLibrary"],
+  "machine": "machine/Elegoo Neptune 4 Pro (0.4 nozzle) -  MMU.json",
+  "process": "process/0.20mm Standard @Elegoo Neptune4Pro (0.4 nozzle) - MMU.json",
+  "filament": "filament/E RPETG Red - MMU - cht-mze + bimetal.json",
+  "support_check": {"enable_support": "1", "support_on_build_plate_only": "0", "support_threshold_angle": "45"}
+}
