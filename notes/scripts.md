@@ -189,7 +189,7 @@ $APP freecadcmd $PWD/cad/passes/liteNN_<what>.py   # headless = dry run: all che
 | GPU batch | **live** (homelab#1935) | Blender renders on node-03 | `~/Code/homelab/bin/gpu-batch-submit.py` |
 | dmf edit | **live** (homelab#1856) | a small, bounded edit to one file by the local model. A guard decides if it lands, and you read only the diff | `~/Code/homelab/bin/dmf-edit.py FILE -i "instruction" --allow 40-55 [--expect TOKEN] [--write]` |
 | dmf handoff | **live** | a one-shot text task from a prompt file, response saved | `cd ~/Code/homelab && DMF_MODEL=automation-tool-free bin/dmf-handoff.sh prompts/dmf-tasks/<task>.md` |
-| slicer check | **live** (#70) | supports, time, warnings, keep-out boxes + preview of each printed part, headless | `python3 platform/parts/slice-check.py <stl…>` |
+| slicer check | **live** (#70; Orca default since gpu-batch-docker#13) | supports, time, grams, cost, per-layer and per-feature estimates, warnings, keep-out boxes + preview of each printed part, headless | `python3 platform/parts/slice-check.py <stl…>` |
 | dmf status drafter | planned: [homelab#1962](https://github.com/dvystrcil/homelab/issues/1962) | turn a run log into a guarded AC status comment draft | not yet |
 | CAD batch lane | planned: [homelab#1961](https://github.com/dvystrcil/homelab/issues/1961) | sweeps/clash checks off the laptop, result posted to the issue | not yet |
 
@@ -204,7 +204,7 @@ $APP freecadcmd $PWD/cad/passes/liteNN_<what>.py   # headless = dry run: all che
 |---|---|---|
 | `printed-parts` | `platform/parts/test_check_printed.py`, `platform/parts/check-printed.py` | manifest, sha256 or BOM drift |
 | `print-area` | `cad/studies/test_print_area.py` | `print-area.svg` is stale against the sweep log |
-| `slice-check` | `platform/parts/test_slice_check.py`, `keepout.json` validity | the G-code parser, keep-out or report logic breaks |
+| `slice-check` | `platform/parts/test_slice_check.py`, `keepout.json` validity, `orca/orca.json` naming real presets | the G-code parser (absolute or relative E, arcs), Orca's statistics, keep-out or report logic breaks |
 | `refresh-chain` | `cad/scripts/test_refresh.py`, `cad/scripts/test_derive_stls.py`, `test_litepool.py`, `test_prove_parallel.py`, `test_part_index.py` | the chain's sync, step runner or markers break, `derive_stls` stops honouring `VT350_MODELS`, or the part index's schema/staleness check breaks |
 | `render-colours` | `platform/render/test_colours.py`, `cad/render/test_render_full.py` | the colour rules break, or `render_full.sh` misjudges the export (a real `FAILED` passes, or the index hook's `index: FAILED` fails it) |
 | `secret-scan` | gitleaks | a secret in the diff |
