@@ -252,6 +252,31 @@ class Artifacts(Base):
         self.assertIn("index: FAILED", log, log)
 
 
+    def test_export_meshes_writes_the_colour_audit(self):
+        # vt350#91 AC1, the real export on the fixture: no rule in the committed map matches it, so every exported
+        # part is listed, the Steel-Generic lid too (the old log listed only material Default). base and tool are
+        # consumed by holed, so they are not exported and not listed.
+        out = tempfile.mkdtemp(dir=self.tmp)
+        self.freecadcmd(EXPORT, VT350_MODEL=self.fixture, VT350_RENDER_OUT=out)
+        log = open(os.path.join(out, "export.log")).read()
+        self.assertIn("] done: ", log, log)
+        audit = open(os.path.join(out, "colour-audit.txt")).read()
+        self.assertEqual(audit.splitlines()[0], "unmatched: 4 of 4 parts, in 3 group/material sets", audit)
+        # export_meshes.py's gpath takes the first group whose Group lists the part: the App::Part here, not the
+        # nested "Filter (fixture)" that part_index.py reports. The audit shows the path the colour rules saw.
+        self.assertIn("  1  Steel-Generic  Trident (fixture)", audit.splitlines())
+        self.assertIn("  1  Default  (no group)", audit.splitlines())
+        for lab in ("lid (fixture)", "ring (fixture)", "holed (fixture)", "loose (fixture)"):
+            self.assertIn("       " + lab, audit.splitlines(), audit)
+        self.assertNotIn("base (fixture)", audit)
+        self.assertIn("unmatched: 4 of 4 parts", [l for l in log.splitlines() if "colour map:" in l][0], log)
+
+    def test_export_meshes_colour_map_off(self):
+        out = tempfile.mkdtemp(dir=self.tmp)
+        self.freecadcmd(EXPORT, VT350_MODEL=self.fixture, VT350_RENDER_OUT=out, VT350_COLOURS="none")
+        self.assertTrue(open(os.path.join(out, "colour-audit.txt")).read().startswith("unmatched: n/a"))
+
+
 if __name__ in ("__main__", "test_part_index_fc"):      # freecadcmd runs a script as module "test_part_index_fc"
     ok = False
     try:

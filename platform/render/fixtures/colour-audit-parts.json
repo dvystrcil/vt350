@@ -1,0 +1,17 @@
+{
+ "note": "vt350#91 AC2: parts as export_meshes.py sees them, [label, group path, ShapeMaterial name]. scene.json can't be the input: it keeps at most 40 labels per bucket and no per-part group. Labels and groups are lite-26's.",
+ "parts": [
+  ["2040 (2) (new front)", "4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Horizontals", "Aluminum-6061-T6"],
+  ["Dock crossbar (placeholder, 2040)", "4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Horizontals", "Aluminum-6061-T6"],
+  ["Dock", "4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Horizontals", "Aluminum-6061-T6"],
+  ["M5x16", "4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Horizontals", "Steel-Generic"],
+  ["M5x16001", "4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Horizontals", "Steel-Generic"],
+  ["Top Cap", "Gantry", "ABS-Generic"],
+  ["Nocturne lens", "Enclosure extras (lite-16)", "Default"],
+  ["StealthMax Acrylic Panel", "StealthMax 300 (nevermore3d a3451c5, GPL-3.0), recessed concept", "Default"],
+  ["StealthMax fan (Delta BFB0712HF)", "StealthMax 300 (nevermore3d a3451c5, GPL-3.0), recessed concept", "Default"],
+  ["M3x8-Screw034", "4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z", "Default"],
+  ["M3x8-Screw034", "4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z", "Default"],
+  ["10x11 Chain Link017", "4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z", "Default"]
+ ]
+}

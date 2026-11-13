@@ -121,6 +121,80 @@ class TheCommittedMap(unittest.TestCase):
 
 
 
+class Audit(unittest.TestCase):
+    """vt350#91: the parts no colour rule matched, grouped by group path and material, with counts. The export
+    writes it to out/colour-audit.txt. The fixture is a parts list as export_meshes.py sees each part, because
+    scene.json keeps at most 40 labels per bucket and no group per part."""
+    FIXTURE = os.path.join(HERE, "fixtures", "colour-audit-parts.json")
+    FRAME = "4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Horizontals"
+    CROSSBAR = "Dock crossbar (placeholder, 2040)"
+
+    def parts(self):
+        return [tuple(p) for p in json.load(open(self.FIXTURE))["parts"]]
+
+    def without_the_pr88_rule(self):
+        m = co.load()
+        frame = [r for r in m["rules"] if r["role"] == "frame"]
+        self.assertEqual(len(frame), 1)
+        before = frame[0]["label"]
+        frame[0]["label"] = before.replace("|^Dock crossbar", "")
+        self.assertNotEqual(frame[0]["label"], before, "the vt350#88 crossbar rule is no longer written this way")
+        return m
+
+    def listed(self, groups):
+        return {lab for g in groups for lab in g["labels"]}
+
+    def test_the_crossbar_is_listed_without_the_pr88_rule(self):
+        groups = co.audit(self.without_the_pr88_rule(), self.parts())
+        self.assertIn(self.CROSSBAR, self.listed(groups))
+        g = next(g for g in groups if self.CROSSBAR in g["labels"])
+        self.assertEqual((g["group"], g["material"]), (self.FRAME, "Aluminum-6061-T6"))
+        self.assertIn(self.CROSSBAR, co.audit_text(groups, len(self.parts())))
+
+    def test_the_crossbar_is_not_listed_with_it(self):
+        groups = co.audit(co.load(), self.parts())
+        self.assertNotIn(self.CROSSBAR, self.listed(groups))
+        self.assertNotIn(self.CROSSBAR, co.audit_text(groups, len(self.parts())))
+
+    def test_groups_by_group_and_material_with_counts(self):
+        groups = co.audit(co.load(), self.parts())
+        got = [(g["n"], g["group"], g["material"], g["labels"]) for g in groups]
+        chain = "4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z"
+        sm = "StealthMax 300 (nevermore3d a3451c5, GPL-3.0), recessed concept"
+        self.assertEqual(got, [                       # most parts first, then group, then material
+            (2, self.FRAME, "Steel-Generic", {"M5x16": 1, "M5x16001": 1}),     # not Default: the old log missed these
+            (2, chain, "Default", {"M3x8-Screw034": 2}),                        # the same label twice (an extra file)
+            (2, sm, "Default", {"StealthMax Acrylic Panel": 1, "StealthMax fan (Delta BFB0712HF)": 1}),
+            (1, self.FRAME, "Aluminum-6061-T6", {"Dock": 1}),
+            (1, "Enclosure extras (lite-16)", "Default", {"Nocturne lens": 1}),
+        ])
+
+    def test_text_first_line_is_the_count(self):
+        text = co.audit_text(co.audit(co.load(), self.parts()), len(self.parts()))
+        lines = text.splitlines()
+        self.assertEqual(lines[0], "unmatched: 8 of 12 parts, in 5 group/material sets")
+        self.assertIn("  2  Steel-Generic  " + self.FRAME, lines)
+        self.assertIn("       M3x8-Screw034  x2", lines)
+        self.assertTrue(text.endswith("\n"))
+
+    def test_a_part_in_no_group(self):
+        text = co.audit_text(co.audit(co.load(), [("loose", "", "Default")]), 1)
+        self.assertIn("  1  Default  (no group)", text.splitlines())
+
+    def test_nothing_unmatched(self):
+        self.assertEqual(co.audit_text([], 3), "unmatched: 0 of 3 parts\n")
+
+    def test_colour_map_off(self):
+        self.assertEqual(co.audit_text(None, 3), "unmatched: n/a (colour map off: every part keeps the model's colour)\n")
+
+    def test_export_writes_the_audit_from_every_part(self):
+        # the export's own grouping is colours.audit over every part it gave the map, not a dict of Default ones
+        src = open(os.path.join(HERE, "export_meshes.py")).read()
+        self.assertIn("colours.audit(CMAP, ", src)
+        self.assertIn('"colour-audit.txt"', src)
+        self.assertNotIn("uncoloured", src)
+
+
 class MapFile(unittest.TestCase):
     """Which colours.json load() reads by default (vt350#122): the map is the printer's data, the code is generic.
     $VT350_COLOURS, else one beside colours.py (a gpu-batch pod stages everything flat), else the checkout's

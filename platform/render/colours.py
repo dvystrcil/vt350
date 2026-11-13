@@ -62,6 +62,37 @@ def role_of(m, label, group, material):
     return None
 
 
+def audit(m, parts):
+    """The parts no rule matches (vt350#91), grouped by (group path, material): a list of {"group", "material", "n",
+    "labels": {label: count}}, most parts first, then by group and material. parts = (label, group, material) for
+    every part the export gave the map, whatever its material."""
+    sets = {}
+    for label, group, material in parts:
+        if role_of(m, label, group, material) is None:
+            g = sets.setdefault((group or "", material or ""), {})
+            g[label] = g.get(label, 0) + 1
+    out = [{"group": k[0], "material": k[1], "n": sum(v.values()), "labels": dict(sorted(v.items()))}
+           for k, v in sets.items()]
+    return sorted(out, key=lambda g: (-g["n"], g["group"], g["material"]))
+
+
+def audit_text(groups, total):
+    """colour-audit.txt. The first line is the count, so a report can quote it alone; then each set
+    ("<n>  <material>  <group>", "(no group)" for a top-level part) with its labels under it, "x<k>" when a label occurs k > 1 times.
+    groups None = the colour map is off."""
+    if groups is None:
+        return "unmatched: n/a (colour map off: every part keeps the model's colour)\n"
+    n = sum(g["n"] for g in groups)
+    if not n:
+        return f"unmatched: 0 of {total} parts\n"
+    lines = [f"unmatched: {n} of {total} parts, in {len(groups)} group/material sets",
+             "(they keep the model's colour; a printed part among them needs a rule in colours.json)", ""]
+    for g in groups:
+        lines.append(f"{g['n']:>3}  {g['material']}  {g['group'] or '(no group)'}")
+        lines += [f"       {lab}" + (f"  x{k}" if k > 1 else "") for lab, k in g["labels"].items()]
+    return "\n".join(lines) + "\n"
+
+
 def linear(hexstr):
     if not re.fullmatch(r"#[0-9A-Fa-f]{6}", hexstr or ""):
         raise ValueError(f"colour {hexstr!r} is not #RRGGBB")
