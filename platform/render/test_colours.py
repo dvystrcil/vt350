@@ -101,6 +101,29 @@ class TheCommittedMap(unittest.TestCase):
         self.assertIsNone(co.role_of(m, "D5x36mm pin001", "x", "Steel-Generic"))
         self.assertEqual(co.role_of(m, "backbone-350 v2", "4040-350x350x250 Voron Trident v4 v33", "Steel-Generic"), "backbone")
 
+    def test_committed_rules_on_lite32_toolhead(self):
+        # vt350#19 (user, 2026-11-14): the Orbiter is black metal; the filament sensor and the O2S toolboard are black
+        # plastic; the Dragon hotend's heat sink is blue anodised aluminium. Labels as in vt350-lite-32.parts.json.
+        m = co.load()
+        th = "4040-350x350x250 Voron Trident v4 v33 / Left Toolhead"
+        orb = th + " / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1"
+        for lab, grp in (("HubHousing V5 With Logo (1)", orb), ("Latch (1) (1)", orb),
+                         ("Molded Gear Housing (65 teeth) v1 (1)", orb + " / Gearset (1)"),
+                         ("Component19", orb + " / LDO_36STH17-1004AHG v6 (1)")):
+            self.assertEqual(co.role_of(m, lab, grp, "Default"), "orbiter", lab)
+        self.assertIsNone(co.role_of(m, "Bowden Left", orb + " / BrassCouplerRing 4mm PFTE v1", "Default"))  # PTFE tube
+        self.assertIsNone(co.role_of(m, "Orbiter Spider Shaft v4 (1)", orb, "Steel-Generic"))              # steel stays steel
+        self.assertEqual(co.role_of(m, "_MR148ZZ Ball017", orb + " / Orbiter 8MM bearing", "Steel-Generic"), "bearing")
+        for lab in ("Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)",
+                    "Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)"):
+            self.assertEqual(co.role_of(m, lab, th, "Default"), "black_plastic", lab)
+        a4t = th + " / A4Tv2 (DW-Tas, CC BY-NC-SA 4.0) v1"
+        # GBK names read as Latin-1 in the model: TL-dragon-外框-矮 (outer frame, short) = the heat sink
+        for lab in ("TL-dragon-\u00cd\u00e2\u00bf\u00f2-\u00b0\u00ab", "TL-dragon-\u00cd\u00e2\u00bf\u00f2-\u00b0\u00ab004"):
+            self.assertEqual(co.role_of(m, lab, a4t, "Default"), "heatsink", lab)
+        self.assertIsNone(co.role_of(m, "TL-dragon-\u00b9\u00e8\u00bd\u00ba\u00cc\u00d7", a4t, "Default"))  # 硅胶套, the silicone sock
+        self.assertEqual(co.role_of(m, "[a]_orbiter-crossbow-adapter_o2_xol", a4t, "ABS-Generic"), "accent")
+
     def test_committed_rules_on_lite27_stand_and_filter(self):
         m = co.load()
         stand = "4040-350x350x250 Voron Trident v4 v33 / Stand: levelling feet + base board (#83, placeholders)"
