@@ -1,244 +1,244 @@
-[    0.0s] model /work/vt350-lite-30-20261110t071220-43b4-sweep/in/vt350-lite-30.FCStd (read-only)
-[    5.2s] opened /work/vt350-lite-30-20261110t071220-43b4-sweep/in/vt350-lite-30.FCStd
-[   39.3s] opened /work/vt350-lite-30-20261110t071220-43b4-sweep/in/vt350-ebox.FCStd
-[   41.4s] opened /work/vt350-lite-30-20261110t071220-43b4-sweep/in/vt350-filter-3.FCStd
-[   43.2s] bed 115 solids moving; 894 others: the printer's, less 2 envelope(s) and 34 sweep_toolhead exclusions (docks' carriage copies, Z drag chain), plus vt350-ebox.FCStd (102 solids), vt350-filter-3.FCStd (24 solids)
-[   79.7s] LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore): top Z 285.761 at the model pose (ray probes at its centre)
-[   79.8s] Magnetic sheet (1.4 mm): top Z 287.161 at the model pose (ray probes at its centre)
-[   94.1s] Z block MGN9H (2) (5 parts): Z 244.500 .. 284.400; rail SOLID029: Z 2.400 .. 402.400; block end reaches the rail's bottom end at bed dZ -242.10, its top end at +118.00
-[  108.0s] Z block MGN9H (3) (5 parts): Z 245.500 .. 285.400; rail SOLID034: Z -1.000 .. 399.000; block end reaches the rail's bottom end at bed dZ -246.50, its top end at +113.60
-[  122.2s] Z block MGN9H (4) (5 parts): Z 244.500 .. 284.400; rail SOLID037: Z 2.400 .. 402.400; block end reaches the rail's bottom end at bed dZ -242.10, its top end at +118.00
-[  122.2s] search caps (first rail end + 10 mm): down 252.10, up 123.60
-[  429.9s] == bed down: 316 pairs can meet within 252.10 mm, 316 searched, 13 already overlapping at the model pose, 0 boolean errors
-[  429.9s]    fit (not a limit): MGN9H - Carriage_end_cap (1) x SOLID029: 0.070 mm3 at the model pose
-[  429.9s]    fit (not a limit): MGN9H - Carriage_end (1) x SOLID029: 0.002 mm3 at the model pose
-[  429.9s]    fit (not a limit): MGN9H - Carriage_body (1) x SOLID029: 0.012 mm3 at the model pose
-[  429.9s]    fit (not a limit): MGN9H - Carriage_end_cap (1)001 x SOLID029: 0.070 mm3 at the model pose
-[  429.9s]    fit (not a limit): Leadscrew Nut001 x Leadscrew002 (rod): 63.756 mm3 at the model pose
-[  429.9s]    fit (not a limit): MGN9H - Carriage_end_cap (1)002 x SOLID034: 0.070 mm3 at the model pose
-[  429.9s]    fit (not a limit): MGN9H - Carriage_end (1)002 x SOLID034: 0.002 mm3 at the model pose
-[  429.9s]    fit (not a limit): MGN9H - Carriage_body (1)001 x SOLID034: 0.012 mm3 at the model pose
-[  429.9s]    fit (not a limit): MGN9H - Carriage_end_cap (1)003 x SOLID034: 0.070 mm3 at the model pose
-[  429.9s]    fit (not a limit): MGN9H - Carriage_end_cap (1)004 x SOLID037: 0.070 mm3 at the model pose
-[  429.9s]    fit (not a limit): MGN9H - Carriage_end (1)004 x SOLID037: 0.002 mm3 at the model pose
-[  429.9s]    fit (not a limit): MGN9H - Carriage_body (1)002 x SOLID037: 0.012 mm3 at the model pose
-[  429.9s]    fit (not a limit): MGN9H - Carriage_end_cap (1)005 x SOLID037: 0.070 mm3 at the model pose
-[  429.9s]    contact at  242.004: 2020 (2) x backbone-350 v2 (printer)
-[  429.9s]    contact at  242.004: 2020 (1) x backbone-350 v2 (printer)
-[  429.9s]    contact at  243.304: COMPOUND002 x M3x12-Screw023 (printer)
-[  429.9s]    contact at  243.304: COMPOUND002 x M3x12-Screw022 (printer)
-[  429.9s]    contact at  243.404: COMPOUND001 x M3x12-Screw019 (printer)
-[  429.9s]    contact at  243.404: COMPOUND001 x M3x12-Screw018 (printer)
-[  429.9s]    contact at  243.562: COMPOUND002 x M5x10-Screw011 (printer)
-[  429.9s]    contact at  243.662: COMPOUND001 x M5x10-Screw008 (printer)
-[  429.9s]    contact at  244.080: M3x6-Screw021 x M5x10-Screw011 (printer)
-[  429.9s]    contact at  244.180: M3x6-Screw014 x M5x10-Screw008 (printer)
-[  429.9s]    contact at  244.304: SOLID031 x M3x12-Screw025 (printer)
-[  429.9s]    contact at  244.304: SOLID031 x M3x12-Screw024 (printer)
-[  429.9s]    contact at  244.304: SOLID032 x M3x12-Screw025 (printer)
-[  429.9s]    contact at  244.304: SOLID032 x M3x12-Screw024 (printer)
-[  429.9s]    contact at  244.504: 2020 (2) x StealthMax 3.3_LidLatch001 (vt350-filter-3.FCStd)
-[  429.9s]    contact at  244.611: 2020 (2) x StealthMax 3.2_LidFrontHinge (vt350-filter-3.FCStd)
-[  429.9s]    contact at  244.911: 2020 (2) x StealthMax M_3.0_Body (vt350-filter-3.FCStd)
-[  429.9s]    contact at  245.773: MGN9H - Carriage_end_cap (1)004 x M5x10-Screw011 (printer)
-[  429.9s]    contact at  245.873: MGN9H - Carriage_end_cap (1) x M5x10-Screw008 (printer)
-[  429.9s]    contact at  246.111: 2020 (2) x StealthMax Acrylic Panel (vt350-filter-3.FCStd)
-[  429.9s]    contact at  246.160: MGN9H - Carriage_end_cap_screw (1)008 x backbone-350 v2 (printer)
-[  429.9s]    contact at  246.160: MGN9H - Carriage_end_cap_screw (1)009 x backbone-350 v2 (printer)
-[  429.9s]    contact at  246.160: MGN9H - Carriage_end_cap_screw (1) x backbone-350 v2 (printer)
-[  429.9s]    contact at  246.160: MGN9H - Carriage_end_cap_screw (1)001 x backbone-350 v2 (printer)
-[  429.9s]    contact at  246.304: M3 Locknut002 x Motor_Body002 (printer)
-[  429.9s]    contact at  246.304: M3x12-Screw009 x Motor_Body002 (printer)
-[  429.9s]    contact at  246.304: M3x12-Screw008 x Motor_Body002 (printer)
-[  429.9s]    contact at  246.304: M3 Locknut003 x Motor_Body002 (printer)
-[  429.9s]    contact at  246.474: MGN9H - Carriage_end (1)004 x M5x10-Screw011 (printer)
-[  429.9s]    contact at  246.504: COMPOUND002 x backbone-350 v2 (printer)
-[  429.9s]    contact at  246.504: COMPOUND001 x backbone-350 v2 (printer)
-[  429.9s]    contact at  246.504: MGN9H - Carriage_end_cap (1)004 x backbone-350 v2 (printer)
-[  429.9s]    contact at  246.504: MGN9H - Carriage_end_cap (1) x backbone-350 v2 (printer)
-[  429.9s]    contact at  246.554: Leadscrew Nut001 x Motor_Body002 (printer)
-[  429.9s]    contact at  246.574: MGN9H - Carriage_end (1) x M5x10-Screw008 (printer)
-[  429.9s]    contact at  246.804: M5x16-Screw069 x M3x12-Screw022 (printer)
-[  429.9s]    contact at  246.862: M3x6-Screw021 x backbone-350 v2 (printer)
-[  429.9s]    contact at  246.862: M3x6-Screw022 x backbone-350 v2 (printer)
-[  429.9s]    contact at  246.862: M3x6-Screw023 x backbone-350 v2 (printer)
-[  429.9s]    contact at  246.862: M3x6-Screw012 x backbone-350 v2 (printer)
-[  429.9s]    contact at  246.862: M3x6-Screw013 x backbone-350 v2 (printer)
-[  429.9s]    contact at  246.862: M3x6-Screw014 x backbone-350 v2 (printer)
-[  429.9s]    contact at  246.904: M5x16-Screw067 x M3x12-Screw019 (printer)
-[  429.9s]    contact at  247.160: MGN9H - Carriage_end_cap_screw (1)005 x backbone-350 v2 (printer)
-[  429.9s]    contact at  247.160: MGN9H - Carriage_end_cap_screw (1)004 x backbone-350 v2 (printer)
-[  429.9s]    contact at  247.304: M5 Hex Nut002 x M3x12-Screw022 (printer)
-[  429.9s]    contact at  247.304: M3x12-Screw014 x Motor_Body001 (printer)
-[  429.9s]    contact at  247.304: M3x12-Screw015 x Motor_Body001 (printer)
-[  429.9s]    contact at  247.311: 2020 (2) x StealthMax M_3.1_LidPanelHolder (vt350-filter-3.FCStd)
-[  429.9s]    contact at  247.404: M5-Nut x M3x12-Screw019 (printer)
-[  429.9s]    contact at  247.404: M3x12-Screw006 x Motor_Body (printer)
-[  429.9s]    contact at  247.404: M3x12-Screw007 x Motor_Body (printer)
-[  429.9s]    contact at  247.404: MGN9H - Carriage_end (1)004 x backbone-350 v2 (printer)
-[  429.9s]    contact at  247.404: MGN9H - Carriage_end (1) x backbone-350 v2 (printer)
-[  429.9s]    contact at  247.504: SOLID031 x backbone-350 v2 (printer)
-[  429.9s]    contact at  247.504: SOLID032 x backbone-350 v2 (printer)
-[  429.9s]    contact at  247.504: MGN9H - Carriage_end_cap (1)002 x backbone-350 v2 (printer)
-[  429.9s]    contact at  248.304: M3 Locknut004 x Motor_Body001 (printer)
-[  429.9s]    contact at  248.304: M3 Locknut005 x Motor_Body001 (printer)
-[  429.9s]    contact at  248.404: M3 Locknut001 x Motor_Body (printer)
-[  429.9s]    contact at  248.404: M3 Locknut x Motor_Body (printer)
-[  429.9s]    contact at  248.404: MGN9H - Carriage_end (1)002 x backbone-350 v2 (printer)
-[  429.9s]    contact at  248.558: Leadscrew Nut002 x Motor_Body001 (printer)
-[  429.9s]    contact at  248.658: Leadscrew Nut x Motor_Body (printer)
-[  429.9s]    contact at  249.411: 2020 (2) x StealthMax 3mm sponge cord (vt350-filter-3.FCStd)
-[  429.9s]    contact at  250.004: M5x16-Screw069 x backbone-350 v2 (printer)
-[  429.9s]    contact at  250.004: M5x16-Screw067 x backbone-350 v2 (printer)
-[  429.9s]    contact at  250.004: M5x16-Screw068 x backbone-350 v2 (printer)
-[  429.9s]    contact at  250.111: 2020 (2) x StealthMax M_2.2a_CarbonBasketLid (vt350-filter-3.FCStd)
-[  429.9s]    contact at  250.504: M5 Hex Nut002 x backbone-350 v2 (printer)
-[  429.9s]    contact at  250.504: M5 Hex Nut001 x backbone-350 v2 (printer)
-[  429.9s]    contact at  250.504: M5-Nut x backbone-350 v2 (printer)
-[  429.9s]    contact at  250.574: MGN9H - Carriage_body (1)002 x M5x10-Screw011 (printer)
-[  429.9s]    contact at  250.674: MGN9H - Carriage_body (1) x M5x10-Screw008 (printer)
-[  429.9s]    contact at  250.911: 2020 (2) x StealthMax M_2.5a_LogoCap (vt350-filter-3.FCStd)
-[  429.9s]    contact at  250.911: 2020 (2) x StealthMax M_2.0_Body (vt350-filter-3.FCStd)
-[  429.9s]    contact at  250.911: 2020 (2) x StealthMax M_2.1_CarbonBasket (vt350-filter-3.FCStd)
-[  429.9s]    contact at  251.011: 2020 (2) x StealthMax M_2.3_HEPACover (vt350-filter-3.FCStd)
-[  429.9s]    contact at  251.504: MGN9H - Carriage_body (1)002 x backbone-350 v2 (printer)
-[  429.9s]    contact at  251.504: MGN9H - Carriage_body (1) x backbone-350 v2 (printer)
-[  429.9s] Left head carried, nozzle over (-245.00, 205.50), tip Z 380.48 by its box; belts and its own bowden tube left out
-[  525.0s] == bed up, Left head carried over the centre: 179 pairs can meet within 123.60 mm, 91 searched, 13 already overlapping at the model pose, 0 boolean errors
-[  525.0s]    fit (not a limit): MGN9H - Carriage_end_cap (1) x SOLID029: 0.070 mm3 at the model pose
-[  525.0s]    fit (not a limit): MGN9H - Carriage_end (1) x SOLID029: 0.002 mm3 at the model pose
-[  525.0s]    fit (not a limit): MGN9H - Carriage_body (1) x SOLID029: 0.012 mm3 at the model pose
-[  525.0s]    fit (not a limit): MGN9H - Carriage_end_cap (1)001 x SOLID029: 0.070 mm3 at the model pose
-[  525.0s]    fit (not a limit): Leadscrew Nut001 x Leadscrew002 (rod): 63.756 mm3 at the model pose
-[  525.0s]    fit (not a limit): MGN9H - Carriage_end_cap (1)002 x SOLID034: 0.070 mm3 at the model pose
-[  525.0s]    fit (not a limit): MGN9H - Carriage_end (1)002 x SOLID034: 0.002 mm3 at the model pose
-[  525.0s]    fit (not a limit): MGN9H - Carriage_body (1)001 x SOLID034: 0.012 mm3 at the model pose
-[  525.0s]    fit (not a limit): MGN9H - Carriage_end_cap (1)003 x SOLID034: 0.070 mm3 at the model pose
-[  525.0s]    fit (not a limit): MGN9H - Carriage_end_cap (1)004 x SOLID037: 0.070 mm3 at the model pose
-[  525.0s]    fit (not a limit): MGN9H - Carriage_end (1)004 x SOLID037: 0.002 mm3 at the model pose
-[  525.0s]    fit (not a limit): MGN9H - Carriage_body (1)002 x SOLID037: 0.012 mm3 at the model pose
-[  525.0s]    fit (not a limit): MGN9H - Carriage_end_cap (1)005 x SOLID037: 0.070 mm3 at the model pose
-[  525.0s]    contact at   93.328: Magnetic sheet (1.4 mm) x E3D v6 HotEnd - Nozzle (printer)
-[  525.0s]    contact at   94.728: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x E3D v6 HotEnd - Nozzle (printer)
-[  525.0s]    contact at   94.993: Magnetic sheet (1.4 mm) x COMPOUND (printer)
-[  525.0s]    contact at   95.761: Magnetic sheet (1.4 mm) x [a]_Duct-4010-right (printer)
-[  525.0s]    contact at   95.761: Magnetic sheet (1.4 mm) x [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0) (printer)
-[  525.0s]    contact at   95.927: Magnetic sheet (1.4 mm) x Beacon RevH Normal (Beacon CAD, MIT) (printer)
-[  525.0s]    contact at   96.028: Magnetic sheet (1.4 mm) x TL-dragon-¹è½ºÌ× (printer)
-[  525.0s]    contact at   96.393: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x COMPOUND (printer)
-[  525.0s]    contact at   97.161: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x [a]_Duct-4010-right (printer)
-[  525.0s]    contact at   97.161: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0) (printer)
-[  525.0s]    contact at   97.327: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x Beacon RevH Normal (Beacon CAD, MIT) (printer)
-[  525.0s]    contact at   97.428: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x TL-dragon-¹è½ºÌ× (printer)
-[  525.0s]    contact at   98.828: Magnetic sheet (1.4 mm) x Heat Block (printer)
-[  525.0s]    contact at  100.228: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x Heat Block (printer)
-[  525.0s] Right head carried, nozzle over (-245.00, 205.50), tip Z 380.49 by its box; belts and its own bowden tube left out
-[  622.7s] == bed up, Right head carried over the centre: 179 pairs can meet within 123.60 mm, 91 searched, 13 already overlapping at the model pose, 0 boolean errors
-[  622.7s]    fit (not a limit): MGN9H - Carriage_end_cap (1) x SOLID029: 0.070 mm3 at the model pose
-[  622.7s]    fit (not a limit): MGN9H - Carriage_end (1) x SOLID029: 0.002 mm3 at the model pose
-[  622.7s]    fit (not a limit): MGN9H - Carriage_body (1) x SOLID029: 0.012 mm3 at the model pose
-[  622.7s]    fit (not a limit): MGN9H - Carriage_end_cap (1)001 x SOLID029: 0.070 mm3 at the model pose
-[  622.7s]    fit (not a limit): Leadscrew Nut001 x Leadscrew002 (rod): 63.756 mm3 at the model pose
-[  622.7s]    fit (not a limit): MGN9H - Carriage_end_cap (1)002 x SOLID034: 0.070 mm3 at the model pose
-[  622.7s]    fit (not a limit): MGN9H - Carriage_end (1)002 x SOLID034: 0.002 mm3 at the model pose
-[  622.7s]    fit (not a limit): MGN9H - Carriage_body (1)001 x SOLID034: 0.012 mm3 at the model pose
-[  622.7s]    fit (not a limit): MGN9H - Carriage_end_cap (1)003 x SOLID034: 0.070 mm3 at the model pose
-[  622.7s]    fit (not a limit): MGN9H - Carriage_end_cap (1)004 x SOLID037: 0.070 mm3 at the model pose
-[  622.7s]    fit (not a limit): MGN9H - Carriage_end (1)004 x SOLID037: 0.002 mm3 at the model pose
-[  622.7s]    fit (not a limit): MGN9H - Carriage_body (1)002 x SOLID037: 0.012 mm3 at the model pose
-[  622.7s]    fit (not a limit): MGN9H - Carriage_end_cap (1)005 x SOLID037: 0.070 mm3 at the model pose
-[  622.7s]    contact at   93.328: Magnetic sheet (1.4 mm) x E3D v6 HotEnd - Nozzle001 (printer)
-[  622.7s]    contact at   94.728: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x E3D v6 HotEnd - Nozzle001 (printer)
-[  622.7s]    contact at   94.993: Magnetic sheet (1.4 mm) x COMPOUND (printer)
-[  622.7s]    contact at   95.761: Magnetic sheet (1.4 mm) x [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0) (printer)
-[  622.7s]    contact at   95.761: Magnetic sheet (1.4 mm) x [a]_Duct-4010-left001 (printer)
-[  622.7s]    contact at   95.927: Magnetic sheet (1.4 mm) x Beacon RevH Normal (Beacon CAD, MIT) (printer)
-[  622.7s]    contact at   96.028: Magnetic sheet (1.4 mm) x TL-dragon-¹è½ºÌ×001 (printer)
-[  622.7s]    contact at   96.393: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x COMPOUND (printer)
-[  622.7s]    contact at   97.161: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0) (printer)
-[  622.7s]    contact at   97.161: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x [a]_Duct-4010-left001 (printer)
-[  622.7s]    contact at   97.327: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x Beacon RevH Normal (Beacon CAD, MIT) (printer)
-[  622.7s]    contact at   97.428: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x TL-dragon-¹è½ºÌ×001 (printer)
-[  622.7s]    contact at   98.828: Magnetic sheet (1.4 mm) x Heat Block001 (printer)
-[  622.7s]    contact at  100.228: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x Heat Block001 (printer)
-[  715.1s] == bed up, both heads docked (model pose): 118 pairs can meet within 123.60 mm, 84 searched, 13 already overlapping at the model pose, 0 boolean errors
-[  715.1s]    fit (not a limit): MGN9H - Carriage_end_cap (1) x SOLID029: 0.070 mm3 at the model pose
-[  715.1s]    fit (not a limit): MGN9H - Carriage_end (1) x SOLID029: 0.002 mm3 at the model pose
-[  715.1s]    fit (not a limit): MGN9H - Carriage_body (1) x SOLID029: 0.012 mm3 at the model pose
-[  715.1s]    fit (not a limit): MGN9H - Carriage_end_cap (1)001 x SOLID029: 0.070 mm3 at the model pose
-[  715.1s]    fit (not a limit): Leadscrew Nut001 x Leadscrew002 (rod): 63.756 mm3 at the model pose
-[  715.1s]    fit (not a limit): MGN9H - Carriage_end_cap (1)002 x SOLID034: 0.070 mm3 at the model pose
-[  715.1s]    fit (not a limit): MGN9H - Carriage_end (1)002 x SOLID034: 0.002 mm3 at the model pose
-[  715.1s]    fit (not a limit): MGN9H - Carriage_body (1)001 x SOLID034: 0.012 mm3 at the model pose
-[  715.1s]    fit (not a limit): MGN9H - Carriage_end_cap (1)003 x SOLID034: 0.070 mm3 at the model pose
-[  715.1s]    fit (not a limit): MGN9H - Carriage_end_cap (1)004 x SOLID037: 0.070 mm3 at the model pose
-[  715.1s]    fit (not a limit): MGN9H - Carriage_end (1)004 x SOLID037: 0.002 mm3 at the model pose
-[  715.1s]    fit (not a limit): MGN9H - Carriage_body (1)002 x SOLID037: 0.012 mm3 at the model pose
-[  715.1s]    fit (not a limit): MGN9H - Carriage_end_cap (1)005 x SOLID037: 0.070 mm3 at the model pose
-[  715.1s]    contact at   94.993: Magnetic sheet (1.4 mm) x COMPOUND (printer)
-[  715.1s]    contact at   95.927: Magnetic sheet (1.4 mm) x Beacon RevH Normal (Beacon CAD, MIT) (printer)
-[  715.1s]    contact at   96.393: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x COMPOUND (printer)
-[  715.1s]    contact at   97.327: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x Beacon RevH Normal (Beacon CAD, MIT) (printer)
-[  715.1s] toolhead parked at the Left dock pickup: gantry dY -257.73, carriage (-154.00, -257.73); both heads docked, belts left out
-[  803.7s] == bed up, toolhead parked at the Left dock: 110 pairs can meet within 123.60 mm, 110 searched, 13 already overlapping at the model pose, 0 boolean errors
-[  803.7s]    fit (not a limit): MGN9H - Carriage_end_cap (1) x SOLID029: 0.070 mm3 at the model pose
-[  803.7s]    fit (not a limit): MGN9H - Carriage_end (1) x SOLID029: 0.002 mm3 at the model pose
-[  803.7s]    fit (not a limit): MGN9H - Carriage_body (1) x SOLID029: 0.012 mm3 at the model pose
-[  803.7s]    fit (not a limit): MGN9H - Carriage_end_cap (1)001 x SOLID029: 0.070 mm3 at the model pose
-[  803.7s]    fit (not a limit): Leadscrew Nut001 x Leadscrew002 (rod): 63.756 mm3 at the model pose
-[  803.7s]    fit (not a limit): MGN9H - Carriage_end_cap (1)002 x SOLID034: 0.070 mm3 at the model pose
-[  803.7s]    fit (not a limit): MGN9H - Carriage_end (1)002 x SOLID034: 0.002 mm3 at the model pose
-[  803.7s]    fit (not a limit): MGN9H - Carriage_body (1)001 x SOLID034: 0.012 mm3 at the model pose
-[  803.7s]    fit (not a limit): MGN9H - Carriage_end_cap (1)003 x SOLID034: 0.070 mm3 at the model pose
-[  803.7s]    fit (not a limit): MGN9H - Carriage_end_cap (1)004 x SOLID037: 0.070 mm3 at the model pose
-[  803.7s]    fit (not a limit): MGN9H - Carriage_end (1)004 x SOLID037: 0.002 mm3 at the model pose
-[  803.7s]    fit (not a limit): MGN9H - Carriage_body (1)002 x SOLID037: 0.012 mm3 at the model pose
-[  803.7s]    fit (not a limit): MGN9H - Carriage_end_cap (1)005 x SOLID037: 0.070 mm3 at the model pose
-[  803.7s]    contact at  113.604: MGN9H - Carriage_end_cap (1)003 x SOLID035 (printer)
-[  803.7s]    contact at  114.504: MGN9H - Carriage_end (1)003 x SOLID035 (printer)
-[  803.7s]    contact at  118.004: MGN9H - Carriage_end_cap (1)001 x SOLID030 (printer)
-[  803.7s]    contact at  118.004: MGN9H - Carriage_end_cap (1)005 x SOLID038 (printer)
-[  803.7s]    contact at  118.604: MGN9H - Carriage_body (1)001 x SOLID035 (printer)
-[  803.7s]    contact at  118.904: MGN9H - Carriage_end (1)005 x SOLID038 (printer)
-[  803.7s]    contact at  118.904: MGN9H - Carriage_end (1)001 x SOLID030 (printer)
-[  803.7s]    contact at  123.004: MGN9H - Carriage_body (1)002 x SOLID038 (printer)
-[  803.7s]    contact at  123.004: MGN9H - Carriage_body (1) x SOLID030 (printer)
-[  803.7s] toolhead parked at the Right dock pickup: gantry dY -257.73, carriage (153.01, -257.73); both heads docked, belts left out
-[  889.5s] == bed up, toolhead parked at the Right dock: 110 pairs can meet within 123.60 mm, 110 searched, 13 already overlapping at the model pose, 0 boolean errors
-[  889.5s]    fit (not a limit): MGN9H - Carriage_end_cap (1) x SOLID029: 0.070 mm3 at the model pose
-[  889.5s]    fit (not a limit): MGN9H - Carriage_end (1) x SOLID029: 0.002 mm3 at the model pose
-[  889.5s]    fit (not a limit): MGN9H - Carriage_body (1) x SOLID029: 0.012 mm3 at the model pose
-[  889.5s]    fit (not a limit): MGN9H - Carriage_end_cap (1)001 x SOLID029: 0.070 mm3 at the model pose
-[  889.5s]    fit (not a limit): Leadscrew Nut001 x Leadscrew002 (rod): 63.756 mm3 at the model pose
-[  889.5s]    fit (not a limit): MGN9H - Carriage_end_cap (1)002 x SOLID034: 0.070 mm3 at the model pose
-[  889.5s]    fit (not a limit): MGN9H - Carriage_end (1)002 x SOLID034: 0.002 mm3 at the model pose
-[  889.5s]    fit (not a limit): MGN9H - Carriage_body (1)001 x SOLID034: 0.012 mm3 at the model pose
-[  889.5s]    fit (not a limit): MGN9H - Carriage_end_cap (1)003 x SOLID034: 0.070 mm3 at the model pose
-[  889.5s]    fit (not a limit): MGN9H - Carriage_end_cap (1)004 x SOLID037: 0.070 mm3 at the model pose
-[  889.5s]    fit (not a limit): MGN9H - Carriage_end (1)004 x SOLID037: 0.002 mm3 at the model pose
-[  889.5s]    fit (not a limit): MGN9H - Carriage_body (1)002 x SOLID037: 0.012 mm3 at the model pose
-[  889.5s]    fit (not a limit): MGN9H - Carriage_end_cap (1)005 x SOLID037: 0.070 mm3 at the model pose
-[  889.5s]    contact at  113.604: MGN9H - Carriage_end_cap (1)003 x SOLID035 (printer)
-[  889.5s]    contact at  114.504: MGN9H - Carriage_end (1)003 x SOLID035 (printer)
-[  889.5s]    contact at  118.004: MGN9H - Carriage_end_cap (1)001 x SOLID030 (printer)
-[  889.5s]    contact at  118.004: MGN9H - Carriage_end_cap (1)005 x SOLID038 (printer)
-[  889.5s]    contact at  118.604: MGN9H - Carriage_body (1)001 x SOLID035 (printer)
-[  889.5s]    contact at  118.904: MGN9H - Carriage_end (1)005 x SOLID038 (printer)
-[  889.5s]    contact at  118.904: MGN9H - Carriage_end (1)001 x SOLID030 (printer)
-[  889.5s]    contact at  123.004: MGN9H - Carriage_body (1)002 x SOLID038 (printer)
-[  889.5s]    contact at  123.004: MGN9H - Carriage_body (1) x SOLID030 (printer)
-[  889.5s] mechanical upper stop with nothing over the bed: bed dZ +94.99, Magnetic sheet (1.4 mm) touches COMPOUND; rail top ends: MGN9H (2) +118.00; MGN9H (3) +113.60; MGN9H (4) +118.00
-[  889.5s] z_lower_limit_mm=43.76 (LDO plate top; bed dZ -242.00 from the model pose: 2020 (2) lands on backbone-350 v2)
-[  889.5s] Left head carried over the centre: bed dZ +93.33, Magnetic sheet (1.4 mm) touches E3D v6 HotEnd - Nozzle; print height 335.33
-[  889.5s] Right head carried over the centre: bed dZ +93.33, Magnetic sheet (1.4 mm) touches E3D v6 HotEnd - Nozzle001; print height 335.33
-[  889.5s] z_upper_limit_mm=379.09 (LDO plate top; bed dZ +93.33 from the model pose: Left head carried, Magnetic sheet (1.4 mm) touches E3D v6 HotEnd - Nozzle)
-[  889.5s] print_height_mm=335.33 (magnet-sheet top, from the lower stop to the Left nozzle)
-[  889.5s] klipper_position_max_mm=335.33 (Klipper Z at the lower stop; Z0 = the nozzle on the magnet sheet (with a steel sheet, subtract its thickness))
-[  889.5s] z_negative_limit_mm=-20.27 (Klipper Z at the mechanical top, toolhead parked off the bed: bed dZ +113.60, the top end of MGN9H (3) reaches the top end of SOLID034)
-[  889.5s] z_travel_mm=355.60 (the bed's full travel, lower stop to mechanical top)
-[  889.5s] klipper_position_max_configured_mm=330.33 (printer.cfg [stepper_z] position_max: the bed stops 5.00 mm above the lower stop (bed dZ -237.00, plate top 48.76); minus the steel sheet's thickness)
-[  889.5s] magnet-sheet top at the model pose 287.161: lower stop 45.16, upper stop 380.49 (no steel sheet modelled)
-[  889.5s] ok   every limit measured by boolean contact or ray probe
-[  889.6s] verify: 0 problems
-[  889.6s] DRY RUN (headless): all checks passed, not saved
-[  889.6s] z_sweep: done (read-only, nothing saved)
+[    0.0s] model /home/dan/Documents/VT350/vt350-lite-31.FCStd (read-only)
+[   10.3s] opened /home/dan/Documents/VT350/vt350-lite-31.FCStd
+[   90.2s] opened /home/dan/Documents/VT350/vt350-ebox.FCStd
+[   93.1s] opened /home/dan/Documents/VT350/vt350-filter-3.FCStd
+[   94.8s] bed 115 solids moving; 1240 others: the printer's, less 2 envelope(s) and 34 sweep_toolhead exclusions (docks' carriage copies, Z drag chain), plus vt350-ebox.FCStd (102 solids), vt350-filter-3.FCStd (24 solids)
+[  207.5s] LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore): top Z 285.761 at the model pose (ray probes at its centre)
+[  207.6s] Magnetic sheet (1.4 mm): top Z 287.161 at the model pose (ray probes at its centre)
+[  226.4s] Z block MGN9H (2) (5 parts): Z 244.500 .. 284.400; rail SOLID029: Z 2.400 .. 402.400; block end reaches the rail's bottom end at bed dZ -242.10, its top end at +118.00
+[  244.8s] Z block MGN9H (3) (5 parts): Z 245.500 .. 285.400; rail SOLID034: Z -1.000 .. 399.000; block end reaches the rail's bottom end at bed dZ -246.50, its top end at +113.60
+[  263.2s] Z block MGN9H (4) (5 parts): Z 244.500 .. 284.400; rail SOLID037: Z 2.400 .. 402.400; block end reaches the rail's bottom end at bed dZ -242.10, its top end at +118.00
+[  263.2s] search caps (first rail end + 10 mm): down 252.10, up 123.60
+[ 1203.2s] == bed down: 316 pairs can meet within 252.10 mm, 316 searched, 13 already overlapping at the model pose, 0 boolean errors
+[ 1203.2s]    fit (not a limit): MGN9H - Carriage_end_cap (1) x SOLID029: 0.070 mm3 at the model pose
+[ 1203.2s]    fit (not a limit): MGN9H - Carriage_end (1) x SOLID029: 0.002 mm3 at the model pose
+[ 1203.2s]    fit (not a limit): MGN9H - Carriage_body (1) x SOLID029: 0.012 mm3 at the model pose
+[ 1203.2s]    fit (not a limit): MGN9H - Carriage_end_cap (1)001 x SOLID029: 0.070 mm3 at the model pose
+[ 1203.2s]    fit (not a limit): Leadscrew Nut001 x Leadscrew002 (rod): 63.756 mm3 at the model pose
+[ 1203.2s]    fit (not a limit): MGN9H - Carriage_end_cap (1)002 x SOLID034: 0.070 mm3 at the model pose
+[ 1203.2s]    fit (not a limit): MGN9H - Carriage_end (1)002 x SOLID034: 0.002 mm3 at the model pose
+[ 1203.2s]    fit (not a limit): MGN9H - Carriage_body (1)001 x SOLID034: 0.012 mm3 at the model pose
+[ 1203.2s]    fit (not a limit): MGN9H - Carriage_end_cap (1)003 x SOLID034: 0.070 mm3 at the model pose
+[ 1203.2s]    fit (not a limit): MGN9H - Carriage_end_cap (1)004 x SOLID037: 0.070 mm3 at the model pose
+[ 1203.2s]    fit (not a limit): MGN9H - Carriage_end (1)004 x SOLID037: 0.002 mm3 at the model pose
+[ 1203.2s]    fit (not a limit): MGN9H - Carriage_body (1)002 x SOLID037: 0.012 mm3 at the model pose
+[ 1203.2s]    fit (not a limit): MGN9H - Carriage_end_cap (1)005 x SOLID037: 0.070 mm3 at the model pose
+[ 1203.2s]    contact at  242.004: 2020 (2) x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  242.004: 2020 (1) x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  243.304: COMPOUND002 x M3x12-Screw023 (printer)
+[ 1203.2s]    contact at  243.304: COMPOUND002 x M3x12-Screw022 (printer)
+[ 1203.2s]    contact at  243.404: COMPOUND001 x M3x12-Screw019 (printer)
+[ 1203.2s]    contact at  243.404: COMPOUND001 x M3x12-Screw018 (printer)
+[ 1203.2s]    contact at  243.562: COMPOUND002 x M5x10-Screw011 (printer)
+[ 1203.2s]    contact at  243.662: COMPOUND001 x M5x10-Screw008 (printer)
+[ 1203.2s]    contact at  244.080: M3x6-Screw021 x M5x10-Screw011 (printer)
+[ 1203.2s]    contact at  244.180: M3x6-Screw014 x M5x10-Screw008 (printer)
+[ 1203.2s]    contact at  244.304: SOLID031 x M3x12-Screw025 (printer)
+[ 1203.2s]    contact at  244.304: SOLID031 x M3x12-Screw024 (printer)
+[ 1203.2s]    contact at  244.304: SOLID032 x M3x12-Screw025 (printer)
+[ 1203.2s]    contact at  244.304: SOLID032 x M3x12-Screw024 (printer)
+[ 1203.2s]    contact at  244.504: 2020 (2) x StealthMax 3.3_LidLatch001 (vt350-filter-3.FCStd)
+[ 1203.2s]    contact at  244.611: 2020 (2) x StealthMax 3.2_LidFrontHinge (vt350-filter-3.FCStd)
+[ 1203.2s]    contact at  244.911: 2020 (2) x StealthMax M_3.0_Body (vt350-filter-3.FCStd)
+[ 1203.2s]    contact at  245.773: MGN9H - Carriage_end_cap (1)004 x M5x10-Screw011 (printer)
+[ 1203.2s]    contact at  245.873: MGN9H - Carriage_end_cap (1) x M5x10-Screw008 (printer)
+[ 1203.2s]    contact at  246.111: 2020 (2) x StealthMax Acrylic Panel (vt350-filter-3.FCStd)
+[ 1203.2s]    contact at  246.160: MGN9H - Carriage_end_cap_screw (1)008 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  246.160: MGN9H - Carriage_end_cap_screw (1)009 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  246.160: MGN9H - Carriage_end_cap_screw (1) x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  246.160: MGN9H - Carriage_end_cap_screw (1)001 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  246.304: M3 Locknut002 x Motor_Body002 (printer)
+[ 1203.2s]    contact at  246.304: M3x12-Screw009 x Motor_Body002 (printer)
+[ 1203.2s]    contact at  246.304: M3x12-Screw008 x Motor_Body002 (printer)
+[ 1203.2s]    contact at  246.304: M3 Locknut003 x Motor_Body002 (printer)
+[ 1203.2s]    contact at  246.474: MGN9H - Carriage_end (1)004 x M5x10-Screw011 (printer)
+[ 1203.2s]    contact at  246.504: COMPOUND002 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  246.504: COMPOUND001 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  246.504: MGN9H - Carriage_end_cap (1)004 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  246.504: MGN9H - Carriage_end_cap (1) x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  246.554: Leadscrew Nut001 x Motor_Body002 (printer)
+[ 1203.2s]    contact at  246.574: MGN9H - Carriage_end (1) x M5x10-Screw008 (printer)
+[ 1203.2s]    contact at  246.804: M5x16-Screw069 x M3x12-Screw022 (printer)
+[ 1203.2s]    contact at  246.862: M3x6-Screw021 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  246.862: M3x6-Screw022 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  246.862: M3x6-Screw023 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  246.862: M3x6-Screw012 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  246.862: M3x6-Screw013 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  246.862: M3x6-Screw014 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  246.904: M5x16-Screw067 x M3x12-Screw019 (printer)
+[ 1203.2s]    contact at  247.160: MGN9H - Carriage_end_cap_screw (1)005 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  247.160: MGN9H - Carriage_end_cap_screw (1)004 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  247.304: M5 Hex Nut002 x M3x12-Screw022 (printer)
+[ 1203.2s]    contact at  247.304: M3x12-Screw014 x Motor_Body001 (printer)
+[ 1203.2s]    contact at  247.304: M3x12-Screw015 x Motor_Body001 (printer)
+[ 1203.2s]    contact at  247.311: 2020 (2) x StealthMax M_3.1_LidPanelHolder (vt350-filter-3.FCStd)
+[ 1203.2s]    contact at  247.404: M5-Nut x M3x12-Screw019 (printer)
+[ 1203.2s]    contact at  247.404: M3x12-Screw006 x Motor_Body (printer)
+[ 1203.2s]    contact at  247.404: M3x12-Screw007 x Motor_Body (printer)
+[ 1203.2s]    contact at  247.404: MGN9H - Carriage_end (1)004 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  247.404: MGN9H - Carriage_end (1) x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  247.504: SOLID031 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  247.504: SOLID032 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  247.504: MGN9H - Carriage_end_cap (1)002 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  248.304: M3 Locknut004 x Motor_Body001 (printer)
+[ 1203.2s]    contact at  248.304: M3 Locknut005 x Motor_Body001 (printer)
+[ 1203.2s]    contact at  248.404: M3 Locknut001 x Motor_Body (printer)
+[ 1203.2s]    contact at  248.404: M3 Locknut x Motor_Body (printer)
+[ 1203.2s]    contact at  248.404: MGN9H - Carriage_end (1)002 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  248.558: Leadscrew Nut002 x Motor_Body001 (printer)
+[ 1203.2s]    contact at  248.658: Leadscrew Nut x Motor_Body (printer)
+[ 1203.2s]    contact at  249.411: 2020 (2) x StealthMax 3mm sponge cord (vt350-filter-3.FCStd)
+[ 1203.2s]    contact at  250.004: M5x16-Screw069 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  250.004: M5x16-Screw067 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  250.004: M5x16-Screw068 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  250.111: 2020 (2) x StealthMax M_2.2a_CarbonBasketLid (vt350-filter-3.FCStd)
+[ 1203.2s]    contact at  250.504: M5 Hex Nut002 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  250.504: M5 Hex Nut001 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  250.504: M5-Nut x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  250.574: MGN9H - Carriage_body (1)002 x M5x10-Screw011 (printer)
+[ 1203.2s]    contact at  250.674: MGN9H - Carriage_body (1) x M5x10-Screw008 (printer)
+[ 1203.2s]    contact at  250.911: 2020 (2) x StealthMax M_2.5a_LogoCap (vt350-filter-3.FCStd)
+[ 1203.2s]    contact at  250.911: 2020 (2) x StealthMax M_2.0_Body (vt350-filter-3.FCStd)
+[ 1203.2s]    contact at  250.911: 2020 (2) x StealthMax M_2.1_CarbonBasket (vt350-filter-3.FCStd)
+[ 1203.2s]    contact at  251.011: 2020 (2) x StealthMax M_2.3_HEPACover (vt350-filter-3.FCStd)
+[ 1203.2s]    contact at  251.504: MGN9H - Carriage_body (1)002 x backbone-350 v2 (printer)
+[ 1203.2s]    contact at  251.504: MGN9H - Carriage_body (1) x backbone-350 v2 (printer)
+[ 1203.2s] Left head carried, nozzle over (-245.00, 205.50), tip Z 380.48 by its box; belts and its own bowden tube left out
+[ 1528.2s] == bed up, Left head carried over the centre: 179 pairs can meet within 123.60 mm, 91 searched, 13 already overlapping at the model pose, 0 boolean errors
+[ 1528.2s]    fit (not a limit): MGN9H - Carriage_end_cap (1) x SOLID029: 0.070 mm3 at the model pose
+[ 1528.2s]    fit (not a limit): MGN9H - Carriage_end (1) x SOLID029: 0.002 mm3 at the model pose
+[ 1528.2s]    fit (not a limit): MGN9H - Carriage_body (1) x SOLID029: 0.012 mm3 at the model pose
+[ 1528.2s]    fit (not a limit): MGN9H - Carriage_end_cap (1)001 x SOLID029: 0.070 mm3 at the model pose
+[ 1528.2s]    fit (not a limit): Leadscrew Nut001 x Leadscrew002 (rod): 63.756 mm3 at the model pose
+[ 1528.2s]    fit (not a limit): MGN9H - Carriage_end_cap (1)002 x SOLID034: 0.070 mm3 at the model pose
+[ 1528.2s]    fit (not a limit): MGN9H - Carriage_end (1)002 x SOLID034: 0.002 mm3 at the model pose
+[ 1528.2s]    fit (not a limit): MGN9H - Carriage_body (1)001 x SOLID034: 0.012 mm3 at the model pose
+[ 1528.2s]    fit (not a limit): MGN9H - Carriage_end_cap (1)003 x SOLID034: 0.070 mm3 at the model pose
+[ 1528.2s]    fit (not a limit): MGN9H - Carriage_end_cap (1)004 x SOLID037: 0.070 mm3 at the model pose
+[ 1528.2s]    fit (not a limit): MGN9H - Carriage_end (1)004 x SOLID037: 0.002 mm3 at the model pose
+[ 1528.2s]    fit (not a limit): MGN9H - Carriage_body (1)002 x SOLID037: 0.012 mm3 at the model pose
+[ 1528.2s]    fit (not a limit): MGN9H - Carriage_end_cap (1)005 x SOLID037: 0.070 mm3 at the model pose
+[ 1528.2s]    contact at   93.328: Magnetic sheet (1.4 mm) x E3D v6 HotEnd - Nozzle (printer)
+[ 1528.2s]    contact at   94.728: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x E3D v6 HotEnd - Nozzle (printer)
+[ 1528.2s]    contact at   94.993: Magnetic sheet (1.4 mm) x COMPOUND (printer)
+[ 1528.2s]    contact at   95.761: Magnetic sheet (1.4 mm) x [a]_Duct-4010-right (printer)
+[ 1528.2s]    contact at   95.761: Magnetic sheet (1.4 mm) x [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0) (printer)
+[ 1528.2s]    contact at   95.927: Magnetic sheet (1.4 mm) x Beacon RevH Normal (Beacon CAD, MIT) (printer)
+[ 1528.2s]    contact at   96.028: Magnetic sheet (1.4 mm) x TL-dragon-¹è½ºÌ× (printer)
+[ 1528.2s]    contact at   96.393: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x COMPOUND (printer)
+[ 1528.2s]    contact at   97.161: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x [a]_Duct-4010-right (printer)
+[ 1528.2s]    contact at   97.161: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0) (printer)
+[ 1528.2s]    contact at   97.327: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x Beacon RevH Normal (Beacon CAD, MIT) (printer)
+[ 1528.2s]    contact at   97.428: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x TL-dragon-¹è½ºÌ× (printer)
+[ 1528.2s]    contact at   98.828: Magnetic sheet (1.4 mm) x Heat Block (printer)
+[ 1528.2s]    contact at  100.228: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x Heat Block (printer)
+[ 1528.2s] Right head carried, nozzle over (-245.00, 205.50), tip Z 380.49 by its box; belts and its own bowden tube left out
+[ 1851.7s] == bed up, Right head carried over the centre: 179 pairs can meet within 123.60 mm, 91 searched, 13 already overlapping at the model pose, 0 boolean errors
+[ 1851.7s]    fit (not a limit): MGN9H - Carriage_end_cap (1) x SOLID029: 0.070 mm3 at the model pose
+[ 1851.7s]    fit (not a limit): MGN9H - Carriage_end (1) x SOLID029: 0.002 mm3 at the model pose
+[ 1851.7s]    fit (not a limit): MGN9H - Carriage_body (1) x SOLID029: 0.012 mm3 at the model pose
+[ 1851.7s]    fit (not a limit): MGN9H - Carriage_end_cap (1)001 x SOLID029: 0.070 mm3 at the model pose
+[ 1851.7s]    fit (not a limit): Leadscrew Nut001 x Leadscrew002 (rod): 63.756 mm3 at the model pose
+[ 1851.7s]    fit (not a limit): MGN9H - Carriage_end_cap (1)002 x SOLID034: 0.070 mm3 at the model pose
+[ 1851.7s]    fit (not a limit): MGN9H - Carriage_end (1)002 x SOLID034: 0.002 mm3 at the model pose
+[ 1851.7s]    fit (not a limit): MGN9H - Carriage_body (1)001 x SOLID034: 0.012 mm3 at the model pose
+[ 1851.7s]    fit (not a limit): MGN9H - Carriage_end_cap (1)003 x SOLID034: 0.070 mm3 at the model pose
+[ 1851.7s]    fit (not a limit): MGN9H - Carriage_end_cap (1)004 x SOLID037: 0.070 mm3 at the model pose
+[ 1851.7s]    fit (not a limit): MGN9H - Carriage_end (1)004 x SOLID037: 0.002 mm3 at the model pose
+[ 1851.7s]    fit (not a limit): MGN9H - Carriage_body (1)002 x SOLID037: 0.012 mm3 at the model pose
+[ 1851.7s]    fit (not a limit): MGN9H - Carriage_end_cap (1)005 x SOLID037: 0.070 mm3 at the model pose
+[ 1851.7s]    contact at   93.328: Magnetic sheet (1.4 mm) x E3D v6 HotEnd - Nozzle001 (printer)
+[ 1851.7s]    contact at   94.728: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x E3D v6 HotEnd - Nozzle001 (printer)
+[ 1851.7s]    contact at   94.993: Magnetic sheet (1.4 mm) x COMPOUND (printer)
+[ 1851.7s]    contact at   95.761: Magnetic sheet (1.4 mm) x [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0) (printer)
+[ 1851.7s]    contact at   95.761: Magnetic sheet (1.4 mm) x [a]_Duct-4010-left001 (printer)
+[ 1851.7s]    contact at   95.927: Magnetic sheet (1.4 mm) x Beacon RevH Normal (Beacon CAD, MIT) (printer)
+[ 1851.7s]    contact at   96.028: Magnetic sheet (1.4 mm) x TL-dragon-¹è½ºÌ×001 (printer)
+[ 1851.7s]    contact at   96.393: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x COMPOUND (printer)
+[ 1851.7s]    contact at   97.161: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0) (printer)
+[ 1851.7s]    contact at   97.161: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x [a]_Duct-4010-left001 (printer)
+[ 1851.7s]    contact at   97.327: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x Beacon RevH Normal (Beacon CAD, MIT) (printer)
+[ 1851.7s]    contact at   97.428: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x TL-dragon-¹è½ºÌ×001 (printer)
+[ 1851.7s]    contact at   98.828: Magnetic sheet (1.4 mm) x Heat Block001 (printer)
+[ 1851.7s]    contact at  100.228: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x Heat Block001 (printer)
+[ 2178.9s] == bed up, both heads docked (model pose): 118 pairs can meet within 123.60 mm, 84 searched, 13 already overlapping at the model pose, 0 boolean errors
+[ 2178.9s]    fit (not a limit): MGN9H - Carriage_end_cap (1) x SOLID029: 0.070 mm3 at the model pose
+[ 2178.9s]    fit (not a limit): MGN9H - Carriage_end (1) x SOLID029: 0.002 mm3 at the model pose
+[ 2178.9s]    fit (not a limit): MGN9H - Carriage_body (1) x SOLID029: 0.012 mm3 at the model pose
+[ 2178.9s]    fit (not a limit): MGN9H - Carriage_end_cap (1)001 x SOLID029: 0.070 mm3 at the model pose
+[ 2178.9s]    fit (not a limit): Leadscrew Nut001 x Leadscrew002 (rod): 63.756 mm3 at the model pose
+[ 2178.9s]    fit (not a limit): MGN9H - Carriage_end_cap (1)002 x SOLID034: 0.070 mm3 at the model pose
+[ 2178.9s]    fit (not a limit): MGN9H - Carriage_end (1)002 x SOLID034: 0.002 mm3 at the model pose
+[ 2178.9s]    fit (not a limit): MGN9H - Carriage_body (1)001 x SOLID034: 0.012 mm3 at the model pose
+[ 2178.9s]    fit (not a limit): MGN9H - Carriage_end_cap (1)003 x SOLID034: 0.070 mm3 at the model pose
+[ 2178.9s]    fit (not a limit): MGN9H - Carriage_end_cap (1)004 x SOLID037: 0.070 mm3 at the model pose
+[ 2178.9s]    fit (not a limit): MGN9H - Carriage_end (1)004 x SOLID037: 0.002 mm3 at the model pose
+[ 2178.9s]    fit (not a limit): MGN9H - Carriage_body (1)002 x SOLID037: 0.012 mm3 at the model pose
+[ 2178.9s]    fit (not a limit): MGN9H - Carriage_end_cap (1)005 x SOLID037: 0.070 mm3 at the model pose
+[ 2178.9s]    contact at   94.993: Magnetic sheet (1.4 mm) x COMPOUND (printer)
+[ 2178.9s]    contact at   95.927: Magnetic sheet (1.4 mm) x Beacon RevH Normal (Beacon CAD, MIT) (printer)
+[ 2178.9s]    contact at   96.393: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x COMPOUND (printer)
+[ 2178.9s]    contact at   97.327: LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore) x Beacon RevH Normal (Beacon CAD, MIT) (printer)
+[ 2178.9s] toolhead parked at the Left dock pickup: gantry dY -257.73, carriage (-164.70, -257.73); both heads docked, belts left out
+[ 2503.8s] == bed up, toolhead parked at the Left dock: 110 pairs can meet within 123.60 mm, 110 searched, 13 already overlapping at the model pose, 0 boolean errors
+[ 2503.8s]    fit (not a limit): MGN9H - Carriage_end_cap (1) x SOLID029: 0.070 mm3 at the model pose
+[ 2503.8s]    fit (not a limit): MGN9H - Carriage_end (1) x SOLID029: 0.002 mm3 at the model pose
+[ 2503.8s]    fit (not a limit): MGN9H - Carriage_body (1) x SOLID029: 0.012 mm3 at the model pose
+[ 2503.8s]    fit (not a limit): MGN9H - Carriage_end_cap (1)001 x SOLID029: 0.070 mm3 at the model pose
+[ 2503.8s]    fit (not a limit): Leadscrew Nut001 x Leadscrew002 (rod): 63.756 mm3 at the model pose
+[ 2503.8s]    fit (not a limit): MGN9H - Carriage_end_cap (1)002 x SOLID034: 0.070 mm3 at the model pose
+[ 2503.8s]    fit (not a limit): MGN9H - Carriage_end (1)002 x SOLID034: 0.002 mm3 at the model pose
+[ 2503.8s]    fit (not a limit): MGN9H - Carriage_body (1)001 x SOLID034: 0.012 mm3 at the model pose
+[ 2503.8s]    fit (not a limit): MGN9H - Carriage_end_cap (1)003 x SOLID034: 0.070 mm3 at the model pose
+[ 2503.8s]    fit (not a limit): MGN9H - Carriage_end_cap (1)004 x SOLID037: 0.070 mm3 at the model pose
+[ 2503.8s]    fit (not a limit): MGN9H - Carriage_end (1)004 x SOLID037: 0.002 mm3 at the model pose
+[ 2503.8s]    fit (not a limit): MGN9H - Carriage_body (1)002 x SOLID037: 0.012 mm3 at the model pose
+[ 2503.8s]    fit (not a limit): MGN9H - Carriage_end_cap (1)005 x SOLID037: 0.070 mm3 at the model pose
+[ 2503.8s]    contact at  113.604: MGN9H - Carriage_end_cap (1)003 x SOLID035 (printer)
+[ 2503.8s]    contact at  114.504: MGN9H - Carriage_end (1)003 x SOLID035 (printer)
+[ 2503.8s]    contact at  118.004: MGN9H - Carriage_end_cap (1)001 x SOLID030 (printer)
+[ 2503.8s]    contact at  118.004: MGN9H - Carriage_end_cap (1)005 x SOLID038 (printer)
+[ 2503.8s]    contact at  118.604: MGN9H - Carriage_body (1)001 x SOLID035 (printer)
+[ 2503.8s]    contact at  118.904: MGN9H - Carriage_end (1)005 x SOLID038 (printer)
+[ 2503.8s]    contact at  118.904: MGN9H - Carriage_end (1)001 x SOLID030 (printer)
+[ 2503.8s]    contact at  123.004: MGN9H - Carriage_body (1)002 x SOLID038 (printer)
+[ 2503.8s]    contact at  123.004: MGN9H - Carriage_body (1) x SOLID030 (printer)
+[ 2503.8s] toolhead parked at the Right dock pickup: gantry dY -257.73, carriage (164.71, -257.73); both heads docked, belts left out
+[ 2827.1s] == bed up, toolhead parked at the Right dock: 110 pairs can meet within 123.60 mm, 110 searched, 13 already overlapping at the model pose, 0 boolean errors
+[ 2827.1s]    fit (not a limit): MGN9H - Carriage_end_cap (1) x SOLID029: 0.070 mm3 at the model pose
+[ 2827.1s]    fit (not a limit): MGN9H - Carriage_end (1) x SOLID029: 0.002 mm3 at the model pose
+[ 2827.1s]    fit (not a limit): MGN9H - Carriage_body (1) x SOLID029: 0.012 mm3 at the model pose
+[ 2827.1s]    fit (not a limit): MGN9H - Carriage_end_cap (1)001 x SOLID029: 0.070 mm3 at the model pose
+[ 2827.1s]    fit (not a limit): Leadscrew Nut001 x Leadscrew002 (rod): 63.756 mm3 at the model pose
+[ 2827.1s]    fit (not a limit): MGN9H - Carriage_end_cap (1)002 x SOLID034: 0.070 mm3 at the model pose
+[ 2827.1s]    fit (not a limit): MGN9H - Carriage_end (1)002 x SOLID034: 0.002 mm3 at the model pose
+[ 2827.1s]    fit (not a limit): MGN9H - Carriage_body (1)001 x SOLID034: 0.012 mm3 at the model pose
+[ 2827.1s]    fit (not a limit): MGN9H - Carriage_end_cap (1)003 x SOLID034: 0.070 mm3 at the model pose
+[ 2827.1s]    fit (not a limit): MGN9H - Carriage_end_cap (1)004 x SOLID037: 0.070 mm3 at the model pose
+[ 2827.1s]    fit (not a limit): MGN9H - Carriage_end (1)004 x SOLID037: 0.002 mm3 at the model pose
+[ 2827.1s]    fit (not a limit): MGN9H - Carriage_body (1)002 x SOLID037: 0.012 mm3 at the model pose
+[ 2827.1s]    fit (not a limit): MGN9H - Carriage_end_cap (1)005 x SOLID037: 0.070 mm3 at the model pose
+[ 2827.1s]    contact at  113.604: MGN9H - Carriage_end_cap (1)003 x SOLID035 (printer)
+[ 2827.1s]    contact at  114.504: MGN9H - Carriage_end (1)003 x SOLID035 (printer)
+[ 2827.1s]    contact at  118.004: MGN9H - Carriage_end_cap (1)001 x SOLID030 (printer)
+[ 2827.1s]    contact at  118.004: MGN9H - Carriage_end_cap (1)005 x SOLID038 (printer)
+[ 2827.1s]    contact at  118.604: MGN9H - Carriage_body (1)001 x SOLID035 (printer)
+[ 2827.1s]    contact at  118.904: MGN9H - Carriage_end (1)005 x SOLID038 (printer)
+[ 2827.1s]    contact at  118.904: MGN9H - Carriage_end (1)001 x SOLID030 (printer)
+[ 2827.1s]    contact at  123.004: MGN9H - Carriage_body (1)002 x SOLID038 (printer)
+[ 2827.1s]    contact at  123.004: MGN9H - Carriage_body (1) x SOLID030 (printer)
+[ 2827.1s] mechanical upper stop with nothing over the bed: bed dZ +94.99, Magnetic sheet (1.4 mm) touches COMPOUND; rail top ends: MGN9H (2) +118.00; MGN9H (3) +113.60; MGN9H (4) +118.00
+[ 2827.1s] z_lower_limit_mm=43.76 (LDO plate top; bed dZ -242.00 from the model pose: 2020 (2) lands on backbone-350 v2)
+[ 2827.1s] Left head carried over the centre: bed dZ +93.33, Magnetic sheet (1.4 mm) touches E3D v6 HotEnd - Nozzle; print height 335.33
+[ 2827.1s] Right head carried over the centre: bed dZ +93.33, Magnetic sheet (1.4 mm) touches E3D v6 HotEnd - Nozzle001; print height 335.33
+[ 2827.1s] z_upper_limit_mm=379.09 (LDO plate top; bed dZ +93.33 from the model pose: Left head carried, Magnetic sheet (1.4 mm) touches E3D v6 HotEnd - Nozzle)
+[ 2827.1s] print_height_mm=335.33 (magnet-sheet top, from the lower stop to the Left nozzle)
+[ 2827.1s] klipper_position_max_mm=335.33 (Klipper Z at the lower stop; Z0 = the nozzle on the magnet sheet (with a steel sheet, subtract its thickness))
+[ 2827.1s] z_negative_limit_mm=-20.27 (Klipper Z at the mechanical top, toolhead parked off the bed: bed dZ +113.60, the top end of MGN9H (3) reaches the top end of SOLID034)
+[ 2827.1s] z_travel_mm=355.60 (the bed's full travel, lower stop to mechanical top)
+[ 2827.1s] klipper_position_max_configured_mm=330.33 (printer.cfg [stepper_z] position_max: the bed stops 5.00 mm above the lower stop (bed dZ -237.00, plate top 48.76); minus the steel sheet's thickness)
+[ 2827.1s] magnet-sheet top at the model pose 287.161: lower stop 45.16, upper stop 380.49 (no steel sheet modelled)
+[ 2827.1s] ok   every limit measured by boolean contact or ray probe
+[ 2827.1s] verify: 0 problems
+[ 2827.1s] DRY RUN (headless): all checks passed, not saved
+[ 2827.1s] z_sweep: done (read-only, nothing saved)
