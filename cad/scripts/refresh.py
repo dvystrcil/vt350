@@ -250,6 +250,13 @@ def summary(changed, sweep_log, prev_sweep_log, area_line=None, index=None, z_lo
     return "\n".join(out)
 
 
+def load_tool(name):
+    """import one of TOOLS as a module, from where TOOLS says it lives"""
+    spec = importlib.util.spec_from_file_location(name, os.path.join(REPO, TOOLS[name]))
+    m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+    return m
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("lite", type=int, help="model number N of vt350-lite-N.FCStd for the sweep")
@@ -281,8 +288,7 @@ def main():
         area = open(by["print_area"].log, encoding="utf-8").read().strip().splitlines()[-1]
     index = None
     if "part_index" in by:
-        spec = importlib.util.spec_from_file_location("part_index", os.path.join(HERE, "part_index.py"))
-        pi = importlib.util.module_from_spec(spec); spec.loader.exec_module(pi)
+        pi = load_tool("part_index")
         index = [(m, pi.status(m)) for m in by["part_index"].env["VT350_INDEX_MODELS"].split(":")]
     s = summary(changed or [], sweep, prev, area, index, z_log, prev_z)
     with open(os.path.join(REPO, "cad/data/logs/refresh.log"), "w", encoding="utf-8") as f:
