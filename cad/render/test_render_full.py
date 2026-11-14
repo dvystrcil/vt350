@@ -79,5 +79,20 @@ class RenderFull(unittest.TestCase):
         self.assertEqual(r.returncode, 1); self.assertIn("export FAILED", r.stderr)
 
 
+
+class ReadmeRenders(unittest.TestCase):
+    """cad/README.md's render images exist in cad/renders/, and every committed render is shown (no orphans)."""
+
+    def test_readme_images_exist_and_none_are_orphaned(self):
+        import re
+        cad = os.path.dirname(HERE)
+        readme = open(os.path.join(cad, "README.md"), encoding="utf-8").read()
+        linked = set(re.findall(r"\]\((renders/[^)\s]+)\)", readme))
+        self.assertTrue(linked, "README links no renders/ images")
+        for rel in sorted(linked):
+            self.assertTrue(os.path.isfile(os.path.join(cad, rel)), f"README links missing {rel}")
+        on_disk = {"renders/" + n for n in os.listdir(os.path.join(cad, "renders")) if n.endswith(".jpg")}
+        self.assertEqual(on_disk - linked, set(), "renders/ JPEGs the README doesn't show")
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
