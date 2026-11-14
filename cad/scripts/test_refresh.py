@@ -279,6 +279,19 @@ class Summary(unittest.TestCase):
         self.assertIn("sweep not run", s)
 
 
+class ToolModules(unittest.TestCase):
+    """main() loads part_index for the summary from where TOOLS says it lives (it moved to platform/ in #132 and the
+    summary kept the old path: lite-31's refresh ran every step, then died on FileNotFoundError)"""
+    def test_part_index_loads_for_the_summary(self):
+        pi = rf.load_tool("part_index")
+        self.assertTrue(callable(pi.status))
+
+    def test_every_tool_path_exists(self):
+        root = os.path.dirname(os.path.dirname(HERE))
+        for name, path in rf.TOOLS.items():
+            self.assertTrue(os.path.isfile(os.path.join(root, path)), (name, path))
+
+
 class MarkersMatchTheRealTools(unittest.TestCase):
     """the markers in plan() against the output of the real scripts, not a transcription of it"""
     ROOT = os.path.dirname(os.path.dirname(HERE))
