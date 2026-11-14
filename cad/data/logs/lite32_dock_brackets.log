@@ -1,0 +1,52 @@
+[  122.6s] opened /home/dan/Documents/VT350/vt350-lite-31.FCStd
+[  133.1s] bar 'Dock bar 2020 (holds the 5 keyslot plates; brackets not modelled, #19 AC7)': BoundBox (-480, -75.5304, 469.3, -10, -55.5304, 489.3)
+[  133.3s] slot 1 keyslot plate, upper heat-set holes (y, z): [(-54.26, 459.3), (-54.26, 465.3), (-45.26, 459.3), (-45.26, 465.3)]
+[  133.3s] ok   slot 1 keyslot plate has 4 upper heat-set holes on its outer face (4)
+[  133.3s] ok   slot 1 (L): the same 4 holes on the outer face X -454.70 ([(-54.26, 459.3), (-54.26, 465.3), (-45.26, 459.3), (-45.26, 465.3)])
+[  133.3s] ok   slot 2 (L): the same 4 holes on the outer face X -369.54 ([(-54.26, 459.3), (-54.26, 465.3), (-45.26, 459.3), (-45.26, 465.3)])
+[  133.3s] ok   slot 5 (R): the same 4 holes on the outer face X -35.30 ([(-54.26, 459.3), (-54.26, 465.3), (-45.26, 459.3), (-45.26, 465.3)])
+[  133.3s] ok   slots 3 (R) and 4 (L): outer faces face each other 2.00 mm apart (no room for a web)
+[  146.0s] slots 3/4 plates' front in the hanger band Z 450.3..469.30: Y -58.797 (overall -72.261)
+[  146.1s] ok   bar ends on the verticals' inner faces (X -480.00 / -10.00)
+[  146.2s] ok   Dock bracket slot 1 (L) (keyslot plate to bar): one valid solid, 6403.6 mm3, BoundBox (-468.7, -80.5304, 453.3, -448.7, -40.26, 489.3)
+[  146.2s] ok   Dock bracket slot 2 (L) (keyslot plate to bar): one valid solid, 6403.6 mm3, BoundBox (-383.54, -80.5304, 453.3, -363.54, -40.26, 489.3)
+[  146.2s] ok   Dock bracket slot 5 (R) (keyslot plate to bar): one valid solid, 6403.6 mm3, BoundBox (-41.3, -80.5304, 453.3, -21.3, -40.26, 489.3)
+[  146.2s] ok   Dock pair filler slots 3+4 (prints with both keyslot plates): one valid solid, 4521.4 mm3, BoundBox (-203.42, -58.7969, 371.3, -201.42, -35.261, 469.3)
+[  146.2s] ok   Dock pair hanger slots 3+4 (keyslot pair to bar): one valid solid, 9103.9 mm3, BoundBox (-219.42, -80.5304, 450.3, -185.42, -58.7969, 489.3)
+[  146.2s] ok   Dock bar end bracket (left): one valid solid, 6329.1 mm3, BoundBox (-480, -90, 489.3, -458, -55.5304, 509.3)
+[  146.2s] ok   Dock bar end bracket (right): one valid solid, 6329.1 mm3, BoundBox (-32, -90, 489.3, -10, -55.5304, 509.3)
+[  231.8s] ok   new parts x printer: []
+[  232.5s] ok   new parts x each other: []
+[  232.8s] ok   Dock bracket slot 1 (L) (keyslot plate to bar) sits on the plate (distance 0.000)
+[  232.8s] ok   Dock bracket slot 1 (L) (keyslot plate to bar) sits on the bar (distance 0.000)
+[  233.1s] ok   Dock bracket slot 2 (L) (keyslot plate to bar) sits on the plate (distance 0.000)
+[  233.2s] ok   Dock bracket slot 2 (L) (keyslot plate to bar) sits on the bar (distance 0.000)
+[  233.5s] ok   Dock bracket slot 5 (R) (keyslot plate to bar) sits on the plate (distance 0.000)
+[  233.6s] ok   Dock bracket slot 5 (R) (keyslot plate to bar) sits on the bar (distance 0.000)
+[  234.1s] ok   Dock pair filler slots 3+4 (prints with both keyslot plates) sits on the slot 3 plate (distance 0.000)
+[  234.6s] ok   Dock pair filler slots 3+4 (prints with both keyslot plates) sits on the slot 4 plate (distance 0.000)
+[  234.7s] ok   Dock pair hanger slots 3+4 (keyslot pair to bar) sits on the bar (distance 0.000)
+[  235.0s] ok   Dock pair hanger slots 3+4 (keyslot pair to bar) sits on the slot 3 plate (distance 0.000)
+[  235.2s] ok   Dock pair hanger slots 3+4 (keyslot pair to bar) sits on the slot 4 plate (distance 0.000)
+[  235.2s] ok   Dock pair hanger slots 3+4 (keyslot pair to bar) sits on the pair filler (distance 0.000)
+[  235.3s] ok   Dock bar end bracket (left) sits on the bar (distance 0.000)
+[  235.5s] ok   Dock bar end bracket (left) sits on the left vertical (distance 0.000)
+[  235.6s] ok   Dock bar end bracket (right) sits on the bar (distance 0.000)
+[  235.8s] ok   Dock bar end bracket (right) sits on the right vertical (distance 0.000)
+[  271.9s] ok   slot 1 (L) carried head + carriage, 38 dock poses (96 pairs measured): min 4.67 mm to the new parts []
+[  280.9s] ok   slot 2 (L) carried head + carriage, 38 dock poses (4 pairs measured): min 6.94 mm to the new parts []
+[  290.1s] ok   slot 3 (R) carried head + carriage, 38 dock poses (4 pairs measured): min 9.55 mm to the new parts []
+[  299.7s] ok   slot 4 (L) carried head + carriage, 38 dock poses (14 pairs measured): min 9.55 mm to the new parts []
+[  308.7s] ok   slot 5 (R) carried head + carriage, 38 dock poses (0 pairs measured): min inf mm to the new parts []
+[  308.7s] ok   a printed (ABS) part to take the brackets' material from (SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0))
+[  318.7s] ok   bar: label '2020 dock bar (front; holds the 5 keyslot plates, #19)', material Aluminum-6061-T6, group '4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Horizontals' -> role frame
+[  318.7s] ok   Dock bracket slot 1 (L) (keyslot plate to bar): material ABS-Generic -> role printed
+[  318.7s] ok   Dock bracket slot 2 (L) (keyslot plate to bar): material ABS-Generic -> role printed
+[  318.7s] ok   Dock bracket slot 5 (R) (keyslot plate to bar): material ABS-Generic -> role printed
+[  318.7s] ok   Dock pair filler slots 3+4 (prints with both keyslot plates): material ABS-Generic -> role printed
+[  318.7s] ok   Dock pair hanger slots 3+4 (keyslot pair to bar): material ABS-Generic -> role printed
+[  318.7s] ok   Dock bar end bracket (left): material ABS-Generic -> role printed
+[  318.7s] ok   Dock bar end bracket (right): material ABS-Generic -> role printed
+[  318.7s] ok   solids: 1265 + 7 = 1272
+[  318.7s] verify: 0 problems
+[  363.0s] SAVED /home/dan/Documents/VT350/vt350-lite-32.FCStd 211496874

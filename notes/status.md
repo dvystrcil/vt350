@@ -1,12 +1,12 @@
 # Build status: read this first when picking the project back up
 
-Last updated **2026-11-04**.
+Last updated **2026-11-14**.
 
 ## What this printer is
 
 A Voron Trident 350 derivative on a **4040 frame**: MGN12 rails on X/Y, three
 MGN9 rails on Z with integrated-leadscrew NEMA17s (T8, 8 mm), 250 mm Z travel,
-**MadMax toolchanger** with two toolheads (A4T + Dragon Rapido UHF, Orbiter 2.5
+**MadMax toolchanger** with five toolheads in a front dock row (#19; A4T + Dragon Rapido UHF, Orbiter 2.5
 + **Orbitool O2S** + **Orbiter Smart Filament Sensor**), kinematic bed (LDO
 350 plate kit, tanaes Trident mounts), Octopus Pro + Pi 5, fully enclosed.
 
@@ -57,7 +57,7 @@ confirm which parts you already own.
 
 | What | Where |
 |---|---|
-| Model files (not in git) | `~/Documents/VT350/`. Current working copy **`vt350-lite-22.FCStd`** (lite-19 + the re-measured rear hole row (lite-20), BTT Pad 7 screen removed (lite-21), pad cut-outs measured with calipers (lite-22); electronics in `vt350-ebox.FCStd`, same global frame); untouched original `vt350-good.FCStd` |
+| Model files (not in git) | `~/Documents/VT350/`. Current working copy **`vt350-lite-32.FCStd`**: lite-22 (the heater pad measured with calipers) + the dock screws on bosses on each head's duct (lite-23), Beacon RevH (lite-24), the 9 mm-belt carriage (lite-25) sitting on the MGN12H block (lite-26), levelling feet (lite-27), the filter holder (lite-28, lite-29; the filter itself in `vt350-filter-3.FCStd`, off the printer since lite-31, #115), O2S + Smart Sensor on the heads (lite-30), **five docks in a front `LLRLR` row on a 2020 bar** (lite-31) and **the brackets that hold them** (lite-32, #19 AC7). Each pass is a row in `cad/README.md`; electronics in `vt350-ebox.FCStd`, same global frame; untouched original `vt350-good.FCStd` |
 | **Backup of the model files** | restic to the home NAS. Run **`cad/backup-models.sh --verify`** (alias `vt350-backup`) after model changes; old snapshots are pruned automatically (last 10, daily for 30 days, monthly for a year). Target and password are local config (`~/.config/vt350/backup.env`), not in this public repo; keep the restic password in the password manager too. First backup 2026-11-04: 52 files, 4.09 GB, test restore byte-identical |
 | How the model files were made + how to redo it | `cad/README.md`, `cad/passes/` |
 | Cut list (draft) | `notes/cut-list.md` |
