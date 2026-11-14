@@ -1,0 +1,80 @@
+{
+ "parts": [
+  {
+   "label": "Dock bracket slot 1 (L) (keyslot plate to bar)",
+   "volume": 10235.1,
+   "box": [
+    -468.7,
+    -80.53,
+    453.3,
+    -448.7,
+    -40.26,
+    494.3
+   ]
+  },
+  {
+   "label": "Dock bracket slot 2 (L) (keyslot plate to bar)",
+   "volume": 11041.6,
+   "box": [
+    -383.54,
+    -80.53,
+    453.3,
+    -363.54,
+    -40.26,
+    494.3
+   ]
+  },
+  {
+   "label": "Dock bracket slot 5 (R) (keyslot plate to bar)",
+   "volume": 10235.1,
+   "box": [
+    -41.3,
+    -80.53,
+    453.3,
+    -21.3,
+    -40.26,
+    494.3
+   ]
+  },
+  {
+   "label": "Dock pair hanger slots 3+4 (keyslot pair to bar)",
+   "volume": 17925.0,
+   "box": [
+    -219.42,
+    -80.53,
+    450.3,
+    -185.42,
+    -35.26,
+    494.3
+   ]
+  },
+  {
+   "label": "Dock bar end bracket (left)",
+   "volume": 6310.6,
+   "box": [
+    -480.0,
+    -90.0,
+    489.3,
+    -458.0,
+    -55.53,
+    509.3
+   ]
+  },
+  {
+   "label": "Dock bar end bracket (right)",
+   "volume": 6310.6,
+   "box": [
+    -32.0,
+    -90.0,
+    489.3,
+    -10.0,
+    -55.53,
+    509.3
+   ]
+  }
+ ],
+ "fasteners_added": {
+  "M3x10 SHCS + M3 T-nut, bar rear slot (slots 1, 2, 5 legs; pair hanger block)": 4
+ },
+ "design_load_per_head_g": 350
+}

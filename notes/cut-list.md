@@ -51,11 +51,14 @@ Only the rows that are decided so far. The rest depends on the joint style (#7 A
 | 2020 × 470 dock bar | **none**: no tapped ends, no access holes | Its ends are held by printed inside corner brackets on its top face, not blind joints (user, 2026-11-14): the bar can then be raised or lowered by sliding the brackets in the verticals' slots, if a remixed head ever needs a different dock height. lite-32 |
 | 2040 × 740 front verticals | **none for the dock bar** (the lite-10 gantry-joint re-drill above still applies) | Each corner bracket takes one M5 + T-nut in the vertical's inner (20 mm) face slot. |
 
-T-nuts the dock bar needs (lite-32, `cad/data/logs/lite32_dock_brackets.json`), all M5:
-- **5 in the bar's front slot**: one per keyslot bracket for slots 1, 2 and 5, and two for the slot 3+4 pair hanger.
-- **2 in the bar's top slot**: one per end bracket.
-- **2 in the verticals' inner slots**: one per end bracket.
+T-nuts the dock bar needs (lite-32 + lite-33, `cad/data/logs/lite32_dock_brackets.json`, `lite33_dock_saddles.json`):
+- **5 × M5 in the bar's front slot**: one per keyslot bracket for slots 1, 2 and 5, and two for the slot 3+4 pair hanger.
+- **4 × M3 in the bar's rear slot** (lite-33): one per bracket. Each bracket is a saddle clamped to both faces of the
+  bar, so the magnets' rearward tug at pickup and the heads' weight can't rock it (user, 2026-11-14).
+- **2 × M5 in the bar's top slot**: one per end bracket.
+- **2 × M5 in the verticals' inner slots**: one per end bracket.
 
-Once the bar is between the verticals its slot ends are covered, so use **drop-in (roll-in) T-nuts**, or slide all 7 into
-the bar before fitting it. Screws: 9 × M5 (front slot: 5, top and verticals: 4), 12 × M3 SHCS into the keyslot plates'
-existing heat-sets, 2 × M3 heat-sets + SHCS for the pair hanger. Lengths aren't chosen yet.
+Once the bar is between the verticals its slot ends are covered, so use **drop-in (roll-in) T-nuts**, or slide all 11 into
+the bar before fitting it. The rear M3s go in from behind with the heads off. Screws: 9 × M5 (front slot: 5, top and
+verticals: 4), 4 × M3×10 SHCS (rear slot), 12 × M3 SHCS into the keyslot plates' existing heat-sets, 2 × M3 heat-sets +
+SHCS for the pair hanger. Lengths other than the rear M3×10 aren't chosen yet. Still no machining of the bar.
