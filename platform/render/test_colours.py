@@ -123,6 +123,10 @@ class TheCommittedMap(unittest.TestCase):
             self.assertEqual(co.role_of(m, lab, a4t, "Default"), "heatsink", lab)
         self.assertIsNone(co.role_of(m, "TL-dragon-\u00b9\u00e8\u00bd\u00ba\u00cc\u00d7", a4t, "Default"))  # 硅胶套, the silicone sock
         self.assertEqual(co.role_of(m, "[a]_orbiter-crossbow-adapter_o2_xol", a4t, "ABS-Generic"), "accent")
+        # the fans are black (user, 2026-11-14, from the LH Stinger head photo on #19): the hotend's 2510 in each head
+        for lab in ("2510 Fan", "2510 Fan001"):
+            self.assertEqual(co.role_of(m, lab, a4t, "Default"), "black_plastic", lab)
+        self.assertEqual(co.role_of(m, "[a]_Duct-4010-right", a4t, "ABS-Generic"), "accent")   # a duct, not a fan
 
     def test_committed_rules_on_lite27_stand_and_filter(self):
         m = co.load()
