@@ -10,13 +10,19 @@
     "printed": {"hex": "#E6E4DE", "kind": "plastic", "roughness": 0.65, "note": "PET-GF white (glass fill = matte off-white)"},
     "foot_metal": {"hex": "#C9CDD2", "kind": "aluminium", "roughness": 0.4, "note": "levelling feet brackets + studs (#83, placeholder until a product is picked)"},
     "rubber": {"hex": "#141414", "kind": "plastic", "roughness": 0.9, "note": "levelling foot pads (#83)"},
-    "board": {"hex": "#B58B5A", "kind": "plastic", "roughness": 0.85, "note": "base board, plywood/MDF (#83, placeholder)"}
+    "board": {"hex": "#B58B5A", "kind": "plastic", "roughness": 0.85, "note": "base board, plywood/MDF (#83, placeholder)"},
+    "orbiter": {"hex": "#1C1C1E", "kind": "aluminium", "roughness": 0.45, "note": "Orbiter extruder body + motor, black metal (user, 2026-11-14, #19; placeholder hex until photos of the user's parts)"},
+    "black_plastic": {"hex": "#161616", "kind": "plastic", "roughness": 0.6, "note": "Orbiter Smart Sensor + Orbitool O2S toolboard housings, black plastic (user, 2026-11-14, #19; placeholder hex)"},
+    "heatsink": {"hex": "#2A5DB0", "kind": "aluminium", "roughness": 0.35, "note": "Phaetus Dragon hotend heat sink, blue anodised aluminium (user, 2026-11-14, #19; placeholder hex until photos)"}
   },
   "rules": [
     {"role": "backbone", "label": "^backbone-350"},
     {"role": "belt",     "label": "^GT2 9mm belt"},
     {"role": "monolith", "label": "^V[CT]9-", "material": "Alumin"},
     {"role": "bearing",  "label": "(?i)(^|\\s)F?695 .*bearing|^_?MR\\d+ZZ "},
+    {"role": "orbiter",  "group": "Orbiter V2\\.0 Mockup", "material": "^Default$", "label": "^(?!Bowden)"},
+    {"role": "black_plastic", "label": "^Orbiter Smart Sensor |^Orbitool O2S v[\\d.]+ toolboard "},
+    {"role": "heatsink", "label": "^TL-dragon-\u00cd\u00e2\u00bf\u00f2-\u00b0\u00ab", "note": "GBK name read as Latin-1: TL-dragon-\u5916\u6846-\u77ee (outer frame, short) = the Dragon heat sink"},
     {"role": "frame",   "group": "VT Frame|Door Frame|Electronics Cabinet", "material": "Alumin", "label": "^(2020|2040|4040)|^Dock crossbar"},
     {"role": "accent",  "label": "^\\[a\\]_"},
     {"role": "printed", "material": "ABS"},
