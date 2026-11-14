@@ -5,6 +5,13 @@
 #        "outside" = 3/4 front view, studio light plus the LED strips;
 #        "low_front", "low_side" = only for a model on its stand (a "Base board" part, lite-27): the feet, board and
 #        the filter recessed under the backbone, seen from just above the board.
+#        "dock_top", "dock_below" = only for a model with the front dock bar (lite-32, vt350#19): the tool row seen
+#        straight down and straight up, orthographic (true scale, no perspective), to read the heads' clearances to
+#        the bar and its brackets. Each camera's near clip plane cuts away what is in the way: the lid and top frame
+#        above Z 560 for dock_top, the bed and everything below Z 380 (the nozzle tips) for dock_below. Both have the
+#        printer's front at the bottom of the image; dock_below is seen from underneath, so it is mirrored left-right
+#        against dock_top (the printer's left, slot 1, is on the image's right).
+#   blender -b -P render.py -- <export dir> <output dir> [samples] --only dock_top,dock_below   renders just those views
 # Motion frames (vt350#135 AC4): an export made with VT350_GROUPS (each moving group's parts in buckets of their own)
 #   blender -b -P render.py -- <export dir> <output dir> [samples] --frames <frames.json, relative: in the export dir>
 #       [--view NAME] [--size WxH] [--first N] [--count N]
@@ -108,6 +115,16 @@ def add_cam(name, pos, look, fov_diag=None, lens_mm=None, sensor=36.0):
         cd.sensor_fit = 'HORIZONTAL'; cd.angle = 2 * math.atan(k * ar)
     if lens_mm: cd.lens = lens_mm; cd.sensor_width = sensor
     return co
+def add_ortho(name, centre, width, z, clip_z):
+    """A camera looking straight down (z above clip_z) or straight up (z below), orthographic, `width` mm across,
+    with the near clip plane at Z clip_z: what is between the camera and that plane is not drawn."""
+    cd = bpy.data.cameras.new(name); co = bpy.data.objects.new(name, cd); sc.collection.objects.link(co)
+    cd.type = 'ORTHO'; cd.ortho_scale = width * S; cd.sensor_fit = 'HORIZONTAL'
+    cd.clip_start = abs(z - clip_z) * S; cd.clip_end = 20
+    co.location = Vector((centre[0], centre[1], z)) * S
+    co.rotation_euler = (0, 0, 0) if z > clip_z else (math.pi, 0, math.pi)   # both: image up = printer rear (+Y)
+    return co
+DOCK_BAR = ("2020 dock bar", "Dock bar 2020")          # the front dock bar's labels (lite-31, lite-32)
 views = []
 c = scene_j["camera"]
 if scene_j.get("views"):                             # explicit cameras (export_pose.py): render only these, key-lit
@@ -125,6 +142,14 @@ if not scene_j.get("views"):
         # 30 mm above the board so the filter shows between the feet under the bottom extrusions
         views.append(("low_front", add_cam("low_front", (105, -555, -70), (-245, 225, -15), lens_mm=35), 1.0, -0.6))
         views.append(("low_side", add_cam("low_side", (-1145, -25, -70), (-245, 225, 5), lens_mm=35), 1.0, 0.4))   # unlit side: +1 EV
+    # the dock row (vt350#19): X -565..75 (the front verticals and a margin), Y -200..160 (bar front .. carriages)
+    if any(lab.startswith(DOCK_BAR) for b in scene_j["buckets"].values() for lab in b.get("labels", [])):
+        views.append(("dock_top", add_ortho("dock_top", (-245, -20), 640, 2000, 560), 1.0, -0.6))
+        views.append(("dock_below", add_ortho("dock_below", (-245, -20), 640, -1500, 380), 1.0, 0.8))
+if "only" in OPTS:
+    keep = OPTS["only"].split(",")
+    if not set(keep) <= {v[0] for v in views}: raise SystemExit(f"render: --only {keep}, but the views are {[v[0] for v in views]}")
+    views = [v for v in views if v[0] in keep]
 VIEWDEF = {v["name"]: v for v in scene_j.get("views", [])}
 def apply_view(name):                                # per-view "hide": [bucket], "alpha": {bucket: alpha}
     v = VIEWDEF.get(name, {})

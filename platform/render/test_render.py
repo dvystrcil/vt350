@@ -120,6 +120,9 @@ class RenderWritesReadmeImages(unittest.TestCase):
     def test_no_low_views_without_a_stand(self):
         self.assertFalse([n for n in os.listdir(self.out) if "-low_" in n])
 
+    def test_no_dock_views_without_a_dock_bar(self):
+        self.assertFalse([n for n in os.listdir(self.out) if "-dock_" in n])
+
 
 class LowViewsWhenTheModelStandsOnABoard(unittest.TestCase):
     """#83/#74: a model with the stand (base board + feet) also gets two low views of the base and the
@@ -139,6 +142,29 @@ class LowViewsWhenTheModelStandsOnABoard(unittest.TestCase):
         for view in ("obico", "outside", "low_front", "low_side"):
             for ext in ("png", "jpg"):
                 self.assertTrue(os.path.isfile(os.path.join(self.out, f"fixture-{view}.{ext}")), (view, ext))
+
+
+class DockViewsWhenTheModelHasADockRow(unittest.TestCase):
+    """vt350#19: a model with the dock bar (lite-32) also gets two orthographic views of the tool row, straight down
+    (dock_top) and straight up (dock_below), to read the heads' clearances to the bar and its brackets."""
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = tempfile.mkdtemp(prefix="vt350-render-test-")
+        cls.addClassCleanup(shutil.rmtree, cls.tmp, True)
+        src, cls.out = os.path.join(cls.tmp, "export"), os.path.join(cls.tmp, "out")
+        os.makedirs(src)
+        write_fixture(src, labels=("2020 dock bar (front; holds the 5 keyslot plates, #19)",))
+        cls.blender = subprocess.run(BLENDER + ["-b", "--python-exit-code", "1", "-P", os.path.join(HERE, "render.py"),
+                                            "--", src, cls.out, "1"], capture_output=True, text=True)
+
+    def test_dock_views_written(self):
+        self.assertEqual(self.blender.returncode, 0, self.blender.stdout[-3000:] + self.blender.stderr[-3000:])
+        for view in ("obico", "outside", "dock_top", "dock_below"):
+            for ext in ("png", "jpg"):
+                self.assertTrue(os.path.isfile(os.path.join(self.out, f"fixture-{view}.{ext}")), (view, ext))
+
+    def test_no_low_views_without_a_stand(self):
+        self.assertFalse([n for n in os.listdir(self.out) if "-low_" in n])
 
 
 class JpegInfoReadsTheReadmeImages(unittest.TestCase):
