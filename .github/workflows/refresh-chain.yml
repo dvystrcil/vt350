@@ -31,6 +31,10 @@ jobs:
         run: python3 cad/studies/test_sweep_toolhead.py 2>&1 | tee test-sweep.log
       - name: Confirm every sweep_toolhead test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-sweep.log && tail -1 test-sweep.log | grep -qx 'OK'
+      - name: Test the dock-row analysis (dock_layout, #19 AC2; no FreeCAD)
+        run: python3 cad/studies/test_dock_layout.py 2>&1 | tee test-dock.log
+      - name: Confirm every dock_layout test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-dock.log && tail -1 test-dock.log | grep -qx 'OK'
       - name: Test the serial-vs-parallel proof runner (prove_parallel, #45; fake freecadcmd)
         run: python3 cad/studies/test_prove_parallel.py 2>&1 | tee test-prove.log
       - name: Confirm every prove_parallel test ran

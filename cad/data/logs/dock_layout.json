@@ -1,0 +1,206 @@
+{
+ "Left": {
+  "carried_behind": 67.96,
+  "clearance 0.0": {
+   "parts": {
+    "detach side": 83.16,
+    "far side": 68.52,
+    "parked": 77.1,
+    "shuttle": 57.05,
+    "slide": 78.16
+   },
+   "pitch": 83.16,
+   "tools": 5
+  },
+  "clearance 1.0": {
+   "parts": {
+    "detach side": 84.16,
+    "far side": 69.52,
+    "parked": 78.1,
+    "shuttle": 58.05,
+    "slide": 79.16
+   },
+   "pitch": 84.16,
+   "tools": 5
+  },
+  "clearance 2.0": {
+   "parts": {
+    "detach side": 85.16,
+    "far side": 70.52,
+    "parked": 79.1,
+    "shuttle": 59.05,
+    "slide": 80.16
+   },
+   "pitch": 85.16,
+   "tools": 4
+  },
+  "front_nozzle_y": 37.5,
+  "shuttle_behind": -0.5
+ },
+ "Right": {
+  "carried_behind": 67.96,
+  "clearance 0.0": {
+   "parts": {
+    "detach side": 88.06,
+    "far side": 68.52,
+    "parked": 79.0,
+    "shuttle": 57.06,
+    "slide": 83.06
+   },
+   "pitch": 88.06,
+   "tools": 4
+  },
+  "clearance 1.0": {
+   "parts": {
+    "detach side": 89.06,
+    "far side": 69.52,
+    "parked": 80.0,
+    "shuttle": 58.06,
+    "slide": 84.06
+   },
+   "pitch": 89.06,
+   "tools": 4
+  },
+  "clearance 2.0": {
+   "parts": {
+    "detach side": 90.06,
+    "far side": 70.52,
+    "parked": 81.0,
+    "shuttle": 59.06,
+    "slide": 85.06
+   },
+   "pitch": 90.06,
+   "tools": 4
+  },
+  "front_nozzle_y": 37.5,
+  "shuttle_behind": -0.5
+ },
+ "rows": {
+  "clearance 0.0": {
+   "gaps": {
+    "L|L": 83.16,
+    "L|R": 74.12,
+    "R|L": 90.0,
+    "R|R": 88.06
+   },
+   "rows": {
+    "1": {
+     "needed": 5.0,
+     "pattern": "L",
+     "slack": 337.0,
+     "span": 0
+    },
+    "2": {
+     "needed": 74.12219545944856,
+     "pattern": "LR",
+     "slack": 267.87780454055144,
+     "span": 74.12219545944856
+    },
+    "3": {
+     "needed": 157.27876297437848,
+     "pattern": "LLR",
+     "slack": 184.72123702562152,
+     "span": 157.27876297437848
+    },
+    "4": {
+     "needed": 238.24439091882408,
+     "pattern": "LRLR",
+     "slack": 103.75560908117592,
+     "span": 238.24439091882408
+    },
+    "5": {
+     "needed": 321.400958433754,
+     "pattern": "LLRLR",
+     "slack": 20.599041566246,
+     "span": 321.400958433754
+    },
+    "6": null,
+    "7": null
+   }
+  },
+  "clearance 1.0": {
+   "gaps": {
+    "L|L": 84.16,
+    "L|R": 75.12,
+    "R|L": 91.0,
+    "R|R": 89.06
+   },
+   "rows": {
+    "1": {
+     "needed": 5.0,
+     "pattern": "L",
+     "slack": 337.0,
+     "span": 0
+    },
+    "2": {
+     "needed": 75.12219545944856,
+     "pattern": "LR",
+     "slack": 266.87780454055144,
+     "span": 75.12219545944856
+    },
+    "3": {
+     "needed": 159.27876297437848,
+     "pattern": "LLR",
+     "slack": 182.72123702562152,
+     "span": 159.27876297437848
+    },
+    "4": {
+     "needed": 241.24439091882408,
+     "pattern": "LRLR",
+     "slack": 100.75560908117592,
+     "span": 241.24439091882408
+    },
+    "5": {
+     "needed": 325.400958433754,
+     "pattern": "LLRLR",
+     "slack": 16.599041566246,
+     "span": 325.400958433754
+    },
+    "6": null,
+    "7": null
+   }
+  },
+  "clearance 2.0": {
+   "gaps": {
+    "L|L": 85.16,
+    "L|R": 76.12,
+    "R|L": 92.0,
+    "R|R": 90.06
+   },
+   "rows": {
+    "1": {
+     "needed": 5.0,
+     "pattern": "L",
+     "slack": 337.0,
+     "span": 0
+    },
+    "2": {
+     "needed": 76.12219545944856,
+     "pattern": "LR",
+     "slack": 265.87780454055144,
+     "span": 76.12219545944856
+    },
+    "3": {
+     "needed": 161.27876297437848,
+     "pattern": "LLR",
+     "slack": 180.72123702562152,
+     "span": 161.27876297437848
+    },
+    "4": {
+     "needed": 244.24439091882408,
+     "pattern": "LRLR",
+     "slack": 97.75560908117592,
+     "span": 244.24439091882408
+    },
+    "5": {
+     "needed": 329.400958433754,
+     "pattern": "LLRLR",
+     "slack": 12.599041566246001,
+     "span": 329.400958433754
+    },
+    "6": null,
+    "7": null
+   }
+  }
+ }
+}
