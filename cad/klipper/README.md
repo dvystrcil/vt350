@@ -53,8 +53,8 @@ MadMax's dock path, with the VT350's values (printer coordinates, PROPOSED mappi
 
 | Param | VT350 | From |
 |---|---|---|
-| `[tool T0] params_park_x` / `params_detach_x` | 21.00 / 26.00 | `sweep_toolhead.log` "Left: docked nozzle tip (−399.00, …)"; detach 5 mm (MadMax) away from the keyslot plate, which is on the left head's −X side |
-| `[tool T1] params_park_x` / `params_detach_x` | 328.00 / 323.00 | "Right: docked nozzle tip (−92.00, …)"; the mirror image, so detach goes −X |
+| `[tool T0] params_park_x` / `params_detach_x` | 10.30 / 15.30 | `sweep_toolhead.log` "Left: docked nozzle tip (−409.70, …)"; detach 5 mm (MadMax) away from the keyslot plate, which is on the left head's −X side |
+| `[tool T1] params_park_x` / `params_detach_x` | 339.70 / 334.70 | "Right: docked nozzle tip (−80.30, …)"; the mirror image, so detach goes −X |
 | `params_attach_y` | −68.96 | docked nozzle Y −32.46, minus the 6.0 mm keyslot slide to the large opening (`sweep_toolhead.log`) |
 | `params_close_y` | −46.96 | MadMax's distance from its parked Y (+16), kept |
 | `params_safe_shuttle_y` | −26.96 | MadMax's distance (+36). **Unchecked:** set for MadMax's heads; #116 AC5 clash-checks it |
