@@ -118,9 +118,13 @@ class TheCommittedMap(unittest.TestCase):
                     "Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)"):
             self.assertEqual(co.role_of(m, lab, th, "Default"), "black_plastic", lab)
         a4t = th + " / A4Tv2 (DW-Tas, CC BY-NC-SA 4.0) v1"
-        # GBK names read as Latin-1 in the model: TL-dragon-外框-矮 (outer frame, short) = the heat sink
+        # GBK names read as Latin-1 in the model: TL-dragon-外框-矮 (outer frame, short) = the Dragon heat sink, which is
+        # orange-red; the BLUE heat sink is the O2S board's (user, 2026-11-14: split out of the board by lite-34)
         for lab in ("TL-dragon-\u00cd\u00e2\u00bf\u00f2-\u00b0\u00ab", "TL-dragon-\u00cd\u00e2\u00bf\u00f2-\u00b0\u00ab004"):
-            self.assertEqual(co.role_of(m, lab, a4t, "Default"), "heatsink", lab)
+            self.assertEqual(co.role_of(m, lab, a4t, "Default"), "dragon_heatsink", lab)
+        for lab in ("Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)",
+                    "Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)"):
+            self.assertEqual(co.role_of(m, lab, th, "Default"), "o2s_heatsink", lab)
         self.assertIsNone(co.role_of(m, "TL-dragon-\u00b9\u00e8\u00bd\u00ba\u00cc\u00d7", a4t, "Default"))  # 硅胶套, the silicone sock
         self.assertEqual(co.role_of(m, "[a]_orbiter-crossbow-adapter_o2_xol", a4t, "ABS-Generic"), "accent")
         # the fans are black (user, 2026-11-14, from the LH Stinger head photo on #19): the hotend's 2510 in each head
