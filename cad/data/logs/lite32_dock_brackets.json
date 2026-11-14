@@ -1,0 +1,122 @@
+{
+ "bar": [
+  -480.00000013806414,
+  -75.53041524957139,
+  469.2999908277021,
+  -10.000000138063676,
+  -55.53041524957027,
+  489.29999082770416
+ ],
+ "bar_label": "2020 dock bar (front; holds the 5 keyslot plates, #19)",
+ "heat_sets": [
+  [
+   -54.26,
+   459.3
+  ],
+  [
+   -54.26,
+   465.3
+  ],
+  [
+   -45.26,
+   459.3
+  ],
+  [
+   -45.26,
+   465.3
+  ]
+ ],
+ "parts": [
+  {
+   "label": "Dock bracket slot 1 (L) (keyslot plate to bar)",
+   "volume": 6403.6,
+   "box": [
+    -468.7,
+    -80.53,
+    453.3,
+    -448.7,
+    -40.26,
+    489.3
+   ]
+  },
+  {
+   "label": "Dock bracket slot 2 (L) (keyslot plate to bar)",
+   "volume": 6403.6,
+   "box": [
+    -383.54,
+    -80.53,
+    453.3,
+    -363.54,
+    -40.26,
+    489.3
+   ]
+  },
+  {
+   "label": "Dock bracket slot 5 (R) (keyslot plate to bar)",
+   "volume": 6403.6,
+   "box": [
+    -41.3,
+    -80.53,
+    453.3,
+    -21.3,
+    -40.26,
+    489.3
+   ]
+  },
+  {
+   "label": "Dock pair filler slots 3+4 (prints with both keyslot plates)",
+   "volume": 4521.4,
+   "box": [
+    -203.42,
+    -58.8,
+    371.3,
+    -201.42,
+    -35.26,
+    469.3
+   ]
+  },
+  {
+   "label": "Dock pair hanger slots 3+4 (keyslot pair to bar)",
+   "volume": 9103.9,
+   "box": [
+    -219.42,
+    -80.53,
+    450.3,
+    -185.42,
+    -58.8,
+    489.3
+   ]
+  },
+  {
+   "label": "Dock bar end bracket (left)",
+   "volume": 6329.1,
+   "box": [
+    -480.0,
+    -90.0,
+    489.3,
+    -458.0,
+    -55.53,
+    509.3
+   ]
+  },
+  {
+   "label": "Dock bar end bracket (right)",
+   "volume": 6329.1,
+   "box": [
+    -32.0,
+    -90.0,
+    489.3,
+    -10.0,
+    -55.53,
+    509.3
+   ]
+  }
+ ],
+ "fasteners": {
+  "M3 SHCS into the plates' heat-sets": 12,
+  "M3 heat-set in the pair filler + M3 SHCS": 2,
+  "M5 + T-nut, bar front slot": 5,
+  "M5 + T-nut, bar top slot": 2,
+  "M5 + T-nut, vertical inner slot": 2
+ }
+}
