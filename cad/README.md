@@ -86,15 +86,17 @@ last 10 runs, one per day for 30 days, and one per month for 12 months
 (override with `VT350_KEEP` in the local config). On this laptop the alias
 `vt350-backup` runs `cad/backup-models.sh --verify` from any directory.
 
-## Renders (lite-26, in colour)
+## Renders (lite-30, in colour)
 
-Blender Cycles renders of `vt350-lite-26.FCStd` + `vt350-ebox.FCStd`, made with `render/render_full.sh` (below), in the
+Blender Cycles renders of `vt350-lite-30.FCStd` + `vt350-ebox.FCStd` (no filter: #115), made 2026-11-14 by the batch
+lane's `vt350-render` chain (`vt350-lite-30-20261114t032557-82bc`; `render/render_full.sh` below makes the same on the laptop), in the
 chosen colours (#38): RAL 6011 green powder-coated frame (chosen 2026-11-14, tentative until the #102 sample is matched: DLLPDF Dull Green, Prismatic photo #6E8C5B, rendered with albedo #27461F so it looks like the photo, #101), PET-GF white printed parts, PET-GF orange accents, matte black backbone and Monolith parts, brown belts, chrome bearings. Photo references for the rest: #75. They are
-re-rendered when worth it, not on every pass. The lite-16 renders (model colours) are in git history.
+re-rendered when worth it, not on every pass. Earlier renders (lite-16 in model colours, lite-26 in seafoam) are in git history.
+How the frame colour was chosen: [notes/reference/frame-colour.html](../notes/reference/frame-colour.html).
 
 | What the Obico camera sees (LED strips only, 3800 K) | Outside, front 3/4 |
 |---|---|
-| ![View from the Nocturne camera at the top front centre](renders/vt350-lite-26-obico.jpg) | ![Front 3/4 view of the printer](renders/vt350-lite-26-outside.jpg) |
+| ![View from the Nocturne camera at the top front centre](renders/vt350-lite-30-obico.jpg) | ![Front 3/4 view of the printer](renders/vt350-lite-30-outside.jpg) |
 
 ### Full colour renders on this laptop: `render/render_full.sh` (#38)
 
