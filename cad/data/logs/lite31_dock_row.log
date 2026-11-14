@@ -1,0 +1,41 @@
+[  244.4s] opened /home/dan/Documents/VT350/vt350-lite-30.FCStd
+[  250.6s] ok   printer root not rotated (global X moves)
+[  250.6s] ok   committed 5-tool row LLRLR (/home/dan/Code/vt350/cad/data/logs/dock_layout.json)
+[  250.6s] reach (-416.0, -74.0); row LLRLR: span 329.40, margin 6.30 each side; slot nozzle X [-409.7, -324.54, -248.42, -156.42, -80.3]
+[  250.6s] ok   row fits the reach with 6.30 mm each side (>= 5)
+[  305.1s] template docked nozzles: {'L': (-399.0, -32.461, 380.8), 'R': (-92.0, -32.461, 380.8)}
+[  315.9s] lite-30 Bowden Left crosses (allowed for every tube of this type): ['Roof felt strip (pad 3)', 'Roof felt strip liner, inner', 'Roof felt strip liner, outer', 'Roof panel (3 mm)']
+[  328.4s] lite-30 Bowden Right crosses (allowed for every tube of this type): ['Roof felt strip (pad 3)', 'Roof felt strip liner, inner', 'Roof felt strip liner, outer', 'Roof panel (3 mm)']
+[  328.4s] ok   lite-30 tubes cross only roof parts (['Roof felt strip (pad 3)', 'Roof felt strip liner, inner', 'Roof felt strip liner, outer', 'Roof panel (3 mm)'])
+[  329.2s] ok   two corner dock arms to remove (['Dock Arm v1 Bottom -9.06mm', 'Dock Arm v1 Bottom -9.06mm(Mirror)'])
+[ 1039.8s] ok   five keyslot plates (5)
+[ 1116.0s] keyslot plate tops: [469.3, 469.3, 469.3, 469.3, 469.3]
+[ 1226.0s] carried head front at attach_y in Z 469.30..489.30: Y -53.53 (HubHousing V5 With Logo (1) [slot 1]); bar Y -75.53..-55.53
+[ 1226.0s] ok   2020 (1) is a 20x20 bar along X (BoundBox (-480, 60.8, 240, -10, 80.8, 260))
+[ 1226.0s] 2020 dock bar: BoundBox (-480, -75.5304, 469.3, -10, -55.5304, 489.3)
+[ 1311.4s] ok   slot 1 (L): docked nozzle (-409.700, -32.461, 380.800), target X -409.700
+[ 1311.4s] ok   slot 2 (L): docked nozzle (-324.540, -32.461, 380.800), target X -324.540
+[ 1311.4s] ok   slot 3 (R): docked nozzle (-248.420, -32.461, 380.800), target X -248.420
+[ 1311.4s] ok   slot 4 (L): docked nozzle (-156.420, -32.461, 380.800), target X -156.420
+[ 1311.6s] ok   slot 5 (R): docked nozzle (-80.300, -32.461, 380.800), target X -80.300
+[ 1523.9s] ok   slot 1 (L) head + dock x everything else: []
+[ 1537.4s] ok   slot 1 (L) tube(s) ['Bowden Left', 'Bowden Right'] x everything else but its roof pass-through: []
+[ 1680.0s] ok   slot 2 (L) head + dock x everything else: []
+[ 1685.0s] ok   slot 2 (L) tube(s) ['Bowden slot 2'] x everything else but its roof pass-through: []
+[ 1828.9s] ok   slot 3 (R) head + dock x everything else: []
+[ 1838.7s] ok   slot 3 (R) tube(s) ['Bowden slot 3'] x everything else but its roof pass-through: []
+[ 1984.1s] ok   slot 4 (L) head + dock x everything else: []
+[ 1989.1s] ok   slot 4 (L) tube(s) ['Bowden slot 4'] x everything else but its roof pass-through: []
+[ 2202.2s] ok   slot 5 (R) head + dock x everything else: []
+[ 2207.2s] ok   slot 5 (R) tube(s) ['Bowden Right'] x everything else but its roof pass-through: []
+[ 2210.2s] ok   2020 dock bar x printer: []
+[ 2212.2s] ok   bar ends on frame parts: left ['2040(Mirror)'], right ['2040']
+[ 2212.2s] ok   bar bottom on every keyslot plate top (gaps [0.0, 0.0, 0.0, 0.0, 0.0])
+[ 2254.9s] ok   slot 1: carried head at attach_y vs the bar: 2.00 mm ([])
+[ 2294.0s] ok   slot 5: carried head at attach_y vs the bar: 2.00 mm ([])
+[ 2308.0s] ok   slot 1: carriage + Beacon at attach_y vs the bar: 49.66 mm ([])
+[ 2317.3s] NOT MODELLED: the bracket joining each keyslot plate to the bar (#19 AC7); the tubes' routes for the new heads (#3)
+[ 2317.4s] slots 2-4: 348 new solids; in a slot tree but not a model leaf: []
+[ 2317.4s] ok   solids: 919 - 2 arms + 348 (slots 2-4) = 1265
+[ 2317.4s] verify: 0 problems
+[ 2346.3s] SAVED /home/dan/Documents/VT350/vt350-lite-31.FCStd 211472248

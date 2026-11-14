@@ -1,0 +1,61 @@
+{
+ "pattern": "LLRLR",
+ "slot_x": [
+  -409.7,
+  -324.53999999999996,
+  -248.41999999999996,
+  -156.41999999999996,
+  -80.29999999999995
+ ],
+ "margin": 6.300000000000011,
+ "bar": [
+  -480.0000001380642,
+  -75.53041524957196,
+  469.299990827702,
+  -10.000000138063672,
+  -55.53041524957027,
+  489.2999908277049
+ ],
+ "slots": [
+  {
+   "slot": 1,
+   "type": "L",
+   "head": "Left Toolhead",
+   "dock": "Left Dock",
+   "tube": "Bowden Left",
+   "dx": -10.699999999999989
+  },
+  {
+   "slot": 2,
+   "type": "L",
+   "head": "Toolhead slot 2 (L)",
+   "dock": "Dock slot 2 (L)",
+   "tube": "Bowden slot 2",
+   "dx": 85.16000000000003
+  },
+  {
+   "slot": 3,
+   "type": "R",
+   "head": "Toolhead slot 3 (R)",
+   "dock": "Dock slot 3 (R)",
+   "tube": "Bowden slot 3",
+   "dx": -168.12
+  },
+  {
+   "slot": 4,
+   "type": "L",
+   "head": "Toolhead slot 4 (L)",
+   "dock": "Dock slot 4 (L)",
+   "tube": "Bowden slot 4",
+   "dx": 253.28000000000003
+  },
+  {
+   "slot": 5,
+   "type": "R",
+   "head": "Right Toolhead",
+   "dock": "Right Dock",
+   "tube": "Bowden Right",
+   "dx": 11.700000000000074
+  }
+ ]
+}
