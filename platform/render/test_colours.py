@@ -122,10 +122,22 @@ class TheCommittedMap(unittest.TestCase):
         # orange-red; the BLUE heat sink is the O2S board's (user, 2026-11-14: split out of the board by lite-34)
         for lab in ("TL-dragon-\u00cd\u00e2\u00bf\u00f2-\u00b0\u00ab", "TL-dragon-\u00cd\u00e2\u00bf\u00f2-\u00b0\u00ab004"):
             self.assertEqual(co.role_of(m, lab, a4t, "Default"), "dragon_heatsink", lab)
+        # The Dragon ACE Volcano as the user owns it (photo on #19, 2026-11-14): black finned outer heat sink, a copper
+        # core in its window, an orange ring under the core, a black silicone sock. The model names the outer sink and
+        # the core alike (外框-矮), and the big and small sleeves alike (硅胶套); FreeCAD's suffixes alternate between
+        # them in every head (lite-32 parts index: sink 22.3 mm wide, core 11.0; sock 19.0, ring 11.0).
+        sink, sleeve = "TL-dragon-\u00cd\u00e2\u00bf\u00f2-\u00b0\u00ab", "TL-dragon-\u00b9\u00e8\u00bd\u00ba\u00cc\u00d7"
+        for suf, role in (("", "dragon_heatsink"), ("001", "copper"), ("002", "dragon_heatsink"), ("003", "copper"),
+                          ("004", "dragon_heatsink"), ("005", "copper"), ("006", "dragon_heatsink"), ("007", "copper"),
+                          ("008", "dragon_heatsink"), ("009", "copper")):
+            self.assertEqual(co.role_of(m, sink + suf, a4t, "Default"), role, sink + suf)
+        for suf, role in (("", "rubber"), ("3", "dragon_orange"), ("001", "rubber"), ("002", "dragon_orange"),
+                          ("003", "rubber"), ("004", "dragon_orange"), ("005", "rubber"), ("006", "dragon_orange"),
+                          ("007", "rubber"), ("008", "dragon_orange")):
+            self.assertEqual(co.role_of(m, sleeve + suf, a4t, "Default"), role, sleeve + suf)
         for lab in ("Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)",
                     "Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)"):
             self.assertEqual(co.role_of(m, lab, th, "Default"), "o2s_heatsink", lab)
-        self.assertIsNone(co.role_of(m, "TL-dragon-\u00b9\u00e8\u00bd\u00ba\u00cc\u00d7", a4t, "Default"))  # 硅胶套, the silicone sock
         self.assertEqual(co.role_of(m, "[a]_orbiter-crossbow-adapter_o2_xol", a4t, "ABS-Generic"), "accent")
         # the fans are black (user, 2026-11-14, from the LH Stinger head photo on #19): the hotend's 2510 in each head
         for lab in ("2510 Fan", "2510 Fan001"):
