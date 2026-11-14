@@ -1,0 +1,69 @@
+{
+ "heat_sinks": [
+  {
+   "label": "Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)",
+   "board": "Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)",
+   "head": "4040-350x350x250 Voron Trident v4 v33 / Left Toolhead",
+   "box": [
+    -432.85,
+    8.43,
+    460.58,
+    -402.4,
+    20.43,
+    483.93
+   ]
+  },
+  {
+   "label": "Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)",
+   "board": "Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)",
+   "head": "4040-350x350x250 Voron Trident v4 v33 / Right Toolhead",
+   "box": [
+    -103.45,
+    8.43,
+    460.58,
+    -73.0,
+    20.43,
+    483.93
+   ]
+  },
+  {
+   "label": "Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001",
+   "board": "Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001",
+   "head": "4040-350x350x250 Voron Trident v4 v33 / Toolhead slot 2 (L)",
+   "box": [
+    -347.69,
+    8.43,
+    460.58,
+    -317.24,
+    20.43,
+    483.93
+   ]
+  },
+  {
+   "label": "Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001",
+   "board": "Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001",
+   "head": "4040-350x350x250 Voron Trident v4 v33 / Toolhead slot 3 (R)",
+   "box": [
+    -271.57,
+    8.43,
+    460.58,
+    -241.12,
+    20.43,
+    483.93
+   ]
+  },
+  {
+   "label": "Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002",
+   "board": "Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002",
+   "head": "4040-350x350x250 Voron Trident v4 v33 / Toolhead slot 4 (L)",
+   "box": [
+    -179.57,
+    8.43,
+    460.58,
+    -149.12,
+    20.43,
+    483.93
+   ]
+  }
+ ]
+}
