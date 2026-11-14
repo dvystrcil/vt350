@@ -1,5 +1,5 @@
 {
- "model": "/work/vt350-lite-30-20261110t071220-43b4-sweep/in/vt350-lite-30.FCStd",
+ "model": "/home/dan/Documents/VT350/vt350-lite-31.FCStd",
  "plate_top": 285.76060992516267,
  "magnet_top": 287.16060992516265,
  "lower": {
@@ -8,14 +8,14 @@
   "why": "2020 (2) lands on backbone-350 v2"
  },
  "upper": {
-  "dz": 93.32829622477442,
-  "plate_top": 379.0889061499371,
+  "dz": 93.32829622477664,
+  "plate_top": 379.0889061499393,
   "head": "Left",
   "why": "Magnetic sheet (1.4 mm) touches E3D v6 HotEnd - Nozzle"
  },
  "print_height": {
-  "Left": 335.3322023747735,
-  "Right": 335.33220254238415
+  "Left": 335.33220237477565,
+  "Right": 335.33220254238563
  },
  "top": {
   "dz": 113.59999989998136,
@@ -23,9 +23,9 @@
   "why": "the top end of MGN9H (3) reaches the top end of SOLID034"
  },
  "klipper": {
-  "position_max": 335.3322023747735,
-  "position_max_configured": 330.3322023747735,
-  "z_negative": -20.271703675206936,
+  "position_max": 335.33220237477565,
+  "position_max_configured": 330.33220237477565,
+  "z_negative": -20.27170367520472,
   "travel": 355.6039060499804
  },
  "parked": {
@@ -473,12 +473,12 @@
   ],
   "up Left": [
    [
-    93.32829622477442,
+    93.32829622477664,
     "Magnetic sheet (1.4 mm)",
     "E3D v6 HotEnd - Nozzle"
    ],
    [
-    94.7282962247744,
+    94.72829622477661,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "E3D v6 HotEnd - Nozzle"
    ],
@@ -488,12 +488,12 @@
     "COMPOUND"
    ],
    [
-    95.76055299726255,
+    95.76055299726477,
     "Magnetic sheet (1.4 mm)",
     "[a]_Duct-4010-right"
    ],
    [
-    95.76055299726676,
+    95.76055299726897,
     "Magnetic sheet (1.4 mm)",
     "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
    ],
@@ -503,7 +503,7 @@
     "Beacon RevH Normal (Beacon CAD, MIT)"
    ],
    [
-    96.02829622483785,
+    96.02829622484006,
     "Magnetic sheet (1.4 mm)",
     "TL-dragon-\u00b9\u00e8\u00bd\u00ba\u00cc\u00d7"
    ],
@@ -513,12 +513,12 @@
     "COMPOUND"
    ],
    [
-    97.16055299726253,
+    97.16055299726474,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "[a]_Duct-4010-right"
    ],
    [
-    97.16055299726673,
+    97.16055299726895,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
    ],
@@ -528,29 +528,29 @@
     "Beacon RevH Normal (Beacon CAD, MIT)"
    ],
    [
-    97.42829622483782,
+    97.42829622484004,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "TL-dragon-\u00b9\u00e8\u00bd\u00ba\u00cc\u00d7"
    ],
    [
-    98.82829622484081,
+    98.82829622484303,
     "Magnetic sheet (1.4 mm)",
     "Heat Block"
    ],
    [
-    100.22829622484079,
+    100.228296224843,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "Heat Block"
    ]
   ],
   "up Right": [
    [
-    93.32829639238508,
+    93.32829639238656,
     "Magnetic sheet (1.4 mm)",
     "E3D v6 HotEnd - Nozzle001"
    ],
    [
-    94.72829639238506,
+    94.72829639238654,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "E3D v6 HotEnd - Nozzle001"
    ],
@@ -560,12 +560,12 @@
     "COMPOUND"
    ],
    [
-    95.76055316487322,
+    95.7605531648747,
     "Magnetic sheet (1.4 mm)",
     "[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
    ],
    [
-    95.76055316487742,
+    95.7605531648789,
     "Magnetic sheet (1.4 mm)",
     "[a]_Duct-4010-left001"
    ],
@@ -575,7 +575,7 @@
     "Beacon RevH Normal (Beacon CAD, MIT)"
    ],
    [
-    96.02829639244851,
+    96.02829639244999,
     "Magnetic sheet (1.4 mm)",
     "TL-dragon-\u00b9\u00e8\u00bd\u00ba\u00cc\u00d7001"
    ],
@@ -585,12 +585,12 @@
     "COMPOUND"
    ],
    [
-    97.16055316487319,
+    97.16055316487467,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
    ],
    [
-    97.1605531648774,
+    97.16055316487888,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "[a]_Duct-4010-left001"
    ],
@@ -600,17 +600,17 @@
     "Beacon RevH Normal (Beacon CAD, MIT)"
    ],
    [
-    97.42829639244849,
+    97.42829639244997,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "TL-dragon-\u00b9\u00e8\u00bd\u00ba\u00cc\u00d7001"
    ],
    [
-    98.82829639245148,
+    98.82829639245296,
     "Magnetic sheet (1.4 mm)",
     "Heat Block001"
    ],
    [
-    100.22829639245145,
+    100.22829639245293,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "Heat Block001"
    ]

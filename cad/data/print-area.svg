@@ -3,7 +3,7 @@
 <rect x="70.0" y="70.0" width="710.0" height="710.0" fill="#d9d9d9" stroke="#555" stroke-width="1.5"/>
 <rect x="75.0" y="75.0" width="700.0" height="700.0" fill="#f2f2f2" stroke="#333" stroke-width="1.5" stroke-dasharray="8 5"/>
 <rect x="83.0" y="94.6" width="684.0" height="680.4" fill="#2e9e5b" fill-opacity="0.35" stroke="#1b6e3c" stroke-width="2"/>
-<text x="425.0" y="26.0" font-size="16" text-anchor="middle" font-weight="bold" fill="#222">Printable area on vt350-lite-30 (both heads: Left, Right)</text>
+<text x="425.0" y="26.0" font-size="16" text-anchor="middle" font-weight="bold" fill="#222">Printable area on vt350-lite-31 (both heads: Left, Right)</text>
 <text x="425.0" y="46.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">top view, plate coordinates: front-left plate corner = 0,0, X right, Y to the rear (mm)</text>
 <text x="780.0" y="798.0" font-size="12" text-anchor="end" font-weight="normal" fill="#444">grey: 355 × 355 plate (LDO, 10 mm)</text>
 <text x="70.0" y="798.0" font-size="12" text-anchor="start" font-weight="normal" fill="#333">dashed: 350 × 350 print square</text>
