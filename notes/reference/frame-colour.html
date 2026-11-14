@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Frame Colour</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: workshop spec sheet. Decision + swatches, the numbers, per-view three-up renders, the powder table, method, sources. */
+:root {
+  --bg: #F3F4F1; --panel: #FFFFFF; --fg: #1D211B; --muted: #5C6457; --line: #D5D9D0;
+  --accent: #4E6B3D;
+  --fern: #4F7942; --r6011: #6E8C5B; --r6001: #457A31;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121411; --panel: #1A1D18; --fg: #E6E9E2; --muted: #9AA294; --line: #2E332B; --accent: #A6C28F; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121411; --panel: #1A1D18; --fg: #E6E9E2; --muted: #9AA294; --line: #2E332B; --accent: #A6C28F; color-scheme: dark }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 1500px; margin: 0 auto; padding-block: 28px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 28px; }
+header { display: grid; gap: 8px; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1 { margin: 0; font-size: clamp(24px, 3.2vw, 34px); font-weight: 600; text-wrap: balance; }
+h2 { margin: 0; font-size: 18px; font-weight: 600; text-wrap: balance; }
+p { margin: 0; max-width: 72ch; color: var(--muted); }
+p strong { color: var(--fg); font-weight: 600; }
+a { color: var(--accent); }
+code { font-family: var(--mono); font-size: .92em; }
+.verdict { background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--r6011); border-radius: 6px; padding: 16px; display: grid; gap: 8px; }
+.verdict p { color: var(--fg); }
+.chips { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.chip { display: grid; grid-template-columns: 56px 1fr; gap: 12px; align-items: center; background: var(--panel);
+  border: 1px solid var(--line); border-radius: 6px; padding: 10px; min-width: 0; }
+.sw { width: 56px; height: 56px; border-radius: 4px; border: 1px solid var(--line); }
+.chip b { display: block; font-weight: 600; }
+.chip small { display: block; color: var(--muted); font-size: 12.5px; }
+.note { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 16px; display: grid; gap: 10px; }
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 6px 16px 6px 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { font-weight: 500; color: var(--muted); }
+tr.pick td { font-weight: 600; }
+.dot { display: inline-block; width: 14px; height: 14px; border-radius: 2px; vertical-align: -2px; margin-right: 6px; border: 1px solid var(--line); }
+section.view { display: grid; gap: 10px; }
+section.view h3 { margin: 0; font-size: 16px; font-weight: 600; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+section.view h3 span { font-family: var(--mono); font-size: 12px; color: var(--muted); font-weight: 400; }
+.trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 900px) { .trio { grid-template-columns: 1fr; } }
+figure { margin: 0; display: grid; gap: 4px; min-width: 0; }
+figure img { width: 100%; height: auto; display: block; border-radius: 4px; background: #111; aspect-ratio: 16 / 9; }
+figcaption { font-family: var(--mono); font-size: 12px; color: var(--muted); display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+figcaption i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+ol, ul { margin: 0; padding-left: 20px; color: var(--muted); max-width: 72ch; display: grid; gap: 4px; }
+footer { color: var(--muted); font-size: 12.5px; display: grid; gap: 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">VT350 · notes/reference · lite-30 + ebox · 2026-11-14</div>
+    <h1>Frame colour: the Fern look vs the powders you can buy</h1>
+    <p>How the frame's powder-coat colour was chosen: renders of the frame in three greens, made fair by matching each powder's product photo, and a measured search of the vendor's catalogue. Tracking: <a href="https://github.com/dvystrcil/vt350/issues/101">vt350#101</a>, sample order <a href="https://github.com/dvystrcil/vt350/issues/102">vt350#102</a>.</p>
+  </header>
+
+  <div class="verdict">
+    <h2>Decision (2026-11-14): RAL 6011 Reseda, Prismatic gloss</h2>
+    <p>Seen in the fair renders, under the chamber camera's lighting as well, RAL 6011 is the choice. It's in stock at DLLPDF, the candidate frame vendor. If a Fern-like powder becomes available (for example RAL 6001 Emerald by special order), it would be hard not to choose it instead. The physical sample from <a href="https://github.com/dvystrcil/vt350/issues/102">#102</a> still has the last word.</p>
+  </div>
+
+  <div class="chips">
+    <div class="chip"><div class="sw" style="background:var(--fern)"></div><div><b>Fern, the look first liked</b><code>#4F7942</code><small>web colour; no powder of this name</small></div></div>
+    <div class="chip"><div class="sw" style="background:var(--r6011)"></div><div><b>RAL 6011 Reseda, Prismatic</b><code>#6E8C5B</code><small>gloss 71–85 GU · in stock at DLLPDF · chosen</small></div></div>
+    <div class="chip"><div class="sw" style="background:var(--r6001)"></div><div><b>RAL 6001 Emerald, Prismatic</b><code>#457A31</code><small>gloss 85+ GU · not on DLLPDF's in-stock list</small></div></div>
+  </div>
+
+  <div class="note">
+    <h2>What the numbers say</h2>
+    <p>Measured as lightness L, chroma C (how vivid) and hue h (CIELAB). <strong>RAL 6001 Emerald has Fern's lightness and hue and is a bit more vivid. RAL 6011 is lighter and duller.</strong> Fern sits between the two.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Colour</th><th>Photo hex</th><th>L</th><th>C</th><th>h</th><th>ΔE to Fern</th></tr></thead>
+      <tbody>
+        <tr><td><span class="dot" style="background:#4F7942"></span>Fern (web)</td><td>#4F7942</td><td>46.6</td><td>36.4</td><td>135°</td><td>0</td></tr>
+        <tr><td><span class="dot" style="background:#457A31"></span>RAL 6001 Emerald</td><td>#457A31</td><td>46.2</td><td>46.8</td><td>134°</td><td>10.5</td></tr>
+        <tr><td><span class="dot" style="background:#4A823C"></span>RAL 6029 Mint (signal green)</td><td>#4A823C</td><td>49.2</td><td>45.8</td><td>136°</td><td>9.7</td></tr>
+        <tr class="pick"><td><span class="dot" style="background:#6E8C5B"></span>RAL 6011 Reseda</td><td>#6E8C5B</td><td>54.9</td><td>30.4</td><td>131°</td><td>10.5</td></tr>
+        <tr><td><span class="dot" style="background:#5B7C28"></span>RAL 6025 “Fern green”</td><td>#5B7C28</td><td>48.0</td><td>48.0</td><td>122°</td><td>15.1</td></tr>
+      </tbody>
+    </table></div>
+    <p>RAL 6025 is officially named Fern Green but is a yellower olive, further from the web Fern than the others.</p>
+  </div>
+
+  <main style="display:grid;gap:32px" id="views"></main>
+
+  <div class="note">
+    <h2>Closest Prismatic solid powders to Fern</h2>
+    <p>399 green Prismatic products measured. These are the top 10 solid tones, without metallics or transparents. Every photo was checked by eye as a flat panel shot.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>#</th><th>Powder</th><th>Photo hex</th><th>ΔE to Fern</th><th>Gloss (GU)</th><th>DLLPDF</th></tr></thead>
+      <tbody id="powders"></tbody>
+    </table></div>
+    <p>“Special order?” means not on DLLPDF's in-stock sheet. Whether they'll order it, and at what minimum, was unconfirmed on 2026-11-14. The question is on <a href="https://github.com/dvystrcil/vt350/issues/102">#102</a>.</p>
+  </div>
+
+  <div class="note">
+    <h2>How these renders were made fair</h2>
+    <ol>
+      <li>The scene's lighting and gloss make every frame colour render much lighter than its hex. Even a black frame renders <code>#423F3C</code> on the lit bar, because of reflections.</li>
+      <li>So for each powder, the frame colour fed to Blender was adjusted, in six short test renders, until the lit middle front bar measured the same as the powder's product photo. RAL 6011 needs <code>#27461F</code> (bar renders <code>#6E8C5D</code>). RAL 6001 needs <code>#013800</code> (bar renders <code>#457A3A</code>; blue stays 9 too high because the reflections can't get more vivid).</li>
+      <li>The Fern column feeds <code>#4F7942</code> straight in, which is how the render first liked was made. Its bar renders <code>#9EB68F</code>, much lighter than Fern itself.</li>
+      <li>A product photo is one lit panel under the vendor's lights, so “matches the photo” is one reference, not the paint. The physical sample from #102 is the real test.</li>
+    </ol>
+    <p>Measurement: a product photo's colour is the average of its centre 30 %; a render's is the average of a 300 × 8 px strip of the lit middle front bar in the outside view (x 700, y 415). Colour distance is CIE76 ΔE.</p>
+  </div>
+
+  <footer>
+    <h2 style="font-size:15px;color:var(--fg)">Sources</h2>
+    <span>Model: <code>vt350-lite-30.FCStd</code> + <code>vt350-ebox.FCStd</code>, no filter (<a href="https://github.com/dvystrcil/vt350/issues/115">#115</a> took the StealthMax off the printer). Exported by the batch lane, chain <code>vt350-lite-30-calib-20261114t014226-c7de</code>.</span>
+    <span>Renderer: <code>platform/render/render.py</code> at <a href="https://github.com/dvystrcil/vt350/commit/43be2d6">43be2d6</a>, unmodified, Blender Cycles, 128 samples, AgX; only the <code>frame</code> role's hex differs between columns (via <code>VT350_COLOURS</code>).</span>
+    <span>Powders: Prismatic Powders product pages and product photos, read 2026-11-14 (product codes linked in the table). In-stock list: DLLPDF “Powder Coat Colors” sheet, from <a href="https://www.dllpdf.com/powder-coat-colors">dllpdf.com/powder-coat-colors</a>, as recorded on <a href="https://github.com/dvystrcil/vt350/issues/101">#101</a> on 2026-11-09.</span>
+  </footer>
+</div>
+
+<script>
+const VIEWS = [
+  ["outside", "Outside", "three-quarter front, key light"],
+  ["obico", "Obico camera", "chamber lit by the LED strips only"],
+  ["low_front", "Low front", "base board and feet"],
+  ["low_side", "Low side", "unlit side"],
+];
+const COLS = [
+  ["fern", "Fern look · #4F7942 as before", "--fern"],
+  ["r6011", "RAL 6011 Reseda · fair · chosen", "--r6011"],
+  ["r6001", "RAL 6001 Emerald · fair", "--r6001"],
+];
+const root = document.getElementById("views");
+for (const [key, name, sub] of VIEWS) {
+  const s = document.createElement("section");
+  s.className = "view";
+  s.innerHTML = `<h3>${name} <span>${sub}</span></h3><div class="trio">` +
+    COLS.map(([p, cap, tok]) => `<figure><img src="frame-colour/${p}-${key}.jpg" alt="${name} view, ${cap}" loading="lazy">
+      <figcaption><i style="background:var(${tok})"></i>${cap}</figcaption></figure>`).join("") + `</div>`;
+  root.appendChild(s);
+}
+const POWDERS = [
+  ["RAL-6029/ral-6029", "RAL 6029 Mint", "#4A823C", 9.7, "71–85", "special order?"],
+  ["RAL-6001/ral-6001", "RAL 6001 Emerald", "#457A31", 10.5, "85+", "special order?"],
+  ["RAL-6011/ral-6011", "RAL 6011 Reseda", "#6E8C5B", 10.5, "71–85", "in stock"],
+  ["PSB-4609/valley-dark-green", "Valley Dark Green", "#29693E", 11.5, "71–85", "special order?"],
+  ["PSS-4815/winter-green", "Winter Green", "#40714F", 12.2, "71–85", "special order?"],
+  ["PSB-4075/redwood-green", "Redwood Green", "#285E31", 12.7, "71–85", "special order?"],
+  ["PSB-11204/trolley-green", "Trolley Green", "#327752", 12.8, "71–85", "special order?"],
+  ["RAL-6011-MATTE/ral-6011-matte", "RAL 6011 Matte", "#6D8C64", 13.3, "matte", "special order?"],
+  ["RAL-6000/ral-6000", "RAL 6000 Patina", "#4D8865", 13.9, "71–85", "special order?"],
+  ["PSS-0734/jd-green", "JD Green", "#297B39", 14.1, "85+", "special order?"],
+];
+document.getElementById("powders").innerHTML = POWDERS.map(([path, n, hex, de, gl, st], i) =>
+  `<tr${n === "RAL 6011 Reseda" ? ' class="pick"' : ""}><td>${i + 1}</td>
+   <td><span class="dot" style="background:${hex}"></span><a href="https://www.prismaticpowders.com/shop/powder-coating-colors/${path}">${n}</a></td>
+   <td>${hex}</td><td>${de}</td><td>${gl}</td><td>${st}</td></tr>`).join("");
+</script>
+</body>
+</html>
