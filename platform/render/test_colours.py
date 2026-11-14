@@ -68,10 +68,14 @@ class TheCommittedMap(unittest.TestCase):
         self.assertTrue({"frame", "printed", "accent"} <= set(m["roles"]))
 
     def test_frame_is_the_tentative_ral_6011_render(self):
-        # vt350#101: the user picked Prismatic RAL 6011 (Dull Green) at its product-photo centre, #6E8C5B
-        # (2026-11-13); tentative until the #102 sample is matched under room light (AC4)
+        # vt350#101: the user chose Prismatic RAL 6011 (Dull Green), product photo #6E8C5B (2026-11-14). The hex is
+        # the render albedo that makes the lit front bar render as that photo (#27461F; the scene lightens colours,
+        # notes/reference/frame-colour.html); the paint colour stays in the note. Tentative until #102 (AC4).
         frame = json.load(open(os.path.join(PRINTER_RENDER, "colours.json")))["roles"]["frame"]
-        self.assertEqual(frame["hex"], "#6E8C5B")
+        self.assertEqual(frame["hex"], "#27461F")
+        self.assertIn("#6E8C5B", frame["note"])
+        self.assertIn("render albedo", frame["note"])
+        self.assertIn("frame-colour.html", frame["note"])
         self.assertIn("Dull Green", frame["note"])
         self.assertIn("Prismatic", frame["note"])
         self.assertIn("TENTATIVE", frame["note"])
