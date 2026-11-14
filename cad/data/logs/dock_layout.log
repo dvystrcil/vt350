@@ -1,0 +1,84 @@
+[    0.1s] model /home/dan/Documents/VT350/vt350-lite-30.FCStd (read-only); cells 1.0 mm, surface samples every 0.4 mm, tessellation 0.05 mm: distances are good to about +-0.5 mm
+[    0.1s] carriage nozzle-X reach -416.0 .. -74.0 (sweep_toolhead.log, vt350-lite-30)
+[    0.1s] left out: bowden tubes (#3), USB cables (not modelled), dock arms (corner-post mounts; a row needs a crossbar, AC7), gantry and belts (checked by the sweep at the pickup, the same for every slot)
+[    0.1s] === template slot: Left (keyslot Dock Asembly; left out: Dock Arm v1 Bottom -9.06mm)
+[    0.1s]    keyslot plate centre X -441.00 vs head centre -400.81: detach +5.0 mm in X (away from the plate); pickup carriage offset [-154.0, -257.725, 0.315]; carried head dZ -0.315
+[    0.7s] -- clearance 0.0 mm: pitch 83.16 mm -> 5 tools in the reach
+[    0.7s]    parked         77.10  (parked next to parked: moving [a]_Duct-4010-right meets neighbour Dock Asembly)
+[    0.7s]    slide          78.16  (carried at park_x, Y -6.0: moving [a]_Duct-4010-right meets neighbour Dock Asembly)
+[    0.7s]    detach side    83.16  (carried at detach_x, Y -6.0: moving [a]_Duct-4010-right meets neighbour Dock Asembly)
+[    0.7s]    far side       68.52  (carried at detach_x, Y +36.0: moving [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0) meets neighbour [a]_Duct-4010-right)
+[    0.7s]    shuttle        57.05  (empty carriage at park_x, Y -6.0: moving SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0) meets neighbour Plate)
+[    1.3s] -- clearance 1.0 mm: pitch 84.16 mm -> 5 tools in the reach
+[    1.3s]    parked         78.10  (parked next to parked: moving [a]_Duct-4010-right meets neighbour Dock Asembly)
+[    1.3s]    slide          79.16  (carried at park_x, Y -6.0: moving [a]_Duct-4010-right meets neighbour Dock Asembly)
+[    1.3s]    detach side    84.16  (carried at detach_x, Y -6.0: moving [a]_Duct-4010-right meets neighbour Dock Asembly)
+[    1.3s]    far side       69.52  (carried at detach_x, Y +36.0: moving [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0) meets neighbour [a]_Duct-4010-right)
+[    1.3s]    shuttle        58.05  (empty carriage at park_x, Y -6.0: moving SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0) meets neighbour Plate)
+[    1.9s] -- clearance 2.0 mm: pitch 85.16 mm -> 4 tools in the reach
+[    1.9s]    parked         79.10  (parked next to parked: moving [a]_Duct-4010-right meets neighbour Dock Asembly)
+[    1.9s]    slide          80.16  (carried at park_x, Y -6.0: moving [a]_Duct-4010-right meets neighbour Dock Asembly)
+[    1.9s]    detach side    85.16  (carried at detach_x, Y -6.0: moving [a]_Duct-4010-right meets neighbour Dock Asembly)
+[    1.9s]    far side       70.52  (carried at detach_x, Y +36.0: moving [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0) meets neighbour [a]_Duct-4010-right)
+[    1.9s]    shuttle        59.05  (empty carriage at park_x, Y -6.0: moving SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0) meets neighbour Plate)
+[    2.7s] -- shuttle passing behind a row of parked heads: needs Y >= parked -0.50 mm (+ clearance), worst at dX -42.0: parked Plate (rear Y -7.00) vs shuttle COMPOUND (front Y -6.50); toolchanger.cfg uses parked +36.0 (Kalico -26.96); with 2 mm: Kalico >= -61.46
+[    3.6s] -- carried passing behind a row of parked heads: needs Y >= parked +67.96 mm (+ clearance), worst at dX -19.0: parked Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0) (rear Y 20.43) vs carried HubHousing V5 With Logo (1) (front Y -47.53); toolchanger.cfg uses parked +111.0 (Kalico 48.04); with 2 mm: Kalico >= 7.00
+[    3.6s]    front edge: with docks along the whole front, the carried nozzle must stay at Y >= 37.50 (docked nozzle Y -32.46 + 67.96 + 2.0); print square front edge 30.50
+[    3.6s] === template slot: Right (keyslot Dock Asembly(Mirror); left out: Dock Arm v1 Bottom -9.06mm(Mirror))
+[    3.6s]    keyslot plate centre X -50.00 vs head centre -91.53: detach -5.0 mm in X (away from the plate); pickup carriage offset [153.014, -257.725, 0.315]; carried head dZ -0.315
+[    4.2s] -- clearance 0.0 mm: pitch 88.06 mm -> 4 tools in the reach
+[    4.2s]    parked         79.00  (parked next to parked: moving Crossbow - Lever001 meets neighbour Dock Asembly(Mirror))
+[    4.2s]    slide          83.06  (carried at park_x, Y -6.0: moving Crossbow - Lever001 meets neighbour Dock Asembly(Mirror))
+[    4.2s]    detach side    88.06  (carried at detach_x, Y -6.0: moving Crossbow - Lever001 meets neighbour Dock Asembly(Mirror))
+[    4.2s]    far side       68.52  (carried at detach_x, Y +16.0: moving [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0) meets neighbour [a]_Duct-4010-left001)
+[    4.2s]    shuttle        57.06  (empty carriage at park_x, Y -6.0: moving SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0) meets neighbour Plate(Mirror))
+[    4.8s] -- clearance 1.0 mm: pitch 89.06 mm -> 4 tools in the reach
+[    4.8s]    parked         80.00  (parked next to parked: moving Crossbow - Lever001 meets neighbour Dock Asembly(Mirror))
+[    4.8s]    slide          84.06  (carried at park_x, Y -6.0: moving Crossbow - Lever001 meets neighbour Dock Asembly(Mirror))
+[    4.8s]    detach side    89.06  (carried at detach_x, Y -6.0: moving Crossbow - Lever001 meets neighbour Dock Asembly(Mirror))
+[    4.8s]    far side       69.52  (carried at detach_x, Y +16.0: moving [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0) meets neighbour [a]_Duct-4010-left001)
+[    4.8s]    shuttle        58.06  (empty carriage at park_x, Y -6.0: moving SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0) meets neighbour Plate(Mirror))
+[    5.3s] -- clearance 2.0 mm: pitch 90.06 mm -> 4 tools in the reach
+[    5.3s]    parked         81.00  (parked next to parked: moving Crossbow - Lever001 meets neighbour Dock Asembly(Mirror))
+[    5.3s]    slide          85.06  (carried at park_x, Y -6.0: moving Crossbow - Lever001 meets neighbour Dock Asembly(Mirror))
+[    5.3s]    detach side    90.06  (carried at detach_x, Y -6.0: moving Crossbow - Lever001 meets neighbour Dock Asembly(Mirror))
+[    5.3s]    far side       70.52  (carried at detach_x, Y +16.0: moving [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0) meets neighbour [a]_Duct-4010-left001)
+[    5.3s]    shuttle        59.06  (empty carriage at park_x, Y -6.0: moving SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0) meets neighbour Plate(Mirror))
+[    6.2s] -- shuttle passing behind a row of parked heads: needs Y >= parked -0.50 mm (+ clearance), worst at dX -42.0: parked Plate(Mirror) (rear Y -7.00) vs shuttle COMPOUND (front Y -6.50); toolchanger.cfg uses parked +36.0 (Kalico -26.96); with 2 mm: Kalico >= -61.46
+[    7.1s] -- carried passing behind a row of parked heads: needs Y >= parked +67.96 mm (+ clearance), worst at dX -19.0: parked Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0) (rear Y 20.43) vs carried HubHousing V5 With Logo (1) (1) (front Y -47.53); toolchanger.cfg uses parked +111.0 (Kalico 48.04); with 2 mm: Kalico >= 7.00
+[    7.1s]    front edge: with docks along the whole front, the carried nozzle must stay at Y >= 37.50 (docked nozzle Y -32.46 + 67.96 + 2.0); print square front edge 30.50
+[    7.1s] === rows of docks, any mix of Left-style (L: keyslot plate on -X, detach +X) and Right-style (R: mirrored) slots; gap = nozzle X distance between neighbours
+[    7.7s] -- clearance 0.0: L|L gap 83.16 (set by: left carried, Y -6.0)
+[    8.3s] -- clearance 0.0: L|R gap 74.12 (set by: left carried, Y -1.0)
+[    8.9s] -- clearance 0.0: R|L gap 90.00 (set by: parked, parked next to parked)
+[    9.5s] -- clearance 0.0: R|R gap 88.06 (set by: right carried, Y -6.0)
+[    9.5s]    1 tools: L, span 0.00 + outward detach = 5.00 of 342.00 (slack 337.00)
+[    9.5s]    2 tools: LR, span 74.12 + outward detach = 74.12 of 342.00 (slack 267.88)
+[    9.5s]    3 tools: LLR, span 157.28 + outward detach = 157.28 of 342.00 (slack 184.72)
+[    9.5s]    4 tools: LRLR, span 238.24 + outward detach = 238.24 of 342.00 (slack 103.76)
+[    9.5s]    5 tools: LLRLR, span 321.40 + outward detach = 321.40 of 342.00 (slack 20.60)
+[    9.5s]    6 tools: does not fit
+[    9.5s]    7 tools: does not fit
+[   10.1s] -- clearance 1.0: L|L gap 84.16 (set by: left carried, Y -6.0)
+[   10.7s] -- clearance 1.0: L|R gap 75.12 (set by: left carried, Y -1.0)
+[   11.4s] -- clearance 1.0: R|L gap 91.00 (set by: parked, parked next to parked)
+[   12.0s] -- clearance 1.0: R|R gap 89.06 (set by: right carried, Y -6.0)
+[   12.0s]    1 tools: L, span 0.00 + outward detach = 5.00 of 342.00 (slack 337.00)
+[   12.0s]    2 tools: LR, span 75.12 + outward detach = 75.12 of 342.00 (slack 266.88)
+[   12.0s]    3 tools: LLR, span 159.28 + outward detach = 159.28 of 342.00 (slack 182.72)
+[   12.0s]    4 tools: LRLR, span 241.24 + outward detach = 241.24 of 342.00 (slack 100.76)
+[   12.0s]    5 tools: LLRLR, span 325.40 + outward detach = 325.40 of 342.00 (slack 16.60)
+[   12.0s]    6 tools: does not fit
+[   12.0s]    7 tools: does not fit
+[   12.6s] -- clearance 2.0: L|L gap 85.16 (set by: left carried, Y -6.0)
+[   13.2s] -- clearance 2.0: L|R gap 76.12 (set by: left carried, Y -1.0)
+[   13.9s] -- clearance 2.0: R|L gap 92.00 (set by: parked, parked next to parked)
+[   14.5s] -- clearance 2.0: R|R gap 90.06 (set by: right carried, Y -6.0)
+[   14.5s]    1 tools: L, span 0.00 + outward detach = 5.00 of 342.00 (slack 337.00)
+[   14.5s]    2 tools: LR, span 76.12 + outward detach = 76.12 of 342.00 (slack 265.88)
+[   14.5s]    3 tools: LLR, span 161.28 + outward detach = 161.28 of 342.00 (slack 180.72)
+[   14.5s]    4 tools: LRLR, span 244.24 + outward detach = 244.24 of 342.00 (slack 97.76)
+[   14.5s]    5 tools: LLRLR, span 329.40 + outward detach = 329.40 of 342.00 (slack 12.60)
+[   14.5s]    6 tools: does not fit
+[   14.5s]    7 tools: does not fit
+[   14.5s] done (read-only, nothing saved)

@@ -72,6 +72,39 @@ Spacing p = head width + 3 + 2. *Span* = how far apart the outermost docked head
 - **5 tools looks feasible** with a front crossbar and slim docks. That's either with the Crossbow tucked inside the A4T width (fits even at the current span), or with the X span measured at ≥ 341 mm.
 - **6 tools** needs a span of 375 mm (70 mm heads) or 427 mm (80 mm heads). That's beyond a 350's X travel. The options are a wider frame, which means a new X beam (the Carbonara only comes in 250/300/350, and the 350 one is 430 mm), or narrower heads (the DragonBurner is 54 mm per the MadMax docs).
 
+## Measured on lite-30: a row of docks (#19 AC2, `cad/studies/dock_layout.py`, 2026-11-13)
+The arithmetic above takes head width + 5. The model says more: it moves the real lite-30 parts (A4Tv2 + Orbiter 2.5 + Smart Sensor + O2S, the MadMax plate, the dock's keyslot plate, the carriage and Beacon) through MadMax's dock moves (`cad/klipper/toolchanger.cfg`: 6 mm keyslot slide; detach 5 mm in X, **away from the keyslot plate**). Read-only; accurate to about ±0.5 mm. Log: `cad/data/logs/dock_layout.log`.
+
+**What sets the spacing is the neighbour's keyslot plate, not the head.** The keyslot plate sits beside its head, so in a row of identical docks it sits between two heads, and the carried head's 5 mm detach moves toward it. Two slot styles exist in the model:
+- **L** (the left dock): keyslot plate on −X, detach +X;
+- **R** (the right dock, mirrored plate and keyslot plate): keyslot plate on +X, detach −X.
+
+Nozzle distance between neighbours (2 mm clearance; 0 mm is 2 less):
+
+| Left slot \| right slot | Gap | Set by |
+|---|---|---|
+| L\|L | 85.16 | carried head at detach, at attach_y: its right 4010 duct meets the neighbour's keyslot plate |
+| **L\|R** | **76.12** | both heads detach into this gap and no keyslot plate is in it; only one head moves at a time |
+| R\|L | 92.00 | the two keyslot plates back to back, parked |
+| R\|R | 90.06 | carried head at detach: its Crossbow lever meets the neighbour's keyslot plate |
+
+**Tool count**, in the carriage's nozzle-X reach −416 … −74 (342 mm, `sweep_toolhead.log`), counting the outer slots' outward detach:
+
+| Tools | Best row | Needs | Slack |
+|---|---|---|---|
+| 4 | LRLR | 244.24 | 97.76 |
+| **5** | **LLRLR** | **329.40** | **12.60** |
+| 6 | none | | |
+
+All-L docks fit only 4 at 2 mm (5 at 1 mm with 0.4 mm to spare). L and R tools aren't interchangeable: the dock screws sit on bosses on one duct (lite-23), left duct for an L slot, right duct for an R slot.
+
+**Behind the row:**
+- The **carried head** clears a row of parked heads at **parked + 67.96 mm** (the parked O2S board vs the carried head's Orbiter hub); `toolchanger.cfg`'s safe_toolhead_y is parked + 111, so it is safe with 41 mm to spare.
+- The **empty carriage** clears it at parked − 0.50 (its SpeedClips vs the parked plate); safe_shuttle_y parked + 36 is safe.
+- **Printing near docks:** with docks along the whole front, the carried nozzle stays at **Y ≥ 37.50**, 7.0 mm behind the print square's front edge (30.50). This is #121's front-corner clash spread across a full row. The O2S's 18 mm standoffs (#121) would move the board back and make this worse.
+
+**Not checked here:** bowden tubes (rigid routes, #3), USB cables past the stub, the dock arms (corner-post mounts: a row needs a crossbar or hangers, AC7), the gantry and belts (checked by the toolhead sweep at the pickup, which is the same for every slot).
+
 ## Y: printable area lost to parked heads
 Docked heads hang over the bed's front strip, and their nozzles sit at the same height as the active nozzle. Model: bed plate Y 28.0 … 388.5; docked heads Y −1.9 … 78.5. With docks across the whole front, the strip is lost for every multi-tool print, not just the corners:
 - **Loss ≈ 6 mm dock slide + 4 mm screw stick-out + head depth (80 mm) ≈ 90 mm**, versus 360 mm of bed (A4T v1 as modeled; for the A4Tv2 + O2S head it is ≈ 79 mm, see above).
