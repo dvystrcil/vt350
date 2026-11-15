@@ -8,7 +8,7 @@ Created 2026-05-17 to centralize the build before construction begins.
 
 ![The VT350 design (model vt350-lite-35): a green 4040 frame, enclosed, with five toolheads parked in a row of docks across the front](cad/renders/vt350-lite-35-outside.jpg)
 
-The VT350 is a heavily modified Voron Trident 350 built around a **five-tool toolchanger**. Each tool is a complete toolhead with its own extruder, hotend and board, and the printer swaps between them during a print. That allows several materials or colours in one print without purging filament between them. It also has a **heated, enclosed chamber** for engineering plastics like ASA and ABS.
+The VT350 is a heavily modified Voron Trident 350 built around a [MadMax](https://github.com/zruncho3d/madmax) based **five-tool toolchanger**. Each tool is a complete toolhead with its own extruder, hotend and board, and the printer swaps between them during a print. That allows several materials or colours in one print without purging filament between them. It also has a **heated, enclosed chamber** for engineering plastics like ASA and ABS.
 
 The model and renders always show all five tools. The first build will run **two** (T0 and T1, the outer docks). The other three are added later without changing the frame.
 
