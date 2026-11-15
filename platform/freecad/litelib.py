@@ -63,6 +63,7 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 CODE_PATH = [_HERE] + [p for p in (os.path.join(os.path.dirname(os.path.dirname(_HERE)), d) for d in CODE_DIRS)
                        if os.path.isdir(p) and os.path.realpath(p) != os.path.realpath(_HERE)]
 sys.path[:0] = [p for p in CODE_PATH if p not in sys.path]
+import batchvalues
 import litepool
 
 V = FreeCAD.Vector
@@ -75,7 +76,8 @@ BED_FLOOR_DZ = BED_LOWEST_DZ + 5.0  # where printer.cfg stops the bed (position_
                               # the lower stop, both bed-frame 2020s 5 mm above the backbone (user 2026-11-09)
 BED_Z = (230.0, 300.0)        # bed-side solids at the model pose: ZMin in this band and ZMax <= its top
 HERE = os.path.dirname(os.path.abspath(__file__))
-APP = os.environ.get("FREECAD_APPIMAGE", "/home/dan/FreeCAD/FreeCAD_26.3rc2-Linux-x86_64.AppImage")
+APP = batchvalues.setting("freecad_appimage", env="FREECAD_APPIMAGE",
+                          default="/home/dan/FreeCAD/FreeCAD_26.3rc2-Linux-x86_64.AppImage")
 FREECADCMD = os.environ.get("FREECADCMD", f"{APP} freecadcmd").split()
 WORKER_DOC_MB = 100.0         # tasks on shapes of a saved document bigger than this run in the parent (#45): a worker
                               # that opens the 173 MB printer model costs GBs; the 49 MB filter document is fine

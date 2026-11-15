@@ -39,6 +39,25 @@ $APP freecadcmd $PWD/platform/freecad/part_index.py             # the per-part b
 
 The full list, with the VT350-side commands, is in [`notes/scripts.md`](../notes/scripts.md).
 
+## Settings: the values file
+
+A script that moved its laptop-specific constant to [`freecad/batchvalues.py`](freecad/batchvalues.py) takes that
+setting from, in order: its own environment variable, then the `platform` section of the JSON file named by
+`GPU_BATCH_VALUES` (the same file whose `print_guard` section the gpu-batch guard reads), then today's value in the
+code. With no values file, nothing changes. A missing or non-JSON file, or an unknown `platform` key, is an error.
+
+| Key | Env var | Default | Used by |
+|---|---|---|---|
+| `freecad_appimage` | `FREECAD_APPIMAGE` | `/home/dan/FreeCAD/FreeCAD_26.3rc2-Linux-x86_64.AppImage` | `freecad/litelib.py`, `freecad/clashlib.py` |
+
+```json
+{
+  "platform": {
+    "freecad_appimage": "/opt/FreeCAD/FreeCAD.AppImage"
+  }
+}
+```
+
 ## Where the printer's data comes in
 
 The printer passes its data to these tools by path or environment variable:
