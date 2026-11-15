@@ -143,6 +143,11 @@ class TheCommittedMap(unittest.TestCase):
         for lab in ("2510 Fan", "2510 Fan001"):
             self.assertEqual(co.role_of(m, lab, a4t, "Default"), "black_plastic", lab)
         self.assertEqual(co.role_of(m, "[a]_Duct-4010-right", a4t, "ABS-Generic"), "accent")   # a duct, not a fan
+        # lite-37: the part-cooling blowers, 2 per head (Vindr Berserker 4010B, modelled from the user's measurements,
+        # #19), in the A4Tv2 group beside the ducts they feed: a fan, so coloured like the 2510
+        for lab in ("Vindr Berserker 4010B blower L Left Toolhead (modelled from measurements)",
+                    "Vindr Berserker 4010B blower R Toolhead slot 3 (R) (modelled from measurements)"):
+            self.assertEqual(co.role_of(m, lab, a4t, "Default"), "black_plastic", lab)
 
     def test_committed_rules_on_lite27_stand_and_filter(self):
         m = co.load()

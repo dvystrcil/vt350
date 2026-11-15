@@ -1,0 +1,497 @@
+{
+ "blower": {
+  "volume": 13669.6,
+  "body_c": [
+   -6.5,
+   3.3
+  ],
+  "tabs_c": [
+   -6.5,
+   0.0
+  ],
+  "outlet_b": [
+   -13.949999999999996,
+   13.850000000000001
+  ],
+  "outlet_c": [
+   -5.88,
+   2.68
+  ],
+  "hole_offset_mm": 0.354
+ },
+ "blowers": [
+  {
+   "label": "Vindr Berserker 4010B blower L Left Toolhead (modelled from measurements)",
+   "head": "Left Toolhead",
+   "duct": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "rotation_deg": 90,
+   "outlet_void_walls_by_rotation": [
+    [
+     1.0,
+     0.002
+    ],
+    [
+     0.593,
+     0.666
+    ],
+    [
+     0.227,
+     0.752
+    ],
+    [
+     0.397,
+     0.682
+    ]
+   ],
+   "outlet_dir": [
+    -0.0,
+    0.0,
+    -1.0
+   ],
+   "seat_centre": [
+    -433.725,
+    -42.327,
+    417.897
+   ],
+   "seat_normal": [
+    -0.98481,
+    -0.17365,
+    0.0
+   ],
+   "box": [
+    -440.42,
+    -62.45,
+    398.05,
+    -423.88,
+    -21.65,
+    437.75
+   ]
+  },
+  {
+   "label": "Vindr Berserker 4010B blower R Left Toolhead (modelled from measurements)",
+   "head": "Left Toolhead",
+   "duct": "[a]_Duct-4010-right",
+   "rotation_deg": 90,
+   "outlet_void_walls_by_rotation": [
+    [
+     0.129,
+     0.752
+    ],
+    [
+     0.587,
+     0.667
+    ],
+    [
+     1.0,
+     0.002
+    ],
+    [
+     0.397,
+     0.682
+    ]
+   ],
+   "outlet_dir": [
+    0.0,
+    -0.0,
+    -1.0
+   ],
+   "seat_centre": [
+    -385.675,
+    -42.327,
+    417.897
+   ],
+   "seat_normal": [
+    0.98481,
+    -0.17365,
+    0.0
+   ],
+   "box": [
+    -395.52,
+    -62.45,
+    398.05,
+    -378.98,
+    -21.65,
+    437.75
+   ]
+  },
+  {
+   "label": "Vindr Berserker 4010B blower L Toolhead slot 2 (L) (modelled from measurements)",
+   "head": "Toolhead slot 2 (L)",
+   "duct": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)001",
+   "rotation_deg": 90,
+   "outlet_void_walls_by_rotation": [
+    [
+     1.0,
+     0.002
+    ],
+    [
+     0.593,
+     0.666
+    ],
+    [
+     0.227,
+     0.752
+    ],
+    [
+     0.397,
+     0.682
+    ]
+   ],
+   "outlet_dir": [
+    -0.0,
+    0.0,
+    -1.0
+   ],
+   "seat_centre": [
+    -348.565,
+    -42.327,
+    417.897
+   ],
+   "seat_normal": [
+    -0.98481,
+    -0.17365,
+    0.0
+   ],
+   "box": [
+    -355.26,
+    -62.45,
+    398.05,
+    -338.72,
+    -21.65,
+    437.75
+   ]
+  },
+  {
+   "label": "Vindr Berserker 4010B blower R Toolhead slot 2 (L) (modelled from measurements)",
+   "head": "Toolhead slot 2 (L)",
+   "duct": "[a]_Duct-4010-right001",
+   "rotation_deg": 90,
+   "outlet_void_walls_by_rotation": [
+    [
+     0.129,
+     0.752
+    ],
+    [
+     0.587,
+     0.667
+    ],
+    [
+     1.0,
+     0.002
+    ],
+    [
+     0.397,
+     0.682
+    ]
+   ],
+   "outlet_dir": [
+    0.0,
+    -0.0,
+    -1.0
+   ],
+   "seat_centre": [
+    -300.515,
+    -42.327,
+    417.897
+   ],
+   "seat_normal": [
+    0.98481,
+    -0.17365,
+    0.0
+   ],
+   "box": [
+    -310.36,
+    -62.45,
+    398.05,
+    -293.82,
+    -21.65,
+    437.75
+   ]
+  },
+  {
+   "label": "Vindr Berserker 4010B blower L Toolhead slot 3 (R) (modelled from measurements)",
+   "head": "Toolhead slot 3 (R)",
+   "duct": "[a]_Duct-4010-left002",
+   "rotation_deg": 90,
+   "outlet_void_walls_by_rotation": [
+    [
+     1.0,
+     0.002
+    ],
+    [
+     0.593,
+     0.666
+    ],
+    [
+     0.227,
+     0.752
+    ],
+    [
+     0.397,
+     0.682
+    ]
+   ],
+   "outlet_dir": [
+    -0.0,
+    0.0,
+    -1.0
+   ],
+   "seat_centre": [
+    -272.445,
+    -42.327,
+    417.897
+   ],
+   "seat_normal": [
+    -0.98481,
+    -0.17365,
+    0.0
+   ],
+   "box": [
+    -279.14,
+    -62.45,
+    398.05,
+    -262.6,
+    -21.65,
+    437.75
+   ]
+  },
+  {
+   "label": "Vindr Berserker 4010B blower R Toolhead slot 3 (R) (modelled from measurements)",
+   "head": "Toolhead slot 3 (R)",
+   "duct": "[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)001",
+   "rotation_deg": 90,
+   "outlet_void_walls_by_rotation": [
+    [
+     0.129,
+     0.752
+    ],
+    [
+     0.587,
+     0.667
+    ],
+    [
+     1.0,
+     0.002
+    ],
+    [
+     0.397,
+     0.682
+    ]
+   ],
+   "outlet_dir": [
+    -0.0,
+    -0.0,
+    -1.0
+   ],
+   "seat_centre": [
+    -224.395,
+    -42.327,
+    417.897
+   ],
+   "seat_normal": [
+    0.98481,
+    -0.17365,
+    0.0
+   ],
+   "box": [
+    -234.24,
+    -62.45,
+    398.05,
+    -217.7,
+    -21.65,
+    437.75
+   ]
+  },
+  {
+   "label": "Vindr Berserker 4010B blower L Toolhead slot 4 (L) (modelled from measurements)",
+   "head": "Toolhead slot 4 (L)",
+   "duct": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)002",
+   "rotation_deg": 90,
+   "outlet_void_walls_by_rotation": [
+    [
+     1.0,
+     0.002
+    ],
+    [
+     0.593,
+     0.666
+    ],
+    [
+     0.227,
+     0.752
+    ],
+    [
+     0.397,
+     0.682
+    ]
+   ],
+   "outlet_dir": [
+    -0.0,
+    0.0,
+    -1.0
+   ],
+   "seat_centre": [
+    -180.445,
+    -42.327,
+    417.897
+   ],
+   "seat_normal": [
+    -0.98481,
+    -0.17365,
+    0.0
+   ],
+   "box": [
+    -187.14,
+    -62.45,
+    398.05,
+    -170.6,
+    -21.65,
+    437.75
+   ]
+  },
+  {
+   "label": "Vindr Berserker 4010B blower R Toolhead slot 4 (L) (modelled from measurements)",
+   "head": "Toolhead slot 4 (L)",
+   "duct": "[a]_Duct-4010-right002",
+   "rotation_deg": 90,
+   "outlet_void_walls_by_rotation": [
+    [
+     0.129,
+     0.752
+    ],
+    [
+     0.587,
+     0.667
+    ],
+    [
+     1.0,
+     0.002
+    ],
+    [
+     0.397,
+     0.682
+    ]
+   ],
+   "outlet_dir": [
+    0.0,
+    -0.0,
+    -1.0
+   ],
+   "seat_centre": [
+    -132.395,
+    -42.327,
+    417.897
+   ],
+   "seat_normal": [
+    0.98481,
+    -0.17365,
+    0.0
+   ],
+   "box": [
+    -142.24,
+    -62.45,
+    398.05,
+    -125.7,
+    -21.65,
+    437.75
+   ]
+  },
+  {
+   "label": "Vindr Berserker 4010B blower L Right Toolhead (modelled from measurements)",
+   "head": "Right Toolhead",
+   "duct": "[a]_Duct-4010-left001",
+   "rotation_deg": 90,
+   "outlet_void_walls_by_rotation": [
+    [
+     1.0,
+     0.002
+    ],
+    [
+     0.593,
+     0.666
+    ],
+    [
+     0.227,
+     0.752
+    ],
+    [
+     0.397,
+     0.682
+    ]
+   ],
+   "outlet_dir": [
+    -0.0,
+    0.0,
+    -1.0
+   ],
+   "seat_centre": [
+    -104.325,
+    -42.327,
+    417.897
+   ],
+   "seat_normal": [
+    -0.98481,
+    -0.17365,
+    0.0
+   ],
+   "box": [
+    -111.02,
+    -62.45,
+    398.05,
+    -94.48,
+    -21.65,
+    437.75
+   ]
+  },
+  {
+   "label": "Vindr Berserker 4010B blower R Right Toolhead (modelled from measurements)",
+   "head": "Right Toolhead",
+   "duct": "[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "rotation_deg": 90,
+   "outlet_void_walls_by_rotation": [
+    [
+     0.129,
+     0.752
+    ],
+    [
+     0.587,
+     0.667
+    ],
+    [
+     1.0,
+     0.002
+    ],
+    [
+     0.397,
+     0.682
+    ]
+   ],
+   "outlet_dir": [
+    -0.0,
+    -0.0,
+    -1.0
+   ],
+   "seat_centre": [
+    -56.275,
+    -42.327,
+    417.897
+   ],
+   "seat_normal": [
+    0.98481,
+    -0.17365,
+    0.0
+   ],
+   "box": [
+    -66.12,
+    -62.45,
+    398.05,
+    -49.58,
+    -21.65,
+    437.75
+   ]
+  }
+ ],
+ "fasteners_added_per_blower": {
+  "M2x10 self-tapping screw (into the duct's pilot)": 4
+ }
+}
