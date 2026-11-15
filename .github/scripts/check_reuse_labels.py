@@ -45,6 +45,8 @@ def family(text):
         return "GPL-3.0"
     if "NonCommercial-ShareAlike 4.0" in text:
         return "CC BY-NC-SA 4.0"
+    if "CC0 1.0 Universal" in text:
+        return "CC0-1.0"
     return None
 
 

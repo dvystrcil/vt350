@@ -56,6 +56,15 @@ class Check(unittest.TestCase):
         self.assertEqual(self.run_check({"parts/a/LICENSE": "Version 3\n"}),
                          ["parts/a/LICENSE: can't tell which licence this text is"])
 
+    def test_cc0_text_is_cc0(self):
+        # vt350#19 lite-35: Orbiter-Toolboards (the O2S wire restraint) is CC0-1.0
+        cc0 = "Creative Commons Legal Code\n\nCC0 1.0 Universal\n"
+        toml = TOML + '[[annotations]]\npath = "parts/z/**"\nprecedence = "override"\nSPDX-FileCopyrightText = "them"\nSPDX-License-Identifier = "CC0-1.0"\n'
+        self.assertEqual(crl.family(cc0), "CC0-1.0")
+        self.assertEqual(self.run_check({"parts/z/LICENSE": cc0, "parts/z/x.stl": None}, toml), [])
+        self.assertEqual(self.run_check({"parts/a/LICENSE": cc0}, toml),
+                         ["parts/a/: REUSE.toml labels it GPL-3.0-only, but its LICENSE is CC0-1.0"])
+
     def test_only_licence_files_are_read(self):
         self.assertEqual(self.run_check({"parts/c/README.md": CC, "parts/c/NOTICE": GPL}), [])
 
