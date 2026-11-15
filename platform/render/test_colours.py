@@ -143,6 +143,11 @@ class TheCommittedMap(unittest.TestCase):
         for lab in ("2510 Fan", "2510 Fan001"):
             self.assertEqual(co.role_of(m, lab, a4t, "Default"), "black_plastic", lab)
         self.assertEqual(co.role_of(m, "[a]_Duct-4010-right", a4t, "ABS-Generic"), "accent")   # a duct, not a fan
+        # the O2S wire restraint (lite-35) is printed in the accent orange (user, 2026-11-14, #19): its ABS
+        # material would otherwise make it `printed` white
+        for lab in ("Orbitool O2S wire restraint body Left (Orbiter-Toolboards 52a5a33, CC0-1.0)",
+                    "Orbitool O2S wire restraint lock Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001"):
+            self.assertEqual(co.role_of(m, lab, th, "ABS-Generic"), "accent", lab)
         # lite-37: the part-cooling blowers, 2 per head (Vindr Berserker 4010B, modelled from the user's measurements,
         # #19), in the A4Tv2 group beside the ducts they feed: a fan, so coloured like the 2510
         for lab in ("Vindr Berserker 4010B blower L Left Toolhead (modelled from measurements)",
