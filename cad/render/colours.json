@@ -32,6 +32,7 @@
     {"role": "dragon_heatsink", "label": "^TL-dragon-\u00cd\u00e2\u00bf\u00f2-\u00b0\u00ab", "note": "GBK name read as Latin-1: TL-dragon-\u5916\u6846-\u77ee (outer frame, short) = the Dragon heat sink"},
     {"role": "frame",   "group": "VT Frame|Door Frame|Electronics Cabinet", "material": "Alumin", "label": "^(2020|2040|4040)|^Dock crossbar"},
     {"role": "accent",  "label": "^\\[a\\]_"},
+    {"role": "accent",  "label": "^Orbitool O2S wire restraint ", "note": "the O2S cable's strain relief (lite-35), printed in the accent colour (user, 2026-11-14, #19); before the ABS -> printed rule"},
     {"role": "printed", "material": "ABS"},
     {"role": "printed", "label": "^Camera housing (front|back)"},
     {"role": "foot_metal", "label": "^Levelling foot \\d+ (T-slot bracket|M8 stud)"},
