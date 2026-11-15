@@ -1,0 +1,179 @@
+[  134.6s] opened /home/dan/Documents/VT350/vt350-lite-37.FCStd
+[  147.0s] ok   Left Toolhead: one Smart Sensor (1)
+[  147.2s] ok   Left Toolhead: the sensor's r 2.05 inlet bore, one axis [(-409.7006, -33.3832)]
+[  147.3s] ok   Bowden Left: cut by Z 517.6498555928473 in one loop (1)
+[  147.3s] Left Toolhead: Bowden Left lower end (-409.701, -33.383); sensor bore (-409.701, -33.383); off by dX +0.000 dY -0.000
+[  147.3s] ok   Left Toolhead: Bowden Left in line with its sensor bore in Y (-0.0003)
+[  147.3s] ok   Left Toolhead: Bowden Left on its sensor bore already (+0.0001)
+[  147.4s] ok   Toolhead slot 2 (L): one Smart Sensor (1)
+[  147.5s] ok   Toolhead slot 2 (L): the sensor's r 2.05 inlet bore, one axis [(-324.5406, -33.3832)]
+[  147.6s] ok   Bowden slot 2: cut by Z 517.6498555928473 in one loop (1)
+[  147.6s] Toolhead slot 2 (L): Bowden slot 2 lower end (-324.541, -33.383); sensor bore (-324.541, -33.383); off by dX +0.000 dY -0.000
+[  147.6s] ok   Toolhead slot 2 (L): Bowden slot 2 in line with its sensor bore in Y (-0.0003)
+[  147.6s] ok   Toolhead slot 2 (L): Bowden slot 2 on its sensor bore already (+0.0001)
+[  147.7s] ok   Toolhead slot 3 (R): one Smart Sensor (1)
+[  147.8s] ok   Toolhead slot 3 (R): the sensor's r 2.05 inlet bore, one axis [(-248.4206, -33.3832)]
+[  147.9s] ok   Bowden slot 3: cut by Z 517.6498555928489 in one loop (1)
+[  147.9s] Toolhead slot 3 (R): Bowden slot 3 lower end (-259.121, -33.383); sensor bore (-248.421, -33.383); off by dX +10.700 dY -0.000
+[  147.9s] ok   Toolhead slot 3 (R): Bowden slot 3 in line with its sensor bore in Y (-0.0003)
+[  148.0s] ok   Toolhead slot 4 (L): one Smart Sensor (1)
+[  148.1s] ok   Toolhead slot 4 (L): the sensor's r 2.05 inlet bore, one axis [(-156.4206, -33.3832)]
+[  148.2s] ok   Bowden slot 4: cut by Z 517.6498555928473 in one loop (1)
+[  148.2s] Toolhead slot 4 (L): Bowden slot 4 lower end (-156.421, -33.383); sensor bore (-156.421, -33.383); off by dX +0.000 dY -0.000
+[  148.2s] ok   Toolhead slot 4 (L): Bowden slot 4 in line with its sensor bore in Y (-0.0003)
+[  148.2s] ok   Toolhead slot 4 (L): Bowden slot 4 on its sensor bore already (+0.0001)
+[  148.3s] ok   Right Toolhead: one Smart Sensor (1)
+[  148.5s] ok   Right Toolhead: the sensor's r 2.05 inlet bore, one axis [(-80.3006, -33.3832)]
+[  148.6s] ok   Bowden Right: cut by Z 517.6498555928489 in one loop (1)
+[  148.6s] Right Toolhead: Bowden Right lower end (-91.001, -33.383); sensor bore (-80.301, -33.383); off by dX +10.700 dY -0.000
+[  148.6s] ok   Right Toolhead: Bowden Right in line with its sensor bore in Y (-0.0003)
+[  148.6s] ok   the R tubes are off by the same dX: [10.7001, 10.7001]
+[  160.9s] ok   Bowden Left: cut by Z 530.0 in one loop (1)
+[  160.9s] ok   Bowden Left: cut by Z 560.0 in one loop (1)
+[  161.0s] ok   Bowden Left: cut by Z 600.0 in one loop (1)
+[  161.1s] ok   Bowden Left: cut by Z 650.0 in one loop (1)
+[  161.2s] ok   Bowden Left: cut by Z 680.0 in one loop (1)
+[  161.2s] ok   Bowden Left: planar, section centres X [-409.701, -409.701, -409.701, -409.701, -409.701]
+[  177.3s] ok   Bowden slot 2: cut by Z 530.0 in one loop (1)
+[  177.3s] ok   Bowden slot 2: cut by Z 560.0 in one loop (1)
+[  177.4s] ok   Bowden slot 2: cut by Z 600.0 in one loop (1)
+[  177.5s] ok   Bowden slot 2: cut by Z 650.0 in one loop (1)
+[  177.6s] ok   Bowden slot 2: cut by Z 680.0 in one loop (1)
+[  177.6s] ok   Bowden slot 2: planar, section centres X [-324.541, -324.541, -324.541, -324.541, -324.541]
+[  179.5s] ok   Bowden slot 3: cut by Z 530.0 in one loop (1)
+[  179.6s] ok   Bowden slot 3: cut by Z 560.0 in one loop (1)
+[  179.7s] ok   Bowden slot 3: cut by Z 600.0 in one loop (1)
+[  179.8s] ok   Bowden slot 3: cut by Z 650.0 in one loop (1)
+[  179.9s] ok   Bowden slot 3: cut by Z 680.0 in one loop (1)
+[  179.9s] ok   Bowden slot 3: planar, section centres X [-248.421, -248.421, -248.421, -248.421, -248.421]
+[  179.9s] ok   Bowden slot 3: cut by Z 517.6498555928489 in one loop (1)
+[  180.0s] ok   Bowden slot 3: cut by Z 690.0 in one loop (1)
+[  180.0s] ok   Bowden slot 3: moved +10.700 in X; props now match the solid: Inlet (-248.42, -33.38, 517.15), ExitPoint X -248.42 (the solid crosses Z 690 at X -248.42)
+[  193.9s] ok   Bowden slot 4: cut by Z 530.0 in one loop (1)
+[  193.9s] ok   Bowden slot 4: cut by Z 560.0 in one loop (1)
+[  194.0s] ok   Bowden slot 4: cut by Z 600.0 in one loop (1)
+[  194.1s] ok   Bowden slot 4: cut by Z 650.0 in one loop (1)
+[  194.2s] ok   Bowden slot 4: cut by Z 680.0 in one loop (1)
+[  194.2s] ok   Bowden slot 4: planar, section centres X [-156.421, -156.421, -156.421, -156.421, -156.421]
+[  196.1s] ok   Bowden Right: cut by Z 530.0 in one loop (1)
+[  196.2s] ok   Bowden Right: cut by Z 560.0 in one loop (1)
+[  196.2s] ok   Bowden Right: cut by Z 600.0 in one loop (1)
+[  196.3s] ok   Bowden Right: cut by Z 650.0 in one loop (1)
+[  196.4s] ok   Bowden Right: cut by Z 680.0 in one loop (1)
+[  196.4s] ok   Bowden Right: planar, section centres X [-80.301, -80.301, -80.301, -80.301, -80.301]
+[  196.5s] ok   Bowden Right: cut by Z 517.6498555928489 in one loop (1)
+[  196.5s] ok   Bowden Right: cut by Z 690.0 in one loop (1)
+[  196.5s] ok   Bowden Right: moved +10.700 in X; props now match the solid: Inlet (-80.3, -33.38, 517.15), ExitPoint X -80.30 (the solid crosses Z 690 at X -80.30)
+[  198.5s] ok   Bowden slot 3: sits in its sensor as the L tubes do: 0.000 mm3 (L: [0.0, 0.0, 0.0])
+[  198.5s] ok   Bowden Right: sits in its sensor as the L tubes do: 0.000 mm3 (L: [0.0, 0.0, 0.0])
+[  379.0s] opened /home/dan/Documents/VT350/vt350-lite-35.FCStd
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -425.8, 13.0 from exit 1
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -399.8, 13.0 from exit 1
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -340.6, 13.0 from exit 2
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -314.6, 13.0 from exit 2
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -269.0, 13.0 from exit 3
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -413.1, 0.2 from exit 1
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -327.9, 0.2 from exit 2
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -255.8, 0.2 from exit 3
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -243.0, 13.0 from exit 3
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -172.5, 13.0 from exit 4
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -146.5, 13.0 from exit 4
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -100.9, 13.0 from exit 5
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -74.9, 13.0 from exit 5
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -159.8, 0.2 from exit 4
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -87.7, 0.2 from exit 5
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -423.8, 11.0 from exit 1
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -401.8, 11.0 from exit 1
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -338.6, 11.0 from exit 2
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -316.6, 11.0 from exit 2
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -267.0, 11.0 from exit 3
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -245.0, 11.0 from exit 3
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -170.5, 11.0 from exit 4
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -148.5, 11.0 from exit 4
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -98.9, 11.0 from exit 5
+[  407.5s] ok   Roof panel (3 mm): a removed piece at X -76.9, 11.0 from exit 5
+[  408.3s] ok   Roof panel (3 mm): rebuilt from lite-35 with the R exits moved +10.700: cut 2436.316 mm3 (was 2436.316); R exits' material there before and after the move {3: (487.263, 487.263), 5: (487.263, 487.263)}; valid True, solids 1
+[  408.4s] ok   Roof felt strip (pad 3): a removed piece at X -412.8, 0.0 from exit 1
+[  408.4s] ok   Roof felt strip (pad 3): a removed piece at X -327.6, 0.0 from exit 2
+[  408.4s] ok   Roof felt strip (pad 3): a removed piece at X -256.0, 0.0 from exit 3
+[  408.4s] ok   Roof felt strip (pad 3): a removed piece at X -159.5, 0.0 from exit 4
+[  408.4s] ok   Roof felt strip (pad 3): a removed piece at X -87.9, 0.0 from exit 5
+[  408.4s] ok   Roof felt strip (pad 3): a removed piece at X -425.8, 13.0 from exit 1
+[  408.4s] ok   Roof felt strip (pad 3): a removed piece at X -399.8, 13.0 from exit 1
+[  408.4s] ok   Roof felt strip (pad 3): a removed piece at X -340.6, 13.0 from exit 2
+[  408.4s] ok   Roof felt strip (pad 3): a removed piece at X -314.6, 13.0 from exit 2
+[  408.4s] ok   Roof felt strip (pad 3): a removed piece at X -269.0, 13.0 from exit 3
+[  408.4s] ok   Roof felt strip (pad 3): a removed piece at X -243.0, 13.0 from exit 3
+[  408.4s] ok   Roof felt strip (pad 3): a removed piece at X -172.5, 13.0 from exit 4
+[  408.4s] ok   Roof felt strip (pad 3): a removed piece at X -146.5, 13.0 from exit 4
+[  408.4s] ok   Roof felt strip (pad 3): a removed piece at X -100.9, 13.0 from exit 5
+[  408.4s] ok   Roof felt strip (pad 3): a removed piece at X -74.9, 13.0 from exit 5
+[  408.7s] ok   Roof felt strip (pad 3): rebuilt from lite-35 with the R exits moved +10.700: cut 17545.420 mm3 (was 17545.420); R exits' material there before and after the move {3: (3509.084, 3509.084), 5: (3509.084, 3509.084)}; valid True, solids 1
+[  408.8s] ok   Roof felt strip liner, inner: a removed piece at X -412.8, 0.0 from exit 1
+[  408.8s] ok   Roof felt strip liner, inner: a removed piece at X -327.6, 0.0 from exit 2
+[  408.8s] ok   Roof felt strip liner, inner: a removed piece at X -256.0, 0.0 from exit 3
+[  408.8s] ok   Roof felt strip liner, inner: a removed piece at X -159.5, 0.0 from exit 4
+[  408.8s] ok   Roof felt strip liner, inner: a removed piece at X -87.9, 0.0 from exit 5
+[  408.8s] ok   Roof felt strip liner, inner: a removed piece at X -425.8, 13.0 from exit 1
+[  408.8s] ok   Roof felt strip liner, inner: a removed piece at X -399.8, 13.0 from exit 1
+[  408.8s] ok   Roof felt strip liner, inner: a removed piece at X -340.6, 13.0 from exit 2
+[  408.8s] ok   Roof felt strip liner, inner: a removed piece at X -314.6, 13.0 from exit 2
+[  408.8s] ok   Roof felt strip liner, inner: a removed piece at X -269.0, 13.0 from exit 3
+[  408.8s] ok   Roof felt strip liner, inner: a removed piece at X -243.0, 13.0 from exit 3
+[  408.8s] ok   Roof felt strip liner, inner: a removed piece at X -172.5, 13.0 from exit 4
+[  408.8s] ok   Roof felt strip liner, inner: a removed piece at X -146.5, 13.0 from exit 4
+[  408.8s] ok   Roof felt strip liner, inner: a removed piece at X -100.9, 13.0 from exit 5
+[  408.8s] ok   Roof felt strip liner, inner: a removed piece at X -74.9, 13.0 from exit 5
+[  409.1s] ok   Roof felt strip liner, inner: rebuilt from lite-35 with the R exits moved +10.700: cut 877.271 mm3 (was 877.271); R exits' material there before and after the move {3: (175.454, 175.454), 5: (175.454, 175.454)}; valid True, solids 1
+[  409.2s] ok   Roof felt strip liner, outer: a removed piece at X -412.8, 0.0 from exit 1
+[  409.2s] ok   Roof felt strip liner, outer: a removed piece at X -327.6, 0.0 from exit 2
+[  409.2s] ok   Roof felt strip liner, outer: a removed piece at X -256.0, 0.0 from exit 3
+[  409.2s] ok   Roof felt strip liner, outer: a removed piece at X -159.5, 0.0 from exit 4
+[  409.2s] ok   Roof felt strip liner, outer: a removed piece at X -87.9, 0.0 from exit 5
+[  409.2s] ok   Roof felt strip liner, outer: a removed piece at X -425.8, 13.0 from exit 1
+[  409.2s] ok   Roof felt strip liner, outer: a removed piece at X -399.8, 13.0 from exit 1
+[  409.2s] ok   Roof felt strip liner, outer: a removed piece at X -340.6, 13.0 from exit 2
+[  409.2s] ok   Roof felt strip liner, outer: a removed piece at X -314.6, 13.0 from exit 2
+[  409.2s] ok   Roof felt strip liner, outer: a removed piece at X -269.0, 13.0 from exit 3
+[  409.2s] ok   Roof felt strip liner, outer: a removed piece at X -243.0, 13.0 from exit 3
+[  409.2s] ok   Roof felt strip liner, outer: a removed piece at X -172.5, 13.0 from exit 4
+[  409.2s] ok   Roof felt strip liner, outer: a removed piece at X -146.5, 13.0 from exit 4
+[  409.2s] ok   Roof felt strip liner, outer: a removed piece at X -100.9, 13.0 from exit 5
+[  409.2s] ok   Roof felt strip liner, outer: a removed piece at X -74.9, 13.0 from exit 5
+[  409.5s] ok   Roof felt strip liner, outer: rebuilt from lite-35 with the R exits moved +10.700: cut 877.271 mm3 (was 877.271); R exits' material there before and after the move {3: (175.454, 175.454), 5: (175.454, 175.454)}; valid True, solids 1
+[  411.6s] ok   the frame spans X -520.00..30.00; the right panel sits on its right face (X 30.00)
+[  411.7s] ok   the door frame: 4 x 2040 (['2040 (2) (1)', '2040 (2) (1)001', '2040 (1)', '2040 (1)(Mirror)'])
+[  411.7s] ok   the door frame's outside face is flat at Y -113.00; outline X -520.00..30.00, Z -50.00..690.00
+[  552.9s] ok   Right side panel (3 mm): paint skin 88208.0 + core 1234912.0 = 1323120.0 mm3 (0.2 mm on the (1, 0, 0) faces; skin 1 solid(s))
+[  571.4s] ok   Back Panel001: paint skin 65070.0 + core 910980.0 = 976050.0 mm3 (0.2 mm on the (0, 1, 0) faces; skin 1 solid(s))
+[  588.7s] ok   Roof panel (3 mm): paint skin 66973.5 + core 937090.2 = 1004063.7 mm3 (0.2 mm on the (0, 0, 1) faces; skin 1 solid(s))
+[  604.8s] ok   Left side panel (3 mm): paint skin 88208.0 + core 1234912.0 = 1323120.0 mm3 (0.2 mm on the (-1, 0, 0) faces; skin 1 solid(s))
+[  616.7s] ok   tubes vs the rebuilt roof layers: clear
+[  616.7s] ok   clamps slot 1 | slot 2: 49.2 mm apart
+[  616.7s] ok   clamps slot 2 | slot 3: 46.3 mm apart
+[  616.7s] ok   clamps slot 3 | slot 4: 49.8 mm apart
+[  616.7s] ok   clamps slot 4 | slot 5: 46.3 mm apart
+[  723.0s] ok   the clamps vs everything (tubes included): []
+[  723.7s] ok   Bowden Left vs everything outside its head: []
+[  724.3s] ok   Bowden slot 2 vs everything outside its head: []
+[  725.0s] ok   Bowden slot 3 vs everything outside its head: []
+[  725.7s] ok   Bowden slot 4 vs everything outside its head: []
+[  726.4s] ok   Bowden Right vs everything outside its head: []
+[  727.7s] ok   the left panel, door window and gasket vs everything: []
+[  728.9s] ok   Right side panel (3 mm): skin + core overlap only what the panel did: nothing 
+[  732.5s] ok   Back Panel001: skin + core overlap only what the panel did: {'4040': 2710.7, '4040 (1)004': 3031.1, '4040 (2)': 5868.8, '4040(Mirror)': 7219.3, 'M5x50-Screw021': 3.1, 'M5x50-Screw026': 0.2} 
+[  738.2s] ok   Roof panel (3 mm): skin + core overlap only what the panel did: nothing 
+[  739.3s] ok   Left side panel (3 mm): skin + core overlap only what the panel did: nothing 
+[  739.4s] ok   Right side panel (3 mm) paint, outside: material Default -> role panel_paint
+[  739.4s] ok   Back Panel001 paint, outside: material Default -> role panel_paint
+[  739.4s] ok   Roof panel (3 mm) paint, outside: material Default -> role panel_paint
+[  739.4s] ok   Left side panel (3 mm) paint, outside: material Default -> role panel_paint
+[  739.4s] ok   Right side panel (3 mm): material Default -> role None
+[  739.4s] ok   Back Panel001: material Default -> role None
+[  739.4s] ok   Roof panel (3 mm): material Default -> role None
+[  739.4s] ok   Left side panel (3 mm): material Default -> role None
+[  739.4s] ok   Door window gasket (EPDM foam, black): material Default -> role rubber
+[  739.4s] ok   Door window (3 mm clear sheet, acrylic or polycarbonate per #4): material Default -> role glass_clear
+[  739.4s] ok   solids: 1307 + 7 = 1314
+[  739.4s] verify: 0 problems
+[  787.8s] SAVED /home/dan/Documents/VT350/vt350-lite-38.FCStd 212932983

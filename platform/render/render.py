@@ -63,6 +63,11 @@ def material(name, color, kind, transparency=0.0, roughness=None):
     p.inputs["Metallic"].default_value = 1.0 if metal else 0.0
     p.inputs["Roughness"].default_value = roughness if roughness is not None else \
         {"aluminium": 0.35, "steel": 0.3, "brass": 0.3, "felt": 0.95, "ptfe": 0.4}.get(kind, 0.5)
+    if kind == "glass":                              # a clear sheet (the door window, lite-38): transmits, ~no tint
+        for n in ("Transmission Weight", "Transmission"):   # Blender 4.x name, then 3.x
+            if n in p.inputs: p.inputs[n].default_value = 1.0; break
+        p.inputs["IOR"].default_value = 1.49
+        p.inputs["Roughness"].default_value = roughness if roughness is not None else 0.03
     if kind == "glow":                               # overlap volumes in export_pose.py scenes: visible inside anything
         p.inputs["Emission Color"].default_value = (*color, 1); p.inputs["Emission Strength"].default_value = 8.0
     if kind == "emitter":

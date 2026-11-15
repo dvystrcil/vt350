@@ -1,0 +1,41 @@
+{
+ "r_tube_shift_x": 10.7001,
+ "tubes_in_sensor_mm3": {
+  "Bowden Left": 0.0,
+  "Bowden slot 2": 0.0,
+  "Bowden slot 3": 0.0,
+  "Bowden slot 4": 0.0,
+  "Bowden Right": 0.0
+ },
+ "frame_x": [
+  -520.0,
+  30.0
+ ],
+ "left_panel_box": [
+  -522.8,
+  -76.0,
+  -50.0,
+  -520.0,
+  520.0,
+  690.0
+ ],
+ "door_window_mm": [
+  550.0,
+  740.0,
+  3.0
+ ],
+ "door_gasket": {
+  "ring_mm": [
+   10.0,
+   30.0
+  ],
+  "thickness": 2.0,
+  "length_m": 2.42
+ },
+ "paint_skins_mm3": {
+  "Right side panel (3 mm) paint, outside": 88208.0,
+  "Back Panel001 paint, outside": 65070.0,
+  "Roof panel (3 mm) paint, outside": 66973.5,
+  "Left side panel (3 mm) paint, outside": 88208.0
+ }
+}

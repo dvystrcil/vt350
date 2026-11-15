@@ -33,7 +33,7 @@ try:
 except FileNotFoundError:
     MAP_FILE = None                                  # load() then needs a path; a render without a map still runs
 FIELDS = ("label", "group", "material")
-KINDS = ("plastic", "paint", "aluminium", "steel", "brass", "ptfe", "felt")
+KINDS = ("plastic", "paint", "aluminium", "steel", "brass", "ptfe", "felt", "glass")
 
 
 def load(path=None):
