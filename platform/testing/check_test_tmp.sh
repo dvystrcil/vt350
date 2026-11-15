@@ -20,7 +20,13 @@ for f in "${files[@]}"; do
     t="$base/$(echo "$f" | tr / _)"; mkdir -p "$t"
     out=$(cd "$(dirname "$f")" && TMPDIR="$t" python3 "$(basename "$f")" 2>&1)
     if ! grep -qE '^Ran [1-9][0-9]* tests?' <<<"$out" || ! grep -qx 'OK' <<<"$out"; then
-        echo "FAILED $f: tests did not pass"; echo "$out" | tail -5 | sed 's/^/       /'; fail=1; continue
+        # Show unittest's FAIL:/ERROR: blocks (test name, traceback, assertion), not the summary: the passing tests'
+        # verbose lines and warnings come first, so a plain `tail` showed only "FAILED (failures=1)" (vt350 run
+        # 43665070452). A file that crashed before unittest has no blocks: show its traceback's end instead.
+        report=$(awk '/^(FAIL|ERROR): /{on=1} /^Ran [0-9]+ tests? in /{on=0} on' <<<"$out" | head -60)
+        [[ -n "$report" ]] || report=$(tail -15 <<<"$out")
+        echo "FAILED $f: tests did not pass"; { echo "$report"; tail -1 <<<"$out"; } | sed 's/^/       /'
+        fail=1; continue
     fi
     left=$(ls -A "$t")
     if [[ -n "$left" ]]; then
@@ -29,6 +35,6 @@ for f in "${files[@]}"; do
         echo "clean  $f"; ran=$((ran + 1))
     fi
 done
-(( ran > 0 )) || { echo "check-test-tmp: no test file ran"; exit 1; }
 (( fail )) && { echo "check-test-tmp: FAILED"; exit 1; }
+(( ran > 0 )) || { echo "check-test-tmp: no test file ran"; exit 1; }
 echo "check-test-tmp: OK"
