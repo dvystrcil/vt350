@@ -1,0 +1,23 @@
+[  127.3s] opened /home/dan/Documents/VT350/vt350-lite-42-none.FCStd
+[  138.4s] ok   one stale filter envelope (1)
+[  149.9s] ok   4 feet (4 pads, 4 studs, 4 brackets)
+[  230.5s] ok   pad bottoms level: -81.00 .. -81.00
+[  240.5s] board raised 19.00 mm
+[  240.5s] ok   board raised 19.00 mm (expected 19)
+[  322.9s] ok   Levelling foot pad 1 (: top to bracket 5.00 mm (= 5)
+[  322.9s] ok   Levelling foot pad 1 (: 18.00 tall (= 18)
+[  322.9s] ok   Levelling foot pad 1 (: stands on the board
+[  322.9s] ok   Levelling foot pad 2 (: top to bracket 5.00 mm (= 5)
+[  322.9s] ok   Levelling foot pad 2 (: 18.00 tall (= 18)
+[  322.9s] ok   Levelling foot pad 2 (: stands on the board
+[  322.9s] ok   Levelling foot pad 3 (: top to bracket 5.00 mm (= 5)
+[  322.9s] ok   Levelling foot pad 3 (: 18.00 tall (= 18)
+[  322.9s] ok   Levelling foot pad 3 (: stands on the board
+[  322.9s] ok   Levelling foot pad 4 (: top to bracket 5.00 mm (= 5)
+[  322.9s] ok   Levelling foot pad 4 (: 18.00 tall (= 18)
+[  322.9s] ok   Levelling foot pad 4 (: stands on the board
+[  322.9s] ok   nothing but the stand below the frame bottom: []
+[  334.9s] ok   the stand vs the printer: []
+[  334.9s] ok   solids: 1346 (lite-42-none less the envelope, 1346)
+[  334.9s] verify: 0 problems
+[  378.2s] SAVED /home/dan/Documents/VT350/vt350-lite-43.FCStd 213769149
