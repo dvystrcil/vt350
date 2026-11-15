@@ -1,0 +1,25 @@
+[  124.3s] opened /home/dan/Documents/VT350/vt350-lite-33.FCStd
+[  135.1s] ok   5 O2S boards (one per head): ['33, CC0-1.0)', '33, CC0-1.0)', ' CC0-1.0)001', ' CC0-1.0)001', ' CC0-1.0)002']
+[  140.8s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0): 225 solids, 1 is the 13-fin heat sink ([2113.1])
+[  144.2s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0): 225 solids, 1 is the 13-fin heat sink ([2113.1])
+[  147.8s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: 225 solids, 1 is the 13-fin heat sink ([2113.1])
+[  151.5s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: 225 solids, 1 is the 13-fin heat sink ([2113.1])
+[  155.2s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: 225 solids, 1 is the 13-fin heat sink ([2113.1])
+[  169.5s] ok   Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0): board + heat sink = the old board (volume diff 0.0010, box diff 0.0000); heat sink at BoundBox (-432.851, 8.42907, 460.581, -402.401, 20.4291, 483.931)
+[  169.5s] ok   Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0): material Aluminum-Generic -> role o2s_heatsink
+[  169.5s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0): role black_plastic
+[  170.4s] ok   Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0): board + heat sink = the old board (volume diff 0.0010, box diff 0.0000); heat sink at BoundBox (-103.451, 8.42907, 460.581, -73.0014, 20.4291, 483.931)
+[  170.4s] ok   Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0): material Aluminum-Generic -> role o2s_heatsink
+[  170.4s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0): role black_plastic
+[  171.3s] ok   Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: board + heat sink = the old board (volume diff 0.0010, box diff 0.0000); heat sink at BoundBox (-347.691, 8.42907, 460.581, -317.241, 20.4291, 483.931)
+[  171.3s] ok   Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: material Aluminum-Generic -> role o2s_heatsink
+[  171.3s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: role black_plastic
+[  172.2s] ok   Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: board + heat sink = the old board (volume diff 0.0010, box diff 0.0000); heat sink at BoundBox (-271.571, 8.42907, 460.581, -241.121, 20.4291, 483.931)
+[  172.2s] ok   Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: material Aluminum-Generic -> role o2s_heatsink
+[  172.2s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: role black_plastic
+[  173.2s] ok   Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: board + heat sink = the old board (volume diff 0.0010, box diff 0.0000); heat sink at BoundBox (-179.571, 8.42907, 460.581, -149.121, 20.4291, 483.931)
+[  173.2s] ok   Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: material Aluminum-Generic -> role o2s_heatsink
+[  173.2s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: role black_plastic
+[  173.2s] ok   solids: 1272 + 5 = 1277
+[  173.2s] verify: 0 problems
+[  218.3s] SAVED /home/dan/Documents/VT350/vt350-lite-34.FCStd 211694626

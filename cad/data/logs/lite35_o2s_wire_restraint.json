@@ -1,0 +1,137 @@
+{
+ "restraints": [
+  {
+   "label": "Orbitool O2S wire restraint body Left (Orbiter-Toolboards 52a5a33, CC0-1.0)",
+   "head": "Left Toolhead",
+   "volume": 2869.9,
+   "box": [
+    -438.51,
+    2.87,
+    460.44,
+    -393.57,
+    15.42,
+    550.37
+   ]
+  },
+  {
+   "label": "Orbitool O2S wire restraint lock Left (Orbiter-Toolboards 52a5a33, CC0-1.0)",
+   "head": "Left Toolhead",
+   "volume": 829.2,
+   "box": [
+    -414.82,
+    4.29,
+    535.11,
+    -404.02,
+    16.32,
+    550.11
+   ]
+  },
+  {
+   "label": "Orbitool O2S wire restraint body Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001",
+   "head": "Toolhead slot 2 (L)",
+   "volume": 2869.9,
+   "box": [
+    -353.35,
+    2.87,
+    460.44,
+    -308.41,
+    15.42,
+    550.37
+   ]
+  },
+  {
+   "label": "Orbitool O2S wire restraint lock Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001",
+   "head": "Toolhead slot 2 (L)",
+   "volume": 829.2,
+   "box": [
+    -329.66,
+    4.29,
+    535.11,
+    -318.86,
+    16.32,
+    550.11
+   ]
+  },
+  {
+   "label": "Orbitool O2S wire restraint body Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001",
+   "head": "Toolhead slot 3 (R)",
+   "volume": 2869.9,
+   "box": [
+    -277.23,
+    2.87,
+    460.44,
+    -232.29,
+    15.42,
+    550.37
+   ]
+  },
+  {
+   "label": "Orbitool O2S wire restraint lock Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001",
+   "head": "Toolhead slot 3 (R)",
+   "volume": 829.2,
+   "box": [
+    -253.54,
+    4.29,
+    535.11,
+    -242.74,
+    16.32,
+    550.11
+   ]
+  },
+  {
+   "label": "Orbitool O2S wire restraint body Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002",
+   "head": "Toolhead slot 4 (L)",
+   "volume": 2869.9,
+   "box": [
+    -185.23,
+    2.87,
+    460.44,
+    -140.29,
+    15.42,
+    550.37
+   ]
+  },
+  {
+   "label": "Orbitool O2S wire restraint lock Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002",
+   "head": "Toolhead slot 4 (L)",
+   "volume": 829.2,
+   "box": [
+    -161.54,
+    4.29,
+    535.11,
+    -150.74,
+    16.32,
+    550.11
+   ]
+  },
+  {
+   "label": "Orbitool O2S wire restraint body Right (Orbiter-Toolboards 52a5a33, CC0-1.0)",
+   "head": "Right Toolhead",
+   "volume": 2869.9,
+   "box": [
+    -109.11,
+    2.87,
+    460.44,
+    -64.17,
+    15.42,
+    550.37
+   ]
+  },
+  {
+   "label": "Orbitool O2S wire restraint lock Right (Orbiter-Toolboards 52a5a33, CC0-1.0)",
+   "head": "Right Toolhead",
+   "volume": 829.2,
+   "box": [
+    -85.42,
+    4.29,
+    535.11,
+    -74.62,
+    16.32,
+    550.11
+   ]
+  }
+ ],
+ "design_overlaps_mm3": {
+  "O2S WirerestrainBody x board": 2.102
+ }
+}

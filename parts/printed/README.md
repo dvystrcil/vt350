@@ -31,6 +31,7 @@ and non-commercial.
 | [Monolith3D/LDO_Monolith_Gantry_Kits](https://github.com/Monolith3D/LDO_Monolith_Gantry_Kits) | [`95cb5fc`](https://github.com/Monolith3D/LDO_Monolith_Gantry_Kits/tree/95cb5fc3957369aeb1e631f4656880bdb69ea770) | CC BY-NC-SA 4.0 | yes, non-commercial | credit Monolith3D, link the licence, same licence for adaptations | `ldo-monolith/` |
 | [Monolith3D/Toolheads_for_Monolith](https://github.com/Monolith3D/Toolheads_for_Monolith) | [`e205bff`](https://github.com/Monolith3D/Toolheads_for_Monolith/tree/e205bff37e405bfbeb40fe2d8f46dbeda45c7b73) | GPL-3.0; README: "Geometry and designs from other projects, including their derivatives, remain subject to their original licenses" | yes (check each part's origin) | as GPL-3.0 | not printed: its belt clamp is still "decide" |
 | [DW-Tas/EMU](https://github.com/DW-Tas/EMU) | [`0e92ca2`](https://github.com/DW-Tas/EMU/tree/0e92ca241eb2627fab224660ef5925ee872ad0e3) | CC BY-NC-SA 4.0 | yes, non-commercial | as A4Tv2 | link only: its parts come from its own configurator, tracked separately |
+| [LorinczElectronics/Orbiter-Toolboards](https://github.com/LorinczElectronics/Orbiter-Toolboards) (Orbitool O2S wire restraint) | [`52a5a33`](https://github.com/LorinczElectronics/Orbiter-Toolboards/tree/52a5a330e1c57ea71ecdc2192382872b0b254452) | CC0-1.0 | yes | none (public domain dedication); credited anyway | `orbiter-toolboards/` |
 | [tanaes/whopping_Voron_mods](https://github.com/tanaes/whopping_Voron_mods) (Clicky-Clack door) | [`62268ed`](https://github.com/tanaes/whopping_Voron_mods/tree/62268ed817878e54d6a1186882060aa8368d4f0f) | GPL-3.0 | yes | as GPL-3.0 | `clicky-clack/` |
 | this repo (the user's BTT 5160 base) | — | GPL-3.0-or-later (the root `LICENSE`) | yes | — | `vt350/btt5160-base-4-middle-screws/` |
 
@@ -71,6 +72,8 @@ link-only because its part list isn't chosen yet.
 | MadMax dock keyslot plate, one per dock | 2 | #12 | MadMax / andrewmcgr | GPL-3.0 | chamber material (#8 AC1); upstream spelling 'Asembly' | [`madmax/andrewmcgr/Dock Asembly.stl`](madmax/andrewmcgr/Dock%20Asembly.stl) |
 | MadMax tool plate (XOL), one per head | 2 | #12 | MadMax / andrewmcgr | GPL-3.0 | chamber material (#8 AC1) | [`madmax/andrewmcgr/Plate Assembly.stl`](madmax/andrewmcgr/Plate%20Assembly.stl) |
 | MadMax tool plate back, one per head | 2 | #12 | MadMax / andrewmcgr | GPL-3.0 | chamber material (#8 AC1) | [`madmax/andrewmcgr/Plate Back.stl`](madmax/andrewmcgr/Plate%20Back.stl) |
+| Orbitool O2S wire restraint, body | 2 | #12 | Orbiter-Toolboards | CC0-1.0 | chamber material (#8 AC1); strain relief for the O2S cable (lite-35); one per tool | [`orbiter-toolboards/O2S-WirerestrainBody.stl`](orbiter-toolboards/O2S-WirerestrainBody.stl) |
+| Orbitool O2S wire restraint, lock | 2 | #12 | Orbiter-Toolboards | CC0-1.0 | chamber material (#8 AC1); strain relief for the O2S cable (lite-35); one per tool | [`orbiter-toolboards/O2S-Wirestrain_Lock.stl`](orbiter-toolboards/O2S-Wirestrain_Lock.stl) |
 | A4Tv2 4010 duct with dock bosses, left | 2 | #12 | vt350 remix | CC BY-NC-SA 4.0 | chamber material (#8 AC1); lite-23 (#53); one per head. NOT YET PRINT-ORIENTED: don't print until #53 AC8 picks the orientation | [`vt350/a4tv2-duct-4010-madmax-dock/A4Tv2 Duct-4010-left MadMax dock.stl`](vt350/a4tv2-duct-4010-madmax-dock/A4Tv2%20Duct-4010-left%20MadMax%20dock.stl) |
 | A4Tv2 4010 duct with dock bosses, right | 2 | #12 | vt350 remix | CC BY-NC-SA 4.0 | chamber material (#8 AC1); lite-23 (#53); one per head. NOT YET PRINT-ORIENTED: don't print until #53 AC8 picks the orientation | [`vt350/a4tv2-duct-4010-madmax-dock/A4Tv2 Duct-4010-right MadMax dock.stl`](vt350/a4tv2-duct-4010-madmax-dock/A4Tv2%20Duct-4010-right%20MadMax%20dock.stl) |
 | MadMax dock arm, −9.06 mm | 4 | #12 | vt350 remix | GPL-3.0 | chamber material (#8 AC1); lite-23 (#53); a top and a bottom arm per dock, right dock = same part turned round | [`vt350/madmax-andrewmcgr-dock-arm/Dock Arm -9.06mm.stl`](vt350/madmax-andrewmcgr-dock-arm/Dock%20Arm%20-9.06mm.stl) |
@@ -82,6 +85,6 @@ link-only because its part list isn't chosen yet.
 | Door panel clip | 1 | #14 | Clicky-Clack door | GPL-3.0 | chamber material (#8 AC1) | [`clicky-clack/Panel_Clip.stl`](clicky-clack/Panel_Clip.stl) |
 | EMU (filament unit, per lane) | as-needed | #15 | EMU | CC BY-NC-SA 4.0 | link only: parts come from EMU's own configurator and are tracked separately (#8 AC2); stage not set by any stage issue yet | link only: [upstream](https://github.com/DW-Tas/EMU/tree/0e92ca241eb2627fab224660ef5925ee872ad0e3) |
 
-**Full set:** 55 printed pieces from 36 files, plus 3 file(s) printed as needed. 1 part(s) are links only, not counted. Rows marked *alternative* are pick-one: one of each group is counted.
+**Full set:** 59 printed pieces from 38 files, plus 3 file(s) printed as needed. 1 part(s) are links only, not counted. Rows marked *alternative* are pick-one: one of each group is counted.
 
 <!-- END GENERATED -->

@@ -54,6 +54,12 @@ SPDX-FileCopyrightText = "DW-Tas"
 SPDX-License-Identifier = "CC-BY-NC-SA-4.0"
 
 [[annotations]]
+path = "parts/printed/orbiter-toolboards/**"
+precedence = "override"
+SPDX-FileCopyrightText = "Lorincz Electronics (Orbiter-Toolboards)"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
 path = "parts/printed/ldo-monolith/**"
 precedence = "override"
 SPDX-FileCopyrightText = "Monolith3D"
