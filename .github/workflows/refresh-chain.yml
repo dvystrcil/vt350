@@ -27,7 +27,7 @@ jobs:
         run: python3 platform/freecad/test_clashlib.py 2>&1 | tee test-clashlib.log
       - name: Confirm every clashlib test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-clashlib.log && tail -1 test-clashlib.log | grep -qx 'OK'
-      - name: Test where the platform scripts' settings come from (batchvalues: env, values file, default)
+      - name: Test where the platform scripts' settings come from (batchvalues; env var, then values file, then default)
         run: python3 platform/freecad/test_batchvalues.py 2>&1 | tee test-batchvalues.log
       - name: Confirm every batchvalues test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-batchvalues.log && tail -1 test-batchvalues.log | grep -qx 'OK'
