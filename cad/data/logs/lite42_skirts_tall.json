@@ -1,0 +1,68 @@
+{
+ "variant": "tall",
+ "drop": 30.0,
+ "board_top": -130.0,
+ "z": [
+  -118.0,
+  -50.0
+ ],
+ "faces": {
+  "front": {
+   "length": 444,
+   "windows": [
+    110,
+    110
+   ],
+   "window_h": 47.0
+  },
+  "rear": {
+   "length": 444,
+   "windows": [
+    160,
+    160
+   ],
+   "window_h": 48.0
+  },
+  "left": {
+   "length": 529,
+   "windows": [
+    203,
+    203
+   ],
+   "window_h": 48.0
+  },
+  "right": {
+   "length": 529,
+   "windows": [
+    203,
+    203
+   ],
+   "window_h": 48.0
+  }
+ },
+ "outline": [
+  -523.0,
+  33.0,
+  -118.0,
+  523.0
+ ],
+ "volumes_mm3": {
+  "Skirt panel front": 89768,
+  "Skirt mesh front 1": 5270,
+  "Skirt mesh front 2": 5270,
+  "Skirt badge front": 5393,
+  "Skirt panel rear": 85042,
+  "Skirt mesh rear 1": 7662,
+  "Skirt mesh rear 2": 7662,
+  "Skirt panel left": 93079,
+  "Skirt mesh left 1": 9557,
+  "Skirt mesh left 2": 9557,
+  "Skirt panel right": 93079,
+  "Skirt mesh right 1": 9557,
+  "Skirt mesh right 2": 9557,
+  "Skirt corner front-left": 20803,
+  "Skirt corner front-right": 20803,
+  "Skirt corner rear-left": 20938,
+  "Skirt corner rear-right": 20938
+ }
+}
