@@ -417,6 +417,18 @@ class Visibility(unittest.TestCase):
         g = "Trident v4 v33 / Right Dock / MadMax 4 XOL v11 v1(Mirror) / Carriage(Mirror)"
         self.assertEqual(co.vis_tag(VIS, "SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)004", g), "dock_carriage_copy")
 
+    def test_the_real_paths_go_below_the_carriage(self):
+        # the exporter's path for these parts, read from vt350-lite-42-none.FCStd (2026-11-15): the carriage is a group
+        # of groups, so a rule anchored at "Carriage$" matched nothing
+        m = co.load(os.path.join(PRINTER_RENDER, "colours.json"))
+        for g in ("4040-350x350x250 Voron Trident v4 v33 / Right Dock / MadMax 4 XOL v11 v1(Mirror) / Carriage(Mirror) / MadMaxCarriage(Mirror)",
+                  "4040-350x350x250 Voron Trident v4 v33 / Right Dock / MadMax 4 XOL v11 v1(Mirror) / Carriage(Mirror) / MadMaxCarriage(Mirror) / Belt Clips(Mirror) / 4mm Gap 6mm Belt v1(Mirror)",
+                  "4040-350x350x250 Voron Trident v4 v33 / Left Dock / MadMax 4 XOL v11 v1 / Carriage / MadMaxCarriage"):
+            self.assertEqual(co.vis_tag(m, "COMPOUND004", g), "dock_carriage_copy", g)
+        self.assertIsNone(co.vis_tag(m, "COMPOUND", "4040-350x350x250 Voron Trident v4 v33 / Carriage (1) / MadMaxCarriage (1)"))
+        self.assertIsNone(co.vis_tag(m, "SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)",
+                                     "4040-350x350x250 Voron Trident v4 v33 / Carriage (1) / MadMaxCarriage (1) / Belt Clips (1) / 4mm Gap 6mm Belt v1 (2)"))
+
     def test_the_gantry_carriage_is_not(self):
         self.assertIsNone(co.vis_tag(VIS, "Beacon RevH Normal (Beacon CAD, MIT)", "Trident v4 v33 / Carriage (1) / MadMaxCarriage (1)"))
 
