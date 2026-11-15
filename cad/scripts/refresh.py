@@ -1,9 +1,20 @@
 #!/usr/bin/env python3
 """After a model change: re-derive the remixed STLs, refresh parts/printed, re-sweep, redraw the print area (#69).
 
-  python3 cad/scripts/refresh.py <lite-N number> [--from STEP] [--dry-run]
+  python3 cad/scripts/refresh.py <lite-N> [--notify OWNER/REPO#N] [--dry-run]   # lane: submit, then the repo writes
+  python3 cad/scripts/refresh.py <lite-N> --collect [CHAIN-ID]                   # after the chain's comment
+  python3 cad/scripts/refresh.py <lite-N> --local [--from STEP] [--dry-run]      # every step on this machine
 
-Steps, in order. It stops at the first failure and names the step and its log:
+By default (homelab#2257) the model-reading steps run on the cluster's batch lane: the homelab chain vt350-refresh
+(homelab bin/gpu-batch-submit.py, VT350_GPU_BATCH_SUBMIT) runs part_index, sweep, z_sweep and print_area on max-01,
+read-only, and posts ONE comment on --notify when it ends. This machine submits it first, then runs only the steps whose
+output is committed while the chain runs: derive_stls (the lane's STLs are never committed: max-01 tessellates them
+differently, homelab#1961), sync_printed and check_printed. After the comment, --collect copies the chain's logs, the
+part index and print-area.svg into the repo (refusing a failed or unfinished chain, another model's, or a log without
+its completion marker, before writing anything) and runs test_print_area. On lite-32 the local run took 4790 s, z_sweep
+alone 3219 s. --local runs every step here, as before (the lane down, or no NFS share).
+
+Steps of --local, in order. It stops at the first failure and names the step and its log:
   part_index       platform/freecad/part_index.py (FreeCAD, headless, read-only, #90): the per-part box index beside
                    vt350-lite-<N>.FCStd AND each companion the same pass saved (any other .FCStd in the folder saved
                    within COMPANION_S of it, never another lite-N: lite-28 wrote vt350-filter-2 in the same minute).
@@ -28,9 +39,11 @@ Plain python3 (stdlib). FreeCAD comes from VT350_APP (default: the 26.3rc2 AppIm
 """
 import argparse
 import csv
+import glob
 import hashlib
 import importlib.util
 import io
+import json
 import os
 import re
 import shutil
@@ -57,6 +70,26 @@ PRINTED = "parts/printed"
 SWEEP_LOG = "cad/data/logs/sweep_toolhead.log"
 Z_LOG = "cad/data/logs/z_sweep.log"
 ORDER = ["part_index", "derive_stls", "sync_printed", "check_printed", "sweep", "z_sweep", "print_area", "test_print_area"]
+# The batch lane (homelab#2257): homelab's submit command and the laptop path of its NFS work share.
+SUBMIT = os.environ.get("VT350_GPU_BATCH_SUBMIT", "/home/dan/Code/homelab/bin/gpu-batch-submit.py")
+WORK_ROOT = os.environ.get("GPU_BATCH_WORK_ROOT", "/mnt/nfs/media/gpu-batch")
+LANE_LOCAL = ["derive_stls", "sync_printed", "check_printed"]      # what the laptop still runs (their output is committed)
+SUBMIT_LOG = "cad/data/logs/refresh_submit.out"
+CHAIN_RE = r"(?m)^started chain vt350-refresh (\S+)$"              # its first line (pinned by a homelab test)
+# The chain's sweep job runs the sweep, the index and z_sweep under one deadline (lite-32 on the laptop: 1114 s + 3219 s;
+# lite-30 on max-01: 23.5 min). homelab caps z_sweep's own step at 1 h within it.
+SWEEP_DEADLINE_S = 7200
+SWEEP_DONE = r"(?m)done \(read-only, nothing saved\)$"
+Z_DONE = r"(?m)^\[ *\d+\.\ds\] z_sweep: done \(read-only, nothing saved\)$"
+INDEX_DONE = r"(?m)part_index: done \(\d+ models\)$"
+# What --collect copies: (job, path in the job dir, repo path, a regex its text must match; {n} = the lite number).
+PULL = [("sweep", "out/logs/sweep_toolhead.log", SWEEP_LOG, SWEEP_DONE),
+        ("sweep", "out/logs/sweep_toolhead.log", SWEEP_LOG, r"(?m)^\[ *[\d.]+s\] model \S*/vt350-lite-{n}\.FCStd "),
+        ("sweep", "out/logs/z_sweep.log", Z_LOG, Z_DONE),
+        ("sweep", "out/logs/z_sweep.log", Z_LOG, r"(?m)^\[ *[\d.]+s\] model \S*/vt350-lite-{n}\.FCStd "),
+        ("sweep", "out/logs/z_sweep.json", "cad/data/logs/z_sweep.json", r"/vt350-lite-{n}\.FCStd\b"),
+        ("sweep", "out/logs/part_index.log", "cad/data/logs/part_index.log", INDEX_DONE),
+        ("area", "out/print-area.svg", "cad/data/print-area.svg", r"Printable area on vt350-lite-{n}\b")]
 
 
 class StepError(RuntimeError):
@@ -158,7 +191,7 @@ def plan(n, root=REPO, app=APP, start=None, models=MODELS_DIR):
         Step("part_index", cmd=fc + [os.path.join(root, TOOLS["part_index"])],
              env=dict(VT350_INDEX_MODELS=":".join([model] + companions(model)), VT350_WORK=os.path.join(root, "cad/data")),
              log=os.path.join(logs, "refresh_part_index.out"),
-             marker=r"(?m)part_index: done \(\d+ models\)$", marker_in=os.path.join(logs, "part_index.log")),
+             marker=INDEX_DONE, marker_in=os.path.join(logs, "part_index.log")),
         Step("derive_stls", cmd=fc + [os.path.join(root, TOOLS["derive_stls"])], env=dict(VT350_REPO=root),
              log=os.path.join(logs, "refresh_derive_stls.out"),
              marker=r"done: (\d+) of \1 written", marker_in=os.path.join(logs, "derive_stls.log")),
@@ -168,17 +201,88 @@ def plan(n, root=REPO, app=APP, start=None, models=MODELS_DIR):
         Step("sweep", cmd=[sys.executable, os.path.join(root, TOOLS["sweep"])],
              env=dict(VT350_MODEL=model, FREECADCMD=" ".join(fc), VT350_WORK=os.path.join(root, "cad/data")),
              log=os.path.join(logs, "refresh_sweep.out"),
-             marker=r"(?m)done \(read-only, nothing saved\)$", marker_in=os.path.join(root, SWEEP_LOG)),
+             marker=SWEEP_DONE, marker_in=os.path.join(root, SWEEP_LOG)),
         Step("z_sweep", cmd=fc + [os.path.join(root, TOOLS["z_sweep"])],
              env=dict(VT350_MODEL=model, FREECADCMD=" ".join(fc), VT350_WORK=os.path.join(root, "cad/data")),
              log=os.path.join(logs, "refresh_z_sweep.out"),
-             marker=r"(?m)^\[ *\d+\.\ds\] z_sweep: done \(read-only, nothing saved\)$", marker_in=os.path.join(root, Z_LOG)),
+             marker=Z_DONE, marker_in=os.path.join(root, Z_LOG)),
         Step("print_area", cmd=[sys.executable, os.path.join(root, TOOLS["print_area"])],
              log=os.path.join(logs, "refresh_print_area.out"), marker=r"printable [\d.]+ x [\d.]+ mm"),
         Step("test_print_area", cmd=[sys.executable, os.path.join(root, TOOLS["test_print_area"])],
              log=os.path.join(logs, "refresh_test_print_area.out"), marker=r"(?m)^Ran [1-9]\d* tests? in [\d.]+s\n\nOK$"),
     ]
     return steps[ORDER.index(start):] if start else steps
+
+
+def lane_plan(n, root=REPO, app=APP, models=MODELS_DIR, notify=None, submit=SUBMIT):
+    """Submit the vt350-refresh chain for vt350-lite-<n>, then the steps whose output is committed (homelab#2257)."""
+    model = os.path.join(models, f"vt350-lite-{n}.FCStd")
+    cmd = [sys.executable, submit, "chain", "vt350-refresh", "--model", model, "--models-dir", models, "--vt350", root,
+           "--sweep-deadline", str(SWEEP_DEADLINE_S)] + (["--notify", notify] if notify else [])
+    sub = Step("submit", cmd=cmd, log=os.path.join(root, SUBMIT_LOG), marker=CHAIN_RE)
+    return [sub] + [s for s in plan(n, root=root, app=app, models=models) if s.name in LANE_LOCAL]
+
+
+def chain_id(submit_out):
+    m = re.search(CHAIN_RE, submit_out)
+    if not m:
+        raise StepError(f"no 'started chain vt350-refresh <id>' line in the submit output: {submit_out[-300:]!r}")
+    return m.group(1)
+
+
+def last_chain_id(root=REPO):
+    p = os.path.join(root, SUBMIT_LOG)
+    if not os.path.isfile(p):
+        raise StepError(f"no {SUBMIT_LOG}: name the chain (--collect <chain-id>)")
+    return chain_id(open(p, encoding="utf-8").read())
+
+
+def collect(n, cid, root=REPO, work_root=WORK_ROOT):
+    """Copy a finished vt350-refresh chain's outputs into the repo, where the local steps write them. Everything is
+    checked before anything is written. -> {copied: [repo paths], index: [.parts.json paths], printable: [w, d]}"""
+    if not cid.startswith(f"vt350-lite-{n}-"):
+        raise StepError(f"chain {cid} is not a chain of vt350-lite-{n}")
+    for job in ("derive", "sweep", "area"):
+        d = os.path.join(work_root, f"{cid}-{job}")
+        try:
+            st = json.load(open(os.path.join(d, "status.json"), encoding="utf-8"))
+        except FileNotFoundError:
+            raise StepError(f"chain {cid} not finished: no status.json in {d} (wait for its comment)") from None
+        except (OSError, ValueError) as e:
+            raise StepError(f"chain {cid}: can't read {d}/status.json: {e}") from None
+        if st.get("state") != "succeeded":
+            raise StepError(f"chain {cid}: {d} {st.get('state')}: {st.get('reason')}")
+    texts, copies = {}, {}
+    for job, rel, dest, pattern in PULL:
+        src = os.path.join(work_root, f"{cid}-{job}", rel)
+        if src not in texts:
+            try:
+                texts[src] = open(src, encoding="utf-8").read()
+            except OSError as e:
+                raise StepError(f"chain {cid}: no {rel} in {cid}-{job}: {e}") from None
+        if not re.search(pattern.format(n=n), texts[src]):
+            raise StepError(f"chain {cid}: {src} does not match /{pattern.format(n=n)}/")
+        copies[dest] = src
+    area = os.path.join(work_root, f"{cid}-area", "out/refresh-summary.json")
+    try:
+        printable = json.load(open(area, encoding="utf-8"))["printable"]
+    except (OSError, ValueError, KeyError) as e:
+        raise StepError(f"chain {cid}: no printable area in {area}: {e}") from None
+    index = sorted(glob.glob(os.path.join(work_root, f"{cid}-sweep", "out/index/*.parts.json")))
+    if not index:
+        raise StepError(f"chain {cid}: no part index in {cid}-sweep/out/index/")
+    for dest, src in copies.items():
+        shutil.copyfile(src, os.path.join(root, dest))
+    return dict(copied=list(copies), index=index, printable=printable)
+
+
+def collect_plan(index, root=REPO, models=MODELS_DIR):
+    """After collect(): the chain's part index beside the models it describes (only onto the same bytes), and the
+    print-area test against the copied log and SVG."""
+    logs = os.path.join(root, "cad", "data", "logs")
+    adopt = Step("adopt_index", cmd=[sys.executable, os.path.join(root, TOOLS["part_index"]), "--adopt", "--models", models,
+                                     *index], log=os.path.join(logs, "refresh_adopt_index.out"))
+    return [adopt] + [s for s in plan(0, root=root, models=models) if s.name == "test_print_area"]
 
 
 def run(steps, cwd=REPO, root=REPO, on_step=None):
@@ -211,13 +315,17 @@ def _print_area():
     return _module("print_area")
 
 
+def stl_lines(changed):
+    return [f"{len(changed)} STL{'' if len(changed) == 1 else 's'} changed"] + \
+        [f"  {c['path']}: {c['old'][:12]} -> {c['new'][:12]}" for c in changed]
+
+
 def summary(changed, sweep_log, prev_sweep_log, area_line=None, index=None, z_log=None, prev_z_log=None):
     out = []
     if index:
         out.append("part index: " + ", ".join(f"{os.path.basename(m)[:-len('.FCStd')]} {st}" for m, st in index))
-    out.append(f"{len(changed)} STL{'' if len(changed) == 1 else 's'} changed")
-    for c in changed:
-        out.append(f"  {c['path']}: {c['old'][:12]} -> {c['new'][:12]}")
+    if changed is not None:                         # None: a --collect summary (the STLs were the submit run's)
+        out += stl_lines(changed)
     if sweep_log is None:
         out.append("sweep not run")
     else:
@@ -257,23 +365,97 @@ def load_tool(name):
     return m
 
 
-def main():
+def parse_args(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("lite", type=int, help="model number N of vt350-lite-N.FCStd for the sweep")
-    ap.add_argument("--from", dest="start", choices=ORDER, help="start at this step")
+    mode = ap.add_mutually_exclusive_group()
+    mode.add_argument("--local", action="store_true", help="run every step on this machine (no batch lane)")
+    mode.add_argument("--collect", nargs="?", const="", metavar="CHAIN-ID",
+                      help="copy a finished chain's outputs into the repo (default: the last one submitted)")
+    ap.add_argument("--notify", help="lane: OWNER/REPO#N the chain comments on when it ends")
+    ap.add_argument("--from", dest="start", choices=ORDER, help="--local: start at this step")
     ap.add_argument("--dry-run", action="store_true", help="print the steps and what sync_printed would change")
-    a = ap.parse_args()
+    a = ap.parse_args(argv)
+    if a.start and not a.local:
+        ap.error("--from needs --local (the lane run is always: submit, derive_stls, sync_printed, check_printed)")
+    return a
+
+
+def _show(steps):
+    for s in steps:
+        print(f"{s.name:16s} {' '.join(s.cmd) if s.cmd else 'sync_printed()'}  {s.env or ''}")
+    for c in sync_printed(REPO, write=False):
+        print(f"would re-copy {c['path']} ({c['old'][:12]} -> {c['new'][:12]})")
+
+
+def _git_head(rel):
+    return subprocess.run(["git", "-C", REPO, "show", f"HEAD:{rel}"], capture_output=True, text=True).stdout
+
+
+def _index_status(models):
+    pi = load_tool("part_index")
+    return [(m, pi.status(m)) for m in models]
+
+
+def _finish(s, steps, t0):
+    with open(os.path.join(REPO, "cad/data/logs/refresh.log"), "w", encoding="utf-8") as f:
+        f.write(s + f"\nsteps: {', '.join(steps)}; {time.time() - t0:.0f} s\nrefresh: OK\n")
+    print(s); print("refresh: OK")
+    return 0
+
+
+def main_collect(a):
+    t0 = time.time()
+    model = MODELS.format(a.lite)
+    try:
+        cid = a.collect or last_chain_id()
+        prev, prev_z = _git_head(SWEEP_LOG), _git_head(Z_LOG)
+        got = collect(a.lite, cid)
+        print(f"collected chain {cid}: " + ", ".join(got["copied"]), flush=True)
+        steps = collect_plan(got["index"])
+        run(steps, on_step=lambda s: print(f"[{time.time() - t0:6.0f}s] {s.name}", flush=True))
+    except StepError as e:
+        print(f"refresh: FAILED: {e}"); return 1
+    sweep = open(os.path.join(REPO, SWEEP_LOG), encoding="utf-8").read()
+    z_log = open(os.path.join(REPO, Z_LOG), encoding="utf-8").read()
+    area = f"vt350-lite-{a.lite}: printable {got['printable'][0]} x {got['printable'][1]} mm (chain {cid})"
+    s = summary(None, sweep, prev, area, _index_status([model] + companions(model)), z_log, prev_z)
+    return _finish(s, ["collect " + cid] + [x.name for x in steps], t0)
+
+
+def main_lane(a):
+    steps = lane_plan(a.lite, notify=a.notify)
+    if a.dry_run:
+        _show(steps); return 0
+    if not os.path.isfile(MODELS.format(a.lite)):
+        print(f"refresh: FAILED: no model {MODELS.format(a.lite)}"); return 1
+    if not a.notify:
+        print("refresh: no --notify: the chain posts no comment; read its status.json files once, later")
+    t0 = time.time()
+    try:
+        run(steps, on_step=lambda s: print(f"[{time.time() - t0:6.0f}s] {s.name}", flush=True))
+    except StepError as e:
+        print(f"refresh: FAILED: {e}"); return 1
+    cid = last_chain_id()
+    by = {s.name: s for s in steps}
+    s = "\n".join(stl_lines(by["sync_printed"].result or []) + [
+        f"part_index, sweep, z_sweep, print_area: on chain {cid}",
+        f"after its comment: python3 cad/scripts/refresh.py {a.lite} --collect {cid}"])
+    return _finish(s, list(by), t0)
+
+
+def main(argv=None):
+    a = parse_args(argv)
+    if a.collect is not None:
+        return main_collect(a)
+    if not a.local:
+        return main_lane(a)
     steps = plan(a.lite, start=a.start)
     if a.dry_run:
-        for s in steps:
-            print(f"{s.name:16s} {' '.join(s.cmd) if s.cmd else 'sync_printed()'}  {s.env or ''}")
-        for c in sync_printed(REPO, write=False):
-            print(f"would re-copy {c['path']} ({c['old'][:12]} -> {c['new'][:12]})")
-        return 0
+        _show(steps); return 0
     if any(s.name in ("part_index", "sweep", "z_sweep") for s in steps) and not os.path.isfile(MODELS.format(a.lite)):
         print(f"refresh: FAILED: no model {MODELS.format(a.lite)}"); return 1
-    prev = subprocess.run(["git", "-C", REPO, "show", f"HEAD:{SWEEP_LOG}"], capture_output=True, text=True).stdout
-    prev_z = subprocess.run(["git", "-C", REPO, "show", f"HEAD:{Z_LOG}"], capture_output=True, text=True).stdout
+    prev, prev_z = _git_head(SWEEP_LOG), _git_head(Z_LOG)
     t0 = time.time()
     try:
         run(steps, on_step=lambda s: print(f"[{time.time() - t0:6.0f}s] {s.name}", flush=True))
@@ -286,15 +468,9 @@ def main():
     area = None
     if "print_area" in by:
         area = open(by["print_area"].log, encoding="utf-8").read().strip().splitlines()[-1]
-    index = None
-    if "part_index" in by:
-        pi = load_tool("part_index")
-        index = [(m, pi.status(m)) for m in by["part_index"].env["VT350_INDEX_MODELS"].split(":")]
+    index = _index_status(by["part_index"].env["VT350_INDEX_MODELS"].split(":")) if "part_index" in by else None
     s = summary(changed or [], sweep, prev, area, index, z_log, prev_z)
-    with open(os.path.join(REPO, "cad/data/logs/refresh.log"), "w", encoding="utf-8") as f:
-        f.write(s + f"\nsteps: {', '.join(by)}; {time.time() - t0:.0f} s\nrefresh: OK\n")
-    print(s); print("refresh: OK")
-    return 0
+    return _finish(s, list(by), t0)
 
 
 if __name__ == "__main__":
