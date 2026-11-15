@@ -1,7 +1,7 @@
 {
  "model": "vt350-lite-35.FCStd",
- "cable_od_mm": 5.0,
- "min_r_assumed_mm": 50.0,
+ "cable_od_mm": 5.1,
+ "min_r_assumed_mm": 51.0,
  "heads": {
   "Left Toolhead": {
    "lock_top": [
@@ -9,23 +9,23 @@
     10.92,
     550.11
    ],
-   "join_u": 0.3,
-   "join_z": 659.7,
-   "lead_in_mm": 125.1,
-   "bundle_mm": 422.4,
-   "total_to_roof_mm": 547.5,
-   "r_lead_in": 50.0,
-   "r_bundle_min": 95.3,
+   "join_u": 0.325,
+   "join_z": 663.2,
+   "lead_in_mm": 133.2,
+   "bundle_mm": 409.5,
+   "total_to_roof_mm": 542.7,
+   "r_lead_in": 57.1,
+   "r_bundle_min": 95.2,
    "tube_r": 100.35,
    "nearest": [
     [
-     1.05,
+     1.04,
      "Roof panel (3 mm)",
      false,
-     686.5
+     686.4
     ],
     [
-     2.69,
+     2.61,
      "Roof panel (3 mm)",
      false,
      684.8
@@ -38,23 +38,23 @@
     10.92,
     550.11
    ],
-   "join_u": 0.3,
-   "join_z": 659.7,
-   "lead_in_mm": 125.1,
-   "bundle_mm": 422.4,
-   "total_to_roof_mm": 547.5,
-   "r_lead_in": 50.0,
-   "r_bundle_min": 95.3,
+   "join_u": 0.325,
+   "join_z": 663.2,
+   "lead_in_mm": 133.2,
+   "bundle_mm": 409.5,
+   "total_to_roof_mm": 542.7,
+   "r_lead_in": 57.1,
+   "r_bundle_min": 95.2,
    "tube_r": 100.35,
    "nearest": [
     [
-     1.05,
+     1.04,
      "Roof panel (3 mm)",
      false,
-     686.5
+     686.4
     ],
     [
-     2.69,
+     2.61,
      "Roof panel (3 mm)",
      false,
      684.8
@@ -67,23 +67,23 @@
     10.92,
     550.11
    ],
-   "join_u": 0.3,
-   "join_z": 659.7,
-   "lead_in_mm": 125.2,
-   "bundle_mm": 422.4,
-   "total_to_roof_mm": 547.7,
-   "r_lead_in": 50.0,
-   "r_bundle_min": 95.3,
+   "join_u": 0.325,
+   "join_z": 663.2,
+   "lead_in_mm": 133.4,
+   "bundle_mm": 409.5,
+   "total_to_roof_mm": 542.9,
+   "r_lead_in": 57.0,
+   "r_bundle_min": 95.2,
    "tube_r": 100.35,
    "nearest": [
     [
-     1.04,
+     1.03,
      "Roof panel (3 mm)",
      false,
-     686.5
+     686.4
     ],
     [
-     2.68,
+     2.61,
      "Roof panel (3 mm)",
      false,
      684.8
@@ -96,23 +96,23 @@
     10.92,
     550.11
    ],
-   "join_u": 0.3,
-   "join_z": 659.7,
-   "lead_in_mm": 125.1,
-   "bundle_mm": 422.4,
-   "total_to_roof_mm": 547.5,
-   "r_lead_in": 50.0,
-   "r_bundle_min": 95.3,
+   "join_u": 0.325,
+   "join_z": 663.2,
+   "lead_in_mm": 133.2,
+   "bundle_mm": 409.5,
+   "total_to_roof_mm": 542.7,
+   "r_lead_in": 57.1,
+   "r_bundle_min": 95.2,
    "tube_r": 100.35,
    "nearest": [
     [
-     1.05,
+     1.04,
      "Roof panel (3 mm)",
      false,
-     686.5
+     686.4
     ],
     [
-     2.69,
+     2.61,
      "Roof panel (3 mm)",
      false,
      684.8
@@ -125,23 +125,23 @@
     10.92,
     550.11
    ],
-   "join_u": 0.3,
-   "join_z": 659.7,
-   "lead_in_mm": 125.2,
-   "bundle_mm": 422.4,
-   "total_to_roof_mm": 547.7,
-   "r_lead_in": 50.0,
-   "r_bundle_min": 95.3,
+   "join_u": 0.325,
+   "join_z": 663.2,
+   "lead_in_mm": 133.4,
+   "bundle_mm": 409.5,
+   "total_to_roof_mm": 542.9,
+   "r_lead_in": 57.0,
+   "r_bundle_min": 95.2,
    "tube_r": 100.35,
    "nearest": [
     [
-     1.04,
+     1.03,
      "Roof panel (3 mm)",
      false,
-     686.5
+     686.4
     ],
     [
-     2.68,
+     2.61,
      "Roof panel (3 mm)",
      false,
      684.8
@@ -149,8 +149,8 @@
    ]
   },
   "Left Toolhead | Toolhead slot 2 (L)": 79.5,
-  "Toolhead slot 2 (L) | Toolhead slot 3 (R)": 49.9,
-  "Toolhead slot 3 (R) | Toolhead slot 4 (L)": 87.0,
-  "Toolhead slot 4 (L) | Right Toolhead": 49.9
+  "Toolhead slot 2 (L) | Toolhead slot 3 (R)": 49.8,
+  "Toolhead slot 3 (R) | Toolhead slot 4 (L)": 86.9,
+  "Toolhead slot 4 (L) | Right Toolhead": 49.8
  }
 }

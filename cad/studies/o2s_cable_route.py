@@ -4,7 +4,7 @@
 # Log: $VT350_WORK/logs/o2s_cable_route.log (+ .json).
 #
 # The cable leaves the restraint's lock straight up (the lock's Ø5.4 channel, axis +Z; upstream's USB stub is a
-# Ø5.0 cable under a Ø9.8 plug). The plan is the usual toolchanger umbilical: the cable is tied along its own head's
+# Ø5.0 cable under a Ø9.8 plug; the user measured the real cable at 5.1 mm). The plan is the usual toolchanger umbilical: the cable is tied along its own head's
 # bowden tube, which lite-30 routed to the roof's top-rear exit (#3) with a bend radius >= 100 mm. So per head:
 #  1. the tube's curve, from its stored route (Inlet, ExitPoint, ExitDir, HandleInlet, HandleExit; bezier.py). lite-31
 #     made the middle heads as copies translated in X, whose stored Inlet/ExitPoint are still the source's: the X
@@ -22,7 +22,7 @@
 # Docked pose only. With the cable tied to the tube, the moving bundle behaves like the tube, whose fixed-length
 # behaviour over the travel is #3's open question (the 2026-11-04 study); this adds the cable's length to that.
 # The cable's minimum bend radius is not known (no datasheet for the O2S cable): MIN_R is a stated assumption, 10 x
-# the Ø5.0 cable, the usual rule for a cable that flexes.
+# the cable's OD (5.1 mm, measured), the usual rule for a cable that flexes.
 import FreeCAD, Part, os, sys, math
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
                                 if "__file__" in globals() else os.environ.get("VT350_REPO", "/home/dan/Code/vt350"),
@@ -31,8 +31,11 @@ import litelib, bezier
 from litelib import is_leaf, MODELS
 V = FreeCAD.Vector
 MODEL = os.environ.get("VT350_MODEL", f"{MODELS}/vt350-lite-35.FCStd")
-R_TUBE, R_CABLE, GAP = 4.12 / 2, 5.0 / 2, 0.5         # PTFE OD 4.12 (measured, #3); cable Ø5.0 (upstream stub)
-MIN_R = 50.0                                           # assumption: 10 x OD for a flexing cable
+R_TUBE, R_CABLE, GAP = 4.12 / 2, 5.1 / 2, 0.5         # PTFE OD 4.12 (measured, #3); cable OD 5.1 (measured by the user,
+                                                       # 2026-11-14; upstream's stub models it as 5.0)
+MIN_R = 10 * 2 * R_CABLE                               # assumption: 10 x OD for a flexing cable (no datasheet)
+                                                       # The user (2026-11-14): "fairly flexible", rubber jacket, not
+                                                       # PVC. So 10 x OD is a cautious rule for it, kept on purpose.
 HANDLES = [10.0 * i for i in range(1, 21)]             # 10..200 mm
 JOINS = [i / 40 for i in range(1, 36)]                 # along the tube, u 0.025..0.875
 ROOF_Z = 690.0                                         # roof panel underside (lite-35)
@@ -141,7 +144,7 @@ def main(p):
               f"{(bez(tp, u) - P0).Length:.1f} mm from the lock; lead-in handles {a:.0f}/{b:.0f}, length {L_lead:.1f}; "
               f"bundle to the roof {L_bun2:.1f} (tube {L_bun:.1f})")
         p.check(r_lead >= MIN_R and r_bun >= MIN_R, f"{h}: bend R lead-in {r_lead:.1f}, beside the tube >= {r_bun:.1f} "
-                f"(MIN_R {MIN_R:.0f}, assumed 10 x Ø5.0)")
+                f"(MIN_R {MIN_R:.0f}, assumed 10 x the {2 * R_CABLE:.1f} mm OD)")
         # clearance vs everything outside this head's O2S/restraint/sensor parts and its own tube
         excl = {o.Name for o in mine if o.Label.startswith(OWN)} | {t.Name}
         if h == "Left Toolhead": excl |= {obj("Bowden Right").Name}                 # filed under the left head
