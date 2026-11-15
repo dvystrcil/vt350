@@ -179,6 +179,34 @@ class TheCommittedMap(unittest.TestCase):
             self.assertEqual(co.role_of(m, lab, z, "Default"), "accent", lab)
         self.assertIsNone(co.role_of(m, "M3x8-Screw034", z, "Default"))
 
+    def test_lite38_brass_felt_paint_door(self):
+        """User, 2026-11-14 (#19): the O2S standoffs are brass (their screws in the same part may be brass too);
+        the carbon felt is sealed in aluminium, so the liners are foil and the felt black, not the model's white;
+        the panels are spray-painted outside in the frame colour (slightly off), white inside; the door gets a
+        clear window on a black gasket."""
+        m = co.load()
+        th = "4040-350x350x250 Voron Trident v4 v33 / Left Toolhead"
+        self.assertEqual(co.role_of(m, "Orbitool O2S standoffs + screws Left (Orbiter-Toolboards 52a5a33, CC0-1.0)", th, "Default"), "brass")
+        self.assertEqual(m["roles"]["brass"]["kind"], "brass")
+        ins = "Enclosure extras (lite-16) / Insulation: carbon felt sealed in aluminium"
+        for lab in ("Roof felt liner, inner", "Back felt liner, outer", "Right wall felt liner, inner", "Roof felt strip liner, outer"):
+            self.assertEqual(co.role_of(m, lab, ins, "Default"), "foil", lab)
+        for lab in ("Roof felt (pad 1)", "Roof felt strip (pad 3)", "Back felt (pad 2)", "Right wall felt (pad 3)"):
+            self.assertEqual(co.role_of(m, lab, ins, "Default"), "carbon_felt", lab)
+        self.assertEqual(m["roles"]["foil"]["kind"], "aluminium")
+        ex = "Enclosure extras (lite-16)"
+        for lab, grp in (("Right side panel (3 mm) paint, outside", ex), ("Left side panel (3 mm) paint, outside", ex),
+                         ("Roof panel (3 mm) paint, outside", ex),
+                         ("Back Panel001 paint, outside", "4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12")):
+            self.assertEqual(co.role_of(m, lab, grp, "Default"), "panel_paint", lab)
+        self.assertEqual(m["roles"]["panel_paint"]["kind"], "paint")
+        self.assertNotEqual(m["roles"]["panel_paint"]["hex"], m["roles"]["frame"]["hex"])     # slightly off: a spray can
+        self.assertIsNone(co.role_of(m, "Right side panel (3 mm)", ex, "Default"))           # the inside keeps the model's white
+        door = "4040-350x350x250 Voron Trident v4 v33 / Door (1) (1)"
+        self.assertEqual(co.role_of(m, "Door window gasket (EPDM foam, black)", door, "Default"), "rubber")
+        self.assertEqual(co.role_of(m, "Door window (3 mm clear sheet, acrylic or polycarbonate per #4)", door, "Default"), "glass_clear")
+        self.assertEqual(m["roles"]["glass_clear"]["kind"], "glass")
+
 
 
 class Audit(unittest.TestCase):
