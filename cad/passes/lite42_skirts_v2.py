@@ -4,7 +4,9 @@
 # about the height: "render both, and keep in mind the adjustable feet need a little room to poke out so the printer is
 # not resting on the skirts".
 #
-# VT350_SKIRT picks the variant (two models, so the user can compare renders):
+# VT350_SKIRT picks the variant (separate models, so the user can compare renders):
+#   none  no skirt; each foot body grows up to 5 mm under its bracket, so only 5 mm of stud shows (asked 2026-11-15,
+#         wobble). The board stays put: raising it instead hits the StealthMax filter, which hangs to Z -80 below the frame.
 #   band  the 50 mm band under the frame as it is: skirt Z -50 .. -88 (38 tall), feet and board unchanged.
 #   tall  Voron proportions: the official Trident skirts are 66.8 mm tall (VoronDesign/Voron-Trident STLs/Skirt/350,
 #         measured). The stand drops 30 mm (longer M8 studs on the same placeholder feet), and the skirt is Z -50 .. -118
@@ -30,21 +32,22 @@ import litelib, colours
 from litelib import MODELS
 V = FreeCAD.Vector
 VAR = os.environ.get("VT350_SKIRT", "band")
-assert VAR in ("band", "tall"), VAR
+assert VAR in ("band", "tall", "none"), VAR
 SRC, DST = f"{MODELS}/vt350-lite-41.FCStd", f"{MODELS}/vt350-lite-42-{VAR}.FCStd"
 EXTRAS = "Enclosure extras (lite-16)"
 OLD_GROUP = "Bottom skirts (lite-41)"
 GROUP = f"Bottom skirts v2 (lite-42 {VAR})"
 T, FL_T, FL_D = 3.0, 4.0, 16.0                     # wall, flange thickness, flange depth (as lite-41)
 Z_TOP, Z_FRONT_TOP = -50.0, -51.0
-DROP = {"band": 0.0, "tall": 30.0}[VAR]           # the stand (pads, board) moves down by this
+DROP = {"band": 0.0, "tall": 30.0, "none": 0.0}[VAR]   # the stand (pads, board) moves down by this
+LEVEL_GAP = 5.0                                    # none: pad top to bracket underside (the user: "just leave 5mm for leveling")
 BOARD_TOP0 = -100.0
 FLOOR_GAP = 12.0                                   # skirt bottom above the board (the user: feet poke out)
 CORNER, CHAMF = 56.0, 8.0                          # corner leg length along each face; outer vertical edge chamfer
-BORDER = {"band": 7.0, "tall": 10.0}[VAR]          # white border round the windows
+BORDER = {"band": 7.0, "tall": 10.0, "none": 0.0}[VAR]          # white border round the windows
 END_M, RIB = 50.0, 24.0                            # window margin from a panel's ends (clears the foot arches), mid rib
-HEX_F, WEB = {"band": 10.0, "tall": 19.0}[VAR], 3.0
-MESH_F, MESH_WEB, MESH_T, MESH_M = {"band": 5.0, "tall": 6.0}[VAR], 1.6, 2.0, 3.0
+HEX_F, WEB = {"band": 10.0, "tall": 19.0, "none": 0.0}[VAR], 3.0
+MESH_F, MESH_WEB, MESH_T, MESH_M = {"band": 5.0, "tall": 6.0, "none": 0.0}[VAR], 1.6, 2.0, 3.0
 BADGE_W = 100.0
 ARCH_R, ARCH_UP = 29.0, 6.0
 TOL = 1e-3
@@ -90,6 +93,32 @@ def main(p):
     board_top = pr.shapes[board.Name].BoundBox.ZMax
     p.check(abs(board_top - (BOARD_TOP0 - DROP)) < 0.01, f"board top Z {board_top:.2f} (expected {BOARD_TOP0 - DROP:.2f})")
     Z_BOT = board_top + FLOOR_GAP
+    if VAR == "none":
+        # no skirt; 5 mm of stud between each foot body and its bracket (the user, 2026-11-15: "no skirt and the feet
+        # almost touching the extrusion, just leave 5mm for leveling", worried about wobble). Wobble is the exposed
+        # thread, so the foot body grows up to meet it; the board stays 20 mm under the filter (raising it 19 mm hit
+        # the filter envelope in a first try).
+        for pd, st in zip(pads, studs):
+            bk = min(brackets, key=lambda o: pr.shapes[o.Name].distToShape(pr.shapes[st.Name])[0])
+            zb = pr.boxes[bk.Name].ZMin; b = pr.shapes[pd.Name].BoundBox
+            cx, cy, r_ = (b.XMin + b.XMax) / 2, (b.YMin + b.YMax) / 2, b.XLength / 2
+            for o, g in ((pd, Part.makeCylinder(r_, zb - LEVEL_GAP - b.ZMin, V(cx, cy, b.ZMin))),
+                         (st, Part.makeCylinder(4, LEVEL_GAP, V(cx, cy, zb - LEVEL_GAP)))):
+                par = o.getGlobalPlacement().multiply(o.Placement.inverse())
+                g.Placement = par.inverse().multiply(g.Placement); o.Shape = g; o.Placement = FreeCAD.Placement()
+            pd.Label = pd.Label.replace("(rubber", f"(rubber, {zb - LEVEL_GAP - b.ZMin:.0f} tall body")
+            st.Label = st.Label.replace("(placeholder)", f"(placeholder, {LEVEL_GAP:.0f} showing)")
+        doc.recompute(); pr.refresh()
+        for pd, st in zip(pads, studs):
+            bk = min(brackets, key=lambda o: pr.shapes[o.Name].distToShape(pr.shapes[st.Name])[0])
+            gap = pr.boxes[bk.Name].ZMin - pr.boxes[pd.Name].ZMax
+            p.check(abs(gap - LEVEL_GAP) < 0.01, f"{pd.Label[:30]}: pad top to bracket {gap:.2f} mm (= {LEVEL_GAP:.0f})")
+            p.check(pr.shapes[st.Name].isValid() and abs(pr.boxes[st.Name].ZLength - LEVEL_GAP) < 0.01, f"{st.Label[:40]}: {pr.boxes[st.Name].ZLength:.1f} long")
+        p.no_overlap([(o.Label, pr.shapes[o.Name]) for o in pads + studs + [board]], pr, lambda r: f"the stand vs the printer: {r.hits[:6]}",
+                     exclude={o.Name for o in pads + studs + [board]})
+        p.check(len(pr.leaves) == n_before, f"solids: {len(pr.leaves)} (lite-41 less its 12 skirt parts)")
+        p.dump({"variant": VAR, "drop": DROP, "board_top": board_top, "level_gap": LEVEL_GAP})
+        return p.finish([(doc, DST)])
     feet = []
     for o in pads:
         b = pr.shapes[o.Name].BoundBox; feet.append(((b.XMin + b.XMax) / 2, (b.YMin + b.YMax) / 2, b.ZMax))

@@ -1,0 +1,16 @@
+[  452.2s] opened /home/dan/Documents/VT350/vt350-lite-41.FCStd
+[  479.6s] ok   lite-41's skirts: 12 parts (12)
+[  505.0s] ok   4 feet (4 pads, 4 studs, 4 brackets)
+[  505.0s] ok   board top Z -100.00 (expected -100.00)
+[ 1074.2s] ok   Levelling foot pad 1 (rubber, : pad top to bracket 5.00 mm (= 5)
+[ 1074.2s] ok   Levelling foot 1 M8 stud (placeholder, 5: 5.0 long
+[ 1074.3s] ok   Levelling foot pad 2 (rubber, : pad top to bracket 5.00 mm (= 5)
+[ 1074.3s] ok   Levelling foot 2 M8 stud (placeholder, 5: 5.0 long
+[ 1074.3s] ok   Levelling foot pad 3 (rubber, : pad top to bracket 5.00 mm (= 5)
+[ 1074.3s] ok   Levelling foot 3 M8 stud (placeholder, 5: 5.0 long
+[ 1074.3s] ok   Levelling foot pad 4 (rubber, : pad top to bracket 5.00 mm (= 5)
+[ 1074.3s] ok   Levelling foot 4 M8 stud (placeholder, 5: 5.0 long
+[ 1120.1s] ok   the stand vs the printer: []
+[ 1120.1s] ok   solids: 1347 (lite-41 less its 12 skirt parts)
+[ 1120.1s] verify: 0 problems
+[ 1237.2s] SAVED /home/dan/Documents/VT350/vt350-lite-42-none.FCStd 213773819
