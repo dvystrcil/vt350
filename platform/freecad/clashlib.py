@@ -27,6 +27,12 @@ BOX_MARGIN = 0.1          # mm added to every bounding box before the intersect 
 HERE = os.path.abspath(__file__)
 
 
+def maxrss_mb():
+    """This process's peak resident set, MB (Linux ru_maxrss is KB). A worker reports its own (homelab#2267)."""
+    import resource
+    return max(1, round(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024))
+
+
 def default_n():
     """VT350_WORKERS, else the CPUs this process may use (cgroup quota + affinity, not os.cpu_count()) - 2."""
     sys.path.insert(0, os.path.dirname(HERE))
@@ -88,9 +94,15 @@ def _run(job, tmp, n, tol, log, timeout, procs):
                  pair_poses=sum(s["pair_poses"] for s in wstats), box_hits=sum(s["box_hits"] for s in wstats),
                  load_s=max(s["load_s"] for s in wstats), check_s_max=max(s["check_s"] for s in wstats),
                  check_s_sum=round(sum(s["check_s"] for s in wstats), 1), workers=wstats)
+    rss = [s.get("maxrss_mb") for s in wstats]
+    known = None not in rss
+    stats["peak_rss_mb"] = dict(worker_max=max(rss) if known else None, worker_sum=sum(rss) if known else None,
+                                parent=maxrss_mb())
     log(f"clashlib: done in {wall:.1f}s (load <= {stats['load_s']:.1f}s, check <= {stats['check_s_max']:.1f}s); "
         f"{stats['pair_poses']} pair-poses, {stats['box_hits']} box hits, {len(results)} overlaps > {tol} mm3, "
         f"{len(errors)} errors")
+    p = stats["peak_rss_mb"]
+    log(f"clashlib: peak RSS: workers max {p['worker_max']} MB, sum {p['worker_sum']} MB; parent {p['parent']} MB")
     return dict(results=results, errors=errors, stats=stats)
 
 
@@ -200,6 +212,7 @@ def _worker():
                         results.append(dict(pose=pid, ga=ga, gb=gb, a=a.Name, b=b.Name, la=a.Label, lb=b.Label, volume=v))
     stats = dict(k=k, leaves=len(leaves), pairs_total=pairs_total, mine=len(mine), pair_poses=pair_poses,
                  box_hits=box_hits, load_s=round(load_s, 1), check_s=round(time.time() - t1, 1))
+    stats["maxrss_mb"] = maxrss_mb()           # after the checks: this worker's whole-life peak
     json.dump(dict(results=results, errors=errors, stats=stats), open(out, "w"))
 
 
