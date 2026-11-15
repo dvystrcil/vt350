@@ -1,0 +1,28 @@
+{
+ "camera_lens_old": [
+  -245.0,
+  -52.0,
+  628.0
+ ],
+ "camera_lens_new": [
+  -50.0,
+  440.0,
+  620.0
+ ],
+ "camera_dir_new": [
+  -0.3305,
+  -0.5404,
+  -0.7738
+ ],
+ "housing_to_upright_mm": 26.4,
+ "plate_points_seen_of_49": {
+  "old": {
+   "top": 21,
+   "bottom": 21
+  },
+  "new": {
+   "top": 41,
+   "bottom": 46
+  }
+ }
+}

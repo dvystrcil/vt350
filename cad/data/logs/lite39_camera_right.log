@@ -1,0 +1,20 @@
+[  118.2s] opened /home/dan/Documents/VT350/vt350-lite-38.FCStd
+[  128.3s] ok   the 4 camera solids: ['Camera housing front (Printables 305428, public domain)', 'Camera housing back (Printables 305428, public domain)', "Nocturne USB camera board (Luke's Laboratory, 96 deg FOV)", 'Nocturne lens']
+[  128.3s] ok   the lens's old pose has no roll (local X horizontal: z +0.00e+00); at (-245.0, -52.0, 628.0) looking (+0.000, +0.540, -0.842)
+[  138.3s] ok   the lens is at (-50.00, 440.00, 620.00) looking (-0.331, -0.540, -0.774), no roll
+[  138.4s] ok   Camera housing front (Printables 305428, public domain): same solid (10163.8 mm3), moved with the lens (centre off by 0.0000)
+[  138.5s] ok   Camera housing back (Printables 305428, public domain): same solid (1736.1 mm3), moved with the lens (centre off by 0.0000)
+[  138.5s] ok   Nocturne USB camera board (Luke's Laboratory, 96 deg FOV): same solid (2310.4 mm3), moved with the lens (centre off by 0.0000)
+[  138.5s] ok   Nocturne lens: same solid (1077.6 mm3), moved with the lens (centre off by 0.0000)
+[  232.5s] ok   the camera vs everything: []
+[  232.5s] ok   4040 is the rear-right upright: X -10.0..30.0, Y 480.0..520.0
+[  232.7s] ok   the housing is 26.4 mm from the upright: a bracket's reach (not modelled)
+[  277.4s] old spot, bed at its top (sheet Z 397): 42/49 framed, 21 seen; blocked by {'Gantry assembly': 7, 'MadMaxCarriage(Mirror)': 5, 'Toolhead slot 2 (L)': 2, 'A4Tv2 (DW-Tas, CC BY-NC-SA 4.0) v003': 2}
+[  277.4s] old spot, bed at its bottom (sheet Z 50): 49/49 framed, 21 seen; blocked by {'Toolhead slot 3 (R)': 10, 'MadMaxCarriage(Mirror)': 7, 'MadMaxCarriage': 2, 'Orbiter V2.0 Mockup (1) v1 (1)001': 2}
+[  278.2s] new spot, bed at its top (sheet Z 397): 49/49 framed, 41 seen; blocked by {'4040-350x350x250 Voron Trident v4 v33': 7, 'MadMaxCarriage (1)': 1}
+[  278.2s] new spot, bed at its bottom (sheet Z 50): 46/49 framed, 46 seen; blocked by {}
+[  278.2s] ok   plate points seen at the worst bed height: 41/49 here, 21/49 from the old spot
+[  278.2s] ok   the Crossbow parts (20, 4 per head) -> {'brushed_aluminium'}
+[  278.2s] ok   solids unchanged: 1314 -> 1314
+[  278.2s] verify: 0 problems
+[  321.3s] SAVED /home/dan/Documents/VT350/vt350-lite-39.FCStd 212932828

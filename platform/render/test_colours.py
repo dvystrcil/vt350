@@ -207,6 +207,19 @@ class TheCommittedMap(unittest.TestCase):
         self.assertEqual(co.role_of(m, "Door window (3 mm clear sheet, acrylic or polycarbonate per #4)", door, "Default"), "glass_clear")
         self.assertEqual(m["roles"]["glass_clear"]["kind"], "glass")
 
+    def test_crossbow_brushed_aluminium(self):
+        """User, 2026-11-14 (#19): the Crossbow (each head's CNC aluminium Crossbow: main body, top cap, lever, blade
+        caddy) is brushed aluminium. Unmatched, it kept the model's colour; the printed adapter stays accent."""
+        m = co.load()
+        for th, n in (("Left Toolhead", ""), ("Right Toolhead", "001"), ("Toolhead slot 3 (R)", "003")):
+            g = f"4040-350x350x250 Voron Trident v4 v33 / {th} / A4Tv2 (DW-Tas, CC BY-NC-SA 4.0) v{n or 1}"
+            for part in ("Main Body", "Top Cap", "Lever", "Blade caddy"):
+                self.assertEqual(co.role_of(m, f"Crossbow - {part}{n}", g, "Aluminum-Generic"), "brushed_aluminium", part + n)
+        r = m["roles"]["brushed_aluminium"]
+        self.assertEqual(r["kind"], "aluminium")
+        self.assertGreaterEqual(r["roughness"], 0.25)            # brushed, not polished: the foil (0.22) is the shiny one
+        self.assertEqual(co.role_of(m, "[a]_orbiter-crossbow-adapter_o2_xol", "x / Left Toolhead", "ABS-Generic"), "accent")
+
 
 
 class Audit(unittest.TestCase):
