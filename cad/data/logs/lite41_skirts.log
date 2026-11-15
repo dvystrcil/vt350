@@ -1,0 +1,54 @@
+[  123.6s] opened /home/dan/Documents/VT350/vt350-lite-40.FCStd
+[  134.0s] ok   the rear bottom 4040: 1
+[  134.0s] ok   outline measured: X -523.0..33.0, Y -118.0..520.0; the bottom extrusions' underside Z -50.0
+[  134.0s] ok   4 foot pads (4)
+[  146.3s] front: panel 356 long, vent 214 x 24 with 25 slots (29% open)
+[  146.3s] ok   Skirt panel front (printed ABS, vt350, G: one valid solid (1), 54397 mm3
+[  146.4s] ok   Skirt grille front (printed ABS, vt350, : one valid solid (1), 22062 mm3
+[  146.7s] rear: panel 356 long, vent 214 x 24 with 25 slots (29% open)
+[  146.7s] ok   Skirt panel rear (printed ABS, vt350, GP: one valid solid (1), 55465 mm3
+[  146.7s] ok   Skirt grille rear (printed ABS, vt350, G: one valid solid (1), 22062 mm3
+[  147.2s] left: panel 441 long, vent 265 x 24 with 31 slots (29% open)
+[  147.2s] ok   Skirt panel left (printed ABS, vt350, GP: one valid solid (1), 68708 mm3
+[  147.2s] ok   Skirt grille left (printed ABS, vt350, G: one valid solid (1), 27198 mm3
+[  147.7s] right: panel 441 long, vent 265 x 24 with 31 slots (29% open)
+[  147.7s] ok   Skirt panel right (printed ABS, vt350, G: one valid solid (1), 68708 mm3
+[  147.7s] ok   Skirt grille right (printed ABS, vt350, : one valid solid (1), 27198 mm3
+[  147.7s] ok   Skirt corner front-left (printed ABS, vt: one valid solid (1), 17430 mm3
+[  147.7s] ok   Skirt corner front-right (printed ABS, v: one valid solid (1), 17430 mm3
+[  147.7s] ok   Skirt corner rear-left (printed ABS, vt3: one valid solid (1), 17730 mm3
+[  147.7s] ok   Skirt corner rear-right (printed ABS, vt: one valid solid (1), 17730 mm3
+[  252.5s] ok   the skirts vs the printer: []
+[  252.6s] ok   Skirt panel front (print vs Skirt grille front (prin: 0.0000 mm3
+[  252.6s] ok   Skirt panel front (print vs Skirt corner front-left : 0.0000 mm3
+[  252.6s] ok   Skirt panel front (print vs Skirt corner front-right: 0.0000 mm3
+[  252.6s] ok   Skirt panel rear (printe vs Skirt grille rear (print: 0.0000 mm3
+[  252.6s] ok   Skirt panel rear (printe vs Skirt corner rear-left (: 0.0000 mm3
+[  252.6s] ok   Skirt panel rear (printe vs Skirt corner rear-right : 0.0000 mm3
+[  252.6s] ok   Skirt panel left (printe vs Skirt grille left (print: 0.0000 mm3
+[  252.6s] ok   Skirt panel left (printe vs Skirt corner front-left : 0.0000 mm3
+[  252.6s] ok   Skirt panel left (printe vs Skirt corner rear-left (: 0.0000 mm3
+[  252.7s] ok   Skirt panel right (print vs Skirt grille right (prin: 0.0000 mm3
+[  252.7s] ok   Skirt panel right (print vs Skirt corner front-right: 0.0000 mm3
+[  252.7s] ok   Skirt panel right (print vs Skirt corner rear-right : 0.0000 mm3
+[  253.5s] ok   skirt panel front: its flange touches the underside of 2040 (2) (1)001 (gap 0.000)
+[  253.9s] ok   skirt panel rear: its flange touches the underside of 4040 (2) (gap 0.000)
+[  255.6s] ok   skirt panel left: its flange touches the underside of 4040 (1)001 (gap 0.000)
+[  257.3s] ok   skirt panel right: its flange touches the underside of 4040 (1) (gap 0.000)
+[  257.3s] ok   Skirt panel front (printed A: clears the foot pads and the board by 5.0 mm
+[  257.3s] ok   Skirt grille front (printed : clears the foot pads and the board by 11.0 mm
+[  257.4s] ok   Skirt panel rear (printed AB: clears the foot pads and the board by 5.0 mm
+[  257.4s] ok   Skirt grille rear (printed A: clears the foot pads and the board by 11.0 mm
+[  257.4s] ok   Skirt panel left (printed AB: clears the foot pads and the board by 5.0 mm
+[  257.5s] ok   Skirt grille left (printed A: clears the foot pads and the board by 11.0 mm
+[  257.5s] ok   Skirt panel right (printed A: clears the foot pads and the board by 5.0 mm
+[  257.6s] ok   Skirt grille right (printed : clears the foot pads and the board by 11.0 mm
+[  257.6s] ok   Skirt corner front-left (pri: clears the foot pads and the board by 2.0 mm
+[  257.6s] ok   Skirt corner front-right (pr: clears the foot pads and the board by 2.0 mm
+[  257.7s] ok   Skirt corner rear-left (prin: clears the foot pads and the board by 2.0 mm
+[  257.7s] ok   Skirt corner rear-right (pri: clears the foot pads and the board by 2.0 mm
+[  257.7s] ok   the skirts' outline X -523.0..33.0, Y -118.0..523.0: flush with the walls above (the rear wall sits on the rear 4040's back face, 3 mm proud; the side skirts run 3 mm past the side panels' rear edge to meet it)
+[  257.7s] ok   roles {'panel': {'printed'}, 'grille': {'accent'}, 'corner': {'accent'}}
+[  257.7s] ok   solids: 1347 + 12 = 1359
+[  257.7s] verify: 0 problems
+[  301.0s] SAVED /home/dan/Documents/VT350/vt350-lite-41.FCStd 213879253
