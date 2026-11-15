@@ -1,0 +1,66 @@
+[  128.9s] opened /home/dan/Documents/VT350/vt350-lite-34.FCStd
+[  140.6s] ok   o2s_assembly.step is the pinned file: 25950842 bytes, sha256 0140eb363daff456
+[  171.2s] ok   o2s_wire_restrain.step is the pinned file: 379883 bytes, sha256 bee4906e7030b9e1
+[  171.6s] ok   restraint STEP solids ['O2S WirerestrainBody', 'O2S Wirestrain_Lock']; the assembly's ['O2S WirerestrainBody', 'O2S Wirestrain_Lock']
+[  171.7s] ok   O2S WirerestrainBody: 2869.9 mm3 (the assembly's 2593.1); same box in both STEPs (same frame): BoundBox (-27.4777, 28.3795, -5.46074, 17.4672, 40.9295, 84.4643)
+[  171.7s] ok   O2S Wirestrain_Lock: 829.2 mm3 (the assembly's 829.2); same box in both STEPs (same frame): BoundBox (-3.78746, 29.7988, 69.2015, 7.01254, 41.8316, 84.2015)
+[  173.8s] ok   STEP fit parts: {'board': 224, 'hs': 1, 'usb': 1, 'sensor': 38}
+[  196.1s] as designed (STEP frame), restraint x O2S/Orbiter overlaps mm3: {'O2S WirerestrainBody x board': 2.102}
+[  196.2s] ok   Left Toolhead: one each of ['board', 'hs', 'usb', 'sensor', 'mount']: {'board': 1, 'hs': 1, 'usb': 1, 'sensor': 1, 'mount': 1}
+[  199.6s] ok   Left Toolhead: the O2S pose from 4 parts: n 4, COM max 0.00000 (sensor), volume max 0.0000 (sensor)
+[  199.8s] ok   Toolhead slot 2 (L): one each of ['board', 'hs', 'usb', 'sensor', 'mount']: {'board': 1, 'hs': 1, 'usb': 1, 'sensor': 1, 'mount': 1}
+[  202.9s] ok   Toolhead slot 2 (L): the O2S pose from 4 parts: n 4, COM max 0.00000 (hs), volume max 0.0000 (board)
+[  203.1s] ok   Toolhead slot 3 (R): one each of ['board', 'hs', 'usb', 'sensor', 'mount']: {'board': 1, 'hs': 1, 'usb': 1, 'sensor': 1, 'mount': 1}
+[  206.0s] ok   Toolhead slot 3 (R): the O2S pose from 4 parts: n 4, COM max 0.00000 (usb), volume max 0.0000 (board)
+[  206.2s] ok   Toolhead slot 4 (L): one each of ['board', 'hs', 'usb', 'sensor', 'mount']: {'board': 1, 'hs': 1, 'usb': 1, 'sensor': 1, 'mount': 1}
+[  209.1s] ok   Toolhead slot 4 (L): the O2S pose from 4 parts: n 4, COM max 0.00000 (usb), volume max 0.0000 (sensor)
+[  209.3s] ok   Right Toolhead: one each of ['board', 'hs', 'usb', 'sensor', 'mount']: {'board': 1, 'hs': 1, 'usb': 1, 'sensor': 1, 'mount': 1}
+[  212.3s] ok   Right Toolhead: the O2S pose from 4 parts: n 4, COM max 0.00000 (sensor), volume max 0.0000 (sensor)
+[  222.9s] ok   Orbitool O2S wire restraint body Left (Orbiter-Toolboards 52a5a33, CC0-1.0): lands where registered; BoundBox (-438.514, 2.86957, 460.443, -393.569, 15.4196, 550.368)
+[  231.0s] ok   Orbitool O2S wire restraint body Left (Orbiter-Toolboards 52a5a33, CC0-1.0): overlaps with its head's O2S/Orbiter as designed ({'board': 2.1}) 
+[  231.0s] ok   Orbitool O2S wire restraint lock Left (Orbiter-Toolboards 52a5a33, CC0-1.0): lands where registered; BoundBox (-414.824, 4.28893, 535.105, -404.024, 16.3216, 550.105)
+[  243.3s] ok   Orbitool O2S wire restraint lock Left (Orbiter-Toolboards 52a5a33, CC0-1.0): overlaps with its head's O2S/Orbiter as designed ({}) 
+[  330.7s] ok   Left Toolhead: restraint vs every solid outside its head: []
+[  330.9s] ok   Orbitool O2S wire restraint body Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: lands where registered; BoundBox (-353.354, 2.86957, 460.443, -308.409, 15.4196, 550.368)
+[  351.0s] ok   Orbitool O2S wire restraint body Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: overlaps with its head's O2S/Orbiter as designed ({'board': 2.1}) 
+[  351.0s] ok   Orbitool O2S wire restraint lock Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: lands where registered; BoundBox (-329.664, 4.28893, 535.105, -318.864, 16.3216, 550.105)
+[  351.6s] ok   Orbitool O2S wire restraint lock Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: overlaps with its head's O2S/Orbiter as designed ({}) 
+[  352.7s] ok   Toolhead slot 2 (L): restraint vs every solid outside its head: []
+[  352.8s] ok   Orbitool O2S wire restraint body Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: lands where registered; BoundBox (-277.234, 2.86957, 460.443, -232.289, 15.4196, 550.368)
+[  360.2s] ok   Orbitool O2S wire restraint body Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: overlaps with its head's O2S/Orbiter as designed ({'board': 2.1}) 
+[  360.2s] ok   Orbitool O2S wire restraint lock Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: lands where registered; BoundBox (-253.544, 4.28893, 535.105, -242.744, 16.3216, 550.105)
+[  360.5s] ok   Orbitool O2S wire restraint lock Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: overlaps with its head's O2S/Orbiter as designed ({}) 
+[  361.6s] ok   Toolhead slot 3 (R): restraint vs every solid outside its head: []
+[  361.7s] ok   Orbitool O2S wire restraint body Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: lands where registered; BoundBox (-185.234, 2.86957, 460.443, -140.289, 15.4196, 550.368)
+[  369.4s] ok   Orbitool O2S wire restraint body Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: overlaps with its head's O2S/Orbiter as designed ({'board': 2.1}) 
+[  369.4s] ok   Orbitool O2S wire restraint lock Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: lands where registered; BoundBox (-161.544, 4.28893, 535.105, -150.744, 16.3216, 550.105)
+[  370.0s] ok   Orbitool O2S wire restraint lock Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: overlaps with its head's O2S/Orbiter as designed ({}) 
+[  371.1s] ok   Toolhead slot 4 (L): restraint vs every solid outside its head: []
+[  371.2s] ok   Orbitool O2S wire restraint body Right (Orbiter-Toolboards 52a5a33, CC0-1.0): lands where registered; BoundBox (-109.114, 2.86957, 460.443, -64.1694, 15.4196, 550.368)
+[  378.4s] ok   Orbitool O2S wire restraint body Right (Orbiter-Toolboards 52a5a33, CC0-1.0): overlaps with its head's O2S/Orbiter as designed ({'board': 2.1}) 
+[  378.4s] ok   Orbitool O2S wire restraint lock Right (Orbiter-Toolboards 52a5a33, CC0-1.0): lands where registered; BoundBox (-85.424, 4.28893, 535.105, -74.624, 16.3216, 550.105)
+[  378.7s] ok   Orbitool O2S wire restraint lock Right (Orbiter-Toolboards 52a5a33, CC0-1.0): overlaps with its head's O2S/Orbiter as designed ({}) 
+[  380.1s] ok   Right Toolhead: restraint vs every solid outside its head: []
+[  381.5s] Left Toolhead: nearest []
+[  381.5s] ok   Left Toolhead: its restraint at 38 dock poses (0 pairs within 3 mm by box, measured; nearest box gap 18.88: O2S WirerestrainBody @x+0 y+0 vs GT2 9mm belt, upper (Monolith 2WD)): min inf mm to anything that stays put []
+[  382.1s] Toolhead slot 2 (L): nearest []
+[  382.1s] ok   Toolhead slot 2 (L): its restraint at 38 dock poses (0 pairs within 3 mm by box, measured; nearest box gap 18.88: O2S WirerestrainBody @x+0 y+0 vs GT2 9mm belt, upper (Monolith 2WD)): min inf mm to anything that stays put []
+[  382.7s] Toolhead slot 3 (R): nearest []
+[  382.7s] ok   Toolhead slot 3 (R): its restraint at 38 dock poses (0 pairs within 3 mm by box, measured; nearest box gap 16.31: O2S WirerestrainBody @x-5 y-6 vs main-body_dragon-rapido-UHF_o2_xol002): min inf mm to anything that stays put []
+[  383.4s] Toolhead slot 4 (L): nearest []
+[  383.4s] ok   Toolhead slot 4 (L): its restraint at 38 dock poses (0 pairs within 3 mm by box, measured; nearest box gap 18.88: O2S WirerestrainBody @x+0 y+0 vs GT2 9mm belt, upper (Monolith 2WD)): min inf mm to anything that stays put []
+[  384.2s] Right Toolhead: nearest []
+[  384.2s] ok   Right Toolhead: its restraint at 38 dock poses (0 pairs within 3 mm by box, measured; nearest box gap 16.31: O2S WirerestrainBody @x-5 y-6 vs main-body_dragon-rapido-UHF_o2_xol004): min inf mm to anything that stays put []
+[  384.2s] ok   Orbitool O2S wire restraint body Left (Orbiter-Toolboards 52a5a33, CC0-1.0): material ABS-Generic -> role printed
+[  384.2s] ok   Orbitool O2S wire restraint lock Left (Orbiter-Toolboards 52a5a33, CC0-1.0): material ABS-Generic -> role printed
+[  384.2s] ok   Orbitool O2S wire restraint body Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: material ABS-Generic -> role printed
+[  384.2s] ok   Orbitool O2S wire restraint lock Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: material ABS-Generic -> role printed
+[  384.2s] ok   Orbitool O2S wire restraint body Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: material ABS-Generic -> role printed
+[  384.2s] ok   Orbitool O2S wire restraint lock Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: material ABS-Generic -> role printed
+[  384.2s] ok   Orbitool O2S wire restraint body Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: material ABS-Generic -> role printed
+[  384.2s] ok   Orbitool O2S wire restraint lock Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: material ABS-Generic -> role printed
+[  384.2s] ok   Orbitool O2S wire restraint body Right (Orbiter-Toolboards 52a5a33, CC0-1.0): material ABS-Generic -> role printed
+[  384.2s] ok   Orbitool O2S wire restraint lock Right (Orbiter-Toolboards 52a5a33, CC0-1.0): material ABS-Generic -> role printed
+[  384.2s] ok   solids: 1277 + 10 = 1287
+[  384.9s] verify: 0 problems
+[  433.0s] SAVED /home/dan/Documents/VT350/vt350-lite-35.FCStd 212570651
