@@ -21,7 +21,12 @@
 # drop a real overlap; then Shape.common().Volume. A common() that throws is reported as an error, not skipped.
 import json, os, shutil, subprocess, sys, tempfile, time
 
-APP = os.environ.get("FREECAD_APPIMAGE", "/home/dan/FreeCAD/FreeCAD_26.3rc2-Linux-x86_64.AppImage")
+if os.path.dirname(os.path.abspath(__file__)) not in sys.path:   # a worker runs as `freecadcmd clashlib.py`
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import batchvalues
+
+APP = batchvalues.setting("freecad_appimage", env="FREECAD_APPIMAGE",
+                          default="/home/dan/FreeCAD/FreeCAD_26.3rc2-Linux-x86_64.AppImage")
 FREECADCMD = os.environ.get("FREECADCMD", f"{APP} freecadcmd").split()
 BOX_MARGIN = 0.1          # mm added to every bounding box before the intersect test
 HERE = os.path.abspath(__file__)
