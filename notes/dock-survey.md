@@ -98,6 +98,11 @@ Nozzle distance between neighbours (2 mm clearance; 0 mm is 2 less):
 
 All-L docks fit only 4 at 2 mm (5 at 1 mm with 0.4 mm to spare). L and R tools aren't interchangeable: the dock screws sit on bosses on one duct (lite-23), left duct for an L slot, right duct for an R slot.
 
+**Decision (owner, 2026-11-14, #19): the model and renders carry all 5 tools; the build starts with 2.** "When I build the printer 2 at first, but I need the model and renders to be 5." So:
+- every model pass, clearance check and render keeps the full `LLRLR` row of 5 heads and docks;
+- `cad/klipper/toolchanger.cfg` defines only `T0` (slot 1, L, the left end) and `T1` (slot 5, R, the right end); T2–T4 are added when those tools are built;
+- quantities in `parts/printed/manifest.csv` and the BOM are for the 2 tools built first ("per tool" rows ×2); the 3 middle docks and heads are printed when they're added.
+
 **Behind the row:**
 - The **carried head** clears a row of parked heads at **parked + 67.96 mm** (the parked O2S board vs the carried head's Orbiter hub); `toolchanger.cfg`'s safe_toolhead_y is parked + 111, so it is safe with 41 mm to spare.
 - The **empty carriage** clears it at parked − 0.50 (its SpeedClips vs the parked plate); safe_shuttle_y parked + 36 is safe.
