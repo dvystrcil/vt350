@@ -195,10 +195,25 @@ One command for everything a new lite-N (or a `derive_stls` change) has to be fo
 writes a model and never commits, so opencode or CI can run it and the caller commits the result:
 
 ```bash
-python3 cad/scripts/refresh.py 26 --dry-run       # the steps, and which parts/printed copies would change
-python3 cad/scripts/refresh.py 26                 # ~15-20 min: part_index -> derive_stls -> sync_printed -> check_printed -> sweep -> print_area -> test_print_area
-python3 cad/scripts/refresh.py 26 --from sweep    # start part-way
+python3 cad/scripts/refresh.py 35 --dry-run       # the steps, and which parts/printed copies would change
+python3 cad/scripts/refresh.py 35 --notify dvystrcil/vt350#69   # submit the batch-lane chain, then derive_stls -> sync_printed -> check_printed here
+python3 cad/scripts/refresh.py 35 --collect       # after the chain's comment: its logs, index and print-area.svg into the repo, then test_print_area
+python3 cad/scripts/refresh.py 35 --local         # every step here (lane down): part_index -> derive_stls -> sync_printed -> check_printed -> sweep -> z_sweep -> print_area -> test_print_area
+python3 cad/scripts/refresh.py 35 --local --from sweep    # start part-way
 ```
+
+**The model-reading steps run on the cluster's batch lane** (homelab#2257): part_index, sweep, z_sweep and print_area are
+the homelab chain `vt350-refresh` (homelab `bin/gpu-batch-submit.py`; `VT350_GPU_BATCH_SUBMIT` overrides its path), on
+max-01, read-only. On lite-32 they took ~78 of the local run's 80 min (z_sweep alone 54). `refresh.py N` submits the chain
+first, then runs only the steps whose output is committed while it runs: `derive_stls` (the lane's STLs are never
+committed: max-01 tessellates them differently, homelab#1961), `sync_printed`, `check_printed`. The chain posts ONE
+comment on `--notify` when it ends; don't poll. `--collect [CHAIN-ID]` (default: the last one submitted, from
+`data/logs/refresh_submit.out`) copies `sweep_toolhead.log`, `z_sweep.log`/`.json`, `part_index.log` and
+`print-area.svg` from the NFS share (`GPU_BATCH_WORK_ROOT`, default `/mnt/nfs/media/gpu-batch`) to where the local
+steps write them. It checks everything before it writes anything: every job `succeeded`, each log's completion marker,
+and that the logs and the SVG are this lite-N's. It then adopts the chain's part index beside the models
+(`part_index.py --adopt`) and runs `test_print_area`. The copied logs name the pod's paths
+(`/work/<chain-id>-sweep/in/...`), which records which chain made them.
 
 It stops at the first failed step (exit code **or** a missing completion marker) and names the step and its log. The
 summary goes to stdout and `data/logs/refresh.log`: STLs re-copied (only their `sha256` cell in `manifest.csv` changes,
@@ -277,7 +292,7 @@ row first (refresh only updates existing rows).
 | `cad/studies/dock_layout.py` | plain `python3`; export stage headless, read-only, never saves (~4 min, ~3 GB, one `freecadcmd`) | #19 AC2 on **lite-30**: a front **row** of MadMax docks. The export samples each template slot's surfaces (Left and Right: head + plate + keyslot plate parked; carriage + Beacon at the pickup; the carried head) into extent fields (per 1 mm row, the min/max along X or Y); the analysis (no FreeCAD) moves them with MadMax's dock moves from `cad/klipper/toolchanger.cfg` (6 mm keyslot slide, 5 mm detach away from the keyslot plate) and reports the smallest nozzle distance between neighbours for every mix of slot styles, the best row per tool count in the sweep's X reach, and how far behind the row the carried head and the empty carriage must stay. lite-30 at 2 mm: L\|L 85.16, L\|R 76.12, R\|L 92.00, R\|R 90.06; **5 tools as `LLRLR`** (329.40 of 342, slack 12.6), 6 never; carried head behind the row at parked +67.96 (cfg safe_toolhead_y +111), so with docks along the whole front the carried nozzle stays at Y ≥ 37.50 (print square 30.50). Left out: bowden tubes, USB cables beyond the stub, dock arms/crossbar (AC7), gantry/belts (the sweep's pickup check). Accurate to about ±0.5 mm. `DOCK_LAYOUT_KEEP=<json>` keeps the fields; `dock_layout.py <json>` re-runs the analysis in seconds. Log `data/logs/dock_layout.log` + `.json` |
 | `cad/studies/test_dock_layout.py` | plain `python3`, in CI (`refresh-chain`) | the analysis on boxes with hand-worked answers: separation along an axis, part-cell Y shifts, mirrored sides, pitch per MadMax phase, pair gaps of mixed slots (two copies of one slot = the uniform pitch, wherever it sits), best rows, tool count |
 | `cad/studies/belt_plate_gap.py` | headless, read-only | #61: the belts (XY-joint band, moved with the gantry) vs both parked MadMax plates at the dock pickup, parked and at the large opening, on lite-25 and lite-26. Clearance by `distToShape`; on overlap, the Y depth. lite-26: ≥ 0.79 mm clear at the large opening, ≥ 6.79 mm parked (lite-25: 3.25–4.0 mm into the plates). Log `data/logs/belt_plate_gap.log` |
-| `cad/scripts/refresh.py` | plain `python3`; runs the read-only steps, never saves or commits | #69: the after-a-model-change chain above. `test_refresh.py` (CI `refresh-chain`) tests the sync, the step runner and the summary |
+| `cad/scripts/refresh.py` | plain `python3`; submits the batch-lane chain or runs the read-only steps, never saves or commits | #69: the after-a-model-change chain above. `test_refresh.py` (CI `refresh-chain`) tests the sync, the step runner, the summary, the lane plan and `--collect` (homelab#2257) |
 | `cad/studies/print_area.py` | plain `python3`, no FreeCAD | #67: draws `data/print-area.svg`: the 355 plate, the 350 print square and the area the carried nozzle reaches (tightest head per side, clamped to the square). It reads the reach from `data/logs/sweep_toolhead.log` and the plate constants from `sweep_toolhead.py`, so **re-run it after every sweep**. `test_print_area.py` fails in CI when the drawing is stale. lite-26: **342.0 × 340.19** (plate X 6.5…348.5, Y 2.5…342.69; left/right −4, rear −9.81, front 0). The user accepts a smaller print area (2026-11-06): printing to the plate edge cools faster and curls |
 | `platform/render/export_meshes.py` + `platform/render/render.py` | GUI export (never saves), then `blender -b -P render.py -- <export> <out>`, or on node-03 (see "Rendering on node-03") | Cycles renders: the Obico camera's view lit only by the LED strips, plus an outside 3/4 view |
 | `cad/render/export_pose.py` + `platform/render/render.py` | headless export (never saves), then render locally or on node-03 | One `sweep_toolhead.py` pose (`VT350_POSE="Left:front-left, top"`). Parts are coloured by role (head, plate, standard vs Alternate bracket, carriage, gantry), the overlap volumes glow red, and the door, panels and insulation are left out. `scene.json` carries its own `views`, with per-view `hide` and `alpha`; `render.py` renders those in place of the obico/outside views |

@@ -279,6 +279,201 @@ class Summary(unittest.TestCase):
         self.assertIn("sweep not run", s)
 
 
+# homelab bin/gpu-batch-submit.py's output, verbatim in shape (its first line is pinned by homelab
+# test_first_line_names_the_chain_id_for_vt350_refresh_py, homelab#2257)
+SUBMIT_OUT = """\
+started chain vt350-refresh vt350-lite-35-20261114t170000-ab12
+  derive  /mnt/nfs/media/gpu-batch/vt350-lite-35-20261114t170000-ab12-derive  (status.json there is that step's record)
+  sweep   /mnt/nfs/media/gpu-batch/vt350-lite-35-20261114t170000-ab12-sweep  (status.json there is that step's record)
+  area    /mnt/nfs/media/gpu-batch/vt350-lite-35-20261114t170000-ab12-area  (status.json there is that step's record)
+"""
+CID = "vt350-lite-35-20261114t170000-ab12"
+
+
+class Lane(unittest.TestCase):
+    """homelab#2257: the model-reading steps (part_index, sweep, z_sweep, print_area) run on the vt350-refresh
+    batch-lane chain; the laptop keeps the steps whose output is committed (derive_stls's STLs: the lane's
+    tessellation differs, homelab#1961) and submits the chain first so both run at once"""
+
+    def test_lane_plan_submits_then_runs_only_the_repo_writing_steps(self):
+        names = [s.name for s in rf.lane_plan(35, root="/r", app="/app", models="/m", notify="dvystrcil/homelab#2257")]
+        self.assertEqual(names, ["submit", "derive_stls", "sync_printed", "check_printed"])
+
+    def test_submit_step_is_the_homelab_chain_on_this_checkout_and_model(self):
+        s = rf.lane_plan(35, root="/r", app="/app", models="/m", notify="dvystrcil/homelab#2257",
+                         submit="/h/bin/gpu-batch-submit.py")[0]
+        self.assertEqual(s.cmd, [sys.executable, "/h/bin/gpu-batch-submit.py", "chain", "vt350-refresh",
+                                 "--model", "/m/vt350-lite-35.FCStd", "--models-dir", "/m", "--vt350", "/r",
+                                 "--sweep-deadline", str(rf.SWEEP_DEADLINE_S), "--notify", "dvystrcil/homelab#2257"])
+        self.assertEqual(s.log, "/r/cad/data/logs/refresh_submit.out")
+        self.assertRegex(SUBMIT_OUT, s.marker)
+
+    def test_without_notify_there_is_no_notify_flag(self):
+        s = rf.lane_plan(35, root="/r", app="/app", models="/m", notify=None)[0]
+        self.assertNotIn("--notify", s.cmd)
+
+    def test_the_sweep_job_has_room_for_sweep_index_and_z_sweep(self):
+        # lite-32 on the laptop: sweep 1114 s + z_sweep 3219 s; the sweep job runs both plus the index
+        self.assertGreaterEqual(rf.SWEEP_DEADLINE_S, 7200)
+
+    def test_chain_id_is_read_from_the_submit_output(self):
+        self.assertEqual(rf.chain_id(SUBMIT_OUT), CID)
+        with self.assertRaises(rf.StepError):
+            rf.chain_id("chain webhook answered 500\n")
+
+
+class Collect(unittest.TestCase):
+    """refresh.py N --collect <chain-id>: after the chain's comment, the chain's outputs into the repo"""
+
+    def setUp(self):
+        self.work = tempfile.mkdtemp(); self.addCleanup(shutil.rmtree, self.work, True)
+        self.root = tempfile.mkdtemp(); self.addCleanup(shutil.rmtree, self.root, True)
+        os.makedirs(os.path.join(self.root, "cad/data/logs"))
+        model = f"/work/{CID}-sweep/in/vt350-lite-35.FCStd"
+        self.outputs = {
+            "sweep": {"out/logs/sweep_toolhead.log": SWEEP.replace("/home/x/vt350-lite-26.FCStd", model)
+                      + "[  700.0s] done (read-only, nothing saved)\n",
+                      "out/logs/z_sweep.log": f"[    0.0s] model {model} (read-only)\n" + ZLOG,
+                      "out/logs/z_sweep.json": '{"model": "%s"}\n' % model,
+                      "out/logs/part_index.log": "[   45.2s] part_index: done (1 models)\n",
+                      "out/index/vt350-lite-35.parts.json": "{}\n"},
+            "area": {"out/print-area.svg": '<svg><text>Printable area on vt350-lite-35 (both heads: Left, Right)</text></svg>\n',
+                     "out/refresh-summary.json": '{"printable": [342.0, 340.19], "print_area_svg_unchanged": false}\n'},
+        }
+        for job in ("derive", "sweep", "area"):
+            self.job(job, "succeeded", "ok")
+            for rel, text in self.outputs.get(job, {}).items():
+                self.write(job, rel, text)
+
+    def job(self, job, state, reason):
+        d = os.path.join(self.work, f"{CID}-{job}"); os.makedirs(d, exist_ok=True)
+        with open(os.path.join(d, "status.json"), "w") as f:
+            f.write('{"state": "%s", "reason": "%s"}' % (state, reason))
+
+    def write(self, job, rel, text):
+        p = os.path.join(self.work, f"{CID}-{job}", rel); os.makedirs(os.path.dirname(p), exist_ok=True)
+        open(p, "w").write(text)
+
+    def collect(self, n=35, cid=CID):
+        return rf.collect(n, cid, root=self.root, work_root=self.work)
+
+    def repo(self, rel):
+        p = os.path.join(self.root, rel)
+        return open(p).read() if os.path.isfile(p) else None
+
+    def assert_nothing_written(self):
+        self.assertEqual(sorted(os.listdir(os.path.join(self.root, "cad/data/logs"))), [])
+        self.assertIsNone(self.repo("cad/data/print-area.svg"))
+
+    def test_logs_and_svg_land_where_the_local_steps_wrote_them(self):
+        got = self.collect()
+        for job, rel, dest in (("sweep", "out/logs/sweep_toolhead.log", rf.SWEEP_LOG), ("sweep", "out/logs/z_sweep.log", rf.Z_LOG),
+                               ("sweep", "out/logs/z_sweep.json", "cad/data/logs/z_sweep.json"),
+                               ("sweep", "out/logs/part_index.log", "cad/data/logs/part_index.log"),
+                               ("area", "out/print-area.svg", "cad/data/print-area.svg")):
+            self.assertEqual(self.repo(dest), self.outputs[job][rel], dest)
+        self.assertEqual(got["index"], [os.path.join(self.work, f"{CID}-sweep/out/index/vt350-lite-35.parts.json")])
+        self.assertEqual(got["printable"], [342.0, 340.19])
+
+    def test_a_failed_job_is_named_with_its_reason_and_nothing_is_written(self):
+        self.job("sweep", "failed", "step z-sweep: exit 1")
+        with self.assertRaises(rf.StepError) as e:
+            self.collect()
+        self.assertIn(f"{CID}-sweep", str(e.exception)); self.assertIn("step z-sweep: exit 1", str(e.exception))
+        self.assert_nothing_written()
+
+    def test_a_chain_still_running_is_not_finished(self):
+        os.remove(os.path.join(self.work, f"{CID}-area", "status.json"))
+        with self.assertRaises(rf.StepError) as e:
+            self.collect()
+        self.assertIn("not finished", str(e.exception))
+        self.assert_nothing_written()
+
+    def test_a_log_without_its_completion_marker_is_refused(self):
+        # the runner's own checks passed, but a log copied here must still end the way the local step's must
+        self.write("sweep", "out/logs/z_sweep.log", ZLOG.replace("z_sweep: done", "z_sweep: FAILED"))
+        with self.assertRaises(rf.StepError) as e:
+            self.collect()
+        self.assertIn("z_sweep.log", str(e.exception))
+        self.assert_nothing_written()
+
+    def test_a_missing_output_is_refused(self):
+        os.remove(os.path.join(self.work, f"{CID}-sweep", "out/logs/z_sweep.json"))
+        with self.assertRaises(rf.StepError) as e:
+            self.collect()
+        self.assertIn("z_sweep.json", str(e.exception))
+        self.assert_nothing_written()
+
+    def test_a_chain_without_a_part_index_is_refused(self):
+        os.remove(os.path.join(self.work, f"{CID}-sweep", "out/index/vt350-lite-35.parts.json"))
+        with self.assertRaises(rf.StepError) as e:
+            self.collect()
+        self.assertIn("no part index", str(e.exception))
+        self.assert_nothing_written()
+
+    def test_a_chain_of_another_model_is_refused(self):
+        with self.assertRaises(rf.StepError) as e:
+            self.collect(n=34)
+        self.assertIn(f"{CID} is not a chain of vt350-lite-34", str(e.exception))
+        self.assert_nothing_written()
+
+    def test_a_sweep_of_another_model_is_refused_even_under_the_right_id(self):
+        self.write("sweep", "out/logs/sweep_toolhead.log",
+                   self.outputs["sweep"]["out/logs/sweep_toolhead.log"].replace("vt350-lite-35.FCStd", "vt350-lite-34.FCStd"))
+        with self.assertRaises(rf.StepError) as e:
+            self.collect()
+        self.assertIn("sweep_toolhead.log", str(e.exception))
+        self.assert_nothing_written()
+
+    def test_the_last_submitted_chain_is_the_default(self):
+        with open(os.path.join(self.root, "cad/data/logs/refresh_submit.out"), "w") as f:
+            f.write(SUBMIT_OUT)
+        self.assertEqual(rf.last_chain_id(self.root), CID)
+        os.remove(os.path.join(self.root, "cad/data/logs/refresh_submit.out"))
+        with self.assertRaises(rf.StepError):
+            rf.last_chain_id(self.root)
+
+    def test_collect_plan_adopts_the_index_and_tests_the_print_area_locally(self):
+        steps = rf.collect_plan(["/w/x.parts.json"], root="/r", models="/m")
+        self.assertEqual([s.name for s in steps], ["adopt_index", "test_print_area"])
+        self.assertEqual(steps[0].cmd, [sys.executable, "/r/platform/freecad/part_index.py", "--adopt", "--models", "/m",
+                                        "/w/x.parts.json"])
+
+
+class Cli(unittest.TestCase):
+    def run_cli(self, *argv):
+        import subprocess
+        return subprocess.run([sys.executable, os.path.join(HERE, "refresh.py"), *argv], capture_output=True, text=True)
+
+    # parse_args only: a red run of the old main() with these argv would start the real steps (a FreeCAD sweep)
+    def parse_error(self, *argv):
+        import contextlib, io
+        err = io.StringIO()
+        with self.assertRaises(SystemExit) as e, contextlib.redirect_stderr(err):
+            rf.parse_args(list(argv))
+        self.assertEqual(e.exception.code, 2)
+        return err.getvalue()
+
+    def test_from_needs_local(self):
+        # --from picks among the all-local steps; the lane run has its own fixed four
+        self.assertIn("--local", self.parse_error("35", "--from", "sweep"))
+        self.assertEqual(rf.parse_args(["35", "--local", "--from", "sweep"]).start, "sweep")
+
+    def test_collect_and_local_are_exclusive(self):
+        self.parse_error("35", "--local", "--collect", CID)
+
+    def test_collect_without_an_id_means_the_last_submitted(self):
+        self.assertEqual(rf.parse_args(["35", "--collect"]).collect, "")
+        self.assertIsNone(rf.parse_args(["35"]).collect)
+
+    def test_lane_dry_run_lists_the_submit_and_the_local_steps(self):
+        r = self.run_cli("35", "--dry-run", "--notify", "dvystrcil/homelab#2257")
+        self.assertEqual(r.returncode, 0, r.stderr)
+        names = [l.split()[0] for l in r.stdout.splitlines() if l and not l.startswith("would")]
+        self.assertEqual(names, ["submit", "derive_stls", "sync_printed", "check_printed"])
+        self.assertIn("chain vt350-refresh", r.stdout)
+
+
 class ToolModules(unittest.TestCase):
     """main() loads part_index for the summary from where TOOLS says it lives (it moved to platform/ in #132 and the
     summary kept the old path: lite-31's refresh ran every step, then died on FileNotFoundError)"""
