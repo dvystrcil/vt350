@@ -7,8 +7,10 @@
 # Ø5.0 cable under a Ø9.8 plug; the user measured the real cable at 5.1 mm). The plan is the usual toolchanger umbilical: the cable is tied along its own head's
 # bowden tube, which lite-30 routed to the roof's top-rear exit (#3) with a bend radius >= 100 mm. So per head:
 #  1. the tube's curve, from its stored route (Inlet, ExitPoint, ExitDir, HandleInlet, HandleExit; bezier.py). lite-31
-#     made the middle heads as copies translated in X, whose stored Inlet/ExitPoint are still the source's: the X
-#     offset comes from each copy's geometry vs its source (checked: Y, Z and size unchanged);
+#     made the middle heads as copies translated in X. The stored Inlet/ExitPoint X is STALE on every tube (each
+#     tube lies in a plane X = const; Bowden Left's solid is at X -409.70, its props say -399.0; found 2026-11-14 by
+#     lite36_roof_exit.py, after #169/#171 had used the stored X). So X is taken from the solid (its section at Z 600)
+#     and the rebuilt curve is checked against the solid's section centres at several heights;
 #  2. the JOIN: for each point along the tube, the cable's lead-in is a Bezier from the lock top (tangent +Z) to a
 #     point beside the tube (tube radius + cable radius + GAP, on the restraint's side), arriving along the tube's
 #     tangent. Handles are searched for the largest smallest bend radius (bezier.ranked_handles' method) at each join;
@@ -102,7 +104,9 @@ def main(p):
         dx = tb.XMin - sb.XMin
         p.check(all(abs(a - b) < 1e-3 for a, b in ((tb.YMin, sb.YMin), (tb.ZMin, sb.ZMin), (tb.XLength, sb.XLength), (tb.ZLength, sb.ZLength))),
                 f"{h}: {tlab} is {slab} translated by dX {dx:+.2f} (Y, Z, size unchanged)")
-        off = V(dx, 0, 0)
+        sec = pr.shapes[t.Name].slice(V(0, 0, 1), 600.0)
+        p.check(len(sec) == 1, f"{h}: {tlab} cut by Z 600 in one loop")
+        off = V(Part.Face(sec[0]).CenterOfMass.x - s.Inlet.x, 0, 0)
         tp = bezier.tube_poles(tuple(V(s.Inlet) + off), tuple(V(s.ExitPoint) + off), tuple(V(s.ExitDir)),
                                s.HandleInlet.Value, s.HandleExit.Value)
         r_tube = bezier.min_radius(tp)
@@ -110,6 +114,14 @@ def main(p):
                 f"(stored {s.MinBendRadius.Value:.2f})")
         p.check(abs(bez(tp, 0).z - pr.shapes[t.Name].BoundBox.ZMin) < 0.05, f"{h}: the curve starts at the tube's bottom "
                 f"(Z {bez(tp, 0).z:.2f} vs {pr.shapes[t.Name].BoundBox.ZMin:.2f})")
+        miss = []
+        for z in (530.0, 560.0, 600.0, 650.0, 680.0):
+            sc = pr.shapes[t.Name].slice(V(0, 0, 1), z)
+            cm = Part.Face(sc[0]).CenterOfMass if len(sc) == 1 else None
+            q = bez(tp, u_at_z(tp, z))
+            miss.append(round((V(cm.x, cm.y, z) - q).Length, 2) if cm else None)
+        p.check(all(m is not None and m < 0.5 for m in miss), f"{h}: the rebuilt curve runs through the tube solid's "
+                f"section centres at Z 530/560/600/650/680 (off by {miss} mm); X {bez(tp, 0).x:.2f} (stored {s.Inlet.x + dx:.2f})")
         u_roof = u_at_z(tp, ROOF_Z) if bez(tp, 1).z > ROOF_Z else 1.0
         sgap = R_TUBE + R_CABLE + GAP
         per_u = {}

@@ -1,0 +1,72 @@
+[  125.0s] opened /home/dan/Documents/VT350/vt350-lite-35.FCStd
+[  135.8s] ok   roof parts are plain Part::Features in the global frame
+[  135.8s] ok   the rear top bar: top Z 690.00, Y 480.0..520.0 (slot at 490.0)
+[  135.8s] ok   Toolhead slot 1: Bowden Left is Bowden Left translated by dX +0.00
+[  135.9s] ok   Toolhead slot 1: Bowden Left cut by Z 690.0 in one loop (1)
+[  135.9s] ok   Toolhead slot 1: Bowden Left cut by Z 700.0 in one loop (1)
+[  135.9s] ok   Toolhead slot 1: exit measured at (-409.7, 460.0, 690.0) along (-0.0, 0.707, 0.707) (stored ExitPoint X -399.00, ExitDir agrees to 0.01 deg)
+[  148.1s] ok   Toolhead slot 1: base 16072 mm3, cap 3706 mm3, one valid solid each; base Z 693.0..724.4, Y 444.0..498.0
+[  148.1s] ok   Toolhead slot 1: walls between holes >= 1.5 mm: {'tube-cable bores': 1.5, 'cap screw 0 - tube bore': 8.5, 'cap screw 0 - cable bore': 1.8, 'cap screw 1 - tube bore': 2.28, 'cap screw 1 - cable bore': 8.0}
+[  148.1s] ok   Toolhead slot 1: cap screws 1.50 mm from the clamp's side faces
+[  148.1s] ok   Toolhead slot 1: M5 at X -423.8 over the bar's slot (Y 490.0)
+[  148.1s] ok   Toolhead slot 1: M5 at X -401.8 over the bar's slot (Y 490.0)
+[  148.2s] ok   slot 2: Bowden slot 2 is Bowden Left translated by dX +85.16
+[  148.2s] ok   slot 2: Bowden slot 2 cut by Z 690.0 in one loop (1)
+[  148.2s] ok   slot 2: Bowden slot 2 cut by Z 700.0 in one loop (1)
+[  148.2s] ok   slot 2: exit measured at (-324.54, 460.0, 690.0) along (-0.0, 0.707, 0.707) (stored ExitPoint X -313.84, ExitDir agrees to 0.01 deg)
+[  148.4s] ok   slot 2: base 16072 mm3, cap 3706 mm3, one valid solid each; base Z 693.0..724.4, Y 444.0..498.0
+[  148.4s] ok   slot 2: walls between holes >= 1.5 mm: {'tube-cable bores': 1.5, 'cap screw 0 - tube bore': 8.5, 'cap screw 0 - cable bore': 1.8, 'cap screw 1 - tube bore': 2.28, 'cap screw 1 - cable bore': 8.0}
+[  148.4s] ok   slot 2: cap screws 1.50 mm from the clamp's side faces
+[  148.4s] ok   slot 2: M5 at X -338.6 over the bar's slot (Y 490.0)
+[  148.4s] ok   slot 2: M5 at X -316.6 over the bar's slot (Y 490.0)
+[  148.4s] ok   slot 3: Bowden slot 3 is Bowden Right translated by dX -168.12
+[  148.4s] ok   slot 3: Bowden slot 3 cut by Z 690.0 in one loop (1)
+[  148.5s] ok   slot 3: Bowden slot 3 cut by Z 700.0 in one loop (1)
+[  148.5s] ok   slot 3: exit measured at (-259.12, 460.0, 690.0) along (-0.0, 0.707, 0.707) (stored ExitPoint X -260.12, ExitDir agrees to 0.01 deg)
+[  148.7s] ok   slot 3: base 16072 mm3, cap 3706 mm3, one valid solid each; base Z 693.0..724.4, Y 444.0..498.0
+[  148.7s] ok   slot 3: walls between holes >= 1.5 mm: {'tube-cable bores': 1.5, 'cap screw 0 - tube bore': 2.28, 'cap screw 0 - cable bore': 8.0, 'cap screw 1 - tube bore': 8.5, 'cap screw 1 - cable bore': 1.8}
+[  148.7s] ok   slot 3: cap screws 1.50 mm from the clamp's side faces
+[  148.7s] ok   slot 3: M5 at X -267.0 over the bar's slot (Y 490.0)
+[  148.7s] ok   slot 3: M5 at X -245.0 over the bar's slot (Y 490.0)
+[  148.7s] ok   slot 4: Bowden slot 4 is Bowden Left translated by dX +253.28
+[  148.7s] ok   slot 4: Bowden slot 4 cut by Z 690.0 in one loop (1)
+[  148.7s] ok   slot 4: Bowden slot 4 cut by Z 700.0 in one loop (1)
+[  148.7s] ok   slot 4: exit measured at (-156.42, 460.0, 690.0) along (-0.0, 0.707, 0.707) (stored ExitPoint X -145.72, ExitDir agrees to 0.01 deg)
+[  148.9s] ok   slot 4: base 16072 mm3, cap 3706 mm3, one valid solid each; base Z 693.0..724.4, Y 444.0..498.0
+[  148.9s] ok   slot 4: walls between holes >= 1.5 mm: {'tube-cable bores': 1.5, 'cap screw 0 - tube bore': 8.49, 'cap screw 0 - cable bore': 1.79, 'cap screw 1 - tube bore': 2.29, 'cap screw 1 - cable bore': 8.01}
+[  148.9s] ok   slot 4: cap screws 1.50 mm from the clamp's side faces
+[  148.9s] ok   slot 4: M5 at X -170.5 over the bar's slot (Y 490.0)
+[  148.9s] ok   slot 4: M5 at X -148.5 over the bar's slot (Y 490.0)
+[  148.9s] ok   slot 5: Bowden Right is Bowden Right translated by dX +0.00
+[  149.0s] ok   slot 5: Bowden Right cut by Z 690.0 in one loop (1)
+[  149.0s] ok   slot 5: Bowden Right cut by Z 700.0 in one loop (1)
+[  149.0s] ok   slot 5: exit measured at (-91.0, 460.0, 690.0) along (-0.0, 0.707, 0.707) (stored ExitPoint X -92.00, ExitDir agrees to 0.01 deg)
+[  149.2s] ok   slot 5: base 16072 mm3, cap 3706 mm3, one valid solid each; base Z 693.0..724.4, Y 444.0..498.0
+[  149.2s] ok   slot 5: walls between holes >= 1.5 mm: {'tube-cable bores': 1.5, 'cap screw 0 - tube bore': 2.28, 'cap screw 0 - cable bore': 8.0, 'cap screw 1 - tube bore': 8.5, 'cap screw 1 - cable bore': 1.8}
+[  149.2s] ok   slot 5: cap screws 1.50 mm from the clamp's side faces
+[  149.2s] ok   slot 5: M5 at X -98.9 over the bar's slot (Y 490.0)
+[  149.2s] ok   slot 5: M5 at X -76.9 over the bar's slot (Y 490.0)
+[  149.2s] ok   clamps Toolhead slot 1 | slot 2: 49.2 mm apart
+[  149.2s] ok   clamps slot 2 | slot 3: 35.6 mm apart
+[  149.2s] ok   clamps slot 3 | slot 4: 60.5 mm apart
+[  149.2s] ok   clamps slot 4 | slot 5: 35.6 mm apart
+[  149.6s] ok   Roof panel (3 mm): cut 2436.3 of 1006500.0 mm3 (5 exits); valid True, solids 1
+[  149.9s] ok   Roof felt strip (pad 3): cut 17545.4 of 197400.0 mm3 (5 exits); valid True, solids 1
+[  150.2s] ok   Roof felt strip liner, inner: cut 877.3 of 9870.0 mm3 (5 exits); valid True, solids 1
+[  150.5s] ok   Roof felt strip liner, outer: cut 877.3 of 9870.0 mm3 (5 exits); valid True, solids 1
+[  161.2s] ok   10 new clamp parts
+[  161.7s] ok   tubes vs the cut roof layers: clear
+[  245.2s] ok   new clamp parts vs everything (tubes included): []
+[  245.2s] ok   Roof exit clamp base slot 1 (vt350, GPL-3.0-or-later): material ABS-Generic -> role printed
+[  245.2s] ok   Roof exit clamp cap slot 1 (vt350, GPL-3.0-or-later): material ABS-Generic -> role printed
+[  245.2s] ok   Roof exit clamp base slot 2 (vt350, GPL-3.0-or-later): material ABS-Generic -> role printed
+[  245.2s] ok   Roof exit clamp cap slot 2 (vt350, GPL-3.0-or-later): material ABS-Generic -> role printed
+[  245.2s] ok   Roof exit clamp base slot 3 (vt350, GPL-3.0-or-later): material ABS-Generic -> role printed
+[  245.2s] ok   Roof exit clamp cap slot 3 (vt350, GPL-3.0-or-later): material ABS-Generic -> role printed
+[  245.2s] ok   Roof exit clamp base slot 4 (vt350, GPL-3.0-or-later): material ABS-Generic -> role printed
+[  245.2s] ok   Roof exit clamp cap slot 4 (vt350, GPL-3.0-or-later): material ABS-Generic -> role printed
+[  245.2s] ok   Roof exit clamp base slot 5 (vt350, GPL-3.0-or-later): material ABS-Generic -> role printed
+[  245.2s] ok   Roof exit clamp cap slot 5 (vt350, GPL-3.0-or-later): material ABS-Generic -> role printed
+[  245.2s] ok   solids: 1287 + 10 = 1297
+[  245.2s] verify: 0 problems
+[  289.0s] SAVED /home/dan/Documents/VT350/vt350-lite-36.FCStd 212778532
