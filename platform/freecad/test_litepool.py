@@ -18,6 +18,8 @@ def op_stale(msg): raise litepool.Stale(msg)
 def op_crash(): os._exit(3)
 def op_env(k): return os.environ.get(k)
 def op_trims(): return sys.modules["__main__"].TRIMS            # the worker's own count (it runs as __main__)
+_KEEP = []
+def op_hold(mb): _KEEP.append(b"\x01" * (mb << 20)); return os.getpid()   # resident until the worker exits
 
 
 BIG = 10 ** 9                                   # MB: no memory cap
@@ -196,6 +198,29 @@ class PoolTest(unittest.TestCase):
         procs = list(p.procs); p.close()
         self.assertTrue(all(pr.poll() is not None for pr in procs))
         p.close()                                                           # twice is fine
+
+    def test_close_records_each_workers_peak_rss(self):                # homelab#2267: size the budget from these
+        p = litepool.Pool(2, cmd=[sys.executable], path=[HERE])
+        self.assertIsNone(p.peak_rss_mb)                                    # known only once the workers stop
+        p.map("test_litepool", "op_hold", [(300,), (5,)])
+        p.close()
+        self.assertEqual(len(p.peak_rss_mb), 2)
+        self.assertGreaterEqual(max(p.peak_rss_mb), 300)
+        self.assertLess(min(p.peak_rss_mb), 300)
+
+    def test_a_dead_workers_peak_is_unknown(self):
+        p = litepool.Pool(2, cmd=[sys.executable], path=[HERE])
+        with self.assertRaises(RuntimeError): p.map("test_litepool", "op_crash", [(), ()])
+        p.close()
+        self.assertEqual(p.peak_rss_mb, [None, None])
+
+    def test_the_peak_line(self):
+        self.assertEqual(litepool.peak_rss_line([2100, 1900, None], 3400),
+                         "litepool: peak RSS: workers max 2100 MB, sum 4000 MB (2 of 3 reported); parent 3400 MB")
+        self.assertEqual(litepool.peak_rss_line([2100, 1900], 3400),
+                         "litepool: peak RSS: workers max 2100 MB, sum 4000 MB; parent 3400 MB")
+        self.assertEqual(litepool.peak_rss_line(None, 3400), "litepool: peak RSS: no workers; parent 3400 MB")
+        self.assertGreater(litepool.maxrss_mb(), 0)
 
     def test_close_removes_the_pool_dir(self):
         p = litepool.Pool(1, cmd=[sys.executable], path=[HERE])

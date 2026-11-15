@@ -319,7 +319,9 @@ class Pass:
 
     def close(self):
         if self._pool is not None:
-            self._pool.close(); self._pool = None
+            self._pool.close()
+            self.log(litepool.peak_rss_line(self._pool.peak_rss_mb, litepool.maxrss_mb()))   # homelab#2267
+            self._pool = None
         if not self.log_f.closed: self.log_f.close()
 
     def vol(self, a, b):

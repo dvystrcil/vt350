@@ -17,6 +17,8 @@ FAKE = textwrap.dedent("""\
         import time; time.sleep(60)
     if mode == "fatal": json.dump(dict(fatal="worker blew up"), open(out, "w")); sys.exit(0)
     stats = dict(leaves=3, pairs_total=2, pair_poses=1, box_hits=0, load_s=0.1, check_s=0.1)
+    if mode == "rss":                 # homelab#2267: a worker reports its own peak RSS; worker k reports 100 * (k + 1) MB
+        stats["maxrss_mb"] = 100 * (int(os.environ["CLASHLIB_K"]) + 1)
     json.dump(dict(results=[], errors=[], stats=stats), open(out, "w"))
     """)
 
@@ -75,6 +77,30 @@ class JobDir(unittest.TestCase):
         self.run_job("ok", keep_dir=keep)
         self.assertTrue(os.path.isfile(os.path.join(keep, "job.json")))
         self.assertEqual(json.load(open(os.path.join(keep, "w0.json")))["stats"]["leaves"], 3)
+
+
+class PeakRss(unittest.TestCase):
+    """homelab#2267: the batch lane's sweep job was OOMKilled at 10 workers on lite-35. Every run reports the parent's
+    peak and each worker's, so the worker count can be sized from measured numbers instead of a guess."""
+    setUp, run_job = JobDir.setUp, JobDir.run_job
+
+    def test_the_run_reports_the_largest_and_total_worker_peak_and_the_parent_peak(self):
+        lines = []
+        os.environ["FAKE_MODE"] = "rss"
+        r = clashlib.run(self.model, {"a": ["x"], "b": ["y"]}, n=3, log=lines.append)
+        peak = r["stats"]["peak_rss_mb"]
+        self.assertEqual((peak["worker_max"], peak["worker_sum"]), (300, 600))
+        self.assertGreater(peak["parent"], 0)
+        self.assertRegex(lines[-1], rf"peak RSS: workers max 300 MB, sum 600 MB; parent {peak['parent']} MB$")
+
+    def test_the_worker_side_measures_itself(self):
+        # the real worker writes stats["maxrss_mb"] from its own getrusage (KB on Linux) before it exits
+        self.assertEqual(clashlib.maxrss_mb(), max(1, round(__import__("resource").getrusage(
+            __import__("resource").RUSAGE_SELF).ru_maxrss / 1024)))
+
+    def test_a_worker_that_reports_no_peak_is_unknown_not_zero(self):
+        r = self.run_job("ok")
+        self.assertEqual(r["stats"]["peak_rss_mb"]["worker_max"], None)
 
 
 if __name__ == "__main__":

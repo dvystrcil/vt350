@@ -29,6 +29,21 @@ WORKER_MB = 2000        # one worker: ~0.5 GB at rest (trimmed) + its task; the 
 RESERVE_MB = 12000      # the parent pass: it keeps the heavy distance, so it can reach serial's peak (lite-30: 11.85 GB)
 
 
+def maxrss_mb():
+    """This process's peak resident set, MB (Linux ru_maxrss is KB)."""
+    import resource
+    return max(1, round(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024))
+
+
+def peak_rss_line(workers, parent):
+    """The log line a pass writes when its pool closes (homelab#2267: the budget is sized from these numbers)."""
+    if not workers: return f"litepool: peak RSS: no workers; parent {parent} MB"
+    known = [w for w in workers if w is not None]
+    part = "" if len(known) == len(workers) else f" ({len(known)} of {len(workers)} reported)"
+    top = max(known) if known else None
+    return f"litepool: peak RSS: workers max {top} MB, sum {sum(known)} MB{part}; parent {parent} MB"
+
+
 class Stale(Exception):
     """Raised by an op when its inputs don't match the parent's (e.g. a document shape changed in memory)."""
 
@@ -102,6 +117,7 @@ def _discard(procs, d):
 class Pool:
     def __init__(self, n, cmd, path=(), cwd=None, env=None):
         self.n = n
+        self.peak_rss_mb = None                 # [MB or None per worker], filled by close() from the workers' replies
         self.dir = tempfile.mkdtemp(prefix="litepool-")
         self.procs, self.conns, self.errs = [], [], []
         # close() is the normal path; this also runs if the pool is dropped or the process exits without close()
@@ -152,6 +168,13 @@ class Pool:
         for c in self.conns:
             try: c.send(None)
             except OSError: pass
+        if self.conns:                         # each live worker answers the stop with its own peak, then exits
+            peaks = []
+            for c in self.conns:
+                try: m = c.recv() if c.poll(10) else None
+                except (EOFError, OSError): m = None
+                peaks.append(m[1] if isinstance(m, tuple) and len(m) == 2 and m[0] == "peak" else None)
+            self.peak_rss_mb = peaks
         for pr in self.procs:
             try: pr.wait(timeout=30)
             except subprocess.TimeoutExpired: pr.kill(); pr.wait()
@@ -185,7 +208,10 @@ def _serve(fd):
     while True:
         try: msg = conn.recv()
         except (EOFError, OSError): break
-        if msg is None: break
+        if msg is None:
+            try: conn.send(("peak", maxrss_mb()))
+            except OSError: pass
+            break
         tid, module, fn, args = msg
         try:
             if module not in mods: mods[module] = importlib.import_module(module)
