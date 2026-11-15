@@ -403,7 +403,7 @@ class Aligned(unittest.TestCase):
 
 
 VIS = {"roles": {}, "rules": [], "visibility": [
-    {"tag": "dock_carriage_copy", "group": "(Left|Right) Dock / .* / Carriage(\\(Mirror\\))?$", "hide": "all"},
+    {"tag": "dock_carriage_copy", "group": "(Left|Right) Dock / [^/]+ / Carriage(\\(Mirror\\))?( / |$)", "hide": "all"},
     {"tag": "left_panel", "label": "^Left side panel \\(3 mm\\)", "hide": ["low_side"]}]}
 
 
