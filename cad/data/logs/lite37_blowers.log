@@ -1,0 +1,175 @@
+[  116.2s] opened /home/dan/Documents/VT350/vt350-lite-36.FCStd
+[  137.8s] ok   the blower solid: valid, one solid, 13669.6 mm3, box 39.70 x 39.70 x 9.80
+[  138.0s] ok   Left Toolhead: one 2510 fan (1)
+[  138.0s] ok   Left Toolhead: one left 4010 duct (['[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)'])
+[  138.0s] ok   Left Toolhead / [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0): 4 pilot holes r 0.75
+[  138.0s] ok   Left Toolhead / [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0): pilot axes parallel
+[  138.0s] ok   Left Toolhead / [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0): 4 corner seats [18.23, 17.27, 18.23, 18.13], all facing the same way
+[  138.0s] ok   Left Toolhead / [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0): the 4 seats in one plane
+[  138.0s] ok   Left Toolhead / [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0): seat normal horizontal (-0.98481, -0.17365, 0.00000)
+[  138.0s] ok   Left Toolhead / [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0): pilots on a 35.0 square [(-17.5, -17.5), (-17.5, 17.5), (17.5, -17.5), (17.5, 17.5)]
+[  158.9s] ok   Left Toolhead / [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0): outlet (void, walls) by rotation 0/90/180/270 [(1.0, 0.002), (0.593, 0.666), (0.227, 0.752), (0.397, 0.682)]: on the inlet at [90] deg (void >= 0.5 and walls >= 0.5, exactly one)
+[  158.9s] ok   Left Toolhead: one right 4010 duct (['[a]_Duct-4010-right'])
+[  158.9s] ok   Left Toolhead / [a]_Duct-4010-right: 4 pilot holes r 0.75
+[  158.9s] ok   Left Toolhead / [a]_Duct-4010-right: pilot axes parallel
+[  159.0s] ok   Left Toolhead / [a]_Duct-4010-right: 4 corner seats [18.23, 18.23, 18.13, 17.27], all facing the same way
+[  159.0s] ok   Left Toolhead / [a]_Duct-4010-right: the 4 seats in one plane
+[  159.0s] ok   Left Toolhead / [a]_Duct-4010-right: seat normal horizontal (0.98481, -0.17365, 0.00000)
+[  159.0s] ok   Left Toolhead / [a]_Duct-4010-right: pilots on a 35.0 square [(-17.5, -17.5), (-17.5, 17.5), (17.5, -17.5), (17.5, 17.5)]
+[  159.5s] ok   Left Toolhead / [a]_Duct-4010-right: outlet (void, walls) by rotation 0/90/180/270 [(0.129, 0.752), (0.587, 0.667), (1.0, 0.002), (0.397, 0.682)]: on the inlet at [90] deg (void >= 0.5 and walls >= 0.5, exactly one)
+[  159.6s] ok   Toolhead slot 2 (L): one 2510 fan (1)
+[  159.6s] ok   Toolhead slot 2 (L): one left 4010 duct (['[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)001'])
+[  159.6s] ok   Toolhead slot 2 (L) / [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)001: 4 pilot holes r 0.75
+[  159.6s] ok   Toolhead slot 2 (L) / [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)001: pilot axes parallel
+[  159.7s] ok   Toolhead slot 2 (L) / [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)001: 4 corner seats [18.23, 17.27, 18.23, 18.13], all facing the same way
+[  159.7s] ok   Toolhead slot 2 (L) / [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)001: the 4 seats in one plane
+[  159.7s] ok   Toolhead slot 2 (L) / [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)001: seat normal horizontal (-0.98481, -0.17365, 0.00000)
+[  159.7s] ok   Toolhead slot 2 (L) / [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)001: pilots on a 35.0 square [(-17.5, -17.5), (-17.5, 17.5), (17.5, -17.5), (17.5, 17.5)]
+[  180.3s] ok   Toolhead slot 2 (L) / [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)001: outlet (void, walls) by rotation 0/90/180/270 [(1.0, 0.002), (0.593, 0.666), (0.227, 0.752), (0.397, 0.682)]: on the inlet at [90] deg (void >= 0.5 and walls >= 0.5, exactly one)
+[  180.3s] ok   Toolhead slot 2 (L): one right 4010 duct (['[a]_Duct-4010-right001'])
+[  180.4s] ok   Toolhead slot 2 (L) / [a]_Duct-4010-right001: 4 pilot holes r 0.75
+[  180.4s] ok   Toolhead slot 2 (L) / [a]_Duct-4010-right001: pilot axes parallel
+[  180.4s] ok   Toolhead slot 2 (L) / [a]_Duct-4010-right001: 4 corner seats [18.23, 18.23, 18.13, 17.27], all facing the same way
+[  180.4s] ok   Toolhead slot 2 (L) / [a]_Duct-4010-right001: the 4 seats in one plane
+[  180.4s] ok   Toolhead slot 2 (L) / [a]_Duct-4010-right001: seat normal horizontal (0.98481, -0.17365, 0.00000)
+[  180.4s] ok   Toolhead slot 2 (L) / [a]_Duct-4010-right001: pilots on a 35.0 square [(-17.5, -17.5), (-17.5, 17.5), (17.5, -17.5), (17.5, 17.5)]
+[  180.9s] ok   Toolhead slot 2 (L) / [a]_Duct-4010-right001: outlet (void, walls) by rotation 0/90/180/270 [(0.129, 0.752), (0.587, 0.667), (1.0, 0.002), (0.397, 0.682)]: on the inlet at [90] deg (void >= 0.5 and walls >= 0.5, exactly one)
+[  181.0s] ok   Toolhead slot 3 (R): one 2510 fan (1)
+[  181.0s] ok   Toolhead slot 3 (R): one left 4010 duct (['[a]_Duct-4010-left002'])
+[  181.0s] ok   Toolhead slot 3 (R) / [a]_Duct-4010-left002: 4 pilot holes r 0.75
+[  181.0s] ok   Toolhead slot 3 (R) / [a]_Duct-4010-left002: pilot axes parallel
+[  181.1s] ok   Toolhead slot 3 (R) / [a]_Duct-4010-left002: 4 corner seats [18.13, 18.23, 18.23, 17.27], all facing the same way
+[  181.1s] ok   Toolhead slot 3 (R) / [a]_Duct-4010-left002: the 4 seats in one plane
+[  181.1s] ok   Toolhead slot 3 (R) / [a]_Duct-4010-left002: seat normal horizontal (-0.98481, -0.17365, 0.00000)
+[  181.1s] ok   Toolhead slot 3 (R) / [a]_Duct-4010-left002: pilots on a 35.0 square [(-17.5, -17.5), (-17.5, 17.5), (17.5, -17.5), (17.5, 17.5)]
+[  201.4s] ok   Toolhead slot 3 (R) / [a]_Duct-4010-left002: outlet (void, walls) by rotation 0/90/180/270 [(1.0, 0.002), (0.593, 0.666), (0.227, 0.752), (0.397, 0.682)]: on the inlet at [90] deg (void >= 0.5 and walls >= 0.5, exactly one)
+[  201.4s] ok   Toolhead slot 3 (R): one right 4010 duct (['[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)001'])
+[  201.4s] ok   Toolhead slot 3 (R) / [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)001: 4 pilot holes r 0.75
+[  201.4s] ok   Toolhead slot 3 (R) / [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)001: pilot axes parallel
+[  201.4s] ok   Toolhead slot 3 (R) / [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)001: 4 corner seats [17.27, 18.23, 18.13, 18.23], all facing the same way
+[  201.4s] ok   Toolhead slot 3 (R) / [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)001: the 4 seats in one plane
+[  201.4s] ok   Toolhead slot 3 (R) / [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)001: seat normal horizontal (0.98481, -0.17365, 0.00000)
+[  201.4s] ok   Toolhead slot 3 (R) / [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)001: pilots on a 35.0 square [(-17.5, -17.5), (-17.5, 17.5), (17.5, -17.5), (17.5, 17.5)]
+[  214.4s] ok   Toolhead slot 3 (R) / [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)001: outlet (void, walls) by rotation 0/90/180/270 [(0.129, 0.752), (0.587, 0.667), (1.0, 0.002), (0.397, 0.682)]: on the inlet at [90] deg (void >= 0.5 and walls >= 0.5, exactly one)
+[  214.6s] ok   Toolhead slot 4 (L): one 2510 fan (1)
+[  214.6s] ok   Toolhead slot 4 (L): one left 4010 duct (['[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)002'])
+[  214.6s] ok   Toolhead slot 4 (L) / [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)002: 4 pilot holes r 0.75
+[  214.6s] ok   Toolhead slot 4 (L) / [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)002: pilot axes parallel
+[  214.6s] ok   Toolhead slot 4 (L) / [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)002: 4 corner seats [18.23, 17.27, 18.23, 18.13], all facing the same way
+[  214.6s] ok   Toolhead slot 4 (L) / [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)002: the 4 seats in one plane
+[  214.6s] ok   Toolhead slot 4 (L) / [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)002: seat normal horizontal (-0.98481, -0.17365, 0.00000)
+[  214.6s] ok   Toolhead slot 4 (L) / [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)002: pilots on a 35.0 square [(-17.5, -17.5), (-17.5, 17.5), (17.5, -17.5), (17.5, 17.5)]
+[  235.4s] ok   Toolhead slot 4 (L) / [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)002: outlet (void, walls) by rotation 0/90/180/270 [(1.0, 0.002), (0.593, 0.666), (0.227, 0.752), (0.397, 0.682)]: on the inlet at [90] deg (void >= 0.5 and walls >= 0.5, exactly one)
+[  235.4s] ok   Toolhead slot 4 (L): one right 4010 duct (['[a]_Duct-4010-right002'])
+[  235.4s] ok   Toolhead slot 4 (L) / [a]_Duct-4010-right002: 4 pilot holes r 0.75
+[  235.4s] ok   Toolhead slot 4 (L) / [a]_Duct-4010-right002: pilot axes parallel
+[  235.4s] ok   Toolhead slot 4 (L) / [a]_Duct-4010-right002: 4 corner seats [18.23, 18.23, 18.13, 17.27], all facing the same way
+[  235.4s] ok   Toolhead slot 4 (L) / [a]_Duct-4010-right002: the 4 seats in one plane
+[  235.4s] ok   Toolhead slot 4 (L) / [a]_Duct-4010-right002: seat normal horizontal (0.98481, -0.17365, 0.00000)
+[  235.4s] ok   Toolhead slot 4 (L) / [a]_Duct-4010-right002: pilots on a 35.0 square [(-17.5, -17.5), (-17.5, 17.5), (17.5, -17.5), (17.5, 17.5)]
+[  236.0s] ok   Toolhead slot 4 (L) / [a]_Duct-4010-right002: outlet (void, walls) by rotation 0/90/180/270 [(0.129, 0.752), (0.587, 0.667), (1.0, 0.002), (0.397, 0.682)]: on the inlet at [90] deg (void >= 0.5 and walls >= 0.5, exactly one)
+[  236.1s] ok   Right Toolhead: one 2510 fan (1)
+[  236.1s] ok   Right Toolhead: one left 4010 duct (['[a]_Duct-4010-left001'])
+[  236.1s] ok   Right Toolhead / [a]_Duct-4010-left001: 4 pilot holes r 0.75
+[  236.1s] ok   Right Toolhead / [a]_Duct-4010-left001: pilot axes parallel
+[  236.1s] ok   Right Toolhead / [a]_Duct-4010-left001: 4 corner seats [18.13, 18.23, 18.23, 17.27], all facing the same way
+[  236.1s] ok   Right Toolhead / [a]_Duct-4010-left001: the 4 seats in one plane
+[  236.1s] ok   Right Toolhead / [a]_Duct-4010-left001: seat normal horizontal (-0.98481, -0.17365, 0.00000)
+[  236.1s] ok   Right Toolhead / [a]_Duct-4010-left001: pilots on a 35.0 square [(-17.5, -17.5), (-17.5, 17.5), (17.5, -17.5), (17.5, 17.5)]
+[  256.3s] ok   Right Toolhead / [a]_Duct-4010-left001: outlet (void, walls) by rotation 0/90/180/270 [(1.0, 0.002), (0.593, 0.666), (0.227, 0.752), (0.397, 0.682)]: on the inlet at [90] deg (void >= 0.5 and walls >= 0.5, exactly one)
+[  256.3s] ok   Right Toolhead: one right 4010 duct (['[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)'])
+[  256.3s] ok   Right Toolhead / [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0): 4 pilot holes r 0.75
+[  256.4s] ok   Right Toolhead / [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0): pilot axes parallel
+[  256.4s] ok   Right Toolhead / [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0): 4 corner seats [17.27, 18.23, 18.13, 18.23], all facing the same way
+[  256.4s] ok   Right Toolhead / [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0): the 4 seats in one plane
+[  256.4s] ok   Right Toolhead / [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0): seat normal horizontal (0.98481, -0.17365, 0.00000)
+[  256.4s] ok   Right Toolhead / [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0): pilots on a 35.0 square [(-17.5, -17.5), (-17.5, 17.5), (17.5, -17.5), (17.5, 17.5)]
+[  257.0s] ok   Right Toolhead / [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0): outlet (void, walls) by rotation 0/90/180/270 [(0.129, 0.752), (0.587, 0.667), (1.0, 0.002), (0.397, 0.682)]: on the inlet at [90] deg (void >= 0.5 and walls >= 0.5, exactly one)
+[  266.9s] ok   Vindr Berserker 4010B blower L Left Toolhead (modelled from measurements): one valid solid, 13669.6 mm3, where placed
+[  266.9s] ok   Vindr Berserker 4010B blower L Left Toolhead (modelled from measurements): 4 holes parallel to the duct's pilots, one per pilot, each [0.354, 0.354, 0.354, 0.354] mm off its pilot (34.5 vs 35.0 square: 0.354 expected)
+[  287.0s] ok   Vindr Berserker 4010B blower L Left Toolhead (modelled from measurements): outlet pocket in the solid (0.0000 mm3 of material in it); facing (-0.000, +0.000, -1.000), rotation 90 deg; in front of it 59.3% void inside 66.6% duct walls (the inlet)
+[  290.3s] ok   Vindr Berserker 4010B blower L Left Toolhead (modelled from measurements): on its duct's seats: overlap 0.0000 mm3, distance 0.0000
+[  373.1s] Vindr Berserker 4010B blower L Left Toolhead (modelled from measurements): vs the 2510 fan 0.000 mm3; box gap 1.68, distance 1.680 mm
+[  373.1s] ok   Vindr Berserker 4010B blower L Left Toolhead (modelled from measurements): inside Left Toolhead, overlaps none (as designed: none)
+[  373.2s] ok   Vindr Berserker 4010B blower R Left Toolhead (modelled from measurements): one valid solid, 13669.6 mm3, where placed
+[  373.2s] ok   Vindr Berserker 4010B blower R Left Toolhead (modelled from measurements): 4 holes parallel to the duct's pilots, one per pilot, each [0.354, 0.354, 0.354, 0.354] mm off its pilot (34.5 vs 35.0 square: 0.354 expected)
+[  373.4s] ok   Vindr Berserker 4010B blower R Left Toolhead (modelled from measurements): outlet pocket in the solid (0.0000 mm3 of material in it); facing (+0.000, -0.000, -1.000), rotation 90 deg; in front of it 58.7% void inside 66.7% duct walls (the inlet)
+[  373.9s] ok   Vindr Berserker 4010B blower R Left Toolhead (modelled from measurements): on its duct's seats: overlap 0.0000 mm3, distance 0.0000
+[  374.1s] Vindr Berserker 4010B blower R Left Toolhead (modelled from measurements): vs the 2510 fan 0.000 mm3; box gap 1.33, distance 1.674 mm
+[  374.1s] ok   Vindr Berserker 4010B blower R Left Toolhead (modelled from measurements): inside Left Toolhead, overlaps none (as designed: none)
+[  374.4s] ok   Left Toolhead: blowers vs every solid outside its head: []
+[  374.5s] ok   Vindr Berserker 4010B blower L Toolhead slot 2 (L) (modelled from measurements): one valid solid, 13669.6 mm3, where placed
+[  374.5s] ok   Vindr Berserker 4010B blower L Toolhead slot 2 (L) (modelled from measurements): 4 holes parallel to the duct's pilots, one per pilot, each [0.354, 0.354, 0.354, 0.354] mm off its pilot (34.5 vs 35.0 square: 0.354 expected)
+[  382.3s] ok   Vindr Berserker 4010B blower L Toolhead slot 2 (L) (modelled from measurements): outlet pocket in the solid (0.0000 mm3 of material in it); facing (-0.000, +0.000, -1.000), rotation 90 deg; in front of it 59.3% void inside 66.6% duct walls (the inlet)
+[  385.2s] ok   Vindr Berserker 4010B blower L Toolhead slot 2 (L) (modelled from measurements): on its duct's seats: overlap 0.0000 mm3, distance 0.0000
+[  385.4s] Vindr Berserker 4010B blower L Toolhead slot 2 (L) (modelled from measurements): vs the 2510 fan 0.000 mm3; box gap 1.68, distance 1.680 mm
+[  385.4s] ok   Vindr Berserker 4010B blower L Toolhead slot 2 (L) (modelled from measurements): inside Toolhead slot 2 (L), overlaps none (as designed: none)
+[  385.4s] ok   Vindr Berserker 4010B blower R Toolhead slot 2 (L) (modelled from measurements): one valid solid, 13669.6 mm3, where placed
+[  385.4s] ok   Vindr Berserker 4010B blower R Toolhead slot 2 (L) (modelled from measurements): 4 holes parallel to the duct's pilots, one per pilot, each [0.354, 0.354, 0.354, 0.354] mm off its pilot (34.5 vs 35.0 square: 0.354 expected)
+[  385.7s] ok   Vindr Berserker 4010B blower R Toolhead slot 2 (L) (modelled from measurements): outlet pocket in the solid (0.0000 mm3 of material in it); facing (+0.000, -0.000, -1.000), rotation 90 deg; in front of it 58.7% void inside 66.7% duct walls (the inlet)
+[  386.0s] ok   Vindr Berserker 4010B blower R Toolhead slot 2 (L) (modelled from measurements): on its duct's seats: overlap 0.0000 mm3, distance 0.0000
+[  386.2s] Vindr Berserker 4010B blower R Toolhead slot 2 (L) (modelled from measurements): vs the 2510 fan 0.000 mm3; box gap 1.33, distance 1.674 mm
+[  386.2s] ok   Vindr Berserker 4010B blower R Toolhead slot 2 (L) (modelled from measurements): inside Toolhead slot 2 (L), overlaps none (as designed: none)
+[  386.5s] ok   Toolhead slot 2 (L): blowers vs every solid outside its head: []
+[  386.6s] ok   Vindr Berserker 4010B blower L Toolhead slot 3 (R) (modelled from measurements): one valid solid, 13669.6 mm3, where placed
+[  386.6s] ok   Vindr Berserker 4010B blower L Toolhead slot 3 (R) (modelled from measurements): 4 holes parallel to the duct's pilots, one per pilot, each [0.354, 0.354, 0.354, 0.354] mm off its pilot (34.5 vs 35.0 square: 0.354 expected)
+[  394.5s] ok   Vindr Berserker 4010B blower L Toolhead slot 3 (R) (modelled from measurements): outlet pocket in the solid (0.0000 mm3 of material in it); facing (-0.000, +0.000, -1.000), rotation 90 deg; in front of it 59.3% void inside 66.6% duct walls (the inlet)
+[  397.5s] ok   Vindr Berserker 4010B blower L Toolhead slot 3 (R) (modelled from measurements): on its duct's seats: overlap 0.0000 mm3, distance 0.0000
+[  397.7s] Vindr Berserker 4010B blower L Toolhead slot 3 (R) (modelled from measurements): vs the 2510 fan 0.000 mm3; box gap 1.68, distance 1.680 mm
+[  397.7s] ok   Vindr Berserker 4010B blower L Toolhead slot 3 (R) (modelled from measurements): inside Toolhead slot 3 (R), overlaps none (as designed: none)
+[  397.8s] ok   Vindr Berserker 4010B blower R Toolhead slot 3 (R) (modelled from measurements): one valid solid, 13669.6 mm3, where placed
+[  397.8s] ok   Vindr Berserker 4010B blower R Toolhead slot 3 (R) (modelled from measurements): 4 holes parallel to the duct's pilots, one per pilot, each [0.354, 0.354, 0.354, 0.354] mm off its pilot (34.5 vs 35.0 square: 0.354 expected)
+[  398.0s] ok   Vindr Berserker 4010B blower R Toolhead slot 3 (R) (modelled from measurements): outlet pocket in the solid (0.0000 mm3 of material in it); facing (-0.000, -0.000, -1.000), rotation 90 deg; in front of it 58.7% void inside 66.7% duct walls (the inlet)
+[  398.3s] ok   Vindr Berserker 4010B blower R Toolhead slot 3 (R) (modelled from measurements): on its duct's seats: overlap 0.0000 mm3, distance 0.0000
+[  398.5s] Vindr Berserker 4010B blower R Toolhead slot 3 (R) (modelled from measurements): vs the 2510 fan 0.000 mm3; box gap 1.33, distance 1.674 mm
+[  398.5s] ok   Vindr Berserker 4010B blower R Toolhead slot 3 (R) (modelled from measurements): inside Toolhead slot 3 (R), overlaps none (as designed: none)
+[  398.7s] ok   Toolhead slot 3 (R): blowers vs every solid outside its head: []
+[  398.9s] ok   Vindr Berserker 4010B blower L Toolhead slot 4 (L) (modelled from measurements): one valid solid, 13669.6 mm3, where placed
+[  398.9s] ok   Vindr Berserker 4010B blower L Toolhead slot 4 (L) (modelled from measurements): 4 holes parallel to the duct's pilots, one per pilot, each [0.354, 0.354, 0.354, 0.354] mm off its pilot (34.5 vs 35.0 square: 0.354 expected)
+[  406.7s] ok   Vindr Berserker 4010B blower L Toolhead slot 4 (L) (modelled from measurements): outlet pocket in the solid (0.0000 mm3 of material in it); facing (-0.000, +0.000, -1.000), rotation 90 deg; in front of it 59.3% void inside 66.6% duct walls (the inlet)
+[  409.8s] ok   Vindr Berserker 4010B blower L Toolhead slot 4 (L) (modelled from measurements): on its duct's seats: overlap 0.0000 mm3, distance 0.0000
+[  410.0s] Vindr Berserker 4010B blower L Toolhead slot 4 (L) (modelled from measurements): vs the 2510 fan 0.000 mm3; box gap 1.68, distance 1.680 mm
+[  410.0s] ok   Vindr Berserker 4010B blower L Toolhead slot 4 (L) (modelled from measurements): inside Toolhead slot 4 (L), overlaps none (as designed: none)
+[  410.0s] ok   Vindr Berserker 4010B blower R Toolhead slot 4 (L) (modelled from measurements): one valid solid, 13669.6 mm3, where placed
+[  410.0s] ok   Vindr Berserker 4010B blower R Toolhead slot 4 (L) (modelled from measurements): 4 holes parallel to the duct's pilots, one per pilot, each [0.354, 0.354, 0.354, 0.354] mm off its pilot (34.5 vs 35.0 square: 0.354 expected)
+[  410.3s] ok   Vindr Berserker 4010B blower R Toolhead slot 4 (L) (modelled from measurements): outlet pocket in the solid (0.0000 mm3 of material in it); facing (+0.000, -0.000, -1.000), rotation 90 deg; in front of it 58.7% void inside 66.7% duct walls (the inlet)
+[  410.6s] ok   Vindr Berserker 4010B blower R Toolhead slot 4 (L) (modelled from measurements): on its duct's seats: overlap 0.0000 mm3, distance 0.0000
+[  410.9s] Vindr Berserker 4010B blower R Toolhead slot 4 (L) (modelled from measurements): vs the 2510 fan 0.000 mm3; box gap 1.33, distance 1.674 mm
+[  410.9s] ok   Vindr Berserker 4010B blower R Toolhead slot 4 (L) (modelled from measurements): inside Toolhead slot 4 (L), overlaps none (as designed: none)
+[  411.1s] ok   Toolhead slot 4 (L): blowers vs every solid outside its head: []
+[  411.2s] ok   Vindr Berserker 4010B blower L Right Toolhead (modelled from measurements): one valid solid, 13669.6 mm3, where placed
+[  411.2s] ok   Vindr Berserker 4010B blower L Right Toolhead (modelled from measurements): 4 holes parallel to the duct's pilots, one per pilot, each [0.354, 0.354, 0.354, 0.354] mm off its pilot (34.5 vs 35.0 square: 0.354 expected)
+[  418.9s] ok   Vindr Berserker 4010B blower L Right Toolhead (modelled from measurements): outlet pocket in the solid (0.0000 mm3 of material in it); facing (-0.000, +0.000, -1.000), rotation 90 deg; in front of it 59.3% void inside 66.6% duct walls (the inlet)
+[  422.1s] ok   Vindr Berserker 4010B blower L Right Toolhead (modelled from measurements): on its duct's seats: overlap 0.0000 mm3, distance 0.0000
+[  422.3s] Vindr Berserker 4010B blower L Right Toolhead (modelled from measurements): vs the 2510 fan 0.000 mm3; box gap 1.68, distance 1.680 mm
+[  422.3s] ok   Vindr Berserker 4010B blower L Right Toolhead (modelled from measurements): inside Right Toolhead, overlaps none (as designed: none)
+[  422.3s] ok   Vindr Berserker 4010B blower R Right Toolhead (modelled from measurements): one valid solid, 13669.6 mm3, where placed
+[  422.3s] ok   Vindr Berserker 4010B blower R Right Toolhead (modelled from measurements): 4 holes parallel to the duct's pilots, one per pilot, each [0.354, 0.354, 0.354, 0.354] mm off its pilot (34.5 vs 35.0 square: 0.354 expected)
+[  422.6s] ok   Vindr Berserker 4010B blower R Right Toolhead (modelled from measurements): outlet pocket in the solid (0.0000 mm3 of material in it); facing (-0.000, -0.000, -1.000), rotation 90 deg; in front of it 58.7% void inside 66.7% duct walls (the inlet)
+[  423.0s] ok   Vindr Berserker 4010B blower R Right Toolhead (modelled from measurements): on its duct's seats: overlap 0.0000 mm3, distance 0.0000
+[  423.2s] Vindr Berserker 4010B blower R Right Toolhead (modelled from measurements): vs the 2510 fan 0.000 mm3; box gap 1.33, distance 1.674 mm
+[  423.2s] ok   Vindr Berserker 4010B blower R Right Toolhead (modelled from measurements): inside Right Toolhead, overlaps none (as designed: none)
+[  423.4s] ok   Right Toolhead: blowers vs every solid outside its head: []
+[  426.8s] Left Toolhead: nearest [(18.68, 'left @x+0 y-6', 'GT2 9mm belt, upper (Monolith 2WD)'), (18.69, 'left @x+0 y-2', 'GT2 9mm belt, upper (Monolith 2WD)'), (18.69, 'left @x+0 y-4', 'GT2 9mm belt, upper (Monolith 2WD)')]
+[  426.8s] ok   Left Toolhead: its blowers at 38 dock poses (152 pairs within 3 mm by box, measured; nearest box gap 0.00: left @x+0 y+0 vs GT2 9mm belt, lower (Monolith 2WD)): min 18.68 mm to anything that stays put []
+[  430.0s] Toolhead slot 2 (L): nearest [(103.84, 'left @x+0 y-6', 'GT2 9mm belt, upper (Monolith 2WD)'), (103.85, 'left @x+0 y-2', 'GT2 9mm belt, upper (Monolith 2WD)'), (103.85, 'left @x+0 y-4', 'GT2 9mm belt, upper (Monolith 2WD)')]
+[  430.0s] ok   Toolhead slot 2 (L): its blowers at 38 dock poses (152 pairs within 3 mm by box, measured; nearest box gap 0.00: left @x+0 y+0 vs GT2 9mm belt, lower (Monolith 2WD)): min 103.84 mm to anything that stays put []
+[  433.0s] Toolhead slot 3 (R): nearest [(174.96, 'left @x-5 y-6', 'GT2 9mm belt, upper (Monolith 2WD)'), (174.97, 'left @x-5 y-2', 'GT2 9mm belt, upper (Monolith 2WD)'), (174.97, 'left @x-5 y-4', 'GT2 9mm belt, upper (Monolith 2WD)')]
+[  433.0s] ok   Toolhead slot 3 (R): its blowers at 38 dock poses (152 pairs within 3 mm by box, measured; nearest box gap 0.00: left @x+0 y+0 vs GT2 9mm belt, lower (Monolith 2WD)): min 174.96 mm to anything that stays put []
+[  436.3s] Toolhead slot 4 (L): nearest [(89.8, 'right @x+5 y-6', 'GT2 9mm belt, lower (Monolith 2WD)'), (89.81, 'right @x+5 y-2', 'GT2 9mm belt, lower (Monolith 2WD)'), (89.81, 'right @x+5 y-4', 'GT2 9mm belt, lower (Monolith 2WD)')]
+[  436.3s] ok   Toolhead slot 4 (L): its blowers at 38 dock poses (152 pairs within 3 mm by box, measured; nearest box gap 0.00: left @x+0 y+0 vs GT2 9mm belt, lower (Monolith 2WD)): min 89.80 mm to anything that stays put []
+[  439.4s] Right Toolhead: nearest [(18.68, 'right @x+0 y-6', 'GT2 9mm belt, lower (Monolith 2WD)'), (18.69, 'right @x+0 y-2', 'GT2 9mm belt, lower (Monolith 2WD)'), (18.69, 'right @x+0 y-4', 'GT2 9mm belt, lower (Monolith 2WD)')]
+[  439.4s] ok   Right Toolhead: its blowers at 38 dock poses (152 pairs within 3 mm by box, measured; nearest box gap 0.00: left @x+0 y+0 vs GT2 9mm belt, lower (Monolith 2WD)): min 18.68 mm to anything that stays put []
+[  439.4s] ok   Vindr Berserker 4010B blower L Left Toolhead (modelled from measurements): material Default -> role black_plastic
+[  439.4s] ok   Vindr Berserker 4010B blower R Left Toolhead (modelled from measurements): material Default -> role black_plastic
+[  439.4s] ok   Vindr Berserker 4010B blower L Toolhead slot 2 (L) (modelled from measurements): material Default -> role black_plastic
+[  439.4s] ok   Vindr Berserker 4010B blower R Toolhead slot 2 (L) (modelled from measurements): material Default -> role black_plastic
+[  439.4s] ok   Vindr Berserker 4010B blower L Toolhead slot 3 (R) (modelled from measurements): material Default -> role black_plastic
+[  439.4s] ok   Vindr Berserker 4010B blower R Toolhead slot 3 (R) (modelled from measurements): material Default -> role black_plastic
+[  439.4s] ok   Vindr Berserker 4010B blower L Toolhead slot 4 (L) (modelled from measurements): material Default -> role black_plastic
+[  439.4s] ok   Vindr Berserker 4010B blower R Toolhead slot 4 (L) (modelled from measurements): material Default -> role black_plastic
+[  439.4s] ok   Vindr Berserker 4010B blower L Right Toolhead (modelled from measurements): material Default -> role black_plastic
+[  439.4s] ok   Vindr Berserker 4010B blower R Right Toolhead (modelled from measurements): material Default -> role black_plastic
+[  439.4s] ok   solids: 1297 + 10 = 1307
+[  439.4s] verify: 0 problems
+[  482.9s] SAVED /home/dan/Documents/VT350/vt350-lite-37.FCStd 212857025
