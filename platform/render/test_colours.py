@@ -215,6 +215,15 @@ class TheCommittedMap(unittest.TestCase):
         self.assertEqual(co.role_of(m, "Skirt grille left (printed ABS, vt350, GPL-3.0-or-later)", g, "Default"), "accent")
         self.assertEqual(co.role_of(m, "Skirt corner rear-right (printed ABS, vt350, GPL-3.0-or-later)", g, "Default"), "accent")
 
+    def test_lite42_skirts_v2(self):
+        """User, 2026-11-15 (#19): the skirts again, Voron look (hex windows over a two-colour mesh), in two heights."""
+        m = co.load()
+        g = "Enclosure extras (lite-16) / Bottom skirts v2 (lite-42 band)"
+        self.assertEqual(co.role_of(m, "Skirt panel left (printed ABS, vt350, GPL-3.0-or-later)", g, "Default"), "printed")
+        self.assertEqual(co.role_of(m, "Skirt mesh left 2 (printed ABS, vt350, GPL-3.0-or-later)", g, "Default"), "accent")
+        self.assertEqual(co.role_of(m, "Skirt badge front (printed ABS, vt350, GPL-3.0-or-later)", g, "Default"), "accent")
+        self.assertEqual(co.role_of(m, "Skirt corner front-left (printed ABS, vt350, GPL-3.0-or-later)", g, "Default"), "accent")
+
     def test_lite40_cables_ties_channel(self):
         """User, 2026-11-14 (#3, #19): the O2S cables zip-tied to the bowdens with BLACK zip ties, routed to the side
         pack in a printed channel with a cover (white body, the accent on the cover: Voron style)."""

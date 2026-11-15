@@ -1,0 +1,85 @@
+[  272.3s] opened /home/dan/Documents/VT350/vt350-lite-41.FCStd
+[  292.6s] ok   lite-41's skirts: 12 parts (12)
+[  307.3s] ok   4 feet (4 pads, 4 studs, 4 brackets)
+[  321.0s] ok   board top Z -130.00 (expected -130.00)
+[  321.0s] variant tall: board top -130.0, skirt Z -118.0 .. -50.0 (68 tall), feet [(-500, -50), (10, -50), (-500, 460), (10, 460)]
+[  321.0s] ok   the rear bottom 4040: 1
+[  321.1s] ok   outline measured: X -523.0..33.0, Y -118.0..520.0; the bottom extrusions' underside Z -50.0
+[  568.8s] ok   Skirt panel front (printed ABS, vt350, G: one valid solid (1), 89768 mm3
+[  569.8s] ok   Skirt mesh front 1 (printed ABS, vt350, : one valid solid (1), 5270 mm3
+[  598.6s] ok   Skirt mesh front 2 (printed ABS, vt350, : one valid solid (1), 5270 mm3
+[  598.8s] ok   Skirt badge front (printed ABS, vt350, G: one valid solid (1), 5393 mm3
+[  639.7s] ok   Skirt panel rear (printed ABS, vt350, GP: one valid solid (1), 85042 mm3
+[  641.3s] ok   Skirt mesh rear 1 (printed ABS, vt350, G: one valid solid (1), 7662 mm3
+[  672.4s] ok   Skirt mesh rear 2 (printed ABS, vt350, G: one valid solid (1), 7662 mm3
+[  721.2s] ok   Skirt panel left (printed ABS, vt350, GP: one valid solid (1), 93079 mm3
+[  723.5s] ok   Skirt mesh left 1 (printed ABS, vt350, G: one valid solid (1), 9557 mm3
+[  755.3s] ok   Skirt mesh left 2 (printed ABS, vt350, G: one valid solid (1), 9557 mm3
+[  806.1s] ok   Skirt panel right (printed ABS, vt350, G: one valid solid (1), 93079 mm3
+[  808.5s] ok   Skirt mesh right 1 (printed ABS, vt350, : one valid solid (1), 9557 mm3
+[  839.7s] ok   Skirt mesh right 2 (printed ABS, vt350, : one valid solid (1), 9557 mm3
+[  840.1s] ok   Skirt corner front-left (printed ABS, vt: one valid solid (1), 20803 mm3
+[  840.2s] ok   Skirt corner front-right (printed ABS, v: one valid solid (1), 20803 mm3
+[  840.4s] ok   Skirt corner rear-left (printed ABS, vt3: one valid solid (1), 20938 mm3
+[  840.5s] ok   Skirt corner rear-right (printed ABS, vt: one valid solid (1), 20938 mm3
+[ 1144.3s] ok   the skirts vs the printer: []
+[ 1145.2s] ok   Skirt panel front (print vs Skirt mesh front 1 (prin: 0.0000 mm3
+[ 1146.1s] ok   Skirt panel front (print vs Skirt mesh front 2 (prin: 0.0000 mm3
+[ 1146.1s] ok   Skirt panel front (print vs Skirt badge front (print: 0.0000 mm3
+[ 1146.2s] ok   Skirt panel front (print vs Skirt corner front-left : 0.0000 mm3
+[ 1146.3s] ok   Skirt panel front (print vs Skirt corner front-right: 0.0000 mm3
+[ 1147.4s] ok   Skirt panel rear (printe vs Skirt mesh rear 1 (print: 0.0000 mm3
+[ 1148.6s] ok   Skirt panel rear (printe vs Skirt mesh rear 2 (print: 0.0000 mm3
+[ 1148.6s] ok   Skirt panel rear (printe vs Skirt corner rear-left (: 0.0000 mm3
+[ 1148.7s] ok   Skirt panel rear (printe vs Skirt corner rear-right : 0.0000 mm3
+[ 1150.2s] ok   Skirt panel left (printe vs Skirt mesh left 1 (print: 0.0000 mm3
+[ 1151.7s] ok   Skirt panel left (printe vs Skirt mesh left 2 (print: 0.0000 mm3
+[ 1151.7s] ok   Skirt panel left (printe vs Skirt corner front-left : 0.0000 mm3
+[ 1151.8s] ok   Skirt panel left (printe vs Skirt corner rear-left (: 0.0000 mm3
+[ 1153.6s] ok   Skirt panel right (print vs Skirt mesh right 1 (prin: 0.0000 mm3
+[ 1155.2s] ok   Skirt panel right (print vs Skirt mesh right 2 (prin: 0.0000 mm3
+[ 1155.2s] ok   Skirt panel right (print vs Skirt corner front-right: 0.0000 mm3
+[ 1155.3s] ok   Skirt panel right (print vs Skirt corner rear-right : 0.0000 mm3
+[ 1170.8s] ok   skirt panel front: its flange touches the underside of 2040 (2) (1)001 (gap 0.000)
+[ 1180.0s] ok   skirt panel rear: its flange touches the underside of 4040 (2) (gap 0.000)
+[ 1184.5s] ok   skirt panel left: its flange touches the underside of 4040 (1)001 (gap 0.000)
+[ 1187.1s] ok   skirt panel right: its flange touches the underside of 4040 (1) (gap 0.000)
+[ 1187.3s] ok   Skirt panel front (printed A: clears the studs, pads and board by 12.0 mm
+[ 1187.3s] ok   Skirt panel front (printed A: lowest Z -118.0, 12.0 above the board (>= 12)
+[ 1188.4s] ok   Skirt mesh front 1 (printed : clears the studs, pads and board by 19.0 mm
+[ 1188.4s] ok   Skirt mesh front 1 (printed : lowest Z -111.0, 19.0 above the board (>= 12)
+[ 1189.4s] ok   Skirt mesh front 2 (printed : clears the studs, pads and board by 19.0 mm
+[ 1189.4s] ok   Skirt mesh front 2 (printed : lowest Z -111.0, 19.0 above the board (>= 12)
+[ 1189.4s] ok   Skirt badge front (printed A: clears the studs, pads and board by 22.0 mm
+[ 1189.4s] ok   Skirt badge front (printed A: lowest Z -108.0, 22.0 above the board (>= 12)
+[ 1189.8s] ok   Skirt panel rear (printed AB: clears the studs, pads and board by 12.0 mm
+[ 1189.8s] ok   Skirt panel rear (printed AB: lowest Z -118.0, 12.0 above the board (>= 12)
+[ 1191.4s] ok   Skirt mesh rear 1 (printed A: clears the studs, pads and board by 19.0 mm
+[ 1191.4s] ok   Skirt mesh rear 1 (printed A: lowest Z -111.0, 19.0 above the board (>= 12)
+[ 1193.1s] ok   Skirt mesh rear 2 (printed A: clears the studs, pads and board by 19.0 mm
+[ 1193.1s] ok   Skirt mesh rear 2 (printed A: lowest Z -111.0, 19.0 above the board (>= 12)
+[ 1194.0s] ok   Skirt panel left (printed AB: clears the studs, pads and board by 4.0 mm
+[ 1194.0s] ok   Skirt panel left (printed AB: lowest Z -118.0, 12.0 above the board (>= 12)
+[ 1195.8s] ok   Skirt mesh left 1 (printed A: clears the studs, pads and board by 17.6 mm
+[ 1195.8s] ok   Skirt mesh left 1 (printed A: lowest Z -111.0, 19.0 above the board (>= 12)
+[ 1197.9s] ok   Skirt mesh left 2 (printed A: clears the studs, pads and board by 19.0 mm
+[ 1197.9s] ok   Skirt mesh left 2 (printed A: lowest Z -111.0, 19.0 above the board (>= 12)
+[ 1198.6s] ok   Skirt panel right (printed A: clears the studs, pads and board by 4.0 mm
+[ 1198.6s] ok   Skirt panel right (printed A: lowest Z -118.0, 12.0 above the board (>= 12)
+[ 1200.6s] ok   Skirt mesh right 1 (printed : clears the studs, pads and board by 17.6 mm
+[ 1200.6s] ok   Skirt mesh right 1 (printed : lowest Z -111.0, 19.0 above the board (>= 12)
+[ 1202.4s] ok   Skirt mesh right 2 (printed : clears the studs, pads and board by 19.0 mm
+[ 1202.4s] ok   Skirt mesh right 2 (printed : lowest Z -111.0, 19.0 above the board (>= 12)
+[ 1202.5s] ok   Skirt corner front-left (pri: clears the studs, pads and board by 4.0 mm
+[ 1202.5s] ok   Skirt corner front-left (pri: lowest Z -118.0, 12.0 above the board (>= 12)
+[ 1202.6s] ok   Skirt corner front-right (pr: clears the studs, pads and board by 4.0 mm
+[ 1202.6s] ok   Skirt corner front-right (pr: lowest Z -118.0, 12.0 above the board (>= 12)
+[ 1202.7s] ok   Skirt corner rear-left (prin: clears the studs, pads and board by 4.0 mm
+[ 1202.7s] ok   Skirt corner rear-left (prin: lowest Z -118.0, 12.0 above the board (>= 12)
+[ 1202.7s] ok   Skirt corner rear-right (pri: clears the studs, pads and board by 4.0 mm
+[ 1202.7s] ok   Skirt corner rear-right (pri: lowest Z -118.0, 12.0 above the board (>= 12)
+[ 1202.7s] ok   the skirts' outline X -523.0..33.0, Y -118.0..523.0: flush with the walls above
+[ 1202.7s] ok   roles {'panel': {'printed'}, 'mesh': {'accent'}, 'badge': {'accent'}, 'corner': {'accent'}}
+[ 1202.7s] ok   solids: 1347 + 17 = 1364 (17 parts)
+[ 1203.2s] verify: 0 problems
+[ 1275.8s] SAVED /home/dan/Documents/VT350/vt350-lite-42-tall.FCStd 216953578

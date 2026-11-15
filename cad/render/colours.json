@@ -29,7 +29,7 @@
     {"role": "brass", "label": "^Orbitool O2S standoffs \\+ screws "},
     {"role": "black_plastic", "label": "^(O2S USB cable slot \\d|Zip tie, black) ", "note": "lite-40: the O2S cables' jacket and the black zip ties (user, 2026-11-14, #19)"},
     {"role": "accent", "label": "^Cable channel cover, "},
-    {"role": "accent", "label": "^Skirt (grille|corner) ", "note": "lite-41: Voron-style skirts, white ABS with orange accents (user, 2026-11-14)"},
+    {"role": "accent", "label": "^Skirt (grille|corner|mesh|badge) ", "note": "lite-41: Voron-style skirts, white ABS with orange accents (user, 2026-11-14); lite-42: the mesh behind the hex windows and the front badge"},
     {"role": "printed", "label": "^Skirt panel "},
     {"role": "printed", "label": "^Cable channel (body|post \\d|arm \\d)"},
     {"role": "brushed_aluminium", "label": "^Crossbow - (Main Body|Top Cap|Lever|Blade caddy)\\d*$"},

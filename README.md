@@ -44,7 +44,7 @@ Other scripts measure what that means for the machine: reach, Z travel, print ar
   - **A kit or product.** Several parts are under non-commercial licences, so this repo is non-commercial.
   - **Six or more tools,** which would need a wider frame.
   - **Materials that need a chamber hotter than 70 °C,** such as some nylons. This limit is accepted.
-- **Where it stands:** design. The current model is `vt350-lite-41`. Assembly hasn't started. See [`notes/status.md`](notes/status.md) for decisions and open questions.
+- **Where it stands:** design. The current model is `vt350-lite-41`; lite-42 is two skirt variants waiting for a choice (`lite-42-band`, `lite-42-tall`). Assembly hasn't started. See [`notes/status.md`](notes/status.md) for decisions and open questions.
 
 ## Layout
 
