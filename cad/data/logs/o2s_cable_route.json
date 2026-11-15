@@ -11,21 +11,21 @@
    ],
    "join_u": 0.325,
    "join_z": 663.2,
-   "lead_in_mm": 133.2,
+   "lead_in_mm": 132.8,
    "bundle_mm": 409.5,
-   "total_to_roof_mm": 542.7,
-   "r_lead_in": 57.1,
+   "total_to_roof_mm": 542.3,
+   "r_lead_in": 57.2,
    "r_bundle_min": 95.2,
    "tube_r": 100.35,
    "nearest": [
     [
-     1.04,
+     1.06,
      "Roof panel (3 mm)",
      false,
      686.4
     ],
     [
-     2.61,
+     2.64,
      "Roof panel (3 mm)",
      false,
      684.8
@@ -40,21 +40,21 @@
    ],
    "join_u": 0.325,
    "join_z": 663.2,
-   "lead_in_mm": 133.2,
+   "lead_in_mm": 132.8,
    "bundle_mm": 409.5,
-   "total_to_roof_mm": 542.7,
-   "r_lead_in": 57.1,
+   "total_to_roof_mm": 542.3,
+   "r_lead_in": 57.2,
    "r_bundle_min": 95.2,
    "tube_r": 100.35,
    "nearest": [
     [
-     1.04,
+     1.06,
      "Roof panel (3 mm)",
      false,
      686.4
     ],
     [
-     2.61,
+     2.64,
      "Roof panel (3 mm)",
      false,
      684.8
@@ -69,10 +69,10 @@
    ],
    "join_u": 0.325,
    "join_z": 663.2,
-   "lead_in_mm": 133.4,
+   "lead_in_mm": 133.3,
    "bundle_mm": 409.5,
-   "total_to_roof_mm": 542.9,
-   "r_lead_in": 57.0,
+   "total_to_roof_mm": 542.8,
+   "r_lead_in": 57.1,
    "r_bundle_min": 95.2,
    "tube_r": 100.35,
    "nearest": [
@@ -98,21 +98,21 @@
    ],
    "join_u": 0.325,
    "join_z": 663.2,
-   "lead_in_mm": 133.2,
+   "lead_in_mm": 132.8,
    "bundle_mm": 409.5,
-   "total_to_roof_mm": 542.7,
-   "r_lead_in": 57.1,
+   "total_to_roof_mm": 542.3,
+   "r_lead_in": 57.2,
    "r_bundle_min": 95.2,
    "tube_r": 100.35,
    "nearest": [
     [
-     1.04,
+     1.06,
      "Roof panel (3 mm)",
      false,
      686.4
     ],
     [
-     2.61,
+     2.64,
      "Roof panel (3 mm)",
      false,
      684.8
@@ -127,10 +127,10 @@
    ],
    "join_u": 0.325,
    "join_z": 663.2,
-   "lead_in_mm": 133.4,
+   "lead_in_mm": 133.3,
    "bundle_mm": 409.5,
-   "total_to_roof_mm": 542.9,
-   "r_lead_in": 57.0,
+   "total_to_roof_mm": 542.8,
+   "r_lead_in": 57.1,
    "r_bundle_min": 95.2,
    "tube_r": 100.35,
    "nearest": [
@@ -148,9 +148,9 @@
     ]
    ]
   },
-  "Left Toolhead | Toolhead slot 2 (L)": 79.5,
-  "Toolhead slot 2 (L) | Toolhead slot 3 (R)": 49.8,
+  "Left Toolhead | Toolhead slot 2 (L)": 80.1,
+  "Toolhead slot 2 (L) | Toolhead slot 3 (R)": 60.9,
   "Toolhead slot 3 (R) | Toolhead slot 4 (L)": 86.9,
-  "Toolhead slot 4 (L) | Right Toolhead": 49.8
+  "Toolhead slot 4 (L) | Right Toolhead": 60.9
  }
 }

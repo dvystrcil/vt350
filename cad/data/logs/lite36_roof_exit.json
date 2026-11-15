@@ -1,0 +1,65 @@
+{
+ "exits": [
+  {
+   "slot": "Toolhead slot 1",
+   "tube_exit": [
+    -409.7,
+    460.0,
+    690.0
+   ],
+   "cable_side": "-X",
+   "base_mm3": 16071.9,
+   "cap_mm3": 3705.8
+  },
+  {
+   "slot": "slot 2",
+   "tube_exit": [
+    -324.54,
+    460.0,
+    690.0
+   ],
+   "cable_side": "-X",
+   "base_mm3": 16071.9,
+   "cap_mm3": 3705.8
+  },
+  {
+   "slot": "slot 3",
+   "tube_exit": [
+    -259.12,
+    460.0,
+    690.0
+   ],
+   "cable_side": "+X",
+   "base_mm3": 16071.9,
+   "cap_mm3": 3705.8
+  },
+  {
+   "slot": "slot 4",
+   "tube_exit": [
+    -156.42,
+    460.0,
+    690.0
+   ],
+   "cable_side": "-X",
+   "base_mm3": 16071.9,
+   "cap_mm3": 3705.8
+  },
+  {
+   "slot": "slot 5",
+   "tube_exit": [
+    -91.0,
+    460.0,
+    690.0
+   ],
+   "cable_side": "+X",
+   "base_mm3": 16071.9,
+   "cap_mm3": 3705.8
+  }
+ ],
+ "fasteners_added_per_exit": {
+  "M5x25 SHCS + M5 T-nut (rear 4040 top slot)": 2,
+  "M3x20 SHCS + washer + nyloc nut (front, through felt + roof)": 2,
+  "M3x12 SHCS + M3 heat-set insert (cap to base)": 2
+ },
+ "exits_total": 5
+}
