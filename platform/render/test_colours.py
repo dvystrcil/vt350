@@ -207,6 +207,14 @@ class TheCommittedMap(unittest.TestCase):
         self.assertEqual(co.role_of(m, "Door window (3 mm clear sheet, acrylic or polycarbonate per #4)", door, "Default"), "glass_clear")
         self.assertEqual(m["roles"]["glass_clear"]["kind"], "glass")
 
+    def test_lite41_skirts(self):
+        """User, 2026-11-14 (#19): "voron type bottom skirts in ABS white with orange accents"."""
+        m = co.load()
+        g = "Enclosure extras (lite-16) / Bottom skirts (lite-41)"
+        self.assertEqual(co.role_of(m, "Skirt panel front (printed ABS, vt350, GPL-3.0-or-later)", g, "Default"), "printed")
+        self.assertEqual(co.role_of(m, "Skirt grille left (printed ABS, vt350, GPL-3.0-or-later)", g, "Default"), "accent")
+        self.assertEqual(co.role_of(m, "Skirt corner rear-right (printed ABS, vt350, GPL-3.0-or-later)", g, "Default"), "accent")
+
     def test_lite40_cables_ties_channel(self):
         """User, 2026-11-14 (#3, #19): the O2S cables zip-tied to the bowdens with BLACK zip ties, routed to the side
         pack in a printed channel with a cover (white body, the accent on the cover: Voron style)."""

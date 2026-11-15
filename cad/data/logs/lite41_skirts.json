@@ -1,0 +1,27 @@
+{
+ "outline": [
+  -523.0,
+  33.0,
+  -118.0,
+  523.0
+ ],
+ "z": [
+  -95.0,
+  -50.0
+ ],
+ "corner_bottom_z": -80.0,
+ "volumes_mm3": {
+  "Skirt panel front": 54397,
+  "Skirt grille front": 22062,
+  "Skirt panel rear": 55465,
+  "Skirt grille rear": 22062,
+  "Skirt panel left": 68708,
+  "Skirt grille left": 27198,
+  "Skirt panel right": 68708,
+  "Skirt grille right": 27198,
+  "Skirt corner front-left": 17430,
+  "Skirt corner front-right": 17430,
+  "Skirt corner rear-left": 17730,
+  "Skirt corner rear-right": 17730
+ }
+}

@@ -66,7 +66,8 @@ Status key:
 | vt350 (lite-40) | **Cable channel post** (on the roof over the rear top 4040, carries the channel's horizontal run) | **4** | custom: no STL yet. **Hardware per post:** 1 × M5×25 SHCS + 1 × M5 T-nut (rear top 4040, rear slot, through the roof panel); fixings to the channel not designed |
 | vt350 (lite-40) | **Cable channel arm** (rear-right upright's back face to the channel's vertical run) | **2** | custom: no STL yet. **Hardware per arm:** 1 × M5×10 BHCS + 1 × M5 T-nut |
 | — (lite-40, hardware, not printed) | **Zip ties, black, 2.5 mm wide** (~100 mm): tie each O2S cable to its bowden tube inside the chamber | 4 per tool: **8** for the 2-tool build (20 in the model) | buy. The cables themselves are the O2S kits' own (~3 m, user 2026-11-14) |
-| custom | Pad 7 quick-release mount, skirts and feet, Z chain anchor for the Backbone | — | custom |
+| vt350 (lite-41, `cad/passes/lite41_skirts.py`, #19) | **Bottom skirts**, Voron style: 4 `panel` (white ABS: front/rear 356 mm, left/right 441 mm), 4 `grille` (orange ABS), 4 `corner` (orange ABS, L, 100 × 100 mm) | 1 set (the same for 2 or 5 tools) | custom: designed in the model, no STL yet. The side panels at 441 mm may need splitting for the bed. **Hardware:** 2 × M5×10 BHCS + 2 × M5 T-nut per panel (flange into the bottom extrusion's bottom slot): **8 + 8**; corner-to-panel joint not designed |
+| custom | Pad 7 quick-release mount, feet, Z chain anchor for the Backbone | — | custom |
 
 ## Next steps
 1. Confirm what the kinematic mount kit includes (does it replace `z_bed_*`?).
