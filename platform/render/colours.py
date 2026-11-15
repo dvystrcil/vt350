@@ -52,6 +52,14 @@ def validate(m):
             raise ValueError(f"rule {i}: needs at least one of {FIELDS}")
         for f in FIELDS:
             if rule.get(f): re.compile(rule[f])
+    for i, v in enumerate(m.get("visibility", [])):    # render visibility flags: {tag, label|group, hide: "all"|[views]}
+        if not v.get("tag"): raise ValueError(f"visibility {i}: needs a tag")
+        if not (v.get("label") or v.get("group")): raise ValueError(f"visibility {i} ({v['tag']}): needs a label or group")
+        h = v.get("hide")
+        if not (h == "all" or (isinstance(h, list) and h)):
+            raise ValueError(f"visibility {i} ({v['tag']}): hide must be \"all\" or a list of view names")
+        for f in ("label", "group"):
+            if v.get(f): re.compile(v[f])
 
 
 def role_of(m, label, group, material):
@@ -60,6 +68,20 @@ def role_of(m, label, group, material):
         if all(re.search(rule[f], vals[f]) for f in FIELDS if rule.get(f)):
             return rule["role"]
     return None
+
+
+def vis_tag(m, label, group):
+    """The visibility flag a part carries (the first matching rule's tag), or None."""
+    for v in (m or {}).get("visibility", []):
+        if all(re.search(v[f], {"label": label or "", "group": group or ""}[f]) for f in ("label", "group") if v.get(f)):
+            return v["tag"]
+    return None
+
+
+def hidden_in(m, tag, view):
+    """Whether parts flagged `tag` are left out of the render of `view`."""
+    v = next((v for v in (m or {}).get("visibility", []) if v["tag"] == tag), None) if tag else None
+    return bool(v) and (v["hide"] == "all" or view in v["hide"])
 
 
 def audit(m, parts):

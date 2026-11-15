@@ -156,12 +156,14 @@ if "only" in OPTS:
     if not set(keep) <= {v[0] for v in views}: raise SystemExit(f"render: --only {keep}, but the views are {[v[0] for v in views]}")
     views = [v for v in views if v[0] in keep]
 VIEWDEF = {v["name"]: v for v in scene_j.get("views", [])}
-def apply_view(name):                                # per-view "hide": [bucket], "alpha": {bucket: alpha}
+SHOW_ALL = OPTS.get("show-all", "") in ("1", "true", "yes")   # --show-all 1: ignore the visibility flags
+def apply_view(name):                                # per-view "hide": [bucket], "alpha": {bucket: alpha}; plus the
+    # visibility flags (colours.json, via scene.json): a bucket flagged "vis" is hidden in the views its rule names
     v = VIEWDEF.get(name, {})
     for key, b in scene_j["buckets"].items():
         ob = bpy.data.objects.get(key)
         if ob is None: continue
-        ob.hide_render = key in v.get("hide", [])
+        ob.hide_render = key in v.get("hide", []) or (not SHOW_ALL and colours.hidden_in(scene_j, b.get("vis"), name))
         a = v.get("alpha", {}).get(key, 1 - b.get("transparency", 0))
         ob.data.materials[0].node_tree.nodes["Principled BSDF"].inputs["Alpha"].default_value = a
 # key light for the outside view only

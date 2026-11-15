@@ -10,6 +10,8 @@
 # colour map gives a role goes in that role's bucket (#38). The rest bucket by (material, model colour) as before.
 # Also writes each model's per-part box index beside it, <model>.parts.json (platform/freecad/part_index.py, #90),
 # unless it is fresh; a failure there is logged as "index: FAILED" and does not fail the export.
+# Visibility flags (colours.json "visibility", user 2026-11-15): a flagged part goes in a bucket of its own,
+# "vis_<tag>__<key>", with "vis" in scene.json and the rules in scene["visibility"]; render.py hides it per view.
 # Writes colour-audit.txt (vt350#91): every part the colour map matched no rule for, whatever its material, grouped
 # by group path and material with counts (colours.audit). From the full part list: scene.json keeps 40 labels a bucket.
 # Never saves the model.
@@ -34,7 +36,8 @@ def log(*a): logf.write(f"[{time.time() - t0:7.1f}s] " + " ".join(str(x) for x i
 try:
     buckets, scene = {}, {"model": os.path.basename(MODEL), "extra": [os.path.basename(p) for p in EXTRA], "buckets": {},
                           "lights": [], "camera": None, "roles": CMAP["roles"] if CMAP else {}}
-    hidden = 0; seen = []; n_role = {}; n_motion = {"hide": 0, "clip": 0, "moving": 0}
+    hidden = 0; seen = []; n_role = {}; n_motion = {"hide": 0, "clip": 0, "moving": 0}; n_vis = {}
+    scene["visibility"] = CMAP.get("visibility", []) if CMAP else []
     if os.environ.get("VT350_GROUPS"): scene["groups_file"] = os.environ["VT350_GROUPS"]
     for path_ in [MODEL] + EXTRA:
       doc = FreeCAD.openDocument(path_); log("opened", path_)
@@ -66,10 +69,12 @@ try:
             gp = gpath(o); seen.append((o.Label, gp, mat))   # the audit's input: every part the map is asked about
             role = colours.role_of(CMAP, o.Label, gp, mat)
             if role: key = f"role_{role}_t{int(tr*100)}"; n_role[role] = n_role.get(role, 0) + 1
+        tag = colours.vis_tag(CMAP, o.Label, gpath(o)) if CMAP else None
+        if tag: key = f"vis_{tag}__{key}"; n_vis[tag] = n_vis.get(tag, 0) + 1
         key, grp = G.bucket(o.Name, key)
         if grp: n_motion["moving"] += 1
         b = buckets.setdefault(key, {"mesh": Mesh.Mesh(), "color": col, "material": mat, "transparency": tr, "labels": [],
-                                     "role": role, "group": grp})
+                                     "role": role, "group": grp, "vis": tag})
         s = o.Shape.copy(); s.Placement = o.getGlobalPlacement()
         cb = G.clip(o.Name)
         if cb:                                       # a belt loop: only the part that moves rigidly (player.py's clip)
@@ -95,6 +100,7 @@ try:
         b["mesh"].write(os.path.join(OUT, k + ".stl"))
         scene["buckets"][k] = {"color": b["color"], "material": b["material"], "transparency": b["transparency"], "role": b["role"],
                                **({"group": b["group"]} if b.get("group") else {}),
+                               **({"vis": b["vis"]} if b.get("vis") else {}),
                                "n": len(b["labels"]), "facets": b["mesh"].CountFacets, "labels": sorted(set(b["labels"]))[:40]}
         log(f"{k}: {len(b['labels'])} solids, {b['mesh'].CountFacets} facets")
     json.dump(scene, open(os.path.join(OUT, "scene.json"), "w"), indent=1)
@@ -108,6 +114,7 @@ try:
         except Exception as e: log(f"index: FAILED for {path_}: {type(e).__name__}: {e}")
     audit = colours.audit_text(colours.audit(CMAP, seen) if CMAP else None, len(seen))
     open(os.path.join(OUT, "colour-audit.txt"), "w").write(audit)
+    log(f"visibility flags: {n_vis or 'none'}")
     log(f"colour map: {n_role or 'off'}; {audit.splitlines()[0]} (colour-audit.txt)")
     if os.environ.get("VT350_GROUPS"):
         log(f"motion groups: {n_motion['moving']} moving solids, {n_motion['clip']} clipped, {n_motion['hide']} left out")
