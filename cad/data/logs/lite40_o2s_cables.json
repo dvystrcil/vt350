@@ -1,0 +1,70 @@
+{
+ "heads": {
+  "Left Toolhead": {
+   "join_z": 663.2,
+   "r_lead_in": 57.2,
+   "r_out": 93.4,
+   "r_min_whole": 57.4,
+   "lane_z": 821.0,
+   "run_dx": 100.0,
+   "modelled_mm": 1599
+  },
+  "Toolhead slot 2 (L)": {
+   "join_z": 663.2,
+   "r_lead_in": 57.2,
+   "r_out": 92.4,
+   "r_min_whole": 57.4,
+   "lane_z": 814.5,
+   "run_dx": 100.0,
+   "modelled_mm": 1498
+  },
+  "Toolhead slot 3 (R)": {
+   "join_z": 663.2,
+   "r_lead_in": 57.2,
+   "r_out": 87.7,
+   "r_min_whole": 57.4,
+   "lane_z": 808.0,
+   "run_dx": 100.0,
+   "modelled_mm": 1394
+  },
+  "Toolhead slot 4 (L)": {
+   "join_z": 663.2,
+   "r_lead_in": 57.2,
+   "r_out": 83.0,
+   "r_min_whole": 57.4,
+   "lane_z": 801.5,
+   "run_dx": 100.0,
+   "modelled_mm": 1300
+  },
+  "Right Toolhead": {
+   "join_z": 663.2,
+   "r_lead_in": 57.2,
+   "r_out": 76.9,
+   "r_min_whole": 57.4,
+   "lane_z": 795.0,
+   "run_dx": 100.0,
+   "modelled_mm": 1197
+  }
+ },
+ "channel": {
+  "lane_y": 540.0,
+  "lanes_z": [
+   821.0,
+   814.5,
+   808.0,
+   801.5,
+   795.0
+  ],
+  "inner_r": 60.0,
+  "end_z": 380.0,
+  "body_mm3": 90382,
+  "cover_mm3": 70340,
+  "posts_x": [
+   -455.0,
+   -285.0,
+   -170.0,
+   0.0
+  ]
+ },
+ "ties": 20
+}

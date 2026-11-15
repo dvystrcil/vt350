@@ -27,6 +27,9 @@
   "rules": [
     {"role": "backbone", "label": "^backbone-350"},
     {"role": "brass", "label": "^Orbitool O2S standoffs \\+ screws "},
+    {"role": "black_plastic", "label": "^(O2S USB cable slot \\d|Zip tie, black) ", "note": "lite-40: the O2S cables' jacket and the black zip ties (user, 2026-11-14, #19)"},
+    {"role": "accent", "label": "^Cable channel cover, "},
+    {"role": "printed", "label": "^Cable channel (body|post \\d|arm \\d)"},
     {"role": "brushed_aluminium", "label": "^Crossbow - (Main Body|Top Cap|Lever|Blade caddy)\\d*$"},
     {"role": "foil", "group": "Insulation: carbon felt sealed in aluminium", "label": " liner, (inner|outer)$"},
     {"role": "carbon_felt", "group": "Insulation: carbon felt sealed in aluminium", "label": " felt (strip )?\\(pad \\d+\\)$"},

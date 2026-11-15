@@ -1,71 +1,71 @@
-[   11.9s] opened /home/dan/Documents/VT350/vt350-lite-35.FCStd
-[   22.7s] ok   Left Toolhead: one restraint lock (1)
-[   22.7s] ok   Left Toolhead: the lock's Ø5.4 cable channel is vertical
-[   22.7s] ok   Left Toolhead: Bowden Left is Bowden Left translated by dX +0.00 (Y, Z, size unchanged)
-[   22.8s] ok   Left Toolhead: Bowden Left cut by Z 600 in one loop
-[   22.8s] ok   Left Toolhead: tube curve rebuilt from its stored route, R 100.35 (stored 100.35)
-[   22.8s] ok   Left Toolhead: the curve starts at the tube's bottom (Z 517.15 vs 517.15)
-[   23.1s] ok   Left Toolhead: the rebuilt curve runs through the tube solid's section centres at Z 530/560/600/650/680 (off by [0.0, 0.0, 0.0, 0.1, 0.05] mm); X -409.70 (stored -399.00)
-[   30.8s] Left Toolhead: best lead-in bend R by join height: Z 557: 3, Z 574: 6, Z 589: 10, Z 603: 15, Z 615: 18, Z 626: 23, Z 635: 29, Z 643: 34, Z 650: 39, Z 655: 45, Z 660: 50, Z 663: 57, Z 666: 68, Z 668: 78, Z 669: 95, Z 669: 103, Z 669: 108, Z 668: 106, Z 667: 103, Z 666: 100, Z 664: 97, Z 663: 95, Z 661: 91, Z 659: 87, Z 657: 87, Z 656: 87, Z 654: 88, Z 654: 88, Z 653: 88, Z 653: 88, Z 654: 88, Z 655: 87, Z 657: 87, Z 660: 85
-[   30.8s] ok   Left Toolhead: a join on the tube with the lead-in bend R >= 51
-[   30.8s] Left Toolhead: lock top (-409.42, 10.92, 550.11); join at tube u 0.325 = Z 663.2, 124.6 mm from the lock; lead-in handles 30/60, length 132.8; bundle to the roof 409.5 (tube 406.7)
-[   30.8s] ok   Left Toolhead: bend R lead-in 57.2, beside the tube >= 95.2 (MIN_R 51, assumed 10 x the 5.1 mm OD)
-[  119.1s] Left Toolhead: nearest to the cable (clearance, part, in lead-in, Z): [(1.06, 'Roof panel (3 mm)', False, 686.4), (2.64, 'Roof panel (3 mm)', False, 684.8)]
-[  119.1s] ok   Left Toolhead: the cable clears everything outside its own O2S/restraint/tube (2 close samples; min 1.06 mm) []
-[  119.2s] ok   Toolhead slot 2 (L): one restraint lock (1)
-[  119.2s] ok   Toolhead slot 2 (L): the lock's Ø5.4 cable channel is vertical
-[  119.2s] ok   Toolhead slot 2 (L): Bowden slot 2 is Bowden Left translated by dX +85.16 (Y, Z, size unchanged)
-[  119.3s] ok   Toolhead slot 2 (L): Bowden slot 2 cut by Z 600 in one loop
-[  119.3s] ok   Toolhead slot 2 (L): tube curve rebuilt from its stored route, R 100.35 (stored 100.35)
-[  119.3s] ok   Toolhead slot 2 (L): the curve starts at the tube's bottom (Z 517.15 vs 517.15)
-[  119.6s] ok   Toolhead slot 2 (L): the rebuilt curve runs through the tube solid's section centres at Z 530/560/600/650/680 (off by [0.0, 0.0, 0.0, 0.1, 0.05] mm); X -324.54 (stored -313.84)
-[  127.1s] Toolhead slot 2 (L): best lead-in bend R by join height: Z 557: 3, Z 574: 6, Z 589: 10, Z 603: 15, Z 615: 18, Z 626: 23, Z 635: 29, Z 643: 34, Z 650: 39, Z 655: 45, Z 660: 50, Z 663: 57, Z 666: 68, Z 668: 78, Z 669: 95, Z 669: 103, Z 669: 108, Z 668: 106, Z 667: 103, Z 666: 100, Z 664: 97, Z 663: 95, Z 661: 91, Z 659: 87, Z 657: 87, Z 656: 87, Z 654: 88, Z 654: 88, Z 653: 88, Z 653: 88, Z 654: 88, Z 655: 87, Z 657: 87, Z 660: 85
-[  127.1s] ok   Toolhead slot 2 (L): a join on the tube with the lead-in bend R >= 51
-[  127.1s] Toolhead slot 2 (L): lock top (-324.26, 10.92, 550.11); join at tube u 0.325 = Z 663.2, 124.6 mm from the lock; lead-in handles 30/60, length 132.8; bundle to the roof 409.5 (tube 406.7)
-[  127.1s] ok   Toolhead slot 2 (L): bend R lead-in 57.2, beside the tube >= 95.2 (MIN_R 51, assumed 10 x the 5.1 mm OD)
-[  128.3s] Toolhead slot 2 (L): nearest to the cable (clearance, part, in lead-in, Z): [(1.06, 'Roof panel (3 mm)', False, 686.4), (2.64, 'Roof panel (3 mm)', False, 684.8)]
-[  128.3s] ok   Toolhead slot 2 (L): the cable clears everything outside its own O2S/restraint/tube (2 close samples; min 1.06 mm) []
-[  128.4s] ok   Toolhead slot 3 (R): one restraint lock (1)
-[  128.4s] ok   Toolhead slot 3 (R): the lock's Ø5.4 cable channel is vertical
-[  128.4s] ok   Toolhead slot 3 (R): Bowden slot 3 is Bowden Right translated by dX -168.12 (Y, Z, size unchanged)
-[  128.5s] ok   Toolhead slot 3 (R): Bowden slot 3 cut by Z 600 in one loop
-[  128.5s] ok   Toolhead slot 3 (R): tube curve rebuilt from its stored route, R 100.35 (stored 100.35)
-[  128.5s] ok   Toolhead slot 3 (R): the curve starts at the tube's bottom (Z 517.15 vs 517.15)
-[  128.8s] ok   Toolhead slot 3 (R): the rebuilt curve runs through the tube solid's section centres at Z 530/560/600/650/680 (off by [0.0, 0.0, 0.0, 0.1, 0.05] mm); X -259.12 (stored -260.12)
-[  136.5s] Toolhead slot 3 (R): best lead-in bend R by join height: Z 557: 3, Z 574: 6, Z 589: 10, Z 603: 15, Z 615: 17, Z 626: 23, Z 635: 29, Z 643: 34, Z 650: 39, Z 655: 45, Z 660: 50, Z 663: 57, Z 666: 66, Z 668: 78, Z 669: 93, Z 669: 104, Z 669: 109, Z 668: 104, Z 667: 103, Z 666: 100, Z 664: 97, Z 663: 95, Z 661: 91, Z 659: 87, Z 657: 87, Z 656: 87, Z 654: 88, Z 654: 88, Z 653: 88, Z 653: 88, Z 654: 88, Z 655: 87, Z 657: 87, Z 660: 86
-[  136.5s] ok   Toolhead slot 3 (R): a join on the tube with the lead-in bend R >= 51
-[  136.5s] Toolhead slot 3 (R): lock top (-248.14, 10.92, 550.11); join at tube u 0.325 = Z 663.2, 125.1 mm from the lock; lead-in handles 30/60, length 133.3; bundle to the roof 409.5 (tube 406.7)
-[  136.5s] ok   Toolhead slot 3 (R): bend R lead-in 57.1, beside the tube >= 95.2 (MIN_R 51, assumed 10 x the 5.1 mm OD)
-[  137.9s] Toolhead slot 3 (R): nearest to the cable (clearance, part, in lead-in, Z): [(1.03, 'Roof panel (3 mm)', False, 686.4), (2.61, 'Roof panel (3 mm)', False, 684.8)]
-[  137.9s] ok   Toolhead slot 3 (R): the cable clears everything outside its own O2S/restraint/tube (2 close samples; min 1.03 mm) []
-[  138.0s] ok   Toolhead slot 4 (L): one restraint lock (1)
-[  138.0s] ok   Toolhead slot 4 (L): the lock's Ø5.4 cable channel is vertical
-[  138.0s] ok   Toolhead slot 4 (L): Bowden slot 4 is Bowden Left translated by dX +253.28 (Y, Z, size unchanged)
-[  138.1s] ok   Toolhead slot 4 (L): Bowden slot 4 cut by Z 600 in one loop
-[  138.1s] ok   Toolhead slot 4 (L): tube curve rebuilt from its stored route, R 100.35 (stored 100.35)
-[  138.1s] ok   Toolhead slot 4 (L): the curve starts at the tube's bottom (Z 517.15 vs 517.15)
-[  138.4s] ok   Toolhead slot 4 (L): the rebuilt curve runs through the tube solid's section centres at Z 530/560/600/650/680 (off by [0.0, 0.0, 0.0, 0.1, 0.05] mm); X -156.42 (stored -145.72)
-[  146.2s] Toolhead slot 4 (L): best lead-in bend R by join height: Z 557: 3, Z 574: 6, Z 589: 10, Z 603: 15, Z 615: 18, Z 626: 23, Z 635: 29, Z 643: 34, Z 650: 39, Z 655: 45, Z 660: 50, Z 663: 57, Z 666: 68, Z 668: 78, Z 669: 95, Z 669: 103, Z 669: 108, Z 668: 106, Z 667: 103, Z 666: 100, Z 664: 97, Z 663: 95, Z 661: 91, Z 659: 87, Z 657: 87, Z 656: 87, Z 654: 88, Z 654: 88, Z 653: 88, Z 653: 88, Z 654: 88, Z 655: 87, Z 657: 87, Z 660: 85
-[  146.2s] ok   Toolhead slot 4 (L): a join on the tube with the lead-in bend R >= 51
-[  146.2s] Toolhead slot 4 (L): lock top (-156.14, 10.92, 550.11); join at tube u 0.325 = Z 663.2, 124.6 mm from the lock; lead-in handles 30/60, length 132.8; bundle to the roof 409.5 (tube 406.7)
-[  146.2s] ok   Toolhead slot 4 (L): bend R lead-in 57.2, beside the tube >= 95.2 (MIN_R 51, assumed 10 x the 5.1 mm OD)
-[  147.5s] Toolhead slot 4 (L): nearest to the cable (clearance, part, in lead-in, Z): [(1.06, 'Roof panel (3 mm)', False, 686.4), (2.64, 'Roof panel (3 mm)', False, 684.8)]
-[  147.5s] ok   Toolhead slot 4 (L): the cable clears everything outside its own O2S/restraint/tube (2 close samples; min 1.06 mm) []
-[  147.6s] ok   Right Toolhead: one restraint lock (1)
-[  147.6s] ok   Right Toolhead: the lock's Ø5.4 cable channel is vertical
-[  147.6s] ok   Right Toolhead: Bowden Right is Bowden Right translated by dX +0.00 (Y, Z, size unchanged)
-[  147.7s] ok   Right Toolhead: Bowden Right cut by Z 600 in one loop
-[  147.7s] ok   Right Toolhead: tube curve rebuilt from its stored route, R 100.35 (stored 100.35)
-[  147.7s] ok   Right Toolhead: the curve starts at the tube's bottom (Z 517.15 vs 517.15)
-[  148.1s] ok   Right Toolhead: the rebuilt curve runs through the tube solid's section centres at Z 530/560/600/650/680 (off by [0.0, 0.0, 0.0, 0.1, 0.05] mm); X -91.00 (stored -92.00)
-[  155.9s] Right Toolhead: best lead-in bend R by join height: Z 557: 3, Z 574: 6, Z 589: 10, Z 603: 15, Z 615: 17, Z 626: 23, Z 635: 29, Z 643: 34, Z 650: 39, Z 655: 45, Z 660: 50, Z 663: 57, Z 666: 66, Z 668: 78, Z 669: 93, Z 669: 104, Z 669: 109, Z 668: 104, Z 667: 103, Z 666: 100, Z 664: 97, Z 663: 95, Z 661: 91, Z 659: 87, Z 657: 87, Z 656: 87, Z 654: 88, Z 654: 88, Z 653: 88, Z 653: 88, Z 654: 88, Z 655: 87, Z 657: 87, Z 660: 86
-[  155.9s] ok   Right Toolhead: a join on the tube with the lead-in bend R >= 51
-[  155.9s] Right Toolhead: lock top (-80.02, 10.92, 550.11); join at tube u 0.325 = Z 663.2, 125.1 mm from the lock; lead-in handles 30/60, length 133.3; bundle to the roof 409.5 (tube 406.7)
-[  155.9s] ok   Right Toolhead: bend R lead-in 57.1, beside the tube >= 95.2 (MIN_R 51, assumed 10 x the 5.1 mm OD)
-[  157.2s] Right Toolhead: nearest to the cable (clearance, part, in lead-in, Z): [(1.03, 'Roof panel (3 mm)', False, 686.4), (2.61, 'Roof panel (3 mm)', False, 684.8)]
-[  157.2s] ok   Right Toolhead: the cable clears everything outside its own O2S/restraint/tube (2 close samples; min 1.03 mm) []
-[  157.2s] ok   cable Left Toolhead vs Toolhead slot 2 (L): 80.1 mm apart
-[  157.2s] ok   cable Toolhead slot 2 (L) vs Toolhead slot 3 (R): 60.9 mm apart
-[  157.2s] ok   cable Toolhead slot 3 (R) vs Toolhead slot 4 (L): 86.9 mm apart
-[  157.3s] ok   cable Toolhead slot 4 (L) vs Right Toolhead: 60.9 mm apart
-[  157.3s] o2s_cable_route: done (read-only, nothing saved)
+[   11.3s] opened /home/dan/Documents/VT350/vt350-lite-38.FCStd
+[   21.6s] ok   Left Toolhead: one restraint lock (1)
+[   21.6s] ok   Left Toolhead: the lock's Ø5.4 cable channel is vertical
+[   21.6s] ok   Left Toolhead: Bowden Left is Bowden Left translated by dX +0.00 (Y, Z, size unchanged)
+[   21.7s] ok   Left Toolhead: Bowden Left cut by Z 600 in one loop
+[   21.7s] ok   Left Toolhead: tube curve rebuilt from its stored route, R 100.35 (stored 100.35)
+[   21.7s] ok   Left Toolhead: the curve starts at the tube's bottom (Z 517.15 vs 517.15)
+[   22.0s] ok   Left Toolhead: the rebuilt curve runs through the tube solid's section centres at Z 530/560/600/650/680 (off by [0.0, 0.0, 0.0, 0.1, 0.05] mm); X -409.70 (stored -399.00)
+[   29.4s] Left Toolhead: best lead-in bend R by join height: Z 557: 3, Z 574: 6, Z 589: 10, Z 603: 15, Z 615: 18, Z 626: 23, Z 635: 29, Z 643: 34, Z 650: 39, Z 655: 45, Z 660: 50, Z 663: 57, Z 666: 68, Z 668: 78, Z 669: 95, Z 669: 103, Z 669: 108, Z 668: 106, Z 667: 103, Z 666: 100, Z 664: 97, Z 663: 95, Z 661: 91, Z 659: 87, Z 657: 87, Z 656: 87, Z 654: 88, Z 654: 88, Z 653: 88, Z 653: 88, Z 654: 88, Z 655: 87, Z 657: 87, Z 660: 85
+[   29.4s] ok   Left Toolhead: a join on the tube with the lead-in bend R >= 51
+[   29.4s] Left Toolhead: lock top (-409.42, 10.92, 550.11); join at tube u 0.325 = Z 663.2, 124.6 mm from the lock; lead-in handles 30/60, length 132.8; bundle to the roof 409.5 (tube 406.7)
+[   29.4s] ok   Left Toolhead: bend R lead-in 57.2, beside the tube >= 95.2 (MIN_R 51, assumed 10 x the 5.1 mm OD)
+[  111.1s] Left Toolhead: nearest to the cable (clearance, part, in lead-in, Z): [(1.13, 'Roof panel (3 mm) paint, outside', False, 686.4), (1.18, 'Roof panel (3 mm)', False, 686.4), (3.13, 'Roof panel (3 mm) paint, outside', False, 684.8), (3.2, 'Roof panel (3 mm)', False, 684.8)]
+[  111.1s] ok   Left Toolhead: the cable clears everything outside its own O2S/restraint/tube (4 close samples; min 1.13 mm) []
+[  111.2s] ok   Toolhead slot 2 (L): one restraint lock (1)
+[  111.2s] ok   Toolhead slot 2 (L): the lock's Ø5.4 cable channel is vertical
+[  111.2s] ok   Toolhead slot 2 (L): Bowden slot 2 is Bowden Left translated by dX +85.16 (Y, Z, size unchanged)
+[  111.2s] ok   Toolhead slot 2 (L): Bowden slot 2 cut by Z 600 in one loop
+[  111.2s] ok   Toolhead slot 2 (L): tube curve rebuilt from its stored route, R 100.35 (stored 100.35)
+[  111.2s] ok   Toolhead slot 2 (L): the curve starts at the tube's bottom (Z 517.15 vs 517.15)
+[  111.6s] ok   Toolhead slot 2 (L): the rebuilt curve runs through the tube solid's section centres at Z 530/560/600/650/680 (off by [0.0, 0.0, 0.0, 0.1, 0.05] mm); X -324.54 (stored -313.84)
+[  118.8s] Toolhead slot 2 (L): best lead-in bend R by join height: Z 557: 3, Z 574: 6, Z 589: 10, Z 603: 15, Z 615: 18, Z 626: 23, Z 635: 29, Z 643: 34, Z 650: 39, Z 655: 45, Z 660: 50, Z 663: 57, Z 666: 68, Z 668: 78, Z 669: 95, Z 669: 103, Z 669: 108, Z 668: 106, Z 667: 103, Z 666: 100, Z 664: 97, Z 663: 95, Z 661: 91, Z 659: 87, Z 657: 87, Z 656: 87, Z 654: 88, Z 654: 88, Z 653: 88, Z 653: 88, Z 654: 88, Z 655: 87, Z 657: 87, Z 660: 85
+[  118.8s] ok   Toolhead slot 2 (L): a join on the tube with the lead-in bend R >= 51
+[  118.8s] Toolhead slot 2 (L): lock top (-324.26, 10.92, 550.11); join at tube u 0.325 = Z 663.2, 124.6 mm from the lock; lead-in handles 30/60, length 132.8; bundle to the roof 409.5 (tube 406.7)
+[  118.8s] ok   Toolhead slot 2 (L): bend R lead-in 57.2, beside the tube >= 95.2 (MIN_R 51, assumed 10 x the 5.1 mm OD)
+[  120.1s] Toolhead slot 2 (L): nearest to the cable (clearance, part, in lead-in, Z): [(1.13, 'Roof panel (3 mm) paint, outside', False, 686.4), (1.18, 'Roof panel (3 mm)', False, 686.4), (3.13, 'Roof panel (3 mm) paint, outside', False, 684.8), (3.2, 'Roof panel (3 mm)', False, 684.8)]
+[  120.1s] ok   Toolhead slot 2 (L): the cable clears everything outside its own O2S/restraint/tube (4 close samples; min 1.13 mm) []
+[  120.2s] ok   Toolhead slot 3 (R): one restraint lock (1)
+[  120.2s] ok   Toolhead slot 3 (R): the lock's Ø5.4 cable channel is vertical
+[  120.2s] ok   Toolhead slot 3 (R): Bowden slot 3 is Bowden Right translated by dX -168.12 (Y, Z, size unchanged)
+[  120.3s] ok   Toolhead slot 3 (R): Bowden slot 3 cut by Z 600 in one loop
+[  120.3s] ok   Toolhead slot 3 (R): tube curve rebuilt from its stored route, R 100.35 (stored 100.35)
+[  120.3s] ok   Toolhead slot 3 (R): the curve starts at the tube's bottom (Z 517.15 vs 517.15)
+[  120.6s] ok   Toolhead slot 3 (R): the rebuilt curve runs through the tube solid's section centres at Z 530/560/600/650/680 (off by [0.0, 0.0, 0.0, 0.1, 0.05] mm); X -248.42 (stored -248.42)
+[  127.5s] Toolhead slot 3 (R): best lead-in bend R by join height: Z 557: 3, Z 574: 6, Z 589: 10, Z 603: 15, Z 615: 18, Z 626: 23, Z 635: 29, Z 643: 34, Z 650: 39, Z 655: 45, Z 660: 50, Z 663: 57, Z 666: 68, Z 668: 78, Z 669: 95, Z 669: 103, Z 669: 108, Z 668: 106, Z 667: 103, Z 666: 100, Z 664: 97, Z 663: 95, Z 661: 91, Z 659: 87, Z 657: 87, Z 656: 87, Z 654: 88, Z 654: 88, Z 653: 88, Z 653: 88, Z 654: 88, Z 655: 87, Z 657: 87, Z 660: 85
+[  127.5s] ok   Toolhead slot 3 (R): a join on the tube with the lead-in bend R >= 51
+[  127.5s] Toolhead slot 3 (R): lock top (-248.14, 10.92, 550.11); join at tube u 0.325 = Z 663.2, 124.6 mm from the lock; lead-in handles 30/60, length 132.8; bundle to the roof 409.5 (tube 406.7)
+[  127.5s] ok   Toolhead slot 3 (R): bend R lead-in 57.2, beside the tube >= 95.2 (MIN_R 51, assumed 10 x the 5.1 mm OD)
+[  128.7s] Toolhead slot 3 (R): nearest to the cable (clearance, part, in lead-in, Z): [(1.13, 'Roof panel (3 mm) paint, outside', False, 686.4), (1.18, 'Roof panel (3 mm)', False, 686.4), (3.13, 'Roof panel (3 mm) paint, outside', False, 684.8), (3.2, 'Roof panel (3 mm)', False, 684.8)]
+[  128.7s] ok   Toolhead slot 3 (R): the cable clears everything outside its own O2S/restraint/tube (4 close samples; min 1.13 mm) []
+[  128.8s] ok   Toolhead slot 4 (L): one restraint lock (1)
+[  128.8s] ok   Toolhead slot 4 (L): the lock's Ø5.4 cable channel is vertical
+[  128.8s] ok   Toolhead slot 4 (L): Bowden slot 4 is Bowden Left translated by dX +253.28 (Y, Z, size unchanged)
+[  128.9s] ok   Toolhead slot 4 (L): Bowden slot 4 cut by Z 600 in one loop
+[  128.9s] ok   Toolhead slot 4 (L): tube curve rebuilt from its stored route, R 100.35 (stored 100.35)
+[  128.9s] ok   Toolhead slot 4 (L): the curve starts at the tube's bottom (Z 517.15 vs 517.15)
+[  129.2s] ok   Toolhead slot 4 (L): the rebuilt curve runs through the tube solid's section centres at Z 530/560/600/650/680 (off by [0.0, 0.0, 0.0, 0.1, 0.05] mm); X -156.42 (stored -145.72)
+[  135.9s] Toolhead slot 4 (L): best lead-in bend R by join height: Z 557: 3, Z 574: 6, Z 589: 10, Z 603: 15, Z 615: 18, Z 626: 23, Z 635: 29, Z 643: 34, Z 650: 39, Z 655: 45, Z 660: 50, Z 663: 57, Z 666: 68, Z 668: 78, Z 669: 95, Z 669: 103, Z 669: 108, Z 668: 106, Z 667: 103, Z 666: 100, Z 664: 97, Z 663: 95, Z 661: 91, Z 659: 87, Z 657: 87, Z 656: 87, Z 654: 88, Z 654: 88, Z 653: 88, Z 653: 88, Z 654: 88, Z 655: 87, Z 657: 87, Z 660: 85
+[  135.9s] ok   Toolhead slot 4 (L): a join on the tube with the lead-in bend R >= 51
+[  135.9s] Toolhead slot 4 (L): lock top (-156.14, 10.92, 550.11); join at tube u 0.325 = Z 663.2, 124.6 mm from the lock; lead-in handles 30/60, length 132.8; bundle to the roof 409.5 (tube 406.7)
+[  135.9s] ok   Toolhead slot 4 (L): bend R lead-in 57.2, beside the tube >= 95.2 (MIN_R 51, assumed 10 x the 5.1 mm OD)
+[  137.1s] Toolhead slot 4 (L): nearest to the cable (clearance, part, in lead-in, Z): [(1.13, 'Roof panel (3 mm) paint, outside', False, 686.4), (1.18, 'Roof panel (3 mm)', False, 686.4), (3.13, 'Roof panel (3 mm) paint, outside', False, 684.8), (3.2, 'Roof panel (3 mm)', False, 684.8)]
+[  137.1s] ok   Toolhead slot 4 (L): the cable clears everything outside its own O2S/restraint/tube (4 close samples; min 1.13 mm) []
+[  137.3s] ok   Right Toolhead: one restraint lock (1)
+[  137.3s] ok   Right Toolhead: the lock's Ø5.4 cable channel is vertical
+[  137.3s] ok   Right Toolhead: Bowden Right is Bowden Right translated by dX +0.00 (Y, Z, size unchanged)
+[  137.3s] ok   Right Toolhead: Bowden Right cut by Z 600 in one loop
+[  137.3s] ok   Right Toolhead: tube curve rebuilt from its stored route, R 100.35 (stored 100.35)
+[  137.3s] ok   Right Toolhead: the curve starts at the tube's bottom (Z 517.15 vs 517.15)
+[  137.7s] ok   Right Toolhead: the rebuilt curve runs through the tube solid's section centres at Z 530/560/600/650/680 (off by [0.0, 0.0, 0.0, 0.1, 0.05] mm); X -80.30 (stored -80.30)
+[  145.0s] Right Toolhead: best lead-in bend R by join height: Z 557: 3, Z 574: 6, Z 589: 10, Z 603: 15, Z 615: 18, Z 626: 23, Z 635: 29, Z 643: 34, Z 650: 39, Z 655: 45, Z 660: 50, Z 663: 57, Z 666: 68, Z 668: 78, Z 669: 95, Z 669: 103, Z 669: 108, Z 668: 106, Z 667: 103, Z 666: 100, Z 664: 97, Z 663: 95, Z 661: 91, Z 659: 87, Z 657: 87, Z 656: 87, Z 654: 88, Z 654: 88, Z 653: 88, Z 653: 88, Z 654: 88, Z 655: 87, Z 657: 87, Z 660: 85
+[  145.0s] ok   Right Toolhead: a join on the tube with the lead-in bend R >= 51
+[  145.0s] Right Toolhead: lock top (-80.02, 10.92, 550.11); join at tube u 0.325 = Z 663.2, 124.6 mm from the lock; lead-in handles 30/60, length 132.8; bundle to the roof 409.5 (tube 406.7)
+[  145.0s] ok   Right Toolhead: bend R lead-in 57.2, beside the tube >= 95.2 (MIN_R 51, assumed 10 x the 5.1 mm OD)
+[  146.3s] Right Toolhead: nearest to the cable (clearance, part, in lead-in, Z): [(1.13, 'Roof panel (3 mm) paint, outside', False, 686.4), (1.18, 'Roof panel (3 mm)', False, 686.4), (3.13, 'Roof panel (3 mm) paint, outside', False, 684.8), (3.2, 'Roof panel (3 mm)', False, 684.8)]
+[  146.3s] ok   Right Toolhead: the cable clears everything outside its own O2S/restraint/tube (4 close samples; min 1.13 mm) []
+[  146.4s] ok   cable Left Toolhead vs Toolhead slot 2 (L): 80.1 mm apart
+[  146.4s] ok   cable Toolhead slot 2 (L) vs Toolhead slot 3 (R): 71.0 mm apart
+[  146.4s] ok   cable Toolhead slot 3 (R) vs Toolhead slot 4 (L): 86.9 mm apart
+[  146.4s] ok   cable Toolhead slot 4 (L) vs Right Toolhead: 71.0 mm apart
+[  146.4s] o2s_cable_route: done (read-only, nothing saved)
