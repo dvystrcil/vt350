@@ -1,0 +1,168 @@
+[  114.9s] opened /home/dan/Documents/VT350/vt350-lite-39.FCStd
+[  124.5s] ok   Left Toolhead: one restraint lock (1)
+[  124.5s] ok   Left Toolhead: the lock's Ø5.4 cable channel is vertical
+[  124.5s] ok   Left Toolhead: Bowden Left is Bowden Left translated by dX +0.00 (Y, Z, size unchanged)
+[  124.5s] ok   Left Toolhead: Bowden Left cut by Z 600 in one loop
+[  124.6s] ok   Left Toolhead: tube curve rebuilt from its stored route, R 100.35 (stored 100.35)
+[  124.6s] ok   Left Toolhead: the curve starts at the tube's bottom (Z 517.15 vs 517.15)
+[  124.9s] ok   Left Toolhead: the rebuilt curve runs through the tube solid's section centres at Z 530/560/600/650/680 (off by [0.0, 0.0, 0.0, 0.1, 0.05] mm); X -409.70 (stored -399.00)
+[  131.5s] Left Toolhead: best lead-in bend R by join height: Z 557: 3, Z 574: 6, Z 589: 10, Z 603: 15, Z 615: 18, Z 626: 23, Z 635: 29, Z 643: 34, Z 650: 39, Z 655: 45, Z 660: 50, Z 663: 57, Z 666: 68, Z 668: 78, Z 669: 95, Z 669: 103, Z 669: 108, Z 668: 106, Z 667: 103, Z 666: 100, Z 664: 97, Z 663: 95, Z 661: 91, Z 659: 87, Z 657: 87, Z 656: 87, Z 654: 88, Z 654: 88, Z 653: 88, Z 653: 88, Z 654: 88, Z 655: 87, Z 657: 87, Z 660: 85
+[  131.5s] ok   Left Toolhead: a join on the tube with the lead-in bend R >= 51
+[  131.5s] Left Toolhead: lock top (-409.42, 10.92, 550.11); join at tube u 0.325 = Z 663.2, 124.6 mm from the lock; lead-in handles 30/60, length 132.8; bundle to the roof 409.5 (tube 406.7)
+[  131.5s] ok   Left Toolhead: bend R lead-in 57.2, beside the tube >= 95.2 (MIN_R 51, assumed 10 x the 5.1 mm OD)
+[  131.6s] ok   Left Toolhead: Bowden Left cut by Z 690.0 in one loop
+[  131.6s] ok   Left Toolhead: Bowden Left cut by Z 700.0 in one loop
+[  131.6s] ok   Left Toolhead: the cable's clamp axis X -415.91 is inside clamp slot 1 (X -430.8..-394.8)
+[  131.6s] ok   Left Toolhead: the bundle reaches the roof at the clamp's cable axis (off by 0.002 mm)
+[  133.4s] ok   Left Toolhead: clamp -> lane lead-in bends R 93.4 (run 100 along X, handles 65/60)
+[  133.4s] ok   Left Toolhead: its lane runs forward: from X -315.9 to the corner at X 40
+[  133.4s] ok   Left Toolhead: the whole cable bends no tighter than R 57.4 (at Z 645; MIN_R 51)
+[  133.5s] ok   Toolhead slot 2 (L): one restraint lock (1)
+[  133.5s] ok   Toolhead slot 2 (L): the lock's Ø5.4 cable channel is vertical
+[  133.5s] ok   Toolhead slot 2 (L): Bowden slot 2 is Bowden Left translated by dX +85.16 (Y, Z, size unchanged)
+[  133.6s] ok   Toolhead slot 2 (L): Bowden slot 2 cut by Z 600 in one loop
+[  133.6s] ok   Toolhead slot 2 (L): tube curve rebuilt from its stored route, R 100.35 (stored 100.35)
+[  133.6s] ok   Toolhead slot 2 (L): the curve starts at the tube's bottom (Z 517.15 vs 517.15)
+[  133.9s] ok   Toolhead slot 2 (L): the rebuilt curve runs through the tube solid's section centres at Z 530/560/600/650/680 (off by [0.0, 0.0, 0.0, 0.1, 0.05] mm); X -324.54 (stored -313.84)
+[  140.5s] Toolhead slot 2 (L): best lead-in bend R by join height: Z 557: 3, Z 574: 6, Z 589: 10, Z 603: 15, Z 615: 18, Z 626: 23, Z 635: 29, Z 643: 34, Z 650: 39, Z 655: 45, Z 660: 50, Z 663: 57, Z 666: 68, Z 668: 78, Z 669: 95, Z 669: 103, Z 669: 108, Z 668: 106, Z 667: 103, Z 666: 100, Z 664: 97, Z 663: 95, Z 661: 91, Z 659: 87, Z 657: 87, Z 656: 87, Z 654: 88, Z 654: 88, Z 653: 88, Z 653: 88, Z 654: 88, Z 655: 87, Z 657: 87, Z 660: 85
+[  140.5s] ok   Toolhead slot 2 (L): a join on the tube with the lead-in bend R >= 51
+[  140.5s] Toolhead slot 2 (L): lock top (-324.26, 10.92, 550.11); join at tube u 0.325 = Z 663.2, 124.6 mm from the lock; lead-in handles 30/60, length 132.8; bundle to the roof 409.5 (tube 406.7)
+[  140.5s] ok   Toolhead slot 2 (L): bend R lead-in 57.2, beside the tube >= 95.2 (MIN_R 51, assumed 10 x the 5.1 mm OD)
+[  140.6s] ok   Toolhead slot 2 (L): Bowden slot 2 cut by Z 690.0 in one loop
+[  140.6s] ok   Toolhead slot 2 (L): Bowden slot 2 cut by Z 700.0 in one loop
+[  140.6s] ok   Toolhead slot 2 (L): the cable's clamp axis X -330.75 is inside clamp slot 2 (X -345.6..-309.6)
+[  140.6s] ok   Toolhead slot 2 (L): the bundle reaches the roof at the clamp's cable axis (off by 0.002 mm)
+[  142.4s] ok   Toolhead slot 2 (L): clamp -> lane lead-in bends R 92.4 (run 100 along X, handles 60/60)
+[  142.4s] ok   Toolhead slot 2 (L): its lane runs forward: from X -230.8 to the corner at X 40
+[  142.4s] ok   Toolhead slot 2 (L): the whole cable bends no tighter than R 57.4 (at Z 645; MIN_R 51)
+[  142.5s] ok   Toolhead slot 3 (R): one restraint lock (1)
+[  142.5s] ok   Toolhead slot 3 (R): the lock's Ø5.4 cable channel is vertical
+[  142.5s] ok   Toolhead slot 3 (R): Bowden slot 3 is Bowden Right translated by dX -168.12 (Y, Z, size unchanged)
+[  142.5s] ok   Toolhead slot 3 (R): Bowden slot 3 cut by Z 600 in one loop
+[  142.5s] ok   Toolhead slot 3 (R): tube curve rebuilt from its stored route, R 100.35 (stored 100.35)
+[  142.5s] ok   Toolhead slot 3 (R): the curve starts at the tube's bottom (Z 517.15 vs 517.15)
+[  142.9s] ok   Toolhead slot 3 (R): the rebuilt curve runs through the tube solid's section centres at Z 530/560/600/650/680 (off by [0.0, 0.0, 0.0, 0.1, 0.05] mm); X -248.42 (stored -248.42)
+[  149.5s] Toolhead slot 3 (R): best lead-in bend R by join height: Z 557: 3, Z 574: 6, Z 589: 10, Z 603: 15, Z 615: 18, Z 626: 23, Z 635: 29, Z 643: 34, Z 650: 39, Z 655: 45, Z 660: 50, Z 663: 57, Z 666: 68, Z 668: 78, Z 669: 95, Z 669: 103, Z 669: 108, Z 668: 106, Z 667: 103, Z 666: 100, Z 664: 97, Z 663: 95, Z 661: 91, Z 659: 87, Z 657: 87, Z 656: 87, Z 654: 88, Z 654: 88, Z 653: 88, Z 653: 88, Z 654: 88, Z 655: 87, Z 657: 87, Z 660: 85
+[  149.5s] ok   Toolhead slot 3 (R): a join on the tube with the lead-in bend R >= 51
+[  149.5s] Toolhead slot 3 (R): lock top (-248.14, 10.92, 550.11); join at tube u 0.325 = Z 663.2, 124.6 mm from the lock; lead-in handles 30/60, length 132.8; bundle to the roof 409.5 (tube 406.7)
+[  149.5s] ok   Toolhead slot 3 (R): bend R lead-in 57.2, beside the tube >= 95.2 (MIN_R 51, assumed 10 x the 5.1 mm OD)
+[  149.5s] ok   Toolhead slot 3 (R): Bowden slot 3 cut by Z 690.0 in one loop
+[  149.5s] ok   Toolhead slot 3 (R): Bowden slot 3 cut by Z 700.0 in one loop
+[  149.5s] ok   Toolhead slot 3 (R): the cable's clamp axis X -242.21 is inside clamp slot 3 (X -263.3..-227.3)
+[  149.5s] ok   Toolhead slot 3 (R): the bundle reaches the roof at the clamp's cable axis (off by 0.002 mm)
+[  151.3s] ok   Toolhead slot 3 (R): clamp -> lane lead-in bends R 87.7 (run 100 along X, handles 55/60)
+[  151.3s] ok   Toolhead slot 3 (R): its lane runs forward: from X -142.2 to the corner at X 40
+[  151.3s] ok   Toolhead slot 3 (R): the whole cable bends no tighter than R 57.4 (at Z 645; MIN_R 51)
+[  151.4s] ok   Toolhead slot 4 (L): one restraint lock (1)
+[  151.4s] ok   Toolhead slot 4 (L): the lock's Ø5.4 cable channel is vertical
+[  151.4s] ok   Toolhead slot 4 (L): Bowden slot 4 is Bowden Left translated by dX +253.28 (Y, Z, size unchanged)
+[  151.5s] ok   Toolhead slot 4 (L): Bowden slot 4 cut by Z 600 in one loop
+[  151.5s] ok   Toolhead slot 4 (L): tube curve rebuilt from its stored route, R 100.35 (stored 100.35)
+[  151.5s] ok   Toolhead slot 4 (L): the curve starts at the tube's bottom (Z 517.15 vs 517.15)
+[  151.8s] ok   Toolhead slot 4 (L): the rebuilt curve runs through the tube solid's section centres at Z 530/560/600/650/680 (off by [0.0, 0.0, 0.0, 0.1, 0.05] mm); X -156.42 (stored -145.72)
+[  158.4s] Toolhead slot 4 (L): best lead-in bend R by join height: Z 557: 3, Z 574: 6, Z 589: 10, Z 603: 15, Z 615: 18, Z 626: 23, Z 635: 29, Z 643: 34, Z 650: 39, Z 655: 45, Z 660: 50, Z 663: 57, Z 666: 68, Z 668: 78, Z 669: 95, Z 669: 103, Z 669: 108, Z 668: 106, Z 667: 103, Z 666: 100, Z 664: 97, Z 663: 95, Z 661: 91, Z 659: 87, Z 657: 87, Z 656: 87, Z 654: 88, Z 654: 88, Z 653: 88, Z 653: 88, Z 654: 88, Z 655: 87, Z 657: 87, Z 660: 85
+[  158.4s] ok   Toolhead slot 4 (L): a join on the tube with the lead-in bend R >= 51
+[  158.4s] Toolhead slot 4 (L): lock top (-156.14, 10.92, 550.11); join at tube u 0.325 = Z 663.2, 124.6 mm from the lock; lead-in handles 30/60, length 132.8; bundle to the roof 409.5 (tube 406.7)
+[  158.4s] ok   Toolhead slot 4 (L): bend R lead-in 57.2, beside the tube >= 95.2 (MIN_R 51, assumed 10 x the 5.1 mm OD)
+[  158.5s] ok   Toolhead slot 4 (L): Bowden slot 4 cut by Z 690.0 in one loop
+[  158.5s] ok   Toolhead slot 4 (L): Bowden slot 4 cut by Z 700.0 in one loop
+[  158.5s] ok   Toolhead slot 4 (L): the cable's clamp axis X -162.63 is inside clamp slot 4 (X -177.5..-141.5)
+[  158.5s] ok   Toolhead slot 4 (L): the bundle reaches the roof at the clamp's cable axis (off by 0.002 mm)
+[  160.3s] ok   Toolhead slot 4 (L): clamp -> lane lead-in bends R 83.0 (run 100 along X, handles 50/65)
+[  160.3s] ok   Toolhead slot 4 (L): its lane runs forward: from X -62.6 to the corner at X 40
+[  160.3s] ok   Toolhead slot 4 (L): the whole cable bends no tighter than R 57.4 (at Z 645; MIN_R 51)
+[  160.4s] ok   Right Toolhead: one restraint lock (1)
+[  160.4s] ok   Right Toolhead: the lock's Ø5.4 cable channel is vertical
+[  160.4s] ok   Right Toolhead: Bowden Right is Bowden Right translated by dX +0.00 (Y, Z, size unchanged)
+[  160.5s] ok   Right Toolhead: Bowden Right cut by Z 600 in one loop
+[  160.5s] ok   Right Toolhead: tube curve rebuilt from its stored route, R 100.35 (stored 100.35)
+[  160.5s] ok   Right Toolhead: the curve starts at the tube's bottom (Z 517.15 vs 517.15)
+[  160.8s] ok   Right Toolhead: the rebuilt curve runs through the tube solid's section centres at Z 530/560/600/650/680 (off by [0.0, 0.0, 0.0, 0.1, 0.05] mm); X -80.30 (stored -80.30)
+[  167.4s] Right Toolhead: best lead-in bend R by join height: Z 557: 3, Z 574: 6, Z 589: 10, Z 603: 15, Z 615: 18, Z 626: 23, Z 635: 29, Z 643: 34, Z 650: 39, Z 655: 45, Z 660: 50, Z 663: 57, Z 666: 68, Z 668: 78, Z 669: 95, Z 669: 103, Z 669: 108, Z 668: 106, Z 667: 103, Z 666: 100, Z 664: 97, Z 663: 95, Z 661: 91, Z 659: 87, Z 657: 87, Z 656: 87, Z 654: 88, Z 654: 88, Z 653: 88, Z 653: 88, Z 654: 88, Z 655: 87, Z 657: 87, Z 660: 85
+[  167.4s] ok   Right Toolhead: a join on the tube with the lead-in bend R >= 51
+[  167.4s] Right Toolhead: lock top (-80.02, 10.92, 550.11); join at tube u 0.325 = Z 663.2, 124.6 mm from the lock; lead-in handles 30/60, length 132.8; bundle to the roof 409.5 (tube 406.7)
+[  167.4s] ok   Right Toolhead: bend R lead-in 57.2, beside the tube >= 95.2 (MIN_R 51, assumed 10 x the 5.1 mm OD)
+[  167.4s] ok   Right Toolhead: Bowden Right cut by Z 690.0 in one loop
+[  167.4s] ok   Right Toolhead: Bowden Right cut by Z 700.0 in one loop
+[  167.4s] ok   Right Toolhead: the cable's clamp axis X -74.09 is inside clamp slot 5 (X -95.2..-59.2)
+[  167.4s] ok   Right Toolhead: the bundle reaches the roof at the clamp's cable axis (off by 0.002 mm)
+[  169.2s] ok   Right Toolhead: clamp -> lane lead-in bends R 76.9 (run 100 along X, handles 45/65)
+[  169.2s] ok   Right Toolhead: its lane runs forward: from X 25.9 to the corner at X 40
+[  169.2s] ok   Right Toolhead: the whole cable bends no tighter than R 57.4 (at Z 645; MIN_R 51)
+[  181.8s] ok   Left Toolhead: cable solid (7 pieces fused), 1599 mm, 32656 mm3 (pi r^2 L 32657), valid True
+[  184.2s] ok   Toolhead slot 2 (L): cable solid (7 pieces fused), 1498 mm, 30601 mm3 (pi r^2 L 30601), valid True
+[  198.9s] ok   Toolhead slot 3 (R): cable solid (7 pieces fused), 1394 mm, 28479 mm3 (pi r^2 L 28479), valid True
+[  213.9s] ok   Toolhead slot 4 (L): cable solid (7 pieces fused), 1300 mm, 26566 mm3 (pi r^2 L 26566), valid True
+[  216.1s] ok   Right Toolhead: cable solid (7 pieces fused), 1197 mm, 24449 mm3 (pi r^2 L 24450), valid True
+[  229.8s] ok   Left Toolhead: tie head sits on its band (1.54 mm3 shared)
+[  231.2s] ok   Left Toolhead: tie at 20 mm overlapped its cable by 0.000, its tube by 0.000 mm3 before fitting (< 2 % of 153; tube ~0); fitted round both: 1 piece(s), slivers 0.000 dropped; 153.0 mm3
+[  231.3s] ok   Left Toolhead: tie head sits on its band (1.54 mm3 shared)
+[  245.5s] ok   Left Toolhead: tie at 120 mm overlapped its cable by 0.000, its tube by 0.000 mm3 before fitting (< 2 % of 155; tube ~0); fitted round both: 1 piece(s), slivers 0.000 dropped; 154.6 mm3
+[  245.6s] ok   Left Toolhead: tie head sits on its band (1.54 mm3 shared)
+[  259.7s] ok   Left Toolhead: tie at 220 mm overlapped its cable by 0.000, its tube by 0.000 mm3 before fitting (< 2 % of 156; tube ~0); fitted round both: 1 piece(s), slivers 0.000 dropped; 156.1 mm3
+[  259.7s] ok   Left Toolhead: tie head sits on its band (1.54 mm3 shared)
+[  273.7s] ok   Left Toolhead: tie at 320 mm overlapped its cable by 0.000, its tube by 0.000 mm3 before fitting (< 2 % of 158; tube ~0); fitted round both: 1 piece(s), slivers 0.000 dropped; 157.6 mm3
+[  273.8s] ok   Toolhead slot 2 (L): tie head sits on its band (1.54 mm3 shared)
+[  287.7s] ok   Toolhead slot 2 (L): tie at 20 mm overlapped its cable by 0.000, its tube by 0.000 mm3 before fitting (< 2 % of 153; tube ~0); fitted round both: 1 piece(s), slivers 0.000 dropped; 153.0 mm3
+[  287.8s] ok   Toolhead slot 2 (L): tie head sits on its band (1.54 mm3 shared)
+[  302.0s] ok   Toolhead slot 2 (L): tie at 120 mm overlapped its cable by 0.000, its tube by 0.000 mm3 before fitting (< 2 % of 155; tube ~0); fitted round both: 1 piece(s), slivers 0.000 dropped; 154.6 mm3
+[  302.1s] ok   Toolhead slot 2 (L): tie head sits on its band (1.54 mm3 shared)
+[  316.2s] ok   Toolhead slot 2 (L): tie at 220 mm overlapped its cable by 0.000, its tube by 0.000 mm3 before fitting (< 2 % of 156; tube ~0); fitted round both: 1 piece(s), slivers 0.000 dropped; 156.1 mm3
+[  316.3s] ok   Toolhead slot 2 (L): tie head sits on its band (1.54 mm3 shared)
+[  330.3s] ok   Toolhead slot 2 (L): tie at 320 mm overlapped its cable by 0.000, its tube by 0.000 mm3 before fitting (< 2 % of 158; tube ~0); fitted round both: 1 piece(s), slivers 0.000 dropped; 157.6 mm3
+[  330.4s] ok   Toolhead slot 3 (R): tie head sits on its band (1.54 mm3 shared)
+[  344.3s] ok   Toolhead slot 3 (R): tie at 20 mm overlapped its cable by 0.000, its tube by 0.000 mm3 before fitting (< 2 % of 153; tube ~0); fitted round both: 1 piece(s), slivers 0.000 dropped; 153.0 mm3
+[  344.4s] ok   Toolhead slot 3 (R): tie head sits on its band (1.54 mm3 shared)
+[  358.4s] ok   Toolhead slot 3 (R): tie at 120 mm overlapped its cable by 0.000, its tube by 0.000 mm3 before fitting (< 2 % of 155; tube ~0); fitted round both: 1 piece(s), slivers 0.000 dropped; 154.6 mm3
+[  358.5s] ok   Toolhead slot 3 (R): tie head sits on its band (1.54 mm3 shared)
+[  372.4s] ok   Toolhead slot 3 (R): tie at 220 mm overlapped its cable by 0.000, its tube by 0.000 mm3 before fitting (< 2 % of 156; tube ~0); fitted round both: 1 piece(s), slivers 0.000 dropped; 156.1 mm3
+[  372.5s] ok   Toolhead slot 3 (R): tie head sits on its band (1.54 mm3 shared)
+[  386.5s] ok   Toolhead slot 3 (R): tie at 320 mm overlapped its cable by 0.000, its tube by 0.000 mm3 before fitting (< 2 % of 158; tube ~0); fitted round both: 1 piece(s), slivers 0.000 dropped; 157.6 mm3
+[  386.6s] ok   Toolhead slot 4 (L): tie head sits on its band (1.54 mm3 shared)
+[  400.6s] ok   Toolhead slot 4 (L): tie at 20 mm overlapped its cable by 0.000, its tube by 0.000 mm3 before fitting (< 2 % of 153; tube ~0); fitted round both: 1 piece(s), slivers 0.000 dropped; 153.0 mm3
+[  400.7s] ok   Toolhead slot 4 (L): tie head sits on its band (1.54 mm3 shared)
+[  414.8s] ok   Toolhead slot 4 (L): tie at 120 mm overlapped its cable by 0.000, its tube by 0.000 mm3 before fitting (< 2 % of 155; tube ~0); fitted round both: 1 piece(s), slivers 0.000 dropped; 154.6 mm3
+[  414.9s] ok   Toolhead slot 4 (L): tie head sits on its band (1.54 mm3 shared)
+[  428.9s] ok   Toolhead slot 4 (L): tie at 220 mm overlapped its cable by 0.000, its tube by 0.000 mm3 before fitting (< 2 % of 156; tube ~0); fitted round both: 1 piece(s), slivers 0.000 dropped; 156.1 mm3
+[  428.9s] ok   Toolhead slot 4 (L): tie head sits on its band (1.54 mm3 shared)
+[  442.9s] ok   Toolhead slot 4 (L): tie at 320 mm overlapped its cable by 0.000, its tube by 0.000 mm3 before fitting (< 2 % of 158; tube ~0); fitted round both: 1 piece(s), slivers 0.000 dropped; 157.6 mm3
+[  443.0s] ok   Right Toolhead: tie head sits on its band (1.54 mm3 shared)
+[  456.9s] ok   Right Toolhead: tie at 20 mm overlapped its cable by 0.000, its tube by 0.000 mm3 before fitting (< 2 % of 153; tube ~0); fitted round both: 1 piece(s), slivers 0.000 dropped; 153.0 mm3
+[  457.0s] ok   Right Toolhead: tie head sits on its band (1.54 mm3 shared)
+[  471.0s] ok   Right Toolhead: tie at 120 mm overlapped its cable by 0.000, its tube by 0.000 mm3 before fitting (< 2 % of 155; tube ~0); fitted round both: 1 piece(s), slivers 0.000 dropped; 154.6 mm3
+[  471.0s] ok   Right Toolhead: tie head sits on its band (1.54 mm3 shared)
+[  485.0s] ok   Right Toolhead: tie at 220 mm overlapped its cable by 0.000, its tube by 0.000 mm3 before fitting (< 2 % of 156; tube ~0); fitted round both: 1 piece(s), slivers 0.000 dropped; 156.1 mm3
+[  485.1s] ok   Right Toolhead: tie head sits on its band (1.54 mm3 shared)
+[  498.9s] ok   Right Toolhead: tie at 320 mm overlapped its cable by 0.000, its tube by 0.000 mm3 before fitting (< 2 % of 158; tube ~0); fitted round both: 1 piece(s), slivers 0.000 dropped; 157.6 mm3
+[  499.0s] ok   channel body 114578 mm3, cover 70340 mm3, valid
+[  499.1s] ok   channel body with 5 entry slots: one valid solid (1)
+[  594.3s] ok   posts at X [-455.0, -285.0, -170.0, 0.0] (clear of cables, clamps and tube lines); spans [15, 170, 115, 170, 40]
+[ 1035.8s] ok   the cables vs everything: []
+[ 1035.8s] ok   O2S USB cable slot 1 (Ø5.1, ~3 vs O2S USB cable slot 2 (Ø5.1, ~3: 0.000 mm3
+[ 1036.0s] ok   O2S USB cable slot 1 (Ø5.1, ~3 vs O2S USB cable slot 3 (Ø5.1, ~3: 0.000 mm3
+[ 1036.1s] ok   O2S USB cable slot 1 (Ø5.1, ~3 vs O2S USB cable slot 4 (Ø5.1, ~3: 0.000 mm3
+[ 1036.2s] ok   O2S USB cable slot 1 (Ø5.1, ~3 vs O2S USB cable slot 5 (Ø5.1, ~3: 0.000 mm3
+[ 1036.5s] ok   O2S USB cable slot 2 (Ø5.1, ~3 vs O2S USB cable slot 3 (Ø5.1, ~3: 0.000 mm3
+[ 1036.5s] ok   O2S USB cable slot 2 (Ø5.1, ~3 vs O2S USB cable slot 4 (Ø5.1, ~3: 0.000 mm3
+[ 1036.7s] ok   O2S USB cable slot 2 (Ø5.1, ~3 vs O2S USB cable slot 5 (Ø5.1, ~3: 0.000 mm3
+[ 1036.8s] ok   O2S USB cable slot 3 (Ø5.1, ~3 vs O2S USB cable slot 4 (Ø5.1, ~3: 0.000 mm3
+[ 1036.8s] ok   O2S USB cable slot 3 (Ø5.1, ~3 vs O2S USB cable slot 5 (Ø5.1, ~3: 0.000 mm3
+[ 1037.1s] ok   O2S USB cable slot 4 (Ø5.1, ~3 vs O2S USB cable slot 5 (Ø5.1, ~3: 0.000 mm3
+[ 1045.1s] ok   the zip ties vs everything: []
+[ 1063.0s] ok   the zip ties vs the cables: []
+[ 1063.6s] ok   channel, cover, posts, arms vs the printer: []
+[ 1064.1s] ok   channel + cover vs the cables: []
+[ 1064.1s] ok   Left Toolhead: its tube's line, extended 250 mm past the clamp, clears the channel/posts by 6.1 mm
+[ 1064.1s] ok   Toolhead slot 2 (L): its tube's line, extended 250 mm past the clamp, clears the channel/posts by 6.1 mm
+[ 1064.1s] ok   Toolhead slot 3 (R): its tube's line, extended 250 mm past the clamp, clears the channel/posts by 6.1 mm
+[ 1064.1s] ok   Toolhead slot 4 (L): its tube's line, extended 250 mm past the clamp, clears the channel/posts by 5.5 mm
+[ 1064.2s] ok   Right Toolhead: its tube's line, extended 250 mm past the clamp, clears the channel/posts by 6.1 mm
+[ 1064.2s] ok   O2S USB cable slot 1 (Ø5.1, ~3 m; modelled lock to: role black_plastic
+[ 1064.2s] ok   Zip tie, black (2.5 mm) slot 1 at 20 mm: role black_plastic
+[ 1064.2s] ok   Cable channel body, roof to side pack (printed, vt: role printed
+[ 1064.2s] ok   Cable channel cover, roof to side pack (printed, v: role accent
+[ 1064.2s] ok   Cable channel post 1 (printed, M5 to the rear 4040: role printed
+[ 1064.2s] ok   Cable channel arm 1 (printed, M5 to the rear-right: role printed
+[ 1064.2s] ok   solids: 1314 + 33 = 1347
+[ 1064.2s] verify: 0 problems
+[ 1106.7s] SAVED /home/dan/Documents/VT350/vt350-lite-40.FCStd 213775025

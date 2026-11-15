@@ -207,6 +207,18 @@ class TheCommittedMap(unittest.TestCase):
         self.assertEqual(co.role_of(m, "Door window (3 mm clear sheet, acrylic or polycarbonate per #4)", door, "Default"), "glass_clear")
         self.assertEqual(m["roles"]["glass_clear"]["kind"], "glass")
 
+    def test_lite40_cables_ties_channel(self):
+        """User, 2026-11-14 (#3, #19): the O2S cables zip-tied to the bowdens with BLACK zip ties, routed to the side
+        pack in a printed channel with a cover (white body, the accent on the cover: Voron style)."""
+        m = co.load()
+        g = "Enclosure extras (lite-16) / O2S cables + channel (lite-40)"
+        self.assertEqual(co.role_of(m, "O2S USB cable slot 3 (Ø5.1, ~3 m; modelled lock to the side pack)", g, "Default"), "black_plastic")
+        self.assertEqual(co.role_of(m, "Zip tie, black (2.5 mm) slot 1 at 120 mm", g, "Default"), "black_plastic")
+        for lab in ("Cable channel body, roof to side pack (printed, vt350, GPL-3.0-or-later)",
+                    "Cable channel post 2 (printed, M5 to the rear 4040)", "Cable channel arm 1 (printed, M5 to the rear-right upright)"):
+            self.assertEqual(co.role_of(m, lab, g, "Default"), "printed", lab)
+        self.assertEqual(co.role_of(m, "Cable channel cover, roof to side pack (printed, vt350, GPL-3.0-or-later)", g, "Default"), "accent")
+
     def test_crossbow_brushed_aluminium(self):
         """User, 2026-11-14 (#19): the Crossbow (each head's CNC aluminium Crossbow: main body, top cap, lever, blade
         caddy) is brushed aluminium. Unmatched, it kept the model's colour; the printed adapter stays accent."""
