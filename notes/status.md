@@ -4,11 +4,7 @@ Last updated **2026-11-14**.
 
 ## What this printer is
 
-A Voron Trident 350 derivative on a **4040 frame**: MGN12 rails on X/Y, three
-MGN9 rails on Z with integrated-leadscrew NEMA17s (T8, 8 mm), 250 mm Z travel,
-**MadMax toolchanger** with five toolheads in a front dock row (#19; A4T + Dragon Rapido UHF, Orbiter 2.5
-+ **Orbitool O2S** + **Orbiter Smart Filament Sensor**), kinematic bed (LDO
-350 plate kit, tanaes Trident mounts), Octopus Pro + Pi 5, fully enclosed.
+See [What this printer will be](../README.md#what-this-printer-will-be) in the README: the goal, the main parts, scope and where it stands. The decisions behind each part are below.
 
 ## Decisions made
 
