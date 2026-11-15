@@ -21,11 +21,13 @@
     "carbon_felt": {"hex": "#2B2B2B", "kind": "felt", "roughness": 0.95, "note": "carbon felt insulation pads (lite-16), black-grey; seen only at the cut edges between the foil liners (#19, 2026-11-14)"},
     "panel_paint": {"hex": "#2C4A24", "kind": "paint", "roughness": 0.55, "note": "the panels' outsides, spray-painted by the user to match the frame (user, 2026-11-14, #19): a shade off the frame's RAL 6011 and less glossy, a rattle can; the insides stay white"},
     "glass_clear": {"hex": "#F4F7F8", "kind": "glass", "roughness": 0.03, "note": "the door window, clear sheet (acrylic or polycarbonate: #4) (user, 2026-11-14, #19)"},
+    "brushed_aluminium": {"hex": "#BFC3C7", "kind": "aluminium", "roughness": 0.32, "note": "the CNC Crossbow on each head (main body, top cap, lever, blade caddy), brushed aluminium (user, 2026-11-14, #19)"},
     "o2s_heatsink": {"hex": "#2A5DB0", "kind": "aluminium", "roughness": 0.35, "note": "Orbitool O2S toolboard heat sink (13 fins), blue anodised aluminium (user, 2026-11-14, #19; split out of the board by lite-34; placeholder hex until photos)"}
   },
   "rules": [
     {"role": "backbone", "label": "^backbone-350"},
     {"role": "brass", "label": "^Orbitool O2S standoffs \\+ screws "},
+    {"role": "brushed_aluminium", "label": "^Crossbow - (Main Body|Top Cap|Lever|Blade caddy)\\d*$"},
     {"role": "foil", "group": "Insulation: carbon felt sealed in aluminium", "label": " liner, (inner|outer)$"},
     {"role": "carbon_felt", "group": "Insulation: carbon felt sealed in aluminium", "label": " felt (strip )?\\(pad \\d+\\)$"},
     {"role": "panel_paint", "label": " paint, outside$"},
