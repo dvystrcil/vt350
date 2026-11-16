@@ -1,7 +1,7 @@
 """Tests for dupes.py's plain-python side (vt350#195): what each object costs in an .FCStd, read from the zip and
 Document.xml. Plain python3, no FreeCAD:  python3 platform/freecad/test_dupes.py
 The FreeCAD side (grouping, fitting, linking) is test_dupes_fc.py, run under freecadcmd."""
-import os, sys, tempfile, unittest, zipfile
+import os, shutil, sys, tempfile, unittest, zipfile
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import dupes  # noqa: E402
@@ -48,6 +48,10 @@ class ObjectBytes(unittest.TestCase):
             z.writestr("GuiDocument.xml", "<x/>")
         with zipfile.ZipFile(cls.path) as z:
             cls.csize = {i.filename: i.compress_size for i in z.infolist()}
+
+    @classmethod
+    def tearDownClass(cls):
+        shutil.rmtree(cls.tmp)
 
     def test_each_object_costs_its_files_compressed_size(self):
         b = dupes.object_bytes(self.path)
