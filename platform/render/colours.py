@@ -84,15 +84,21 @@ def hidden_in(m, tag, view):
     return bool(v) and (v["hide"] == "all" or view in v["hide"])
 
 
-def standin_skip(name, visible, standin_for, real, use_standins=False):
+def standin_skip(name, visible, standin_for, real):
     """Whether the render export leaves this part out (vt350#195 AC3). A stand-in (standin_for = its real part's
-    Name) is a cheap shape the GUI shows; its real part stays in the model hidden, since a hidden part is never
-    tessellated when the GUI opens the file. `real` = the Names stand-ins stand in for. The render draws the real
-    part and leaves out its stand-in, or the other way round with use_standins (a quick preview). Every other part,
-    and a hidden stand-in, follows its own visibility."""
-    if standin_for: return not (use_standins and visible)
-    if name in real: return use_standins
+    Name) is a cheap shape or mesh the GUI shows; its real part stays in the model hidden, since a hidden part is
+    never tessellated when the GUI opens the file. `real` = the Names stand-ins stand in for. The export always walks
+    the real part, hidden or not, so it keeps its own bucket, colour role and motion group, and never the stand-in.
+    Every other part follows its own visibility."""
+    if standin_for: return True
+    if name in real: return False
     return not visible
+
+
+def standin_source(name, by_real, use_standins):
+    """With use_standins (VT350_STANDINS=1, a quick preview), the stand-in whose geometry the export draws for the
+    real part `name` (by_real = {real Name: stand-in Name}); otherwise None (draw the real shape)."""
+    return by_real.get(name) if use_standins else None
 
 
 def audit(m, parts):

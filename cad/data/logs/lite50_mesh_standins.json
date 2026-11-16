@@ -1,0 +1,1116 @@
+{
+ "stand_ins": [
+  {
+   "family": "O2S toolboard",
+   "part": "O2S_board",
+   "label": "Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)",
+   "parent": "Left Toolhead",
+   "faces": 11584,
+   "facets": 129152,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "O2S toolboard",
+   "part": "O2S_board001",
+   "label": "Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)",
+   "parent": "Right Toolhead",
+   "faces": 11584,
+   "facets": 129154,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "O2S toolboard",
+   "part": "O2S_board002",
+   "label": "Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001",
+   "parent": "Toolhead slot 2 (L)",
+   "faces": 11584,
+   "facets": 129154,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "O2S toolboard",
+   "part": "O2S_board003",
+   "label": "Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001",
+   "parent": "Toolhead slot 3 (R)",
+   "faces": 11584,
+   "facets": 129154,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "O2S toolboard",
+   "part": "O2S_board004",
+   "label": "Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002",
+   "parent": "Toolhead slot 4 (L)",
+   "faces": 11584,
+   "facets": 129154,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "Smart Sensor",
+   "part": "O2S_sensor",
+   "label": "Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)",
+   "parent": "Left Toolhead",
+   "faces": 3146,
+   "facets": 58894,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "Smart Sensor",
+   "part": "O2S_sensor001",
+   "label": "Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0)",
+   "parent": "Right Toolhead",
+   "faces": 3146,
+   "facets": 58894,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "Smart Sensor",
+   "part": "O2S_sensor002",
+   "label": "Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001",
+   "parent": "Toolhead slot 2 (L)",
+   "faces": 3146,
+   "facets": 58894,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "Smart Sensor",
+   "part": "O2S_sensor003",
+   "label": "Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001",
+   "parent": "Toolhead slot 3 (R)",
+   "faces": 3146,
+   "facets": 58894,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "Smart Sensor",
+   "part": "O2S_sensor004",
+   "label": "Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002",
+   "parent": "Toolhead slot 4 (L)",
+   "faces": 3146,
+   "facets": 58894,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "bowden tube",
+   "part": "BowdenTube",
+   "label": "Bowden Left",
+   "parent": "BrassCouplerRing 4mm PFTE v1 (1)",
+   "faces": 4,
+   "facets": 28568,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "bowden tube",
+   "part": "BowdenTube001",
+   "label": "Bowden Right",
+   "parent": "BrassCouplerRing 4mm PFTE v1 (1)",
+   "faces": 4,
+   "facets": 28506,
+   "box_err": 0.0,
+   "worst": 0.0008
+  },
+  {
+   "family": "bowden tube",
+   "part": "BowdenTube002",
+   "label": "Bowden slot 2",
+   "parent": "BrassCouplerRing 4mm PFTE v1 (1)001",
+   "faces": 4,
+   "facets": 28568,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "bowden tube",
+   "part": "BowdenTube003",
+   "label": "Bowden slot 3",
+   "parent": "Toolhead slot 3 (R)",
+   "faces": 4,
+   "facets": 28506,
+   "box_err": 0.0,
+   "worst": 0.001
+  },
+  {
+   "family": "bowden tube",
+   "part": "BowdenTube004",
+   "label": "Bowden slot 4",
+   "parent": "BrassCouplerRing 4mm PFTE v1 (1)002",
+   "faces": 4,
+   "facets": 28568,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "heat block",
+   "part": "A4Tv027",
+   "label": "Heat Block",
+   "parent": "A4Tv2 (DW-Tas, CC BY-NC-SA 4.0) v1",
+   "faces": 128,
+   "facets": 11058,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "heat block",
+   "part": "A4Tv085",
+   "label": "Heat Block001",
+   "parent": "A4Tv2 (DW-Tas, CC BY-NC-SA 4.0) v001",
+   "faces": 128,
+   "facets": 11058,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "heat block",
+   "part": "A4Tv143",
+   "label": "Heat Block002",
+   "parent": "A4Tv2 (DW-Tas, CC BY-NC-SA 4.0) v002",
+   "faces": 128,
+   "facets": 11058,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "heat block",
+   "part": "A4Tv201",
+   "label": "Heat Block003",
+   "parent": "A4Tv2 (DW-Tas, CC BY-NC-SA 4.0) v003",
+   "faces": 128,
+   "facets": 11058,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "heat block",
+   "part": "A4Tv259",
+   "label": "Heat Block004",
+   "parent": "A4Tv2 (DW-Tas, CC BY-NC-SA 4.0) v004",
+   "faces": 128,
+   "facets": 11058,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1008",
+   "label": "_MR148ZZ Outer Ring",
+   "parent": "MR148ZZ v1",
+   "faces": 12,
+   "facets": 1686,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1009",
+   "label": "_MR148ZZ Inner Ring",
+   "parent": "MR148ZZ v1",
+   "faces": 12,
+   "facets": 1612,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1010",
+   "label": "_MR148ZZ Shield1",
+   "parent": "MR148ZZ v1",
+   "faces": 4,
+   "facets": 208,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1011",
+   "label": "_MR148ZZ Ball",
+   "parent": "MR148ZZ v1",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1012",
+   "label": "_MR148ZZ Ball001",
+   "parent": "MR148ZZ v1",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1013",
+   "label": "_MR148ZZ Ball002",
+   "parent": "MR148ZZ v1",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1014",
+   "label": "_MR148ZZ Ball003",
+   "parent": "MR148ZZ v1",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1015",
+   "label": "_MR148ZZ Ball004",
+   "parent": "MR148ZZ v1",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1016",
+   "label": "_MR148ZZ Ball005",
+   "parent": "MR148ZZ v1",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1017",
+   "label": "_MR148ZZ Ball006",
+   "parent": "MR148ZZ v1",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1018",
+   "label": "_MR148ZZ Ball007",
+   "parent": "MR148ZZ v1",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1019",
+   "label": "_MR148ZZ Ball008",
+   "parent": "MR148ZZ v1",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1020",
+   "label": "_MR148ZZ Ball009",
+   "parent": "MR148ZZ v1",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1021",
+   "label": "_MR148ZZ Ball010",
+   "parent": "MR148ZZ v1",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1022",
+   "label": "_MR148ZZ Ball011",
+   "parent": "MR148ZZ v1",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1023",
+   "label": "_MR148ZZ Ball012",
+   "parent": "MR148ZZ v1",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1024",
+   "label": "_MR148ZZ Ball013",
+   "parent": "MR148ZZ v1",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1025",
+   "label": "_MR148ZZ Shield2",
+   "parent": "MR148ZZ v1",
+   "faces": 4,
+   "facets": 208,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1089",
+   "label": "_MR148ZZ Outer Ring (1)",
+   "parent": "MR148ZZ v1 (1)",
+   "faces": 12,
+   "facets": 1686,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1090",
+   "label": "_MR148ZZ Inner Ring (1)",
+   "parent": "MR148ZZ v1 (1)",
+   "faces": 12,
+   "facets": 1612,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1091",
+   "label": "_MR148ZZ Shield1 (1)",
+   "parent": "MR148ZZ v1 (1)",
+   "faces": 4,
+   "facets": 208,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1092",
+   "label": "_MR148ZZ Ball (1)",
+   "parent": "MR148ZZ v1 (1)",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1093",
+   "label": "_MR148ZZ Ball (1)001",
+   "parent": "MR148ZZ v1 (1)",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1094",
+   "label": "_MR148ZZ Ball (1)002",
+   "parent": "MR148ZZ v1 (1)",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1095",
+   "label": "_MR148ZZ Ball (1)003",
+   "parent": "MR148ZZ v1 (1)",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1096",
+   "label": "_MR148ZZ Ball (1)004",
+   "parent": "MR148ZZ v1 (1)",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1097",
+   "label": "_MR148ZZ Ball (1)005",
+   "parent": "MR148ZZ v1 (1)",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1098",
+   "label": "_MR148ZZ Ball (1)006",
+   "parent": "MR148ZZ v1 (1)",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1099",
+   "label": "_MR148ZZ Ball (1)007",
+   "parent": "MR148ZZ v1 (1)",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1100",
+   "label": "_MR148ZZ Ball (1)008",
+   "parent": "MR148ZZ v1 (1)",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1101",
+   "label": "_MR148ZZ Ball (1)009",
+   "parent": "MR148ZZ v1 (1)",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1102",
+   "label": "_MR148ZZ Ball (1)010",
+   "parent": "MR148ZZ v1 (1)",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1103",
+   "label": "_MR148ZZ Ball (1)011",
+   "parent": "MR148ZZ v1 (1)",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1104",
+   "label": "_MR148ZZ Ball (1)012",
+   "parent": "MR148ZZ v1 (1)",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1105",
+   "label": "_MR148ZZ Ball (1)013",
+   "parent": "MR148ZZ v1 (1)",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature1106",
+   "label": "_MR148ZZ Shield2 (1)",
+   "parent": "MR148ZZ v1 (1)",
+   "faces": 4,
+   "facets": 208,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3144",
+   "label": "_MR148ZZ Outer Ring001",
+   "parent": "MR148ZZ v001",
+   "faces": 12,
+   "facets": 1686,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3145",
+   "label": "_MR148ZZ Inner Ring001",
+   "parent": "MR148ZZ v001",
+   "faces": 12,
+   "facets": 1612,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3146",
+   "label": "_MR148ZZ Shield001",
+   "parent": "MR148ZZ v001",
+   "faces": 4,
+   "facets": 208,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3147",
+   "label": "_MR148ZZ Ball014",
+   "parent": "MR148ZZ v001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3148",
+   "label": "_MR148ZZ Ball015",
+   "parent": "MR148ZZ v001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3149",
+   "label": "_MR148ZZ Ball016",
+   "parent": "MR148ZZ v001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3150",
+   "label": "_MR148ZZ Ball017",
+   "parent": "MR148ZZ v001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3151",
+   "label": "_MR148ZZ Ball018",
+   "parent": "MR148ZZ v001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3152",
+   "label": "_MR148ZZ Ball019",
+   "parent": "MR148ZZ v001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3153",
+   "label": "_MR148ZZ Ball020",
+   "parent": "MR148ZZ v001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3154",
+   "label": "_MR148ZZ Ball021",
+   "parent": "MR148ZZ v001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3155",
+   "label": "_MR148ZZ Ball022",
+   "parent": "MR148ZZ v001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3156",
+   "label": "_MR148ZZ Ball023",
+   "parent": "MR148ZZ v001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3157",
+   "label": "_MR148ZZ Ball024",
+   "parent": "MR148ZZ v001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3158",
+   "label": "_MR148ZZ Ball025",
+   "parent": "MR148ZZ v001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3159",
+   "label": "_MR148ZZ Ball026",
+   "parent": "MR148ZZ v001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3160",
+   "label": "_MR148ZZ Ball027",
+   "parent": "MR148ZZ v001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3161",
+   "label": "_MR148ZZ Shield002",
+   "parent": "MR148ZZ v001",
+   "faces": 4,
+   "facets": 208,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3199",
+   "label": "_MR148ZZ Outer Ring (1)001",
+   "parent": "MR148ZZ v1 (1)001",
+   "faces": 12,
+   "facets": 1686,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3200",
+   "label": "_MR148ZZ Inner Ring (1)001",
+   "parent": "MR148ZZ v1 (1)001",
+   "faces": 12,
+   "facets": 1612,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3201",
+   "label": "_MR148ZZ Shield1 (1)001",
+   "parent": "MR148ZZ v1 (1)001",
+   "faces": 4,
+   "facets": 208,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3202",
+   "label": "_MR148ZZ Ball (1)014",
+   "parent": "MR148ZZ v1 (1)001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3203",
+   "label": "_MR148ZZ Ball (1)015",
+   "parent": "MR148ZZ v1 (1)001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3204",
+   "label": "_MR148ZZ Ball (1)016",
+   "parent": "MR148ZZ v1 (1)001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3205",
+   "label": "_MR148ZZ Ball (1)017",
+   "parent": "MR148ZZ v1 (1)001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3206",
+   "label": "_MR148ZZ Ball (1)018",
+   "parent": "MR148ZZ v1 (1)001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3207",
+   "label": "_MR148ZZ Ball (1)019",
+   "parent": "MR148ZZ v1 (1)001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3208",
+   "label": "_MR148ZZ Ball (1)020",
+   "parent": "MR148ZZ v1 (1)001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3209",
+   "label": "_MR148ZZ Ball (1)021",
+   "parent": "MR148ZZ v1 (1)001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3210",
+   "label": "_MR148ZZ Ball (1)022",
+   "parent": "MR148ZZ v1 (1)001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3211",
+   "label": "_MR148ZZ Ball (1)023",
+   "parent": "MR148ZZ v1 (1)001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3212",
+   "label": "_MR148ZZ Ball (1)024",
+   "parent": "MR148ZZ v1 (1)001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3213",
+   "label": "_MR148ZZ Ball (1)025",
+   "parent": "MR148ZZ v1 (1)001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3214",
+   "label": "_MR148ZZ Ball (1)026",
+   "parent": "MR148ZZ v1 (1)001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3215",
+   "label": "_MR148ZZ Ball (1)027",
+   "parent": "MR148ZZ v1 (1)001",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3216",
+   "label": "_MR148ZZ Shield2 (1)001",
+   "parent": "MR148ZZ v1 (1)001",
+   "faces": 4,
+   "facets": 208,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3254",
+   "label": "_MR148ZZ Outer Ring002",
+   "parent": "MR148ZZ v002",
+   "faces": 12,
+   "facets": 1686,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3255",
+   "label": "_MR148ZZ Inner Ring002",
+   "parent": "MR148ZZ v002",
+   "faces": 12,
+   "facets": 1612,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3256",
+   "label": "_MR148ZZ Shield003",
+   "parent": "MR148ZZ v002",
+   "faces": 4,
+   "facets": 208,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3257",
+   "label": "_MR148ZZ Ball028",
+   "parent": "MR148ZZ v002",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3258",
+   "label": "_MR148ZZ Ball029",
+   "parent": "MR148ZZ v002",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3259",
+   "label": "_MR148ZZ Ball030",
+   "parent": "MR148ZZ v002",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3260",
+   "label": "_MR148ZZ Ball031",
+   "parent": "MR148ZZ v002",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3261",
+   "label": "_MR148ZZ Ball032",
+   "parent": "MR148ZZ v002",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3262",
+   "label": "_MR148ZZ Ball033",
+   "parent": "MR148ZZ v002",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3263",
+   "label": "_MR148ZZ Ball034",
+   "parent": "MR148ZZ v002",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3264",
+   "label": "_MR148ZZ Ball035",
+   "parent": "MR148ZZ v002",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3265",
+   "label": "_MR148ZZ Ball036",
+   "parent": "MR148ZZ v002",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3266",
+   "label": "_MR148ZZ Ball037",
+   "parent": "MR148ZZ v002",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3267",
+   "label": "_MR148ZZ Ball038",
+   "parent": "MR148ZZ v002",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3268",
+   "label": "_MR148ZZ Ball039",
+   "parent": "MR148ZZ v002",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3269",
+   "label": "_MR148ZZ Ball040",
+   "parent": "MR148ZZ v002",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3270",
+   "label": "_MR148ZZ Ball041",
+   "parent": "MR148ZZ v002",
+   "faces": 1,
+   "facets": 304,
+   "box_err": 0.0,
+   "worst": 0.0
+  },
+  {
+   "family": "MR bearing part",
+   "part": "Part__Feature3271",
+   "label": "_MR148ZZ Shield004",
+   "parent": "MR148ZZ v002",
+   "faces": 4,
+   "facets": 208,
+   "box_err": 0.0,
+   "worst": 0.0
+  }
+ ],
+ "deflection": [
+  0.1,
+  0.5
+ ],
+ "solids": [
+  1395,
+  1395
+ ],
+ "meshes": [
+  0,
+  110
+ ]
+}

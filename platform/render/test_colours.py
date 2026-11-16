@@ -474,30 +474,31 @@ class Visibility(unittest.TestCase):
 
 
 class StandIns(unittest.TestCase):
-    """vt350#195 AC3: a stand-in (a cheap shape the GUI shows, its StandInFor naming the real part) and its real part
-    (hidden, so the GUI never tessellates it). The render draws the real part unless asked for the stand-ins."""
+    """vt350#195 AC3: a stand-in (a cheap shape or mesh the GUI shows, its StandInFor naming the real part) and its
+    real part (hidden, so the GUI never tessellates it). The export always walks the real part (its bucket, role and
+    motion group), never the stand-in; VT350_STANDINS=1 only swaps where the real part's geometry comes from."""
     REAL = {"Spring1"}
 
-    def skip(self, name, visible, standin_for="", use=False):
-        return co.standin_skip(name, visible, standin_for, self.REAL, use)
+    def skip(self, name, visible, standin_for=""):
+        return co.standin_skip(name, visible, standin_for, self.REAL)
 
     def test_ordinary_parts_follow_their_visibility(self):
         self.assertFalse(self.skip("Bolt", True))
         self.assertTrue(self.skip("Bolt", False))
-        self.assertTrue(self.skip("Bolt", False, use=True))
 
-    def test_the_render_draws_the_hidden_real_part(self):
+    def test_the_hidden_real_part_is_exported(self):
         self.assertFalse(self.skip("Spring1", False))
+        self.assertFalse(self.skip("Spring1", True))
 
-    def test_the_render_leaves_out_the_stand_in(self):
+    def test_a_stand_in_is_never_exported_as_a_part(self):
         self.assertTrue(self.skip("Spring1_standin", True, standin_for="Spring1"))
+        self.assertTrue(self.skip("Spring1_standin", False, standin_for="Spring1"))
 
-    def test_asked_for_stand_ins_it_swaps(self):
-        self.assertFalse(self.skip("Spring1_standin", True, standin_for="Spring1", use=True))
-        self.assertTrue(self.skip("Spring1", False, use=True))
-
-    def test_a_hidden_stand_in_stays_hidden(self):
-        self.assertTrue(self.skip("Spring1_standin", False, standin_for="Spring1", use=True))
+    def test_the_geometry_comes_from_the_stand_in_only_when_asked(self):
+        by_real = {"Spring1": "Spring1_standin"}
+        self.assertIsNone(co.standin_source("Spring1", by_real, False))
+        self.assertEqual(co.standin_source("Spring1", by_real, True), "Spring1_standin")
+        self.assertIsNone(co.standin_source("Bolt", by_real, True))
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
