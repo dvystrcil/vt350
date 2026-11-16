@@ -10,6 +10,9 @@
 # colour map gives a role goes in that role's bucket (#38). The rest bucket by (material, model colour) as before.
 # Also writes each model's per-part box index beside it, <model>.parts.json (platform/freecad/part_index.py, #90),
 # unless it is fresh; a failure there is logged as "index: FAILED" and does not fail the export.
+# Stand-ins (vt350#195 AC3): a part with a StandInFor property is a cheap shape the GUI shows in place of a hidden real
+# part (named by it). The export draws the real part and leaves out the stand-in (colours.standin_skip), or the other way
+# round with VT350_STANDINS=1, a quicker preview. Every other part follows its visibility, as before.
 # Visibility flags (colours.json "visibility", user 2026-11-15): a flagged part goes in a bucket of its own,
 # "vis_<tag>__<key>", with "vis" in scene.json and the rules in scene["visibility"]; render.py hides it per view.
 # Writes colour-audit.txt (vt350#91): every part the colour map matched no rule for, whatever its material, grouped
@@ -22,6 +25,7 @@ import logos                                       # Voron logos: orange, white 
 MODEL = os.environ.get("VT350_MODEL", "/home/dan/Documents/VT350/vt350-lite-16.FCStd")
 OUT = os.environ.get("VT350_RENDER_OUT", "/tmp/claude-1000/-home-dan-Code/49170e9e-d71c-4cd7-8f69-23f113691ee5/scratchpad/render")
 EXTRA = [p for p in os.environ.get("VT350_EXTRA", "").split(":") if p]
+STANDINS = os.environ.get("VT350_STANDINS") == "1"   # render the GUI's stand-ins, not the real parts they stand in for
 CMAP = None if os.environ.get("VT350_COLOURS") == "none" else colours.load(os.environ.get("VT350_COLOURS", colours.MAP_FILE))
 class STATIC:                                      # no motion groups (as motion.Assign(None), without importing it:
     bucket = staticmethod(lambda name, key: (key, None))   # the batch lane's vt350-render chain stages no motion.py)
@@ -46,13 +50,16 @@ try:
       par = {}
       for g in doc.Objects:
           for k in (getattr(g, 'Group', []) or []): par.setdefault(k.Name, g)
+      real = {getattr(o, "StandInFor", "") for o in leaves.values()} - {""}   # parts a stand-in shows in the GUI (#195)
+      if real: log(f"stand-ins: {len(real)}, rendering the {'stand-ins' if STANDINS else 'real parts'}")
       def gpath(o):
           r, p = [], par.get(o.Name)
           while p is not None: r.append(p.Label); p = par.get(p.Name)
           return " / ".join(reversed(r))
       for o in leaves.values():
         vo = o.ViewObject if FreeCAD.GuiUp else None
-        if vo is not None and not vo.isVisible(): hidden += 1; continue
+        if colours.standin_skip(o.Name, vo is None or vo.isVisible(), getattr(o, "StandInFor", ""), real, STANDINS):
+            hidden += 1; continue
         if G.hidden(o.Name): n_motion["hide"] += 1; continue
         if EXTRA and o.Label.startswith(("Ebox envelope", "Filter envelope")): continue   # placeholders for vt350-ebox / vt350-filter merged in (lite-19, lite-27)
         if any(o2.isDerivedFrom('Part::Feature') and o2.Name in leaves for o2 in o.InList if o2.TypeId != 'App::Part'):

@@ -31,6 +31,10 @@ jobs:
         run: python3 platform/freecad/test_batchvalues.py 2>&1 | tee test-batchvalues.log
       - name: Confirm every batchvalues test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-batchvalues.log && tail -1 test-batchvalues.log | grep -qx 'OK'
+      - name: Test the coil fit behind the spring stand-ins (standins, #195 AC3; no FreeCAD)
+        run: python3 platform/freecad/test_standins.py 2>&1 | tee test-standins.log
+      - name: Confirm every standins test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-standins.log && tail -1 test-standins.log | grep -qx 'OK'
       - name: Test sweep_toolhead's plan stage removes its temp dir (fake freecadcmd)
         run: python3 cad/studies/test_sweep_toolhead.py 2>&1 | tee test-sweep.log
       - name: Confirm every sweep_toolhead test ran

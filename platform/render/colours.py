@@ -84,6 +84,17 @@ def hidden_in(m, tag, view):
     return bool(v) and (v["hide"] == "all" or view in v["hide"])
 
 
+def standin_skip(name, visible, standin_for, real, use_standins=False):
+    """Whether the render export leaves this part out (vt350#195 AC3). A stand-in (standin_for = its real part's
+    Name) is a cheap shape the GUI shows; its real part stays in the model hidden, since a hidden part is never
+    tessellated when the GUI opens the file. `real` = the Names stand-ins stand in for. The render draws the real
+    part and leaves out its stand-in, or the other way round with use_standins (a quick preview). Every other part,
+    and a hidden stand-in, follows its own visibility."""
+    if standin_for: return not (use_standins and visible)
+    if name in real: return use_standins
+    return not visible
+
+
 def audit(m, parts):
     """The parts no rule matches (vt350#91), grouped by (group path, material): a list of {"group", "material", "n",
     "labels": {label: count}}, most parts first, then by group and material. parts = (label, group, material) for

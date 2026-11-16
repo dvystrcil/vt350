@@ -1,0 +1,68 @@
+{
+ "springs": [
+  {
+   "spring": "Part__Feature1053",
+   "label": "Spring v1 (1)",
+   "parent": "Sping (1)",
+   "axis": "Y",
+   "od": 6.905,
+   "id": 5.095,
+   "length": 10.472,
+   "wire": 0.838,
+   "slack": 0.002,
+   "points": 12169
+  },
+  {
+   "spring": "Part__Feature1134",
+   "label": "Spring v1 (1) (1)",
+   "parent": "Sping (1) (1)",
+   "axis": "Y",
+   "od": 6.905,
+   "id": 5.095,
+   "length": 10.472,
+   "wire": 0.838,
+   "slack": 0.002,
+   "points": 12169
+  },
+  {
+   "spring": "Part__Feature3186",
+   "label": "Spring v1 (1)001",
+   "parent": "Sping (1)001",
+   "axis": "Y",
+   "od": 6.905,
+   "id": 5.095,
+   "length": 10.472,
+   "wire": 0.838,
+   "slack": 0.002,
+   "points": 12169
+  },
+  {
+   "spring": "Part__Feature3241",
+   "label": "Spring v1 (1) (1)001",
+   "parent": "Sping (1) (1)001",
+   "axis": "Y",
+   "od": 6.905,
+   "id": 5.095,
+   "length": 10.472,
+   "wire": 0.838,
+   "slack": 0.002,
+   "points": 12169
+  },
+  {
+   "spring": "Part__Feature3296",
+   "label": "Spring v1 (1)002",
+   "parent": "Sping (1)002",
+   "axis": "Y",
+   "od": 6.905,
+   "id": 5.095,
+   "length": 10.472,
+   "wire": 0.838,
+   "slack": 0.002,
+   "points": 12169
+  }
+ ],
+ "solids": [
+  1390,
+  1395
+ ]
+}

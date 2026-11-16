@@ -472,5 +472,32 @@ class Visibility(unittest.TestCase):
         self.assertEqual(tags.get("dock_carriage_copy"), "all")
         self.assertIn("low_side", tags.get("left_panel", []))
 
+
+class StandIns(unittest.TestCase):
+    """vt350#195 AC3: a stand-in (a cheap shape the GUI shows, its StandInFor naming the real part) and its real part
+    (hidden, so the GUI never tessellates it). The render draws the real part unless asked for the stand-ins."""
+    REAL = {"Spring1"}
+
+    def skip(self, name, visible, standin_for="", use=False):
+        return co.standin_skip(name, visible, standin_for, self.REAL, use)
+
+    def test_ordinary_parts_follow_their_visibility(self):
+        self.assertFalse(self.skip("Bolt", True))
+        self.assertTrue(self.skip("Bolt", False))
+        self.assertTrue(self.skip("Bolt", False, use=True))
+
+    def test_the_render_draws_the_hidden_real_part(self):
+        self.assertFalse(self.skip("Spring1", False))
+
+    def test_the_render_leaves_out_the_stand_in(self):
+        self.assertTrue(self.skip("Spring1_standin", True, standin_for="Spring1"))
+
+    def test_asked_for_stand_ins_it_swaps(self):
+        self.assertFalse(self.skip("Spring1_standin", True, standin_for="Spring1", use=True))
+        self.assertTrue(self.skip("Spring1", False, use=True))
+
+    def test_a_hidden_stand_in_stays_hidden(self):
+        self.assertTrue(self.skip("Spring1_standin", False, standin_for="Spring1", use=True))
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
