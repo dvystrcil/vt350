@@ -67,6 +67,9 @@ costs nothing on open (above) and is there for renders.
 
   A coarse **mesh** (`Mesh::Feature`, already triangles, so nothing to tessellate) is about as fast as boxes and
   still looks like the part, so it works as one generic stand-in for any part.
+- **lite-50:** mesh stand-ins for those five families (110 parts). Printer open, 3 alternating pairs: median
+  120.7 → **83.6 s** (the test documents predicted ~40 s off; it was 37). The file grew 110 → 125 MB with the
+  meshes stored. Since lite-47 the open went 133.5 → 83.6 s, and file size explained almost none of it.
 
 ## Linked objects (App::Link): tessellated once (measured 2026-11-16)
 
