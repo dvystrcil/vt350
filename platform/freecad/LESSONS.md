@@ -16,7 +16,7 @@ we know it. **Keep this current while working:** add a finding the day it's meas
   | 5 bowden tubes | 0.02 MB, 4 faces | ~9 s | a 520 mm swept B-spline tube |
   | 5 O2S toolboards | 14.5 MB, 11,584 faces | 10.5 s | a populated PCB, 224 solids |
   | 90 `_MR` bearing parts | small | 8.6 s | toroidal raceways and balls |
-  | 6 SpeedClips | **90 MB** in all | only 2.9 s | big file, cheap to draw |
+  | 6 SpeedClips | **90 MB** raw (29 MB in the zip) | only 2.9 s | big file, cheap to draw |
 
 - How to measure: `cad/studies/open_time.py` (GUI open + first draw, appended to `cad/data/logs/open_time.log`).
   Run it several times, alternating the models: one run varies by ±10 s; medians of 5–6 runs agree within ~1 s.
@@ -96,6 +96,20 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
 - **Not used in this model (yet).** The 5 toolheads are separate copies (each its own Part::Features). Making them
   links to one toolhead would cut every toolhead part's open cost to a fifth. But the motion groups, clash sweeps,
   part index, passes and render export all walk Part::Features by name, so that would be a restructure, not a pass.
+
+## File size: measure the zip, find the copies (measured 2026-11-16, lite-50)
+
+- **An `.FCStd` is a zip; size it by the compressed entries** (`unzip -v`, column 3), not by raw `.brp` sizes. B-rep
+  text compresses 3–7×: lite-50's SpeedClips are 90 MB raw but 29 MB of the 125 MB file. Of lite-50's 124 MB
+  compressed, 106 MB is `.brp` shapes and 14.5 MB the lite-50 mesh stand-ins (`.bms`). It's a long tail:
+  19 shapes over 1 MB hold 57 MB, and 440 between 10 kB and 1 MB hold 45 MB.
+- **Each Part::Feature's shape is stored in full**, even when another object has the same shape. Equal zip CRCs
+  find only byte-identical copies (23.7 MB in lite-50). A copy that has been moved differs in bytes. To find
+  congruent copies, group solids by (volume, area, face count): in lite-50 that's 184 groups, and storing each
+  once would save **80 MB**, 45 MB of it in the ×5 toolhead parts.
+- **An STL turned into a solid is easy to spot:** every face is a planar triangle (the SpeedClips: 14,712 faces,
+  all triangles, 4.9 MB compressed each). `removeSplitter()` doesn't rescue one: 14,712 → 10,085 faces, 30 s,
+  and the result is **invalid**. Replace it with real geometry or a link.
 
 ## Gotchas
 
