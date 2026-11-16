@@ -1,0 +1,72 @@
+[  132.3s] opened /home/dan/Documents/VT350/vt350-lite-44.FCStd
+[  142.3s] ok   4 brackets, 4 jam nuts (4, 4)
+[  231.3s] ok   foot 1 screw 1: the slot at (-510.0, -62.0) has the measured profile (opening, lips, cavity, ceiling Z -44.00)
+[  231.3s] ok   foot 1 screw 1: a stock M5 length fits (lip top -48.00, ceiling -44.00, cavity 12.0 -> 5.88 wide)
+[  234.5s] ok   foot 1 screw 1: washer clears the jam nut by 3.51 mm
+[  234.5s] ok   foot 1 screw 1: M5x14, tip Z -45.20, 2.80 mm in the T-nut (-48.00..-45.00), 1.20 under the ceiling
+[  243.9s] ok   foot 1 screw 2: the slot at (-490.0, -62.0) has the measured profile (opening, lips, cavity, ceiling Z -44.00)
+[  243.9s] ok   foot 1 screw 2: a stock M5 length fits (lip top -48.00, ceiling -44.00, cavity 12.0 -> 5.88 wide)
+[  243.9s] ok   foot 1 screw 2: washer clears the jam nut by 3.51 mm
+[  243.9s] ok   foot 1 screw 2: M5x14, tip Z -45.20, 2.80 mm in the T-nut (-48.00..-45.00), 1.20 under the ceiling
+[  251.9s] ok   foot 1 screw 3: the slot at (-510.0, -38.0) has the measured profile (opening, lips, cavity, ceiling Z -44.00)
+[  251.9s] ok   foot 1 screw 3: a stock M5 length fits (lip top -48.00, ceiling -44.00, cavity 12.0 -> 5.88 wide)
+[  251.9s] ok   foot 1 screw 3: washer clears the jam nut by 3.51 mm
+[  251.9s] ok   foot 1 screw 3: M5x14, tip Z -45.20, 2.80 mm in the T-nut (-48.00..-45.00), 1.20 under the ceiling
+[  261.0s] ok   foot 1 screw 4: the slot at (-490.0, -38.0) has the measured profile (opening, lips, cavity, ceiling Z -44.00)
+[  261.0s] ok   foot 1 screw 4: a stock M5 length fits (lip top -48.00, ceiling -44.00, cavity 12.0 -> 5.88 wide)
+[  261.1s] ok   foot 1 screw 4: washer clears the jam nut by 3.51 mm
+[  261.1s] ok   foot 1 screw 4: M5x14, tip Z -45.20, 2.80 mm in the T-nut (-48.00..-45.00), 1.20 under the ceiling
+[  269.2s] ok   foot 2 screw 1: the slot at (0.0, -62.0) has the measured profile (opening, lips, cavity, ceiling Z -44.00)
+[  269.2s] ok   foot 2 screw 1: a stock M5 length fits (lip top -48.00, ceiling -44.00, cavity 12.0 -> 5.88 wide)
+[  269.2s] ok   foot 2 screw 1: washer clears the jam nut by 3.51 mm
+[  269.2s] ok   foot 2 screw 1: M5x14, tip Z -45.20, 2.80 mm in the T-nut (-48.00..-45.00), 1.20 under the ceiling
+[  278.4s] ok   foot 2 screw 2: the slot at (20.0, -62.0) has the measured profile (opening, lips, cavity, ceiling Z -44.00)
+[  278.4s] ok   foot 2 screw 2: a stock M5 length fits (lip top -48.00, ceiling -44.00, cavity 12.0 -> 5.88 wide)
+[  278.4s] ok   foot 2 screw 2: washer clears the jam nut by 3.51 mm
+[  278.4s] ok   foot 2 screw 2: M5x14, tip Z -45.20, 2.80 mm in the T-nut (-48.00..-45.00), 1.20 under the ceiling
+[  286.1s] ok   foot 2 screw 3: the slot at (0.0, -38.0) has the measured profile (opening, lips, cavity, ceiling Z -44.00)
+[  286.1s] ok   foot 2 screw 3: a stock M5 length fits (lip top -48.00, ceiling -44.00, cavity 12.0 -> 5.88 wide)
+[  286.2s] ok   foot 2 screw 3: washer clears the jam nut by 3.51 mm
+[  286.2s] ok   foot 2 screw 3: M5x14, tip Z -45.20, 2.80 mm in the T-nut (-48.00..-45.00), 1.20 under the ceiling
+[  295.1s] ok   foot 2 screw 4: the slot at (20.0, -38.0) has the measured profile (opening, lips, cavity, ceiling Z -44.00)
+[  295.1s] ok   foot 2 screw 4: a stock M5 length fits (lip top -48.00, ceiling -44.00, cavity 12.0 -> 5.88 wide)
+[  295.1s] ok   foot 2 screw 4: washer clears the jam nut by 3.51 mm
+[  295.1s] ok   foot 2 screw 4: M5x14, tip Z -45.20, 2.80 mm in the T-nut (-48.00..-45.00), 1.20 under the ceiling
+[  296.5s] ok   foot 3 screw 1: the slot at (-510.0, 448.0) has the measured profile (opening, lips, cavity, ceiling Z -44.00)
+[  296.5s] ok   foot 3 screw 1: a stock M5 length fits (lip top -48.00, ceiling -44.00, cavity 12.0 -> 5.88 wide)
+[  296.5s] ok   foot 3 screw 1: washer clears the jam nut by 3.51 mm
+[  296.5s] ok   foot 3 screw 1: M5x14, tip Z -45.20, 2.80 mm in the T-nut (-48.00..-45.00), 1.20 under the ceiling
+[  298.2s] ok   foot 3 screw 2: the slot at (-490.0, 448.0) has the measured profile (opening, lips, cavity, ceiling Z -44.00)
+[  298.2s] ok   foot 3 screw 2: a stock M5 length fits (lip top -48.00, ceiling -44.00, cavity 12.0 -> 5.88 wide)
+[  298.2s] ok   foot 3 screw 2: washer clears the jam nut by 3.51 mm
+[  298.2s] ok   foot 3 screw 2: M5x14, tip Z -45.20, 2.80 mm in the T-nut (-48.00..-45.00), 1.20 under the ceiling
+[  299.7s] ok   foot 3 screw 3: the slot at (-510.0, 472.0) has the measured profile (opening, lips, cavity, ceiling Z -44.00)
+[  299.7s] ok   foot 3 screw 3: a stock M5 length fits (lip top -48.00, ceiling -44.00, cavity 12.0 -> 5.88 wide)
+[  299.7s] ok   foot 3 screw 3: washer clears the jam nut by 3.51 mm
+[  299.7s] ok   foot 3 screw 3: M5x14, tip Z -45.20, 2.80 mm in the T-nut (-48.00..-45.00), 1.20 under the ceiling
+[  301.2s] ok   foot 3 screw 4: the slot at (-490.0, 472.0) has the measured profile (opening, lips, cavity, ceiling Z -44.00)
+[  301.2s] ok   foot 3 screw 4: a stock M5 length fits (lip top -48.00, ceiling -44.00, cavity 12.0 -> 5.88 wide)
+[  301.2s] ok   foot 3 screw 4: washer clears the jam nut by 3.51 mm
+[  301.2s] ok   foot 3 screw 4: M5x14, tip Z -45.20, 2.80 mm in the T-nut (-48.00..-45.00), 1.20 under the ceiling
+[  302.6s] ok   foot 4 screw 1: the slot at (0.0, 448.0) has the measured profile (opening, lips, cavity, ceiling Z -44.00)
+[  302.6s] ok   foot 4 screw 1: a stock M5 length fits (lip top -48.00, ceiling -44.00, cavity 12.0 -> 5.88 wide)
+[  302.6s] ok   foot 4 screw 1: washer clears the jam nut by 3.51 mm
+[  302.6s] ok   foot 4 screw 1: M5x14, tip Z -45.20, 2.80 mm in the T-nut (-48.00..-45.00), 1.20 under the ceiling
+[  303.9s] ok   foot 4 screw 2: the slot at (20.0, 448.0) has the measured profile (opening, lips, cavity, ceiling Z -44.00)
+[  303.9s] ok   foot 4 screw 2: a stock M5 length fits (lip top -48.00, ceiling -44.00, cavity 12.0 -> 5.88 wide)
+[  303.9s] ok   foot 4 screw 2: washer clears the jam nut by 3.51 mm
+[  303.9s] ok   foot 4 screw 2: M5x14, tip Z -45.20, 2.80 mm in the T-nut (-48.00..-45.00), 1.20 under the ceiling
+[  305.4s] ok   foot 4 screw 3: the slot at (0.0, 472.0) has the measured profile (opening, lips, cavity, ceiling Z -44.00)
+[  305.4s] ok   foot 4 screw 3: a stock M5 length fits (lip top -48.00, ceiling -44.00, cavity 12.0 -> 5.88 wide)
+[  305.4s] ok   foot 4 screw 3: washer clears the jam nut by 3.51 mm
+[  305.4s] ok   foot 4 screw 3: M5x14, tip Z -45.20, 2.80 mm in the T-nut (-48.00..-45.00), 1.20 under the ceiling
+[  306.9s] ok   foot 4 screw 4: the slot at (20.0, 472.0) has the measured profile (opening, lips, cavity, ceiling Z -44.00)
+[  306.9s] ok   foot 4 screw 4: a stock M5 length fits (lip top -48.00, ceiling -44.00, cavity 12.0 -> 5.88 wide)
+[  306.9s] ok   foot 4 screw 4: washer clears the jam nut by 3.51 mm
+[  306.9s] ok   foot 4 screw 4: M5x14, tip Z -45.20, 2.80 mm in the T-nut (-48.00..-45.00), 1.20 under the ceiling
+[  306.9s] ok   16 screw positions over the slot: 16
+[  411.9s] ok   the screws, washers and T-nuts vs the printer: []
+[  412.1s] ok   the foot hardware overlaps itself nowhere (64 touching pairs): []
+[  412.1s] ok   solids: 1402 (lite-44 + 16 screws, 16 washers, 16 T-nuts = 1402)
+[  412.1s] verify: 0 problems
+[  442.3s] SAVED /home/dan/Documents/VT350/vt350-lite-45.FCStd 213867571
