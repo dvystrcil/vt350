@@ -10,6 +10,7 @@
 import FreeCAD, Mesh, MeshPart, os, sys, json, time, traceback, tempfile
 _HERE = os.path.dirname(os.path.abspath(__file__))   # then the checkout's code folders (vt350#122); a gpu-batch pod stages all flat in _HERE
 sys.path[:0] = [_HERE] + [p for p in (os.path.join(os.path.dirname(os.path.dirname(_HERE)), d) for d in ('cad/studies', 'cad/scripts', 'platform/freecad')) if os.path.isdir(p)]
+import linkgeo                                     # parts may be App::Links (vt350#195)
 V = FreeCAD.Vector
 POSE = os.environ.get("VT350_POSE", "Left:front-left, top")
 OUT = os.environ.get("VT350_RENDER_OUT", "/tmp/vt350-pose-render")
@@ -45,14 +46,14 @@ try:
     excl = set(plan["exclude"]) | {plan["tubes"][head]}
     buckets, moved, n_skip = {}, {}, 0
     for o in doc.Objects:
-        if not (o.isDerivedFrom('Part::Feature') and not o.Shape.isNull() and o.Shape.Solids): continue
+        if not linkgeo.is_leaf(o): continue          # a Part::Feature, or a link to one (vt350#195)
         if o.Name in excl: continue
         path = {p.Label for p in o.InListRecursive}
         if path & SKIP_PATHS or o.Label.startswith(SKIP_LABEL_PREFIX): n_skip += 1; continue
         bucket, col, mat, trn, grp = role.get(o.Name, ("frame", (0.62, 0.63, 0.66), "Aluminum", 0.0, None))
         if o.Label.startswith("Bowden"): bucket, col, mat = "bowden", (0.92, 0.92, 0.85), "PTFE"
         if o.Label.startswith(getattr(sw, "BEAM", "\0")): bucket, col = "beacon", (0.1, 0.35, 0.8)
-        s = o.Shape.copy(); s.Placement = o.getGlobalPlacement()
+        s = linkgeo.gshape(o)
         if clipb.get(o.Name):
             import Part
             x0, y0, z0, x1, y1, z1 = clipb[o.Name]; s = s.common(Part.makeBox(x1 - x0, y1 - y0, z1 - z0, V(x0, y0, z0)))

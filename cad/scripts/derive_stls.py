@@ -40,7 +40,8 @@ def part(doc, label, group, which):
              and group in [a.Label for a in o.InListRecursive]]
     else: c = [o for o in doc.getObjectsByLabel(label) if group in [a.Label for a in o.InListRecursive]]
     if len(c) != 1: raise RuntimeError(f"{len(c)} objects {label!r} under {group!r}")
-    s = c[0].Shape.copy(); s.Placement = c[0].getGlobalPlacement()
+    import linkgeo                                   # c[0] may be an App::Link (vt350#195); lazily: plain-python tests
+    s = linkgeo.gshape(c[0])
     if which == "low": s = min(s.Solids, key=lambda x: x.BoundBox.ZMin)
     return s, c[0].Label
 try:

@@ -93,9 +93,34 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
   shape once.
 - **A hidden original is still tessellated if a visible link shows it.** Hiding saves nothing then: the links
   need its triangles. So stand-ins and links don't combine. To skip a linked part's cost, hide the links too.
-- **Not used in this model (yet).** The 5 toolheads are separate copies (each its own Part::Features). Making them
-  links to one toolhead would cut every toolhead part's open cost to a fifth. But the motion groups, clash sweeps,
-  part index, passes and render export all walk Part::Features by name, so that would be a restructure, not a pass.
+- **Used from lite-51 (vt350#195):** 22 copies became links (SpeedClips, O2S boards, Smart Sensors and their mesh
+  stand-ins, one carriage compound), found and made by `platform/freecad/dupes.py`. On a scratch copy of lite-50:
+  file 124 → 67.7 MB, save 19.2 → 9.5 s, headless open 9.7 → 4.5 s, and the part index of all 1,395 parts identical.
+  `dupes.py` finds 89 MB of copies in lite-50 in all; most of the rest are the ×5 toolhead parts.
+- **What a link is to code that walks parts** (each found the hard way, 2026-11-16). `platform/freecad/linkgeo.py`
+  handles all of it; walk parts through it:
+  - A link is **not a Part::Feature**, so `isDerivedFrom('Part::Feature')` filters drop it silently.
+  - A link has **no `getGlobalPlacement`**. Its global placement is its parents' times its own Placement
+    (`linkgeo.gplace`). FreeCAD 26.3 deprecates `getGlobalPlacement` anyway (removed in 27.2, "does not handle Links").
+  - A link **has `.Shape`** (and `.Mesh` for a link to a mesh): the target's raw geometry. Placed at `gplace(link)` it
+    is exactly the copy it replaced. That Shape is a **Compound wrapper**: it has `.Solids` but no `.CenterOfMass`.
+  - A link has **no `ShapeMaterial`**, and its view provider may have no `ShapeAppearance`: it shows its target's.
+    Read material and colour from `linkgeo.link_target(o)`.
+  - A link appears in its target's **`InList`**: a check like "consumed by a leaf in its InList" must skip links.
+  - **Names can be kept.** Remove the copy, then `addObject("App::Link", same_name)` gets that Name back, so motion
+    groups and clash lists that name parts keep working.
+- **Fitting a copy to its master** (`dupes.fit`), measured on lite-50:
+  - Parts' raw geometry is often baked where it was imported (each SpeedClip's STL at its own spot, turned), so a
+    copy is master × some rigid move, not master at the copy's Placement.
+  - **FreeCAD's principal axes aren't always right-handed**: build the third from the cross product, or every
+    candidate rotation comes out a reflection.
+  - **A box-corner offset or principal-axes rotation is only near** (0.4 µm off on the SpeedClips). Refine with a
+    least-squares fit on the matched vertices (Kabsch): the residual drops to ~1e-12 mm.
+  - **An open mesh's `Volume` isn't stable**: lite-50's board stand-ins fit each other exactly, yet their volumes
+    were 6431.0–6435.7 (areas within 3e-6). Group meshes by area and box size.
+  - **A mesh's `BoundBox` includes its Placement** (a shape's raw copy doesn't): compare raw meshes.
+  - **An L-shape is not a test of reflection**: it has a mirror plane, so its mirror image is a rotation of it. Use
+    three unequal arms from a corner.
 
 ## Gotchas
 

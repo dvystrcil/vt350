@@ -46,4 +46,5 @@ it doesn't repeat them, so they can't drift apart.
 Task recipes for Claude Code are in `.claude/skills/`. They point to the docs above; any tool or person can follow
 them by reading the file.
 
-- `freecad-standins`: make a FreeCAD model faster to open with stand-ins, and keep renders showing the real parts.
+- `freecad-standins`: make a FreeCAD model faster to open with stand-ins, and keep renders showing the real parts;
+  make it smaller by turning copies into App::Links (`platform/freecad/dupes.py`).

@@ -130,7 +130,8 @@ class FreeCADBackend:
     local one R_parent^-1 d, since global = parent * local."""
 
     def save(self, obj):
-        parent = obj.getGlobalPlacement().multiply(obj.Placement.inverse())
+        import linkgeo                  # lazily: FreeCAD isn't there for the plain-python tests
+        parent = linkgeo.gplace(obj).multiply(obj.Placement.inverse())
         return obj.Placement.copy(), parent.Rotation.inverted()
 
     def move(self, obj, saved, d):
@@ -197,6 +198,7 @@ def clip_objects(doc, objects, clip):
     never moves. -> the new {group: [object]}."""
     import FreeCAD
     import Part
+    import linkgeo
     out = {}
     for g, objs in objects.items():
         out[g] = []
@@ -205,7 +207,7 @@ def clip_objects(doc, objects, clip):
                 out[g].append(o)
                 continue
             x0, y0, z0, x1, y1, z1 = clip[o.Name]
-            s = o.Shape.copy(); s.Placement = o.getGlobalPlacement()
+            s = linkgeo.gshape(o)
             c = doc.addObject("Part::Feature", o.Name + "_PlayerClip")
             c.Shape = s.common(Part.makeBox(x1 - x0, y1 - y0, z1 - z0, FreeCAD.Vector(x0, y0, z0)))
             c.Label = o.Label + " (player: clipped)"

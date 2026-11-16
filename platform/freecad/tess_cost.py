@@ -9,8 +9,11 @@
 # springs and bowdens, the GUI's two worst. Use this to choose what to try; measure the real effect with GUI opens
 # (cad/studies/open_time.py, or 5 copies of a part in a test document).
 # Skips what the GUI skips: parts hidden by their own Visibility, and parts a stand-in shows instead (StandInFor).
+# An App::Link shares its target's triangles, so each target counts once, if it or any link to it is visible.
 # A family is the label without its copy suffixes ("Spring v1 (1)001" -> "Spring v1"). Read-only: never saves.
 import FreeCAD, os, re, sys, time, json, collections
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import linkgeo                                     # parts may be App::Links (vt350#195)
 
 MODEL = os.environ.get("TESS_COST_MODEL")
 OUT = os.environ.get("TESS_COST_OUT")
@@ -35,12 +38,14 @@ def main():
     if not MODEL: raise SystemExit("set TESS_COST_MODEL to the .FCStd to measure")
     t0 = time.time(); doc = FreeCAD.openDocument(MODEL); t_open = time.time() - t0
     standin_for = {getattr(o, "StandInFor", "") for o in doc.Objects} - {""}
-    leaves, skipped = [], collections.Counter()
+    leaves, skipped, drawn = [], collections.Counter(), set()
     for o in doc.Objects:
-        if not o.isDerivedFrom("Part::Feature") or o.Shape.isNull() or not o.Shape.Solids: continue
+        if not linkgeo.is_leaf(o): continue
         if o.Name in standin_for: skipped["a stand-in shows it"] += 1; continue
         if not getattr(o, "Visibility", True): skipped["hidden"] += 1; continue
-        leaves.append(o)
+        t = linkgeo.link_target(o)                   # links share their target's triangles: the GUI pays once
+        if t.Name in drawn: skipped["shares a link target's triangles"] += 1; continue
+        drawn.add(t.Name); leaves.append(t)
     rows = []
     for o in leaves:
         s = o.Shape.copy()                           # a fresh copy: no triangulation cached on it yet

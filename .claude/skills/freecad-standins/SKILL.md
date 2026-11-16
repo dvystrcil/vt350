@@ -1,6 +1,6 @@
 ---
 name: freecad-standins
-description: Make a FreeCAD model faster to open in the GUI by giving its most expensive parts cheap stand-ins (a fitted shape or a coarse mesh) while the real parts stay in the model, hidden, and renders keep drawing the real ones. Use when a model is slow to open or "not responding" on load, when asked which parts make it slow, or before adding a stand-in for a part.
+description: Make a FreeCAD model faster to open in the GUI by giving its most expensive parts cheap stand-ins (a fitted shape or a coarse mesh) while the real parts stay in the model, hidden, and renders keep drawing the real ones; and make it smaller by turning repeated parts into App::Links (dupes.py). Use when a model is slow to open or "not responding" on load, when asked which parts make it slow or what makes the file big, or before adding a stand-in or a link for a part.
 ---
 
 # Stand-ins for a slow FreeCAD model
@@ -60,3 +60,18 @@ hidden and unmoved. Dry run headless, then save from the GUI.
   `stand-ins: N, drawing the real parts`. Then export again with `RENDER_STANDINS=1` (the quick preview): it must
   give the same buckets with the same part counts, and each bucket's box within a few hundredths of a mm.
 - Row in `cad/README.md`, sentence in `notes/status.md`, findings in `LESSONS.md`.
+
+## Copies: links, not stand-ins
+
+When the same part appears several times (one per toolhead, one per dock), a link beats a stand-in for each copy:
+the file stores the shape once, and the GUI tessellates it once for all its links (`LESSONS.md`, "Linked objects").
+
+```bash
+DUPES_MODEL=<model.FCStd> $APP freecadcmd $PWD/platform/freecad/dupes.py    # groups of copies, what linking saves
+```
+
+It prices each group from the zip (compressed bytes, the real file cost) and flags reflections (a link can't reflect)
+and STL-made solids. A pass then calls `dupes.find(doc, dupes.object_bytes(src), names)` and `dupes.link_copies`
+on an explicit list (model it on `cad/passes/lite51_links.py`), checking that each link lands where its copy was and
+every part keeps its global box. Every walker reads links through `platform/freecad/linkgeo.py`; new code that walks
+parts must too (`is_leaf`, `gshape`, `gplace`, never `isDerivedFrom('Part::Feature')` or `getGlobalPlacement`).
