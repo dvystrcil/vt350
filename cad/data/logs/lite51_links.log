@@ -1,0 +1,89 @@
+[   77.1s] opened /home/dan/Documents/VT350/vt350-lite-50.FCStd
+[   88.7s] ok   SpeedClip: 6 parts (found 6)
+[   88.7s] ok   O2S toolboard: 5 parts (found 5)
+[   88.7s] ok   Smart Sensor: 5 parts (found 5)
+[   88.7s] ok   MadMax carriage compound: 3 parts (found 3)
+[   88.7s] ok   mesh stand-ins: one per board and sensor (10 for 10)
+[  109.1s] ok   SpeedClip: one group, 5 copies fit by a rigid move (want 5), staying real [] (want [])
+[  135.6s] ok   O2S toolboard: one group, 4 copies fit by a rigid move (want 4), staying real [] (want [])
+[  144.0s] ok   Smart Sensor: one group, 4 copies fit by a rigid move (want 4), staying real [] (want [])
+[  149.9s] ok   MadMax carriage compound: one group, 1 copies fit by a rigid move (want 1), staying real ['Part__Feature1507'] (want ['Part__Feature1507'])
+[  153.1s] ok   stand-ins: 2 groups (one a family), 8 copies of 10
+[  153.1s] ok   SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)005: material 'ABS-Generic' = its master's 'ABS-Generic'
+[  153.1s] ok   SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)005: colour = its master's (a link shows its target's)
+[  153.1s] ok   SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0): material 'ABS-Generic' = its master's 'ABS-Generic'
+[  153.1s] ok   SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0): colour = its master's (a link shows its target's)
+[  153.1s] ok   SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001: material 'ABS-Generic' = its master's 'ABS-Generic'
+[  153.1s] ok   SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001: colour = its master's (a link shows its target's)
+[  153.1s] ok   SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)002: material 'ABS-Generic' = its master's 'ABS-Generic'
+[  153.1s] ok   SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)002: colour = its master's (a link shows its target's)
+[  153.1s] ok   SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)003: material 'ABS-Generic' = its master's 'ABS-Generic'
+[  153.1s] ok   SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)003: colour = its master's (a link shows its target's)
+[  153.1s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0): material 'Default' = its master's 'Default'
+[  153.1s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0): colour = its master's (a link shows its target's)
+[  153.1s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: material 'Default' = its master's 'Default'
+[  153.1s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: colour = its master's (a link shows its target's)
+[  153.1s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: material 'Default' = its master's 'Default'
+[  153.1s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: colour = its master's (a link shows its target's)
+[  153.1s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: material 'Default' = its master's 'Default'
+[  153.1s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: colour = its master's (a link shows its target's)
+[  153.1s] ok   Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0): material 'Default' = its master's 'Default'
+[  153.1s] ok   Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0): colour = its master's (a link shows its target's)
+[  153.1s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: material 'Default' = its master's 'Default'
+[  153.1s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: colour = its master's (a link shows its target's)
+[  153.1s] ok   Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: material 'Default' = its master's 'Default'
+[  153.1s] ok   Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: colour = its master's (a link shows its target's)
+[  153.1s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: material 'Default' = its master's 'Default'
+[  153.1s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: colour = its master's (a link shows its target's)
+[  153.1s] ok   COMPOUND003: material 'ABS-Generic' = its master's 'ABS-Generic'
+[  153.1s] ok   COMPOUND003: colour = its master's (a link shows its target's)
+[  153.1s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0) stand-in: material '' = its master's ''
+[  153.1s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0) stand-in: colour = its master's (a link shows its target's)
+[  153.1s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 stand-in: material '' = its master's ''
+[  153.1s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 stand-in: colour = its master's (a link shows its target's)
+[  153.1s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 stand-in: material '' = its master's ''
+[  153.1s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 stand-in: colour = its master's (a link shows its target's)
+[  153.1s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 stand-in: material '' = its master's ''
+[  153.1s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 stand-in: colour = its master's (a link shows its target's)
+[  153.1s] ok   Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0) stand-in: material '' = its master's ''
+[  153.1s] ok   Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0) stand-in: colour = its master's (a link shows its target's)
+[  153.1s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 stand-in: material '' = its master's ''
+[  153.1s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 stand-in: colour = its master's (a link shows its target's)
+[  153.1s] ok   Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 stand-in: material '' = its master's ''
+[  153.1s] ok   Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 stand-in: colour = its master's (a link shows its target's)
+[  153.1s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 stand-in: material '' = its master's ''
+[  153.1s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 stand-in: colour = its master's (a link shows its target's)
+[  159.6s] ok   SpeedClip: Part__Feature1506 -> link to Part__Feature1505, lands 1.76e-12 mm from the copy
+[  159.6s] ok   SpeedClip: Part__Feature446 -> link to Part__Feature1505, lands 1.53e-12 mm from the copy
+[  159.6s] ok   SpeedClip: Part__Feature447 -> link to Part__Feature1505, lands 1.14e-12 mm from the copy
+[  159.6s] ok   SpeedClip: Part__Feature652 -> link to Part__Feature1505, lands 2.67e-12 mm from the copy
+[  159.6s] ok   SpeedClip: Part__Feature653 -> link to Part__Feature1505, lands 6.25e-13 mm from the copy
+[  159.6s] SpeedClip: 5 links to SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)004 [Part__Feature1505], saves 25.88 MB
+[  169.1s] ok   O2S toolboard: O2S_board001 -> link to O2S_board, lands 3.60e-12 mm from the copy
+[  169.1s] ok   O2S toolboard: O2S_board002 -> link to O2S_board, lands 8.30e-09 mm from the copy
+[  169.1s] ok   O2S toolboard: O2S_board003 -> link to O2S_board, lands 8.30e-09 mm from the copy
+[  169.1s] ok   O2S toolboard: O2S_board004 -> link to O2S_board, lands 8.30e-09 mm from the copy
+[  169.1s] O2S toolboard: 4 links to Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0) [O2S_board], saves 14.04 MB
+[  172.7s] ok   Smart Sensor: O2S_sensor001 -> link to O2S_sensor, lands 0.00e+00 mm from the copy
+[  172.7s] ok   Smart Sensor: O2S_sensor002 -> link to O2S_sensor, lands 0.00e+00 mm from the copy
+[  172.7s] ok   Smart Sensor: O2S_sensor003 -> link to O2S_sensor, lands 0.00e+00 mm from the copy
+[  172.7s] ok   Smart Sensor: O2S_sensor004 -> link to O2S_sensor, lands 0.00e+00 mm from the copy
+[  172.7s] Smart Sensor: 4 links to Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0) [O2S_sensor], saves 6.26 MB
+[  173.3s] ok   MadMax carriage compound: Part__Feature654 -> link to Part__Feature448, lands 5.72e-09 mm from the copy
+[  173.3s] MadMax carriage compound: 1 links to COMPOUND [Part__Feature448], saves 1.23 MB
+[  173.3s] ok   stand-ins 1: MeshStandIn001 -> link to MeshStandIn, lands 0.00e+00 mm from the copy
+[  173.3s] ok   stand-ins 1: MeshStandIn002 -> link to MeshStandIn, lands 0.00e+00 mm from the copy
+[  173.3s] ok   stand-ins 1: MeshStandIn003 -> link to MeshStandIn, lands 0.00e+00 mm from the copy
+[  173.3s] ok   stand-ins 1: MeshStandIn004 -> link to MeshStandIn, lands 0.00e+00 mm from the copy
+[  173.3s] stand-ins 1: 4 links to Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0) stand-in [MeshStandIn], saves 6.04 MB
+[  173.3s] ok   stand-ins 2: MeshStandIn006 -> link to MeshStandIn005, lands 0.00e+00 mm from the copy
+[  173.3s] ok   stand-ins 2: MeshStandIn007 -> link to MeshStandIn005, lands 0.00e+00 mm from the copy
+[  173.3s] ok   stand-ins 2: MeshStandIn008 -> link to MeshStandIn005, lands 0.00e+00 mm from the copy
+[  173.3s] ok   stand-ins 2: MeshStandIn009 -> link to MeshStandIn005, lands 0.00e+00 mm from the copy
+[  173.3s] stand-ins 2: 4 links to Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0) stand-in [MeshStandIn005], saves 2.98 MB
+[  186.1s] ok   every part keeps its global box (1395 parts; moved [], missing [])
+[  186.1s] ok   parts 1395 -> 1395 (unchanged: links count as parts)
+[  186.1s] ok   meshes (and links to meshes) 110 -> 110 (unchanged)
+[  186.1s] 22 links (22 in the document); the copies stored 56.4 MB
+[  186.1s] verify: 0 problems
+[  199.3s] SAVED /home/dan/Documents/VT350/vt350-lite-51.FCStd 68679388

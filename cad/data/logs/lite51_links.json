@@ -1,0 +1,82 @@
+{
+ "links": [
+  {
+   "family": "SpeedClip",
+   "master": "Part__Feature1505",
+   "links": [
+    "Part__Feature1506",
+    "Part__Feature446",
+    "Part__Feature447",
+    "Part__Feature652",
+    "Part__Feature653"
+   ],
+   "saves_bytes": 25880680,
+   "worst_mm": 2.6716406864579767e-12
+  },
+  {
+   "family": "O2S toolboard",
+   "master": "O2S_board",
+   "links": [
+    "O2S_board001",
+    "O2S_board002",
+    "O2S_board003",
+    "O2S_board004"
+   ],
+   "saves_bytes": 14039912,
+   "worst_mm": 8.29913915367797e-09
+  },
+  {
+   "family": "Smart Sensor",
+   "master": "O2S_sensor",
+   "links": [
+    "O2S_sensor001",
+    "O2S_sensor002",
+    "O2S_sensor003",
+    "O2S_sensor004"
+   ],
+   "saves_bytes": 6260011,
+   "worst_mm": 0.0
+  },
+  {
+   "family": "MadMax carriage compound",
+   "master": "Part__Feature448",
+   "links": [
+    "Part__Feature654"
+   ],
+   "saves_bytes": 1227721,
+   "worst_mm": 5.722180063116866e-09
+  },
+  {
+   "family": "stand-ins 1",
+   "master": "MeshStandIn",
+   "links": [
+    "MeshStandIn001",
+    "MeshStandIn002",
+    "MeshStandIn003",
+    "MeshStandIn004"
+   ],
+   "saves_bytes": 6039645,
+   "worst_mm": 0.0
+  },
+  {
+   "family": "stand-ins 2",
+   "master": "MeshStandIn005",
+   "links": [
+    "MeshStandIn006",
+    "MeshStandIn007",
+    "MeshStandIn008",
+    "MeshStandIn009"
+   ],
+   "saves_bytes": 2980240,
+   "worst_mm": 0.0
+  }
+ ],
+ "parts": [
+  1395,
+  1395
+ ],
+ "meshes": [
+  110,
+  110
+ ]
+}
