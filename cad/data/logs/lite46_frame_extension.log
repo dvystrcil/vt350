@@ -1,0 +1,35 @@
+[  132.0s] opened /home/dan/Documents/VT350/vt350-lite-45.FCStd
+[  221.9s] ok   2040 (2) (new front) found once at Y (-90.0, -70.0) Z (-50.0, -10.0): 1
+[  233.8s] ok   2040 (2) (new front): the profile is the same at two places ([(40.0, 320.4), (80.0, 320.4)] mm in, mm2)
+[  243.0s] 2040 (2) (new front): the fuse failed (1 solids, 215256 of 218496 mm3); kept as a compound of the stock rail and 2 extensions
+[  244.4s] ok   2040 (2)001 found once at Y (-90.0, -70.0) Z (650.0, 690.0): 1
+[  252.4s] ok   2040 (2)001: the profile is the same at two places ([(40.0, 320.4), (80.0, 320.4)] mm in, mm2)
+[  258.8s] 2040 (2)001: the fuse failed (1 solids, 224139 of 218496 mm3); kept as a compound of the stock rail and 2 extensions
+[  260.3s] ok   4040 (2) found once at Y (480.0, 520.0) Z (-50.0, -10.0): 1
+[  261.5s] ok   4040 (2): the profile is the same at two places ([(40.0, 501.3), (80.0, 501.3)] mm in, mm2)
+[  275.4s] ok   4040 (1)004 found once at Y (480.0, 520.0) Z (650.0, 690.0): 1
+[  277.0s] ok   4040 (1)004: the profile is the same at two places ([(40.0, 482.5), (80.0, 482.5)] mm in, mm2)
+[  290.1s] clearance holes (D 5.5, along Y) drilled in the long rails for the side rails' joint screws: 8 [('4040 (2)', 'M5x50-Screw001', 20.0, -20.0), ('4040 (2)', 'M5x50-Screw020', -510.0, -20.0), ('4040 (2)', 'M5x50-Screw024', -0.0, -20.0), ('4040 (2)', 'M5x50-Screw026', -490.0, -20.0), ('4040 (1)004', 'M5x50-Screw040', 20.0, 660.0), ('4040 (1)004', 'M5x50-Screw045', -510.0, 660.0), ('4040 (1)004', 'M5x50-Screw046', -0.0, 660.0), ('4040 (1)004', 'M5x50-Screw047', -490.0, 660.0)]
+[  291.1s] ok   4 printer uprights shortened: 4
+[  304.4s] ok   old rail-end joints removed: 32 (16 M5x50 along X + 16 washers)
+[  394.6s] ok   2040 (2) (new front) one piece X -520..145 (lite-46): X -520.00..145.00, 3 solid(s), profile 320.4 mm2
+[  394.6s] ok   2040 (2)001 one piece X -520..145 (lite-46): X -520.00..145.00, 3 solid(s), profile 320.4 mm2
+[  394.6s] ok   4040 (2) one piece X -520..145 (lite-46): X -520.00..145.00, 1 solid(s), profile 501.3 mm2
+[  394.6s] ok   4040 (1)004 one piece X -520..145 (lite-46): X -520.00..145.00, 1 solid(s), profile 482.5 mm2
+[  394.6s] ok   2040 upright Z -10..650 (lite-46): Z -10.00..650.00
+[  394.6s] ok   2040(Mirror) upright Z -10..650 (lite-46): Z -10.00..650.00
+[  394.6s] ok   4040 upright Z -10..650 (lite-46): Z -10.00..650.00
+[  394.6s] ok   4040(Mirror) upright Z -10..650 (lite-46): Z -10.00..650.00
+[  394.6s] ok   2020 e-box front outer upright, Z -10..650 (lite-46): X 125.00..145.00, Y -90.00..-70.00, Z -10.00..650.00
+[  394.6s] ok   2020 e-box rear outer upright, Z -10..650 (lite-46): X 125.00..145.00, Y 480.00..500.00, Z -10.00..650.00
+[  394.6s] ok   2040 e-box outer side rail, bottom (lite-46): X 125.00..145.00, Y -70.00..480.00, Z -50.00..-10.00
+[  394.6s] ok   2040 e-box outer side rail, top (lite-46): X 125.00..145.00, Y -70.00..480.00, Z 650.00..690.00
+[  490.7s]   boolean failed: Null input shape
+[  490.7s]   boolean failed: Null input shape
+[  490.7s] info overlaps already in lite-45 (not a failure): 19 [('4040 (2) one piece X -520..145 (lite-46)', 'M5x10-Screw016', 25.5), ('4040 (2) one piece X -520..145 (lite-46)', 'M5x10-Screw017', 25.5), ('4040 (2) one piece X -520..145 (lite-46)', 'Back Panel001', 5598.0), ('4040 (2) one piece X -520..145 (lite-46)', 'Back Panel001 paint, outside', 270.9), ('4040 (1)004 one piece X -520..145 (lite-', 'Back Panel001', 3021.7), ('4040 (1)004 one piece X -520..145 (lite-', 'Back Panel001 paint, outside', 9.4), ('2040 upright Z -10..650 (lite-46)', 'M5-Washer010', 20.2), ('2040 upright Z -10..650 (lite-46)', 'M5-Washer011', 20.2), ('4040 upright Z -10..650 (lite-46)', 'M5x50-Screw003', 183.7), ('4040 upright Z -10..650 (lite-46)', 'M5-Washer012', 3.8), ('4040 upright Z -10..650 (lite-46)', 'M5x50-Screw004', 183.7), ('4040 upright Z -10..650 (lite-46)', 'M5-Washer013', 3.8), ('4040 upright Z -10..650 (lite-46)', 'Back Panel001', 2710.7), ('4040(Mirror) upright Z -10..650 (lite-46', 'M5x50-Screw021', 183.1), ('4040(Mirror) upright Z -10..650 (lite-46', 'M5-Washer055', 15.8), ('4040(Mirror) upright Z -10..650 (lite-46', 'M5x50-Screw022', 183.1), ('4040(Mirror) upright Z -10..650 (lite-46', 'M5-Washer056', 15.8), ('4040(Mirror) upright Z -10..650 (lite-46', 'Back Panel001', 6949.6), ('4040(Mirror) upright Z -10..650 (lite-46', 'Back Panel001 paint, outside', 269.8)]
+[  490.7s] info existing overlaps that grew with the longer members (not a failure): [('4040 (2) one piece X -520..145 (lite-46)', 'Back Panel001', 143.1), ('4040 (2) one piece X -520..145 (lite-46)', 'Back Panel001 paint, outside', 6.9), ('4040 (1)004 one piece X -520..145 (lite-', 'Back Panel001', 77.2), ('4040 (1)004 one piece X -520..145 (lite-', 'Back Panel001 paint, outside', 0.2)]
+[  490.7s] ok   new overlaps (pairs that didn't overlap in lite-45): 0 []
+[  491.4s] info e-box envelope overlapping the members (not a failure; concept C re-lays it out): [('2040 (2) (new front) one piece X -520..1', 403.2), ('4040 (2) one piece X -520..145 (lite-46)', 19046.1)]
+[  491.4s] ok   solids: 1374 (lite-45 - 32 joint parts + 4 e-box members = 1374)
+[  491.4s] verify: 0 problems
+[  520.2s] SAVED /home/dan/Documents/VT350/vt350-lite-46.FCStd 213857305
