@@ -64,10 +64,22 @@ costs nothing on open (above) and is there for renders.
   A coarse **mesh** (`Mesh::Feature`, already triangles, so nothing to tessellate) is about as fast as boxes and
   still looks like the part, so it works as one generic stand-in for any part.
 
-## Linked objects (App::Link)
+## Linked objects (App::Link): tessellated once (measured 2026-11-16)
 
-_Being tested (2026-11-16): whether five App::Links to one part are tessellated once rather than five times. Nothing
-here until it's measured._
+Five copies of a part as separate Part::Features vs one part plus `App::Link`s to it, GUI open (two runs each):
+
+| 5 copies of | Separate copies | 1 part + links (part visible) | 1 part hidden + 5 links |
+|---|---|---|---|
+| O2S toolboard | 14.5 / 13.2 s, 16 MB | 3.1 / 3.1 s, 3 MB | 3.0 / 3.1 s |
+| Bowden tube | 14.7 / 13.7 s | 3.2 / 3.1 s | 3.3 / 3.1 s |
+
+- **Links share the original's triangles:** five links cost about what one copy does, and the file stores the
+  shape once.
+- **A hidden original is still tessellated if a visible link shows it.** Hiding saves nothing then: the links
+  need its triangles. So stand-ins and links don't combine. To skip a linked part's cost, hide the links too.
+- **Not used in this model (yet).** The 5 toolheads are separate copies (each its own Part::Features). Making them
+  links to one toolhead would cut every toolhead part's open cost to a fifth. But the motion groups, clash sweeps,
+  part index, passes and render export all walk Part::Features by name, so that would be a restructure, not a pass.
 
 ## Gotchas
 
