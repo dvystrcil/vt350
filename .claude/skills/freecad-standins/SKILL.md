@@ -75,3 +75,7 @@ and STL-made solids. A pass then calls `dupes.find(doc, dupes.object_bytes(src),
 on an explicit list (model it on `cad/passes/lite51_links.py`), checking that each link lands where its copy was and
 every part keeps its global box. Every walker reads links through `platform/freecad/linkgeo.py`; new code that walks
 parts must too (`is_leaf`, `gshape`, `gplace`, never `isDerivedFrom('Part::Feature')` or `getGlobalPlacement`).
+To link every copy at once, model it on `cad/passes/lite52_link_all.py`: split groups by colour
+(`dupes.find(split=...)`, a link draws its master's colour), drop copies whose link would land off
+(`dupes.landing`, `Group.drop`), and read what a link draws with `linkgeo.drawn_vo`, never its own `ShapeAppearance`
+(an undrawn default: lite-52's first render drew it teal).

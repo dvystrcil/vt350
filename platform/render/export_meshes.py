@@ -71,7 +71,7 @@ try:
         if any(o2.isDerivedFrom('Part::Feature') and o2.Name in leaves for o2 in o.InList if o2.TypeId != 'App::Part'):
             continue    # consumed by a feature that is itself a leaf
         try:
-            avo = vo if vo is None or hasattr(vo, "ShapeAppearance") else tgt.ViewObject
+            avo = linkgeo.drawn_vo(o) if vo is not None else None    # a link: its target's, not its own undrawn default
             col = tuple(round(c, 2) for c in avo.ShapeAppearance[0].DiffuseColor[:3]) if avo else (0.7, 0.7, 0.7)
             tr = round(avo.Transparency / 100, 2) if avo else 0.0
         except Exception: col, tr = (0.7, 0.7, 0.7), 0.0

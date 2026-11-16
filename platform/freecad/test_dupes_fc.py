@@ -12,6 +12,7 @@
 #   Shifted   the L baked 40 mm along X into its raw shape (as an STL import does)
 #   Turned    the L baked turned 180 deg about Y and moved, with its own turned Placement (as the SpeedClips are)
 #   Mirror    the L reflected in YZ (a mirrored dock's part): never linked
+#   Near      the chiral solid scaled 1.00002: fits within FIT_TOL but would land ~0.6 um off (landing() catches it)
 #   Tool      a copy a Part::Cut uses: left alone
 #   MMaster/MCopy: one mesh of the L twice, the copy with StandInFor (a lite-50 mesh stand-in)
 import os, sys, tempfile, traceback, unittest
@@ -49,6 +50,8 @@ def build_fixture(path):
     part("Turned", baked(TURN), FreeCAD.Placement(V(0, -40, 3), FreeCAD.Rotation(V(1, 0, 0), 180)))
     m = l_shape().mirror(V(0, 0, 0), V(1, 0, 0))
     part("Mirror", m, FreeCAD.Placement(V(0, 80, 0), FreeCAD.Rotation()))
+    near = l_shape(); near.scale(1.00002)                 # a near-copy: fits within FIT_TOL, lands ~0.6 um off
+    part("Near", near, FreeCAD.Placement(V(0, -90, 0), FreeCAD.Rotation()))
     tool = part("Tool", l_shape(), FreeCAD.Placement(V(-50, 0, 0), FreeCAD.Rotation()))
     base = part("Base", Part.makeBox(100, 100, 2, V(-80, -20, -1)), FreeCAD.Placement())
     cut = doc.addObject("Part::Cut", "Cut"); cut.Base = base; cut.Tool = tool; head.addObject(cut)
@@ -78,7 +81,7 @@ class Dupes(unittest.TestCase):
         self.assertEqual(len(g), 2)
         self.assertIn("Master", g)
         (mg,) = [x for x in g.values() if x.master.TypeId == "Mesh::Feature"]
-        self.assertEqual(sorted(o.Name for o, _ in g["Master"].copies), ["Same", "Shifted", "Turned"])
+        self.assertEqual(sorted(o.Name for o, _ in g["Master"].copies), ["Near", "Same", "Shifted", "Turned"])
         self.assertEqual(g["Master"].unfit[0][0].Name, "Mirror")
         self.assertEqual(g["Master"].unfit[0][1], "reflected")
         self.assertEqual({mg.master.Name, mg.copies[0][0].Name}, {"MMaster", "MCopy"})   # masters: first by Name
@@ -89,13 +92,30 @@ class Dupes(unittest.TestCase):
 
     def test_savings_are_the_copies_file_bytes(self):
         sizes, g = dupes.object_bytes(self.path), self.groups()["Master"]
-        self.assertEqual(g.saving, sum(sizes[n] for n in ("Same", "Shifted", "Turned")))
+        self.assertEqual(g.saving, sum(sizes[n] for n in ("Near", "Same", "Shifted", "Turned")))
         self.assertGreater(g.saving, 0)
+
+    def test_landing_predicts_and_drop_keeps_a_near_copy_real(self):
+        g = self.groups()["Master"]
+        land = dict(dupes.landing(g))
+        self.assertGreater(land["Near"], 1e-6)
+        self.assertLess(land["Near"], 0.01)
+        for n in ("Same", "Shifted", "Turned"): self.assertLess(land[n], 1e-6, n)
+        g.drop([n for n, d in land.items() if d > 1e-6])
+        self.assertEqual(sorted(o.Name for o, _ in g.copies), ["Same", "Shifted", "Turned"])
+        self.assertEqual(sorted(g.copy_names), ["Same", "Shifted", "Turned"])
+        self.assertEqual(self.doc.getObject("Near").TypeId, "Part::Feature")       # landing() changes nothing
+
+    def test_split_and_skip(self):
+        gs = dupes.find(self.doc, split=lambda o: o.Name in ("Shifted", "Turned"), skip=("Same",))
+        names = sorted(sorted([g.master.Name] + [o.Name for o, _ in g.copies]) for g in gs if g.master.TypeId == "Part::Feature")
+        self.assertEqual(names, [["Master", "Near"], ["Shifted", "Turned"]])     # split apart; Same never considered
 
     def test_linking_keeps_every_copy_where_it_was(self):
         before = {n: linkgeo.gshape(self.doc.getObject(n)) for n in ("Same", "Shifted", "Turned")}
         mbefore = linkgeo.gmesh(self.doc.getObject("MMaster")).BoundBox   # MCopy sorts first: MMaster is its copy
         for g in self.groups().values():
+            g.drop([n for n, d in dupes.landing(g) if d > 1e-6])
             for name, d in dupes.link_copies(self.doc, g):
                 self.assertLess(d, 1e-6, name)
         path2 = os.path.join(self.tmp, "linked.FCStd"); self.doc.saveAs(path2)

@@ -104,8 +104,20 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
     (`linkgeo.gplace`). FreeCAD 26.3 deprecates `getGlobalPlacement` anyway (removed in 27.2, "does not handle Links").
   - A link **has `.Shape`** (and `.Mesh` for a link to a mesh): the target's raw geometry. Placed at `gplace(link)` it
     is exactly the copy it replaced. That Shape is a **Compound wrapper**: it has `.Solids` but no `.CenterOfMass`.
-  - A link has **no `ShapeMaterial`**, and its view provider may have no `ShapeAppearance`: it shows its target's.
-    Read material and colour from `linkgeo.link_target(o)`.
+  - A link has **no `ShapeMaterial`**: it shows its target's. Read material and colour from
+    `linkgeo.link_target(o)`.
+  - **A link's view provider can carry a `ShapeAppearance` that isn't drawn.** The GUI draws the target's colours
+    unless the link sets `OverrideMaterial` or `OverrideMaterialList`. lite-52's first GUI run read the link's own
+    appearance and failed its colour check on all 1,001 links, which were in fact correct (2026-11-16). To check what
+    a link shows: no override, then compare the target's appearance.
+  - **A link shows its master's colour, so group copies by colour before linking** (`dupes.find(split=...)`). In
+    lite-51, 32 copies were coloured unlike their master (some `Component21`s, the MR148ZZ shields, two extrusions).
+  - **A fit within tolerance can still land microns off.** lite-51's zip ties fit their master but their links would
+    have landed up to 3 µm away. `dupes.landing(group)` predicts each landing without changing the document; keep
+    those copies real (`Group.drop`).
+  - **Moving a master doesn't move its links**: each link places the target's raw shape by its own Placement
+    (`test_links_fc.MovingMaster`). The motion player can move a head whose parts are masters of the other heads'.
+    But editing a master's *shape* changes every link: unlink a copy before editing it alone.
   - A link appears in its target's **`InList`**: a check like "consumed by a leaf in its InList" must skip links.
   - **Names can be kept.** Remove the copy, then `addObject("App::Link", same_name)` gets that Name back, so motion
     groups and clash lists that name parts keep working.

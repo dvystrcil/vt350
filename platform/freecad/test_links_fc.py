@@ -117,10 +117,84 @@ class Links(unittest.TestCase):
             self.assertAlmostEqual((litelib.gplace(o).Base - before).Length, 0.0, places=9)
 
 
+class MovingMaster(unittest.TestCase):
+    """The motion player moves one head at a time; a master sits in one toolhead and its links in the others. Moving
+    the master must leave each link where it is: a link places the target's raw shape by its OWN Placement."""
+
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp(prefix="links_fc_move_")
+        self.path = os.path.join(self.tmp, "fixture.FCStd")
+        build_fixture(self.path)
+        self.doc = FreeCAD.openDocument(self.path, True)
+
+    def tearDown(self):
+        FreeCAD.closeDocument(self.doc.Name)
+
+    def test_moving_the_master_leaves_its_link(self):
+        orig, copy = self.doc.getObject("Orig"), self.doc.getObject("Copy")
+        b_link, b_orig = linkgeo.gshape(copy).BoundBox, linkgeo.gshape(orig).BoundBox
+        be = player.FreeCADBackend(); saved = be.save(orig)
+        be.move(orig, saved, (25.0, -10.0, 4.0)); self.doc.recompute()
+        moved = linkgeo.gshape(orig).BoundBox
+        self.assertAlmostEqual(moved.XMin - b_orig.XMin, 25.0, places=6)          # the master did move
+        after = linkgeo.gshape(copy).BoundBox
+        for k in ("XMin", "YMin", "ZMin", "XMax", "YMax", "ZMax"):
+            self.assertAlmostEqual(getattr(after, k), getattr(b_link, k), places=9, msg=k)
+        be.restore(orig, saved)
+
+    def test_moving_the_link_leaves_its_master(self):
+        orig, copy = self.doc.getObject("Orig"), self.doc.getObject("Copy")
+        b_orig = linkgeo.gshape(orig).BoundBox
+        be = player.FreeCADBackend(); saved = be.save(copy)
+        be.move(copy, saved, (0.0, 30.0, 0.0)); self.doc.recompute()
+        after = linkgeo.gshape(orig).BoundBox
+        for k in ("XMin", "YMin", "ZMin", "XMax", "YMax", "ZMax"):
+            self.assertAlmostEqual(getattr(after, k), getattr(b_orig, k), places=9, msg=k)
+
+
+class DrawnVO(unittest.TestCase):
+    """linkgeo.drawn_vo: whose appearance the GUI draws. Headless has no view objects, so stand-ins (lite-52's render
+    drew links' undrawn default appearance: teal screws)."""
+
+    class VO:
+        def __init__(self, obj, **kw):
+            self.Object = obj; self.__dict__.update(kw)
+
+    class Obj:
+        def __init__(self, type_id, target=None):
+            self.TypeId, self.target = type_id, target
+
+        def getLinkedObject(self, recurse):
+            return self.target
+
+    def make(self, type_id, target=None, **vo):
+        o = self.Obj(type_id, target); o.ViewObject = self.VO(o, **vo); return o
+
+    def test_a_part_draws_its_own(self):
+        p = self.make("Part::Feature", ShapeAppearance="orange")
+        self.assertIs(linkgeo.drawn_vo(p), p.ViewObject)
+
+    def test_a_link_draws_its_targets_not_its_own_default(self):
+        p = self.make("Part::Feature", ShapeAppearance="orange")
+        ln = self.make("App::Link", p, ShapeAppearance="teal default", OverrideMaterial=False, OverrideMaterialList=[])
+        self.assertIs(linkgeo.drawn_vo(ln), p.ViewObject)
+
+    def test_an_overriding_link_draws_its_own(self):
+        p = self.make("Part::Feature", ShapeAppearance="orange")
+        ln = self.make("App::Link", p, OverrideMaterial=True)
+        self.assertIs(linkgeo.drawn_vo(ln), ln.ViewObject)
+        ln2 = self.make("App::Link", p, OverrideMaterial=False, OverrideMaterialList=[False, True])
+        self.assertIs(linkgeo.drawn_vo(ln2), ln2.ViewObject)
+
+    def test_headless_has_none(self):
+        o = self.Obj("App::Link", None); o.ViewObject = None
+        self.assertIsNone(linkgeo.drawn_vo(o))
+
+
 if __name__ in ("__main__", "test_links_fc"):            # freecadcmd runs a script as module "test_links_fc"
     try:
         r = unittest.TextTestRunner(stream=sys.stdout, verbosity=2).run(
-            unittest.defaultTestLoader.loadTestsFromTestCase(Links))
+            unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromTestCase(c) for c in (Links, MovingMaster, DrawnVO)))
         print("OK" if r.wasSuccessful() else "FAILED")
         code = 0 if r.wasSuccessful() else 1
     except Exception:
