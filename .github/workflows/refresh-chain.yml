@@ -63,3 +63,9 @@ jobs:
         run: python3 platform/freecad/test_part_index.py 2>&1 | tee test-part-index.log
       - name: Confirm every part_index test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-part-index.log && tail -1 test-part-index.log | grep -qx 'OK'
+      - name: Install numpy + scipy for the cable rod model (the only scipy user)
+        run: python3 -m pip install --user --break-system-packages numpy scipy
+      - name: Test the flap + guide cable rod model (gradients, catenary, segment distance; #3)
+        run: python3 cad/studies/flap_guide/test_rod.py 2>&1 | tee test-flap-guide.log
+      - name: Confirm every flap_guide test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-flap-guide.log && tail -1 test-flap-guide.log | grep -qx 'OK'
