@@ -15,6 +15,9 @@ jobs:
       # skip is not the bare "OK" the check below accepts.
       - name: Install ffmpeg
         run: sudo apt-get update -q && sudo apt-get install -y -q --no-install-recommends ffmpeg
+      # numpy + scipy: cad/studies/flap_guide/test_rod.py (the cable rod model, #3)
+      - name: Install numpy + scipy
+        run: python3 -m pip install --user --break-system-packages numpy scipy
       # Each test file runs with its own empty TMPDIR. Anything left behind fails the check: leaked test dirs once
       # filled the laptop's /tmp (a tmpfs, 1M inodes).
       - name: Run every python3 test file with an empty TMPDIR

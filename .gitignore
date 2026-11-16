@@ -10,3 +10,6 @@ __pycache__/
 
 # the motion player's cached groups (cad/motion/play.py, vt350#135)
 cad/data/motion/
+
+# flap_guide study shapes (~15 MB); the summary is cad/data/logs/flap_guide_summary.json
+cad/data/logs/flap_guide_raw.json

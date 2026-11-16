@@ -1,0 +1,818 @@
+[
+ {
+  "layout": "A one station",
+  "EI": 700.0,
+  "mode": "T=0.2",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 135,
+  "L_max": 394,
+  "lowest": 550.1,
+  "lowest_p5": 550.1,
+  "docked_lowest": 550.1,
+  "minR": 30.1,
+  "guide_max_deg": 67,
+  "docked_gaps": [
+   4.2,
+   66.9,
+   2.7,
+   3.0
+  ],
+  "cross_pct": [
+   71,
+   0,
+   70,
+   32,
+   0
+  ],
+  "min_clear_to_docked": [
+   -8.6,
+   1.3,
+   -8.6,
+   -8.9,
+   1.0
+  ]
+ },
+ {
+  "layout": "A one station",
+  "EI": 700.0,
+  "mode": "T=0.5",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 135,
+  "L_max": 393,
+  "lowest": 550.1,
+  "lowest_p5": 550.1,
+  "docked_lowest": 550.1,
+  "minR": 26.3,
+  "guide_max_deg": 68,
+  "docked_gaps": [
+   4.4,
+   66.9,
+   3.0,
+   3.3
+  ],
+  "cross_pct": [
+   69,
+   0,
+   69,
+   32,
+   0
+  ],
+  "min_clear_to_docked": [
+   -8.6,
+   1.3,
+   -8.7,
+   -8.9,
+   1.0
+  ]
+ },
+ {
+  "layout": "A one station",
+  "EI": 700.0,
+  "mode": "fixed",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 382,
+  "L_max": 394,
+  "lowest": 535.6,
+  "lowest_p5": 550.1,
+  "docked_lowest": 535.6,
+  "minR": 30.1,
+  "guide_max_deg": 93,
+  "docked_gaps": [
+   -8.5,
+   66.9,
+   -8.6,
+   -1.3
+  ],
+  "cross_pct": [
+   27,
+   30,
+   33,
+   31,
+   21
+  ],
+  "min_clear_to_docked": [
+   -9.0,
+   -9.0,
+   -9.2,
+   -9.0,
+   -8.8
+  ]
+ },
+ {
+  "layout": "A one station",
+  "EI": 2000.0,
+  "mode": "T=0.2",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 135,
+  "L_max": 401,
+  "lowest": 550.1,
+  "lowest_p5": 550.1,
+  "docked_lowest": 550.1,
+  "minR": 46.0,
+  "guide_max_deg": 73,
+  "docked_gaps": [
+   1.9,
+   66.9,
+   0.3,
+   0.4
+  ],
+  "cross_pct": [
+   91,
+   2,
+   94,
+   44,
+   2
+  ],
+  "min_clear_to_docked": [
+   -9.0,
+   -2.6,
+   -9.2,
+   -9.2,
+   -2.4
+  ]
+ },
+ {
+  "layout": "A one station",
+  "EI": 2000.0,
+  "mode": "T=0.5",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 135,
+  "L_max": 398,
+  "lowest": 550.1,
+  "lowest_p5": 550.1,
+  "docked_lowest": 550.1,
+  "minR": 40.0,
+  "guide_max_deg": 73,
+  "docked_gaps": [
+   2.6,
+   66.9,
+   1.0,
+   1.1
+  ],
+  "cross_pct": [
+   87,
+   2,
+   84,
+   38,
+   2
+  ],
+  "min_clear_to_docked": [
+   -8.6,
+   -1.7,
+   -9.0,
+   -9.1,
+   -1.6
+  ]
+ },
+ {
+  "layout": "A one station",
+  "EI": 2000.0,
+  "mode": "fixed",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 388,
+  "L_max": 401,
+  "lowest": 546.3,
+  "lowest_p5": 550.1,
+  "docked_lowest": 546.3,
+  "minR": 42.9,
+  "guide_max_deg": 97,
+  "docked_gaps": [
+   -8.7,
+   66.9,
+   -6.5,
+   -2.9
+  ],
+  "cross_pct": [
+   15,
+   25,
+   17,
+   31,
+   28
+  ],
+  "min_clear_to_docked": [
+   -9.1,
+   -9.1,
+   -8.9,
+   -8.8,
+   -9.2
+  ]
+ },
+ {
+  "layout": "A one station",
+  "EI": 7000.0,
+  "mode": "T=0.2",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 135,
+  "L_max": 414,
+  "lowest": 550.1,
+  "lowest_p5": 550.1,
+  "docked_lowest": 550.1,
+  "minR": 74.4,
+  "guide_max_deg": 85,
+  "docked_gaps": [
+   -0.6,
+   66.9,
+   -2.6,
+   -2.9
+  ],
+  "cross_pct": [
+   100,
+   7,
+   100,
+   100,
+   7
+  ],
+  "min_clear_to_docked": [
+   -9.0,
+   -7.4,
+   -9.2,
+   -9.1,
+   -6.8
+  ]
+ },
+ {
+  "layout": "A one station",
+  "EI": 7000.0,
+  "mode": "T=0.5",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 135,
+  "L_max": 410,
+  "lowest": 550.1,
+  "lowest_p5": 550.1,
+  "docked_lowest": 550.1,
+  "minR": 65.4,
+  "guide_max_deg": 82,
+  "docked_gaps": [
+   -0.0,
+   66.9,
+   -1.9,
+   -2.1
+  ],
+  "cross_pct": [
+   100,
+   6,
+   99,
+   100,
+   6
+  ],
+  "min_clear_to_docked": [
+   -9.2,
+   -9.1,
+   -9.2,
+   -9.2,
+   -8.9
+  ]
+ },
+ {
+  "layout": "A one station",
+  "EI": 7000.0,
+  "mode": "fixed",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 402,
+  "L_max": 414,
+  "lowest": 548.3,
+  "lowest_p5": 550.1,
+  "docked_lowest": 548.3,
+  "minR": 43.8,
+  "guide_max_deg": 97,
+  "docked_gaps": [
+   -6.6,
+   66.9,
+   12.4,
+   -9.0
+  ],
+  "cross_pct": [
+   41,
+   51,
+   75,
+   94,
+   49
+  ],
+  "min_clear_to_docked": [
+   -9.2,
+   -9.2,
+   -9.2,
+   -9.2,
+   -9.2
+  ]
+ },
+ {
+  "layout": "A one station",
+  "EI": 11000.0,
+  "mode": "T=0.2",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 135,
+  "L_max": 420,
+  "lowest": 550.1,
+  "lowest_p5": 550.1,
+  "docked_lowest": 550.1,
+  "minR": 82.7,
+  "guide_max_deg": 89,
+  "docked_gaps": [
+   -1.2,
+   66.9,
+   -3.3,
+   -3.8
+  ],
+  "cross_pct": [
+   100,
+   8,
+   100,
+   100,
+   7
+  ],
+  "min_clear_to_docked": [
+   -9.2,
+   -8.5,
+   -9.2,
+   -8.9,
+   -9.1
+  ]
+ },
+ {
+  "layout": "A one station",
+  "EI": 11000.0,
+  "mode": "T=0.5",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 135,
+  "L_max": 416,
+  "lowest": 550.1,
+  "lowest_p5": 550.1,
+  "docked_lowest": 550.1,
+  "minR": 76.4,
+  "guide_max_deg": 86,
+  "docked_gaps": [
+   -0.8,
+   66.9,
+   -2.7,
+   -3.1
+  ],
+  "cross_pct": [
+   100,
+   7,
+   100,
+   100,
+   7
+  ],
+  "min_clear_to_docked": [
+   -9.2,
+   -9.1,
+   -9.2,
+   -9.1,
+   -7.5
+  ]
+ },
+ {
+  "layout": "A one station",
+  "EI": 11000.0,
+  "mode": "fixed",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 408,
+  "L_max": 420,
+  "lowest": 550.1,
+  "lowest_p5": 550.1,
+  "docked_lowest": 550.1,
+  "minR": 44.5,
+  "guide_max_deg": 97,
+  "docked_gaps": [
+   7.2,
+   52.2,
+   15.6,
+   -8.9
+  ],
+  "cross_pct": [
+   68,
+   40,
+   94,
+   95,
+   59
+  ],
+  "min_clear_to_docked": [
+   -9.2,
+   -9.2,
+   -9.2,
+   -9.2,
+   -9.2
+  ]
+ },
+ {
+  "layout": "B two stations",
+  "EI": 700.0,
+  "mode": "T=0.2",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 135,
+  "L_max": 431,
+  "lowest": 550.1,
+  "lowest_p5": 550.1,
+  "docked_lowest": 550.1,
+  "minR": 29.6,
+  "guide_max_deg": 67,
+  "docked_gaps": [
+   56.5,
+   66.9,
+   25.2,
+   26.9
+  ],
+  "cross_pct": [
+   15,
+   0,
+   29,
+   17,
+   1
+  ],
+  "min_clear_to_docked": [
+   -7.5,
+   3.9,
+   -7.8,
+   -8.6,
+   -1.4
+  ]
+ },
+ {
+  "layout": "B two stations",
+  "EI": 700.0,
+  "mode": "T=0.5",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 135,
+  "L_max": 429,
+  "lowest": 550.1,
+  "lowest_p5": 550.1,
+  "docked_lowest": 550.1,
+  "minR": 25.9,
+  "guide_max_deg": 69,
+  "docked_gaps": [
+   57.1,
+   66.9,
+   26.3,
+   27.0
+  ],
+  "cross_pct": [
+   15,
+   0,
+   29,
+   17,
+   2
+  ],
+  "min_clear_to_docked": [
+   -7.3,
+   3.6,
+   -7.9,
+   -8.7,
+   -1.6
+  ]
+ },
+ {
+  "layout": "B two stations",
+  "EI": 700.0,
+  "mode": "fixed",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 382,
+  "L_max": 431,
+  "lowest": 501.7,
+  "lowest_p5": 539.7,
+  "docked_lowest": 516.2,
+  "minR": 29.6,
+  "guide_max_deg": 93,
+  "docked_gaps": [
+   -6.7,
+   66.9,
+   28.6,
+   6.9
+  ],
+  "cross_pct": [
+   31,
+   16,
+   43,
+   20,
+   17
+  ],
+  "min_clear_to_docked": [
+   -8.9,
+   -8.7,
+   -8.9,
+   -9.1,
+   -7.9
+  ]
+ },
+ {
+  "layout": "B two stations",
+  "EI": 2000.0,
+  "mode": "T=0.2",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 135,
+  "L_max": 437,
+  "lowest": 550.1,
+  "lowest_p5": 550.1,
+  "docked_lowest": 550.1,
+  "minR": 45.4,
+  "guide_max_deg": 73,
+  "docked_gaps": [
+   49.9,
+   66.9,
+   20.5,
+   19.0
+  ],
+  "cross_pct": [
+   15,
+   0,
+   31,
+   17,
+   2
+  ],
+  "min_clear_to_docked": [
+   -9.0,
+   4.6,
+   -8.9,
+   -9.2,
+   -3.2
+  ]
+ },
+ {
+  "layout": "B two stations",
+  "EI": 2000.0,
+  "mode": "T=0.5",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 135,
+  "L_max": 435,
+  "lowest": 550.1,
+  "lowest_p5": 550.1,
+  "docked_lowest": 550.1,
+  "minR": 39.5,
+  "guide_max_deg": 73,
+  "docked_gaps": [
+   52.1,
+   66.9,
+   22.1,
+   21.0
+  ],
+  "cross_pct": [
+   14,
+   0,
+   32,
+   17,
+   2
+  ],
+  "min_clear_to_docked": [
+   -9.0,
+   4.4,
+   -9.1,
+   -8.8,
+   -3.1
+  ]
+ },
+ {
+  "layout": "B two stations",
+  "EI": 2000.0,
+  "mode": "fixed",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 388,
+  "L_max": 437,
+  "lowest": 532.8,
+  "lowest_p5": 550.1,
+  "docked_lowest": 538.0,
+  "minR": 44.8,
+  "guide_max_deg": 97,
+  "docked_gaps": [
+   67.4,
+   66.9,
+   18.2,
+   1.8
+  ],
+  "cross_pct": [
+   18,
+   17,
+   39,
+   16,
+   21
+  ],
+  "min_clear_to_docked": [
+   -9.2,
+   -9.0,
+   -9.0,
+   -8.7,
+   -9.2
+  ]
+ },
+ {
+  "layout": "B two stations",
+  "EI": 7000.0,
+  "mode": "T=0.2",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 135,
+  "L_max": 452,
+  "lowest": 550.1,
+  "lowest_p5": 550.1,
+  "docked_lowest": 550.1,
+  "minR": 74.2,
+  "guide_max_deg": 85,
+  "docked_gaps": [
+   37.1,
+   66.9,
+   14.0,
+   6.3
+  ],
+  "cross_pct": [
+   22,
+   2,
+   35,
+   17,
+   2
+  ],
+  "min_clear_to_docked": [
+   -8.9,
+   -5.4,
+   -9.1,
+   -7.6,
+   -8.2
+  ]
+ },
+ {
+  "layout": "B two stations",
+  "EI": 7000.0,
+  "mode": "T=0.5",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 135,
+  "L_max": 447,
+  "lowest": 550.1,
+  "lowest_p5": 550.1,
+  "docked_lowest": 550.1,
+  "minR": 65.1,
+  "guide_max_deg": 83,
+  "docked_gaps": [
+   40.5,
+   66.9,
+   15.8,
+   9.2
+  ],
+  "cross_pct": [
+   21,
+   1,
+   34,
+   17,
+   2
+  ],
+  "min_clear_to_docked": [
+   -9.2,
+   -2.6,
+   -8.9,
+   -8.6,
+   -8.8
+  ]
+ },
+ {
+  "layout": "B two stations",
+  "EI": 7000.0,
+  "mode": "fixed",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 402,
+  "L_max": 452,
+  "lowest": 546.2,
+  "lowest_p5": 550.1,
+  "docked_lowest": 546.2,
+  "minR": 44.6,
+  "guide_max_deg": 97,
+  "docked_gaps": [
+   67.5,
+   66.9,
+   49.3,
+   66.9
+  ],
+  "cross_pct": [
+   35,
+   40,
+   51,
+   18,
+   28
+  ],
+  "min_clear_to_docked": [
+   -9.2,
+   -9.0,
+   -9.2,
+   -9.0,
+   -9.1
+  ]
+ },
+ {
+  "layout": "B two stations",
+  "EI": 11000.0,
+  "mode": "T=0.2",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 135,
+  "L_max": 459,
+  "lowest": 550.1,
+  "lowest_p5": 550.1,
+  "docked_lowest": 550.1,
+  "minR": 82.7,
+  "guide_max_deg": 89,
+  "docked_gaps": [
+   33.2,
+   66.9,
+   12.2,
+   3.0
+  ],
+  "cross_pct": [
+   24,
+   2,
+   33,
+   15,
+   2
+  ],
+  "min_clear_to_docked": [
+   -9.0,
+   -7.8,
+   -9.1,
+   -6.4,
+   -7.9
+  ]
+ },
+ {
+  "layout": "B two stations",
+  "EI": 11000.0,
+  "mode": "T=0.5",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 135,
+  "L_max": 454,
+  "lowest": 550.1,
+  "lowest_p5": 550.1,
+  "docked_lowest": 550.1,
+  "minR": 76.4,
+  "guide_max_deg": 87,
+  "docked_gaps": [
+   36.0,
+   66.9,
+   13.6,
+   5.2
+  ],
+  "cross_pct": [
+   20,
+   2,
+   35,
+   16,
+   2
+  ],
+  "min_clear_to_docked": [
+   -8.9,
+   -7.2,
+   -9.1,
+   -7.1,
+   -6.9
+  ]
+ },
+ {
+  "layout": "B two stations",
+  "EI": 11000.0,
+  "mode": "fixed",
+  "unsolved": 0,
+  "n": 628,
+  "L_min": 408,
+  "L_max": 459,
+  "lowest": 544.6,
+  "lowest_p5": 550.1,
+  "docked_lowest": 544.6,
+  "minR": 44.8,
+  "guide_max_deg": 97,
+  "docked_gaps": [
+   67.6,
+   44.5,
+   -8.9,
+   66.9
+  ],
+  "cross_pct": [
+   60,
+   42,
+   98,
+   68,
+   42
+  ],
+  "min_clear_to_docked": [
+   -9.2,
+   -9.2,
+   -9.2,
+   -9.2,
+   -9.2
+  ]
+ }
+]
