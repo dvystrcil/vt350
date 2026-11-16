@@ -1,0 +1,28 @@
+[  121.4s] opened /home/dan/Documents/VT350/vt350-lite-43.FCStd
+[  131.5s] ok   4 feet (4 pads, 4 studs, 4 brackets)
+[  223.4s] ok   feet level: floor Z -89.50 .. -89.50
+[  223.4s] ok   studs cut to [19.5, 19.5, 19.5, 19.5] (= 19.5)
+[  311.3s] board moved -8.50 mm, top Z -89.50
+[  311.3s] ok   board moved -8.50 mm (expected -8.5)
+[  311.3s] ok   foot 1: jam nut tight under the bracket (-58.00 vs -58.00)
+[  311.3s] ok   foot 1: 5.00 mm thread showing (= 5)
+[  311.3s] ok   foot 1: stud top -50.00 flush with the bracket top, below the frame
+[  311.3s] ok   foot 1: cushion stands on the board
+[  311.3s] ok   foot 2: jam nut tight under the bracket (-58.00 vs -58.00)
+[  311.3s] ok   foot 2: 5.00 mm thread showing (= 5)
+[  311.3s] ok   foot 2: stud top -50.00 flush with the bracket top, below the frame
+[  311.3s] ok   foot 2: cushion stands on the board
+[  311.3s] ok   foot 3: jam nut tight under the bracket (-58.00 vs -58.00)
+[  311.3s] ok   foot 3: 5.00 mm thread showing (= 5)
+[  311.3s] ok   foot 3: stud top -50.00 flush with the bracket top, below the frame
+[  311.3s] ok   foot 3: cushion stands on the board
+[  311.3s] ok   foot 4: jam nut tight under the bracket (-58.00 vs -58.00)
+[  311.3s] ok   foot 4: 5.00 mm thread showing (= 5)
+[  311.3s] ok   foot 4: stud top -50.00 flush with the bracket top, below the frame
+[  311.3s] ok   foot 4: cushion stands on the board
+[  311.3s] ok   nothing but the stand below the frame bottom: []
+[  338.6s] ok   the stand vs the printer: []
+[  338.7s] ok   stand parts overlap each other nowhere (24 touching pairs): []
+[  338.7s] ok   solids: 1354 (lite-43 - 8 placeholders + 16 foot parts = 1354)
+[  338.7s] verify: 0 problems
+[  381.6s] SAVED /home/dan/Documents/VT350/vt350-lite-44.FCStd 213792562
