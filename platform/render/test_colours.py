@@ -159,8 +159,8 @@ class TheCommittedMap(unittest.TestCase):
         stand = "4040-350x350x250 Voron Trident v4 v33 / Stand: levelling feet + base board (#83, placeholders)"
         self.assertEqual(co.role_of(m, "Base board (18 mm, plywood/MDF, placeholder)", stand, "Default"), "board")
         self.assertEqual(co.role_of(m, "Levelling foot pad 3 (rubber, placeholder D50)", stand, "Default"), "rubber")
-        self.assertEqual(co.role_of(m, "Levelling foot 1 T-slot bracket (4040, placeholder)", stand, "Default"), "foot_metal")
-        self.assertEqual(co.role_of(m, "Levelling foot 4 M8 stud (placeholder)", stand, "Default"), "foot_metal")
+        self.assertEqual(co.role_of(m, "Levelling foot 1 T-slot bracket (4040, placeholder)", stand, "Default"), "brushed_steel")
+        self.assertEqual(co.role_of(m, "Levelling foot 4 M8 stud (placeholder)", stand, "Default"), "brushed_steel")
         sm = "StealthMax 300 (nevermore3d a3451c5, GPL-3.0), recessed concept"
         for lab in ("StealthMax M_2.0_Body", "StealthMax M_3.0_Body", "StealthMax M_1a.0_Body_BPM", "StealthMax M_2.1_CarbonBasket"):
             self.assertEqual(co.role_of(m, lab, sm, "Default"), "printed", lab)
@@ -170,6 +170,24 @@ class TheCommittedMap(unittest.TestCase):
         self.assertEqual(co.role_of(m, "StealthMax cradle half, right (remix concept)", sm, "Default"), "accent")  # lite-29
         self.assertIsNone(co.role_of(m, "StealthMax Acrylic Panel", sm, "Default"))
         self.assertIsNone(co.role_of(m, "StealthMax fan (Delta BFB0712HF)", sm, "Default"))
+
+    def test_dk08_feet_brushed_steel_din_rails_brushed_aluminium(self):
+        """User, 2026-11-16: the feet "look white, they should be brushed steel"; "din rails are brushed aluminium".
+        lite-44's DK-08 labels matched no rule, so they kept the model's light grey."""
+        m = co.load()
+        stand = "4040-350x350x250 Voron Trident v4 v33 / Stand: levelling feet + base board (#83, placeholders)"
+        d = "Levelling foot 2 Asmith DK-0808035A"
+        for lab in (d + " base (D40, zinc-plated steel)", d + " bolt (M8x1.25, cut 35 -> 19.5)", d + " jam nut (M8, 13 AF)",
+                    "Levelling foot 3 T-slot bracket (4040, placeholder, tapped M8)",
+                    "Levelling foot 1 M5x16 screw 2 (DIN 912)", "Levelling foot 4 M5 lock washer 3 (DIN 127)"):
+            self.assertEqual(co.role_of(m, lab, stand, "Default"), "brushed_steel", lab)
+        self.assertEqual(co.role_of(m, d + " NBR cushion (D40, est. 4 thick)", stand, "Default"), "rubber")
+        r = m["roles"]["brushed_steel"]
+        self.assertEqual(r["kind"], "steel")
+        self.assertGreaterEqual(r["roughness"], 0.25)            # brushed, not polished like the bearings (0.12)
+        for lab in ("DIN3 Rail", "DIN3 Rail001"):
+            self.assertEqual(co.role_of(m, lab, "Electronics", "Default"), "brushed_aluminium", lab)
+        self.assertIsNone(co.role_of(m, "Din_Mount Foam Tape (1mm)", "Electronics / DIN_Mount", "Default"))
 
     def test_drag_chains_are_orange(self):
         """User, 2026-11-08: all drag chains, the Z chain included, in the orange accent; their screws are not."""
