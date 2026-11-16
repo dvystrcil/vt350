@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VT350 Flap Guides</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a drafting sheet. Controls on top, three orthographic views (front, side, top) in a grid, then findings and the full table. */
+:root {
+  --bg: #eef1ef;          /* drafting paper, faint green bias toward the frame colour */
+  --sheet: #f8faf8;
+  --ink: #1d2622;
+  --muted: #5d6b64;
+  --line: #c9d2cd;
+  --frame: #2f5d45;       /* RAL 6011-ish: the printer's frame */
+  --active: #e0661b;      /* PET-GF orange: the moving bundle */
+  --docked: #8a9a92;
+  --contact: #c62f3a;
+  --ok: #2f7d4f;
+  --flap: #c8d8cf;
+  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121815; --sheet: #182019; --ink: #e3ebe6; --muted: #93a39b; --line: #2c3832;
+  --frame: #6fae8a; --active: #f08a3e; --docked: #6b7a73; --contact: #ff6b74; --ok: #6fc28f; --flap: #263a30; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121815; --sheet: #182019; --ink: #e3ebe6; --muted: #93a39b; --line: #2c3832;
+  --frame: #6fae8a; --active: #f08a3e; --docked: #6b7a73; --contact: #ff6b74; --ok: #6fc28f; --flap: #263a30; color-scheme: dark }
+
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.55; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-block: 28px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 28px; }
+h1, h2 { font-family: var(--f-display); text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+h1 { font-size: clamp(26px, 4vw, 38px); font-weight: 800; }
+h2 { font-size: 21px; font-weight: 700; }
+.eyebrow { font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+p { margin: 0; max-width: 68ch; }
+header { display: grid; gap: 10px; }
+.sheet { background: var(--sheet); border: 1px solid var(--line); border-radius: 6px; padding: 18px; min-width: 0; }
+.controls { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: end; }
+.ctl { display: grid; gap: 5px; }
+.ctl label, .ctl .lbl { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 5px; overflow: hidden; }
+.seg button { font: 500 13px var(--f-body); background: transparent; color: var(--ink); border: 0; padding: 6px 11px; cursor: pointer; border-right: 1px solid var(--line); }
+.seg button:last-child { border-right: 0; }
+.seg button[aria-pressed="true"] { background: var(--frame); color: var(--sheet); }
+.seg button:focus-visible, .play:focus-visible, input[type=range]:focus-visible { outline: 2px solid var(--active); outline-offset: 2px; }
+.scrub { flex: 1 1 260px; display: grid; gap: 5px; min-width: 0; }
+.scrub .row { display: flex; gap: 10px; align-items: center; }
+input[type=range] { flex: 1; accent-color: var(--active); min-width: 0; }
+.play { font: 600 13px var(--f-body); border: 1px solid var(--active); color: var(--active); background: transparent; border-radius: 5px; padding: 6px 12px; cursor: pointer; }
+.readout { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 14px; font-family: var(--f-mono); font-size: 13px; font-variant-numeric: tabular-nums; }
+.readout b { font-weight: 600; }
+.chip { display: inline-block; padding: 1px 8px; border-radius: 99px; font-size: 12px; font-weight: 600; }
+.chip.ok { color: var(--ok); border: 1px solid var(--ok); }
+.chip.bad { color: var(--contact); border: 1px solid var(--contact); }
+.views { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.view { display: grid; gap: 6px; min-width: 0; }
+.view.top { grid-column: 1 / -1; }
+.view canvas { width: 100%; height: auto; display: block; background: var(--sheet); border: 1px solid var(--line); border-radius: 4px; }
+.view .cap { font-family: var(--f-mono); font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); }
+.legend span::before { content: ""; display: inline-block; width: 18px; height: 3px; vertical-align: middle; margin-right: 6px; background: var(--c); }
+.findings { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.finding { display: grid; gap: 6px; align-content: start; }
+.finding .big { font-family: var(--f-display); font-size: 28px; font-weight: 800; color: var(--frame); font-variant-numeric: tabular-nums; }
+.finding h3 { margin: 0; font: 600 15px var(--f-body); }
+.finding p { font-size: 14px; color: var(--muted); }
+.tbl { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; font-variant-numeric: tabular-nums; }
+th, td { padding: 6px 9px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+th { font-family: var(--f-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); text-align: right; }
+th:first-child, td:first-child, th:nth-child(2), td:nth-child(2), th:nth-child(3), td:nth-child(3) { text-align: left; }
+tr.sel td { background: color-mix(in srgb, var(--active) 12%, transparent); }
+tr[data-k] { cursor: pointer; }
+td.hot { color: var(--contact); font-weight: 600; }
+.notes { display: grid; gap: 8px; font-size: 14px; color: var(--muted); }
+.notes ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+.loading { font-family: var(--f-mono); color: var(--muted); }
+@media (max-width: 720px) { .views { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow"><a href="index.html" style="color:inherit">VT350 reference</a> · vt350#3 · cable routing · rod study, 2026-11-16</div>
+    <h1>Bundles through a guide on each ceiling flap</h1>
+    <p>Each bundle (PTFE tube plus Nitehawk cable) lies on a flap along the left or right of the ceiling and slides through a fixed, flared guide on the flap's inner edge. Only the free span from the guide down to the head is modelled: an elastic rod under its own weight, with the head end leaving straight up. Pick a configuration, then scrub or play the head along its path: out of its dock, then a 34 mm serpentine over the whole reach.</p>
+  </header>
+
+  <section class="sheet" aria-label="Configuration">
+    <div class="controls">
+      <div class="ctl"><span class="lbl">Guide layout</span>
+        <div class="seg" id="layout"><button data-v="A">A · one station</button><button data-v="B" aria-pressed="true">B · spread</button></div></div>
+      <div class="ctl"><span class="lbl">Stiffness EI, N·mm²</span>
+        <div class="seg" id="ei"><button data-v="700">700</button><button data-v="2000" aria-pressed="true">2000</button><button data-v="7000">7000</button><button data-v="11000">11000</button></div></div>
+      <div class="ctl"><span class="lbl">Slack take-up</span>
+        <div class="seg" id="mode"><button data-v="T=0.2" aria-pressed="true">0.2 N pull</button><button data-v="fixed">none</button></div></div>
+      <div class="ctl"><span class="lbl">Moving head</span>
+        <div class="seg" id="slot"><button data-v="1">1</button><button data-v="2">2</button><button data-v="3" aria-pressed="true">3</button><button data-v="4">4</button><button data-v="5">5</button></div></div>
+      <div class="scrub"><label for="pos">Head position along its path</label>
+        <div class="row"><input type="range" id="pos" min="0" max="100" value="0"><button class="play" id="play">Play</button></div></div>
+    </div>
+    <div class="readout" id="readout"><span class="loading">Loading the solved shapes…</span></div>
+  </section>
+
+  <section class="views" aria-label="Orthographic views">
+    <div class="view"><canvas id="front" width="1020" height="560"></canvas><div class="cap">FRONT VIEW · X (left → right) by Z (up) · mm</div></div>
+    <div class="view"><canvas id="side" width="1020" height="560"></canvas><div class="cap">SIDE VIEW FROM THE RIGHT · Y (front → rear) by Z · mm</div></div>
+    <div class="view top"><canvas id="top" width="1600" height="900"></canvas><div class="cap">TOP VIEW · X by Y (front at the bottom) · flaps shaded, guides as rings, nozzle reach dashed</div></div>
+    <div class="legend view top">
+      <span style="--c: var(--active)">moving bundle</span>
+      <span style="--c: var(--contact)">moving bundle where it touches a docked one</span>
+      <span style="--c: var(--docked)">docked bundles</span>
+      <span style="--c: var(--frame)">frame, ceiling and flaps</span>
+    </div>
+  </section>
+
+  <section class="sheet" style="display:grid; gap:16px">
+    <h2>What it says</h2>
+    <div class="findings">
+      <div class="finding"><div class="big">Z 550</div><h3>The guide solves the sag</h3><p>With a 0.2 N pull on the slack, no span dips below the head top at any stiffness from 700 to 11 000. With no take-up at all, the lowest is Z 502, about 54 mm above the gantry (Z 448). Without guides, the free loops hung to Z 408.</p></div>
+      <div class="finding"><div class="big">≈ 0.07 N</div><h3>Friction alone won't pull slack back</h3><p>400 mm of slack lying on the flap holds back about μ·w·L ≈ 0.3 × 5.8e-4 × 400 N (μ guessed). That is below the 0.2 N case, so expect the "none" rows unless something pulls: a light bungee or a hanging weight on each loop.</p></div>
+      <div class="finding"><div class="big">15–35 %</div><h3>Spread the guides</h3><p>One station per side makes the bundles fan out of eyelets 25 mm apart, and they touch under the flap at 70–100 % of positions. Spread along the edge (B), contact drops to 15–35 % for slots 1, 3 and 4, and 0–2 % for 2 and 5. It happens 0–90 mm below the flap, never down among the heads.</p></div>
+      <div class="finding"><div class="big">26–30 mm</div><h3>Bend radius is tight only when soft</h3><p>At EI 700 the tightest bend reaches the cable's rated 28 mm. From EI 2000 up it stays at 40 mm or more. This is now what your stiffness measurement mostly decides.</p></div>
+      <div class="finding"><div class="big">97°</div><h3>The guide must be a trumpet</h3><p>The span leaves the guide up to 97° from straight down, in any direction. The guide needs a flared lip of radius 28 mm or more, open all round, not a slot.</p></div>
+    </div>
+  </section>
+
+  <section class="sheet" style="display:grid; gap:12px">
+    <h2>Every configuration</h2>
+    <p style="color:var(--muted); font-size:14px">Click a row to show it above. Gaps are surface to surface for a 9.2 mm bundle (tube and cable side by side); "touching" means centrelines within 9.2 mm. 628 head positions per row, every one solved. The 0.5 N pull rows are within a few percent of 0.2 N and are in the repo's summary file.</p>
+    <div class="tbl"><table id="tbl"><thead><tr>
+      <th>Layout</th><th>EI</th><th>Take-up</th><th>Free span</th><th>Lowest Z</th><th>Tightest R</th><th>Max guide angle</th><th>Docked gaps 1-2 · 2-3 · 3-4 · 4-5</th><th>% touching, slots 1–5</th>
+    </tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <section class="sheet notes">
+    <h2 style="color:var(--ink)">Assumptions and limits</h2>
+    <ul>
+      <li>Flaps 100 mm wide, inner edges at X −380 and −110; guides 5 mm under the ceiling (Z 685). Slots 1–2 on the left flap, 3–5 on the right.</li>
+      <li>Layout A: eyelets 25 mm apart around Y 200. Layout B: left Y 110 and 290; right Y 110, 200 and 290.</li>
+      <li>Weight 5.8e-4 N/mm and the EI values are estimates until your cantilever measurement.</li>
+      <li>Each head's O2S lock is taken to sit directly above its nozzle; docks at Y 10.9.</li>
+      <li>Each bundle is solved alone, so a "touch" means two bundles would push on each other. The slack's path on the flap and friction at the guide are not modelled.</li>
+      <li>Checks: exact gradients agree with central differences to 1e-9; a limp rod sags within 0.04 % of the analytic catenary. Code: <a href="https://github.com/dvystrcil/vt350/tree/8eac49b/cad/studies/flap_guide">cad/studies/flap_guide at 8eac49b</a> (vt350#190); summary <a href="https://github.com/dvystrcil/vt350/blob/8eac49b/cad/data/logs/flap_guide_summary.json">flap_guide_summary.json</a>; discussion on <a href="https://github.com/dvystrcil/vt350/issues/3">vt350#3</a>.</li>
+    </ul>
+  </section>
+</div>
+
+<script src="cable-flap-guides/shapes.js"></script>
+<script>
+(function () {
+  const $ = (s) => document.querySelector(s);
+  const state = { layout: "B", ei: "2000", mode: "T=0.2", slot: "3", pos: 0 };
+  let D = null, timer = null;
+  const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+  function seg(id, key) {
+    const el = $("#" + id);
+    el.addEventListener("click", (e) => {
+      const b = e.target.closest("button"); if (!b) return;
+      el.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+      state[key] = b.dataset.v;
+      if (key === "slot") state.pos = 0;
+      sync(); draw();
+    });
+  }
+  function setSeg(id, v) { $("#" + id).querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x.dataset.v === v ? "true" : "false")); }
+  ["layout", "ei", "mode", "slot"].forEach((k) => seg(k === "ei" ? "ei" : k, k));
+
+  const cfg = () => D.configs[`${state.layout}|${state.ei}|${state.mode}`];
+  const pts = (p) => { const a = []; for (let i = 0; i < p.X.length; i += 3) a.push([p.X[i], p.X[i + 1], p.X[i + 2]]); return a; };
+
+  // views: [canvas id, horizontal axis, vertical axis, x range, y range, flipY]
+  const VIEWS = {
+    front: { h: 0, v: 2, hr: [-500, 10], vr: [420, 715] },
+    side: { h: 1, v: 2, hr: [-60, 500], vr: [420, 715] },
+    top: { h: 0, v: 1, hr: [-500, 10], vr: [-50, 500] },
+  };
+  function mapper(c, V) {
+    const pad = 46, W = c.width, H = c.height;
+    const sx = (W - 2 * pad) / (V.hr[1] - V.hr[0]), sy = (H - 2 * pad) / (V.vr[1] - V.vr[0]);
+    const s = Math.min(sx, sy);
+    const ox = pad + ((W - 2 * pad) - s * (V.hr[1] - V.hr[0])) / 2, oy = pad + ((H - 2 * pad) - s * (V.vr[1] - V.vr[0])) / 2;
+    return { s, X: (h) => ox + (h - V.hr[0]) * s, Y: (v) => H - oy - (v - V.vr[0]) * s };
+  }
+
+  function drawView(id) {
+    const V = VIEWS[id], c = $("#" + id), g = c.getContext("2d"), m = mapper(c, V);
+    const ink = css("--ink"), muted = css("--muted"), line = css("--line"), frame = css("--frame"), flap = css("--flap");
+    g.clearRect(0, 0, c.width, c.height);
+    g.font = `500 ${id === "top" ? 20 : 17}px ${css("--f-mono")}`; g.textBaseline = "middle";
+    const P = (p) => [m.X(p[V.h]), m.Y(p[V.v])];
+    const lineAt = (a, b, color, w, dash) => { g.beginPath(); g.setLineDash(dash || []); g.strokeStyle = color; g.lineWidth = w; g.moveTo(...a); g.lineTo(...b); g.stroke(); g.setLineDash([]); };
+    const label = (t, x, y, color, align) => { g.fillStyle = color || muted; g.textAlign = align || "left"; g.fillText(t, x, y); };
+    const C = cfg(), slot = +state.slot, G = D.guides[state.layout === "A" ? "A one station" : "B two stations"];
+
+    if (id === "top") {
+      // inner frame box, flaps, reach
+      g.strokeStyle = frame; g.lineWidth = 2.5; g.strokeRect(m.X(-480), m.Y(480), (470) * m.s, (480 + 40) * m.s);
+      g.fillStyle = flap; g.globalAlpha = 0.7;
+      g.fillRect(m.X(-480), m.Y(480), 100 * m.s, 520 * m.s); g.fillRect(m.X(-110), m.Y(480), 100 * m.s, 520 * m.s); g.globalAlpha = 1;
+      const [rx, ry] = D.reach;
+      g.setLineDash([8, 6]); g.strokeStyle = muted; g.lineWidth = 1.5; g.strokeRect(m.X(rx[0]), m.Y(ry[1]), (rx[1] - rx[0]) * m.s, (ry[1] - ry[0]) * m.s); g.setLineDash([]);
+      label("left flap", m.X(-430), m.Y(455), frame, "center"); label("right flap", m.X(-60), m.Y(455), frame, "center");
+      label("nozzle reach", m.X(rx[0]) + 8, m.Y(ry[1]) + 16, muted);
+      label("front (docks)", m.X(-245), m.Y(-30), muted, "center");
+      // path trace
+      g.beginPath(); C[slot].forEach((p, i) => { const q = [m.X(p.h[0]), m.Y(p.h[1])]; i ? g.lineTo(...q) : g.moveTo(...q); });
+      g.strokeStyle = line; g.lineWidth = 1; g.stroke();
+    } else {
+      const hr = V.hr;
+      lineAt([m.X(hr[0]), m.Y(690)], [m.X(hr[1]), m.Y(690)], frame, 2.5);
+      label("ceiling Z 690", m.X(hr[0]) + 4, m.Y(690) - 14, frame);
+      lineAt([m.X(hr[0]), m.Y(550)], [m.X(hr[1]), m.Y(550)], muted, 1, [3, 5]);
+      label("head top Z 550", m.X(hr[1]) - 4, m.Y(550) - 13, muted, "right");
+      lineAt([m.X(hr[0]), m.Y(448)], [m.X(hr[1]), m.Y(448)], muted, 1.5, [10, 6]);
+      label("gantry top Z 448", m.X(hr[1]) - 4, m.Y(448) - 13, muted, "right");
+      if (id === "front") {
+        g.fillStyle = flap; g.fillRect(m.X(-480), m.Y(690), 100 * m.s, 7 * m.s); g.fillRect(m.X(-110), m.Y(690), 100 * m.s, 7 * m.s);
+        lineAt([m.X(-480), m.Y(420)], [m.X(-480), m.Y(715)], frame, 2.5); lineAt([m.X(-10), m.Y(420)], [m.X(-10), m.Y(715)], frame, 2.5);
+      } else {
+        lineAt([m.X(480), m.Y(420)], [m.X(480), m.Y(715)], frame, 2.5);
+        label("rear", m.X(470), m.Y(430), muted, "right"); label("front", m.X(-50), m.Y(430), muted);
+      }
+    }
+    // guides
+    for (let s = 1; s <= 5; s++) {
+      const q = P(G[s]); g.beginPath(); g.arc(q[0], q[1], id === "top" ? 9 : 7, 0, 2 * Math.PI);
+      g.strokeStyle = ink; g.lineWidth = 2; g.stroke();
+      if (id === "top") label(String(s), q[0] + (G[s][0] < -245 ? 14 : -14), q[1], ink, G[s][0] < -245 ? "left" : "right");
+    }
+    // docked bundles
+    const poly = (arr, color, w) => { g.beginPath(); arr.forEach((p, i) => { const q = P(p); i ? g.lineTo(...q) : g.moveTo(...q); }); g.strokeStyle = color; g.lineWidth = w; g.lineJoin = "round"; g.lineCap = "round"; g.stroke(); };
+    for (let s = 1; s <= 5; s++) if (s !== slot) {
+      const a = pts(C[s][0]); poly(a, css("--docked"), id === "top" ? 5 : 4);
+      const h = P(a[a.length - 1]); g.fillStyle = css("--docked"); g.fillRect(h[0] - 6, h[1] - 6, 12, 12);
+    }
+    // active
+    const p = C[slot][state.pos], a = pts(p), touch = p.c < 0;
+    poly(a, touch ? css("--contact") : css("--active"), id === "top" ? 7 : 6);
+    const h = P(a[a.length - 1]); g.fillStyle = touch ? css("--contact") : css("--active"); g.fillRect(h[0] - 8, h[1] - 8, 16, 16);
+  }
+
+  function readout() {
+    const p = cfg()[+state.slot][state.pos], n = cfg()[+state.slot].length;
+    const where = state.pos === 0 ? "docked" : `X ${p.h[0]}, Y ${p.h[1]}`;
+    $("#readout").innerHTML =
+      `<span>head ${state.slot}: <b>${where}</b> (${state.pos + 1}/${n})</span>` +
+      `<span>free span <b>${p.L} mm</b></span><span>lowest <b>Z ${p.lo}</b></span><span>tightest bend <b>R ${p.R}</b></span>` +
+      `<span>to nearest docked bundle ${p.c < 0 ? `<span class="chip bad">touching (${p.c} mm)</span>` : `<span class="chip ok">${p.c} mm clear</span>`}</span>`;
+  }
+  function sync() {
+    const n = cfg()[+state.slot].length; const r = $("#pos"); r.max = n - 1; if (state.pos > n - 1) state.pos = n - 1; r.value = state.pos;
+    document.querySelectorAll("#tbl tr[data-k]").forEach((tr) => tr.classList.toggle("sel", tr.dataset.k === `${state.layout}|${state.ei}|${state.mode}`));
+  }
+  function draw() { if (!D) return; ["front", "side", "top"].forEach(drawView); readout(); }
+
+  $("#pos").addEventListener("input", (e) => { state.pos = +e.target.value; draw(); });
+  $("#play").addEventListener("click", () => {
+    if (timer) { clearInterval(timer); timer = null; $("#play").textContent = "Play"; return; }
+    $("#play").textContent = "Pause";
+    timer = setInterval(() => { const n = cfg()[+state.slot].length; state.pos = (state.pos + 1) % n; $("#pos").value = state.pos; draw(); }, 90);
+  });
+
+  function table() {
+    const tb = $("#tbl tbody"), rows = D.summary.filter((r) => r.mode !== "T=0.5");
+    tb.innerHTML = rows.map((r) => {
+      const k = `${r.layout[0]}|${r.EI}|${r.mode}`;
+      const cross = r.cross_pct.map((v) => v >= 50 ? `<span style="color:var(--contact);font-weight:600">${v}</span>` : v).join(" · ");
+      return `<tr data-k="${k}"><td>${r.layout}</td><td>${r.EI}</td><td>${r.mode === "fixed" ? "none" : "0.2 N"}</td>` +
+        `<td>${r.L_min}–${r.L_max}</td><td>${r.lowest}</td><td class="${r.minR < 28 ? "hot" : ""}">${r.minR}</td><td>${r.guide_max_deg}°</td>` +
+        `<td>${r.docked_gaps.map((x) => Math.round(x)).join(" · ")}</td><td>${cross}</td></tr>`;
+    }).join("");
+    tb.addEventListener("click", (e) => {
+      const tr = e.target.closest("tr[data-k]"); if (!tr) return;
+      const [l, ei, mode] = tr.dataset.k.split("|"); Object.assign(state, { layout: l, ei, mode });
+      setSeg("layout", l); setSeg("ei", ei); setSeg("mode", mode); sync(); draw();
+      document.querySelector(".controls").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    });
+  }
+
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", draw);
+  new MutationObserver(draw).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+  if (window.FLAP_DATA) { D = window.FLAP_DATA; table(); sync(); draw(); }
+  else $("#readout").innerHTML = `<span class="loading">The shapes file (cable-flap-guides/shapes.js) did not load. Reload the page to try again.</span>`;
+})();
+</script>
+
+</body>
+</html>

@@ -5,6 +5,7 @@ stands alone, with its CSS inline, light and dark themes, and its sources listed
 
 | Page | What it covers |
 |---|---|
+| [cable-flap-guides.html](cable-flap-guides.html) | The flap-and-guide cable study: bundles sliding through a guide on each ceiling flap, every solved shape in front, side and top views (layouts A/B, EI 700–11 000, 0.2 N or no take-up), findings and the full table. Data in `cable-flap-guides/shapes.js` (2.6 MB), from `cad/studies/flap_guide` at 8eac49b (https://github.com/dvystrcil/vt350/issues/3, 2026-11-16) |
 | [frame-colour.html](frame-colour.html) | How the frame colour was chosen: the Fern look vs RAL 6011 Reseda (chosen, in stock at DLLPDF) and RAL 6001 Emerald, rendered on lite-30 so each lit frame bar matches the powder's product photo, plus the 10 closest Prismatic solid powders to Fern, measured. Images in `frame-colour/` (https://github.com/dvystrcil/vt350/issues/101, 2026-11-14) |
 | [toolchange-docks.html](toolchange-docks.html) | The tool-change timeline on lite-30, rendered with Blender: a 16 s video of both docks (241 frames, 15 fps) and two 1920×1080 stills of the T0 pickup at park X 21 / attach Y −68.96. Media in `toolchange-docks/` (https://github.com/dvystrcil/vt350/issues/135, 2026-11-10) |
 | [orbiter-hub.html](orbiter-hub.html) | What the Orbiter 2.5's hub housing is: renders from lite-30 (in place, pulled apart, alone), checked against LDO's model. Images in `orbiter-hub/` (https://github.com/dvystrcil/vt350/issues/6, 2026-11-10) |
