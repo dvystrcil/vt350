@@ -92,8 +92,10 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
 - **A crash-recovery dialog blocks scripted GUI runs.** A document left open when FreeCAD was killed leaves an
   autosave in `~/.cache/FreeCAD/v26-3/Cache/FreeCAD_Doc_*/fc_recovery_file.*`, and every GUI start offers it.
   A scripted run waits behind that dialog forever. Move the folder aside.
-- **`Shape.BoundBox` is loose on B-spline surfaces:** it follows the control polygon. Use the tight box,
-  `optimalBoundingBox` (`litelib.obb`). A spring's loose box was 7.65 mm across; the coil is 6.905.
+- **Neither box is always tight on B-spline surfaces.** `Shape.BoundBox` follows the control polygon: a spring's
+  box was 7.65 mm across, the coil 6.905. `optimalBoundingBox` (`litelib.obb`) can overshoot instead: 1.4 mm on the
+  heat blocks' threaded ends, where `BoundBox`, the mesh and points along every edge all agreed. Both contain the
+  shape, so take their overlap (`tight()` in `cad/passes/lite50_mesh_standins.py`).
 - **`distToShape` is slow on a big multi-solid shape.** 60 points against the 224-solid O2S board took ~5 minutes.
   Check a point only against the faces whose box (enlarged by the tolerance) contains it.
 - **A trimmed face's parameter range is the rectangle round it.** Sampling a grid over `ParameterRange` lands
