@@ -1,0 +1,60 @@
+[  290.1s] opened /home/dan/Documents/VT350/vt350-lite-48.FCStd
+[  300.7s] ok   5 'Spring v1' parts (found 5)
+[  300.7s] ok   Spring v1 (1): a plain Part::Feature, one B-spline face and two end planes (Part::Feature, ['BSplineSurface', 'Plane', 'Plane'])
+[  300.7s] ok   Spring v1 (1): directly in an App::Part, nothing built from it (parent Sping (1), users [])
+[  300.9s] ok   Spring v1 (1): a coil (radial spread 0.905 vs wire 0.838)
+[  303.9s] ok   Spring v1 (1): the stand-in is one valid solid
+[  304.0s] ok   Spring v1 (1): the stand-in holds every sampled point (1739, outside 0)
+[  304.2s] ok   Spring v1 (1): the stand-in's box holds the spring's, slack 0.002 <= 0.3
+[  304.2s] Spring v1 (1) (Part__Feature1053) in Sping (1): axis Y, OD 6.905 ID 5.095 length 10.472, wire 0.838; stand-in 4 faces, slack 0.002
+[  304.2s] ok   Spring v1 (1) (1): a plain Part::Feature, one B-spline face and two end planes (Part::Feature, ['BSplineSurface', 'Plane', 'Plane'])
+[  304.2s] ok   Spring v1 (1) (1): directly in an App::Part, nothing built from it (parent Sping (1) (1), users [])
+[  304.4s] ok   Spring v1 (1) (1): a coil (radial spread 0.905 vs wire 0.838)
+[  304.4s] ok   Spring v1 (1) (1): the stand-in is one valid solid
+[  304.5s] ok   Spring v1 (1) (1): the stand-in holds every sampled point (1739, outside 0)
+[  304.7s] ok   Spring v1 (1) (1): the stand-in's box holds the spring's, slack 0.002 <= 0.3
+[  304.7s] Spring v1 (1) (1) (Part__Feature1134) in Sping (1) (1): axis Y, OD 6.905 ID 5.095 length 10.472, wire 0.838; stand-in 4 faces, slack 0.002
+[  304.7s] ok   Spring v1 (1)001: a plain Part::Feature, one B-spline face and two end planes (Part::Feature, ['BSplineSurface', 'Plane', 'Plane'])
+[  304.7s] ok   Spring v1 (1)001: directly in an App::Part, nothing built from it (parent Sping (1)001, users [])
+[  304.9s] ok   Spring v1 (1)001: a coil (radial spread 0.905 vs wire 0.838)
+[  304.9s] ok   Spring v1 (1)001: the stand-in is one valid solid
+[  305.1s] ok   Spring v1 (1)001: the stand-in holds every sampled point (1739, outside 0)
+[  305.2s] ok   Spring v1 (1)001: the stand-in's box holds the spring's, slack 0.002 <= 0.3
+[  305.2s] Spring v1 (1)001 (Part__Feature3186) in Sping (1)001: axis Y, OD 6.905 ID 5.095 length 10.472, wire 0.838; stand-in 4 faces, slack 0.002
+[  305.2s] ok   Spring v1 (1) (1)001: a plain Part::Feature, one B-spline face and two end planes (Part::Feature, ['BSplineSurface', 'Plane', 'Plane'])
+[  305.2s] ok   Spring v1 (1) (1)001: directly in an App::Part, nothing built from it (parent Sping (1) (1)001, users [])
+[  305.4s] ok   Spring v1 (1) (1)001: a coil (radial spread 0.905 vs wire 0.838)
+[  305.4s] ok   Spring v1 (1) (1)001: the stand-in is one valid solid
+[  305.6s] ok   Spring v1 (1) (1)001: the stand-in holds every sampled point (1739, outside 0)
+[  305.7s] ok   Spring v1 (1) (1)001: the stand-in's box holds the spring's, slack 0.002 <= 0.3
+[  305.7s] Spring v1 (1) (1)001 (Part__Feature3241) in Sping (1) (1)001: axis Y, OD 6.905 ID 5.095 length 10.472, wire 0.838; stand-in 4 faces, slack 0.002
+[  305.7s] ok   Spring v1 (1)002: a plain Part::Feature, one B-spline face and two end planes (Part::Feature, ['BSplineSurface', 'Plane', 'Plane'])
+[  305.7s] ok   Spring v1 (1)002: directly in an App::Part, nothing built from it (parent Sping (1)002, users [])
+[  306.0s] ok   Spring v1 (1)002: a coil (radial spread 0.905 vs wire 0.838)
+[  306.4s] ok   Spring v1 (1)002: the stand-in is one valid solid
+[  306.6s] ok   Spring v1 (1)002: the stand-in holds every sampled point (1739, outside 0)
+[  306.7s] ok   Spring v1 (1)002: the stand-in's box holds the spring's, slack 0.002 <= 0.3
+[  306.7s] Spring v1 (1)002 (Part__Feature3296) in Sping (1)002: axis Y, OD 6.905 ID 5.095 length 10.472, wire 0.838; stand-in 4 faces, slack 0.002
+[  317.1s] ok   Spring v1 (1) stand-in: in the document where it was built
+[  317.1s] ok   Spring v1 (1) stand-in: holds its spring in the document
+[  317.1s] ok   Spring v1 (1): unmoved and hidden
+[  317.1s] ok   Spring v1 (1) stand-in: beside its spring, StandInFor Part__Feature1053
+[  317.3s] ok   Spring v1 (1) (1) stand-in: in the document where it was built
+[  317.3s] ok   Spring v1 (1) (1) stand-in: holds its spring in the document
+[  317.3s] ok   Spring v1 (1) (1): unmoved and hidden
+[  317.3s] ok   Spring v1 (1) (1) stand-in: beside its spring, StandInFor Part__Feature1134
+[  317.5s] ok   Spring v1 (1)001 stand-in: in the document where it was built
+[  317.5s] ok   Spring v1 (1)001 stand-in: holds its spring in the document
+[  317.5s] ok   Spring v1 (1)001: unmoved and hidden
+[  317.5s] ok   Spring v1 (1)001 stand-in: beside its spring, StandInFor Part__Feature3186
+[  317.6s] ok   Spring v1 (1) (1)001 stand-in: in the document where it was built
+[  317.6s] ok   Spring v1 (1) (1)001 stand-in: holds its spring in the document
+[  317.6s] ok   Spring v1 (1) (1)001: unmoved and hidden
+[  317.6s] ok   Spring v1 (1) (1)001 stand-in: beside its spring, StandInFor Part__Feature3241
+[  317.8s] ok   Spring v1 (1)002 stand-in: in the document where it was built
+[  317.8s] ok   Spring v1 (1)002 stand-in: holds its spring in the document
+[  317.8s] ok   Spring v1 (1)002: unmoved and hidden
+[  317.8s] ok   Spring v1 (1)002 stand-in: beside its spring, StandInFor Part__Feature3296
+[  317.8s] ok   solids 1390 -> 1395 (+5)
+[  317.8s] verify: 0 problems
+[  335.3s] SAVED /home/dan/Documents/VT350/vt350-lite-49.FCStd 110540926
