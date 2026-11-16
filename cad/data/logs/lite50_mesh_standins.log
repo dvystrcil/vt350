@@ -1,0 +1,784 @@
+[  109.6s] opened /home/dan/Documents/VT350/vt350-lite-49.FCStd
+[  122.3s] ok   O2S toolboard: 5 parts (found 5)
+[  122.7s] ok   Smart Sensor: 5 parts (found 5)
+[  122.7s] ok   bowden tube: 5 parts (found 5)
+[  122.7s] ok   heat block: 5 parts (found 5)
+[  122.7s] ok   MR bearing part: 90 parts (found 90)
+[  122.7s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0): a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  122.7s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0): one colour (1)
+[  126.2s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0): mesh 129152 facets, box within 0.000 <= 0.15
+[  127.4s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0): 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  127.9s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0): a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  127.9s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0): one colour (1)
+[  131.8s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0): mesh 129154 facets, box within 0.000 <= 0.15
+[  133.0s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0): 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  133.4s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  133.4s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: one colour (1)
+[  137.3s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: mesh 129154 facets, box within 0.000 <= 0.15
+[  138.5s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  139.0s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  139.0s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: one colour (1)
+[  142.9s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: mesh 129154 facets, box within 0.000 <= 0.15
+[  144.1s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  144.5s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  144.5s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: one colour (1)
+[  148.7s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: mesh 129154 facets, box within 0.000 <= 0.15
+[  150.0s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  150.6s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0): a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  150.6s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0): one colour (1)
+[  152.0s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0): mesh 58894 facets, box within 0.000 <= 0.15
+[  152.6s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0): 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  152.7s] ok   Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0): a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  152.7s] ok   Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0): one colour (1)
+[  154.2s] ok   Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0): mesh 58894 facets, box within 0.000 <= 0.15
+[  154.9s] ok   Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0): 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  155.1s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  155.1s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: one colour (1)
+[  156.3s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: mesh 58894 facets, box within 0.000 <= 0.15
+[  157.0s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  157.1s] ok   Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  157.1s] ok   Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: one colour (1)
+[  158.2s] ok   Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: mesh 58894 facets, box within 0.000 <= 0.15
+[  159.0s] ok   Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  159.1s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  159.1s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: one colour (1)
+[  160.3s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: mesh 58894 facets, box within 0.000 <= 0.15
+[  160.9s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  161.0s] ok   Bowden Left: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  161.0s] ok   Bowden Left: one colour (1)
+[  161.5s] ok   Bowden Left: mesh 28568 facets, box within 0.000 <= 0.15
+[  161.7s] ok   Bowden Left: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  161.7s] ok   Bowden Right: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  161.7s] ok   Bowden Right: one colour (1)
+[  162.2s] ok   Bowden Right: mesh 28506 facets, box within 0.000 <= 0.15
+[  162.4s] ok   Bowden Right: 60 mesh points on the part, worst 0.0008 <= 0.12000000000000001
+[  162.4s] ok   Bowden slot 2: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  162.4s] ok   Bowden slot 2: one colour (1)
+[  162.8s] ok   Bowden slot 2: mesh 28568 facets, box within 0.000 <= 0.15
+[  163.0s] ok   Bowden slot 2: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  163.0s] ok   Bowden slot 3: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  163.0s] ok   Bowden slot 3: one colour (1)
+[  163.4s] ok   Bowden slot 3: mesh 28506 facets, box within 0.000 <= 0.15
+[  163.6s] ok   Bowden slot 3: 60 mesh points on the part, worst 0.0010 <= 0.12000000000000001
+[  163.6s] ok   Bowden slot 4: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  163.6s] ok   Bowden slot 4: one colour (1)
+[  164.1s] ok   Bowden slot 4: mesh 28568 facets, box within 0.000 <= 0.15
+[  164.2s] ok   Bowden slot 4: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  164.2s] ok   Heat Block: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  164.2s] ok   Heat Block: one colour (1)
+[  164.4s] ok   Heat Block: mesh 11058 facets, box within 0.000 <= 0.15
+[  166.0s] ok   Heat Block: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  166.0s] ok   Heat Block001: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  166.0s] ok   Heat Block001: one colour (1)
+[  166.2s] ok   Heat Block001: mesh 11058 facets, box within 0.000 <= 0.15
+[  167.8s] ok   Heat Block001: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  167.8s] ok   Heat Block002: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  167.8s] ok   Heat Block002: one colour (1)
+[  168.0s] ok   Heat Block002: mesh 11058 facets, box within 0.000 <= 0.15
+[  169.7s] ok   Heat Block002: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  169.7s] ok   Heat Block003: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  169.7s] ok   Heat Block003: one colour (1)
+[  169.9s] ok   Heat Block003: mesh 11058 facets, box within 0.000 <= 0.15
+[  171.5s] ok   Heat Block003: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  171.5s] ok   Heat Block004: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  171.5s] ok   Heat Block004: one colour (1)
+[  171.7s] ok   Heat Block004: mesh 11058 facets, box within 0.000 <= 0.15
+[  173.4s] ok   Heat Block004: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  173.4s] ok   _MR148ZZ Outer Ring: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  173.4s] ok   _MR148ZZ Outer Ring: one colour (1)
+[  173.4s] ok   _MR148ZZ Outer Ring: mesh 1686 facets, box within 0.000 <= 0.15
+[  173.4s] ok   _MR148ZZ Outer Ring: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  173.4s] ok   _MR148ZZ Inner Ring: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  173.4s] ok   _MR148ZZ Inner Ring: one colour (1)
+[  173.4s] ok   _MR148ZZ Inner Ring: mesh 1612 facets, box within 0.000 <= 0.15
+[  173.5s] ok   _MR148ZZ Inner Ring: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  173.5s] ok   _MR148ZZ Shield1: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  173.5s] ok   _MR148ZZ Shield1: one colour (1)
+[  173.5s] ok   _MR148ZZ Shield1: mesh 208 facets, box within 0.000 <= 0.15
+[  173.5s] ok   _MR148ZZ Shield1: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  173.5s] ok   _MR148ZZ Ball: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  173.5s] ok   _MR148ZZ Ball: one colour (1)
+[  173.5s] ok   _MR148ZZ Ball: mesh 304 facets, box within 0.000 <= 0.15
+[  173.5s] ok   _MR148ZZ Ball: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  173.5s] ok   _MR148ZZ Ball001: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  173.5s] ok   _MR148ZZ Ball001: one colour (1)
+[  173.5s] ok   _MR148ZZ Ball001: mesh 304 facets, box within 0.000 <= 0.15
+[  173.6s] ok   _MR148ZZ Ball001: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  173.6s] ok   _MR148ZZ Ball002: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  173.6s] ok   _MR148ZZ Ball002: one colour (1)
+[  173.6s] ok   _MR148ZZ Ball002: mesh 304 facets, box within 0.000 <= 0.15
+[  173.6s] ok   _MR148ZZ Ball002: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  173.6s] ok   _MR148ZZ Ball003: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  173.6s] ok   _MR148ZZ Ball003: one colour (1)
+[  173.6s] ok   _MR148ZZ Ball003: mesh 304 facets, box within 0.000 <= 0.15
+[  173.6s] ok   _MR148ZZ Ball003: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  173.6s] ok   _MR148ZZ Ball004: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  173.6s] ok   _MR148ZZ Ball004: one colour (1)
+[  173.6s] ok   _MR148ZZ Ball004: mesh 304 facets, box within 0.000 <= 0.15
+[  173.6s] ok   _MR148ZZ Ball004: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  173.6s] ok   _MR148ZZ Ball005: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  173.6s] ok   _MR148ZZ Ball005: one colour (1)
+[  173.6s] ok   _MR148ZZ Ball005: mesh 304 facets, box within 0.000 <= 0.15
+[  173.7s] ok   _MR148ZZ Ball005: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  173.7s] ok   _MR148ZZ Ball006: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  173.7s] ok   _MR148ZZ Ball006: one colour (1)
+[  173.7s] ok   _MR148ZZ Ball006: mesh 304 facets, box within 0.000 <= 0.15
+[  173.7s] ok   _MR148ZZ Ball006: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  173.7s] ok   _MR148ZZ Ball007: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  173.7s] ok   _MR148ZZ Ball007: one colour (1)
+[  173.7s] ok   _MR148ZZ Ball007: mesh 304 facets, box within 0.000 <= 0.15
+[  173.7s] ok   _MR148ZZ Ball007: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  173.7s] ok   _MR148ZZ Ball008: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  173.7s] ok   _MR148ZZ Ball008: one colour (1)
+[  173.7s] ok   _MR148ZZ Ball008: mesh 304 facets, box within 0.000 <= 0.15
+[  173.7s] ok   _MR148ZZ Ball008: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  173.7s] ok   _MR148ZZ Ball009: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  173.7s] ok   _MR148ZZ Ball009: one colour (1)
+[  173.7s] ok   _MR148ZZ Ball009: mesh 304 facets, box within 0.000 <= 0.15
+[  173.8s] ok   _MR148ZZ Ball009: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  173.8s] ok   _MR148ZZ Ball010: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  173.8s] ok   _MR148ZZ Ball010: one colour (1)
+[  173.8s] ok   _MR148ZZ Ball010: mesh 304 facets, box within 0.000 <= 0.15
+[  173.8s] ok   _MR148ZZ Ball010: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  173.8s] ok   _MR148ZZ Ball011: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  173.8s] ok   _MR148ZZ Ball011: one colour (1)
+[  173.8s] ok   _MR148ZZ Ball011: mesh 304 facets, box within 0.000 <= 0.15
+[  173.8s] ok   _MR148ZZ Ball011: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  173.8s] ok   _MR148ZZ Ball012: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  173.8s] ok   _MR148ZZ Ball012: one colour (1)
+[  173.8s] ok   _MR148ZZ Ball012: mesh 304 facets, box within 0.000 <= 0.15
+[  173.8s] ok   _MR148ZZ Ball012: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  173.8s] ok   _MR148ZZ Ball013: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  173.8s] ok   _MR148ZZ Ball013: one colour (1)
+[  173.8s] ok   _MR148ZZ Ball013: mesh 304 facets, box within 0.000 <= 0.15
+[  173.9s] ok   _MR148ZZ Ball013: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  173.9s] ok   _MR148ZZ Shield2: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  173.9s] ok   _MR148ZZ Shield2: one colour (1)
+[  173.9s] ok   _MR148ZZ Shield2: mesh 208 facets, box within 0.000 <= 0.15
+[  173.9s] ok   _MR148ZZ Shield2: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  173.9s] ok   _MR148ZZ Outer Ring (1): a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  173.9s] ok   _MR148ZZ Outer Ring (1): one colour (1)
+[  173.9s] ok   _MR148ZZ Outer Ring (1): mesh 1686 facets, box within 0.000 <= 0.15
+[  173.9s] ok   _MR148ZZ Outer Ring (1): 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  173.9s] ok   _MR148ZZ Inner Ring (1): a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  173.9s] ok   _MR148ZZ Inner Ring (1): one colour (1)
+[  173.9s] ok   _MR148ZZ Inner Ring (1): mesh 1612 facets, box within 0.000 <= 0.15
+[  174.0s] ok   _MR148ZZ Inner Ring (1): 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.0s] ok   _MR148ZZ Shield1 (1): a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.0s] ok   _MR148ZZ Shield1 (1): one colour (1)
+[  174.0s] ok   _MR148ZZ Shield1 (1): mesh 208 facets, box within 0.000 <= 0.15
+[  174.0s] ok   _MR148ZZ Shield1 (1): 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.0s] ok   _MR148ZZ Ball (1): a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.0s] ok   _MR148ZZ Ball (1): one colour (1)
+[  174.0s] ok   _MR148ZZ Ball (1): mesh 304 facets, box within 0.000 <= 0.15
+[  174.0s] ok   _MR148ZZ Ball (1): 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.0s] ok   _MR148ZZ Ball (1)001: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.0s] ok   _MR148ZZ Ball (1)001: one colour (1)
+[  174.0s] ok   _MR148ZZ Ball (1)001: mesh 304 facets, box within 0.000 <= 0.15
+[  174.1s] ok   _MR148ZZ Ball (1)001: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.1s] ok   _MR148ZZ Ball (1)002: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.1s] ok   _MR148ZZ Ball (1)002: one colour (1)
+[  174.1s] ok   _MR148ZZ Ball (1)002: mesh 304 facets, box within 0.000 <= 0.15
+[  174.1s] ok   _MR148ZZ Ball (1)002: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.1s] ok   _MR148ZZ Ball (1)003: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.1s] ok   _MR148ZZ Ball (1)003: one colour (1)
+[  174.1s] ok   _MR148ZZ Ball (1)003: mesh 304 facets, box within 0.000 <= 0.15
+[  174.1s] ok   _MR148ZZ Ball (1)003: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.1s] ok   _MR148ZZ Ball (1)004: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.1s] ok   _MR148ZZ Ball (1)004: one colour (1)
+[  174.1s] ok   _MR148ZZ Ball (1)004: mesh 304 facets, box within 0.000 <= 0.15
+[  174.1s] ok   _MR148ZZ Ball (1)004: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.1s] ok   _MR148ZZ Ball (1)005: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.1s] ok   _MR148ZZ Ball (1)005: one colour (1)
+[  174.1s] ok   _MR148ZZ Ball (1)005: mesh 304 facets, box within 0.000 <= 0.15
+[  174.1s] ok   _MR148ZZ Ball (1)005: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.1s] ok   _MR148ZZ Ball (1)006: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.1s] ok   _MR148ZZ Ball (1)006: one colour (1)
+[  174.1s] ok   _MR148ZZ Ball (1)006: mesh 304 facets, box within 0.000 <= 0.15
+[  174.2s] ok   _MR148ZZ Ball (1)006: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.2s] ok   _MR148ZZ Ball (1)007: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.2s] ok   _MR148ZZ Ball (1)007: one colour (1)
+[  174.2s] ok   _MR148ZZ Ball (1)007: mesh 304 facets, box within 0.000 <= 0.15
+[  174.2s] ok   _MR148ZZ Ball (1)007: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.2s] ok   _MR148ZZ Ball (1)008: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.2s] ok   _MR148ZZ Ball (1)008: one colour (1)
+[  174.2s] ok   _MR148ZZ Ball (1)008: mesh 304 facets, box within 0.000 <= 0.15
+[  174.2s] ok   _MR148ZZ Ball (1)008: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.2s] ok   _MR148ZZ Ball (1)009: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.2s] ok   _MR148ZZ Ball (1)009: one colour (1)
+[  174.2s] ok   _MR148ZZ Ball (1)009: mesh 304 facets, box within 0.000 <= 0.15
+[  174.2s] ok   _MR148ZZ Ball (1)009: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.2s] ok   _MR148ZZ Ball (1)010: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.2s] ok   _MR148ZZ Ball (1)010: one colour (1)
+[  174.2s] ok   _MR148ZZ Ball (1)010: mesh 304 facets, box within 0.000 <= 0.15
+[  174.3s] ok   _MR148ZZ Ball (1)010: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.3s] ok   _MR148ZZ Ball (1)011: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.3s] ok   _MR148ZZ Ball (1)011: one colour (1)
+[  174.3s] ok   _MR148ZZ Ball (1)011: mesh 304 facets, box within 0.000 <= 0.15
+[  174.3s] ok   _MR148ZZ Ball (1)011: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.3s] ok   _MR148ZZ Ball (1)012: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.3s] ok   _MR148ZZ Ball (1)012: one colour (1)
+[  174.3s] ok   _MR148ZZ Ball (1)012: mesh 304 facets, box within 0.000 <= 0.15
+[  174.3s] ok   _MR148ZZ Ball (1)012: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.3s] ok   _MR148ZZ Ball (1)013: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.3s] ok   _MR148ZZ Ball (1)013: one colour (1)
+[  174.3s] ok   _MR148ZZ Ball (1)013: mesh 304 facets, box within 0.000 <= 0.15
+[  174.3s] ok   _MR148ZZ Ball (1)013: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.3s] ok   _MR148ZZ Shield2 (1): a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.3s] ok   _MR148ZZ Shield2 (1): one colour (1)
+[  174.3s] ok   _MR148ZZ Shield2 (1): mesh 208 facets, box within 0.000 <= 0.15
+[  174.4s] ok   _MR148ZZ Shield2 (1): 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.4s] ok   _MR148ZZ Outer Ring001: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.4s] ok   _MR148ZZ Outer Ring001: one colour (1)
+[  174.4s] ok   _MR148ZZ Outer Ring001: mesh 1686 facets, box within 0.000 <= 0.15
+[  174.4s] ok   _MR148ZZ Outer Ring001: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.4s] ok   _MR148ZZ Inner Ring001: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.4s] ok   _MR148ZZ Inner Ring001: one colour (1)
+[  174.4s] ok   _MR148ZZ Inner Ring001: mesh 1612 facets, box within 0.000 <= 0.15
+[  174.4s] ok   _MR148ZZ Inner Ring001: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.4s] ok   _MR148ZZ Shield001: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.4s] ok   _MR148ZZ Shield001: one colour (1)
+[  174.4s] ok   _MR148ZZ Shield001: mesh 208 facets, box within 0.000 <= 0.15
+[  174.5s] ok   _MR148ZZ Shield001: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.5s] ok   _MR148ZZ Ball014: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.5s] ok   _MR148ZZ Ball014: one colour (1)
+[  174.5s] ok   _MR148ZZ Ball014: mesh 304 facets, box within 0.000 <= 0.15
+[  174.5s] ok   _MR148ZZ Ball014: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.5s] ok   _MR148ZZ Ball015: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.5s] ok   _MR148ZZ Ball015: one colour (1)
+[  174.5s] ok   _MR148ZZ Ball015: mesh 304 facets, box within 0.000 <= 0.15
+[  174.5s] ok   _MR148ZZ Ball015: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.5s] ok   _MR148ZZ Ball016: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.5s] ok   _MR148ZZ Ball016: one colour (1)
+[  174.5s] ok   _MR148ZZ Ball016: mesh 304 facets, box within 0.000 <= 0.15
+[  174.6s] ok   _MR148ZZ Ball016: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.6s] ok   _MR148ZZ Ball017: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.6s] ok   _MR148ZZ Ball017: one colour (1)
+[  174.6s] ok   _MR148ZZ Ball017: mesh 304 facets, box within 0.000 <= 0.15
+[  174.6s] ok   _MR148ZZ Ball017: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.6s] ok   _MR148ZZ Ball018: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.6s] ok   _MR148ZZ Ball018: one colour (1)
+[  174.6s] ok   _MR148ZZ Ball018: mesh 304 facets, box within 0.000 <= 0.15
+[  174.6s] ok   _MR148ZZ Ball018: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.6s] ok   _MR148ZZ Ball019: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.6s] ok   _MR148ZZ Ball019: one colour (1)
+[  174.6s] ok   _MR148ZZ Ball019: mesh 304 facets, box within 0.000 <= 0.15
+[  174.6s] ok   _MR148ZZ Ball019: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.6s] ok   _MR148ZZ Ball020: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.6s] ok   _MR148ZZ Ball020: one colour (1)
+[  174.6s] ok   _MR148ZZ Ball020: mesh 304 facets, box within 0.000 <= 0.15
+[  174.7s] ok   _MR148ZZ Ball020: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.7s] ok   _MR148ZZ Ball021: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.7s] ok   _MR148ZZ Ball021: one colour (1)
+[  174.7s] ok   _MR148ZZ Ball021: mesh 304 facets, box within 0.000 <= 0.15
+[  174.7s] ok   _MR148ZZ Ball021: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.7s] ok   _MR148ZZ Ball022: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.7s] ok   _MR148ZZ Ball022: one colour (1)
+[  174.7s] ok   _MR148ZZ Ball022: mesh 304 facets, box within 0.000 <= 0.15
+[  174.7s] ok   _MR148ZZ Ball022: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.7s] ok   _MR148ZZ Ball023: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.7s] ok   _MR148ZZ Ball023: one colour (1)
+[  174.7s] ok   _MR148ZZ Ball023: mesh 304 facets, box within 0.000 <= 0.15
+[  174.7s] ok   _MR148ZZ Ball023: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.7s] ok   _MR148ZZ Ball024: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.7s] ok   _MR148ZZ Ball024: one colour (1)
+[  174.7s] ok   _MR148ZZ Ball024: mesh 304 facets, box within 0.000 <= 0.15
+[  174.8s] ok   _MR148ZZ Ball024: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.8s] ok   _MR148ZZ Ball025: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.8s] ok   _MR148ZZ Ball025: one colour (1)
+[  174.8s] ok   _MR148ZZ Ball025: mesh 304 facets, box within 0.000 <= 0.15
+[  174.8s] ok   _MR148ZZ Ball025: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.8s] ok   _MR148ZZ Ball026: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.8s] ok   _MR148ZZ Ball026: one colour (1)
+[  174.8s] ok   _MR148ZZ Ball026: mesh 304 facets, box within 0.000 <= 0.15
+[  174.8s] ok   _MR148ZZ Ball026: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.8s] ok   _MR148ZZ Ball027: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.8s] ok   _MR148ZZ Ball027: one colour (1)
+[  174.8s] ok   _MR148ZZ Ball027: mesh 304 facets, box within 0.000 <= 0.15
+[  174.8s] ok   _MR148ZZ Ball027: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.8s] ok   _MR148ZZ Shield002: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.8s] ok   _MR148ZZ Shield002: one colour (1)
+[  174.8s] ok   _MR148ZZ Shield002: mesh 208 facets, box within 0.000 <= 0.15
+[  174.9s] ok   _MR148ZZ Shield002: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.9s] ok   _MR148ZZ Outer Ring (1)001: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.9s] ok   _MR148ZZ Outer Ring (1)001: one colour (1)
+[  174.9s] ok   _MR148ZZ Outer Ring (1)001: mesh 1686 facets, box within 0.000 <= 0.15
+[  174.9s] ok   _MR148ZZ Outer Ring (1)001: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.9s] ok   _MR148ZZ Inner Ring (1)001: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.9s] ok   _MR148ZZ Inner Ring (1)001: one colour (1)
+[  174.9s] ok   _MR148ZZ Inner Ring (1)001: mesh 1612 facets, box within 0.000 <= 0.15
+[  174.9s] ok   _MR148ZZ Inner Ring (1)001: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  174.9s] ok   _MR148ZZ Shield1 (1)001: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  174.9s] ok   _MR148ZZ Shield1 (1)001: one colour (1)
+[  174.9s] ok   _MR148ZZ Shield1 (1)001: mesh 208 facets, box within 0.000 <= 0.15
+[  175.0s] ok   _MR148ZZ Shield1 (1)001: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.0s] ok   _MR148ZZ Ball (1)014: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.0s] ok   _MR148ZZ Ball (1)014: one colour (1)
+[  175.0s] ok   _MR148ZZ Ball (1)014: mesh 304 facets, box within 0.000 <= 0.15
+[  175.0s] ok   _MR148ZZ Ball (1)014: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.0s] ok   _MR148ZZ Ball (1)015: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.0s] ok   _MR148ZZ Ball (1)015: one colour (1)
+[  175.0s] ok   _MR148ZZ Ball (1)015: mesh 304 facets, box within 0.000 <= 0.15
+[  175.0s] ok   _MR148ZZ Ball (1)015: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.0s] ok   _MR148ZZ Ball (1)016: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.0s] ok   _MR148ZZ Ball (1)016: one colour (1)
+[  175.0s] ok   _MR148ZZ Ball (1)016: mesh 304 facets, box within 0.000 <= 0.15
+[  175.0s] ok   _MR148ZZ Ball (1)016: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.0s] ok   _MR148ZZ Ball (1)017: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.0s] ok   _MR148ZZ Ball (1)017: one colour (1)
+[  175.0s] ok   _MR148ZZ Ball (1)017: mesh 304 facets, box within 0.000 <= 0.15
+[  175.0s] ok   _MR148ZZ Ball (1)017: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.0s] ok   _MR148ZZ Ball (1)018: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.0s] ok   _MR148ZZ Ball (1)018: one colour (1)
+[  175.0s] ok   _MR148ZZ Ball (1)018: mesh 304 facets, box within 0.000 <= 0.15
+[  175.1s] ok   _MR148ZZ Ball (1)018: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.1s] ok   _MR148ZZ Ball (1)019: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.1s] ok   _MR148ZZ Ball (1)019: one colour (1)
+[  175.1s] ok   _MR148ZZ Ball (1)019: mesh 304 facets, box within 0.000 <= 0.15
+[  175.1s] ok   _MR148ZZ Ball (1)019: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.1s] ok   _MR148ZZ Ball (1)020: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.1s] ok   _MR148ZZ Ball (1)020: one colour (1)
+[  175.1s] ok   _MR148ZZ Ball (1)020: mesh 304 facets, box within 0.000 <= 0.15
+[  175.1s] ok   _MR148ZZ Ball (1)020: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.1s] ok   _MR148ZZ Ball (1)021: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.1s] ok   _MR148ZZ Ball (1)021: one colour (1)
+[  175.1s] ok   _MR148ZZ Ball (1)021: mesh 304 facets, box within 0.000 <= 0.15
+[  175.1s] ok   _MR148ZZ Ball (1)021: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.1s] ok   _MR148ZZ Ball (1)022: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.1s] ok   _MR148ZZ Ball (1)022: one colour (1)
+[  175.1s] ok   _MR148ZZ Ball (1)022: mesh 304 facets, box within 0.000 <= 0.15
+[  175.2s] ok   _MR148ZZ Ball (1)022: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.2s] ok   _MR148ZZ Ball (1)023: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.2s] ok   _MR148ZZ Ball (1)023: one colour (1)
+[  175.2s] ok   _MR148ZZ Ball (1)023: mesh 304 facets, box within 0.000 <= 0.15
+[  175.2s] ok   _MR148ZZ Ball (1)023: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.2s] ok   _MR148ZZ Ball (1)024: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.2s] ok   _MR148ZZ Ball (1)024: one colour (1)
+[  175.2s] ok   _MR148ZZ Ball (1)024: mesh 304 facets, box within 0.000 <= 0.15
+[  175.2s] ok   _MR148ZZ Ball (1)024: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.2s] ok   _MR148ZZ Ball (1)025: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.2s] ok   _MR148ZZ Ball (1)025: one colour (1)
+[  175.2s] ok   _MR148ZZ Ball (1)025: mesh 304 facets, box within 0.000 <= 0.15
+[  175.2s] ok   _MR148ZZ Ball (1)025: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.2s] ok   _MR148ZZ Ball (1)026: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.2s] ok   _MR148ZZ Ball (1)026: one colour (1)
+[  175.2s] ok   _MR148ZZ Ball (1)026: mesh 304 facets, box within 0.000 <= 0.15
+[  175.2s] ok   _MR148ZZ Ball (1)026: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.2s] ok   _MR148ZZ Ball (1)027: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.2s] ok   _MR148ZZ Ball (1)027: one colour (1)
+[  175.2s] ok   _MR148ZZ Ball (1)027: mesh 304 facets, box within 0.000 <= 0.15
+[  175.3s] ok   _MR148ZZ Ball (1)027: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.3s] ok   _MR148ZZ Shield2 (1)001: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.3s] ok   _MR148ZZ Shield2 (1)001: one colour (1)
+[  175.3s] ok   _MR148ZZ Shield2 (1)001: mesh 208 facets, box within 0.000 <= 0.15
+[  175.3s] ok   _MR148ZZ Shield2 (1)001: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.3s] ok   _MR148ZZ Outer Ring002: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.3s] ok   _MR148ZZ Outer Ring002: one colour (1)
+[  175.3s] ok   _MR148ZZ Outer Ring002: mesh 1686 facets, box within 0.000 <= 0.15
+[  175.3s] ok   _MR148ZZ Outer Ring002: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.3s] ok   _MR148ZZ Inner Ring002: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.3s] ok   _MR148ZZ Inner Ring002: one colour (1)
+[  175.3s] ok   _MR148ZZ Inner Ring002: mesh 1612 facets, box within 0.000 <= 0.15
+[  175.4s] ok   _MR148ZZ Inner Ring002: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.4s] ok   _MR148ZZ Shield003: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.4s] ok   _MR148ZZ Shield003: one colour (1)
+[  175.4s] ok   _MR148ZZ Shield003: mesh 208 facets, box within 0.000 <= 0.15
+[  175.4s] ok   _MR148ZZ Shield003: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.4s] ok   _MR148ZZ Ball028: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.4s] ok   _MR148ZZ Ball028: one colour (1)
+[  175.4s] ok   _MR148ZZ Ball028: mesh 304 facets, box within 0.000 <= 0.15
+[  175.4s] ok   _MR148ZZ Ball028: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.4s] ok   _MR148ZZ Ball029: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.4s] ok   _MR148ZZ Ball029: one colour (1)
+[  175.4s] ok   _MR148ZZ Ball029: mesh 304 facets, box within 0.000 <= 0.15
+[  175.4s] ok   _MR148ZZ Ball029: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.4s] ok   _MR148ZZ Ball030: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.4s] ok   _MR148ZZ Ball030: one colour (1)
+[  175.4s] ok   _MR148ZZ Ball030: mesh 304 facets, box within 0.000 <= 0.15
+[  175.5s] ok   _MR148ZZ Ball030: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.5s] ok   _MR148ZZ Ball031: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.5s] ok   _MR148ZZ Ball031: one colour (1)
+[  175.5s] ok   _MR148ZZ Ball031: mesh 304 facets, box within 0.000 <= 0.15
+[  175.5s] ok   _MR148ZZ Ball031: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.5s] ok   _MR148ZZ Ball032: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.5s] ok   _MR148ZZ Ball032: one colour (1)
+[  175.5s] ok   _MR148ZZ Ball032: mesh 304 facets, box within 0.000 <= 0.15
+[  175.5s] ok   _MR148ZZ Ball032: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.5s] ok   _MR148ZZ Ball033: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.5s] ok   _MR148ZZ Ball033: one colour (1)
+[  175.5s] ok   _MR148ZZ Ball033: mesh 304 facets, box within 0.000 <= 0.15
+[  175.5s] ok   _MR148ZZ Ball033: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.5s] ok   _MR148ZZ Ball034: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.5s] ok   _MR148ZZ Ball034: one colour (1)
+[  175.5s] ok   _MR148ZZ Ball034: mesh 304 facets, box within 0.000 <= 0.15
+[  175.5s] ok   _MR148ZZ Ball034: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.5s] ok   _MR148ZZ Ball035: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.5s] ok   _MR148ZZ Ball035: one colour (1)
+[  175.5s] ok   _MR148ZZ Ball035: mesh 304 facets, box within 0.000 <= 0.15
+[  175.6s] ok   _MR148ZZ Ball035: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.6s] ok   _MR148ZZ Ball036: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.6s] ok   _MR148ZZ Ball036: one colour (1)
+[  175.6s] ok   _MR148ZZ Ball036: mesh 304 facets, box within 0.000 <= 0.15
+[  175.6s] ok   _MR148ZZ Ball036: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.6s] ok   _MR148ZZ Ball037: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.6s] ok   _MR148ZZ Ball037: one colour (1)
+[  175.6s] ok   _MR148ZZ Ball037: mesh 304 facets, box within 0.000 <= 0.15
+[  175.6s] ok   _MR148ZZ Ball037: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.6s] ok   _MR148ZZ Ball038: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.6s] ok   _MR148ZZ Ball038: one colour (1)
+[  175.6s] ok   _MR148ZZ Ball038: mesh 304 facets, box within 0.000 <= 0.15
+[  175.6s] ok   _MR148ZZ Ball038: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.6s] ok   _MR148ZZ Ball039: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.6s] ok   _MR148ZZ Ball039: one colour (1)
+[  175.6s] ok   _MR148ZZ Ball039: mesh 304 facets, box within 0.000 <= 0.15
+[  175.6s] ok   _MR148ZZ Ball039: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.6s] ok   _MR148ZZ Ball040: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.6s] ok   _MR148ZZ Ball040: one colour (1)
+[  175.6s] ok   _MR148ZZ Ball040: mesh 304 facets, box within 0.000 <= 0.15
+[  175.7s] ok   _MR148ZZ Ball040: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.7s] ok   _MR148ZZ Ball041: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.7s] ok   _MR148ZZ Ball041: one colour (1)
+[  175.7s] ok   _MR148ZZ Ball041: mesh 304 facets, box within 0.000 <= 0.15
+[  175.7s] ok   _MR148ZZ Ball041: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.7s] ok   _MR148ZZ Shield004: a plain Part::Feature directly in an App::Part, nothing built from it, no stand-in yet (Part::Feature, parent App::Part, users [])
+[  175.7s] ok   _MR148ZZ Shield004: one colour (1)
+[  175.7s] ok   _MR148ZZ Shield004: mesh 208 facets, box within 0.000 <= 0.15
+[  175.7s] ok   _MR148ZZ Shield004: 60 mesh points on the part, worst 0.0000 <= 0.12000000000000001
+[  175.7s] O2S toolboard: 5 stand-ins, 645768 facets in all, worst point 0.0000, worst box 0.0000
+[  175.7s] Smart Sensor: 5 stand-ins, 294470 facets in all, worst point 0.0000, worst box 0.0000
+[  175.7s] bowden tube: 5 stand-ins, 142716 facets in all, worst point 0.0010, worst box 0.0000
+[  175.7s] heat block: 5 stand-ins, 55290 facets in all, worst point 0.0000, worst box 0.0000
+[  175.7s] MR bearing part: 90 stand-ins, 39850 facets in all, worst point 0.0000, worst box 0.0000
+[  188.2s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0) stand-in: in the document where it was built, on its part
+[  188.2s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0): unmoved and hidden
+[  188.2s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0) stand-in: beside its part, StandInFor O2S_board
+[  189.6s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0) stand-in: in the document where it was built, on its part
+[  189.6s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0): unmoved and hidden
+[  189.6s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0) stand-in: beside its part, StandInFor O2S_board001
+[  191.0s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 stand-in: in the document where it was built, on its part
+[  191.0s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: unmoved and hidden
+[  191.0s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 stand-in: beside its part, StandInFor O2S_board002
+[  192.4s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 stand-in: in the document where it was built, on its part
+[  192.4s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: unmoved and hidden
+[  192.4s] ok   Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 stand-in: beside its part, StandInFor O2S_board003
+[  193.8s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 stand-in: in the document where it was built, on its part
+[  193.8s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: unmoved and hidden
+[  193.8s] ok   Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 stand-in: beside its part, StandInFor O2S_board004
+[  195.2s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0) stand-in: in the document where it was built, on its part
+[  195.2s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0): unmoved and hidden
+[  195.2s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0) stand-in: beside its part, StandInFor O2S_sensor
+[  196.8s] ok   Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0) stand-in: in the document where it was built, on its part
+[  196.8s] ok   Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0): unmoved and hidden
+[  196.8s] ok   Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0) stand-in: beside its part, StandInFor O2S_sensor001
+[  198.3s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 stand-in: in the document where it was built, on its part
+[  198.3s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001: unmoved and hidden
+[  198.3s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 stand-in: beside its part, StandInFor O2S_sensor002
+[  199.8s] ok   Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 stand-in: in the document where it was built, on its part
+[  199.8s] ok   Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001: unmoved and hidden
+[  199.8s] ok   Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 stand-in: beside its part, StandInFor O2S_sensor003
+[  201.2s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 stand-in: in the document where it was built, on its part
+[  201.2s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: unmoved and hidden
+[  201.2s] ok   Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 stand-in: beside its part, StandInFor O2S_sensor004
+[  201.3s] ok   Bowden Left stand-in: in the document where it was built, on its part
+[  201.3s] ok   Bowden Left: unmoved and hidden
+[  201.3s] ok   Bowden Left stand-in: beside its part, StandInFor BowdenTube
+[  201.4s] ok   Bowden Right stand-in: in the document where it was built, on its part
+[  201.4s] ok   Bowden Right: unmoved and hidden
+[  201.4s] ok   Bowden Right stand-in: beside its part, StandInFor BowdenTube001
+[  201.4s] ok   Bowden slot 2 stand-in: in the document where it was built, on its part
+[  201.4s] ok   Bowden slot 2: unmoved and hidden
+[  201.4s] ok   Bowden slot 2 stand-in: beside its part, StandInFor BowdenTube002
+[  201.5s] ok   Bowden slot 3 stand-in: in the document where it was built, on its part
+[  201.5s] ok   Bowden slot 3: unmoved and hidden
+[  201.5s] ok   Bowden slot 3 stand-in: beside its part, StandInFor BowdenTube003
+[  201.6s] ok   Bowden slot 4 stand-in: in the document where it was built, on its part
+[  201.6s] ok   Bowden slot 4: unmoved and hidden
+[  201.6s] ok   Bowden slot 4 stand-in: beside its part, StandInFor BowdenTube004
+[  201.6s] ok   Heat Block stand-in: in the document where it was built, on its part
+[  201.6s] ok   Heat Block: unmoved and hidden
+[  201.6s] ok   Heat Block stand-in: beside its part, StandInFor A4Tv027
+[  201.7s] ok   Heat Block001 stand-in: in the document where it was built, on its part
+[  201.7s] ok   Heat Block001: unmoved and hidden
+[  201.7s] ok   Heat Block001 stand-in: beside its part, StandInFor A4Tv085
+[  201.7s] ok   Heat Block002 stand-in: in the document where it was built, on its part
+[  201.7s] ok   Heat Block002: unmoved and hidden
+[  201.7s] ok   Heat Block002 stand-in: beside its part, StandInFor A4Tv143
+[  201.7s] ok   Heat Block003 stand-in: in the document where it was built, on its part
+[  201.7s] ok   Heat Block003: unmoved and hidden
+[  201.7s] ok   Heat Block003 stand-in: beside its part, StandInFor A4Tv201
+[  201.7s] ok   Heat Block004 stand-in: in the document where it was built, on its part
+[  201.7s] ok   Heat Block004: unmoved and hidden
+[  201.7s] ok   Heat Block004 stand-in: beside its part, StandInFor A4Tv259
+[  201.8s] ok   _MR148ZZ Outer Ring stand-in: in the document where it was built, on its part
+[  201.8s] ok   _MR148ZZ Outer Ring: unmoved and hidden
+[  201.8s] ok   _MR148ZZ Outer Ring stand-in: beside its part, StandInFor Part__Feature1008
+[  201.8s] ok   _MR148ZZ Inner Ring stand-in: in the document where it was built, on its part
+[  201.8s] ok   _MR148ZZ Inner Ring: unmoved and hidden
+[  201.8s] ok   _MR148ZZ Inner Ring stand-in: beside its part, StandInFor Part__Feature1009
+[  201.8s] ok   _MR148ZZ Shield1 stand-in: in the document where it was built, on its part
+[  201.8s] ok   _MR148ZZ Shield1: unmoved and hidden
+[  201.8s] ok   _MR148ZZ Shield1 stand-in: beside its part, StandInFor Part__Feature1010
+[  201.8s] ok   _MR148ZZ Ball stand-in: in the document where it was built, on its part
+[  201.8s] ok   _MR148ZZ Ball: unmoved and hidden
+[  201.8s] ok   _MR148ZZ Ball stand-in: beside its part, StandInFor Part__Feature1011
+[  201.8s] ok   _MR148ZZ Ball001 stand-in: in the document where it was built, on its part
+[  201.8s] ok   _MR148ZZ Ball001: unmoved and hidden
+[  201.8s] ok   _MR148ZZ Ball001 stand-in: beside its part, StandInFor Part__Feature1012
+[  201.8s] ok   _MR148ZZ Ball002 stand-in: in the document where it was built, on its part
+[  201.8s] ok   _MR148ZZ Ball002: unmoved and hidden
+[  201.8s] ok   _MR148ZZ Ball002 stand-in: beside its part, StandInFor Part__Feature1013
+[  201.8s] ok   _MR148ZZ Ball003 stand-in: in the document where it was built, on its part
+[  201.8s] ok   _MR148ZZ Ball003: unmoved and hidden
+[  201.8s] ok   _MR148ZZ Ball003 stand-in: beside its part, StandInFor Part__Feature1014
+[  201.8s] ok   _MR148ZZ Ball004 stand-in: in the document where it was built, on its part
+[  201.8s] ok   _MR148ZZ Ball004: unmoved and hidden
+[  201.8s] ok   _MR148ZZ Ball004 stand-in: beside its part, StandInFor Part__Feature1015
+[  201.8s] ok   _MR148ZZ Ball005 stand-in: in the document where it was built, on its part
+[  201.8s] ok   _MR148ZZ Ball005: unmoved and hidden
+[  201.8s] ok   _MR148ZZ Ball005 stand-in: beside its part, StandInFor Part__Feature1016
+[  201.8s] ok   _MR148ZZ Ball006 stand-in: in the document where it was built, on its part
+[  201.8s] ok   _MR148ZZ Ball006: unmoved and hidden
+[  201.8s] ok   _MR148ZZ Ball006 stand-in: beside its part, StandInFor Part__Feature1017
+[  201.8s] ok   _MR148ZZ Ball007 stand-in: in the document where it was built, on its part
+[  201.8s] ok   _MR148ZZ Ball007: unmoved and hidden
+[  201.8s] ok   _MR148ZZ Ball007 stand-in: beside its part, StandInFor Part__Feature1018
+[  201.8s] ok   _MR148ZZ Ball008 stand-in: in the document where it was built, on its part
+[  201.8s] ok   _MR148ZZ Ball008: unmoved and hidden
+[  201.8s] ok   _MR148ZZ Ball008 stand-in: beside its part, StandInFor Part__Feature1019
+[  201.8s] ok   _MR148ZZ Ball009 stand-in: in the document where it was built, on its part
+[  201.8s] ok   _MR148ZZ Ball009: unmoved and hidden
+[  201.8s] ok   _MR148ZZ Ball009 stand-in: beside its part, StandInFor Part__Feature1020
+[  201.8s] ok   _MR148ZZ Ball010 stand-in: in the document where it was built, on its part
+[  201.8s] ok   _MR148ZZ Ball010: unmoved and hidden
+[  201.8s] ok   _MR148ZZ Ball010 stand-in: beside its part, StandInFor Part__Feature1021
+[  201.8s] ok   _MR148ZZ Ball011 stand-in: in the document where it was built, on its part
+[  201.8s] ok   _MR148ZZ Ball011: unmoved and hidden
+[  201.8s] ok   _MR148ZZ Ball011 stand-in: beside its part, StandInFor Part__Feature1022
+[  201.8s] ok   _MR148ZZ Ball012 stand-in: in the document where it was built, on its part
+[  201.8s] ok   _MR148ZZ Ball012: unmoved and hidden
+[  201.8s] ok   _MR148ZZ Ball012 stand-in: beside its part, StandInFor Part__Feature1023
+[  201.8s] ok   _MR148ZZ Ball013 stand-in: in the document where it was built, on its part
+[  201.8s] ok   _MR148ZZ Ball013: unmoved and hidden
+[  201.8s] ok   _MR148ZZ Ball013 stand-in: beside its part, StandInFor Part__Feature1024
+[  201.8s] ok   _MR148ZZ Shield2 stand-in: in the document where it was built, on its part
+[  201.8s] ok   _MR148ZZ Shield2: unmoved and hidden
+[  201.8s] ok   _MR148ZZ Shield2 stand-in: beside its part, StandInFor Part__Feature1025
+[  201.9s] ok   _MR148ZZ Outer Ring (1) stand-in: in the document where it was built, on its part
+[  201.9s] ok   _MR148ZZ Outer Ring (1): unmoved and hidden
+[  201.9s] ok   _MR148ZZ Outer Ring (1) stand-in: beside its part, StandInFor Part__Feature1089
+[  201.9s] ok   _MR148ZZ Inner Ring (1) stand-in: in the document where it was built, on its part
+[  201.9s] ok   _MR148ZZ Inner Ring (1): unmoved and hidden
+[  201.9s] ok   _MR148ZZ Inner Ring (1) stand-in: beside its part, StandInFor Part__Feature1090
+[  201.9s] ok   _MR148ZZ Shield1 (1) stand-in: in the document where it was built, on its part
+[  201.9s] ok   _MR148ZZ Shield1 (1): unmoved and hidden
+[  201.9s] ok   _MR148ZZ Shield1 (1) stand-in: beside its part, StandInFor Part__Feature1091
+[  201.9s] ok   _MR148ZZ Ball (1) stand-in: in the document where it was built, on its part
+[  201.9s] ok   _MR148ZZ Ball (1): unmoved and hidden
+[  201.9s] ok   _MR148ZZ Ball (1) stand-in: beside its part, StandInFor Part__Feature1092
+[  201.9s] ok   _MR148ZZ Ball (1)001 stand-in: in the document where it was built, on its part
+[  201.9s] ok   _MR148ZZ Ball (1)001: unmoved and hidden
+[  201.9s] ok   _MR148ZZ Ball (1)001 stand-in: beside its part, StandInFor Part__Feature1093
+[  201.9s] ok   _MR148ZZ Ball (1)002 stand-in: in the document where it was built, on its part
+[  201.9s] ok   _MR148ZZ Ball (1)002: unmoved and hidden
+[  201.9s] ok   _MR148ZZ Ball (1)002 stand-in: beside its part, StandInFor Part__Feature1094
+[  201.9s] ok   _MR148ZZ Ball (1)003 stand-in: in the document where it was built, on its part
+[  201.9s] ok   _MR148ZZ Ball (1)003: unmoved and hidden
+[  201.9s] ok   _MR148ZZ Ball (1)003 stand-in: beside its part, StandInFor Part__Feature1095
+[  201.9s] ok   _MR148ZZ Ball (1)004 stand-in: in the document where it was built, on its part
+[  201.9s] ok   _MR148ZZ Ball (1)004: unmoved and hidden
+[  201.9s] ok   _MR148ZZ Ball (1)004 stand-in: beside its part, StandInFor Part__Feature1096
+[  201.9s] ok   _MR148ZZ Ball (1)005 stand-in: in the document where it was built, on its part
+[  201.9s] ok   _MR148ZZ Ball (1)005: unmoved and hidden
+[  201.9s] ok   _MR148ZZ Ball (1)005 stand-in: beside its part, StandInFor Part__Feature1097
+[  201.9s] ok   _MR148ZZ Ball (1)006 stand-in: in the document where it was built, on its part
+[  201.9s] ok   _MR148ZZ Ball (1)006: unmoved and hidden
+[  201.9s] ok   _MR148ZZ Ball (1)006 stand-in: beside its part, StandInFor Part__Feature1098
+[  201.9s] ok   _MR148ZZ Ball (1)007 stand-in: in the document where it was built, on its part
+[  201.9s] ok   _MR148ZZ Ball (1)007: unmoved and hidden
+[  201.9s] ok   _MR148ZZ Ball (1)007 stand-in: beside its part, StandInFor Part__Feature1099
+[  201.9s] ok   _MR148ZZ Ball (1)008 stand-in: in the document where it was built, on its part
+[  201.9s] ok   _MR148ZZ Ball (1)008: unmoved and hidden
+[  201.9s] ok   _MR148ZZ Ball (1)008 stand-in: beside its part, StandInFor Part__Feature1100
+[  201.9s] ok   _MR148ZZ Ball (1)009 stand-in: in the document where it was built, on its part
+[  201.9s] ok   _MR148ZZ Ball (1)009: unmoved and hidden
+[  201.9s] ok   _MR148ZZ Ball (1)009 stand-in: beside its part, StandInFor Part__Feature1101
+[  201.9s] ok   _MR148ZZ Ball (1)010 stand-in: in the document where it was built, on its part
+[  201.9s] ok   _MR148ZZ Ball (1)010: unmoved and hidden
+[  201.9s] ok   _MR148ZZ Ball (1)010 stand-in: beside its part, StandInFor Part__Feature1102
+[  201.9s] ok   _MR148ZZ Ball (1)011 stand-in: in the document where it was built, on its part
+[  201.9s] ok   _MR148ZZ Ball (1)011: unmoved and hidden
+[  201.9s] ok   _MR148ZZ Ball (1)011 stand-in: beside its part, StandInFor Part__Feature1103
+[  201.9s] ok   _MR148ZZ Ball (1)012 stand-in: in the document where it was built, on its part
+[  201.9s] ok   _MR148ZZ Ball (1)012: unmoved and hidden
+[  201.9s] ok   _MR148ZZ Ball (1)012 stand-in: beside its part, StandInFor Part__Feature1104
+[  201.9s] ok   _MR148ZZ Ball (1)013 stand-in: in the document where it was built, on its part
+[  201.9s] ok   _MR148ZZ Ball (1)013: unmoved and hidden
+[  201.9s] ok   _MR148ZZ Ball (1)013 stand-in: beside its part, StandInFor Part__Feature1105
+[  201.9s] ok   _MR148ZZ Shield2 (1) stand-in: in the document where it was built, on its part
+[  201.9s] ok   _MR148ZZ Shield2 (1): unmoved and hidden
+[  201.9s] ok   _MR148ZZ Shield2 (1) stand-in: beside its part, StandInFor Part__Feature1106
+[  202.0s] ok   _MR148ZZ Outer Ring001 stand-in: in the document where it was built, on its part
+[  202.0s] ok   _MR148ZZ Outer Ring001: unmoved and hidden
+[  202.0s] ok   _MR148ZZ Outer Ring001 stand-in: beside its part, StandInFor Part__Feature3144
+[  202.0s] ok   _MR148ZZ Inner Ring001 stand-in: in the document where it was built, on its part
+[  202.0s] ok   _MR148ZZ Inner Ring001: unmoved and hidden
+[  202.0s] ok   _MR148ZZ Inner Ring001 stand-in: beside its part, StandInFor Part__Feature3145
+[  202.0s] ok   _MR148ZZ Shield001 stand-in: in the document where it was built, on its part
+[  202.0s] ok   _MR148ZZ Shield001: unmoved and hidden
+[  202.0s] ok   _MR148ZZ Shield001 stand-in: beside its part, StandInFor Part__Feature3146
+[  202.0s] ok   _MR148ZZ Ball014 stand-in: in the document where it was built, on its part
+[  202.0s] ok   _MR148ZZ Ball014: unmoved and hidden
+[  202.0s] ok   _MR148ZZ Ball014 stand-in: beside its part, StandInFor Part__Feature3147
+[  202.0s] ok   _MR148ZZ Ball015 stand-in: in the document where it was built, on its part
+[  202.0s] ok   _MR148ZZ Ball015: unmoved and hidden
+[  202.0s] ok   _MR148ZZ Ball015 stand-in: beside its part, StandInFor Part__Feature3148
+[  202.0s] ok   _MR148ZZ Ball016 stand-in: in the document where it was built, on its part
+[  202.0s] ok   _MR148ZZ Ball016: unmoved and hidden
+[  202.0s] ok   _MR148ZZ Ball016 stand-in: beside its part, StandInFor Part__Feature3149
+[  202.0s] ok   _MR148ZZ Ball017 stand-in: in the document where it was built, on its part
+[  202.0s] ok   _MR148ZZ Ball017: unmoved and hidden
+[  202.0s] ok   _MR148ZZ Ball017 stand-in: beside its part, StandInFor Part__Feature3150
+[  202.0s] ok   _MR148ZZ Ball018 stand-in: in the document where it was built, on its part
+[  202.0s] ok   _MR148ZZ Ball018: unmoved and hidden
+[  202.0s] ok   _MR148ZZ Ball018 stand-in: beside its part, StandInFor Part__Feature3151
+[  202.0s] ok   _MR148ZZ Ball019 stand-in: in the document where it was built, on its part
+[  202.0s] ok   _MR148ZZ Ball019: unmoved and hidden
+[  202.0s] ok   _MR148ZZ Ball019 stand-in: beside its part, StandInFor Part__Feature3152
+[  202.0s] ok   _MR148ZZ Ball020 stand-in: in the document where it was built, on its part
+[  202.0s] ok   _MR148ZZ Ball020: unmoved and hidden
+[  202.0s] ok   _MR148ZZ Ball020 stand-in: beside its part, StandInFor Part__Feature3153
+[  202.0s] ok   _MR148ZZ Ball021 stand-in: in the document where it was built, on its part
+[  202.0s] ok   _MR148ZZ Ball021: unmoved and hidden
+[  202.0s] ok   _MR148ZZ Ball021 stand-in: beside its part, StandInFor Part__Feature3154
+[  202.0s] ok   _MR148ZZ Ball022 stand-in: in the document where it was built, on its part
+[  202.0s] ok   _MR148ZZ Ball022: unmoved and hidden
+[  202.0s] ok   _MR148ZZ Ball022 stand-in: beside its part, StandInFor Part__Feature3155
+[  202.0s] ok   _MR148ZZ Ball023 stand-in: in the document where it was built, on its part
+[  202.0s] ok   _MR148ZZ Ball023: unmoved and hidden
+[  202.0s] ok   _MR148ZZ Ball023 stand-in: beside its part, StandInFor Part__Feature3156
+[  202.0s] ok   _MR148ZZ Ball024 stand-in: in the document where it was built, on its part
+[  202.0s] ok   _MR148ZZ Ball024: unmoved and hidden
+[  202.0s] ok   _MR148ZZ Ball024 stand-in: beside its part, StandInFor Part__Feature3157
+[  202.0s] ok   _MR148ZZ Ball025 stand-in: in the document where it was built, on its part
+[  202.0s] ok   _MR148ZZ Ball025: unmoved and hidden
+[  202.0s] ok   _MR148ZZ Ball025 stand-in: beside its part, StandInFor Part__Feature3158
+[  202.0s] ok   _MR148ZZ Ball026 stand-in: in the document where it was built, on its part
+[  202.0s] ok   _MR148ZZ Ball026: unmoved and hidden
+[  202.0s] ok   _MR148ZZ Ball026 stand-in: beside its part, StandInFor Part__Feature3159
+[  202.0s] ok   _MR148ZZ Ball027 stand-in: in the document where it was built, on its part
+[  202.0s] ok   _MR148ZZ Ball027: unmoved and hidden
+[  202.0s] ok   _MR148ZZ Ball027 stand-in: beside its part, StandInFor Part__Feature3160
+[  202.0s] ok   _MR148ZZ Shield002 stand-in: in the document where it was built, on its part
+[  202.0s] ok   _MR148ZZ Shield002: unmoved and hidden
+[  202.0s] ok   _MR148ZZ Shield002 stand-in: beside its part, StandInFor Part__Feature3161
+[  202.1s] ok   _MR148ZZ Outer Ring (1)001 stand-in: in the document where it was built, on its part
+[  202.1s] ok   _MR148ZZ Outer Ring (1)001: unmoved and hidden
+[  202.1s] ok   _MR148ZZ Outer Ring (1)001 stand-in: beside its part, StandInFor Part__Feature3199
+[  202.1s] ok   _MR148ZZ Inner Ring (1)001 stand-in: in the document where it was built, on its part
+[  202.1s] ok   _MR148ZZ Inner Ring (1)001: unmoved and hidden
+[  202.1s] ok   _MR148ZZ Inner Ring (1)001 stand-in: beside its part, StandInFor Part__Feature3200
+[  202.1s] ok   _MR148ZZ Shield1 (1)001 stand-in: in the document where it was built, on its part
+[  202.1s] ok   _MR148ZZ Shield1 (1)001: unmoved and hidden
+[  202.1s] ok   _MR148ZZ Shield1 (1)001 stand-in: beside its part, StandInFor Part__Feature3201
+[  202.1s] ok   _MR148ZZ Ball (1)014 stand-in: in the document where it was built, on its part
+[  202.1s] ok   _MR148ZZ Ball (1)014: unmoved and hidden
+[  202.1s] ok   _MR148ZZ Ball (1)014 stand-in: beside its part, StandInFor Part__Feature3202
+[  202.1s] ok   _MR148ZZ Ball (1)015 stand-in: in the document where it was built, on its part
+[  202.1s] ok   _MR148ZZ Ball (1)015: unmoved and hidden
+[  202.1s] ok   _MR148ZZ Ball (1)015 stand-in: beside its part, StandInFor Part__Feature3203
+[  202.1s] ok   _MR148ZZ Ball (1)016 stand-in: in the document where it was built, on its part
+[  202.1s] ok   _MR148ZZ Ball (1)016: unmoved and hidden
+[  202.1s] ok   _MR148ZZ Ball (1)016 stand-in: beside its part, StandInFor Part__Feature3204
+[  202.1s] ok   _MR148ZZ Ball (1)017 stand-in: in the document where it was built, on its part
+[  202.1s] ok   _MR148ZZ Ball (1)017: unmoved and hidden
+[  202.1s] ok   _MR148ZZ Ball (1)017 stand-in: beside its part, StandInFor Part__Feature3205
+[  202.1s] ok   _MR148ZZ Ball (1)018 stand-in: in the document where it was built, on its part
+[  202.1s] ok   _MR148ZZ Ball (1)018: unmoved and hidden
+[  202.1s] ok   _MR148ZZ Ball (1)018 stand-in: beside its part, StandInFor Part__Feature3206
+[  202.1s] ok   _MR148ZZ Ball (1)019 stand-in: in the document where it was built, on its part
+[  202.1s] ok   _MR148ZZ Ball (1)019: unmoved and hidden
+[  202.1s] ok   _MR148ZZ Ball (1)019 stand-in: beside its part, StandInFor Part__Feature3207
+[  202.1s] ok   _MR148ZZ Ball (1)020 stand-in: in the document where it was built, on its part
+[  202.1s] ok   _MR148ZZ Ball (1)020: unmoved and hidden
+[  202.1s] ok   _MR148ZZ Ball (1)020 stand-in: beside its part, StandInFor Part__Feature3208
+[  202.1s] ok   _MR148ZZ Ball (1)021 stand-in: in the document where it was built, on its part
+[  202.1s] ok   _MR148ZZ Ball (1)021: unmoved and hidden
+[  202.1s] ok   _MR148ZZ Ball (1)021 stand-in: beside its part, StandInFor Part__Feature3209
+[  202.1s] ok   _MR148ZZ Ball (1)022 stand-in: in the document where it was built, on its part
+[  202.1s] ok   _MR148ZZ Ball (1)022: unmoved and hidden
+[  202.1s] ok   _MR148ZZ Ball (1)022 stand-in: beside its part, StandInFor Part__Feature3210
+[  202.1s] ok   _MR148ZZ Ball (1)023 stand-in: in the document where it was built, on its part
+[  202.1s] ok   _MR148ZZ Ball (1)023: unmoved and hidden
+[  202.1s] ok   _MR148ZZ Ball (1)023 stand-in: beside its part, StandInFor Part__Feature3211
+[  202.1s] ok   _MR148ZZ Ball (1)024 stand-in: in the document where it was built, on its part
+[  202.1s] ok   _MR148ZZ Ball (1)024: unmoved and hidden
+[  202.1s] ok   _MR148ZZ Ball (1)024 stand-in: beside its part, StandInFor Part__Feature3212
+[  202.1s] ok   _MR148ZZ Ball (1)025 stand-in: in the document where it was built, on its part
+[  202.1s] ok   _MR148ZZ Ball (1)025: unmoved and hidden
+[  202.1s] ok   _MR148ZZ Ball (1)025 stand-in: beside its part, StandInFor Part__Feature3213
+[  202.1s] ok   _MR148ZZ Ball (1)026 stand-in: in the document where it was built, on its part
+[  202.1s] ok   _MR148ZZ Ball (1)026: unmoved and hidden
+[  202.1s] ok   _MR148ZZ Ball (1)026 stand-in: beside its part, StandInFor Part__Feature3214
+[  202.1s] ok   _MR148ZZ Ball (1)027 stand-in: in the document where it was built, on its part
+[  202.1s] ok   _MR148ZZ Ball (1)027: unmoved and hidden
+[  202.1s] ok   _MR148ZZ Ball (1)027 stand-in: beside its part, StandInFor Part__Feature3215
+[  202.1s] ok   _MR148ZZ Shield2 (1)001 stand-in: in the document where it was built, on its part
+[  202.1s] ok   _MR148ZZ Shield2 (1)001: unmoved and hidden
+[  202.1s] ok   _MR148ZZ Shield2 (1)001 stand-in: beside its part, StandInFor Part__Feature3216
+[  202.2s] ok   _MR148ZZ Outer Ring002 stand-in: in the document where it was built, on its part
+[  202.2s] ok   _MR148ZZ Outer Ring002: unmoved and hidden
+[  202.2s] ok   _MR148ZZ Outer Ring002 stand-in: beside its part, StandInFor Part__Feature3254
+[  202.2s] ok   _MR148ZZ Inner Ring002 stand-in: in the document where it was built, on its part
+[  202.2s] ok   _MR148ZZ Inner Ring002: unmoved and hidden
+[  202.2s] ok   _MR148ZZ Inner Ring002 stand-in: beside its part, StandInFor Part__Feature3255
+[  202.2s] ok   _MR148ZZ Shield003 stand-in: in the document where it was built, on its part
+[  202.2s] ok   _MR148ZZ Shield003: unmoved and hidden
+[  202.2s] ok   _MR148ZZ Shield003 stand-in: beside its part, StandInFor Part__Feature3256
+[  202.2s] ok   _MR148ZZ Ball028 stand-in: in the document where it was built, on its part
+[  202.2s] ok   _MR148ZZ Ball028: unmoved and hidden
+[  202.2s] ok   _MR148ZZ Ball028 stand-in: beside its part, StandInFor Part__Feature3257
+[  202.2s] ok   _MR148ZZ Ball029 stand-in: in the document where it was built, on its part
+[  202.2s] ok   _MR148ZZ Ball029: unmoved and hidden
+[  202.2s] ok   _MR148ZZ Ball029 stand-in: beside its part, StandInFor Part__Feature3258
+[  202.2s] ok   _MR148ZZ Ball030 stand-in: in the document where it was built, on its part
+[  202.2s] ok   _MR148ZZ Ball030: unmoved and hidden
+[  202.2s] ok   _MR148ZZ Ball030 stand-in: beside its part, StandInFor Part__Feature3259
+[  202.2s] ok   _MR148ZZ Ball031 stand-in: in the document where it was built, on its part
+[  202.2s] ok   _MR148ZZ Ball031: unmoved and hidden
+[  202.2s] ok   _MR148ZZ Ball031 stand-in: beside its part, StandInFor Part__Feature3260
+[  202.2s] ok   _MR148ZZ Ball032 stand-in: in the document where it was built, on its part
+[  202.2s] ok   _MR148ZZ Ball032: unmoved and hidden
+[  202.2s] ok   _MR148ZZ Ball032 stand-in: beside its part, StandInFor Part__Feature3261
+[  202.2s] ok   _MR148ZZ Ball033 stand-in: in the document where it was built, on its part
+[  202.2s] ok   _MR148ZZ Ball033: unmoved and hidden
+[  202.2s] ok   _MR148ZZ Ball033 stand-in: beside its part, StandInFor Part__Feature3262
+[  202.2s] ok   _MR148ZZ Ball034 stand-in: in the document where it was built, on its part
+[  202.2s] ok   _MR148ZZ Ball034: unmoved and hidden
+[  202.2s] ok   _MR148ZZ Ball034 stand-in: beside its part, StandInFor Part__Feature3263
+[  202.2s] ok   _MR148ZZ Ball035 stand-in: in the document where it was built, on its part
+[  202.2s] ok   _MR148ZZ Ball035: unmoved and hidden
+[  202.2s] ok   _MR148ZZ Ball035 stand-in: beside its part, StandInFor Part__Feature3264
+[  202.2s] ok   _MR148ZZ Ball036 stand-in: in the document where it was built, on its part
+[  202.2s] ok   _MR148ZZ Ball036: unmoved and hidden
+[  202.2s] ok   _MR148ZZ Ball036 stand-in: beside its part, StandInFor Part__Feature3265
+[  202.2s] ok   _MR148ZZ Ball037 stand-in: in the document where it was built, on its part
+[  202.2s] ok   _MR148ZZ Ball037: unmoved and hidden
+[  202.2s] ok   _MR148ZZ Ball037 stand-in: beside its part, StandInFor Part__Feature3266
+[  202.2s] ok   _MR148ZZ Ball038 stand-in: in the document where it was built, on its part
+[  202.2s] ok   _MR148ZZ Ball038: unmoved and hidden
+[  202.2s] ok   _MR148ZZ Ball038 stand-in: beside its part, StandInFor Part__Feature3267
+[  202.2s] ok   _MR148ZZ Ball039 stand-in: in the document where it was built, on its part
+[  202.2s] ok   _MR148ZZ Ball039: unmoved and hidden
+[  202.2s] ok   _MR148ZZ Ball039 stand-in: beside its part, StandInFor Part__Feature3268
+[  202.2s] ok   _MR148ZZ Ball040 stand-in: in the document where it was built, on its part
+[  202.2s] ok   _MR148ZZ Ball040: unmoved and hidden
+[  202.2s] ok   _MR148ZZ Ball040 stand-in: beside its part, StandInFor Part__Feature3269
+[  202.2s] ok   _MR148ZZ Ball041 stand-in: in the document where it was built, on its part
+[  202.2s] ok   _MR148ZZ Ball041: unmoved and hidden
+[  202.2s] ok   _MR148ZZ Ball041 stand-in: beside its part, StandInFor Part__Feature3270
+[  202.2s] ok   _MR148ZZ Shield004 stand-in: in the document where it was built, on its part
+[  202.2s] ok   _MR148ZZ Shield004: unmoved and hidden
+[  202.2s] ok   _MR148ZZ Shield004 stand-in: beside its part, StandInFor Part__Feature3271
+[  202.2s] ok   Part::Feature solids 1395 -> 1395 (unchanged); meshes 0 -> 110 (+110)
+[  202.2s] verify: 0 problems
+[  225.2s] SAVED /home/dan/Documents/VT350/vt350-lite-50.FCStd 125137946

@@ -45,9 +45,13 @@ costs nothing on open (above) and is there for renders.
 
 - **How it's wired:** the stand-in sits beside the real part in the same App::Part, at its placement, in its colour,
   with a `StandInFor` property naming the real part.
-  - The render export (`platform/render/export_meshes.py`, rule `colours.standin_skip`) draws the real part, though
-    hidden, and leaves out the stand-in.
-  - `VT350_STANDINS=1` renders the stand-ins instead, for a quick preview.
+  - The stand-in can be a shape (`Part::Feature`, the springs' tubes) or a coarse mesh (`Mesh::Feature`).
+  - The render export (`platform/render/export_meshes.py`, rule `colours.standin_skip`) always walks the real part,
+    though hidden, so it keeps its own bucket, colour role and motion group. It never exports the stand-in.
+  - `VT350_STANDINS=1` is a quick preview: it draws each real part with its stand-in's geometry instead of meshing
+    the real shape (`colours.standin_source`).
+  - A `Mesh::Feature` isn't a `Part::Feature`, so the passes, clash checks and part index, which walk
+    Part::Features, don't see mesh stand-ins at all.
 - **To see a real part in the GUI:** select it in the tree and press Space. That pays its tessellation then.
 - **Springs (lite-49):** a plain tube fitted to the coil (`platform/freecad/standins.py`). Printer open: median 125.6 → 111.5 s.
 - **Choosing a stand-in shape** (5 copies each, GUI open; the real parts as they are vs two generic stand-ins):
@@ -63,11 +67,26 @@ costs nothing on open (above) and is there for renders.
 
   A coarse **mesh** (`Mesh::Feature`, already triangles, so nothing to tessellate) is about as fast as boxes and
   still looks like the part, so it works as one generic stand-in for any part.
+- **lite-50:** mesh stand-ins for those five families (110 parts). Printer open, 3 alternating pairs: median
+  120.7 → **83.6 s** (the test documents predicted ~40 s off; it was 37). The file grew 110 → 125 MB with the
+  meshes stored. Since lite-47 the open went 133.5 → 83.6 s, and file size explained almost none of it.
 
-## Linked objects (App::Link)
+## Linked objects (App::Link): tessellated once (measured 2026-11-16)
 
-_Being tested (2026-11-16): whether five App::Links to one part are tessellated once rather than five times. Nothing
-here until it's measured._
+Five copies of a part as separate Part::Features vs one part plus `App::Link`s to it, GUI open (two runs each):
+
+| 5 copies of | Separate copies | 1 part + links (part visible) | 1 part hidden + 5 links |
+|---|---|---|---|
+| O2S toolboard | 14.5 / 13.2 s, 16 MB | 3.1 / 3.1 s, 3 MB | 3.0 / 3.1 s |
+| Bowden tube | 14.7 / 13.7 s | 3.2 / 3.1 s | 3.3 / 3.1 s |
+
+- **Links share the original's triangles:** five links cost about what one copy does, and the file stores the
+  shape once.
+- **A hidden original is still tessellated if a visible link shows it.** Hiding saves nothing then: the links
+  need its triangles. So stand-ins and links don't combine. To skip a linked part's cost, hide the links too.
+- **Not used in this model (yet).** The 5 toolheads are separate copies (each its own Part::Features). Making them
+  links to one toolhead would cut every toolhead part's open cost to a fifth. But the motion groups, clash sweeps,
+  part index, passes and render export all walk Part::Features by name, so that would be a restructure, not a pass.
 
 ## Gotchas
 
@@ -76,8 +95,12 @@ here until it's measured._
 - **A crash-recovery dialog blocks scripted GUI runs.** A document left open when FreeCAD was killed leaves an
   autosave in `~/.cache/FreeCAD/v26-3/Cache/FreeCAD_Doc_*/fc_recovery_file.*`, and every GUI start offers it.
   A scripted run waits behind that dialog forever. Move the folder aside.
-- **`Shape.BoundBox` is loose on B-spline surfaces:** it follows the control polygon. Use the tight box,
-  `optimalBoundingBox` (`litelib.obb`). A spring's loose box was 7.65 mm across; the coil is 6.905.
+- **Neither box is always tight on B-spline surfaces.** `Shape.BoundBox` follows the control polygon: a spring's
+  box was 7.65 mm across, the coil 6.905. `optimalBoundingBox` (`litelib.obb`) can overshoot instead: 1.4 mm on the
+  heat blocks' threaded ends, where `BoundBox`, the mesh and points along every edge all agreed. Both contain the
+  shape, so take their overlap (`tight()` in `cad/passes/lite50_mesh_standins.py`).
+- **`distToShape` is slow on a big multi-solid shape.** 60 points against the 224-solid O2S board took ~5 minutes.
+  Check a point only against the faces whose box (enlarged by the tolerance) contains it.
 - **A trimmed face's parameter range is the rectangle round it.** Sampling a grid over `ParameterRange` lands
   points off the face, for example on a plane face round a circular wire end. Sample edges instead, or check `isInside`.
 - **`removeSplitter()` changes the shape it's called on.** If the result is invalid, the original is broken too.
