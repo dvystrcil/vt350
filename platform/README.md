@@ -37,6 +37,7 @@ bash platform/testing/check_test_tmp.sh                         # "check-test-tm
 bash cad/klipper/test_in_container.sh                           # builds platform/kalisim with the VT350's MCU configs; "kalico-batch: OK"
 cad/render/render_full.sh 30                                    # FreeCAD export + Blender render of vt350-lite-30
 $APP freecadcmd $PWD/platform/freecad/part_index.py             # the per-part box index ($VT350_INDEX_MODELS)
+TESS_COST_MODEL=<model> $APP freecadcmd $PWD/platform/freecad/tess_cost.py   # which parts make a model slow to open (freecad/LESSONS.md)
 ```
 
 The full list, with the VT350-side commands, is in [`notes/scripts.md`](../notes/scripts.md).

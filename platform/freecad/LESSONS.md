@@ -21,6 +21,15 @@ we know it. **Keep this current while working:** add a finding the day it's meas
 - How to measure: `cad/studies/open_time.py` (GUI open + first draw, appended to `cad/data/logs/open_time.log`).
   Run it several times, alternating the models: one run varies by ±10 s; medians of 5–6 runs agree within ~1 s.
   For a single part, put 5 copies in a small test document and time that; it predicted the lite-49 saving exactly.
+- **Finding the expensive parts:** `platform/freecad/tess_cost.py` (headless) times `Shape.tessellate()` part by part
+  at 0.5 % of each part's box diagonal and ranks families and parts. It's a **ranking proxy**, checked against GUI
+  opens of six families (each within about 2×). Don't trust its absolute seconds, and confirm any fix with GUI opens.
+  - **`MeshPart.meshFromShape` with the GUI's own Deviation and angular defaults is NOT a usable proxy.** On lite-48
+    it gave 44 s in all and missed the springs and bowdens, the GUI's two worst families (measured 2026-11-16). So
+    the GUI's cost on those swept B-spline surfaces isn't just meshing at its default settings; why is still open.
+- **After lite-50 the cost is spread thin** (`tess_cost.py`, 2026-11-16): 72 s across 1,280 visible parts, the
+  biggest family 4.2 s (53 M3×8 screws), then SpeedClips, hub housings and 2510 fans at ~3 s each. More stand-ins
+  give less and less back from here.
 
 ## Hidden parts are not tessellated (measured 2026-11-16)
 
