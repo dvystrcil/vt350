@@ -1,0 +1,365 @@
+[  125.8s] opened /home/dan/Documents/VT350/vt350-lite-47.FCStd
+[  135.9s] ok   30 frame members: 30
+[  135.9s] ok   2040 (2): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   4040 (2) one piece X -520..125 (lite-47): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   2040 (2)001 one piece X -520..125 (lite-47): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   4040 (1)004 one piece X -520..125 (lite-47): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   2020: a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   2020 (1): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   2020 (2): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   2040 (2) (1): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   2040 (2) (1)001: a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   4040 upright Z -10..650 (lite-46): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   4040(Mirror) upright Z -10..650 (lite-46): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   2040 (1): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   2040 (1)(Mirror): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   4040 (1): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   4040 (1)001: a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   4040 (1)002: a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   4040 (1)003: a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   2040 (3): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   2040 (3)001: a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   2040 upright Z -10..650 (lite-46): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   2040(Mirror) upright Z -10..650 (lite-46): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   2040 (2) (new front) one piece X -520..125 (lite-47): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   2040 Z post (R): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   2040(Mirror) Z post (L): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   2020 (3): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   2020 dock bar (front; holds the 5 keyslot plates, #19): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   2020 e-box front outer upright, Z -50..690 (lite-47): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   2040 e-box rear outer upright, Y 480..520, Z -50..690 (lite-47): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   2040 e-box outer side rail, bottom (lite-46): a plain Part::Feature (Part::Feature), built into nothing []
+[  135.9s] ok   2040 e-box outer side rail, top (lite-46): a plain Part::Feature (Part::Feature), built into nothing []
+[  216.1s] ok   gantry rails at one height: Z [430.0000000000006, 429.9999999999996]
+[  216.1s] ok   gantry rails' bores at Z 430.0: the orphaned holes move +50.0 (lite-10 raised the gantry 50)
+[  405.9s]   4040 (2) one piece X -520..125 (lite-47): slices split {501.26: 4, 482.51: 4}; taking {482.51} (the (40, 40) profile of {482.51: 5, 483.32: 2})
+[  428.3s] ok   2040 (2): one valid solid (1, valid True)
+[  428.3s] ok   2040 (2): box as before within 0.011 (0.0009)
+[  428.7s] ok   2040 (2): volume 152778 -> 152973 mm3 (+0.13%), within 3%
+[  429.1s]   2040 (2)                                                19902 ->   56 KB  area 325.47 {325.47: 8}  holes 0/0  vol +0.13%  18.9s
+[  434.0s] ok   4040 (2) one piece X -520..125 (lite-47): one valid solid (1, valid True)
+[  434.0s] ok   4040 (2) one piece X -520..125 (lite-47): box as before within 0.011 (0.0000)
+[  435.4s] ok   4040 (2) one piece X -520..125 (lite-47): volume 316802 -> 309627 mm3 (-2.26%), within 3%
+[  436.6s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 2.50 at (-245.0, 510.0, -40.0) kept (0 of 40 probe points material)
+[  438.5s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 2.50 at (-245.0, 510.0, -20.0) kept (0 of 40 probe points material)
+[  439.4s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 2.75 at (-0.0, 490.0, -20.0) kept (0 of 40 probe points material)
+[  439.8s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 2.75 at (-0.0, 510.0, -20.0) kept (0 of 40 probe points material)
+[  445.9s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 2.75 at (-490.0, 490.0, -20.0) kept (0 of 40 probe points material)
+[  446.3s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 2.75 at (-490.0, 510.0, -20.0) kept (0 of 40 probe points material)
+[  447.2s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 2.75 at (20.0, 490.0, -20.0) kept (0 of 40 probe points material)
+[  447.6s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 2.75 at (20.0, 510.0, -20.0) kept (0 of 40 probe points material)
+[  447.9s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 5.25 at (20.0, 515.3, -20.0) kept (0 of 40 probe points material)
+[  448.3s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 5.25 at (20.0, 519.0, -20.0) kept (0 of 40 probe points material)
+[  448.6s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 5.25 at (-0.0, 515.3, -20.0) kept (0 of 40 probe points material)
+[  449.0s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 5.25 at (-0.0, 519.0, -20.0) kept (0 of 40 probe points material)
+[  449.5s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 5.25 at (-490.0, 515.3, -20.0) kept (0 of 40 probe points material)
+[  449.8s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 5.25 at (-490.0, 519.0, -20.0) kept (0 of 40 probe points material)
+[  450.3s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 5.25 at (-510.0, 515.3, -20.0) kept (0 of 40 probe points material)
+[  450.7s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 5.25 at (-510.0, 519.0, -20.0) kept (0 of 40 probe points material)
+[  452.9s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 2.75 at (-510.0, 490.0, -20.0) kept (0 of 40 probe points material)
+[  453.3s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 2.75 at (-510.0, 510.0, -20.0) kept (0 of 40 probe points material)
+[  453.6s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 5.00 at (-245.0, 510.0, -49.0) kept (0 of 40 probe points material)
+[  453.9s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 5.00 at (-245.0, 510.0, -45.0) kept (0 of 40 probe points material)
+[  454.2s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 5.00 at (-245.0, 490.0, -49.0) kept (0 of 40 probe points material)
+[  454.6s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 5.00 at (-245.0, 490.0, -45.0) kept (0 of 40 probe points material)
+[  455.6s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 2.50 at (-245.0, 490.0, -40.0) kept (0 of 40 probe points material)
+[  456.8s] ok   4040 (2) one piece X -520..125 (lite-47): hole r 2.50 at (-245.0, 490.0, -20.0) kept (0 of 40 probe points material)
+[  458.1s]   4040 (2) one piece X -520..125 (lite-47)                16829 ->  973 KB  area 482.51 {501.26: 4, 482.51: 4}  holes 24/24  vol -2.26%  46.3s
+[  462.9s] ok   2040 (2)001 one piece X -520..125 (lite-47): one valid solid (1, valid True)
+[  462.9s] ok   2040 (2)001 one piece X -520..125 (lite-47): box as before within 0.011 (0.0009)
+[  463.3s] ok   2040 (2)001 one piece X -520..125 (lite-47): volume 211837 -> 209930 mm3 (-0.90%), within 3%
+[  463.8s]   2040 (2)001 one piece X -520..125 (lite-47)             20462 ->   55 KB  area 325.47 {325.47: 7, 320.38: 1}  holes 0/0  vol -0.90%  17.2s
+[  467.7s] ok   4040 (1)004 one piece X -520..125 (lite-47): one valid solid (1, valid True)
+[  467.7s] ok   4040 (1)004 one piece X -520..125 (lite-47): box as before within 0.011 (0.0000)
+[  468.8s] ok   4040 (1)004 one piece X -520..125 (lite-47): volume 309722 -> 310080 mm3 (+0.12%), within 3%
+[  469.5s] ok   4040 (1)004 one piece X -520..125 (lite-47): hole r 2.75 at (-0.0, 490.0, 660.0) kept (0 of 40 probe points material)
+[  470.1s] ok   4040 (1)004 one piece X -520..125 (lite-47): hole r 2.75 at (-0.0, 510.0, 660.0) kept (0 of 40 probe points material)
+[  474.5s] ok   4040 (1)004 one piece X -520..125 (lite-47): hole r 2.75 at (-490.0, 490.0, 660.0) kept (0 of 40 probe points material)
+[  479.1s] ok   4040 (1)004 one piece X -520..125 (lite-47): hole r 2.75 at (-490.0, 510.0, 660.0) kept (0 of 40 probe points material)
+[  480.4s] ok   4040 (1)004 one piece X -520..125 (lite-47): hole r 2.75 at (-510.0, 490.0, 660.0) kept (0 of 40 probe points material)
+[  481.8s] ok   4040 (1)004 one piece X -520..125 (lite-47): hole r 2.75 at (-510.0, 510.0, 660.0) kept (0 of 40 probe points material)
+[  482.4s] ok   4040 (1)004 one piece X -520..125 (lite-47): hole r 2.75 at (20.0, 490.0, 660.0) kept (0 of 40 probe points material)
+[  483.0s] ok   4040 (1)004 one piece X -520..125 (lite-47): hole r 2.75 at (20.0, 510.0, 660.0) kept (0 of 40 probe points material)
+[  483.3s] ok   4040 (1)004 one piece X -520..125 (lite-47): hole r 5.25 at (-510.0, 515.3, 660.0) kept (0 of 40 probe points material)
+[  483.5s] ok   4040 (1)004 one piece X -520..125 (lite-47): hole r 5.25 at (-510.0, 519.0, 660.0) kept (0 of 40 probe points material)
+[  483.8s] ok   4040 (1)004 one piece X -520..125 (lite-47): hole r 5.25 at (-490.0, 515.3, 660.0) kept (0 of 40 probe points material)
+[  484.0s] ok   4040 (1)004 one piece X -520..125 (lite-47): hole r 5.25 at (-490.0, 519.0, 660.0) kept (0 of 40 probe points material)
+[  484.2s] ok   4040 (1)004 one piece X -520..125 (lite-47): hole r 5.25 at (-0.0, 515.3, 660.0) kept (0 of 40 probe points material)
+[  484.5s] ok   4040 (1)004 one piece X -520..125 (lite-47): hole r 5.25 at (-0.0, 519.0, 660.0) kept (0 of 40 probe points material)
+[  484.7s] ok   4040 (1)004 one piece X -520..125 (lite-47): hole r 5.25 at (20.0, 515.3, 660.0) kept (0 of 40 probe points material)
+[  484.9s] ok   4040 (1)004 one piece X -520..125 (lite-47): hole r 5.25 at (20.0, 519.0, 660.0) kept (0 of 40 probe points material)
+[  485.9s]   4040 (1)004 one piece X -520..125 (lite-47)             14976 ->  731 KB  area 482.51 {482.51: 8}  holes 16/16  vol +0.12%  36.9s
+[  486.0s] ok   2020: one valid solid (1, valid True)
+[  486.0s] ok   2020: box as before within 0.011 (0.0000)
+[  486.0s] ok   2020: volume 59888 -> 59888 mm3 (-0.00%), within 3%
+[  486.0s] ok   2020: hole r 2.50 at (-245.0, 490.0, 430.0) kept (0 of 40 probe points material)
+[  486.1s]   2020                                                      134 ->   92 KB  area 176.35 {176.35: 8}  holes 1/1  vol -0.00%  1.3s
+[  486.1s] ok   2020 (1): one valid solid (1, valid True)
+[  486.1s] ok   2020 (1): box as before within 0.011 (0.0000)
+[  486.1s] ok   2020 (1): volume 82814 -> 82814 mm3 (-0.00%), within 3%
+[  486.2s] ok   2020 (1): hole r 2.50 at (-245.0, 70.8, 250.0) kept (0 of 40 probe points material)
+[  486.2s]   2020 (1)                                                  134 ->   92 KB  area 176.35 {176.35: 8}  holes 1/1  vol -0.00%  0.9s
+[  487.4s] ok   2020 (2): one valid solid (1, valid True)
+[  487.4s] ok   2020 (2): box as before within 0.011 (0.0009)
+[  487.5s] ok   2020 (2): volume 60343 -> 60394 mm3 (+0.08%), within 3%
+[  487.6s]   2020 (2)                                                 4002 ->   36 KB  area 181.91 {181.91: 8}  holes 0/0  vol +0.08%  4.0s
+[  492.2s] ok   2040 (2) (1): one valid solid (1, valid True)
+[  492.2s] ok   2040 (2) (1): box as before within 0.011 (0.0009)
+[  492.6s] ok   2040 (2) (1): volume 152778 -> 152973 mm3 (+0.13%), within 3%
+[  493.0s]   2040 (2) (1)                                            19901 ->   55 KB  area 325.47 {325.47: 8}  holes 0/0  vol +0.13%  15.9s
+[  497.6s] ok   2040 (2) (1)001: one valid solid (1, valid True)
+[  497.6s] ok   2040 (2) (1)001: box as before within 0.011 (0.0009)
+[  498.0s] ok   2040 (2) (1)001: volume 152778 -> 152973 mm3 (+0.13%), within 3%
+[  498.4s]   2040 (2) (1)001                                         19903 ->   56 KB  area 325.47 {325.47: 8}  holes 0/0  vol +0.13%  16.0s
+[  498.6s] ok   4040 upright Z -10..650 (lite-46): one valid solid (1, valid True)
+[  498.6s] ok   4040 upright Z -10..650 (lite-46): box as before within 0.011 (0.0000)
+[  498.6s] ok   4040 upright Z -10..650 (lite-46): volume 318537 -> 318536 mm3 (-0.00%), within 3%
+[  498.8s] ok   4040 upright Z -10..650 (lite-46): orphaned hole r 5.00 at (20.0, 515.0, 380.0) filled (12 of 40 probe points material)
+[  498.9s] ok   4040 upright Z -10..650 (lite-46): orphaned hole r 5.00 at (20.0, 519.0, 380.0) filled (30 of 40 probe points material)
+[  499.1s] ok   4040 upright Z -10..650 (lite-46): orphaned hole r 2.50 at (20.0, 490.0, 380.0) filled (24 of 40 probe points material)
+[  499.2s] ok   4040 upright Z -10..650 (lite-46): orphaned hole r 2.50 at (20.0, 510.0, 380.0) filled (24 of 40 probe points material)
+[  499.5s] ok   4040 upright Z -10..650 (lite-46): orphaned hole r 2.50 at (0.0, 490.0, 380.0) filled (24 of 40 probe points material)
+[  499.7s] ok   4040 upright Z -10..650 (lite-46): orphaned hole r 2.50 at (0.0, 510.0, 380.0) filled (24 of 40 probe points material)
+[  499.9s] ok   4040 upright Z -10..650 (lite-46): orphaned hole r 5.00 at (0.0, 515.0, 380.0) filled (12 of 40 probe points material)
+[  500.0s] ok   4040 upright Z -10..650 (lite-46): orphaned hole r 5.00 at (0.0, 519.0, 380.0) filled (30 of 40 probe points material)
+[  500.1s]   4040 upright Z -10..650 (lite-46)                         458 ->  738 KB  area 483.32 {483.32: 8}  holes 0/8 +8 joint  vol -0.00%  4.4s
+[  500.3s] ok   4040(Mirror) upright Z -10..650 (lite-46): one valid solid (1, valid True)
+[  500.3s] ok   4040(Mirror) upright Z -10..650 (lite-46): box as before within 0.011 (0.0000)
+[  500.4s] ok   4040(Mirror) upright Z -10..650 (lite-46): volume 318537 -> 318536 mm3 (-0.00%), within 3%
+[  500.6s] ok   4040(Mirror) upright Z -10..650 (lite-46): orphaned hole r 5.00 at (-510.0, 515.0, 380.0) filled (12 of 40 probe points material)
+[  500.7s] ok   4040(Mirror) upright Z -10..650 (lite-46): orphaned hole r 5.00 at (-510.0, 519.0, 380.0) filled (30 of 40 probe points material)
+[  500.9s] ok   4040(Mirror) upright Z -10..650 (lite-46): orphaned hole r 2.50 at (-510.0, 490.0, 380.0) filled (24 of 40 probe points material)
+[  501.2s] ok   4040(Mirror) upright Z -10..650 (lite-46): orphaned hole r 2.50 at (-510.0, 510.0, 380.0) filled (24 of 40 probe points material)
+[  501.3s] ok   4040(Mirror) upright Z -10..650 (lite-46): orphaned hole r 5.00 at (-490.0, 515.0, 380.0) filled (12 of 40 probe points material)
+[  501.4s] ok   4040(Mirror) upright Z -10..650 (lite-46): orphaned hole r 5.00 at (-490.0, 519.0, 380.0) filled (30 of 40 probe points material)
+[  501.6s] ok   4040(Mirror) upright Z -10..650 (lite-46): orphaned hole r 2.50 at (-490.0, 490.0, 380.0) filled (24 of 40 probe points material)
+[  501.9s] ok   4040(Mirror) upright Z -10..650 (lite-46): orphaned hole r 2.50 at (-490.0, 510.0, 380.0) filled (24 of 40 probe points material)
+[  502.0s]   4040(Mirror) upright Z -10..650 (lite-46)                 474 ->  739 KB  area 483.32 {483.32: 8}  holes 0/8 +8 joint  vol -0.00%  4.5s
+[  502.2s] ok   2040 (1): one valid solid (1, valid True)
+[  502.2s] ok   2040 (1): box as before within 0.011 (0.0000)
+[  502.2s] ok   2040 (1): volume 231787 -> 231785 mm3 (-0.00%), within 3%
+[  502.4s] ok   2040 (1): hole r 5.00 at (25.0, -103.0, -20.0) kept (0 of 40 probe points material)
+[  502.5s] ok   2040 (1): hole r 5.00 at (29.0, -103.0, -20.0) kept (0 of 40 probe points material)
+[  502.6s] ok   2040 (1): hole r 5.00 at (25.0, -103.0, -40.0) kept (0 of 40 probe points material)
+[  502.8s] ok   2040 (1): hole r 5.00 at (29.0, -103.0, -40.0) kept (0 of 40 probe points material)
+[  502.9s] ok   2040 (1): hole r 2.50 at (-0.0, -103.0, -40.0) kept (0 of 40 probe points material)
+[  503.1s] ok   2040 (1): hole r 2.50 at (20.0, -103.0, -40.0) kept (0 of 40 probe points material)
+[  503.2s] ok   2040 (1): hole r 2.50 at (-0.0, -103.0, -20.0) kept (0 of 40 probe points material)
+[  503.4s] ok   2040 (1): hole r 2.50 at (20.0, -103.0, -20.0) kept (0 of 40 probe points material)
+[  503.6s] ok   2040 (1): hole r 2.50 at (-0.0, -103.0, 660.0) kept (0 of 40 probe points material)
+[  503.7s] ok   2040 (1): hole r 2.50 at (20.0, -103.0, 660.0) kept (0 of 40 probe points material)
+[  503.9s] ok   2040 (1): hole r 5.00 at (25.0, -103.0, 660.0) kept (0 of 40 probe points material)
+[  504.0s] ok   2040 (1): hole r 5.00 at (29.0, -103.0, 660.0) kept (0 of 40 probe points material)
+[  504.1s] ok   2040 (1): hole r 5.00 at (25.0, -103.0, 680.0) kept (0 of 40 probe points material)
+[  504.3s] ok   2040 (1): hole r 5.00 at (29.0, -103.0, 680.0) kept (0 of 40 probe points material)
+[  504.4s] ok   2040 (1): hole r 2.50 at (-0.0, -103.0, 680.0) kept (0 of 40 probe points material)
+[  504.6s] ok   2040 (1): hole r 2.50 at (20.0, -103.0, 680.0) kept (0 of 40 probe points material)
+[  504.6s]   2040 (1)                                                  438 ->  315 KB  area 314.36 {314.36: 8}  holes 16/16  vol -0.00%  4.3s
+[  504.8s] ok   2040 (1)(Mirror): one valid solid (1, valid True)
+[  504.8s] ok   2040 (1)(Mirror): box as before within 0.011 (0.0000)
+[  504.9s] ok   2040 (1)(Mirror): volume 231787 -> 231785 mm3 (-0.00%), within 3%
+[  505.0s] ok   2040 (1)(Mirror): hole r 5.00 at (-519.0, -103.0, -20.0) kept (0 of 40 probe points material)
+[  505.2s] ok   2040 (1)(Mirror): hole r 5.00 at (-515.0, -103.0, -20.0) kept (0 of 40 probe points material)
+[  505.3s] ok   2040 (1)(Mirror): hole r 5.00 at (-519.0, -103.0, -40.0) kept (0 of 40 probe points material)
+[  505.4s] ok   2040 (1)(Mirror): hole r 5.00 at (-515.0, -103.0, -40.0) kept (0 of 40 probe points material)
+[  505.6s] ok   2040 (1)(Mirror): hole r 2.50 at (-510.0, -103.0, -20.0) kept (0 of 40 probe points material)
+[  505.7s] ok   2040 (1)(Mirror): hole r 2.50 at (-490.0, -103.0, -20.0) kept (0 of 40 probe points material)
+[  505.9s] ok   2040 (1)(Mirror): hole r 2.50 at (-510.0, -103.0, -40.0) kept (0 of 40 probe points material)
+[  506.0s] ok   2040 (1)(Mirror): hole r 2.50 at (-490.0, -103.0, -40.0) kept (0 of 40 probe points material)
+[  506.2s] ok   2040 (1)(Mirror): hole r 2.50 at (-510.0, -103.0, 660.0) kept (0 of 40 probe points material)
+[  506.4s] ok   2040 (1)(Mirror): hole r 2.50 at (-490.0, -103.0, 660.0) kept (0 of 40 probe points material)
+[  506.5s] ok   2040 (1)(Mirror): hole r 5.00 at (-519.0, -103.0, 680.0) kept (0 of 40 probe points material)
+[  506.6s] ok   2040 (1)(Mirror): hole r 5.00 at (-515.0, -103.0, 680.0) kept (0 of 40 probe points material)
+[  506.8s] ok   2040 (1)(Mirror): hole r 5.00 at (-519.0, -103.0, 660.0) kept (0 of 40 probe points material)
+[  506.9s] ok   2040 (1)(Mirror): hole r 5.00 at (-515.0, -103.0, 660.0) kept (0 of 40 probe points material)
+[  507.1s] ok   2040 (1)(Mirror): hole r 2.50 at (-510.0, -103.0, 680.0) kept (0 of 40 probe points material)
+[  507.2s] ok   2040 (1)(Mirror): hole r 2.50 at (-490.0, -103.0, 680.0) kept (0 of 40 probe points material)
+[  507.3s]   2040 (1)(Mirror)                                          442 ->  313 KB  area 314.36 {314.36: 8}  holes 16/16  vol -0.00%  4.3s
+[  511.1s] ok   4040 (1): one valid solid (1, valid True)
+[  511.1s] ok   4040 (1): box as before within 0.011 (0.0011)
+[  512.1s] ok   4040 (1): volume 265028 -> 265380 mm3 (+0.13%), within 3%
+[  513.1s]   4040 (1)                                                14307 ->   79 KB  area 482.51 {482.51: 8}  holes 0/0  vol +0.13%  19.2s
+[  516.9s] ok   4040 (1)001: one valid solid (1, valid True)
+[  516.9s] ok   4040 (1)001: box as before within 0.011 (0.0011)
+[  517.8s] ok   4040 (1)001: volume 265028 -> 265380 mm3 (+0.13%), within 3%
+[  518.8s]   4040 (1)001                                             14332 ->   77 KB  area 482.51 {482.51: 8}  holes 0/0  vol +0.13%  18.4s
+[  522.6s] ok   4040 (1)002: one valid solid (1, valid True)
+[  522.6s] ok   4040 (1)002: box as before within 0.011 (0.0011)
+[  523.6s] ok   4040 (1)002: volume 265028 -> 265380 mm3 (+0.13%), within 3%
+[  524.6s]   4040 (1)002                                             14322 ->   76 KB  area 482.51 {482.51: 8}  holes 0/0  vol +0.13%  18.4s
+[  528.3s] ok   4040 (1)003: one valid solid (1, valid True)
+[  528.3s] ok   4040 (1)003: box as before within 0.011 (0.0011)
+[  529.3s] ok   4040 (1)003: volume 265028 -> 265380 mm3 (+0.13%), within 3%
+[  530.3s]   4040 (1)003                                             14314 ->   77 KB  area 482.51 {482.51: 8}  holes 0/0  vol +0.13%  19.8s
+[  535.2s] ok   2040 (3): one valid solid (1, valid True)
+[  535.2s] ok   2040 (3): box as before within 0.011 (0.0009)
+[  535.6s] ok   2040 (3): volume 178817 -> 179010 mm3 (+0.11%), within 3%
+[  536.1s]   2040 (3)                                                20074 ->   54 KB  area 325.47 {325.47: 8}  holes 0/0  vol +0.11%  16.1s
+[  540.8s] ok   2040 (3)001: one valid solid (1, valid True)
+[  540.8s] ok   2040 (3)001: box as before within 0.011 (0.0009)
+[  541.2s] ok   2040 (3)001: volume 178817 -> 179010 mm3 (+0.11%), within 3%
+[  541.6s]   2040 (3)001                                             20072 ->   53 KB  area 325.47 {325.47: 8}  holes 0/0  vol +0.11%  15.6s
+[  541.7s] ok   2040 upright Z -10..650 (lite-46): one valid solid (1, valid True)
+[  541.7s] ok   2040 upright Z -10..650 (lite-46): box as before within 0.011 (0.0000)
+[  541.7s] ok   2040 upright Z -10..650 (lite-46): volume 207335 -> 207335 mm3 (-0.00%), within 3%
+[  541.8s] ok   2040 upright Z -10..650 (lite-46): orphaned hole r 2.50 at (20.0, -80.0, 380.0) filled (20 of 40 probe points material)
+[  541.9s] ok   2040 upright Z -10..650 (lite-46): orphaned hole r 2.50 at (0.0, -80.0, 380.0) filled (20 of 40 probe points material)
+[  541.9s]   2040 upright Z -10..650 (lite-46)                         218 ->  157 KB  area 314.36 {314.36: 8}  holes 0/2 +2 joint  vol -0.00%  1.6s
+[  542.0s] ok   2040(Mirror) upright Z -10..650 (lite-46): one valid solid (1, valid True)
+[  542.0s] ok   2040(Mirror) upright Z -10..650 (lite-46): box as before within 0.011 (0.0000)
+[  542.0s] ok   2040(Mirror) upright Z -10..650 (lite-46): volume 207335 -> 207335 mm3 (-0.00%), within 3%
+[  542.1s] ok   2040(Mirror) upright Z -10..650 (lite-46): orphaned hole r 2.50 at (-510.0, -80.0, 380.0) filled (20 of 40 probe points material)
+[  542.2s] ok   2040(Mirror) upright Z -10..650 (lite-46): orphaned hole r 2.50 at (-490.0, -80.0, 380.0) filled (20 of 40 probe points material)
+[  542.2s]   2040(Mirror) upright Z -10..650 (lite-46)                 220 ->  155 KB  area 314.36 {314.36: 8}  holes 0/2 +2 joint  vol -0.00%  1.6s
+[  547.1s] ok   2040 (2) (new front) one piece X -520..125 (lite-47): one valid solid (1, valid True)
+[  547.1s] ok   2040 (2) (new front) one piece X -520..125 (lite-47): box as before within 0.011 (0.0009)
+[  547.5s] ok   2040 (2) (new front) one piece X -520..125 (lite-47): volume 211837 -> 209930 mm3 (-0.90%), within 3%
+[  547.9s]   2040 (2) (new front) one piece X -520..125 (lite-47)    20466 ->   56 KB  area 325.47 {325.47: 7, 320.38: 1}  holes 0/0  vol -0.90%  17.7s
+[  548.0s] ok   2040 Z post (R): one valid solid (1, valid True)
+[  548.0s] ok   2040 Z post (R): box as before within 0.011 (0.0000)
+[  548.0s] ok   2040 Z post (R): volume 135176 -> 135176 mm3 (-0.00%), within 3%
+[  548.0s]   2040 Z post (R)                                           153 ->   58 KB  area 314.36 {314.36: 8}  holes 0/0  vol -0.00%  1.1s
+[  548.1s] ok   2040(Mirror) Z post (L): one valid solid (1, valid True)
+[  548.1s] ok   2040(Mirror) Z post (L): box as before within 0.011 (0.0000)
+[  548.1s] ok   2040(Mirror) Z post (L): volume 135176 -> 135176 mm3 (-0.00%), within 3%
+[  548.1s]   2040(Mirror) Z post (L)                                   155 ->   58 KB  area 314.36 {314.36: 8}  holes 0/0  vol -0.00%  1.1s
+[  548.1s] ok   2020 (3): one valid solid (1, valid True)
+[  548.1s] ok   2020 (3): box as before within 0.011 (0.0000)
+[  548.1s] ok   2020 (3): volume 78323 -> 78318 mm3 (-0.01%), within 3%
+[  548.2s]   2020 (3)                                                   96 ->   36 KB  area 182.13 {182.13: 8}  holes 0/0  vol -0.01%  0.7s
+[  548.2s] ok   2020 dock bar (front; holds the 5 keyslot plates, #19): one valid solid (1, valid True)
+[  548.2s] ok   2020 dock bar (front; holds the 5 keyslot plates, #19): box as before within 0.011 (0.0000)
+[  548.2s] ok   2020 dock bar (front; holds the 5 keyslot plates, #19): volume 82814 -> 82814 mm3 (-0.00%), within 3%
+[  548.3s] ok   2020 dock bar (front; holds the 5 keyslot plates, #19): hole r 2.50 at (-245.0, -65.5, 479.3) kept (0 of 40 probe points material)
+[  548.3s]   2020 dock bar (front; holds the 5 keyslot plates, #1      133 ->   94 KB  area 176.35 {176.35: 8}  holes 1/1  vol -0.00%  0.8s
+[  548.4s] ok   2020 e-box front outer upright, Z -50..690 (lite-47): one valid solid (1, valid True)
+[  548.4s] ok   2020 e-box front outer upright, Z -50..690 (lite-47): box as before within 0.011 (0.0000)
+[  548.5s] ok   2020 e-box front outer upright, Z -50..690 (lite-47): volume 129805 -> 129803 mm3 (-0.00%), within 3%
+[  549.0s] ok   2020 e-box front outer upright, Z -50..690 (lite-47): hole r 2.75 at (135.0, -80.0, 680.0) kept (0 of 40 probe points material)
+[  549.6s] ok   2020 e-box front outer upright, Z -50..690 (lite-47): hole r 2.75 at (135.0, -80.0, 660.0) kept (0 of 40 probe points material)
+[  552.9s] ok   2020 e-box front outer upright, Z -50..690 (lite-47): hole r 2.75 at (135.0, -80.0, -20.0) kept (0 of 40 probe points material)
+[  553.6s] ok   2020 e-box front outer upright, Z -50..690 (lite-47): hole r 2.75 at (135.0, -80.0, -40.0) kept (0 of 40 probe points material)
+[  553.7s] ok   2020 e-box front outer upright, Z -50..690 (lite-47): hole r 5.25 at (140.3, -80.0, 680.0) kept (0 of 40 probe points material)
+[  553.8s] ok   2020 e-box front outer upright, Z -50..690 (lite-47): hole r 5.25 at (144.0, -80.0, 680.0) kept (0 of 40 probe points material)
+[  553.9s] ok   2020 e-box front outer upright, Z -50..690 (lite-47): hole r 5.25 at (140.3, -80.0, 660.0) kept (0 of 40 probe points material)
+[  554.0s] ok   2020 e-box front outer upright, Z -50..690 (lite-47): hole r 5.25 at (144.0, -80.0, 660.0) kept (0 of 40 probe points material)
+[  554.1s] ok   2020 e-box front outer upright, Z -50..690 (lite-47): hole r 5.25 at (140.3, -80.0, -20.0) kept (0 of 40 probe points material)
+[  554.2s] ok   2020 e-box front outer upright, Z -50..690 (lite-47): hole r 5.25 at (144.0, -80.0, -20.0) kept (0 of 40 probe points material)
+[  554.3s] ok   2020 e-box front outer upright, Z -50..690 (lite-47): hole r 5.25 at (140.3, -80.0, -40.0) kept (0 of 40 probe points material)
+[  554.4s] ok   2020 e-box front outer upright, Z -50..690 (lite-47): hole r 5.25 at (144.0, -80.0, -40.0) kept (0 of 40 probe points material)
+[  554.5s]   2020 e-box front outer upright, Z -50..690 (lite-47)      389 ->  371 KB  area 176.35 {176.35: 8}  holes 12/12  vol -0.00%  7.4s
+[  554.7s] ok   2040 e-box rear outer upright, Y 480..520, Z -50..690 (lite-47): one valid solid (1, valid True)
+[  554.7s] ok   2040 e-box rear outer upright, Y 480..520, Z -50..690 (lite-47): box as before within 0.011 (0.0013)
+[  554.7s] ok   2040 e-box rear outer upright, Y 480..520, Z -50..690 (lite-47): volume 236351 -> 236332 mm3 (-0.01%), within 3%
+[  555.1s] ok   2040 e-box rear outer upright, Y 480..520, Z -50..690 (lite-47): hole r 5.25 at (140.3, 490.0, 680.0) kept (0 of 40 probe points material)
+[  555.4s] ok   2040 e-box rear outer upright, Y 480..520, Z -50..690 (lite-47): hole r 5.25 at (144.0, 490.0, 680.0) kept (0 of 40 probe points material)
+[  555.7s] ok   2040 e-box rear outer upright, Y 480..520, Z -50..690 (lite-47): hole r 5.25 at (140.3, 490.0, -40.0) kept (0 of 40 probe points material)
+[  556.0s] ok   2040 e-box rear outer upright, Y 480..520, Z -50..690 (lite-47): hole r 5.25 at (144.0, 490.0, -40.0) kept (0 of 40 probe points material)
+[  556.2s] ok   2040 e-box rear outer upright, Y 480..520, Z -50..690 (lite-47): hole r 5.25 at (140.3, 510.0, -40.0) kept (0 of 40 probe points material)
+[  556.5s] ok   2040 e-box rear outer upright, Y 480..520, Z -50..690 (lite-47): hole r 5.25 at (144.0, 510.0, -40.0) kept (0 of 40 probe points material)
+[  556.8s] ok   2040 e-box rear outer upright, Y 480..520, Z -50..690 (lite-47): hole r 5.25 at (140.3, 510.0, 680.0) kept (0 of 40 probe points material)
+[  557.1s] ok   2040 e-box rear outer upright, Y 480..520, Z -50..690 (lite-47): hole r 5.25 at (144.0, 510.0, 680.0) kept (0 of 40 probe points material)
+[  557.7s] ok   2040 e-box rear outer upright, Y 480..520, Z -50..690 (lite-47): hole r 2.75 at (135.0, 510.0, -40.0) kept (0 of 40 probe points material)
+[  558.3s] ok   2040 e-box rear outer upright, Y 480..520, Z -50..690 (lite-47): hole r 2.75 at (135.0, 510.0, 680.0) kept (0 of 40 probe points material)
+[  558.8s] ok   2040 e-box rear outer upright, Y 480..520, Z -50..690 (lite-47): hole r 2.75 at (135.0, 490.0, -40.0) kept (0 of 40 probe points material)
+[  559.3s] ok   2040 e-box rear outer upright, Y 480..520, Z -50..690 (lite-47): hole r 2.75 at (135.0, 490.0, 680.0) kept (0 of 40 probe points material)
+[  559.4s]   2040 e-box rear outer upright, Y 480..520, Z -50..69      836 ->  623 KB  area 320.38 {320.38: 8}  holes 12/12  vol -0.01%  8.1s
+[  559.5s] ok   2040 e-box outer side rail, bottom (lite-46): one valid solid (1, valid True)
+[  559.5s] ok   2040 e-box outer side rail, bottom (lite-46): box as before within 0.011 (0.0023)
+[  559.5s] ok   2040 e-box outer side rail, bottom (lite-46): volume 176222 -> 176210 mm3 (-0.01%), within 3%
+[  559.5s]   2040 e-box outer side rail, bottom (lite-46)              294 ->   77 KB  area 320.38 {320.38: 8}  holes 0/0  vol -0.01%  2.0s
+[  559.6s] ok   2040 e-box outer side rail, top (lite-46): one valid solid (1, valid True)
+[  559.6s] ok   2040 e-box outer side rail, top (lite-46): box as before within 0.011 (0.0023)
+[  559.6s] ok   2040 e-box outer side rail, top (lite-46): volume 176222 -> 176210 mm3 (-0.01%), within 3%
+[  559.6s]   2040 e-box outer side rail, top (lite-46)                 292 ->   76 KB  area 320.38 {320.38: 8}  holes 0/0  vol -0.01%  2.1s
+[  559.6s] rebuilt 30 members: 238.7 MB -> 6.43 MB of BRep in 344s
+[  559.6s] ok   all members rebuilt: 30 of 30
+[  559.6s] ok   orphaned holes dropped only in the 4 uprights: [('4040 upright', 8), ('4040(Mirror)', 8), ('2040 upright', 2), ('2040(Mirror)', 2)]
+[  559.8s] ok   4040 upright Z -10..650 (lite-46): moved hole r 5.00 at (20.0, 515.0, 430.0) open (0 of 40 probe points material)
+[  560.0s] ok   4040 upright Z -10..650 (lite-46): moved hole r 5.00 at (20.0, 519.0, 430.0) open (0 of 40 probe points material)
+[  560.3s] ok   4040 upright Z -10..650 (lite-46): moved hole r 2.50 at (20.0, 490.0, 430.0) open (0 of 40 probe points material)
+[  560.6s] ok   4040 upright Z -10..650 (lite-46): moved hole r 2.50 at (20.0, 510.0, 430.0) open (0 of 40 probe points material)
+[  561.0s] ok   4040 upright Z -10..650 (lite-46): moved hole r 2.50 at (0.0, 490.0, 430.0) open (0 of 40 probe points material)
+[  561.3s] ok   4040 upright Z -10..650 (lite-46): moved hole r 2.50 at (0.0, 510.0, 430.0) open (0 of 40 probe points material)
+[  561.5s] ok   4040 upright Z -10..650 (lite-46): moved hole r 5.00 at (0.0, 515.0, 430.0) open (0 of 40 probe points material)
+[  561.6s] ok   4040 upright Z -10..650 (lite-46): moved hole r 5.00 at (0.0, 519.0, 430.0) open (0 of 40 probe points material)
+[  561.8s] ok   4040(Mirror) upright Z -10..650 (lite-46): moved hole r 5.00 at (-510.0, 515.0, 430.0) open (0 of 40 probe points material)
+[  561.9s] ok   4040(Mirror) upright Z -10..650 (lite-46): moved hole r 5.00 at (-510.0, 519.0, 430.0) open (0 of 40 probe points material)
+[  562.5s] ok   4040(Mirror) upright Z -10..650 (lite-46): moved hole r 2.50 at (-510.0, 490.0, 430.0) open (0 of 40 probe points material)
+[  562.8s] ok   4040(Mirror) upright Z -10..650 (lite-46): moved hole r 2.50 at (-510.0, 510.0, 430.0) open (0 of 40 probe points material)
+[  562.9s] ok   4040(Mirror) upright Z -10..650 (lite-46): moved hole r 5.00 at (-490.0, 515.0, 430.0) open (0 of 40 probe points material)
+[  563.1s] ok   4040(Mirror) upright Z -10..650 (lite-46): moved hole r 5.00 at (-490.0, 519.0, 430.0) open (0 of 40 probe points material)
+[  564.0s] ok   4040(Mirror) upright Z -10..650 (lite-46): moved hole r 2.50 at (-490.0, 490.0, 430.0) open (0 of 40 probe points material)
+[  564.3s] ok   4040(Mirror) upright Z -10..650 (lite-46): moved hole r 2.50 at (-490.0, 510.0, 430.0) open (0 of 40 probe points material)
+[  564.4s] ok   2040 upright Z -10..650 (lite-46): moved hole r 2.50 at (20.0, -80.0, 430.0) open (0 of 40 probe points material)
+[  564.5s] ok   2040 upright Z -10..650 (lite-46): moved hole r 2.50 at (0.0, -80.0, 430.0) open (0 of 40 probe points material)
+[  564.6s] ok   2040(Mirror) upright Z -10..650 (lite-46): moved hole r 2.50 at (-510.0, -80.0, 430.0) open (0 of 40 probe points material)
+[  564.7s] ok   2040(Mirror) upright Z -10..650 (lite-46): moved hole r 2.50 at (-490.0, -80.0, 430.0) open (0 of 40 probe points material)
+[  566.0s] ok   M5x16-Screw007: its left-hand mirror found once: ['M5x16-Screw022']
+[  566.0s] ok   M5x16-Screw007: Y -74.75..-56.00, its mirror M5x16-Screw022 -75.75..-57.00: moves -1.00
+[  566.0s] ok   M5-Washer010: its left-hand mirror found once: ['M5-Washer035']
+[  566.0s] ok   M5-Washer010: Y -72.10..-71.10, its mirror M5-Washer035 -73.10..-72.10: moves -1.00
+[  566.0s] ok   M5x16-Screw008: its left-hand mirror found once: ['M5x16-Screw023']
+[  566.0s] ok   M5x16-Screw008: Y -74.75..-56.00, its mirror M5x16-Screw023 -75.75..-57.00: moves -1.00
+[  566.0s] ok   M5-Washer011: its left-hand mirror found once: ['M5-Washer036']
+[  566.0s] ok   M5-Washer011: Y -72.10..-71.10, its mirror M5-Washer036 -73.10..-72.10: moves -1.00
+[  566.0s] ok   M5x50-Screw003: its left-hand mirror found once: ['M5x50-Screw021']
+[  566.0s] ok   M5x50-Screw003: Y 466.00..521.00, its mirror M5x50-Screw021 465.00..520.00: moves -1.00
+[  566.0s] ok   M5-Washer012: its left-hand mirror found once: ['M5-Washer055']
+[  566.0s] ok   M5-Washer012: Y 515.00..516.00, its mirror M5-Washer055 514.00..515.00: moves -1.00
+[  566.0s] ok   M5x50-Screw004: its left-hand mirror found once: ['M5x50-Screw022']
+[  566.0s] ok   M5x50-Screw004: Y 466.00..521.00, its mirror M5x50-Screw022 465.00..520.00: moves -1.00
+[  566.0s] ok   M5-Washer013: its left-hand mirror found once: ['M5-Washer056']
+[  566.0s] ok   M5-Washer013: Y 515.00..516.00, its mirror M5-Washer056 514.00..515.00: moves -1.00
+[  566.0s] ok   8 right-hand gantry joint parts moved to mirror the left: ['M5x16-Screw007', 'M5-Washer010', 'M5x16-Screw008', 'M5-Washer011', 'M5x50-Screw003', 'M5-Washer012', 'M5x50-Screw004', 'M5-Washer013']
+[  620.9s] ok   2040 (2): in the document where it was built (0.0000)
+[  620.9s] ok   4040 (2) one piece X -520..125 (lite-47): in the document where it was built (0.0000)
+[  620.9s] ok   2040 (2)001 one piece X -520..125 (lite-47): in the document where it was built (0.0000)
+[  620.9s] ok   4040 (1)004 one piece X -520..125 (lite-47): in the document where it was built (0.0000)
+[  620.9s] ok   2020: in the document where it was built (0.0000)
+[  620.9s] ok   2020 (1): in the document where it was built (0.0000)
+[  620.9s] ok   2020 (2): in the document where it was built (0.0000)
+[  620.9s] ok   2040 (2) (1): in the document where it was built (0.0000)
+[  620.9s] ok   2040 (2) (1)001: in the document where it was built (0.0000)
+[  620.9s] ok   4040 upright Z -10..650 (lite-46): in the document where it was built (0.0000)
+[  620.9s] ok   4040(Mirror) upright Z -10..650 (lite-46): in the document where it was built (0.0000)
+[  620.9s] ok   2040 (1): in the document where it was built (0.0000)
+[  620.9s] ok   2040 (1)(Mirror): in the document where it was built (0.0000)
+[  620.9s] ok   4040 (1): in the document where it was built (0.0000)
+[  620.9s] ok   4040 (1)001: in the document where it was built (0.0000)
+[  620.9s] ok   4040 (1)002: in the document where it was built (0.0000)
+[  620.9s] ok   4040 (1)003: in the document where it was built (0.0000)
+[  620.9s] ok   2040 (3): in the document where it was built (0.0000)
+[  620.9s] ok   2040 (3)001: in the document where it was built (0.0000)
+[  620.9s] ok   2040 upright Z -10..650 (lite-46): in the document where it was built (0.0000)
+[  620.9s] ok   2040(Mirror) upright Z -10..650 (lite-46): in the document where it was built (0.0000)
+[  620.9s] ok   2040 (2) (new front) one piece X -520..125 (lite-47): in the document where it was built (0.0000)
+[  620.9s] ok   2040 Z post (R): in the document where it was built (0.0000)
+[  620.9s] ok   2040(Mirror) Z post (L): in the document where it was built (0.0000)
+[  620.9s] ok   2020 (3): in the document where it was built (0.0000)
+[  620.9s] ok   2020 dock bar (front; holds the 5 keyslot plates, #19): in the document where it was built (0.0000)
+[  620.9s] ok   2020 e-box front outer upright, Z -50..690 (lite-47): in the document where it was built (0.0000)
+[  620.9s] ok   2040 e-box rear outer upright, Y 480..520, Z -50..690 (lite-47): in the document where it was built (0.0000)
+[  620.9s] ok   2040 e-box outer side rail, bottom (lite-46): in the document where it was built (0.0000)
+[  620.9s] ok   2040 e-box outer side rail, top (lite-46): in the document where it was built (0.0000)
+[  620.9s] ok   M5x16-Screw007: in the document 1 mm toward -Y, nothing else ((0.0, -1.0, 0.0, 0.0, -1.0, 0.0))
+[  620.9s] ok   M5-Washer010: in the document 1 mm toward -Y, nothing else ((0.0, -1.0, 0.0, 0.0, -1.0, 0.0))
+[  621.0s] ok   M5x16-Screw008: in the document 1 mm toward -Y, nothing else ((0.0, -1.0, 0.0, 0.0, -1.0, 0.0))
+[  621.0s] ok   M5-Washer011: in the document 1 mm toward -Y, nothing else ((0.0, -1.0, 0.0, 0.0, -1.0, 0.0))
+[  621.0s] ok   M5x50-Screw003: in the document 1 mm toward -Y, nothing else ((0.0, -1.0, 0.0, 0.0, -1.0, 0.0))
+[  621.0s] ok   M5-Washer012: in the document 1 mm toward -Y, nothing else ((0.0, -1.0, 0.0, 0.0, -1.0, 0.0))
+[  621.0s] ok   M5x50-Screw004: in the document 1 mm toward -Y, nothing else ((0.0, -1.0, 0.0, 0.0, -1.0, 0.0))
+[  621.0s] ok   M5-Washer013: in the document 1 mm toward -Y, nothing else ((0.0, -1.0, 0.0, 0.0, -1.0, 0.0))
+[  621.2s] overlap candidates: 523 pairs
+[  782.4s] info screws threaded into end bores, overlap new or grown (the clean bore replaces the modelled thread): 45 [('2040 (2)001 one piece X -520..125 (lite-47)', 'M5x30-Screw e-box joint 2040 (2)001 Y-80', 83.33, 46.92), ('2040 (2)001 one piece X -520..125 (lite-47)', 'M5x30-Screw e-box joint 2040 (2)001 Y-80', 83.33, 46.92), ('2020 (2)', 'M5x16-Screw001', 71.03, 0.0), ('2040 (2) (1)', 'M5x50-Screw048', 81.59, 0.0), ('2040 (2) (1)', 'M5x50-Screw049', 81.59, 0.0), ('2040 (2) (1)', 'M5x50-Screw050', 81.59, 0.0), ('2040 (2) (1)', 'M5x50-Screw051', 81.59, 0.0), ('2040 (2) (1)001', 'M5x50-Screw028', 81.59, 0.0), ('2040 (2) (1)001', 'M5x50-Screw029', 81.59, 0.0), ('2040 (2) (1)001', 'M5x50-Screw030', 81.59, 0.0), ('2040 (2) (1)001', 'M5x50-Screw031', 81.59, 0.0), ('4040 (1)', 'M5x16-Screw', 62.0, 34.83), ('4040 (1)', 'M5x16-Screw004', 62.0, 34.88), ('4040 (1)', 'M5x50-Screw001', 71.77, 40.34), ('4040 (1)', 'M5x16-Screw005', 62.0, 34.85), ('4040 (1)', 'M5x16-Screw006', 62.0, 34.84), ('4040 (1)', 'M5x50-Screw024', 71.77, 40.3), ('4040 (1)001', 'M5x16-Screw018', 62.0, 34.88), ('4040 (1)001', 'M5x16-Screw019', 62.0, 34.83), ('4040 (1)001', 'M5x16-Screw020', 62.0, 34.84), ('4040 (1)001', 'M5x16-Screw021', 62.0, 34.85), ('4040 (1)001', 'M5x50-Screw020', 71.77, 40.3), ('4040 (1)001', 'M5x50-Screw026', 71.77, 40.34), ('4040 (1)002', 'M5x16-Screw085', 62.0, 34.84), ('4040 (1)002', 'M5x16-Screw086', 62.0, 34.85), ('4040 (1)002', 'M5x16-Screw087', 62.0, 34.88), ('4040 (1)002', 'M5x16-Screw088', 62.0, 34.83), ('4040 (1)002', 'M5x50-Screw045', 71.77, 40.29), ('4040 (1)002', 'M5x50-Screw047', 71.77, 40.3), ('4040 (1)003', 'M5x16-Screw078', 62.0, 34.85), ('4040 (1)003', 'M5x16-Screw079', 62.0, 34.84), ('4040 (1)003', 'M5x16-Screw080', 62.0, 34.83), ('4040 (1)003', 'M5x16-Screw081', 62.0, 34.88), ('4040 (1)003', 'M5x50-Screw040', 71.77, 40.3), ('4040 (1)003', 'M5x50-Screw046', 71.77, 40.29), ('2040 (3)', 'M5x16-Screw007', 70.48, 41.26), ('2040 (3)', 'M5x16-Screw008', 70.48, 0.0), ('2040 (3)', 'M5x50-Screw003', 81.59, 0.0), ('2040 (3)', 'M5x50-Screw004', 81.59, 0.0), ('2040 (3)001', 'M5x16-Screw022', 70.48, 0.0), ('2040 (3)001', 'M5x16-Screw023', 70.48, 0.0), ('2040 (3)001', 'M5x50-Screw021', 81.59, 0.0), ('2040 (3)001', 'M5x50-Screw022', 81.59, 0.0), ('2040 (2) (new front) one piece X -520..125 (', 'M5x30-Screw e-box joint 2040 (2) (new fr', 83.33, 46.92), ('2040 (2) (new front) one piece X -520..125 (', 'M5x30-Screw e-box joint 2040 (2) (new fr', 83.33, 46.92)]
+[  782.4s] info overlaps lite-47 already has, not grown: 21 [('4040 (2) one piece X -520..125 (lite-47)', 'M5x10-Screw016', 25.47, 25.47), ('4040 (2) one piece X -520..125 (lite-47)', 'M5x10-Screw017', 25.47, 25.47), ('4040 (2) one piece X -520..125 (lite-47)', 'Back Panel001', 5739.77, 5741.04), ('4040 (2) one piece X -520..125 (lite-47)', 'Back Panel001 paint, outside', 277.96, 277.82), ('4040 (2) one piece X -520..125 (lite-47)', 'M5x30-Screw e-box joint 4040 (2) Y490 Z-', 73.31, 143.61), ('4040 (2) one piece X -520..125 (lite-47)', 'M5x30-Screw e-box joint 4040 (2) Y510 Z-', 73.31, 143.61), ('4040 (1)004 one piece X -520..125 (lite-47)', 'Back Panel001', 3098.88, 3098.88), ('4040 (1)004 one piece X -520..125 (lite-47)', 'Back Panel001 paint, outside', 9.64, 9.64), ('4040 (1)004 one piece X -520..125 (lite-47)', 'M5x30-Screw e-box joint 4040 (1)004 Y490', 73.31, 73.31), ('4040 (1)004 one piece X -520..125 (lite-47)', 'M5x30-Screw e-box joint 4040 (1)004 Y510', 73.31, 73.31), ('2020 (1)', 'M5-Washer001', 0.05, 0.05), ('4040 upright Z -10..650 (lite-46)', 'Back Panel001', 2650.42, 2650.42), ('4040(Mirror) upright Z -10..650 (lite-46)', 'Back Panel001', 6795.17, 6795.17), ('4040(Mirror) upright Z -10..650 (lite-46)', 'Back Panel001 paint, outside', 263.78, 263.78), ('2040 (3)', 'VT_NP_spacer', 0.42, 0.42), ('2040 (3)', 'VT_NP_spacer001', 0.42, 0.42), ('2040 (3)001', 'VT_NP_spacer002', 0.42, 0.42), ('2040 (3)001', 'VT_NP_spacer003', 0.42, 0.42), ('2020 (3)', 'M5x16-Screw002', 73.38, 77.66), ('M5x16-Screw007', 'M5-Washer010', 4.72, 4.72), ('M5x16-Screw008', 'M5-Washer011', 4.72, 4.72)]
+[  782.4s] info overlaps lite-47 had that are gone: 10 [('4040 upright Z -10..650 (lite-46)', 'M5x50-Screw003', 0.0, 183.71), ('4040 upright Z -10..650 (lite-46)', 'M5-Washer012', 0.0, 3.81), ('4040 upright Z -10..650 (lite-46)', 'M5x50-Screw004', 0.0, 183.71), ('4040 upright Z -10..650 (lite-46)', 'M5-Washer013', 0.0, 3.81), ('4040(Mirror) upright Z -10..650 (lite-46)', 'M5x50-Screw021', 0.0, 183.08), ('4040(Mirror) upright Z -10..650 (lite-46)', 'M5-Washer055', 0.0, 15.81), ('4040(Mirror) upright Z -10..650 (lite-46)', 'M5x50-Screw022', 0.0, 183.08), ('4040(Mirror) upright Z -10..650 (lite-46)', 'M5-Washer056', 0.0, 15.81), ('2040 upright Z -10..650 (lite-46)', 'M5-Washer010', 0.0, 20.17), ('2040 upright Z -10..650 (lite-46)', 'M5-Washer011', 0.0, 20.17)]
+[  782.4s] info overlaps where lite-47's boolean failed (can't compare; volumes now): 0 []
+[  782.4s] ok   new overlaps (pairs that didn't overlap in lite-47): 0 []
+[  782.4s] ok   grown overlaps (> 5% and > 1 mm3 more than lite-47): 0 []
+[  782.4s] ok   the 8 gantry joint screws and their washers clear their upright: [('M5x50-Screw003', 183.7, 0.0), ('M5-Washer012', 3.8, 0.0), ('M5x50-Screw004', 183.7, 0.0), ('M5-Washer013', 3.8, 0.0), ('M5x50-Screw021', 183.1, 0.0), ('M5-Washer055', 15.8, 0.0), ('M5x50-Screw022', 183.1, 0.0), ('M5-Washer056', 15.8, 0.0), ('M5x16-Screw007', 0.0, 0.0), ('M5-Washer010', 20.2, 0.0), ('M5x16-Screw008', 0.0, 0.0), ('M5-Washer011', 20.2, 0.0), ('M5x16-Screw022', 0.0, 0.0), ('M5-Washer035', 0.0, 0.0), ('M5x16-Screw023', 0.0, 0.0), ('M5-Washer036', 0.0, 0.0)]
+[  782.4s] ok   solids: 1390 (as lite-47: 1390)
+[  782.4s] info faces left split where merging them broke the solid: ['4040 (2) one piece X -520..125 (lite-47)']
+[  782.4s] info holes cut one at a time (the one cut was invalid): []
+[  782.4s] verify: 0 problems
+[  800.0s] SAVED /home/dan/Documents/VT350/vt350-lite-48.FCStd 110537570

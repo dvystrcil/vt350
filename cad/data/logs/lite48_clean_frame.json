@@ -1,0 +1,1093 @@
+{
+ "members": [
+  {
+   "label": "2040 (2)",
+   "ax": 0,
+   "length": 470.0,
+   "kb_old": 19902,
+   "kb_new": 56,
+   "area": 325.473,
+   "votes": {
+    "325.47": 8
+   },
+   "edges": {
+    "line": 90,
+    "arc": 6,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 0,
+   "holes_kept": 0,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "none",
+   "vol_old": 152777.8,
+   "vol_new": 152972.5,
+   "box_dev": 0.0009,
+   "secs": 18.9
+  },
+  {
+   "label": "4040 (2) one piece X -520..125 (lite-47)",
+   "ax": 0,
+   "length": 645.0,
+   "kb_old": 16829,
+   "kb_new": 973,
+   "area": 482.51,
+   "votes": {
+    "501.26": 4,
+    "482.51": 4
+   },
+   "edges": {
+    "line": 112,
+    "arc": 24,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 24,
+   "holes_kept": 24,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": true,
+   "cut": "one cut",
+   "vol_old": 316802.1,
+   "vol_new": 309626.9,
+   "box_dev": 0.0,
+   "secs": 46.3
+  },
+  {
+   "label": "2040 (2)001 one piece X -520..125 (lite-47)",
+   "ax": 0,
+   "length": 645.0,
+   "kb_old": 20462,
+   "kb_new": 55,
+   "area": 325.473,
+   "votes": {
+    "325.47": 7,
+    "320.38": 1
+   },
+   "edges": {
+    "line": 90,
+    "arc": 6,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 0,
+   "holes_kept": 0,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "none",
+   "vol_old": 211837.1,
+   "vol_new": 209930.3,
+   "box_dev": 0.0009,
+   "secs": 17.2
+  },
+  {
+   "label": "4040 (1)004 one piece X -520..125 (lite-47)",
+   "ax": 0,
+   "length": 645.0,
+   "kb_old": 14976,
+   "kb_new": 731,
+   "area": 482.51,
+   "votes": {
+    "482.51": 8
+   },
+   "edges": {
+    "line": 112,
+    "arc": 24,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 16,
+   "holes_kept": 16,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "one cut",
+   "vol_old": 309722.0,
+   "vol_new": 310079.5,
+   "box_dev": 0.0,
+   "secs": 36.9
+  },
+  {
+   "label": "2020",
+   "ax": 0,
+   "length": 340.0,
+   "kb_old": 134,
+   "kb_new": 92,
+   "area": 176.354,
+   "votes": {
+    "176.35": 8
+   },
+   "edges": {
+    "line": 56,
+    "arc": 5,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 1,
+   "holes_kept": 1,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "one cut",
+   "vol_old": 59888.1,
+   "vol_new": 59888.1,
+   "box_dev": 0.0,
+   "secs": 1.3
+  },
+  {
+   "label": "2020 (1)",
+   "ax": 0,
+   "length": 470.0,
+   "kb_old": 134,
+   "kb_new": 92,
+   "area": 176.354,
+   "votes": {
+    "176.35": 8
+   },
+   "edges": {
+    "line": 56,
+    "arc": 5,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 1,
+   "holes_kept": 1,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "one cut",
+   "vol_old": 82814.0,
+   "vol_new": 82814.0,
+   "box_dev": 0.0,
+   "secs": 0.9
+  },
+  {
+   "label": "2020 (2)",
+   "ax": 1,
+   "length": 332.0,
+   "kb_old": 4002,
+   "kb_new": 36,
+   "area": 181.909,
+   "votes": {
+    "181.91": 8
+   },
+   "edges": {
+    "line": 56,
+    "arc": 5,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 0,
+   "holes_kept": 0,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "none",
+   "vol_old": 60342.9,
+   "vol_new": 60393.8,
+   "box_dev": 0.0009,
+   "secs": 4.0
+  },
+  {
+   "label": "2040 (2) (1)",
+   "ax": 0,
+   "length": 470.0,
+   "kb_old": 19901,
+   "kb_new": 55,
+   "area": 325.473,
+   "votes": {
+    "325.47": 8
+   },
+   "edges": {
+    "line": 90,
+    "arc": 6,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 0,
+   "holes_kept": 0,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "none",
+   "vol_old": 152777.8,
+   "vol_new": 152972.5,
+   "box_dev": 0.0009,
+   "secs": 15.9
+  },
+  {
+   "label": "2040 (2) (1)001",
+   "ax": 0,
+   "length": 470.0,
+   "kb_old": 19903,
+   "kb_new": 56,
+   "area": 325.473,
+   "votes": {
+    "325.47": 8
+   },
+   "edges": {
+    "line": 90,
+    "arc": 6,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 0,
+   "holes_kept": 0,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "none",
+   "vol_old": 152777.8,
+   "vol_new": 152972.5,
+   "box_dev": 0.0009,
+   "secs": 16.0
+  },
+  {
+   "label": "4040 upright Z -10..650 (lite-46)",
+   "ax": 2,
+   "length": 660.0,
+   "kb_old": 458,
+   "kb_new": 738,
+   "area": 483.32,
+   "votes": {
+    "483.32": 8
+   },
+   "edges": {
+    "line": 112,
+    "arc": 24,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 8,
+   "holes_kept": 0,
+   "holes_dropped": 8,
+   "dropped": [
+    [
+     1,
+     [
+      20.0,
+      0.0,
+      380.0
+     ],
+     5.0,
+     514.0,
+     516.07
+    ],
+    [
+     1,
+     [
+      20.0,
+      0.0,
+      380.0
+     ],
+     5.0,
+     518.0,
+     520.0
+    ],
+    [
+     1,
+     [
+      20.0,
+      0.0,
+      380.0
+     ],
+     2.5,
+     486.0,
+     494.0
+    ],
+    [
+     1,
+     [
+      20.0,
+      0.0,
+      380.0
+     ],
+     2.5,
+     506.0,
+     514.0
+    ],
+    [
+     1,
+     [
+      0.0,
+      0.0,
+      380.0
+     ],
+     2.5,
+     486.0,
+     494.0
+    ],
+    [
+     1,
+     [
+      0.0,
+      0.0,
+      380.0
+     ],
+     2.5,
+     506.0,
+     514.0
+    ],
+    [
+     1,
+     [
+      0.0,
+      0.0,
+      380.0
+     ],
+     5.0,
+     514.0,
+     516.07
+    ],
+    [
+     1,
+     [
+      0.0,
+      0.0,
+      380.0
+     ],
+     5.0,
+     518.0,
+     520.0
+    ]
+   ],
+   "joint_holes": 8,
+   "split_kept": false,
+   "cut": "one cut",
+   "vol_old": 318536.7,
+   "vol_new": 318535.6,
+   "box_dev": 0.0,
+   "secs": 4.4
+  },
+  {
+   "label": "4040(Mirror) upright Z -10..650 (lite-46)",
+   "ax": 2,
+   "length": 660.0,
+   "kb_old": 474,
+   "kb_new": 739,
+   "area": 483.32,
+   "votes": {
+    "483.32": 8
+   },
+   "edges": {
+    "line": 112,
+    "arc": 24,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 8,
+   "holes_kept": 0,
+   "holes_dropped": 8,
+   "dropped": [
+    [
+     1,
+     [
+      -510.0,
+      0.0,
+      380.0
+     ],
+     5.0,
+     514.0,
+     516.07
+    ],
+    [
+     1,
+     [
+      -510.0,
+      0.0,
+      380.0
+     ],
+     5.0,
+     518.0,
+     520.0
+    ],
+    [
+     1,
+     [
+      -510.0,
+      0.0,
+      380.0
+     ],
+     2.5,
+     486.0,
+     494.0
+    ],
+    [
+     1,
+     [
+      -510.0,
+      0.0,
+      380.0
+     ],
+     2.5,
+     506.0,
+     514.0
+    ],
+    [
+     1,
+     [
+      -490.0,
+      0.0,
+      380.0
+     ],
+     5.0,
+     514.0,
+     516.07
+    ],
+    [
+     1,
+     [
+      -490.0,
+      0.0,
+      380.0
+     ],
+     5.0,
+     518.0,
+     520.0
+    ],
+    [
+     1,
+     [
+      -490.0,
+      0.0,
+      380.0
+     ],
+     2.5,
+     486.0,
+     494.0
+    ],
+    [
+     1,
+     [
+      -490.0,
+      0.0,
+      380.0
+     ],
+     2.5,
+     506.0,
+     514.0
+    ]
+   ],
+   "joint_holes": 8,
+   "split_kept": false,
+   "cut": "one cut",
+   "vol_old": 318536.7,
+   "vol_new": 318535.6,
+   "box_dev": 0.0,
+   "secs": 4.5
+  },
+  {
+   "label": "2040 (1)",
+   "ax": 2,
+   "length": 740.0,
+   "kb_old": 438,
+   "kb_new": 315,
+   "area": 314.363,
+   "votes": {
+    "314.36": 8
+   },
+   "edges": {
+    "line": 90,
+    "arc": 6,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 16,
+   "holes_kept": 16,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "one cut",
+   "vol_old": 231787.3,
+   "vol_new": 231785.1,
+   "box_dev": 0.0,
+   "secs": 4.3
+  },
+  {
+   "label": "2040 (1)(Mirror)",
+   "ax": 2,
+   "length": 740.0,
+   "kb_old": 442,
+   "kb_new": 313,
+   "area": 314.363,
+   "votes": {
+    "314.36": 8
+   },
+   "edges": {
+    "line": 90,
+    "arc": 6,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 16,
+   "holes_kept": 16,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "one cut",
+   "vol_old": 231787.3,
+   "vol_new": 231785.1,
+   "box_dev": 0.0,
+   "secs": 4.3
+  },
+  {
+   "label": "4040 (1)",
+   "ax": 1,
+   "length": 550.0,
+   "kb_old": 14307,
+   "kb_new": 79,
+   "area": 482.51,
+   "votes": {
+    "482.51": 8
+   },
+   "edges": {
+    "line": 112,
+    "arc": 24,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 0,
+   "holes_kept": 0,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "none",
+   "vol_old": 265027.5,
+   "vol_new": 265380.3,
+   "box_dev": 0.0011,
+   "secs": 19.2
+  },
+  {
+   "label": "4040 (1)001",
+   "ax": 1,
+   "length": 550.0,
+   "kb_old": 14332,
+   "kb_new": 77,
+   "area": 482.51,
+   "votes": {
+    "482.51": 8
+   },
+   "edges": {
+    "line": 112,
+    "arc": 24,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 0,
+   "holes_kept": 0,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "none",
+   "vol_old": 265027.6,
+   "vol_new": 265380.3,
+   "box_dev": 0.0011,
+   "secs": 18.4
+  },
+  {
+   "label": "4040 (1)002",
+   "ax": 1,
+   "length": 550.0,
+   "kb_old": 14322,
+   "kb_new": 76,
+   "area": 482.51,
+   "votes": {
+    "482.51": 8
+   },
+   "edges": {
+    "line": 112,
+    "arc": 24,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 0,
+   "holes_kept": 0,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "none",
+   "vol_old": 265027.6,
+   "vol_new": 265380.3,
+   "box_dev": 0.0011,
+   "secs": 18.4
+  },
+  {
+   "label": "4040 (1)003",
+   "ax": 1,
+   "length": 550.0,
+   "kb_old": 14314,
+   "kb_new": 77,
+   "area": 482.51,
+   "votes": {
+    "482.51": 8
+   },
+   "edges": {
+    "line": 112,
+    "arc": 24,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 0,
+   "holes_kept": 0,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "none",
+   "vol_old": 265027.5,
+   "vol_new": 265380.3,
+   "box_dev": 0.0011,
+   "secs": 19.8
+  },
+  {
+   "label": "2040 (3)",
+   "ax": 1,
+   "length": 550.0,
+   "kb_old": 20074,
+   "kb_new": 54,
+   "area": 325.473,
+   "votes": {
+    "325.47": 8
+   },
+   "edges": {
+    "line": 90,
+    "arc": 6,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 0,
+   "holes_kept": 0,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "none",
+   "vol_old": 178817.3,
+   "vol_new": 179010.4,
+   "box_dev": 0.0009,
+   "secs": 16.1
+  },
+  {
+   "label": "2040 (3)001",
+   "ax": 1,
+   "length": 550.0,
+   "kb_old": 20072,
+   "kb_new": 53,
+   "area": 325.473,
+   "votes": {
+    "325.47": 8
+   },
+   "edges": {
+    "line": 90,
+    "arc": 6,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 0,
+   "holes_kept": 0,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "none",
+   "vol_old": 178817.3,
+   "vol_new": 179010.4,
+   "box_dev": 0.0009,
+   "secs": 15.6
+  },
+  {
+   "label": "2040 upright Z -10..650 (lite-46)",
+   "ax": 2,
+   "length": 660.0,
+   "kb_old": 218,
+   "kb_new": 157,
+   "area": 314.363,
+   "votes": {
+    "314.36": 8
+   },
+   "edges": {
+    "line": 90,
+    "arc": 6,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 2,
+   "holes_kept": 0,
+   "holes_dropped": 2,
+   "dropped": [
+    [
+     1,
+     [
+      20.0,
+      0.0,
+      380.0
+     ],
+     2.5,
+     -84.0,
+     -76.0
+    ],
+    [
+     1,
+     [
+      0.0,
+      0.0,
+      380.0
+     ],
+     2.5,
+     -84.0,
+     -76.0
+    ]
+   ],
+   "joint_holes": 2,
+   "split_kept": false,
+   "cut": "one cut",
+   "vol_old": 207335.1,
+   "vol_new": 207335.1,
+   "box_dev": 0.0,
+   "secs": 1.6
+  },
+  {
+   "label": "2040(Mirror) upright Z -10..650 (lite-46)",
+   "ax": 2,
+   "length": 660.0,
+   "kb_old": 220,
+   "kb_new": 155,
+   "area": 314.363,
+   "votes": {
+    "314.36": 8
+   },
+   "edges": {
+    "line": 90,
+    "arc": 6,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 2,
+   "holes_kept": 0,
+   "holes_dropped": 2,
+   "dropped": [
+    [
+     1,
+     [
+      -510.0,
+      0.0,
+      380.0
+     ],
+     2.5,
+     -84.0,
+     -76.0
+    ],
+    [
+     1,
+     [
+      -490.0,
+      0.0,
+      380.0
+     ],
+     2.5,
+     -84.0,
+     -76.0
+    ]
+   ],
+   "joint_holes": 2,
+   "split_kept": false,
+   "cut": "one cut",
+   "vol_old": 207335.1,
+   "vol_new": 207335.1,
+   "box_dev": 0.0,
+   "secs": 1.6
+  },
+  {
+   "label": "2040 (2) (new front) one piece X -520..125 (lite-47)",
+   "ax": 0,
+   "length": 645.0,
+   "kb_old": 20466,
+   "kb_new": 56,
+   "area": 325.473,
+   "votes": {
+    "325.47": 7,
+    "320.38": 1
+   },
+   "edges": {
+    "line": 90,
+    "arc": 6,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 0,
+   "holes_kept": 0,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "none",
+   "vol_old": 211837.1,
+   "vol_new": 209930.3,
+   "box_dev": 0.0009,
+   "secs": 17.7
+  },
+  {
+   "label": "2040 Z post (R)",
+   "ax": 2,
+   "length": 430.0,
+   "kb_old": 153,
+   "kb_new": 58,
+   "area": 314.363,
+   "votes": {
+    "314.36": 8
+   },
+   "edges": {
+    "line": 90,
+    "arc": 6,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 0,
+   "holes_kept": 0,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "none",
+   "vol_old": 135176.0,
+   "vol_new": 135176.0,
+   "box_dev": 0.0,
+   "secs": 1.1
+  },
+  {
+   "label": "2040(Mirror) Z post (L)",
+   "ax": 2,
+   "length": 430.0,
+   "kb_old": 155,
+   "kb_new": 58,
+   "area": 314.363,
+   "votes": {
+    "314.36": 8
+   },
+   "edges": {
+    "line": 90,
+    "arc": 6,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 0,
+   "holes_kept": 0,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "none",
+   "vol_old": 135176.0,
+   "vol_new": 135176.0,
+   "box_dev": 0.0,
+   "secs": 1.1
+  },
+  {
+   "label": "2020 (3)",
+   "ax": 2,
+   "length": 430.0,
+   "kb_old": 96,
+   "kb_new": 36,
+   "area": 182.134,
+   "votes": {
+    "182.13": 8
+   },
+   "edges": {
+    "line": 56,
+    "arc": 5,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 0,
+   "holes_kept": 0,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "none",
+   "vol_old": 78322.9,
+   "vol_new": 78317.7,
+   "box_dev": 0.0,
+   "secs": 0.7
+  },
+  {
+   "label": "2020 dock bar (front; holds the 5 keyslot plates, #19)",
+   "ax": 0,
+   "length": 470.0,
+   "kb_old": 133,
+   "kb_new": 94,
+   "area": 176.354,
+   "votes": {
+    "176.35": 8
+   },
+   "edges": {
+    "line": 56,
+    "arc": 5,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 1,
+   "holes_kept": 1,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "one cut",
+   "vol_old": 82814.0,
+   "vol_new": 82814.0,
+   "box_dev": 0.0,
+   "secs": 0.8
+  },
+  {
+   "label": "2020 e-box front outer upright, Z -50..690 (lite-47)",
+   "ax": 2,
+   "length": 740.0,
+   "kb_old": 389,
+   "kb_new": 371,
+   "area": 176.354,
+   "votes": {
+    "176.35": 8
+   },
+   "edges": {
+    "line": 56,
+    "arc": 5,
+    "spline_as_arc": 0,
+    "spline_kept": 0
+   },
+   "holes": 12,
+   "holes_kept": 12,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "one cut",
+   "vol_old": 129804.8,
+   "vol_new": 129802.5,
+   "box_dev": 0.0,
+   "secs": 7.4
+  },
+  {
+   "label": "2040 e-box rear outer upright, Y 480..520, Z -50..690 (lite-47)",
+   "ax": 2,
+   "length": 740.0,
+   "kb_old": 836,
+   "kb_new": 623,
+   "area": 320.38,
+   "votes": {
+    "320.38": 8
+   },
+   "edges": {
+    "line": 90,
+    "arc": 8,
+    "spline_as_arc": 2,
+    "spline_kept": 4
+   },
+   "holes": 12,
+   "holes_kept": 12,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "one cut",
+   "vol_old": 236350.8,
+   "vol_new": 236332.2,
+   "box_dev": 0.0013,
+   "secs": 8.1
+  },
+  {
+   "label": "2040 e-box outer side rail, bottom (lite-46)",
+   "ax": 1,
+   "length": 550.0,
+   "kb_old": 294,
+   "kb_new": 77,
+   "area": 320.382,
+   "votes": {
+    "320.38": 8
+   },
+   "edges": {
+    "line": 90,
+    "arc": 8,
+    "spline_as_arc": 2,
+    "spline_kept": 4
+   },
+   "holes": 0,
+   "holes_kept": 0,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "none",
+   "vol_old": 176221.5,
+   "vol_new": 176210.3,
+   "box_dev": 0.0023,
+   "secs": 2.0
+  },
+  {
+   "label": "2040 e-box outer side rail, top (lite-46)",
+   "ax": 1,
+   "length": 550.0,
+   "kb_old": 292,
+   "kb_new": 76,
+   "area": 320.382,
+   "votes": {
+    "320.38": 8
+   },
+   "edges": {
+    "line": 90,
+    "arc": 8,
+    "spline_as_arc": 2,
+    "spline_kept": 4
+   },
+   "holes": 0,
+   "holes_kept": 0,
+   "holes_dropped": 0,
+   "dropped": [],
+   "joint_holes": 0,
+   "split_kept": false,
+   "cut": "none",
+   "vol_old": 176221.5,
+   "vol_new": 176210.3,
+   "box_dev": 0.0023,
+   "secs": 2.1
+  }
+ ],
+ "brep_mb": [
+  238.7,
+  6.43
+ ],
+ "orphan_z": 380.0,
+ "moved_to_z": 430.0,
+ "hardware_moved_y": [
+  "M5x16-Screw007",
+  "M5-Washer010",
+  "M5x16-Screw008",
+  "M5-Washer011",
+  "M5x50-Screw003",
+  "M5-Washer012",
+  "M5x50-Screw004",
+  "M5-Washer013"
+ ],
+ "overlaps": {
+  "thread": 45,
+  "kept": 21,
+  "gone": 10,
+  "unverified": []
+ }
+}
