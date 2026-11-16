@@ -21,6 +21,8 @@ code. The printer side imports from here, not the other way round.
 | `pages/` | `check_index.py`: the guard that runs before the reference pages are published | `python3` |
 | `testing/` | `check_test_tmp.sh`: every plain-python test must leave its `TMPDIR` empty | `bash` |
 
+**What we've learned about FreeCAD** (what makes a model slow to open, hidden parts, stand-ins, App::Links, and the gotchas that cost us time): [`freecad/LESSONS.md`](freecad/LESSONS.md). Add to it the day something is learned.
+
 ## Running them by hand
 
 Every tool runs without Claude and without the cluster. Run these from the repo root:
@@ -80,7 +82,14 @@ Moving the code here didn't make it generic yet. These VT350 assumptions are sti
 - `freecad/litelib.py` holds VT350 constants (`BED_LOWEST_DZ`, `BED_FLOOR_DZ`, `BED_Z`), the default model and work
   paths, and `print_area()`, which reads the VT350's `cad/studies/print_area.py` and sweep log.
 - `freecad/contact.py` has the VT350's floor margin (`FLOOR_MARGIN`). `freecad/part_index.py` has the VT350's model
-  folder (`MODELS_DIR`) and a `vt350-` format name, and every tool reads `VT350_*` environment variables.
+  folder (`MODELS_DIR`) and a `vt350-` format name.
+- Tools read their inputs from 16 `VT350_*` environment variables: `VT350_BLENDER`, `VT350_COLOURS`, `VT350_DOCS`,
+  `VT350_EXTRA`, `VT350_GROUPS`, `VT350_HEAVY_FACES`, `VT350_INDEX_FORCE`, `VT350_INDEX_MODELS`, `VT350_MODEL`,
+  `VT350_RENDER_OUT`, `VT350_REPO`, `VT350_RESERVE_MB`, `VT350_WORK`, `VT350_WORKER_DOC_MB`, `VT350_WORKER_MB`,
+  `VT350_WORKERS`. **The rule for these (agreed 2026-11-16):** a platform input has a neutral name that says what
+  it is (a model path, an output folder, a colour map), and the printer passes its own values in. The printer's
+  names stay on the printer's side: its launchers, passes and values. New inputs follow the rule from the start
+  (`RENDER_STANDINS`, `FREECAD_APPIMAGE`); these 16 get renamed with #125 and the values-file moves, not piecemeal.
 - `parts/check-printed.py` names this repository (`THIS_REPO`) and its licence.
 - The default paths in the tables above are the VT350's folders.
 

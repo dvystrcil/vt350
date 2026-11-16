@@ -12,7 +12,7 @@
 # unless it is fresh; a failure there is logged as "index: FAILED" and does not fail the export.
 # Stand-ins (vt350#195 AC3): an object with a StandInFor property (a Part::Feature or a Mesh::Feature) is a cheap shape the
 # GUI shows in place of a hidden real part (named by it). The export walks the real part, hidden or not (its bucket, role
-# and motion group), never the stand-in (colours.standin_skip). VT350_STANDINS=1, a quicker preview, draws the real part
+# and motion group), never the stand-in (colours.standin_skip). RENDER_STANDINS=1, a quicker preview, draws the real part
 # with its stand-in's geometry (colours.standin_source). Every other part follows its visibility, as before.
 # Visibility flags (colours.json "visibility", user 2026-11-15): a flagged part goes in a bucket of its own,
 # "vis_<tag>__<key>", with "vis" in scene.json and the rules in scene["visibility"]; render.py hides it per view.
@@ -26,7 +26,7 @@ import logos                                       # Voron logos: orange, white 
 MODEL = os.environ.get("VT350_MODEL", "/home/dan/Documents/VT350/vt350-lite-16.FCStd")
 OUT = os.environ.get("VT350_RENDER_OUT", "/tmp/claude-1000/-home-dan-Code/49170e9e-d71c-4cd7-8f69-23f113691ee5/scratchpad/render")
 EXTRA = [p for p in os.environ.get("VT350_EXTRA", "").split(":") if p]
-STANDINS = os.environ.get("VT350_STANDINS") == "1"   # draw real parts with their stand-ins' geometry (a quick preview)
+STANDINS = os.environ.get("RENDER_STANDINS") == "1"   # draw real parts with their stand-ins' geometry (a quick preview)
 CMAP = None if os.environ.get("VT350_COLOURS") == "none" else colours.load(os.environ.get("VT350_COLOURS", colours.MAP_FILE))
 class STATIC:                                      # no motion groups (as motion.Assign(None), without importing it:
     bucket = staticmethod(lambda name, key: (key, None))   # the batch lane's vt350-render chain stages no motion.py)

@@ -476,7 +476,7 @@ class Visibility(unittest.TestCase):
 class StandIns(unittest.TestCase):
     """vt350#195 AC3: a stand-in (a cheap shape or mesh the GUI shows, its StandInFor naming the real part) and its
     real part (hidden, so the GUI never tessellates it). The export always walks the real part (its bucket, role and
-    motion group), never the stand-in; VT350_STANDINS=1 only swaps where the real part's geometry comes from."""
+    motion group), never the stand-in; RENDER_STANDINS=1 only swaps where the real part's geometry comes from."""
     REAL = {"Spring1"}
 
     def skip(self, name, visible, standin_for=""):

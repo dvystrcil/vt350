@@ -1,6 +1,6 @@
 # What we've learned about FreeCAD
 
-Things that cost us time, measured on this model (FreeCAD 26.3rc2 AppImage, this laptop). Each entry says how
+Things that cost us time, measured on the VT350 model (FreeCAD 26.3rc2 AppImage, one laptop), but true of FreeCAD in general. Each entry says how
 we know it. **Keep this current while working:** add a finding the day it's measured, not in a later docs pass.
 
 ## Why the printer is slow to open: tessellation, not file size
@@ -48,7 +48,7 @@ costs nothing on open (above) and is there for renders.
   - The stand-in can be a shape (`Part::Feature`, the springs' tubes) or a coarse mesh (`Mesh::Feature`).
   - The render export (`platform/render/export_meshes.py`, rule `colours.standin_skip`) always walks the real part,
     though hidden, so it keeps its own bucket, colour role and motion group. It never exports the stand-in.
-  - `VT350_STANDINS=1` is a quick preview: it draws each real part with its stand-in's geometry instead of meshing
+  - `RENDER_STANDINS=1` is a quick preview: it draws each real part with its stand-in's geometry instead of meshing
     the real shape (`colours.standin_source`).
   - A `Mesh::Feature` isn't a `Part::Feature`, so the passes, clash checks and part index, which walk
     Part::Features, don't see mesh stand-ins at all.

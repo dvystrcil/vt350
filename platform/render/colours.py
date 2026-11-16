@@ -96,7 +96,7 @@ def standin_skip(name, visible, standin_for, real):
 
 
 def standin_source(name, by_real, use_standins):
-    """With use_standins (VT350_STANDINS=1, a quick preview), the stand-in whose geometry the export draws for the
+    """With use_standins (RENDER_STANDINS=1, a quick preview), the stand-in whose geometry the export draws for the
     real part `name` (by_real = {real Name: stand-in Name}); otherwise None (draw the real shape)."""
     return by_real.get(name) if use_standins else None
 

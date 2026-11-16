@@ -1,7 +1,7 @@
 # GUI pass: vt350-lite-49 -> vt350-lite-50   (headless = dry run, never saves)
 # vt350#195 AC3 (user, 2026-11-16: "I good with proceeding with standins and swaping when rendering is needed"): the next
 # most expensive parts to tessellate get coarse-mesh stand-ins, as the springs got tubes in lite-49. Measured with 5
-# copies of each in a test document, GUI open (notes/freecad-lessons.md):
+# copies of each in a test document, GUI open (platform/freecad/LESSONS.md):
 #   bowden tube 13.0-13.5 s -> mesh 0.3-0.6 s, O2S toolboard 12.6-13.1 -> 0.9-1.0, Smart Sensor 8.0-9.4 -> 0.7,
 #   heat block 5.4 -> 0.3, bearing (18 parts) 4.2-4.4 -> 0.3.
 # A coarse mesh (Mesh::Feature, linear deflection 0.1 mm, angular 0.5 rad) is already triangles, so the GUI has nothing

@@ -7,7 +7,7 @@
 # property naming the real spring. The real spring stays, hidden: the GUI does not tessellate a hidden object when it
 # opens a file (measured 2026-11-16, 5 springs: open 14.4 s visible, 0.2 s hidden; a visible spring under a hidden
 # App::Part still costs 15 s, so hiding a parent saves nothing). The render export draws the real spring and leaves out
-# the stand-in (colours.standin_skip; VT350_STANDINS=1 swaps them for a quick preview).
+# the stand-in (colours.standin_skip; RENDER_STANDINS=1 swaps them for a quick preview).
 # Checks (refuses to save on any): exactly 5 springs, each a plain Part::Feature (one B-spline face and two end planes)
 # that nothing is built from, directly in an App::Part; the fit is a coil (the radial spread is the wire's diameter);
 # each stand-in one valid solid that holds every sampled point of its spring and whose box holds the spring's box,
