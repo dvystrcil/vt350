@@ -59,5 +59,11 @@
     {"role": "accent",  "label": "^StealthMax .*(Latch|LogoCap|Hinge|hanger|cradle)"},
     {"role": "accent",  "group": "Chain", "label": "Chain Link|Fixed End|Unfixed End"},
     {"role": "printed", "label": "^StealthMax (M_|3\\.|1\\.)"}
+  ],
+  "visibility": [
+    {"tag": "dock_carriage_copy", "group": "(Left|Right) Dock / [^/]+ / Carriage(\\(Mirror\\))?( / |$)", "hide": "all",
+     "note": "The MadMax dock assembly carries a copy of the carriage at its pickup pose (lite-14); it is not a part of this printer. User 2026-11-15: the extra carriages on heads 1 and 5 are still in the renders."},
+    {"tag": "left_panel", "label": "^Left side panel \\(3 mm\\)", "hide": ["low_side"],
+     "note": "low_side looks in from the left; the panel hides the interior. User 2026-11-15: if the panel blocks, hide it for the side shots."}
   ]
 }

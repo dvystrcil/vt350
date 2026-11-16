@@ -401,5 +401,58 @@ class Aligned(unittest.TestCase):
         for f in self.SHARED | set(self.DIAGNOSTIC):
             self.assertTrue(any(os.path.exists(os.path.join(d, f)) for d in (HERE, PRINTER_RENDER)), f)
 
+
+VIS = {"roles": {}, "rules": [], "visibility": [
+    {"tag": "dock_carriage_copy", "group": "(Left|Right) Dock / [^/]+ / Carriage(\\(Mirror\\))?( / |$)", "hide": "all"},
+    {"tag": "left_panel", "label": "^Left side panel \\(3 mm\\)", "hide": ["low_side"]}]}
+
+
+class Visibility(unittest.TestCase):
+    """Render visibility flags (user 2026-11-15): the carriage copies inside the MadMax docks, hidden in every view, and
+    the left side panel, hidden in the side view it blocks."""
+
+    def test_a_docks_carriage_copy_is_tagged(self):
+        g = "Trident v4 v33 / Left Dock / MadMax 4 XOL v11 v1 / Carriage"
+        self.assertEqual(co.vis_tag(VIS, "COMPOUND003", g), "dock_carriage_copy")
+        g = "Trident v4 v33 / Right Dock / MadMax 4 XOL v11 v1(Mirror) / Carriage(Mirror)"
+        self.assertEqual(co.vis_tag(VIS, "SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)004", g), "dock_carriage_copy")
+
+    def test_the_real_paths_go_below_the_carriage(self):
+        # the exporter's path for these parts, read from vt350-lite-42-none.FCStd (2026-11-15): the carriage is a group
+        # of groups, so a rule anchored at "Carriage$" matched nothing
+        m = co.load(os.path.join(PRINTER_RENDER, "colours.json"))
+        for g in ("4040-350x350x250 Voron Trident v4 v33 / Right Dock / MadMax 4 XOL v11 v1(Mirror) / Carriage(Mirror) / MadMaxCarriage(Mirror)",
+                  "4040-350x350x250 Voron Trident v4 v33 / Right Dock / MadMax 4 XOL v11 v1(Mirror) / Carriage(Mirror) / MadMaxCarriage(Mirror) / Belt Clips(Mirror) / 4mm Gap 6mm Belt v1(Mirror)",
+                  "4040-350x350x250 Voron Trident v4 v33 / Left Dock / MadMax 4 XOL v11 v1 / Carriage / MadMaxCarriage"):
+            self.assertEqual(co.vis_tag(m, "COMPOUND004", g), "dock_carriage_copy", g)
+        self.assertIsNone(co.vis_tag(m, "COMPOUND", "4040-350x350x250 Voron Trident v4 v33 / Carriage (1) / MadMaxCarriage (1)"))
+        self.assertIsNone(co.vis_tag(m, "SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)",
+                                     "4040-350x350x250 Voron Trident v4 v33 / Carriage (1) / MadMaxCarriage (1) / Belt Clips (1) / 4mm Gap 6mm Belt v1 (2)"))
+
+    def test_the_gantry_carriage_is_not(self):
+        self.assertIsNone(co.vis_tag(VIS, "Beacon RevH Normal (Beacon CAD, MIT)", "Trident v4 v33 / Carriage (1) / MadMaxCarriage (1)"))
+
+    def test_the_left_panel_and_its_paint_are_tagged(self):
+        for lab in ("Left side panel (3 mm)", "Left side panel (3 mm) paint, outside"):
+            self.assertEqual(co.vis_tag(VIS, lab, "Enclosure extras (lite-16)"), "left_panel")
+        self.assertIsNone(co.vis_tag(VIS, "Right side panel (3 mm)", "Enclosure extras (lite-16)"))
+
+    def test_hidden_in_follows_the_rule(self):
+        self.assertTrue(co.hidden_in(VIS, "dock_carriage_copy", "outside"))
+        self.assertTrue(co.hidden_in(VIS, "left_panel", "low_side"))
+        self.assertFalse(co.hidden_in(VIS, "left_panel", "outside"))
+        self.assertFalse(co.hidden_in(VIS, None, "low_side"))
+
+    def test_a_rule_needs_a_tag_a_matcher_and_a_hide(self):
+        for bad in ({"group": "x", "hide": "all"}, {"tag": "t", "hide": "all"}, {"tag": "t", "label": "x"},
+                    {"tag": "t", "label": "x", "hide": "some"}):
+            with self.assertRaises(ValueError): co.validate({"roles": {}, "rules": [], "visibility": [bad]})
+
+    def test_the_printer_map_hides_the_dock_copies_and_the_left_panel_for_low_side(self):
+        m = co.load(os.path.join(PRINTER_RENDER, "colours.json"))
+        tags = {r["tag"]: r["hide"] for r in m["visibility"]}
+        self.assertEqual(tags.get("dock_carriage_copy"), "all")
+        self.assertIn("low_side", tags.get("left_panel", []))
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
