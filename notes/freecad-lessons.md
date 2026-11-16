@@ -45,9 +45,13 @@ costs nothing on open (above) and is there for renders.
 
 - **How it's wired:** the stand-in sits beside the real part in the same App::Part, at its placement, in its colour,
   with a `StandInFor` property naming the real part.
-  - The render export (`platform/render/export_meshes.py`, rule `colours.standin_skip`) draws the real part, though
-    hidden, and leaves out the stand-in.
-  - `VT350_STANDINS=1` renders the stand-ins instead, for a quick preview.
+  - The stand-in can be a shape (`Part::Feature`, the springs' tubes) or a coarse mesh (`Mesh::Feature`).
+  - The render export (`platform/render/export_meshes.py`, rule `colours.standin_skip`) always walks the real part,
+    though hidden, so it keeps its own bucket, colour role and motion group. It never exports the stand-in.
+  - `VT350_STANDINS=1` is a quick preview: it draws each real part with its stand-in's geometry instead of meshing
+    the real shape (`colours.standin_source`).
+  - A `Mesh::Feature` isn't a `Part::Feature`, so the passes, clash checks and part index, which walk
+    Part::Features, don't see mesh stand-ins at all.
 - **To see a real part in the GUI:** select it in the tree and press Space. That pays its tessellation then.
 - **Springs (lite-49):** a plain tube fitted to the coil (`platform/freecad/standins.py`). Printer open: median 125.6 → 111.5 s.
 - **Choosing a stand-in shape** (5 copies each, GUI open; the real parts as they are vs two generic stand-ins):
@@ -90,6 +94,8 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
   A scripted run waits behind that dialog forever. Move the folder aside.
 - **`Shape.BoundBox` is loose on B-spline surfaces:** it follows the control polygon. Use the tight box,
   `optimalBoundingBox` (`litelib.obb`). A spring's loose box was 7.65 mm across; the coil is 6.905.
+- **`distToShape` is slow on a big multi-solid shape.** 60 points against the 224-solid O2S board took ~5 minutes.
+  Check a point only against the faces whose box (enlarged by the tolerance) contains it.
 - **A trimmed face's parameter range is the rectangle round it.** Sampling a grid over `ParameterRange` lands
   points off the face, for example on a plane face round a circular wire end. Sample edges instead, or check `isInside`.
 - **`removeSplitter()` changes the shape it's called on.** If the result is invalid, the original is broken too.
