@@ -1,0 +1,65 @@
+[  139.1s] opened /home/dan/Documents/VT350/vt350-lite-46.FCStd
+[  149.7s] ok   2040 (2) (new front) found once: 1
+[  157.3s] ok   2040 (2)001 found once: 1
+[  161.4s] ok   4040 (2) found once: 1
+[  168.3s] ok   4040 (1)004 found once: 1
+[  174.4s] ok   e-box front upright found once: 1
+[  174.4s] ok   e-box rear upright found once: 1
+[  254.7s] ok   rear upright profile 20 x 40 in plan: 20.00 x 40.00 x 0.001
+[  255.0s] ok   rear upright clipped to its box: 1 solid, 237098 mm3
+[  275.6s] ok   front upright: 4 joint holes cut, 697 mm3 removed, 1 solid
+[  283.6s] ok   rear upright: 4 joint holes cut, 747 mm3 removed, 1 solid
+[  284.6s] ok   2040 e-box outer side rail, bottom (lite-46): clipped to Y -70..480, 1 solid, 0.116 mm3 off
+[  286.6s] ok   2040 e-box outer side rail, top (lite-46): clipped to Y -70..480, 1 solid, 0.116 mm3 off
+[  286.8s] ok   2 e-box side rails: 2
+[  378.0s] ok   2040 (2) (new front) one piece X -520..125 (lite-47): X -520.00..125.00
+[  378.0s] ok   2040 (2)001 one piece X -520..125 (lite-47): X -520.00..125.00
+[  378.0s] ok   4040 (2) one piece X -520..125 (lite-47): X -520.00..125.00
+[  378.0s] ok   4040 (1)004 one piece X -520..125 (lite-47): X -520.00..125.00
+[  378.0s] ok   2020 e-box front outer upright, Z -50..690 (lite-47): X 125.00..145.00, Y -90.00..-70.00, Z -50.00..690.00
+[  378.0s] ok   2040 e-box rear outer upright, Y 480..520, Z -50..690 (lite-47): X 125.00..145.00, Y 480.00..520.00, Z -50.00..690.00
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s]   boolean failed: Null input shape
+[  554.2s] info screw threads in their rail ends (expected): 8 [('2040 (2) (new front) one piece X -520..125 (', 'M5x30-Screw e-box joint 2040 (2) (ne', 46.9), ('2040 (2) (new front) one piece X -520..125 (', 'M5x30-Screw e-box joint 2040 (2) (ne', 46.9), ('M5x30-Screw e-box joint 2040 (2)001 Y-80 Z66', '2040 (2)001 one piece X -520..125 (l', 46.9), ('M5x30-Screw e-box joint 2040 (2)001 Y-80 Z68', '2040 (2)001 one piece X -520..125 (l', 46.9), ('M5x30-Screw e-box joint 4040 (2) Y490 Z-40 (', '4040 (2) one piece X -520..125 (lite', 143.6), ('M5x30-Screw e-box joint 4040 (2) Y510 Z-40 (', '4040 (2) one piece X -520..125 (lite', 143.6), ('M5x30-Screw e-box joint 4040 (1)004 Y490 Z68', '4040 (1)004 one piece X -520..125 (l', 73.3), ('M5x30-Screw e-box joint 4040 (1)004 Y510 Z68', '4040 (1)004 one piece X -520..125 (l', 73.3)]
+[  554.2s] info overlaps lite-46 already has (not a failure): 8 [('4040 (2) one piece X -520..125 (lite-47)', 'M5x10-Screw016', 25.5), ('4040 (2) one piece X -520..125 (lite-47)', 'M5x10-Screw017', 25.5), ('4040 (2) one piece X -520..125 (lite-47)', 'Back Panel001', 5741.0), ('4040 (2) one piece X -520..125 (lite-47)', 'Back Panel001 paint, outside', 277.8), ('4040 (2) one piece X -520..125 (lite-47)', '2040 e-box outer side rail, bottom (', 0.0), ('4040 (1)004 one piece X -520..125 (lite-47)', 'Back Panel001', 3098.9), ('4040 (1)004 one piece X -520..125 (lite-47)', 'Back Panel001 paint, outside', 9.6), ('4040 (1)004 one piece X -520..125 (lite-47)', '2040 e-box outer side rail, top (lit', 0.0)]
+[  554.2s] ok   new overlaps (pairs that didn't overlap in lite-46): 0 []
+[  554.2s] ok   solids: 1390 (lite-46 + 8 screws + 8 washers = 1390)
+[  554.2s] verify: 0 problems
+[  583.6s] SAVED /home/dan/Documents/VT350/vt350-lite-47.FCStd 214445116
+[  583.6s] litepool: peak RSS: workers max 8248 MB, sum 24744 MB; parent 8258 MB
