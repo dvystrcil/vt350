@@ -477,19 +477,24 @@ Both ends are measured on the saved model by `cad/studies/z_sweep.py` (#82). It'
 | 0 | the nozzle touches the magnet sheet | — |
 | **−20.27** | the mechanical top, with the toolhead parked | the rear Z block on its rail stop |
 
-With a steel sheet of thickness *t*, Z0 moves up by *t*: `position_max` becomes 330.33 − *t* (mechanical 335.33 − *t*) and the top −20.27 − *t*. `test_refresh.py` fails if `printer.cfg`'s `position_max` differs from `klipper_position_max_configured_mm` in the committed log. `position_min` must stay above the top with margin. Below Z0 the bed only clears the toolhead when the toolhead is parked: with a head (or the empty carriage) over the bed, the bed meets it at Z 0 / −1.66.
+With a steel sheet of thickness *t*, Z0 moves up by *t*: `position_max` becomes 330.33 − *t* (mechanical 335.33 − *t*) and the top −20.27 − *t*. `test_refresh.py` fails if `printer.cfg`'s `position_max` differs from `klipper_position_max_configured_mm` in the committed log. `position_min` must stay above the top with margin. Below Z0 the bed only clears the toolhead when the toolhead is parked: with a head over the bed, the bed meets the nozzle at Z 0.
 
 Runners-up, i.e. what would limit next:
 - **Bottom, Z rails:** the left and right Z blocks' bottom end caps reach their rails' bottom ends at dZ −242.10. That's only **0.10 mm** past the stop: the blocks stay on the rails, just. The rear block has 4.50 mm.
 - **Bottom, Z carriages:** the left and right Z carriages land on their Z motors' M3 screw heads at −243.30.
 - **Bottom, filter (lite-29 only):** the 2020 spine reaches the StealthMax lid latch at −244.50, 2.5 mm under the spine at the mechanical stop. The filter comes off the printer (#115, user 2026-11-09: rear-outside mount later; a printed panel with a lip closes the backbone cutout).
-- **Top:** past the nozzle tip, the magnet sheet next meets:
-  - the gantry's MadMax carriage body (label `COMPOUND`) at +1.66 mm;
-  - the 4010 ducts at +2.43;
-  - the Beacon at +2.60.
+- **Top:** past the nozzle tip (lite-62, `cad/data/logs/carriage_clearance.log`), the magnet sheet next meets:
+  - the 4010 duct tips at +2.03 mm (carried head);
+  - the Dragon heater-block cover at +2.50 (carried head);
+  - the Beacon coil face at +2.60;
+  - the gantry's MadMax carriage body (label `COMPOUND`) at +3.00, since lite-62 trimmed its ledge pads (it was +1.66).
 
-  The carriage body only 1.66 mm above the nozzle tip looks too close; check the carried-head offset before trusting it.
-- **Heads docked, carriage at the model pose** (over the middle of the bed): the same carriage body is the first thing above the bed, at +94.99 (Klipper Z −1.66).
+  **Beacon height, decided (#114 AC3, owner 2026-11-17):** what matters is that the Beacon coil face sits in Beacon's
+  prescribed height zone above the nozzle tip (nominally 2.6 mm; Beacon's mount drawing gives 2.6–3). The model has
+  2.60, at the zone's low edge. Parts lower than the Beacon face are fine as long as they stay above the nozzle tip:
+  they clear the bed whenever the nozzle touches it. The real height is measured after the build (AC5); a shim under
+  the Beacon raises it if the printed parts put it below the zone.
+- **Heads docked, carriage at the model pose** (over the middle of the bed): the Beacon is the first thing above the bed, at +95.93 (Klipper Z −2.60; it was the carriage body at −1.66 before lite-62).
 - **Toolhead parked** (gantry dY −257.73, carriage at the Left or Right dock pickup): no part of the toolhead, gantry or frame reaches the bed before the Z rail stops; both parkings give the same contacts. That's 110 pairs searched each, 0 boolean errors.
 
 Left out of the sweep, and listed in its log: the Z drag chain (its links are posed for one bed height), the docks' carriage copies, with a head carried, the belts and that head's own bowden tube, and with the toolhead parked, the belts. Pairs already overlapping at the model pose are listed, not limits. There are 13: the Z blocks' 0.002–0.07 mm³ overlaps with their own rails, and the rear lead-screw nut on its rod (63.8 mm³).
