@@ -2,7 +2,7 @@
 #   VT350_MODEL = .FCStd to read (default: the current working copy), VT350_RENDER_OUT = output folder,
 #   VT350_EXTRA = more .FCStd files in the same global frame, ':'-separated (e.g. vt350-ebox.FCStd, lite-19),
 #   VT350_COLOURS = colour map (default cad/render/colours.json; "none" = the model's own colours only).
-#   VT350_GROUPS = a motion groups file (cad/motion/play.py's, vt350#135 AC4; platform/render/motion.py): each moving
+#   VT350_GROUPS = a motion groups file (cad/motion/play.py's, vt350#135 AC4; platform/render/groups.py): each moving
 #     group's parts go in buckets of their own, "<group>__<key>", with "group" in scene.json, so render.py --frames
 #     can move them; "clip" parts are exported cut to their box, "hide" parts are left out. Unset: as before.
 # Writes one binary STL per bucket in global coordinates (mm) and scene.json describing each bucket (colour,
@@ -31,13 +31,13 @@ OUT = os.environ.get("VT350_RENDER_OUT", "/tmp/claude-1000/-home-dan-Code/49170e
 EXTRA = [p for p in os.environ.get("VT350_EXTRA", "").split(":") if p]
 STANDINS = os.environ.get("RENDER_STANDINS") == "1"   # draw real parts with their stand-ins' geometry (a quick preview)
 CMAP = None if os.environ.get("VT350_COLOURS") == "none" else colours.load(os.environ.get("VT350_COLOURS", colours.MAP_FILE))
-class STATIC:                                      # no motion groups (as motion.Assign(None), without importing it:
-    bucket = staticmethod(lambda name, key: (key, None))   # the batch lane's vt350-render chain stages no motion.py)
+class STATIC:                                      # no motion groups (as groups.Assign(None), without importing it:
+    bucket = staticmethod(lambda name, key: (key, None))   # the batch lane's vt350-render chain stages no groups.py)
     hidden = staticmethod(lambda name: False); clip = staticmethod(lambda name: None)
 GROUPS = STATIC
 if os.environ.get("VT350_GROUPS"):                 # motion groups -> buckets (vt350#135 AC4)
-    import motion
-    GROUPS = motion.Assign(json.load(open(os.environ["VT350_GROUPS"])))
+    import groups
+    GROUPS = groups.Assign(json.load(open(os.environ["VT350_GROUPS"])))
 os.makedirs(OUT, exist_ok=True)
 logf = open(os.path.join(OUT, "export.log"), "w"); t0 = time.time()
 def log(*a): logf.write(f"[{time.time() - t0:7.1f}s] " + " ".join(str(x) for x in a) + "\n"); logf.flush()
