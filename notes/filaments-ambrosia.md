@@ -57,4 +57,6 @@ own numbers:
 - **PC-CF** (2400 MPa, 120 °C) and the ASA grades are less stiff.
 
 A datasheet doesn't measure creep directly: stiffness and HDT are the closest proxies listed. The hinge's own design
-(how its pin carries the door's weight) matters as much as the material. Decision pending.
+(how its pin carries the door's weight) matters as much as the material.
+
+**Decided (owner, 2026-11-17): PET-GF.** PPS-CF is out: its 300–350 °C nozzle range is beyond what the owner prints.
