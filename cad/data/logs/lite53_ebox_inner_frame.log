@@ -1,0 +1,108 @@
+[   40.7s] opened /home/dan/Documents/VT350/vt350-lite-52.FCStd
+[  100.2s] ok   2040 (2) (new front) found 1x: 1
+[  100.3s] ok   2040 (2) (new front): extension 4882 mm3 = end face 325 mm2 x 15
+[  100.3s] ok   2040 (2)001 found 1x: 1
+[  100.3s] ok   4040 (2) found 1x: 1
+[  100.3s] ok   4040 (2): extension 7238 mm3 = end face 483 mm2 x 15
+[  100.4s] ok   4040 (1)004 found 1x: 1
+[  100.5s] ok   4040 (1)004: extension 7238 mm3 = end face 483 mm2 x 15
+[  100.6s] ok   2020 e-box front outer upright found 1x: 1
+[  100.6s] ok   2040 e-box rear outer upright found 1x: 1
+[  100.6s] ok   2040 e-box outer side rail found 2x: 2
+[  100.6s] ok   M5x30-Screw e-box joint found 8x: 8
+[  100.6s] ok   M5-Washer e-box joint found 8x: 8
+[  100.6s] ok   2020 e-box front outer upright, Z -50..690 (lite-4: parents don't turn
+[  100.6s] ok   2040 e-box rear outer upright, Y 480..520, Z -50..: parents don't turn
+[  100.6s] ok   2040 e-box outer side rail, bottom (lite-46): parents don't turn
+[  100.6s] ok   2040 e-box outer side rail, top (lite-46): parents don't turn
+[  100.6s] ok   2040 e-box outer side rail, top (lite-46): LinkTransform off
+[  100.6s] ok   M5x30-Screw e-box joint 2040 (2) (new front) Y-80 : parents don't turn
+[  100.6s] ok   M5x30-Screw e-box joint 2040 (2) (new front) Y-80 : parents don't turn
+[  100.6s] ok   M5x30-Screw e-box joint 2040 (2) (new front) Y-80 : LinkTransform off
+[  100.6s] ok   M5x30-Screw e-box joint 2040 (2)001 Y-80 Z660 (DIN: parents don't turn
+[  100.6s] ok   M5x30-Screw e-box joint 2040 (2)001 Y-80 Z660 (DIN: LinkTransform off
+[  100.6s] ok   M5x30-Screw e-box joint 2040 (2)001 Y-80 Z680 (DIN: parents don't turn
+[  100.6s] ok   M5x30-Screw e-box joint 2040 (2)001 Y-80 Z680 (DIN: LinkTransform off
+[  100.6s] ok   M5x30-Screw e-box joint 4040 (2) Y490 Z-40 (DIN 91: parents don't turn
+[  100.6s] ok   M5x30-Screw e-box joint 4040 (2) Y490 Z-40 (DIN 91: LinkTransform off
+[  100.6s] ok   M5x30-Screw e-box joint 4040 (2) Y510 Z-40 (DIN 91: parents don't turn
+[  100.6s] ok   M5x30-Screw e-box joint 4040 (2) Y510 Z-40 (DIN 91: LinkTransform off
+[  100.6s] ok   M5x30-Screw e-box joint 4040 (1)004 Y490 Z680 (DIN: parents don't turn
+[  100.6s] ok   M5x30-Screw e-box joint 4040 (1)004 Y490 Z680 (DIN: LinkTransform off
+[  100.6s] ok   M5x30-Screw e-box joint 4040 (1)004 Y510 Z680 (DIN: parents don't turn
+[  100.6s] ok   M5x30-Screw e-box joint 4040 (1)004 Y510 Z680 (DIN: LinkTransform off
+[  100.6s] ok   M5-Washer e-box joint 2040 (2) (new front) Y-80 Z-: parents don't turn
+[  100.6s] ok   M5-Washer e-box joint 2040 (2) (new front) Y-80 Z-: parents don't turn
+[  100.6s] ok   M5-Washer e-box joint 2040 (2) (new front) Y-80 Z-: LinkTransform off
+[  100.6s] ok   M5-Washer e-box joint 2040 (2)001 Y-80 Z660 (DIN 1: parents don't turn
+[  100.6s] ok   M5-Washer e-box joint 2040 (2)001 Y-80 Z660 (DIN 1: LinkTransform off
+[  100.6s] ok   M5-Washer e-box joint 2040 (2)001 Y-80 Z680 (DIN 1: parents don't turn
+[  100.6s] ok   M5-Washer e-box joint 2040 (2)001 Y-80 Z680 (DIN 1: LinkTransform off
+[  100.6s] ok   M5-Washer e-box joint 4040 (2) Y490 Z-40 (DIN 125,: parents don't turn
+[  100.6s] ok   M5-Washer e-box joint 4040 (2) Y490 Z-40 (DIN 125,: LinkTransform off
+[  100.6s] ok   M5-Washer e-box joint 4040 (2) Y510 Z-40 (DIN 125,: parents don't turn
+[  100.6s] ok   M5-Washer e-box joint 4040 (2) Y510 Z-40 (DIN 125,: LinkTransform off
+[  100.6s] ok   M5-Washer e-box joint 4040 (1)004 Y490 Z680 (DIN 1: parents don't turn
+[  100.6s] ok   M5-Washer e-box joint 4040 (1)004 Y490 Z680 (DIN 1: LinkTransform off
+[  100.6s] ok   M5-Washer e-box joint 4040 (1)004 Y510 Z680 (DIN 1: parents don't turn
+[  100.6s] ok   M5-Washer e-box joint 4040 (1)004 Y510 Z680 (DIN 1: LinkTransform off
+[  100.6s] ok   2020 (3) is a Part::Feature: Part::Feature
+[  100.6s] ok   2020 (3) runs along Z: 20.0 x 20.0 x 430.0
+[  100.6s] ok   2020 profile 20.00 x 20.00
+[  159.5s] ok   2040 (2) (new front) one piece X -520..125 (lite-47): X -520.00..140.00
+[  159.5s] ok   2040 (2)001 one piece X -520..125 (lite-47): X -520.00..140.00
+[  159.5s] ok   4040 (2) one piece X -520..125 (lite-47): X -520.00..140.00
+[  159.5s] ok   4040 (1)004 one piece X -520..125 (lite-47): X -520.00..140.00
+[  159.5s] ok   2020 e-box front outer upright, Z -50..690 (lite-4: X 125.0..145.0 -> 140.0..160.0
+[  159.5s] ok   2040 e-box rear outer upright, Y 480..520, Z -50..: X 125.0..145.0 -> 140.0..160.0
+[  159.5s] ok   2040 e-box outer side rail, bottom (lite-46): X 125.0..145.0 -> 140.0..160.0
+[  159.5s] ok   2040 e-box outer side rail, top (lite-46): X 125.0..145.0 -> 140.0..160.0
+[  159.5s] ok   M5x30-Screw e-box joint 2040 (2) (new front) Y-80 : X 110.0..145.0 -> 125.0..160.0
+[  159.5s] ok   M5x30-Screw e-box joint 2040 (2) (new front) Y-80 : X 110.0..145.0 -> 125.0..160.0
+[  159.5s] ok   M5x30-Screw e-box joint 2040 (2)001 Y-80 Z660 (DIN: X 110.0..145.0 -> 125.0..160.0
+[  159.5s] ok   M5x30-Screw e-box joint 2040 (2)001 Y-80 Z680 (DIN: X 110.0..145.0 -> 125.0..160.0
+[  159.5s] ok   M5x30-Screw e-box joint 4040 (2) Y490 Z-40 (DIN 91: X 110.0..145.0 -> 125.0..160.0
+[  159.5s] ok   M5x30-Screw e-box joint 4040 (2) Y510 Z-40 (DIN 91: X 110.0..145.0 -> 125.0..160.0
+[  159.5s] ok   M5x30-Screw e-box joint 4040 (1)004 Y490 Z680 (DIN: X 110.0..145.0 -> 125.0..160.0
+[  159.5s] ok   M5x30-Screw e-box joint 4040 (1)004 Y510 Z680 (DIN: X 110.0..145.0 -> 125.0..160.0
+[  159.5s] ok   M5-Washer e-box joint 2040 (2) (new front) Y-80 Z-: X 139.0..140.0 -> 154.0..155.0
+[  159.5s] ok   M5-Washer e-box joint 2040 (2) (new front) Y-80 Z-: X 139.0..140.0 -> 154.0..155.0
+[  159.5s] ok   M5-Washer e-box joint 2040 (2)001 Y-80 Z660 (DIN 1: X 139.0..140.0 -> 154.0..155.0
+[  159.5s] ok   M5-Washer e-box joint 2040 (2)001 Y-80 Z680 (DIN 1: X 139.0..140.0 -> 154.0..155.0
+[  159.5s] ok   M5-Washer e-box joint 4040 (2) Y490 Z-40 (DIN 125,: X 139.0..140.0 -> 154.0..155.0
+[  159.5s] ok   M5-Washer e-box joint 4040 (2) Y510 Z-40 (DIN 125,: X 139.0..140.0 -> 154.0..155.0
+[  159.5s] ok   M5-Washer e-box joint 4040 (1)004 Y490 Z680 (DIN 1: X 139.0..140.0 -> 154.0..155.0
+[  159.5s] ok   M5-Washer e-box joint 4040 (1)004 Y510 Z680 (DIN 1: X 139.0..140.0 -> 154.0..155.0
+[  159.5s] ok   2020 e-box inner cross member, bottom (lite-53): 45.0 65.0 -70.0 480.0 -50.0 -30.0
+[  159.5s] ok   2020 e-box inner cross member, top (lite-53): 45.0 65.0 -70.0 480.0 670.0 690.0
+[  159.5s] ok   2020 e-box inner upright, front, Y -58..-38 (lite-53): 45.0 65.0 -58.0 -38.0 -30.0 670.0
+[  159.5s] ok   2020 e-box inner upright, middle, Y 190..210 (lite-53): 45.0 65.0 190.0 210.0 -30.0 670.0
+[  159.5s] ok   2020 e-box inner upright, rear, Y 460..480 (lite-53): 45.0 65.0 460.0 480.0 -30.0 670.0
+[  185.5s]   boolean failed: Null input shape
+[  185.5s]   boolean failed: Null input shape
+[  185.5s]   boolean failed: Null input shape
+[  185.5s]   boolean failed: Null input shape
+[  185.5s]   boolean failed: Null input shape
+[  185.5s]   boolean failed: Null input shape
+[  185.5s]   boolean failed: Null input shape
+[  185.5s]   boolean failed: Null input shape
+[  185.5s]   boolean failed: Null input shape
+[  185.5s]   boolean failed: Null input shape
+[  185.5s]   boolean failed: Null input shape
+[  185.5s]   boolean failed: Null input shape
+[  185.5s]   boolean failed: Null input shape
+[  185.5s]   boolean failed: Null input shape
+[  185.5s]   boolean failed: Null input shape
+[  185.5s]   boolean failed: Null input shape
+[  185.5s]   boolean failed: Null input shape
+[  185.5s]   boolean failed: Null input shape
+[  185.5s]   boolean failed: Null input shape
+[  185.5s]   boolean failed: Null input shape
+[  185.5s]   boolean failed: Null input shape
+[  185.5s]   boolean failed: Null input shape
+[  185.5s]   boolean failed: Null input shape
+[  185.5s] info overlaps lite-52 already has (not a failure): 14 [('2040 (2) (new front) one piece X -520..140 (', 'M5x30-Screw e-box joint 2040 (2) (ne', 0.0), ('2040 (2) (new front) one piece X -520..140 (', 'M5x30-Screw e-box joint 2040 (2) (ne', 0.0), ('4040 (2) one piece X -520..140 (lite-53)', 'M5x10-Screw016', 25.5), ('4040 (2) one piece X -520..140 (lite-53)', 'M5x10-Screw017', 25.5), ('4040 (2) one piece X -520..140 (lite-53)', 'Back Panel001', 5739.8), ('4040 (2) one piece X -520..140 (lite-53)', 'Back Panel001 paint, outside', 278.0), ('4040 (1)004 one piece X -520..140 (lite-53)', 'Back Panel001', 3098.9), ('4040 (1)004 one piece X -520..140 (lite-53)', 'Back Panel001 paint, outside', 9.6), ('M5x30-Screw e-box joint 2040 (2)001 Y-80 Z66', '2040 (2)001 one piece X -520..140 (l', 83.3), ('M5x30-Screw e-box joint 2040 (2)001 Y-80 Z68', '2040 (2)001 one piece X -520..140 (l', 83.3), ('M5x30-Screw e-box joint 4040 (2) Y490 Z-40 (', '4040 (2) one piece X -520..140 (lite', 73.3), ('M5x30-Screw e-box joint 4040 (2) Y510 Z-40 (', '4040 (2) one piece X -520..140 (lite', 73.3), ('M5x30-Screw e-box joint 4040 (1)004 Y490 Z68', '4040 (1)004 one piece X -520..140 (l', 73.3), ('M5x30-Screw e-box joint 4040 (1)004 Y510 Z68', '4040 (1)004 one piece X -520..140 (l', 73.3)]
+[  185.5s] ok   new overlaps (pairs that didn't overlap in lite-52): 0 []
+[  185.5s] ok   solids: 1400 (lite-52 + 5 = 1400)
+[  185.5s] verify: 0 problems
+[  190.5s] SAVED /home/dan/Documents/VT350/vt350-lite-53.FCStd 33968022
