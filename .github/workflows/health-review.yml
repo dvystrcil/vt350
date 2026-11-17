@@ -1,0 +1,54 @@
+name: Monthly health review
+# vt350#120: run the unattended checks (CI on main, pinned-version drift, a manual run, docs age, script count),
+# open or update the "health review" issue with the report, and fail if any check is red. Drift and old docs are
+# amber: reported, not failing. Run it by hand from the Actions tab (workflow_dispatch) or locally:
+#   python3 platform/health/health_review.py --repo dvystrcil/vt350 --out report.md ...   (the arguments below)
+on:
+  schedule:
+    - cron: "0 16 1 * *"          # the 1st of each month, 16:00 UTC (08:00 / 09:00 Pacific)
+  workflow_dispatch:
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+      issues: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0          # docs age needs history
+      # what check_test_tmp.sh's tests need (as test-tmp.yml)
+      - name: Install ffmpeg, numpy, scipy
+        run: |
+          sudo apt-get update -q && sudo apt-get install -y -q --no-install-recommends ffmpeg
+          python3 -m pip install --user --break-system-packages numpy scipy
+      - name: Run the checks
+        id: checks
+        continue-on-error: true
+        run: |
+          python3 platform/health/health_review.py --repo "${{ github.repository }}" --out report.md \
+            --dockerfile platform/kalisim/Dockerfile \
+            --git-pin KALICO_SHA=https://github.com/KalicoCrew/kalico@main \
+            --git-pin TOOLCHANGER_SHA=https://github.com/viesturz/klipper-toolchanger@main \
+            --image-pin ghcr.io/kalicocrew/kalico:main \
+            --run "bash platform/testing/check_test_tmp.sh" \
+            --doc notes/status.md --doc cad/README.md --scripts cad/scripts
+      - name: Open or update the health review issue
+        run: |
+          gh label create health-review --color 0E8A16 --description "Monthly health review (vt350#120)" 2>/dev/null || true
+          n=$(gh issue list --label health-review --state open --json number --jq '.[0].number')
+          if [ -n "$n" ]; then
+            gh issue edit "$n" --body-file report.md
+            gh issue comment "$n" --body "Updated by run ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}."
+          else
+            gh issue create --title "Health review" --label health-review --body-file report.md
+          fi
+      - name: Fail if any check is red
+        if: steps.checks.outcome == 'failure'
+        run: |
+          echo "health review: red checks, see report.md in the issue"
+          exit 1
