@@ -282,8 +282,8 @@ class Audit(unittest.TestCase):
 
     def without_the_pr88_rule(self):
         m = co.load()
-        frame = [r for r in m["rules"] if r["role"] == "frame"]
-        self.assertEqual(len(frame), 1)
+        frame = [r for r in m["rules"] if r["role"] == "frame" and "Dock crossbar" in r.get("label", "")]
+        self.assertEqual(len(frame), 1)   # the main frame rule (lite-56 added a second frame rule, for the e-box door)
         before = frame[0]["label"]
         frame[0]["label"] = before.replace("|^Dock crossbar", "")
         self.assertNotEqual(frame[0]["label"], before, "the vt350#88 crossbar rule is no longer written this way")

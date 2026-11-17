@@ -67,7 +67,7 @@ try:
         if colours.standin_skip(o.Name, vo is None or vo.isVisible(), getattr(o, "StandInFor", ""), real):
             hidden += 1; continue
         if G.hidden(o.Name): n_motion["hide"] += 1; continue
-        if EXTRA and o.Label.startswith(("Ebox envelope", "Filter envelope")): continue   # placeholders for vt350-ebox / vt350-filter merged in (lite-19, lite-27)
+        if EXTRA and o.Label.startswith(("Ebox envelope", "Filter envelope", "EMU envelope")): continue   # placeholders for vt350-ebox / vt350-filter / vt350-emu merged in (lite-19, lite-27, lite-55)
         if any(o2.isDerivedFrom('Part::Feature') and o2.Name in leaves for o2 in o.InList if o2.TypeId != 'App::Part'):
             continue    # consumed by a feature that is itself a leaf
         try:

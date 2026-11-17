@@ -1,0 +1,31 @@
+[   13.2s] ok   holder mesh DIN_frame_mount_x4_square in /home/dan/Documents/3D Files/ebox/ebox.FCStd
+[   13.7s] ok   holder solid valid, volume 7454 (mesh 7454)
+[   13.7s] holder 14.0 x 60.0 x 11.8, key at local x 1.00, top z 11.80
+[   19.6s] opened /home/dan/Documents/VT350/vt350-ebox-2.FCStd
+[   21.8s] ok   old rail strips: 5 (5)
+[   25.6s] ok   81 parts moved by (+11.0, 0, 0) (+6.0 Z on the mains rail): 0 off []
+[   25.6s] ok   DIN rail TS35 x 7.5 (EN 60715), mains, Z 36, 538 long: X 76.0..83.5 Y -58.0..480.0 Z 18.5..53.5
+[   25.6s] ok   DIN rail holder (owner's Neptune DIN_frame_mount), mains rail,: X 64.2..76.0 Y -54.0..-40.0 Z 6.0..66.0
+[   25.6s] ok   DIN rail holder (owner's Neptune DIN_frame_mount), mains rail,: X 64.2..76.0 Y 464.0..478.0 Z 6.0..66.0
+[   25.6s] ok   DIN rail TS35 x 7.5 (EN 60715), PSUs, Z 190, 538 long: X 76.0..83.5 Y -58.0..480.0 Z 172.5..207.5
+[   25.6s] ok   DIN rail holder (owner's Neptune DIN_frame_mount), PSUs rail, : X 64.2..76.0 Y -54.0..-40.0 Z 160.0..220.0
+[   25.6s] ok   DIN rail holder (owner's Neptune DIN_frame_mount), PSUs rail, : X 64.2..76.0 Y 464.0..478.0 Z 160.0..220.0
+[   25.6s] ok   DIN rail TS35 x 7.5 (EN 60715), DC fuses + buck, Z 300, 538 lo: X 76.0..83.5 Y -58.0..480.0 Z 282.5..317.5
+[   25.6s] ok   DIN rail holder (owner's Neptune DIN_frame_mount), DC fuses + : X 64.2..76.0 Y -54.0..-40.0 Z 270.0..330.0
+[   25.6s] ok   DIN rail holder (owner's Neptune DIN_frame_mount), DC fuses + : X 64.2..76.0 Y 464.0..478.0 Z 270.0..330.0
+[   25.6s] ok   DIN rail TS35 x 7.5 (EN 60715), logic, lower, Z 400, 538 long: X 76.0..83.5 Y -58.0..480.0 Z 382.5..417.5
+[   25.6s] ok   DIN rail holder (owner's Neptune DIN_frame_mount), logic, lowe: X 64.2..76.0 Y -54.0..-40.0 Z 370.0..430.0
+[   25.6s] ok   DIN rail holder (owner's Neptune DIN_frame_mount), logic, lowe: X 64.2..76.0 Y 464.0..478.0 Z 370.0..430.0
+[   25.6s] ok   DIN rail TS35 x 7.5 (EN 60715), logic, upper, Z 490, 538 long: X 76.0..83.5 Y -58.0..480.0 Z 472.5..507.5
+[   25.6s] ok   DIN rail holder (owner's Neptune DIN_frame_mount), logic, uppe: X 64.2..76.0 Y -54.0..-40.0 Z 460.0..520.0
+[   25.6s] ok   DIN rail holder (owner's Neptune DIN_frame_mount), logic, uppe: X 64.2..76.0 Y 464.0..478.0 Z 460.0..520.0
+[   25.6s] ok   every e-box part within X 64.0..160.0: 0 out []
+[   39.5s] ok   layout units overlap: 0 []
+[   82.5s] opened /home/dan/Documents/VT350/vt350-lite-56.FCStd
+[   93.1s] ok   e-box envelope 1 (1)
+[  530.5s] ok   no e-box part overlaps a lite-56 part: 0 []
+[  530.5s] envelope: BoundBox (64.2, -58, -9, 146, 545, 636)
+[  540.9s] ok   lite-57 solids: 1474 (= lite-56)
+[  540.9s] verify: 0 problems
+[  542.8s] SAVED /home/dan/Documents/VT350/vt350-ebox-3.FCStd 12774315
+[  547.9s] SAVED /home/dan/Documents/VT350/vt350-lite-57.FCStd 34905561

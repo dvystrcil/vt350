@@ -1,0 +1,60 @@
+[   51.9s] opened /home/dan/Documents/VT350/vt350-lite-58.FCStd
+[  178.2s] ok   2020 e-box front outer upright: 1 found, box (140.0, 160.0, -90.0, -70.0, -50.0, 690.0) (expected (140.0, 160.0, -90.0, -70.0, -50.0, 690.0))
+[  178.2s] ok   2040 e-box rear outer upright: 1 found, box (140.0, 160.0, 480.0, 520.0, -50.0, 690.0) (expected (140.0, 160.0, 480.0, 520.0, -50.0, 690.0))
+[  178.2s] ok   2040 e-box outer side rail, top: 1 found, box (140.0, 160.0, -70.0, 480.0, 650.0, 690.0) (expected (140.0, 160.0, -70, 480, 650.0, 690.0))
+[  178.2s] ok   2040 (2) (new front): 1 found, box (-520.0, 140.0, -90.0, -70.0, -50.0, -10.0) (expected (-520, 140.0, -90.0, -70.0, -50.0, -10))
+[  178.2s] ok   4040 (2) one piece: 1 found, box (-520.0, 140.0, 480.0, 520.0, -50.0, -10.0) (expected (-520, 140.0, 480.0, 520.0, -50.0, -10))
+[  178.2s] ok   roof panel core 1, paint 1
+[  178.2s] ok   roof panel Z ..693.00, Y -90.0..520.0: the top panel continues it
+[  179.7s] ok   top panel: skin 15860.0 + core 222040.0 = 237900.0 mm3
+[  179.7s] ok   E-box top panel (3 mm): one valid solid (1), 222040 mm3
+[  179.7s] ok   E-box top panel (3 mm) paint, outside: one valid solid (1), 15860 mm3
+[  180.4s] ok   Cable channel arm 1 (printed, M5 to the rear-right: crosses the panel at X 10.0..115.0 Y 520.0..533.5 Z 454.0..466.0: an expected notch
+[  180.4s] ok   Cable channel arm 2 (printed, M5 to the rear-right: crosses the panel at X 10.0..115.0 Y 520.0..533.4 Z 614.0..626.0: an expected notch
+[  180.5s] ok   rear panel: skin 16686.1 + core 233605.7 = 250291.8 mm3
+[  180.5s] ok   E-box rear panel (3 mm): one valid solid (1), 233606 mm3
+[  180.5s] ok   E-box rear panel (3 mm) paint, outside: one valid solid (1), 16686 mm3
+[  181.0s] ok   SOLID041: crosses the panel at X 30.7..49.3 Y -131.0..-63.1 Z 435.1..495.1: an expected notch
+[  181.0s] ok   SOLID042: crosses the panel at X 30.2..50.8 Y -131.0..-61.6 Z 495.1..524.1: an expected notch
+[  181.0s] ok   SOLID053: crosses the panel at X 24.1..38.7 Y -103.0..-77.1 Z 436.1..494.1: an expected notch
+[  181.0s] ok   SOLID054: crosses the panel at X 30.2..50.8 Y -131.0..-61.6 Z 406.1..435.1: an expected notch
+[  181.0s] ok   E-box door: M3x8-Screw050: crosses the panel at X 147.3..152.8 Y -96.0..-85.0 Z 476.1..481.6: an expected notch
+[  181.0s] ok   E-box door: M3x8-Screw051: crosses the panel at X 147.3..152.8 Y -96.0..-85.0 Z 448.7..454.2: an expected notch
+[  181.0s] ok   E-box door: 6x3mm magnet v2 (1)007: crosses the panel at X 153.5..159.5 Y -95.8..-92.8 Z 478.1..484.1: an expected notch
+[  181.0s] ok   E-box door: 6x3mm magnet v2 (1)008: crosses the panel at X 153.5..159.5 Y -95.8..-92.8 Z 487.1..493.1: an expected notch
+[  181.0s] ok   E-box door: 6x3mm magnet v2 (1)009: crosses the panel at X 153.5..159.5 Y -95.8..-92.8 Z 446.1..452.1: an expected notch
+[  181.0s] ok   E-box door: 6x3mm magnet v2 (1)010: crosses the panel at X 153.5..159.5 Y -95.8..-92.8 Z 437.1..443.1: an expected notch
+[  181.0s] ok   E-box door: SOLID053: crosses the panel at X 147.1..173.0 Y -98.7..-84.1 Z 436.1..494.1: an expected notch
+[  181.1s] ok   front: notched round 11 door latch parts (both doors')
+[  228.2s] ok   E-box grille panel 1 of 3, Z -50..195 (printed A: one valid solid (1), 55650 mm3
+[  228.6s] ok   E-box grille panel 2 of 3, Z 195..400 (printed A: one valid solid (1), 40900 mm3
+[  229.2s] ok   E-box grille panel 3 of 3, Z 400..690 (printed A: one valid solid (1), 76226 mm3
+[  234.6s] ok   E-box grille mesh 1 (printed ABS, vt350, GPL-3.0: one valid solid (1), 16153 mm3
+[  239.8s] ok   E-box grille mesh 2 (printed ABS, vt350, GPL-3.0: one valid solid (1), 15826 mm3
+[  241.1s] ok   E-box grille mesh 3 (printed ABS, vt350, GPL-3.0: one valid solid (1), 9004 mm3
+[  241.3s] ok   E-box grille badge (printed ABS, vt350, GPL-3.0-: one valid solid (1), 5625 mm3
+[  378.0s] ok   no new part overlaps a lite-58 part: 0 []
+[  378.0s] ok   E-box top panel (3 mm) vs E-box top panel (3 mm) paint, : 0.0000 mm3
+[  378.1s] ok   E-box top panel (3 mm) vs E-box rear panel (3 mm): 0.0000 mm3
+[  378.1s] ok   E-box top panel (3 mm) vs E-box grille panel 3 of 3, Z 4: 0.0000 mm3
+[  378.1s] ok   E-box rear panel (3 mm) vs E-box rear panel (3 mm) paint,: 0.0000 mm3
+[  378.1s] ok   E-box grille panel 1 of 3, Z - vs E-box grille panel 2 of 3, Z 1: 0.0000 mm3
+[  380.6s] ok   E-box grille panel 1 of 3, Z - vs E-box grille mesh 1 (printed A: 0.0000 mm3
+[  380.7s] ok   E-box grille panel 2 of 3, Z 1 vs E-box grille panel 3 of 3, Z 4: 0.0000 mm3
+[  383.4s] ok   E-box grille panel 2 of 3, Z 1 vs E-box grille mesh 2 (printed A: 0.0000 mm3
+[  384.3s] ok   E-box grille panel 3 of 3, Z 4 vs E-box grille mesh 3 (printed A: 0.0000 mm3
+[  384.3s] ok   E-box grille panel 3 of 3, Z 4 vs E-box grille badge (printed AB: 0.0000 mm3
+[  384.3s] ok   E-box grille panel 1 of 3, Z -50..195 (p: fits the bed flat
+[  384.3s] ok   E-box grille panel 2 of 3, Z 195..400 (p: fits the bed flat
+[  384.4s] ok   E-box grille panel 3 of 3, Z 400..690 (p: fits the bed flat
+[  384.5s] ok   E-box grille mesh 1 (printed ABS, vt350,: fits the bed flat
+[  384.5s] ok   E-box grille mesh 1 (printed A: Z -7.0..186.0, inside one piece
+[  384.6s] ok   E-box grille mesh 2 (printed ABS, vt350,: fits the bed flat
+[  384.6s] ok   E-box grille mesh 2 (printed A: Z 204.0..393.0, inside one piece
+[  384.7s] ok   E-box grille mesh 3 (printed ABS, vt350,: fits the bed flat
+[  384.7s] ok   E-box grille mesh 3 (printed A: Z 537.0..643.0, inside one piece
+[  384.7s] ok   E-box grille badge (printed ABS, vt350, : fits the bed flat
+[  384.7s] ok   roles {'E-box top panel': {None}, 'E-box top panel paint': {'panel_paint'}, 'E-box rear panel': {None}, 'E-box rear panel paint': {'panel_paint'}, 'E-box grille panel': {'printed'}, 'E-box grille mesh': {'accent'}, 'E-box grille badge': {'accent'}} (panel cores as the roof's: None)
+[  384.7s] ok   lite-59 solids: 1485 (lite-58 1474 + 11)
+[  384.9s] verify: 0 problems
+[  391.1s] SAVED /home/dan/Documents/VT350/vt350-lite-59.FCStd 36756584

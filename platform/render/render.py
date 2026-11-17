@@ -11,6 +11,10 @@
 #        above Z 560 for dock_top, the bed and everything below Z 380 (the nozzle tips) for dock_below. Both have the
 #        printer's front at the bottom of the image; dock_below is seen from underneath, so it is mirrored left-right
 #        against dock_top (the printer's left, slot 1, is on the image's right).
+#        "ebox_side" = only for a model with the e-box's inner frame (lite-53, vt350#5): the e-box seen straight on from
+#        its outer side, orthographic, front on the left.
+#        "glamour", "glamour_ebox" = also only with the e-box: the whole machine, EMU included, 3/4 from the front;
+#        glamour_ebox swung round to the right to look in through the e-box door.
 #   blender -b -P render.py -- <export dir> <output dir> [samples] --only dock_top,dock_below   renders just those views
 # Motion frames (vt350#135 AC4): an export made with VT350_GROUPS (each moving group's parts in buckets of their own)
 #   blender -b -P render.py -- <export dir> <output dir> [samples] --frames <frames.json, relative: in the export dir>
@@ -129,7 +133,17 @@ def add_ortho(name, centre, width, z, clip_z):
     co.location = Vector((centre[0], centre[1], z)) * S
     co.rotation_euler = (0, 0, 0) if z > clip_z else (math.pi, 0, math.pi)   # both: image up = printer rear (+Y)
     return co
+def add_ortho_side(name, centre, width, x, clip_x):
+    """A camera looking along -X from X `x` (beyond clip_x), orthographic, `width` mm across, image up = +Z and
+    image right = +Y (the printer's rear); what is between the camera and the plane X clip_x is not drawn."""
+    cd = bpy.data.cameras.new(name); co = bpy.data.objects.new(name, cd); sc.collection.objects.link(co)
+    cd.type = 'ORTHO'; cd.ortho_scale = width * S; cd.sensor_fit = 'HORIZONTAL'
+    cd.clip_start = (x - clip_x) * S; cd.clip_end = 20
+    co.location = Vector((x, centre[0], centre[1])) * S
+    co.rotation_euler = (math.pi / 2, 0, math.pi / 2)   # the camera's -Z (its view) turned onto -X, its up onto +Z
+    return co
 DOCK_BAR = ("2020 dock bar", "Dock bar 2020")          # the front dock bar's labels (lite-31, lite-32)
+EBOX_FRAME = ("2020 e-box inner upright",)            # the e-box's inner frame (lite-53, vt350#5)
 views = []
 c = scene_j["camera"]
 if scene_j.get("views"):                             # explicit cameras (export_pose.py): render only these, key-lit
@@ -151,6 +165,16 @@ if not scene_j.get("views"):
     if any(lab.startswith(DOCK_BAR) for b in scene_j["buckets"].values() for lab in b.get("labels", [])):
         views.append(("dock_top", add_ortho("dock_top", (-245, -20), 640, 2000, 560), 1.0, -0.6))
         views.append(("dock_below", add_ortho("dock_below", (-245, -20), 640, -1500, 380), 1.0, 0.8))
+    # the e-box (vt350#5): its whole outer side, Z -50..690 (1460 wide at 16:9 is 821 tall), seen from outside, ortho;
+    # the clip plane at X 165 is just outside the e-box's outer members (X 140..160), so nothing outside it is drawn
+    if any(lab.startswith(EBOX_FRAME) for b in scene_j["buckets"].values() for lab in b.get("labels", [])):
+        views.append(("ebox_side", add_ortho_side("ebox_side", (215, 320), 1460, 1500, 165), 1.0, 0.4))
+        # two glamour shots of the whole machine (owner, 2026-11-16): the scene is X -554..201, Y -151..548,
+        # Z -108..1040 with the EMU on the roof (its top is cut off in "outside"). "glamour": outside's direction, far
+        # enough back for all 1150 mm of height; "glamour_ebox": the printer turned ~30 degrees to the left (the camera
+        # swung round to the right), so the view goes in through the clear e-box door (its outer face, +X)
+        views.append(("glamour", add_cam("glamour", (824, -2167, 1294), (-176, 200, 466), lens_mm=35), 1.0, -1.0))
+        views.append(("glamour_ebox", add_cam("glamour_ebox", (1876, -1347, 1294), (-150, 200, 420), lens_mm=35), 1.0, -1.0))
 if "only" in OPTS:
     keep = OPTS["only"].split(",")
     if not set(keep) <= {v[0] for v in views}: raise SystemExit(f"render: --only {keep}, but the views are {[v[0] for v in views]}")

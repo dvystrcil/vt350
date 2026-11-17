@@ -1,0 +1,30 @@
+{
+ "tubes": [
+  {
+   "label": "Bowden lane 1 to Bowden Left (PTFE 4.12 OD, roof exit to the EMU, 474 mm)",
+   "length": 474,
+   "min_radius": 87.1
+  },
+  {
+   "label": "Bowden lane 2 to Bowden slot 2 (PTFE 4.12 OD, roof exit to the EMU, 473 mm)",
+   "length": 473,
+   "min_radius": 86.3
+  },
+  {
+   "label": "Bowden lane 3 to Bowden slot 3 (PTFE 4.12 OD, roof exit to the EMU, 473 mm)",
+   "length": 473,
+   "min_radius": 85.7
+  },
+  {
+   "label": "Bowden lane 4 to Bowden slot 4 (PTFE 4.12 OD, roof exit to the EMU, 473 mm)",
+   "length": 473,
+   "min_radius": 85.7
+  },
+  {
+   "label": "Bowden lane 5 to Bowden Right (PTFE 4.12 OD, roof exit to the EMU, 474 mm)",
+   "length": 474,
+   "min_radius": 87.1
+  }
+ ],
+ "total_ptfe_mm": 2367
+}

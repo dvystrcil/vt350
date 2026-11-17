@@ -1,0 +1,54 @@
+[   52.6s] opened /home/dan/Documents/VT350/vt350-lite-61.FCStd
+[  120.9s] ok   head tubes reaching the roof: 5 (5): ['Bowden Left', 'Bowden slot 2', 'Bowden slot 3', 'Bowden slot 4', 'Bowden Right']
+[  120.9s] Bowden Left: end (-409.7, 481.21, 711.21), dir (0.0, 0.707, 0.707), r 2.06
+[  120.9s] Bowden slot 2: end (-324.54, 481.21, 711.21), dir (0.0, 0.707, 0.707), r 2.06
+[  120.9s] Bowden slot 3: end (-248.42, 481.21, 711.21), dir (0.0, 0.707, 0.707), r 2.06
+[  120.9s] Bowden slot 4: end (-156.42, 481.21, 711.21), dir (0.0, 0.707, 0.707), r 2.06
+[  120.9s] Bowden Right: end (-80.3, 481.21, 711.21), dir (0.0, 0.707, 0.707), r 2.06
+[  148.6s] opened /home/dan/Documents/VT350/vt350-emu-2.FCStd
+[  248.3s] ok   EMU couplers: 5 release clips, 5 bodies (5 each)
+[  248.3s] coupler faces: [(-429.4, 197.0, 799.0), (-337.2, 197.0, 799.0), (-245.0, 197.0, 799.0), (-152.8, 197.0, 799.0), (-60.6, 197.0, 799.0)]
+[  248.3s] ok   lane 1: head X -409.7, lane X -429.4 (paired in X order, shift -19.7)
+[  248.5s] ok   lane 1 tube: one valid solid, 6272 mm3 (pi r2 L = 6320), length 474
+[  248.5s] ok   lane 1 tube: smallest bend radius 87.1 (>= 80); S 33 deg, straight in 27
+[  248.5s] ok   lane 1 tube: Y max 514.9 (<= 525, in front of the cable channel), Z max 885.8
+[  248.5s] ok   lane 1: starts on Bowden Left's end along its direction (0.000 mm, 0.00 deg)
+[  248.5s] ok   lane 1: ends on its coupler's face along -Y (0.000 mm)
+[  250.7s] ok   lane 2: head X -324.5, lane X -337.2 (paired in X order, shift -12.7)
+[  250.9s] ok   lane 2 tube: one valid solid, 6276 mm3 (pi r2 L = 6311), length 473
+[  250.9s] ok   lane 2 tube: smallest bend radius 86.3 (>= 80); S 33 deg, straight in 27
+[  250.9s] ok   lane 2 tube: Y max 514.9 (<= 525, in front of the cable channel), Z max 885.9
+[  250.9s] ok   lane 2: starts on Bowden slot 2's end along its direction (0.000 mm, 0.00 deg)
+[  250.9s] ok   lane 2: ends on its coupler's face along -Y (0.000 mm)
+[  253.0s] ok   lane 3: head X -248.4, lane X -245.0 (paired in X order, shift +3.4)
+[  253.2s] ok   lane 3 tube: one valid solid, 6279 mm3 (pi r2 L = 6305), length 473
+[  253.2s] ok   lane 3 tube: smallest bend radius 85.7 (>= 80); S 33 deg, straight in 27
+[  253.2s] ok   lane 3 tube: Y max 514.9 (<= 525, in front of the cable channel), Z max 885.9
+[  253.2s] ok   lane 3: starts on Bowden slot 3's end along its direction (0.000 mm, 0.00 deg)
+[  253.2s] ok   lane 3: ends on its coupler's face along -Y (0.000 mm)
+[  255.4s] ok   lane 4: head X -156.4, lane X -152.8 (paired in X order, shift +3.6)
+[  255.5s] ok   lane 4 tube: one valid solid, 6279 mm3 (pi r2 L = 6305), length 473
+[  255.5s] ok   lane 4 tube: smallest bend radius 85.7 (>= 80); S 33 deg, straight in 27
+[  255.5s] ok   lane 4 tube: Y max 514.9 (<= 525, in front of the cable channel), Z max 885.9
+[  255.5s] ok   lane 4: starts on Bowden slot 4's end along its direction (0.000 mm, 0.00 deg)
+[  255.5s] ok   lane 4: ends on its coupler's face along -Y (0.000 mm)
+[  258.0s] ok   lane 5: head X -80.3, lane X -60.6 (paired in X order, shift +19.7)
+[  258.2s] ok   lane 5 tube: one valid solid, 6272 mm3 (pi r2 L = 6320), length 474
+[  258.2s] ok   lane 5 tube: smallest bend radius 87.1 (>= 80); S 33 deg, straight in 27
+[  258.2s] ok   lane 5 tube: Y max 514.9 (<= 525, in front of the cable channel), Z max 885.8
+[  258.2s] ok   lane 5: starts on Bowden Right's end along its direction (0.000 mm, 0.00 deg)
+[  258.2s] ok   lane 5: ends on its coupler's face along -Y (0.000 mm)
+[  395.1s] ok   no tube overlaps an EMU part: 0 []
+[  416.5s] ok   no tube overlaps a printer part (lite-61): 0 []
+[  416.6s] ok   tube 1 vs tube 2: 0.0000 mm3
+[  416.6s] ok   tube 1 vs tube 3: 0.0000 mm3
+[  416.6s] ok   tube 1 vs tube 4: 0.0000 mm3
+[  416.6s] ok   tube 1 vs tube 5: 0.0000 mm3
+[  416.6s] ok   tube 2 vs tube 3: 0.0000 mm3
+[  416.7s] ok   tube 2 vs tube 4: 0.0000 mm3
+[  416.7s] ok   tube 2 vs tube 5: 0.0000 mm3
+[  416.7s] ok   tube 3 vs tube 4: 0.0000 mm3
+[  416.7s] ok   tube 3 vs tube 5: 0.0000 mm3
+[  416.7s] ok   tube 4 vs tube 5: 0.0000 mm3
+[  416.7s] verify: 0 problems
+[  421.4s] SAVED /home/dan/Documents/VT350/vt350-emu-3.FCStd 23123819

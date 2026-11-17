@@ -1,0 +1,31 @@
+{
+ "e_in": [
+  125.0,
+  140.0
+ ],
+ "inner_frame_x": [
+  45.0,
+  65.0
+ ],
+ "uprights_y": {
+  "front": -58.0,
+  "rear": 460.0
+ },
+ "cross_z": {
+  "bottom": [
+   -30.0,
+   -10.0
+  ],
+  "top": [
+   650.0,
+   670.0
+  ]
+ },
+ "moved": 20,
+ "rails": [
+  "2040 (2) (new front) one piece X -520..140 (lite-53)",
+  "2040 (2)001 one piece X -520..140 (lite-53)",
+  "4040 (2) one piece X -520..140 (lite-53)",
+  "4040 (1)004 one piece X -520..140 (lite-53)"
+ ]
+}

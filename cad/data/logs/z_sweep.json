@@ -1,5 +1,5 @@
 {
- "model": "/work/vt350-lite-52-20261117t001958-44e9-sweep/in/vt350-lite-52.FCStd",
+ "model": "/work/vt350-lite-61-20261117t120134-fa6f-sweep/in/vt350-lite-61.FCStd",
  "plate_top": 285.76060992516267,
  "magnet_top": 287.16060992516265,
  "lower": {
@@ -78,6 +78,11 @@
    [
     242.00390624999932,
     "2020 (1)",
+    "backbone-350 v2"
+   ],
+   [
+    242.00390624999932,
+    "Nozzle offset probe bracket (printed ABS, vt350, GPL-3.0-or-later)",
     "backbone-350 v2"
    ],
    [
@@ -597,6 +602,11 @@
     "SOLID030"
    ],
    [
+    122.85110882483735,
+    "Mellow MultiHead Zero probe (bushing, pin, D 10 ball; estimated from the photo)",
+    "Carbonara CF X beam 20x20 430"
+   ],
+   [
     123.0038373992711,
     "MGN9H - Carriage_body (1)002",
     "SOLID038"
@@ -642,6 +652,11 @@
     118.903906250148,
     "MGN9H - Carriage_end (1)001",
     "SOLID030"
+   ],
+   [
+    122.85110882483735,
+    "Mellow MultiHead Zero probe (bushing, pin, D 10 ball; estimated from the photo)",
+    "Carbonara CF X beam 20x20 430"
    ],
    [
     123.0038373992711,
