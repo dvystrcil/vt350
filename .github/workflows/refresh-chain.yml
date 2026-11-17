@@ -63,6 +63,10 @@ jobs:
         run: python3 cad/studies/test_z_sweep.py 2>&1 | tee test-z-sweep.log
       - name: Confirm every z_sweep test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-z-sweep.log && tail -1 test-z-sweep.log | grep -qx 'OK'
+      - name: Test the tool-change clash study's timeline handling (toolchange_clash, #116 AC5; no FreeCAD)
+        run: python3 cad/studies/test_toolchange_clash.py 2>&1 | tee test-toolchange.log
+      - name: Confirm every toolchange_clash test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-toolchange.log && tail -1 test-toolchange.log | grep -qx 'OK'
       - name: Test the per-part box index's schema, staleness and --check (part_index, #90; no FreeCAD)
         run: python3 platform/freecad/test_part_index.py 2>&1 | tee test-part-index.log
       - name: Confirm every part_index test ran
