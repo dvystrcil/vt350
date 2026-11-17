@@ -1,4 +1,5 @@
 """FreeCAD loads every card in cad/materials (vt350#60). Needs FreeCAD: $APP freecadcmd $PWD/cad/materials/test_cards_fc.py"""
+import FreeCAD  # noqa: F401  (FreeCAD-only: the CI test runner skips files that import it)
 import os, sys
 HERE = os.path.dirname(os.path.abspath(__file__)) if "__file__" in dir() else os.path.join(os.getcwd(), "cad", "materials")
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(HERE)), "platform", "freecad"))
