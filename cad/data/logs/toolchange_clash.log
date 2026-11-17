@@ -1,0 +1,153 @@
+[    0.0s] model /home/dan/Documents/VT350/vt350-lite-61.FCStd (read-only); timeline 47 lines, 35 moves; attach_y -68.96, park_x {'Left': 10.3, 'Right': 339.7}; mapping origin (-420.0, 30.5), sign (1, 1) [PROPOSED in https://github.com/dvystrcil/vt350/issues/116, n]
+[   45.9s] nozzle -> carriage offset: Left (-245.000, 225.264); Right (-245.014, 225.264); bed top dZ +93.324
+[   45.9s] excluded as in sweep_toolhead: the docks' carriage copies, the Z drag chain, the head's own bowden tube; belts clipped to the XY joints' band
+[   45.9s] clashlib: 8 workers on vt350-lite-61.FCStd, 104 poses, job dir /tmp/clashlib-r7l7wvac
+[ 3443.8s] clashlib: done in 3397.9s (load <= 6.8s, check <= 3390.8s); 39058760 pair-poses, 31258 box hits, 1416 overlaps > 0.01 mm3, 0 errors
+[ 3443.8s] clashlib: peak RSS: workers max 1139 MB, sum 7917 MB; parent 18 MB
+[ 3443.8s] === Left head: 103 poses; 0 common() errors
+[ 3443.8s] -- move 01 @0.07: printer (341.36, 23.94, 0.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 01 @0.14: printer (341.71, 47.88, 0.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 01 @0.21: printer (342.07, 71.83, 0.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 01 @0.29: printer (342.43, 95.77, 0.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 01 @0.36: printer (342.79, 119.71, 0.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 01 @0.43: printer (343.14, 143.65, 0.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 01 @0.50: printer (343.50, 167.59, 0.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 01 @0.57: printer (343.86, 191.54, 0.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 01 @0.64: printer (344.21, 215.48, 0.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 01 @0.71: printer (344.57, 239.42, 0.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 01 @0.79: printer (344.93, 263.36, 0.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 01 @0.86: printer (345.29, 287.31, 0.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 01 @0.93: printer (345.64, 311.25, 0.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 01: printer (346.00, 335.19, 0.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 02: printer (346.00, 340.19, 5.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 03 @0.33: printer (289.00, 285.13, 6.67), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 03 @0.67: printer (232.00, 230.06, 8.33), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 03: printer (175.00, 175.00, 10.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 04 @0.11: printer (175.00, 152.56, 10.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 04 @0.22: printer (175.00, 130.12, 10.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 04 @0.33: printer (175.00, 107.68, 10.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 04 @0.44: printer (175.00, 85.24, 10.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 04 @0.56: printer (175.00, 62.80, 10.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 04 @0.67: printer (175.00, 40.36, 10.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 04 @0.78: printer (175.00, 17.92, 10.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 04 @0.89: printer (175.00, -4.52, 10.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 04: printer (175.00, -26.96, 10.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+4 blocks sliding on their rails)
+[ 3443.8s] -- move 05 @0.14: printer (151.47, -26.96, 10.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+4 blocks sliding on their rails)
+[ 3443.8s] -- move 05 @0.29: printer (127.94, -26.96, 10.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+4 blocks sliding on their rails)
+[ 3443.8s] -- move 05 @0.43: printer (104.41, -26.96, 10.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+4 blocks sliding on their rails)
+[ 3443.8s] -- move 05 @0.57: printer (80.89, -26.96, 10.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+4 blocks sliding on their rails)
+[ 3443.8s] -- move 05 @0.71: printer (57.36, -26.96, 10.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+4 blocks sliding on their rails)
+[ 3443.8s] -- move 05 @0.86: printer (33.83, -26.96, 10.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+4 blocks sliding on their rails)
+[ 3443.8s] -- move 05: printer (10.30, -26.96, 10.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+5 blocks sliding on their rails)
+[ 3443.8s] -- move 06: printer (10.30, -46.96, 10.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+5 blocks sliding on their rails)
+[ 3443.8s] -- move 07: printer (10.30, -68.96, 10.00), carrying Left; covered by the model pose 'dock pickup at the large opening, top';  (bed Z -10.00 from it); 0 overlaps not in the saved model (+3 blocks sliding on their rails)
+[ 3443.8s] -- move 08: printer (15.30, -68.96, 10.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model (+3 blocks sliding on their rails)
+[ 3443.8s] -- move 09 @0.20: printer (15.30, -45.56, 10.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model (+5 blocks sliding on their rails)
+[ 3443.8s] -- move 09 @0.40: printer (15.30, -22.16, 10.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model (+5 blocks sliding on their rails)
+[ 3443.8s] -- move 09 @0.60: printer (15.30, 1.24, 10.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 09 @0.80: printer (15.30, 24.64, 10.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 09: printer (15.30, 48.04, 10.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 10: printer (15.30, 48.04, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 11 @0.14: printer (38.11, 48.04, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 11 @0.29: printer (60.93, 48.04, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 11 @0.43: printer (83.74, 48.04, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 11 @0.57: printer (106.56, 48.04, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 11 @0.71: printer (129.37, 48.04, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 11 @0.86: printer (152.19, 48.04, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 11: printer (175.00, 48.04, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 12 @0.17: printer (175.00, 69.20, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 12 @0.33: printer (175.00, 90.36, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 12 @0.50: printer (175.00, 111.52, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 12 @0.67: printer (175.00, 132.68, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 12 @0.83: printer (175.00, 153.84, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 12: printer (175.00, 175.00, 11.00), carrying Left; covered by the model pose 'centre, top';  (bed Z -11.00 from it); 0 overlaps not in the saved model
+[ 3443.8s] -- move 13: printer (175.00, 175.00, 10.00), carrying Left; covered by the model pose 'centre, top';  (bed Z -10.00 from it); 0 overlaps not in the saved model
+[ 3443.8s] -- move 14: printer (175.00, 175.00, 11.00), carrying Left; covered by the model pose 'centre, top';  (bed Z -11.00 from it); 0 overlaps not in the saved model
+[ 3443.8s] -- move 15 @0.11: printer (157.26, 160.89, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 15 @0.22: printer (139.51, 146.79, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 15 @0.33: printer (121.77, 132.68, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 15 @0.44: printer (104.02, 118.57, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 15 @0.56: printer (86.28, 104.47, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 15 @0.67: printer (68.53, 90.36, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 15 @0.78: printer (50.79, 76.25, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 15 @0.89: printer (33.04, 62.15, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 15: printer (15.30, 48.04, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 16 @0.20: printer (15.30, 24.64, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 16 @0.40: printer (15.30, 1.24, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 16 @0.60: printer (15.30, -22.16, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model (+5 blocks sliding on their rails)
+[ 3443.8s] -- move 16 @0.80: printer (15.30, -45.56, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model (+5 blocks sliding on their rails)
+[ 3443.8s] -- move 16: printer (15.30, -68.96, 11.00), carrying Left; NOT covered by a model pose; ; 0 overlaps not in the saved model (+3 blocks sliding on their rails)
+[ 3443.8s] -- move 17: printer (10.30, -68.96, 11.00), carrying Left; covered by the model pose 'dock pickup at the large opening, top';  (bed Z -11.00 from it); 0 overlaps not in the saved model (+3 blocks sliding on their rails)
+[ 3443.8s] -- move 18: printer (10.30, -46.96, 11.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+5 blocks sliding on their rails)
+[ 3443.8s] -- move 19: printer (10.30, -26.96, 11.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+5 blocks sliding on their rails)
+[ 3443.8s] -- move 20 @0.07: printer (33.83, -26.96, 11.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+4 blocks sliding on their rails)
+[ 3443.8s] -- move 20 @0.14: printer (57.36, -26.96, 11.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+4 blocks sliding on their rails)
+[ 3443.8s] -- move 20 @0.21: printer (80.89, -26.96, 11.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+4 blocks sliding on their rails)
+[ 3443.8s] -- move 20 @0.29: printer (104.41, -26.96, 11.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+4 blocks sliding on their rails)
+[ 3443.8s] -- move 20 @0.36: printer (127.94, -26.96, 11.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+4 blocks sliding on their rails)
+[ 3443.8s] -- move 20 @0.43: printer (151.47, -26.96, 11.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+4 blocks sliding on their rails)
+[ 3443.8s] -- move 20 @0.50: printer (175.00, -26.96, 11.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+4 blocks sliding on their rails)
+[ 3443.8s] -- move 20 @0.57: printer (198.53, -26.96, 11.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+4 blocks sliding on their rails)
+[ 3443.8s] -- move 20 @0.64: printer (222.06, -26.96, 11.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+4 blocks sliding on their rails)
+[ 3443.8s] -- move 20 @0.71: printer (245.59, -26.96, 11.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+4 blocks sliding on their rails)
+[ 3443.8s] -- move 20 @0.79: printer (269.11, -26.96, 11.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+5 blocks sliding on their rails)
+[ 3443.8s] -- move 20 @0.86: printer (292.64, -26.96, 11.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+5 blocks sliding on their rails)
+[ 3443.8s] -- move 20 @0.93: printer (316.17, -26.96, 11.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+5 blocks sliding on their rails)
+[ 3443.8s] -- move 20: printer (339.70, -26.96, 11.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+5 blocks sliding on their rails)
+[ 3443.8s] -- move 21: printer (339.70, -46.96, 11.00), empty; NOT covered by a model pose; ; 0 overlaps not in the saved model (+5 blocks sliding on their rails)
+[ 3443.8s] -- move 32: printer (339.70, -46.96, 11.00), empty, Right head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+5 blocks sliding on their rails)
+[ 3443.8s] -- move 33: printer (339.70, -26.96, 11.00), empty, Right head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+5 blocks sliding on their rails)
+[ 3443.8s] -- move 34 @0.09: printer (324.73, -8.60, 10.91), empty, Right head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 34 @0.18: printer (309.75, 9.76, 10.82), empty, Right head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 34 @0.27: printer (294.78, 28.12, 10.73), empty, Right head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 34 @0.36: printer (279.81, 46.48, 10.64), empty, Right head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 34 @0.45: printer (264.84, 64.84, 10.55), empty, Right head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 34 @0.55: printer (249.86, 83.20, 10.45), empty, Right head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 34 @0.64: printer (234.89, 101.56, 10.36), empty, Right head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 34 @0.73: printer (219.92, 119.92, 10.27), empty, Right head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 34 @0.82: printer (204.95, 138.28, 10.18), empty, Right head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] -- move 34 @0.91: printer (189.97, 156.64, 10.09), empty, Right head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 3443.8s] -- move 34: printer (175.00, 175.00, 10.00), empty, Right head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 3443.8s] clashlib: 8 workers on vt350-lite-61.FCStd, 38 poses, job dir /tmp/clashlib-jl6t16xt
+[ 6071.1s] clashlib: done in 2627.3s (load <= 6.8s, check <= 2619.5s); 14271470 pair-poses, 22356 box hits, 502 overlaps > 0.01 mm3, 0 errors
+[ 6071.1s] clashlib: peak RSS: workers max 1169 MB, sum 8099 MB; parent 18 MB
+[ 6071.1s] === Right head: 37 poses; 0 common() errors
+[ 6071.1s] -- move 22: printer (339.70, -68.96, 11.00), carrying Right, Left head left off its dock; covered by the model pose 'dock pickup at the large opening, top';  (bed Z -11.00 from it); 0 overlaps not in the saved model (+3 blocks sliding on their rails)
+[ 6071.1s] -- move 23: printer (334.70, -68.96, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+3 blocks sliding on their rails)
+[ 6071.1s] -- move 24 @0.20: printer (334.70, -45.56, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+5 blocks sliding on their rails)
+[ 6071.1s] -- move 24 @0.40: printer (334.70, -22.16, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+5 blocks sliding on their rails)
+[ 6071.1s] -- move 24 @0.60: printer (334.70, 1.24, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 6071.1s] -- move 24 @0.80: printer (334.70, 24.64, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 6071.1s] -- move 24: printer (334.70, 48.04, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 6071.1s] -- move 25 @0.14: printer (311.89, 48.04, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 6071.1s] -- move 25 @0.29: printer (289.07, 48.04, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 6071.1s] -- move 25 @0.43: printer (266.26, 48.04, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 6071.1s] -- move 25 @0.57: printer (243.44, 48.04, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 6071.1s] -- move 25 @0.71: printer (220.63, 48.04, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 6071.1s] -- move 25 @0.86: printer (197.81, 48.04, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 6071.1s] -- move 25: printer (175.00, 48.04, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 6071.1s] -- move 26 @0.17: printer (175.00, 69.20, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 6071.1s] -- move 26 @0.33: printer (175.00, 90.36, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 6071.1s] -- move 26 @0.50: printer (175.00, 111.52, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 6071.1s] -- move 26 @0.67: printer (175.00, 132.68, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 6071.1s] -- move 26 @0.83: printer (175.00, 153.84, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 6071.1s] -- move 26: printer (175.00, 175.00, 11.00), carrying Right, Left head left off its dock; covered by the model pose 'centre, top';  (bed Z -11.00 from it); 0 overlaps not in the saved model
+[ 6071.1s] -- move 27: printer (175.00, 175.00, 10.00), carrying Right, Left head left off its dock; covered by the model pose 'centre, top';  (bed Z -10.00 from it); 0 overlaps not in the saved model
+[ 6071.1s] -- move 28: printer (175.00, 175.00, 11.00), carrying Right, Left head left off its dock; covered by the model pose 'centre, top';  (bed Z -11.00 from it); 0 overlaps not in the saved model
+[ 6071.1s] -- move 29 @0.11: printer (192.74, 160.89, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 6071.1s] -- move 29 @0.22: printer (210.49, 146.79, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 6071.1s] -- move 29 @0.33: printer (228.23, 132.68, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 6071.1s] -- move 29 @0.44: printer (245.98, 118.57, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 6071.1s] -- move 29 @0.56: printer (263.72, 104.47, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 6071.1s] -- move 29 @0.67: printer (281.47, 90.36, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 6071.1s] -- move 29 @0.78: printer (299.21, 76.25, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model
+[ 6071.1s] -- move 29 @0.89: printer (316.96, 62.15, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 6071.1s] -- move 29: printer (334.70, 48.04, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 6071.1s] -- move 30 @0.20: printer (334.70, 24.64, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 6071.1s] -- move 30 @0.40: printer (334.70, 1.24, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+1 blocks sliding on their rails)
+[ 6071.1s] -- move 30 @0.60: printer (334.70, -22.16, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+5 blocks sliding on their rails)
+[ 6071.1s] -- move 30 @0.80: printer (334.70, -45.56, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+5 blocks sliding on their rails)
+[ 6071.1s] -- move 30: printer (334.70, -68.96, 11.00), carrying Right, Left head left off its dock; NOT covered by a model pose; ; 0 overlaps not in the saved model (+3 blocks sliding on their rails)
+[ 6071.1s] -- move 31: printer (339.70, -68.96, 11.00), carrying Right, Left head left off its dock; covered by the model pose 'dock pickup at the large opening, top';  (bed Z -11.00 from it); 0 overlaps not in the saved model (+3 blocks sliding on their rails)
+[ 6071.1s] summary: 140 poses, 130 not covered by a model-derived pose, 0 overlaps not in the saved model
+[ 6071.1s] toolchange_clash: done (read-only, nothing saved)
