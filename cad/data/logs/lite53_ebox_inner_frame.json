@@ -9,19 +9,18 @@
  ],
  "uprights_y": {
   "front": -58.0,
-  "middle": 190.0,
   "rear": 460.0
  },
- "cross_z": [
-  [
-   -50.0,
-   -30.0
+ "cross_z": {
+  "bottom": [
+   -30.0,
+   -10.0
   ],
-  [
-   670.0,
-   690.0
+  "top": [
+   650.0,
+   670.0
   ]
- ],
+ },
  "moved": 20,
  "rails": [
   "2040 (2) (new front) one piece X -520..140 (lite-53)",

@@ -175,3 +175,13 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
   (`platform/freecad/profile_lib.py`).
 - **Headless `freecadcmd` has no `ViewObject`**, so no colours (an object's own `Visibility` property does exist).
   Our passes dry-run headless and save only from a GUI run.
+- **A handed copy needs a mirror, not a turn** (lite-56). Copying a door onto another face with its hinges on the
+  other edge: `shape.mirror(base, normal)` (one mirror across x + y = 0 both turned the front door onto the side face
+  and put its hinges at the rear). The copies are reflected, so they can't be App::Links (`dupes.py` reports them
+  as reflected); handles and latches become mirrored prints.
+- **A mesh becomes a solid in two calls** (lite-57): `sh = Part.Shape(); sh.makeShapeFromMesh(mesh.Topology, 0.05)`,
+  then `Part.makeSolid(sh)`. Check `isValid()` and that its volume matches the mesh's: then the usual `common()`
+  overlap checks work on it. A 2,200-facet printed part is cheap enough to keep as a solid.
+- **An overlap check is how to prove a part sits in a slot** (lite-57 holder keys, lite-58 door sheets): put it where
+  the slot should be and check it against the profile. 0 overlap means open slot, so the check guards the design,
+  not just the pass.

@@ -1,0 +1,11 @@
+[   44.7s] opened /home/dan/Documents/VT350/vt350-lite-57.FCStd
+[   56.1s] ok   front door: sheet 1, gasket 1 (1 each)
+[   56.1s] ok   e-box door: sheet 1, gasket 1 (1 each)
+[  114.5s] ok   front: Door window (3 mm clear sheet, acrylic or polycarb: X -484.5..-5.5 Y -104.5..-101.5 Z -14.5..654.5
+[  114.5s] ok   front: Door window gasket (rubber glazing strip, U on the: X -485.5..-4.5 Y -106.0..-100.0 Z -15.5..655.5
+[  114.5s] ok   e-box: E-box door window (3 mm clear sheet, as the front : X 171.5..174.5 Y -54.5..484.5 Z -14.5..654.5
+[  114.5s] ok   e-box: E-box door window gasket (rubber glazing strip, U : X 170.0..176.0 Y -55.5..485.5 Z -15.5..655.5
+[  116.3s] ok   no sheet or strip overlaps a lite-57 part (so each sits in open slot): 0 []
+[  116.3s] ok   lite-58 solids: 1474 (= lite-57 1474)
+[  116.3s] verify: 0 problems
+[  121.6s] SAVED /home/dan/Documents/VT350/vt350-lite-58.FCStd 34919868

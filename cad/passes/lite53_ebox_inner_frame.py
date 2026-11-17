@@ -1,10 +1,11 @@
 # GUI pass: vt350-lite-52 -> vt350-lite-53   (headless = dry run, never saves)
 # vt350#5. The e-box gets an inner 2020 frame that the DIN rails mount on, so nothing is drilled through the printer's
 # side panel (user, 2026-11-16: "I would rather not drill. if I add the 2020s then I have room to add and move things
-# about later"). Concept C's short rails get a middle upright to bear on.
+# about later"; on the first render: no middle upright, and the cross members 20 mm in from the top and bottom "this
+# will allow us to put panels in uniformly with the rest of the printer").
 #  - Inner frame, all 2020 at X IN0..IN1 (1 mm clear of the right wall felt's outer liner at X 44):
-#    bottom and top cross members along Y, butted between the front and rear long rails, flush with the frame's
-#    bottom (Z -50..-30) and top (Z 670..690); front, middle and rear uprights standing on the bottom one, Z -30..670.
+#    bottom and top cross members along Y, butted between the front and rear long rails, Z -30..-10 and 650..670
+#    (flush with the long rails' inner top and bottom faces); front and rear uprights between them, Z -10..650.
 #    The front upright is at Y -58..-38, not on the front long rail: the printer door's hinges and latch handle wrap
 #    round the front-right corner to X 51, Y -61.6, Z 405..525.
 #  - Depth: a DIN rail on the inner frame's face (X IN1) has its face at IN1 + 7.5; + printed PSU clip ~10 (assumed,
@@ -17,7 +18,7 @@
 #    (the e-box layout, vt350-ebox-2.FCStd, next).
 # Checks (refuses to save on any): every member found once; the long rails X -520..140; the outer members and
 # fasteners 15 further out; each new member where specified and 20 x 20 in section; no overlap pair that lite-52
-# didn't already have (the e-box envelope excluded: it's re-laid out next); solids = lite-52 + 5.
+# didn't already have (the e-box envelope excluded: it's re-laid out next); solids = lite-52 + 4.
 import FreeCAD, Part, os, sys
 _REPO = os.environ.get("VT350_REPO", "/home/dan/Code/vt350")
 sys.path[:0] = [os.path.join(_REPO, "platform/freecad")]
@@ -31,7 +32,30 @@ E_OUT = E_IN + 20.0
 IN0, IN1 = 45.0, 65.0                      # inner frame, X
 Y_F, Y_R = -70.0, 480.0                    # the long rails' inner faces (front 2040 Y -90..-70, rear 4040 Y 480..520)
 Z_BOT, Z_TOP = -50.0, 690.0
-UPRIGHTS = {"front": -58.0, "middle": 190.0, "rear": 460.0}     # Y of each inner upright's low face
+UPRIGHTS = {"front": -58.0, "rear": 460.0}     # Y of each inner upright's low face (no middle one: owner, 2026-11-16)
+CROSS_Z = {"bottom": (-30.0, -10.0), "top": (650.0, 670.0)}
+BL, BT, BRACKET_RGB = 25.0, 5.0, (0.95, 0.95, 0.94)   # printed bracket stand-in: leg, plate thickness (assumed), white
+
+
+def brackets():
+    """[(label, [plate boxes (x0, x1, y0, y1, z0, z1)])]: 8 L-brackets, two butted plates each.
+    Upright to cross member: in the inner corner on the upright's side that faces the e-box's middle, X IN0..IN1.
+    Cross member to long rail: on the cross member's open X IN1 face (the front upright is only 12 mm from the rail)."""
+    out = []
+    for name, y0 in UPRIGHTS.items():
+        yi, s = (y0 + 20, 1) if name == "front" else (y0, -1)          # the upright's inner face, and which way is in
+        ys = lambda a, b: (min(yi + s * a, yi + s * b), max(yi + s * a, yi + s * b))
+        for k, (z0, z1) in CROSS_Z.items():
+            zf, t = (z1, 1) if k == "bottom" else (z0, -1)              # the cross member's face toward the uprights
+            zs = lambda a, b: (min(zf + t * a, zf + t * b), max(zf + t * a, zf + t * b))
+            out.append((f"Printed bracket 20x25x25 (stand-in), {name} upright to {k} cross member (lite-53)",
+                        [(IN0, IN1, *ys(0, BL), *zs(0, BT)), (IN0, IN1, *ys(0, BT), *zs(BT, BL))]))
+    for end, yr, s in (("front", Y_F, 1), ("rear", Y_R, -1)):
+        ys = lambda a, b: (min(yr + s * a, yr + s * b), max(yr + s * a, yr + s * b))
+        for k, (z0, z1) in CROSS_Z.items():
+            out.append((f"Printed bracket 20x25x25 (stand-in), {k} cross member to {end} long rail (lite-53)",
+                        [(IN1, IN1 + BL, *ys(0, BT), z0, z1), (IN1, IN1 + BT, *ys(BT, BL), z0, z1)]))
+    return out   # 20 in from the frame's faces: panels sit as on the printer
 SRC_2020 = "2020 (3)"
 RAILS = ["2040 (2) (new front)", "2040 (2)001", "4040 (2)", "4040 (1)004"]
 MOVE = ["2020 e-box front outer upright", "2040 e-box rear outer upright", "2040 e-box outer side rail",
@@ -133,15 +157,25 @@ def main(p):
         f = f20.copy(); f.rotate(V(0, 0, 0), V(1, 0, 0), -90); b = f.optimalBoundingBox()
         f.translate(V(IN0 - b.XMin, Y_F - b.YMin, z0 - b.ZMin)); return extrude(f, V(0, Y_R - Y_F, 0))
 
-    spec = [("2020 e-box inner cross member, bottom (lite-53)", cross(Z_BOT), (IN0, IN1, Y_F, Y_R, Z_BOT, Z_BOT + 20)),
-            ("2020 e-box inner cross member, top (lite-53)", cross(Z_TOP - 20), (IN0, IN1, Y_F, Y_R, Z_TOP - 20, Z_TOP))]
+    spec = [(f"2020 e-box inner cross member, {k}, Z {z0:.0f}..{z1:.0f} (lite-53)", cross(z0), (IN0, IN1, Y_F, Y_R, z0, z1))
+            for k, (z0, z1) in CROSS_Z.items()]
+    U0, U1 = CROSS_Z["bottom"][1], CROSS_Z["top"][0]
     for name, y0 in UPRIGHTS.items():
         spec.append((f"2020 e-box inner upright, {name}, Y {y0:.0f}..{y0 + 20:.0f} (lite-53)",
-                     upright(y0, Z_BOT + 20, Z_TOP - 20), (IN0, IN1, y0, y0 + 20, Z_BOT + 20, Z_TOP - 20)))
+                     upright(y0, U0, U1), (IN0, IN1, y0, y0 + 20, U0, U1)))
     new = []
     for label, s, want in spec:
         c = doc.copyObject(srco, False); container(srco).addObject(c)
         put(c, s); c.Label = label; new.append((c, want))
+    # printed 20x25x25 angle brackets, one per joint: stand-ins (two butted plates, legs 25, 20 wide, BT thick
+    # assumed). The owner prints a downloaded design whose licence forbids sharing: no file of it goes in the repo
+    # or the models, only its outside size.
+    for label, b in brackets():
+        sh = Part.makeCompound([box(*q) for q in b])
+        o = p.add_solids(doc, container(srco), [("", sh)], "Bracket", label, BRACKET_RGB)[0]; put(o, sh)   # global
+        bb = FreeCAD.BoundBox()
+        for q in b: bb.add(FreeCAD.BoundBox(q[0], q[2], q[4], q[1], q[3], q[5]))
+        new.append((o, (bb.XMin, bb.XMax, bb.YMin, bb.YMax, bb.ZMin, bb.ZMax)))
     doc.recompute(); pr.refresh()
     # checks: positions
     for o in rails:
@@ -173,9 +207,9 @@ def main(p):
         if a > 1e-2: fresh.append(pair)
     p.log(f"info overlaps lite-52 already has (not a failure): {len(kept)} {kept}")
     p.check(not fresh, f"new overlaps (pairs that didn't overlap in lite-52): {len(fresh)} {fresh[:12]}")
-    p.check(len(pr.leaves) == n_before + 5, f"solids: {len(pr.leaves)} (lite-52 + 5 = {n_before + 5})")
+    p.check(len(pr.leaves) == n_before + 4 + len(brackets()), f"solids: {len(pr.leaves)} (lite-52 + 4 members + {len(brackets())} brackets = {n_before + 4 + len(brackets())})")
     p.dump({"e_in": [E_IN_OLD, E_IN], "inner_frame_x": [IN0, IN1], "uprights_y": UPRIGHTS,
-            "cross_z": [[Z_BOT, Z_BOT + 20], [Z_TOP - 20, Z_TOP]], "moved": len(moved), "rails": [o.Label for o in rails]})
+            "cross_z": CROSS_Z, "moved": len(moved), "rails": [o.Label for o in rails]})
     return p.finish([(doc, DST)])
 
 

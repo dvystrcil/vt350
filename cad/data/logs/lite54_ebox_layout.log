@@ -1,0 +1,63 @@
+[   41.6s] opened /home/dan/Documents/VT350/vt350-lite-53.FCStd
+[   52.5s] ok   the Octopus board's stand-in in the printer model: 1 (1)
+[   63.1s] opened /home/dan/Documents/VT350/vt350-ebox.FCStd
+[   64.1s] ok   old e-box part to remove: Meanwell RS-25
+[   64.1s] ok   old e-box part to remove: Meanwell LRS-200-24
+[   64.2s] ok   old e-box part to remove: DIN_Mount
+[   64.2s] ok   old e-box part to remove: DIN_Mount (1)
+[   64.2s] ok   old e-box part to remove: DIN_Mount (2)
+[   64.2s] ok   old e-box part to remove: DIN_Mount (3)
+[   64.2s] ok   old e-box part to remove: DIN_Center_Support
+[   64.2s] ok   old e-box part to remove: DIN_Center_Support001
+[   64.2s] ok   old e-box part to remove: 3x WAGO_221-415_mount
+[   64.2s] ok   old e-box part to remove: Electronics Cabinet
+[   64.2s] ok   old e-box part to remove: DIN3 Rail
+[   64.2s] ok   old e-box part to remove: DIN3 Rail001
+[   64.8s] removed 69 solids of the old layout; 55 left
+[   64.8s] ok   kept assembly found: Controllers
+[   66.5s] ok   kept assembly found: Pi Assembly
+[   66.5s] ok   kept assembly found: SSR
+[   68.8s] ok   Controllers: moved (20.6, -38.1, 218.4) -> X 72.5..101.9 Y 174.2..270.8 Z 366.9..523.1
+[   68.8s] ok   Pi Assembly: moved (20.6, 52.6, 323.1) -> X 72.5..114.6 Y 280.5..369.5 Z 361.9..419.1
+[   68.8s] ok   SSR: moved (20.1, -285.0, -52.3) -> X 72.5..108.5 Y 60.0..124.0 Z 5.0..55.0
+[   71.2s] ok   inside the e-box: PSU 60 V: BOSYTRO 600 W 0-60 V, set to 48 V (X/Y drivers) [m: X 82.5..132.5 Y -32.0..183.0 Z 133.5..246.5
+[   71.2s] ok   inside the e-box: PSU 24 V: BOSYTRO 600 W 0-24 V [m 215 x 113 x 50]: X 82.5..132.5 Y 227.0..442.0 Z 133.5..246.5
+[   71.2s] ok   inside the e-box: PSU clip, 60 V, front (printed) [a 10 deep]: X 72.5..82.5 Y 0.0..30.0 Z 172.5..207.5
+[   71.2s] ok   inside the e-box: PSU clip, 60 V, rear (printed) [a 10 deep]: X 72.5..82.5 Y 120.0..150.0 Z 172.5..207.5
+[   71.2s] ok   inside the e-box: PSU clip, 24 V, front (printed) [a 10 deep]: X 72.5..82.5 Y 260.0..290.0 Z 172.5..207.5
+[   71.2s] ok   inside the e-box: PSU clip, 24 V, rear (printed) [a 10 deep]: X 72.5..82.5 Y 380.0..410.0 Z 172.5..207.5
+[   71.2s] ok   inside the e-box: Duct, front trunk: frame wiring [c 40 x 40]: X 72.5..112.5 Y -58.0..-34.0 Z 85.0..636.0
+[   71.2s] ok   inside the e-box: Duct, rear trunk: toolhead USB [c 40 x 40]: X 72.5..112.5 Y 446.0..480.0 Z 85.0..636.0
+[   71.2s] ok   inside the e-box: Duct 1: mains below its divider, DC above [c 40 x 40]: X 72.5..112.5 Y -34.0..446.0 Z 85.0..125.0
+[   71.2s] ok   inside the e-box: Duct, centre: PSU terminals, clipped to the PSU rail [c 40 x: X 72.5..112.5 Y 185.0..225.0 Z 125.0..258.0
+[   71.2s] ok   inside the e-box: Duct 3: signal [c 40 x 40]: X 72.5..112.5 Y -34.0..446.0 Z 596.0..636.0
+[   71.2s] ok   inside the e-box: K1: TBT7-C1 time relay, delays the 24 V supply [a 36 wide, 9: X 72.5..135.0 Y 132.0..168.0 Z -15.0..75.0
+[   71.2s] ok   inside the e-box: F4: fuse holder, bed heater (SSR) [a 18 wide]: X 72.5..135.0 Y 176.0..194.0 Z -10.5..70.5
+[   71.2s] ok   inside the e-box: F2: fuse holder, 24 V supply [a 18 wide]: X 72.5..135.0 Y 202.0..220.0 Z -10.5..70.5
+[   71.2s] ok   inside the e-box: F1: fuse holder, 60 V supply [a 18 wide]: X 72.5..135.0 Y 228.0..246.0 Z -10.5..70.5
+[   71.2s] ok   inside the e-box: Q1: 2-pole breaker [a 36 wide, 90 tall]: X 72.5..135.0 Y 254.0..290.0 Z -15.0..75.0
+[   71.2s] ok   inside the e-box: X1: N and PE terminals [a 48 wide]: X 72.5..117.5 Y 298.0..346.0 Z 5.0..55.0
+[   71.2s] ok   inside the e-box: F5: fuse holder, 60 V -> TMC5160T Plus X and Y [a 18 wide]: X 72.5..135.0 Y 190.0..208.0 Z 259.5..340.5
+[   71.2s] ok   inside the e-box: F6: fuse holder, 24 V -> Octopus [a 18 wide]: X 72.5..135.0 Y 208.0..226.0 Z 259.5..340.5
+[   71.2s] ok   inside the e-box: F7: fuse holder, 24 V -> Nitehawk Hexa [a 18 wide]: X 72.5..135.0 Y 226.0..244.0 Z 259.5..340.5
+[   71.2s] ok   inside the e-box: F8: fuse holder, 24 V -> buck [a 18 wide]: X 72.5..135.0 Y 244.0..262.0 Z 259.5..340.5
+[   71.2s] ok   inside the e-box: Buck 24 -> 5 V, for the Pi (as the Neptune's EA60) [m 62 x 5: X 72.5..104.5 Y 290.0..352.0 Z 272.0..328.0
+[   71.2s] ok   inside the e-box: TMC5160T Plus, X, in its case [s 64 x 56 x 32.55]: X 72.5..105.0 Y 110.0..166.0 Z 362.0..426.0
+[   71.2s] ok   inside the e-box: TMC5160T Plus, Y, in its case [s 64 x 56 x 32.55]: X 72.5..105.0 Y 110.0..166.0 Z 434.0..498.0
+[   71.2s] ok   inside the e-box: Nitehawk Hexa on the owner's printed holder, upright [m 44 x: X 72.5..129.5 Y 303.0..347.0 Z 430.0..569.0
+[   71.2s] ok   inside the e-box: Inlet: C14 with fuse and EMI filter, in the rear panel [a]: X 85.0..115.0 Y 490.0..545.0 Z 0.0..70.0
+[   71.2s] ok   inside the e-box: Mains switch, in the rear panel [a]: X 85.0..115.0 Y 490.0..545.0 Z 90.0..120.0
+[   71.2s] ok   inside the e-box: DIN rail TS35 x 7.5, mains, Z 30: X 65.0..72.5 Y -58.0..480.0 Z 12.5..47.5
+[   71.2s] ok   inside the e-box: DIN rail TS35 x 7.5, PSUs, Z 190: X 65.0..72.5 Y -58.0..480.0 Z 172.5..207.5
+[   71.2s] ok   inside the e-box: DIN rail TS35 x 7.5, DC fuses + buck, Z 300: X 65.0..72.5 Y -58.0..480.0 Z 282.5..317.5
+[   71.2s] ok   inside the e-box: DIN rail TS35 x 7.5, logic, lower, Z 400: X 65.0..72.5 Y -58.0..480.0 Z 382.5..417.5
+[   71.2s] ok   inside the e-box: DIN rail TS35 x 7.5, logic, upper, Z 490: X 65.0..72.5 Y -58.0..480.0 Z 472.5..507.5
+[   71.2s] ok   inside the e-box: Octopus Pro H723 board (simplified box, moved from the print: X 93.8..113.2 Y 171.9..271.9 Z 364.4..526.6
+[   80.8s] ok   layout units overlap: 0 []
+[   80.8s] ok   envelope 1 (1)
+[  509.9s] ok   no e-box part overlaps a lite-53 part: 0 []
+[  509.9s] envelope: BoundBox (65, -58, -15, 135, 545, 636)
+[  521.1s] ok   lite-54 solids: 1406 (lite-53 - 1 = 1406)
+[  521.1s] verify: 0 problems
+[  522.2s] SAVED /home/dan/Documents/VT350/vt350-ebox-2.FCStd 5573140
+[  527.4s] SAVED /home/dan/Documents/VT350/vt350-lite-54.FCStd 33967896

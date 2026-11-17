@@ -1,0 +1,17 @@
+[   44.6s] opened /home/dan/Documents/VT350/vt350-lite-54.FCStd
+[  170.0s] opened /home/dan/Documents/VT350/vt350-emu.FCStd
+[  176.0s] EMU 495.7 x 295.5 x 343.6; roof X -520.0..30.0 Y -90.0..520.0, felt top Z 704.00; move Vector (-464.6000000000001, -29.418753427862143, 719.116792051936)
+[  188.0s] ok   every EMU part (2258) moved by Vector (-464.6000000000001, -29.418753427862143, 719.116792051936) (0 off: [])
+[  303.1s] 167 groups, 2077 copies to link, saving 87.9 MB; kept real (a fit would move them): 0
+[  303.1s] ok   2077 copies to link (>= 500)
+[  329.4s] ok   2077 links, every one within 1e-06 mm of its copy (worst 1.53e-07)
+[  339.0s] ok   every link shows its copy's colour and transparency (0 differ: [])
+[  339.0s] ok   every link shown or hidden as its copy was (0 differ: [])
+[  342.9s] ok   links keep every part's box (2258 -> 2258 parts; moved [])
+[  343.0s] ok   meshes 0 (unchanged)
+[ 1397.9s] ok   no EMU part overlaps a lite-54 part: 0 []
+[ 1408.4s] ok   envelope X -492.9..2.9 Y -85.0..210.5 Z 704.0..1047.6
+[ 1408.4s] ok   lite-55 solids: 1407 (lite-54 + 1 = 1407)
+[ 1408.4s] verify: 0 problems
+[ 1412.4s] SAVED /home/dan/Documents/VT350/vt350-emu-2.FCStd 22113956
+[ 1417.6s] SAVED /home/dan/Documents/VT350/vt350-lite-55.FCStd 33971538
