@@ -77,8 +77,10 @@ LANE_LOCAL = ["derive_stls", "sync_printed", "check_printed"]      # what the la
 SUBMIT_LOG = "cad/data/logs/refresh_submit.out"
 CHAIN_RE = r"(?m)^started chain vt350-refresh (\S+)$"              # its first line (pinned by a homelab test)
 # The chain's sweep job runs the sweep, the index and z_sweep under one deadline (lite-32 on the laptop: 1114 s + 3219 s;
-# lite-30 on max-01: 23.5 min). homelab caps z_sweep's own step at 1 h within it.
-SWEEP_DEADLINE_S = 7200
+# lite-30 on max-01: 23.5 min). homelab caps z_sweep's own step at 1 h within it. 7200 s stopped being enough at lite-50:
+# the toolhead sweep alone took 92.3 min (lite-50) and 116.6 min (lite-51) on max-01, leaving z_sweep 1542 s and 50 s
+# (vt350#204). 3.5 h = the slower sweep + z_sweep's 1 h cap + the index, with ~30 min to spare.
+SWEEP_DEADLINE_S = 12600
 SWEEP_DONE = r"(?m)done \(read-only, nothing saved\)$"
 Z_DONE = r"(?m)^\[ *\d+\.\ds\] z_sweep: done \(read-only, nothing saved\)$"
 INDEX_DONE = r"(?m)part_index: done \(\d+ models\)$"
