@@ -50,7 +50,8 @@ X_SCAN = 40.0, 1.0                     # nozzle X scanned inward from each side 
 CARRIAGE_PART = ("Carriage (1)", "COMPOUND")          # (group, label) of the gantry's MadMax carriage body
 BED_PATHS = {"Bed frame", "Z_Bed_Left", "Z_Bed_Right", "Z_Bed_Rear", "Z_Carriage_Left", "Z_Carriage_Right",
              "Z_Carriage_Rear_2-hole (IGUS)", "Z_Carriage_Rear_3-Hole (Generic)", "MGN9H (2)", "MGN9H (3)",
-             "MGN9H (4)", "kinematic bed mount v1"}
+             "MGN9H (4)", "kinematic bed mount v1",
+             "Nozzle offset probe (lite-61, #186)"}    # bolted to the bed frame's front edge: rides with the bed
 BED_LABEL_PREFIX = ("LDO 350 build plate", "Magnetic sheet", "Heater pad")
 BED_LOOSE = ("M5x16-Screw001", "M5-Washer001")       # bed-frame bolt filed under the frame (lite-10 found it)
 GANTRY_PATHS = {"XY left: _XY_left", "XY right: _XY_right", "Gantry assembly"}
