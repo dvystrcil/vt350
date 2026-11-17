@@ -1,32 +1,32 @@
 {
- "model": "/home/dan/Documents/VT350/vt350-lite-35.FCStd",
+ "model": "/work/vt350-lite-52-20261117t001958-44e9-sweep/in/vt350-lite-52.FCStd",
  "plate_top": 285.76060992516267,
  "magnet_top": 287.16060992516265,
  "lower": {
-  "dz": -242.00390614999904,
-  "plate_top": 43.75670377516363,
+  "dz": -242.00390624999864,
+  "plate_top": 43.75670367516403,
   "why": "2020 (2) lands on backbone-350 v2"
  },
  "upper": {
-  "dz": 93.32829622477664,
-  "plate_top": 379.0889061499393,
+  "dz": 93.32829622485701,
+  "plate_top": 379.0889061500197,
   "head": "Left",
   "why": "Magnetic sheet (1.4 mm) touches E3D v6 HotEnd - Nozzle"
  },
  "print_height": {
-  "Left": 335.33220237477565,
-  "Right": 335.33220254238563
+  "Left": 335.33220247485565,
+  "Right": 335.3322026423852
  },
  "top": {
-  "dz": 113.59999989998136,
-  "plate_top": 399.360609825144,
+  "dz": 113.59999989998363,
+  "plate_top": 399.3606098251463,
   "why": "the top end of MGN9H (3) reaches the top end of SOLID034"
  },
  "klipper": {
-  "position_max": 335.33220237477565,
-  "position_max_configured": 330.33220237477565,
-  "z_negative": -20.27170367520472,
-  "travel": 355.6039060499804
+  "position_max": 335.33220247485565,
+  "position_max_configured": 330.33220247485565,
+  "z_negative": -20.271703675126616,
+  "travel": 355.60390614998227
  },
  "parked": {
   "Left": 113.6039061499813,
@@ -39,12 +39,12 @@
    "SOLID029 (MGN9 - 400mm (2))"
   ],
   [
-   246.50006895088828,
+   246.5000689508856,
    "MGN9H (3)",
    "SOLID034 (MGN9 - 400mm (4))"
   ],
   [
-   242.10006885072647,
+   242.10006885070874,
    "MGN9H (4)",
    "SOLID037 (MGN9 - 400mm (3))"
   ]
@@ -56,12 +56,12 @@
    "SOLID029"
   ],
   [
-   113.59999989998136,
+   113.59999989998363,
    "MGN9H (3)",
    "SOLID034"
   ],
   [
-   118.00000000014785,
+   118.00000000016598,
    "MGN9H (4)",
    "SOLID037"
   ]
@@ -71,12 +71,12 @@
  "contacts": {
   "down": [
    [
-    242.00390614999904,
+    242.00390624999864,
     "2020 (2)",
     "backbone-350 v2"
    ],
    [
-    242.0039062499989,
+    242.00390624999932,
     "2020 (1)",
     "backbone-350 v2"
    ],
@@ -141,21 +141,6 @@
     "M3x12-Screw024"
    ],
    [
-    244.50390614999904,
-    "2020 (2)",
-    "StealthMax 3.3_LidLatch001"
-   ],
-   [
-    244.61139011294563,
-    "2020 (2)",
-    "StealthMax 3.2_LidFrontHinge"
-   ],
-   [
-    244.9113893696361,
-    "2020 (2)",
-    "StealthMax M_3.0_Body"
-   ],
-   [
     245.77272510080385,
     "MGN9H - Carriage_end_cap (1)004",
     "M5x10-Screw011"
@@ -164,11 +149,6 @@
     245.87272510086157,
     "MGN9H - Carriage_end_cap (1)",
     "M5x10-Screw008"
-   ],
-   [
-    246.11139011294583,
-    "2020 (2)",
-    "StealthMax Acrylic Panel"
    ],
    [
     246.16013956282507,
@@ -311,11 +291,6 @@
     "Motor_Body001"
    ],
    [
-    247.31139011294584,
-    "2020 (2)",
-    "StealthMax M_3.1_LidPanelHolder"
-   ],
-   [
     247.4039062499922,
     "M5-Nut",
     "M3x12-Screw019"
@@ -391,11 +366,6 @@
     "Motor_Body"
    ],
    [
-    249.41139001294584,
-    "2020 (2)",
-    "StealthMax 3mm sponge cord"
-   ],
-   [
     250.0039062499332,
     "M5x16-Screw069",
     "backbone-350 v2"
@@ -409,11 +379,6 @@
     250.0039063500002,
     "M5x16-Screw068",
     "backbone-350 v2"
-   ],
-   [
-    250.11138944646171,
-    "2020 (2)",
-    "StealthMax M_2.2a_CarbonBasketLid"
    ],
    [
     250.50390614993282,
@@ -441,26 +406,6 @@
     "M5x10-Screw008"
    ],
    [
-    250.91121562108228,
-    "2020 (2)",
-    "StealthMax M_2.5a_LogoCap"
-   ],
-   [
-    250.91122062859066,
-    "2020 (2)",
-    "StealthMax M_2.0_Body"
-   ],
-   [
-    250.91139001292575,
-    "2020 (2)",
-    "StealthMax M_2.1_CarbonBasket"
-   ],
-   [
-    251.01122062858505,
-    "2020 (2)",
-    "StealthMax M_2.3_HEPACover"
-   ],
-   [
     251.50397510080515,
     "MGN9H - Carriage_body (1)002",
     "backbone-350 v2"
@@ -473,12 +418,12 @@
   ],
   "up Left": [
    [
-    93.32829622477664,
+    93.32829622485701,
     "Magnetic sheet (1.4 mm)",
     "E3D v6 HotEnd - Nozzle"
    ],
    [
-    94.72829622477661,
+    94.72829622485699,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "E3D v6 HotEnd - Nozzle"
    ],
@@ -488,12 +433,12 @@
     "COMPOUND"
    ],
    [
-    95.76055299726477,
+    95.76055299734514,
     "Magnetic sheet (1.4 mm)",
     "[a]_Duct-4010-right"
    ],
    [
-    95.76055299726897,
+    95.76055299734935,
     "Magnetic sheet (1.4 mm)",
     "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
    ],
@@ -503,7 +448,7 @@
     "Beacon RevH Normal (Beacon CAD, MIT)"
    ],
    [
-    96.02829622484006,
+    96.02829622492044,
     "Magnetic sheet (1.4 mm)",
     "TL-dragon-\u00b9\u00e8\u00bd\u00ba\u00cc\u00d7"
    ],
@@ -513,12 +458,12 @@
     "COMPOUND"
    ],
    [
-    97.16055299726474,
+    97.16055299734512,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "[a]_Duct-4010-right"
    ],
    [
-    97.16055299726895,
+    97.16055299734933,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
    ],
@@ -528,17 +473,17 @@
     "Beacon RevH Normal (Beacon CAD, MIT)"
    ],
    [
-    97.42829622484004,
+    97.42829622492042,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "TL-dragon-\u00b9\u00e8\u00bd\u00ba\u00cc\u00d7"
    ],
    [
-    98.82829622484303,
+    98.8282962249234,
     "Magnetic sheet (1.4 mm)",
     "Heat Block"
    ],
    [
-    100.228296224843,
+    100.22829622492338,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "Heat Block"
    ]
