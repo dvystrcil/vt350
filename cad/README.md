@@ -173,6 +173,10 @@ FreeCAD held **9.8 GB of RAM** with it open. On top of that:
 Longer-term option (not done): split the model into per-assembly `.FCStd`
 files brought together with `App::Link`, so you only open what you edit.
 
+## Tools
+
+Every program the CAD, checks, renders and simulation use, with its pinned version, licence and link: [`tools.md`](tools.md). `cad/check-tools-page.sh` checks the page against the pins (CI runs it); `--local` also checks the laptop's installed versions.
+
 ## Running the scripts
 
 Data in / logs out go to `VT350_WORK` (default: `~/Code/vt350/cad/data`).
