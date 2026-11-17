@@ -8,6 +8,8 @@
 #    coat, printed PET-GF white, [a]_ accents PET-GF orange. Anything else keeps the model's colour. A FreeCAD
 #    window opens and closes by itself; if GNOME says "Not Responding", click Wait.
 # 2. Blender (snap, headless) renders the "obico" (chamber camera) and "outside" (3/4 front) views on the RTX 2070.
+#    A model with the e-box also gets "ebox_side" and two glamour shots, "glamour" (all of it, EMU included) and
+#    "glamour_ebox" (turned to look in through the e-box door); see platform/render/render.py.
 # Output: ~/Documents/VT350/renders/<model>-<UTC>/{export,out}. Never saves a model, writes nothing to git.
 # Colours: edit colours.json and re-run. Changed only a role's hex/finish? VT350_REUSE_EXPORT=<run>/export skips the
 # slow export. Changed or added a RULE? Run a full export: roles are assigned when parts are exported.

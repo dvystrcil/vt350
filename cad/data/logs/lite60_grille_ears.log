@@ -1,0 +1,93 @@
+[   44.1s] opened /home/dan/Documents/VT350/vt350-lite-59.FCStd
+[  104.1s] ok   grille pieces: 3 (3)
+[  104.1s] ok   front fixing at X 60 Z -40: outside the band
+[  104.2s] ok   front fixing X 60 Z -40: a 3 mm shank 4 mm past the face hits nothing (open slot): []
+[  105.4s] ok   front fixing X 60 Z -40: the same shank 6 mm off the slot hits the profile: ['2040 (2) (new front) one piece X -520..1']
+[  105.4s] ok   front fixing at X 110 Z -40: outside the band
+[  105.5s] ok   front fixing X 110 Z -40: a 3 mm shank 4 mm past the face hits nothing (open slot): []
+[  105.6s] ok   front fixing X 110 Z -40: the same shank 6 mm off the slot hits the profile: ['2040 (2) (new front) one piece X -520..1']
+[  105.6s] ok   front fixing at X 60 Z 680: outside the band
+[  105.7s] ok   front fixing X 60 Z 680: a 3 mm shank 4 mm past the face hits nothing (open slot): []
+[  105.9s] ok   front fixing X 60 Z 680: the same shank 6 mm off the slot hits the profile: ['2040 (2)001 one piece X -520..140 (lite-']
+[  105.9s] ok   front fixing at X 110 Z 680: outside the band
+[  106.0s] ok   front fixing X 110 Z 680: a 3 mm shank 4 mm past the face hits nothing (open slot): []
+[  106.2s] ok   front fixing X 110 Z 680: the same shank 6 mm off the slot hits the profile: ['2040 (2)001 one piece X -520..140 (lite-']
+[  106.2s] ok   front fixing at X 150 Z 10: outside the band
+[  106.2s] ok   front fixing X 150 Z 10: a 3 mm shank 4 mm past the face hits nothing (open slot): []
+[  106.3s] ok   front fixing X 150 Z 10: the same shank 6 mm off the slot hits the profile: ['2020 e-box front outer upright, Z -50..6']
+[  106.3s] ok   front fixing at X 150 Z 100: outside the band
+[  106.3s] ok   front fixing X 150 Z 100: a 3 mm shank 4 mm past the face hits nothing (open slot): []
+[  106.3s] ok   front fixing X 150 Z 100: the same shank 6 mm off the slot hits the profile: ['2020 e-box front outer upright, Z -50..6']
+[  106.3s] ok   front fixing at X 150 Z 180: outside the band
+[  106.4s] ok   front fixing X 150 Z 180: a 3 mm shank 4 mm past the face hits nothing (open slot): []
+[  106.4s] ok   front fixing X 150 Z 180: the same shank 6 mm off the slot hits the profile: ['2020 e-box front outer upright, Z -50..6']
+[  106.4s] ok   front fixing at X 150 Z 260: outside the band
+[  106.4s] ok   front fixing X 150 Z 260: a 3 mm shank 4 mm past the face hits nothing (open slot): []
+[  106.5s] ok   front fixing X 150 Z 260: the same shank 6 mm off the slot hits the profile: ['2020 e-box front outer upright, Z -50..6']
+[  106.5s] ok   front fixing at X 150 Z 380: outside the band
+[  106.5s] ok   front fixing X 150 Z 380: a 3 mm shank 4 mm past the face hits nothing (open slot): []
+[  106.5s] ok   front fixing X 150 Z 380: the same shank 6 mm off the slot hits the profile: ['2020 e-box front outer upright, Z -50..6']
+[  106.5s] ok   front fixing at X 150 Z 560: outside the band
+[  106.6s] ok   front fixing X 150 Z 560: a 3 mm shank 4 mm past the face hits nothing (open slot): []
+[  106.6s] ok   front fixing X 150 Z 560: the same shank 6 mm off the slot hits the profile: ['2020 e-box front outer upright, Z -50..6']
+[  106.6s] ok   front fixing at X 150 Z 640: outside the band
+[  106.6s] ok   front fixing X 150 Z 640: a 3 mm shank 4 mm past the face hits nothing (open slot): []
+[  106.7s] ok   front fixing X 150 Z 640: the same shank 6 mm off the slot hits the profile: ['2020 e-box front outer upright, Z -50..6']
+[  106.7s] ok   ear fixing at X 30 Z 10: outside the band
+[  106.7s] ok   ear fixing X 30 Z 10: a 3 mm shank 4 mm past the face hits nothing (open slot): []
+[  106.7s] ok   ear fixing X 30 Z 10: the same shank 6 mm off the slot hits the profile: ['2040 upright Z -10..650 (lite-46)']
+[  106.7s] ok   ear fixing at X 30 Z 100: outside the band
+[  106.8s] ok   ear fixing X 30 Z 100: a 3 mm shank 4 mm past the face hits nothing (open slot): []
+[  106.8s] ok   ear fixing X 30 Z 100: the same shank 6 mm off the slot hits the profile: ['2040 upright Z -10..650 (lite-46)']
+[  106.8s] ok   ear fixing at X 30 Z 180: outside the band
+[  106.8s] ok   ear fixing X 30 Z 180: a 3 mm shank 4 mm past the face hits nothing (open slot): []
+[  106.9s] ok   ear fixing X 30 Z 180: the same shank 6 mm off the slot hits the profile: ['2040 upright Z -10..650 (lite-46)']
+[  106.9s] ok   ear fixing at X 30 Z 260: outside the band
+[  106.9s] ok   ear fixing X 30 Z 260: a 3 mm shank 4 mm past the face hits nothing (open slot): []
+[  106.9s] ok   ear fixing X 30 Z 260: the same shank 6 mm off the slot hits the profile: ['2040 upright Z -10..650 (lite-46)']
+[  106.9s] ok   ear fixing at X 30 Z 380: outside the band
+[  106.9s] ok   ear fixing X 30 Z 380: a 3 mm shank 4 mm past the face hits nothing (open slot): []
+[  107.0s] ok   ear fixing X 30 Z 380: the same shank 6 mm off the slot hits the profile: ['2040 upright Z -10..650 (lite-46)']
+[  107.0s] ok   ear fixing at X 30 Z 560: outside the band
+[  107.0s] ok   ear fixing X 30 Z 560: a 3 mm shank 4 mm past the face hits nothing (open slot): []
+[  107.0s] ok   ear fixing X 30 Z 560: the same shank 6 mm off the slot hits the profile: ['2040 upright Z -10..650 (lite-46)']
+[  107.0s] ok   ear fixing at X 30 Z 640: outside the band
+[  107.1s] ok   ear fixing X 30 Z 640: a 3 mm shank 4 mm past the face hits nothing (open slot): []
+[  107.1s] ok   ear fixing X 30 Z 640: the same shank 6 mm off the slot hits the profile: ['2040 upright Z -10..650 (lite-46)']
+[  107.1s] ok   left ear Z 10: overlaps nothing: []
+[  107.1s] ok   left ear Z 100: overlaps nothing: []
+[  107.2s] ok   left ear Z 180: overlaps nothing: []
+[  107.2s] ok   left ear Z 260: overlaps nothing: []
+[  107.2s] ok   left ear Z 380: overlaps nothing: []
+[  107.2s] ok   left ear Z 560: overlaps nothing: []
+[  107.3s] ok   left ear Z 640: overlaps nothing: []
+[  107.5s] ok   E-box grille panel 1 o front hole X 60 Z -40: material all round it
+[  107.6s] ok   E-box grille panel 1 o front hole X 110 Z -40: material all round it
+[  107.7s] ok   E-box grille panel 1 o front hole X 150 Z 10: material all round it
+[  107.8s] ok   E-box grille panel 1 o front hole X 150 Z 100: material all round it
+[  107.8s] ok   E-box grille panel 1 o front hole X 150 Z 180: material all round it
+[  107.9s] ok   E-box grille panel 1 o ear hole X 30 Z 10: material all round it
+[  107.9s] ok   E-box grille panel 1 o ear hole X 30 Z 100: material all round it
+[  108.0s] ok   E-box grille panel 1 o ear hole X 30 Z 180: material all round it
+[  108.1s] ok   E-box grille panel 1 of 3, Z -: one valid solid (1), 57304 mm3
+[  108.1s] ok   E-box grille panel 1 of 3, Z -: 8 fixings (>= 4)
+[  108.4s] ok   E-box grille panel 2 o front hole X 150 Z 260: material all round it
+[  108.5s] ok   E-box grille panel 2 o front hole X 150 Z 380: material all round it
+[  108.5s] ok   E-box grille panel 2 o ear hole X 30 Z 260: material all round it
+[  108.6s] ok   E-box grille panel 2 o ear hole X 30 Z 380: material all round it
+[  108.7s] ok   E-box grille panel 2 of 3, Z 1: one valid solid (1), 42039 mm3
+[  108.7s] ok   E-box grille panel 2 of 3, Z 1: 4 fixings (>= 4)
+[  108.9s] ok   E-box grille panel 3 o front hole X 60 Z 680: material all round it
+[  108.9s] ok   E-box grille panel 3 o front hole X 110 Z 680: material all round it
+[  109.0s] ok   E-box grille panel 3 o front hole X 150 Z 560: material all round it
+[  109.0s] ok   E-box grille panel 3 o front hole X 150 Z 640: material all round it
+[  109.0s] ok   E-box grille panel 3 o ear hole X 30 Z 560: material all round it
+[  109.1s] ok   E-box grille panel 3 o ear hole X 30 Z 640: material all round it
+[  109.1s] ok   E-box grille panel 3 of 3, Z 4: one valid solid (1), 77311 mm3
+[  109.1s] ok   E-box grille panel 3 of 3, Z 4: 6 fixings (>= 4)
+[  109.2s] ok   left ears: Z [10.0, 100.0, 180.0, 260.0, 380.0, 560.0, 640.0], gaps outside the band [90.0, 80.0, 80.0, 120.0, 80.0] (<= 120)
+[  109.2s] ok   right holes: Z [10.0, 100.0, 180.0, 260.0, 380.0, 560.0, 640.0], gaps outside the band [90.0, 80.0, 80.0, 120.0, 80.0] (<= 120)
+[  174.3s] ok   the grille pieces (with ears) overlap no lite-59 part: 0 []
+[  174.3s] ok   lite-60 solids: 1485 (= lite-59 1485)
+[  174.3s] verify: 0 problems
+[  180.2s] SAVED /home/dan/Documents/VT350/vt350-lite-60.FCStd 36800754

@@ -13,6 +13,8 @@
 #        against dock_top (the printer's left, slot 1, is on the image's right).
 #        "ebox_side" = only for a model with the e-box's inner frame (lite-53, vt350#5): the e-box seen straight on from
 #        its outer side, orthographic, front on the left.
+#        "glamour", "glamour_ebox" = also only with the e-box: the whole machine, EMU included, 3/4 from the front;
+#        glamour_ebox swung round to the right to look in through the e-box door.
 #   blender -b -P render.py -- <export dir> <output dir> [samples] --only dock_top,dock_below   renders just those views
 # Motion frames (vt350#135 AC4): an export made with VT350_GROUPS (each moving group's parts in buckets of their own)
 #   blender -b -P render.py -- <export dir> <output dir> [samples] --frames <frames.json, relative: in the export dir>
@@ -167,6 +169,12 @@ if not scene_j.get("views"):
     # the clip plane at X 165 is just outside the e-box's outer members (X 140..160), so nothing outside it is drawn
     if any(lab.startswith(EBOX_FRAME) for b in scene_j["buckets"].values() for lab in b.get("labels", [])):
         views.append(("ebox_side", add_ortho_side("ebox_side", (215, 320), 1460, 1500, 165), 1.0, 0.4))
+        # two glamour shots of the whole machine (owner, 2026-11-16): the scene is X -554..201, Y -151..548,
+        # Z -108..1040 with the EMU on the roof (its top is cut off in "outside"). "glamour": outside's direction, far
+        # enough back for all 1150 mm of height; "glamour_ebox": the printer turned ~30 degrees to the left (the camera
+        # swung round to the right), so the view goes in through the clear e-box door (its outer face, +X)
+        views.append(("glamour", add_cam("glamour", (824, -2167, 1294), (-176, 200, 466), lens_mm=35), 1.0, -1.0))
+        views.append(("glamour_ebox", add_cam("glamour_ebox", (1876, -1347, 1294), (-150, 200, 420), lens_mm=35), 1.0, -1.0))
 if "only" in OPTS:
     keep = OPTS["only"].split(",")
     if not set(keep) <= {v[0] for v in views}: raise SystemExit(f"render: --only {keep}, but the views are {[v[0] for v in views]}")

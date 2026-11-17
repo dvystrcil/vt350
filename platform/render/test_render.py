@@ -167,6 +167,26 @@ class DockViewsWhenTheModelHasADockRow(unittest.TestCase):
         self.assertFalse([n for n in os.listdir(self.out) if "-low_" in n])
 
 
+class EboxViewsWhenTheModelHasAnEbox(unittest.TestCase):
+    """vt350#5: a model with the e-box's inner frame (lite-53) also gets the e-box side view and two glamour shots
+    of the whole machine (glamour, glamour_ebox)."""
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = tempfile.mkdtemp(prefix="vt350-render-test-")
+        cls.addClassCleanup(shutil.rmtree, cls.tmp, True)
+        src, cls.out = os.path.join(cls.tmp, "export"), os.path.join(cls.tmp, "out")
+        os.makedirs(src)
+        write_fixture(src, labels=("2020 e-box inner upright, front, Y -58..-38 (lite-53)",))
+        cls.blender = subprocess.run(BLENDER + ["-b", "--python-exit-code", "1", "-P", os.path.join(HERE, "render.py"),
+                                            "--", src, cls.out, "1"], capture_output=True, text=True)
+
+    def test_ebox_views_written(self):
+        self.assertEqual(self.blender.returncode, 0, self.blender.stdout[-3000:] + self.blender.stderr[-3000:])
+        for view in ("obico", "outside", "ebox_side", "glamour", "glamour_ebox"):
+            for ext in ("png", "jpg"):
+                self.assertTrue(os.path.isfile(os.path.join(self.out, f"fixture-{view}.{ext}")), (view, ext))
+
+
 class JpegInfoReadsTheReadmeImages(unittest.TestCase):
     """The parser above, against the JPEGs already in cad/renders (made at quality 85)."""
 
