@@ -1,0 +1,26 @@
+[   45.5s] opened /home/dan/Documents/VT350/vt350-lite-60.FCStd
+[  106.9s] ok   plate 1, magnet 1, heater 1, bed front 2020 1
+[  106.9s] ok   plate front Y 28.00, magnet top Z 287.16, bed front 2020 face Y 60.80 Z 240.0..260.0
+[  106.9s] ok   nozzle reach from sweep_toolhead.log: Y [(-51.93, 370.69), (-51.93, 370.69)], tip Z [380.48, 380.49]
+[  107.0s] ok   Mellow MultiHead Zero body (aluminium, 20 x 17.2 x: one valid solid (1), 7568 mm3
+[  107.0s] ok   Mellow MultiHead Zero probe (bushing, pin, D 10 ba: one valid solid (1), 1916 mm3
+[  107.1s] ok   Mellow MultiHead Zero switch + XH2.54 plug (in the: one valid solid (1), 288 mm3
+[  107.1s] ok   Nozzle offset probe bracket (printed ABS, vt350, G: one valid solid (1), 9222 mm3
+[  169.1s] ok   no new part overlaps a lite-60 part: 0 []
+[  169.1s] ok   Mellow MultiHead Zero body ( vs Mellow MultiHead Zero probe : 0.0000 mm3
+[  169.1s] ok   Mellow MultiHead Zero body ( vs Mellow MultiHead Zero switch: 0.0000 mm3
+[  169.2s] ok   Mellow MultiHead Zero body ( vs Nozzle offset probe bracket : 0.0000 mm3
+[  169.2s] ok   Mellow MultiHead Zero probe  vs Mellow MultiHead Zero switch: 0.0000 mm3
+[  169.2s] ok   Mellow MultiHead Zero probe  vs Nozzle offset probe bracket : 0.0000 mm3
+[  169.2s] ok   Mellow MultiHead Zero switch vs Nozzle offset probe bracket : 0.0000 mm3
+[  169.2s] ok   the bracket's back plate sits on the bed 2020's face (gap 0.0000)
+[  169.2s] ok   bracket top Z 271.3: 3.0 below the heater pad (>= 3.0)
+[  169.2s] ok   the bushing clears the plate's front edge by 3.5, the ball by 5.0
+[  169.2s] ok   ball centre (its equator) Z 292.16: 5.00 above the magnet top (>= 4)
+[  169.2s] ok   nozzle reaches all 4 sides: X -255..-235 in (-420.0, -70.0), Y 8..28 in -51.9..370.7
+[  169.7s] ok   over the bed's Z travel (dZ -242.0 .. +93.32), the probe's swept box X -260..-230 Y 3..61 hits no fixed part: 0 []
+[  169.7s] ok   every new part is bed-side by the motion code's Z band (moves with the bed)
+[  169.7s] ok   roles {'Mellow MultiHead Zero body': 'brushed_aluminium', 'Mellow MultiHead Zero probe': 'brushed_steel', 'Mellow MultiHead Zero switch + XH2.54 plug': 'black_plastic', 'Nozzle offset probe bracket': 'printed'}
+[  169.7s] ok   lite-61 solids: 1489 (lite-60 1485 + 4)
+[  169.7s] verify: 0 problems
+[  175.8s] SAVED /home/dan/Documents/VT350/vt350-lite-61.FCStd 36815493
