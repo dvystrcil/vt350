@@ -1,0 +1,24 @@
+[    4.0s] opened /home/dan/Documents/VT350/vt350-lite-61.FCStd
+[    5.5s] carriage group: 5 solids
+[    6.6s] 
+[    6.6s] == Left head carried: T_pick (-164.700, -257.725, 0.315); nozzle tip (-245.00, 225.26, 380.485)
+[   11.8s] parts within 5.0 mm above the carried nozzle tip, lowest first (dz = height above the tip; dx, dy = the lowest face's centre from the nozzle; w x d = its extent):
+[   11.8s]     +0.000  E3D v6 HotEnd - Nozzle                                                 [carried head] at dx   +0.00 dy   +0.00, 3.8 x 3.8
+[   11.8s]     +1.665  COMPOUND                                                               [carriage] at dx   +0.00 dy  +31.53, 54.4 x 11.1
+[   11.8s]     +2.025  [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)         [carried head] at dx  -19.53 dy  -13.20, 0.9 x 1.7
+[   11.8s]     +2.025  [a]_Duct-4010-right                                                    [carried head] at dx  +19.53 dy  -13.20, 0.9 x 1.7
+[   11.8s]     +2.500  TL-dragon-¹è½ºÌ×                                                       [carried head] at dx   +0.00 dy   +0.00, 17.1 x 17.1
+[   11.8s]     +2.599  Beacon RevH Normal (Beacon CAD, MIT)                                   [carriage] at dx   +0.00 dy  +27.40, 17.0 x 17.0  <- Beacon coil face
+[   11.8s] Beacon face 2.599 above the tip (nominal 2.6); 4 other part(s) lower than it: COMPOUND +1.665, [a]_Duct-4010-left MadMax dock bosses (r +2.025, [a]_Duct-4010-right +2.025, TL-dragon-¹è½ºÌ× +2.500
+[   12.8s] 
+[   12.8s] == Right head carried: T_pick (164.714, -257.725, 0.315); nozzle tip (-245.01, 225.26, 380.485)
+[   18.4s] parts within 5.0 mm above the carried nozzle tip, lowest first (dz = height above the tip; dx, dy = the lowest face's centre from the nozzle; w x d = its extent):
+[   18.4s]     +0.000  E3D v6 HotEnd - Nozzle001                                              [carried head] at dx   +0.00 dy   +0.00, 3.8 x 3.8
+[   18.4s]     +1.665  COMPOUND                                                               [carriage] at dx   +0.01 dy  +31.53, 54.4 x 11.1
+[   18.4s]     +2.025  [a]_Duct-4010-left001                                                  [carried head] at dx  -19.53 dy  -13.20, 0.9 x 1.7
+[   18.4s]     +2.025  [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)        [carried head] at dx  +19.53 dy  -13.20, 0.9 x 1.7
+[   18.4s]     +2.500  TL-dragon-¹è½ºÌ×001                                                    [carried head] at dx   +0.00 dy   +0.00, 17.1 x 17.1
+[   18.4s]     +2.599  Beacon RevH Normal (Beacon CAD, MIT)                                   [carriage] at dx   +0.01 dy  +27.40, 17.0 x 17.0  <- Beacon coil face
+[   18.4s] Beacon face 2.599 above the tip (nominal 2.6); 4 other part(s) lower than it: COMPOUND +1.665, [a]_Duct-4010-left001 +2.025, [a]_Duct-4010-right MadMax dock bosses ( +2.025, TL-dragon-¹è½ºÌ×001 +2.500
+[   18.4s] 
+[   18.4s] carriage_clearance: done
