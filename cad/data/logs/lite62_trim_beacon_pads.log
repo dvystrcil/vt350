@@ -1,0 +1,42 @@
+[   48.5s] opened /home/dan/Documents/VT350/vt350-lite-61.FCStd
+[   61.2s] ok   'COMPOUND' under 'Carriage (1)': 1
+[   61.2s] ok   'COMPOUND003' under 'Left Dock': 1
+[   61.2s] ok   'COMPOUND004' under 'Right Dock': 1
+[   61.2s] ok   the gantry carriage is a Part::Feature (Part::Feature)
+[   61.2s] ok   COMPOUND003 (Part__Feature654): App::Link -> Part__Feature448
+[   61.2s] ok   COMPOUND004 (Part__Feature1507): Part::Feature
+[   62.8s] Left dock copy = gantry carriage + (-164.700, -257.725, 0.315)
+[   62.8s] Right dock copy = gantry carriage + (164.714, -257.725, 0.315)
+[   62.8s] ok   Beacon: 1
+[   62.8s] ok   Left nozzle: 1
+[   62.8s] ok   Right nozzle: 1
+[   62.8s] ok   carried tips Z {'Left': 380.4850000000197, 'Right': 380.48500016754923} (expected 380.485)
+[   62.8s] ok   Beacon face 2.599 above the tip (expected 2.6)
+[   62.8s] ok   carriage underside 1.665 above the tip (expected 1.665)
+[   64.1s] trim plane Z 383.485: 105.24 mm3 in 2 piece(s)
+[   64.1s]     52.62 mm3  X -224.05..-217.80  Y 251.22..260.36  Z 382.150..383.485
+[   64.1s]     52.62 mm3  X -272.20..-265.95  Y 251.22..260.36  Z 382.150..383.485
+[   64.1s] ok   the cut is the two pads: 2 pieces, 105.24 mm3 (expected 2, 105.2)
+[   66.9s] ok   COMPOUND (Part__Feature448): removed 105.24 mm3 (gantry 105.24), valid True, solids 2 (was 2)
+[   66.9s] ok   COMPOUND (Part__Feature448): underside now 3.000 above the carried tip
+[   70.0s] ok   COMPOUND003 (Part__Feature654): removed 105.24 mm3 (gantry 105.24), valid True, solids 2 (was 2)
+[   70.1s] ok   COMPOUND003 (Part__Feature654): underside now 3.000 above the carried tip
+[   72.8s] ok   COMPOUND004 (Part__Feature1507): removed 105.24 mm3 (gantry 105.24), valid True, solids 2 (was 2)
+[   72.8s] ok   COMPOUND004 (Part__Feature1507): underside now 3.000 above the carried tip
+[   72.8s] ok   the Beacon face (2.599) is now the carriage's lowest part (0.401 below the carriage)
+[   77.3s] ok   gantry carriage, parts not on a head: nothing within 1.0 mm of the removed volume: []
+[   78.6s] ok   Left head carried: nothing within 1.0 mm of the removed volume: []
+[   78.7s] ok   Left dock, its copy's cut: nothing within 1.0 mm of the removed volume: []
+[   80.2s] ok   Right head carried: nothing within 1.0 mm of the removed volume: []
+[   80.2s] ok   Right dock, its copy's cut: nothing within 1.0 mm of the removed volume: []
+[  163.0s] ok   the committed STL's frame: 1505 of its vertices on the untrimmed carriage, max 0.0000 median 0.0000 mm
+[  163.6s] ok   COMPOUND (Part__Feature448): its Placement unchanged
+[  164.2s] ok   COMPOUND004 (Part__Feature1507): its Placement unchanged
+[  177.8s] ok   COMPOUND (Part__Feature448) holds the trimmed shape where it was: volume diff 0.00000, centroid 0.000000 mm, box 0.000000 mm
+[  179.2s] ok   COMPOUND003 (Part__Feature654) holds the trimmed shape where it was: volume diff 0.00000, centroid 0.000000 mm, box 0.000000 mm
+[  180.6s] ok   COMPOUND004 (Part__Feature1507) holds the trimmed shape where it was: volume diff 0.00000, centroid 0.000000 mm, box 0.000000 mm
+[  185.0s] ok   every other solid unchanged (0 moved); solids 1489 (was 1489)
+[  186.7s] printable carriage: 53519 facets, 54.40 x 62.17 x 12.60, volume 16779.8 (was 16885.0)
+[  187.0s] wrote cad/derived/madmax-andrewmcgr-carriage-beacon/MadMaxCarriage Beacon RevH pocket 9mm belts.stl
+[  187.0s] verify: 0 problems
+[  193.1s] SAVED /home/dan/Documents/VT350/vt350-lite-62.FCStd 36835143

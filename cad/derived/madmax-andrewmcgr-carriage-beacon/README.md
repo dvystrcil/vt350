@@ -7,6 +7,7 @@
 |---|---|
 | Made | 2026-11-06, by Daniel Vystrcil (with Claude Code), `cad/passes/lite25_carriage_9mm.py` |
 | Change | Same as below, plus: **both belt-clip pockets replaced with upstream's 9 mm ones**, taken from [`STL/Carriage_MGN12H_9mm.stl`](https://github.com/zruncho3d/madmax/blob/6bf670de9adcc5924e2fb552978161d7a9c7b1c8/STL/Carriage_MGN12H_9mm.stl) @ `6bf670d` (GPL-3.0). The pockets are 26 mm tall instead of 20, on the same centre line, with the same depth. Swap boxes (STL frame, from the bounding-box minimum): X −1…12.5 and 41.9…55.4, height 1.5…31 from the top, full depth. They hold every 6-vs-9 mm difference and none of andrewmcgr's changes (checked by vertex sets). 18 150.9 → 16 885.0 mm³ |
+| Trim (lite-62) | 2026-11-17, `cad/passes/lite62_trim_beacon_pads.py` (#114): the two pads at the bottom of the Beacon pocket's side walls are cut back 1.335 mm, so nothing on the carriage sits lower than the Beacon's coil face (the carriage underside is now 3.0 mm above the nozzle tip, the Beacon face 2.6). 16 885.0 → 16 779.8 mm³; the part is 62.17 mm tall instead of 63.5, in the same frame |
 | Clips | upstream `STL/SpeedClip_4mm_Gap_9mm.stl`, unmodified (not in this folder) |
 | Frame | the original `MadMaxCarriage.stl`'s frame (same print orientation) |
 
