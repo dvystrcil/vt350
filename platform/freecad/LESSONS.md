@@ -148,6 +148,22 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
   all triangles, 4.9 MB compressed each). `removeSplitter()` doesn't rescue one: 14,712 → 10,085 faces, 30 s,
   and the result is **invalid**. Replace it with real geometry or a link.
 
+## Materials: a model stores the UUID, the card lives outside (measured 2026-11-17)
+
+- **A part's `ShapeMaterial` is saved as the material's UUID only** (`<Material uuid="..."/>` in `Document.xml`).
+  Opened where no registered library has that card, the part silently comes back as `Default` (1e-9 kg/mm³): no
+  error, no warning. Measured on FreeCAD 26.3 and the Flatpak 1.1.4.
+- **A material made in a script and never saved to a library doesn't survive a reopen**, for the same reason.
+  Make it as the editor's "Inherit New" does: `Materials.Material()`, `addPhysicalModel()` for each of the parent's
+  models (else `setPhysicalValue("Density", ...)` raises "Property not found"), then
+  `MaterialManager().save(library, material, "<Name>.FCMat", True)`.
+- **Register the card folder before opening a model**: Preferences > Material > "Use materials from user defined
+  directory", or `matlib.use_dir(path)` in a script (sets `Mod/Material/Resources/CustomMaterialsDir` and calls
+  `refresh()`). The library then shows as "Custom". The setting is saved in `user.cfg` on exit, per install: the
+  AppImage (`~/.config/FreeCAD/v26-3`) and the Flatpak (`~/.var/app/org.freecad.FreeCAD/config/FreeCAD/v1-1`)
+  each need it.
+- **The Flatpak has its own private `/tmp`**: a script under `/tmp` on the host isn't there. Pass it inline (`-c`).
+
 ## Gotchas
 
 - **A GUI script named `build.py` never runs.** FreeCAD runs a `.py` argument by importing it by its module name,
