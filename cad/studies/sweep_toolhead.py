@@ -93,10 +93,10 @@ def plan(out):
         r, p = [], par.get(o.Name)
         while p is not None: r.append(p.Label); p = par.get(p.Name)
         return r
-    leaves = [o for o in doc.Objects if o.isDerivedFrom('Part::Feature') and not o.Shape.isNull() and o.Shape.Solids]
+    import linkgeo                                   # parts may be App::Links (vt350#195)
+    leaves = [o for o in doc.Objects if linkgeo.is_leaf(o)]
     P = {o.Name: set(path(o)) for o in leaves}
-    def gshape(o):
-        s = o.Shape.copy(); s.Placement = o.getGlobalPlacement(); return s
+    gshape = linkgeo.gshape
     _bb = {}
     def bb(o):
         if o.Name not in _bb:

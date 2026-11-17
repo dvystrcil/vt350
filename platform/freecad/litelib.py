@@ -65,6 +65,7 @@ CODE_PATH = [_HERE] + [p for p in (os.path.join(os.path.dirname(os.path.dirname(
 sys.path[:0] = [p for p in CODE_PATH if p not in sys.path]
 import batchvalues
 import litepool
+from linkgeo import gplace, link_target, gshape, is_mesh, gmesh, is_leaf  # noqa: F401  (re-exported)
 
 V = FreeCAD.Vector
 REPO = os.environ.get("VT350_REPO", "/home/dan/Code/vt350")
@@ -86,17 +87,9 @@ HEAVY_FACES = 10000           # a distance to a shape with more faces runs in th
                               # every lite-30 part stayed under 1.5 GB. One at a time, as serial would.
 
 
-def gshape(o):
-    s = o.Shape.copy(); s.Placement = o.getGlobalPlacement(); return s
-
-
 def obb(s):
     try: return s.optimalBoundingBox(True, False)
     except Exception: return s.BoundBox
-
-
-def is_leaf(o):
-    return o.isDerivedFrom('Part::Feature') and not o.Shape.isNull() and bool(o.Shape.Solids) and o.TypeId != 'App::Part'
 
 
 def box(x0, x1, y0, y1, z0, z1):
@@ -515,7 +508,7 @@ class Pass:
         """The printer's placeholder box for a separate document (ebox, filter): reshaped to the GLOBAL box bb,
         stored in the root App::Part's frame; the document is recomputed and the new box logged."""
         e = box(bb.XMin, bb.XMax, bb.YMin, bb.YMax, bb.ZMin, bb.ZMax)
-        e.Placement = model.root(root).getGlobalPlacement().inverse().multiply(e.Placement)
+        e.Placement = gplace(model.root(root)).inverse().multiply(e.Placement)
         env.Shape = e; env.Label = label
         model.doc.recompute()
         self.log("envelope:", gshape(env).BoundBox)

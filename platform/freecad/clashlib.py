@@ -122,10 +122,8 @@ def _worker():
     doc = FreeCAD.openDocument(job["model"])
     load_s = time.time() - t0
 
-    def is_leaf(o):
-        return o.isDerivedFrom('Part::Feature') and not o.Shape.isNull() and bool(o.Shape.Solids)
-
-    leaves = [o for o in doc.Objects if is_leaf(o)]
+    import linkgeo                              # a part may be an App::Link to it (vt350#195)
+    leaves = [o for o in doc.Objects if linkgeo.is_leaf(o)]
     by_name = {o.Name: o for o in leaves}
     by_label = {}
     for o in leaves: by_label.setdefault(o.Label, []).append(o)
@@ -165,7 +163,7 @@ def _worker():
 
     def gs(o):
         if o.Name not in shape:
-            s = o.Shape.copy(); s.Placement = o.getGlobalPlacement()
+            s = linkgeo.gshape(o)
             if o.Name in clipb:
                 import Part
                 x0, y0, z0, x1, y1, z1 = clipb[o.Name]

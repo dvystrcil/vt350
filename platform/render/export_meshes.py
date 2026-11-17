@@ -21,6 +21,9 @@
 # Never saves the model.
 import FreeCAD, Part, Mesh, MeshPart, os, json, time, traceback, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))   # colours.py sits next to this script (laptop or a gpu-batch pod)
+_UP = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # platform/, or a pod's job dir
+sys.path[:0] = [os.path.join(_UP, "freecad"), os.path.join(_UP, "scripts")]   # linkgeo.py: platform/freecad, or scripts/
+import linkgeo                                     # parts may be App::Links to one stored shape (vt350#195)
 import colours
 import logos                                       # Voron logos: orange, white inset (shared with export_exploded.py)
 MODEL = os.environ.get("VT350_MODEL", "/home/dan/Documents/VT350/vt350-lite-16.FCStd")
@@ -47,7 +50,7 @@ try:
     for path_ in [MODEL] + EXTRA:
       doc = FreeCAD.openDocument(path_); log("opened", path_)
       G = GROUPS if path_ == MODEL else STATIC     # the groups name MODEL's objects; an extra file's may reuse a Name
-      leaves = {o.Name: o for o in doc.Objects if o.isDerivedFrom('Part::Feature') and not o.Shape.isNull() and o.Shape.Solids}
+      leaves = {o.Name: o for o in doc.Objects if linkgeo.is_leaf(o)}
       par = {}
       for g in doc.Objects:
           for k in (getattr(g, 'Group', []) or []): par.setdefault(k.Name, g)
@@ -60,6 +63,7 @@ try:
           return " / ".join(reversed(r))
       for o in leaves.values():
         vo = o.ViewObject if FreeCAD.GuiUp else None
+        tgt = linkgeo.link_target(o)                 # a link shows its target's colour and material
         if colours.standin_skip(o.Name, vo is None or vo.isVisible(), getattr(o, "StandInFor", ""), real):
             hidden += 1; continue
         if G.hidden(o.Name): n_motion["hide"] += 1; continue
@@ -67,10 +71,11 @@ try:
         if any(o2.isDerivedFrom('Part::Feature') and o2.Name in leaves for o2 in o.InList if o2.TypeId != 'App::Part'):
             continue    # consumed by a feature that is itself a leaf
         try:
-            col = tuple(round(c, 2) for c in vo.ShapeAppearance[0].DiffuseColor[:3]) if vo else (0.7, 0.7, 0.7)
-            tr = round(vo.Transparency / 100, 2) if vo else 0.0
+            avo = vo if vo is None or hasattr(vo, "ShapeAppearance") else tgt.ViewObject
+            col = tuple(round(c, 2) for c in avo.ShapeAppearance[0].DiffuseColor[:3]) if avo else (0.7, 0.7, 0.7)
+            tr = round(avo.Transparency / 100, 2) if avo else 0.0
         except Exception: col, tr = (0.7, 0.7, 0.7), 0.0
-        mat = getattr(getattr(o, 'ShapeMaterial', None), 'Name', '') or 'Default'
+        mat = getattr(getattr(tgt, 'ShapeMaterial', None), 'Name', '') or 'Default'
         key = f"{re.sub('[^A-Za-z0-9]+', '_', mat)}__{int(col[0]*100):02d}_{int(col[1]*100):02d}_{int(col[2]*100):02d}_t{int(tr*100)}"
         role = None
         if o.Label.startswith("LED channel"): key = "LED_emitter"
@@ -85,12 +90,10 @@ try:
         b = buckets.setdefault(key, {"mesh": Mesh.Mesh(), "color": col, "material": mat, "transparency": tr, "labels": [],
                                      "role": role, "group": grp, "vis": tag})
         sn = colours.standin_source(o.Name, {k: v.Name for k, v in by_real.items()}, STANDINS)
-        if sn and by_real[o.Name].isDerivedFrom("Mesh::Feature"):   # a mesh stand-in: its triangles, in the real part's bucket
-            m = by_real[o.Name].Mesh.copy(); m.Placement = FreeCAD.Placement()
-            m.transform(by_real[o.Name].getGlobalPlacement().toMatrix())
-            b["mesh"].addMesh(m); b["labels"].append(o.Label); continue
+        if sn and linkgeo.is_mesh(by_real[o.Name]):   # a mesh stand-in (or a link to one): its triangles, in the real part's bucket
+            b["mesh"].addMesh(linkgeo.gmesh(by_real[o.Name])); b["labels"].append(o.Label); continue
         src = by_real[o.Name] if sn else o           # a shape stand-in (the springs' tubes) stands in for the shape
-        s = src.Shape.copy(); s.Placement = src.getGlobalPlacement()
+        s = linkgeo.gshape(src)
         cb = G.clip(o.Name)
         if cb:                                       # a belt loop: only the part that moves rigidly (player.py's clip)
             x0, y0, z0, x1, y1, z1 = cb; s = s.common(Part.makeBox(x1 - x0, y1 - y0, z1 - z0, FreeCAD.Vector(x0, y0, z0)))
@@ -109,7 +112,7 @@ try:
         if o.Label.startswith("LED channel"):
             bb = s.BoundBox; scene["lights"].append({"label": o.Label, "bbox": [bb.XMin, bb.XMax, bb.YMin, bb.YMax, bb.ZMin, bb.ZMax]})
         if o.Label == "Nocturne lens":
-            pl = o.getGlobalPlacement(); d = pl.Rotation.multVec(FreeCAD.Vector(0, 0, 1))
+            pl = linkgeo.gplace(o); d = pl.Rotation.multVec(FreeCAD.Vector(0, 0, 1))
             scene["camera"] = {"pos": [pl.Base.x, pl.Base.y, pl.Base.z], "dir": [d.x, d.y, d.z], "fov_diag_deg": 96.0, "aspect": 16 / 9}
     for k, b in buckets.items():
         b["mesh"].write(os.path.join(OUT, k + ".stl"))

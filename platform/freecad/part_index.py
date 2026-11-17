@@ -237,8 +237,8 @@ def index_doc(doc, model, p=None):
     parts = []
     for o in sorted(m.leaves, key=lambda o: o.Name):
         parts.append({"name": o.Name, "label": o.Label, "path": path(o),
-                      "material": getattr(getattr(o, 'ShapeMaterial', None), 'Name', '') or 'Default',
-                      "consumed": any(x.Name in leaves for x in o.InList if x.TypeId != 'App::Part'),
+                      "material": getattr(getattr(litelib.link_target(o), 'ShapeMaterial', None), 'Name', '') or 'Default',
+                      "consumed": any(x.Name in leaves for x in o.InList if x.TypeId not in ('App::Part', 'App::Link')),
                       "bbox": _rbox(boxes[o.Name])})
     return {"format": FORMAT, "model": os.path.basename(model), "source": fingerprint(model),
             "bbox": {"method": METHOD, "mode": "gui" if gui else "headless", "freecad": ".".join(FreeCAD.Version()[:3])},

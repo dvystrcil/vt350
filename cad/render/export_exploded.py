@@ -6,7 +6,7 @@
 # cutout and a margin), cutout seal halves (also pulled apart in X), cradle, tray seal, filter.
 import FreeCAD, Part, Mesh, MeshPart, os, sys, json, time, traceback
 _HERE = os.path.dirname(os.path.abspath(__file__))   # then the checkout's code folders (vt350#122); a gpu-batch pod stages all flat in _HERE
-sys.path[:0] = [_HERE] + [p for p in (os.path.join(os.path.dirname(os.path.dirname(_HERE)), d) for d in ('platform/render',)) if os.path.isdir(p)]
+sys.path[:0] = [_HERE] + [p for p in (os.path.join(os.path.dirname(os.path.dirname(_HERE)), d) for d in ('platform/render', 'platform/freecad')) if os.path.isdir(p)]
 import colours                                   # #38 role colours: the filter's accents, the black backbone
 import logos                                     # Voron logos: orange, white inset (shared with export_meshes.py)
 V = FreeCAD.Vector
@@ -32,10 +32,7 @@ CLEAR, DARK = (0.85, 0.9, 0.95), (0.18, 0.18, 0.19)
 os.makedirs(OUT, exist_ok=True)
 logf = open(os.path.join(OUT, "export.log"), "w"); t0 = time.time()
 def log(*a): logf.write(f"[{time.time() - t0:7.1f}s] " + " ".join(str(x) for x in a) + "\n"); logf.flush()
-def gshape(o):
-    s = o.Shape.copy(); s.Placement = o.getGlobalPlacement(); return s
-def leaf(o):
-    return o.isDerivedFrom('Part::Feature') and not o.Shape.isNull() and bool(o.Shape.Solids) and o.TypeId != 'App::Part'
+from linkgeo import gshape, is_leaf as leaf        # parts may be App::Links (vt350#195)
 try:
     shapes = {}
     for k in ("ring", "tray_seal", "seal_left", "seal_right"):
