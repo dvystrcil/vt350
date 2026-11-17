@@ -1,0 +1,26 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "475e42e0-5eb8-5fb6-b0f4-593154c3084f"
+  Name: "Ambrosia ABS Matte Grey Abyss (Non-Sparkle Galactic Black)"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "Ambrosia ABS Matte, colour Grey Abyss (Non-Sparkle Galactic Black) (SKU AMB2410GRE), in stock 2026-11-17. Colour value: estimate from the colour's name."
+  SourceURL: "https://west3d.com/products/ambrosia-abs-matte-filament-of-the-gods-1kg-bambu-ams-friendly-cardboard-spools-premium-3d-printing-filament?variant=45924784013524"
+  ReferenceSource: "Density ISO 1183 1.03 g/cm3 (1.03 used); colour #2b2b2e (estimate from the colour's name)"
+Inherits:
+  Ambrosia ABS Matte:
+    UUID: "d3395e15-6ba5-5e25-bd99-625ac89597b0"
+Models:
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "1030 kg/m^3"
+AppearanceModels:
+  Basic Rendering:
+    UUID: "f006c7e4-35b7-43d5-bbf9-c5d572309e6e"
+    AmbientColor: "(0.0470588,0.0470588,0.0509804,1)"
+    DiffuseColor: "(0.168627,0.168627,0.180392,1)"
+    EmissiveColor: "(0,0,0,1)"
+    Shininess: "0.05"
+    SpecularColor: "(0.1,0.1,0.1,1)"
+    Transparency: "0"

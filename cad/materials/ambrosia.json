@@ -1,0 +1,738 @@
+{
+ "_about": "Ambrosia filament (West3D) as FreeCAD material cards (vt350#60). Densities: each grade's datasheet. Colours: in stock on the product page on inventory_read. palette rgb: ESTIMATES until West3D publishes colour codes (replace rgb and basis, then run build_cards.py). Refresh the inventory with fetch_west3d.py.",
+ "inventory_read": "2026-11-17",
+ "palette": {
+  "Black": {
+   "rgb": "#1a1a1a",
+   "basis": "estimate from the colour's name"
+  },
+  "White": {
+   "rgb": "#f2f2f0",
+   "basis": "estimate from the colour's name"
+  },
+  "Polar White": {
+   "rgb": "#fbfbfb",
+   "basis": "estimate from the colour's name"
+  },
+  "Natural": {
+   "rgb": "#e6dcc4",
+   "basis": "estimate from the colour's name"
+  },
+  "Pastel Pink": {
+   "rgb": "#f4b6c8",
+   "basis": "estimate from the colour's name"
+  },
+  "Red": {
+   "rgb": "#c62828",
+   "basis": "estimate from the colour's name"
+  },
+  "Voron Red": {
+   "rgb": "#c8102e",
+   "basis": "estimate from the colour's name"
+  },
+  "Dark Red": {
+   "rgb": "#7f1d1d",
+   "basis": "estimate from the colour's name"
+  },
+  "Purple": {
+   "rgb": "#6a3d9a",
+   "basis": "estimate from the colour's name"
+  },
+  "Grape": {
+   "rgb": "#5b2a86",
+   "basis": "estimate from the colour's name"
+  },
+  "Midnight Purple": {
+   "rgb": "#2e1a47",
+   "basis": "estimate from the colour's name"
+  },
+  "Hot Pink": {
+   "rgb": "#ff3fa4",
+   "basis": "estimate from the colour's name"
+  },
+  "Grey": {
+   "rgb": "#8a8d8f",
+   "basis": "estimate from the colour's name"
+  },
+  "Street Grey": {
+   "rgb": "#5f6366",
+   "basis": "estimate from the colour's name"
+  },
+  "Concrete Grey": {
+   "rgb": "#9a9a96",
+   "basis": "estimate from the colour's name"
+  },
+  "Galactic Grey": {
+   "rgb": "#6d6d72",
+   "basis": "estimate from the colour's name"
+  },
+  "Grey Abyss (Non-Sparkle Galactic Black)": {
+   "rgb": "#2b2b2e",
+   "basis": "estimate from the colour's name"
+  },
+  "Super Blue": {
+   "rgb": "#1f4fd1",
+   "basis": "estimate from the colour's name"
+  },
+  "Blue": {
+   "rgb": "#1565c0",
+   "basis": "estimate from the colour's name"
+  },
+  "Dark Blue": {
+   "rgb": "#1b2a59",
+   "basis": "estimate from the colour's name"
+  },
+  "Navy Blue": {
+   "rgb": "#1f2a44",
+   "basis": "estimate from the colour's name"
+  },
+  "Terrestrial Blue": {
+   "rgb": "#2f6db5",
+   "basis": "estimate from the colour's name"
+  },
+  "Quadra Teal": {
+   "rgb": "#00897b",
+   "basis": "estimate from the colour's name"
+  },
+  "West Green": {
+   "rgb": "#2e9e4a",
+   "basis": "estimate from the colour's name"
+  },
+  "Green": {
+   "rgb": "#2e7d32",
+   "basis": "estimate from the colour's name"
+  },
+  "Fluorescent Neon Green": {
+   "rgb": "#39ff14",
+   "basis": "estimate from the colour's name"
+  },
+  "Camo Green": {
+   "rgb": "#5b6b3a",
+   "basis": "estimate from the colour's name"
+  },
+  "Camo Olive Drab": {
+   "rgb": "#4b5320",
+   "basis": "estimate from the colour's name"
+  },
+  "Orange": {
+   "rgb": "#ff7a00",
+   "basis": "estimate from the colour's name"
+  },
+  "KB-3D Orange": {
+   "rgb": "#ff6a13",
+   "basis": "estimate from the colour's name"
+  },
+  "Burnt Orange": {
+   "rgb": "#cc5500",
+   "basis": "estimate from the colour's name"
+  },
+  "Bloody Murder (Blood Orange)": {
+   "rgb": "#cc3a1a",
+   "basis": "estimate from the colour's name"
+  },
+  "Creamsicle": {
+   "rgb": "#ffb07c",
+   "basis": "estimate from the colour's name"
+  },
+  "Marigold": {
+   "rgb": "#eaa221",
+   "basis": "estimate from the colour's name"
+  },
+  "Terracotta": {
+   "rgb": "#e2725b",
+   "basis": "estimate from the colour's name"
+  },
+  "Skin (Light)": {
+   "rgb": "#f1c9a5",
+   "basis": "estimate from the colour's name"
+  },
+  "Cardovan": {
+   "rgb": "#893f45",
+   "basis": "estimate from the colour's name"
+  },
+  "Milk Chocolate Brown": {
+   "rgb": "#7b4b2a",
+   "basis": "estimate from the colour's name"
+  },
+  "Faded Desert Brown FDE": {
+   "rgb": "#a38f6d",
+   "basis": "estimate from the colour's name"
+  },
+  "British Racing Green": {
+   "rgb": "#004225",
+   "basis": "the conventional British racing green"
+  },
+  "Black (Pantone 7C)": {
+   "rgb": "#3d3935",
+   "basis": "Pantone Black 7 C, named in the colour; sRGB from Pantone's published value"
+  },
+  "Galactic Black (With Glitter)": {
+   "rgb": "#1c1c22",
+   "basis": "estimate from the colour's name; has glitter",
+   "effect": "glitter"
+  },
+  "Galactic Black": {
+   "rgb": "#1c1c22",
+   "basis": "estimate from the colour's name; galactic = glitter",
+   "effect": "glitter"
+  },
+  "Clear": {
+   "rgb": "#e6eef0",
+   "basis": "estimate from the colour's name",
+   "transparency": 0.6
+  },
+  "Easter Egg": {
+   "rgb": "#f7c6d9",
+   "basis": "estimate from the colour's name; multi-colour or effect filament: one colour stands in",
+   "effect": "multi"
+  },
+  "Rainbow Rush": {
+   "rgb": "#ff8c00",
+   "basis": "estimate from the colour's name; multi-colour or effect filament: one colour stands in",
+   "effect": "multi"
+  },
+  "Rainbow Fusion": {
+   "rgb": "#8e44ad",
+   "basis": "estimate from the colour's name; multi-colour or effect filament: one colour stands in",
+   "effect": "multi"
+  },
+  "Marble": {
+   "rgb": "#d9d6d0",
+   "basis": "estimate from the colour's name; multi-colour or effect filament: one colour stands in",
+   "effect": "multi"
+  },
+  "Autumn Shift": {
+   "rgb": "#b5651d",
+   "basis": "estimate from the colour's name; multi-colour or effect filament: one colour stands in",
+   "effect": "multi"
+  }
+ },
+ "grades": [
+  {
+   "grade": "PET-GF",
+   "handle": "ambrosia-pet-gf-glass-filled-pet-filament-of-the-gods-1kg-spool",
+   "density_kg_m3": 1405,
+   "density_published_g_cm3": "1.40-1.41",
+   "density_method": "ISO 1183",
+   "datasheet_read": "2026-11-17",
+   "colours": [
+    {
+     "colour": "Black",
+     "sku": "AMB5537BLA",
+     "variant": 67651409314004
+    },
+    {
+     "colour": "Voron Red",
+     "sku": "AMB5539VOR",
+     "variant": 67651409379540
+    },
+    {
+     "colour": "Burnt Orange",
+     "sku": "AMB5540BUR",
+     "variant": 67651409412308
+    },
+    {
+     "colour": "White",
+     "sku": "AMB5541WHI",
+     "variant": 67651438969044
+    },
+    {
+     "colour": "Orange",
+     "sku": "AMB5542ORA",
+     "variant": 67651439001812
+    }
+   ]
+  },
+  {
+   "grade": "PPS-CF",
+   "handle": "ambrosia-pps-cf-filament-of-the-gods-1kg-bambu-ams-friendly-high-temperature-polycarbonate-spools-premium-3d-printing-filament",
+   "density_kg_m3": 1305,
+   "density_published_g_cm3": "1.30-1.31",
+   "density_method": "ISO 1183",
+   "datasheet_read": "2026-11-17",
+   "only_colour": "Black",
+   "colours": [
+    {
+     "colour": "Black",
+     "sku": "AMB4401PPS",
+     "variant": 47681643020500
+    }
+   ]
+  },
+  {
+   "grade": "PC-CF",
+   "handle": "ambrosia-pc-cf-filament-of-the-gods-1kg-bambu-ams-friendly-cardboard-spools-premium-3d-printing-filament-house-polycarbonate-cf-pccf",
+   "density_kg_m3": 1210,
+   "density_published_g_cm3": "1.21",
+   "density_method": "ISO 1183",
+   "datasheet_read": "2026-11-17",
+   "colours": [
+    {
+     "colour": "Black",
+     "sku": "AMB1731",
+     "variant": 44425761161428
+    },
+    {
+     "colour": "Blue",
+     "sku": "AMB1732",
+     "variant": 45409449836756
+    },
+    {
+     "colour": "Red",
+     "sku": "AMB1733",
+     "variant": 45409450229972
+    }
+   ]
+  },
+  {
+   "grade": "PC-ABS",
+   "handle": "ambrosia-pc-abs-filament-of-the-gods-1kg-bambu-ams-friendly-cardboard-spools-premium-3d-printing-filament-house-polycarbonate-abs",
+   "density_kg_m3": 1145,
+   "density_published_g_cm3": "1.14-1.15",
+   "density_method": "ISO 1183",
+   "datasheet_read": "2026-11-17",
+   "colours": [
+    {
+     "colour": "Black",
+     "sku": "AMB1728",
+     "variant": 44420893671636
+    },
+    {
+     "colour": "Galactic Black",
+     "sku": "AMB1729",
+     "variant": 44420893704404
+    },
+    {
+     "colour": "Galactic Grey",
+     "sku": "AMB1730",
+     "variant": 45409413038292
+    }
+   ]
+  },
+  {
+   "grade": "ASA",
+   "handle": "ambrosia-asa-filament-of-the-gods-1kg-bambu-friendly-cardboard-spools-premium-3d-printing-filament",
+   "density_kg_m3": 1085,
+   "density_published_g_cm3": "1.08-1.09",
+   "density_method": "ISO 1183",
+   "datasheet_read": "2026-11-17",
+   "colours": [
+    {
+     "colour": "Black",
+     "sku": "AMB1492",
+     "variant": 44020687274196
+    },
+    {
+     "colour": "White",
+     "sku": "AMB1493",
+     "variant": 44020687306964
+    },
+    {
+     "colour": "Polar White",
+     "sku": "AMB1545",
+     "variant": 45744938090708
+    },
+    {
+     "colour": "West Green",
+     "sku": "AMB1494",
+     "variant": 44020687339732
+    },
+    {
+     "colour": "Voron Red",
+     "sku": "AMB1495",
+     "variant": 44020687372500
+    },
+    {
+     "colour": "Grey",
+     "sku": "AMB1496",
+     "variant": 44425275572436
+    },
+    {
+     "colour": "Faded Desert Brown FDE",
+     "sku": "AMB1497",
+     "variant": 44425275605204
+    },
+    {
+     "colour": "KB-3D Orange",
+     "sku": "AMB1498",
+     "variant": 44425275637972
+    },
+    {
+     "colour": "Terrestrial Blue",
+     "sku": "AMB1499",
+     "variant": 44461380567252
+    },
+    {
+     "colour": "Super Blue",
+     "sku": "AMB1500",
+     "variant": 44461380600020
+    },
+    {
+     "colour": "Grape",
+     "sku": "AMB1501",
+     "variant": 44461380632788
+    },
+    {
+     "colour": "Quadra Teal",
+     "sku": "AMB1503",
+     "variant": 45409297072340
+    },
+    {
+     "colour": "Cardovan",
+     "sku": "AMB2527CAR",
+     "variant": 46039862870228
+    },
+    {
+     "colour": "Bloody Murder (Blood Orange)",
+     "sku": "AMB2528BLO",
+     "variant": 46039862902996
+    },
+    {
+     "colour": "Easter Egg",
+     "sku": "AMB2530EAS",
+     "variant": 46039862968532
+    },
+    {
+     "colour": "Rainbow Rush",
+     "sku": "AMB2531RAI",
+     "variant": 46039863001300
+    },
+    {
+     "colour": "Hot Pink",
+     "sku": "AMB2532HOT",
+     "variant": 46039863034068
+    },
+    {
+     "colour": "Fluorescent Neon Green",
+     "sku": "AMB2533FLU",
+     "variant": 46039863066836
+    },
+    {
+     "colour": "Camo Green",
+     "sku": "AMB2535CAM",
+     "variant": 46039863132372
+    },
+    {
+     "colour": "Camo Olive Drab",
+     "sku": "AMB2536COD",
+     "variant": 46039863165140
+    },
+    {
+     "colour": "Creamsicle",
+     "sku": "AMB3765CRE",
+     "variant": 47159814488276
+    },
+    {
+     "colour": "Burnt Orange",
+     "sku": "AMB3766BUR",
+     "variant": 47159814521044
+    },
+    {
+     "colour": "Skin (Light)",
+     "sku": "AMB3767SKI",
+     "variant": 47159814553812
+    },
+    {
+     "colour": "Terracotta",
+     "sku": "AMB3909TER",
+     "variant": 47336904360148
+    },
+    {
+     "colour": "Midnight Purple",
+     "sku": "AMB4393MID",
+     "variant": 47681585414356
+    },
+    {
+     "colour": "Marble",
+     "sku": "AMB5530MAR",
+     "variant": 67651408986324
+    },
+    {
+     "colour": "Navy Blue",
+     "sku": "AMB5531NAV",
+     "variant": 67651409019092
+    },
+    {
+     "colour": "Milk Chocolate Brown",
+     "sku": "AMB5532MIL",
+     "variant": 67651409051860
+    },
+    {
+     "colour": "Marigold",
+     "sku": "AMB5533MAR",
+     "variant": 67651409084628
+    },
+    {
+     "colour": "Street Grey",
+     "sku": "AMB5534STR",
+     "variant": 67651409117396
+    },
+    {
+     "colour": "Concrete Grey",
+     "sku": "AMB5535CON",
+     "variant": 67651409150164
+    },
+    {
+     "colour": "Natural",
+     "sku": "AMB5536NAT",
+     "variant": 67651409182932
+    },
+    {
+     "colour": "Autumn Shift",
+     "sku": "AMB5602AUT",
+     "variant": 68124403400916
+    }
+   ]
+  },
+  {
+   "grade": "ASA-CF",
+   "handle": "ambrosia-asa-cf-filament-of-the-gods-1kg-bambu-ams-friendly-cardboard-spools-premium-3d-printing-filament",
+   "density_kg_m3": 1095,
+   "density_published_g_cm3": "1.09-1.10",
+   "density_method": "ISO 1183",
+   "datasheet_read": "2026-11-17",
+   "colours": [
+    {
+     "colour": "Black",
+     "sku": "AMB1722",
+     "variant": 44420868276436
+    },
+    {
+     "colour": "Dark Red",
+     "sku": "AMB1723",
+     "variant": 44420868309204
+    },
+    {
+     "colour": "Dark Blue",
+     "sku": "AMB1724",
+     "variant": 44420868341972
+    },
+    {
+     "colour": "Purple",
+     "sku": "AMB1725",
+     "variant": 45409394688212
+    }
+   ]
+  },
+  {
+   "grade": "ASA-GF",
+   "handle": "ambrosia-asa-gf-glass-filled-asa-filament-of-the-gods-1kg-bambu-ams-friendly-cardboard-spools-premium-3d-printing-filament",
+   "density_kg_m3": 1125,
+   "density_published_g_cm3": "1.12-1.13",
+   "density_method": "ISO 1183",
+   "datasheet_read": "2026-11-17",
+   "colours": [
+    {
+     "colour": "Black",
+     "sku": "AMB2049",
+     "variant": 45409918157012
+    },
+    {
+     "colour": "Voron Red",
+     "sku": "AMB2050",
+     "variant": 45409918189780
+    },
+    {
+     "colour": "Natural",
+     "sku": "AMB2051",
+     "variant": 45409918222548
+    }
+   ]
+  },
+  {
+   "grade": "Uber ABS",
+   "handle": "ambrosia-uber-abs-filament-of-the-gods-1kg-bambu-friendly-cardboard-spools-premium-3d-printing-filament-abs",
+   "density_kg_m3": 1090,
+   "density_published_g_cm3": "1.08-1.10",
+   "density_method": "ISO 1183",
+   "datasheet_read": "2026-11-17",
+   "colours": [
+    {
+     "colour": "Black",
+     "sku": "AMB1504",
+     "variant": 44020706738388
+    },
+    {
+     "colour": "White",
+     "sku": "AMB1505",
+     "variant": 44020706771156
+    },
+    {
+     "colour": "Natural",
+     "sku": "AMB1506",
+     "variant": 44020706803924
+    },
+    {
+     "colour": "Pastel Pink",
+     "sku": "AMB1507",
+     "variant": 44020706836692
+    },
+    {
+     "colour": "Red",
+     "sku": "AMB1508",
+     "variant": 44020708344020
+    },
+    {
+     "colour": "Purple",
+     "sku": "AMB1509",
+     "variant": 44020708376788
+    }
+   ]
+  },
+  {
+   "grade": "ABS Matte",
+   "handle": "ambrosia-abs-matte-filament-of-the-gods-1kg-bambu-ams-friendly-cardboard-spools-premium-3d-printing-filament",
+   "density_kg_m3": 1030,
+   "density_published_g_cm3": "1.03",
+   "density_method": "ISO 1183",
+   "datasheet_read": "2026-11-17",
+   "colours": [
+    {
+     "colour": "Black (Pantone 7C)",
+     "sku": "AMB2406BLA",
+     "variant": 45924783882452
+    },
+    {
+     "colour": "Voron Red",
+     "sku": "AMB2407RED",
+     "variant": 45924783915220
+    },
+    {
+     "colour": "Hot Pink",
+     "sku": "AMB2408HOT",
+     "variant": 45924783947988
+    },
+    {
+     "colour": "British Racing Green",
+     "sku": "AMB2409BRG",
+     "variant": 45924783980756
+    },
+    {
+     "colour": "Grey Abyss (Non-Sparkle Galactic Black)",
+     "sku": "AMB2410GRE",
+     "variant": 45924784013524
+    },
+    {
+     "colour": "Galactic Black (With Glitter)",
+     "sku": "AMB2833GAL",
+     "variant": 46335670780116
+    },
+    {
+     "colour": "Grey",
+     "sku": "AMB5517GRY",
+     "variant": 67651366879444
+    },
+    {
+     "colour": "Super Blue",
+     "sku": "AMB5518SUP",
+     "variant": 67651366912212
+    }
+   ]
+  },
+  {
+   "grade": "PETG",
+   "handle": "ambrosia-petg-filament-of-the-gods-1kg-bambu-ams-friendly-cardboard-spools-premium-3d-printing-filament",
+   "density_kg_m3": 1275,
+   "density_published_g_cm3": "1.27-1.28",
+   "density_method": "ISO 1183",
+   "datasheet_read": "2026-11-17",
+   "colours": [
+    {
+     "colour": "Black",
+     "sku": "AMB1521",
+     "variant": 44020738097364
+    },
+    {
+     "colour": "White",
+     "sku": "AMB1522",
+     "variant": 44020741341396
+    },
+    {
+     "colour": "Clear",
+     "sku": "AMB1523",
+     "variant": 44020741374164
+    },
+    {
+     "colour": "Red",
+     "sku": "AMB1524",
+     "variant": 45409664598228
+    },
+    {
+     "colour": "Blue",
+     "sku": "AMB1525",
+     "variant": 45409664630996
+    },
+    {
+     "colour": "Orange",
+     "sku": "AMB1526",
+     "variant": 45409664663764
+    },
+    {
+     "colour": "Grey",
+     "sku": "AMB1527",
+     "variant": 45409664729300
+    },
+    {
+     "colour": "Rainbow Fusion",
+     "sku": "AMB3764RAI",
+     "variant": 47159812194516
+    },
+    {
+     "colour": "West Green",
+     "sku": "AMB5527WES",
+     "variant": 67651397484756
+    }
+   ]
+  },
+  {
+   "grade": "PCTG",
+   "handle": "ambrosia-pctg-filament-of-the-gods-1kg-spool",
+   "density_kg_m3": null,
+   "density_published_g_cm3": "TBD",
+   "density_method": "ISO 1183",
+   "datasheet_read": "2026-11-17",
+   "colours": [
+    {
+     "colour": "Black",
+     "sku": "AMB5548BLA",
+     "variant": 67651456467156
+    }
+   ]
+  },
+  {
+   "grade": "TPU 95A",
+   "handle": "ambrosia-tpu-95-filament-of-the-gods-1kg-bambu-ams-friendly-cardboard-spools-premium-3d-printing-filament-tpu95",
+   "density_kg_m3": 1235,
+   "density_published_g_cm3": "1.22-1.25",
+   "density_method": "ISO 1183",
+   "datasheet_read": "2026-11-17",
+   "colours": [
+    {
+     "colour": "Black",
+     "sku": "AMB1727",
+     "variant": 44420882497748
+    },
+    {
+     "colour": "White",
+     "sku": "AMB5523WHI",
+     "variant": 67651373039828
+    },
+    {
+     "colour": "Red",
+     "sku": "AMB5524RED",
+     "variant": 67651373072596
+    },
+    {
+     "colour": "Blue",
+     "sku": "AMB5525BLU",
+     "variant": 67651373105364
+    },
+    {
+     "colour": "Green",
+     "sku": "AMB5526GRE",
+     "variant": 67651373138132
+    }
+   ]
+  }
+ ]
+}

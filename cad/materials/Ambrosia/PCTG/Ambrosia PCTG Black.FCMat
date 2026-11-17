@@ -1,0 +1,22 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "56cbe0e2-d80c-531c-903f-abeb44fd9ea2"
+  Name: "Ambrosia PCTG Black"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "Ambrosia PCTG, colour Black (SKU AMB5548BLA), in stock 2026-11-17. Colour value: estimate from the colour's name."
+  SourceURL: "https://west3d.com/products/ambrosia-pctg-filament-of-the-gods-1kg-spool?variant=67651456467156"
+  ReferenceSource: "Density not published (the datasheet says TBD): this card has no density; colour #1a1a1a (estimate from the colour's name)"
+Inherits:
+  Ambrosia PCTG:
+    UUID: "0a14f34e-b205-53c2-9142-40a4b11c36c4"
+AppearanceModels:
+  Basic Rendering:
+    UUID: "f006c7e4-35b7-43d5-bbf9-c5d572309e6e"
+    AmbientColor: "(0.027451,0.027451,0.027451,1)"
+    DiffuseColor: "(0.101961,0.101961,0.101961,1)"
+    EmissiveColor: "(0,0,0,1)"
+    Shininess: "0.2"
+    SpecularColor: "(0.1,0.1,0.1,1)"
+    Transparency: "0"

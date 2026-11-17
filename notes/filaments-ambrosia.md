@@ -8,6 +8,8 @@ number for a design limit. Silk, Sparkle, Dolos, PLA, PHA and Foaming TPU are le
 **Decided:** toolhead parts are **PET-GF** (owner, 2026-11-17). The CoM study (#60) uses its density, **1.405 g/cm³** (the
 middle of 1.40–1.41).
 
+Every grade and in-stock colour is also a FreeCAD material card: `cad/materials/` (how to use them is in its README).
+
 ## Mechanical and thermal (ISO test methods as listed)
 
 | Grade | Density g/cm³ (ISO 1183) | Tensile MPa (ISO 527) | Elongation % | Flexural modulus MPa | Flexural strength MPa (ISO 178) | Impact kJ/m² (ISO 180) | HDT °C @ 0.455 MPa (ISO 75) |

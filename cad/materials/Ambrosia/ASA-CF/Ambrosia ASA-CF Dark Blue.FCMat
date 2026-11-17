@@ -1,0 +1,26 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "2658d8ff-f1cf-59c1-a9d5-76e0d0427895"
+  Name: "Ambrosia ASA-CF Dark Blue"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "Ambrosia ASA-CF, colour Dark Blue (SKU AMB1724), in stock 2026-11-17. Colour value: estimate from the colour's name."
+  SourceURL: "https://west3d.com/products/ambrosia-asa-cf-filament-of-the-gods-1kg-bambu-ams-friendly-cardboard-spools-premium-3d-printing-filament?variant=44420868341972"
+  ReferenceSource: "Density ISO 1183 1.09-1.10 g/cm3 (1.095 used); colour #1b2a59 (estimate from the colour's name)"
+Inherits:
+  Ambrosia ASA-CF:
+    UUID: "270cfdd0-ca86-52cb-b853-64b82364b14c"
+Models:
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "1095 kg/m^3"
+AppearanceModels:
+  Basic Rendering:
+    UUID: "f006c7e4-35b7-43d5-bbf9-c5d572309e6e"
+    AmbientColor: "(0.0313725,0.0470588,0.101961,1)"
+    DiffuseColor: "(0.105882,0.164706,0.34902,1)"
+    EmissiveColor: "(0,0,0,1)"
+    Shininess: "0.2"
+    SpecularColor: "(0.1,0.1,0.1,1)"
+    Transparency: "0"

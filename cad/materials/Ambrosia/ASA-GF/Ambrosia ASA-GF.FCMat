@@ -1,0 +1,17 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "c225f956-48b6-5d6b-a2f6-8c1ed7197fc9"
+  Name: "Ambrosia ASA-GF"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "Ambrosia ASA-GF filament (West3D). Datasheet values: notes/filaments-ambrosia.md. Pick a colour card under it to get the colour too."
+  SourceURL: "https://west3d.com/products/ambrosia-asa-gf-glass-filled-asa-filament-of-the-gods-1kg-bambu-ams-friendly-cardboard-spools-premium-3d-printing-filament"
+  ReferenceSource: "ASA-GF product page, Technical Specifications, read 2026-11-17: Density ISO 1183 1.12-1.13 g/cm3 (1.125 used)"
+Models:
+  Father:
+    UUID: "9cdda8b6-b606-4778-8f13-3934d8668e67"
+    Father: "Thermoplast"
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "1125 kg/m^3"

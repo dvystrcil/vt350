@@ -1,0 +1,26 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "8599de86-f8c2-5ae4-94ce-baf8e62b19ba"
+  Name: "Ambrosia TPU 95A Blue"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "Ambrosia TPU 95A, colour Blue (SKU AMB5525BLU), in stock 2026-11-17. Colour value: estimate from the colour's name."
+  SourceURL: "https://west3d.com/products/ambrosia-tpu-95-filament-of-the-gods-1kg-bambu-ams-friendly-cardboard-spools-premium-3d-printing-filament-tpu95?variant=67651373105364"
+  ReferenceSource: "Density ISO 1183 1.22-1.25 g/cm3 (1.235 used); colour #1565c0 (estimate from the colour's name)"
+Inherits:
+  Ambrosia TPU 95A:
+    UUID: "6bea1ff6-daaa-52f1-9dfb-ba14fe234ef2"
+Models:
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "1235 kg/m^3"
+AppearanceModels:
+  Basic Rendering:
+    UUID: "f006c7e4-35b7-43d5-bbf9-c5d572309e6e"
+    AmbientColor: "(0.0235294,0.117647,0.223529,1)"
+    DiffuseColor: "(0.0823529,0.396078,0.752941,1)"
+    EmissiveColor: "(0,0,0,1)"
+    Shininess: "0.2"
+    SpecularColor: "(0.1,0.1,0.1,1)"
+    Transparency: "0"

@@ -1,0 +1,26 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "bee05951-a4fe-5ced-a57a-b262789649fb"
+  Name: "Ambrosia PC-ABS Galactic Black"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "Ambrosia PC-ABS, colour Galactic Black (SKU AMB1729), in stock 2026-11-17. Colour value: estimate from the colour's name; galactic = glitter. Has glitter."
+  SourceURL: "https://west3d.com/products/ambrosia-pc-abs-filament-of-the-gods-1kg-bambu-ams-friendly-cardboard-spools-premium-3d-printing-filament-house-polycarbonate-abs?variant=44420893704404"
+  ReferenceSource: "Density ISO 1183 1.14-1.15 g/cm3 (1.145 used); colour #1c1c22 (estimate from the colour's name; galactic = glitter)"
+Inherits:
+  Ambrosia PC-ABS:
+    UUID: "2dfd2aa2-3cc4-549c-a5a2-8bc8c75c7957"
+Models:
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "1145 kg/m^3"
+AppearanceModels:
+  Basic Rendering:
+    UUID: "f006c7e4-35b7-43d5-bbf9-c5d572309e6e"
+    AmbientColor: "(0.0313725,0.0313725,0.0392157,1)"
+    DiffuseColor: "(0.109804,0.109804,0.133333,1)"
+    EmissiveColor: "(0,0,0,1)"
+    Shininess: "0.2"
+    SpecularColor: "(0.1,0.1,0.1,1)"
+    Transparency: "0"

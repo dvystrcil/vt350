@@ -1,0 +1,26 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "bf5ba14f-9e4f-57dc-b040-215abe4815e4"
+  Name: "Ambrosia PET-GF Black"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "Ambrosia PET-GF, colour Black (SKU AMB5537BLA), in stock 2026-11-17. Colour value: estimate from the colour's name."
+  SourceURL: "https://west3d.com/products/ambrosia-pet-gf-glass-filled-pet-filament-of-the-gods-1kg-spool?variant=67651409314004"
+  ReferenceSource: "Density ISO 1183 1.40-1.41 g/cm3 (1.405 used); colour #1a1a1a (estimate from the colour's name)"
+Inherits:
+  Ambrosia PET-GF:
+    UUID: "fb81a375-0fd8-5984-bc39-ddf9d45724a6"
+Models:
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "1405 kg/m^3"
+AppearanceModels:
+  Basic Rendering:
+    UUID: "f006c7e4-35b7-43d5-bbf9-c5d572309e6e"
+    AmbientColor: "(0.027451,0.027451,0.027451,1)"
+    DiffuseColor: "(0.101961,0.101961,0.101961,1)"
+    EmissiveColor: "(0,0,0,1)"
+    Shininess: "0.2"
+    SpecularColor: "(0.1,0.1,0.1,1)"
+    Transparency: "0"

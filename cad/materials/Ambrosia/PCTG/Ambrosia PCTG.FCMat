@@ -1,0 +1,14 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "0a14f34e-b205-53c2-9142-40a4b11c36c4"
+  Name: "Ambrosia PCTG"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "Ambrosia PCTG filament (West3D). Datasheet values: notes/filaments-ambrosia.md. Pick a colour card under it to get the colour too."
+  SourceURL: "https://west3d.com/products/ambrosia-pctg-filament-of-the-gods-1kg-spool"
+  ReferenceSource: "PCTG product page, Technical Specifications, read 2026-11-17: Density not published (the datasheet says TBD): this card has no density"
+Models:
+  Father:
+    UUID: "9cdda8b6-b606-4778-8f13-3934d8668e67"
+    Father: "Thermoplast"

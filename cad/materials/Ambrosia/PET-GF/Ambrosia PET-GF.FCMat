@@ -1,0 +1,17 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "fb81a375-0fd8-5984-bc39-ddf9d45724a6"
+  Name: "Ambrosia PET-GF"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "Ambrosia PET-GF filament (West3D). Datasheet values: notes/filaments-ambrosia.md. Pick a colour card under it to get the colour too."
+  SourceURL: "https://west3d.com/products/ambrosia-pet-gf-glass-filled-pet-filament-of-the-gods-1kg-spool"
+  ReferenceSource: "PET-GF product page, Technical Specifications, read 2026-11-17: Density ISO 1183 1.40-1.41 g/cm3 (1.405 used)"
+Models:
+  Father:
+    UUID: "9cdda8b6-b606-4778-8f13-3934d8668e67"
+    Father: "Thermoplast"
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "1405 kg/m^3"

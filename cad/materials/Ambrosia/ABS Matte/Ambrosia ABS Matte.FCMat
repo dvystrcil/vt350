@@ -1,0 +1,17 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "d3395e15-6ba5-5e25-bd99-625ac89597b0"
+  Name: "Ambrosia ABS Matte"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "Ambrosia ABS Matte filament (West3D). Datasheet values: notes/filaments-ambrosia.md. Pick a colour card under it to get the colour too."
+  SourceURL: "https://west3d.com/products/ambrosia-abs-matte-filament-of-the-gods-1kg-bambu-ams-friendly-cardboard-spools-premium-3d-printing-filament"
+  ReferenceSource: "ABS Matte product page, Technical Specifications, read 2026-11-17: Density ISO 1183 1.03 g/cm3 (1.03 used)"
+Models:
+  Father:
+    UUID: "9cdda8b6-b606-4778-8f13-3934d8668e67"
+    Father: "Thermoplast"
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "1030 kg/m^3"
