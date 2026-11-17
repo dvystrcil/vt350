@@ -185,3 +185,7 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
 - **An overlap check is how to prove a part sits in a slot** (lite-57 holder keys, lite-58 door sheets): put it where
   the slot should be and check it against the profile. 0 overlap means open slot, so the check guards the design,
   not just the pass.
+- **Notch a panel round what the overlap check finds** (lite-59): build the plain slab, list the parts it overlaps
+  (`common().Volume`), and cut each one's box + clearance through the panel. Then no part is missed or hard-coded,
+  but gate every hit with a predicate ("only in the latch band", "only the cable arms"): an unexpected hit fails
+  the pass instead of quietly becoming a hole.

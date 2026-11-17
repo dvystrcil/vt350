@@ -1,0 +1,81 @@
+{
+ "stats": {
+  "top": {
+   "notched_round": [],
+   "box": [
+    30.0,
+    160.0,
+    -90.0,
+    520.0,
+    690.0,
+    693.0
+   ]
+  },
+  "rear": {
+   "notched_round": [
+    "Cable channel arm 1 (printed, M5 to the ",
+    "Cable channel arm 2 (printed, M5 to the "
+   ],
+   "box": [
+    30.0,
+    146.0,
+    520.0,
+    523.0,
+    -50.0,
+    690.0
+   ]
+  },
+  "front": {
+   "notched_round": [
+    "E-box door: 6x3mm magnet v2 (1)007",
+    "E-box door: 6x3mm magnet v2 (1)008",
+    "E-box door: 6x3mm magnet v2 (1)009",
+    "E-box door: 6x3mm magnet v2 (1)010",
+    "E-box door: M3x8-Screw050",
+    "E-box door: M3x8-Screw051",
+    "E-box door: SOLID053",
+    "SOLID041",
+    "SOLID042",
+    "SOLID053",
+    "SOLID054"
+   ],
+   "windows": [
+    [
+     -4.0,
+     183.0
+    ],
+    [
+     207.0,
+     390.0
+    ],
+    [
+     540.0,
+     640.0
+    ]
+   ],
+   "window_u": [
+    37.0,
+    133.0
+   ],
+   "splits": [
+    195.0,
+    400.0
+   ],
+   "band": [
+    400.0,
+    530.0
+   ]
+  }
+ },
+ "volumes_mm3": {
+  "E-box top panel": 15860,
+  "E-box rear panel": 16686,
+  "E-box grille panel 1 of 3, Z -50..195": 55650,
+  "E-box grille panel 2 of 3, Z 195..400": 40900,
+  "E-box grille panel 3 of 3, Z 400..690": 76226,
+  "E-box grille mesh 1": 16153,
+  "E-box grille mesh 2": 15826,
+  "E-box grille mesh 3": 9004,
+  "E-box grille badge": 5625
+ }
+}
