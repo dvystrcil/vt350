@@ -18,47 +18,6 @@ def fr(t, **groups):
     return {"t": t, "seq": 1, "pos": [0.0, 0.0, 0.0], "carried": None, "groups": groups}
 
 
-GROUPS = {"groups": {"bed": ["Bed1", "Bed2"], "carriage": ["Car"], "Left": ["HeadL"]},
-          "clip": {"Car": [0, 0, 0, 1, 1, 1]}, "hide": ["Ghost"]}
-
-
-class Assign(unittest.TestCase):
-    """Which bucket an exported part goes in: a moving group's parts get their own buckets, so Blender can move them."""
-    def setUp(self):
-        self.a = motion.Assign(GROUPS)
-
-    def test_a_static_part_keeps_its_bucket(self):
-        self.assertEqual(self.a.bucket("Frame1", "role_frame_t0"), ("role_frame_t0", None))
-
-    def test_a_moving_part_gets_its_groups_bucket(self):
-        self.assertEqual(self.a.bucket("Bed2", "role_frame_t0"), ("bed__role_frame_t0", "bed"))
-
-    def test_the_same_colour_in_two_groups_is_two_buckets(self):
-        self.assertNotEqual(self.a.bucket("Bed1", "k")[0], self.a.bucket("HeadL", "k")[0])
-
-    def test_hidden_parts_are_left_out(self):
-        self.assertTrue(self.a.hidden("Ghost"))
-        self.assertFalse(self.a.hidden("Bed1"))
-
-    def test_clip_box(self):
-        self.assertEqual(self.a.clip("Car"), [0, 0, 0, 1, 1, 1])
-        self.assertIsNone(self.a.clip("Bed1"))
-
-    def test_without_a_groups_file_nothing_changes(self):
-        a = motion.Assign(None)
-        self.assertEqual(a.bucket("Bed1", "k"), ("k", None))
-        self.assertFalse(a.hidden("Ghost"))
-        self.assertIsNone(a.clip("Car"))
-
-    def test_an_object_in_two_groups_is_refused(self):
-        with self.assertRaisesRegex(ValueError, "Bed1.*two groups"):
-            motion.Assign({"groups": {"bed": ["Bed1"], "gantry": ["Bed1"]}})
-
-    def test_a_hidden_object_that_moves_is_refused(self):
-        with self.assertRaisesRegex(ValueError, "Bed1"):
-            motion.Assign({"groups": {"bed": ["Bed1"]}, "hide": ["Bed1"]})
-
-
 class FramesFile(unittest.TestCase):
     """The frames the Blender job reads: the timeline's group translations, the frames picked, nothing else."""
     FRAMES = [fr(i / 10, bed=[0, 0, -i], carriage=[i, 0, 0]) for i in range(10)]

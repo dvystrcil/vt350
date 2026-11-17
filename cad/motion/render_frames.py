@@ -12,12 +12,13 @@ How:
      the belt loop shoots out of the frame and a ghost carriage stays in each dock).
   2. Export: platform/render/export_meshes.py ONCE, at the model pose, with VT350_GROUPS: each group's parts in
      buckets of their own. Cached in $VT350_WORK/motion/render-<model>-<key>/export, keyed by the groups file, the
-     exporter and the colour map. Nothing is re-exported per frame.
+     exporter (export_meshes.py, colours.py, logos.py, groups.py: not motion.py, vt350#144) and the colour map. Nothing is re-exported per frame.
   3. frames.json: platform/freecad/timeline.py's frames through rig.json (platform/render/motion.py). The export's
-     scene.json gets the "docks" camera, computed from the rig; colours.py, colours.json and motion.py are copied in,
+     scene.json gets the "docks" camera, computed from the rig; colours.py, colours.json, motion.py and groups.py are copied in,
      so the export dir is a complete batch-lane input (the lane stages only the script).
   4. Blender (platform/render/render.py --frames) moves each group's objects per frame: frame-NNNNN.png.
-  5. ffmpeg: the frames -> an H.264 MP4 for notes/reference.
+  5. ffmpeg: the frames -> an H.264 MP4 for notes/reference. `encode` builds the frames list itself; it never runs
+     the export (vt350#144).
 
 Everything goes to $VT350_WORK (default cad/data, git-ignored), never /tmp: lite-30 is 184 MB and /tmp has a quota.
 Never writes a model. VT350-specific; plain python3, standard library only.
@@ -41,7 +42,7 @@ import timeline  # noqa: E402
 RIG, TIMELINE, WORK = play.RIG, play.TIMELINE, play.WORK
 COLOURS = os.path.join(ROOT, "cad", "render", "colours.json")
 HOMELAB = os.environ.get("HOMELAB", os.path.join(os.path.dirname(ROOT), "homelab"))
-EXPORT_CODE = [os.path.join(RENDER, f) for f in ("export_meshes.py", "colours.py", "logos.py", "motion.py")] + [COLOURS]
+EXPORT_CODE = [os.path.join(RENDER, f) for f in ("export_meshes.py", "colours.py", "logos.py", "groups.py")] + [COLOURS]
 VIDEO = os.path.join(ROOT, "notes", "reference", "toolchange-docks", "toolchange-docks.mp4")
 NOTIFY = "dvystrcil/vt350#135"
 
@@ -140,7 +141,7 @@ def prepare(a, rig):
     for name, obj in (("scene.json", scene), ("frames.json", ff)):
         with open(os.path.join(exp, name), "w") as f:
             json.dump(obj, f, indent=1)
-    for p in (os.path.join(RENDER, "colours.py"), os.path.join(RENDER, "motion.py"), COLOURS):
+    for p in (os.path.join(RENDER, "colours.py"), os.path.join(RENDER, "motion.py"), os.path.join(RENDER, "groups.py"), COLOURS):
         shutil.copy2(p, exp)
     moving = {k: b["group"] for k, b in scene["buckets"].items() if b.get("group")}
     print(f"prepared {exp}: {len(scene['buckets'])} buckets ({len(moving)} moving: "
@@ -171,7 +172,7 @@ def main(argv):
     if a.what == "encode":
         if not a.frames_dir:
             ap.error("encode needs the frames dir")
-        exp, ff = prepare(a, rig)
+        ff = make_frames(rig, a.timeline, a.fps, a.every)   # the frames alone: encode needs no export (vt350#144)
         os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
         motion.encode(a.frames_dir, ff, a.out)
         print(f"wrote {a.out} ({os.path.getsize(a.out) / 1e6:.1f} MB, {len(ff['frames'])} frames)")
