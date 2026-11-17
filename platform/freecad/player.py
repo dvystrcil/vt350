@@ -211,11 +211,12 @@ def clip_objects(doc, objects, clip):
             c = doc.addObject("Part::Feature", o.Name + "_PlayerClip")
             c.Shape = s.common(Part.makeBox(x1 - x0, y1 - y0, z1 - z0, FreeCAD.Vector(x0, y0, z0)))
             c.Label = o.Label + " (player: clipped)"
-            if getattr(o, "ViewObject", None) is not None and getattr(c, "ViewObject", None) is not None:
+            dvo = linkgeo.drawn_vo(o)               # a link draws its target's colours, not its own
+            if dvo is not None and getattr(c, "ViewObject", None) is not None:
                 for prop in ("ShapeAppearance", "DiffuseColor", "ShapeColor", "LineColor"):
-                    if hasattr(o.ViewObject, prop) and hasattr(c.ViewObject, prop):
+                    if hasattr(dvo, prop) and hasattr(c.ViewObject, prop):
                         try:
-                            setattr(c.ViewObject, prop, getattr(o.ViewObject, prop))
+                            setattr(c.ViewObject, prop, getattr(dvo, prop))
                         except Exception:
                             pass
                 o.ViewObject.Visibility = False

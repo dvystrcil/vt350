@@ -1,0 +1,12 @@
+[   64.2s] opened /home/dan/Documents/VT350/vt350-lite-51.FCStd
+[  128.5s] 169 groups, 1001 copies to link, saving 34.7 MB; kept real (a fit would move them): 10 [('Zip_tie019', 0.00063, 'Zip tie, black (2.5 mm) slot 1 at 320 mm'), ('Zip_tie018', 0.00169, 'Zip tie, black (2.5 mm) slot 1 at 220 mm'), ('Zip_tie017', 0.00296, 'Zip tie, black (2.5 mm) slot 1 at 120 mm'), ('Zip_tie016', 0.00172, 'Zip tie, black (2.5 mm) slot 1 at 20 mm'), ('Zip_tie011', 0.00063, 'Zip tie, black (2.5 mm) slot 1 at 320 mm'), ('Zip_tie010', 0.00169, 'Zip tie, black (2.5 mm) slot 1 at 220 mm'), ('Zip_tie009', 0.00296, 'Zip tie, black (2.5 mm) slot 1 at 120 mm'), ('Zip_tie008', 0.00172, 'Zip tie, black (2.5 mm) slot 1 at 20 mm'), ('Kin008', 3e-05, 'Trident kinematic E left bottom (3 mm)'), ('Bar007', 4e-05, '4040 upright Z -10..650 (lite-46)')]
+[  128.5s] ok   1001 copies to link (>= 900)
+[  144.2s] ok   1001 links, every one within 1e-06 mm of its copy (worst 9.22e-07)
+[  156.7s] ok   every link shows its copy's colour and transparency (0 differ: [])
+[  156.7s] ok   every link shown or hidden as its copy was (0 differ: [])
+[  161.4s] ok   every part keeps its global box (1395 parts; moved [], missing [])
+[  161.4s] ok   parts 1395 -> 1395 (unchanged: links count as parts)
+[  161.4s] ok   meshes (and links to meshes) 110 -> 110 (unchanged)
+[  161.4s] 1001 links in 169 groups; 1023 links in the document
+[  161.4s] verify: 0 problems
+[  166.6s] SAVED /home/dan/Documents/VT350/vt350-lite-52.FCStd 33803059

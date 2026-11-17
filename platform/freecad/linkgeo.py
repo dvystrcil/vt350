@@ -22,6 +22,18 @@ def link_target(o):
     return o.getLinkedObject(True) if o.TypeId == 'App::Link' else o
 
 
+def drawn_vo(o):
+    """The view object whose ShapeAppearance / Transparency the GUI draws for o (None headless). For an App::Link
+    that's its target's, unless the link overrides (OverrideMaterial / OverrideMaterialList): a link's own
+    ShapeAppearance can hold a default that is never drawn. lite-52 (vt350#195): its links' undrawn defaults came out
+    teal in the render, and a colour check that read them failed all 1,001 correct links."""
+    vo = getattr(o, "ViewObject", None)
+    if vo is None or o.TypeId != 'App::Link': return vo
+    if getattr(vo, "OverrideMaterial", False) or any(getattr(vo, "OverrideMaterialList", None) or []): return vo
+    t = link_target(o)
+    return getattr(t, "ViewObject", None) if t is not None else vo
+
+
 def is_leaf(o):
     """A part with solids: a Part::Feature, or an App::Link to one. Not containers (App::Part), not meshes."""
     t = link_target(o)

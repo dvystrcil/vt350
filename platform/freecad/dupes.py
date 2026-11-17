@@ -222,18 +222,36 @@ class Group:
     def saving(self):
         return sum(self.each_bytes.get(n, 0) for n in self.copy_names)
 
+    def drop(self, names):
+        """Leave these copies out (they stay real parts)."""
+        names = set(names)
+        self.copies = [(o, T) for o, T in self.copies if o.Name not in names]
+        self.copy_names = [n for n in self.copy_names if n not in names]
+
     def __repr__(self):
         return (f"Group({self.master.Label!r}: {len(self.copies)} copies, {len(self.unfit)} unfit, "
                 f"saves {self.saving / 1e6:.2f} MB)")
 
 
-def find(doc, sizes=None, names=None):
+def find(doc, sizes=None, names=None, split=None, skip=()):
     """Groups of copies in doc, the biggest saving first. sizes: object_bytes() of the saved file (else savings are 0).
-    names: only consider these object Names (a pass's explicit list)."""
+    names: only consider these object Names (a pass's explicit list). skip: never consider these.
+    split(obj) -> a hashable: parts are only grouped with parts of the same value. A link shows its master's colour,
+    so a pass that links copies splits by colour (lite-52: 32 copies coloured unlike their master)."""
     sizes = sizes or {}
-    keyed = [(key(o), o) for o in doc.Objects if (names is None or o.Name in names) and candidate(o)]
+    skip = set(skip)
+    keyed = [(key(o), o) for o in doc.Objects
+             if (names is None or o.Name in names) and o.Name not in skip and candidate(o)]
+    clusters = cluster(keyed)
+    if split is not None:
+        parts = []
+        for objs in clusters:
+            by = {}
+            for o in objs: by.setdefault(split(o), []).append(o)
+            parts += list(by.values())
+        clusters = parts
     out = []
-    for objs in cluster(keyed):
+    for objs in clusters:
         if len(objs) < 2: continue
         objs.sort(key=lambda o: o.Name)
         rest = objs
@@ -248,6 +266,27 @@ def find(doc, sizes=None, names=None):
             if copies or unfit: out.append(Group(m, copies, unfit, sizes))
             rest = left
     out.sort(key=lambda g: -g.saving)
+    return out
+
+
+def landing(group):
+    """Where each copy's link WOULD land, before linking: [(Name, global box difference in mm)]. The document is
+    not changed. A fit within FIT_TOL can still be microns off (lite-51's zip ties: up to 3 um): drop those copies
+    (Group.drop) and keep them real, rather than move a part."""
+    import linkgeo
+    FreeCAD = _fc()
+    g0 = raw(group.master)
+    out = []
+    for o, T in group.copies:
+        par = o.getParentGeoFeatureGroup()
+        place = (linkgeo.gplace(par) if par is not None else FreeCAD.Placement()).multiply(o.Placement).multiply(T)
+        if o.TypeId == "Mesh::Feature":
+            import Mesh
+            m = Mesh.Mesh(g0); m.transform(place.toMatrix()); want, got = m.BoundBox, linkgeo.gmesh(o).BoundBox
+        else:
+            sh = g0.copy(); sh.Placement = place; want, got = sh.BoundBox, linkgeo.gshape(o).BoundBox
+        out.append((o.Name, max(abs(getattr(want, k) - getattr(got, k))
+                                for k in ("XMin", "YMin", "ZMin", "XMax", "YMax", "ZMax"))))
     return out
 
 

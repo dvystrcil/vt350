@@ -1,0 +1,2417 @@
+{
+ "groups": [
+  {
+   "master": "Part__Feature1051",
+   "label": "KnurledNut (1)",
+   "links": [
+    "Part__Feature1132",
+    "Part__Feature3184",
+    "Part__Feature3239",
+    "Part__Feature3294"
+   ],
+   "saves_bytes": 3639056,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1050",
+   "label": "92125A138 (1)",
+   "links": [
+    "Part__Feature1131",
+    "Part__Feature3183",
+    "Part__Feature3238",
+    "Part__Feature3293"
+   ],
+   "saves_bytes": 2879394,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv017",
+   "label": "main-body_dragon-rapido-UHF_o2_xol",
+   "links": [
+    "A4Tv075",
+    "A4Tv133",
+    "A4Tv191",
+    "A4Tv249"
+   ],
+   "saves_bytes": 2201968,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv025",
+   "label": "Component2",
+   "links": [
+    "A4Tv083",
+    "A4Tv141",
+    "A4Tv199",
+    "A4Tv257"
+   ],
+   "saves_bytes": 1883597,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv023",
+   "label": "TL-dragon-\u00b9\u00e8\u00bd\u00ba\u00cc\u00d7",
+   "links": [
+    "A4Tv081",
+    "A4Tv139",
+    "A4Tv197",
+    "A4Tv255"
+   ],
+   "saves_bytes": 1725421,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1006",
+   "label": "HubHousing V5 With Logo (1)",
+   "links": [
+    "Part__Feature1087",
+    "Part__Feature3142",
+    "Part__Feature3197",
+    "Part__Feature3252"
+   ],
+   "saves_bytes": 1562793,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv024",
+   "label": "Component1",
+   "links": [
+    "A4Tv082",
+    "A4Tv140",
+    "A4Tv198",
+    "A4Tv256"
+   ],
+   "saves_bytes": 1460807,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1031",
+   "label": "Component19",
+   "links": [
+    "Part__Feature1112",
+    "Part__Feature3164",
+    "Part__Feature3219",
+    "Part__Feature3274"
+   ],
+   "saves_bytes": 1109228,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv022",
+   "label": "TL-dragon-\u00cd\u00e2\u00bf\u00f2-\u00b0\u00ab",
+   "links": [
+    "A4Tv080",
+    "A4Tv138",
+    "A4Tv196",
+    "A4Tv254"
+   ],
+   "saves_bytes": 1108774,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv016",
+   "label": "Duct-HEF-Dragon-UHF001",
+   "links": [
+    "A4Tv074",
+    "A4Tv132",
+    "A4Tv190",
+    "A4Tv248"
+   ],
+   "saves_bytes": 1101758,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv035",
+   "label": "2510 Fan",
+   "links": [
+    "A4Tv093",
+    "A4Tv151",
+    "A4Tv209",
+    "A4Tv267"
+   ],
+   "saves_bytes": 861364,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1033",
+   "label": "Component21",
+   "links": [
+    "Part__Feature1034",
+    "Part__Feature1035",
+    "Part__Feature1037",
+    "Part__Feature1038",
+    "Part__Feature1040",
+    "Part__Feature1041",
+    "Part__Feature1042",
+    "Part__Feature1044",
+    "Part__Feature1046",
+    "Part__Feature1048",
+    "Part__Feature1049",
+    "Part__Feature1114",
+    "Part__Feature1115",
+    "Part__Feature1116",
+    "Part__Feature1118",
+    "Part__Feature1119",
+    "Part__Feature1121",
+    "Part__Feature1122",
+    "Part__Feature1123",
+    "Part__Feature1125",
+    "Part__Feature1127",
+    "Part__Feature1129",
+    "Part__Feature1130",
+    "Part__Feature3166",
+    "Part__Feature3167",
+    "Part__Feature3168",
+    "Part__Feature3170",
+    "Part__Feature3171",
+    "Part__Feature3173",
+    "Part__Feature3174",
+    "Part__Feature3175",
+    "Part__Feature3177",
+    "Part__Feature3179",
+    "Part__Feature3181",
+    "Part__Feature3182",
+    "Part__Feature3221",
+    "Part__Feature3222",
+    "Part__Feature3223",
+    "Part__Feature3225",
+    "Part__Feature3226",
+    "Part__Feature3228",
+    "Part__Feature3229",
+    "Part__Feature3230",
+    "Part__Feature3232",
+    "Part__Feature3234",
+    "Part__Feature3236",
+    "Part__Feature3237",
+    "Part__Feature3276",
+    "Part__Feature3277",
+    "Part__Feature3278",
+    "Part__Feature3280",
+    "Part__Feature3281",
+    "Part__Feature3283",
+    "Part__Feature3284",
+    "Part__Feature3285",
+    "Part__Feature3287",
+    "Part__Feature3289",
+    "Part__Feature3291",
+    "Part__Feature3292"
+   ],
+   "saves_bytes": 813928,
+   "worst_mm": 1.1546319456101628e-13
+  },
+  {
+   "master": "MeshStandIn010",
+   "label": "Bowden Left stand-in",
+   "links": [
+    "MeshStandIn012",
+    "MeshStandIn014"
+   ],
+   "saves_bytes": 812368,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "MeshStandIn015",
+   "label": "Heat Block stand-in",
+   "links": [
+    "MeshStandIn016",
+    "MeshStandIn017",
+    "MeshStandIn018",
+    "MeshStandIn019"
+   ],
+   "saves_bytes": 618490,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv027",
+   "label": "Heat Block",
+   "links": [
+    "A4Tv085",
+    "A4Tv143",
+    "A4Tv201",
+    "A4Tv259"
+   ],
+   "saves_bytes": 605396,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv014",
+   "label": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "links": [
+    "A4Tv130",
+    "A4Tv246"
+   ],
+   "saves_bytes": 599544,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "O2S_restraint_body",
+   "label": "Orbitool O2S wire restraint body Left (Orbiter-Toolboards 52a5a33, CC0-1.0)",
+   "links": [
+    "O2S_restraint_body001",
+    "O2S_restraint_body002",
+    "O2S_restraint_body003",
+    "O2S_restraint_body004"
+   ],
+   "saves_bytes": 569314,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv003",
+   "label": "[a]_orbiter-crossbow-adapter_o2_xol",
+   "links": [
+    "A4Tv061",
+    "A4Tv119",
+    "A4Tv177",
+    "A4Tv235"
+   ],
+   "saves_bytes": 548057,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature2894",
+   "label": "M5 2020 drop-in T-nut",
+   "links": [
+    "Part__Feature2895",
+    "Part__Feature2896",
+    "Part__Feature2897",
+    "Part__Feature2920",
+    "Part__Feature2921",
+    "Part__Feature2922",
+    "Part__Feature2923",
+    "Part__Feature2983",
+    "Part__Feature2984",
+    "Part__Feature2985",
+    "Part__Feature2986",
+    "Part__Feature2993",
+    "Part__Feature2994",
+    "Part__Feature2995",
+    "Part__Feature2996",
+    "Part__Feature3043",
+    "Part__Feature3044",
+    "Part__Feature3045",
+    "Part__Feature3046",
+    "Part__Feature3053",
+    "Part__Feature3054",
+    "Part__Feature3055",
+    "Part__Feature3056"
+   ],
+   "saves_bytes": 509180,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv015",
+   "label": "[a]_Duct-4010-right",
+   "links": [
+    "A4Tv131",
+    "A4Tv247"
+   ],
+   "saves_bytes": 441540,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1029",
+   "label": "T10 SpurGear (1)",
+   "links": [
+    "Part__Feature1110",
+    "Part__Feature3162",
+    "Part__Feature3217",
+    "Part__Feature3272"
+   ],
+   "saves_bytes": 415730,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "O2S_heatsink",
+   "label": "Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)",
+   "links": [
+    "O2S_heatsink001",
+    "O2S_heatsink002",
+    "O2S_heatsink003",
+    "O2S_heatsink004"
+   ],
+   "saves_bytes": 413566,
+   "worst_mm": 7.870426088629756e-09
+  },
+  {
+   "master": "MeshStandIn011",
+   "label": "Bowden Right stand-in",
+   "links": [
+    "MeshStandIn013"
+   ],
+   "saves_bytes": 408345,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature594",
+   "label": "Motor_Body",
+   "links": [
+    "Part__Feature612",
+    "Part__Feature622"
+   ],
+   "saves_bytes": 387450,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv073",
+   "label": "[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "links": [
+    "A4Tv189"
+   ],
+   "saves_bytes": 314842,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature458",
+   "label": "Leadscrew Nut",
+   "links": [
+    "Part__Feature503",
+    "Part__Feature539"
+   ],
+   "saves_bytes": 309854,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "O2S_usb",
+   "label": "Orbitool O2S USB cable stub Left (Orbiter-Toolboards 52a5a33, CC0-1.0)",
+   "links": [
+    "O2S_usb001",
+    "O2S_usb002",
+    "O2S_usb003",
+    "O2S_usb004"
+   ],
+   "saves_bytes": 298448,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv028",
+   "label": "E3D v6 HotEnd - Nozzle",
+   "links": [
+    "A4Tv086",
+    "A4Tv144",
+    "A4Tv202",
+    "A4Tv260"
+   ],
+   "saves_bytes": 266561,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1036",
+   "label": "Component24",
+   "links": [
+    "Part__Feature1039",
+    "Part__Feature1043",
+    "Part__Feature1047",
+    "Part__Feature1117",
+    "Part__Feature1120",
+    "Part__Feature1124",
+    "Part__Feature1128",
+    "Part__Feature3169",
+    "Part__Feature3172",
+    "Part__Feature3176",
+    "Part__Feature3180",
+    "Part__Feature3224",
+    "Part__Feature3227",
+    "Part__Feature3231",
+    "Part__Feature3235",
+    "Part__Feature3279",
+    "Part__Feature3282",
+    "Part__Feature3286",
+    "Part__Feature3290"
+   ],
+   "saves_bytes": 262519,
+   "worst_mm": 1.1368683772161603e-13
+  },
+  {
+   "master": "O2S_mount",
+   "label": "Orbitool O2S standoffs + screws Left (Orbiter-Toolboards 52a5a33, CC0-1.0)",
+   "links": [
+    "O2S_mount001",
+    "O2S_mount002",
+    "O2S_mount003",
+    "O2S_mount004"
+   ],
+   "saves_bytes": 254034,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "MeshStandIn023",
+   "label": "_MR148ZZ Ball stand-in",
+   "links": [
+    "MeshStandIn024",
+    "MeshStandIn025",
+    "MeshStandIn026",
+    "MeshStandIn027",
+    "MeshStandIn028",
+    "MeshStandIn029",
+    "MeshStandIn030",
+    "MeshStandIn031",
+    "MeshStandIn032",
+    "MeshStandIn033",
+    "MeshStandIn034",
+    "MeshStandIn035",
+    "MeshStandIn036",
+    "MeshStandIn041",
+    "MeshStandIn042",
+    "MeshStandIn043",
+    "MeshStandIn044",
+    "MeshStandIn045",
+    "MeshStandIn046",
+    "MeshStandIn047",
+    "MeshStandIn048",
+    "MeshStandIn049",
+    "MeshStandIn050",
+    "MeshStandIn051",
+    "MeshStandIn052",
+    "MeshStandIn053",
+    "MeshStandIn054",
+    "MeshStandIn059",
+    "MeshStandIn060",
+    "MeshStandIn061",
+    "MeshStandIn062",
+    "MeshStandIn063",
+    "MeshStandIn064",
+    "MeshStandIn065",
+    "MeshStandIn066",
+    "MeshStandIn067",
+    "MeshStandIn068",
+    "MeshStandIn069",
+    "MeshStandIn070",
+    "MeshStandIn071",
+    "MeshStandIn072",
+    "MeshStandIn077",
+    "MeshStandIn078",
+    "MeshStandIn079",
+    "MeshStandIn080",
+    "MeshStandIn081",
+    "MeshStandIn082",
+    "MeshStandIn083",
+    "MeshStandIn084",
+    "MeshStandIn085",
+    "MeshStandIn086",
+    "MeshStandIn087",
+    "MeshStandIn088",
+    "MeshStandIn089",
+    "MeshStandIn090",
+    "MeshStandIn095",
+    "MeshStandIn096",
+    "MeshStandIn097",
+    "MeshStandIn098",
+    "MeshStandIn099",
+    "MeshStandIn100",
+    "MeshStandIn101",
+    "MeshStandIn102",
+    "MeshStandIn103",
+    "MeshStandIn104",
+    "MeshStandIn105",
+    "MeshStandIn106",
+    "MeshStandIn107",
+    "MeshStandIn108"
+   ],
+   "saves_bytes": 248814,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1005",
+   "label": "Latch (1) (1)",
+   "links": [
+    "Part__Feature1086",
+    "Part__Feature3141",
+    "Part__Feature3196",
+    "Part__Feature3251"
+   ],
+   "saves_bytes": 242644,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv008",
+   "label": "Crossbow - Main Body",
+   "links": [
+    "A4Tv066",
+    "A4Tv124",
+    "A4Tv182",
+    "A4Tv240"
+   ],
+   "saves_bytes": 238566,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1053",
+   "label": "Spring v1 (1)",
+   "links": [
+    "Part__Feature1134",
+    "Part__Feature3186",
+    "Part__Feature3241",
+    "Part__Feature3296"
+   ],
+   "saves_bytes": 233314,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1511",
+   "label": "Dock Asembly(Mirror)",
+   "links": [
+    "Part__Feature3247"
+   ],
+   "saves_bytes": 206808,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv072",
+   "label": "[a]_Duct-4010-left001",
+   "links": [
+    "A4Tv188"
+   ],
+   "saves_bytes": 206321,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature624",
+   "label": "10x11 Chain Link",
+   "links": [
+    "Part__Feature625",
+    "Part__Feature626",
+    "Part__Feature627",
+    "Part__Feature628",
+    "Part__Feature629",
+    "Part__Feature631",
+    "Part__Feature632",
+    "Part__Feature633",
+    "Part__Feature634",
+    "Part__Feature635",
+    "Part__Feature636",
+    "Part__Feature637",
+    "Part__Feature638",
+    "Part__Feature639",
+    "Part__Feature640",
+    "Part__Feature641",
+    "Part__Feature642",
+    "Part__Feature643",
+    "Part__Feature645"
+   ],
+   "saves_bytes": 202360,
+   "worst_mm": 5.684341886080802e-14
+  },
+  {
+   "master": "A4Tv002",
+   "label": "LED_Carrier",
+   "links": [
+    "A4Tv060",
+    "A4Tv118",
+    "A4Tv176",
+    "A4Tv234"
+   ],
+   "saves_bytes": 200316,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv006",
+   "label": "Crossbow - Lever",
+   "links": [
+    "A4Tv064",
+    "A4Tv122",
+    "A4Tv180",
+    "A4Tv238"
+   ],
+   "saves_bytes": 189226,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "KeptFastener034",
+   "label": "MGN9H - Carriage_end_cap_screw (1)",
+   "links": [
+    "KeptFastener035",
+    "KeptFastener036",
+    "KeptFastener037",
+    "KeptFastener039",
+    "KeptFastener040",
+    "KeptFastener041",
+    "KeptFastener042",
+    "KeptFastener044",
+    "KeptFastener045",
+    "KeptFastener046",
+    "KeptFastener047"
+   ],
+   "saves_bytes": 168442,
+   "worst_mm": 1.7763568394002505e-15
+  },
+  {
+   "master": "Part__Feature",
+   "label": "M5x10 LP SHCS",
+   "links": [
+    "Part__Feature2891",
+    "Part__Feature2892",
+    "Part__Feature2893",
+    "Part__Feature2924",
+    "Part__Feature2925",
+    "Part__Feature2926",
+    "Part__Feature2927",
+    "Part__Feature2972",
+    "Part__Feature2973",
+    "Part__Feature2974",
+    "Part__Feature2975",
+    "Part__Feature2988",
+    "Part__Feature2989",
+    "Part__Feature2990",
+    "Part__Feature2991",
+    "Part__Feature3032",
+    "Part__Feature3033",
+    "Part__Feature3034",
+    "Part__Feature3035",
+    "Part__Feature3048",
+    "Part__Feature3049",
+    "Part__Feature3050",
+    "Part__Feature3051"
+   ],
+   "saves_bytes": 157134,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature2905",
+   "label": "M3x8 FHCS",
+   "links": [
+    "Part__Feature2906",
+    "Part__Feature2907",
+    "Part__Feature2908",
+    "Part__Feature2932",
+    "Part__Feature2933",
+    "Part__Feature2934",
+    "Part__Feature2935",
+    "Part__Feature2956",
+    "Part__Feature2957",
+    "Part__Feature3016",
+    "Part__Feature3017",
+    "Part__Feature3083",
+    "Part__Feature3084",
+    "Part__Feature3085",
+    "Part__Feature3086",
+    "Part__Feature3087",
+    "Part__Feature3088",
+    "Part__Feature3117",
+    "Part__Feature3118",
+    "Part__Feature3119",
+    "Part__Feature3120",
+    "Part__Feature3121",
+    "Part__Feature3122"
+   ],
+   "saves_bytes": 155997,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1508",
+   "label": "Plate(Mirror)",
+   "links": [
+    "Part__Feature3245"
+   ],
+   "saves_bytes": 144677,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv038",
+   "label": "Socket button head screw M3x0.5 x 6",
+   "links": [
+    "A4Tv041",
+    "A4Tv046",
+    "A4Tv047",
+    "A4Tv048",
+    "A4Tv051",
+    "A4Tv096",
+    "A4Tv099",
+    "A4Tv104",
+    "A4Tv105",
+    "A4Tv106",
+    "A4Tv109",
+    "A4Tv154",
+    "A4Tv157",
+    "A4Tv162",
+    "A4Tv163",
+    "A4Tv164",
+    "A4Tv167",
+    "A4Tv212",
+    "A4Tv215",
+    "A4Tv220",
+    "A4Tv221",
+    "A4Tv222",
+    "A4Tv225",
+    "A4Tv270",
+    "A4Tv273",
+    "A4Tv278",
+    "A4Tv279",
+    "A4Tv280",
+    "A4Tv283"
+   ],
+   "saves_bytes": 143980,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature2915",
+   "label": "_GT2 20T toothed core",
+   "links": [
+    "Part__Feature2945",
+    "Part__Feature3005",
+    "Part__Feature3065"
+   ],
+   "saves_bytes": 143828,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Kin014",
+   "label": "Trident kinematic M3 thin hex nut, front left",
+   "links": [
+    "Kin019",
+    "Kin024"
+   ],
+   "saves_bytes": 139941,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "O2S_restraint_lock",
+   "label": "Orbitool O2S wire restraint lock Left (Orbiter-Toolboards 52a5a33, CC0-1.0)",
+   "links": [
+    "O2S_restraint_lock001",
+    "O2S_restraint_lock002",
+    "O2S_restraint_lock003",
+    "O2S_restraint_lock004"
+   ],
+   "saves_bytes": 124911,
+   "worst_mm": 1.1368683772161603e-13
+  },
+  {
+   "master": "A4Tv036",
+   "label": "Hex socket head cap screw M3x0.50 x 012",
+   "links": [
+    "A4Tv040",
+    "A4Tv054",
+    "A4Tv056",
+    "A4Tv094",
+    "A4Tv098",
+    "A4Tv112",
+    "A4Tv114",
+    "A4Tv152",
+    "A4Tv156",
+    "A4Tv170",
+    "A4Tv172",
+    "A4Tv210",
+    "A4Tv214",
+    "A4Tv228",
+    "A4Tv230",
+    "A4Tv268",
+    "A4Tv272",
+    "A4Tv286",
+    "A4Tv288"
+   ],
+   "saves_bytes": 114039,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv018",
+   "label": "Hex socket head cap screw M2.5x0.45 x 10",
+   "links": [
+    "A4Tv019",
+    "A4Tv020",
+    "A4Tv034",
+    "A4Tv076",
+    "A4Tv077",
+    "A4Tv078",
+    "A4Tv092",
+    "A4Tv134",
+    "A4Tv135",
+    "A4Tv136",
+    "A4Tv150",
+    "A4Tv192",
+    "A4Tv193",
+    "A4Tv194",
+    "A4Tv208",
+    "A4Tv250",
+    "A4Tv251",
+    "A4Tv252",
+    "A4Tv266"
+   ],
+   "saves_bytes": 107252,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Bar011",
+   "label": "4040 (1)",
+   "links": [
+    "Bar012",
+    "Bar013",
+    "Bar014"
+   ],
+   "saves_bytes": 98127,
+   "worst_mm": 9.221960226568626e-07
+  },
+  {
+   "master": "Part__Feature3096",
+   "label": "_MGN9H",
+   "links": [
+    "Part__Feature3130"
+   ],
+   "saves_bytes": 95023,
+   "worst_mm": 5.684341886080802e-14
+  },
+  {
+   "master": "Part__Feature2900",
+   "label": "F695 flanged bearing",
+   "links": [
+    "Part__Feature2901",
+    "Part__Feature2902",
+    "Part__Feature2912",
+    "Part__Feature2928",
+    "Part__Feature2938",
+    "Part__Feature2939",
+    "Part__Feature2940",
+    "Part__Feature2965",
+    "Part__Feature2966",
+    "Part__Feature2967",
+    "Part__Feature2968",
+    "Part__Feature2982",
+    "Part__Feature3025",
+    "Part__Feature3026",
+    "Part__Feature3027",
+    "Part__Feature3028",
+    "Part__Feature3042",
+    "Part__Feature3076",
+    "Part__Feature3092",
+    "Part__Feature3093",
+    "Part__Feature3095",
+    "Part__Feature3110",
+    "Part__Feature3126",
+    "Part__Feature3127",
+    "Part__Feature3129"
+   ],
+   "saves_bytes": 93820,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv058",
+   "label": "[t]_LED_diffuser001",
+   "links": [
+    "A4Tv116",
+    "A4Tv174",
+    "A4Tv2",
+    "A4Tv232"
+   ],
+   "saves_bytes": 92660,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature2997",
+   "label": "VT_NP_spacer",
+   "links": [
+    "Part__Feature2998",
+    "Part__Feature3057",
+    "Part__Feature3058"
+   ],
+   "saves_bytes": 90945,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature450",
+   "label": "M3 Locknut",
+   "links": [
+    "Part__Feature459",
+    "Part__Feature504",
+    "Part__Feature505",
+    "Part__Feature550",
+    "Part__Feature551"
+   ],
+   "saves_bytes": 88493,
+   "worst_mm": 2.842170943040401e-14
+  },
+  {
+   "master": "A4Tv044",
+   "label": "Square thin nut grade B M3x0.002",
+   "links": [
+    "A4Tv045",
+    "A4Tv049",
+    "A4Tv050",
+    "A4Tv052",
+    "A4Tv053",
+    "A4Tv055",
+    "A4Tv057",
+    "A4Tv102",
+    "A4Tv103",
+    "A4Tv107",
+    "A4Tv108",
+    "A4Tv110",
+    "A4Tv111",
+    "A4Tv113",
+    "A4Tv115",
+    "A4Tv160",
+    "A4Tv161",
+    "A4Tv165",
+    "A4Tv166",
+    "A4Tv168",
+    "A4Tv169",
+    "A4Tv171",
+    "A4Tv173",
+    "A4Tv218",
+    "A4Tv219",
+    "A4Tv223",
+    "A4Tv224",
+    "A4Tv226",
+    "A4Tv227",
+    "A4Tv229",
+    "A4Tv231",
+    "A4Tv276",
+    "A4Tv277",
+    "A4Tv281",
+    "A4Tv282",
+    "A4Tv284",
+    "A4Tv285",
+    "A4Tv287",
+    "A4Tv289"
+   ],
+   "saves_bytes": 84452,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "MeshStandIn020",
+   "label": "_MR148ZZ Outer Ring stand-in",
+   "links": [
+    "MeshStandIn038",
+    "MeshStandIn056",
+    "MeshStandIn074",
+    "MeshStandIn092"
+   ],
+   "saves_bytes": 78464,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1045",
+   "label": "Component33",
+   "links": [
+    "Part__Feature1126",
+    "Part__Feature3178",
+    "Part__Feature3233",
+    "Part__Feature3288"
+   ],
+   "saves_bytes": 78297,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1011",
+   "label": "_MR148ZZ Ball",
+   "links": [
+    "Part__Feature1012",
+    "Part__Feature1013",
+    "Part__Feature1014",
+    "Part__Feature1015",
+    "Part__Feature1016",
+    "Part__Feature1017",
+    "Part__Feature1018",
+    "Part__Feature1019",
+    "Part__Feature1020",
+    "Part__Feature1021",
+    "Part__Feature1022",
+    "Part__Feature1023",
+    "Part__Feature1024",
+    "Part__Feature1092",
+    "Part__Feature1093",
+    "Part__Feature1094",
+    "Part__Feature1095",
+    "Part__Feature1096",
+    "Part__Feature1097",
+    "Part__Feature1098",
+    "Part__Feature1099",
+    "Part__Feature1100",
+    "Part__Feature1101",
+    "Part__Feature1102",
+    "Part__Feature1103",
+    "Part__Feature1104",
+    "Part__Feature1105",
+    "Part__Feature3147",
+    "Part__Feature3148",
+    "Part__Feature3149",
+    "Part__Feature3150",
+    "Part__Feature3151",
+    "Part__Feature3152",
+    "Part__Feature3153",
+    "Part__Feature3154",
+    "Part__Feature3155",
+    "Part__Feature3156",
+    "Part__Feature3157",
+    "Part__Feature3158",
+    "Part__Feature3159",
+    "Part__Feature3160",
+    "Part__Feature3202",
+    "Part__Feature3203",
+    "Part__Feature3204",
+    "Part__Feature3205",
+    "Part__Feature3206",
+    "Part__Feature3207",
+    "Part__Feature3208",
+    "Part__Feature3209",
+    "Part__Feature3210",
+    "Part__Feature3211",
+    "Part__Feature3212",
+    "Part__Feature3213",
+    "Part__Feature3214",
+    "Part__Feature3215",
+    "Part__Feature3257",
+    "Part__Feature3258",
+    "Part__Feature3259",
+    "Part__Feature3260",
+    "Part__Feature3261",
+    "Part__Feature3262",
+    "Part__Feature3263",
+    "Part__Feature3264",
+    "Part__Feature3265",
+    "Part__Feature3266",
+    "Part__Feature3267",
+    "Part__Feature3268",
+    "Part__Feature3269",
+    "Part__Feature3270"
+   ],
+   "saves_bytes": 77218,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "MeshStandIn021",
+   "label": "_MR148ZZ Inner Ring stand-in",
+   "links": [
+    "MeshStandIn039",
+    "MeshStandIn057",
+    "MeshStandIn075",
+    "MeshStandIn093"
+   ],
+   "saves_bytes": 74144,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature2914",
+   "label": "VT9-FIA",
+   "links": [
+    "Part__Feature2943"
+   ],
+   "saves_bytes": 70172,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature2913",
+   "label": "VT9-FIB",
+   "links": [
+    "Part__Feature2944"
+   ],
+   "saves_bytes": 69905,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv012",
+   "label": "Crossbow - Blade caddy",
+   "links": [
+    "A4Tv070",
+    "A4Tv128",
+    "A4Tv186",
+    "A4Tv244"
+   ],
+   "saves_bytes": 69714,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature3001",
+   "label": "_GT2 20T toothed core002",
+   "links": [
+    "Part__Feature3061",
+    "Part__Feature3100",
+    "Part__Feature3134"
+   ],
+   "saves_bytes": 67111,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Blower_4010",
+   "label": "Vindr Berserker 4010B blower L Left Toolhead (modelled from measurements)",
+   "links": [
+    "Blower_4011",
+    "Blower_4012",
+    "Blower_4013",
+    "Blower_4014",
+    "Blower_4015",
+    "Blower_4016",
+    "Blower_4017",
+    "Blower_4018",
+    "Blower_4019"
+   ],
+   "saves_bytes": 65945,
+   "worst_mm": 3.552713678800501e-15
+  },
+  {
+   "master": "Part__Feature2917",
+   "label": "_Pulley removable hub 15x10x7.5mm",
+   "links": [
+    "Part__Feature2947",
+    "Part__Feature3007",
+    "Part__Feature3067"
+   ],
+   "saves_bytes": 58109,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1539",
+   "label": "SOLID044",
+   "links": [
+    "Part__Feature2886",
+    "Part__Feature2889"
+   ],
+   "saves_bytes": 56632,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "RoofExit_base",
+   "label": "Roof exit clamp base slot 1 (vt350, GPL-3.0-or-later)",
+   "links": [
+    "RoofExit_base001",
+    "RoofExit_base003"
+   ],
+   "saves_bytes": 50710,
+   "worst_mm": 1.7053025658242404e-11
+  },
+  {
+   "master": "KeptFastener038",
+   "label": "M3 Hammerhead T-Nut",
+   "links": [
+    "KeptFastener043",
+    "KeptFastener048"
+   ],
+   "saves_bytes": 48217,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature3079",
+   "label": "M3x6 FHCS",
+   "links": [
+    "Part__Feature3080",
+    "Part__Feature3081",
+    "Part__Feature3082",
+    "Part__Feature3113",
+    "Part__Feature3114",
+    "Part__Feature3115",
+    "Part__Feature3116"
+   ],
+   "saves_bytes": 47382,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature005",
+   "label": "2040 (2)",
+   "links": [
+    "Part__Feature1542",
+    "Part__Feature1544"
+   ],
+   "saves_bytes": 46624,
+   "worst_mm": 6.821210263296962e-13
+  },
+  {
+   "master": "Part__Feature472",
+   "label": "MGN9H - Carriage_end_cap (1)",
+   "links": [
+    "Part__Feature480",
+    "Part__Feature517",
+    "Part__Feature525",
+    "Part__Feature561",
+    "Part__Feature569"
+   ],
+   "saves_bytes": 46099,
+   "worst_mm": 3.552713678800501e-15
+  },
+  {
+   "master": "Part__Feature2999",
+   "label": "_Stepper_stator",
+   "links": [
+    "Part__Feature3059"
+   ],
+   "saves_bytes": 44599,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1536",
+   "label": "SOLID043",
+   "links": [
+    "Part__Feature2885",
+    "Part__Feature2888"
+   ],
+   "saves_bytes": 44232,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature3094",
+   "label": "VC9-JSC",
+   "links": [
+    "Part__Feature3128"
+   ],
+   "saves_bytes": 43635,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv001",
+   "label": "[o]_LED_filter",
+   "links": [
+    "A4Tv059",
+    "A4Tv117",
+    "A4Tv175",
+    "A4Tv233"
+   ],
+   "saves_bytes": 43175,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv042",
+   "label": "Socket button head screw M3x0.5 x 003",
+   "links": [
+    "A4Tv043",
+    "A4Tv100",
+    "A4Tv101",
+    "A4Tv158",
+    "A4Tv159",
+    "A4Tv216",
+    "A4Tv217",
+    "A4Tv274",
+    "A4Tv275"
+   ],
+   "saves_bytes": 42514,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Feature003",
+   "label": "SOLID029",
+   "links": [
+    "Feature004",
+    "Feature005"
+   ],
+   "saves_bytes": 39857,
+   "worst_mm": 1.7280399333685637e-11
+  },
+  {
+   "master": "Part__Feature1032",
+   "label": "Component20",
+   "links": [
+    "Part__Feature1113",
+    "Part__Feature3165",
+    "Part__Feature3220",
+    "Part__Feature3275"
+   ],
+   "saves_bytes": 38620,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature3303",
+   "label": "2040 e-box outer side rail, bottom (lite-46)",
+   "links": [
+    "Part__Feature3304"
+   ],
+   "saves_bytes": 38607,
+   "worst_mm": 7.958078640513122e-13
+  },
+  {
+   "master": "Part__Feature1001",
+   "label": "Molded Gear Housing (65 teeth) v1 (1)",
+   "links": [
+    "Part__Feature1082",
+    "Part__Feature3138",
+    "Part__Feature3193",
+    "Part__Feature3248"
+   ],
+   "saves_bytes": 37482,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv010",
+   "label": "M3x8 Ultra low profile socket head screw",
+   "links": [
+    "A4Tv068",
+    "A4Tv126",
+    "A4Tv184",
+    "A4Tv242"
+   ],
+   "saves_bytes": 35753,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv005",
+   "label": "M3x6 Ultra low profile socket head screw",
+   "links": [
+    "A4Tv063",
+    "A4Tv121",
+    "A4Tv179",
+    "A4Tv237"
+   ],
+   "saves_bytes": 35666,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature2950",
+   "label": "M3x40 FHCS",
+   "links": [
+    "Part__Feature2951",
+    "Part__Feature2952",
+    "Part__Feature3010",
+    "Part__Feature3011",
+    "Part__Feature3012"
+   ],
+   "saves_bytes": 34496,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "BowdenTube",
+   "label": "Bowden Left",
+   "links": [
+    "BowdenTube001",
+    "BowdenTube002",
+    "BowdenTube003",
+    "BowdenTube004"
+   ],
+   "saves_bytes": 34141,
+   "worst_mm": 9.853096116785309e-11
+  },
+  {
+   "master": "A4Tv007",
+   "label": "Crossbow - Top Cap",
+   "links": [
+    "A4Tv065",
+    "A4Tv123",
+    "A4Tv181",
+    "A4Tv239"
+   ],
+   "saves_bytes": 32138,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature2976",
+   "label": "VC9-RTB",
+   "links": [
+    "Part__Feature3036"
+   ],
+   "saves_bytes": 29237,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv032",
+   "label": "TL-dragon-\u00cd\u00e2\u00bf\u00f2-\u00b0\u00ab001",
+   "links": [
+    "A4Tv090",
+    "A4Tv148",
+    "A4Tv206",
+    "A4Tv264"
+   ],
+   "saves_bytes": 27630,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "RoofExit_base002",
+   "label": "Roof exit clamp base slot 3 (vt350, GPL-3.0-or-later)",
+   "links": [
+    "RoofExit_base004"
+   ],
+   "saves_bytes": 25560,
+   "worst_mm": 2.830802259268239e-11
+  },
+  {
+   "master": "A4Tv031",
+   "label": "TL-dragon-\u00b9\u00e8\u00bd\u00ba\u00cc\u00d73",
+   "links": [
+    "A4Tv089",
+    "A4Tv147",
+    "A4Tv205",
+    "A4Tv263"
+   ],
+   "saves_bytes": 24709,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Kin015",
+   "label": "Trident kinematic J leaf spring, front left (flat, before preload)",
+   "links": [
+    "Kin020",
+    "Kin025"
+   ],
+   "saves_bytes": 24639,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1030",
+   "label": "Component18",
+   "links": [
+    "Part__Feature1111",
+    "Part__Feature3163",
+    "Part__Feature3218",
+    "Part__Feature3273"
+   ],
+   "saves_bytes": 24360,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Bar015",
+   "label": "2040 (3)",
+   "links": [
+    "Bar016"
+   ],
+   "saves_bytes": 23046,
+   "worst_mm": 6.821210263296962e-13
+  },
+  {
+   "master": "Bar020",
+   "label": "2040 (2) (new front) one piece X -520..125 (lite-47)",
+   "links": [
+    "Part__Feature009"
+   ],
+   "saves_bytes": 22744,
+   "worst_mm": 7.958078640513122e-13
+  },
+  {
+   "master": "Zip_tie002",
+   "label": "Zip tie, black (2.5 mm) slot 1 at 220 mm",
+   "links": [
+    "Zip_tie006",
+    "Zip_tie014"
+   ],
+   "saves_bytes": 10854,
+   "worst_mm": 5.3717030823463574e-12
+  },
+  {
+   "master": "Zip_tie001",
+   "label": "Zip tie, black (2.5 mm) slot 1 at 120 mm",
+   "links": [
+    "Zip_tie005",
+    "Zip_tie013"
+   ],
+   "saves_bytes": 10861,
+   "worst_mm": 9.464429240324534e-12
+  },
+  {
+   "master": "A4Tv021",
+   "label": "D2.3L7.5-\u00d1\u00f5\u00bb\u00af\u00ef\u00af\u00cc\u00d5\u00b4\u00c9\u00d6\u00f9",
+   "links": [
+    "A4Tv026",
+    "A4Tv030",
+    "A4Tv033",
+    "A4Tv079",
+    "A4Tv084",
+    "A4Tv088",
+    "A4Tv091",
+    "A4Tv137",
+    "A4Tv142",
+    "A4Tv146",
+    "A4Tv149",
+    "A4Tv195",
+    "A4Tv200",
+    "A4Tv204",
+    "A4Tv207",
+    "A4Tv253",
+    "A4Tv258",
+    "A4Tv262",
+    "A4Tv265"
+   ],
+   "saves_bytes": 21748,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Zip_tie003",
+   "label": "Zip tie, black (2.5 mm) slot 1 at 320 mm",
+   "links": [
+    "Zip_tie007",
+    "Zip_tie015"
+   ],
+   "saves_bytes": 10902,
+   "worst_mm": 1.9610979506978765e-12
+  },
+  {
+   "master": "Zip_tie",
+   "label": "Zip tie, black (2.5 mm) slot 1 at 20 mm",
+   "links": [
+    "Zip_tie004",
+    "Zip_tie012"
+   ],
+   "saves_bytes": 10901,
+   "worst_mm": 5.4569682106375694e-12
+  },
+  {
+   "master": "Part__Feature2977",
+   "label": "VC9-RTA",
+   "links": [
+    "Part__Feature3037"
+   ],
+   "saves_bytes": 21027,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "DockBar",
+   "label": "2020 dock bar (front; holds the 5 keyslot plates, #19)",
+   "links": [
+    "Part__Feature016"
+   ],
+   "saves_bytes": 20346,
+   "worst_mm": 4.547473508864641e-13
+  },
+  {
+   "master": "Stand032",
+   "label": "Levelling foot 1 M5 T-nut 1 (drop-in, slot)",
+   "links": [
+    "Stand035",
+    "Stand038",
+    "Stand041",
+    "Stand044",
+    "Stand047",
+    "Stand050",
+    "Stand053",
+    "Stand056",
+    "Stand059",
+    "Stand062",
+    "Stand065",
+    "Stand068",
+    "Stand071",
+    "Stand074",
+    "Stand077"
+   ],
+   "saves_bytes": 18139,
+   "worst_mm": 1.2079226507921703e-13
+  },
+  {
+   "master": "Part__Feature2918",
+   "label": "_M4x4 set screw",
+   "links": [
+    "Part__Feature2919",
+    "Part__Feature2948",
+    "Part__Feature2949",
+    "Part__Feature3008",
+    "Part__Feature3009",
+    "Part__Feature3068",
+    "Part__Feature3069"
+   ],
+   "saves_bytes": 17507,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature474",
+   "label": "MGN9H - Carriage_end (1)",
+   "links": [
+    "Part__Feature478",
+    "Part__Feature519",
+    "Part__Feature523",
+    "Part__Feature563",
+    "Part__Feature567"
+   ],
+   "saves_bytes": 16870,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv029",
+   "label": "TL-dragon-ace-spacer",
+   "links": [
+    "A4Tv087",
+    "A4Tv145",
+    "A4Tv203",
+    "A4Tv261"
+   ],
+   "saves_bytes": 16285,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature2898",
+   "label": "695 W5 bearing",
+   "links": [
+    "Part__Feature2942",
+    "Part__Feature2964",
+    "Part__Feature3024",
+    "Part__Feature3074",
+    "Part__Feature3108"
+   ],
+   "saves_bytes": 15727,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature492",
+   "label": "SOLID030",
+   "links": [
+    "Part__Feature538",
+    "Part__Feature581"
+   ],
+   "saves_bytes": 14537,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature500",
+   "label": "M5 Hex Nut001",
+   "links": [
+    "Part__Feature540"
+   ],
+   "saves_bytes": 14524,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Rail",
+   "label": "MGN9-400mm Y rail (R) - owned Berserker, steel",
+   "links": [
+    "Rail003"
+   ],
+   "saves_bytes": 14391,
+   "worst_mm": 2.2737367544323206e-13
+  },
+  {
+   "master": "Part__Feature2903",
+   "label": "M5 disc spring",
+   "links": [
+    "Part__Feature2904",
+    "Part__Feature2936",
+    "Part__Feature2937",
+    "Part__Feature2961",
+    "Part__Feature2962",
+    "Part__Feature2963",
+    "Part__Feature3021",
+    "Part__Feature3022",
+    "Part__Feature3023",
+    "Part__Feature3072",
+    "Part__Feature3073",
+    "Part__Feature3106",
+    "Part__Feature3107"
+   ],
+   "saves_bytes": 14015,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1509",
+   "label": "Plate Back(Mirror)",
+   "links": [
+    "Part__Feature3246"
+   ],
+   "saves_bytes": 13899,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv004",
+   "label": "Magnet 6x1.5",
+   "links": [
+    "A4Tv013",
+    "A4Tv062",
+    "A4Tv071",
+    "A4Tv120",
+    "A4Tv129",
+    "A4Tv178",
+    "A4Tv187",
+    "A4Tv236",
+    "A4Tv245"
+   ],
+   "saves_bytes": 13353,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Belt",
+   "label": "GT2 9mm belt, lower (Monolith 2WD)",
+   "links": [
+    "Belt001"
+   ],
+   "saves_bytes": 12972,
+   "worst_mm": 1.6484591469634324e-12
+  },
+  {
+   "master": "Rail002",
+   "label": "MGN9 Y rail front extension (R) - 73.9 mm, printed or cut steel (docking only)",
+   "links": [
+    "Rail004"
+   ],
+   "saves_bytes": 12632,
+   "worst_mm": 1.1368683772161603e-13
+  },
+  {
+   "master": "Part__Feature2916",
+   "label": "_Pulley flange 15x10x1.5mm",
+   "links": [
+    "Part__Feature2946",
+    "Part__Feature3002",
+    "Part__Feature3003",
+    "Part__Feature3006",
+    "Part__Feature3062",
+    "Part__Feature3063",
+    "Part__Feature3066",
+    "Part__Feature3101",
+    "Part__Feature3102",
+    "Part__Feature3135",
+    "Part__Feature3136"
+   ],
+   "saves_bytes": 12219,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature475",
+   "label": "MGN9H - Carriage_body (1)",
+   "links": [
+    "Part__Feature520",
+    "Part__Feature564"
+   ],
+   "saves_bytes": 10906,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv009",
+   "label": "Flat point hex socket set screw M3x0.5 x 3",
+   "links": [
+    "A4Tv067",
+    "A4Tv125",
+    "A4Tv183",
+    "A4Tv241"
+   ],
+   "saves_bytes": 10783,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Stand030",
+   "label": "Levelling foot 1 M5x14 screw 1 (DIN 912)",
+   "links": [
+    "Stand033",
+    "Stand036",
+    "Stand039",
+    "Stand042",
+    "Stand045",
+    "Stand048",
+    "Stand051",
+    "Stand054",
+    "Stand057",
+    "Stand060",
+    "Stand063",
+    "Stand066",
+    "Stand069",
+    "Stand072",
+    "Stand075"
+   ],
+   "saves_bytes": 10744,
+   "worst_mm": 4.263256414560601e-14
+  },
+  {
+   "master": "Stand031",
+   "label": "Levelling foot 1 M5 lock washer 1 (DIN 127)",
+   "links": [
+    "Stand034",
+    "Stand037",
+    "Stand040",
+    "Stand043",
+    "Stand046",
+    "Stand049",
+    "Stand052",
+    "Stand055",
+    "Stand058",
+    "Stand061",
+    "Stand064",
+    "Stand067",
+    "Stand070",
+    "Stand073",
+    "Stand076"
+   ],
+   "saves_bytes": 10371,
+   "worst_mm": 2.842170943040401e-14
+  },
+  {
+   "master": "A4Tv011",
+   "label": "17A cut down blade",
+   "links": [
+    "A4Tv069",
+    "A4Tv127",
+    "A4Tv185",
+    "A4Tv243"
+   ],
+   "saves_bytes": 9979,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1515",
+   "label": "6x3mm magnet v2 (1)",
+   "links": [
+    "Part__Feature1516",
+    "Part__Feature1517",
+    "Part__Feature1518",
+    "Part__Feature1519",
+    "Part__Feature1520",
+    "Part__Feature1524",
+    "Part__Feature1562",
+    "Part__Feature1564",
+    "Part__Feature1566",
+    "Part__Feature1567",
+    "Part__Feature1571"
+   ],
+   "saves_bytes": 9831,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature2953",
+   "label": "M3x4 special BHCS",
+   "links": [
+    "Part__Feature2954",
+    "Part__Feature3013",
+    "Part__Feature3014"
+   ],
+   "saves_bytes": 9328,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "A4Tv037",
+   "label": "Plain washer normal grade C M3",
+   "links": [
+    "A4Tv039",
+    "A4Tv095",
+    "A4Tv097",
+    "A4Tv153",
+    "A4Tv155",
+    "A4Tv211",
+    "A4Tv213",
+    "A4Tv269",
+    "A4Tv271"
+   ],
+   "saves_bytes": 9188,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "MeshStandIn037",
+   "label": "_MR148ZZ Shield2 stand-in",
+   "links": [
+    "MeshStandIn055",
+    "MeshStandIn073",
+    "MeshStandIn091",
+    "MeshStandIn109"
+   ],
+   "saves_bytes": 9188,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "MeshStandIn022",
+   "label": "_MR148ZZ Shield1 stand-in",
+   "links": [
+    "MeshStandIn040",
+    "MeshStandIn058",
+    "MeshStandIn076",
+    "MeshStandIn094"
+   ],
+   "saves_bytes": 9180,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "RoofExit_cap",
+   "label": "Roof exit clamp cap slot 1 (vt350, GPL-3.0-or-later)",
+   "links": [
+    "RoofExit_cap001",
+    "RoofExit_cap003"
+   ],
+   "saves_bytes": 9056,
+   "worst_mm": 1.0118128557223827e-11
+  },
+  {
+   "master": "Encl006",
+   "label": "Roof felt strip liner, inner",
+   "links": [
+    "Encl007"
+   ],
+   "saves_bytes": 8139,
+   "worst_mm": 5.684341886080802e-14
+  },
+  {
+   "master": "Part__Feature2899",
+   "label": "Custom M3x30 standoff (5mm OD, F-F threads)",
+   "links": [
+    "Part__Feature2941",
+    "Part__Feature3070",
+    "Part__Feature3104"
+   ],
+   "saves_bytes": 8031,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature2958",
+   "label": "M3x25mm spacer (6mm OD, no threads)",
+   "links": [
+    "Part__Feature2959",
+    "Part__Feature2960",
+    "Part__Feature3018",
+    "Part__Feature3019",
+    "Part__Feature3020"
+   ],
+   "saves_bytes": 7653,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1004",
+   "label": "FlyShaft2 (1)",
+   "links": [
+    "Part__Feature1085",
+    "Part__Feature3140",
+    "Part__Feature3195",
+    "Part__Feature3250"
+   ],
+   "saves_bytes": 7570,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1008",
+   "label": "_MR148ZZ Outer Ring",
+   "links": [
+    "Part__Feature1089",
+    "Part__Feature3144",
+    "Part__Feature3199",
+    "Part__Feature3254"
+   ],
+   "saves_bytes": 7492,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1009",
+   "label": "_MR148ZZ Inner Ring",
+   "links": [
+    "Part__Feature1090",
+    "Part__Feature3145",
+    "Part__Feature3200",
+    "Part__Feature3255"
+   ],
+   "saves_bytes": 7488,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Stand001",
+   "label": "Levelling foot 1 T-slot bracket (4040, placeholder, tapped M8, 4 x M5 holes)",
+   "links": [
+    "Stand004",
+    "Stand007",
+    "Stand010"
+   ],
+   "saves_bytes": 7389,
+   "worst_mm": 5.684341886080802e-14
+  },
+  {
+   "master": "Part__Feature2980",
+   "label": "M5x40 LP SHCS",
+   "links": [
+    "Part__Feature3040"
+   ],
+   "saves_bytes": 6882,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature2981",
+   "label": "M3x5 LP SHCS",
+   "links": [
+    "Part__Feature3041"
+   ],
+   "saves_bytes": 6795,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature2978",
+   "label": "M5x10 ULP SHCS",
+   "links": [
+    "Part__Feature3038"
+   ],
+   "saves_bytes": 6129,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Kin013",
+   "label": "Trident kinematic 9 mm M3 sphere nut, front left",
+   "links": [
+    "Kin018",
+    "Kin023"
+   ],
+   "saves_bytes": 6113,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1007",
+   "label": "Orbiter Spider Shaft v4 (1)",
+   "links": [
+    "Part__Feature1088",
+    "Part__Feature3143",
+    "Part__Feature3198",
+    "Part__Feature3253"
+   ],
+   "saves_bytes": 5974,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature2969",
+   "label": "M5x0.5mm shim",
+   "links": [
+    "Part__Feature2970",
+    "Part__Feature2971",
+    "Part__Feature3029",
+    "Part__Feature3030",
+    "Part__Feature3031",
+    "Part__Feature3075",
+    "Part__Feature3109"
+   ],
+   "saves_bytes": 5519,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Stand016",
+   "label": "Levelling foot 1 Asmith DK-0808035A bolt (M8x1.25, cut 35 -> 19.5)",
+   "links": [
+    "Stand020",
+    "Stand024",
+    "Stand028"
+   ],
+   "saves_bytes": 5494,
+   "worst_mm": 7.105427357601002e-14
+  },
+  {
+   "master": "Part__Feature470",
+   "label": "GE5C",
+   "links": [
+    "Part__Feature515",
+    "Part__Feature553"
+   ],
+   "saves_bytes": 5358,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Stand017",
+   "label": "Levelling foot 1 Asmith DK-0808035A jam nut (M8, 13 AF)",
+   "links": [
+    "Stand021",
+    "Stand025",
+    "Stand029"
+   ],
+   "saves_bytes": 5358,
+   "worst_mm": 5.684341886080802e-14
+  },
+  {
+   "master": "Kin",
+   "label": "Trident kinematic A left bearing plate (3 mm)",
+   "links": [
+    "Kin001"
+   ],
+   "saves_bytes": 5299,
+   "worst_mm": 1.2789769243681803e-13
+  },
+  {
+   "master": "Part__Feature2955",
+   "label": "M5x13 spacer (8mm OD, no threads)",
+   "links": [
+    "Part__Feature3015",
+    "Part__Feature3071",
+    "Part__Feature3105"
+   ],
+   "saves_bytes": 5265,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Fastener453",
+   "label": "M5x30-Screw e-box joint 2040 (2) (new front) Y-80 Z-40 (DIN 912, lite-47)",
+   "links": [
+    "Fastener455",
+    "Fastener457",
+    "Fastener459",
+    "Fastener461",
+    "Fastener463",
+    "Fastener465",
+    "Fastener467"
+   ],
+   "saves_bytes": 4863,
+   "worst_mm": 2.842170943040401e-14
+  },
+  {
+   "master": "Fastener454",
+   "label": "M5-Washer e-box joint 2040 (2) (new front) Y-80 Z-40 (DIN 125, lite-47)",
+   "links": [
+    "Fastener456",
+    "Fastener458",
+    "Fastener460",
+    "Fastener462",
+    "Fastener464",
+    "Fastener466",
+    "Fastener468"
+   ],
+   "saves_bytes": 4820,
+   "worst_mm": 7.105427357601002e-15
+  },
+  {
+   "master": "Part__Feature1003",
+   "label": "LatchShaft (1)",
+   "links": [
+    "Part__Feature1084",
+    "Part__Feature3139",
+    "Part__Feature3194",
+    "Part__Feature3249"
+   ],
+   "saves_bytes": 4490,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Cable_channel_post",
+   "label": "Cable channel post 1 (printed, M5 to the rear 4040)",
+   "links": [
+    "Cable_channel_post001",
+    "Cable_channel_post002",
+    "Cable_channel_post003"
+   ],
+   "saves_bytes": 4247,
+   "worst_mm": 2.2737367544323206e-13
+  },
+  {
+   "master": "Part__Feature1052",
+   "label": "90940A412 (1)",
+   "links": [
+    "Part__Feature1133",
+    "Part__Feature3185",
+    "Part__Feature3240",
+    "Part__Feature3295"
+   ],
+   "saves_bytes": 3400,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "SpringStandIn",
+   "label": "Spring v1 (1) stand-in",
+   "links": [
+    "SpringStandIn001",
+    "SpringStandIn002",
+    "SpringStandIn003",
+    "SpringStandIn004"
+   ],
+   "saves_bytes": 3258,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1010",
+   "label": "_MR148ZZ Shield1",
+   "links": [
+    "Part__Feature1091",
+    "Part__Feature3146",
+    "Part__Feature3201",
+    "Part__Feature3256"
+   ],
+   "saves_bytes": 3126,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature1025",
+   "label": "_MR148ZZ Shield2",
+   "links": [
+    "Part__Feature1106",
+    "Part__Feature3161",
+    "Part__Feature3216",
+    "Part__Feature3271"
+   ],
+   "saves_bytes": 3084,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Encl003",
+   "label": "Roof felt liner, inner",
+   "links": [
+    "Encl004",
+    "Encl009",
+    "Encl010"
+   ],
+   "saves_bytes": 2813,
+   "worst_mm": 1.1368683772161603e-13
+  },
+  {
+   "master": "Part__Feature3004",
+   "label": "_LDO 5 mm shaft",
+   "links": [
+    "Part__Feature3064",
+    "Part__Feature3103",
+    "Part__Feature3137"
+   ],
+   "saves_bytes": 2775,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Plate002",
+   "label": "Heater pad hold-down 1 (pan head + washer envelope, 3.8 below plate)",
+   "links": [
+    "Plate003",
+    "Plate004",
+    "Plate005"
+   ],
+   "saves_bytes": 2237,
+   "worst_mm": 1.1368683772161603e-13
+  },
+  {
+   "master": "Kin003",
+   "label": "Trident kinematic I bearing retain, left (3 mm)",
+   "links": [
+    "Kin005"
+   ],
+   "saves_bytes": 2196,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Stand015",
+   "label": "Levelling foot 1 Asmith DK-0808035A base (D40, zinc-plated steel)",
+   "links": [
+    "Stand019",
+    "Stand023",
+    "Stand027"
+   ],
+   "saves_bytes": 2000,
+   "worst_mm": 5.684341886080802e-14
+  },
+  {
+   "master": "Part__Feature1540",
+   "label": "M5x50 Dowel Pin (1)002",
+   "links": [
+    "Part__Feature2887",
+    "Part__Feature2890"
+   ],
+   "saves_bytes": 1886,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature2979",
+   "label": "Custom M3x24mm standoff (5mm OD, F-F threads)",
+   "links": [
+    "Part__Feature3039"
+   ],
+   "saves_bytes": 1878,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature2911",
+   "label": "M5x7 spacer (8mm OD, no threads)",
+   "links": [
+    "Part__Feature2929"
+   ],
+   "saves_bytes": 1846,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Part__Feature2910",
+   "label": "M3x30mm standoff (5mm OD, F-F threads)",
+   "links": [
+    "Part__Feature2930"
+   ],
+   "saves_bytes": 1805,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Stand014",
+   "label": "Levelling foot 1 Asmith DK-0808035A NBR cushion (D40, est. 4 thick)",
+   "links": [
+    "Stand018",
+    "Stand022",
+    "Stand026"
+   ],
+   "saves_bytes": 1463,
+   "worst_mm": 7.105427357601002e-15
+  },
+  {
+   "master": "Part__Feature2909",
+   "label": "D5x36mm pin",
+   "links": [
+    "Part__Feature2931"
+   ],
+   "saves_bytes": 1185,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Cable_channel_arm",
+   "label": "Cable channel arm 1 (printed, M5 to the rear-right upright)",
+   "links": [
+    "Cable_channel_arm001"
+   ],
+   "saves_bytes": 1160,
+   "worst_mm": 1.1368683772161603e-13
+  },
+  {
+   "master": "Part__Feature3000",
+   "label": "_Stepper_shaft_S45R",
+   "links": [
+    "Part__Feature3060"
+   ],
+   "saves_bytes": 1120,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Encl012",
+   "label": "Right wall felt liner, inner",
+   "links": [
+    "Encl013"
+   ],
+   "saves_bytes": 935,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Encl018",
+   "label": "LED channel left (24 V COB, warm white)",
+   "links": [
+    "Encl019"
+   ],
+   "saves_bytes": 934,
+   "worst_mm": 0.0
+  },
+  {
+   "master": "Encl002",
+   "label": "Roof felt (pad 1)",
+   "links": [
+    "Encl008"
+   ],
+   "saves_bytes": 934,
+   "worst_mm": 1.1368683772161603e-13
+  },
+  {
+   "master": "Kin021",
+   "label": "Trident kinematic M5x20 dowel pin, rear",
+   "links": [
+    "Kin022"
+   ],
+   "saves_bytes": 573,
+   "worst_mm": 0.0
+  }
+ ],
+ "kept_real_near": [
+  [
+   "Bar007",
+   4e-05,
+   "4040 upright Z -10..650 (lite-46)"
+  ],
+  [
+   "Zip_tie010",
+   0.00169,
+   "Zip tie, black (2.5 mm) slot 1 at 220 mm"
+  ],
+  [
+   "Zip_tie018",
+   0.00169,
+   "Zip tie, black (2.5 mm) slot 1 at 220 mm"
+  ],
+  [
+   "Zip_tie009",
+   0.00296,
+   "Zip tie, black (2.5 mm) slot 1 at 120 mm"
+  ],
+  [
+   "Zip_tie017",
+   0.00296,
+   "Zip tie, black (2.5 mm) slot 1 at 120 mm"
+  ],
+  [
+   "Zip_tie011",
+   0.00063,
+   "Zip tie, black (2.5 mm) slot 1 at 320 mm"
+  ],
+  [
+   "Zip_tie019",
+   0.00063,
+   "Zip tie, black (2.5 mm) slot 1 at 320 mm"
+  ],
+  [
+   "Zip_tie008",
+   0.00172,
+   "Zip tie, black (2.5 mm) slot 1 at 20 mm"
+  ],
+  [
+   "Zip_tie016",
+   0.00172,
+   "Zip tie, black (2.5 mm) slot 1 at 20 mm"
+  ],
+  [
+   "Kin008",
+   3e-05,
+   "Trident kinematic E left bottom (3 mm)"
+  ]
+ ],
+ "parts": [
+  1395,
+  1395
+ ],
+ "meshes": [
+  110,
+  110
+ ]
+}
