@@ -185,6 +185,17 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
 - **An overlap check is how to prove a part sits in a slot** (lite-57 holder keys, lite-58 door sheets): put it where
   the slot should be and check it against the profile. 0 overlap means open slot, so the check guards the design,
   not just the pass.
+- **Sweeping a round tube along a 3D spline** (emu3_bowdens, 2026-11-17, PTFE 4.12 OD, ~470 mm routes with arcs and
+  straights): `Wire.makePipeShell([circle], True, True)` (Frenet) made a valid solid of only 57 % of pi r^2 L: the
+  frame twists on the straights. `makePipeShell(.., True, False)` (corrected Frenet) failed in `MakeSolid`.
+  `Wire.makePipe(face)` **segfaulted** freecadcmd. A loft through circles was 10 % short. What works:
+  `ps = Part.BRepOffsetAPI.MakePipeShell(wire); ps.setBiNormalMode(V(1, 0, 0)); ps.add(circle); ps.build();
+  ps.makeSolid()` with the binormal along the axis the route is (nearly) flat across: within 0.8 % of pi r^2 L.
+  Check a sweep's volume against pi r^2 L: `isValid()` passed on the twisted one. A sweep can also come out inside
+  out (negative volume); `shape.reverse()` fixes that.
+- **A segfault in `freecadcmd` loses everything the script printed** (stdout is buffered): the run ends with no
+  output at all. When a call might crash, write to a file of your own and flush before each risky call, so the log
+  shows where it died. (A syntax error shows only as "Exception while processing file: ... [message]".)
 - **Notch a panel round what the overlap check finds** (lite-59): build the plain slab, list the parts it overlaps
   (`common().Volume`), and cut each one's box + clearance through the panel. Then no part is missed or hard-coded,
   but gate every hit with a predicate ("only in the latch band", "only the cable arms"): an unexpected hit fails
