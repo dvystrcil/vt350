@@ -92,11 +92,8 @@ def main(p):
     for i, ((tube, e, ax), o) in enumerate(zip(ends, outs), 1):
         # straight on out of the clamp's bore first: the first 0.5 mm step where the centre line is R_T + CLEAR_C off
         # every clamp part (emu-3's arc began inside the bore and cut 1.25 mm into the cap; booleans missed it)
-        near = [pr.shapes[c.Name] for c in clamps if pr.boxes[c.Name].isInside(e) or pr.boxes[c.Name].intersect(
-                FreeCAD.BoundBox(e.x - 5, e.y - 5, e.z - 5, e.x + 5, e.y + 5, e.z + 5))]
-        lead = next((s / 2 for s in range(0, 100) if all(
-            not c.isInside(e + ax * (s / 2), 0.0, True) and c.distToShape(Part.Vertex(e + ax * (s / 2)))[0] > eb.R_T + CLEAR_C
-            for c in near)), None)
+        near = eb.near_clamps(e, [pr.shapes[c.Name] for c in clamps])
+        lead = eb.lead_in(e, ax, near, CLEAR_C)
         p.check(lead is not None, f"lane {i}: the bore's exit found ({len(near)} clamp parts round the end, lead {lead} mm)")
         if lead is None: continue
         try: sweep, edge, rmin, th, lf = eb.tube(e, ax, o, lead)

@@ -69,3 +69,22 @@ def tube(e, ax, o, lead=0.0):
     ps.build(); ps.makeSolid(); sweep = ps.shape()
     if sweep.Volume < 0: sweep.reverse()
     return sweep, edge, rmin, th, lf
+
+
+CLEAR_C = 0.2                 # mm: the straight lead-in ends where the tube is this far clear of the clamp
+
+
+def lead_in(e, ax, near, clear=CLEAR_C):
+    """the straight run out of the roof clamp's bore before the route's first arc: the first 0.5 mm step along ax from
+    the head tube's end e where the centre line is R_T + clear off every clamp part in `near` (shapes), or None.
+    emu-3's arc began inside the bore and cut 1.25 mm into the cap; shared by emu4_lower and the lite-70 roof exit,
+    which plans its cables round these tubes"""
+    return next((s / 2 for s in range(0, 100) if all(
+        not c.isInside(e + ax * (s / 2), 0.0, True) and c.distToShape(Part.Vertex(e + ax * (s / 2)))[0] > R_T + clear
+        for c in near)), None)
+
+
+def near_clamps(e, clamps):
+    """the clamp shapes round a head tube's end e"""
+    return [c for c in clamps if c.BoundBox.isInside(e) or c.BoundBox.intersect(
+        FreeCAD.BoundBox(e.x - 5, e.y - 5, e.z - 5, e.x + 5, e.y + 5, e.z + 5))]

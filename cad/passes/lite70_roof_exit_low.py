@@ -33,10 +33,14 @@ import FreeCAD, Part, os, re, sys, math
 _REPO = os.environ.get("VT350_REPO", "/home/dan/Code/vt350")
 sys.path[:0] = [os.path.join(_REPO, "platform/freecad"), os.path.join(_REPO, "cad/scripts"), os.path.join(_REPO, "platform/render")]
 import litelib, linkgeo, bezier, colours, printchamfer
+sys.path.insert(0, os.path.join(_REPO, "cad/passes"))
+import emu_bowden as eb
 from litelib import MODELS
 import o2s_route as R
 V = FreeCAD.Vector
 LITE69, LITE68, DST = f"{MODELS}/vt350-lite-69.FCStd", f"{MODELS}/vt350-lite-68.FCStd", f"{MODELS}/vt350-lite-70.FCStd"
+EMU3 = f"{MODELS}/vt350-emu-3.FCStd"          # read only: where emu-4 will put the EMU's couplers, for the tubes' routes
+TUBE_CLR = 0.5                                # mm: a cable's tail keeps this off every EMU tube (surface to surface)
 ROOF_INS = re.compile(r"^Roof felt ")
 TOL = 1e-3
 
@@ -117,17 +121,30 @@ def arc_pts(c, r, a0, a1, n, y):
     return [V(c[0] + r * math.cos(a0 + (a1 - a0) * i / n), y, c[1] + r * math.sin(a0 + (a1 - a0) * i / n)) for i in range(n + 1)]
 
 
-def lead_out(Ctop, Dv, zl):
-    """lite-40's search: the gentlest Bezier from the clamp's end (along Dv) to (x + dx, LANE_Y, zl) along +X"""
-    X, best = V(1, 0, 0), None
+def lead_out(Ctop, Dv, zl, tubes):
+    """lite-40's search for the gentlest Bezier from the clamp's end (along Dv) to (x + dx, LANE_Y, zl) along +X, among
+    those whose centre line keeps R_T + RC + TUBE_CLR off every EMU tube's centre line (`tubes`: point lists).
+    Returns (r, dx, a, b, poles) of the best that clears, else the gentlest overall with r = -1 (no clear one)."""
+    X, cands = V(1, 0, 0), []
     for dx in DXS:
         P3 = V(Ctop.x + dx, LANE_Y, zl)
         for a in HANDLES:
             for b in HANDLES:
                 pl = [tuple(Ctop), tuple(Ctop + Dv * a), tuple(P3 - X * b), tuple(P3)]
-                r = bezier.min_radius(pl, 120)
-                if best is None or r > best[0]: best = (r, dx, a, b, pl)
-    return best
+                cands.append((bezier.min_radius(pl, 120), dx, a, b, pl))
+    cands.sort(key=lambda c: -c[0])
+    need = eb.R_T + RC + TUBE_CLR
+    for c in cands:
+        if c[0] < R.MIN_R: break
+        pts = pts_of(c[4], 60)
+        if all(min((q - t).Length for t in tp[2]) >= need for q in pts for tp in tubes if _near(q, tp, need)):
+            return c
+    return (-1.0,) + cands[0][1:]
+
+
+def _near(q, tp, d):
+    lo, hi = tp[0], tp[1]
+    return lo.x - d <= q.x <= hi.x + d and lo.y - d <= q.y <= hi.y + d and lo.z - d <= q.z <= hi.z + d
 
 
 def gplace(o):
@@ -219,6 +236,54 @@ def main(p):
         p.on_face(base, PANEL_TOP, f"slot {n}: the base's flange lies flat on the roof's top (Z {PANEL_TOP})")
         clamp_new[n] = {"base": base, "cap": cap}
         data[n] = dict(axis_x=round(E.x, 2), cable_x=round(Ec.x, 2))
+    # ---------------- chamfers, the clamps first: the EMU tubes' lead-out depends on the cap's real shape
+    made = {}
+    def chamf(key, shape, up, what):
+        s, info = printchamfer.chamfer(shape, up, **CHAMFER)
+        left = printchamfer.unchamfered(shape, s, up, **CHAMFER, skip={w for k, w, c in info["skipped"]} | {w for k, w in info["failed"]})
+        p.check(s.isValid() and len(s.Solids) == 1 and not left,
+                f"{what}: chamfered (up {tuple(round(c, 3) for c in up)}): {info['bottom']} first-layer edges {CHAMFER['bottom']}, {info['top']} top edges {CHAMFER['top']}, "
+                f"{len(info['reduced'])} reduced on narrow faces (smallest {min([c for k, w, c in info['reduced']] or [1.0]):.2f}), "
+                f"{len(info['skipped'])} skipped, {len(info['failed'])} OCC couldn't build {info['failed'][:3]}; -{info['removed_mm3']:.0f} mm3; missed: {left[:4]}")
+        if left and os.environ.get("VT350_DEBUG_BREP"):               # the unchamfered part, to look at by hand
+            shape.exportBrep(os.path.join(os.environ["VT350_DEBUG_BREP"], re.sub(r"\W+", "_", what)[:40] + ".brep"))
+        made[key] = s; return s
+    for n, _, _ in HEADS:
+        E, Ec, Dv, X, N, sgn = axes[n]
+        chamf(("clamp", "base", n), clamp_new[n]["base"], UP["base"], f"slot {n} base")
+        chamf(("clamp", "cap", n), clamp_new[n]["cap"], N, f"slot {n} cap (printed on its split face)")
+    if p.errs: return p.finish([])
+    # ---------------- the EMU tubes emu-4 will route over these clamps (emu4_lower's own steps, emu_bowden's route)
+    rp = [o for o in pr.leaves if o.Label == "Roof panel (3 mm)"]
+    paint = [o for o in pr.leaves if o.Label == "Roof panel (3 mm) paint, outside"]
+    p.check(len(rp) == 1 and len(paint) == 1, "the roof panel and its paint")
+    if p.errs: return p.finish([])
+    top = max(pr.boxes[rp[0].Name].ZMax, pr.boxes[paint[0].Name].ZMax)
+    em = p.open(EMU3)
+    bgrp = next(o for o in em.doc.Objects if o.TypeId == "App::Part" and o.Label.startswith("Bowdens, roof exits"))
+    eparts = [o for o in em.leaves if bgrp not in o.InListRecursive]
+    edz = top - min(em.boxes[o.Name].ZMin for o in eparts)
+    clips = sorted([o for o in em.leaves if o.Label.startswith("Release clip") and em.boxes[o.Name].YMax > 180], key=lambda o: em.boxes[o.Name].XMin)
+    p.check(len(clips) == 5 and -25 < edz < 0, f"emu-3: 5 rear couplers, the EMU comes down {edz:.3f} mm")
+    if p.errs: return p.finish([])
+    clamp_shapes = [made[("clamp", pt, n)] for n, _, _ in HEADS for pt in ("base", "cap")]
+    tubes = {}
+    for n, tlab, sgn in HEADS:
+        t = by[tlab]
+        c = max([e for e in pr.shapes[t.Name].Edges if isinstance(e.Curve, Part.Circle)], key=lambda e: e.Curve.Center.z)
+        ax = c.Curve.Axis; ax = ax if ax.z > 0 else -ax; e0 = c.Curve.Center
+        cb = em.boxes[clips[n - 1].Name]
+        o = V((cb.XMin + cb.XMax) / 2, cb.YMax, (cb.ZMin + cb.ZMax) / 2 + edz)
+        lead = eb.lead_in(e0, ax, eb.near_clamps(e0, clamp_shapes))
+        p.check(lead is not None, f"slot {n}: the EMU tube's straight lead out of the new clamp: {lead} mm")
+        if lead is None: continue
+        sw, edge, rmin, th, lf = eb.tube(e0, ax, o, lead)
+        pts = [q for q in edge.discretize(Distance=1.0) if q.y > 440.0]     # its part round the roof exit (the cables'
+        tubes[n] = (V(min(q.x for q in pts), min(q.y for q in pts), min(q.z for q in pts)),   # tails are all behind Y 470)
+                    V(max(q.x for q in pts), max(q.y for q in pts), max(q.z for q in pts)), pts)
+        p.log(f"slot {n}: EMU tube planned: lead {lead} mm, R min {rmin:.1f}, {len(pts)} points behind Y 440")
+    if p.errs: return p.finish([])
+    tube_pts = [(lo, hi, pts) for lo, hi, pts in tubes.values()]
     # ---------------- the channel: the lowest lanes every lead-out reaches at R >= MIN_R
     zc_of = lambda z0: {n: z0 + (5 - n) * PITCH for n, _, _ in HEADS}
     lane_z0, outs = None, None
@@ -227,12 +292,12 @@ def main(p):
         zc = zc_of(z0); trial = {}
         for n, _, _ in HEADS:
             E, Ec, Dv, X, N, sgn = axes[n]
-            trial[n] = lead_out(Ec + Dv * CL_S1, Dv, zc[n])
+            trial[n] = lead_out(Ec + Dv * CL_S1, Dv, zc[n], tube_pts)
             if trial[n][0] < R.MIN_R: break
         else:
             lane_z0, outs = z0, trial; break
         z0 += 2.5
-    p.check(lane_z0 is not None, f"lanes: the lowest bottom lane where every lead-out bends >= R {R.MIN_R:.0f}: Z {lane_z0} "
+    p.check(lane_z0 is not None, f"lanes: the lowest bottom lane where every lead-out bends >= R {R.MIN_R:.0f} and clears the EMU tubes by {TUBE_CLR}: Z {lane_z0} "
             f"(lite-40: 795; tried from {LANE_Z0_MIN:.2f})")
     if p.errs: return p.finish([])
     zc = zc_of(lane_z0); zc_c = lane_z0 + 2 * PITCH
@@ -315,22 +380,7 @@ def main(p):
     p.check(len(chosen) == 4 and max(gaps) <= 200, f"posts at X {chosen} ({zb - PANEL_TOP:.1f} tall; lite-40: 97) clear of cables and clamps by >= 1 mm; spans {[round(g) for g in gaps]}")
     xv0 = X_A + R0 - RC - CCLR - WALL
     arms = [Part.makeBox(xv0 + 20 - 10, Y_IN0 - WALL - 520.0, 12.0, V(10.0, 520.0, z - 6)).cut(outer) for z in ARM_Z]
-    # ---------------- chamfers, in print orientation
-    made = {}
-    def chamf(key, shape, up, what):
-        s, info = printchamfer.chamfer(shape, up, **CHAMFER)
-        left = printchamfer.unchamfered(shape, s, up, **CHAMFER, skip={w for k, w, c in info["skipped"]} | {w for k, w in info["failed"]})
-        p.check(s.isValid() and len(s.Solids) == 1 and not left,
-                f"{what}: chamfered (up {tuple(round(c, 3) for c in up)}): {info['bottom']} first-layer edges {CHAMFER['bottom']}, {info['top']} top edges {CHAMFER['top']}, "
-                f"{len(info['reduced'])} reduced on narrow faces (smallest {min([c for k, w, c in info['reduced']] or [1.0]):.2f}), "
-                f"{len(info['skipped'])} skipped, {len(info['failed'])} OCC couldn't build {info['failed'][:3]}; -{info['removed_mm3']:.0f} mm3; missed: {left[:4]}")
-        if left and os.environ.get("VT350_DEBUG_BREP"):               # the unchamfered part, to look at by hand
-            shape.exportBrep(os.path.join(os.environ["VT350_DEBUG_BREP"], re.sub(r"\W+", "_", what)[:40] + ".brep"))
-        made[key] = s; return s
-    for n, _, _ in HEADS:
-        E, Ec, Dv, X, N, sgn = axes[n]
-        chamf(("clamp", "base", n), clamp_new[n]["base"], UP["base"], f"slot {n} base")
-        chamf(("clamp", "cap", n), clamp_new[n]["cap"], N, f"slot {n} cap (printed on its split face)")
+    # ---------------- chamfers, in print orientation (the clamps are done above)
     chamf(("chan", "body", 0), body, UP["body"], "channel body (on its front wall)")
     chamf(("chan", "cover", 0), cover, UP["cover"], "channel cover")
     for i, x in enumerate(chosen, 1): chamf(("post", "", i), post_at(x), UP["post"], f"post {i} (on its side)")
