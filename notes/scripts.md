@@ -119,6 +119,9 @@ cad/viewer/export_glb.sh 62 cad/viewer/toolhead.json -- --decimate 0.5   # a sma
   its licence and where that was read) and the `.glb`. The last lines are `licence-check: OK`, the GLB's size and
   triangle count, and `glb-export: OK`. Never saves a model.
 - **A new part in a selection?** Add its licence rule to `licences.json` first, with where you read it.
+- **The page:** `cad/viewer/index.html` loads `toolhead.gltf.json` from beside it (export with `-- --decimate 0.5 --json 1`;
+  an artifact holds at most 15 MB per file and won't serve `.glb`). It rebuilds the GLB in memory, because the artifact
+  sandbox blocks three.js fetching the embedded `data:` buffer.
 
 ### `cad/render/render_full.sh`: full colour renders on this laptop (#38)
 
