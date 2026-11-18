@@ -14,7 +14,7 @@ code. The printer side imports from here, not the other way round.
 | Folder | What it does | Runs with |
 |---|---|---|
 | `freecad/` | The pass library (`litelib.py`: parts plus named checks, run on workers by `litepool.py`), clash checks (`clashlib.py`), boolean contact (`contact.py`), the per-part box index (`part_index.py`), copies found and turned into App::Links (`dupes.py`) and the link-aware geometry every walker uses (`linkgeo.py`), mesh registration (`reglib.py`, `register.py`), Bézier paths (`bezier.py`), FCStd inspectors (`analyze.py`, `cats.py`, `tree.py`), the motion player's core (`timeline.py`: a kalisim timeline + a rig file → frames of group translations, with the dock handover), and its FreeCAD GUI player (`player.py`, started by `player_gui.FCMacro`: plays the frames on a private copy of the model, play/pause/step/speed, restores every Placement on stop, never saves) | FreeCAD `freecadcmd`; the `test_*.py` files without `import FreeCAD` run in plain `python3` |
-| `viewer/` | Part selection and licence rules (`rules.py`), the licence check of an export (`licence_check.py`), Blender export to GLB with the renders' materials (`glb.py`) | python3, then Blender |
+| `viewer/` | Part selection and licence rules (`rules.py`), the licence check of an export (`licence_check.py`), Blender export to GLB with the renders' materials (`glb.py`), turntable cameras (`frame_view.py`), the turntable page from its renders (`turntable_page.py`, template `turntable.html`) | python3, then Blender |
 | `render/` | FreeCAD mesh export (`export_meshes.py`), Blender render (`render.py`), the colour-map engine (`colours.py`) and logo split (`logos.py`) | FreeCAD, then Blender |
 | `kalisim/` | Kalico batch mode with no hardware: run G-code through the real firmware and check the moves. The image includes klipper-toolchanger (pinned), for printers whose config uses it | `docker` (Kalico's published image, pinned by digest) |
 | `parts/` | `check-printed.py` (printed parts against their manifest and the BOM) and `slice-check.py` (supports, keep-outs and print estimates, via OrcaSlicer or `--slicer prusa`) | `python3`; slice-check also needs the Orca (or PrusaSlicer) flatpak |
@@ -40,6 +40,8 @@ bash cad/klipper/test_in_container.sh                           # builds platfor
 cad/render/render_full.sh 30                                    # FreeCAD export + Blender render of vt350-lite-30
 cad/viewer/export_glb.sh 62                                     # a licence-checked GLB of a selection, for the 3D viewer ("glb-export: OK")
 python3 platform/viewer/licence_check.py <export>/scene.json <licences.json>   # "licence-check: OK"
+python3 platform/viewer/turntable_page.py stage <frames> <page.json> <out>    # a turntable preview folder ("turntable-page: OK")
+cad/viewer/turntable.py <step> <name>                         # the VT350 turntables, step by step (notes/scripts.md)
 $APP freecadcmd $PWD/platform/freecad/part_index.py             # the per-part box index ($VT350_INDEX_MODELS)
 TESS_COST_MODEL=<model> $APP freecadcmd $PWD/platform/freecad/tess_cost.py   # which parts make a model slow to open (freecad/LESSONS.md)
 DUPES_MODEL=<model> $APP freecadcmd $PWD/platform/freecad/dupes.py          # which parts are copies, and what linking them saves in the file

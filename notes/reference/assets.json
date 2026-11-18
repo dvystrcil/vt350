@@ -3,15 +3,15 @@
  "assets": [
   {
    "release": "viewer-assets-lite-62",
-   "asset": "vt350-lite-62-toolhead-turntable-frames.zip",
-   "into": "toolhead-turntable",
-   "sha256": "29d7bc5ba23a757acdbd370c0200c045fd6554ba9d8a2e6d38b925b86ecd4ed2"
-  },
-  {
-   "release": "viewer-assets-lite-62",
    "asset": "vt350-lite-62-toolhead.glb",
    "into": "toolhead-viewer",
    "sha256": "3283d89343749ab32d048a2b6b42e2ef895dc5f08fa5a645e3f2ead226ea98fa"
+  },
+  {
+   "release": "viewer-assets-lite-62",
+   "asset": "vt350-lite-62-toolhead-turntable-frames-1c5ca876.zip",
+   "into": "toolhead-turntable",
+   "sha256": "1c5ca8763f8c2334abb887139b6bc959b9723bb69a6ecbde967d4e44dc538bce"
   }
  ]
 }

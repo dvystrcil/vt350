@@ -128,38 +128,32 @@ cad/viewer/export_glb.sh 62 cad/viewer/toolhead.json -- --decimate 0.5   # a sma
 
 ### A turntable of real renders (#220)
 
-```bash
-# 1. a whole-printer export, as render_full.sh makes (or reuse one): GUI under xvfb, read-only
-RUN=~/Documents/VT350/renders/vt350-lite-62-turntable-<UTC>; D=~/Documents/VT350
-VT350_COLOURS=$PWD/cad/render/colours.json VT350_MODEL=$D/vt350-lite-62.FCStd \
-  VT350_EXTRA=$D/vt350-ebox-3.FCStd:$D/vt350-emu-3.FCStd VT350_RENDER_OUT=$RUN/export \
-  xvfb-run -a -s "-screen 0 1280x1024x24" $APP $PWD/platform/render/export_meshes.py
-# 2. 36 angles x 7 heights (below level too) of cameras into its scene.json, without the base board; the key light
-#    turns and tilts with each camera, so no frame is lit from behind
-python3 platform/viewer/frame_view.py $RUN/export --turntable 36x7 --elevations -40,-25,-10,0,10,25,40 --fill 1.0 --ev -1.4 \
-  --hide role_board_t0
-# 3. the 252 renders on the batch lane (~18 s each on the GTX 970, ~77 min); the result is a comment on the issue
-~/Code/homelab/bin/gpu-batch-submit.py blender --input $RUN/export --script $PWD/platform/render/render.py \
-  --with $PWD/platform/render/colours.py --with $PWD/cad/render/colours.json --expect 'out/*.jpg' \
-  --min-outputs 252 --deadline 14400 --notify dvystrcil/vt350#220 -- 64 --size 1280x720 \
-  --look "AgX - Punchy" --plastic-specular 0.2     # the owner's look for the turntable (2026-11-17)
-```
-
-The page is `cad/viewer/turntable/index.html`: it loads `frames/<model>-tt-e<elev>-a<azimuth>.jpg` from beside it.
-
-**Putting it on the public pages** (dvystrcil.github.io/vt350; done for the toolhead, vt350#220): the frames and
-models are too big for git, so they go on a GitHub release and the pages workflow fetches them, checked by sha256.
+A drag-to-turn page of Cycles renders: 36 angles × 7 heights. One settings file per turntable,
+`cad/viewer/turntables/<name>.json` (`toolhead`, `printer`), holds every choice: what to export, the cameras, the
+render look, the page's text, where it's published. `cad/viewer/turntable.py` runs the steps from it, in order:
 
 ```bash
-# zip the frames (stored, not compressed: JPEGs don't shrink), then upload to a release
-(cd <dir holding frames/> && zip -q -0 -X -r /tmp/<name>-frames.zip frames)
-gh release upload viewer-assets-lite-62 /tmp/<name>-frames.zip      # or gh release create <tag> --prerelease ...
-sha256sum /tmp/<name>-frames.zip     # -> a new entry in notes/reference/assets.json ("into": the page's folder)
-python3 platform/pages/fetch_assets.py notes/reference/assets.json   # by hand: fetch them into a clone, "fetch-assets: OK"
+cad/viewer/turntable.py export  toolhead            # FreeCAD under xvfb (read-only) + licence check -> a new RUN dir
+cad/viewer/turntable.py views   toolhead            # the 252 cameras into RUN/export/scene.json
+cad/viewer/turntable.py render  toolhead            # Blender here (~5-10 s a frame on the RTX 2070), RUN/out/
+cad/viewer/turntable.py render  printer --lane      # or the GTX 970 lane (~18 s a frame); comment on the issue, then:
+cad/viewer/turntable.py collect printer             #   its frames into RUN/out/
+cad/viewer/turntable.py stage   toolhead            # preview folder RUN/page/: python3 -m http.server -d <it>
+cad/viewer/turntable.py publish toolhead            # the public page: notes/reference + a release asset; commit after
+cad/viewer/turntable.py all     toolhead            # export, views, render here, stage
+cad/viewer/turntable.py check   all                 # every settings file is complete (CI runs this)
 ```
 
-The page itself (`notes/reference/<name>.html`) and its `turntable.json` are committed and listed in
-`notes/reference/index.html`; `check_index.py` fails the build otherwise.
+- **RUN** is `~/Documents/VT350/renders/vt350-lite-<N>-<name>-turntable-<UTC>/`. Each step uses the newest one;
+  `--run DIR` picks another, `--model N` exports another lite-N. Each step ends with `<step>: OK`.
+- **The look** (owner, 2026-11-17): AgX Punchy, plastic specular 0.2, −1.4 EV. The key light turns and tilts with
+  each camera, so no side is backlit. `printer` hides the base board (`"hide": ["role_board_t0"]`).
+- **publish refuses** unless every part's licence is cleared in `cad/viewer/licences.json`. The toolhead's are; the
+  whole printer's aren't yet. `--upload 0` writes everything but leaves the zip in RUN instead of uploading it.
+- **Where the big files go:** the frames zip is a GitHub release asset (named by its sha256, so the live site keeps
+  working until the change merges); `notes/reference/assets.json` records it, and the pages workflow fetches and
+  checks it (`platform/pages/fetch_assets.py`). Only the page and its `turntable.json` are committed.
+- A new turntable: copy a settings file, change it, run `check all`, then the steps.
 
 ### `cad/render/render_full.sh`: full colour renders on this laptop (#38)
 

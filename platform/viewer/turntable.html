@@ -1,8 +1,14 @@
-<title>VT350 Turntable</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<!-- Template: platform/viewer/turntable_page.py fills __TITLE__ and __BASE__ (vt350#220). -->
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>__TITLE__</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
+body { margin: 0; } img { max-width: 100%; } [hidden] { display: none !important; }
+footer a { color: inherit; }
 /* Layout: one 16:9 stage of real Cycles renders, a strip of facts above, the angle and height controls below. */
 :root {
   --bg: #eceef0; --stage: #121316; --fg: #1d2226; --muted: #5d676f; --line: #c4cbd1;
@@ -48,7 +54,7 @@ footer { font-size: 0.78rem; color: var(--muted); line-height: 1.5; max-width: 7
   </div>
 </header>
 
-<div id="stage" tabindex="0" aria-label="Turntable of renders. Drag or use the arrow keys to turn the printer; up and down change the height.">
+<div id="stage" tabindex="0" aria-label="Turntable of renders. Drag or use the arrow keys to turn the model; up and down change the height.">
   <img id="frame" alt="">
   <div id="status">Loading the renders…</div>
 </div>
@@ -56,7 +62,7 @@ footer { font-size: 0.78rem; color: var(--muted); line-height: 1.5; max-width: 7
 <div class="controls">
   <div class="group"><span class="label">Height</span><span id="heights"></span></div>
   <div class="group" style="flex:1 1 280px; min-width:0"><span class="label">Angle</span>
-    <input id="az" type="range" min="0" max="35" step="1" value="0" aria-label="Angle round the printer">
+    <input id="az" type="range" min="0" max="35" step="1" value="0" aria-label="Angle round the model">
     <span class="readout" id="r-az">0°</span></div>
   <button id="b-play" type="button" aria-pressed="false">Play</button>
 </div>
@@ -64,11 +70,13 @@ footer { font-size: 0.78rem; color: var(--muted); line-height: 1.5; max-width: 7
 <footer id="t-foot">
   Real Blender Cycles renders (render.py, the render colour map), one every 10° round the model at three heights. Drag sideways to turn it, up or down to change the height; arrow keys work too. Only these angles exist: for any angle, use the live 3D viewer (vt350#220).
 </footer>
+<footer id="t-credits" hidden></footer>
 </div>
 
 <script>
-// turntable.json beside the page: {"title", "title_accent", "model", "prefix", "elevations": [..], "azimuths": N, "foot"?}
-fetch("turntable.json").then(r => { if (!r.ok) throw new Error("turntable.json " + r.status); return r.json(); })
+// __BASE__turntable.json: {"title", "title_accent", "model", "prefix", "elevations": [..], "azimuths": N, "start_elevation"?,
+//   "foot"?, "credits"?, "links"?}. Frames: __BASE__frames/<prefix>-tt-e<EE>-a<AAA>.jpg (frame_view.py names, render.py files).
+fetch("__BASE__turntable.json").then(r => { if (!r.ok) throw new Error("turntable.json " + r.status); return r.json(); })
   .then(start).catch(e => { document.getElementById("status").textContent = "Couldn't load the turntable settings (" + String(e.message).slice(0, 120) + ")."; });
 function start(cfg) {
   const ELEV = cfg.elevations, NAZ = cfg.azimuths, MODEL = cfg.prefix;
@@ -76,7 +84,16 @@ function start(cfg) {
   const sp = document.createElement("span"); sp.textContent = cfg.title_accent || ""; t.appendChild(sp);
   document.getElementById("t-model").textContent = cfg.model;
   if (cfg.foot) document.getElementById("t-foot").textContent = cfg.foot;
-  const name = (e, i) => `frames/${MODEL}-tt-e${String(e).padStart(2, "0")}-a${String(i * 360 / NAZ).padStart(3, "0")}.jpg`;
+  // "credits": plain text; "links": [{"href", "text"}], shown under it
+  const cr = document.getElementById("t-credits");
+  if (cfg.credits || (cfg.links || []).length) {
+    cr.hidden = false; cr.textContent = cfg.credits || "";
+    (cfg.links || []).forEach((l, k) => {
+      if (k === 0 && cfg.credits) cr.appendChild(document.createElement("br")); else if (k) cr.append(" · ");
+      const a = document.createElement("a"); a.href = l.href; a.textContent = l.text; cr.appendChild(a);
+    });
+  }
+  const name = (e, i) => `__BASE__frames/${MODEL}-tt-e${String(e).padStart(2, "0")}-a${String(i * 360 / NAZ).padStart(3, "0")}.jpg`;
   const img = document.getElementById("frame"), stage = document.getElementById("stage"), status = document.getElementById("status");
   const az = document.getElementById("az"), rAz = document.getElementById("r-az"), hb = document.getElementById("heights");
   const total = ELEV.length * NAZ;
@@ -99,7 +116,7 @@ function start(cfg) {
   });
   function show() {
     ai = ((ai % NAZ) + NAZ) % NAZ; ei = Math.max(0, Math.min(ELEV.length - 1, ei));
-    img.src = cache[ei][ai].src; img.alt = `The printer from ${ai * 360 / NAZ}° round, ${ELEV[ei]}° up`;
+    img.src = cache[ei][ai].src; img.alt = `The model from ${ai * 360 / NAZ}° round, ${ELEV[ei]}° up`;
     az.value = ai; rAz.textContent = `${ai * 360 / NAZ}°`;
     [...hb.children].forEach((b, k) => b.setAttribute("aria-pressed", String(k === ei)));
     if (cache[ei][ai].complete && cache[ei][ai].naturalWidth) status.hidden = true;
