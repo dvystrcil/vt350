@@ -1,0 +1,24 @@
+{
+ "cards": {
+  "Bought Vindr Berserker 4010B blower": "Blower_4010",
+  "Bought 2510 hotend fan": "A4Tv035"
+ },
+ "per_head_g": 36.8,
+ "masses_g": {
+  "Vindr Berserker 4010B blower L Left Toolhead (modelled from measurements)": 15.0,
+  "Vindr Berserker 4010B blower R Left Toolhead (modelled from measurements)": 15.0,
+  "Vindr Berserker 4010B blower L Toolhead slot 2 (L) (modelled from measurements)": 15.0,
+  "Vindr Berserker 4010B blower R Toolhead slot 2 (L) (modelled from measurements)": 15.0,
+  "Vindr Berserker 4010B blower L Toolhead slot 3 (R) (modelled from measurements)": 15.0,
+  "Vindr Berserker 4010B blower R Toolhead slot 3 (R) (modelled from measurements)": 15.0,
+  "Vindr Berserker 4010B blower L Toolhead slot 4 (L) (modelled from measurements)": 15.0,
+  "Vindr Berserker 4010B blower R Toolhead slot 4 (L) (modelled from measurements)": 15.0,
+  "Vindr Berserker 4010B blower L Right Toolhead (modelled from measurements)": 15.0,
+  "Vindr Berserker 4010B blower R Right Toolhead (modelled from measurements)": 15.0,
+  "2510 Fan": 6.8,
+  "2510 Fan001": 6.8,
+  "2510 Fan002": 6.8,
+  "2510 Fan003": 6.8,
+  "2510 Fan004": 6.8
+ }
+}

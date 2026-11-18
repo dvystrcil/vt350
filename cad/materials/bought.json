@@ -1,5 +1,5 @@
 {
- "_about": "Bought parts with a published mass (vt350#60). The model's solids for a bought part are a mockup: their volume isn't the real part's, and most carry FreeCAD's weightless Default material. Each part here gets one card with an EFFECTIVE density, so that its Default solids plus its solids that already have a material add up to the published mass: density = (mass_g - known_g) / default_mm3. default_mm3 and known_g are measured on measured_on (cad/passes lite-63 re-measures them and refuses to save if they've changed). Only published figures go here; parts without one stay Default until the owner weighs them (vt350#60 AC6). materials: real materials bought as parts (magnets), with their datasheet density; one plain card each.",
+ "_about": "Bought parts with a published mass (vt350#60). The model's solids for a bought part are a mockup: their volume isn't the real part's, and most carry FreeCAD's weightless Default material. Each part here gets one card with an EFFECTIVE density, so that its Default solids plus its solids that already have a material add up to the published mass: density = (mass_g - known_g) / default_mm3. default_mm3 and known_g are measured on measured_on (cad/passes lite-63 re-measures them and refuses to save if they've changed). Only published figures go here: the part's own, or, when its maker publishes none, a same-size, same-type part's from another maker (owner, 2026-11-17: \"they would not vary by much\"), said so in its source; parts without one stay Default until the owner weighs them (vt350#60 AC6). materials: real materials bought as parts (magnets), with their datasheet density; one plain card each.",
  "parts": [
   {
    "name": "Bought LDO Orbiter v2.5 with motor",
@@ -20,6 +20,28 @@
    "selector": "the solid 'Beacon RevH Normal (Beacon CAD, MIT)' on the carriage",
    "measured_on": "vt350-lite-62.FCStd",
    "default_mm3": 2518.4,
+   "known_g": 0.0,
+   "default_solids": 1
+  },
+  {
+   "name": "Bought Vindr Berserker 4010B blower",
+   "mass_g": 15,
+   "source_url": "https://kb-3d.com/store/fans/663-4010-ball-bearing-blower-fan-24v-1662421807065.html",
+   "source": "Berserker (and West3D, BER1429) publish no weight; read 2026-11-17. A same-size, same-type stand-in figure (owner's choice): 24 V 40x40x10 dual-ball blowers weigh 15 g: KB3D's 4010 blower (9,500 rpm, with a 15 cm lead), Senhar's 4010A datasheet (15.0 g), GDSTime GDB4010 (12 g at 9,500 rpm, 15 g at 12,000 rpm). The Berserker is a high-speed blower, so 15 g. Replace with the owner's scale (vt350#60 AC6).",
+   "selector": "the blower solid 'Blower_4010' (each head's two 'Vindr Berserker 4010B blower' are links to it)",
+   "measured_on": "vt350-lite-65.FCStd",
+   "default_mm3": 13669.6,
+   "known_g": 0.0,
+   "default_solids": 1
+  },
+  {
+   "name": "Bought 2510 hotend fan",
+   "mass_g": 6.8,
+   "source_url": "https://www.sunonusa.com/wp-content/uploads/2026/05/MF25101V1-1000U-A99-D02025390G-01-1.pdf",
+   "source": "The owner's 2510 fan's maker isn't recorded; a same-size, same-type stand-in figure (owner's choice): Sunon MF25101V1-1000U-A99 (25x25x10 axial, 12 V; the 24 V version's mechanics are the same) datasheet, read 2026-11-17: \"WEIGHT 6.8 g\". Replace with the owner's scale (vt350#60 AC6).",
+   "selector": "the solid '2510 Fan' (A4Tv035; each head's 2510 fan is it or a link to it)",
+   "measured_on": "vt350-lite-65.FCStd",
+   "default_mm3": 3257.6,
    "known_g": 0.0,
    "default_solids": 1
   }

@@ -1,0 +1,14 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "8be34b40-23a8-5dc4-9e90-60cb2058baef"
+  Name: "Bought 2510 hotend fan"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "NOT A REAL MATERIAL: an effective density for the solid '2510 Fan' (A4Tv035; each head's 2510 fan is it or a link to it), so that it weighs its published 6.8 g (cad/materials/bought.json). Modelled volume 3257.6 mm3 on vt350-lite-65.FCStd, plus 0 g already in other materials."
+  SourceURL: "https://www.sunonusa.com/wp-content/uploads/2026/05/MF25101V1-1000U-A99-D02025390G-01-1.pdf"
+  ReferenceSource: "The owner's 2510 fan's maker isn't recorded; a same-size, same-type stand-in figure (owner's choice): Sunon MF25101V1-1000U-A99 (25x25x10 axial, 12 V; the 24 V version's mechanics are the same) datasheet, read 2026-11-17: \"WEIGHT 6.8 g\". Replace with the owner's scale (vt350#60 AC6)."
+Models:
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "2087.4 kg/m^3"
