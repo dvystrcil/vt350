@@ -1,0 +1,102 @@
+{
+ "_doc": "The public pages of one subject, built from one lite-N by cad/viewer/pages.py (vt350#220). Top level: what to export, the render look (owner 2026-11-17: AgX Punchy, plastic 0.2, -1.4 EV; the key light turns and tilts with each camera), where pages go ('release' takes {model}). 'turntable': cameras and page text. 'viewer' (optional): the live 3D page, its GLB and its compare render.",
+ "model": 62,
+ "selection": "cad/viewer/toolhead.json",
+ "extra": [],
+ "hide": [],
+ "render": {
+  "size": "1280x720",
+  "look": "AgX - Punchy",
+  "plastic_specular": 0.2,
+  "local_samples": 96,
+  "lane_samples": 64,
+  "lane_deadline_s": 14400,
+  "lane_notify": "dvystrcil/vt350#220"
+ },
+ "publish": {
+  "pages": "notes/reference",
+  "release": "viewer-assets-lite-{model}",
+  "issue": "vt350#220"
+ },
+ "turntable": {
+  "page_name": "toolhead-turntable",
+  "blurb": "252 Blender Cycles renders of the left toolhead on the MadMax carriage: drag round it at 36 angles and seven heights, from 40° below to 40° above, with the light turning with the camera.",
+  "azimuths": 36,
+  "elevations": [
+   -40,
+   -25,
+   -10,
+   0,
+   10,
+   25,
+   40
+  ],
+  "fill": 1.1,
+  "ev": -1.4,
+  "page": {
+   "title": "VT350 · Left head on the",
+   "title_accent": "MadMax carriage",
+   "page_title": "VT350 Toolhead Turntable",
+   "model_note": "the viewer's toolhead export",
+   "start_elevation": 25,
+   "foot": "Real Blender Cycles renders (render.py, the render colour map, AgX Punchy, −1.4 EV), one every 10° round the toolhead at seven heights, from 40° below to 40° above. The light turns with the camera, so every side is lit the same. Drag sideways to turn it, up or down to change the height; arrow keys work too. Only these angles exist: for any angle, use the live 3D viewer.",
+   "credits": "Parts: A4Tv2 and Orbiter (CC BY-NC-SA 4.0, DW-Tas / Orbiter Projects), MadMax carriage, plate and clips (GPL-3.0, zruncho3d, andrewmcgr), Beacon RevH (MIT, Beacon3D), O2S and Smart Sensor (CC0-1.0, Lorincz Electronics); blowers modelled from measurements. Each part keeps its licence; non-commercial use only.",
+   "links": [
+    {
+     "href": "index.html",
+     "text": "All reference pages"
+    },
+    {
+     "href": "toolhead-viewer.html",
+     "text": "Live 3D viewer"
+    },
+    {
+     "href": "https://github.com/DW-Tas/A4Tv2",
+     "text": "A4Tv2 (DW-Tas)"
+    },
+    {
+     "href": "https://github.com/zruncho3d/madmax",
+     "text": "MadMax (zruncho3d)"
+    }
+   ]
+  }
+ },
+ "viewer": {
+  "page_name": "toolhead-viewer",
+  "decimate": 0.5,
+  "compare": {
+   "from": "725,-1715,850",
+   "lens": 35,
+   "fill": 0.9,
+   "ev": -1.4
+  },
+  "blurb": "The same toolhead as a live 3D model you can turn, pan and zoom, beside a Cycles render of it and a button that puts the live view at the render's camera.",
+  "page": {
+   "title": "VT350 · Left head on the",
+   "title_accent": "MadMax carriage",
+   "page_title": "VT350 Toolhead Viewer",
+   "compare_alt": "Cycles render of the same toolhead and carriage, seen from the front right and above",
+   "caption": "Blender Cycles, the same export and colour map, AgX Punchy look and less shiny plastic at −1.4 EV, 35 mm lens from the front right and above. It's a still picture: the live view on the left is the one you can turn.",
+   "about": "A4Tv2 toolhead with Orbiter 2.5, Smart Sensor and Orbitool O2S, on the MadMax plate and the gantry carriage with its Beacon (vt350#220). Colours are the render colour map's.",
+   "credits": "Parts: A4Tv2 and Orbiter (CC BY-NC-SA 4.0, DW-Tas / Orbiter Projects), MadMax carriage, plate and clips (GPL-3.0, zruncho3d, andrewmcgr), Beacon RevH (MIT, Beacon3D), O2S and Smart Sensor (CC0-1.0, Lorincz Electronics); blowers modelled from measurements. Each part keeps its licence; non-commercial use only.",
+   "links": [
+    {
+     "href": "index.html",
+     "text": "All reference pages"
+    },
+    {
+     "href": "toolhead-turntable.html",
+     "text": "Turntable of real renders"
+    },
+    {
+     "href": "https://github.com/DW-Tas/A4Tv2",
+     "text": "A4Tv2 (DW-Tas)"
+    },
+    {
+     "href": "https://github.com/zruncho3d/madmax",
+     "text": "MadMax (zruncho3d)"
+    }
+   ]
+  }
+ }
+}
