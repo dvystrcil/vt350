@@ -366,6 +366,15 @@ class TcOffsets(Base):
         self.assertEqual(r.returncode, 0, r.log[-3000:])
         self.assertEqual([s[3:] for s in self.states(saved)], [(1.0, 0.0), (0.0, 1.0), (0.0, 0.0)])
 
+    def test_fan_set_just_before_a_change_reaches_the_new_tool(self):
+        # A slicer may set the fan, make a move, then change tools. _CHANGE_TOOL reads the fan speed when it starts,
+        # and Kalico reports a fan's speed only once its request is applied (when the queued moves flush): without a
+        # flush first, it reads the old speed and the new tool's fan starts off
+        r, saved = self.run_macros(self.shows(self.START + ["T0", "M106 S127.5", "G1 X170 Y175 F6000", "T1",
+                                                            "G1 X180 Y175 F6000", "M400", "_SHOW"]))
+        self.assertEqual(r.returncode, 0, r.log[-3000:])
+        self.assertEqual([s[3:] for s in self.states(saved)], [(0.0, 0.5)])
+
     def test_missing_offsets_stop_the_tool_change_with_a_fix(self):
         r, _ = self.run_macros(self.START + ["T1"], seed="[Variables]\nt0_offset_x = 0.0\n")
         self.assertIn("the offset save file has no t0_offset_y, t0_offset_z, t1_offset_x, t1_offset_y, t1_offset_z: "
