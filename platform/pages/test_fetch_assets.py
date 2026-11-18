@@ -54,4 +54,4 @@ class FetchAssets(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(buffer=True)   # keep run()'s progress lines out of the log, so "OK" stays the last line
