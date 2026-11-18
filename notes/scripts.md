@@ -147,6 +147,20 @@ python3 platform/viewer/frame_view.py $RUN/export --turntable 36x7 --elevations 
 
 The page is `cad/viewer/turntable/index.html`: it loads `frames/<model>-tt-e<elev>-a<azimuth>.jpg` from beside it.
 
+**Putting it on the public pages** (dvystrcil.github.io/vt350; done for the toolhead, vt350#220): the frames and
+models are too big for git, so they go on a GitHub release and the pages workflow fetches them, checked by sha256.
+
+```bash
+# zip the frames (stored, not compressed: JPEGs don't shrink), then upload to a release
+(cd <dir holding frames/> && zip -q -0 -X -r /tmp/<name>-frames.zip frames)
+gh release upload viewer-assets-lite-62 /tmp/<name>-frames.zip      # or gh release create <tag> --prerelease ...
+sha256sum /tmp/<name>-frames.zip     # -> a new entry in notes/reference/assets.json ("into": the page's folder)
+python3 platform/pages/fetch_assets.py notes/reference/assets.json   # by hand: fetch them into a clone, "fetch-assets: OK"
+```
+
+The page itself (`notes/reference/<name>.html`) and its `turntable.json` are committed and listed in
+`notes/reference/index.html`; `check_index.py` fails the build otherwise.
+
 ### `cad/render/render_full.sh`: full colour renders on this laptop (#38)
 
 ```bash

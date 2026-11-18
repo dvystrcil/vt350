@@ -1,0 +1,17 @@
+{
+ "_doc": "Large files for these pages, kept as GitHub release assets and put in place by platform/pages/fetch_assets.py when the pages workflow runs (vt350#220). Change an asset: upload it to a release and update its sha256 here.",
+ "assets": [
+  {
+   "release": "viewer-assets-lite-62",
+   "asset": "vt350-lite-62-toolhead-turntable-frames.zip",
+   "into": "toolhead-turntable",
+   "sha256": "29d7bc5ba23a757acdbd370c0200c045fd6554ba9d8a2e6d38b925b86ecd4ed2"
+  },
+  {
+   "release": "viewer-assets-lite-62",
+   "asset": "vt350-lite-62-toolhead.glb",
+   "into": "toolhead-viewer",
+   "sha256": "3283d89343749ab32d048a2b6b42e2ef895dc5f08fa5a645e3f2ead226ea98fa"
+  }
+ ]
+}

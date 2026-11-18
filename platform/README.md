@@ -19,7 +19,7 @@ code. The printer side imports from here, not the other way round.
 | `kalisim/` | Kalico batch mode with no hardware: run G-code through the real firmware and check the moves. The image includes klipper-toolchanger (pinned), for printers whose config uses it | `docker` (Kalico's published image, pinned by digest) |
 | `parts/` | `check-printed.py` (printed parts against their manifest and the BOM) and `slice-check.py` (supports, keep-outs and print estimates, via OrcaSlicer or `--slicer prusa`) | `python3`; slice-check also needs the Orca (or PrusaSlicer) flatpak |
 | `klipper/` | The web front end's client config, Fluidd or Mainsail, vendored unchanged; `frontend.py` reports which one a printer's config includes and switches it | `python3` |
-| `pages/` | `check_index.py`: the guard that runs before the reference pages are published | `python3` |
+| `pages/` | `check_index.py`: the guard that runs before the reference pages are published; `fetch_assets.py`: puts the pages' large files (release assets, checked by sha256) in place | `python3`, `gh` |
 | `testing/` | `check_test_tmp.sh`: every plain-python test must leave its `TMPDIR` empty | `bash` |
 
 **What we've learned about FreeCAD** (what makes a model slow to open, hidden parts, stand-ins, App::Links, and the gotchas that cost us time): [`freecad/LESSONS.md`](freecad/LESSONS.md). Add to it the day something is learned.
@@ -34,6 +34,7 @@ APP=/home/dan/FreeCAD/FreeCAD_26.3rc2-Linux-x86_64.AppImage
 python3 platform/parts/check-printed.py                         # "check-printed: OK"
 python3 platform/parts/slice-check.py parts/printed/vt350/<part>/*.stl
 python3 platform/pages/check_index.py notes/reference           # "check-index: OK"
+python3 platform/pages/fetch_assets.py notes/reference/assets.json   # "fetch-assets: OK"; --from-dir DIR to skip the download
 bash platform/testing/check_test_tmp.sh                         # "check-test-tmp: OK"
 bash cad/klipper/test_in_container.sh                           # builds platform/kalisim with the VT350's MCU configs; "kalico-batch: OK"
 cad/render/render_full.sh 30                                    # FreeCAD export + Blender render of vt350-lite-30
@@ -79,6 +80,7 @@ The printer passes its data to these tools by path or environment variable:
 | `parts/check-printed.py` | the manifest and BOM | `--root` (default: this checkout), reads `parts/printed/manifest.csv` and `bom/printed-parts.md` |
 | `parts/slice-check.py` | the slicer presets and keep-out boxes | `parts/slice/orca/orca.json` (the Neptune presets), `parts/slice/petg-0.4-0.2.ini` (`--slicer prusa`), `parts/slice/keepout.json` (`--orca`, `--profile`, `--keepout`) |
 | `pages/check_index.py` | the pages folder | its argument (default `notes/reference`) |
+| `pages/fetch_assets.py` | the manifest of release assets | its argument; `--repo` or `GITHUB_REPOSITORY` |
 
 ## Still VT350-specific (phase 3 of #122)
 
