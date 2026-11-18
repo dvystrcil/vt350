@@ -23,9 +23,12 @@ The owner's rules (2026-11-18) for every printed part this repo designs (`vt350/
 - **Bottom edges: a 0.5 mm chamfer.** The edges of the face that sits on the print bed, so the first layers' squish
   (elephant's foot) doesn't make the part oversize or leave a lip.
 - **Top edges: a 1.0 mm chamfer**, so the part isn't sharp.
+- **Bores: none**, unless it's a countersink for a flat-head screw (owner: "bores do not need chaphers unless its for
+  a flathead screw of course"). A countersink is part of the design, not a chamfer added afterwards.
 - "Bottom" and "top" follow the part's **print orientation**, so settle that first and write it in the pass and the
-  part's README. A pass that builds a printed part makes the chamfers and checks them (each bottom edge chamfered
-  0.5, each top edge 1.0).
+  part's README. A pass that builds a printed part makes the chamfers and checks them with
+  `platform/freecad/printchamfer.py` (`chamfer()`, then `unchamfered()`: every bottom edge 0.5, every top edge 1.0,
+  bores left out; a face narrower than ~3 mm takes a smaller chamfer, logged).
 
 ## Licences (#63 AC1)
 
