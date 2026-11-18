@@ -1,9 +1,9 @@
 # printchamfer: chamfer a printed part's edges by its print orientation (vt350 owner rule, 2026-11-18, in
-# parts/printed/README.md): the edges of the face on the bed get `bottom` (0.5 mm: no elephant's foot), the edges of
+# parts/printed/README.md): the edges of the face on the bed get `bottom` (0.6 mm: no elephant's foot), the edges of
 # every face that looks up get `top` (1.0 mm: not sharp). Generic: any part, any print direction `up`.
 #
 #   import printchamfer as pc
-#   new, info = pc.chamfer(shape, up=FreeCAD.Vector(0, 0, 1))      # bottom 0.5, top 1.0 by default
+#   new, info = pc.chamfer(shape, up=FreeCAD.Vector(0, 0, 1))      # bottom 0.6, top 1.0, in 0.2 mm layers by default
 #   left = pc.unchamfered(shape, new, up)                            # [] when every bed/top edge got its chamfer
 #
 # - Bores are left sharp (owner: "bores do not need chaphers unless its for a flathead screw"): an edge on a hole's
@@ -11,17 +11,19 @@
 # - Only CONVEX edges are chamfered (a chamfer on a concave edge would add material), and only where the two faces
 #   meet at more than SHARP_DEG (a near-tangent edge isn't sharp).
 # - A narrow face can't take the full size on both its edges (a 2 mm rim with 1.0 mm each side would vanish): an edge
-#   gets at most NARROW_FRAC of its narrower face's width (2 x area / perimeter), rounded down to 0.05 mm, and at
-#   least MIN_SIZE (smaller is skipped and reported). info["reduced"] / info["skipped"] list them, for the pass's log.
+#   gets at most NARROW_FRAC of its narrower face's width (2 x area / perimeter), rounded down to a whole number of
+#   layers (`step`), and at least one layer (smaller is skipped and reported). info["reduced"] / info["skipped"] list them, for the pass's log.
 # - All edges go in ONE Part::Chamfer (per-edge sizes) in a scratch document, closed afterwards; the input is untouched.
 #   OCC can quietly leave edges out of a big chamfer, so every edge still where it was afterwards is then done on its
-#   own (longest first), at its size or else half; one that takes neither is listed in info["failed"].
+#   own (longest first), at its size or else a layer or two less; one that takes neither is listed in info["failed"].
 # Never saves anything.
 import FreeCAD, Part, math
 
 SHARP_DEG = 30.0           # faces meeting at more than this (normals apart) make an edge worth chamfering
 NARROW_FRAC = 0.3          # an edge's chamfer <= this x its narrower face's width
-MIN_SIZE = 0.2             # mm: below this an edge is skipped (reported)
+STEP = 0.2                 # mm: the layer height. A 45 deg chamfer on a first-layer or top edge rises as much as it is
+                           # wide, so every size is a whole number of layers (owner, 2026-11-18: "the print layer
+                           # height is 0.2 so the slicer will fight trying to make 0.25 work"); below one layer: none
 PLANE_TOL = 0.01           # mm: a face this close to the lowest point (along up) is on the bed
 
 
@@ -78,7 +80,10 @@ def _planar_facing(face, up, sign):
     return n.dot(up) * sign > 1 - 1e-6
 
 
-def select(shape, up, bottom=0.5, top=1.0):
+def _layers(x, step): return math.floor(x / step + 1e-6) * step
+
+
+def select(shape, up, bottom=0.6, top=1.0, step=STEP):
     """{edge index (0-based): (size, kind)} and the reduced/skipped lists, for `shape` printed with `up` pointing up"""
     up = FreeCAD.Vector(up); up.normalize()
     lo = min(v.Point.dot(up) for v in shape.Vertexes)
@@ -95,18 +100,20 @@ def select(shape, up, bottom=0.5, top=1.0):
                 f1, f2, n1, n2, convex, ang = inf
                 if not convex or ang < SHARP_DEG or is_bore(f1) or is_bore(f2): continue
                 cap = NARROW_FRAC * min(_width(f1), _width(f2))
-                d = size if cap >= size else math.floor(cap / 0.05) * 0.05
+                d = round(_layers(min(size, cap), step), 3)
                 m = shape.Edges[i].valueAt((shape.Edges[i].FirstParameter + shape.Edges[i].LastParameter) / 2)
                 where = tuple(round(c, 1) for c in m)
-                if d < MIN_SIZE: skipped.append((kind, where, round(cap, 2))); continue
-                if d < size: reduced.append((kind, where, d))
+                if d < step - 1e-9: skipped.append((kind, where, round(cap, 2))); continue
+                if d < size - 1e-9: reduced.append((kind, where, d))
                 want[i] = (d, kind)
     return want, reduced, skipped, bed, tops
 
 
-def chamfer(shape, up, bottom=0.5, top=1.0):
+def chamfer(shape, up, bottom=0.6, top=1.0, step=STEP):
     """the chamfered copy of `shape` and info {bottom, top, reduced, skipped, removed_mm3}"""
-    want, reduced, skipped, bed, tops = select(shape, up, bottom, top)
+    for x in (bottom, top):
+        if abs(_layers(x, step) - x) > 1e-6: raise ValueError(f"printchamfer: {x} mm is not a whole number of {step} mm layers")
+    want, reduced, skipped, bed, tops = select(shape, up, bottom, top, step)
     info = dict(bottom=sum(1 for d, k in want.values() if k == "bottom"), top=sum(1 for d, k in want.values() if k == "top"),
                 reduced=reduced, skipped=skipped, bed_faces=len(bed), top_faces=len(tops), removed_mm3=0.0)
     if not want: return shape.copy(), info
@@ -128,8 +135,8 @@ def chamfer(shape, up, bottom=0.5, top=1.0):
         e = shape.Edges[i]; d, kind = want[i]
         cur = _on_line(e, out)
         if cur is None: continue
-        for dd in (d, round(d / 2, 2)):
-            if dd < MIN_SIZE: continue
+        for dd in [round(d - k * step, 3) for k in range(3)]:      # its size, else a layer or two less
+            if dd < step - 1e-9: continue
             try: o = out.makeChamfer(dd, [cur])
             except Exception: continue
             if _good(o, out, shape) and _on_line(e, o) is None:
@@ -164,11 +171,11 @@ def _mid(e):
     return tuple(round(c, 1) for c in e.valueAt((e.FirstParameter + e.LastParameter) / 2))
 
 
-def unchamfered(orig, new, up, bottom=0.5, top=1.0, skip=()):
+def unchamfered(orig, new, up, bottom=0.6, top=1.0, skip=(), step=STEP):
     """edges of `orig` that select() wants chamfered and that `new` still has where they were (an edge on the same
     line, ends possibly trimmed by a neighbour's chamfer): their midpoints (rounded 0.1). `skip`: midpoints to leave
     out (the skipped and failed lists). [] = every bed and top edge got its chamfer."""
-    want = select(orig, up, bottom, top)[0]
+    want = select(orig, up, bottom, top, step)[0]
     return [_mid(orig.Edges[i]) for i in want if _mid(orig.Edges[i]) not in skip and _on_line(orig.Edges[i], new) is not None]
 
 

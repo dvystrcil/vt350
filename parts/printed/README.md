@@ -18,17 +18,21 @@ rows without a part, stages, licences). The table below is generated from `manif
 
 ## Design rules for the parts we design
 
-The owner's rules (2026-11-18) for every printed part this repo designs (`vt350/`, and the edges our remixes add):
+The owner's rules (2026-11-18; first said 0.5 at the bottom, then whole 0.2 mm layers made it 0.6) for every printed part this repo designs (`vt350/`, and the edges our remixes add):
 
-- **Bottom edges: a 0.5 mm chamfer.** The edges of the face that sits on the print bed, so the first layers' squish
+- **Bottom edges: a 0.6 mm chamfer.** The edges of the face that sits on the print bed, so the first layers' squish
   (elephant's foot) doesn't make the part oversize or leave a lip.
 - **Top edges: a 1.0 mm chamfer**, so the part isn't sharp.
+- **Whole layers: every chamfer is a multiple of the 0.2 mm layer height.** A 45 deg chamfer on a bottom or top edge
+  rises as much as it is wide, so 0.25 would end mid-layer and the slicer fights it (owner: "lets do champhers in 0.2
+  increments. this also means the plate side 0.5 turns into a 0.6"). Smaller ones step down 0.8, 0.6, 0.4, 0.2;
+  under one layer there is none.
 - **Bores: none**, unless it's a countersink for a flat-head screw (owner: "bores do not need chaphers unless its for
   a flathead screw of course"). A countersink is part of the design, not a chamfer added afterwards.
 - "Bottom" and "top" follow the part's **print orientation**, so settle that first and write it in the pass and the
   part's README. A pass that builds a printed part makes the chamfers and checks them with
-  `platform/freecad/printchamfer.py` (`chamfer()`, then `unchamfered()`: every bottom edge 0.5, every top edge 1.0,
-  bores left out; a face narrower than ~3 mm takes a smaller chamfer, logged).
+  `platform/freecad/printchamfer.py` (`chamfer()`, then `unchamfered()`: every bottom edge 0.6, every top edge 1.0,
+  bores left out; a face narrower than ~3 mm takes a smaller chamfer, in whole layers, logged).
 
 ## Licences (#63 AC1)
 

@@ -19,17 +19,17 @@ UP = V(0, 0, 1)
 
 class PrintChamfer(unittest.TestCase):
     def test_block(self):
-        """a 20 x 10 x 8 block: 4 bed edges at 0.5, 4 top edges at 1.0, vertical edges untouched"""
+        """a 20 x 10 x 8 block: 4 bed edges at 0.6, 4 top edges at 1.0, vertical edges untouched"""
         SHAPE = b = Part.makeBox(20, 10, 8)
         new, info = pc.chamfer(b, UP)
         self.assertEqual((info["bottom"], info["top"]), (4, 4))
         self.assertEqual(info["reduced"] + info["skipped"], [])
         # a chamfer of d on an edge of length L removes d^2/2 * L (less at the corners)
-        want = 0.5 ** 2 / 2 * 60 + 1.0 ** 2 / 2 * 60
+        want = 0.6 ** 2 / 2 * 60 + 1.0 ** 2 / 2 * 60
         self.assertAlmostEqual(info["removed_mm3"], want, delta=0.05 * want)
         self.assertEqual(pc.sharp_edges(new, UP), [])
         self.assertEqual(pc.unchamfered(SHAPE, new, UP), [])
-        self.assertEqual(new.BoundBox.ZLength, 8.0)               # chamfers don't change the outline
+        self.assertAlmostEqual(new.BoundBox.ZLength, 8.0, places=9)               # chamfers don't change the outline
 
     def test_turned(self):
         """the same block printed on its side (up = +Y): the bed is the Y = 0 face"""
@@ -37,7 +37,7 @@ class PrintChamfer(unittest.TestCase):
         new, info = pc.chamfer(b, V(0, 1, 0))
         self.assertEqual((info["bottom"], info["top"]), (4, 4))
         f = [x for x in new.Faces if isinstance(x.Surface, Part.Plane) and abs(x.CenterOfMass.y) < 1e-6][0]
-        self.assertAlmostEqual(f.Area, (20 - 1) * (8 - 1), places=3)   # the bed face shrank 0.5 all round
+        self.assertAlmostEqual(f.Area, (20 - 1.2) * (8 - 1.2), places=3)   # the bed face shrank 0.6 all round
 
     def test_u_channel_rims_reduced(self):
         """a U with 2 mm walls, open at the top: its rims (2 mm wide) get less than 1.0 and are reported"""
@@ -46,8 +46,19 @@ class PrintChamfer(unittest.TestCase):
         self.assertTrue(new.isValid())
         self.assertTrue(info["reduced"])
         self.assertTrue(all(d < 1.0 for k, w, d in info["reduced"]))
+        self.assertTrue(all(abs(d / 0.2 - round(d / 0.2)) < 1e-6 for k, w, d in info["reduced"]))   # whole layers
         self.assertEqual(pc.sharp_edges(new, UP), [])
         self.assertEqual(pc.unchamfered(SHAPE, new, UP), [])
+
+    def test_sizes_in_layers(self):
+        """sizes are whole 0.2 mm layers: 0.5 is refused; on a 20 x 2.5 x 8 fin the long top edges (face 2.5 wide:
+        0.3 x 2.5 = 0.75) get 0.6, the short ones (the 2.5 x 8 end faces: 2A/P = 1.9, 0.57) get 0.4"""
+        b = Part.makeBox(20, 10, 8)
+        with self.assertRaises(ValueError): pc.chamfer(b, UP, bottom=0.5)
+        w = Part.makeBox(20, 2.5, 8)                                   # top face 2.5 wide: 0.3 x 2.5 = 0.75
+        new, info = pc.chamfer(w, UP)
+        self.assertEqual(sorted({d for k, x, d in info["reduced"]}), [0.4, 0.6])
+        self.assertEqual(pc.unchamfered(w, new, UP), [])
 
     def test_bore_left_sharp_boss_chamfered(self):
         """a plate with a through hole and a round boss: the hole's mouth stays sharp (owner: bores need none),

@@ -319,7 +319,7 @@ def main(p):
         s, info = printchamfer.chamfer(shape, up)
         left = printchamfer.unchamfered(shape, s, up, skip={w for k, w, c in info["skipped"]} | {w for k, w in info["failed"]})
         p.check(s.isValid() and len(s.Solids) == 1 and not left,
-                f"{what}: chamfered (up {tuple(round(c, 3) for c in up)}): {info['bottom']} first-layer edges 0.5, {info['top']} top edges 1.0, "
+                f"{what}: chamfered (up {tuple(round(c, 3) for c in up)}): {info['bottom']} first-layer edges 0.6, {info['top']} top edges 1.0, "
                 f"{len(info['reduced'])} reduced on narrow faces (smallest {min([c for k, w, c in info['reduced']] or [1.0]):.2f}), "
                 f"{len(info['skipped'])} skipped, {len(info['failed'])} OCC couldn't build {info['failed'][:3]}; -{info['removed_mm3']:.0f} mm3; missed: {left[:4]}")
         if left and os.environ.get("VT350_DEBUG_BREP"):               # the unchamfered part, to look at by hand
