@@ -13,7 +13,7 @@
 import os, re, sys, time
 
 WORK = os.environ.get("VT350_WORK", "/home/dan/Code/vt350/cad/data")
-MODEL = os.environ.get("VT350_MODEL", "/home/dan/Documents/VT350/vt350-lite-61.FCStd")
+MODEL = os.environ.get("VT350_MODEL", "/home/dan/Documents/VT350/vt350-lite-63.FCStd")
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path[:0] = [HERE] + [os.path.join(os.path.dirname(os.path.dirname(HERE)), d) for d in ("platform/freecad",)]
 HEADS = {"Left": dict(group="Left Toolhead", dock="Left Dock", copy="COMPOUND003", tube="Bowden Left",
@@ -49,6 +49,11 @@ def main():
     import FreeCAD, Part
     import linkgeo
     V = FreeCAD.Vector
+    import matlib
+    # a model stores only each material's UUID: register the repo's cards first, or every part with one of them
+    # reopens as weightless Default with no warning (platform/freecad/LESSONS.md, "Materials")
+    mm = matlib.use_dir(os.path.join(os.path.dirname(os.path.dirname(HERE)), "cad", "materials"))
+    log(f"material cards: {sum(1 for _, m in mm.Materials.items() if m.LibraryName == 'Custom')} in the Custom library")
     doc = FreeCAD.openDocument(MODEL)
     log(f"opened {MODEL}")
     par = {}

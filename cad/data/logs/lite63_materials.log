@@ -1,0 +1,31 @@
+[    0.4s] ok   card 'Ambrosia PET-GF' has a density
+[    0.4s] ok   card 'Ambrosia PETG Clear' has a density
+[    0.4s] ok   card 'Ambrosia ASA' has a density
+[    0.4s] ok   card 'Bought LDO Orbiter v2.5 with motor' has a density
+[    0.4s] ok   card 'Bought Beacon RevH Normal' has a density
+[    0.4s] ok   card 'NdFeB N52 magnet' has a density
+[  129.2s] opened /home/dan/Documents/VT350/vt350-lite-62.FCStd
+[  145.2s] ok   the carriages: 3 (COMPOUND in 4040-350x350x250 Voron Trident v4 v33, COMPOUND004 in 4040-350x350x250 Voron Trident v4 v33, COMPOUND003 in 4040-350x350x250 Voron Trident v4 v33)
+[  145.2s] ok   the tool plates: 10 (Plate, Plate Back, Plate Back(Mirror), Plate Back(Mirror)001, Plate Back001, Plate Back002, Plate(Mirror), Plate(Mirror)001, Plate001, Plate002)
+[  145.2s] Ambrosia ASA: 25 part(s) (targets; links follow)
+[  145.2s] Ambrosia PET-GF: 20 part(s) (targets; links follow)
+[  145.2s] Ambrosia PETG Clear: 1 part(s) (targets; links follow)
+[  145.2s] Bought Beacon RevH Normal: 1 part(s) (targets; links follow)
+[  145.2s] Bought LDO Orbiter v2.5 with motor: 10 part(s) (targets; links follow)
+[  145.2s] NdFeB N52 magnet: 14 part(s) (targets; links follow)
+[  146.0s] ok   Bought LDO Orbiter v2.5 with motor Left Toolhead: 24 Default solids, 48343.73 mm3, 18.806 g known (bought.json: 24, 48343.73, 18.806)
+[  146.8s] ok   Bought LDO Orbiter v2.5 with motor Right Toolhead: 24 Default solids, 48343.73 mm3, 18.806 g known (bought.json: 24, 48343.73, 18.806)
+[  146.8s] ok   Bought Beacon RevH Normal : 1 Default solids, 2518.40 mm3, 0.000 g known (bought.json: 1, 2518.4, 0.0)
+[  146.9s] ok   every ABS part has a card
+[  170.3s] ok   solids 1489 (was 1489)
+[  178.1s] ok   every solid's box unchanged (0 changed: [])
+[  178.2s] ok   no ABS left (0: [])
+[  178.2s] ok   each part has its card (0 not: [])
+[  178.2s] ok   no other part on the carried heads or the carriage has a bought card (0: [])
+[  178.5s] ok   Bought LDO Orbiter v2.5 with motor Left Toolhead: 135.000 g (published 135 g)
+[  178.9s] ok   Bought LDO Orbiter v2.5 with motor Right Toolhead: 135.000 g (published 135 g)
+[  178.9s] ok   Bought Beacon RevH Normal : 3.500 g (published 3.5 g)
+[  178.9s] ok   every other part's colour unchanged (0 changed: [])
+[  178.9s] ok   the Beacon is white: [[((0.9490000009536743, 0.9490000009536743, 0.9409999847412109, 1.0), 0.0)]]
+[  178.9s] verify: 0 problems
+[  187.1s] SAVED /home/dan/Documents/VT350/vt350-lite-63.FCStd 36834995

@@ -75,6 +75,11 @@ def bought_cards(d=None):
                             f"other materials.",
              "SourceURL": p["source_url"], "ReferenceSource": p["source"]},
             density_kg_m3=rho)
+    for m in d.get("materials", []):
+        out[f"{m['name']}.FCMat"] = matlib.card_text(
+            {"UUID": matlib.card_uuid(NS, m["name"]), "Name": m["name"], "Author": AUTHOR, "License": LICENSE,
+             "Description": m["description"], "SourceURL": m["source_url"], "ReferenceSource": m["source"]},
+            density_kg_m3=m["density_kg_m3"])
     return out
 
 

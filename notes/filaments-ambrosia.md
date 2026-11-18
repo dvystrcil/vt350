@@ -5,7 +5,7 @@ from its West3D product page, saving a page-by-page lookup. Values are copied as
 says they're for reference and that suitability is the user's to decide. Re-check a product page before relying on a
 number for a design limit. Silk, Sparkle, Dolos, PLA, PHA and Foaming TPU are left out (not candidates for this printer).
 
-**Decided:** toolhead parts are **PET-GF** (owner, 2026-11-17). The CoM study (#60) uses its density, **1.405 g/cm³** (the
+**Decided (owner, 2026-11-17):** toolhead parts are **PET-GF** (the heads' printed parts, the MadMax tool plates and the carriage); every other printed part is **ASA** (the owner can't print ABS); clear parts are **PETG**. lite-63 assigns these cards in the model. The CoM study (#60) uses its density, **1.405 g/cm³** (the
 middle of 1.40–1.41).
 
 Every grade and in-stock colour is also a FreeCAD material card: `cad/materials/` (how to use them is in its README).

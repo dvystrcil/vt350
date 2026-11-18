@@ -1,0 +1,15 @@
+{
+ "cards": {
+  "Ambrosia PET-GF": 20,
+  "Ambrosia ASA": 25,
+  "Bought LDO Orbiter v2.5 with motor": 10,
+  "NdFeB N52 magnet": 14,
+  "Ambrosia PETG Clear": 1,
+  "Bought Beacon RevH Normal": 1
+ },
+ "bought_g": {
+  "Bought LDO Orbiter v2.5 with motor Left Toolhead": 135.0,
+  "Bought LDO Orbiter v2.5 with motor Right Toolhead": 135.0,
+  "Bought Beacon RevH Normal": 3.5
+ }
+}

@@ -1,5 +1,5 @@
 {
- "_about": "Bought parts with a published mass (vt350#60). The model's solids for a bought part are a mockup: their volume isn't the real part's, and most carry FreeCAD's weightless Default material. Each part here gets one card with an EFFECTIVE density, so that its Default solids plus its solids that already have a material add up to the published mass: density = (mass_g - known_g) / default_mm3. default_mm3 and known_g are measured on measured_on (cad/passes lite-63 re-measures them and refuses to save if they've changed). Only published figures go here; parts without one stay Default until the owner weighs them (vt350#60 AC6).",
+ "_about": "Bought parts with a published mass (vt350#60). The model's solids for a bought part are a mockup: their volume isn't the real part's, and most carry FreeCAD's weightless Default material. Each part here gets one card with an EFFECTIVE density, so that its Default solids plus its solids that already have a material add up to the published mass: density = (mass_g - known_g) / default_mm3. default_mm3 and known_g are measured on measured_on (cad/passes lite-63 re-measures them and refuses to save if they've changed). Only published figures go here; parts without one stay Default until the owner weighs them (vt350#60 AC6). materials: real materials bought as parts (magnets), with their datasheet density; one plain card each.",
  "parts": [
   {
    "name": "Bought LDO Orbiter v2.5 with motor",
@@ -22,6 +22,15 @@
    "default_mm3": 2518.4,
    "known_g": 0.0,
    "default_solids": 1
+  }
+ ],
+ "materials": [
+  {
+   "name": "NdFeB N52 magnet",
+   "density_kg_m3": 7600,
+   "source_url": "https://www.arnoldmagnetics.com/wp-content/uploads/2017/11/N52-151021.pdf",
+   "source": "Arnold Magnetic Technologies, Sintered Neodymium-Iron-Boron Magnets N52 datasheet (rev. 210802), read 2026-11-17: density 7.6 g/cm3. MadMax's BOM calls for 6x3 mm N52 (zruncho3d/madmax BOM.md at 277a63c); the A4Tv2 and door magnets use the same card.",
+   "description": "Sintered NdFeB (neodymium) magnets, grade N52: a real material (the density is the datasheet's)."
   }
  ]
 }
