@@ -1,0 +1,24 @@
+{
+ "_doc": "vt350#220 AC3: the licence of every part a viewer export may contain. The first rule that matches a part gives its licence (platform/viewer/rules.py); a part no rule matches, or one whose licence isn't in 'shareable', fails the check. 'source' says where the licence was read. Licences of the printed parts: parts/printed/README.md.",
+ "shareable": ["GPL-3.0-only", "GPL-3.0-or-later", "CC-BY-NC-SA-4.0", "CC0-1.0", "MIT"],
+ "rules": [
+  {"label_prefix": "Vindr Berserker 4010B blower", "licence": "GPL-3.0-or-later",
+   "source": "this repo: modelled from measurements (label says so), not from vendor CAD"},
+  {"label_prefix": "[a]_Duct-4010-left MadMax dock bosses", "licence": "CC-BY-NC-SA-4.0",
+   "source": "vt350 remix of the A4Tv2 duct, parts/printed/vt350/a4tv2-duct-4010-madmax-dock/README.md"},
+  {"group_prefix": "A4Tv2 (DW-Tas", "licence": "CC-BY-NC-SA-4.0",
+   "source": "DW-Tas/A4Tv2 @ 888755a LICENSE, A4Tv2_assembly.step (cad/README.md lite-15); the vendor sub-models in it (Dragon hotend, Crossbow, 2510 fan, screws) are shared by DW-Tas under it: owner confirmed 2026-11-17 (#220)"},
+  {"label_contains": "(Orbiter-Toolboards 52a5a33, CC0-1.0)", "licence": "CC0-1.0",
+   "source": "LorinczElectronics/Orbiter-Toolboards @ 52a5a33 LICENSE (parts/printed/README.md)"},
+  {"group_prefix": "Orbiter 2", "licence": "CC-BY-NC-SA-4.0",
+   "source": "Orbiter Projects (Robert Lorincz): 'All shared files are licensed under Creative Commons - Attribution-NonCommercial-ShareAlike', orbiterprojects.com/orbiter-v2-5 footer, read 2026-11-17; the model's Orbiter is the v2.0 mockup registered on the CC0 Orbiter-Toolboards STEP (lite-30)"},
+  {"label_contains": "(Beacon CAD, MIT)", "licence": "MIT",
+   "source": "Beacon3D CAD repository, MIT (part label; parts-owned.md #54)"},
+  {"label_prefix": "SpeedClip", "licence": "GPL-3.0-only",
+   "source": "zruncho3d/madmax @ 6bf670d LICENSE (parts/printed/README.md)"},
+  {"group": "MadMaxCarriage (1)", "licence": "GPL-3.0-only",
+   "source": "vt350 remix of andrewmcgr's MadMax carriage, zruncho3d/madmax @ 6bf670d (parts/printed/vt350/madmax-andrewmcgr-carriage-beacon/README.md)"},
+  {"group_prefix": "MadMax 4 XOL v11", "licence": "GPL-3.0-only",
+   "source": "andrewmcgr's MadMax XOL plate, zruncho3d/madmax @ 6bf670d (parts/printed/README.md)"}
+ ]
+}

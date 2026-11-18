@@ -48,3 +48,5 @@ them by reading the file.
 
 - `freecad-standins`: make a FreeCAD model faster to open with stand-ins, and keep renders showing the real parts;
   make it smaller by turning copies into App::Links (`platform/freecad/dupes.py`).
+- `turntable`: a drag-to-turn page of real Cycles renders (36 angles × 7 heights), previewed privately, then published
+  on the reference pages with its frames as a release asset (`cad/viewer/turntable.py`).

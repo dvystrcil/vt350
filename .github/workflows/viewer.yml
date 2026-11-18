@@ -1,0 +1,36 @@
+name: viewer
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+      - name: Test the viewer's part selection and licence rules (vt350#220)
+        run: python3 platform/viewer/test_rules.py 2>&1 | tee test.log
+      - name: Confirm every test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test.log && tail -1 test.log | grep -qx 'OK'
+      - name: Test the GLB -> embedded-JSON conversion
+        run: python3 platform/viewer/test_glbjson.py 2>&1 | tee test-glbjson.log
+      - name: Confirm every glbjson test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-glbjson.log && tail -1 test-glbjson.log | grep -qx 'OK'
+      - name: Test the view framing and turntable cameras
+        run: python3 platform/viewer/test_frame_view.py 2>&1 | tee test-frame-view.log
+      - name: Confirm every frame_view test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-frame-view.log && tail -1 test-frame-view.log | grep -qx 'OK'
+      - name: The printer's selection and licence files load
+        run: |
+          python3 -c "import sys, json; sys.path.insert(0, 'platform/viewer'); import rules; rules.load_selection('cad/viewer/toolhead.json'); rules.check(json.load(open('cad/viewer/licences.json')), []); print('viewer data: OK')"
+      - name: Test the turntable page maker
+        run: python3 platform/viewer/test_turntable_page.py 2>&1 | tee test-turntable-page.log
+      - name: Confirm every turntable_page test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-turntable-page.log && tail -1 test-turntable-page.log | grep -qx 'OK'
+      - name: Every turntable settings file has what the steps need
+        run: |
+          python3 cad/viewer/turntable.py check all 2>&1 | tee turntable-check.log
+          grep -qx 'check: OK' turntable-check.log

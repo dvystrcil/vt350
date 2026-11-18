@@ -1,0 +1,15 @@
+{
+ "_doc": "vt350#220 AC1: the Left head (A4Tv2 + Orbiter 2.5 + O2S) on the gantry carriage, from lite-62. In the model every head is parked; each dock holds a copy of the carriage against its head. The head, its MadMax plate and plate back move by the translation that takes the Left dock's carriage copy (Part__Feature654) onto the gantry carriage (Part__Feature448), as cad/studies/sweep_toolhead.py does. The bowden tubes are left out (they run to the rear of the printer). Format: platform/viewer/rules.py.",
+ "include": [
+  {"group": "Carriage (1)", "note": "gantry carriage, its SpeedClips, the Beacon"},
+  {"group": "Left Toolhead", "move": "onto_carriage"},
+  {"group": "Left Dock", "label": "Plate", "move": "onto_carriage"},
+  {"group": "Left Dock", "label": "Plate Back", "move": "onto_carriage"}
+ ],
+ "exclude": [
+  {"label_prefix": "Bowden"}
+ ],
+ "moves": {
+  "onto_carriage": {"from": "Part__Feature654", "to": "Part__Feature448"}
+ }
+}

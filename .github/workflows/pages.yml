@@ -6,13 +6,13 @@ on:
   pull_request:
     paths:
       - notes/reference/**
-      - platform/pages/*check_index.py
+      - platform/pages/**
       - .github/workflows/pages.yml
   push:
     branches: [main]
     paths:
       - notes/reference/**
-      - platform/pages/*check_index.py
+      - platform/pages/**
       - .github/workflows/pages.yml
   workflow_dispatch:
 
@@ -37,6 +37,18 @@ jobs:
       - name: Assert the completion marker
         run: |
           grep -qx 'check-index: OK' check-index.log
+      - name: Test the asset fetcher
+        run: python3 platform/pages/test_fetch_assets.py 2>&1 | tee test-fetch-assets.log
+      - name: Confirm every asset-fetcher test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-fetch-assets.log && tail -1 test-fetch-assets.log | grep -qx 'OK'
+      # The large files (renders, models) are release assets, checked against their sha256 in assets.json (vt350#220)
+      - name: Put the release assets in place
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 platform/pages/fetch_assets.py notes/reference/assets.json 2>&1 | tee fetch-assets.log
+      - name: Assert the assets are in place
+        run: |
+          grep -qx 'fetch-assets: OK' fetch-assets.log
       - if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v6
       - if: github.event_name != 'pull_request'

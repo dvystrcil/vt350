@@ -36,6 +36,7 @@ flowchart TD
 | See what refresh *would* do, writing nothing | `python3 cad/scripts/refresh.py N --dry-run` | seconds |
 | Full colour renders of the whole printer, here on the laptop | `cad/render/render_full.sh [N] [samples]` (below) | ~6 min; prints the image paths |
 | Where is part X? What sits below/above Z? (no FreeCAD) | `jq` on `~/Documents/VT350/<model>.parts.json` (below; `part_index.py --check` first) | instant |
+| A GLB of part of the printer for the 3D viewer (licence-checked) | `cad/viewer/export_glb.sh [N] [selection.json]` (below) | a few minutes; prints the GLB path, `glb-export: OK` |
 | A render of a sweep pose (clash in red) | `export_pose.py`, then `gpu-batch-submit.py` (below) | ~5 min, result posted to the issue |
 | A new model change (lite-N) | a GUI pass script: Claude writes it, you click **Wait** | 5–40 min |
 
@@ -103,6 +104,56 @@ VT350_ONLY=MadMaxCarriage $APP freecadcmd $PWD/cad/scripts/derive_stls.py   # on
 
 Each remixed part is moved into its upstream part's print orientation. Its JOBS table pins which model each remix
 comes from.
+
+### `cad/viewer/export_glb.sh`: a GLB for the 3D viewer (#220)
+
+```bash
+cad/viewer/export_glb.sh                          # lite-62, cad/viewer/toolhead.json (the Left head on the gantry carriage)
+cad/viewer/export_glb.sh 62 cad/viewer/toolhead.json -- --decimate 0.5   # a smaller file
+```
+
+- **What happens:** FreeCAD runs under `xvfb-run` (no window) and exports only the parts the selection file names,
+  coloured as in the renders. Then every exported part is checked against `cad/viewer/licences.json`. An unknown or
+  non-shareable licence stops the run before any GLB exists. Then Blender writes the GLB.
+- **Output:** `~/Documents/VT350/renders/<model>-viewer-<UTC>/` with `export/`, `licences.log` (one line per part:
+  its licence and where that was read) and the `.glb`. The last lines are `licence-check: OK`, the GLB's size and
+  triangle count, and `glb-export: OK`. Never saves a model.
+- **A new part in a selection?** Add its licence rule to `licences.json` first, with where you read it.
+- **The page:** `cad/viewer/index.html` loads `toolhead.gltf.json` from beside it (export with `-- --decimate 0.5 --json 1`;
+  an artifact holds at most 15 MB per file and won't serve `.glb`). It rebuilds the GLB in memory, because the artifact
+  sandbox blocks three.js fetching the embedded `data:` buffer.
+- **The AC2 comparison render:** `python3 platform/viewer/frame_view.py <export>` adds a camera framed on the export to
+  its `scene.json`; then `blender -b -P platform/render/render.py -- <export> <out> 128` renders just that view. The page's
+  `RENDER_CAM` is that camera (printed by `frame_view.py`); the page shows the render beside the live model.
+
+### A turntable of real renders (#220)
+
+A drag-to-turn page of Cycles renders: 36 angles × 7 heights. One settings file per turntable,
+`cad/viewer/turntables/<name>.json` (`toolhead`, `printer`), holds every choice: what to export, the cameras, the
+render look, the page's text, where it's published. `cad/viewer/turntable.py` runs the steps from it, in order:
+
+```bash
+cad/viewer/turntable.py export  toolhead            # FreeCAD under xvfb (read-only) + licence check -> a new RUN dir
+cad/viewer/turntable.py views   toolhead            # the 252 cameras into RUN/export/scene.json
+cad/viewer/turntable.py render  toolhead            # Blender here (~5-10 s a frame on the RTX 2070), RUN/out/
+cad/viewer/turntable.py render  printer --lane      # or the GTX 970 lane (~18 s a frame); comment on the issue, then:
+cad/viewer/turntable.py collect printer             #   its frames into RUN/out/
+cad/viewer/turntable.py stage   toolhead            # preview folder RUN/page/: python3 -m http.server -d <it>
+cad/viewer/turntable.py publish toolhead            # the public page: notes/reference + a release asset; commit after
+cad/viewer/turntable.py all     toolhead            # export, views, render here, stage
+cad/viewer/turntable.py check   all                 # every settings file is complete (CI runs this)
+```
+
+- **RUN** is `~/Documents/VT350/renders/vt350-lite-<N>-<name>-turntable-<UTC>/`. Each step uses the newest one;
+  `--run DIR` picks another, `--model N` exports another lite-N. Each step ends with `<step>: OK`.
+- **The look** (owner, 2026-11-17): AgX Punchy, plastic specular 0.2, −1.4 EV. The key light turns and tilts with
+  each camera, so no side is backlit. `printer` hides the base board (`"hide": ["role_board_t0"]`).
+- **publish refuses** unless every part's licence is cleared in `cad/viewer/licences.json`. The toolhead's are; the
+  whole printer's aren't yet. `--upload 0` writes everything but leaves the zip in RUN instead of uploading it.
+- **Where the big files go:** the frames zip is a GitHub release asset (named by its sha256, so the live site keeps
+  working until the change merges); `notes/reference/assets.json` records it, and the pages workflow fetches and
+  checks it (`platform/pages/fetch_assets.py`). Only the page and its `turntable.json` are committed.
+- A new turntable: copy a settings file, change it, run `check all`, then the steps.
 
 ### `cad/render/render_full.sh`: full colour renders on this laptop (#38)
 
