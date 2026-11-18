@@ -17,19 +17,23 @@ DUCTS = f"{REPO}/cad/derived/a4tv2-duct-4010-madmax-dock"
 ARMS = f"{REPO}/cad/derived/madmax-andrewmcgr-dock-arm"
 CARRIAGE = f"{REPO}/cad/derived/madmax-andrewmcgr-carriage-beacon"
 SPACERS = f"{REPO}/cad/derived/a4tv2-dock-spacer"
+# Parts of our own, with no upstream to register to: each printed on its largest planar face. (model, output, label +
+# group.) A separate table: the cluster's submitter (homelab gpu-batch-submit.py) reads JOBS to stage each job's old
+# model and upstream STL, and these have neither. Their model must be one a JOBS row already uses (lite-67 is).
+FLAT = [
+    (67, f"{SPACERS}/A4Tv2 dock spacer left.stl",
+     ("[a]_Dock spacer left (cut from the duct's dock bosses, CC BY-NC-SA 4.0)", "Left Toolhead")),
+    (67, f"{SPACERS}/A4Tv2 dock spacer right.stl",
+     ("[a]_Dock spacer right (cut from the duct's dock bosses, CC BY-NC-SA 4.0)", "Right Toolhead")),
+]
 ONLY = os.environ.get("VT350_ONLY")          # write only the jobs whose output name contains this
-# (old model, new model, output, upstream STL, old label + group, new label + group, which solid: "low" = lowest Z;
-#  "flat" = a part of our own with no upstream: printed on its largest planar face)
+# (old model, new model, output, upstream STL, old label + group, new label + group, which solid: "low" = lowest Z)
 JOBS = [
     # lite-67 (vt350#59) cut the bosses off on the print face: the ducts come from lite-67, the spacers print flat
     (22, 67, f"{DUCTS}/A4Tv2 Duct-4010-left MadMax dock.stl", f"{UP}/A4Tv2_4010_Ducts.stl",
      ("[a]_Duct-4010-left", "Left Toolhead"), ("[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)", "Left Toolhead"), None),
     (22, 67, f"{DUCTS}/A4Tv2 Duct-4010-right MadMax dock.stl", f"{UP}/A4Tv2_4010_Ducts.stl",
      ("[a]_Duct-4010-right001", "Right Toolhead"), ("[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)", "Right Toolhead"), None),
-    (None, 67, f"{SPACERS}/A4Tv2 dock spacer left.stl", None, None,
-     ("[a]_Dock spacer left (cut from the duct's dock bosses, CC BY-NC-SA 4.0)", "Left Toolhead"), "flat"),
-    (None, 67, f"{SPACERS}/A4Tv2 dock spacer right.stl", None, None,
-     ("[a]_Dock spacer right (cut from the duct's dock bosses, CC BY-NC-SA 4.0)", "Right Toolhead"), "flat"),
     (22, 23, f"{ARMS}/Dock Arm {{net}}.stl", f"{ARMS}/Dock Arm +5mm.stl",
      ("Dock Arm v1 Bottom +5mm", "Left Dock"), ("Dock Arm v1 Bottom *", "Left Dock"), "low"),
     (23, 24, f"{CARRIAGE}/MadMaxCarriage Beacon RevH pocket.stl", f"{UP}/MadMaxCarriage.stl",
@@ -72,18 +76,8 @@ try:
         if n not in docs: docs[n] = FreeCAD.openDocument(M.format(n))
         return docs[n]
     res = []
-    for mo, mn, out, up, old, (nl, ng), which in JOBS:
+    for mo, mn, out, up, (ol, og), (nl, ng), which in JOBS:
         if ONLY and ONLY not in out: continue
-        if which == "flat":
-            sn, nlab = part(model(mn), nl, ng, None); sn = sn.Solids[0]
-            r = flat(sn)
-            msh = MeshPart.meshFromShape(Shape=r, LinearDeflection=0.01, AngularDeflection=0.1)
-            os.makedirs(os.path.dirname(out), exist_ok=True); msh.write(out)
-            b = r.BoundBox
-            log(f"{os.path.basename(out)}: flat on its largest planar face; wrote {os.path.relpath(out, REPO)}: {msh.CountFacets} facets, "
-                f"{b.XLength:.2f} x {b.YLength:.2f} x {b.ZLength:.2f} mm, volume {r.Volume:.1f}; solid valid {r.isValid()}")
-            res.append((out, dict(volume=r.Volume, size=(b.XLength, b.YLength, b.ZLength)))); continue
-        ol, og = old
         so, _ = part(model(mo), ol, og, which); sn, nlab = part(model(mn), nl, ng, which)
         out = out.replace("{net}", nlab.split()[-1])
         comps = [c for c in Mesh.Mesh(up).getSeparateComponents() if c.CountFacets >= 50]
@@ -105,6 +99,17 @@ try:
         b = r.BoundBox
         log(f"   wrote {os.path.relpath(out, REPO)}: {msh.CountFacets} facets, {b.XLength:.2f} x {b.YLength:.2f} x {b.ZLength:.2f} mm, volume {r.Volume:.1f} (old {so.Volume:.1f}); solid valid {r.isValid()}")
         res.append((out, dict(volume=r.Volume, size=(b.XLength, b.YLength, b.ZLength), old_volume=so.Volume)))
+    for mn, out, (nl, ng) in FLAT:
+        if ONLY and ONLY not in out: continue
+        sn, nlab = part(model(mn), nl, ng, None)
+        r = flat(sn.Solids[0])
+        msh = MeshPart.meshFromShape(Shape=r, LinearDeflection=0.01, AngularDeflection=0.1)
+        os.makedirs(os.path.dirname(out), exist_ok=True); msh.write(out)
+        b = r.BoundBox
+        log(f"{os.path.basename(out)}: our own part, flat on its largest planar face (lite-{mn})")
+        log(f"   wrote {os.path.relpath(out, REPO)}: {msh.CountFacets} facets, {b.XLength:.2f} x {b.YLength:.2f} x {b.ZLength:.2f} mm, "
+            f"volume {r.Volume:.1f}; solid valid {r.isValid()}")
+        res.append((out, dict(volume=r.Volume, size=(b.XLength, b.YLength, b.ZLength))))
     log("done:", sum(1 for _, x in res if x), "of", len(res), "written")
 except Exception:
     log("FAILED\n" + traceback.format_exc())
