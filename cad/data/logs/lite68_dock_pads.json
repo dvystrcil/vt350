@@ -1,0 +1,154 @@
+{
+ "cowl": {
+  "Left": {
+   "front-top": {
+    "axis": [
+     -67.9,
+     3.039
+    ],
+    "pocket_mm": 3.4,
+    "spot_mm": 0.685
+   },
+   "rear-top": {
+    "axis": [
+     -67.9,
+     23.039
+    ],
+    "pocket_mm": 3.4,
+    "spot_mm": 0.685
+   },
+   "rear-bottom": {
+    "axis": [
+     -20.15,
+     4.539
+    ],
+    "pocket_mm": 3.4,
+    "spot_mm": 0.685
+   },
+   "print_face_deg": 10.0
+  },
+  "Right": {
+   "front-top": {
+    "axis": [
+     -67.9,
+     3.039
+    ],
+    "pocket_mm": 3.4,
+    "spot_mm": 0.685
+   },
+   "rear-top": {
+    "axis": [
+     -67.9,
+     23.039
+    ],
+    "pocket_mm": 3.4,
+    "spot_mm": 0.685
+   },
+   "rear-bottom": {
+    "axis": [
+     -20.15,
+     4.539
+    ],
+    "pocket_mm": 3.4,
+    "spot_mm": 0.685
+   },
+   "print_face_deg": 10.0
+  }
+ },
+ "pads": {
+  "Left": {
+   "front-top": {
+    "moved": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "pad_mm": 7.6877,
+    "clearance_mm": 1.606,
+    "sleeve_mm": 4.0,
+    "face_x": -441.012
+   },
+   "rear-top": {
+    "moved": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "pad_mm": 0.1612,
+    "clearance_mm": 1.384,
+    "sleeve_mm": 8.0,
+    "face_x": -448.539
+   },
+   "rear-bottom": {
+    "moved": [
+     0.0,
+     -18.5,
+     6.25
+    ],
+    "pad_mm": 7.4232,
+    "clearance_mm": 1.55,
+    "sleeve_mm": 4.0,
+    "face_x": -441.277
+   }
+  },
+  "Right": {
+   "front-top": {
+    "moved": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "pad_mm": 7.6877,
+    "clearance_mm": 1.606,
+    "sleeve_mm": 4.0,
+    "face_x": -48.988
+   },
+   "rear-top": {
+    "moved": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "pad_mm": 4.1612,
+    "clearance_mm": 1.424,
+    "sleeve_mm": 4.0,
+    "face_x": -45.461
+   },
+   "rear-bottom": {
+    "moved": [
+     0.0,
+     -18.5,
+     6.25
+    ],
+    "pad_mm": 7.4232,
+    "clearance_mm": 1.55,
+    "sleeve_mm": 4.0,
+    "face_x": -48.723
+   }
+  }
+ },
+ "com": {
+  "Left": {
+   "mass_g": [
+    357.17,
+    355.51
+   ],
+   "com_x": [
+    -411.735,
+    -411.591
+   ],
+   "shift_mm": 0.144
+  },
+  "Right": {
+   "mass_g": [
+    357.16,
+    355.51
+   ],
+   "com_x": [
+    -81.995,
+    -82.157
+   ],
+   "shift_mm": -0.162
+  }
+ }
+}

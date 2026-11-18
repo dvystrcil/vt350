@@ -1,5 +1,7 @@
 # A4Tv2 dock spacers (derived from DW-Tas's A4Tv2)
 
+**Superseded by lite-68 (2026-11-18, vt350#59):** nothing could hold the spacer on (the dock screws stand proud as hooks), so the dock reaches to the cowl instead: `../madmax-andrewmcgr-dock-keyslot-pads/`. These STLs are the record of lite-67; `derive_stls.py` no longer writes them.
+
 **This folder is licensed CC BY-NC-SA 4.0 (see `LICENSE` here), not GPL-3.0 like the rest of this repo.** The spacers
 are cut from our remix of a CC BY-NC-SA 4.0 part (the A4Tv2 4010 ducts, `../a4tv2-duct-4010-madmax-dock/`):
 attribution required, **non-commercial only**, and derivatives under the same licence.

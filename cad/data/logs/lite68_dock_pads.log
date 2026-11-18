@@ -1,0 +1,121 @@
+[   43.5s] opened /home/dan/Documents/VT350/vt350-lite-67.FCStd
+[   54.7s] ok   Left: one duct '[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)' (1)
+[   54.7s] ok   Left: one keyslot plate in Left Dock (['Dock Asembly'])
+[   54.7s] ok   Right: one duct '[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)' (1)
+[   54.7s] ok   Right: one keyslot plate in Right Dock (['Dock Asembly(Mirror)'])
+[   54.7s] slot dock plates: {'Left': [('Dock Asembly001', 'Part::Feature'), ('Dock Asembly002', 'Part::Feature')], 'Right': [('Dock Asembly(Mirror)001', 'App::Link')]}
+[   54.7s] ok   three slot dock plates (3)
+[   54.7s] ok   lite-67's five spacers (5)
+[   60.7s] ok   Left: its own plate faces its own cowl ([a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0))
+[   65.7s] ok   Left Dock Asembly001 (Dock slot 2 (L)): sits to its cowl [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)001 as Dock Asembly does
+[   69.3s] ok   Left Dock Asembly002 (Dock slot 4 (L)): sits to its cowl [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)002 as Dock Asembly does
+[   73.2s] ok   Right: its own plate faces its own cowl ([a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0))
+[   75.8s] ok   Right Dock Asembly(Mirror)001 (Dock slot 3 (R)): sits to its cowl [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)001 as Dock Asembly(Mirror) does
+[  212.4s] lite-67 overlaps of the cowl copies and keyslot plates: {('[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)', 'Plain washer normal grade C M3'): 0.01, ('[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)', 'main-body_dragon-rapido-UHF_o2_xol001'): 0.36, ('[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)', 'Plain washer normal grade C M003'): 0.01, ('[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)001', 'Plain washer normal grade C M004'): 0.01, ('[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)002', 'Plain washer normal grade C M008'): 0.01, ('[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)001', 'main-body_dragon-rapido-UHF_o2_xol003'): 0.36, ('[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)001', 'Plain washer normal grade C M007'): 0.01}
+[  213.3s] ok   Left: print face 1329 mm2, 10.00 deg off the screw axes
+[  213.3s] ok   Left: lite-67's two top pockets ([(-67.9, 3.039), (-67.9, 23.039)])
+[  213.3s] ok   Left: the rear-bottom stub's axis ([(-67.9, 3.039), (-67.9, 23.039), (-13.9, 23.039)])
+[  213.3s] ok   Left: lite-23's screw square, 20 x 54 (20.000 x 54.000)
+[  213.3s] ok   Left: the move is across the screw axes (Vector (0.0, -6.250000000000004, -18.5))
+[  220.9s] Left front-top: deepest pocket from the spot-face with 1.0 mm floor all round: 3.9 mm (contiguous? False)
+[  220.9s] ok   Left front-top: >= 1.0 mm of cowl beyond the 3.4 mm pocket at 36/36 points
+[  221.3s] ok   Left front-top: 1.0 mm of cowl round the pocket at 36/36 points
+[  221.3s] ok   Left front-top: spot-face rim 0.20 mm below the print face
+[  221.4s] ok   Left front-top: the sleeve seats on cowl all round the insert (12/12)
+[  228.5s] Left rear-top: deepest pocket from the spot-face with 1.0 mm floor all round: 3.9 mm (contiguous? False)
+[  228.5s] ok   Left rear-top: >= 1.0 mm of cowl beyond the 3.4 mm pocket at 36/36 points
+[  228.9s] ok   Left rear-top: 1.0 mm of cowl round the pocket at 36/36 points
+[  228.9s] ok   Left rear-top: spot-face rim 0.20 mm below the print face
+[  229.0s] ok   Left rear-top: the sleeve seats on cowl all round the insert (12/12)
+[  293.8s] Left rear-bottom: deepest pocket from the spot-face with 1.0 mm floor all round: 7.9 mm (contiguous? True)
+[  293.8s] ok   Left rear-bottom: >= 1.0 mm of cowl beyond the 3.4 mm pocket at 36/36 points
+[  294.3s] ok   Left rear-bottom: 1.0 mm of cowl round the pocket at 36/36 points
+[  294.3s] ok   Left rear-bottom: spot-face rim 0.20 mm below the print face
+[  294.4s] ok   Left rear-bottom: the sleeve seats on cowl all round the insert (12/12)
+[  294.8s] ok   Left cowl: one valid solid (1, valid True)
+[  294.8s] Left cowl: {'front-top': {'axis': (-67.9, 3.039), 'pocket_mm': 3.4, 'spot_mm': 0.685}, 'rear-top': {'axis': (-67.9, 23.039), 'pocket_mm': 3.4, 'spot_mm': 0.685}, 'rear-bottom': {'axis': (-20.15, 4.539), 'pocket_mm': 3.4, 'spot_mm': 0.685}, 'print_face_deg': 10.0}
+[  294.8s] ok   Right: print face 1331 mm2, 10.00 deg off the screw axes
+[  294.8s] ok   Right: lite-67's two top pockets ([(-67.9, 3.039), (-67.9, 23.039)])
+[  294.9s] ok   Right: the rear-bottom stub's axis ([(-67.9, 3.039), (-67.9, 23.039), (-13.9, 23.039)])
+[  294.9s] ok   Right: lite-23's screw square, 20 x 54 (20.000 x 54.000)
+[  294.9s] ok   Right: the move is across the screw axes (Vector (0.0, -6.250000000000004, -18.5))
+[  304.1s] Right front-top: deepest pocket from the spot-face with 1.0 mm floor all round: 3.9 mm (contiguous? False)
+[  304.1s] ok   Right front-top: >= 1.0 mm of cowl beyond the 3.4 mm pocket at 36/36 points
+[  304.7s] ok   Right front-top: 1.0 mm of cowl round the pocket at 36/36 points
+[  304.7s] ok   Right front-top: spot-face rim 0.20 mm below the print face
+[  304.9s] ok   Right front-top: the sleeve seats on cowl all round the insert (12/12)
+[  312.9s] Right rear-top: deepest pocket from the spot-face with 1.0 mm floor all round: 3.9 mm (contiguous? False)
+[  312.9s] ok   Right rear-top: >= 1.0 mm of cowl beyond the 3.4 mm pocket at 36/36 points
+[  313.5s] ok   Right rear-top: 1.0 mm of cowl round the pocket at 36/36 points
+[  313.5s] ok   Right rear-top: spot-face rim 0.20 mm below the print face
+[  313.6s] ok   Right rear-top: the sleeve seats on cowl all round the insert (12/12)
+[  397.0s] Right rear-bottom: deepest pocket from the spot-face with 1.0 mm floor all round: 7.9 mm (contiguous? True)
+[  397.0s] ok   Right rear-bottom: >= 1.0 mm of cowl beyond the 3.4 mm pocket at 36/36 points
+[  397.6s] ok   Right rear-bottom: 1.0 mm of cowl round the pocket at 36/36 points
+[  397.6s] ok   Right rear-bottom: spot-face rim 0.20 mm below the print face
+[  397.8s] ok   Right rear-bottom: the sleeve seats on cowl all round the insert (12/12)
+[  398.2s] ok   Right cowl: one valid solid (1, valid True)
+[  398.2s] Right cowl: {'front-top': {'axis': (-67.9, 3.039), 'pocket_mm': 3.4, 'spot_mm': 0.685}, 'rear-top': {'axis': (-67.9, 23.039), 'pocket_mm': 3.4, 'spot_mm': 0.685}, 'rear-bottom': {'axis': (-20.15, 4.539), 'pocket_mm': 3.4, 'spot_mm': 0.685}, 'print_face_deg': 10.0}
+[  398.3s] ok   Left: the cowl keeps its placement
+[  398.4s] ok   Right: the cowl keeps its placement
+[  410.7s] ok   Left front-top: the keyslot's channel and through-hole at the screw
+[  410.7s] ok   Left front-top: channel 65.4 mm2 > through-hole 29.4
+[  421.4s] ok   Left front-top: the plate itself keeps 1.0 mm (9.16)
+[  606.4s] ok   Left front-top: room for a pad (7.69 mm) with a 4.0 mm sleeve
+[  619.9s] ok   Left front-top: the pad is stopped by the head, not by the search's 20 mm limit (7.69)
+[  619.9s] ok   Left front-top: pad 7.69 mm keeps 1.61 mm from the head over the slide (>= 1.0)
+[  620.9s] ok   Left rear-top: the keyslot's channel and through-hole at the screw
+[  620.9s] ok   Left rear-top: channel 71.5 mm2 > through-hole 29.4
+[  629.1s] ok   Left rear-top: the plate itself keeps 1.0 mm (1.50)
+[  751.4s] ok   Left rear-top: room for a pad (0.16 mm) with a 8.0 mm sleeve
+[  756.0s] ok   Left rear-top: the pad is stopped by the head, not by the search's 20 mm limit (0.16)
+[  756.0s] ok   Left rear-top: pad 0.16 mm keeps 1.38 mm from the head over the slide (>= 1.0)
+[  757.3s] ok   Left rear-bottom: the keyslot's channel and through-hole at the screw
+[  763.6s] ok   Left rear-bottom: channel 65.4 mm2 > through-hole 29.4
+[  777.2s] ok   Left rear-bottom: the plate itself keeps 1.0 mm (8.86)
+[  976.8s] ok   Left rear-bottom: room for a pad (7.42 mm) with a 4.0 mm sleeve
+[  989.9s] ok   Left rear-bottom: the pad is stopped by the head, not by the search's 20 mm limit (7.42)
+[  989.9s] ok   Left rear-bottom: pad 7.42 mm keeps 1.55 mm from the head over the slide (>= 1.0)
+[  990.7s] ok   Left keyslot plate: one valid solid (1, valid True)
+[  990.8s] ok   Left keyslot plate: still prints on its outer face (x -454.70, 1701 mm2)
+[  990.8s] Left pads: {'front-top': {'moved': (0.0, 0.0, 0.0), 'pad_mm': 7.6877, 'clearance_mm': 1.606, 'sleeve_mm': 4.0, 'face_x': -441.012}, 'rear-top': {'moved': (0.0, 0.0, 0.0), 'pad_mm': 0.1612, 'clearance_mm': 1.384, 'sleeve_mm': 8.0, 'face_x': -448.539}, 'rear-bottom': {'moved': (0.0, -18.5, 6.25), 'pad_mm': 7.4232, 'clearance_mm': 1.55, 'sleeve_mm': 4.0, 'face_x': -441.277}}
+[  990.9s] ok   Left: the keyslot plate keeps its placement
+[  991.4s] ok   Right front-top: the keyslot's channel and through-hole at the screw
+[  991.4s] ok   Right front-top: channel 65.4 mm2 > through-hole 29.4
+[ 1001.0s] ok   Right front-top: the plate itself keeps 1.0 mm (9.16)
+[ 1157.2s] ok   Right front-top: room for a pad (7.69 mm) with a 4.0 mm sleeve
+[ 1168.5s] ok   Right front-top: the pad is stopped by the head, not by the search's 20 mm limit (7.69)
+[ 1168.5s] ok   Right front-top: pad 7.69 mm keeps 1.61 mm from the head over the slide (>= 1.0)
+[ 1169.7s] ok   Right rear-top: the keyslot's channel and through-hole at the screw
+[ 1169.7s] ok   Right rear-top: channel 71.5 mm2 > through-hole 29.4
+[ 1176.9s] ok   Right rear-top: the plate itself keeps 1.0 mm (5.52)
+[ 1385.0s] ok   Right rear-top: room for a pad (4.16 mm) with a 4.0 mm sleeve
+[ 1400.7s] ok   Right rear-top: the pad is stopped by the head, not by the search's 20 mm limit (4.16)
+[ 1400.7s] ok   Right rear-top: pad 4.16 mm keeps 1.42 mm from the head over the slide (>= 1.0)
+[ 1401.8s] ok   Right rear-bottom: the keyslot's channel and through-hole at the screw
+[ 1408.2s] ok   Right rear-bottom: channel 65.4 mm2 > through-hole 29.4
+[ 1422.6s] ok   Right rear-bottom: the plate itself keeps 1.0 mm (8.86)
+[ 1645.1s] ok   Right rear-bottom: room for a pad (7.42 mm) with a 4.0 mm sleeve
+[ 1659.2s] ok   Right rear-bottom: the pad is stopped by the head, not by the search's 20 mm limit (7.42)
+[ 1659.2s] ok   Right rear-bottom: pad 7.42 mm keeps 1.55 mm from the head over the slide (>= 1.0)
+[ 1660.2s] ok   Right keyslot plate: one valid solid (1, valid True)
+[ 1660.3s] ok   Right keyslot plate: still prints on its outer face (x -35.30, 1701 mm2)
+[ 1660.3s] Right pads: {'front-top': {'moved': (0.0, 0.0, 0.0), 'pad_mm': 7.6877, 'clearance_mm': 1.606, 'sleeve_mm': 4.0, 'face_x': -48.988}, 'rear-top': {'moved': (0.0, 0.0, 0.0), 'pad_mm': 4.1612, 'clearance_mm': 1.424, 'sleeve_mm': 4.0, 'face_x': -45.461}, 'rear-bottom': {'moved': (0.0, -18.5, 6.25), 'pad_mm': 7.4232, 'clearance_mm': 1.55, 'sleeve_mm': 4.0, 'face_x': -48.723}}
+[ 1660.5s] ok   Right: the keyslot plate keeps its placement
+[ 1660.5s] ok   Dock Asembly001: the same placement as Dock Asembly, standoff pads left (MadMax remix, GPL-3.0)
+[ 1660.6s] ok   Dock Asembly002: the same placement as Dock Asembly, standoff pads left (MadMax remix, GPL-3.0)
+[ 1675.2s] ok   Left keyslot plate valid after the save path; box X -454.70..-441.01
+[ 1675.4s] ok   Right keyslot plate valid after the save path; box X -48.99..-35.30
+[ 1675.6s] ok   Dock Asembly, standoff pads left Dock slot 2 (L) (MadMax remix, GPL-3.0): valid
+[ 1676.0s] ok   Dock Asembly, standoff pads left Dock slot 2 (L) (MadMax remix, GPL-3.0): the remixed plate (14086.9 vs 14086.9 mm3)
+[ 1676.4s] ok   Dock Asembly, standoff pads left Dock slot 4 (L) (MadMax remix, GPL-3.0): valid
+[ 1676.7s] ok   Dock Asembly, standoff pads left Dock slot 4 (L) (MadMax remix, GPL-3.0): the remixed plate (14086.9 vs 14086.9 mm3)
+[ 1676.9s] ok   Dock Asembly(Mirror)001: valid
+[ 1677.3s] ok   Dock Asembly(Mirror)001: the remixed plate (14661.0 vs 14661.0 mm3)
+[ 1677.3s] ok   solids 1542 -> 1537 (the five spacers gone)
+[ 1846.1s] ok   no new overlap of a cowl copy or keyslot plate (0: [])
+[ 1847.8s] ok   every other solid's box unchanged (0: [])
+[ 1855.5s] ok   AC7 Left Toolhead: against lite-66, mass 357.2 -> 355.5 g, CoM X -411.735 -> -411.591 (+0.144 mm, limit 0.5)
+[ 1863.4s] ok   AC7 Right Toolhead: against lite-66, mass 357.2 -> 355.5 g, CoM X -81.995 -> -82.157 (-0.162 mm, limit 0.5)
+[ 1863.4s] verify: 0 problems
+[ 1870.5s] SAVED /home/dan/Documents/VT350/vt350-lite-68.FCStd 37270849
