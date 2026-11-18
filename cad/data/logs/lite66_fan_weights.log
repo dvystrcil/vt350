@@ -1,0 +1,33 @@
+[    0.3s] ok   card 'Bought Vindr Berserker 4010B blower' has a density
+[    0.3s] ok   card 'Bought 2510 hotend fan' has a density
+[   45.5s] opened /home/dan/Documents/VT350/vt350-lite-65.FCStd
+[   57.2s] ok   Bought Vindr Berserker 4010B blower: 10 parts, one target (10, ['Blower_4010'])
+[   57.2s] ok   Bought Vindr Berserker 4010B blower: in all 5 heads (['Left Toolhead', 'Right Toolhead', 'Toolhead slot 2 (L)', 'Toolhead slot 3 (R)', 'Toolhead slot 4 (L)'])
+[   57.2s] ok   Bought Vindr Berserker 4010B blower: Blower_4010 is a Part::Feature on Default (Part::Feature, Default)
+[   57.2s] ok   Bought Vindr Berserker 4010B blower: volume 13669.6 mm3 (bought.json 13669.6)
+[   57.2s] ok   Bought 2510 hotend fan: 5 parts, one target (5, ['A4Tv035'])
+[   57.2s] ok   Bought 2510 hotend fan: in all 5 heads (['Left Toolhead', 'Right Toolhead', 'Toolhead slot 2 (L)', 'Toolhead slot 3 (R)', 'Toolhead slot 4 (L)'])
+[   57.2s] ok   Bought 2510 hotend fan: A4Tv035 is a Part::Feature on Default (Part::Feature, Default)
+[   57.3s] ok   Bought 2510 hotend fan: volume 3257.6 mm3 (bought.json 3257.6)
+[   70.4s] ok   Vindr Berserker 4010B blower L Left Toolhead (modelled from measurements): 15.000 g (want 15 g)
+[   70.4s] ok   Vindr Berserker 4010B blower R Left Toolhead (modelled from measurements): 15.000 g (want 15 g)
+[   70.4s] ok   Vindr Berserker 4010B blower L Toolhead slot 2 (L) (modelled from measurements): 15.000 g (want 15 g)
+[   70.4s] ok   Vindr Berserker 4010B blower R Toolhead slot 2 (L) (modelled from measurements): 15.000 g (want 15 g)
+[   70.4s] ok   Vindr Berserker 4010B blower L Toolhead slot 3 (R) (modelled from measurements): 15.000 g (want 15 g)
+[   70.4s] ok   Vindr Berserker 4010B blower R Toolhead slot 3 (R) (modelled from measurements): 15.000 g (want 15 g)
+[   70.4s] ok   Vindr Berserker 4010B blower L Toolhead slot 4 (L) (modelled from measurements): 15.000 g (want 15 g)
+[   70.4s] ok   Vindr Berserker 4010B blower R Toolhead slot 4 (L) (modelled from measurements): 15.000 g (want 15 g)
+[   70.4s] ok   Vindr Berserker 4010B blower L Right Toolhead (modelled from measurements): 15.000 g (want 15 g)
+[   70.4s] ok   Vindr Berserker 4010B blower R Right Toolhead (modelled from measurements): 15.000 g (want 15 g)
+[   70.5s] ok   2510 Fan: 6.800 g (want 6.8 g)
+[   70.6s] ok   2510 Fan001: 6.800 g (want 6.8 g)
+[   70.6s] ok   2510 Fan002: 6.800 g (want 6.8 g)
+[   70.7s] ok   2510 Fan003: 6.800 g (want 6.8 g)
+[   70.8s] ok   2510 Fan004: 6.800 g (want 6.8 g)
+[   70.8s] ok   no other part's material changed (0: [])
+[   70.8s] ok   solids 1537 (was 1537)
+[   72.6s] ok   every solid's box unchanged (0: [])
+[   72.6s] ok   each fan's colour unchanged (0: [])
+[   72.6s] per head: 2 blowers + 1 fan = 36.8 g
+[   72.6s] verify: 0 problems
+[   78.7s] SAVED /home/dan/Documents/VT350/vt350-lite-66.FCStd 36891627

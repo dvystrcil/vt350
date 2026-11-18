@@ -1,0 +1,14 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "c62932ae-afc6-5f4a-bda4-589c33de69cd"
+  Name: "Bought Vindr Berserker 4010B blower"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "NOT A REAL MATERIAL: an effective density for the blower solid 'Blower_4010' (each head's two 'Vindr Berserker 4010B blower' are links to it), so that it weighs its published 15 g (cad/materials/bought.json). Modelled volume 13669.6 mm3 on vt350-lite-65.FCStd, plus 0 g already in other materials."
+  SourceURL: "https://kb-3d.com/store/fans/663-4010-ball-bearing-blower-fan-24v-1662421807065.html"
+  ReferenceSource: "Berserker (and West3D, BER1429) publish no weight; read 2026-11-17. A same-size, same-type stand-in figure (owner's choice): 24 V 40x40x10 dual-ball blowers weigh 15 g: KB3D's 4010 blower (9,500 rpm, with a 15 cm lead), Senhar's 4010A datasheet (15.0 g), GDSTime GDB4010 (12 g at 9,500 rpm, 15 g at 12,000 rpm). The Berserker is a high-speed blower, so 15 g. Replace with the owner's scale (vt350#60 AC6)."
+Models:
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "1097.3 kg/m^3"
