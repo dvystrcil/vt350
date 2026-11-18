@@ -1,4 +1,4 @@
-# GUI pass: vt350-lite-67 -> vt350-lite-68   (headless = dry run, never saves)   vt350#4, #14
+# GUI pass: vt350-lite-68 -> vt350-lite-69   (headless = dry run, never saves)   vt350#4, #14
 # The roof and back insulation move inside the printer. lite-16 put the owner's carbon-felt pads (10 mm, sealed in
 # aluminium foil both faces) OUTSIDE the roof and back panels; the owner, 2026-11-18, after the whole-printer turntable
 # (#220): "move the insulation to the opposite side of the panel so its on the inside of the printer". Each stack (felt
@@ -24,7 +24,7 @@ _REPO = os.environ.get("VT350_REPO", "/home/dan/Code/vt350")
 sys.path[:0] = [os.path.join(_REPO, "platform/freecad")]
 import litelib
 from litelib import MODELS
-SRC, DST = f"{MODELS}/vt350-lite-67.FCStd", f"{MODELS}/vt350-lite-68.FCStd"
+SRC, DST = f"{MODELS}/vt350-lite-68.FCStd", f"{MODELS}/vt350-lite-69.FCStd"
 EMU3 = f"{MODELS}/vt350-emu-3.FCStd"           # read only: the EMU's own box, for its envelope
 GROUP = "Insulation: carbon felt sealed in aluminium"
 ROOF = re.compile(r"^Roof felt (\(pad 1\)|liner, |strip)")
@@ -209,4 +209,4 @@ def main(p):
     return p.finish([(doc, DST)])
 
 
-litelib.Pass("lite68_insulation_inside").run(main)
+litelib.Pass("lite69_insulation_inside").run(main)

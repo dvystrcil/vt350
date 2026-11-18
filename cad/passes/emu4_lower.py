@@ -1,12 +1,13 @@
-# GUI pass: vt350-emu-3.FCStd -> vt350-emu-4.FCStd   (reads vt350-lite-68; headless = dry run, never saves)   vt350#187, #4
+# GUI pass: vt350-emu-3.FCStd -> vt350-emu-4.FCStd   (reads vt350-lite-70; headless = dry run, never saves)   vt350#187, #4
 # The EMU comes down onto the roof panel. Its rubber feet were at Z 712.1 (8 mm over the roof felt's top, though
-# lite-55 meant them on it); lite-68 moved the roof insulation under the panel, so it floated 19.1 mm up. Owner, 2026-11-18: "lower the EMU onto the roof panel".
+# lite-55 meant them on it); lite-69 moved the roof insulation under the panel, so it floated 19.1 mm up. Owner, 2026-11-18: "lower the EMU onto the roof panel".
 #  - The whole EMU (its root App::Part) moves straight down until its lowest part sits on the roof panel's top face.
 #  - Its five roof-exit bowdens (emu-3) are rebuilt: the head tubes' roof ends don't move, the lane couplers do, so each
 #    is re-routed with emu3_bowdens' route (cad/passes/emu_bowden.py: R 100 arcs, an S down, >= 25 mm straight in),
 #    after a straight lead-in out of the roof clamp's bore (emu-3's first arc began inside it: 1.25 mm into the cap).
 # Checks (refuses to save on any):
-#  - the printer model is lite-68 (a dry run can read lite-67, minus the roof insulation lite-68 moves; never saves);
+#  - the printer model is lite-70 (lite-69's insulation inside + lite-70's roof exit); a dry run can read lite-68 minus
+#    the roof insulation lite-69 moves (its clamps and cables are then lite-36/40's); never saves;
 #  - every EMU part moved by exactly dz (links included), the count unchanged; its bottom on the roof's (paint) top;
 #  - five new tubes: one valid solid within 1 % of pi r2 L, starting on the head tube's end along it, ending on the
 #    coupler face along -Y, smallest bend radius >= 80, Y max <= 528 (5 mm in front of the cable channel);
@@ -18,12 +19,12 @@ sys.path[:0] = [os.path.join(_REPO, "platform/freecad"), os.path.dirname(os.path
 import litelib, linkgeo, emu_bowden as eb
 from litelib import MODELS
 V = FreeCAD.Vector
-LITE68, LITE67 = f"{MODELS}/vt350-lite-68.FCStd", f"{MODELS}/vt350-lite-67.FCStd"
+LITE70, LITE68 = f"{MODELS}/vt350-lite-70.FCStd", f"{MODELS}/vt350-lite-68.FCStd"
 EMU3, EMU4 = f"{MODELS}/vt350-emu-3.FCStd", f"{MODELS}/vt350-emu-4.FCStd"
 ROOT = "EMU 5-lane (DW-Tas)"
 BOWDENS = "Bowdens, roof exits to the lanes"
 ROOF_PANEL = re.compile(r"^Roof panel \(3 mm\)$")
-ROOF_INS = re.compile(r"^Roof felt ")          # under the panel in lite-68; still on top in lite-67
+ROOF_INS = re.compile(r"^Roof felt ")          # under the panel from lite-69; still on top in lite-68
 TOL = 1e-3
 Y_MAX = 528.0                # emu-3's 525 less 3: the 17 mm lead-in out of the clamp puts arc 1's top at Y 527.0;
                              # the cable channel starts at Y 533, so >= 5 mm in front of it (the clearance check measures it)
@@ -32,10 +33,10 @@ LOW = 30.0                                      # mm: EMU parts this close to th
 
 
 def main(p):
-    final = os.path.exists(LITE68)
-    pr = p.open(LITE68 if final else LITE67)
-    if not final: p.log("lite-68 not saved yet: dry run against lite-67 without its roof insulation; will not save")
-    p.check(final or p.dry, "the printer model is lite-68 (a GUI save needs it)")
+    final = os.path.exists(LITE70)
+    pr = p.open(LITE70 if final else LITE68)
+    if not final: p.log("lite-70 not saved yet: dry run against lite-68 without its roof insulation; will not save")
+    p.check(final or p.dry, "the printer model is lite-70 (a GUI save needs it)")
     rp = [o for o in pr.leaves if ROOF_PANEL.match(o.Label)]
     p.check(len(rp) == 1, f"one roof panel ({len(rp)})")
     if p.errs: return p.finish([])
