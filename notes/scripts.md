@@ -122,6 +122,9 @@ cad/viewer/export_glb.sh 62 cad/viewer/toolhead.json -- --decimate 0.5   # a sma
 - **The page:** `cad/viewer/index.html` loads `toolhead.gltf.json` from beside it (export with `-- --decimate 0.5 --json 1`;
   an artifact holds at most 15 MB per file and won't serve `.glb`). It rebuilds the GLB in memory, because the artifact
   sandbox blocks three.js fetching the embedded `data:` buffer.
+- **The AC2 comparison render:** `python3 platform/viewer/frame_view.py <export>` adds a camera framed on the export to
+  its `scene.json`; then `blender -b -P platform/render/render.py -- <export> <out> 128` renders just that view. The page's
+  `RENDER_CAM` is that camera (printed by `frame_view.py`); the page shows the render beside the live model.
 
 ### `cad/render/render_full.sh`: full colour renders on this laptop (#38)
 

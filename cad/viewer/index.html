@@ -22,7 +22,13 @@ h1 { font-size: 1.15rem; font-weight: 600; margin: 0; text-wrap: balance; }
 h1 span { color: var(--accent); }
 .facts { display: flex; flex-wrap: wrap; gap: 4px 16px; font-family: var(--mono); font-size: 0.78rem; color: var(--muted); font-variant-numeric: tabular-nums; }
 .facts b { color: var(--fg); font-weight: 500; }
-#stage { position: relative; flex: 1; min-height: 320px; border: 1px solid var(--line); border-radius: 6px; background: var(--stage); overflow: hidden; }
+main { flex: 1; display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); grid-template-rows: minmax(320px, 1fr); gap: 10px; min-height: 0; }
+@media (max-width: 860px) { main { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(360px, 1fr) auto; } }
+figure { margin: 0; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+figure img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid var(--line); border-radius: 6px; background: #121316; }
+figcaption { font-size: 0.78rem; color: var(--muted); line-height: 1.45; }
+figcaption b { color: var(--fg); font-weight: 500; }
+#stage { position: relative; min-height: 320px; border: 1px solid var(--line); border-radius: 6px; background: var(--stage); overflow: hidden; }
 #stage canvas { display: block; width: 100%; height: 100%; touch-action: none; }
 #status { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--mono); font-size: 0.85rem; color: var(--muted); pointer-events: none; text-align: center; padding: 16px; }
 .tools { position: absolute; top: 10px; right: 10px; display: flex; gap: 6px; }
@@ -44,14 +50,22 @@ footer a { color: inherit; }
   </div>
 </header>
 
+<main>
 <div id="stage">
   <div id="status">Loading the model…</div>
   <div class="tools">
+    <button id="b-match" type="button">Match render camera</button>
     <button id="b-reset" type="button">Reset view</button>
     <button id="b-spin" type="button" aria-pressed="false">Turntable</button>
   </div>
   <div class="hint">drag: turn · right-drag / two fingers: pan · wheel / pinch: zoom</div>
 </div>
+<figure>
+  <img src="render-compare.jpg" alt="Cycles render of the same toolhead and carriage, seen from the front right and above" width="1280" height="720">
+  <figcaption><b>The render, for comparison (AC2).</b> Blender Cycles, 128 samples, the same export and colour map, render.py's lights and exposure.
+  <b>Match render camera</b> puts the live view at this camera: 35 mm lens, from the front right and above. The live view has no ray-traced shadows or reflections, so expect the same colours with flatter lighting.</figcaption>
+</figure>
+</main>
 
 <footer>
   A4Tv2 toolhead with Orbiter 2.5, Smart Sensor and Orbitool O2S, on the MadMax plate and the gantry carriage with its Beacon (vt350#220, prototype).
@@ -66,6 +80,9 @@ footer a { color: inherit; }
 <script>
 (function () {
   const t0 = performance.now();
+  // frame_view.py's "compare" view on the lite-62 toolhead export, rendered by render.py into render-compare.jpg
+  const RENDER_CAM = { pos: [-103.12, -106.035, 634.056], look: [-247.198, 234.784, 465.138], lens_mm: 35 };
+  let match = null;
   const stage = document.getElementById("stage"), status = document.getElementById("status");
   const fmtMB = n => (n / 1048576).toFixed(2) + " MB";
   if (!window.THREE || !THREE.GLTFLoader || !THREE.OrbitControls) { status.textContent = "Couldn't load the 3D library. Reload the page to try again."; return; }
@@ -113,6 +130,10 @@ footer a { color: inherit; }
       const root = gltf.scene;
       const box = new THREE.Box3().setFromObject(root), c = box.getCenter(new THREE.Vector3()), s = box.getSize(new THREE.Vector3());
       root.position.sub(c); scene.add(root);
+      // the render's camera (frame_view.py, model mm, Z up) -> glTF (m, Y up: x, z, -y), less the centring offset
+      const toG = p => new THREE.Vector3(p[0] / 1000, p[2] / 1000, -p[1] / 1000).sub(c);
+      match = { pos: toG(RENDER_CAM.pos), target: toG(RENDER_CAM.look),
+                vfov: 2 * Math.atan(Math.tan(Math.atan(18 / RENDER_CAM.lens_mm)) / (16 / 9)) * 180 / Math.PI };
       let tris = 0;
       root.traverse(o => { if (o.isMesh) { const g = o.geometry; tris += (g.index ? g.index.count : g.attributes.position.count) / 3; } });
       document.getElementById("f-tris").textContent = Math.round(tris).toLocaleString("en-US");
@@ -127,8 +148,14 @@ footer a { color: inherit; }
     }, e => { status.textContent = "Couldn't read the model: " + String(e && e.message || e).slice(0, 200); });
   }).catch(e => { status.textContent = "Couldn't load the model (" + String(e && e.message || e).slice(0, 200) + "). Reload the page to try again."; });
 
-  function reset() { if (!home) return; camera.position.copy(home.pos); controls.target.copy(home.target); controls.update(); }
+  function reset() { if (!home) return; camera.fov = 35; camera.updateProjectionMatrix(); camera.position.copy(home.pos); controls.target.copy(home.target); controls.update(); }
   document.getElementById("b-reset").addEventListener("click", reset);
+  document.getElementById("b-match").addEventListener("click", () => {
+    if (!match) return;
+    controls.autoRotate = false; spin.setAttribute("aria-pressed", "false");
+    camera.fov = match.vfov; camera.updateProjectionMatrix();
+    camera.position.copy(match.pos); controls.target.copy(match.target); controls.update();
+  });
   const spin = document.getElementById("b-spin");
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   spin.addEventListener("click", () => {
