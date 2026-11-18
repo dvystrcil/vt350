@@ -1,0 +1,14 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "1f99c987-3ed6-5979-9d01-ae272e122144"
+  Name: "Bought LDO Orbiter v2.5 with motor"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "NOT A REAL MATERIAL: an effective density for every solid under the group 'Orbiter V2.0 Mockup' in each head, except the bowden tubes (Bowden Left, Bowden Right) and stand-ins, so that it weighs its published 135 g (cad/materials/bought.json). Modelled volume 48343.7 mm3 on vt350-lite-62.FCStd, plus 18.806 g already in other materials."
+  SourceURL: "https://www.orbiterprojects.com/orbiter-v2-0/"
+  ReferenceSource: "Orbiter Projects (the designer), Orbiter v2.0 page, read 2026-11-17: \"Weight reduced to ~135 grams\". The Orbiter v2.5 page says v2.5 uses the v2.0 body and gives no weight of its own. Neither page says which motor the figure is with: the owner's is the LDO 36STH20 (notes/parts-owned.md), the model's mockup has the 36STH17. The ~140 g figure some resellers quote is the older Orbiter v1.x's, 'with the 17mm stepper'."
+Models:
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "2403.5 kg/m^3"

@@ -1,0 +1,26 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "6a86a2f7-0c6f-5ee8-80e9-418450d0e090"
+  Name: "Ambrosia ASA Rainbow Rush"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "Ambrosia ASA, colour Rainbow Rush (SKU AMB2531RAI), in stock 2026-11-17. Colour value: estimate from the colour's name; multi-colour or effect filament: one colour stands in. Multi-colour/effect filament: one colour stands in."
+  SourceURL: "https://west3d.com/products/ambrosia-asa-filament-of-the-gods-1kg-bambu-friendly-cardboard-spools-premium-3d-printing-filament?variant=46039863001300"
+  ReferenceSource: "Density ISO 1183 1.08-1.09 g/cm3 (1.085 used); colour #ff8c00 (estimate from the colour's name; multi-colour or effect filament: one colour stands in)"
+Inherits:
+  Ambrosia ASA:
+    UUID: "1e95b078-da2c-5633-aec3-2fffce14952a"
+Models:
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "1085 kg/m^3"
+AppearanceModels:
+  Basic Rendering:
+    UUID: "f006c7e4-35b7-43d5-bbf9-c5d572309e6e"
+    AmbientColor: "(0.298039,0.164706,0,1)"
+    DiffuseColor: "(1,0.54902,0,1)"
+    EmissiveColor: "(0,0,0,1)"
+    Shininess: "0.2"
+    SpecularColor: "(0.1,0.1,0.1,1)"
+    Transparency: "0"

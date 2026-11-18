@@ -1,0 +1,17 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "6bea1ff6-daaa-52f1-9dfb-ba14fe234ef2"
+  Name: "Ambrosia TPU 95A"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "Ambrosia TPU 95A filament (West3D). Datasheet values: notes/filaments-ambrosia.md. Pick a colour card under it to get the colour too."
+  SourceURL: "https://west3d.com/products/ambrosia-tpu-95-filament-of-the-gods-1kg-bambu-ams-friendly-cardboard-spools-premium-3d-printing-filament-tpu95"
+  ReferenceSource: "TPU 95A product page, Technical Specifications, read 2026-11-17: Density ISO 1183 1.22-1.25 g/cm3 (1.235 used)"
+Models:
+  Father:
+    UUID: "9cdda8b6-b606-4778-8f13-3934d8668e67"
+    Father: "Thermoplast"
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "1235 kg/m^3"

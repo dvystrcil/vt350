@@ -1,0 +1,26 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "e7ea396f-4054-553f-8f78-895dcb48e133"
+  Name: "Ambrosia PET-GF Voron Red"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "Ambrosia PET-GF, colour Voron Red (SKU AMB5539VOR), in stock 2026-11-17. Colour value: estimate from the colour's name."
+  SourceURL: "https://west3d.com/products/ambrosia-pet-gf-glass-filled-pet-filament-of-the-gods-1kg-spool?variant=67651409379540"
+  ReferenceSource: "Density ISO 1183 1.40-1.41 g/cm3 (1.405 used); colour #c8102e (estimate from the colour's name)"
+Inherits:
+  Ambrosia PET-GF:
+    UUID: "fb81a375-0fd8-5984-bc39-ddf9d45724a6"
+Models:
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "1405 kg/m^3"
+AppearanceModels:
+  Basic Rendering:
+    UUID: "f006c7e4-35b7-43d5-bbf9-c5d572309e6e"
+    AmbientColor: "(0.235294,0.0156863,0.0509804,1)"
+    DiffuseColor: "(0.784314,0.0627451,0.180392,1)"
+    EmissiveColor: "(0,0,0,1)"
+    Shininess: "0.2"
+    SpecularColor: "(0.1,0.1,0.1,1)"
+    Transparency: "0"

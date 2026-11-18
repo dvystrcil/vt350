@@ -1,0 +1,26 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "494580a4-2c6f-5882-978c-cad80c64a194"
+  Name: "Ambrosia ASA Marble"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "Ambrosia ASA, colour Marble (SKU AMB5530MAR), in stock 2026-11-17. Colour value: estimate from the colour's name; multi-colour or effect filament: one colour stands in. Multi-colour/effect filament: one colour stands in."
+  SourceURL: "https://west3d.com/products/ambrosia-asa-filament-of-the-gods-1kg-bambu-friendly-cardboard-spools-premium-3d-printing-filament?variant=67651408986324"
+  ReferenceSource: "Density ISO 1183 1.08-1.09 g/cm3 (1.085 used); colour #d9d6d0 (estimate from the colour's name; multi-colour or effect filament: one colour stands in)"
+Inherits:
+  Ambrosia ASA:
+    UUID: "1e95b078-da2c-5633-aec3-2fffce14952a"
+Models:
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "1085 kg/m^3"
+AppearanceModels:
+  Basic Rendering:
+    UUID: "f006c7e4-35b7-43d5-bbf9-c5d572309e6e"
+    AmbientColor: "(0.254902,0.25098,0.243137,1)"
+    DiffuseColor: "(0.85098,0.839216,0.815686,1)"
+    EmissiveColor: "(0,0,0,1)"
+    Shininess: "0.2"
+    SpecularColor: "(0.1,0.1,0.1,1)"
+    Transparency: "0"

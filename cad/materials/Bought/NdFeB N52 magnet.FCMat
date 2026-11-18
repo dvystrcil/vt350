@@ -1,0 +1,14 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "526df130-6b70-541e-865a-ea3082bf27a1"
+  Name: "NdFeB N52 magnet"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "Sintered NdFeB (neodymium) magnets, grade N52: a real material (the density is the datasheet's)."
+  SourceURL: "https://www.arnoldmagnetics.com/wp-content/uploads/2017/11/N52-151021.pdf"
+  ReferenceSource: "Arnold Magnetic Technologies, Sintered Neodymium-Iron-Boron Magnets N52 datasheet (rev. 210802), read 2026-11-17: density 7.6 g/cm3. MadMax's BOM calls for 6x3 mm N52 (zruncho3d/madmax BOM.md at 277a63c); the A4Tv2 and door magnets use the same card."
+Models:
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "7600 kg/m^3"

@@ -1,0 +1,17 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "d1c8184e-1c59-5096-9808-0cff779a037a"
+  Name: "Ambrosia PC-CF"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "Ambrosia PC-CF filament (West3D). Datasheet values: notes/filaments-ambrosia.md. Pick a colour card under it to get the colour too."
+  SourceURL: "https://west3d.com/products/ambrosia-pc-cf-filament-of-the-gods-1kg-bambu-ams-friendly-cardboard-spools-premium-3d-printing-filament-house-polycarbonate-cf-pccf"
+  ReferenceSource: "PC-CF product page, Technical Specifications, read 2026-11-17: Density ISO 1183 1.21 g/cm3 (1.21 used)"
+Models:
+  Father:
+    UUID: "9cdda8b6-b606-4778-8f13-3934d8668e67"
+    Father: "Thermoplast"
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "1210 kg/m^3"

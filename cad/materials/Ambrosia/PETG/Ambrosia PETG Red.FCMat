@@ -1,0 +1,26 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "52b18f81-fa60-50b4-b603-2b4d194bd1fc"
+  Name: "Ambrosia PETG Red"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "Ambrosia PETG, colour Red (SKU AMB1524), in stock 2026-11-17. Colour value: estimate from the colour's name."
+  SourceURL: "https://west3d.com/products/ambrosia-petg-filament-of-the-gods-1kg-bambu-ams-friendly-cardboard-spools-premium-3d-printing-filament?variant=45409664598228"
+  ReferenceSource: "Density ISO 1183 1.27-1.28 g/cm3 (1.275 used); colour #c62828 (estimate from the colour's name)"
+Inherits:
+  Ambrosia PETG:
+    UUID: "6004acfe-cd3c-5c88-a86c-ea93fc39a1bf"
+Models:
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "1275 kg/m^3"
+AppearanceModels:
+  Basic Rendering:
+    UUID: "f006c7e4-35b7-43d5-bbf9-c5d572309e6e"
+    AmbientColor: "(0.231373,0.0470588,0.0470588,1)"
+    DiffuseColor: "(0.776471,0.156863,0.156863,1)"
+    EmissiveColor: "(0,0,0,1)"
+    Shininess: "0.2"
+    SpecularColor: "(0.1,0.1,0.1,1)"
+    Transparency: "0"

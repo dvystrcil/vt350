@@ -44,8 +44,8 @@ link-only because its part list isn't chosen yet.
 
 | Part | Qty | Stage | Source | Licence | Material / print notes | File |
 |---|---|---|---|---|---|---|
-| Door hinge, sleeve part | 3 | #9 | Clicky-Clack door | GPL-3.0 | chamber material (#8 AC1); ×3 for 3 hinges (upstream ships ×2) | [`clicky-clack/Hinge-L-sleeve-2X.stl`](clicky-clack/Hinge-L-sleeve-2X.stl) |
-| Door hinge, solid part | 3 | #9 | Clicky-Clack door | GPL-3.0 | chamber material (#8 AC1); ×3 for 3 hinges (upstream ships ×2) | [`clicky-clack/Hinge-L-solid-2X.stl`](clicky-clack/Hinge-L-solid-2X.stl) |
+| Door hinge, sleeve part | 3 | #9 | Clicky-Clack door | GPL-3.0 | PET-GF (owner 2026-11-17: door hinges sag; stiffest, creep-resistant grade the Neptune prints; notes/filaments-ambrosia.md); ×3 for 3 hinges (upstream ships ×2) | [`clicky-clack/Hinge-L-sleeve-2X.stl`](clicky-clack/Hinge-L-sleeve-2X.stl) |
+| Door hinge, solid part | 3 | #9 | Clicky-Clack door | GPL-3.0 | PET-GF (owner 2026-11-17: door hinges sag; stiffest, creep-resistant grade the Neptune prints; notes/filaments-ambrosia.md); ×3 for 3 hinges (upstream ships ×2) | [`clicky-clack/Hinge-L-solid-2X.stl`](clicky-clack/Hinge-L-solid-2X.stl) |
 | Extrusion drill guide, 10 mm | 1 | #9 | Voron Trident R1 | GPL-3.0 | any material (assembly jig) | [`voron-trident/10mm_extrusion_drill_guide.stl`](voron-trident/10mm_extrusion_drill_guide.stl) |
 | Extrusion drill guide, 140 mm | 1 | #9 | Voron Trident R1 | GPL-3.0 | any material (assembly jig) | [`voron-trident/140mm_extrusion_drill_guide.stl`](voron-trident/140mm_extrusion_drill_guide.stl) |
 | MGN9 rail guide (Z and Y rails) | 2 | #10 | Voron Trident R1 | GPL-3.0 | any material (assembly jig); also used for the Y rails in #11 | [`voron-trident/MGN9_rail_guide_x2.stl`](voron-trident/MGN9_rail_guide_x2.stl) |

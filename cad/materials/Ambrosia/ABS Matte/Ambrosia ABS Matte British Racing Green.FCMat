@@ -1,0 +1,26 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "d44ca5b6-7652-5a68-aa79-b907ba5eaed3"
+  Name: "Ambrosia ABS Matte British Racing Green"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "Ambrosia ABS Matte, colour British Racing Green (SKU AMB2409BRG), in stock 2026-11-17. Colour value: the conventional British racing green."
+  SourceURL: "https://west3d.com/products/ambrosia-abs-matte-filament-of-the-gods-1kg-bambu-ams-friendly-cardboard-spools-premium-3d-printing-filament?variant=45924783980756"
+  ReferenceSource: "Density ISO 1183 1.03 g/cm3 (1.03 used); colour #004225 (the conventional British racing green)"
+Inherits:
+  Ambrosia ABS Matte:
+    UUID: "d3395e15-6ba5-5e25-bd99-625ac89597b0"
+Models:
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "1030 kg/m^3"
+AppearanceModels:
+  Basic Rendering:
+    UUID: "f006c7e4-35b7-43d5-bbf9-c5d572309e6e"
+    AmbientColor: "(0,0.0745098,0.0431373,1)"
+    DiffuseColor: "(0,0.258824,0.145098,1)"
+    EmissiveColor: "(0,0,0,1)"
+    Shininess: "0.05"
+    SpecularColor: "(0.1,0.1,0.1,1)"
+    Transparency: "0"

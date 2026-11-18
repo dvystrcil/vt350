@@ -1,0 +1,26 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "81d452c1-7ba7-508e-a454-18a7382ad646"
+  Name: "Ambrosia ASA Camo Olive Drab"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "Ambrosia ASA, colour Camo Olive Drab (SKU AMB2536COD), in stock 2026-11-17. Colour value: estimate from the colour's name."
+  SourceURL: "https://west3d.com/products/ambrosia-asa-filament-of-the-gods-1kg-bambu-friendly-cardboard-spools-premium-3d-printing-filament?variant=46039863165140"
+  ReferenceSource: "Density ISO 1183 1.08-1.09 g/cm3 (1.085 used); colour #4b5320 (estimate from the colour's name)"
+Inherits:
+  Ambrosia ASA:
+    UUID: "1e95b078-da2c-5633-aec3-2fffce14952a"
+Models:
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "1085 kg/m^3"
+AppearanceModels:
+  Basic Rendering:
+    UUID: "f006c7e4-35b7-43d5-bbf9-c5d572309e6e"
+    AmbientColor: "(0.0862745,0.0941176,0.0352941,1)"
+    DiffuseColor: "(0.294118,0.32549,0.12549,1)"
+    EmissiveColor: "(0,0,0,1)"
+    Shininess: "0.2"
+    SpecularColor: "(0.1,0.1,0.1,1)"
+    Transparency: "0"

@@ -1,0 +1,26 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "e0d0028e-dc2a-5d46-9600-318eaaa4a055"
+  Name: "Ambrosia ASA Terrestrial Blue"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "Ambrosia ASA, colour Terrestrial Blue (SKU AMB1499), in stock 2026-11-17. Colour value: estimate from the colour's name."
+  SourceURL: "https://west3d.com/products/ambrosia-asa-filament-of-the-gods-1kg-bambu-friendly-cardboard-spools-premium-3d-printing-filament?variant=44461380567252"
+  ReferenceSource: "Density ISO 1183 1.08-1.09 g/cm3 (1.085 used); colour #2f6db5 (estimate from the colour's name)"
+Inherits:
+  Ambrosia ASA:
+    UUID: "1e95b078-da2c-5633-aec3-2fffce14952a"
+Models:
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "1085 kg/m^3"
+AppearanceModels:
+  Basic Rendering:
+    UUID: "f006c7e4-35b7-43d5-bbf9-c5d572309e6e"
+    AmbientColor: "(0.054902,0.12549,0.211765,1)"
+    DiffuseColor: "(0.184314,0.427451,0.709804,1)"
+    EmissiveColor: "(0,0,0,1)"
+    Shininess: "0.2"
+    SpecularColor: "(0.1,0.1,0.1,1)"
+    Transparency: "0"

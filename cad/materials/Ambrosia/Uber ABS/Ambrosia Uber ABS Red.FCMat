@@ -1,0 +1,26 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "999b65eb-18d4-522c-a323-3bd1fe1e93ba"
+  Name: "Ambrosia Uber ABS Red"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "Ambrosia Uber ABS, colour Red (SKU AMB1508), in stock 2026-11-17. Colour value: estimate from the colour's name."
+  SourceURL: "https://west3d.com/products/ambrosia-uber-abs-filament-of-the-gods-1kg-bambu-friendly-cardboard-spools-premium-3d-printing-filament-abs?variant=44020708344020"
+  ReferenceSource: "Density ISO 1183 1.08-1.10 g/cm3 (1.09 used); colour #c62828 (estimate from the colour's name)"
+Inherits:
+  Ambrosia Uber ABS:
+    UUID: "e565db10-5c30-55e5-8766-d03ec533b73a"
+Models:
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "1090 kg/m^3"
+AppearanceModels:
+  Basic Rendering:
+    UUID: "f006c7e4-35b7-43d5-bbf9-c5d572309e6e"
+    AmbientColor: "(0.231373,0.0470588,0.0470588,1)"
+    DiffuseColor: "(0.776471,0.156863,0.156863,1)"
+    EmissiveColor: "(0,0,0,1)"
+    Shininess: "0.2"
+    SpecularColor: "(0.1,0.1,0.1,1)"
+    Transparency: "0"

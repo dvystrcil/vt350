@@ -1,0 +1,66 @@
+[   51.5s] opened /home/dan/Documents/VT350/vt350-lite-63.FCStd
+[   65.4s] 8 carriage/plate copies: COMPOUND (Feature) in Carriage (1), Plate (Feature) in MadMax 4 XOL v11 v1, COMPOUND004 (Feature) in Carriage(Mirror), Plate(Mirror) (Feature) in MadMax 4 XOL v11 v1(Mirror), Plate001 (Feature) in MadMax 4 XOL v11 v001, Plate002 (Feature) in MadMax 4 XOL v11 v002, COMPOUND003 (Link) in Carriage, Plate(Mirror)001 (Link) in MadMax 4 XOL v11 v1(Mirror)001
+[   65.4s] ok   every carriage (>= 3) and tool plate (>= 5) copy found
+[   67.7s] ok   COMPOUND (Part__Feature448): 6 pockets (want 6), axes [(0.0, 1.0, 0.0)]
+[   67.9s] ok   Plate (Part__Feature655): 6 pockets (want 6), axes [(0.0, -1.0, -0.0)]
+[   70.2s] ok   COMPOUND004 (Part__Feature1507): 6 pockets (want 6), axes [(0.0, 1.0, 0.0)]
+[   70.4s] ok   Plate(Mirror) (Part__Feature1508): 6 pockets (want 6), axes [(0.0, -1.0, -0.0)]
+[   70.6s] ok   Plate001 (Part__Feature3190): 6 pockets (want 6), axes [(0.0, -1.0, -0.0)]
+[   70.9s] ok   Plate002 (Part__Feature3300): 6 pockets (want 6), axes [(0.0, -1.0, -0.0)]
+[   73.3s] ok   COMPOUND003 (Part__Feature654): 6 pockets (want 6), axes [(-0.0, 1.0, -0.0)]
+[   73.6s] ok   Plate(Mirror)001 (Part__Feature3245): 6 pockets (want 6), axes [(0.0, -1.0, -0.0)]
+[   74.9s] ok   COMPOUND magnet 1: 0.000 mm3 in its own part (pocket 3.20 deep)
+[   75.6s] ok   COMPOUND magnet 2: 0.000 mm3 in its own part (pocket 3.20 deep)
+[   76.2s] ok   COMPOUND magnet 3: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   76.8s] ok   COMPOUND magnet 4: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   77.3s] ok   COMPOUND magnet 5: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   77.9s] ok   COMPOUND magnet 6: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   77.9s] ok   Plate magnet 1: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   78.0s] ok   Plate magnet 2: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   78.0s] ok   Plate magnet 3: 0.000 mm3 in its own part (pocket 3.20 deep)
+[   78.1s] ok   Plate magnet 4: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   78.2s] ok   Plate magnet 5: 0.000 mm3 in its own part (pocket 3.20 deep)
+[   78.2s] ok   Plate magnet 6: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   78.8s] ok   COMPOUND004 magnet 1: 0.000 mm3 in its own part (pocket 3.20 deep)
+[   79.3s] ok   COMPOUND004 magnet 2: 0.000 mm3 in its own part (pocket 3.20 deep)
+[   79.9s] ok   COMPOUND004 magnet 3: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   80.4s] ok   COMPOUND004 magnet 4: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   81.0s] ok   COMPOUND004 magnet 5: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   81.4s] ok   COMPOUND004 magnet 6: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   81.5s] ok   Plate(Mirror) magnet 1: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   81.5s] ok   Plate(Mirror) magnet 2: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   81.6s] ok   Plate(Mirror) magnet 3: 0.000 mm3 in its own part (pocket 3.20 deep)
+[   81.6s] ok   Plate(Mirror) magnet 4: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   81.7s] ok   Plate(Mirror) magnet 5: 0.000 mm3 in its own part (pocket 3.20 deep)
+[   81.7s] ok   Plate(Mirror) magnet 6: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   81.8s] ok   Plate001 magnet 1: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   81.8s] ok   Plate001 magnet 2: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   81.9s] ok   Plate001 magnet 3: 0.000 mm3 in its own part (pocket 3.20 deep)
+[   81.9s] ok   Plate001 magnet 4: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   82.0s] ok   Plate001 magnet 5: 0.000 mm3 in its own part (pocket 3.20 deep)
+[   82.0s] ok   Plate001 magnet 6: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   82.1s] ok   Plate002 magnet 1: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   82.1s] ok   Plate002 magnet 2: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   82.2s] ok   Plate002 magnet 3: 0.000 mm3 in its own part (pocket 3.20 deep)
+[   82.3s] ok   Plate002 magnet 4: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   82.3s] ok   Plate002 magnet 5: 0.000 mm3 in its own part (pocket 3.20 deep)
+[   82.4s] ok   Plate002 magnet 6: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   83.0s] ok   COMPOUND003 magnet 1: 0.000 mm3 in its own part (pocket 3.20 deep)
+[   83.5s] ok   COMPOUND003 magnet 2: 0.000 mm3 in its own part (pocket 3.20 deep)
+[   84.1s] ok   COMPOUND003 magnet 3: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   84.6s] ok   COMPOUND003 magnet 4: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   85.1s] ok   COMPOUND003 magnet 5: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   85.7s] ok   COMPOUND003 magnet 6: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   85.7s] ok   Plate(Mirror)001 magnet 1: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   85.8s] ok   Plate(Mirror)001 magnet 2: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   85.8s] ok   Plate(Mirror)001 magnet 3: 0.000 mm3 in its own part (pocket 3.20 deep)
+[   85.9s] ok   Plate(Mirror)001 magnet 4: 0.000 mm3 in its own part (pocket 3.00 deep)
+[   85.9s] ok   Plate(Mirror)001 magnet 5: 0.000 mm3 in its own part (pocket 3.20 deep)
+[   86.0s] ok   Plate(Mirror)001 magnet 6: 0.000 mm3 in its own part (pocket 3.00 deep)
+[  128.5s] ok   every magnet clear of every other solid (0: [])
+[  145.1s] ok   every other solid's box unchanged (0: [])
+[  145.1s] ok   solids 1537 = 1489 + 48
+[  145.2s] ok   each magnet valid, 84.8 mm3, where planned, NdFeB (0 not: [])
+[  145.2s] magnets: 48 x 0.645 g; carried per tool (carriage 6 + plate 6) 7.74 g
+[  145.2s] verify: 0 problems
+[  150.9s] SAVED /home/dan/Documents/VT350/vt350-lite-64.FCStd 36891744

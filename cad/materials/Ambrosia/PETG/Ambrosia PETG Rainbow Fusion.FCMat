@@ -1,0 +1,26 @@
+---
+# Generated: do not edit by hand (see the README in this folder)
+General:
+  UUID: "c16b9dde-1eab-5683-b146-92238b74e9ea"
+  Name: "Ambrosia PETG Rainbow Fusion"
+  Author: "Daniel Vystrcil (vt350)"
+  License: "GPL-3.0-or-later"
+  Description: "Ambrosia PETG, colour Rainbow Fusion (SKU AMB3764RAI), in stock 2026-11-17. Colour value: estimate from the colour's name; multi-colour or effect filament: one colour stands in. Multi-colour/effect filament: one colour stands in."
+  SourceURL: "https://west3d.com/products/ambrosia-petg-filament-of-the-gods-1kg-bambu-ams-friendly-cardboard-spools-premium-3d-printing-filament?variant=47159812194516"
+  ReferenceSource: "Density ISO 1183 1.27-1.28 g/cm3 (1.275 used); colour #8e44ad (estimate from the colour's name; multi-colour or effect filament: one colour stands in)"
+Inherits:
+  Ambrosia PETG:
+    UUID: "6004acfe-cd3c-5c88-a86c-ea93fc39a1bf"
+Models:
+  Density:
+    UUID: "454661e5-265b-4320-8e6f-fcf6223ac3af"
+    Density: "1275 kg/m^3"
+AppearanceModels:
+  Basic Rendering:
+    UUID: "f006c7e4-35b7-43d5-bbf9-c5d572309e6e"
+    AmbientColor: "(0.164706,0.0784314,0.2,1)"
+    DiffuseColor: "(0.556863,0.266667,0.678431,1)"
+    EmissiveColor: "(0,0,0,1)"
+    Shininess: "0.2"
+    SpecularColor: "(0.1,0.1,0.1,1)"
+    Transparency: "0"
