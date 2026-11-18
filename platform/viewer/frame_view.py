@@ -17,6 +17,8 @@ its azimuth, so render.py turns the key light with the camera (otherwise the rea
 Negative elevations look up from below.
 --hide B1,B2: buckets render.py leaves out of every view written ("hide"), and the framing ignores (vt350#220: the
 base board under the printer).
+--add 1: keep the views already in scene.json (a view of the same name is replaced) instead of replacing them all, so
+one export can hold a turntable and a "compare" view (cad/viewer/pages.py).
 --ev EV: the view's exposure for render.py (default -1.0, as its "outside" view; render.py's own default for an
 explicit view, -0.5, washes the colours out).
 Stdlib only.
@@ -72,6 +74,16 @@ def turntable(bbox, n_az, elevations, lens_mm, fill=0.9, ev=-1.0, light_el=25.0)
     return views
 
 
+def put(scene, views, frame, add):
+    """Write views (and the frame record) into scene: replacing all, or with add, only the views of the same name."""
+    if add:
+        names = {v["name"] for v in views}
+        scene["views"] = [v for v in scene.get("views", []) if v["name"] not in names] + views
+        scene["frame"] = dict(scene.get("frame", {}), **frame)
+    else:
+        scene["views"], scene["frame"] = views, frame
+
+
 def main(argv):
     opts, args = {}, []
     it = iter(argv)
@@ -96,15 +108,15 @@ def main(argv):
         if len(els) != n_el: sys.exit(f"frame_view: --turntable {opts['turntable']} needs {n_el} --elevations, got {len(els)}")
         views = turntable(bb, n_az, els, lens, fill, ev, float(opts.get("light-el", 25)))
         for v in views: v["hide"] = hide
-        scene["views"] = views
-        scene["frame"] = {"bbox": [round(v, 3) for v in bb], "turntable": {"azimuths": n_az, "elevations": els}}
+        put(scene, views, {"bbox": [round(v, 3) for v in bb], "turntable": {"azimuths": n_az, "elevations": els}},
+            opts.get("add") == "1")
         json.dump(scene, open(sj, "w", encoding="utf-8"), indent=1)
         print(f"{len(views)} turntable views, {views[0]['name']} .. {views[-1]['name']}")
         print("frame-view: OK")
         return
     pos, look = frame(bb, direction, lens, fill)
     view = {"name": name, "pos": [round(v, 3) for v in pos], "look": [round(v, 3) for v in look], "lens_mm": lens, "ev": ev, "hide": hide}
-    scene["views"] = [view]; scene["frame"] = {"bbox": [round(v, 3) for v in bb], "view": view}
+    put(scene, [view], {"bbox": [round(v, 3) for v in bb], "view": view}, opts.get("add") == "1")
     json.dump(scene, open(sj, "w", encoding="utf-8"), indent=1)
     print(json.dumps(scene["frame"]))
     print("frame-view: OK")

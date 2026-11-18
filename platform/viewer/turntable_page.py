@@ -15,7 +15,10 @@
 #   "foot"?, "credits"?, "links"?: [{"href", "text"}], "page_title"?, "blurb"?, "issue"?}.
 # Every frame <prefix>-tt-e<EE>-a<AAA>.jpg must be in the frames dir, or nothing is written.
 # Last line "turntable-page: OK".
-import datetime, hashlib, html, json, os, shutil, subprocess, sys, tempfile, zipfile
+import html, json, os, shutil, sys, tempfile, zipfile
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "pages"))
+import sitepub
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE = os.path.join(HERE, "turntable.html")
@@ -55,58 +58,26 @@ def stage(frames, cfg, out):
 
 
 def zip_frames(frames, cfg, path):
-    """Stored (JPEGs don't shrink), sorted, fixed timestamps: the same frames give the same zip and sha256."""
+    """Stored (JPEGs don't shrink), sorted, fixed timestamps: the same frames give the same zip (and asset name)."""
     with zipfile.ZipFile(path, "w", zipfile.ZIP_STORED) as z:
         for f in sorted(frame_names(cfg)):
             info = zipfile.ZipInfo("frames/" + f, date_time=(2020, 1, 1, 0, 0, 0))
             z.writestr(info, open(os.path.join(frames, f), "rb").read())
-    return hashlib.sha256(open(path, "rb").read()).hexdigest()
-
-
-def upload(path, tag, repo):
-    r = ["--repo", repo] if repo else []
-    if subprocess.run(["gh", "release", "view", tag] + r, capture_output=True).returncode:
-        subprocess.run(["gh", "release", "create", tag, "--prerelease", "--title", f"Page assets: {tag}",
-                        "--notes", "Large files for the reference pages, fetched and checked by "
-                                   "platform/pages/fetch_assets.py. Not a printer release."] + r, check=True)
-    subprocess.run(["gh", "release", "upload", tag, path, "--clobber"] + r, check=True)
-
-
-def set_asset(manifest, entry):
-    m = json.load(open(manifest)) if os.path.exists(manifest) else {"assets": []}
-    m["assets"] = [a for a in m["assets"] if a["into"] != entry["into"]] + [entry]
-    json.dump(m, open(manifest, "w"), indent=1); open(manifest, "a").write("\n")
-
-
-def add_index_entry(index, name, cfg):
-    s = open(index, encoding="utf-8").read()
-    if f'href="{name}.html"' in s: return False
-    anchor = '  <ul class="pages">\n'
-    if anchor not in s: return None
-    li = (f'    <li>\n      <a href="{name}.html">{html.escape(cfg.get("page_title") or name)}</a>\n'
-          f'      <p>{html.escape(cfg.get("blurb", ""))}</p>\n'
-          f'      <span class="meta">{datetime.date.today().isoformat()} · {html.escape(cfg.get("issue", ""))}</span>\n'
-          '    </li>\n')
-    open(index, "w", encoding="utf-8").write(s.replace(anchor, anchor + li, 1)); return True
 
 
 def publish(frames, cfg, pages, name, tag, repo=None, do_upload=True):
     folder = os.path.join(pages, name); os.makedirs(folder, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
-        z = os.path.join(tmp, "x.zip"); sha = zip_frames(frames, cfg, z)
-        asset = f"{cfg['prefix']}-{name}-frames-{sha[:8]}.zip"      # a new name per content: the live site's
-        os.rename(z, os.path.join(tmp, asset)); z = os.path.join(tmp, asset)   # manifest keeps working until merge
-        if do_upload: upload(z, tag, repo)
-        else: shutil.copy2(z, os.path.join(os.path.dirname(os.path.abspath(frames)), asset))   # beside frames/
-    set_asset(os.path.join(pages, "assets.json"), {"release": tag, "asset": asset, "into": name, "sha256": sha})
+        z = os.path.join(tmp, "frames.zip"); zip_frames(frames, cfg, z)
+        asset = sitepub.put_asset(z, f"{cfg['prefix']}-{name}-frames", ".zip", tag, name, pages, repo, do_upload,
+                                  keep_dir=os.path.dirname(os.path.abspath(frames)))     # --upload 0: beside frames/
     json.dump(page_json(cfg), open(os.path.join(folder, "turntable.json"), "w"), ensure_ascii=False, indent=1)
     open(os.path.join(pages, name + ".html"), "w").write(render_page(cfg, name + "/", standalone=True))
     print(f"{name}.html, {name}/turntable.json; {asset} ({'uploaded to ' + tag if do_upload else 'not uploaded'})")
     idx = os.path.join(pages, "index.html")
     if os.path.exists(idx):
-        added = add_index_entry(idx, name, cfg)
-        print({True: "index.html: entry added", False: "index.html: already lists it",
-               None: "index.html: no <ul class=\"pages\">; add the link by hand"}[added])
+        print(sitepub.index_message(sitepub.add_index_entry(idx, name, cfg.get("page_title") or name,
+                                                            cfg.get("blurb", ""), cfg.get("issue", ""))))
 
 
 def main(argv):

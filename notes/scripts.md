@@ -126,34 +126,36 @@ cad/viewer/export_glb.sh 62 cad/viewer/toolhead.json -- --decimate 0.5   # a sma
   its `scene.json`; then `blender -b -P platform/render/render.py -- <export> <out> 128` renders just that view. The page's
   `RENDER_CAM` is that camera (printed by `frame_view.py`); the page shows the render beside the live model.
 
-### A turntable of real renders (#220)
+### The public toolhead / printer pages: rebuilt from a new lite-N (#220)
 
-A drag-to-turn page of Cycles renders: 36 angles × 7 heights. One settings file per turntable,
-`cad/viewer/turntables/<name>.json` (`toolhead`, `printer`), holds every choice: what to export, the cameras, the
-render look, the page's text, where it's published. `cad/viewer/turntable.py` runs the steps from it, in order:
+The reference site's turntable (36 angles × 7 heights of Cycles renders) and live 3D viewer (a GLB beside a Cycles
+render with a matching camera) are rebuilt from a model by one command. One settings file per subject,
+`cad/viewer/pages/<name>.json` (`toolhead`: both pages; `printer`: the turntable), holds every choice: what to
+export, the render look, the cameras, the page text, the release the big files go to.
 
 ```bash
-cad/viewer/turntable.py export  toolhead            # FreeCAD under xvfb (read-only) + licence check -> a new RUN dir
-cad/viewer/turntable.py views   toolhead            # the 252 cameras into RUN/export/scene.json
-cad/viewer/turntable.py render  toolhead            # Blender here (~5-10 s a frame on the RTX 2070), RUN/out/
-cad/viewer/turntable.py render  printer --lane      # or the GTX 970 lane (~18 s a frame); comment on the issue, then:
-cad/viewer/turntable.py collect printer             #   its frames into RUN/out/
-cad/viewer/turntable.py stage   toolhead            # preview folder RUN/page/: python3 -m http.server -d <it>
-cad/viewer/turntable.py publish toolhead            # the public page: notes/reference + a release asset; commit after
-cad/viewer/turntable.py all     toolhead            # export, views, render here, stage
-cad/viewer/turntable.py check   all                 # every settings file is complete (CI runs this)
+cad/viewer/pages.py release toolhead --model 64     # export, licence check, cameras, GLB, 253 renders here (~40 min),
+                                                    # then preview folders RUN/page-turntable and RUN/page-viewer
+python3 -m http.server -d <RUN>/page-viewer         # look at them (the release step prints RUN)
+cad/viewer/pages.py publish toolhead                # upload the frames zip + GLB, rewrite notes/reference; then commit
+                                                    # on a branch, draft PR; the site updates when it merges
+
+cad/viewer/pages.py release printer --model 64 --lane   # the whole printer: renders on the GTX 970 lane (~18 s a frame)
+cad/viewer/pages.py collect printer                     # after the lane's comment on the issue; then stage, publish
+cad/viewer/pages.py check all                           # every settings file is complete (CI runs this)
 ```
 
-- **RUN** is `~/Documents/VT350/renders/vt350-lite-<N>-<name>-turntable-<UTC>/`. Each step uses the newest one;
-  `--run DIR` picks another, `--model N` exports another lite-N. Each step ends with `<step>: OK`.
-- **The look** (owner, 2026-11-17): AgX Punchy, plastic specular 0.2, −1.4 EV. The key light turns and tilts with
-  each camera, so no side is backlit. `printer` hides the base board (`"hide": ["role_board_t0"]`).
-- **publish refuses** unless every part's licence is cleared in `cad/viewer/licences.json`. The toolhead's are; the
-  whole printer's aren't yet. `--upload 0` writes everything but leaves the zip in RUN instead of uploading it.
-- **Where the big files go:** the frames zip is a GitHub release asset (named by its sha256, so the live site keeps
-  working until the change merges); `notes/reference/assets.json` records it, and the pages workflow fetches and
-  checks it (`platform/pages/fetch_assets.py`). Only the page and its `turntable.json` are committed.
-- A new turntable: copy a settings file, change it, run `check all`, then the steps.
+- The steps can also run one at a time: `export`, `views`, `glb`, `render [--lane]`, `collect`, `stage`, `publish`.
+  RUN is `~/Documents/VT350/renders/vt350-lite-<N>-<name>-pages-<UTC>/`; each step uses the newest, `--run DIR`
+  picks another. Each ends with `<step>: OK`.
+- **The look** (owner, 2026-11-17): AgX Punchy, plastic specular 0.2, −1.4 EV; the key light turns and tilts with each
+  camera. `printer` hides the base board (`"hide": ["role_board_t0"]`).
+- **publish refuses** unless every part's licence is cleared in `cad/viewer/licences.json` (the whole printer's aren't
+  yet). `--upload 0` writes the pages but leaves the zip and GLB in RUN.
+- **Big files:** each lite-N gets its own release (`viewer-assets-lite-<N>`); files are named by their sha256 and
+  recorded in `notes/reference/assets.json`, which the pages workflow fetches and checks. Old releases stay, so a
+  page still on main keeps working until the new one merges.
+- A new subject: copy a settings file, change it, `check all`, then `release`.
 
 ### `cad/render/render_full.sh`: full colour renders on this laptop (#38)
 

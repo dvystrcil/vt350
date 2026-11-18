@@ -30,7 +30,11 @@ jobs:
         run: python3 platform/viewer/test_turntable_page.py 2>&1 | tee test-turntable-page.log
       - name: Confirm every turntable_page test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-turntable-page.log && tail -1 test-turntable-page.log | grep -qx 'OK'
-      - name: Every turntable settings file has what the steps need
+      - name: Test the viewer page maker and the shared publishing helpers
+        run: python3 platform/viewer/test_viewer_page.py 2>&1 | tee test-viewer-page.log
+      - name: Confirm every viewer_page test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-viewer-page.log && tail -1 test-viewer-page.log | grep -qx 'OK'
+      - name: Every pages settings file has what the steps need
         run: |
-          python3 cad/viewer/turntable.py check all 2>&1 | tee turntable-check.log
-          grep -qx 'check: OK' turntable-check.log
+          python3 cad/viewer/pages.py check all 2>&1 | tee pages-check.log
+          grep -qx 'check: OK' pages-check.log

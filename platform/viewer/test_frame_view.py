@@ -22,6 +22,19 @@ class Frame(unittest.TestCase):
         self.assertAlmostEqual(math.asin(r / math.dist(pos, look)), vfov / 2, places=9)
 
 
+class Put(unittest.TestCase):
+    def test_replace_all(self):
+        sc = {"views": [{"name": "a"}], "frame": {"x": 1}}
+        fv.put(sc, [{"name": "b"}], {"y": 2}, add=False)
+        self.assertEqual(sc, {"views": [{"name": "b"}], "frame": {"y": 2}})
+
+    def test_add_keeps_others_and_replaces_same_name(self):
+        sc = {"views": [{"name": "tt", "n": 1}, {"name": "compare", "n": 1}], "frame": {"turntable": 1}}
+        fv.put(sc, [{"name": "compare", "n": 2}], {"view": 2}, add=True)
+        self.assertEqual(sc["views"], [{"name": "tt", "n": 1}, {"name": "compare", "n": 2}])
+        self.assertEqual(sc["frame"], {"turntable": 1, "view": 2})
+
+
 class Turntable(unittest.TestCase):
     def test_ring(self):
         vs = fv.turntable(BOX, 4, [0, 30], 35)
