@@ -1,0 +1,37 @@
+{
+ "title": "VT350 · Left head on the",
+ "title_accent": "MadMax carriage",
+ "model": "lite-62, the viewer's toolhead export",
+ "prefix": "vt350-lite-62",
+ "elevations": [
+  -40,
+  -25,
+  -10,
+  0,
+  10,
+  25,
+  40
+ ],
+ "azimuths": 36,
+ "start_elevation": 25,
+ "foot": "Real Blender Cycles renders (render.py, the render colour map, AgX Punchy, −1.4 EV), one every 10° round the toolhead at seven heights, from 40° below to 40° above. The light turns with the camera, so every side is lit the same. Drag sideways to turn it, up or down to change the height; arrow keys work too. Only these angles exist: for any angle, use the live 3D viewer.",
+ "credits": "Parts: A4Tv2 and Orbiter (CC BY-NC-SA 4.0, DW-Tas / Orbiter Projects), MadMax carriage, plate and clips (GPL-3.0, zruncho3d, andrewmcgr), Beacon RevH (MIT, Beacon3D), O2S and Smart Sensor (CC0-1.0, Lorincz Electronics); blowers modelled from measurements. Each part keeps its licence; non-commercial use only.",
+ "links": [
+  {
+   "href": "index.html",
+   "text": "All reference pages"
+  },
+  {
+   "href": "toolhead-viewer.html",
+   "text": "Live 3D viewer"
+  },
+  {
+   "href": "https://github.com/DW-Tas/A4Tv2",
+   "text": "A4Tv2 (DW-Tas)"
+  },
+  {
+   "href": "https://github.com/zruncho3d/madmax",
+   "text": "MadMax (zruncho3d)"
+  }
+ ]
+}

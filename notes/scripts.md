@@ -36,6 +36,7 @@ flowchart TD
 | See what refresh *would* do, writing nothing | `python3 cad/scripts/refresh.py N --dry-run` | seconds |
 | Full colour renders of the whole printer, here on the laptop | `cad/render/render_full.sh [N] [samples]` (below) | ~6 min; prints the image paths |
 | Where is part X? What sits below/above Z? (no FreeCAD) | `jq` on `~/Documents/VT350/<model>.parts.json` (below; `part_index.py --check` first) | instant |
+| A GLB of part of the printer for the 3D viewer (licence-checked) | `cad/viewer/export_glb.sh [N] [selection.json]` (below) | a few minutes; prints the GLB path, `glb-export: OK` |
 | A render of a sweep pose (clash in red) | `export_pose.py`, then `gpu-batch-submit.py` (below) | ~5 min, result posted to the issue |
 | A new model change (lite-N) | a GUI pass script: Claude writes it, you click **Wait** | 5–40 min |
 
@@ -103,6 +104,58 @@ VT350_ONLY=MadMaxCarriage $APP freecadcmd $PWD/cad/scripts/derive_stls.py   # on
 
 Each remixed part is moved into its upstream part's print orientation. Its JOBS table pins which model each remix
 comes from.
+
+### `cad/viewer/export_glb.sh`: a GLB for the 3D viewer (#220)
+
+```bash
+cad/viewer/export_glb.sh                          # lite-62, cad/viewer/toolhead.json (the Left head on the gantry carriage)
+cad/viewer/export_glb.sh 62 cad/viewer/toolhead.json -- --decimate 0.5   # a smaller file
+```
+
+- **What happens:** FreeCAD runs under `xvfb-run` (no window) and exports only the parts the selection file names,
+  coloured as in the renders. Then every exported part is checked against `cad/viewer/licences.json`. An unknown or
+  non-shareable licence stops the run before any GLB exists. Then Blender writes the GLB.
+- **Output:** `~/Documents/VT350/renders/<model>-viewer-<UTC>/` with `export/`, `licences.log` (one line per part:
+  its licence and where that was read) and the `.glb`. The last lines are `licence-check: OK`, the GLB's size and
+  triangle count, and `glb-export: OK`. Never saves a model.
+- **A new part in a selection?** Add its licence rule to `licences.json` first, with where you read it.
+- **The page:** `cad/viewer/index.html` loads `toolhead.gltf.json` from beside it (export with `-- --decimate 0.5 --json 1`;
+  an artifact holds at most 15 MB per file and won't serve `.glb`). It rebuilds the GLB in memory, because the artifact
+  sandbox blocks three.js fetching the embedded `data:` buffer.
+- **The AC2 comparison render:** `python3 platform/viewer/frame_view.py <export>` adds a camera framed on the export to
+  its `scene.json`; then `blender -b -P platform/render/render.py -- <export> <out> 128` renders just that view. The page's
+  `RENDER_CAM` is that camera (printed by `frame_view.py`); the page shows the render beside the live model.
+
+### The public toolhead / printer pages: rebuilt from a new lite-N (#220)
+
+The reference site's turntable (36 angles × 7 heights of Cycles renders) and live 3D viewer (a GLB beside a Cycles
+render with a matching camera) are rebuilt from a model by one command. One settings file per subject,
+`cad/viewer/pages/<name>.json` (`toolhead`: both pages; `printer`: the turntable), holds every choice: what to
+export, the render look, the cameras, the page text, the release the big files go to.
+
+```bash
+cad/viewer/pages.py release toolhead --model 64     # export, licence check, cameras, GLB, 253 renders here (~40 min),
+                                                    # then preview folders RUN/page-turntable and RUN/page-viewer
+python3 -m http.server -d <RUN>/page-viewer         # look at them (the release step prints RUN)
+cad/viewer/pages.py publish toolhead                # upload the frames zip + GLB, rewrite notes/reference; then commit
+                                                    # on a branch, draft PR; the site updates when it merges
+
+cad/viewer/pages.py release printer --model 64 --lane   # the whole printer: renders on the GTX 970 lane (~18 s a frame)
+cad/viewer/pages.py collect printer                     # after the lane's comment on the issue; then stage, publish
+cad/viewer/pages.py check all                           # every settings file is complete (CI runs this)
+```
+
+- The steps can also run one at a time: `export`, `views`, `glb`, `render [--lane]`, `collect`, `stage`, `publish`.
+  RUN is `~/Documents/VT350/renders/vt350-lite-<N>-<name>-pages-<UTC>/`; each step uses the newest, `--run DIR`
+  picks another. Each ends with `<step>: OK`.
+- **The look** (owner, 2026-11-17): AgX Punchy, plastic specular 0.2, −1.4 EV; the key light turns and tilts with each
+  camera. `printer` hides the base board (`"hide": ["role_board_t0"]`).
+- **publish refuses** unless every part's licence is cleared in `cad/viewer/licences.json` (the whole printer's aren't
+  yet). `--upload 0` writes the pages but leaves the zip and GLB in RUN.
+- **Big files:** each lite-N gets its own release (`viewer-assets-lite-<N>`); files are named by their sha256 and
+  recorded in `notes/reference/assets.json`, which the pages workflow fetches and checks. Old releases stay, so a
+  page still on main keeps working until the new one merges.
+- A new subject: copy a settings file, change it, `check all`, then `release`.
 
 ### `cad/render/render_full.sh`: full colour renders on this laptop (#38)
 

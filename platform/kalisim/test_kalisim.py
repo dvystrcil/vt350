@@ -13,6 +13,7 @@ import shutil
 import sys
 import tempfile
 import unittest
+from unittest import mock
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
@@ -177,6 +178,35 @@ class Run(Base):
         r, _ = self.run_lines(["G28"])
         self.assertEqual((r.returncode, r.timeline, r.log), (1, [], "Config error\n"))
 
+    def test_klippy_gets_a_sandbox_home_with_printer_data(self):
+        # a config may name a file under ~/printer_data/config (Klipper's standard layout), e.g. [save_variables]:
+        # klippy creates the file but not the folder, and a batch run must not write into the real home
+        with open(os.path.join(self.kalico, "klippy", "__main__.py"), "w") as f:
+            f.write("import os, sys\nh = os.path.expanduser('~')\n"
+                    "open(sys.argv[sys.argv.index('-l') + 1], 'w').write(h + '|' + "
+                    "str(os.path.isdir(os.path.join(h, 'printer_data', 'config'))))\n")
+        r, work = self.run_lines(["G28"])
+        home, ok = r.log.split("|")
+        self.assertEqual((os.path.dirname(home), ok), (work, "True"))
+
+    def test_home_files_are_copied_into_the_sandbox_home(self):
+        # a config may need a file to exist before it starts, e.g. a [save_variables] file seeded from a template
+        src = os.path.join(self.tmp, "seed.cfg")
+        with open(src, "w") as f:
+            f.write("[Variables]\nx = 1\n")
+        with open(os.path.join(self.kalico, "klippy", "__main__.py"), "w") as f:
+            f.write("import os, sys\n"
+                    "p = os.path.expanduser('~/printer_data/config/saved.cfg')\n"
+                    "open(sys.argv[sys.argv.index('-l') + 1], 'w').write(open(p).read())\n")
+        r = kalisim.run(self.cfg, ["G28"], self.dicts, self.kalico,
+                        home_files={"printer_data/config/saved.cfg": src})
+        self.assertEqual(r.log, "[Variables]\nx = 1\n")
+
+    def test_home_files_stay_inside_the_sandbox(self):
+        for bad in ("/etc/x.cfg", "../x.cfg", "printer_data/../../x.cfg"):
+            with self.subTest(path=bad), self.assertRaises(ValueError):
+                kalisim.run(self.cfg, ["G28"], self.dicts, self.kalico, home_files={bad: self.cfg})
+
     def test_temp_workdir_is_removed(self):
         before = set(os.listdir(tempfile.gettempdir()))
         r = kalisim.run(self.cfg, ["G28", "G1 X1"], self.dicts, self.kalico)
@@ -294,6 +324,20 @@ class Cli(Base):
             f.write("G28\nG1 X1\n")
         out = kalisim.main(["run", "--config", self.cfg, "--gcode", gc, "--kalico", self.kalico, "-d", "/d/m.dict"])
         self.assertEqual([json.loads(l)["kind"] for l in out], ["set_position", "move"])
+
+
+    def test_home_file_option(self):
+        gc = os.path.join(self.tmp, "m.gcode")
+        with open(gc, "w") as f:
+            f.write("G28\n")
+        seen = {}
+        def fake(cfg, lines, dicts, kalico, python=None, workdir=None, home_files=None):
+            seen.update(home_files or {})
+            return kalisim.Result(0, "", [])
+        with mock.patch.object(kalisim, "run", fake):
+            kalisim.main(["run", "--config", self.cfg, "--gcode", gc, "--kalico", self.kalico, "-d", "/d/m.dict",
+                          "--home-file", "printer_data/config/a.cfg=/src/a.cfg", "--home-file", "b=/src/b"])
+        self.assertEqual(seen, {"printer_data/config/a.cfg": "/src/a.cfg", "b": "/src/b"})
 
 
 if __name__ == "__main__":

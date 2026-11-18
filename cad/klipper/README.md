@@ -8,7 +8,8 @@ The firmware is [Kalico](https://github.com/KalicoCrew/kalico) (user, 2026-11-09
 | `xy_mapping.json` | Model → printer XY: origin and axis directions. **Proposed** in [#116](https://github.com/dvystrcil/vt350/issues/116), not confirmed |
 | `frontend.cfg` | The web front end: **Fluidd** (owner, 2026-11-10). One include of a vendored client config in `platform/klipper/frontends/`; `python3 platform/klipper/frontend.py --config cad/klipper/frontend.cfg --use mainsail` switches it |
 | `toolchanger.cfg` | The tool changer: includes MadMax's macros (`madmax/`, unchanged) and sets the VT350's dock positions and two `[tool]`s. Included by `printer.cfg` |
-| `madmax/` | MadMax's `toolchanger.cfg` and `toolchanger_macros.cfg`, vendored unchanged from `zruncho3d/madmax@277a63c` (GPL-3.0) |
+| `tc_offsets.cfg` | Nozzle offsets (#186): includes MadMax's offset-calibration macros, sets the Mellow MultiHead Zero's pin (an Octopus endstop input, DIAG3), replaces the three macros that would fail on Kalico, and checks the save file before a tool change. Included by `printer.cfg` |
+| `madmax/` | MadMax's `toolchanger.cfg`, `toolchanger_macros.cfg`, `tc_offset_calibration_macros.cfg` and `offset_save_file.cfg`, vendored unchanged from `zruncho3d/madmax@277a63c` (GPL-3.0) |
 | `dock_params.py` | VT350-specific. Derives every `params_*` in `toolchanger.cfg` from the CAD dock poses and checks the file against them |
 | `toolchange.gcode` | Picks up and docks each head: `T0`, `T1`, `UNSELECT_TOOL` |
 | `toolchange_timeline.jsonl` | Generated. Every move Kalico planned for `toolchange.gcode`, one JSON line each (the input for #116 AC5) |
@@ -74,6 +75,7 @@ When a dock pose in the CAD changes, run `python3 cad/klipper/dock_params.py --c
 docker build -q --build-context kconfig=cad/klipper/kconfig -t vt350-kalisim platform/kalisim
 docker run --rm -v "$PWD:/repo:ro" vt350-kalisim sh -c 'cd /repo/platform && $KALISIM_PYTHON -m kalisim run \
     --config /repo/cad/klipper/printer.cfg --gcode /repo/cad/klipper/toolchange.gcode \
+    --home-file printer_data/config/offset_save_file.cfg=/repo/cad/klipper/madmax/offset_save_file.cfg \
     -d /opt/dicts/octopus-pro-h723.dict -d o2s_left=/opt/dicts/o2s-left.dict -d o2s_right=/opt/dicts/o2s-right.dict' \
     > cad/klipper/toolchange_timeline.jsonl
 ```
@@ -113,3 +115,19 @@ This prints one JSON line per planned move (`plugins/move_timeline.py`). A move 
 ## Licence
 
 `kalisim/` is **GPL-3.0-or-later**. `plugins/move_timeline.py` runs inside Kalico (GPL-3.0), and the core is meant to become a GPL-3.0 FreeCAD add-on (#116, "Design direction"). Every other file in this folder is GPL-3.0-or-later too, like the rest of the repo's own work. Kalico itself isn't vendored: the image fetches it.
+
+## Nozzle offsets (#186 AC2)
+
+Each head's XY and Z offset is measured on the **Mellow MultiHead Zero** (placed in lite-61: on the bed's front 2020, ball at printer X 175, Y −12.5, its top about Z 10). The macros are MadMax's `tc_offset_calibration_macros.cfg` (written for Nudge): `TC_GET_PROBE_POSITION` with T0 over the Zero, then `TC_FIND_TOOL_OFFSETS TOOL=1`. The results go to `~/printer_data/config/offset_save_file.cfg` (`[save_variables]`).
+
+- **The NC switch needs no inversion.** klipper-toolchanger's `tools_calibrate.md`: "normally closed: nudge (no inversion)". `tc_offsets.cfg` uses `^PG11` (pull-up; the Octopus Pro's DIAG3). It goes to an Octopus endstop input (owner, 2026-11-17): DIAG3, the first one free (X, Y, Z use `PG6`, `PG9`, `PG10`). The cable route from the bed is still open (#186).
+- **MadMax's copies don't run on Kalico.** They read `printer.tools_calibrate.last_x_result`, `last_y_result` and `last_z_result`, which klipper-toolchanger's module reports. Kalico's own `tools_calibrate`, which the build keeps (#116, option A), reports `last_result` (an x, y, z tuple) instead. Kalico's Jinja raises `UndefinedError` on the missing field, so the macro stops and nothing is saved. `tc_offsets.cfg` replaces `_TC_SHOW_LAST_RESULT`, `_TC_SAVE_PROBE_POSITION` and `_TC_UPDATE_OFFSETS` with copies that read `last_result.x/.y/.z`.
+- **A failed offset run can't save the probe position as an offset.** After `TOOL_LOCATE_SENSOR`, Kalico's `last_result` is the sensor's position. It becomes an offset only when `TOOL_CALIBRATE_TOOL_OFFSET` succeeds. `_TC_UPDATE_OFFSETS` refuses to save while the two are equal.
+- `test_kalico_batch.py` (`TcOffsets`) runs the sequence in batch mode and checks that the saved position and the T1 offset equal what Kalico logged. It also checks that MadMax's own copies fail. Batch mode has no probe to touch: each probing move runs its full 100 mm, so the test lowers Z `position_min` and loosens `samples_tolerance` in a wrapper config. The values it measures mean nothing; only the plumbing is checked.
+- **The saved offsets are applied on every tool change.** `toolchanger.cfg` defines `T0` and `T1` as MadMax's `toolboard_<n>.cfg` does: each calls `_CHANGE_TOOL` (`toolchanger_macros.cfg`), which clears the old tool's offsets (keeping any Z tweak made since), selects the new tool, applies its saved `t<n>_offset_x/y/z` with `SET_GCODE_OFFSET`, and moves the part-fan speed to it. The macros must come **before** the `[tool]` sections: klipper-toolchanger registers its own `T<n>` as each `[tool]` loads, unless one already exists ("gcode command T0 already registered" otherwise). They also need MadMax's `variable_color`, which its macros set.
+- **Copy the save file before the first tool change.** `_CHANGE_TOOL` reads every tool's offsets from `~/printer_data/config/offset_save_file.cfg`; start it as a copy of `madmax/offset_save_file.cfg`. Without it, `_CHECK_SAVED_OFFSETS` stops the tool change and names the missing variables (rather than `_CHANGE_TOOL` failing part-way on a Jinja error).
+- **Part fans:** `printer.cfg` has `[fan_generic part_fan_t0]`/`part_fan_t1`, which `_CHANGE_TOOL` and MadMax's `M106`/`M107` drive, on the O2S's 2/3-wire fan pins (`!PA10`, enable `PB14`). **PLACEHOLDER** until the part fans are chosen; a 4-wire fan uses `PB0`.
+- `TcOffsets` also checks: the measured T1 offset is the G-code offset after `T1`; each tool gets its own saved offset and a Z tweak carries over; the part fan follows the tool; a save file without the offsets stops the change. In batch mode a fan change takes effect only once a move follows it (Kalico's fan requests are flushed by the move queue; a dwell isn't enough), so the fan test moves before each read. **A fan set just before a tool change reaches the new tool:** `_CHANGE_TOOL` reads the fan's speed when it starts, and Kalico reports a fan's speed only once its request is applied (when the queued moves flush), so without a flush it read the old speed and the new tool's fan started off. Each `T<n>` starts with `M400`; the test sets the fan, moves, then changes tool.
+
+`kalisim` runs klippy with a sandbox `HOME` that has an empty `printer_data/config/`, so the `[save_variables]` file is created there and not in your own home folder. `home_files` (`--home-file REL=SRC` on the command line) copies a file in first: the tests seed the save file that way.
+

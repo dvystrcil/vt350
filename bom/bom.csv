@@ -1,0 +1,2 @@
+category,item,qty_needed,qty_owned,vendor,link,unit_price,currency,status,stage,notes
+toolchanger,Mellow MultiHead Zero (black) nozzle offset probe,1,0,West3D (SKU MEL2020),https://west3d.com/products/mellow-multiohead-zero-precision-xyz-nozzle-offset-calibration-tool-black,19.99,USD,to buy,#12,"Price from the vendor page, 2026-11-17. #186: measures each head's XY+Z offset; in the model since lite-61, on the bed frame's front 2020 (ball at printer X 175, Y -12.5). Used for calibration in #15. Wired to an Octopus endstop input (DIAG3); cable route open (#186)."

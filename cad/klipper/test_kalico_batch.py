@@ -40,6 +40,11 @@ def dicts(names=MCUS):
     return [(m, os.path.join(DICTS, f"{MCUS[m]}.dict")) for m in names]
 
 
+# A real install starts its offset save file as a copy of MadMax's (cad/klipper/README.md, "Nozzle offsets"): the
+# T<n> macros read every tool's offsets from it (tc_offsets.cfg)
+SAVE_SEED = {"printer_data/config/offset_save_file.cfg": os.path.join(HERE, "madmax", "offset_save_file.cfg")}
+
+
 class Base(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -162,7 +167,7 @@ class Toolchange(Base):
     def setUpClass(cls):
         super().setUpClass()
         cls.p = dock_params.derive_committed()
-        cls.r = kalisim.run(CFG, read(HERE, "toolchange.gcode").splitlines(), dicts(), KALICO)
+        cls.r = kalisim.run(CFG, read(HERE, "toolchange.gcode").splitlines(), dicts(), KALICO, home_files=SAVE_SEED)
 
     def test_module_is_the_pinned_klipper_toolchanger(self):
         sha = re.search(r"(?m)^ARG TOOLCHANGER_SHA=([0-9a-f]{40})$", read(KALISIM, "Dockerfile")).group(1)
@@ -233,7 +238,8 @@ class Frontends(Base):
                 cfg = os.path.join(d, "cad", "klipper", "frontend.cfg")
                 frontend.main(["--config", cfg, "--use", name])
                 r = kalisim.run(os.path.join(d, "cad", "klipper", "printer.cfg"),
-                                read(HERE, "toolchange.gcode").splitlines() + extra, dicts(), KALICO)
+                                read(HERE, "toolchange.gcode").splitlines() + extra, dicts(), KALICO,
+                                home_files=SAVE_SEED)
                 self.assertEqual(r.returncode, 0, r.log[-2000:])
                 # the logged config shows which client.cfg loaded: the two differ only in spacing, e.g. CANCEL_PRINT's
                 # "client.park_at_cancel | default(false)" (Fluidd) vs "client.park_at_cancel|default(false)" (Mainsail)
@@ -242,6 +248,143 @@ class Frontends(Base):
                 self.assertIn(marker[name], r.log)
                 self.assertNotIn("SET_PAUSE", " ".join(re.findall(r'(?m)^Unknown command:"(\w+)"$', r.log)))
                 self.assertEqual(r.timeline, want)
+
+
+# The Mellow MultiHead Zero's ball, printer coordinates: cad/data/logs/lite61_offset_probe.log "nozzle reaches all 4
+# sides: X -255..-235 ... Y 8..28" -> centre model (-245, 18) -> printer (175, -12.5); its top is about Z 10.
+ZERO_XY = (175.0, -12.5)
+
+
+class TcOffsets(Base):
+    """vt350#186 AC2: MadMax's offset macros save what Kalico's tools_calibrate measured, not 0 and not an error.
+
+    Batch mode has no probe to touch: every probing move simply runs its full 100 mm (Kalico's run_probe max_distance)
+    or to the axis limit. So the run starts 100 mm above the ball's top, and the wrapper below lowers Z position_min
+    and loosens samples_tolerance so the synthetic sequence can finish. The numbers it measures mean nothing; the test
+    only checks that the macros carry them into the save file unchanged.
+    """
+
+    SEQ = ["G28", "G90", "G1 X175 Y175 Z10 F6000", "INITIALIZE_TOOLCHANGER",
+           "T0", f"G0 X{ZERO_XY[0]} Y{ZERO_XY[1]} Z110 F6000", "TC_GET_PROBE_POSITION",
+           "T1", "_NUDGE_MOVE_OVER_PROBE", "TOOL_CALIBRATE_TOOL_OFFSET", "_TC_UPDATE_OFFSETS TOOL=1"]
+
+    # _SHOW N=<n> records the G-code offset and both part fans' speeds as show<n> in the save file. (Not a RESPOND:
+    # batch mode discards klippy's replies, and only some reach the log.)
+    SHOW = ("[gcode_macro _SHOW]\ngcode:\n  {% set o = printer.gcode_move.homing_origin %}\n"
+            "  {% set v = \"'%.3f %.3f %.3f %.2f %.2f'\" % (o.x, o.y, o.z, printer['fan_generic part_fan_t0'].speed, "
+            "printer['fan_generic part_fan_t1'].speed) %}\n"
+            "  SAVE_VARIABLE VARIABLE=show{params.N} VALUE=\"{v}\"\n")
+
+    def run_macros(self, lines, extra="", seed=None):
+        """(Result, saved variables) for lines, with the save file in a temporary copy of MadMax's (or seed's text)."""
+        with tempfile.TemporaryDirectory() as d:
+            shutil.copy(os.path.join(HERE, "madmax", "offset_save_file.cfg"), os.path.join(d, "offsets.cfg"))
+            if seed is not None:
+                with open(os.path.join(d, "offsets.cfg"), "w") as f:
+                    f.write(seed)
+            cfg = os.path.join(d, "wrap.cfg")
+            with open(cfg, "w") as f:
+                f.write(f"[include {CFG}]\n{self.SHOW}{extra}"
+                        "[stepper_z]\nposition_min: -1000\nhoming_positive_dir: false\n"
+                        "[tools_calibrate]\nsamples_tolerance: 1000\n"
+                        f"[save_variables]\nfilename: {d}/offsets.cfg\n")
+            r = kalisim.run(cfg, lines, dicts(), KALICO, workdir=d)
+            saved = dict(re.findall(r"(?m)^(\w+) = (.*)$", read(d, "offsets.cfg")))
+        return r, saved
+
+    @staticmethod
+    def logged(r, what):
+        """The last x, y, z Kalico logged as "Sensor location at x,y,z" or "Tool offset is x,y,z", to 3 places."""
+        m = re.findall(rf"(?m)^{what} (?:at|is) ([-0-9.]+),([-0-9.]+),([-0-9.]+)$", r.log)
+        return [round(float(v), 3) for v in m[-1]]
+
+    def test_saves_what_kalico_measured(self):
+        r, saved = self.run_macros(self.SEQ)
+        self.assertEqual(r.returncode, 0, r.log[-3000:])
+        loc, off = self.logged(r, "Sensor location"), self.logged(r, "Tool offset")
+        self.assertEqual([float(saved[f"nudge_position_{a}"]) for a in "xyz"], [loc[0], loc[1], round(loc[2] + 3, 3)])
+        self.assertEqual([float(saved[f"t1_offset_{a}"]) for a in "xyz"], off)
+        self.assertNotEqual(off, [0.0, 0.0, 0.0])     # batch mode's synthetic contacts give T1 a non-zero Z offset
+        self.assertEqual(round(loc[0], 3), ZERO_XY[0])
+
+    def test_madmax_s_own_macros_fail_on_kalico(self):
+        # the reason tc_offsets.cfg replaces them: Kalico reports last_result, not last_x/y/z_result
+        r, saved = self.run_macros(self.SEQ, f"[include {os.path.join(HERE, 'madmax', 'tc_offset_calibration_macros.cfg')}]\n"
+                                             "[tools_calibrate]\npin: ^PG11\n")
+        self.assertIn("UndefinedError: 'dict object' has no attribute 'last_x_result'", r.log)
+        self.assertEqual(saved["nudge_position_x"], "-1000")
+        self.assertEqual(saved["t1_offset_z"], "0.0")
+
+    def test_no_offset_run_saves_nothing(self):
+        # straight after TOOL_LOCATE_SENSOR, last_result is the sensor's position, not an offset
+        r, saved = self.run_macros(self.SEQ[:7] + ["_TC_UPDATE_OFFSETS TOOL=1"])
+        self.assertIn("last_result is the sensor position, not an offset", r.log)
+        self.assertEqual([saved[f"t1_offset_{a}"] for a in "xyz"], ["0.0", "0.0", "0.0"])
+
+    @staticmethod
+    def shows(lines):
+        """lines with each "_SHOW" numbered: _SHOW N=1, N=2, ..."""
+        n, out = 0, []
+        for l in lines:
+            if l == "_SHOW":
+                n += 1
+                l = f"_SHOW N={n}"
+            out.append(l)
+        return out
+
+    @staticmethod
+    def states(saved):
+        """[(origin x, y, z, part fan t0, t1)] from each _SHOW, in order."""
+        n = sorted(int(k[4:]) for k in saved if re.fullmatch(r"show\d+", k))
+        return [tuple(float(v) for v in saved[f"show{i}"].strip("'").split()) for i in n]
+
+    START = ["G28", "G90", "G1 X175 Y175 Z10 F6000", "INITIALIZE_TOOLCHANGER"]
+
+    def test_measured_offset_is_applied_on_the_tool_change(self):
+        r, saved = self.run_macros(self.shows(self.SEQ + ["T0", "_SHOW", "T1", "_SHOW"]))
+        self.assertEqual(r.returncode, 0, r.log[-3000:])
+        off = self.logged(r, "Tool offset")
+        self.assertEqual([s[:3] for s in self.states(saved)], [(0.0, 0.0, 0.0), tuple(off)])
+
+    def test_each_tool_gets_its_own_saved_offset(self):
+        seed = read(HERE, "madmax", "offset_save_file.cfg").replace("t1_offset_x = 0.0", "t1_offset_x = 0.123") \
+            .replace("t1_offset_y = 0.0", "t1_offset_y = -0.456").replace("t1_offset_z = 0.0", "t1_offset_z = 0.789")
+        r, saved = self.run_macros(self.shows(self.START + [
+            "T0", "_SHOW", "T1", "_SHOW", "T0", "_SHOW",
+            # a Z tweak made while printing carries over to the next tool (MadMax's modified_z)
+            "T1", "SET_GCODE_OFFSET Z_ADJUST=0.05", "T0", "_SHOW"]), seed=seed)
+        self.assertEqual(r.returncode, 0, r.log[-3000:])
+        self.assertEqual([s[:3] for s in self.states(saved)],
+                         [(0.0, 0.0, 0.0), (0.123, -0.456, 0.789), (0.0, 0.0, 0.0), (0.0, 0.0, 0.05)])
+
+    def test_part_fan_follows_the_tool(self):
+        # Batch mode applies a fan change only once motion follows it (Kalico's fan request queue is flushed by the
+        # move queue; a dwell isn't enough), so each change is followed by a move before it's read
+        mv = lambda x: [f"G1 X{x} Y175 F6000", "M400", "_SHOW"]
+        r, saved = self.run_macros(self.shows(self.START + ["T0", "M106 S255"] + mv(170) + ["T1"] + mv(180)
+                                              + ["M107"] + mv(170)))
+        self.assertEqual(r.returncode, 0, r.log[-3000:])
+        self.assertEqual([s[3:] for s in self.states(saved)], [(1.0, 0.0), (0.0, 1.0), (0.0, 0.0)])
+
+    def test_fan_set_just_before_a_change_reaches_the_new_tool(self):
+        # A slicer may set the fan, make a move, then change tools. _CHANGE_TOOL reads the fan speed when it starts,
+        # and Kalico reports a fan's speed only once its request is applied (when the queued moves flush): without a
+        # flush first, it reads the old speed and the new tool's fan starts off
+        r, saved = self.run_macros(self.shows(self.START + ["T0", "M106 S127.5", "G1 X170 Y175 F6000", "T1",
+                                                            "G1 X180 Y175 F6000", "M400", "_SHOW"]))
+        self.assertEqual(r.returncode, 0, r.log[-3000:])
+        self.assertEqual([s[3:] for s in self.states(saved)], [(0.0, 0.5)])
+
+    def test_missing_offsets_stop_the_tool_change_with_a_fix(self):
+        r, _ = self.run_macros(self.START + ["T1"], seed="[Variables]\nt0_offset_x = 0.0\n")
+        self.assertIn("the offset save file has no t0_offset_y, t0_offset_z, t1_offset_x, t1_offset_y, t1_offset_z: "
+                      "copy madmax/offset_save_file.cfg", r.log)
+        self.assertNotIn("Selected tool 1", r.log)
+
+    def test_no_result_yet_is_an_error(self):
+        r, saved = self.run_macros(["G28", "_TC_SAVE_PROBE_POSITION"])
+        self.assertIn("tools_calibrate has no result yet", r.log)
+        self.assertEqual(saved["nudge_position_x"], "-1000")
 
 
 if __name__ == "__main__":
