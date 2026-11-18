@@ -21,6 +21,17 @@ class Cards(unittest.TestCase):
         self.assertEqual(sorted(have), sorted(want), "run python3 cad/materials/build_cards.py")
         for rel in want: self.assertEqual(have[rel], want[rel], f"{rel}: run build_cards.py")
 
+    def test_bought_cards_are_the_generated_ones(self):
+        want = build_cards.bought_cards()
+        have = {os.path.relpath(p, build_cards.OUT_BOUGHT): open(p, encoding="utf-8").read()
+                for p in self.paths if p.startswith(build_cards.OUT_BOUGHT + os.sep)}
+        self.assertEqual(sorted(have), sorted(want), "run python3 cad/materials/build_cards.py")
+        for rel in want: self.assertEqual(have[rel], want[rel], f"{rel}: run build_cards.py")
+
+    def test_no_card_outside_the_generated_folders(self):
+        for p in self.paths:
+            self.assertTrue(p.startswith((build_cards.OUT + os.sep, build_cards.OUT_BOUGHT + os.sep)), p)
+
     def test_each_card_names_itself_by_its_file(self):
         for p, c in self.cards.items():
             self.assertEqual(c.get("Name"), os.path.basename(p)[:-len(".FCMat")], p)
@@ -38,6 +49,15 @@ class Cards(unittest.TestCase):
                 self.assertNotIn("Density", c, p); self.assertIn("not published", c["ReferenceSource"]); continue
             m = re.fullmatch(r"([0-9.]+) kg/m\^3", c.get("Density", ""))
             self.assertTrue(m and 100 < float(m.group(1)) < 25000, f"{p}: Density {c.get('Density')!r}")
+
+    def test_bought_density_gives_the_published_mass(self):
+        # the Default solids at the card's density, plus the part's solids already in other materials
+        for p in json.load(open(build_cards.BOUGHT))["parts"]:
+            c = matlib.read_card(os.path.join(build_cards.OUT_BOUGHT, p["name"] + ".FCMat"))
+            rho = float(re.fullmatch(r"([0-9.]+) kg/m\^3", c["Density"]).group(1))
+            self.assertAlmostEqual(p["default_mm3"] * rho * 1e-6 + p["known_g"], p["mass_g"], delta=0.01, msg=p["name"])
+            self.assertTrue(p["source_url"].startswith("https://") and "read 20" in p["source"], p["name"])
+            self.assertIn("NOT A REAL MATERIAL", c["Description"])
 
     def test_every_colour_has_a_value_and_says_where_from(self):
         used = {c["colour"] for g in self.data["grades"] for c in g["colours"]}

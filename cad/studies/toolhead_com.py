@@ -58,7 +58,8 @@ def main():
         r, p = [], par.get(o.Name)
         while p is not None: r.append(p.Label); p = par.get(p.Name)
         return r
-    leaves = [o for o in doc.Objects if linkgeo.is_leaf(o)]
+    # a stand-in (StandInFor, vt350#195) is a cheap copy of a real part that is also in the model: count the real one
+    leaves = [o for o in doc.Objects if linkgeo.is_leaf(o) and not getattr(o, "StandInFor", "")]
     P = {o.Name: set(path(o)) for o in leaves}
     def one(label, under=None):
         c = [o for o in leaves if o.Label == label and (under is None or under in P[o.Name])]

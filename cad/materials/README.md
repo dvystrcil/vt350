@@ -36,3 +36,22 @@ python3 cad/materials/build_cards.py    # rewrite the cards (refuses while a col
 
 Checks: `test_cards.py` (plain python, CI: the cards match the data, unique UUIDs, a density and source on each,
 every colour valued) and `test_cards_fc.py` (FreeCAD loads all of them: `$APP freecadcmd $PWD/cad/materials/test_cards_fc.py`).
+
+## Bought parts (`Bought/`)
+
+A bought part's solids in the model are a mockup: their volume isn't the real part's, and most carry FreeCAD's
+weightless "Default" material. Where the maker publishes a mass, `bought.json` records it with its source, and
+`build_cards.py` writes one card per part with an **effective density**: the one that makes the part's Default
+solids, plus its solids already in another material, add up to that mass. It is **not a real material**, and each
+card says so.
+
+| Card | Published mass | Source | Effective density |
+|---|---|---|---|
+| Bought LDO Orbiter v2.5 with motor | ~135 g | orbiterprojects.com, Orbiter v2.0 ("Weight reduced to ~135 grams"; v2.5 uses the v2.0 body; the motor isn't named, the owner's is the 36STH20) | 2403.5 kg/m³ |
+| Bought Beacon RevH Normal | 3.5 g | beacon3d.com ("the 3.5g Beacon"; the cable not counted) | 1389.8 kg/m³ |
+
+The density depends on the modelled volume, measured on the model named in `bought.json` (`measured_on`). The pass
+that assigns these cards re-measures it and refuses to save if it differs. If a part's mockup changes, update
+`default_mm3` / `known_g` and rebuild. Parts with no published mass (the blowers, the hotend, the O2S, the Smart
+Sensor) stay Default until the owner weighs them (#60 AC6). `test_cards.py` checks that each card gives its
+published mass.

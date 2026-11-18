@@ -6,7 +6,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(HERE)), "platfor
 sys.path.insert(0, HERE)
 import matlib, build_cards  # noqa: E402
 
-want = {t.split('Name: "')[1].split('"')[0]: t for t in build_cards.cards().values()}
+want = {t.split('Name: "')[1].split('"')[0]: t for t in list(build_cards.cards().values()) + list(build_cards.bought_cards().values())}
 mm = matlib.use_dir(HERE)
 got = {m.Name: m for _, m in mm.Materials.items() if m.LibraryName == "Custom"}
 bad = []

@@ -1,0 +1,27 @@
+{
+ "_about": "Bought parts with a published mass (vt350#60). The model's solids for a bought part are a mockup: their volume isn't the real part's, and most carry FreeCAD's weightless Default material. Each part here gets one card with an EFFECTIVE density, so that its Default solids plus its solids that already have a material add up to the published mass: density = (mass_g - known_g) / default_mm3. default_mm3 and known_g are measured on measured_on (cad/passes lite-63 re-measures them and refuses to save if they've changed). Only published figures go here; parts without one stay Default until the owner weighs them (vt350#60 AC6).",
+ "parts": [
+  {
+   "name": "Bought LDO Orbiter v2.5 with motor",
+   "mass_g": 135,
+   "source_url": "https://www.orbiterprojects.com/orbiter-v2-0/",
+   "source": "Orbiter Projects (the designer), Orbiter v2.0 page, read 2026-11-17: \"Weight reduced to ~135 grams\". The Orbiter v2.5 page says v2.5 uses the v2.0 body and gives no weight of its own. Neither page says which motor the figure is with: the owner's is the LDO 36STH20 (notes/parts-owned.md), the model's mockup has the 36STH17. The ~140 g figure some resellers quote is the older Orbiter v1.x's, 'with the 17mm stepper'.",
+   "selector": "every solid under the group 'Orbiter V2.0 Mockup' in each head, except the bowden tubes (Bowden Left, Bowden Right) and stand-ins",
+   "measured_on": "vt350-lite-62.FCStd",
+   "default_mm3": 48343.73,
+   "known_g": 18.806,
+   "default_solids": 24
+  },
+  {
+   "name": "Bought Beacon RevH Normal",
+   "mass_g": 3.5,
+   "source_url": "https://beacon3d.com/",
+   "source": "beacon3d.com home page, read 2026-11-17: \"Attach the 3.5g Beacon to your printer toolhead\" (no revision named; the cable not counted).",
+   "selector": "the solid 'Beacon RevH Normal (Beacon CAD, MIT)' on the carriage",
+   "measured_on": "vt350-lite-62.FCStd",
+   "default_mm3": 2518.4,
+   "known_g": 0.0,
+   "default_solids": 1
+  }
+ ]
+}
