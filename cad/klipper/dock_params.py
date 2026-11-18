@@ -32,7 +32,9 @@ import limits  # noqa: E402
 # git blob ids of the vendored files at zruncho3d/madmax@277a63cbb696f937fbf9d883a8d8c46a658cd6d9,
 # Configs/r2pdx_config-v2-Kalico-Beacon-2025-07-05/klipper-toolchanger/<name> (GPL-3.0)
 UPSTREAM_BLOBS = {"toolchanger.cfg": "06e94bda4a9a87f0694d5baf2c34b7615d05e177",
-                  "toolchanger_macros.cfg": "3f4c8abce0493be9daf21a5f4e987b0210056980"}
+                  "toolchanger_macros.cfg": "3f4c8abce0493be9daf21a5f4e987b0210056980",
+                  "tc_offset_calibration_macros.cfg": "f3d1eb2395484f296792c6fdd96c2e84f6f9d7ae",   # vt350#186
+                  "offset_save_file.cfg": "45b12b23f7284cb64803572d1dea9d201c25b609"}
 Y_PARAMS = ("params_attach_y", "params_close_y", "params_safe_shuttle_y", "params_safe_toolhead_y")
 # MadMax's detach move: toolboard_0.cfg params_park_x 42 -> params_detach_x 47 (blob be0eeeac), toolboard_1.cfg
 # 435 -> 440 (blob 7b8ee98a), same commit. Away from the keyslot plate.
