@@ -81,7 +81,7 @@ function start(cfg) {
   const az = document.getElementById("az"), rAz = document.getElementById("r-az"), hb = document.getElementById("heights");
   const total = ELEV.length * NAZ;
   document.getElementById("f-n").textContent = total;
-  let ei = 1, ai = 0, loaded = 0, failed = 0;
+  let ei = ELEV.includes(cfg.start_elevation) ? ELEV.indexOf(cfg.start_elevation) : Math.floor(ELEV.length / 2), ai = 0, loaded = 0, failed = 0;
   const cache = ELEV.map(e => Array.from({ length: NAZ }, (_, i) => {
     const im = new Image();
     im.onload = () => { loaded++; progress(); };
