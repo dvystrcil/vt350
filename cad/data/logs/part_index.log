@@ -1,2 +1,4 @@
-[    0.0s] fresh   /work/vt350-lite-65-20261118t062927-429c-sweep/in/vt350-lite-65.parts.json
-[    0.0s] part_index: done (1 models)
+[    1.8s] opened /work/vt350-lite-66-20261118t070219-38f7-sweep/in/vt350-lite-66.FCStd
+[   34.7s] written /work/vt350-lite-66-20261118t070219-38f7-sweep/in/vt350-lite-66.parts.json  1537 parts, headless boxes in 32.74 s, 632764 bytes
+[   34.9s] part_index: done (1 models)
+[   35.0s] litepool: peak RSS: workers max 1627 MB, sum 3254 MB; parent 1636 MB
