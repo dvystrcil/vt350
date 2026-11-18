@@ -1,0 +1,102 @@
+{
+ "Left": {
+  "bosses": {
+   "front-top": {
+    "axis": [
+     -67.9,
+     3.039
+    ],
+    "spacer_mm": 11.0,
+    "fill_mm3": 0.0,
+    "left_open_mm3": 49.6
+   },
+   "rear-top": {
+    "axis": [
+     -67.9,
+     23.039
+    ],
+    "spacer_mm": 7.48,
+    "fill_mm3": 8.0,
+    "left_open_mm3": 0.0
+   },
+   "rear-bottom": {
+    "axis": [
+     -13.9,
+     23.039
+    ],
+    "spacer_mm": 7.48,
+    "fill_mm3": 49.0,
+    "left_open_mm3": 0.0
+   }
+  },
+  "duct_mm3": [
+   11568.7,
+   10469.3
+  ],
+  "spacer_mm3": 2762.3,
+  "web_mm2": 989.7,
+  "print_face_deg": 10.0
+ },
+ "Right": {
+  "bosses": {
+   "front-top": {
+    "axis": [
+     -67.9,
+     3.039
+    ],
+    "spacer_mm": 11.0,
+    "fill_mm3": 0.0,
+    "left_open_mm3": 49.6
+   },
+   "rear-top": {
+    "axis": [
+     -67.9,
+     23.039
+    ],
+    "spacer_mm": 7.48,
+    "fill_mm3": 8.0,
+    "left_open_mm3": 0.0
+   },
+   "rear-bottom": {
+    "axis": [
+     -13.9,
+     23.039
+    ],
+    "spacer_mm": 7.48,
+    "fill_mm3": 56.0,
+    "left_open_mm3": 0.0
+   }
+  },
+  "duct_mm3": [
+   11589.1,
+   10496.7
+  ],
+  "spacer_mm3": 2864.9,
+  "web_mm2": 1041.5,
+  "print_face_deg": 10.0
+ },
+ "com": {
+  "Left": {
+   "mass_g": [
+    357.17,
+    359.51
+   ],
+   "com_x": [
+    -411.735,
+    -411.929
+   ],
+   "shift_mm": -0.194
+  },
+  "Right": {
+   "mass_g": [
+    357.16,
+    359.65
+   ],
+   "com_x": [
+    -81.995,
+    -81.758
+   ],
+   "shift_mm": 0.237
+  }
+ }
+}

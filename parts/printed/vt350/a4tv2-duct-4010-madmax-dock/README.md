@@ -1,5 +1,3 @@
-> Copy of [`cad/derived/a4tv2-duct-4010-madmax-dock/README.md`](../../../../cad/derived/a4tv2-duct-4010-madmax-dock/README.md). Only the **current** printable file is in this folder; see `../README.md`.
-
 # A4Tv2 4010 ducts with MadMax dock bosses (derived from DW-Tas's A4Tv2)
 
 **This folder is licensed CC BY-NC-SA 4.0 (see `LICENSE` here), not GPL-3.0 like the rest of this repo.** It's a modified
@@ -15,12 +13,14 @@ version of a CC BY-NC-SA 4.0 part: attribution required, **non-commercial only**
 | Why | On this printer (a Voron Trident 350 with MadMax and A4Tv2 heads), the dock brackets collided with the Crossbow lever and limited X reach. The idea of carrying the dock screws on the cowl comes from the MadMax community (an A4T v1 remix posted on Discord, no CAD published; see also zruncho3d/madmax PR #34). See `cad/README.md`, `lite23_cowl_docks.py`, and issue #53 |
 | How it was made | `cad/passes/lite23_cowl_docks.py` adds the bosses to the ducts as placed in the printer model; `cad/scripts/derive_stls.py` moves each into the upstream STL's frame (registered to the original duct, max vertex error 0.0064 mm) |
 
-**⚠ Not yet print-oriented.** These STLs sit in DW-Tas's original print frame so they can be compared with the
-upstream file, but in that frame the bosses go 9.36 mm below the bed plane. A print orientation for the remix still has
-to be chosen. It also sets the layer direction of the bosses, which carry the dock's pull, so it's tracked with the
-stiffness check in issue #53 (AC8). Don't print these yet.
+**Print-oriented since lite-67 (2026-11-17, vt350#59).** lite-67 (`cad/passes/lite67_dock_spacer.py`) cut the bosses
+off on the duct's print face. What stays of each boss is a stub flush with that face, filled down to the duct where its
+outside angles away, so these STLs sit flat in DW-Tas's own print orientation (48.95 × 63.32 × 23.66 mm, as the
+upstream duct) and print without supports. The cut-off pieces are the separate spacer in `../a4tv2-dock-spacer/`. The
+two top inserts moved into the duct behind the cut (≥ 1 mm of duct beyond each pocket); the rear-bottom insert stays in
+the spacer, since the duct behind that boss is only 5.2 mm deep. lite-23's version, with the bosses, is in git history.
 
-**Hardware:** 3 × Voron M3 heat-set inserts and 3 × M3 FHCS per duct. The screws must be **magnetic steel**, not stainless:
+**Hardware:** 3 × Voron M3 heat-set inserts (2 in the duct, 1 in the spacer) and 3 × M3 FHCS per duct. The screws must be **magnetic steel**, not stainless:
 the dock holds the parked screw heads with magnets.
 
 **Source:** the original STEP/STL linked above plus `lite23_cowl_docks.py` (the boss geometry is fully parametric there:

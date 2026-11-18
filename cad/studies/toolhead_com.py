@@ -13,7 +13,7 @@
 import os, re, sys, time
 
 WORK = os.environ.get("VT350_WORK", "/home/dan/Code/vt350/cad/data")
-MODEL = os.environ.get("VT350_MODEL", "/home/dan/Documents/VT350/vt350-lite-66.FCStd")
+MODEL = os.environ.get("VT350_MODEL", "/home/dan/Documents/VT350/vt350-lite-67.FCStd")
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path[:0] = [HERE] + [os.path.join(os.path.dirname(os.path.dirname(HERE)), d) for d in ("platform/freecad",)]
 HEADS = {"Left": dict(group="Left Toolhead", dock="Left Dock", copy="COMPOUND003", tube="Bowden Left",

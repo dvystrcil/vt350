@@ -16,13 +16,20 @@ TOL = 0.05
 DUCTS = f"{REPO}/cad/derived/a4tv2-duct-4010-madmax-dock"
 ARMS = f"{REPO}/cad/derived/madmax-andrewmcgr-dock-arm"
 CARRIAGE = f"{REPO}/cad/derived/madmax-andrewmcgr-carriage-beacon"
+SPACERS = f"{REPO}/cad/derived/a4tv2-dock-spacer"
 ONLY = os.environ.get("VT350_ONLY")          # write only the jobs whose output name contains this
-# (old model, new model, output, upstream STL, old label + group, new label + group, which solid: "low" = lowest Z)
+# (old model, new model, output, upstream STL, old label + group, new label + group, which solid: "low" = lowest Z;
+#  "flat" = a part of our own with no upstream: printed on its largest planar face)
 JOBS = [
-    (22, 23, f"{DUCTS}/A4Tv2 Duct-4010-left MadMax dock.stl", f"{UP}/A4Tv2_4010_Ducts.stl",
+    # lite-67 (vt350#59) cut the bosses off on the print face: the ducts come from lite-67, the spacers print flat
+    (22, 67, f"{DUCTS}/A4Tv2 Duct-4010-left MadMax dock.stl", f"{UP}/A4Tv2_4010_Ducts.stl",
      ("[a]_Duct-4010-left", "Left Toolhead"), ("[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)", "Left Toolhead"), None),
-    (22, 23, f"{DUCTS}/A4Tv2 Duct-4010-right MadMax dock.stl", f"{UP}/A4Tv2_4010_Ducts.stl",
+    (22, 67, f"{DUCTS}/A4Tv2 Duct-4010-right MadMax dock.stl", f"{UP}/A4Tv2_4010_Ducts.stl",
      ("[a]_Duct-4010-right001", "Right Toolhead"), ("[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)", "Right Toolhead"), None),
+    (None, 67, f"{SPACERS}/A4Tv2 dock spacer left.stl", None, None,
+     ("[a]_Dock spacer left (cut from the duct's dock bosses, CC BY-NC-SA 4.0)", "Left Toolhead"), "flat"),
+    (None, 67, f"{SPACERS}/A4Tv2 dock spacer right.stl", None, None,
+     ("[a]_Dock spacer right (cut from the duct's dock bosses, CC BY-NC-SA 4.0)", "Right Toolhead"), "flat"),
     (22, 23, f"{ARMS}/Dock Arm {{net}}.stl", f"{ARMS}/Dock Arm +5mm.stl",
      ("Dock Arm v1 Bottom +5mm", "Left Dock"), ("Dock Arm v1 Bottom *", "Left Dock"), "low"),
     (23, 24, f"{CARRIAGE}/MadMaxCarriage Beacon RevH pocket.stl", f"{UP}/MadMaxCarriage.stl",
@@ -44,14 +51,39 @@ def part(doc, label, group, which):
     s = linkgeo.gshape(c[0])
     if which == "low": s = min(s.Solids, key=lambda x: x.BoundBox.ZMin)
     return s, c[0].Label
+def flat(s):
+    """s turned so its largest planar face lies on Z = 0, the part above it (a part printed on that face)."""
+    f = max((x for x in s.Faces if x.Surface.__class__.__name__ == "Plane"), key=lambda x: x.Area)
+    u0, u1, v0, v1 = f.ParameterRange
+    n = f.normalAt((u0 + u1) / 2, (v0 + v1) / 2)                       # outward: it goes to -Z
+    r = s.copy()
+    r.rotate(f.CenterOfMass, *rot_to(n, V(0, 0, -1)))
+    b = r.BoundBox; r.translate(V(-b.XMin, -b.YMin, -b.ZMin))
+    return r
+def rot_to(a, b):
+    """(axis, degrees) turning unit vector a onto b."""
+    import math
+    ax = a.cross(b)
+    if ax.Length < 1e-9: return (V(1, 0, 0), 0.0 if a.dot(b) > 0 else 180.0)
+    return (ax.normalize(), math.degrees(math.acos(max(-1.0, min(1.0, a.dot(b))))))
 try:
     docs = {}
     def model(n):
         if n not in docs: docs[n] = FreeCAD.openDocument(M.format(n))
         return docs[n]
     res = []
-    for mo, mn, out, up, (ol, og), (nl, ng), which in JOBS:
+    for mo, mn, out, up, old, (nl, ng), which in JOBS:
         if ONLY and ONLY not in out: continue
+        if which == "flat":
+            sn, nlab = part(model(mn), nl, ng, None); sn = sn.Solids[0]
+            r = flat(sn)
+            msh = MeshPart.meshFromShape(Shape=r, LinearDeflection=0.01, AngularDeflection=0.1)
+            os.makedirs(os.path.dirname(out), exist_ok=True); msh.write(out)
+            b = r.BoundBox
+            log(f"{os.path.basename(out)}: flat on its largest planar face; wrote {os.path.relpath(out, REPO)}: {msh.CountFacets} facets, "
+                f"{b.XLength:.2f} x {b.YLength:.2f} x {b.ZLength:.2f} mm, volume {r.Volume:.1f}; solid valid {r.isValid()}")
+            res.append((out, dict(volume=r.Volume, size=(b.XLength, b.YLength, b.ZLength)))); continue
+        ol, og = old
         so, _ = part(model(mo), ol, og, which); sn, nlab = part(model(mn), nl, ng, which)
         out = out.replace("{net}", nlab.split()[-1])
         comps = [c for c in Mesh.Mesh(up).getSeparateComponents() if c.CountFacets >= 50]
