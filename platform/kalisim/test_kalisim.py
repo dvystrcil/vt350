@@ -177,6 +177,17 @@ class Run(Base):
         r, _ = self.run_lines(["G28"])
         self.assertEqual((r.returncode, r.timeline, r.log), (1, [], "Config error\n"))
 
+    def test_klippy_gets_a_sandbox_home_with_printer_data(self):
+        # a config may name a file under ~/printer_data/config (Klipper's standard layout), e.g. [save_variables]:
+        # klippy creates the file but not the folder, and a batch run must not write into the real home
+        with open(os.path.join(self.kalico, "klippy", "__main__.py"), "w") as f:
+            f.write("import os, sys\nh = os.path.expanduser('~')\n"
+                    "open(sys.argv[sys.argv.index('-l') + 1], 'w').write(h + '|' + "
+                    "str(os.path.isdir(os.path.join(h, 'printer_data', 'config'))))\n")
+        r, work = self.run_lines(["G28"])
+        home, ok = r.log.split("|")
+        self.assertEqual((os.path.dirname(home), ok), (work, "True"))
+
     def test_temp_workdir_is_removed(self):
         before = set(os.listdir(tempfile.gettempdir()))
         r = kalisim.run(self.cfg, ["G28", "G1 X1"], self.dicts, self.kalico)

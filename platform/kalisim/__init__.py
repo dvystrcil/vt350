@@ -125,7 +125,12 @@ def run(printer_cfg, lines, dicts, kalico_dir, python=None, workdir=None):
         f.write("\n".join(lines) + "\n")
     cmd = [python or sys.executable, "-m", "klippy", p["cfg"],
            "-i", p["gcode"], "-o", p["out"], "-l", p["log"]] + dict_args(dicts)
-    rc = subprocess.run(cmd, cwd=kalico_dir, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode
+    # klippy's home is a sandbox in workdir, with Klipper's standard ~/printer_data/config/ folder: a config may keep a
+    # file there ([save_variables] creates its file, not the folder), and a batch run must not write the real home
+    home = os.path.join(workdir, "home")
+    os.makedirs(os.path.join(home, "printer_data", "config"), exist_ok=True)
+    rc = subprocess.run(cmd, cwd=kalico_dir, env=dict(os.environ, HOME=home),
+                        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode
     timeline = [json.loads(l) for l in _read(p["timeline"], "").splitlines() if l.strip()]
     return Result(rc, _read(p["log"], ""), timeline)
 
