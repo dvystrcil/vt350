@@ -7,7 +7,7 @@
   {"label_prefix": "[a]_Duct-4010-left MadMax dock bosses", "licence": "CC-BY-NC-SA-4.0",
    "source": "vt350 remix of the A4Tv2 duct, parts/printed/vt350/a4tv2-duct-4010-madmax-dock/README.md"},
   {"group_prefix": "A4Tv2 (DW-Tas", "licence": "CC-BY-NC-SA-4.0",
-   "source": "DW-Tas/A4Tv2 @ 888755a LICENSE, A4Tv2_assembly.step (cad/README.md lite-15); the hotend, Crossbow, 2510 fan and screws are DW-Tas's own assembly's, shared by DW-Tas under it"},
+   "source": "DW-Tas/A4Tv2 @ 888755a LICENSE, A4Tv2_assembly.step (cad/README.md lite-15); the vendor sub-models in it (Dragon hotend, Crossbow, 2510 fan, screws) are shared by DW-Tas under it: owner confirmed 2026-11-17 (#220)"},
   {"label_contains": "(Orbiter-Toolboards 52a5a33, CC0-1.0)", "licence": "CC0-1.0",
    "source": "LorinczElectronics/Orbiter-Toolboards @ 52a5a33 LICENSE (parts/printed/README.md)"},
   {"group_prefix": "Orbiter 2", "licence": "CC-BY-NC-SA-4.0",
