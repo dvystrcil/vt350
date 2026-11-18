@@ -22,6 +22,7 @@ Standard library only, so it runs under whatever Python runs Kalico.
 import argparse
 import json
 import os
+import shutil
 import re
 import subprocess
 import sys
@@ -111,11 +112,18 @@ def _read(path, default):
         return default
 
 
-def run(printer_cfg, lines, dicts, kalico_dir, python=None, workdir=None):
-    """Run G-code lines through klippy in batch mode with printer_cfg; returns a Result."""
+def run(printer_cfg, lines, dicts, kalico_dir, python=None, workdir=None, home_files=None):
+    """Run G-code lines through klippy in batch mode with printer_cfg; returns a Result.
+
+    home_files: {path relative to klippy's sandbox home: source file}, copied in before klippy starts (e.g. a
+    [save_variables] file seeded from its template, "printer_data/config/<name>.cfg")."""
+    for rel in (home_files or {}):
+        parts = rel.replace("\\", "/").split("/")
+        if os.path.isabs(rel) or ".." in parts or not rel:
+            raise ValueError(f"home_files path {rel!r}: must be relative and stay inside the sandbox home")
     if workdir is None:
         with tempfile.TemporaryDirectory(prefix="kalisim-") as d:
-            return run(printer_cfg, lines, dicts, kalico_dir, python, d)
+            return run(printer_cfg, lines, dicts, kalico_dir, python, d, home_files)
     p = {k: os.path.join(workdir, f) for k, f in (("cfg", "sim.cfg"), ("gcode", "in.gcode"),
                                                     ("out", "out.serial"), ("log", "klippy.log"),
                                                     ("timeline", "timeline.jsonl"))}
@@ -129,6 +137,10 @@ def run(printer_cfg, lines, dicts, kalico_dir, python=None, workdir=None):
     # file there ([save_variables] creates its file, not the folder), and a batch run must not write the real home
     home = os.path.join(workdir, "home")
     os.makedirs(os.path.join(home, "printer_data", "config"), exist_ok=True)
+    for rel, src in (home_files or {}).items():
+        dst = os.path.join(home, rel)
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        shutil.copyfile(src, dst)
     rc = subprocess.run(cmd, cwd=kalico_dir, env=dict(os.environ, HOME=home),
                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode
     timeline = [json.loads(l) for l in _read(p["timeline"], "").splitlines() if l.strip()]
@@ -187,14 +199,20 @@ def main(argv):
     ap.add_argument("--kalico", default=None, help="Kalico checkout (default: $KALICO_DIR)")
     ap.add_argument("--python", default=None)
     ap.add_argument("-d", dest="dicts", action="append", required=True, help="[name=]path, one per MCU")
+    ap.add_argument("--home-file", action="append", default=[], metavar="REL=SRC",
+                    help="copy SRC to REL in klippy's sandbox home first, e.g.\n"
+                         "printer_data/config/offset_save_file.cfg=cad/klipper/madmax/offset_save_file.cfg")
     a = ap.parse_args(argv)
+    home_files = dict(h.split("=", 1) for h in a.home_file)
     dicts = [parse_dict_option(d) for d in a.dicts]
     kalico = a.kalico or os.environ["KALICO_DIR"]
     with open(a.gcode) as f:
         text = f.read()
     if a.command == "run":
-        r = run(a.config, text.splitlines(), dicts, kalico, a.python)
+        r = run(a.config, text.splitlines(), dicts, kalico, a.python, home_files=home_files)
         return [json.dumps(e) for e in r.timeline]
+    if home_files:
+        raise SystemExit("--home-file: only for the run command")
     ok, report = check_envelope(a.config, text, dicts, kalico, a.python)
     if not ok:
         raise SystemExit("\n".join(report))
