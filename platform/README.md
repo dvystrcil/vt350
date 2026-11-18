@@ -14,11 +14,12 @@ code. The printer side imports from here, not the other way round.
 | Folder | What it does | Runs with |
 |---|---|---|
 | `freecad/` | The pass library (`litelib.py`: parts plus named checks, run on workers by `litepool.py`), clash checks (`clashlib.py`), boolean contact (`contact.py`), the per-part box index (`part_index.py`), copies found and turned into App::Links (`dupes.py`) and the link-aware geometry every walker uses (`linkgeo.py`), mesh registration (`reglib.py`, `register.py`), Bézier paths (`bezier.py`), FCStd inspectors (`analyze.py`, `cats.py`, `tree.py`), the motion player's core (`timeline.py`: a kalisim timeline + a rig file → frames of group translations, with the dock handover), and its FreeCAD GUI player (`player.py`, started by `player_gui.FCMacro`: plays the frames on a private copy of the model, play/pause/step/speed, restores every Placement on stop, never saves) | FreeCAD `freecadcmd`; the `test_*.py` files without `import FreeCAD` run in plain `python3` |
+| `viewer/` | Part selection and licence rules (`rules.py`), the licence check of an export (`licence_check.py`), Blender export to GLB with the renders' materials (`glb.py`), turntable cameras (`frame_view.py`), the turntable and 3D viewer pages (`turntable_page.py`, `viewer_page.py`, templates `turntable.html`, `viewer.html`; shared release-asset helpers in `pages/sitepub.py`) | python3, then Blender |
 | `render/` | FreeCAD mesh export (`export_meshes.py`), Blender render (`render.py`), the colour-map engine (`colours.py`) and logo split (`logos.py`) | FreeCAD, then Blender |
-| `kalisim/` | Kalico batch mode with no hardware: run G-code through the real firmware and check the moves. The image includes klipper-toolchanger (pinned), for printers whose config uses it | `docker` (Kalico's published image, pinned by digest) |
+| `kalisim/` | Kalico batch mode with no hardware: run G-code through the real firmware and check the moves. The image includes klipper-toolchanger (pinned), for printers whose config uses it. klippy runs with a sandbox `HOME` holding an empty `printer_data/config/`, for configs that keep a file there (`[save_variables]`); `home_files` / `--home-file REL=SRC` copies a file in first (e.g. a save file seeded from its template) | `docker` (Kalico's published image, pinned by digest) |
 | `parts/` | `check-printed.py` (printed parts against their manifest and the BOM) and `slice-check.py` (supports, keep-outs and print estimates, via OrcaSlicer or `--slicer prusa`) | `python3`; slice-check also needs the Orca (or PrusaSlicer) flatpak |
 | `klipper/` | The web front end's client config, Fluidd or Mainsail, vendored unchanged; `frontend.py` reports which one a printer's config includes and switches it | `python3` |
-| `pages/` | `check_index.py`: the guard that runs before the reference pages are published | `python3` |
+| `pages/` | `check_index.py`: the guard that runs before the reference pages are published; `fetch_assets.py`: puts the pages' large files (release assets, checked by sha256) in place | `python3`, `gh` |
 | `testing/` | `check_test_tmp.sh`: every plain-python test must leave its `TMPDIR` empty | `bash` |
 
 **What we've learned about FreeCAD** (what makes a model slow to open, hidden parts, stand-ins, App::Links, and the gotchas that cost us time): [`freecad/LESSONS.md`](freecad/LESSONS.md). Add to it the day something is learned.
@@ -33,9 +34,15 @@ APP=/home/dan/FreeCAD/FreeCAD_26.3rc2-Linux-x86_64.AppImage
 python3 platform/parts/check-printed.py                         # "check-printed: OK"
 python3 platform/parts/slice-check.py parts/printed/vt350/<part>/*.stl
 python3 platform/pages/check_index.py notes/reference           # "check-index: OK"
+python3 platform/pages/fetch_assets.py notes/reference/assets.json   # "fetch-assets: OK"; --from-dir DIR to skip the download
 bash platform/testing/check_test_tmp.sh                         # "check-test-tmp: OK"
 bash cad/klipper/test_in_container.sh                           # builds platform/kalisim with the VT350's MCU configs; "kalico-batch: OK"
 cad/render/render_full.sh 30                                    # FreeCAD export + Blender render of vt350-lite-30
+cad/viewer/export_glb.sh 62                                     # a licence-checked GLB of a selection, for the 3D viewer ("glb-export: OK")
+python3 platform/viewer/licence_check.py <export>/scene.json <licences.json>   # "licence-check: OK"
+python3 platform/viewer/turntable_page.py stage <frames> <page.json> <out>    # a turntable preview folder ("turntable-page: OK")
+python3 platform/viewer/viewer_page.py stage <model> <compare.jpg> <page.json> <out>   # a 3D viewer preview ("viewer-page: OK")
+cad/viewer/pages.py release <name> --model N                  # the VT350's public pages from a lite-N (notes/scripts.md)
 $APP freecadcmd $PWD/platform/freecad/part_index.py             # the per-part box index ($VT350_INDEX_MODELS)
 TESS_COST_MODEL=<model> $APP freecadcmd $PWD/platform/freecad/tess_cost.py   # which parts make a model slow to open (freecad/LESSONS.md)
 DUPES_MODEL=<model> $APP freecadcmd $PWD/platform/freecad/dupes.py          # which parts are copies, and what linking them saves in the file
@@ -76,6 +83,7 @@ The printer passes its data to these tools by path or environment variable:
 | `parts/check-printed.py` | the manifest and BOM | `--root` (default: this checkout), reads `parts/printed/manifest.csv` and `bom/printed-parts.md` |
 | `parts/slice-check.py` | the slicer presets and keep-out boxes | `parts/slice/orca/orca.json` (the Neptune presets), `parts/slice/petg-0.4-0.2.ini` (`--slicer prusa`), `parts/slice/keepout.json` (`--orca`, `--profile`, `--keepout`) |
 | `pages/check_index.py` | the pages folder | its argument (default `notes/reference`) |
+| `pages/fetch_assets.py` | the manifest of release assets | its argument; `--repo` or `GITHUB_REPOSITORY` |
 
 ## Still VT350-specific (phase 3 of #122)
 

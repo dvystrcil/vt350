@@ -19,6 +19,11 @@
 # Motion frames (vt350#135 AC4): an export made with VT350_GROUPS (each moving group's parts in buckets of their own)
 #   blender -b -P render.py -- <export dir> <output dir> [samples] --frames <frames.json, relative: in the export dir>
 #       [--view NAME] [--size WxH] [--first N] [--count N]
+#   --size WxH also sets the size of ordinary view renders (default 1920x1080).
+#   --look NAME: an AgX look, e.g. "AgX - Punchy" (richer colour, more contrast); default none, as before.
+#   --plastic-specular F: the Principled "Specular IOR Level" of plastic and paint (default Blender's 0.5); 0.2 = less
+#     sheen. Both opt-in (vt350#220, owner 2026-11-17: the turntable and viewer use Punchy + 0.2); colours.json's frame
+#     hex was tuned under the default look, so README renders keep it.
 # renders one PNG per frame, frame-NNNNN.png, from the scene's explicit view NAME (default its first), moving each
 # group's objects by the frame's translation (platform/render/motion.py). Frames already in the output dir are skipped,
 # so a run cut short resumes. --first/--count take a slice of the frames list (to split a long run).
@@ -51,7 +56,11 @@ try:
         except Exception: pass
 except Exception as e: print("no GPU prefs", e)
 sc.render.resolution_x, sc.render.resolution_y = 1920, 1080
+if "size" in OPTS:                                  # --size WxH: any render, not only motion frames (vt350#220 turntable)
+    sc.render.resolution_x, sc.render.resolution_y = (int(v) for v in OPTS["size"].lower().split("x"))
 sc.view_settings.view_transform = 'AgX'
+if "look" in OPTS: sc.view_settings.look = OPTS["look"]
+PLASTIC_SPEC = float(OPTS["plastic-specular"]) if "plastic-specular" in OPTS else None
 def kelvin_rgb(k):   # Tanner Helland's approximation, good enough for a strip colour
     t = k / 100
     r = 255 if t <= 66 else 329.698727446 * ((t - 60) ** -0.1332047592)
@@ -67,6 +76,8 @@ def material(name, color, kind, transparency=0.0, roughness=None):
     p.inputs["Metallic"].default_value = 1.0 if metal else 0.0
     p.inputs["Roughness"].default_value = roughness if roughness is not None else \
         {"aluminium": 0.35, "steel": 0.3, "brass": 0.3, "felt": 0.95, "ptfe": 0.4}.get(kind, 0.5)
+    if PLASTIC_SPEC is not None and kind in ("plastic", "paint") and "Specular IOR Level" in p.inputs:
+        p.inputs["Specular IOR Level"].default_value = PLASTIC_SPEC
     if kind == "glass":                              # a clear sheet (the door window, lite-38): transmits, ~no tint
         for n in ("Transmission Weight", "Transmission"):   # Blender 4.x name, then 3.x
             if n in p.inputs: p.inputs[n].default_value = 1.0; break
@@ -193,6 +204,19 @@ def apply_view(name):                                # per-view "hide": [bucket]
 # key light for the outside view only
 bpy.ops.object.light_add(type='AREA', location=(0.6, -1.4, 1.6)); key = bpy.context.object
 key.data.size = 1.2; key.data.energy = 500; key.rotation_euler = (math.radians(55), 0, math.radians(20))
+bpy.context.view_layer.update(); KEY0 = key.matrix_world.copy()
+def place_key(name):
+    """A view with "light_turn_deg" (a turntable frame, vt350#220) gets the key light turned by that angle about the
+    vertical line through its "look" point, so every frame is lit as the first: the camera and the light go round
+    together, as if the model turned. "light_tilt_deg" first tilts it up (+) or down (-) about the line through "look"
+    along X (the unturned view's left-right), so a camera below the model has the key below too. Any other view: the
+    key where it always is."""
+    v = VIEWDEF.get(name, {})
+    if "light_turn_deg" not in v: key.matrix_world = KEY0; return
+    from mathutils import Matrix
+    c = Vector(v["look"]) * S
+    tilt = Matrix.Rotation(-math.radians(v.get("light_tilt_deg", 0)), 4, 'X')   # +X rotation lowers a -Y point: negate
+    key.matrix_world = Matrix.Translation(c) @ Matrix.Rotation(math.radians(v["light_turn_deg"]), 4, 'Z') @ tilt @ Matrix.Translation(-c) @ KEY0
 if "frames" in OPTS:                                 # motion frames (vt350#135 AC4), then stop
     import motion
     fp = OPTS["frames"] if os.path.isabs(OPTS["frames"]) else os.path.join(SRC, OPTS["frames"])   # a lane job: in/
@@ -203,7 +227,7 @@ if "frames" in OPTS:                                 # motion frames (vt350#135 
     name, cam, room, ev = pick[0]
     sc.camera = cam; sc.view_settings.exposure = ev; bg.inputs["Strength"].default_value = 0.4 * room
     key.hide_render = name == "obico"
-    apply_view(name)
+    apply_view(name); place_key(name)
     if "size" in OPTS: sc.render.resolution_x, sc.render.resolution_y = (int(v) for v in OPTS["size"].lower().split("x"))
     sc.render.use_persistent_data = True             # only locations change between frames
     sc.render.image_settings.file_format = 'PNG'
@@ -220,7 +244,7 @@ if "frames" in OPTS:                                 # motion frames (vt350#135 
 for name, cam, room, ev in views:
     sc.camera = cam; sc.view_settings.exposure = ev; bg.inputs["Strength"].default_value = 0.4 * room
     key.hide_render = name == "obico"
-    apply_view(name)
+    apply_view(name); place_key(name)
     sc.render.filepath = os.path.join(OUT, f"{scene_j['model'].replace('.FCStd', '')}-{name}.png")
     bpy.ops.render.render(write_still=True); print("wrote", sc.render.filepath)
     # The README image (homelab#1961 AC8): the same render as a quality-85 JPEG, the format cad/renders/ holds,
