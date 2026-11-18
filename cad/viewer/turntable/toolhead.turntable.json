@@ -1,0 +1,4 @@
+{"title": "VT350 · Left head on the", "title_accent": "MadMax carriage",
+ "model": "lite-62, the viewer's toolhead export",
+ "prefix": "vt350-lite-62", "elevations": [10, 25, 40], "azimuths": 36,
+ "foot": "Real Blender Cycles renders (render.py, the render colour map, AgX Punchy, −1.4 EV), one every 10° round the toolhead at three heights. Drag sideways to turn it, up or down to change the height; arrow keys work too. Only these angles exist: for any angle, use the live 3D viewer (vt350#220)."}

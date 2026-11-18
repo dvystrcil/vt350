@@ -40,9 +40,9 @@ footer { font-size: 0.78rem; color: var(--muted); line-height: 1.5; max-width: 7
 
 <div class="wrap">
 <header>
-  <h1>VT350 · the whole printer, <span>turned</span></h1>
+  <h1 id="t-title">VT350 · <span>turntable</span></h1>
   <div class="facts">
-    <span>model <b>lite-62</b> + e-box-3 + EMU-3</span>
+    <span>model <b id="t-model">…</b></span>
     <span><b id="f-n">…</b> Cycles renders</span>
     <span>loaded <b id="f-loaded">…</b></span>
   </div>
@@ -61,15 +61,21 @@ footer { font-size: 0.78rem; color: var(--muted); line-height: 1.5; max-width: 7
   <button id="b-play" type="button" aria-pressed="false">Play</button>
 </div>
 
-<footer>
-  Real Blender Cycles renders (render.py, the render colour map), one every 10° round the printer at three heights. Drag sideways to turn it, up or down to change the height; arrow keys work too. Only these angles exist: for any angle, use the live 3D viewer (vt350#220).
+<footer id="t-foot">
+  Real Blender Cycles renders (render.py, the render colour map), one every 10° round the model at three heights. Drag sideways to turn it, up or down to change the height; arrow keys work too. Only these angles exist: for any angle, use the live 3D viewer (vt350#220).
 </footer>
 </div>
 
 <script>
-(function () {
-  // filled from the lane job's scene.json: the turntable's elevations and azimuth count, and the file name pattern
-  const ELEV = [10, 25, 40], NAZ = 36, MODEL = "vt350-lite-62";
+// turntable.json beside the page: {"title", "title_accent", "model", "prefix", "elevations": [..], "azimuths": N, "foot"?}
+fetch("turntable.json").then(r => { if (!r.ok) throw new Error("turntable.json " + r.status); return r.json(); })
+  .then(start).catch(e => { document.getElementById("status").textContent = "Couldn't load the turntable settings (" + String(e.message).slice(0, 120) + ")."; });
+function start(cfg) {
+  const ELEV = cfg.elevations, NAZ = cfg.azimuths, MODEL = cfg.prefix;
+  const t = document.getElementById("t-title"); t.textContent = cfg.title + " ";
+  const sp = document.createElement("span"); sp.textContent = cfg.title_accent || ""; t.appendChild(sp);
+  document.getElementById("t-model").textContent = cfg.model;
+  if (cfg.foot) document.getElementById("t-foot").textContent = cfg.foot;
   const name = (e, i) => `frames/${MODEL}-tt-e${String(e).padStart(2, "0")}-a${String(i * 360 / NAZ).padStart(3, "0")}.jpg`;
   const img = document.getElementById("frame"), stage = document.getElementById("stage"), status = document.getElementById("status");
   const az = document.getElementById("az"), rAz = document.getElementById("r-az"), hb = document.getElementById("heights");
@@ -100,6 +106,7 @@ footer { font-size: 0.78rem; color: var(--muted); line-height: 1.5; max-width: 7
   }
   cache[ei][ai].addEventListener("load", show);
   show();
+  az.max = NAZ - 1;
   az.addEventListener("input", () => { ai = +az.value; show(); });
   // drag: about 12 px per 10° step sideways, 60 px per height step
   let drag = null;
@@ -126,5 +133,5 @@ footer { font-size: 0.78rem; color: var(--muted); line-height: 1.5; max-width: 7
     timer = setInterval(() => { ai -= 1; show(); }, reduce ? 400 : 120);
     play.setAttribute("aria-pressed", "true"); play.textContent = "Pause";
   });
-})();
+}
 </script>
