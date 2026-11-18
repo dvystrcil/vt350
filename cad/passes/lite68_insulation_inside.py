@@ -10,13 +10,14 @@
 # insulation compresses, for now consider the rear insulation as thinner". So the back felt is rebuilt THINNER, to fill
 # the gap exactly (placeholder until the compression test): its own box, no longer a link to the roof felt. The roof
 # strip gets a hole for each bowden tube and O2S USB cable that crosses it (lite-16: "the roof needs pass-throughs").
-# The EMU is left where it was: the log gives its gap above the roof panel (owner to decide).
+# The EMU envelope comes down onto the roof panel with it (owner, 2026-11-18), named emu-4 (emu4_lower.py).
 # Checks (refuses to save on any):
 #  - 9 parts found (roof pad + strip with 2 liners each, back pad with 2 liners), Part::Features or App::Links;
 #  - each roof part's box moved by exactly dz, each back part's by dy; the stacks' faces on the panels' inside faces;
 #  - every other solid's box unchanged, the count unchanged;
 #  - the back felt was a box (volume = its box's), the new one is gap-thick, the stack's front on the frame's rear face;
 #  - holes only where a bowden tube or O2S USB cable crosses the roof strip (anything else hitting it fails);
+#  - the EMU envelope = the EMU's box lowered onto the roof's top (paint included);
 #  - no NEW overlap between a moved part and any other solid (overlaps that existed before are listed, not failed).
 import FreeCAD, Part, os, re, sys
 _REPO = os.environ.get("VT350_REPO", "/home/dan/Code/vt350")
@@ -24,6 +25,7 @@ sys.path[:0] = [os.path.join(_REPO, "platform/freecad")]
 import litelib
 from litelib import MODELS
 SRC, DST = f"{MODELS}/vt350-lite-67.FCStd", f"{MODELS}/vt350-lite-68.FCStd"
+EMU3 = f"{MODELS}/vt350-emu-3.FCStd"           # read only: the EMU's own box, for its envelope
 GROUP = "Insulation: carbon felt sealed in aluminium"
 ROOF = re.compile(r"^Roof felt (\(pad 1\)|liner, |strip)")
 BACK = re.compile(r"^Back felt ")
@@ -91,6 +93,28 @@ def main(p):
     moved = {o.Name: FreeCAD.Vector(0, 0, dz) for o in roof}
     moved.update({o.Name: FreeCAD.Vector(0, dy, 0) for o in back})
     moved[inner.Name] = FreeCAD.Vector(0, dy + shrink, 0)          # the chamber-side liner follows the thinner felt
+    # the EMU comes down onto the roof (owner, 2026-11-18: "lower the EMU onto the roof panel"): the EMU itself in
+    # cad/passes/emu4_lower.py (emu-3 -> emu-4); here its envelope, rebuilt to the lowered EMU's own box (lite-55's was
+    # 8 mm deeper than the EMU: its rubber feet are at Z 712.1, the envelope's bottom at 704), named emu-4 (z_sweep
+    # reads the name). The roof's top is its paint layer's (0.2 mm over the panel).
+    env = [o for o in pr.leaves if o.Label.startswith("EMU envelope")]
+    paint = [o for o in pr.leaves if o.Label == rp[0].Label + " paint, outside"]
+    p.check(len(env) == 1 and len(paint) == 1, f"one EMU envelope, one roof paint layer ({len(env)}, {len(paint)})")
+    if p.errs: return p.finish([])
+    env = env[0]; roof_top = max(rpb.ZMax, pr.boxes[paint[0].Name].ZMax)
+    em = p.open(EMU3)
+    body = [o for o in em.leaves if not any(g.Label.startswith("Bowdens") for g in o.InListRecursive)]
+    eb0 = FreeCAD.BoundBox()
+    for o in body: eb0.add(em.boxes[o.Name])
+    dze = roof_top - eb0.ZMin
+    p.log(f"EMU (emu-3, {len(body)} parts): Z {eb0.ZMin:.3f}..{eb0.ZMax:.3f}; roof top {roof_top:.3f}; dz {dze:.3f}")
+    p.check(-25 < dze < 0, f"the EMU comes down a little ({dze:.3f} mm)")
+    if p.errs: return p.finish([])
+    ebn = FreeCAD.BoundBox(eb0.XMin, eb0.YMin, eb0.ZMin + dze, eb0.XMax, eb0.YMax, eb0.ZMax + dze)
+    FreeCAD.closeDocument(em.doc.Name)
+    env_name = env.Name
+    p.resize_envelope(pr, env, ebn, "EMU envelope (contents in vt350-emu-4.FCStd)")
+    moved[env_name] = FreeCAD.Vector()               # in the overlap check; its box is checked below, not the move
     # overlaps before, of these parts at their NEW place, are what this pass adds; at the old place, what was there
     others = [o for o in pr.leaves if o.Name not in moved]
     def overlaps(model):
@@ -160,7 +184,7 @@ def main(p):
     doc.recompute(); pr.refresh()
     bad = []
     for n, b in box0.items():
-        if n == gname: continue                       # rebuilt thinner: checked above
+        if n in (gname, env_name): continue           # rebuilt: checked on their own
         v = moved.get(n, FreeCAD.Vector()); c = bb(pr.shapes[n])
         if any(abs(a - e) > TOL for a, e in zip((c.XMin, c.YMin, c.ZMin, c.XMax, c.YMax, c.ZMax),
                                                   (b.XMin + v.x, b.YMin + v.y, b.ZMin + v.z, b.XMax + v.x, b.YMax + v.y, b.ZMax + v.z))):
@@ -176,8 +200,10 @@ def main(p):
     for k, v in sorted(after.items()): p.log(f"  overlap after: {k[0]} x {k[1]}: {v} mm3")
     new = sorted({k[1] for k in after} - {k[1] for k in before})
     p.check(not new, f"no new overlap with another part ({len(new)}: {new})")
-    emu = [o for o in pr.leaves if o.Label.startswith("EMU envelope")]
-    for o in emu: p.log(f"{o.Label}: bottom Z {bb(pr.shapes[o.Name]).ZMin:.3f}, roof panel top {rpb.ZMax:.3f}")
+    eb1 = bb(pr.shapes[env_name])
+    p.check(all(abs(a - b) < TOL for a, b in zip((eb1.XMin, eb1.YMin, eb1.ZMin, eb1.XMax, eb1.YMax, eb1.ZMax),
+                                                  (ebn.XMin, ebn.YMin, ebn.ZMin, ebn.XMax, ebn.YMax, ebn.ZMax))),
+            f"after: the EMU envelope is the lowered EMU's box, its bottom on the roof's top (Z {eb1.ZMin:.3f})")
     p.dump({"dz": dz, "dy": dy, "before": {" x ".join(k): v for k, v in before.items()},
             "after": {" x ".join(k): v for k, v in after.items()}})
     return p.finish([(doc, DST)])
