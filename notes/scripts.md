@@ -139,7 +139,8 @@ python3 platform/viewer/frame_view.py $RUN/export --turntable 36x3 --elevations 
 # 3. the 108 renders on the batch lane (~hours on the GTX 970); the result is a comment on the issue
 ~/Code/homelab/bin/gpu-batch-submit.py blender --input $RUN/export --script $PWD/platform/render/render.py \
   --with $PWD/platform/render/colours.py --with $PWD/cad/render/colours.json --expect 'out/*.jpg' \
-  --min-outputs 108 --deadline 14400 --notify dvystrcil/vt350#220 -- 64 --size 1280x720
+  --min-outputs 108 --deadline 14400 --notify dvystrcil/vt350#220 -- 64 --size 1280x720 \
+  --look "AgX - Punchy" --plastic-specular 0.2     # the owner's look for the turntable (2026-11-17)
 ```
 
 The page is `cad/viewer/turntable/index.html`: it loads `frames/<model>-tt-e<elev>-a<azimuth>.jpg` from beside it.

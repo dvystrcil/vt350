@@ -20,6 +20,10 @@
 #   blender -b -P render.py -- <export dir> <output dir> [samples] --frames <frames.json, relative: in the export dir>
 #       [--view NAME] [--size WxH] [--first N] [--count N]
 #   --size WxH also sets the size of ordinary view renders (default 1920x1080).
+#   --look NAME: an AgX look, e.g. "AgX - Punchy" (richer colour, more contrast); default none, as before.
+#   --plastic-specular F: the Principled "Specular IOR Level" of plastic and paint (default Blender's 0.5); 0.2 = less
+#     sheen. Both opt-in (vt350#220, owner 2026-11-17: the turntable and viewer use Punchy + 0.2); colours.json's frame
+#     hex was tuned under the default look, so README renders keep it.
 # renders one PNG per frame, frame-NNNNN.png, from the scene's explicit view NAME (default its first), moving each
 # group's objects by the frame's translation (platform/render/motion.py). Frames already in the output dir are skipped,
 # so a run cut short resumes. --first/--count take a slice of the frames list (to split a long run).
@@ -55,6 +59,8 @@ sc.render.resolution_x, sc.render.resolution_y = 1920, 1080
 if "size" in OPTS:                                  # --size WxH: any render, not only motion frames (vt350#220 turntable)
     sc.render.resolution_x, sc.render.resolution_y = (int(v) for v in OPTS["size"].lower().split("x"))
 sc.view_settings.view_transform = 'AgX'
+if "look" in OPTS: sc.view_settings.look = OPTS["look"]
+PLASTIC_SPEC = float(OPTS["plastic-specular"]) if "plastic-specular" in OPTS else None
 def kelvin_rgb(k):   # Tanner Helland's approximation, good enough for a strip colour
     t = k / 100
     r = 255 if t <= 66 else 329.698727446 * ((t - 60) ** -0.1332047592)
@@ -70,6 +76,8 @@ def material(name, color, kind, transparency=0.0, roughness=None):
     p.inputs["Metallic"].default_value = 1.0 if metal else 0.0
     p.inputs["Roughness"].default_value = roughness if roughness is not None else \
         {"aluminium": 0.35, "steel": 0.3, "brass": 0.3, "felt": 0.95, "ptfe": 0.4}.get(kind, 0.5)
+    if PLASTIC_SPEC is not None and kind in ("plastic", "paint") and "Specular IOR Level" in p.inputs:
+        p.inputs["Specular IOR Level"].default_value = PLASTIC_SPEC
     if kind == "glass":                              # a clear sheet (the door window, lite-38): transmits, ~no tint
         for n in ("Transmission Weight", "Transmission"):   # Blender 4.x name, then 3.x
             if n in p.inputs: p.inputs[n].default_value = 1.0; break
