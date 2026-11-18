@@ -154,6 +154,18 @@ class TheCommittedMap(unittest.TestCase):
                     "Vindr Berserker 4010B blower R Toolhead slot 3 (R) (modelled from measurements)"):
             self.assertEqual(co.role_of(m, lab, a4t, "Default"), "black_plastic", lab)
 
+    def test_orbiter_stays_black_metal_with_its_lite63_material(self):
+        # vt350#220 (user, 2026-11-17: "the orbiter is no longer black its gray"): lite-63 (#60) gave the Orbiter the
+        # material "Bought LDO Orbiter v2.5 with motor"; the orbiter rule must match it as it matched "Default".
+        m = co.load()
+        orb = "4040-350x350x250 Voron Trident v4 v33 / Left Toolhead / Orbiter 2.5 / Orbiter V2.0 Mockup (1) v1"
+        mat = "Bought LDO Orbiter v2.5 with motor"
+        for lab, grp in (("HubHousing V5 With Logo (1)", orb), ("Latch (1) (1)", orb),
+                         ("Component19", orb + " / LDO_36STH17-1004AHG v6 (1) / LDO Stepper (1) (1)")):
+            self.assertEqual(co.role_of(m, lab, grp, mat), "orbiter", lab)
+        self.assertIsNone(co.role_of(m, "Bowden Left", orb + " / BrassCouplerRing 4mm PFTE v1", mat))   # PTFE tube
+        self.assertIsNone(co.role_of(m, "Orbiter Spider Shaft v4 (1)", orb, "Steel-Generic"))           # steel stays steel
+
     def test_committed_rules_on_lite27_stand_and_filter(self):
         m = co.load()
         stand = "4040-350x350x250 Voron Trident v4 v33 / Stand: levelling feet + base board (#83, placeholders)"
