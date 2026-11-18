@@ -19,6 +19,10 @@ jobs:
         run: python3 platform/viewer/test_glbjson.py 2>&1 | tee test-glbjson.log
       - name: Confirm every glbjson test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-glbjson.log && tail -1 test-glbjson.log | grep -qx 'OK'
+      - name: Test the view framing and turntable cameras
+        run: python3 platform/viewer/test_frame_view.py 2>&1 | tee test-frame-view.log
+      - name: Confirm every frame_view test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-frame-view.log && tail -1 test-frame-view.log | grep -qx 'OK'
       - name: The printer's selection and licence files load
         run: |
           python3 -c "import sys, json; sys.path.insert(0, 'platform/viewer'); import rules; rules.load_selection('cad/viewer/toolhead.json'); rules.check(json.load(open('cad/viewer/licences.json')), []); print('viewer data: OK')"

@@ -3,11 +3,15 @@
 parts the viewer shows, from a view the viewer page can match.
 
     python3 platform/viewer/frame_view.py <export dir> [--name NAME] [--from DX,DY,DZ] [--lens MM] [--fill F]
+    python3 platform/viewer/frame_view.py <export dir> --turntable 36x3 [--elevations 10,25,40] [--lens MM] [--fill F]
 
 Reads every bucket's binary STL (model mm) for the box, then writes scene.json "views": [{name, pos, look, lens_mm}]
 (render.py renders exactly those, key-lit) and "frame": {"bbox", "view"} for the page. The camera looks at the box
 centre from the direction --from (default 3/4 front-right, from above, as render.py's "outside" view) at the
 distance where the box's bounding sphere fills --fill (default 0.9) of the narrower field of view of a 16:9 frame.
+--turntable AxE: A cameras evenly round the box centre (azimuth 0 = the front, -Y; then counter-clockwise seen from
+above, so the printer appears to turn to the left as the index rises) at each of E elevations (--elevations, degrees), all at
+the framing distance; views named tt-e<elev>-a<azimuth>, in elevation-then-azimuth order.
 Stdlib only.
 """
 import json, math, os, struct, sys
@@ -46,6 +50,20 @@ def frame(bbox, direction, lens_mm, fill=0.9, aspect=16 / 9):
     return [c[i] + direction[i] / n * d for i in range(3)], c
 
 
+def turntable(bbox, n_az, elevations, lens_mm, fill=0.9):
+    """-> the views of a turntable: n_az azimuths x the elevations (degrees), framed as frame() does."""
+    views = []
+    for el in elevations:
+        for i in range(n_az):
+            az = 360.0 * i / n_az
+            a, e = math.radians(az), math.radians(el)
+            d = [math.sin(a) * math.cos(e), -math.cos(a) * math.cos(e), math.sin(e)]   # az 0: from -Y (the front)
+            pos, look = frame(bbox, d, lens_mm, fill)
+            views.append({"name": f"tt-e{int(round(el)):02d}-a{int(round(az)):03d}", "pos": [round(v, 3) for v in pos],
+                          "look": [round(v, 3) for v in look], "lens_mm": lens_mm, "az": az, "el": el})
+    return views
+
+
 def main(argv):
     opts, args = {}, []
     it = iter(argv)
@@ -59,7 +77,19 @@ def main(argv):
     bb = union(boxes)
     direction = [float(v) for v in opts.get("from", "725,-1715,850").split(",")]   # render.py "outside": cam - look
     lens = float(opts.get("lens", 35)); name = opts.get("name", "compare")
-    pos, look = frame(bb, direction, lens, float(opts.get("fill", 0.9)))
+    fill = float(opts.get("fill", 0.9))
+    if "turntable" in opts:
+        n_az, n_el = (int(v) for v in opts["turntable"].lower().split("x"))
+        els = [float(v) for v in opts.get("elevations", "10,25,40").split(",")]
+        if len(els) != n_el: sys.exit(f"frame_view: --turntable {opts['turntable']} needs {n_el} --elevations, got {len(els)}")
+        views = turntable(bb, n_az, els, lens, fill)
+        scene["views"] = views
+        scene["frame"] = {"bbox": [round(v, 3) for v in bb], "turntable": {"azimuths": n_az, "elevations": els}}
+        json.dump(scene, open(sj, "w", encoding="utf-8"), indent=1)
+        print(f"{len(views)} turntable views, {views[0]['name']} .. {views[-1]['name']}")
+        print("frame-view: OK")
+        return
+    pos, look = frame(bb, direction, lens, fill)
     view = {"name": name, "pos": [round(v, 3) for v in pos], "look": [round(v, 3) for v in look], "lens_mm": lens}
     scene["views"] = [view]; scene["frame"] = {"bbox": [round(v, 3) for v in bb], "view": view}
     json.dump(scene, open(sj, "w", encoding="utf-8"), indent=1)

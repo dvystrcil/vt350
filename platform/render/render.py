@@ -19,6 +19,7 @@
 # Motion frames (vt350#135 AC4): an export made with VT350_GROUPS (each moving group's parts in buckets of their own)
 #   blender -b -P render.py -- <export dir> <output dir> [samples] --frames <frames.json, relative: in the export dir>
 #       [--view NAME] [--size WxH] [--first N] [--count N]
+#   --size WxH also sets the size of ordinary view renders (default 1920x1080).
 # renders one PNG per frame, frame-NNNNN.png, from the scene's explicit view NAME (default its first), moving each
 # group's objects by the frame's translation (platform/render/motion.py). Frames already in the output dir are skipped,
 # so a run cut short resumes. --first/--count take a slice of the frames list (to split a long run).
@@ -51,6 +52,8 @@ try:
         except Exception: pass
 except Exception as e: print("no GPU prefs", e)
 sc.render.resolution_x, sc.render.resolution_y = 1920, 1080
+if "size" in OPTS:                                  # --size WxH: any render, not only motion frames (vt350#220 turntable)
+    sc.render.resolution_x, sc.render.resolution_y = (int(v) for v in OPTS["size"].lower().split("x"))
 sc.view_settings.view_transform = 'AgX'
 def kelvin_rgb(k):   # Tanner Helland's approximation, good enough for a strip colour
     t = k / 100
