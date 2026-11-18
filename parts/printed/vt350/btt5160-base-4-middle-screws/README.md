@@ -9,4 +9,4 @@
 | `btt5160-base-4-middle-screws.step` | its source |
 
 For the [BTT TMC5160T Plus](https://global.bttwiki.com/TMC5160TPlus.html) drivers (2 owned, `notes/parts-owned.md`).
-Stage 7, electronics (#13). Qty in the manifest is 1; check how many drivers one base holds before printing.
+Stage 7, electronics (#13). **One base holds two drivers** (measured on the STEP, 2026-11-17, #65 AC1): two identical sets of four counterbored M3 holes in a 24 × 32 mm pattern, centred 67 mm apart along the 127 mm length (each driver is 64 × 56 mm with its case, BTT wiki). So the manifest's qty 1 covers the 2 owned drivers.

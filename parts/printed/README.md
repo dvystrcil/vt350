@@ -83,8 +83,9 @@ link-only because its part list isn't chosen yet.
 | Door handle hinge, top | 1 | #14 | Clicky-Clack door | GPL-3.0 | chamber material (#8 AC1) | [`clicky-clack/Handle-Hinge_Top.stl`](clicky-clack/Handle-Hinge_Top.stl) |
 | Door latch | 1 | #14 | Clicky-Clack door | GPL-3.0 | chamber material (#8 AC1) | [`clicky-clack/Latch.stl`](clicky-clack/Latch.stl) |
 | Door panel clip | 1 | #14 | Clicky-Clack door | GPL-3.0 | chamber material (#8 AC1) | [`clicky-clack/Panel_Clip.stl`](clicky-clack/Panel_Clip.stl) |
+| Chamber camera housing (front cover v4 + back cover v1) | 1 | #14 | Printables 305428 (lukeslabonline) | Public Domain (Creative Commons) | chamber material (#8 AC1); link only: Printables isn't a git source; print camera_front_cover-v4 and camera_case_back_cover-v1; M2.5x15+ screws; mount waits on #37 | link only: [upstream](https://www.printables.com/model/305428) |
 | EMU (filament unit, per lane) | as-needed | #15 | EMU | CC BY-NC-SA 4.0 | link only: parts come from EMU's own configurator and are tracked separately (#8 AC2); stage not set by any stage issue yet | link only: [upstream](https://github.com/DW-Tas/EMU/tree/0e92ca241eb2627fab224660ef5925ee872ad0e3) |
 
-**Full set:** 59 printed pieces from 38 files, plus 3 file(s) printed as needed. 1 part(s) are links only, not counted. Rows marked *alternative* are pick-one: one of each group is counted.
+**Full set:** 59 printed pieces from 38 files, plus 3 file(s) printed as needed. 2 part(s) are links only, not counted. Rows marked *alternative* are pick-one: one of each group is counted.
 
 <!-- END GENERATED -->
