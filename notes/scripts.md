@@ -126,6 +126,24 @@ cad/viewer/export_glb.sh 62 cad/viewer/toolhead.json -- --decimate 0.5   # a sma
   its `scene.json`; then `blender -b -P platform/render/render.py -- <export> <out> 128` renders just that view. The page's
   `RENDER_CAM` is that camera (printed by `frame_view.py`); the page shows the render beside the live model.
 
+### A turntable of real renders (#220)
+
+```bash
+# 1. a whole-printer export, as render_full.sh makes (or reuse one): GUI under xvfb, read-only
+RUN=~/Documents/VT350/renders/vt350-lite-62-turntable-<UTC>; D=~/Documents/VT350
+VT350_COLOURS=$PWD/cad/render/colours.json VT350_MODEL=$D/vt350-lite-62.FCStd \
+  VT350_EXTRA=$D/vt350-ebox-3.FCStd:$D/vt350-emu-3.FCStd VT350_RENDER_OUT=$RUN/export \
+  xvfb-run -a -s "-screen 0 1280x1024x24" $APP $PWD/platform/render/export_meshes.py
+# 2. 36 angles x 3 heights of cameras into its scene.json
+python3 platform/viewer/frame_view.py $RUN/export --turntable 36x3 --elevations 10,25,40 --fill 1.0
+# 3. the 108 renders on the batch lane (~hours on the GTX 970); the result is a comment on the issue
+~/Code/homelab/bin/gpu-batch-submit.py blender --input $RUN/export --script $PWD/platform/render/render.py \
+  --with $PWD/platform/render/colours.py --with $PWD/cad/render/colours.json --expect 'out/*.jpg' \
+  --min-outputs 108 --deadline 14400 --notify dvystrcil/vt350#220 -- 64 --size 1280x720
+```
+
+The page is `cad/viewer/turntable/index.html`: it loads `frames/<model>-tt-e<elev>-a<azimuth>.jpg` from beside it.
+
 ### `cad/render/render_full.sh`: full colour renders on this laptop (#38)
 
 ```bash
