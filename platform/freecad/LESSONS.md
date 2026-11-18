@@ -233,3 +233,12 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
   (`common().Volume`), and cut each one's box + clearance through the panel. Then no part is missed or hard-coded,
   but gate every hit with a predicate ("only in the latch band", "only the cable arms"): an unexpected hit fails
   the pass instead of quietly becoming a hole.
+- **A big chamfer can quietly leave edges out** (lite70_roof_exit_low, 2026-11-18). A `Part::Chamfer` with ~70 edges
+  on the cable channel came back valid, one solid, smaller in volume, and dozens of its edges were still sharp
+  (whole 350 mm rims among them). No error, no warning. Check the result against the input: an edge that was due a
+  chamfer and still has an edge lying on its line afterwards was missed (`printchamfer.unchamfered`). Then chamfer
+  the missed ones one at a time on the result (`shape.makeChamfer(d, [edge])`). That's what `printchamfer.chamfer`
+  does. Re-find each edge by geometry each time: a neighbour's chamfer trims its ends, so test "on the same line"
+  rather than "same midpoint and length".
+- **Bed and top faces: compare with a tolerance of ~0.01 mm, not 1e-3**: a face's `CenterOfMass` along a tilted
+  print direction (a cap printed on its 45 deg split face) came out 0.001 above the lowest vertex.
