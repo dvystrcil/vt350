@@ -1,0 +1,14 @@
+{
+ "hosts": [
+  "COMPOUND",
+  "Plate",
+  "COMPOUND004",
+  "Plate(Mirror)",
+  "Plate001",
+  "Plate002",
+  "COMPOUND003",
+  "Plate(Mirror)001"
+ ],
+ "magnets": 48,
+ "g_each": 0.645
+}

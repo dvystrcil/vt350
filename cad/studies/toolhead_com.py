@@ -13,7 +13,7 @@
 import os, re, sys, time
 
 WORK = os.environ.get("VT350_WORK", "/home/dan/Code/vt350/cad/data")
-MODEL = os.environ.get("VT350_MODEL", "/home/dan/Documents/VT350/vt350-lite-63.FCStd")
+MODEL = os.environ.get("VT350_MODEL", "/home/dan/Documents/VT350/vt350-lite-64.FCStd")
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path[:0] = [HERE] + [os.path.join(os.path.dirname(os.path.dirname(HERE)), d) for d in ("platform/freecad",)]
 HEADS = {"Left": dict(group="Left Toolhead", dock="Left Dock", copy="COMPOUND003", tube="Bowden Left",
@@ -133,6 +133,9 @@ def main():
             f"({tip.x:.2f}, {tip.y:.2f}, {tip.z:.2f})")
         head = [item(o, sh) for o in leaves if d["group"] in P[o.Name] and o.Label not in TUBES]
         plate = [item(one(l, d["dock"]), sh) for l in d["plate"]]
+        # the plate's magnets (lite-64): "MadMax magnet 6x3 N52 (plate <label>) n", filed beside the plate
+        plate += [item(o, sh) for o in leaves if d["dock"] in P[o.Name] and any(
+            o.Label.startswith(f"MadMax magnet 6x3 N52 (plate {l}) ") for l in d["plate"])]
         tube = [item(one(d["tube"]), sh)]   # the tube as modelled from the docked pose: a rigid route (sweep_toolhead)
         unk = report(f"{h} tool (head + Plate + Plate Back), no bowden (AC2)", head + plate, tip)
         report(f"{h} tool with its bowden tube (AC2; the tube as routed from the dock, moved rigidly)", head + plate + tube, tip)

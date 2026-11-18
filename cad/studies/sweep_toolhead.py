@@ -129,7 +129,10 @@ def plan(out):
     heads, tool = {}, {}
     for h, d in HEADS.items():
         tool[h] = dict(head=[o.Name for o in leaves if d["group"] in P[o.Name] and o.Name not in (tubes["Left"].Name, tubes["Right"].Name)],
-                       plate=[one(l, d["dock"]).Name for l in d["plate"]])
+                       plate=[one(l, d["dock"]).Name for l in d["plate"]]
+                             # the plate's magnets (lite-64) are bolted in with it: "MadMax magnet 6x3 N52 (plate <label>) n"
+                             + [o.Name for o in leaves if d["dock"] in P[o.Name] and any(
+                                 o.Label.startswith(f"MadMax magnet 6x3 N52 (plate {l}) ") for l in d["plate"])])
         heads[h] = tool[h]["head"] + tool[h]["plate"]
     allg = bed + gantry + carriage + heads["Left"] + heads["Right"] + belts
     if len(allg) != len(set(allg)): raise RuntimeError("a solid is in two moving groups")

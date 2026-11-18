@@ -1,159 +1,159 @@
-[    0.6s] material cards: 96 in the Custom library
-[    4.3s] opened /home/dan/Documents/VT350/vt350-lite-63.FCStd
-[    9.9s] X rail block centre (-243.95, 265.83, 429.65); X beam centre line Y 283.50, Z 430.00
-[    9.9s] GT2 9mm belt, lower (Monolith 2WD): near the carriage Y 258.26..465.42, Z 418.75..427.75 (centre Z 423.25)
-[    9.9s] GT2 9mm belt, upper (Monolith 2WD): near the carriage Y 257.51..465.42, Z 432.25..441.25 (centre Z 436.75)
-[   11.5s] 
-[   11.5s] ===== Left head carried (moved by -T_pick (-164.700, -257.725, 0.315)); nozzle tip (-245.00, 225.26, 380.49)
-[   27.1s] -- Left tool (head + Plate + Plate Back), no bowden (AC2): 119 solids; 16 with Default material, 59.8 cm3 of 197.4 cm3
-[   27.1s]    Default as PETG 1.27 g/cm3: mass 355 g, CoM (-247.05, 229.87, 451.06)
-[   27.1s]       vs the nozzle tip   dX   -2.05  dY   +4.61  dZ  +70.57
-[   27.1s]       vs the block centre dX   -3.09  dY  -35.96  dZ  +21.41
-[   27.1s]       vs the X beam line           dY  -53.63  dZ  +21.06
-[   27.1s]       vs the lower belt's plane                 dZ  +27.81
-[   27.1s]       vs the upper belt's plane                 dZ  +14.31
-[   27.1s]    Default as aluminium 2.70 g/cm3: mass 441 g, CoM (-247.03, 229.60, 449.44)
-[   27.1s]       vs the nozzle tip   dX   -2.03  dY   +4.34  dZ  +68.95
-[   27.1s]       vs the block centre dX   -3.08  dY  -36.23  dZ  +19.79
-[   27.1s]       vs the X beam line           dY  -53.90  dZ  +19.44
-[   27.1s]       vs the lower belt's plane                 dZ  +26.19
-[   27.1s]       vs the upper belt's plane                 dZ  +12.69
-[   27.1s]    known materials only: 279 g
-[   27.1s] -- Left tool with its bowden tube (AC2; the tube as routed from the dock, moved rigidly): 120 solids; 17 with Default material, 68.3 cm3 of 205.8 cm3
-[   27.1s]    Default as PETG 1.27 g/cm3: mass 366 g, CoM (-246.99, 236.37, 456.78)
-[   27.1s]       vs the nozzle tip   dX   -1.99  dY  +11.11  dZ  +76.30
-[   27.1s]       vs the block centre dX   -3.03  dY  -29.45  dZ  +27.13
-[   27.1s]       vs the X beam line           dY  -47.13  dZ  +26.78
-[   27.1s]       vs the lower belt's plane                 dZ  +33.53
-[   27.1s]       vs the upper belt's plane                 dZ  +20.03
-[   27.1s]    Default as aluminium 2.70 g/cm3: mass 464 g, CoM (-246.93, 240.52, 459.12)
-[   27.1s]       vs the nozzle tip   dX   -1.93  dY  +15.26  dZ  +78.64
-[   27.1s]       vs the block centre dX   -2.98  dY  -25.30  dZ  +29.47
-[   27.1s]       vs the X beam line           dY  -42.98  dZ  +29.12
-[   27.1s]       vs the lower belt's plane                 dZ  +35.87
-[   27.1s]       vs the upper belt's plane                 dZ  +22.37
-[   27.1s]    known materials only: 279 g
-[   27.1s] -- moving X assembly: carriage, Beacon, MGN12 block, clamps (AC3): 5 solids; 0 with Default material, 0.0 cm3 of 31.3 cm3
-[   27.1s]    Default as PETG 1.27 g/cm3: mass 101 g, CoM (-244.90, 262.78, 425.37)
-[   27.1s]       vs the nozzle tip   dX   +0.10  dY  +37.52  dZ  +44.88
-[   27.1s]       vs the block centre dX   -0.95  dY   -3.04  dZ   -4.28
-[   27.1s]       vs the X beam line           dY  -20.72  dZ   -4.63
-[   27.1s]       vs the lower belt's plane                 dZ   +2.12
-[   27.1s]       vs the upper belt's plane                 dZ  -11.38
-[   27.1s]    Default as aluminium 2.70 g/cm3: mass 101 g, CoM (-244.90, 262.78, 425.37)
-[   27.1s]       vs the nozzle tip   dX   +0.10  dY  +37.52  dZ  +44.88
-[   27.1s]       vs the block centre dX   -0.95  dY   -3.04  dZ   -4.28
-[   27.1s]       vs the X beam line           dY  -20.72  dZ   -4.63
-[   27.1s]       vs the lower belt's plane                 dZ   +2.12
-[   27.1s]       vs the upper belt's plane                 dZ  -11.38
-[   27.1s]    known materials only: 101 g
-[   27.1s] -- whole carried system with the Left head, no bowden (AC3): 124 solids; 16 with Default material, 59.8 cm3 of 228.7 cm3
-[   27.1s]    Default as PETG 1.27 g/cm3: mass 456 g, CoM (-246.57, 237.13, 445.39)
-[   27.1s]       vs the nozzle tip   dX   -1.57  dY  +11.87  dZ  +64.91
-[   27.1s]       vs the block centre dX   -2.62  dY  -28.70  dZ  +15.74
-[   27.1s]       vs the X beam line           dY  -46.37  dZ  +15.39
-[   27.1s]       vs the lower belt's plane                 dZ  +22.14
-[   27.1s]       vs the upper belt's plane                 dZ   +8.64
-[   27.1s]    Default as aluminium 2.70 g/cm3: mass 541 g, CoM (-246.64, 235.76, 444.97)
-[   27.1s]       vs the nozzle tip   dX   -1.64  dY  +10.50  dZ  +64.48
-[   27.1s]       vs the block centre dX   -2.68  dY  -30.06  dZ  +15.32
-[   27.1s]       vs the X beam line           dY  -47.74  dZ  +14.97
-[   27.1s]       vs the lower belt's plane                 dZ  +21.72
-[   27.1s]       vs the upper belt's plane                 dZ   +8.22
-[   27.1s]    known materials only: 380 g
-[   27.1s]    Default-material solids in the Left tool (AC2), largest first:
-[   27.1s]          13.67 cm3  Vindr Berserker 4010B blower R Left Toolhead (modelled from measurements)
-[   27.1s]          13.67 cm3  Vindr Berserker 4010B blower L Left Toolhead (modelled from measurements)
-[   27.1s]          10.04 cm3  Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)
-[   27.1s]           6.46 cm3  Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)
-[   27.1s]           3.26 cm3  2510 Fan
-[   27.1s]           3.17 cm3  Orbitool O2S USB cable stub Left (Orbiter-Toolboards 52a5a33, CC0-1.0)
-[   27.1s]           2.47 cm3  TL-dragon-¹è½ºÌ×
-[   27.1s]           1.90 cm3  Heat Block
-[   27.1s]           1.89 cm3  TL-dragon-Íâ¿ò-°«
-[   27.1s]           0.82 cm3  TL-dragon-ace-spacer
-[   27.1s]           0.75 cm3  Component1
-[   27.1s]           0.55 cm3  TL-dragon-Íâ¿ò-°«001
-[   27.1s]           0.48 cm3  Orbitool O2S standoffs + screws Left (Orbiter-Toolboards 52a5a33, CC0-1.0)
-[   27.1s]           0.35 cm3  TL-dragon-¹è½ºÌ×3
-[   27.1s]           0.29 cm3  E3D v6 HotEnd - Nozzle
-[   27.1s]           0.05 cm3  Component2
-[   28.3s] 
-[   28.3s] ===== Right head carried (moved by -T_pick (164.714, -257.725, 0.315)); nozzle tip (-245.01, 225.26, 380.49)
-[   37.7s] -- Right tool (head + Plate + Plate Back), no bowden (AC2): 119 solids; 16 with Default material, 59.8 cm3 of 197.4 cm3
-[   37.7s]    Default as PETG 1.27 g/cm3: mass 355 g, CoM (-246.72, 229.87, 451.06)
-[   37.7s]       vs the nozzle tip   dX   -1.70  dY   +4.61  dZ  +70.58
-[   37.7s]       vs the block centre dX   -2.76  dY  -35.95  dZ  +21.41
-[   37.7s]       vs the X beam line           dY  -53.63  dZ  +21.06
-[   37.7s]       vs the lower belt's plane                 dZ  +27.81
-[   37.7s]       vs the upper belt's plane                 dZ  +14.31
-[   37.7s]    Default as aluminium 2.70 g/cm3: mass 441 g, CoM (-246.77, 229.60, 449.44)
-[   37.7s]       vs the nozzle tip   dX   -1.76  dY   +4.34  dZ  +68.96
-[   37.7s]       vs the block centre dX   -2.82  dY  -36.23  dZ  +19.79
-[   37.7s]       vs the X beam line           dY  -53.90  dZ  +19.44
-[   37.7s]       vs the lower belt's plane                 dZ  +26.19
-[   37.7s]       vs the upper belt's plane                 dZ  +12.69
-[   37.7s]    known materials only: 279 g
-[   37.7s] -- Right tool with its bowden tube (AC2; the tube as routed from the dock, moved rigidly): 120 solids; 17 with Default material, 68.3 cm3 of 205.8 cm3
-[   37.7s]    Default as PETG 1.27 g/cm3: mass 366 g, CoM (-246.67, 236.37, 456.78)
-[   37.7s]       vs the nozzle tip   dX   -1.65  dY  +11.11  dZ  +76.30
-[   37.7s]       vs the block centre dX   -2.71  dY  -29.45  dZ  +27.13
-[   37.7s]       vs the X beam line           dY  -47.13  dZ  +26.78
-[   37.7s]       vs the lower belt's plane                 dZ  +33.53
-[   37.7s]       vs the upper belt's plane                 dZ  +20.03
-[   37.7s]    Default as aluminium 2.70 g/cm3: mass 464 g, CoM (-246.68, 240.52, 459.12)
-[   37.7s]       vs the nozzle tip   dX   -1.67  dY  +15.26  dZ  +78.64
-[   37.7s]       vs the block centre dX   -2.73  dY  -25.30  dZ  +29.47
-[   37.7s]       vs the X beam line           dY  -42.98  dZ  +29.12
-[   37.7s]       vs the lower belt's plane                 dZ  +35.87
-[   37.7s]       vs the upper belt's plane                 dZ  +22.37
-[   37.7s]    known materials only: 279 g
-[   37.7s] -- moving X assembly: carriage, Beacon, MGN12 block, clamps (AC3): 5 solids; 0 with Default material, 0.0 cm3 of 31.3 cm3
-[   37.7s]    Default as PETG 1.27 g/cm3: mass 101 g, CoM (-244.90, 262.78, 425.37)
-[   37.7s]       vs the nozzle tip   dX   +0.11  dY  +37.52  dZ  +44.88
-[   37.7s]       vs the block centre dX   -0.95  dY   -3.04  dZ   -4.28
-[   37.7s]       vs the X beam line           dY  -20.72  dZ   -4.63
-[   37.7s]       vs the lower belt's plane                 dZ   +2.12
-[   37.7s]       vs the upper belt's plane                 dZ  -11.38
-[   37.7s]    Default as aluminium 2.70 g/cm3: mass 101 g, CoM (-244.90, 262.78, 425.37)
-[   37.7s]       vs the nozzle tip   dX   +0.11  dY  +37.52  dZ  +44.88
-[   37.7s]       vs the block centre dX   -0.95  dY   -3.04  dZ   -4.28
-[   37.7s]       vs the X beam line           dY  -20.72  dZ   -4.63
-[   37.7s]       vs the lower belt's plane                 dZ   +2.12
-[   37.7s]       vs the upper belt's plane                 dZ  -11.38
-[   37.7s]    known materials only: 101 g
-[   37.7s] -- whole carried system with the Right head, no bowden (AC3): 124 solids; 16 with Default material, 59.8 cm3 of 228.7 cm3
-[   37.7s]    Default as PETG 1.27 g/cm3: mass 456 g, CoM (-246.32, 237.13, 445.39)
-[   37.7s]       vs the nozzle tip   dX   -1.30  dY  +11.87  dZ  +64.91
-[   37.7s]       vs the block centre dX   -2.36  dY  -28.69  dZ  +15.74
-[   37.7s]       vs the X beam line           dY  -46.37  dZ  +15.39
-[   37.7s]       vs the lower belt's plane                 dZ  +22.14
-[   37.7s]       vs the upper belt's plane                 dZ   +8.64
-[   37.7s]    Default as aluminium 2.70 g/cm3: mass 541 g, CoM (-246.42, 235.76, 444.97)
-[   37.7s]       vs the nozzle tip   dX   -1.41  dY  +10.50  dZ  +64.48
-[   37.7s]       vs the block centre dX   -2.47  dY  -30.06  dZ  +15.32
-[   37.7s]       vs the X beam line           dY  -47.74  dZ  +14.97
-[   37.7s]       vs the lower belt's plane                 dZ  +21.72
-[   37.7s]       vs the upper belt's plane                 dZ   +8.22
-[   37.7s]    known materials only: 380 g
-[   37.7s]    Default-material solids in the Right tool (AC2), largest first:
-[   37.7s]          13.67 cm3  Vindr Berserker 4010B blower R Right Toolhead (modelled from measurements)
-[   37.7s]          13.67 cm3  Vindr Berserker 4010B blower L Right Toolhead (modelled from measurements)
-[   37.7s]          10.04 cm3  Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0)
-[   37.7s]           6.46 cm3  Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)
-[   37.7s]           3.26 cm3  2510 Fan001
-[   37.7s]           3.17 cm3  Orbitool O2S USB cable stub Right (Orbiter-Toolboards 52a5a33, CC0-1.0)
-[   37.7s]           2.47 cm3  TL-dragon-¹è½ºÌ×001
-[   37.7s]           1.90 cm3  Heat Block001
-[   37.7s]           1.89 cm3  TL-dragon-Íâ¿ò-°«002
-[   37.7s]           0.82 cm3  TL-dragon-ace-spacer001
-[   37.7s]           0.75 cm3  Component005
-[   37.7s]           0.55 cm3  TL-dragon-Íâ¿ò-°«003
-[   37.7s]           0.48 cm3  Orbitool O2S standoffs + screws Right (Orbiter-Toolboards 52a5a33, CC0-1.0)
-[   37.7s]           0.35 cm3  TL-dragon-¹è½ºÌ×002
-[   37.7s]           0.29 cm3  E3D v6 HotEnd - Nozzle001
-[   37.7s]           0.05 cm3  Component006
-[   37.7s] 
-[   37.7s] Default-material solids in the moving X assembly: none
-[   37.7s] 
-[   37.7s] toolhead_com: done
+[    0.4s] material cards: 96 in the Custom library
+[    3.4s] opened /home/dan/Documents/VT350/vt350-lite-64.FCStd
+[    7.6s] X rail block centre (-243.95, 265.83, 429.65); X beam centre line Y 283.50, Z 430.00
+[    7.6s] GT2 9mm belt, lower (Monolith 2WD): near the carriage Y 258.26..465.42, Z 418.75..427.75 (centre Z 423.25)
+[    7.6s] GT2 9mm belt, upper (Monolith 2WD): near the carriage Y 257.51..465.42, Z 432.25..441.25 (centre Z 436.75)
+[    8.5s] 
+[    8.5s] ===== Left head carried (moved by -T_pick (-164.700, -257.725, 0.315)); nozzle tip (-245.00, 225.26, 380.49)
+[   15.7s] -- Left tool (head + Plate + Plate Back), no bowden (AC2): 125 solids; 16 with Default material, 59.8 cm3 of 197.9 cm3
+[   15.7s]    Default as PETG 1.27 g/cm3: mass 359 g, CoM (-247.02, 230.07, 450.74)
+[   15.7s]       vs the nozzle tip   dX   -2.02  dY   +4.81  dZ  +70.25
+[   15.7s]       vs the block centre dX   -3.07  dY  -35.75  dZ  +21.09
+[   15.7s]       vs the X beam line           dY  -53.43  dZ  +20.74
+[   15.7s]       vs the lower belt's plane                 dZ  +27.49
+[   15.7s]       vs the upper belt's plane                 dZ  +13.99
+[   15.7s]    Default as aluminium 2.70 g/cm3: mass 445 g, CoM (-247.01, 229.77, 449.19)
+[   15.7s]       vs the nozzle tip   dX   -2.01  dY   +4.50  dZ  +68.71
+[   15.7s]       vs the block centre dX   -3.06  dY  -36.06  dZ  +19.54
+[   15.7s]       vs the X beam line           dY  -53.73  dZ  +19.19
+[   15.7s]       vs the lower belt's plane                 dZ  +25.94
+[   15.7s]       vs the upper belt's plane                 dZ  +12.44
+[   15.7s]    known materials only: 283 g
+[   15.7s] -- Left tool with its bowden tube (AC2; the tube as routed from the dock, moved rigidly): 126 solids; 17 with Default material, 68.3 cm3 of 206.3 cm3
+[   15.7s]    Default as PETG 1.27 g/cm3: mass 370 g, CoM (-246.97, 236.50, 456.41)
+[   15.7s]       vs the nozzle tip   dX   -1.97  dY  +11.24  dZ  +75.93
+[   15.7s]       vs the block centre dX   -3.01  dY  -29.32  dZ  +26.76
+[   15.7s]       vs the X beam line           dY  -47.00  dZ  +26.41
+[   15.7s]       vs the lower belt's plane                 dZ  +33.16
+[   15.7s]       vs the upper belt's plane                 dZ  +19.66
+[   15.7s]    Default as aluminium 2.70 g/cm3: mass 468 g, CoM (-246.92, 240.59, 458.81)
+[   15.7s]       vs the nozzle tip   dX   -1.92  dY  +15.33  dZ  +78.33
+[   15.7s]       vs the block centre dX   -2.96  dY  -25.23  dZ  +29.16
+[   15.7s]       vs the X beam line           dY  -42.91  dZ  +28.81
+[   15.7s]       vs the lower belt's plane                 dZ  +35.56
+[   15.7s]       vs the upper belt's plane                 dZ  +22.06
+[   15.7s]    known materials only: 283 g
+[   15.7s] -- moving X assembly: carriage, Beacon, MGN12 block, clamps (AC3): 11 solids; 0 with Default material, 0.0 cm3 of 31.8 cm3
+[   15.7s]    Default as PETG 1.27 g/cm3: mass 104 g, CoM (-244.91, 262.42, 425.22)
+[   15.7s]       vs the nozzle tip   dX   +0.09  dY  +37.16  dZ  +44.73
+[   15.7s]       vs the block centre dX   -0.95  dY   -3.40  dZ   -4.43
+[   15.7s]       vs the X beam line           dY  -21.08  dZ   -4.78
+[   15.7s]       vs the lower belt's plane                 dZ   +1.97
+[   15.7s]       vs the upper belt's plane                 dZ  -11.53
+[   15.7s]    Default as aluminium 2.70 g/cm3: mass 104 g, CoM (-244.91, 262.42, 425.22)
+[   15.7s]       vs the nozzle tip   dX   +0.09  dY  +37.16  dZ  +44.73
+[   15.7s]       vs the block centre dX   -0.95  dY   -3.40  dZ   -4.43
+[   15.7s]       vs the X beam line           dY  -21.08  dZ   -4.78
+[   15.7s]       vs the lower belt's plane                 dZ   +1.97
+[   15.7s]       vs the upper belt's plane                 dZ  -11.53
+[   15.7s]    known materials only: 104 g
+[   15.7s] -- whole carried system with the Left head, no bowden (AC3): 136 solids; 16 with Default material, 59.8 cm3 of 229.7 cm3
+[   15.7s]    Default as PETG 1.27 g/cm3: mass 464 g, CoM (-246.55, 237.36, 444.99)
+[   15.7s]       vs the nozzle tip   dX   -1.55  dY  +12.10  dZ  +64.50
+[   15.7s]       vs the block centre dX   -2.59  dY  -28.46  dZ  +15.34
+[   15.7s]       vs the X beam line           dY  -46.14  dZ  +14.99
+[   15.7s]       vs the lower belt's plane                 dZ  +21.74
+[   15.7s]       vs the upper belt's plane                 dZ   +8.24
+[   15.7s]    Default as aluminium 2.70 g/cm3: mass 549 g, CoM (-246.61, 235.98, 444.63)
+[   15.7s]       vs the nozzle tip   dX   -1.61  dY  +10.71  dZ  +64.15
+[   15.7s]       vs the block centre dX   -2.66  dY  -29.85  dZ  +14.98
+[   15.7s]       vs the X beam line           dY  -47.52  dZ  +14.63
+[   15.7s]       vs the lower belt's plane                 dZ  +21.38
+[   15.7s]       vs the upper belt's plane                 dZ   +7.88
+[   15.7s]    known materials only: 388 g
+[   15.7s]    Default-material solids in the Left tool (AC2), largest first:
+[   15.7s]          13.67 cm3  Vindr Berserker 4010B blower R Left Toolhead (modelled from measurements)
+[   15.7s]          13.67 cm3  Vindr Berserker 4010B blower L Left Toolhead (modelled from measurements)
+[   15.7s]          10.04 cm3  Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)
+[   15.7s]           6.46 cm3  Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)
+[   15.7s]           3.26 cm3  2510 Fan
+[   15.7s]           3.17 cm3  Orbitool O2S USB cable stub Left (Orbiter-Toolboards 52a5a33, CC0-1.0)
+[   15.7s]           2.47 cm3  TL-dragon-¹è½ºÌ×
+[   15.7s]           1.90 cm3  Heat Block
+[   15.7s]           1.89 cm3  TL-dragon-Íâ¿ò-°«
+[   15.7s]           0.82 cm3  TL-dragon-ace-spacer
+[   15.7s]           0.75 cm3  Component1
+[   15.7s]           0.55 cm3  TL-dragon-Íâ¿ò-°«001
+[   15.7s]           0.48 cm3  Orbitool O2S standoffs + screws Left (Orbiter-Toolboards 52a5a33, CC0-1.0)
+[   15.7s]           0.35 cm3  TL-dragon-¹è½ºÌ×3
+[   15.7s]           0.29 cm3  E3D v6 HotEnd - Nozzle
+[   15.7s]           0.05 cm3  Component2
+[   16.7s] 
+[   16.7s] ===== Right head carried (moved by -T_pick (164.714, -257.725, 0.315)); nozzle tip (-245.01, 225.26, 380.49)
+[   24.3s] -- Right tool (head + Plate + Plate Back), no bowden (AC2): 125 solids; 16 with Default material, 59.8 cm3 of 197.9 cm3
+[   24.3s]    Default as PETG 1.27 g/cm3: mass 359 g, CoM (-246.70, 230.07, 450.74)
+[   24.3s]       vs the nozzle tip   dX   -1.69  dY   +4.81  dZ  +70.25
+[   24.3s]       vs the block centre dX   -2.75  dY  -35.75  dZ  +21.09
+[   24.3s]       vs the X beam line           dY  -53.43  dZ  +20.74
+[   24.3s]       vs the lower belt's plane                 dZ  +27.49
+[   24.3s]       vs the upper belt's plane                 dZ  +13.99
+[   24.3s]    Default as aluminium 2.70 g/cm3: mass 445 g, CoM (-246.76, 229.77, 449.20)
+[   24.3s]       vs the nozzle tip   dX   -1.74  dY   +4.50  dZ  +68.71
+[   24.3s]       vs the block centre dX   -2.80  dY  -36.06  dZ  +19.55
+[   24.3s]       vs the X beam line           dY  -53.73  dZ  +19.20
+[   24.3s]       vs the lower belt's plane                 dZ  +25.95
+[   24.3s]       vs the upper belt's plane                 dZ  +12.45
+[   24.3s]    known materials only: 283 g
+[   24.3s] -- Right tool with its bowden tube (AC2; the tube as routed from the dock, moved rigidly): 126 solids; 17 with Default material, 68.3 cm3 of 206.3 cm3
+[   24.3s]    Default as PETG 1.27 g/cm3: mass 370 g, CoM (-246.65, 236.50, 456.41)
+[   24.3s]       vs the nozzle tip   dX   -1.64  dY  +11.24  dZ  +75.93
+[   24.3s]       vs the block centre dX   -2.70  dY  -29.32  dZ  +26.76
+[   24.3s]       vs the X beam line           dY  -47.00  dZ  +26.41
+[   24.3s]       vs the lower belt's plane                 dZ  +33.16
+[   24.3s]       vs the upper belt's plane                 dZ  +19.66
+[   24.3s]    Default as aluminium 2.70 g/cm3: mass 468 g, CoM (-246.67, 240.59, 458.81)
+[   24.3s]       vs the nozzle tip   dX   -1.66  dY  +15.33  dZ  +78.33
+[   24.3s]       vs the block centre dX   -2.72  dY  -25.23  dZ  +29.16
+[   24.3s]       vs the X beam line           dY  -42.91  dZ  +28.81
+[   24.3s]       vs the lower belt's plane                 dZ  +35.56
+[   24.3s]       vs the upper belt's plane                 dZ  +22.06
+[   24.3s]    known materials only: 283 g
+[   24.3s] -- moving X assembly: carriage, Beacon, MGN12 block, clamps (AC3): 11 solids; 0 with Default material, 0.0 cm3 of 31.8 cm3
+[   24.3s]    Default as PETG 1.27 g/cm3: mass 104 g, CoM (-244.91, 262.42, 425.22)
+[   24.3s]       vs the nozzle tip   dX   +0.11  dY  +37.16  dZ  +44.73
+[   24.3s]       vs the block centre dX   -0.95  dY   -3.40  dZ   -4.43
+[   24.3s]       vs the X beam line           dY  -21.08  dZ   -4.78
+[   24.3s]       vs the lower belt's plane                 dZ   +1.97
+[   24.3s]       vs the upper belt's plane                 dZ  -11.53
+[   24.3s]    Default as aluminium 2.70 g/cm3: mass 104 g, CoM (-244.91, 262.42, 425.22)
+[   24.3s]       vs the nozzle tip   dX   +0.11  dY  +37.16  dZ  +44.73
+[   24.3s]       vs the block centre dX   -0.95  dY   -3.40  dZ   -4.43
+[   24.3s]       vs the X beam line           dY  -21.08  dZ   -4.78
+[   24.3s]       vs the lower belt's plane                 dZ   +1.97
+[   24.3s]       vs the upper belt's plane                 dZ  -11.53
+[   24.3s]    known materials only: 104 g
+[   24.3s] -- whole carried system with the Right head, no bowden (AC3): 136 solids; 16 with Default material, 59.8 cm3 of 229.7 cm3
+[   24.3s]    Default as PETG 1.27 g/cm3: mass 464 g, CoM (-246.30, 237.36, 444.99)
+[   24.3s]       vs the nozzle tip   dX   -1.28  dY  +12.10  dZ  +64.51
+[   24.3s]       vs the block centre dX   -2.34  dY  -28.46  dZ  +15.34
+[   24.3s]       vs the X beam line           dY  -46.14  dZ  +14.99
+[   24.3s]       vs the lower belt's plane                 dZ  +21.74
+[   24.3s]       vs the upper belt's plane                 dZ   +8.24
+[   24.3s]    Default as aluminium 2.70 g/cm3: mass 549 g, CoM (-246.40, 235.98, 444.64)
+[   24.3s]       vs the nozzle tip   dX   -1.39  dY  +10.71  dZ  +64.15
+[   24.3s]       vs the block centre dX   -2.45  dY  -29.85  dZ  +14.99
+[   24.3s]       vs the X beam line           dY  -47.52  dZ  +14.64
+[   24.3s]       vs the lower belt's plane                 dZ  +21.39
+[   24.3s]       vs the upper belt's plane                 dZ   +7.89
+[   24.3s]    known materials only: 388 g
+[   24.3s]    Default-material solids in the Right tool (AC2), largest first:
+[   24.3s]          13.67 cm3  Vindr Berserker 4010B blower R Right Toolhead (modelled from measurements)
+[   24.3s]          13.67 cm3  Vindr Berserker 4010B blower L Right Toolhead (modelled from measurements)
+[   24.3s]          10.04 cm3  Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0)
+[   24.3s]           6.46 cm3  Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)
+[   24.3s]           3.26 cm3  2510 Fan001
+[   24.3s]           3.17 cm3  Orbitool O2S USB cable stub Right (Orbiter-Toolboards 52a5a33, CC0-1.0)
+[   24.3s]           2.47 cm3  TL-dragon-¹è½ºÌ×001
+[   24.3s]           1.90 cm3  Heat Block001
+[   24.3s]           1.89 cm3  TL-dragon-Íâ¿ò-°«002
+[   24.3s]           0.82 cm3  TL-dragon-ace-spacer001
+[   24.3s]           0.75 cm3  Component005
+[   24.3s]           0.55 cm3  TL-dragon-Íâ¿ò-°«003
+[   24.3s]           0.48 cm3  Orbitool O2S standoffs + screws Right (Orbiter-Toolboards 52a5a33, CC0-1.0)
+[   24.3s]           0.35 cm3  TL-dragon-¹è½ºÌ×002
+[   24.3s]           0.29 cm3  E3D v6 HotEnd - Nozzle001
+[   24.3s]           0.05 cm3  Component006
+[   24.3s] 
+[   24.3s] Default-material solids in the moving X assembly: none
+[   24.3s] 
+[   24.3s] toolhead_com: done
