@@ -32,6 +32,13 @@ class Turntable(unittest.TestCase):
         self.assertLess(vs[0]["pos"][1], 0)                          # az 0: in front (-Y)
         self.assertGreater(vs[1]["pos"][0], 0)                       # az 90: on +X
         self.assertAlmostEqual(vs[4]["pos"][2] - 100, d[4] * math.sin(math.radians(30)), places=2)
+        self.assertEqual([vs[1]["light_turn_deg"], vs[4]["light_tilt_deg"]], [90.0, 5.0])   # el 30 - light_el 25
+
+    def test_below(self):
+        v = fv.turntable(BOX, 2, [-40], 35)[0]
+        self.assertEqual(v["name"], "tt-e-40-a000")
+        self.assertLess(v["pos"][2], 100)                            # under the centre, looking up
+        self.assertEqual(v["light_tilt_deg"], -65.0)
 
 
 if __name__ == "__main__":

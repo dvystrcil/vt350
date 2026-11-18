@@ -11,7 +11,12 @@ centre from the direction --from (default 3/4 front-right, from above, as render
 distance where the box's bounding sphere fills --fill (default 0.9) of the narrower field of view of a 16:9 frame.
 --turntable AxE: A cameras evenly round the box centre (azimuth 0 = the front, -Y; then counter-clockwise seen from
 above, so the printer appears to turn to the left as the index rises) at each of E elevations (--elevations, degrees), all at
-the framing distance; views named tt-e<elev>-a<azimuth>, in elevation-then-azimuth order.
+the framing distance; views named tt-e<elev>-a<azimuth>, in elevation-then-azimuth order. Each has "light_turn_deg":
+its azimuth, so render.py turns the key light with the camera (otherwise the rear views are lit from behind), and
+"light_tilt_deg": elevation - --light-el (default 25, the height the key is lit for), so it tilts with the camera too.
+Negative elevations look up from below.
+--hide B1,B2: buckets render.py leaves out of every view written ("hide"), and the framing ignores (vt350#220: the
+base board under the printer).
 --ev EV: the view's exposure for render.py (default -1.0, as its "outside" view; render.py's own default for an
 explicit view, -0.5, washes the colours out).
 Stdlib only.
@@ -52,7 +57,7 @@ def frame(bbox, direction, lens_mm, fill=0.9, aspect=16 / 9):
     return [c[i] + direction[i] / n * d for i in range(3)], c
 
 
-def turntable(bbox, n_az, elevations, lens_mm, fill=0.9, ev=-1.0):
+def turntable(bbox, n_az, elevations, lens_mm, fill=0.9, ev=-1.0, light_el=25.0):
     """-> the views of a turntable: n_az azimuths x the elevations (degrees), framed as frame() does."""
     views = []
     for el in elevations:
@@ -62,7 +67,8 @@ def turntable(bbox, n_az, elevations, lens_mm, fill=0.9, ev=-1.0):
             d = [math.sin(a) * math.cos(e), -math.cos(a) * math.cos(e), math.sin(e)]   # az 0: from -Y (the front)
             pos, look = frame(bbox, d, lens_mm, fill)
             views.append({"name": f"tt-e{int(round(el)):02d}-a{int(round(az)):03d}", "pos": [round(v, 3) for v in pos],
-                          "look": [round(v, 3) for v in look], "lens_mm": lens_mm, "ev": ev, "az": az, "el": el})
+                          "look": [round(v, 3) for v in look], "lens_mm": lens_mm, "ev": ev, "az": az, "el": el,
+                          "light_turn_deg": az, "light_tilt_deg": el - light_el})
     return views
 
 
@@ -75,7 +81,11 @@ def main(argv):
     if len(args) != 1: sys.exit(__doc__)
     exp = args[0]
     sj = os.path.join(exp, "scene.json"); scene = json.load(open(sj, encoding="utf-8"))
-    boxes = [stl_bbox(os.path.join(exp, k + ".stl")) for k in scene["buckets"] if os.path.exists(os.path.join(exp, k + ".stl"))]
+    hide = [b for b in opts.get("hide", "").split(",") if b]
+    missing = [b for b in hide if b not in scene["buckets"]]
+    if missing: sys.exit(f"frame_view: --hide {missing}: no such bucket in scene.json")
+    boxes = [stl_bbox(os.path.join(exp, k + ".stl")) for k in scene["buckets"]
+             if k not in hide and os.path.exists(os.path.join(exp, k + ".stl"))]
     bb = union(boxes)
     direction = [float(v) for v in opts.get("from", "725,-1715,850").split(",")]   # render.py "outside": cam - look
     lens = float(opts.get("lens", 35)); name = opts.get("name", "compare")
@@ -84,7 +94,8 @@ def main(argv):
         n_az, n_el = (int(v) for v in opts["turntable"].lower().split("x"))
         els = [float(v) for v in opts.get("elevations", "10,25,40").split(",")]
         if len(els) != n_el: sys.exit(f"frame_view: --turntable {opts['turntable']} needs {n_el} --elevations, got {len(els)}")
-        views = turntable(bb, n_az, els, lens, fill, ev)
+        views = turntable(bb, n_az, els, lens, fill, ev, float(opts.get("light-el", 25)))
+        for v in views: v["hide"] = hide
         scene["views"] = views
         scene["frame"] = {"bbox": [round(v, 3) for v in bb], "turntable": {"azimuths": n_az, "elevations": els}}
         json.dump(scene, open(sj, "w", encoding="utf-8"), indent=1)
@@ -92,7 +103,7 @@ def main(argv):
         print("frame-view: OK")
         return
     pos, look = frame(bb, direction, lens, fill)
-    view = {"name": name, "pos": [round(v, 3) for v in pos], "look": [round(v, 3) for v in look], "lens_mm": lens, "ev": ev}
+    view = {"name": name, "pos": [round(v, 3) for v in pos], "look": [round(v, 3) for v in look], "lens_mm": lens, "ev": ev, "hide": hide}
     scene["views"] = [view]; scene["frame"] = {"bbox": [round(v, 3) for v in bb], "view": view}
     json.dump(scene, open(sj, "w", encoding="utf-8"), indent=1)
     print(json.dumps(scene["frame"]))

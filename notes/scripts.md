@@ -134,9 +134,11 @@ RUN=~/Documents/VT350/renders/vt350-lite-62-turntable-<UTC>; D=~/Documents/VT350
 VT350_COLOURS=$PWD/cad/render/colours.json VT350_MODEL=$D/vt350-lite-62.FCStd \
   VT350_EXTRA=$D/vt350-ebox-3.FCStd:$D/vt350-emu-3.FCStd VT350_RENDER_OUT=$RUN/export \
   xvfb-run -a -s "-screen 0 1280x1024x24" $APP $PWD/platform/render/export_meshes.py
-# 2. 36 angles x 3 heights of cameras into its scene.json
-python3 platform/viewer/frame_view.py $RUN/export --turntable 36x3 --elevations 10,25,40 --fill 1.0 --ev -1.4
-# 3. the 108 renders on the batch lane (~hours on the GTX 970); the result is a comment on the issue
+# 2. 36 angles x 7 heights (below level too) of cameras into its scene.json, without the base board; the key light
+#    turns and tilts with each camera, so no frame is lit from behind
+python3 platform/viewer/frame_view.py $RUN/export --turntable 36x7 --elevations -40,-25,-10,0,10,25,40 --fill 1.0 --ev -1.4 \
+  --hide role_board_t0
+# 3. the 252 renders on the batch lane (~18 s each on the GTX 970, ~77 min); the result is a comment on the issue
 ~/Code/homelab/bin/gpu-batch-submit.py blender --input $RUN/export --script $PWD/platform/render/render.py \
   --with $PWD/platform/render/colours.py --with $PWD/cad/render/colours.json --expect 'out/*.jpg' \
   --min-outputs 108 --deadline 14400 --notify dvystrcil/vt350#220 -- 64 --size 1280x720 \
