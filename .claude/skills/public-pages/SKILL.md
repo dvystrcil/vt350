@@ -42,7 +42,8 @@ render. The rear must not be dark (the key light turns with each camera) and not
 
 ## 3. Show the owner privately
 
-`stage` wrote `RUN/page-turntable/` and `RUN/page-viewer/`. Publish each as a **private artifact**: `file_path` =
+`stage` wrote `RUN/page-turntable/` and `RUN/page-viewer/`. Copy each into your scratchpad (the Artifact tool only
+publishes from the working directory or the scratchpad), then publish each as a **private artifact**: `file_path` =
 the folder's `index.html`, `root` = the folder, everything else in `files` (all frames + `turntable.json`; or
 `viewer.json`, the `.gltf.json` and `render-compare.jpg`: artifacts don't serve `.glb`, so the preview uses the
 embedded-JSON copy). Republish to the same file path to keep a link. Say what proves it's the new version (the model
