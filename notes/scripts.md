@@ -141,7 +141,7 @@ python3 platform/viewer/frame_view.py $RUN/export --turntable 36x7 --elevations 
 # 3. the 252 renders on the batch lane (~18 s each on the GTX 970, ~77 min); the result is a comment on the issue
 ~/Code/homelab/bin/gpu-batch-submit.py blender --input $RUN/export --script $PWD/platform/render/render.py \
   --with $PWD/platform/render/colours.py --with $PWD/cad/render/colours.json --expect 'out/*.jpg' \
-  --min-outputs 108 --deadline 14400 --notify dvystrcil/vt350#220 -- 64 --size 1280x720 \
+  --min-outputs 252 --deadline 14400 --notify dvystrcil/vt350#220 -- 64 --size 1280x720 \
   --look "AgX - Punchy" --plastic-specular 0.2     # the owner's look for the turntable (2026-11-17)
 ```
 
