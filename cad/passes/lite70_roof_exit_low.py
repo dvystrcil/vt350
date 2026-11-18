@@ -4,7 +4,8 @@
 #    (Z 704..708) stepping down to the panel; with the felt gone the flange stood 11 mm in the air.
 #  - "lower the channel, it will give us back some cable lenght": lite-40's cable channel ran at Z 790..826 on posts.
 #  - "the components you create need a champher ... 0.5mm for a bottom surface ... 1.0mm on the top surface"
-#    (parts/printed/README.md): every part this pass makes is chamfered in its print orientation (printchamfer.py).
+#    (parts/printed/README.md): every part this pass makes is chamfered in its print orientation (printchamfer.py),
+#    with the sizes in cad/data/print-profile.json (first layer 0.5 for the squish, top 1.0 in 0.2 mm layers).
 #
 # Per head (5):
 #  - CLAMP: lite-36's base + cap (same bores, split, screws, along the same measured 45 deg exit axis), moved 11 mm down
@@ -70,6 +71,7 @@ CHAN = {"body": "Cable channel body, roof to side pack (printed, vt350, GPL-3.0-
 POSTS = "Cable channel post {i} (printed, M5 to the rear 4040)"
 ARMS = "Cable channel arm {i} (printed, M5 to the rear-right upright)"
 LANE_Z0_MIN = PANEL_TOP + POST_ARM + RC + CCLR + WALL   # the channel's bottom leaves room for the post's arm under it
+CHAMFER = printchamfer.profile(os.path.join(_REPO, "cad/data/print-profile.json"))   # first layer 0.5, top 1.0 in 0.2 layers
 UP = {"base": V(0, 0, 1), "body": V(0, 1, 0), "cover": V(0, 1, 0), "post": V(1, 0, 0), "arm": V(0, 0, 1)}
 
 
@@ -316,10 +318,10 @@ def main(p):
     # ---------------- chamfers, in print orientation
     made = {}
     def chamf(key, shape, up, what):
-        s, info = printchamfer.chamfer(shape, up)
-        left = printchamfer.unchamfered(shape, s, up, skip={w for k, w, c in info["skipped"]} | {w for k, w in info["failed"]})
+        s, info = printchamfer.chamfer(shape, up, **CHAMFER)
+        left = printchamfer.unchamfered(shape, s, up, **CHAMFER, skip={w for k, w, c in info["skipped"]} | {w for k, w in info["failed"]})
         p.check(s.isValid() and len(s.Solids) == 1 and not left,
-                f"{what}: chamfered (up {tuple(round(c, 3) for c in up)}): {info['bottom']} first-layer edges 0.6, {info['top']} top edges 1.0, "
+                f"{what}: chamfered (up {tuple(round(c, 3) for c in up)}): {info['bottom']} first-layer edges {CHAMFER['bottom']}, {info['top']} top edges {CHAMFER['top']}, "
                 f"{len(info['reduced'])} reduced on narrow faces (smallest {min([c for k, w, c in info['reduced']] or [1.0]):.2f}), "
                 f"{len(info['skipped'])} skipped, {len(info['failed'])} OCC couldn't build {info['failed'][:3]}; -{info['removed_mm3']:.0f} mm3; missed: {left[:4]}")
         if left and os.environ.get("VT350_DEBUG_BREP"):               # the unchamfered part, to look at by hand

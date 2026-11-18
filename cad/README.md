@@ -349,7 +349,7 @@ row first (refresh only updates existing rows).
 
 ### Writing a new lite-N pass on `litelib.py` (#93)
 
-A pass that designs a **printed part** follows the design rules in [`parts/printed/README.md`](../parts/printed/README.md#design-rules-for-the-parts-we-design): 0.6 mm chamfers on the bed face's edges, 1.0 mm on the top edges, in whole 0.2 mm layers, none in bores, in the part's print orientation.
+A pass that designs a **printed part** follows the design rules in [`parts/printed/README.md`](../parts/printed/README.md#design-rules-for-the-parts-we-design): a 0.5 mm chamfer on the first-layer face's edges (sized for the squish), 1.0 mm on the top edges in whole 0.2 mm layers, none in bores; the sizes come from `cad/data/print-profile.json`, in the part's print orientation.
 
 Start from `lite29_filter_cradle.py`, the shortest complete example. A pass is:
 
