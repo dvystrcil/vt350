@@ -22,10 +22,13 @@
     "panel_paint": {"hex": "#2C4A24", "kind": "paint", "roughness": 0.55, "note": "the panels' outsides, spray-painted by the user to match the frame (user, 2026-11-14, #19): a shade off the frame's RAL 6011 and less glossy, a rattle can; the insides stay white"},
     "glass_clear": {"hex": "#F4F7F8", "kind": "glass", "roughness": 0.03, "note": "the door window, clear sheet (acrylic or polycarbonate: #4) (user, 2026-11-14, #19)"},
     "brushed_aluminium": {"hex": "#BFC3C7", "kind": "aluminium", "roughness": 0.32, "note": "the CNC Crossbow on each head (main body, top cap, lever, blade caddy), brushed aluminium (user, 2026-11-14, #19); also the e-box DIN rails (user, 2026-11-16)"},
+    "stepper": {"hex": "#161616", "kind": "paint", "roughness": 0.55, "note": "NEMA17 stepper bodies (A, B, 3 x Z), black (owner, 2026-11-18, #220); the real motors have silver end caps, but each body is one solid in the model, so all black until it is split"},
     "o2s_heatsink": {"hex": "#2A5DB0", "kind": "aluminium", "roughness": 0.35, "note": "Orbitool O2S toolboard heat sink (13 fins), blue anodised aluminium (user, 2026-11-14, #19; split out of the board by lite-34; placeholder hex until photos)"}
   },
   "rules": [
     {"role": "backbone", "label": "^backbone-350"},
+    {"role": "stepper", "group": "NEMA17 ", "label": "^(_Stepper_stator|Motor_Body)\\d*$", "note": "owner, 2026-11-18, #220: they rendered white"},
+    {"role": "brushed_steel", "group": "NEMA17 ", "label": "^_Stepper_shaft"},
     {"role": "brass", "label": "^Orbitool O2S standoffs \\+ screws "},
     {"role": "black_plastic", "label": "^(O2S USB cable slot \\d|Zip tie, black) ", "note": "lite-40: the O2S cables' jacket and the black zip ties (user, 2026-11-14, #19)"},
     {"role": "accent", "label": "^Cable channel cover, "},
