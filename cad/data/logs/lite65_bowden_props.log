@@ -1,0 +1,11 @@
+[   43.5s] opened /home/dan/Documents/VT350/vt350-lite-64.FCStd
+[   55.2s] ok   five tubes, one target (5, ['BowdenTube'])
+[   55.2s] ok   Bowden Left holds the route props
+[   55.6s] ok   Bowden Left lies in one plane X = const: -409.701..-409.701
+[   57.4s] before: Bowden Left Inlet.x -399.00, ExitPoint.x -399.00; solid X -409.701; worst route-to-centre 10.70 mm (Bowden slot 3 at Z 650.0)
+[   71.3s] ok   after: each tube's route within 0.1 mm of its section centres (worst 0.046 mm, Bowden slot 3 at Z 650.0)
+[   71.3s] ok   only X changed (Inlet/ExitPoint Y and Z, ExitDir, the handles as before)
+[   73.0s] ok   every solid's box and the count unchanged (0: [])
+[   73.0s] ok   every part's material unchanged (0: [])
+[   73.0s] verify: 0 problems
+[   79.0s] SAVED /home/dan/Documents/VT350/vt350-lite-65.FCStd 36891323
