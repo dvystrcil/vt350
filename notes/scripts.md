@@ -36,6 +36,7 @@ flowchart TD
 | See what refresh *would* do, writing nothing | `python3 cad/scripts/refresh.py N --dry-run` | seconds |
 | Full colour renders of the whole printer, here on the laptop | `cad/render/render_full.sh [N] [samples]` (below) | ~6 min; prints the image paths |
 | Where is part X? What sits below/above Z? (no FreeCAD) | `jq` on `~/Documents/VT350/<model>.parts.json` (below; `part_index.py --check` first) | instant |
+| A GLB of part of the printer for the 3D viewer (licence-checked) | `cad/viewer/export_glb.sh [N] [selection.json]` (below) | a few minutes; prints the GLB path, `glb-export: OK` |
 | A render of a sweep pose (clash in red) | `export_pose.py`, then `gpu-batch-submit.py` (below) | ~5 min, result posted to the issue |
 | A new model change (lite-N) | a GUI pass script: Claude writes it, you click **Wait** | 5–40 min |
 
@@ -103,6 +104,21 @@ VT350_ONLY=MadMaxCarriage $APP freecadcmd $PWD/cad/scripts/derive_stls.py   # on
 
 Each remixed part is moved into its upstream part's print orientation. Its JOBS table pins which model each remix
 comes from.
+
+### `cad/viewer/export_glb.sh`: a GLB for the 3D viewer (#220)
+
+```bash
+cad/viewer/export_glb.sh                          # lite-62, cad/viewer/toolhead.json (the Left head on the gantry carriage)
+cad/viewer/export_glb.sh 62 cad/viewer/toolhead.json -- --decimate 0.5   # a smaller file
+```
+
+- **What happens:** FreeCAD runs under `xvfb-run` (no window) and exports only the parts the selection file names,
+  coloured as in the renders. Then every exported part is checked against `cad/viewer/licences.json`. An unknown or
+  non-shareable licence stops the run before any GLB exists. Then Blender writes the GLB.
+- **Output:** `~/Documents/VT350/renders/<model>-viewer-<UTC>/` with `export/`, `licences.log` (one line per part:
+  its licence and where that was read) and the `.glb`. The last lines are `licence-check: OK`, the GLB's size and
+  triangle count, and `glb-export: OK`. Never saves a model.
+- **A new part in a selection?** Add its licence rule to `licences.json` first, with where you read it.
 
 ### `cad/render/render_full.sh`: full colour renders on this laptop (#38)
 

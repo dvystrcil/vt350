@@ -1,0 +1,24 @@
+name: viewer
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+      - name: Test the viewer's part selection and licence rules (vt350#220)
+        run: python3 platform/viewer/test_rules.py 2>&1 | tee test.log
+      - name: Confirm every test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test.log && tail -1 test.log | grep -qx 'OK'
+      - name: Test the GLB -> embedded-JSON conversion
+        run: python3 platform/viewer/test_glbjson.py 2>&1 | tee test-glbjson.log
+      - name: Confirm every glbjson test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-glbjson.log && tail -1 test-glbjson.log | grep -qx 'OK'
+      - name: The printer's selection and licence files load
+        run: |
+          python3 -c "import sys, json; sys.path.insert(0, 'platform/viewer'); import rules; rules.load_selection('cad/viewer/toolhead.json'); rules.check(json.load(open('cad/viewer/licences.json')), []); print('viewer data: OK')"

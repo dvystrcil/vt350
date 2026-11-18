@@ -18,6 +18,9 @@
 # "vis_<tag>__<key>", with "vis" in scene.json and the rules in scene["visibility"]; render.py hides it per view.
 # Writes colour-audit.txt (vt350#91): every part the colour map matched no rule for, whatever its material, grouped
 # by group path and material with counts (colours.audit). From the full part list: scene.json keeps 40 labels a bucket.
+# Part selection (vt350#220, the 3D viewer): RENDER_SELECT = a selection file (platform/viewer/rules.py): only the parts
+# it includes are exported, each moved by its rule's "move" if any (a parked head onto the gantry carriage), and
+# scene.json gets "parts", every exported part's label, group path and bucket, for the licence check. Unset: as before.
 # Never saves the model.
 import FreeCAD, Part, Mesh, MeshPart, os, json, time, traceback, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))   # colours.py sits next to this script (laptop or a gpu-batch pod)
@@ -35,6 +38,11 @@ class STATIC:                                      # no motion groups (as groups
     bucket = staticmethod(lambda name, key: (key, None))   # the batch lane's vt350-render chain stages no groups.py)
     hidden = staticmethod(lambda name: False); clip = staticmethod(lambda name: None)
 GROUPS = STATIC
+SEL = None
+if os.environ.get("RENDER_SELECT"):                # a part selection (vt350#220); rules.py: platform/viewer, or flat in a pod
+    sys.path[:0] = [os.path.join(_UP, "viewer")]
+    import rules
+    SEL = rules.load_selection(os.environ["RENDER_SELECT"])
 if os.environ.get("VT350_GROUPS"):                 # motion groups -> buckets (vt350#135 AC4)
     import groups
     GROUPS = groups.Assign(json.load(open(os.environ["VT350_GROUPS"])))
@@ -47,6 +55,7 @@ try:
     hidden = 0; seen = []; n_role = {}; n_motion = {"hide": 0, "clip": 0, "moving": 0}; n_vis = {}
     scene["visibility"] = CMAP.get("visibility", []) if CMAP else []
     if os.environ.get("VT350_GROUPS"): scene["groups_file"] = os.environ["VT350_GROUPS"]
+    if SEL: scene["select_file"] = os.path.basename(os.environ["RENDER_SELECT"]); scene["parts"] = []; scene["moves"] = {}
     for path_ in [MODEL] + EXTRA:
       doc = FreeCAD.openDocument(path_); log("opened", path_)
       G = GROUPS if path_ == MODEL else STATIC     # the groups name MODEL's objects; an extra file's may reuse a Name
@@ -68,6 +77,14 @@ try:
             hidden += 1; continue
         if G.hidden(o.Name): n_motion["hide"] += 1; continue
         if EXTRA and o.Label.startswith(("Ebox envelope", "Filter envelope", "EMU envelope")): continue   # placeholders for vt350-ebox / vt350-filter / vt350-emu merged in (lite-19, lite-27, lite-55)
+        mv = None
+        if SEL:                                      # a part selection (vt350#220): only what it includes
+            keep, mv = SEL.pick(o.Label, rules.split_path(gpath(o)))
+            if not keep: continue
+            if mv and mv not in scene["moves"]:      # measured once: "from"'s box onto "to"'s (two copies of one part)
+                bx = lambda n: (lambda b: [b.XMin, b.YMin, b.ZMin, b.XMax, b.YMax, b.ZMax])(linkgeo.gshape(doc.getObject(n)).BoundBox)
+                m_ = SEL.moves[mv]; scene["moves"][mv] = dict(m_, by=rules.translation(bx(m_["from"]), bx(m_["to"])))
+                log(f"move {mv}: {m_['from']} -> {m_['to']} by {[round(v, 3) for v in scene['moves'][mv]['by']]}")
         if any(o2.isDerivedFrom('Part::Feature') and o2.Name in leaves for o2 in o.InList if o2.TypeId != 'App::Part'):
             continue    # consumed by a feature that is itself a leaf
         try:
@@ -90,10 +107,14 @@ try:
         b = buckets.setdefault(key, {"mesh": Mesh.Mesh(), "color": col, "material": mat, "transparency": tr, "labels": [],
                                      "role": role, "group": grp, "vis": tag})
         sn = colours.standin_source(o.Name, {k: v.Name for k, v in by_real.items()}, STANDINS)
+        if SEL: scene["parts"].append({"label": o.Label, "path": gpath(o), "bucket": key, **({"move": mv} if mv else {})})
         if sn and linkgeo.is_mesh(by_real[o.Name]):   # a mesh stand-in (or a link to one): its triangles, in the real part's bucket
-            b["mesh"].addMesh(linkgeo.gmesh(by_real[o.Name])); b["labels"].append(o.Label); continue
+            m_ = linkgeo.gmesh(by_real[o.Name])
+            if mv: m_ = m_.copy(); m_.translate(*scene["moves"][mv]["by"])
+            b["mesh"].addMesh(m_); b["labels"].append(o.Label); continue
         src = by_real[o.Name] if sn else o           # a shape stand-in (the springs' tubes) stands in for the shape
         s = linkgeo.gshape(src)
+        if mv: s = s.copy(); s.translate(FreeCAD.Vector(*scene["moves"][mv]["by"]))
         cb = G.clip(o.Name)
         if cb:                                       # a belt loop: only the part that moves rigidly (player.py's clip)
             x0, y0, z0, x1, y1, z1 = cb; s = s.common(Part.makeBox(x1 - x0, y1 - y0, z1 - z0, FreeCAD.Vector(x0, y0, z0)))
