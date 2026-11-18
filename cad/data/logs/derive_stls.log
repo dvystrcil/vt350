@@ -1,13 +1,13 @@
-[  125.8s] A4Tv2 Duct-4010-left MadMax dock.stl: old part = component 0 of A4Tv2_4010_Ducts.stl (volume 10243.7 vs 10242.7); rotation 114.40 deg; max vertex distance 0.0064 mm (median 0.0001)
-[  126.3s]    wrote cad/derived/a4tv2-duct-4010-madmax-dock/A4Tv2 Duct-4010-left MadMax dock.stl: 29518 facets, 48.95 x 63.32 x 23.66 mm, volume 10469.3 (old 10242.7); solid valid True
-[  246.7s] A4Tv2 Duct-4010-right MadMax dock.stl: old part = component 1 of A4Tv2_4010_Ducts.stl (volume 10271.1 vs 10270.1); rotation 114.40 deg; max vertex distance 0.0050 mm (median 0.0003)
-[  247.2s]    wrote cad/derived/a4tv2-duct-4010-madmax-dock/A4Tv2 Duct-4010-right MadMax dock.stl: 30939 facets, 48.95 x 63.32 x 23.66 mm, volume 10496.7 (old 10270.1); solid valid True
-[  286.9s] Dock Arm -9.06mm.stl: old part = component 0 of Dock Arm +5mm.stl (volume 12880.2 vs 12880.3); rotation 0.00 deg; max vertex distance 0.0001 mm (median 0.0000)
-[  287.1s]    wrote cad/derived/madmax-andrewmcgr-dock-arm/Dock Arm -9.06mm.stl: 10298 facets, 36.50 x 48.67 x 30.00 mm, volume 11521.8 (old 12880.3); solid valid True
-[  323.0s] MadMaxCarriage Beacon RevH pocket.stl: old part = component 0 of MadMaxCarriage.stl (volume 18413.7 vs 18425.7); rotation 90.00 deg; max vertex distance 0.0155 mm (median 0.0034)
-[  324.1s]    wrote cad/derived/madmax-andrewmcgr-carriage-beacon/MadMaxCarriage Beacon RevH pocket.stl: 51922 facets, 54.42 x 63.52 x 12.60 mm, volume 18150.9 (old 18425.7); solid valid True
-[  324.4s] A4Tv2 dock spacer left.stl: our own part, flat on its largest planar face (lite-67)
-[  324.4s]    wrote cad/derived/a4tv2-dock-spacer/A4Tv2 dock spacer left.stl: 6218 facets, 64.93 x 40.20 x 11.53 mm, volume 2762.3; solid valid True
-[  324.5s] A4Tv2 dock spacer right.stl: our own part, flat on its largest planar face (lite-67)
-[  324.5s]    wrote cad/derived/a4tv2-dock-spacer/A4Tv2 dock spacer right.stl: 6430 facets, 64.93 x 41.74 x 11.53 mm, volume 2864.9; solid valid True
-[  324.5s] done: 6 of 6 written
+[  125.0s] A4Tv2 Duct-4010-left MadMax dock.stl: old part = component 0 of A4Tv2_4010_Ducts.stl (volume 10243.7 vs 10242.7); rotation 114.40 deg; max vertex distance 0.0064 mm (median 0.0001)
+[  125.4s]    wrote cad/derived/a4tv2-duct-4010-madmax-dock/A4Tv2 Duct-4010-left MadMax dock.stl: 29518 facets, 48.95 x 63.32 x 23.66 mm, volume 10469.3 (old 10242.7); solid valid True
+[  244.9s] A4Tv2 Duct-4010-right MadMax dock.stl: old part = component 1 of A4Tv2_4010_Ducts.stl (volume 10271.1 vs 10270.1); rotation 114.40 deg; max vertex distance 0.0050 mm (median 0.0003)
+[  245.4s]    wrote cad/derived/a4tv2-duct-4010-madmax-dock/A4Tv2 Duct-4010-right MadMax dock.stl: 30939 facets, 48.95 x 63.32 x 23.66 mm, volume 10496.7 (old 10270.1); solid valid True
+[  285.5s] Dock Arm -9.06mm.stl: old part = component 0 of Dock Arm +5mm.stl (volume 12880.2 vs 12880.3); rotation 0.00 deg; max vertex distance 0.0001 mm (median 0.0000)
+[  285.7s]    wrote cad/derived/madmax-andrewmcgr-dock-arm/Dock Arm -9.06mm.stl: 10298 facets, 36.50 x 48.67 x 30.00 mm, volume 11521.8 (old 12880.3); solid valid True
+[  321.5s] MadMaxCarriage Beacon RevH pocket.stl: old part = component 0 of MadMaxCarriage.stl (volume 18413.7 vs 18425.7); rotation 90.00 deg; max vertex distance 0.0155 mm (median 0.0034)
+[  322.6s]    wrote cad/derived/madmax-andrewmcgr-carriage-beacon/MadMaxCarriage Beacon RevH pocket.stl: 51922 facets, 54.42 x 63.52 x 12.60 mm, volume 18150.9 (old 18425.7); solid valid True
+[  322.8s] A4Tv2 dock spacer left.stl: our own part, flat on its largest planar face (lite-67)
+[  322.9s]    wrote cad/derived/a4tv2-dock-spacer/A4Tv2 dock spacer left.stl: 6218 facets, 64.93 x 40.20 x 11.53 mm, volume 2762.3; solid valid True
+[  323.0s] A4Tv2 dock spacer right.stl: our own part, flat on its largest planar face (lite-67)
+[  323.0s]    wrote cad/derived/a4tv2-dock-spacer/A4Tv2 dock spacer right.stl: 6430 facets, 64.93 x 41.74 x 11.53 mm, volume 2864.9; solid valid True
+[  323.0s] done: 6 of 6 written

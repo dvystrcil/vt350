@@ -1,4 +1,4 @@
-[    1.8s] opened /work/vt350-lite-66-20261118t070219-38f7-sweep/in/vt350-lite-66.FCStd
-[   34.7s] written /work/vt350-lite-66-20261118t070219-38f7-sweep/in/vt350-lite-66.parts.json  1537 parts, headless boxes in 32.74 s, 632764 bytes
-[   34.9s] part_index: done (1 models)
-[   35.0s] litepool: peak RSS: workers max 1627 MB, sum 3254 MB; parent 1636 MB
+[    1.6s] opened /work/vt350-lite-67-20261118t080554-dd61-sweep/in/vt350-lite-67.FCStd
+[   30.6s] written /work/vt350-lite-67-20261118t080554-dd61-sweep/in/vt350-lite-67.parts.json  1542 parts, headless boxes in 28.81 s, 635072 bytes
+[   30.8s] part_index: done (1 models)
+[   30.9s] litepool: peak RSS: workers max 1634 MB, sum 3268 MB; parent 1642 MB
