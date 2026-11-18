@@ -16,6 +16,17 @@ are left out.
 rows without a part, stages, licences). The table below is generated from `manifest.csv` by
 `platform/parts/check-printed.py --write-index`; edit the manifest, not the table.
 
+## Design rules for the parts we design
+
+The owner's rules (2026-11-18) for every printed part this repo designs (`vt350/`, and the edges our remixes add):
+
+- **Bottom edges: a 0.5 mm chamfer.** The edges of the face that sits on the print bed, so the first layers' squish
+  (elephant's foot) doesn't make the part oversize or leave a lip.
+- **Top edges: a 1.0 mm chamfer**, so the part isn't sharp.
+- "Bottom" and "top" follow the part's **print orientation**, so settle that first and write it in the pass and the
+  part's README. A pass that builds a printed part makes the chamfers and checks them (each bottom edge chamfered
+  0.5, each top edge 1.0).
+
 ## Licences (#63 AC1)
 
 Read from each upstream repository's `LICENSE` and `README.md` at the pinned commit on 2026-11-06. The repo is public
