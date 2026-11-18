@@ -166,6 +166,13 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
 
 ## Gotchas
 
+- **Changing a linked part's shape: keep its Placement.** An `App::Link` applies its own placement to its target's
+  geometry under the target's Placement. Setting `o.Shape` to a global-frame result (the usual `loc.Placement =
+  container.inverse() * loc.Placement`) also rewrites `o.Placement`. The target still looks right, but every link to
+  it moves: lite-62's first save shifted a dock's carriage copy (a link) 4.78 mm in Y. `transformShape` doesn't help.
+  It changes the location, not the geometry. What works: rebuild the shape as a compound of its solids, each moved
+  into the object's own frame (`solid.Placement = (container * P0).inverse() * solid.Placement`), with `P0` on top.
+  Then check every link's global shape (centroid and box), not just its volume (`cad/passes/lite62_trim_beacon_pads.py`).
 - **A GUI script named `build.py` never runs.** FreeCAD runs a `.py` argument by importing it by its module name,
   and another module called `build` is found first. The GUI just sits there. Give scripts distinctive names.
 - **A crash-recovery dialog blocks scripted GUI runs.** A document left open when FreeCAD was killed leaves an
