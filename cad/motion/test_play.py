@@ -98,8 +98,18 @@ class GroupsFile(unittest.TestCase):
 
 class DefaultModel(unittest.TestCase):
     def test_the_model_the_committed_sweep_log_ran_on(self):    # the rig's numbers come from that log
-        self.assertEqual(play.default_model(os.path.join(ROOT, "cad", "data", "logs", "sweep_toolhead.log"), "/models"),
-                         "/models/vt350-lite-70.FCStd")
+        # Any lite number: every refresh --collect rewrites this log for the new model, so a pinned number went red on
+        # the first green chain after each pass (lite-69, PR #238). The parse itself is pinned by the tmp-log tests.
+        self.assertRegex(play.default_model(os.path.join(ROOT, "cad", "data", "logs", "sweep_toolhead.log"), "/models"),
+                         r"^/models/vt350-lite-\d+\.FCStd$")
+
+    def test_the_model_line_names_the_file_in_the_models_folder(self):
+        tmp = tempfile.mkdtemp(prefix="play-test-")
+        self.addCleanup(shutil.rmtree, tmp, True)
+        log = os.path.join(tmp, "sweep.log")
+        write(log, b"[ 1.0s] start\n[ 27.3s] model /work/chain-x/in/vt350-lite-7.FCStd (read-only)\n"
+                   b"[ 27.4s] model /work/chain-x/in/vt350-lite-8.FCStd (read-only)\n")
+        self.assertEqual(play.default_model(log, "/models"), "/models/vt350-lite-7.FCStd")     # the first one
 
     def test_a_log_with_no_model_line_is_refused(self):
         tmp = tempfile.mkdtemp(prefix="play-test-")
