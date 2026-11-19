@@ -20,7 +20,7 @@ height comes from the part, not from how far a screw is turned.
 | M3 heat-set insert, **short**: M3×3×5 (3 mm long, 5 mm OD), e.g. YuGtcen M3x3x5mm | 6 | Not the Voron 4 mm ones (the pocket is 3.4 mm deep), nor CNC Kitchen "M3 short" (thinner) |
 | M3 male-female round standoff, **4 mm body**, Ø5, M3×4 stud (e.g. "M3x4+4") | 5 | The 4 mm points |
 | M3 male-female round standoff, **8 mm body**, Ø5, M3×6 stud (e.g. AWclub "M3x8+6", 304 stainless) | 1 | The left head's rear-top |
-| M3 flat-head screw (FHCS, ISO 10642), **alloy steel** (black, strongly magnetic), not stainless; head **Ø5.8–6**, not the 5.5 kind | 6 | One per standoff. An M3×6 flat-head puts **4.1 mm** of thread into the standoff: more than a 4 mm standoff can hold, so on the **4 mm standoffs grind it to 5 mm** (3.1 mm in). On the 8 mm one, M3×6 fits if its hole is ≥ 4.5 mm deep (measure it) |
+| M3×6 flat-head screw (FHCS, ISO 10642), **carbon or alloy steel** (strongly magnetic), not stainless; head **Ø5.8–6**, not the 5.5 kind | 6 | One per standoff. An M3×6 flat-head puts **4.1 mm** of thread into the standoff: more than a 4 mm standoff can hold, so on the **4 mm standoffs grind it to 5 mm** (step 4). On the 8 mm one, M3×6 fits if its hole is ≥ 4.5 mm deep (measure it) |
 | 6×3 mm N52 magnet (real N52, from a known vendor, e.g. Fabreeko) | 3 per dock | In the keyslot plate (step 5) |
 | CA glue | | For the magnets |
 | Threadlocker (medium, blue) | | On each stud |
@@ -63,24 +63,40 @@ With a 3 mm stud the shoulder seats flat on the spot-face, and the tip stops 0.4
 ### 3. The left head's rear-top: 8 mm
 
 Use one **8 mm standoff** (M3×8+6). Its stud is **6 mm**, so grind it to **3 mm** as in step 2: 3 mm comes off, not 1.
-Measure its female thread's depth: it decides the screw length (M3×6 needs ≥ 4.5 mm).
+Measure its female thread's depth: it decides whether its M3×6 screw needs shortening too (step 4).
 
 No 8 mm to hand? Stack two 4 mm standoffs instead. The bottom one's stud goes into the insert, ground to 3 mm. The top
 one's stud goes into the bottom one's female thread; if that hole is shallower than the stud, grind it to fit so the
 two bodies meet flat. Threadlocker on both. Don't make 8 mm from a 6 mm standoff plus washers: loose washers aren't
 rigid enough.
 
-### 4. Fit and check
+### 4. Shorten the hook screws to 5 mm (the 4 mm standoffs)
+
+An M3×6 flat-head's 6 mm includes its ~1.9 mm head, so **4.1 mm of thread** goes into the standoff. A 4 mm standoff
+can't take that much: its threaded hole is at most 4 mm deep (it ends at the stud). The screw would bottom out before
+its head seats, and the hook would sit loose and too high. So **grind each of the five screws for the 4 mm standoffs
+to 5 mm overall**. That leaves about 3.1 mm in the standoff, which still has room in a hole 3.2 mm deep or more.
+
+1. Thread an M3 nut onto the screw, up under the head.
+2. Grind the tip until the screw is **5.0 mm** long overall, measured from the flat top of the head.
+3. Unscrew the nut to straighten the cut threads, and take a small chamfer off the tip.
+4. Check: screw it into its standoff by hand. The cone must sit on the hole's edge with no gap before it stops.
+   If it stops short, measure the hole's depth and grind a little more.
+
+The **8 mm standoff** (left rear-top) can keep a full M3×6 **if its threaded hole is at least 4.5 mm deep**. Measure
+it; if it's shallower, grind that screw too, to the hole depth + 1.9 mm.
+
+### 5. Fit and check
 
 1. Put threadlocker on each stud and screw the standoff into its insert until the shoulder sits flat on the spot-face.
    Don't overtighten: the insert is in plastic.
-2. Screw a flat-head into the top of each standoff, snug. Its cone sits on the edge of the standoff's hole: don't countersink the standoff, or the head sinks and the hook drops.
+2. Screw a flat-head (shortened, step 4) into the top of each standoff, snug. Its cone sits on the edge of the standoff's hole: don't countersink the standoff, or the head sinks and the hook drops.
 3. Check each one: from the cowl's spot-face to the top of the standoff is **4.0 mm**, or **8.0 mm** at the left head's
    rear-top, and the screw's flat top stands about 1.7–1.9 mm above that.
 4. On the dock: slide the head in, check it drops into all three keyslots, has a little play, the magnets pull each
    screw head home, and it lifts off cleanly.
 
-### 5. Magnets in the dock's keyslot plate
+### 6. Magnets in the dock's keyslot plate
 
 Each keyslot has a hex hole at the parked screw's position that holds a 6×3 magnet. The magnet must sit at the
 **bottom of the head channel**, right behind the parked screw head, as on the upstream plate. Our pads make that hole
