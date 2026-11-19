@@ -1,35 +1,54 @@
 # Extrusion cut list (draft)
 
-Measured from the model `vt350-lite-4.FCStd` on 2026-11-04 by
-`cad/passes/frame_plus100.py` (see `cad/data/logs/frame_plus100.log`), then
-updated for **lite-6** (+80 mm of Y at the front, `cad/passes/lite6.py`).
-Lengths are the bar's long axis in mm.
+**Re-measured from the model on 2026-11-18** (`vt350-lite-68.FCStd`, every extrusion's box; lite-69 and lite-70 don't
+touch the frame). The list measured at lite-6 was out of date: the **side pack** (#5, owner 2026-11-18: "we are going
+side pack") was built into the frame in lite-46 (top and bottom bars one piece across chamber + e-box, uprights
+between them), lite-47 (full-height e-box outer uprights) and lite-53 (the e-box's inner 2020 frame).
+**Updated for lite-78** (vt350#291, 2026-11-24): the frame front moved 17 mm forward, and the Y bars that cross the
+front were spliced 17 mm longer (550 → 567, the e-box door rails 530 → 547; `cad/data/logs/lite78_front17_gui.log`,
+the `splice:` lines). Nothing else in the frame has changed since lite-68 (lite-79 is the working copy).
+Lengths are the bar's long axis in mm; the names are the model's labels.
 
-| Profile | Length | Qty | Where in the model | lite-6 change |
-|---|---|---|---|---|
-| 4040 | 740 | 2 | Frame verticals (rear) | |
-| 4040 | **550** | 4 | Frame horizontals, sides (top + bottom) | was 470 |
-| 4040 | 470 | 2 | Frame horizontals, rear (top + bottom) | |
-| 2040 | 740 | 2 | Frame verticals (front) | moved 80 mm forward |
-| 2040 | **430** | 2 | **Z posts** (the old front verticals' position; carry the front Z rails) | **new**; 380 → 430 in lite-10 (gantry +50) |
-| 2040 | 740 | 2 | Door frame verticals | |
-| 2040 | **550** | 2 | Gantry (sides) | was 470 |
-| 2040 | 470 | **3** | Frame horizontals, front: top, bottom (new front), bottom (stays under the Backbone's front holes) | **+1** |
-| 2040 | 470 | 2 | Door frame rails (top + bottom) | |
-| 2040 | **550** | 1 | Electronics cabinet | was 470 |
-| 2020 | 470 | 1 | Bed frame | |
-| 2020 | 470 | **1** | **Dock bar** (lite-31/32, #19): front, between the 2040 front verticals, holds the 5 keyslot plates | **new**: replaces lite-6's 2040 dock crossbar placeholder |
-| 2020 | **430** | 1 | Rear vertical (below the gantry) | was 380 (lite-10: gantry +50) |
-| 2020 | 340 | 1 | Gantry (rear) | |
-| 2020 | 332 | 1 | Bed frame | |
+**Frame**
+
+| Profile | Length | Qty | Where in the model |
+|---|---|---|---|
+| 4040 | 660 | 2 | Rear horizontals, top + bottom, one piece X −520..140 across chamber and e-box (lite-46/53) |
+| 4040 | 660 | 2 | Rear uprights, Z −10..650, between the horizontals (lite-46) |
+| 4040 | **567** | 4 | Side horizontals, top + bottom (lite-78: was 550) |
+| 2040 | 660 | 2 | Front horizontals, top + bottom ("new front"), one piece X −520..140 (lite-53) |
+| 2040 | 660 | 2 | Front uprights, Z −10..650 (lite-46) |
+| 2040 | 470 | 1 | Front bottom bar under the Backbone's front holes |
+| 2040 | **567** | 2 | Gantry sides (lite-78: was 550) |
+| 2040 | 430 | 2 | Z posts (carry the front Z rails); **440 if #243 raises the gantry** |
+| 2040 | **567** | 2 | E-box outer side rails, top + bottom (lite-46; lite-78: was 550) |
+| 2040 | 740 | 1 | E-box rear outer upright, Z −50..690 (lite-47) |
+| 2020 | 740 | 1 | E-box front outer upright, Z −50..690 (lite-47) |
+| 2020 | 660 | 2 | E-box inner uprights, front + rear (lite-53) |
+| 2020 | **567** | 2 | E-box inner cross members, top + bottom (lite-53; lite-78: was 550) |
+| 2020 | 470 | 1 | Dock bar (lite-31/32, #19) |
+| 2020 | 430 | 1 | Rear vertical below the gantry; **440 if #243 raises the gantry** |
+| 2020 | 340 | 1 | Gantry rear |
+| 2020 | 470 | 1 | Bed frame |
+| 2020 | 332 | 1 | Bed frame |
+
+**Doors**
+
+| Profile | Length | Qty | Where in the model |
+|---|---|---|---|
+| 2040 | 740 | 2 | Printer door, verticals |
+| 2040 | 470 | 2 | Printer door, rails |
+| 2040 | 740 | 2 | E-box door, verticals (lite-56) |
+| 2040 | **547** | 2 | E-box door, rails (lite-56; lite-78: was 530) |
+
+**Totals (38 bars: 30 frame, the same 30 lite-48 rebuilt, + 8 door):** 4040: 4 × 660 + 4 × 567.
+2040: 5 × 740 + 4 × 660 + 4 × 567 + 3 × 470 + 2 × 547 + 2 × 430. 2020: 740 + 2 × 660 + 2 × 567 + 2 × 470 + 430 + 340 + 332.
 
 Not extrusions, but part of the same order:
 - **Y rails: 2 × Hiwin MGN9H 490, one piece** ([Motion Constrained](https://motionconstrained.com/store/hiwin-linear-guides/mgn-series/mgn-linear-guide-sets/hiwin-mgn9hz0c-long-block-linear-guides/); vt350#291, from lite-78). They replace the owned Berserker 400s + 73.9 mm front extensions (lite-9), which go to Z. The frame front moves 17 mm forward for them: the extrusion lengths here change with lite-78.
 - **X beam: Carbonara 350, 430 mm** CF tube (replaces the 2020).
 - **Z rails: 3 × MGN9 400** (3 owned Berserkers: the third bought 2026-11-25; owner 2026-11-22); **Z motors: 3 × 400 mm integrated lead screw** (lite-10).
-- **Machining: re-drill the 4 gantry-joint holes in the verticals 50 mm higher** (lite-10 raises the gantry to Z 420–440).
-
-**Totals:** 4040: 2 × 740 + 4 × 550 + 2 × 470. 2040: 4 × 740 + 3 × 550 + 5 × 470 + 2 × 430. 2020: 2 × 470, 430, 340, 332.
+- **Machining: the 4 gantry-joint holes in the uprights at the gantry's height** (Z 420–440 since lite-10; Z 430–450 if #243 raises it).
 
 ## Before ordering (stage issue #7)
 
@@ -41,9 +60,10 @@ Not extrusions, but part of the same order:
 - [ ] Gantry height decided (#243): today Z 420–440, or 10.3 mm higher for ~345.6 mm of print height with 10 mm of
       Z overtravel kept. Changes the Z posts and the rear 2020 vertical (430 → 440) and the gantry-joint holes in the
       verticals (+50 → +60 mm over stock). Owner, 2026-11-18: settle it before the frame is ordered.
-- [ ] Re-measured from the model after any further frame change. Re-run
+- [ ] Re-measured from the model after any further frame change (last: lite-68, 2026-11-18; lite-78's +17 applied
+      2026-11-25 from its splice log). Re-run
       `frame_plus100.py`'s cut-list section, or measure in FreeCAD.
-- [ ] The electronics cabinet bar may change with the side/top pack decision (#5).
+- [x] Side pack (#5, owner 2026-11-18); its bars are in the tables above (lite-46/47/53/56).
 
 ## Machining per bar (#7 AC3)
 
