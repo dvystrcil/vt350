@@ -74,7 +74,8 @@ SPDX-FileCopyrightText = ["andrewmcgr", "zruncho3d and the MadMax contributors",
 SPDX-License-Identifier = "GPL-3.0-only"
 
 [[annotations]]
-path = ["cad/derived/a4tv2-duct-4010-madmax-dock/**", "parts/printed/vt350/a4tv2-duct-4010-madmax-dock/**"]
+path = ["cad/derived/a4tv2-duct-4010-madmax-dock/**", "parts/printed/vt350/a4tv2-duct-4010-madmax-dock/**",
+        "cad/derived/a4tv2-dock-spacer/**", "parts/printed/vt350/a4tv2-dock-spacer/**"]
 precedence = "override"
 SPDX-FileCopyrightText = ["DW-Tas", "2026 Daniel Vystrcil"]
 SPDX-License-Identifier = "CC-BY-NC-SA-4.0"

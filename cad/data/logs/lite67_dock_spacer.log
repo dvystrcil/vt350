@@ -1,0 +1,47 @@
+[  239.5s] opened /home/dan/Documents/VT350/vt350-lite-66.FCStd
+[  249.9s] ok   Left: one duct '[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)' (1)
+[  249.9s] ok   Right: one duct '[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)' (1)
+[  249.9s] duct copies: {'Left': ['[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)', '[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)001', '[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)002'], 'Right': ['[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)', '[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)001']}
+[  249.9s] ok   five duct copies (5)
+[  272.9s] lite-66 overlaps of the duct copies: {'Plain washer normal grade C M3': 0.01, 'main-body_dragon-rapido-UHF_o2_xol001': 0.36, 'Plain washer normal grade C M003': 0.01, 'Plain washer normal grade C M004': 0.01, 'Plain washer normal grade C M008': 0.01, 'main-body_dragon-rapido-UHF_o2_xol003': 0.36, 'Plain washer normal grade C M007': 0.01}
+[  286.1s] ok   Left: three boss axes ([(-67.9, 3.039), (-67.9, 23.039), (-13.9, 23.039)])
+[  286.1s] ok   Left: print face 1216 mm2, 10.00 deg off the screw axes
+[  287.4s] ok   Left: only the bosses outside the print face (997.4 of 11568.7 mm3)
+[  287.4s] ok   Left: bosses named {(-67.9, 3.039): 'front-top', (-67.9, 23.039): 'rear-top', (-13.9, 23.039): 'rear-bottom'}
+[  305.7s] ok   Left front-top: pocket in material (in air 10.86 mm3, lead-in 10.86)
+[  305.7s] ok   Left front-top: >= 1.0 mm of duct beyond the pocket at 36/36 points
+[  306.7s] ok   Left rear-top: pocket in material (in air 11.22 mm3, lead-in 10.86)
+[  306.7s] ok   Left rear-top: >= 1.0 mm of duct beyond the pocket at 36/36 points
+[  310.4s] ok   Left: one intake circle in the print face ([15.1])
+[  314.4s] ok   Left spacer: the 4010 intake (r 15.10) stays open, +1.0 mm
+[  314.5s] ok   Left duct: one valid solid (1, valid True)
+[  314.5s] ok   Left spacer: one valid solid (1, valid True)
+[  314.5s] ok   Left spacer: prints flat on the cut plane (bed face 990 mm2, nothing behind it)
+[  314.6s] Left: {'bosses': {'front-top': {'axis': (-67.9, 3.039), 'spacer_mm': 11.0, 'fill_mm3': 0.0, 'left_open_mm3': 49.6}, 'rear-top': {'axis': (-67.9, 23.039), 'spacer_mm': 7.48, 'fill_mm3': 8.0, 'left_open_mm3': 0.0}, 'rear-bottom': {'axis': (-13.9, 23.039), 'spacer_mm': 7.48, 'fill_mm3': 49.0, 'left_open_mm3': 0.0}}, 'duct_mm3': (11568.7, 10469.3), 'spacer_mm3': 2762.3, 'web_mm2': 989.7, 'print_face_deg': 10.0}
+[  314.7s] ok   Right: three boss axes ([(-67.9, 3.039), (-67.9, 23.039), (-13.9, 23.039)])
+[  314.7s] ok   Right: print face 1218 mm2, 10.00 deg off the screw axes
+[  316.4s] ok   Right: only the bosses outside the print face (997.4 of 11589.1 mm3)
+[  316.4s] ok   Right: bosses named {(-67.9, 3.039): 'front-top', (-67.9, 23.039): 'rear-top', (-13.9, 23.039): 'rear-bottom'}
+[  329.9s] ok   Right front-top: pocket in material (in air 10.86 mm3, lead-in 10.86)
+[  329.9s] ok   Right front-top: >= 1.0 mm of duct beyond the pocket at 36/36 points
+[  330.8s] ok   Right rear-top: pocket in material (in air 11.22 mm3, lead-in 10.86)
+[  330.8s] ok   Right rear-top: >= 1.0 mm of duct beyond the pocket at 36/36 points
+[  334.4s] ok   Right: one intake circle in the print face ([15.1])
+[  338.4s] ok   Right spacer: the 4010 intake (r 15.10) stays open, +1.0 mm
+[  338.5s] ok   Right duct: one valid solid (1, valid True)
+[  338.6s] ok   Right spacer: one valid solid (1, valid True)
+[  338.6s] ok   Right spacer: prints flat on the cut plane (bed face 1042 mm2, nothing behind it)
+[  338.7s] Right: {'bosses': {'front-top': {'axis': (-67.9, 3.039), 'spacer_mm': 11.0, 'fill_mm3': 0.0, 'left_open_mm3': 49.6}, 'rear-top': {'axis': (-67.9, 23.039), 'spacer_mm': 7.48, 'fill_mm3': 8.0, 'left_open_mm3': 0.0}, 'rear-bottom': {'axis': (-13.9, 23.039), 'spacer_mm': 7.48, 'fill_mm3': 56.0, 'left_open_mm3': 0.0}}, 'duct_mm3': (11589.1, 10496.7), 'spacer_mm3': 2864.9, 'web_mm2': 1041.5, 'print_face_deg': 10.0}
+[  338.8s] ok   Left: the duct keeps its placement
+[  338.9s] ok   Right: the duct keeps its placement
+[  349.2s] ok   solids 1537 -> 1542, five spacers (5)
+[  349.2s] ok   [a]_Dock spacer left (cut from the duct's dock bosses, CC BY-NC-SA 4.0) Toolhead slot 2 (L): placed as its duct copy [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)001
+[  349.2s] ok   [a]_Dock spacer left (cut from the duct's dock bosses, CC BY-NC-SA 4.0) Toolhead slot 4 (L): placed as its duct copy [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)002
+[  349.2s] ok   [a]_Dock spacer right (cut from the duct's dock bosses, CC BY-NC-SA 4.0) Toolhead slot 3 (R): placed as its duct copy [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)001
+[  501.6s] ok   no new overlap of a duct or spacer copy (0: [])
+[  503.0s] ok   every other solid's box unchanged (0: [])
+[  509.2s] ok   AC7 Left Toolhead: mass 357.2 -> 359.5 g, CoM X -411.735 -> -411.929 (-0.194 mm, limit 0.5)
+[  515.5s] ok   AC7 Right Toolhead: mass 357.2 -> 359.7 g, CoM X -81.995 -> -81.758 (+0.237 mm, limit 0.5)
+[  515.5s] verify: 0 problems
+[  520.9s] SAVED /home/dan/Documents/VT350/vt350-lite-67.FCStd 37014709
+[  520.9s] litepool: peak RSS: workers max 3400 MB, sum 6800 MB; parent 4701 MB
