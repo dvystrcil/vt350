@@ -6,6 +6,11 @@
 #     site is filled solid, from the bed to the plate's inner face;
 #  3. the keyslot plates: where a pad's footprint passes the plate's edge it overhangs from the pad's base (h 4 mm);
 #     the overhang is extruded down to the bed ("extrude that surface back down the plate", owner).
+#  4. the keyslot plates: a pad thinner than THIN slices as one stray layer. lite-68 cut the Left plate's rear-top pad
+#     back to 0.16 mm (the Left head's Crossbow lever, an 8 mm sleeve); the owner saw it on the slice (2026-11-19) and
+#     chose to drop it: lite-68's keyslot there is lowered by the pad's thickness, so its face is the plate face (h 6)
+#     and its lips sit at MadMax's h 4. The 8 mm standoff stays; the hook sits 0.16 mm further from the cowl, inside
+#     the 6 mm pickup slide's play.
 #  The flat roofs left inside the keyslots (the lips that hold the hook screw heads, over the hex below) stay: they
 #  are the keyslot. The log compares them with MadMax's own plate (lite-67).
 #
@@ -45,6 +50,14 @@ KEYHOLE_R = 3.65                               # the keyslot's entry circle
 OLD_BOX = ((-5.24, 8.96), (-4.4, 4.5))         # the old rear-bottom keyslot + its nut pocket, about its entry circle (y, z)
 EDGE_Y = -38.30                                # ... capped inside the plate's long-edge chamfer foot (y -38.26)
 STEEP = 0.75                                   # n . down above this is an overhang (the 45 deg chamfers are 0.71-0.72)
+THIN = 1.0                                     # a pad standing less than this off the plate's inner face is dropped
+THIN_PADS = {"Left": 1, "Right": 0}            # lite-68's log: only the Left rear-top pad (0.16 mm, 8 mm sleeve)
+
+
+def layer(b0, up, h0, h1):
+    """The slab between heights h0 and h1 above the bed (the plates print on a face normal to X)."""
+    a, c = b0.x + up.x * h0, b0.x + up.x * h1
+    return Part.makeBox(abs(c - a), 4000, 4000, V(min(a, c), -2000, -2000))
 
 
 def axes(S, r):
@@ -140,14 +153,57 @@ def plate(p, side, S):
             fills.append(f.extrude(down * h))
     p.check(1 <= len(fills) <= 4, f"{side} plate: overhangs past the edge to fill ({len(fills)})")
     N = B.fuse(fills).removeSplitter() if fills else B
+    # 4. a pad too thin to print: that keyslot back to MadMax's plate (lite-67)
+    pads = [s for s in N.common(layer(b0, up, H + 1e-4, H + 40)).Solids if s.Volume > 1e-3]
+    tall = [max((v.Point - b0).dot(up) for v in s.Vertexes) - H for s in pads]
+    thin = [s for s, t in zip(pads, tall) if t < THIN]
+    p.check(len(thin) == THIN_PADS[side], f"{side} plate: pads under {THIN} mm ({[round(t, 3) for t in tall if t < THIN]} "
+                                          f"of {[round(t, 3) for t in sorted(tall)]}); expected {THIN_PADS[side]}")
+    if p.errs: return None
+    # lite-68 built that keyslot's channel and lips 0.16 mm higher with the pad (lips at h 4.17, not MadMax's 4.0; the
+    # same flat-lipped channel as the other two pads, not MadMax's sloped one). So the keyslot is lowered, not
+    # replaced: inside the pad's footprint, a slice as thick as the pad is taken out of a straight-walled band just
+    # below the lips and everything above it closes down. The pad face lands on the plate face (h 6), the lips at
+    # h 4.0, and the screw head's 2 mm channel keeps its depth.
+    thin_mm3, regions = 0.0, []
+    sec = lambda X, h: sum(Part.makeFace(ws, "Part::FaceMakerBullseye").Area for ws in [X.slice(up, b0.dot(up) + h)] if ws)
+    for s in thin:
+        t = max((v.Point - b0).dot(up) for v in s.Vertexes) - H
+        # its top: the face with every vertex at the pad's height (lite-68's pad faces aren't all Plane surfaces)
+        ftop = max((f for f in s.Faces if all(abs((v.Point - b0).dot(up) - H - t) < 1e-4 for v in f.Vertexes)), key=lambda f: f.Area)
+        F = Part.Face(ftop.OuterWire); F.translate(down * (H + t + 1)); F = F.extrude(up * (H + t + 3))
+        p.check(s.cut(F).Volume < 1e-4, f"{side} plate: the thin pad ({t:.3f} mm, {s.Volume:.2f} mm3) lies in its footprint prism")
+        Pf = N.common(F)
+        roofs = sorted(h for f, h, n, fr in overhangs(Pf, b0, down) if 3.0 < h < H)
+        p.check(bool(roofs) and abs(roofs[0] - 4.0 - t) < 0.02, f"{side} plate: the pad's lips sit {t:.3f} mm above MadMax's h 4 ({[round(h, 3) for h in roofs]})")
+        if p.errs: return None
+        a = roofs[0] - t - 0.05                                   # the band [a, a + t], just below the lips
+        inband = [v for v in Pf.Vertexes if a - 1e-6 <= (v.Point - b0).dot(up) <= a + t + 1e-6]
+        s0, s1 = sec(Pf, a), sec(Pf, a + t)
+        p.check(not inband and abs(s0 - s1) < 1e-3, f"{side} plate: the band h {a:.3f}..{a + t:.3f} is straight-walled ({len(inband)} vertices in it; section {s0:.3f} / {s1:.3f} mm2)")
+        if p.errs: return None
+        lo = Pf.common(layer(b0, up, -1, a)); hi = Pf.common(layer(b0, up, a + t, H + 40)); hi.translate(down * t)
+        M = N.cut(F).fuse([lo, hi]).removeSplitter()
+        p.check(abs((N.Volume - M.Volume) - t * s0) < 0.05, f"{side} plate: lowering takes out the band ({N.Volume - M.Volume:.3f} vs {t * s0:.3f} mm3)")
+        Mf = M.common(F)
+        p.check(Mf.common(layer(b0, up, H + 1e-4, H + 40)).Volume < 1e-4, f"{side} plate: nothing stands above the plate face in the footprint")
+        same = [(round(h, 2), round(sec(Mf, h), 3), round(sec(Pf, h + t), 3)) for h in (a + 0.05, roofs[0] - t + 0.05, 5.0, 5.9)]
+        p.check(all(abs(x - y) < 1e-3 for _, x, y in same), f"{side} plate: above the band the keyslot is lite-68's, {t:.3f} mm lower (h, section now, section was +t: {same})")
+        thin_mm3 += N.Volume - M.Volume; regions.append(F); N = M
     p.check(N.isValid() and len(N.Solids) == 1, f"{side} plate: one valid solid ({len(N.Solids)}, valid {N.isValid()})")
+    left = [max((v.Point - b0).dot(up) for v in s.Vertexes) - H for s in N.common(layer(b0, up, H + 1e-4, H + 40)).Solids if s.Volume > 1e-3]
+    p.check(all(t >= THIN for t in left) and len(left) == len(pads) - len(thin),
+            f"{side} plate: every pad left stands >= {THIN} mm ({[round(t, 3) for t in sorted(left)]})")
     rest = overhangs(N, b0, down)
+    for R in regions:
+        at = [h for f, h, n, fr in rest if R.BoundBox.isInside(f.CenterOfMass)]
+        p.check(at and all(abs(h - 4.0) < 0.02 for h in at), f"{side} plate: the lowered keyslot's lips are at h 4, as MadMax's ({[round(h, 3) for h in at]})")
     p.check(all(fr > 0.98 for f, h, n, fr in rest), f"{side} plate: every overhang left is over a hole in the plate "
                                                      f"({[(round(h, 2), round(fr, 2)) for f, h, n, fr in rest]})")
     nb, _ = bed(N)
     p.check(abs((nb - b0).dot(up)) < 1e-6, f"{side} plate: still prints on the same face")
     info = dict(old_keyslot_yz=[round(oy, 2), round(oz, 2)], old_keyslot_filled_mm3=round(void, 2),
-                edge_fill_mm3=round(sum(x.Volume for x in fills), 2),
+                edge_fill_mm3=round(sum(x.Volume for x in fills), 2), thin_pad_dropped_mm3=round(thin_mm3, 2),
                 lips=sorted((round(h, 2), round(f.Area, 2)) for f, h, n, fr in rest),
                 volume=[round(S.Volume, 2), round(N.Volume, 2)])
     return N, info
