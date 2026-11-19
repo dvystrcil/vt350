@@ -62,7 +62,7 @@ partial versions that have to be rebuilt in order (lite-67 to lite-71 did this).
 
 | Pass in flight | Branch | Builds on |
 |---|---|---|
-| none: next is lite-72, the dock print fixes (#59) | `feat/72-dock-print-fixes` | lite-71 |
+| **lite-72**, the dock print fixes (#59): claimed 2026-11-19 | `feat/72-dock-print-fixes` | lite-71 |
 
 ## Where things are
 
