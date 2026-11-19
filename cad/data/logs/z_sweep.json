@@ -1,5 +1,5 @@
 {
- "model": "/work/vt350-lite-67-20261118t080554-dd61-sweep/in/vt350-lite-67.FCStd",
+ "model": "/work/vt350-lite-70-20261119t014725-3eac-sweep/in/vt350-lite-70.FCStd",
  "plate_top": 285.76060992516267,
  "magnet_top": 287.16060992516265,
  "lower": {
@@ -438,7 +438,7 @@
     "[a]_Duct-4010-right"
    ],
    [
-    95.76055299734657,
+    95.76055299734651,
     "Magnetic sheet (1.4 mm)",
     "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
    ],
@@ -458,17 +458,12 @@
     "COMPOUND"
    ],
    [
-    96.82829622631363,
-    "Magnetic sheet (1.4 mm)",
-    "[a]_Dock spacer left (cut from the duct's dock bosses, CC BY-NC-SA 4.0)"
-   ],
-   [
     97.16055299734228,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "[a]_Duct-4010-right"
    ],
    [
-    97.16055299734654,
+    97.16055299734649,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
    ],
@@ -486,11 +481,6 @@
     97.72829632483734,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "COMPOUND"
-   ],
-   [
-    98.2282962263136,
-    "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
-    "[a]_Dock spacer left (cut from the duct's dock bosses, CC BY-NC-SA 4.0)"
    ],
    [
     98.82829622492056,
@@ -540,11 +530,6 @@
     "COMPOUND"
    ],
    [
-    96.82829608218583,
-    "Magnetic sheet (1.4 mm)",
-    "[a]_Dock spacer right (cut from the duct's dock bosses, CC BY-NC-SA 4.0)"
-   ],
-   [
     97.16055319999037,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
@@ -568,11 +553,6 @@
     97.72829632483734,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "COMPOUND"
-   ],
-   [
-    98.2282960821858,
-    "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
-    "[a]_Dock spacer right (cut from the duct's dock bosses, CC BY-NC-SA 4.0)"
    ],
    [
     98.82829642756855,

@@ -16,6 +16,27 @@ are left out.
 rows without a part, stages, licences). The table below is generated from `manifest.csv` by
 `platform/parts/check-printed.py --write-index`; edit the manifest, not the table.
 
+## Design rules for the parts we design
+
+The owner's rules (2026-11-18) for every printed part this repo designs (`vt350/`, and the edges our remixes add). The
+numbers are in [`cad/data/print-profile.json`](../../cad/data/print-profile.json); the passes read them from there.
+
+- **First-layer edges: a 0.5 mm chamfer.** The edges of the face that sits on the build plate, against elephant's foot.
+  It is sized for the first layer's **squish**, which the slicer never sees: layers are sliced at their nominal
+  heights (first 0.25, then 0.2), but the z offset is tuned per filament from how the first layer printed and sent at
+  print start, not in the model's g-code, so the first layer really prints near 0.2 and the rest spreads sideways.
+  0.5 covers the first two nominal layers (0.45); with the squish the third layer's outer wall starts just inside,
+  with a slight under-pressure. So it is one tuned value, not a layer count: a face too narrow for it gets none, and
+  the pass reports it. A filament study may change it.
+- **Top edges: a 1.0 mm chamfer**, so the part isn't sharp. The top layers print at their nominal 0.2, and a 45 deg
+  chamfer rises as much as it is wide, so the top chamfer and its step-downs on narrow faces are **whole 0.2 mm
+  layers** (0.8, 0.6, 0.4, 0.2; under one layer, none): "the slicer will fight trying to make 0.25 work".
+- **Bores: none**, unless it's a countersink for a flat-head screw (owner: "bores do not need chaphers unless its for
+  a flathead screw of course"). A countersink is part of the design, not a chamfer added afterwards.
+- "First layer" and "top" follow the part's **print orientation**, so settle that first and write it in the pass and
+  the part's README. A pass that builds a printed part makes and checks the chamfers with
+  `platform/freecad/printchamfer.py` (`chamfer()`, then `unchamfered()`; reduced and skipped edges are logged).
+
 ## Licences (#63 AC1)
 
 Read from each upstream repository's `LICENSE` and `README.md` at the pinned commit on 2026-11-06. The repo is public
@@ -69,24 +90,25 @@ link-only because its part list isn't chosen yet.
 | A4Tv2 Orbiter Crossbow adapter | 2 | #12 | A4Tv2 | CC BY-NC-SA 4.0 | chamber material (#8 AC1); accent colour | [`a4tv2/[a]_orbiter-crossbow-adapter_o2_xol.stl`](a4tv2/%5Ba%5D_orbiter-crossbow-adapter_o2_xol.stl) |
 | A4Tv2 hotend-fan duct (Dragon UHF, 2510) | 2 | #12 | A4Tv2 | CC BY-NC-SA 4.0 | chamber material (#8 AC1) | [`a4tv2/Duct-HEF-Dragon-UHF.stl`](a4tv2/Duct-HEF-Dragon-UHF.stl) |
 | A4Tv2 main body (Dragon Rapido UHF, Orbiter, XOL) | 2 | #12 | A4Tv2 | CC BY-NC-SA 4.0 | chamber material (#8 AC1) | [`a4tv2/main-body_dragon-rapido-UHF_o2_xol.stl`](a4tv2/main-body_dragon-rapido-UHF_o2_xol.stl) |
-| MadMax dock keyslot plate, one per dock | 2 | #12 | MadMax / andrewmcgr | GPL-3.0 | chamber material (#8 AC1); upstream spelling 'Asembly' | [`madmax/andrewmcgr/Dock Asembly.stl`](madmax/andrewmcgr/Dock%20Asembly.stl) |
+| MadMax dock keyslot plate, one per dock | 0 | #12 | MadMax / andrewmcgr | GPL-3.0 | chamber material (#8 AC1); upstream spelling 'Asembly'; replaced by vt350/madmax-andrewmcgr-dock-keyslot-pads (lite-68, #59) | [`madmax/andrewmcgr/Dock Asembly.stl`](madmax/andrewmcgr/Dock%20Asembly.stl) |
 | MadMax tool plate (XOL), one per head | 2 | #12 | MadMax / andrewmcgr | GPL-3.0 | chamber material (#8 AC1) | [`madmax/andrewmcgr/Plate Assembly.stl`](madmax/andrewmcgr/Plate%20Assembly.stl) |
 | MadMax tool plate back, one per head | 2 | #12 | MadMax / andrewmcgr | GPL-3.0 | chamber material (#8 AC1) | [`madmax/andrewmcgr/Plate Back.stl`](madmax/andrewmcgr/Plate%20Back.stl) |
 | Orbitool O2S wire restraint, body | 2 | #12 | Orbiter-Toolboards | CC0-1.0 | chamber material (#8 AC1); strain relief for the O2S cable (lite-35); one per tool | [`orbiter-toolboards/O2S-WirerestrainBody.stl`](orbiter-toolboards/O2S-WirerestrainBody.stl) |
 | Orbitool O2S wire restraint, lock | 2 | #12 | Orbiter-Toolboards | CC0-1.0 | chamber material (#8 AC1); strain relief for the O2S cable (lite-35); one per tool | [`orbiter-toolboards/O2S-Wirestrain_Lock.stl`](orbiter-toolboards/O2S-Wirestrain_Lock.stl) |
-| A4Tv2 4010 duct with dock-boss stubs, left | 2 | #12 | vt350 remix | CC BY-NC-SA 4.0 | chamber material (#8 AC1); lite-67 (#59): bosses cut on the print face, prints flat as DW-Tas's duct; one per head | [`vt350/a4tv2-duct-4010-madmax-dock/A4Tv2 Duct-4010-left MadMax dock.stl`](vt350/a4tv2-duct-4010-madmax-dock/A4Tv2%20Duct-4010-left%20MadMax%20dock.stl) |
-| A4Tv2 4010 duct with dock-boss stubs, right | 2 | #12 | vt350 remix | CC BY-NC-SA 4.0 | chamber material (#8 AC1); lite-67 (#59): bosses cut on the print face, prints flat as DW-Tas's duct; one per head | [`vt350/a4tv2-duct-4010-madmax-dock/A4Tv2 Duct-4010-right MadMax dock.stl`](vt350/a4tv2-duct-4010-madmax-dock/A4Tv2%20Duct-4010-right%20MadMax%20dock.stl) |
-| A4Tv2 dock spacer, left | 2 | #12 | vt350 remix | CC BY-NC-SA 4.0 | chamber material (#8 AC1); lite-67 (#59): the cut-off dock bosses; flange face down, no supports; one per head | [`vt350/a4tv2-dock-spacer/A4Tv2 dock spacer left.stl`](vt350/a4tv2-dock-spacer/A4Tv2%20dock%20spacer%20left.stl) |
-| A4Tv2 dock spacer, right | 2 | #12 | vt350 remix | CC BY-NC-SA 4.0 | chamber material (#8 AC1); lite-67 (#59): the cut-off dock bosses; flange face down, no supports; one per head | [`vt350/a4tv2-dock-spacer/A4Tv2 dock spacer right.stl`](vt350/a4tv2-dock-spacer/A4Tv2%20dock%20spacer%20right.stl) |
+| A4Tv2 4010 duct for the MadMax dock (3 inserts), left | 2 | #12 | vt350 remix | CC BY-NC-SA 4.0 | chamber material (#8 AC1); lite-68 (#59): prints flat as DW-Tas's duct; 3 short M3 inserts in spot-faces; one per head | [`vt350/a4tv2-duct-4010-madmax-dock/A4Tv2 Duct-4010-left MadMax dock.stl`](vt350/a4tv2-duct-4010-madmax-dock/A4Tv2%20Duct-4010-left%20MadMax%20dock.stl) |
+| A4Tv2 4010 duct for the MadMax dock (3 inserts), right | 2 | #12 | vt350 remix | CC BY-NC-SA 4.0 | chamber material (#8 AC1); lite-68 (#59): prints flat as DW-Tas's duct; 3 short M3 inserts in spot-faces; one per head | [`vt350/a4tv2-duct-4010-madmax-dock/A4Tv2 Duct-4010-right MadMax dock.stl`](vt350/a4tv2-duct-4010-madmax-dock/A4Tv2%20Duct-4010-right%20MadMax%20dock.stl) |
 | MadMax dock arm, −9.06 mm | 4 | #12 | vt350 remix | GPL-3.0 | chamber material (#8 AC1); lite-23 (#53); a top and a bottom arm per dock, right dock = same part turned round | [`vt350/madmax-andrewmcgr-dock-arm/Dock Arm -9.06mm.stl`](vt350/madmax-andrewmcgr-dock-arm/Dock%20Arm%20-9.06mm.stl) |
+| MadMax dock keyslot plate with standoff pads, left | 3 | #12 | vt350 remix | GPL-3.0 | chamber material (#8 AC1); lite-68 (#59): outer face down, pads up, no supports; one per dock | [`vt350/madmax-andrewmcgr-dock-keyslot-pads/Dock Asembly standoff pads left.stl`](vt350/madmax-andrewmcgr-dock-keyslot-pads/Dock%20Asembly%20standoff%20pads%20left.stl) |
+| MadMax dock keyslot plate with standoff pads, right | 2 | #12 | vt350 remix | GPL-3.0 | chamber material (#8 AC1); lite-68 (#59): outer face down, pads up, no supports; one per dock | [`vt350/madmax-andrewmcgr-dock-keyslot-pads/Dock Asembly standoff pads right.stl`](vt350/madmax-andrewmcgr-dock-keyslot-pads/Dock%20Asembly%20standoff%20pads%20right.stl) |
 | BTT TMC5160T Plus base (4 middle screws) | 1 | #13 | vt350 remix | GPL-3.0-or-later | electronics bay: material per #4/#5; the user's own design (Fusion 360, 2026-05-16), not from a lite-N model; STEP source beside it; check how many drivers one base holds | [`vt350/btt5160-base-4-middle-screws/btt5160-base-4-middle-screws.stl`](vt350/btt5160-base-4-middle-screws/btt5160-base-4-middle-screws.stl) |
 | Door handle | 1 | #14 | Clicky-Clack door | GPL-3.0 | chamber material (#8 AC1) | [`clicky-clack/Handle.stl`](clicky-clack/Handle.stl) |
 | Door handle hinge, bottom | 1 | #14 | Clicky-Clack door | GPL-3.0 | chamber material (#8 AC1) | [`clicky-clack/Handle-Hinge_Bottom.stl`](clicky-clack/Handle-Hinge_Bottom.stl) |
 | Door handle hinge, top | 1 | #14 | Clicky-Clack door | GPL-3.0 | chamber material (#8 AC1) | [`clicky-clack/Handle-Hinge_Top.stl`](clicky-clack/Handle-Hinge_Top.stl) |
 | Door latch | 1 | #14 | Clicky-Clack door | GPL-3.0 | chamber material (#8 AC1) | [`clicky-clack/Latch.stl`](clicky-clack/Latch.stl) |
 | Door panel clip | 1 | #14 | Clicky-Clack door | GPL-3.0 | chamber material (#8 AC1) | [`clicky-clack/Panel_Clip.stl`](clicky-clack/Panel_Clip.stl) |
+| Chamber camera housing (front cover v4 + back cover v1) | 1 | #14 | Printables 305428 (lukeslabonline) | Public Domain (Creative Commons) | chamber material (#8 AC1); link only: Printables isn't a git source; print camera_front_cover-v4 and camera_case_back_cover-v1; M2.5x15+ screws; mount waits on #37 | link only: [upstream](https://www.printables.com/model/305428) |
 | EMU (filament unit, per lane) | as-needed | #15 | EMU | CC BY-NC-SA 4.0 | link only: parts come from EMU's own configurator and are tracked separately (#8 AC2); stage not set by any stage issue yet | link only: [upstream](https://github.com/DW-Tas/EMU/tree/0e92ca241eb2627fab224660ef5925ee872ad0e3) |
 
-**Full set:** 63 printed pieces from 40 files, plus 3 file(s) printed as needed. 1 part(s) are links only, not counted. Rows marked *alternative* are pick-one: one of each group is counted.
+**Full set:** 62 printed pieces from 40 files, plus 3 file(s) printed as needed. 2 part(s) are links only, not counted. Rows marked *alternative* are pick-one: one of each group is counted.
 
 <!-- END GENERATED -->

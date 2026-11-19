@@ -1,0 +1,6 @@
+{
+ "_doc": "How the VT350's printed parts are printed, for the passes that design them (platform/freecad/printchamfer.py). Owner, 2026-11-18. Layers are the slicer's nominal heights. The first layer prints thinner than nominal: the z offset is tuned per filament from how the first layer came out and sent at print start, not in the sliced g-code, so the slicer never sees it; the lost height spreads sideways (elephant's foot). The first-layer chamfer is sized for that squish by experience: 0.5 covers the first two nominal layers (0.25 + 0.2), the squished first layer comes out near 0.2, and the third layer's outer wall starts just inside with a slight under-pressure. The top chamfer and its step-downs on narrow faces are whole layers. A filament study may change these numbers.",
+ "first_layer_nominal": 0.25,
+ "layer_height": 0.2,
+ "chamfer": {"first_layer": 0.5, "top": 1.0, "top_step": 0.2}
+}
