@@ -169,10 +169,25 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
 - **Changing a linked part's shape: keep its Placement.** An `App::Link` applies its own placement to its target's
   geometry under the target's Placement. Setting `o.Shape` to a global-frame result (the usual `loc.Placement =
   container.inverse() * loc.Placement`) also rewrites `o.Placement`. The target still looks right, but every link to
-  it moves: lite-62's first save shifted a dock's carriage copy (a link) 4.78 mm in Y. `transformShape` doesn't help.
-  It changes the location, not the geometry. What works: rebuild the shape as a compound of its solids, each moved
-  into the object's own frame (`solid.Placement = (container * P0).inverse() * solid.Placement`), with `P0` on top.
-  Then check every link's global shape (centroid and box), not just its volume (`cad/passes/lite62_trim_beacon_pads.py`).
+  it moves: lite-62's first save shifted a dock's carriage copy (a link) 4.78 mm in Y. `transformShape(m)` with the
+  default `copy=False` doesn't help: for a rigid `m` it only sets the shape's location, and the object's Placement
+  replaces that. What works: rebuild the shape as a compound of its solids, each moved into the object's own frame
+  (`solid.Placement = (container * P0).inverse() * solid.Placement`), with `P0` on top; or, simpler (measured
+  2026-11-17, lite-67), with `copy=True`, which bakes the transform into the geometry and keeps cylinders and planes
+  analytic (`transformGeometry` turns every face into a B-spline): `s.transformShape(P0.inverse().toMatrix(), True,
+  False); s.Placement = P0; o.Shape = s`. That moved the target and its link 0.000 mm; `copy=False`, and "set
+  `Placement`, then reset it", both put them 425 mm out. Then check every link's global shape (centroid and box), not
+  just its volume (`cad/passes/lite62_trim_beacon_pads.py`, `cad/passes/lite67_dock_spacer.py`).
+- **…but `copy=True` breaks a solid with offset-curve edges** (measured 2026-11-18, lite-68). `face.makeOffset2D(r)`
+  gives `OffsetCurve` edges. A solid built from that face is valid, and so is a fuse with it, but after
+  `transformShape(m, True, False)` it isn't (`isValid()` False). Changing only the location keeps it valid, but that
+  doesn't survive the write (above). Fix: `face.makeOffset2D(r).toNurbs()` before extruding, so the edges are
+  B-splines. `shape.fix(1e-7, 1e-7, 1e-7)` after the transform also repairs it. Check `isValid()` after the write,
+  not only before it (`cad/passes/lite68_dock_pads.py`).
+- **A model can hold more copies of a part than its main assembly shows** (lite-68). The dock keyslot plate had five
+  copies: the Left / Right docks' own, two Part::Feature copies in the slot docks, and one App::Link. A pass that
+  changes a part must find every copy by its target and shape (`linkgeo.link_target`, matching placement), not only
+  by the label under the group it's working on. The "every other solid's box unchanged" check is what found the link.
 - **A GUI script named `build.py` never runs.** FreeCAD runs a `.py` argument by importing it by its module name,
   and another module called `build` is found first. The GUI just sits there. Give scripts distinctive names.
 - **A crash-recovery dialog blocks scripted GUI runs.** A document left open when FreeCAD was killed leaves an

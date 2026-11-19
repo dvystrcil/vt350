@@ -13,13 +13,18 @@ version of a CC BY-NC-SA 4.0 part: attribution required, **non-commercial only**
 | Why | On this printer (a Voron Trident 350 with MadMax and A4Tv2 heads), the dock brackets collided with the Crossbow lever and limited X reach. The idea of carrying the dock screws on the cowl comes from the MadMax community (an A4T v1 remix posted on Discord, no CAD published; see also zruncho3d/madmax PR #34). See `cad/README.md`, `lite23_cowl_docks.py`, and issue #53 |
 | How it was made | `cad/passes/lite23_cowl_docks.py` adds the bosses to the ducts as placed in the printer model; `cad/scripts/derive_stls.py` moves each into the upstream STL's frame (registered to the original duct, max vertex error 0.0064 mm) |
 
-**⚠ Not yet print-oriented.** These STLs sit in DW-Tas's original print frame so they can be compared with the
-upstream file, but in that frame the bosses go 9.36 mm below the bed plane. A print orientation for the remix still has
-to be chosen. It also sets the layer direction of the bosses, which carry the dock's pull, so it's tracked with the
-stiffness check in issue #53 (AC8). Don't print these yet.
+**Print-oriented since lite-67 (2026-11-17, vt350#59).** lite-67 cut the dock bosses off on the duct's print face, so these
+STLs sit flat in DW-Tas's own print orientation (48.95 × 63.32 × 23.66 mm, as the upstream duct) and print without supports.
+**lite-68 (2026-11-18)** (`cad/passes/lite68_dock_pads.py`): the dock now reaches to the cowl
+(`../madmax-andrewmcgr-dock-keyslot-pads/`), so the cowl carries only the three inserts. Each has a spot-face (Ø5.5,
+square to the screw, just below the 10° print face) for its standoff, then a short M3 insert pocket (Ø4.8 × 3.4), with
+≥ 1 mm of cowl beyond and round each. The rear-bottom insert moved 18.5 mm forward and 6.25 mm up, into the solid
+corner: where it was, the cowl allows only a 2 mm pocket. lite-67's separate spacer is gone (it's in git history).
 
-**Hardware:** 3 × Voron M3 heat-set inserts and 3 × M3 FHCS per duct. The screws must be **magnetic steel**, not stainless:
+**Hardware:** 3 × short M3 heat-set inserts (YuGtcen M3×3×5), 3 × M3 male-female standoffs (stud ground to 3 mm) and 3 × M3×6 flat-head screws per duct (see `../madmax-andrewmcgr-dock-keyslot-pads/README.md`). The screws must be **magnetic steel**, not stainless:
 the dock holds the parked screw heads with magnets.
 
 **Source:** the original STEP/STL linked above plus `lite23_cowl_docks.py` (the boss geometry is fully parametric there:
 `SCREWS`, `BOSS_R`, `POCKET`, `TAIL`, `FACE_X`).
+
+**Print:** flat print face down (as the STL stands), PETG, no supports. DW-Tas's original duct slices the same way: with supports off Orca warns of a "floating cantilever" on both, the bridged air channel. Assembly: `docs/assembly/stage-12-toolheads.md`.
