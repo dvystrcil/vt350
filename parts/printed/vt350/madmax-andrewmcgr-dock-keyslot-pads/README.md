@@ -13,11 +13,12 @@ It's a modified version of a GPL-3.0 part.
 | Why | lite-23 put the dock screws on bosses on the 4010 duct, which couldn't print flat. lite-67 cut them off into a separate spacer, which nothing could hold on (the screw heads stand proud as docking hooks, so they clamp nothing). On the dock the extension is free: it doesn't ride on the toolhead |
 | How it was made | `cad/passes/lite68_dock_pads.py` (lite-67 → lite-68); `cad/scripts/derive_stls.py` lays each plate on its outer face (pads up) |
 
-**Hardware per head** (the cowl side, `../a4tv2-duct-4010-madmax-dock/`): 3 × short M3 heat-set inserts (3 mm long, 5 mm OD)
-in the cowl, 3 × M3 aluminium round spacers (Ø5, 3.2 bore) as sleeves, and 3 × M3 screws, **magnetic steel**, not stainless
-(the dock holds the parked screw heads with magnets). Sleeves: **4 mm** at all three, except the left head's rear-top: **8 mm**.
-The screw clamps its sleeve to the cowl, so the head's height is the sleeve's, not how far the screw is turned.
-Screw length: sleeve + 3 mm insert (don't go deeper: there's 1 mm of cowl behind each insert, then the air channel).
+**Hardware per head** (the cowl side, `../a4tv2-duct-4010-madmax-dock/`): 3 short M3 heat-set inserts (3 mm long,
+5 mm OD) in the cowl; 3 M3 male-female round standoffs (4 mm body, Ø5, **stud ground to 3 mm**) screwed into them;
+3 M3×4 button-head screws, **magnetic steel**, not stainless, in the standoffs' tops (the heads are the hooks).
+Every standoff is 4 mm, except the left head's rear-top: **8 mm**, two 4 mm standoffs stacked.
+The screw clamps on the standoff, so the hook height is the standoff's body, not how far a screw is turned.
+Step by step: `docs/assembly/stage-12-toolheads.md`.
 
 **Print:** outer face down, pads up, no supports. Left: 3 (Left Dock, slots 2 and 4); right: 2 (Right Dock, slot 3).
 The mounting holes and their heat-sets are unchanged.

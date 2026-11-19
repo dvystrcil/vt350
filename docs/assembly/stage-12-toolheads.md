@@ -1,0 +1,80 @@
+# Stage 12: toolchanger and toolheads
+
+Assembly notes for stage #12. This page is the first of the repo's assembly instructions (#40: repo markdown, later
+published with GitHub Pages); the per-step Print and Buy tables (#40 AC2–AC3) aren't generated yet.
+
+## Dock screws on each head (lite-68, #59)
+
+Each head hangs in its dock on **three screw heads**: front-top, rear-top and rear-bottom. They're on the head's
+A4Tv2 4010 duct (the orange "cowl" in the renders). Each one is a short heat-set insert in the cowl, a
+**male-female standoff** screwed into it, and a **button-head screw** in the top of the standoff. The screw's head is
+the hook that the dock's keyslot plate catches. The standoff's body sets how far the head stands off the cowl, so the
+height comes from the part, not from how far a screw is turned.
+
+![Left head, dock hidden, the three dock screws](../../cad/renders/lite68-dock-pads/11-left-head-screws-no-dock-front.jpg)
+
+### Parts, per pair of heads (left + right)
+
+| Part | Qty | Notes |
+|---|---|---|
+| M3 heat-set insert, **short**: 3 mm long, 5 mm OD | 6 | Not the Voron 4 mm ones: the pocket is 3.4 mm deep |
+| M3 male-female round standoff, **4 mm body**, Ø5, M3×4 stud (e.g. "M3x4+4") | 7 | 5 for the 4 mm points, 2 stacked for the left head's rear-top (below) |
+| M3×4 button-head screw (ISO 7380), **magnetic steel**, not stainless | 6 | One per standoff stack |
+| Threadlocker (medium, blue) | | On each stud |
+
+| Point | Left head | Right head |
+|---|---|---|
+| front-top | 4 mm | 4 mm |
+| rear-top | **8 mm** (two 4 mm stacked) | 4 mm |
+| rear-bottom | 4 mm | 4 mm |
+
+The left head's rear-top is 8 mm because the dock plate can't reach closer there: the head's Crossbow lever stands
+1.75 mm off the plate.
+
+**Standoff body:** round, **Ø5.5 mm or less**. It seats in a Ø5.5 spot-face. A hex body won't fit: 5 mm across the
+flats is 5.8 mm across the corners.
+
+### 1. Inserts
+
+Press each insert in square to the spot-face, **flush with the spot-face's floor, not below it**. The spot-face is the
+shallow round seat around each hole. If an insert sits deeper, the standoff still seats at the right height, but its
+stud has fewer threads to grip.
+
+Don't push an insert past the bottom of its pocket. Behind each pocket there's only **1 mm of cowl, then the duct's
+air channel**.
+
+### 2. Cut the standoff studs to 3 mm
+
+The stud comes 4 mm long; the insert is 3 mm and its pocket 3.4 mm. A 4 mm stud hits the pocket floor 0.6 mm
+before the shoulder seats. The hook height would then be wrong, and tightening would push on that 1 mm floor.
+So **grind every stud that goes into an insert to 3 mm**, measured from the shoulder:
+
+1. Thread an M3 nut onto the stud, all the way to the shoulder.
+2. Grind the stud to **3.0 mm** (2.8–3.2 is fine; at 2.8 about 5½ threads still grip).
+3. Unscrew the nut. It straightens the cut threads as it comes off.
+4. Take a small chamfer off the tip so it starts cleanly in the brass.
+5. Check the length with calipers.
+
+With a 3 mm stud the shoulder seats flat on the spot-face, and the tip stops 0.4 mm short of the pocket floor.
+
+### 3. The left head's rear-top: two standoffs stacked (8 mm)
+
+1. Take one standoff with its stud ground to 3 mm (step 2). It goes into the insert.
+2. Take a second standoff. Its stud goes into the female thread of the first.
+   Measure how deep that female thread is first. If the hole is shallower than the stud, grind the second stud to
+   fit too, so the two bodies meet flat.
+3. Threadlocker on both studs. The stack is 8.0 mm from the spot-face to the top.
+
+If 8 mm standoffs turn up (M3×8, 3 mm stud or ground to 3), a single one replaces the stack. Don't use a 6 mm one
+plus washers: the height has to be 8.
+
+### 4. Fit and check
+
+1. Put threadlocker on each stud and screw the standoff into its insert until the shoulder sits flat on the spot-face.
+   Don't overtighten: the insert is in plastic.
+2. Screw an M3×4 button head into the top of each standoff, snug, so it clamps down on the standoff.
+3. Check each one: from the cowl's spot-face to the underside of the screw head is **4.0 mm**, or **8.0 mm** at the
+   left head's rear-top.
+4. On the dock: slide the head in, check it drops into all three keyslots, has a little play, and lifts off cleanly.
+
+Why it's built this way, and the render views: `cad/derived/madmax-andrewmcgr-dock-keyslot-pads/README.md` and PR #240.
