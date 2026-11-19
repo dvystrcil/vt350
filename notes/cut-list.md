@@ -38,6 +38,9 @@ Not extrusions, but part of the same order:
 - [ ] Machining list per bar added here.
 - [x] Dock bar: profile, length, height and joints decided (lite-31/32, #19 AC7; see below).
 - [ ] Z post joints decided (lite-6 placeholder).
+- [ ] Gantry height decided (#243): today Z 420–440, or 10.3 mm higher for ~345.6 mm of print height with 10 mm of
+      Z overtravel kept. Changes the Z posts and the rear 2020 vertical (430 → 440) and the gantry-joint holes in the
+      verticals (+50 → +60 mm over stock). Owner, 2026-11-18: settle it before the frame is ordered.
 - [ ] Re-measured from the model after any further frame change. Re-run
       `frame_plus100.py`'s cut-list section, or measure in FreeCAD.
 - [ ] The electronics cabinet bar may change with the side/top pack decision (#5).
