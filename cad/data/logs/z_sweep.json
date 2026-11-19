@@ -1,5 +1,5 @@
 {
- "model": "/work/vt350-lite-70-20261119t014725-3eac-sweep/in/vt350-lite-70.FCStd",
+ "model": "/work/vt350-lite-71-20261119t200333-a1c4-sweep/in/vt350-lite-71.FCStd",
  "plate_top": 285.76060992516267,
  "magnet_top": 287.16060992516265,
  "lower": {
@@ -81,7 +81,7 @@
     "backbone-350 v2"
    ],
    [
-    242.00390624999932,
+    242.00390624999943,
     "Nozzle offset probe bracket (printed ABS, vt350, GPL-3.0-or-later)",
     "backbone-350 v2"
    ],
