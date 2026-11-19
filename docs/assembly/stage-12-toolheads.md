@@ -21,7 +21,7 @@ height comes from the part, not from how far a screw is turned.
 | M3 male-female round standoff, **4 mm body**, Ø5, M3×4 stud (e.g. "M3x4+4") | 5 | The 4 mm points |
 | M3 male-female round standoff, **8 mm body**, Ø5, M3×6 stud (e.g. AWclub "M3x8+6", 304 stainless) | 1 | The left head's rear-top |
 | M3×6 flat-head screw (FHCS, ISO 10642), **carbon or alloy steel** (strongly magnetic), not stainless; head **Ø5.8–6**, not the 5.5 kind | 6 | One per standoff. An M3×6 flat-head puts **4.1 mm** of thread into the standoff: more than a 4 mm standoff can hold, so on the **4 mm standoffs grind it to 5 mm** (step 4). On the 8 mm one, M3×6 fits if its hole is ≥ 4.5 mm deep (measure it) |
-| 6×3 mm N52 magnet (real N52, from a known vendor, e.g. Fabreeko) | 3 per dock | In the keyslot plate (step 5) |
+| 6×3 mm N52 magnet (real N52, from a known vendor: West3D) | 3 per dock | In the keyslot plate (step 6) |
 | CA glue | | For the magnets |
 | Threadlocker (medium, blue) | | On each stud |
 
