@@ -9,6 +9,7 @@
 #    the channel's back edge) that carries it, and a lip that hangs down the rear top 4040's back face (owner,
 #    2026-11-19: "I expected there to be a lip hanging down so I can anchor it to the 4040"). Each post: 1 x M5x10 SHCS
 #    through the 6 mm lip into a drop-in T-nut in the 4040's upper back slot (Z 680); the roof panel isn't drilled.
+#    A gusset under the arm's cantilever, 60 deg (owner: "a reversed chamfer ... closer to 60deg"), down to the lip.
 #    Printed upside down, the arm's top face on the bed (owner: "the top surface laying on the print bed"): every wall
 #    then rises straight from it, no overhangs. The channel screws down into the arm: M3x6 countersunk (ISO 10642) through the floor, from inside the
 #    channel before the cover goes on, into a heat-set insert in the arm; two (one per segment) where a joint sits on
@@ -59,6 +60,7 @@ EBOX_REAR_Y1 = 523.0              # e-box rear panel + paint outer face (X 30..1
 M3, M3_INS, M5, M5_CB = 1.7, 2.0, 2.75, 4.75
 INS_DEPTH, CLAMP_T = 6.5, 8.0
 BAR_BACK_Y, LIP_Y1, LIP_Z0, BACK_SLOT_Z = 520.0, 526.0, 668.0, 680.0   # the post's lip on the 4040's back face; its upper back slot
+GUSSET_DEG, GUSSET_Z0 = 60.0, 687.0   # owner 2026-11-19: a "reversed chamfer" under the arm's cantilever, ~60 deg; stops above the M5 head (Z 684.3)
 CSK_R = 3.15                      # M3 countersunk head radius (Ø6.3), 90 deg
 COL_W, COL_Y0, COL_Y1 = 14.0, 503.0, 517.0
 ARM_W, ARM_T = 24.0, 12.0
@@ -203,7 +205,12 @@ def main(p):
         lip = box(x - COL_W / 2, x + COL_W / 2, BAR_BACK_Y, LIP_Y1, LIP_Z0, PANEL_TOP)
         a0, a1 = (x - ARM_W / 2, x + ARM_W / 2) if j is None else (min(x - COL_W / 2, j - ARM_W / 2), max(x + COL_W / 2, j + ARM_W / 2))
         arm = box(a0, a1, COL_Y0, yin1, zb - ARM_T, zb)
-        s = col.fuse(arm).fuse(lip).removeSplitter()
+        zt = zb - ARM_T; zl = max(GUSSET_Z0, zt - (yin1 - LIP_Y1) * math.tan(math.radians(GUSSET_DEG)))
+        yl = LIP_Y1 + (zl - (zt - (yin1 - LIP_Y1) * math.tan(math.radians(GUSSET_DEG)))) / math.tan(math.radians(GUSSET_DEG))
+        prof = Part.Face(Part.makePolygon([V(x - COL_W / 2, LIP_Y1 - 0.01, zt + 0.01), V(x - COL_W / 2, yin1, zt + 0.01), V(x - COL_W / 2, yl, zl),
+                                           V(x - COL_W / 2, LIP_Y1 - 0.01, zl), V(x - COL_W / 2, LIP_Y1 - 0.01, zt + 0.01)]))
+        gus = prof.extrude(V(COL_W, 0, 0))               # under the arm's cantilever (Y LIP_Y1..yin1), down to the lip
+        s = col.fuse(arm).fuse(lip).fuse(gus).removeSplitter()
         s = s.cut(ycyl(x, BACK_SLOT_Z, BAR_BACK_Y - 1, LIP_Y1 + 1, M5))
         for sx in ((x,) if j is None else (j - JOINT_DX, j + JOINT_DX)):
             s = s.cut(zcyl(sx, ymid, zb - INS_DEPTH, zb + 1, M3_INS))
