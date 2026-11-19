@@ -17,12 +17,14 @@ version of a CC BY-NC-SA 4.0 part: attribution required, **non-commercial only**
 STLs sit flat in DW-Tas's own print orientation (48.95 × 63.32 × 23.66 mm, as the upstream duct) and print without supports.
 **lite-68 (2026-11-18)** (`cad/passes/lite68_dock_pads.py`): the dock now reaches to the cowl
 (`../madmax-andrewmcgr-dock-keyslot-pads/`), so the cowl carries only the three inserts. Each has a spot-face (Ø5.5,
-square to the screw, just below the 10° print face) for its sleeve, then a short M3 insert pocket (Ø4.8 × 3.4), with
+square to the screw, just below the 10° print face) for its standoff, then a short M3 insert pocket (Ø4.8 × 3.4), with
 ≥ 1 mm of cowl beyond and round each. The rear-bottom insert moved 18.5 mm forward and 6.25 mm up, into the solid
 corner: where it was, the cowl allows only a 2 mm pocket. lite-67's separate spacer is gone (it's in git history).
 
-**Hardware:** 3 × short M3 heat-set inserts (3 long, 5 OD), 3 × M3 sleeves and 3 × M3 screws per duct (see `../madmax-andrewmcgr-dock-keyslot-pads/README.md`). The screws must be **magnetic steel**, not stainless:
+**Hardware:** 3 × short M3 heat-set inserts (YuGtcen M3×3×5), 3 × M3 male-female standoffs (stud ground to 3 mm) and 3 × M3×6 flat-head screws per duct (see `../madmax-andrewmcgr-dock-keyslot-pads/README.md`). The screws must be **magnetic steel**, not stainless:
 the dock holds the parked screw heads with magnets.
 
 **Source:** the original STEP/STL linked above plus `lite23_cowl_docks.py` (the boss geometry is fully parametric there:
 `SCREWS`, `BOSS_R`, `POCKET`, `TAIL`, `FACE_X`).
+
+**Print:** flat print face down (as the STL stands), PETG, no supports. DW-Tas's original duct slices the same way: with supports off Orca warns of a "floating cantilever" on both, the bridged air channel. Assembly: `docs/assembly/stage-12-toolheads.md`.
