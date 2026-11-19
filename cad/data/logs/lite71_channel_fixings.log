@@ -1,113 +1,113 @@
-[    3.1s] opened /home/dan/Documents/VT350/vt350-lite-70.FCStd
-[   13.2s] ok   the 8 channel parts to replace: missing []
-[   13.2s] ok   one part labelled 'Nozzle offset probe bracket' (1)
-[   13.2s] ok   one part labelled 'E-box grille panel 1 of 3' (1)
-[   13.2s] ok   one part labelled 'E-box grille panel 2 of 3' (1)
-[   13.2s] ok   one part labelled 'E-box grille panel 3 of 3' (1)
-[   13.2s] ok   one part labelled 'E-box grille badge' (1)
-[   13.2s] ok   the roof panel and its paint (1, 1)
-[   13.2s] ok   only parts we designed are changed: ['Cable channel post 1 (printed, M5 to the rear 4040)', 'Cable channel post 2 (printed, M5 to the rear 4040)', 'Cable channel post 3 (printed, M5 to the rear 4040)', 'Cable channel post 4 (printed, M5 to the rear 4040)']
-[   13.2s] ok   retrofit parts and the roof panel are plain Part::Features: []
-[   13.2s] ok   nothing else uses the replaced parts: []
-[   13.2s] ok   the rear top 4040 and the rear-right upright (1, 1)
-[   45.6s] ok   rear top 4040 at Y 480..520, top Z 690: the slot at Y 510.0 (480.0..520.0, 690.0)
-[   45.6s] ok   rear-right upright X -10..30, back face Y 520: its slot at X 20.0
-[   45.6s] ok   the side pack's stand-in envelope
-[   45.8s] channel: horizontal run Z 732.50..768.40, drop X 95.05..130.95, front wall Y 533.45..535.45, back edge Y 546.50
-[   45.8s] ok   the cover sits on the back edge (Y 546.50)
-[  112.9s] a post fits at X [(-455.0, -429.0), (-395.0, -343.0), (-308.0, -253.0), (-217.0, -174.0), (-135.0, -86.0), (-33.0, 34.0)]; a joint post (floor whole round both screws) at X [(-455.0, -429.0), (-395.0, -343.0), (-308.0, -253.0), (-217.0, -174.0), (-135.0, -86.0), (10.0, 34.0)]
-[  112.9s] ok   posts at X [-455.0, -380.0, -186.0, 10.0], joints on posts 2-4 (targets [-457.0, -380.0, -186.0, 10.0]) clear of cables and clamps by >= 1 mm
-[  112.9s] ok   spans between supports [15, 75, 194, 196, 30] (<= 200)
-[  113.2s] ok   body with 10 countersunk M3 holes: one valid solid
-[  113.3s] ok   joint X -380.0: the floor whole round both screws; the section there 77.4 mm2 (plain 115.6; a cable window opens the front wall)
-[  113.4s] ok   joint X -186.0: the floor whole round both screws; the section there 92.4 mm2 (plain 115.6; a cable window opens the front wall)
-[  113.5s] ok   joint X 10.0: the floor whole round both screws; the section there 115.6 mm2 (plain 115.6; a cable window opens the front wall)
-[  113.6s] ok   joint Z 560.0: the U is whole there (115.6 mm2, plain 115.6)
-[  117.7s] ok   cover with 27 clips: one valid solid
-[  117.7s] ok   body segment 1 (roof run, left end): one valid solid (1), printed footprint 91.9 x 35.9 (bed 220 x 220, margin 5.0)
-[  117.8s] ok   body segment 2 (roof run): one valid solid (1), printed footprint 193.8 x 35.9 (bed 220 x 220, margin 5.0)
-[  117.9s] ok   body segment 3 (roof run, right): one valid solid (1), printed footprint 195.8 x 35.9 (bed 220 x 220, margin 5.0)
-[  117.9s] ok   body segment 4 (the corner): one valid solid (1), printed footprint 120.9 x 208.3 (bed 220 x 220, margin 5.0)
-[  118.0s] ok   body segment 5 (the drop): one valid solid (1), printed footprint 35.9 x 179.9 (bed 220 x 220, margin 5.0)
-[  118.0s] ok   body segment 1 (roof run, left end): held by 2 screws (>= 2)
-[  118.0s] ok   body segment 2 (roof run): held by 2 screws (>= 2)
-[  118.0s] ok   body segment 3 (roof run, right): held by 2 screws (>= 2)
-[  118.0s] ok   body segment 4 (the corner): held by 2 screws (>= 2)
-[  118.0s] ok   body segment 5 (the drop): held by 2 screws (>= 2)
-[  118.0s] ok   cover segment 1 (roof run, left end): one valid solid (1), printed footprint 89.9 x 38.7 (bed 220 x 220, margin 5.0)
-[  118.1s] ok   cover segment 2 (roof run): one valid solid (1), printed footprint 193.8 x 38.7 (bed 220 x 220, margin 5.0)
-[  118.2s] ok   cover segment 3 (roof run, right): one valid solid (1), printed footprint 195.8 x 38.7 (bed 220 x 220, margin 5.0)
-[  118.2s] ok   cover segment 4 (the corner): one valid solid (1), printed footprint 122.3 x 208.3 (bed 220 x 220, margin 5.0)
-[  118.3s] ok   cover segment 5 (the drop): one valid solid (1), printed footprint 38.7 x 179.9 (bed 220 x 220, margin 5.0)
-[  118.3s] ok   cover segment 1 (roof run, left end): 3 clip barbs (>= 2)
-[  118.3s] ok   cover segment 2 (roof run): 8 clip barbs (>= 2)
-[  118.3s] ok   cover segment 3 (roof run, right): 6 clip barbs (>= 2)
-[  118.3s] ok   cover segment 4 (the corner): 4 clip barbs (>= 2)
-[  118.4s] ok   cover segment 5 (the drop): 6 clip barbs (>= 2)
-[  119.3s] ok   body segment 1 (roof run, left end): chamfered (up (0.0, 1.0, 0.0)): 2 first-layer, 7 top, 7 reduced, 15 skipped, 0 OCC couldn't build; -23 mm3; missed: []
-[  122.7s] ok   body segment 2 (roof run): chamfered (up (0.0, 1.0, 0.0)): 4 first-layer, 16 top, 16 reduced, 26 skipped, 0 OCC couldn't build; -50 mm3; missed: []
-[  126.2s] ok   body segment 3 (roof run, right): chamfered (up (0.0, 1.0, 0.0)): 3 first-layer, 13 top, 15 reduced, 27 skipped, 4 OCC couldn't build; -13 mm3; missed: []
-[  127.7s] ok   body segment 4 (the corner): chamfered (up (0.0, 1.0, 0.0)): 4 first-layer, 12 top, 12 reduced, 11 skipped, 0 OCC couldn't build; -63 mm3; missed: []
-[  128.8s] ok   body segment 5 (the drop): chamfered (up (0.0, 1.0, 0.0)): 2 first-layer, 10 top, 10 reduced, 8 skipped, 0 OCC couldn't build; -45 mm3; missed: []
-[  130.3s] ok   cover segment 1 (roof run, left end): chamfered (up (0.0, -1.0, 0.0)): 1 first-layer, 16 top, 16 reduced, 24 skipped, 0 OCC couldn't build; -15 mm3; missed: []
-[  137.9s] ok   cover segment 2 (roof run): chamfered (up (0.0, -1.0, 0.0)): 2 first-layer, 36 top, 36 reduced, 58 skipped, 0 OCC couldn't build; -33 mm3; missed: []
-[  142.5s] ok   cover segment 3 (roof run, right): chamfered (up (0.0, -1.0, 0.0)): 2 first-layer, 28 top, 28 reduced, 44 skipped, 0 OCC couldn't build; -30 mm3; missed: []
-[  145.6s] ok   cover segment 4 (the corner): chamfered (up (0.0, -1.0, 0.0)): 2 first-layer, 23 top, 23 reduced, 33 skipped, 0 OCC couldn't build; -29 mm3; missed: []
-[  150.0s] ok   cover segment 5 (the drop): chamfered (up (0.0, -1.0, 0.0)): 1 first-layer, 28 top, 28 reduced, 45 skipped, 0 OCC couldn't build; -23 mm3; missed: []
-[  150.0s] ok   post 1 printed upside down (arm's top on the bed): faces that would hang 0.0 mm2 (+ 1 insert-hole floors, bridges of 4 mm)
-[  150.1s] ok   post 2 printed upside down (arm's top on the bed): faces that would hang 0.0 mm2 (+ 2 insert-hole floors, bridges of 4 mm)
-[  150.1s] ok   post 3 printed upside down (arm's top on the bed): faces that would hang 0.0 mm2 (+ 2 insert-hole floors, bridges of 4 mm)
-[  150.1s] ok   post 4 printed upside down (arm's top on the bed): faces that would hang 0.0 mm2 (+ 2 insert-hole floors, bridges of 4 mm)
-[  150.6s] ok   post 1 at X -455.0: chamfered (up (0.0, 0.0, -1.0)): 4 first-layer, 14 top, 3 reduced, 0 skipped, 0 OCC couldn't build; -107 mm3; missed: []
-[  151.0s] ok   post 2 at X -380.0, carrying the joint at X -380.0: chamfered (up (0.0, 0.0, -1.0)): 4 first-layer, 14 top, 3 reduced, 0 skipped, 0 OCC couldn't build; -107 mm3; missed: []
-[  151.5s] ok   post 3 at X -186.0, carrying the joint at X -186.0: chamfered (up (0.0, 0.0, -1.0)): 4 first-layer, 14 top, 3 reduced, 0 skipped, 0 OCC couldn't build; -107 mm3; missed: []
-[  152.0s] ok   post 4 at X 10.0, carrying the joint at X 10.0: chamfered (up (0.0, 0.0, -1.0)): 4 first-layer, 14 top, 3 reduced, 0 skipped, 0 OCC couldn't build; -107 mm3; missed: []
-[  152.1s] ok   arm 1 at Z 440.0: chamfered (up (0.0, 0.0, 1.0)): 6 first-layer, 6 top, 1 reduced, 0 skipped, 0 OCC couldn't build; -161 mm3; missed: []
-[  152.3s] ok   arm 2 at Z 560.0: chamfered (up (0.0, 0.0, 1.0)): 6 first-layer, 6 top, 1 reduced, 0 skipped, 0 OCC couldn't build; -161 mm3; missed: []
-[  152.5s] ok   probe bracket: section at Z 251.0 carried down to Z 240.0 (+3160 mm3); flat face on the bed 635 mm2 (lite-70's largest 582); faces that would hang 0.0 mm2; box unchanged True; old material removed 0.000 mm3; holes kept open [(1.7, (-255.0, 55.8, 250.0), (0.0, 1.0, 0.0), 'through the new part'), (1.7, (-235.0, 55.8, 250.0), (0.0, 1.0, 0.0), 'through the new part'), (1.7, (-250.0, 25.6, 268.2), (0.0, 1.0, 0.0), ''), (1.7, (-240.0, 25.6, 258.2), (0.0, 1.0, 0.0), '')]
-[  152.6s] ok   probe bracket's new material vs the printer: []
-[  153.6s] ok   retrofit Nozzle offset probe bracket: printed on its largest face (635 mm2) (up (0.0, 0.0, 1.0)): 12 first-layer, 13 top, 0 reduced, 0 skipped, 0 OCC couldn't build; -1.04 %; box unchanged True; missed []
-[  469.6s] ok   retrofit E-box grille panel 1 of 3: printed on its outside face (up (0.0, 1.0, 0.0)): 298 first-layer, 317 top, 313 reduced, 4 skipped, 0 OCC couldn't build; -2.38 %; box unchanged True; missed []
-[  791.2s] ok   retrofit E-box grille panel 2 of 3: printed on its outside face (up (0.0, 1.0, 0.0)): 297 first-layer, 310 top, 307 reduced, 5 skipped, 0 OCC couldn't build; -3.11 %; box unchanged True; missed []
-[  924.9s] ok   retrofit E-box grille panel 3 of 3: printed on its outside face (up (0.0, 1.0, 0.0)): 172 first-layer, 193 top, 190 reduced, 19 skipped, 0 OCC couldn't build; -1.24 %; box unchanged True; missed []
-[  925.0s] ok   retrofit E-box grille badge: printed on its outside face (up (0.0, 1.0, 0.0)): 0 first-layer, 6 top, 6 reduced, 6 skipped, 0 OCC couldn't build; -0.34 %; box unchanged True; missed []
-[  937.0s] ok   Cable channel body segment 1 of 5, roof run, left : in the model as made
-[  937.0s] ok   Cable channel body segment 2 of 5, roof run (print: in the model as made
-[  937.0s] ok   Cable channel body segment 3 of 5, roof run, right: in the model as made
-[  937.0s] ok   Cable channel body segment 4 of 5, the corner (pri: in the model as made
-[  937.0s] ok   Cable channel body segment 5 of 5, the drop (print: in the model as made
-[  937.0s] ok   Cable channel cover segment 1 of 5, roof run, left: in the model as made
-[  937.0s] ok   Cable channel cover segment 2 of 5, roof run (prin: in the model as made
-[  937.1s] ok   Cable channel cover segment 3 of 5, roof run, righ: in the model as made
-[  937.1s] ok   Cable channel cover segment 4 of 5, the corner (pr: in the model as made
-[  937.1s] ok   Cable channel cover segment 5 of 5, the drop (prin: in the model as made
-[  937.1s] ok   Cable channel post 1 (printed, M5 to the rear 4040: in the model as made
-[  937.1s] ok   Cable channel post 2 (printed, M5 to the rear 4040: in the model as made
-[  937.1s] ok   Cable channel post 3 (printed, M5 to the rear 4040: in the model as made
-[  937.1s] ok   Cable channel post 4 (printed, M5 to the rear 4040: in the model as made
-[  937.1s] ok   Cable channel arm 1 (printed, M5 to the rear-right: in the model as made
-[  937.1s] ok   Cable channel arm 2 (printed, M5 to the rear-right: in the model as made
-[  979.2s] ok   new channel parts vs the printer: []
-[  980.5s] ok   posts, arms, cover vs the cables: []
-[  981.1s] ok   body vs cover, all segments: 0.000 mm3 (lite-70's body vs cover: 0.000, never checked there) []
-[  981.1s] ok   in the side pack (its envelope up to the rear panel, Y 523.0): 0 mm3 (lite-70: 3595)
-[  981.1s] ok   Cable channel body segment 1 of 5, roof run, left : role printed (lite-70: printed)
-[  981.1s] ok   Cable channel body segment 2 of 5, roof run (print: role printed (lite-70: printed)
-[  981.1s] ok   Cable channel body segment 3 of 5, roof run, right: role printed (lite-70: printed)
-[  981.1s] ok   Cable channel body segment 4 of 5, the corner (pri: role printed (lite-70: printed)
-[  981.1s] ok   Cable channel body segment 5 of 5, the drop (print: role printed (lite-70: printed)
-[  981.1s] ok   Cable channel cover segment 1 of 5, roof run, left: role accent (lite-70: accent)
-[  981.1s] ok   Cable channel cover segment 2 of 5, roof run (prin: role accent (lite-70: accent)
-[  981.1s] ok   Cable channel cover segment 3 of 5, roof run, righ: role accent (lite-70: accent)
-[  981.1s] ok   Cable channel cover segment 4 of 5, the corner (pr: role accent (lite-70: accent)
-[  981.1s] ok   Cable channel cover segment 5 of 5, the drop (prin: role accent (lite-70: accent)
-[  981.1s] ok   Cable channel post 1 (printed, M5 to the rear 4040: role printed (lite-70: printed)
-[  981.1s] ok   Cable channel post 2 (printed, M5 to the rear 4040: role printed (lite-70: printed)
-[  981.1s] ok   Cable channel post 3 (printed, M5 to the rear 4040: role printed (lite-70: printed)
-[  981.1s] ok   Cable channel post 4 (printed, M5 to the rear 4040: role printed (lite-70: printed)
-[  981.1s] ok   Cable channel arm 1 (printed, M5 to the rear-right: role printed (lite-70: printed)
-[  981.1s] ok   Cable channel arm 2 (printed, M5 to the rear-right: role printed (lite-70: printed)
-[  981.1s] ok   solids: 1537 -> 1545 (body and cover 1 -> 5 each)
-[  981.1s] verify: 0 problems
-[  981.1s] DRY RUN (headless): all checks passed, not saved
-[  981.2s] litepool: peak RSS: workers max 1645 MB, sum 3290 MB; parent 2927 MB
+[   52.8s] opened /home/dan/Documents/VT350/vt350-lite-70.FCStd
+[   65.9s] ok   the 8 channel parts to replace: missing []
+[   65.9s] ok   one part labelled 'Nozzle offset probe bracket' (1)
+[   65.9s] ok   one part labelled 'E-box grille panel 1 of 3' (1)
+[   65.9s] ok   one part labelled 'E-box grille panel 2 of 3' (1)
+[   65.9s] ok   one part labelled 'E-box grille panel 3 of 3' (1)
+[   65.9s] ok   one part labelled 'E-box grille badge' (1)
+[   65.9s] ok   the roof panel and its paint (1, 1)
+[   65.9s] ok   only parts we designed are changed: ['Cable channel post 1 (printed, M5 to the rear 4040)', 'Cable channel post 2 (printed, M5 to the rear 4040)', 'Cable channel post 3 (printed, M5 to the rear 4040)', 'Cable channel post 4 (printed, M5 to the rear 4040)']
+[   65.9s] ok   retrofit parts and the roof panel are plain Part::Features: []
+[   65.9s] ok   nothing else uses the replaced parts: []
+[   65.9s] ok   the rear top 4040 and the rear-right upright (1, 1)
+[  105.5s] ok   rear top 4040 at Y 480..520, top Z 690: the slot at Y 510.0 (480.0..520.0, 690.0)
+[  105.5s] ok   rear-right upright X -10..30, back face Y 520: its slot at X 20.0
+[  105.5s] ok   the side pack's stand-in envelope
+[  114.5s] channel: horizontal run Z 732.50..768.40, drop X 95.05..130.95, front wall Y 533.45..535.45, back edge Y 546.50
+[  114.5s] ok   the cover sits on the back edge (Y 546.50)
+[  205.5s] a post fits at X [(-455.0, -429.0), (-395.0, -343.0), (-308.0, -253.0), (-217.0, -174.0), (-135.0, -86.0), (-33.0, 34.0)]; a joint post (floor whole round both screws) at X [(-455.0, -429.0), (-395.0, -343.0), (-308.0, -253.0), (-217.0, -174.0), (-135.0, -86.0), (10.0, 34.0)]
+[  205.5s] ok   posts at X [-455.0, -380.0, -186.0, 10.0], joints on posts 2-4 (targets [-457.0, -380.0, -186.0, 10.0]) clear of cables and clamps by >= 1 mm
+[  205.5s] ok   spans between supports [15, 75, 194, 196, 30] (<= 200)
+[  206.0s] ok   body with 10 countersunk M3 holes: one valid solid
+[  206.1s] ok   joint X -380.0: the floor whole round both screws; the section there 77.4 mm2 (plain 115.6; a cable window opens the front wall)
+[  206.3s] ok   joint X -186.0: the floor whole round both screws; the section there 92.4 mm2 (plain 115.6; a cable window opens the front wall)
+[  206.4s] ok   joint X 10.0: the floor whole round both screws; the section there 115.6 mm2 (plain 115.6; a cable window opens the front wall)
+[  206.5s] ok   joint Z 560.0: the U is whole there (115.6 mm2, plain 115.6)
+[  213.2s] ok   cover with 27 clips: one valid solid
+[  213.3s] ok   body segment 1 (roof run, left end): one valid solid (1), printed footprint 91.9 x 35.9 (bed 220 x 220, margin 5.0)
+[  213.4s] ok   body segment 2 (roof run): one valid solid (1), printed footprint 193.8 x 35.9 (bed 220 x 220, margin 5.0)
+[  213.5s] ok   body segment 3 (roof run, right): one valid solid (1), printed footprint 195.8 x 35.9 (bed 220 x 220, margin 5.0)
+[  213.6s] ok   body segment 4 (the corner): one valid solid (1), printed footprint 120.9 x 208.3 (bed 220 x 220, margin 5.0)
+[  213.7s] ok   body segment 5 (the drop): one valid solid (1), printed footprint 35.9 x 179.9 (bed 220 x 220, margin 5.0)
+[  213.7s] ok   body segment 1 (roof run, left end): held by 2 screws (>= 2)
+[  213.7s] ok   body segment 2 (roof run): held by 2 screws (>= 2)
+[  213.7s] ok   body segment 3 (roof run, right): held by 2 screws (>= 2)
+[  213.7s] ok   body segment 4 (the corner): held by 2 screws (>= 2)
+[  213.7s] ok   body segment 5 (the drop): held by 2 screws (>= 2)
+[  213.8s] ok   cover segment 1 (roof run, left end): one valid solid (1), printed footprint 89.9 x 38.7 (bed 220 x 220, margin 5.0)
+[  213.8s] ok   cover segment 2 (roof run): one valid solid (1), printed footprint 193.8 x 38.7 (bed 220 x 220, margin 5.0)
+[  213.9s] ok   cover segment 3 (roof run, right): one valid solid (1), printed footprint 195.8 x 38.7 (bed 220 x 220, margin 5.0)
+[  214.0s] ok   cover segment 4 (the corner): one valid solid (1), printed footprint 122.3 x 208.3 (bed 220 x 220, margin 5.0)
+[  214.1s] ok   cover segment 5 (the drop): one valid solid (1), printed footprint 38.7 x 179.9 (bed 220 x 220, margin 5.0)
+[  214.1s] ok   cover segment 1 (roof run, left end): 3 clip barbs (>= 2)
+[  214.2s] ok   cover segment 2 (roof run): 8 clip barbs (>= 2)
+[  214.2s] ok   cover segment 3 (roof run, right): 6 clip barbs (>= 2)
+[  214.2s] ok   cover segment 4 (the corner): 4 clip barbs (>= 2)
+[  214.2s] ok   cover segment 5 (the drop): 6 clip barbs (>= 2)
+[  215.5s] ok   body segment 1 (roof run, left end): chamfered (up (0.0, 1.0, 0.0)): 2 first-layer, 7 top, 7 reduced, 15 skipped, 0 OCC couldn't build; -23 mm3; missed: []
+[  220.9s] ok   body segment 2 (roof run): chamfered (up (0.0, 1.0, 0.0)): 4 first-layer, 16 top, 16 reduced, 26 skipped, 0 OCC couldn't build; -50 mm3; missed: []
+[  225.2s] ok   body segment 3 (roof run, right): chamfered (up (0.0, 1.0, 0.0)): 3 first-layer, 13 top, 15 reduced, 27 skipped, 4 OCC couldn't build; -13 mm3; missed: []
+[  227.0s] ok   body segment 4 (the corner): chamfered (up (0.0, 1.0, 0.0)): 4 first-layer, 12 top, 12 reduced, 11 skipped, 0 OCC couldn't build; -63 mm3; missed: []
+[  228.4s] ok   body segment 5 (the drop): chamfered (up (0.0, 1.0, 0.0)): 2 first-layer, 10 top, 10 reduced, 8 skipped, 0 OCC couldn't build; -45 mm3; missed: []
+[  230.4s] ok   cover segment 1 (roof run, left end): chamfered (up (0.0, -1.0, 0.0)): 1 first-layer, 16 top, 16 reduced, 24 skipped, 0 OCC couldn't build; -15 mm3; missed: []
+[  251.3s] ok   cover segment 2 (roof run): chamfered (up (0.0, -1.0, 0.0)): 2 first-layer, 36 top, 36 reduced, 58 skipped, 0 OCC couldn't build; -33 mm3; missed: []
+[  256.9s] ok   cover segment 3 (roof run, right): chamfered (up (0.0, -1.0, 0.0)): 2 first-layer, 28 top, 28 reduced, 44 skipped, 0 OCC couldn't build; -30 mm3; missed: []
+[  260.4s] ok   cover segment 4 (the corner): chamfered (up (0.0, -1.0, 0.0)): 2 first-layer, 23 top, 23 reduced, 33 skipped, 0 OCC couldn't build; -29 mm3; missed: []
+[  266.0s] ok   cover segment 5 (the drop): chamfered (up (0.0, -1.0, 0.0)): 1 first-layer, 28 top, 28 reduced, 45 skipped, 0 OCC couldn't build; -23 mm3; missed: []
+[  266.0s] ok   post 1 printed upside down (arm's top on the bed): faces that would hang 0.0 mm2 (+ 1 insert-hole floors, bridges of 4 mm)
+[  266.1s] ok   post 2 printed upside down (arm's top on the bed): faces that would hang 0.0 mm2 (+ 2 insert-hole floors, bridges of 4 mm)
+[  266.1s] ok   post 3 printed upside down (arm's top on the bed): faces that would hang 0.0 mm2 (+ 2 insert-hole floors, bridges of 4 mm)
+[  266.2s] ok   post 4 printed upside down (arm's top on the bed): faces that would hang 0.0 mm2 (+ 2 insert-hole floors, bridges of 4 mm)
+[  266.7s] ok   post 1 at X -455.0: chamfered (up (0.0, 0.0, -1.0)): 4 first-layer, 14 top, 3 reduced, 0 skipped, 0 OCC couldn't build; -107 mm3; missed: []
+[  267.3s] ok   post 2 at X -380.0, carrying the joint at X -380.0: chamfered (up (0.0, 0.0, -1.0)): 4 first-layer, 14 top, 3 reduced, 0 skipped, 0 OCC couldn't build; -107 mm3; missed: []
+[  267.9s] ok   post 3 at X -186.0, carrying the joint at X -186.0: chamfered (up (0.0, 0.0, -1.0)): 4 first-layer, 14 top, 3 reduced, 0 skipped, 0 OCC couldn't build; -107 mm3; missed: []
+[  268.5s] ok   post 4 at X 10.0, carrying the joint at X 10.0: chamfered (up (0.0, 0.0, -1.0)): 4 first-layer, 14 top, 3 reduced, 0 skipped, 0 OCC couldn't build; -107 mm3; missed: []
+[  268.8s] ok   arm 1 at Z 440.0: chamfered (up (0.0, 0.0, 1.0)): 6 first-layer, 6 top, 1 reduced, 0 skipped, 0 OCC couldn't build; -161 mm3; missed: []
+[  269.0s] ok   arm 2 at Z 560.0: chamfered (up (0.0, 0.0, 1.0)): 6 first-layer, 6 top, 1 reduced, 0 skipped, 0 OCC couldn't build; -161 mm3; missed: []
+[  269.3s] ok   probe bracket: section at Z 251.0 carried down to Z 240.0 (+3160 mm3); flat face on the bed 635 mm2 (lite-70's largest 582); faces that would hang 0.0 mm2; box unchanged True; old material removed 0.000 mm3; holes kept open [(1.7, (-255.0, 55.8, 250.0), (0.0, 1.0, 0.0), 'through the new part'), (1.7, (-235.0, 55.8, 250.0), (0.0, 1.0, 0.0), 'through the new part'), (1.7, (-250.0, 25.6, 268.2), (0.0, 1.0, 0.0), ''), (1.7, (-240.0, 25.6, 258.2), (0.0, 1.0, 0.0), '')]
+[  269.5s] ok   probe bracket's new material vs the printer: []
+[  271.2s] ok   retrofit Nozzle offset probe bracket: printed on its largest face (635 mm2) (up (0.0, 0.0, 1.0)): 12 first-layer, 13 top, 0 reduced, 0 skipped, 0 OCC couldn't build; -1.04 %; box unchanged True; missed []
+[  663.8s] ok   retrofit E-box grille panel 1 of 3: printed on its outside face (up (0.0, 1.0, 0.0)): 298 first-layer, 317 top, 313 reduced, 4 skipped, 0 OCC couldn't build; -2.38 %; box unchanged True; missed []
+[ 1323.5s] ok   retrofit E-box grille panel 2 of 3: printed on its outside face (up (0.0, 1.0, 0.0)): 297 first-layer, 310 top, 307 reduced, 5 skipped, 0 OCC couldn't build; -3.11 %; box unchanged True; missed []
+[ 1718.1s] ok   retrofit E-box grille panel 3 of 3: printed on its outside face (up (0.0, 1.0, 0.0)): 172 first-layer, 193 top, 190 reduced, 19 skipped, 0 OCC couldn't build; -1.24 %; box unchanged True; missed []
+[ 1718.2s] ok   retrofit E-box grille badge: printed on its outside face (up (0.0, 1.0, 0.0)): 0 first-layer, 6 top, 6 reduced, 6 skipped, 0 OCC couldn't build; -0.34 %; box unchanged True; missed []
+[ 1731.7s] ok   Cable channel body segment 1 of 5, roof run, left : in the model as made
+[ 1731.7s] ok   Cable channel body segment 2 of 5, roof run (print: in the model as made
+[ 1731.7s] ok   Cable channel body segment 3 of 5, roof run, right: in the model as made
+[ 1731.7s] ok   Cable channel body segment 4 of 5, the corner (pri: in the model as made
+[ 1731.7s] ok   Cable channel body segment 5 of 5, the drop (print: in the model as made
+[ 1731.7s] ok   Cable channel cover segment 1 of 5, roof run, left: in the model as made
+[ 1731.8s] ok   Cable channel cover segment 2 of 5, roof run (prin: in the model as made
+[ 1731.8s] ok   Cable channel cover segment 3 of 5, roof run, righ: in the model as made
+[ 1731.8s] ok   Cable channel cover segment 4 of 5, the corner (pr: in the model as made
+[ 1731.8s] ok   Cable channel cover segment 5 of 5, the drop (prin: in the model as made
+[ 1731.8s] ok   Cable channel post 1 (printed, M5 to the rear 4040: in the model as made
+[ 1731.8s] ok   Cable channel post 2 (printed, M5 to the rear 4040: in the model as made
+[ 1731.8s] ok   Cable channel post 3 (printed, M5 to the rear 4040: in the model as made
+[ 1731.8s] ok   Cable channel post 4 (printed, M5 to the rear 4040: in the model as made
+[ 1731.8s] ok   Cable channel arm 1 (printed, M5 to the rear-right: in the model as made
+[ 1731.8s] ok   Cable channel arm 2 (printed, M5 to the rear-right: in the model as made
+[ 1885.3s] ok   new channel parts vs the printer: []
+[ 1886.8s] ok   posts, arms, cover vs the cables: []
+[ 1887.6s] ok   body vs cover, all segments: 0.000 mm3 (lite-70's body vs cover: 0.000, never checked there) []
+[ 1887.6s] ok   in the side pack (its envelope up to the rear panel, Y 523.0): 0 mm3 (lite-70: 3595)
+[ 1887.7s] ok   Cable channel body segment 1 of 5, roof run, left : role printed (lite-70: printed)
+[ 1887.7s] ok   Cable channel body segment 2 of 5, roof run (print: role printed (lite-70: printed)
+[ 1887.7s] ok   Cable channel body segment 3 of 5, roof run, right: role printed (lite-70: printed)
+[ 1887.7s] ok   Cable channel body segment 4 of 5, the corner (pri: role printed (lite-70: printed)
+[ 1887.7s] ok   Cable channel body segment 5 of 5, the drop (print: role printed (lite-70: printed)
+[ 1887.7s] ok   Cable channel cover segment 1 of 5, roof run, left: role accent (lite-70: accent)
+[ 1887.7s] ok   Cable channel cover segment 2 of 5, roof run (prin: role accent (lite-70: accent)
+[ 1887.7s] ok   Cable channel cover segment 3 of 5, roof run, righ: role accent (lite-70: accent)
+[ 1887.7s] ok   Cable channel cover segment 4 of 5, the corner (pr: role accent (lite-70: accent)
+[ 1887.7s] ok   Cable channel cover segment 5 of 5, the drop (prin: role accent (lite-70: accent)
+[ 1887.7s] ok   Cable channel post 1 (printed, M5 to the rear 4040: role printed (lite-70: printed)
+[ 1887.7s] ok   Cable channel post 2 (printed, M5 to the rear 4040: role printed (lite-70: printed)
+[ 1887.7s] ok   Cable channel post 3 (printed, M5 to the rear 4040: role printed (lite-70: printed)
+[ 1887.7s] ok   Cable channel post 4 (printed, M5 to the rear 4040: role printed (lite-70: printed)
+[ 1887.7s] ok   Cable channel arm 1 (printed, M5 to the rear-right: role printed (lite-70: printed)
+[ 1887.7s] ok   Cable channel arm 2 (printed, M5 to the rear-right: role printed (lite-70: printed)
+[ 1887.7s] ok   solids: 1537 -> 1545 (body and cover 1 -> 5 each)
+[ 1887.7s] verify: 0 problems
+[ 1905.9s] SAVED /home/dan/Documents/VT350/vt350-lite-71.FCStd 37837192
+[ 1906.3s] litepool: peak RSS: workers max 4348 MB, sum 8696 MB; parent 13102 MB
