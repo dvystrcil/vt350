@@ -1,0 +1,40 @@
+[   52.5s] opened /home/dan/Documents/VT350/vt350-lite-68.FCStd
+[   65.5s] ok   6 roof + 3 back parts (6, 3: ['Roof felt (pad 1)', 'Roof felt liner, inner', 'Roof felt strip (pad 3)', 'Roof felt strip liner, inner', 'Roof felt strip liner, outer', 'Roof felt liner, outer', 'Back felt liner, inner', 'Back felt liner, outer', 'Back felt (pad 2)'])
+[   65.5s] ok   all Part::Features or App::Links
+[   65.5s] ok   one roof panel, one back panel (1, 1)
+[  118.3s] roof panel Z 690.000..692.800; roof stack Z 693.000..704.000
+[  118.3s] back panel Y 504.993..507.793; back stack Y 508.000..519.000
+[  118.3s] ok   before: the roof stack sits on the roof panel's outside (top) face (gap 0.200)
+[  118.3s] ok   before: the back stack sits on the back panel's outside (rear) face (gap 0.207)
+[  118.3s] not moved: Right wall felt (pad 3)  X 33.5..43.5
+[  118.3s] not moved: Right wall felt liner, inner  X 33.0..33.5
+[  118.3s] not moved: Right wall felt liner, outer  X 43.5..44.0
+[  118.3s] move: roof dz -14.000, back dy -14.007
+[  118.3s] ok   the rear vertical 2020 found (1)
+[  118.4s] rear 2020 face Y 500.000; rearmost part behind the pad: _Stepper_stator001 at Y 500.100
+[  118.4s] ok   the back felt is a box (2387600 mm3)
+[  118.4s] frame rear face Y 500.100; gap to the panel 4.893; back felt 10.000 -> 3.893 mm
+[  118.4s] ok   a thinner back felt fits (3.893 mm)
+[  118.4s] ok   one EMU envelope, one roof paint layer (1, 1)
+[  162.8s] opened /home/dan/Documents/VT350/vt350-emu-3.FCStd
+[  259.8s] EMU (emu-3, 2258 parts): Z 712.117..1040.470; roof top 693.000; dz -19.117
+[  259.8s] ok   the EMU comes down a little (-19.117 mm)
+[  260.4s] envelope: BoundBox (-491.038, -83.7377, 693, 1.03812, 210.239, 1021.35)
+[  273.0s] ok   the new back felt keeps the Name Encl008 (Encl008)
+[  284.6s] ok   the new back felt is 470 x 3.893 x 508 mm
+[  284.6s] ok   the new back felt sits where the old one's rear face went (Y 500.600..504.493)
+[  349.0s] ok   only bowden tubes and USB cables cross the roof strip (10; others: [])
+[  350.0s] roof strip: 10 holes (Bowden Left, O2S USB cable slot 1, O2S USB cable slot 2, O2S USB cable slot 3, O2S USB cable slot 4, O2S USB cable slot 5, Bowden Right, Bowden slot 2, Bowden slot 3, Bowden slot 4)
+[  350.1s] ok   Roof felt strip (pad 3): Placement kept (its links stay put)
+[  350.1s]   Roof felt strip (pad 3): volume 179855 -> 104924 mm3
+[  350.1s] ok   Roof felt strip liner, inner: Placement kept (its links stay put)
+[  350.1s]   Roof felt strip liner, inner: volume 8993 -> 5246 mm3
+[  363.2s] ok   each moved part moved by exactly its offset, every other solid's box unchanged (0: [])
+[  363.2s] ok   solids 1537 (was 1537)
+[  363.2s] ok   after: the roof stack's top on the roof panel's underside (Z 690.000)
+[  363.2s] ok   after: the back stack's rear on the back panel's inside face (Y 504.993)
+[  363.2s] ok   after: the back stack's front on the rearmost part behind it (Y 500.100)
+[  428.6s] ok   no new overlap with another part (0: [])
+[  428.6s] ok   after: the EMU envelope is the lowered EMU's box, its bottom on the roof's top (Z 693.000)
+[  428.6s] verify: 0 problems
+[  445.9s] SAVED /home/dan/Documents/VT350/vt350-lite-69.FCStd 37290697
