@@ -5,10 +5,12 @@
 # chamfer retrofit "in their own pass", only for parts we designed ("the models that DW-Tas has created are production
 # models and should not need alteration").
 #
-#  - POSTS (4, rebuilt): a 14 x 14 column on the roof panel over the rear top 4040's rear top slot (Y 510), and an arm
-#    under the channel's floor (24 wide, to the channel's back edge) that carries it. Each post: 1 x M5x16 SHCS down a
-#    counterbore through the column and the roof panel into a drop-in T-nut in the slot (8 mm of plastic under the
-#    head). The channel screws down into the arm: M3x6 countersunk (ISO 10642) through the floor, from inside the
+#  - POSTS (4, rebuilt): a 14 wide column on the roof panel's rear edge, an arm under the channel's floor (24 wide, to
+#    the channel's back edge) that carries it, and a lip that hangs down the rear top 4040's back face (owner,
+#    2026-11-19: "I expected there to be a lip hanging down so I can anchor it to the 4040"). Each post: 1 x M5x10 SHCS
+#    through the 6 mm lip into a drop-in T-nut in the 4040's upper back slot (Z 680); the roof panel isn't drilled.
+#    Printed upside down, the arm's top face on the bed (owner: "the top surface laying on the print bed"): every wall
+#    then rises straight from it, no overhangs. The channel screws down into the arm: M3x6 countersunk (ISO 10642) through the floor, from inside the
 #    channel before the cover goes on, into a heat-set insert in the arm; two (one per segment) where a joint sits on
 #    the post, one elsewhere. The countersinks are the one bore the chamfer rule allows: the head sits flush under the
 #    lowest lane.
@@ -23,13 +25,15 @@
 #    groove in the wall (0.2 mm clearance all round, 0.1 at the barb); away from the posts' arms, joints and windows.
 #  - CHAMFERS (printchamfer, cad/data/print-profile.json): every new piece; and the retrofit of the older parts we
 #    designed: the nozzle-offset probe bracket, the 3 e-box grille panels, the grille badge (the hex meshes are left:
-#    2 mm bars, too narrow for the first-layer size anyway). Each printed on its largest flat face.
+#    2 mm bars, too narrow for the first-layer size anyway). Grille parts print outside face down. The probe bracket
+#    (two parallel plates on a web) had no side that prints without supports: its section is carried down to its lowest
+#    edge so all of it stands on one flat side (owner, 2026-11-19), its holes kept open through the new material.
 # Hardware (listed, not modelled): see p.dump "fasteners".
 # Checks (refuses to save on any): the parts found, ours only (label "vt350, GPL-3.0-or-later" or "printed, vt350"
 # for every part changed); M5s on the slots; segments in the bed, one valid solid each, joint sections whole (no window
 # cut by a joint), >= 2 screws each, joints supported, spans <= 200; posts clear of cables and clamps by >= 1 mm;
 # clips: >= 2 per cover piece, grooves in solid wall; chamfers: none missed (printchamfer.unchamfered); retrofit
-# parts lose only chamfer material (box unchanged, < 2 % volume); roof panel + paint lose exactly the 4 M5 holes;
+# parts lose only chamfer material (box unchanged, < 5 % volume); the posts print upside down with no overhang;
 # no overlap: posts, arms, cover pieces vs the printer and the cables; body pieces vs the printer (they only lose
 # material, so vs the cables nothing new); pieces vs each other; the side pack's stand-in envelope counted only up to
 # the e-box rear panel's outer face (Y 523; it's a box that runs past the panel); roles as before; solids +8.
@@ -54,6 +58,7 @@ UPR_FACE_Y, UPR_SLOT_X = 520.0, 20.0     # the rear-right 4040 upright (X -10..3
 EBOX_REAR_Y1 = 523.0              # e-box rear panel + paint outer face (X 30..146)
 M3, M3_INS, M5, M5_CB = 1.7, 2.0, 2.75, 4.75
 INS_DEPTH, CLAMP_T = 6.5, 8.0
+BAR_BACK_Y, LIP_Y1, LIP_Z0, BACK_SLOT_Z = 520.0, 526.0, 668.0, 680.0   # the post's lip on the 4040's back face; its upper back slot
 CSK_R = 3.15                      # M3 countersunk head radius (Ø6.3), 90 deg
 COL_W, COL_Y0, COL_Y1 = 14.0, 503.0, 517.0
 ARM_W, ARM_T = 24.0, 12.0
@@ -73,9 +78,10 @@ CHAN = {"body": "Cable channel body, roof to side pack (printed, vt350, GPL-3.0-
 POSTS = "Cable channel post {i} (printed, M5 to the rear 4040)"
 ARMS = "Cable channel arm {i} (printed, M5 to the rear-right upright)"
 SEG = "Cable channel {what} segment {k} of {n}, {where} (printed, vt350, GPL-3.0-or-later)"
+PROBE_CUT, PROBE_Z0 = 251.0, 240.0      # the probe bracket's section through both plates and the web; its lowest edge (lite-70)
 RETRO = ["Nozzle offset probe bracket", "E-box grille panel 1 of 3", "E-box grille panel 2 of 3", "E-box grille panel 3 of 3",
          "E-box grille badge"]
-UP = {"body": V(0, 1, 0), "cover": V(0, -1, 0), "post": V(1, 0, 0), "arm": V(0, 0, 1)}
+UP = {"body": V(0, 1, 0), "cover": V(0, -1, 0), "post": V(0, 0, -1), "arm": V(0, 0, 1)}   # post: upside down
 
 
 def box(x0, x1, y0, y1, z0, z1): return Part.makeBox(x1 - x0, y1 - y0, z1 - z0, V(x0, y0, z0))
@@ -193,11 +199,12 @@ def main(p):
     # ---------------- posts
     def post_at(x, j=None):
         """column at x over the slot; the arm under the floor reaches to the joint at j (None: one screw at x)"""
-        col = box(x - COL_W / 2, x + COL_W / 2, COL_Y0, COL_Y1, PANEL_TOP, zb)
+        col = box(x - COL_W / 2, x + COL_W / 2, COL_Y0, LIP_Y1, PANEL_TOP, zb)
+        lip = box(x - COL_W / 2, x + COL_W / 2, BAR_BACK_Y, LIP_Y1, LIP_Z0, PANEL_TOP)
         a0, a1 = (x - ARM_W / 2, x + ARM_W / 2) if j is None else (min(x - COL_W / 2, j - ARM_W / 2), max(x + COL_W / 2, j + ARM_W / 2))
         arm = box(a0, a1, COL_Y0, yin1, zb - ARM_T, zb)
-        s = col.fuse(arm).removeSplitter()
-        s = s.cut(zcyl(x, SLOT_Y, PANEL_TOP - 1, zb + 1, M5)).cut(zcyl(x, SLOT_Y, PANEL_TOP + CLAMP_T, zb + 1, M5_CB))
+        s = col.fuse(arm).fuse(lip).removeSplitter()
+        s = s.cut(ycyl(x, BACK_SLOT_Z, BAR_BACK_Y - 1, LIP_Y1 + 1, M5))
         for sx in ((x,) if j is None else (j - JOINT_DX, j + JOINT_DX)):
             s = s.cut(zcyl(sx, ymid, zb - INS_DEPTH, zb + 1, M3_INS))
         return s
@@ -351,13 +358,60 @@ def main(p):
         made[key] = s; return s
     for k, (where, q) in enumerate(body_segs, 1): chamf(("body", k), q, UP["body"], f"body segment {k} ({where})")
     for k, (where, q) in enumerate(cover_segs, 1): chamf(("cover", k), q, UP["cover"], f"cover segment {k} ({where})")
+    for i, (x, j) in enumerate(zip(chosen, [None] + jx), 1):
+        ps = post_at(x, j); top = ps.BoundBox.ZMax
+        down = [f for f in ps.Faces if isinstance(f.Surface, Part.Plane) and f.normalAt(0, 0).z > 0.7 and f.BoundBox.ZMax < top - 0.05]
+        small = [f for f in down if max(f.BoundBox.XLength, f.BoundBox.YLength) <= 2 * M3_INS + 0.01]   # an insert hole's floor: a 4 mm bridge
+        hang = sum(f.Area for f in down if f not in small)
+        p.check(hang < 1.0, f"post {i} printed upside down (arm's top on the bed): faces that would hang {hang:.1f} mm2 "
+                            f"(+ {len(small)} insert-hole floors, bridges of {2 * M3_INS:.0f} mm)")
     for i, (x, j) in enumerate(zip(chosen, [None] + jx), 1): chamf(("post", i), post_at(x, j), UP["post"], f"post {i} at X {x}" + (f", carrying the joint at X {j}" if j is not None else ""))
     for i, z in enumerate(ARM_Z, 1): chamf(("arm", i), arms[z], UP["arm"], f"arm {i} at Z {z}")
     centre = V(-245, 215, 300)
+    def probe_flat(s0):
+        """owner 2026-11-19: the bracket (two parallel plates on a web, an H) had no side that prints without supports.
+        Its section at Z PROBE_CUT (through both plates and the web) is carried down to the lowest edge, Z PROBE_Z0,
+        so all three stand on one flat face; the original holes are kept open through the new material (and nowhere else)."""
+        bb = s0.BoundBox
+        ws = s0.slice(V(0, 0, 1), PROBE_CUT)
+        face = Part.Face(ws[0]) if len(ws) == 1 else None
+        faces = [Part.Face(w) for w in ws]
+        prof = faces[0]
+        for f in faces[1:]: prof = prof.fuse(f)
+        prof = prof.removeSplitter()                     # filled outline (inner wires, i.e. holes crossing the cut, filled)
+        prof.translate(V(0, 0, PROBE_Z0 - PROBE_CUT))
+        slab = prof.extrude(V(0, 0, PROBE_CUT - PROBE_Z0))
+        holes = []
+        for f in s0.Faces:
+            if not isinstance(f.Surface, Part.Cylinder): continue
+            u0, u1, v0, v1 = f.ParameterRange; q = f.valueAt((u0 + u1) / 2, (v0 + v1) / 2); n = f.normalAt((u0 + u1) / 2, (v0 + v1) / 2)
+            ax, c = V(f.Surface.Axis), V(f.Surface.Center); r = q - c; r = r - ax * r.dot(ax)
+            if n.dot(r) < 0:                             # concave: a hole
+                cyl = Part.makeCylinder(f.Surface.Radius, 200, c - ax * 100, ax)
+                holes.append((round(f.Surface.Radius, 2), tuple(round(x, 1) for x in c), tuple(round(x, 2) for x in ax), cyl.common(slab).Volume > 1e-3, cyl))
+        for *_, cyl in holes: slab = slab.cut(cyl)       # the holes kept open through the new material only
+        s1 = s0.fuse(slab).removeSplitter()
+        new_holes = s0.cut(s1).Volume                    # the bracket's old material is all still there: nothing drilled anew
+        up = V(0, 0, 1)
+        z0 = s1.BoundBox.ZMin
+        flat = sum(f.Area for f in s1.Faces if isinstance(f.Surface, Part.Plane) and f.BoundBox.ZMax < z0 + 1e-3)
+        hang = sum(f.Area for f in s1.Faces if isinstance(f.Surface, Part.Plane) and f.normalAt(0, 0).z < -0.7 and f.BoundBox.ZMax > z0 + 0.05)
+        b1 = s1.BoundBox
+        same = all(abs(x - y) < 1e-3 for x, y in zip((bb.XMin, bb.XMax, bb.YMin, bb.YMax, bb.ZMin, bb.ZMax), (b1.XMin, b1.XMax, b1.YMin, b1.YMax, b1.ZMin, b1.ZMax)))
+        p.check(s1.isValid() and len(s1.Solids) == 1 and hang < 1.0 and same and abs(z0 - PROBE_Z0) < 1e-3 and new_holes < 1e-3,
+                f"probe bracket: section at Z {PROBE_CUT} carried down to Z {PROBE_Z0} (+{s1.Volume - s0.Volume:.0f} mm3); flat face on the bed "
+                f"{flat:.0f} mm2 (lite-70's largest {bed_up(s0, centre)[1]:.0f}); faces that would hang {hang:.1f} mm2; box unchanged {same}; "
+                f"old material removed {new_holes:.3f} mm3; holes kept open {[(h[0], h[1], h[2], 'through the new part' if h[3] else '') for h in holes]}")
+        p.no_overlap([("probe bracket, flat side", s1)], pr, lambda r: f"probe bracket's new material vs the printer: {r.hits[:6]}",
+                     exclude={o_.Name for o_ in pr.leaves if o_.Label.startswith("Nozzle offset probe bracket")})
+        return s1, up, flat
     retro_new = {}
     for lab, o in retro.items():
         s0 = pr.shapes[o.Name]
-        up, area = (V(0, 1, 0), None) if lab.startswith("E-box grille") else bed_up(s0, centre)   # grille: outside face (-Y) down
+        if lab.startswith("Nozzle offset probe bracket"):
+            s0, up, area = probe_flat(s0)
+        else:
+            up, area = (V(0, 1, 0), None) if lab.startswith("E-box grille") else bed_up(s0, centre)   # grille: outside face (-Y) down
         s, info = printchamfer.chamfer(s0, up, **CHAMFER)
         skip = {w for k, w, c in info["skipped"]} | {w for k, w in info["failed"]}
         left = printchamfer.unchamfered(s0, s, up, **CHAMFER, skip=skip)
@@ -370,16 +424,6 @@ def main(p):
                 f"{info['bottom']} first-layer, {info['top']} top, {len(info['reduced'])} reduced, {len(info['skipped'])} skipped, "
                 f"{len(info['failed'])} OCC couldn't build; -{lost * 100:.2f} %; box unchanged {same}; missed {left[:3]}")
         retro_new[lab] = s
-    # the roof panel and its paint: the 4 M5 holes
-    holes = Part.Compound([zcyl(x, SLOT_Y, 600, 800, M5) for x in chosen])
-    rp_new = {o.Name: pr.shapes[o.Name].cut(holes) for o in (roof, paint)}
-    for o in (roof, paint):
-        s0 = pr.shapes[o.Name]
-        each = [zcyl(x, SLOT_Y, 600, 800, M5).common(s0).Volume for x in chosen]
-        t = s0.common(box(chosen[0] - 0.5, chosen[0] + 0.5, SLOT_Y - 0.5, SLOT_Y + 0.5, 600, 800)).Volume
-        want = math.pi * M5 ** 2 * t                       # a hole through its full local thickness (t mm, 1 mm2 probe)
-        p.check(all(abs(e - want) < 0.02 * want for e in each) and abs((s0.Volume - rp_new[o.Name].Volume) - sum(each)) < 0.5,
-                f"{o.Label}: 4 M5 holes through {t:.2f} mm ({[round(e, 1) for e in each]} mm3 each, want {want:.1f})")
     if p.errs: return p.finish([])
 
     # ---------------- into the document
@@ -400,7 +444,6 @@ def main(p):
     for i in range(1, 5): add(("post", i), made[("post", i)], POSTS.format(i=i), keep[("post", i)])
     for i in range(1, 3): add(("arm", i), made[("arm", i)], ARMS.format(i=i), keep[("arm", i)])
     for lab, o in retro.items(): set_shape_keep_placement(o, retro_new[lab])
-    for o in (roof, paint): set_shape_keep_placement(o, rp_new[o.Name])
     doc.recompute(); pr.refresh()
     for key, o in newo.items():
         g_ = pr.shapes[o.Name]
@@ -436,7 +479,7 @@ def main(p):
     p.check(len(pr.leaves) == n_before + 8, f"solids: {n_before} -> {len(pr.leaves)} (body and cover 1 -> 5 each)")
     p.dump({"posts_x": chosen, "joints_x": jx, "post_arms_x": [[round(a, 1), round(b, 1)] for a, b in arm_spans], "joint_z": JOINT_Z, "arms_z": ARM_Z, "clips": clip_n, "bed_mm": BED,
             "segments": {w: [round(q.BoundBox.XLength, 1), round(q.BoundBox.ZLength, 1)] for w, q in body_segs},
-            "fasteners": {"M5x16 SHCS (ISO 4762) + M5 drop-in T-nut, posts into the rear top 4040's rear top slot (Y 510)": 4,
+            "fasteners": {"M5x10 SHCS (ISO 4762) + M5 drop-in T-nut, post lips into the rear top 4040's upper back slot (Z 680)": 4,
                           "M5x16 SHCS (ISO 4762) + M5 drop-in T-nut, drop arms into the rear-right upright's back slot (X 20)": 2,
                           "M3x6 countersunk (ISO 10642), channel into the posts and arms": len(screws),
                           "M3 heat-set insert (Ø4.0 hole, <= 6 mm long)": len(screws)},
