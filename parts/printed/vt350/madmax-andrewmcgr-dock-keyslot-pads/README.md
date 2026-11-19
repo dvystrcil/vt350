@@ -15,9 +15,12 @@ It's a modified version of a GPL-3.0 part.
 
 **Hardware per head** (the cowl side, `../a4tv2-duct-4010-madmax-dock/`): 3 short M3 heat-set inserts (3 mm long,
 5 mm OD) in the cowl; 3 M3 male-female round standoffs (4 mm body, Ø5, **stud ground to 3 mm**) screwed into them;
-3 M3×4 button-head screws, **magnetic steel**, not stainless, in the standoffs' tops (the heads are the hooks).
+3 M3 flat-head screws (FHCS, M3×6 or M3×5 by the standoff's thread depth), **alloy steel**, strongly magnetic, not stainless,
+in the standoffs' tops (the heads are the hooks).
 Every standoff is 4 mm, except the left head's rear-top: **8 mm** (an M3×8+6 standoff, its stud also ground to 3 mm; or two 4 mm stacked).
 The screw clamps on the standoff, so the hook height is the standoff's body, not how far a screw is turned.
+**Magnets:** the plate's hex hole at each parked screw takes a 6×3 N52. With the pads it's ~11.5 mm long: press the magnet
+in **from the pad side**, flush with the channel floor, so it sits right behind the screw head as on the upstream plate.
 Step by step: `docs/assembly/stage-12-toolheads.md`.
 
 **Print:** outer face down, pads up, no supports. Left: 3 (Left Dock, slots 2 and 4); right: 2 (Right Dock, slot 3).

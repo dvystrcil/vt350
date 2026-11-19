@@ -7,7 +7,7 @@ published with GitHub Pages); the per-step Print and Buy tables (#40 AC2–AC3) 
 
 Each head hangs in its dock on **three screw heads**: front-top, rear-top and rear-bottom. They're on the head's
 A4Tv2 4010 duct (the orange "cowl" in the renders). Each one is a short heat-set insert in the cowl, a
-**male-female standoff** screwed into it, and a **button-head screw** in the top of the standoff. The screw's head is
+**male-female standoff** screwed into it, and a **flat-head (countersunk) screw** in the top of the standoff. The screw's head is
 the hook that the dock's keyslot plate catches. The standoff's body sets how far the head stands off the cowl, so the
 height comes from the part, not from how far a screw is turned.
 
@@ -20,7 +20,9 @@ height comes from the part, not from how far a screw is turned.
 | M3 heat-set insert, **short**: 3 mm long, 5 mm OD | 6 | Not the Voron 4 mm ones: the pocket is 3.4 mm deep |
 | M3 male-female round standoff, **4 mm body**, Ø5, M3×4 stud (e.g. "M3x4+4") | 5 | The 4 mm points |
 | M3 male-female round standoff, **8 mm body**, Ø5, M3×6 stud (e.g. AWclub "M3x8+6", 304 stainless) | 1 | The left head's rear-top |
-| M3×4 button-head screw (ISO 7380), **magnetic steel**, not stainless | 6 | One per standoff stack |
+| M3 flat-head screw (FHCS, ISO 10642), **alloy steel** (black, strongly magnetic), not stainless; head **Ø5.8–6**, not the 5.5 kind | 6 | One per standoff. **M3×6** if the standoff's female thread is ≥ 4.5 mm deep, **M3×5** if it's 3.5–4.5 (measure it) |
+| 6×3 mm N52 magnet (real N52, from a known vendor, e.g. Fabreeko) | 3 per dock | In the keyslot plate (step 5) |
+| CA glue | | For the magnets |
 | Threadlocker (medium, blue) | | On each stud |
 
 | Point | Left head | Right head |
@@ -61,7 +63,7 @@ With a 3 mm stud the shoulder seats flat on the spot-face, and the tip stops 0.4
 ### 3. The left head's rear-top: 8 mm
 
 Use one **8 mm standoff** (M3×8+6). Its stud is **6 mm**, so grind it to **3 mm** as in step 2: 3 mm comes off, not 1.
-Check that its female thread is at least 4 mm deep for the M3×4 screw.
+Measure its female thread's depth: it decides the screw length (M3×6 needs ≥ 4.5 mm).
 
 No 8 mm to hand? Stack two 4 mm standoffs instead. The bottom one's stud goes into the insert, ground to 3 mm. The top
 one's stud goes into the bottom one's female thread; if that hole is shallower than the stud, grind it to fit so the
@@ -72,9 +74,18 @@ rigid enough.
 
 1. Put threadlocker on each stud and screw the standoff into its insert until the shoulder sits flat on the spot-face.
    Don't overtighten: the insert is in plastic.
-2. Screw an M3×4 button head into the top of each standoff, snug, so it clamps down on the standoff.
-3. Check each one: from the cowl's spot-face to the underside of the screw head is **4.0 mm**, or **8.0 mm** at the
-   left head's rear-top.
-4. On the dock: slide the head in, check it drops into all three keyslots, has a little play, and lifts off cleanly.
+2. Screw a flat-head into the top of each standoff, snug. Its cone sits on the edge of the standoff's hole: don't countersink the standoff, or the head sinks and the hook drops.
+3. Check each one: from the cowl's spot-face to the top of the standoff is **4.0 mm**, or **8.0 mm** at the left head's
+   rear-top, and the screw's flat top stands about 1.7–1.9 mm above that.
+4. On the dock: slide the head in, check it drops into all three keyslots, has a little play, the magnets pull each
+   screw head home, and it lifts off cleanly.
+
+### 5. Magnets in the dock's keyslot plate
+
+Each keyslot has a hex hole at the parked screw's position that holds a 6×3 magnet. The magnet must sit at the
+**bottom of the head channel**, right behind the parked screw head, as on the upstream plate. Our pads make that hole
+about 11.5 mm long, so **press the magnet in from the pad side** (the channel side), flush with the channel's floor.
+Don't push it in from the plate's back face: it would stop about 8 mm short of the screw, and the hold would be a small
+fraction of what it should be. A drop of CA glue holds it. Mind the polarity: all three the same way.
 
 Why it's built this way, and the render views: `cad/derived/madmax-andrewmcgr-dock-keyslot-pads/README.md` and PR #240.
