@@ -12,6 +12,7 @@ is bought, set its `bom.csv` status to `ordered`/`owned` and take it off here.
 | Mellow MultiHead Zero offset probe (black) | 1 | [SKU MEL2020](https://west3d.com/products/mellow-multiohead-zero-precision-xyz-nozzle-offset-calibration-tool-black) | $19.99 (2026-11-17) | Per-head XY+Z offsets (#186) |
 | Beacon RevH, **Normal** | 1 | [Beacon, style "Beacon H Normal", SKU WES2566NOR](https://west3d.com/products/beacon-probe-eddy-current-surface-scanner-for-3d-printers?variant=46106145882324) | $81.49 (2026-11-17) | One per printer, on the MadMax carriage. Owner's choice (2026-11-17), `notes/parts-owned.md` |
 | Berserker VINDR 2510A-24V-A hotend fan | 1 per head (confirm how many are owned) | [2510 axial fan](https://west3d.com/products/berserker-vindr-ultra-performance-2510-axial-fan-24v-2510a-24v-a-25x10mm) | | **Out of stock** 2026-11-17; restock notification set |
+| **Z motors**, LDO 42STH40, "Extended Height (400mm Lead Screw)", TR8×4 | 3 | [LDO 42STH40 Extended Height](https://west3d.com/products/ldo-42sth40-1684l300e-tr8x4-voron-edition-nema-17?variant=44301298303188) | $59.99 each (2026-11-04) | The 400 mm integrated lead screw (lite-10). Owner: still to buy (2026-11-18) |
 
 ## Check before ordering: West3D rows from the 2026-11-04 still-to-buy list (#22)
 
@@ -19,8 +20,6 @@ Not confirmed as still needed: some may be bought already. Prices were read on 2
 
 | Item | Qty | Link | Notes |
 |---|---|---|---|
-| Z rails, MGN9 400, S class | 3 | [West3D MGN9H 400](https://west3d.com/products/west3d-printing-mgn9h-1r-300-350-400-linear-rails-with-carriages-cna) | lite-10 |
-| Z motors, LDO 42STH40, 400 mm TR8×4 lead screw | 3 | [LDO 42STH40 Extended Height](https://west3d.com/products/ldo-42sth40-1684l300e-tr8x4-voron-edition-nema-17?variant=44301298303188) | lite-10 |
 | X/Y endstop switches | 2 | [Omron D2F](https://west3d.com/products/omron-mouse-button-micro-switch-d2f-01l) | |
 | Door seal, LDO3389, 4.5 m | 1 | [LDO door seal](https://west3d.com/products/ldo-door-panel-retailer-rubber-seal-for-2020-extrusions-4-5m-used-also-in-box-turtle-enclosure) | |
 | Crossbow filament cutter, aluminium CNC | 1 per head | [Crossbow CNC](https://west3d.com/products/crossbow-cnc-filament-cutter-for-a4t-sherpa-mini-orbiter-v2-5-and-other-flat-top-extruders-by-dw-tas) | Owner's choice (2026-11-04) |
