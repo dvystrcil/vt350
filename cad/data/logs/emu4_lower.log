@@ -1,0 +1,64 @@
+[  136.9s] opened /home/dan/Documents/VT350/vt350-lite-70.FCStd
+[  160.1s] ok   the printer model is lite-70 (a GUI save needs it)
+[  160.1s] ok   one roof panel (1)
+[  160.1s] ok   the roof's paint layer (1)
+[  207.1s] ok   head tubes reaching the roof: 5 (5)
+[  251.1s] opened /home/dan/Documents/VT350/vt350-emu-3.FCStd
+[  256.8s] ok   emu-3's five roof-exit bowdens (5)
+[  309.0s] roof top (paint) Z 693.000; EMU bottom (its rubber feet) Z 712.117; move dz -19.117
+[  309.0s] ok   the EMU comes down a little (-19.117 mm)
+[  319.2s] ok   every EMU part moved by exactly dz (0 off: []; 2258 of 2258)
+[  409.0s] ok   the EMU's bottom on the roof's top (Z 693.000)
+[  409.0s] ok   EMU rear couplers: 5 (5)
+[  409.1s] ok   lane 1: the bore's exit found (2 clamp parts round the end, lead 1.5 mm)
+[  409.3s] ok   lane 1 tube: one valid solid, 6462 mm3 (pi r2 L = 6477), length 486
+[  409.3s] ok   lane 1 tube: smallest bend radius 85.9 (>= 80); S 43 deg, straight in 25
+[  409.3s] ok   lane 1 tube: Y max 515.8 (<= 528), Z max 886.9
+[  409.3s] ok   lane 1: starts on Bowden Left's end along it (0.000 mm)
+[  409.3s] ok   lane 1: ends on its coupler's face along -Y (0.000 mm)
+[  411.5s] ok   lane 2: the bore's exit found (2 clamp parts round the end, lead 1.5 mm)
+[  411.7s] ok   lane 2 tube: one valid solid, 6461 mm3 (pi r2 L = 6469), length 485
+[  411.7s] ok   lane 2 tube: smallest bend radius 87.3 (>= 80); S 43 deg, straight in 25
+[  411.7s] ok   lane 2 tube: Y max 515.8 (<= 528), Z max 886.9
+[  411.7s] ok   lane 2: starts on Bowden slot 2's end along it (0.000 mm)
+[  411.7s] ok   lane 2: ends on its coupler's face along -Y (0.000 mm)
+[  413.8s] ok   lane 3: the bore's exit found (2 clamp parts round the end, lead 1.5 mm)
+[  414.0s] ok   lane 3 tube: one valid solid, 6460 mm3 (pi r2 L = 6463), length 485
+[  414.0s] ok   lane 3 tube: smallest bend radius 88.1 (>= 80); S 43 deg, straight in 25
+[  414.0s] ok   lane 3 tube: Y max 515.8 (<= 528), Z max 886.9
+[  414.0s] ok   lane 3: starts on Bowden slot 3's end along it (0.000 mm)
+[  414.0s] ok   lane 3: ends on its coupler's face along -Y (0.000 mm)
+[  416.1s] ok   lane 4: the bore's exit found (2 clamp parts round the end, lead 1.5 mm)
+[  416.3s] ok   lane 4 tube: one valid solid, 6460 mm3 (pi r2 L = 6464), length 485
+[  416.3s] ok   lane 4 tube: smallest bend radius 88.1 (>= 80); S 43 deg, straight in 25
+[  416.3s] ok   lane 4 tube: Y max 515.8 (<= 528), Z max 886.9
+[  416.3s] ok   lane 4: starts on Bowden slot 4's end along it (0.000 mm)
+[  416.3s] ok   lane 4: ends on its coupler's face along -Y (0.000 mm)
+[  418.4s] ok   lane 5: the bore's exit found (2 clamp parts round the end, lead 1.5 mm)
+[  418.7s] ok   lane 5 tube: one valid solid, 6462 mm3 (pi r2 L = 6477), length 486
+[  418.7s] ok   lane 5 tube: smallest bend radius 85.9 (>= 80); S 43 deg, straight in 25
+[  418.7s] ok   lane 5 tube: Y max 515.8 (<= 528), Z max 886.9
+[  418.7s] ok   lane 5: starts on Bowden Right's end along it (0.000 mm)
+[  418.7s] ok   lane 5: ends on its coupler's face along -Y (0.000 mm)
+[  544.7s] ok   no tube overlaps an EMU part: 0 []
+[  547.6s] ok   no tube overlaps a printer part: 0 []
+[  547.6s] EMU parts within 30 mm of its bottom: 207
+[  673.7s] ok   no low EMU part overlaps a printer part: 0 []
+[  673.8s] ok   Bowden lane 1 : centre line >= 2.06 mm off the 3 printer parts near it ([])
+[  673.9s] ok   Bowden lane 2 : centre line >= 2.06 mm off the 4 printer parts near it ([])
+[  674.1s] ok   Bowden lane 3 : centre line >= 2.06 mm off the 5 printer parts near it ([])
+[  674.2s] ok   Bowden lane 4 : centre line >= 2.06 mm off the 6 printer parts near it ([])
+[  674.3s] ok   Bowden lane 5 : centre line >= 2.06 mm off the 7 printer parts near it ([])
+[  674.4s] ok   tube 1 vs tube 2: 0.0000 mm3
+[  674.4s] ok   tube 1 vs tube 3: 0.0000 mm3
+[  674.4s] ok   tube 1 vs tube 4: 0.0000 mm3
+[  674.4s] ok   tube 1 vs tube 5: 0.0000 mm3
+[  674.4s] ok   tube 2 vs tube 3: 0.0000 mm3
+[  674.4s] ok   tube 2 vs tube 4: 0.0000 mm3
+[  674.5s] ok   tube 2 vs tube 5: 0.0000 mm3
+[  674.5s] ok   tube 3 vs tube 4: 0.0000 mm3
+[  674.5s] ok   tube 3 vs tube 5: 0.0000 mm3
+[  674.5s] ok   tube 4 vs tube 5: 0.0000 mm3
+[  674.5s] verify: 0 problems
+[  694.8s] SAVED /home/dan/Documents/VT350/vt350-emu-4.FCStd 22603612
+[  694.9s] litepool: peak RSS: workers max 5896 MB, sum 11792 MB; parent 11885 MB

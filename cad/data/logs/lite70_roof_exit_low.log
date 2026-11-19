@@ -1,0 +1,138 @@
+[   54.0s] opened /home/dan/Documents/VT350/vt350-lite-69.FCStd
+[   67.8s] ok   the printer model is lite-69 (a GUI save needs it)
+[   67.8s] ok   the 18 parts to replace: 18 found; missing []
+[   67.8s] ok   nothing else uses them (links, features): []
+[   67.8s] ok   the 5 O2S cables are plain Part::Features
+[   67.8s] ok   the side pack's envelope (1)
+[  132.5s] ok   slot 1: Bowden Left cut by Z 690.0 in one loop (1)
+[  132.5s] ok   slot 1: Bowden Left cut by Z 700.0 in one loop (1)
+[  132.5s] ok   slot 1: exit axis in a plane X = const (dX/len -3.6e-09)
+[  132.6s] ok   slot 1: base 9718, cap 3706 mm3, one valid solid each; base Z 687.98..711.42, cap Z 695.77..716.47 (lite-36: 693.00..724.36, 706.77..727.47)
+[  132.6s] ok   slot 1: the base's flange lies flat on the roof's top (Z 693.0)
+[  132.7s] ok   slot 2: Bowden slot 2 cut by Z 690.0 in one loop (1)
+[  132.7s] ok   slot 2: Bowden slot 2 cut by Z 700.0 in one loop (1)
+[  132.7s] ok   slot 2: exit axis in a plane X = const (dX/len -3.6e-09)
+[  132.9s] ok   slot 2: base 9718, cap 3706 mm3, one valid solid each; base Z 687.98..711.42, cap Z 695.77..716.47 (lite-36: 693.00..724.36, 706.77..727.47)
+[  132.9s] ok   slot 2: the base's flange lies flat on the roof's top (Z 693.0)
+[  132.9s] ok   slot 3: Bowden slot 3 cut by Z 690.0 in one loop (1)
+[  132.9s] ok   slot 3: Bowden slot 3 cut by Z 700.0 in one loop (1)
+[  132.9s] ok   slot 3: exit axis in a plane X = const (dX/len -3.6e-09)
+[  133.1s] ok   slot 3: base 9718, cap 3706 mm3, one valid solid each; base Z 687.98..711.42, cap Z 695.77..716.47 (lite-36: 693.00..724.36, 706.77..727.47)
+[  133.1s] ok   slot 3: the base's flange lies flat on the roof's top (Z 693.0)
+[  133.2s] ok   slot 4: Bowden slot 4 cut by Z 690.0 in one loop (1)
+[  133.2s] ok   slot 4: Bowden slot 4 cut by Z 700.0 in one loop (1)
+[  133.2s] ok   slot 4: exit axis in a plane X = const (dX/len -3.6e-09)
+[  133.3s] ok   slot 4: base 9718, cap 3706 mm3, one valid solid each; base Z 687.98..711.42, cap Z 695.77..716.47 (lite-36: 693.00..724.36, 706.77..727.47)
+[  133.3s] ok   slot 4: the base's flange lies flat on the roof's top (Z 693.0)
+[  133.4s] ok   slot 5: Bowden Right cut by Z 690.0 in one loop (1)
+[  133.4s] ok   slot 5: Bowden Right cut by Z 700.0 in one loop (1)
+[  133.4s] ok   slot 5: exit axis in a plane X = const (dX/len -3.6e-09)
+[  133.6s] ok   slot 5: base 9718, cap 3706 mm3, one valid solid each; base Z 687.98..711.42, cap Z 695.77..716.47 (lite-36: 693.00..724.36, 706.77..727.47)
+[  133.6s] ok   slot 5: the base's flange lies flat on the roof's top (Z 693.0)
+[  134.2s] ok   slot 1 base: chamfered (up (0.0, 0.0, 1.0)): 4 first-layer edges 0.5, 4 top edges 1.0, 0 reduced on narrow faces (smallest 1.00), 0 skipped, 0 OCC couldn't build []; -111 mm3; missed: []
+[  134.6s] ok   slot 1 cap (printed on its split face): chamfered (up (0.0, -0.707, 0.707)): 6 first-layer edges 0.5, 4 top edges 1.0, 0 reduced on narrow faces (smallest 1.00), 2 skipped, 0 OCC couldn't build []; -56 mm3; missed: []
+[  135.3s] ok   slot 2 base: chamfered (up (0.0, 0.0, 1.0)): 4 first-layer edges 0.5, 4 top edges 1.0, 0 reduced on narrow faces (smallest 1.00), 0 skipped, 0 OCC couldn't build []; -111 mm3; missed: []
+[  135.7s] ok   slot 2 cap (printed on its split face): chamfered (up (0.0, -0.707, 0.707)): 6 first-layer edges 0.5, 4 top edges 1.0, 0 reduced on narrow faces (smallest 1.00), 2 skipped, 0 OCC couldn't build []; -56 mm3; missed: []
+[  136.3s] ok   slot 3 base: chamfered (up (0.0, 0.0, 1.0)): 4 first-layer edges 0.5, 4 top edges 1.0, 0 reduced on narrow faces (smallest 1.00), 0 skipped, 0 OCC couldn't build []; -111 mm3; missed: []
+[  136.6s] ok   slot 3 cap (printed on its split face): chamfered (up (0.0, -0.707, 0.707)): 6 first-layer edges 0.5, 4 top edges 1.0, 0 reduced on narrow faces (smallest 1.00), 2 skipped, 0 OCC couldn't build []; -56 mm3; missed: []
+[  137.2s] ok   slot 4 base: chamfered (up (0.0, 0.0, 1.0)): 4 first-layer edges 0.5, 4 top edges 1.0, 0 reduced on narrow faces (smallest 1.00), 0 skipped, 0 OCC couldn't build []; -111 mm3; missed: []
+[  137.4s] ok   slot 4 cap (printed on its split face): chamfered (up (0.0, -0.707, 0.707)): 6 first-layer edges 0.5, 4 top edges 1.0, 0 reduced on narrow faces (smallest 1.00), 2 skipped, 0 OCC couldn't build []; -56 mm3; missed: []
+[  138.0s] ok   slot 5 base: chamfered (up (0.0, 0.0, 1.0)): 4 first-layer edges 0.5, 4 top edges 1.0, 0 reduced on narrow faces (smallest 1.00), 0 skipped, 0 OCC couldn't build []; -111 mm3; missed: []
+[  138.3s] ok   slot 5 cap (printed on its split face): chamfered (up (0.0, -0.707, 0.707)): 6 first-layer edges 0.5, 4 top edges 1.0, 0 reduced on narrow faces (smallest 1.00), 2 skipped, 0 OCC couldn't build []; -56 mm3; missed: []
+[  138.3s] ok   the roof panel and its paint
+[  188.6s] opened /home/dan/Documents/VT350/vt350-emu-3.FCStd
+[  287.3s] ok   emu-3: 5 rear couplers, the EMU comes down -19.117 mm
+[  287.3s] ok   slot 1: the EMU tube's straight lead out of the new clamp: 1.5 mm
+[  287.5s] slot 1: EMU tube planned: lead 1.5 mm, R min 85.9, 209 points behind Y 440
+[  287.5s] ok   slot 2: the EMU tube's straight lead out of the new clamp: 1.5 mm
+[  287.7s] slot 2: EMU tube planned: lead 1.5 mm, R min 87.3, 209 points behind Y 440
+[  287.7s] ok   slot 3: the EMU tube's straight lead out of the new clamp: 1.5 mm
+[  287.9s] slot 3: EMU tube planned: lead 1.5 mm, R min 88.1, 209 points behind Y 440
+[  288.0s] ok   slot 4: the EMU tube's straight lead out of the new clamp: 1.5 mm
+[  288.2s] slot 4: EMU tube planned: lead 1.5 mm, R min 88.1, 209 points behind Y 440
+[  288.2s] ok   slot 5: the EMU tube's straight lead out of the new clamp: 1.5 mm
+[  288.4s] slot 5: EMU tube planned: lead 1.5 mm, R min 85.9, 209 points behind Y 440
+[  377.3s] ok   lanes: the lowest bottom lane where every lead-out bends >= R 51 and clears the EMU tubes by 0.5: Z 737.4499999999999 (lite-40: 795; tried from 709.95)
+[  387.6s] ok   slot 1: tail bends >= R 58.1 (lead-out 58.0: run 100 along X, handles 20/100; lane Z 763.4499999999999, corner R 86.0); its lane runs X -315.9 -> 40
+[  389.2s] ok   slot 1: the old cable cut at the clamp's new end: 2 piece(s), the chamber's found (1)
+[  389.2s] ok   slot 1: the kept cable ends on the clamp axis at the clamp's end (off by 0.000 mm)
+[  389.6s] ok   slot 1: cable one valid solid (1), 30718 mm3 (kept 11637 + pi r^2 x 934 = 30718)
+[  389.8s] ok   slot 2: tail bends >= R 56.2 (lead-out 56.1: run 70 along X, handles 25/60; lane Z 756.9499999999999, corner R 79.5); its lane runs X -260.8 -> 40
+[  389.9s] ok   slot 2: the old cable cut at the clamp's new end: 2 piece(s), the chamber's found (1)
+[  389.9s] ok   slot 2: the kept cable ends on the clamp axis at the clamp's end (off by 0.000 mm)
+[  390.4s] ok   slot 2: cable one valid solid (1), 28766 mm3 (kept 11637 + pi r^2 x 839 = 28766)
+[  390.6s] ok   slot 3: tail bends >= R 66.3 (lead-out 66.3: run 70 along X, handles 40/40; lane Z 750.4499999999999, corner R 73.0); its lane runs X -172.2 -> 40
+[  390.8s] ok   slot 3: the old cable cut at the clamp's new end: 2 piece(s), the chamber's found (1)
+[  390.8s] ok   slot 3: the kept cable ends on the clamp axis at the clamp's end (off by 0.000 mm)
+[  391.1s] ok   slot 3: cable one valid solid (1), 26655 mm3 (kept 11636 + pi r^2 x 735 = 26655)
+[  391.3s] ok   slot 4: tail bends >= R 56.6 (lead-out 56.6: run 70 along X, handles 35/50; lane Z 743.9499999999999, corner R 66.5); its lane runs X -92.6 -> 40
+[  391.4s] ok   slot 4: the old cable cut at the clamp's new end: 2 piece(s), the chamber's found (1)
+[  391.4s] ok   slot 4: the kept cable ends on the clamp axis at the clamp's end (off by 0.000 mm)
+[  391.8s] ok   slot 4: cable one valid solid (1), 24801 mm3 (kept 11637 + pi r^2 x 644 = 24801)
+[  392.0s] ok   slot 5: tail bends >= R 52.9 (lead-out 52.9: run 70 along X, handles 35/50; lane Z 737.4499999999999, corner R 60.0); its lane runs X -4.1 -> 40
+[  392.2s] ok   slot 5: the old cable cut at the clamp's new end: 2 piece(s), the chamber's found (1)
+[  392.2s] ok   slot 5: the kept cable ends on the clamp axis at the clamp's end (off by 0.000 mm)
+[  392.6s] ok   slot 5: cable one valid solid (1), 22747 mm3 (kept 11636 + pi r^2 x 544 = 22747)
+[  392.8s] ok   channel body with 5 entry windows: one valid solid; Z 380.00..768.40 (lite-40: 790..826)
+[  396.6s] ok   posts at X [-455.0, -305.0, -140.0, 0.0] (39.5 tall; lite-40: 97) clear of cables and clamps by >= 1 mm; spans [15, 150, 165, 140, 40]
+[  402.7s] ok   channel body (on its front wall): chamfered (up (0.0, 1.0, 0.0)): 22 first-layer edges 0.5, 38 top edges 1.0, 41 reduced on narrow faces (smallest 0.20), 2 skipped, 6 OCC couldn't build [('bottom', (-216.0, 533.5, 732.5)), ('top', (-216.0, 546.5, 732.5)), ('bottom', (95.0, 533.5, 528.7))]; -468 mm3; missed: []
+[  402.9s] ok   channel cover: chamfered (up (0.0, 1.0, 0.0)): 7 first-layer edges 0.5, 7 top edges 1.0, 7 reduced on narrow faces (smallest 0.40), 0 skipped, 0 OCC couldn't build []; -393 mm3; missed: []
+[  403.1s] ok   post 1 (on its side): chamfered (up (1.0, 0.0, 0.0)): 6 first-layer edges 0.5, 6 top edges 1.0, 0 reduced on narrow faces (smallest 1.00), 0 skipped, 0 OCC couldn't build []; -82 mm3; missed: []
+[  403.2s] ok   post 2 (on its side): chamfered (up (1.0, 0.0, 0.0)): 6 first-layer edges 0.5, 6 top edges 1.0, 0 reduced on narrow faces (smallest 1.00), 0 skipped, 0 OCC couldn't build []; -82 mm3; missed: []
+[  403.4s] ok   post 3 (on its side): chamfered (up (1.0, 0.0, 0.0)): 6 first-layer edges 0.5, 6 top edges 1.0, 0 reduced on narrow faces (smallest 1.00), 0 skipped, 0 OCC couldn't build []; -82 mm3; missed: []
+[  403.5s] ok   post 4 (on its side): chamfered (up (1.0, 0.0, 0.0)): 6 first-layer edges 0.5, 6 top edges 1.0, 0 reduced on narrow faces (smallest 1.00), 0 skipped, 0 OCC couldn't build []; -82 mm3; missed: []
+[  403.7s] ok   arm 1: chamfered (up (0.0, 0.0, 1.0)): 5 first-layer edges 0.5, 5 top edges 1.0, 0 reduced on narrow faces (smallest 1.00), 0 skipped, 0 OCC couldn't build []; -147 mm3; missed: []
+[  403.8s] ok   arm 2: chamfered (up (0.0, 0.0, 1.0)): 5 first-layer edges 0.5, 5 top edges 1.0, 0 reduced on narrow faces (smallest 1.00), 0 skipped, 0 OCC couldn't build []; -147 mm3; missed: []
+[  421.3s] ok   the 18 replacements are in the model (18)
+[  421.5s] ok   slot 1: the cable's object now holds the new shape in place (Placement kept)
+[  421.7s] ok   slot 2: the cable's object now holds the new shape in place (Placement kept)
+[  421.9s] ok   slot 3: the cable's object now holds the new shape in place (Placement kept)
+[  422.0s] ok   slot 4: the cable's object now holds the new shape in place (Placement kept)
+[  422.2s] ok   slot 5: the cable's object now holds the new shape in place (Placement kept)
+[  484.4s] ok   clamps, channel, cover, posts, arms vs the printer: []
+[  487.0s] ok   clamps, cover, posts, arms vs the 5 cables (bores have clearance): []
+[  829.6s] ok   the cables vs everything (the channel body and the envelope below): []
+[  843.8s] ok   slot 1: the cable's centre line in and through the channel stays 2.95 mm off the body (radius 2.55; closest at (126.0, 540.0, 677.4))
+[  857.3s] ok   slot 2: the cable's centre line in and through the channel stays 4.55 mm off the body (radius 2.55; closest at (-256.7, 540.0, 756.9))
+[  866.5s] ok   slot 3: the cable's centre line in and through the channel stays 4.55 mm off the body (radius 2.55; closest at (-164.2, 540.0, 750.4))
+[  873.6s] ok   slot 4: the cable's centre line in and through the channel stays 4.55 mm off the body (radius 2.55; closest at (-84.6, 540.0, 743.9))
+[  873.9s] ok   slot 5: the cable's centre line in and through the channel stays 2.94 mm off the body (radius 2.55; closest at (61.9, 540.0, 733.3))
+[  874.0s] ok   Cable channel body, roof to side pack (p in the side pack's envelope: 28121 mm3 (lite-69: 28160)
+[  874.0s] ok   Cable channel arm 1 (printed, M5 to the  in the side pack's envelope: 8136 mm3 (lite-69: 8207)
+[  874.0s] ok   Cable channel arm 2 (printed, M5 to the  in the side pack's envelope: 8136 mm3 (lite-69: 8207)
+[  874.0s] ok   O2S USB cable slot 1 (Ø5.1, ~3 m; modell in the side pack's envelope: 5230 mm3 (lite-69: 5230)
+[  874.1s] ok   O2S USB cable slot 2 (Ø5.1, ~3 m; modell in the side pack's envelope: 5230 mm3 (lite-69: 5230)
+[  874.1s] ok   O2S USB cable slot 3 (Ø5.1, ~3 m; modell in the side pack's envelope: 5230 mm3 (lite-69: 5230)
+[  874.1s] ok   O2S USB cable slot 4 (Ø5.1, ~3 m; modell in the side pack's envelope: 5230 mm3 (lite-69: 5230)
+[  874.1s] ok   O2S USB cable slot 5 (Ø5.1, ~3 m; modell in the side pack's envelope: 5230 mm3 (lite-69: 5230)
+[  874.2s] ok   cable 1 vs cable 2: 0.000 mm3
+[  874.5s] ok   cable 1 vs cable 3: 0.000 mm3
+[  874.5s] ok   cable 1 vs cable 4: 0.000 mm3
+[  874.7s] ok   cable 1 vs cable 5: 0.000 mm3
+[  875.0s] ok   cable 2 vs cable 3: 0.000 mm3
+[  875.0s] ok   cable 2 vs cable 4: 0.000 mm3
+[  875.3s] ok   cable 2 vs cable 5: 0.000 mm3
+[  875.3s] ok   cable 3 vs cable 4: 0.000 mm3
+[  875.4s] ok   cable 3 vs cable 5: 0.000 mm3
+[  875.6s] ok   cable 4 vs cable 5: 0.000 mm3
+[  875.6s] ok   Roof exit clamp base slot 1 (vt350, GPL-3.0-or-lat: role None (lite-69: None)
+[  875.6s] ok   Roof exit clamp cap slot 1 (vt350, GPL-3.0-or-late: role None (lite-69: None)
+[  875.6s] ok   Roof exit clamp base slot 2 (vt350, GPL-3.0-or-lat: role None (lite-69: None)
+[  875.6s] ok   Roof exit clamp cap slot 2 (vt350, GPL-3.0-or-late: role None (lite-69: None)
+[  875.6s] ok   Roof exit clamp base slot 3 (vt350, GPL-3.0-or-lat: role None (lite-69: None)
+[  875.6s] ok   Roof exit clamp cap slot 3 (vt350, GPL-3.0-or-late: role None (lite-69: None)
+[  875.6s] ok   Roof exit clamp base slot 4 (vt350, GPL-3.0-or-lat: role None (lite-69: None)
+[  875.6s] ok   Roof exit clamp cap slot 4 (vt350, GPL-3.0-or-late: role None (lite-69: None)
+[  875.6s] ok   Roof exit clamp base slot 5 (vt350, GPL-3.0-or-lat: role None (lite-69: None)
+[  875.6s] ok   Roof exit clamp cap slot 5 (vt350, GPL-3.0-or-late: role None (lite-69: None)
+[  875.6s] ok   Cable channel body, roof to side pack (printed, vt: role printed (lite-69: printed)
+[  875.6s] ok   Cable channel cover, roof to side pack (printed, v: role accent (lite-69: accent)
+[  875.6s] ok   Cable channel post 1 (printed, M5 to the rear 4040: role printed (lite-69: printed)
+[  875.6s] ok   Cable channel post 2 (printed, M5 to the rear 4040: role printed (lite-69: printed)
+[  875.6s] ok   Cable channel post 3 (printed, M5 to the rear 4040: role printed (lite-69: printed)
+[  875.6s] ok   Cable channel post 4 (printed, M5 to the rear 4040: role printed (lite-69: printed)
+[  875.6s] ok   Cable channel arm 1 (printed, M5 to the rear-right: role printed (lite-69: printed)
+[  875.6s] ok   Cable channel arm 2 (printed, M5 to the rear-right: role printed (lite-69: printed)
+[  875.6s] ok   solids: 1537 -> 1537 (18 replaced, 5 cables rebuilt in place)
+[  875.6s] verify: 0 problems
+[  892.9s] SAVED /home/dan/Documents/VT350/vt350-lite-70.FCStd 37421436

@@ -1,0 +1,32 @@
+{
+ "dz": -19.11679195193608,
+ "printer": "vt350-lite-70.FCStd",
+ "tubes": [
+  {
+   "label": "Bowden lane 1 to Bowden Left (PTFE 4.12 OD, roof exit to the EMU, 486 mm)",
+   "length": 486,
+   "min_radius": 85.9
+  },
+  {
+   "label": "Bowden lane 2 to Bowden slot 2 (PTFE 4.12 OD, roof exit to the EMU, 485 mm)",
+   "length": 485,
+   "min_radius": 87.3
+  },
+  {
+   "label": "Bowden lane 3 to Bowden slot 3 (PTFE 4.12 OD, roof exit to the EMU, 485 mm)",
+   "length": 485,
+   "min_radius": 88.1
+  },
+  {
+   "label": "Bowden lane 4 to Bowden slot 4 (PTFE 4.12 OD, roof exit to the EMU, 485 mm)",
+   "length": 485,
+   "min_radius": 88.1
+  },
+  {
+   "label": "Bowden lane 5 to Bowden Right (PTFE 4.12 OD, roof exit to the EMU, 486 mm)",
+   "length": 486,
+   "min_radius": 85.9
+  }
+ ],
+ "total_ptfe_mm": 2427
+}
