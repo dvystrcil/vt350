@@ -350,6 +350,7 @@ row first (refresh only updates existing rows).
 | `cad/passes/lite12_materials.py` | GUI writes; headless = dry run, never saves | lite-11 → lite-12: ShapeMaterial by rule, keeps colours; writes `data/materials-lite12.tsv` |
 | `cad/studies/ac9_head_envelope.py` | headless, read-only | #19 AC9: A4Tv2 + Orbiter/OSS/O2S head, width and exact depth at each height |
 | `cad/studies/bowden_study.py` | headless (FreeCAD's Python for numpy) | bend radius vs exit position and tube length; results on #3 |
+| `cad/studies/lanyard/study.py` | plain `python3` with numpy + scipy; read-only, opens no model (~6 min, 10 workers) | #218 / #243: each bowden bundle as an elastic rod from lite-70's 45° roof clamp (under lite-69's ceiling, Z 679) to its head, with or without a badge-reel lanyard from the front top bar; sweeps every head over the reach at today's gantry height and +10.3 mm. Reports ceiling contact, sag, bend radius, force on the head (docked and printing), cord length and angle, and where a cord crosses a docked bundle. Tests: `lanyard/test_lrod.py` |
 | `cad/studies/fs_probe.py` | headless | probes the Fasteners workbench API and screw orientation |
 | `platform/freecad/analyze.py`, `platform/freecad/cats.py`, `platform/freecad/tree.py`, `platform/freecad/fastener_review.py` | plain Python | read an `.FCStd`'s `Document.xml` (unzip it first): sizes, categories, assembly tree, fastener classification |
 
