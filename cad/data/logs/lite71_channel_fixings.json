@@ -1,0 +1,77 @@
+{
+ "posts_x": [
+  -455.0,
+  -380.0,
+  -186.0,
+  10.0
+ ],
+ "joints_x": [
+  -380.0,
+  -186.0,
+  10.0
+ ],
+ "post_arms_x": [
+  [
+   -467.0,
+   -443.0
+  ],
+  [
+   -392.0,
+   -368.0
+  ],
+  [
+   -198.0,
+   -174.0
+  ],
+  [
+   -2.0,
+   22.0
+  ]
+ ],
+ "joint_z": 560.0,
+ "arms_z": [
+  440.0,
+  560.0
+ ],
+ "clips": 27,
+ "bed_mm": [
+  220,
+  220
+ ],
+ "segments": {
+  "roof run, left end": [
+   91.9,
+   35.9
+  ],
+  "roof run": [
+   193.8,
+   35.9
+  ],
+  "roof run, right": [
+   195.8,
+   35.9
+  ],
+  "the corner": [
+   120.9,
+   208.3
+  ],
+  "the drop": [
+   35.9,
+   179.9
+  ]
+ },
+ "fasteners": {
+  "M5x16 SHCS (ISO 4762) + M5 drop-in T-nut, posts into the rear top 4040's rear top slot (Y 510)": 4,
+  "M5x16 SHCS (ISO 4762) + M5 drop-in T-nut, drop arms into the rear-right upright's back slot (X 20)": 2,
+  "M3x6 countersunk (ISO 10642), channel into the posts and arms": 10,
+  "M3 heat-set insert (\u00d84.0 hole, <= 6 mm long)": 10
+ },
+ "retrofit": [
+  "Nozzle offset probe bracket",
+  "E-box grille panel 1 of 3",
+  "E-box grille panel 2 of 3",
+  "E-box grille panel 3 of 3",
+  "E-box grille badge"
+ ],
+ "retrofit_print": "grille panels and badge: outside face down; probe bracket: its largest flat face down"
+}
