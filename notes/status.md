@@ -1,6 +1,6 @@
 # Build status: read this first when picking the project back up
 
-Last updated **2026-11-14**.
+Last updated **2026-11-19**.
 
 ## What this printer is
 
@@ -49,6 +49,20 @@ See [What this printer will be](../README.md#what-this-printer-will-be) in the R
 
 Each stage issue has an **inventory** acceptance criterion. Tick it as you
 confirm which parts you already own.
+
+## Baseline and the pass in flight
+
+**Baseline: `baseline-lite-71`** (tag on main, 2026-11-19). The tag's message lists the sha256 of
+`vt350-lite-71.FCStd`, `vt350-emu-4.FCStd` and `vt350-ebox-3.FCStd`; check the files in `~/Documents/VT350` with
+`sha256sum` before starting a pass.
+
+**One model pass in flight at a time.** Before starting a pass, claim its number here, in the same PR as the pass.
+Clear it when that PR merges. Two passes built at the same time each start from the same lite-N and end up as
+partial versions that have to be rebuilt in order (lite-67 to lite-71 did this).
+
+| Pass in flight | Branch | Builds on |
+|---|---|---|
+| none: next is lite-72, the dock print fixes (#59) | `feat/72-dock-print-fixes` | lite-71 |
 
 ## Where things are
 
