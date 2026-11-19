@@ -17,7 +17,7 @@ height comes from the part, not from how far a screw is turned.
 
 | Part | Qty | Notes |
 |---|---|---|
-| M3 heat-set insert, **short**: 3 mm long, 5 mm OD | 6 | Not the Voron 4 mm ones: the pocket is 3.4 mm deep |
+| M3 heat-set insert, **short**: M3×3×5 (3 mm long, 5 mm OD), e.g. YuGtcen M3x3x5mm | 6 | Not the Voron 4 mm ones (the pocket is 3.4 mm deep), nor CNC Kitchen "M3 short" (thinner) |
 | M3 male-female round standoff, **4 mm body**, Ø5, M3×4 stud (e.g. "M3x4+4") | 5 | The 4 mm points |
 | M3 male-female round standoff, **8 mm body**, Ø5, M3×6 stud (e.g. AWclub "M3x8+6", 304 stainless) | 1 | The left head's rear-top |
 | M3 flat-head screw (FHCS, ISO 10642), **alloy steel** (black, strongly magnetic), not stainless; head **Ø5.8–6**, not the 5.5 kind | 6 | One per standoff. **M3×6** if the standoff's female thread is ≥ 4.5 mm deep, **M3×5** if it's 3.5–4.5 (measure it) |
