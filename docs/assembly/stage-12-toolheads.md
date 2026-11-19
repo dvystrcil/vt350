@@ -18,14 +18,15 @@ height comes from the part, not from how far a screw is turned.
 | Part | Qty | Notes |
 |---|---|---|
 | M3 heat-set insert, **short**: 3 mm long, 5 mm OD | 6 | Not the Voron 4 mm ones: the pocket is 3.4 mm deep |
-| M3 male-female round standoff, **4 mm body**, Ø5, M3×4 stud (e.g. "M3x4+4") | 7 | 5 for the 4 mm points, 2 stacked for the left head's rear-top (below) |
+| M3 male-female round standoff, **4 mm body**, Ø5, M3×4 stud (e.g. "M3x4+4") | 5 | The 4 mm points |
+| M3 male-female round standoff, **8 mm body**, Ø5, M3×6 stud (e.g. AWclub "M3x8+6", 304 stainless) | 1 | The left head's rear-top |
 | M3×4 button-head screw (ISO 7380), **magnetic steel**, not stainless | 6 | One per standoff stack |
 | Threadlocker (medium, blue) | | On each stud |
 
 | Point | Left head | Right head |
 |---|---|---|
 | front-top | 4 mm | 4 mm |
-| rear-top | **8 mm** (two 4 mm stacked) | 4 mm |
+| rear-top | **8 mm** | 4 mm |
 | rear-bottom | 4 mm | 4 mm |
 
 The left head's rear-top is 8 mm because the dock plate can't reach closer there: the head's Crossbow lever stands
@@ -57,16 +58,15 @@ So **grind every stud that goes into an insert to 3 mm**, measured from the shou
 
 With a 3 mm stud the shoulder seats flat on the spot-face, and the tip stops 0.4 mm short of the pocket floor.
 
-### 3. The left head's rear-top: two standoffs stacked (8 mm)
+### 3. The left head's rear-top: 8 mm
 
-1. Take one standoff with its stud ground to 3 mm (step 2). It goes into the insert.
-2. Take a second standoff. Its stud goes into the female thread of the first.
-   Measure how deep that female thread is first. If the hole is shallower than the stud, grind the second stud to
-   fit too, so the two bodies meet flat.
-3. Threadlocker on both studs. The stack is 8.0 mm from the spot-face to the top.
+Use one **8 mm standoff** (M3×8+6). Its stud is **6 mm**, so grind it to **3 mm** as in step 2: 3 mm comes off, not 1.
+Check that its female thread is at least 4 mm deep for the M3×4 screw.
 
-If 8 mm standoffs turn up (M3×8, 3 mm stud or ground to 3), a single one replaces the stack. Don't use a 6 mm one
-plus washers: the height has to be 8.
+No 8 mm to hand? Stack two 4 mm standoffs instead. The bottom one's stud goes into the insert, ground to 3 mm. The top
+one's stud goes into the bottom one's female thread; if that hole is shallower than the stud, grind it to fit so the
+two bodies meet flat. Threadlocker on both. Don't make 8 mm from a 6 mm standoff plus washers: loose washers aren't
+rigid enough.
 
 ### 4. Fit and check
 
