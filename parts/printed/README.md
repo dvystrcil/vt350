@@ -18,14 +18,24 @@ rows without a part, stages, licences). The table below is generated from `manif
 
 ## Design rules for the parts we design
 
-The owner's rules (2026-11-18) for every printed part this repo designs (`vt350/`, and the edges our remixes add):
+The owner's rules (2026-11-18) for every printed part this repo designs (`vt350/`, and the edges our remixes add). The
+numbers are in [`cad/data/print-profile.json`](../../cad/data/print-profile.json); the passes read them from there.
 
-- **Bottom edges: a 0.5 mm chamfer.** The edges of the face that sits on the print bed, so the first layers' squish
-  (elephant's foot) doesn't make the part oversize or leave a lip.
-- **Top edges: a 1.0 mm chamfer**, so the part isn't sharp.
-- "Bottom" and "top" follow the part's **print orientation**, so settle that first and write it in the pass and the
-  part's README. A pass that builds a printed part makes the chamfers and checks them (each bottom edge chamfered
-  0.5, each top edge 1.0).
+- **First-layer edges: a 0.5 mm chamfer.** The edges of the face that sits on the build plate, against elephant's foot.
+  It is sized for the first layer's **squish**, which the slicer never sees: layers are sliced at their nominal
+  heights (first 0.25, then 0.2), but the z offset is tuned per filament from how the first layer printed and sent at
+  print start, not in the model's g-code, so the first layer really prints near 0.2 and the rest spreads sideways.
+  0.5 covers the first two nominal layers (0.45); with the squish the third layer's outer wall starts just inside,
+  with a slight under-pressure. So it is one tuned value, not a layer count: a face too narrow for it gets none, and
+  the pass reports it. A filament study may change it.
+- **Top edges: a 1.0 mm chamfer**, so the part isn't sharp. The top layers print at their nominal 0.2, and a 45 deg
+  chamfer rises as much as it is wide, so the top chamfer and its step-downs on narrow faces are **whole 0.2 mm
+  layers** (0.8, 0.6, 0.4, 0.2; under one layer, none): "the slicer will fight trying to make 0.25 work".
+- **Bores: none**, unless it's a countersink for a flat-head screw (owner: "bores do not need chaphers unless its for
+  a flathead screw of course"). A countersink is part of the design, not a chamfer added afterwards.
+- "First layer" and "top" follow the part's **print orientation**, so settle that first and write it in the pass and
+  the part's README. A pass that builds a printed part makes and checks the chamfers with
+  `platform/freecad/printchamfer.py` (`chamfer()`, then `unchamfered()`; reduced and skipped edges are logged).
 
 ## Licences (#63 AC1)
 
