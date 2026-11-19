@@ -28,4 +28,3 @@ Not confirmed as still needed: some may be bought already. Prices were read on 2
 | Nevermore StealthMax | 1 | [StealthMax kit](https://west3d.com/products/nevermore-stealthmax-complete-kit-for-3d-printer-air-filtrat) | *(owned?)* |
 | AC inlet with switch, 125 °C thermal fuse | 1 each | [inlet](https://west3d.com/products/ac-power-unfilted-inlet-w-15a-switch-250vac-inlet-iec-gs-1-1), [fuse](https://west3d.com/products/125c-cutoff-15a-thermal-fuse) | *(owned?)* |
 
-Free US shipping over $150 (West3D, 2026-11-18).
