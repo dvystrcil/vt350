@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roof Exit</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root { --bg: #eceef0; --fg: #1d2226; --muted: #5d676f; --line: #c4cbd1; --accent: #e2662a; --card: #ffffff;
+  --sans: "IBM Plex Sans", system-ui, sans-serif; --mono: "IBM Plex Mono", ui-monospace, monospace; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #15191c; --fg: #e3e7ea; --muted: #8e99a2; --line: #333b42; --accent: #f07a40; --card: #1d2226; color-scheme: dark } }
+:root[data-theme="dark"] { --bg: #15191c; --fg: #e3e7ea; --muted: #8e99a2; --line: #333b42; --accent: #f07a40; --card: #1d2226; color-scheme: dark }
+body { background: var(--bg); color: var(--fg); font-family: var(--sans); line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 20px; }
+.wrap { max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
+h2 { font-size: 1.0rem; margin: 6px 0 0; }
+h1 { font-size: 1.3rem; margin: 0; text-wrap: balance; } h1 span { color: var(--accent); }
+.lede { max-width: 75ch; margin: 4px 0 0; color: var(--muted); }
+figure { margin: 0; background: var(--card); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+figure img { display: block; width: 100%; height: auto; background: #121316; }
+figcaption { padding: 10px 14px 12px; font-size: 0.92rem; max-width: 80ch; }
+figcaption b { font-weight: 600; }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; font-family: var(--mono); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
+th, td { border-bottom: 1px solid var(--line); padding: 5px 14px 5px 0; text-align: left; vertical-align: top; }
+th { color: var(--muted); font-weight: 500; }
+.note { font-size: 0.85rem; color: var(--muted); max-width: 80ch; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>VT350 roof exit · <span>lite-70</span></h1>
+  <p class="lede"><b>Verdict (owner, 2026-11-18): "that looks so much better".</b> The roof clamps flat on the roof panel, the cable channel lowered, every new printed part chamfered (0.5 mm first layer, 1.0 mm top, bores none), the USB cables re-routed into the lower lanes, and the EMU lowered onto the roof with its five bowden tubes. Built by the real passes (lite-69 insulation, lite-70 roof exit, emu-4) into scratch copies; all three passed every check. Nothing is saved in the model folder yet.</p>
+</header>
+<figure><img src="roof-exit/exit-side-lane1.jpg" alt="From the left at the clamps' height: five clamps flat on the roof, black cables rising back into windows in the lowered channel, white bowden tubes looping up and forward">
+  <figcaption><b>From the left.</b> Each clamp sits flat on the roof; the cable (black) rises back into its window in the lowered channel; the bowden tube (white) loops up and forward over it.</figcaption></figure>
+<figure><img src="roof-exit/clamp-close.jpg" alt="Close-up of one clamp: flange flat on the roof, the cap on the 45 degree body, chamfered edges, plain bores">
+  <figcaption><b>One clamp, close.</b> The flange is one flat plate on the roof (no more step over the felt); the clamp body and cap ride 11 mm lower along the same 45° axis. Chamfers on the outside edges; the screw holes and bores are plain.</figcaption></figure>
+<figure><img src="roof-exit/exit-over-emu.jpg" alt="From above the EMU looking back: each cable curves from its clamp into its own window in the channel's front face, clear of the tube">
+  <figcaption><b>From above the EMU, looking back.</b> Each cable curves from its clamp into its own window in the channel's front face; the tubes clear them by at least 0.5 mm.</figcaption></figure>
+<figure><img src="roof-exit/exit-above-rear.jpg" alt="From above and behind the left corner: the orange channel cover runs along the rear edge low, the tubes arch to the EMU">
+  <figcaption><b>From above, behind the left corner.</b> The channel (orange cover) now runs just above the roof; the tubes arch over it to the EMU's rear couplers.</figcaption></figure>
+<figure><img src="roof-exit/channel-rear.jpg" alt="From behind: the channel's cover low over the roof on short posts">
+  <figcaption><b>From behind.</b> The channel on its shorter posts (39.5 mm, was 97).</figcaption></figure>
+<div class="scroll"><table>
+  <tr><th></th><th>before</th><th>lite-70</th></tr>
+  <tr><td>Clamp flange</td><td>on the felt, 11 mm above the roof</td><td>flat on the roof panel</td></tr>
+  <tr><td>Channel lanes</td><td>Z 795–821</td><td>Z 737–763</td></tr>
+  <tr><td>Posts</td><td>97 mm</td><td>39.5 mm</td></tr>
+  <tr><td>USB cables</td><td></td><td>83–98 mm shorter each; tails bend R ≥ 52.9</td></tr>
+  <tr><td>EMU tubes</td><td>crossed the cables</td><td>clear of every cable; bends R ≥ 85.9</td></tr>
+  <tr><td>Chamfers</td><td>none</td><td>0.5 first layer, 1.0 top (0.2 steps on narrow faces), bores none</td></tr>
+</table></div>
+<p class="note">Two short edges at the ends of slot 5's cable window couldn't be chamfered by FreeCAD (logged in the pass).</p>
+<h2>Why it changed</h2>
+<p class="note">lite-69 moved the roof insulation under the panel (<a href="https://github.com/dvystrcil/vt350/pull/238">#238</a>), which left lite-36's clamp flanges 11 mm in the air and the EMU 19 mm above the roof. The owner asked for the clamps "flush against the roof", the channel lowered ("it will give us back some cable lenght") and every printed part chamfered (<code>parts/printed/README.md</code>). Building the passes into scratch copies first found a USB cable crossing its own bowden on the left-hand heads, so lite-70 now plans the cables round the tubes emu-4 routes.</p>
+<footer class="note">
+  <h2>Sources</h2>
+  <span>Models: built by <code>cad/passes/lite69_insulation_inside.py</code>, <code>lite70_roof_exit_low.py</code> and <code>emu4_lower.py</code> at <a href="https://github.com/dvystrcil/vt350/commit/2fab4e5">2fab4e5</a> (<a href="https://github.com/dvystrcil/vt350/pull/241">#241</a>), GUI runs into scratch copies of <code>vt350-lite-68.FCStd</code> (dock pads) and <code>vt350-emu-3.FCStd</code>, with <code>vt350-ebox-3.FCStd</code>; every check passed.</span><br>
+  <span>Renderer: <code>platform/render/export_meshes.py</code> + <code>platform/render/render.py</code>, Blender Cycles, 64 samples, AgX Punchy, 1280×720, close-up cameras.</span><br>
+  <span>The EMU is DW-Tas's <a href="https://github.com/DW-Tas/EMU">EMU</a> (CC BY-NC-SA 4.0), shown as configured for this build.</span>
+</footer>
+</div>
+
+</body>
+</html>
