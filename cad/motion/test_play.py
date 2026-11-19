@@ -99,7 +99,7 @@ class GroupsFile(unittest.TestCase):
 class DefaultModel(unittest.TestCase):
     def test_the_model_the_committed_sweep_log_ran_on(self):    # the rig's numbers come from that log
         self.assertEqual(play.default_model(os.path.join(ROOT, "cad", "data", "logs", "sweep_toolhead.log"), "/models"),
-                         "/models/vt350-lite-66.FCStd")
+                         "/models/vt350-lite-70.FCStd")
 
     def test_a_log_with_no_model_line_is_refused(self):
         tmp = tempfile.mkdtemp(prefix="play-test-")
