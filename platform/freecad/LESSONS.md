@@ -216,6 +216,16 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
   ps.makeSolid()` with the binormal along the axis the route is (nearly) flat across: within 0.8 % of pi r^2 L.
   Check a sweep's volume against pi r^2 L: `isValid()` passed on the twisted one. A sweep can also come out inside
   out (negative volume); `shape.reverse()` fixes that.
+- **`BSplineCurve.interpolate(..., FinalTangent=t)` can curl at the end** (emu4_lower, 2026-11-18). Interpolating the
+  roof-to-EMU bowden routes (~480 mm, points every 3 mm, the last 25 mm a straight run) with a unit `FinalTangent` left
+  a cusp in the last ~3 mm (radius ~0). emu-3's pass checked curvature at 2,000 samples and stepped over it; 4,000
+  found it on every route. Dropping `FinalTangent` (the straight points already set the end direction) gave radius
+  >= 83.6 mm and an end angle of 0.00 deg. Sample curvature densely, and check a fit near its ends.
+- **Booleans on swept tubes can't be trusted for overlap checks** (emu4_lower, 2026-11-18). emu-3's five roof-exit
+  bowdens cut 1.25 mm into their roof clamp caps (the first arc began inside the clamp's bore), yet
+  `tube.common(cap).Volume` was 0; a re-routed tube gave 24.8 mm3 with a result box reaching 20 mm outside the cap.
+  `distToShape` between the solids just says 0 (touching or inside). What works: the distance from the tube's
+  **centre line** (the sweep's spine edge) to each part near it, against the tube's radius.
 - **A segfault in `freecadcmd` loses everything the script printed** (stdout is buffered): the run ends with no
   output at all. When a call might crash, write to a file of your own and flush before each risky call, so the log
   shows where it died. (A syntax error shows only as "Exception while processing file: ... [message]".)

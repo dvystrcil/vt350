@@ -1,5 +1,5 @@
 {
- "model": "/work/vt350-lite-66-20261118t070219-38f7-sweep/in/vt350-lite-66.FCStd",
+ "model": "/work/vt350-lite-69-20261119t013843-3725-sweep/in/vt350-lite-69.FCStd",
  "plate_top": 285.76060992516267,
  "magnet_top": 287.16060992516265,
  "lower": {
@@ -505,7 +505,7 @@
     "E3D v6 HotEnd - Nozzle001"
    ],
    [
-    95.76055319999028,
+    95.7605531999904,
     "Magnetic sheet (1.4 mm)",
     "[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
    ],
@@ -530,7 +530,7 @@
     "COMPOUND"
    ],
    [
-    97.16055319999026,
+    97.16055319999037,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
    ],
