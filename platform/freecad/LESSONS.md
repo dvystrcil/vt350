@@ -257,6 +257,12 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
   rather than "same midpoint and length".
 - **Bed and top faces: compare with a tolerance of ~0.01 mm, not 1e-3**: a face's `CenterOfMass` along a tilted
   print direction (a cap printed on its 45 deg split face) came out 0.001 above the lowest vertex.
+- **Matching parts across two STEP files by size: a part's box is in world axes** (vt350#220, 2026-11-19). After
+  `Import.insert`, `Shape.BoundBox` includes the part's placement, so a part turned by anything but 90° (a T-nut
+  on a slanted clip) gets a bigger box than the same part upright in the other file, and a name + size match
+  misses it. Compare sorted box sizes, and also measure each STEP product in its own frame: walk the STEP text from
+  `PRODUCT` to its shape representation and take the box of its `VERTEX_POINT`s (plain python, no FreeCAD). That
+  box is short on curved faces (it holds no arc bulge), so accept a match when either measure agrees.
 - **A flat face after a boolean isn't always a `Plane`** (lite-72, 2026-11-19): lite-68's pad faces, made by
   extruding, cutting and `removeSplitter()`, include flat faces whose `Surface` is not `Part.Plane`, so a filter on
   `f.Surface.__class__.__name__ == "Plane"` found no top face on a 0.16 mm pad and `max()` raised. The STL showed the
