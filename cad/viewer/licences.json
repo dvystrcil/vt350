@@ -11,7 +11,7 @@
   {"label_prefix": "SpeedClip", "licence": "GPL-3.0-only", "source": "zruncho3d/madmax @ 6bf670d LICENSE (parts/printed/README.md)"},
   {"group": "MadMaxCarriage (1)", "licence": "GPL-3.0-only", "source": "vt350 remix of andrewmcgr's MadMax carriage, zruncho3d/madmax @ 6bf670d (parts/printed/vt350/madmax-andrewmcgr-carriage-beacon/README.md)"},
   {"group_prefix": "MadMax 4 XOL v11", "licence": "GPL-3.0-only", "source": "andrewmcgr's MadMax XOL plate, zruncho3d/madmax @ 6bf670d (parts/printed/README.md)"},
-  {"label_prefix": "DIN rail holder", "licence": "unknown", "source": "the holder is a mesh from the owner's Neptune e-box CAD (lite57_din_rails.py): the owner's own design, or downloaded (from where, under what licence)?"},
+  {"label_prefix": "DIN rail holder", "licence": "unknown", "source": "owner, 2026-11-19 (#252): 'from printables'. The mesh is DIN_frame_mount_x4_square (lite57_din_rails.py), a remix of Voron Trident's STLs/ElectronicsBay/DIN_frame_mount_x4.stl; which Printables model (link)? Its page's licence decides: credit it, or an outside-size stand-in"},
   {"label_contains": "vt350, GPL-3.0-or-later", "licence": "GPL-3.0-or-later", "source": "this repo: designed in a cad/passes pass; the label says so"},
   {"label_contains": "envelope (contents in", "licence": "GPL-3.0-or-later", "source": "this repo: a placeholder box made by lite19_ebox.py / lite55_emu_roof.py"},
   {"label_contains": "panel (3 mm)", "licence": "GPL-3.0-or-later", "source": "this repo: panels drawn by lite16_enclosure.py (roof, right side), lite38 (left side, paint skins), lite59 (e-box top and rear)"},
