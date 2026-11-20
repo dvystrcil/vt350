@@ -9,7 +9,7 @@ By default (homelab#2257) the model-reading steps run on the cluster's batch lan
 (homelab bin/gpu-batch-submit.py, VT350_GPU_BATCH_SUBMIT) runs part_index, sweep, z_sweep and print_area on max-01,
 read-only, and posts ONE comment on --notify when it ends. This machine submits it first, then runs only the steps whose
 output is committed while the chain runs: derive_stls (the lane's STLs are never committed: max-01 tessellates them
-differently, homelab#1961), sync_printed and check_printed. After the comment, --collect copies the chain's logs, the
+differently, homelab#1961), sync_printed, check_printed and orca_projects. After the comment, --collect copies the chain's logs, the
 part index and print-area.svg into the repo (refusing a failed or unfinished chain, another model's, or a log without
 its completion marker, before writing anything) and runs test_print_area. On lite-32 the local run took 4790 s, z_sweep
 alone 3219 s. --local runs every step here, as before (the lane down, or no NFS share).
@@ -24,6 +24,9 @@ Steps of --local, in order. It stops at the first failure and names the step and
                    source changed is re-copied, and ONLY its sha256 cell in manifest.csv is rewritten (text edit: the
                    rest of the file, quoting and row order stay byte-identical)
   check_printed    platform/parts/check-printed.py (must print "check-printed: OK")
+  orca_projects    platform/parts/orca_projects.py parts/slice/sets.json (#217, needs the Orca flatpak): regenerates
+                   the OrcaSlicer projects (parts/slice/projects/) whose STLs, quantities or presets changed, so a
+                   PR that changes a part carries its plate ("orca-projects: OK")
   sweep            cad/studies/sweep_toolhead.py on vt350-lite-<N>.FCStd (VT350_MODEL), ~11 min
   z_sweep          cad/studies/z_sweep.py (FreeCAD, headless, read-only, #82): the bed's Z travel, both ends, by
                    boolean contact, with the documents the model's envelopes name (envelope_docs) -> cad/data/logs/z_sweep.log
@@ -60,20 +63,21 @@ COMPANION_S = 600             # a pass saves its documents seconds apart (finish
 THIS_REPO = "dvystrcil/vt350"
 # Where each step's tool lives (vt350#122: generic tools under platform/, the VT350's own studies under cad/studies/).
 TOOLS = {"part_index": "platform/freecad/part_index.py", "derive_stls": "cad/scripts/derive_stls.py",
-         "check_printed": "platform/parts/check-printed.py", "sweep": "cad/studies/sweep_toolhead.py",
+         "check_printed": "platform/parts/check-printed.py", "orca_projects": "platform/parts/orca_projects.py", "sweep": "cad/studies/sweep_toolhead.py",
          "z_sweep": "cad/studies/z_sweep.py", "print_area": "cad/studies/print_area.py",
          "test_print_area": "cad/studies/test_print_area.py"}
 # Code folders, searched after this file's own folder (where a gpu-batch pod stages everything flat).
 CODE_DIRS = ("cad/scripts", "cad/studies", "platform/freecad")
 MANIFEST = "parts/printed/manifest.csv"
 PRINTED = "parts/printed"
+SETS = "parts/slice/sets.json"                                      # the print sets for orca_projects (#217)
 SWEEP_LOG = "cad/data/logs/sweep_toolhead.log"
 Z_LOG = "cad/data/logs/z_sweep.log"
-ORDER = ["part_index", "derive_stls", "sync_printed", "check_printed", "sweep", "z_sweep", "print_area", "test_print_area"]
+ORDER = ["part_index", "derive_stls", "sync_printed", "check_printed", "orca_projects", "sweep", "z_sweep", "print_area", "test_print_area"]
 # The batch lane (homelab#2257): homelab's submit command and the laptop path of its NFS work share.
 SUBMIT = os.environ.get("VT350_GPU_BATCH_SUBMIT", "/home/dan/Code/homelab/bin/gpu-batch-submit.py")
 WORK_ROOT = os.environ.get("GPU_BATCH_WORK_ROOT", "/mnt/nfs/media/gpu-batch")
-LANE_LOCAL = ["derive_stls", "sync_printed", "check_printed"]      # what the laptop still runs (their output is committed)
+LANE_LOCAL = ["derive_stls", "sync_printed", "check_printed", "orca_projects"]      # what the laptop still runs (their output is committed)
 SUBMIT_LOG = "cad/data/logs/refresh_submit.out"
 CHAIN_RE = r"(?m)^started chain vt350-refresh (\S+)$"              # its first line (pinned by a homelab test)
 # The chain's sweep job runs the sweep, the index and z_sweep under one deadline (lite-32 on the laptop: 1114 s + 3219 s;
@@ -200,6 +204,9 @@ def plan(n, root=REPO, app=APP, start=None, models=MODELS_DIR):
         Step("sync_printed", fn=sync_printed),
         Step("check_printed", cmd=[sys.executable, os.path.join(root, TOOLS["check_printed"]), "--root", root],
              log=os.path.join(logs, "refresh_check_printed.out"), marker=r"(?m)^check-printed: OK$"),
+        Step("orca_projects", cmd=[sys.executable, os.path.join(root, TOOLS["orca_projects"]),
+                                   os.path.join(root, SETS)],
+             log=os.path.join(logs, "refresh_orca_projects.out"), marker=r"(?m)^orca-projects: OK$"),
         Step("sweep", cmd=[sys.executable, os.path.join(root, TOOLS["sweep"])],
              env=dict(VT350_MODEL=model, FREECADCMD=" ".join(fc), VT350_WORK=os.path.join(root, "cad/data")),
              log=os.path.join(logs, "refresh_sweep.out"),
@@ -379,7 +386,7 @@ def parse_args(argv=None):
     ap.add_argument("--dry-run", action="store_true", help="print the steps and what sync_printed would change")
     a = ap.parse_args(argv)
     if a.start and not a.local:
-        ap.error("--from needs --local (the lane run is always: submit, derive_stls, sync_printed, check_printed)")
+        ap.error("--from needs --local (the lane run is always: submit, derive_stls, sync_printed, check_printed, orca_projects)")
     return a
 
 

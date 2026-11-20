@@ -37,3 +37,14 @@ jobs:
       - name: Confirm the library check ran to the end
         run: |
           grep -qx 'library-check: OK' library.log
+      # vt350#217: each OrcaSlicer project in parts/slice/projects/ still holds the STLs (sha256), copies and presets
+      # its manifest rows give; no Orca needed
+      - name: Test the Orca projects generator (grouping, index, staleness check)
+        run: python3 platform/parts/test_orca_projects.py 2>&1 | tee orca-test.log
+      - name: Confirm every Orca projects test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' orca-test.log && tail -1 orca-test.log | grep -qx 'OK'
+      - name: Check the Orca projects against the manifest, the STLs and their REUSE labels (#278)
+        run: python3 platform/parts/orca_projects.py parts/slice/sets.json --check --reuse REUSE.toml | tee orca-projects.log
+      - name: Confirm the Orca projects check ran to the end
+        run: |
+          grep -qx 'orca-projects: OK' orca-projects.log

@@ -50,6 +50,28 @@ class Build(unittest.TestCase):
         self.assertIn("[MIT](https://spdx.org/licenses/MIT.html)", rows[1])     # no text in LICENSES/: spdx.org
         self.assertNotIn("2026 Me", text)                                         # own work isn't a row
 
+    def test_a_bundle_gives_each_project_only_its_own_licences(self):
+        # vt350#217: a 3MF bundling several projects' parts is labelled "A AND B" with every holder; each project
+        # keeps the licences its own files have, and the expression is never one (broken) link
+        other = {"key": "nc", "name": "NC part", "by": "Nc", "links": [["nc", "https://nc.example"]],
+                 "used": "a duct", "reuse": ["Nc"]}
+        only = {"key": "bo", "name": "Bundle only", "by": "Bo", "links": [["bo", "https://bo.example"]],
+                "used": "a clip", "reuse": ["Bo"]}
+        reuse = {"annotations": REUSE["annotations"] + [
+            {"path": "parts/nc/**", "SPDX-FileCopyrightText": "Nc", "SPDX-License-Identifier": "CC-BY-NC-SA-4.0"},
+            {"path": "bundle-*.3mf", "SPDX-FileCopyrightText": ["Up Author", "Nc", "Bo"],
+             "SPDX-License-Identifier": "GPL-3.0-only AND CC-BY-NC-SA-4.0"}]}
+        text, probs = self.build(p=projects(other, only), reuse=reuse)
+        self.assertEqual(probs, [])
+        row = {r.split("](")[0][3:]: r for r in text.splitlines() if r.startswith("| [")}
+        self.assertNotIn(" AND ", text)
+        self.assertNotIn("CC-BY-NC-SA", row["Upstream"])
+        self.assertIn("`bundle-*.3mf`", row["Upstream"])
+        self.assertNotIn("GPL", row["NC part"])
+        self.assertIn("`bundle-*.3mf`", row["NC part"])
+        self.assertIn("GPL-3.0-only", row["Bundle only"])        # nothing of its own: every part of the expression
+        self.assertIn("CC-BY-NC-SA-4.0", row["Bundle only"])
+
     def test_a_rule_without_credit_fails(self):
         rules = {"rules": RULES["rules"] + [{"label": "d", "licence": "MIT", "source": "s"}]}
         self.assertTrue(any("no 'credit'" in p for p in self.build(rules=rules)[1]))

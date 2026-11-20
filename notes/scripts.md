@@ -32,6 +32,7 @@ flowchart TD
 | Only the reach changed (sweep re-run by hand) | `python3 cad/scripts/refresh.py N --from print_area` | seconds |
 | Changed a file in `parts/printed/` or `manifest.csv` | `python3 platform/parts/check-printed.py` (add `--write-index` to rebuild the README table) | seconds |
 | Will a part print without supports? (before any PETG test-fit) | `python3 platform/parts/slice-check.py <stl…>`: report + red-support preview; see `parts/slice/README.md` | ~1 s/part, up to ~1 min for big ones |
+| Changed a printed part's STL, its qty or material, or `parts/slice/sets.json` (#217) | `python3 platform/parts/orca_projects.py parts/slice/sets.json`: regenerates the stale OrcaSlicer projects in `parts/slice/projects/` (one 3MF per work unit, a plate per material, MMU filament slots, Neptune presets selected); `--check` (CI, no Orca) names the stale ones; `--all` redoes all; see `parts/slice/README.md` | a few s per project |
 | Changed `parts/printed/manifest.csv` or `bom/bom.csv`, or added an assembly page | `python3 platform/docs/step_parts.py`: rewrites each `docs/assembly/stage-N-*.md` page's Print and Buy tables; CI runs `--check` | instant |
 | What has the build cost, and what's left to buy? (or after editing `bom/bom.csv`) | `python3 bom/totals.py`: spent / still to spend / grand total per currency, unpriced and `decide` (undecided, not counted) rows listed; `--check` only validates the CSV (rules in the script's docstring) | instant |
 | Changed a pin in `cad/klipper/printer.cfg` (or a file it includes) | `python3 platform/klipper/pinmap.py generate --config cad/klipper/printer.cfg --map cad/klipper/pinmap.json`, then `... check ...` ("pinmap: OK"; CI runs the check) | instant |
@@ -55,7 +56,7 @@ python3 cad/scripts/refresh.py 26 --from sweep   # start part-way
 python3 cad/scripts/refresh.py 26 --dry-run      # plan + which parts/printed copies would change
 ```
 
-- **What it runs, in order:** `part_index` (the model's box index and its companions', below; skipped if fresh) → `derive_stls` → `sync_printed` → `check_printed` → `sweep` → `print_area` → `test_print_area`.
+- **What it runs, in order:** `part_index` (the model's box index and its companions', below; skipped if fresh) → `derive_stls` → `sync_printed` → `check_printed` → `orca_projects` (regenerates the print projects whose STLs changed, #217) → `sweep` → `print_area` → `test_print_area`.
 - **When a step fails:** it stops and prints `refresh: FAILED: step X …`, naming the log to read. A missing completion line also counts as a failure.
 - **On success:** it prints `refresh: OK` and a summary: STLs re-copied, reach vs the committed sweep, and print area. The summary is also saved to `cad/data/logs/refresh.log`.
 - **What it never does:** save a model or commit. Afterwards, `git diff --stat` shows what changed, and you commit it.
@@ -329,6 +330,7 @@ $APP freecadcmd $PWD/cad/passes/liteNN_<what>.py   # headless = dry run: all che
 | Workflow | Runs | Fails when |
 |---|---|---|
 | `printed-parts` | `platform/parts/test_check_printed.py`, `platform/parts/check-printed.py` | manifest, sha256 or BOM drift |
+| `printed-parts` (Orca projects steps) | `platform/parts/test_orca_projects.py`, `platform/parts/orca_projects.py parts/slice/sets.json --check --reuse REUSE.toml` | a project in `parts/slice/projects/` is stale: an STL's sha256, a qty, a plate, a filament or a preset changed, or a manifest row has no project (#217). Fix: rerun the generator (the `--only …` line it prints). Or a project's REUSE label is wrong (#278): `ERROR REUSE <project>: … has no REUSE label of its own` (a renamed or new project) or `… lacks <licence>` (a part moved in). Fix: add or widen that project's `[[annotations]]` in `REUSE.toml` so its `SPDX-License-Identifier` names every licence in its `index.json` entry (`licenses`), then regenerate `CREDITS.md` (`platform/pages/credits.py`, the `viewer` row below) |
 | `printed-parts` (step-parts steps) | `platform/docs/test_step_parts.py`, `platform/docs/step_parts.py --check` | an assembly page's Print/Buy tables are stale against the manifest or `bom/bom.csv` |
 | `printed-parts` (library steps) | `platform/library/test_check_library.py`, `platform/library/check_library.py` | a `source.json` is invalid, a library file's sha256 differs, a no-file entry has a file, a file has no `source.json`, an entry's category is unknown or not its folder, a file's `REUSE.toml` label or an entry's credit disagrees, or a printed part's manifest row is gone |
 | `print-area` | `cad/studies/test_print_area.py` | `print-area.svg` is stale against the sweep log |

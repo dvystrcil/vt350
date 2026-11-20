@@ -13,7 +13,8 @@ Generic (stdlib only): the printer's data is in the files it is given.
   "licence_names"?: {id: shown name}, "licence_urls"?: {id: url},
   "projects": [{"key", "name", "by", "links": [[text, url], ...] (the name links to the first), "used", "reuse"?: [holders],
                 "licence_urls"?: {id: url}}]}.
-One row per project, in the projects file's order. Its licences are those of its REUSE entries and its rules; each
+One row per project, in the projects file's order. Its licences are those of its REUSE entries and its rules (from an
+"A AND B" entry, a file bundling several projects' parts, only the ids its other entries have, or all if none); each
 links to <licence-dir>/<id>.txt when that exists, else to licence_urls, else (an SPDX id) to spdx.org. It fails (exit
 1, with every problem) on a REUSE holder or rule credit with no project, a project nothing uses, a rule without a
 credit, or a LicenseRef with no text and no URL.
@@ -43,8 +44,10 @@ def build(projects, reuse, rules, licence_dir, out_dir):
     def add_lic(k, lic):
         if lic not in lics[k]: lics[k].append(lic)
 
+    bundles = []                              # (key, [SPDX ids]) from "A AND B" entries, resolved below
     for a in reuse.get("annotations", []):
         lic = a.get("SPDX-License-Identifier", "")
+        parts = [p.strip("() ") for p in lic.split(" AND ")]
         for h in as_list(a.get("SPDX-FileCopyrightText", [])):
             if h in own: continue
             k = holder_of.get(h)
@@ -52,7 +55,8 @@ def build(projects, reuse, rules, licence_dir, out_dir):
                 probs.append(f"REUSE holder {h!r} has no project in the projects file"); continue
             for path in as_list(a.get("path", [])):
                 if path not in files[k]: files[k].append(path)
-            add_lic(k, lic)
+            if len(parts) > 1: bundles.append((k, parts))
+            else: add_lic(k, lic)
     for i, r in enumerate(rules.get("rules", [])):
         if "credit" not in r:
             probs.append(f"licence rule {i + 1} ({r.get('source', '')[:60]}...) has no 'credit'"); continue
@@ -62,6 +66,11 @@ def build(projects, reuse, rules, licence_dir, out_dir):
                 probs.append(f"licence rule {i + 1}: credit {k!r} is no project in the projects file"); continue
             pages[k] = True
             add_lic(k, r["licence"])
+    # A file bundling several projects' parts (a print project, vt350#217) is "A AND B" with every holder: each project
+    # keeps the parts of it that its own files already have, and only one with none of its own gets them all.
+    for k, parts in bundles:
+        mine = [p for p in parts if p in lics[k]]
+        for p in mine or parts: add_lic(k, p)
     for k in known:
         if not files[k] and not pages[k]:
             probs.append(f"project {k!r} is used by no REUSE entry and no licence rule")
