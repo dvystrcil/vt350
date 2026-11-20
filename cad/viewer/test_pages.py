@@ -75,6 +75,30 @@ class PrinterSelection(unittest.TestCase):
             self.assertEqual(problems, [], label)
             self.assertIn("GPL-3.0-only", lines[0])
 
+    def licence(self, label, path):
+        lines, problems = self.rules.check(self.lic, [{"label": label, "path": path}])
+        self.assertEqual(problems, [], label)
+        return lines[0].split()[1]
+
+    def test_z_parts_from_trident_cad_credit_voron(self):
+        z = ["4040-350x350x250 Voron Trident v4 v33", "Z Assembly (1)"]
+        for label, path in (("Motor_Body", z + ["Z_Motors", "Z_Motor_Left", "NEMA17 Leadscrew 400mm"]),
+                            ("10x11 Chain Link003", z + ["10x11 Chain Z"]),
+                            ("MGN9H - Carriage_end_cap (1)", z + ["Z_Left", "MGN9H (2)"]),
+                            ("SOLID029", z + ["Z_Left", "MGN9 - 400mm (2)"]),
+                            ("GE5C001", z + ["Z_Rear", "Z_Bed_Rear"]),
+                            ("M3 Locknut", z + ["Z_Left", "Z_Carriage_Left"]),
+                            ("M3 Hammerhead T-Nut", z + ["Z_Left", "rail_stop (1)", "Fasteners022"])):
+            self.assertEqual(self.licence(label, path), "GPL-3.0-only", label)
+
+    def test_z_parts_not_in_trident_cad_stay_owners(self):
+        z = ["4040-350x350x250 Voron Trident v4 v33", "Z Assembly (1)"]
+        for label, path in (("COMPOUND", z + ["Z_Left", "Z_Carriage_Left"]),
+                            ("M3x8-Screw", z + ["10x11 Chain Z", "Fasteners040"]),
+                            ("M3x8-Screw", z + ["Z_Left", "MGN9 - 400mm (2)", "Fasteners021"]),
+                            ("Leadscrew (rod)", z + ["Z_Motors", "Z_Motor_Left", "NEMA17 Leadscrew 400mm"])):
+            self.assertEqual(self.licence(label, path), "GPL-3.0-or-later", label)
+
     def test_din_holders_cleared(self):
         lines, problems = self.rules.check(self.lic, [{"label": "DIN rail holder (owner's Neptune DIN_frame_mount), "
                                                        "mains rail, front upright",
