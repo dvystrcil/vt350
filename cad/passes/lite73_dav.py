@@ -9,13 +9,17 @@
 #  2. The 3 mm `TL-dragon-ace-spacer` goes on every head: DW-Tas, "for use without spacer".
 #  3. No Dragon ACE Volcano CAD exists, so the old hotend parts stay as a STAND-IN, each renamed "... (stand-in)":
 #     the heat sink and everything held in it seat its top against the DAV body's hotend pocket ceiling (the body's
-#     material straight above the heat sink). The stand-in's nozzle and sock go; in their place, under the stand-in
-#     heat block (kept: the Volcano heater is 20 tall), goes the Trianglelab MZE assembly (MZE_STEP: the MZE screwed
-#     into the block's bottom, a brass V6 nozzle in it, the silicone sock round it). The block goes down until
-#     heat-sink top -> nozzle tip = Phaetus's VOLCANO_SPAN (60.6 mm; the stand-in was 51.0), sliding down the stand-in
-#     heat break's thread (a gap opens under the heat break's flange: the stand-in heat break is v6-length).
+#     material straight above the heat sink), the heat block still seated on the heat break's flange: heat-sink top ->
+#     block bottom = DAV_TO_BLOCK, the owner's measurement of the real DAV (45.5). The stand-in's nozzle and sock go; under
+#     the block (kept: the Volcano heater is 20 tall) the Trianglelab MZE assembly hangs as its STEP assembles it (MZE,
+#     brass V6 nozzle in it, silicone sock round it), the MZE's stud screwed up until it butts the heat break. The tip
+#     lands where that puts it: 59.40, the owner's measurement with a 0.6 TC Undertaker (Phaetus's 60.6 superseded;
+#     lite-72 51.0; nothing stretched).
 #     The four M2.5 hotend screws seat their heads on the DAV body's counterbore floor.
-#  4. The Beacon goes down with the carried tip, back to BEACON_DZ above it (it hangs from the carriage only).
+#  4. The Beacon goes up BEACON_UP (0.30), to BEACON_DZ (2.80) above the carried tip (the tip is 0.10 higher than lite-72's,
+#     which put the carriage-mounted Beacon 0.10 closer, at 2.50). The carriage's Beacon pocket ceiling (our remix,
+#     cad/derived/madmax-andrewmcgr-carriage-beacon/) is cut 0.30 deeper over the board, on the carriage and its
+#     mirrored dock copy, and its printable STL is written again (lite25_carriage_9mm.py's frame).
 # Found on the way (logged, checked): in lite-15..72 the stand-in never touched the UHF body. The spacer's top sat
 # UHF_GAP (8.5 mm) below the UHF body's pocket ceiling, so lite-72's nozzle tip was not where a seated hotend puts it.
 # The DAV body's ceiling is the UHF body's minus the spacer's 3 mm (the 3 mm of plastic DW-Tas added there).
@@ -25,14 +29,14 @@
 #  - the same 18 hotend parts on every head (1 spacer, 4 screws, 9 held in the heat sink, 4 below it); the MZE STEP's
 #    three parts;
 #  - after: no spacer left; the DAV body on all 5 heads (its box where its fit puts it, links following the master);
-#    heat-sink top on the ceiling and heat-sink top -> tip = 60.6 +- 0.05 on each head; nozzle tips' XY unchanged;
-#    the MZE's shoulder on the block's bottom, its stud clear of the heat break; the Beacon face BEACON_DZ above the
+#    heat-sink top on the ceiling and heat-sink top -> block bottom = 45.5 and -> tip = 59.40 +- 0.05, the MZE stud butting the heat break; nozzle tips' XY unchanged;
+#    the MZE on the hotend axis; the Beacon BEACON_DZ above the
 #    carried tip; screw heads on the counterbore floor; no new or worse overlap of any changed part with anything; every other
 #    solid's box unchanged.
 # Measures (the log + json): the stand-in heat block and nozzle (#263, the best figures we have for the Volcano's
 # block), the tips' Z change, the Beacon face and the carriage underside above the carried tip, the 4010 ducts'
 # lowest point above the tip, and the screws' thread engagement in the heat sink.
-import FreeCAD, Part, Import, math, os, re, sys
+import FreeCAD, Part, Import, Mesh, MeshPart, math, os, re, sys
 _REPO = os.environ.get("VT350_REPO", "/home/dan/Code/vt350")
 sys.path[:0] = [os.path.join(_REPO, "platform/freecad")]
 import litelib, linkgeo, dupes
@@ -50,7 +54,11 @@ SPACER, SCREW = "TL-dragon-ace-spacer", "Hex socket head cap screw M2.5"
 HEATSINK = "TL-dragon-Íâ¿ò-°«"   # GBK read as Latin-1: TL-dragon-外框-矮 (the heat sink)
 NOZZLE, BLOCK = "E3D v6 HotEnd - Nozzle", "Heat Block"
 STANDIN = " (stand-in)"
-VOLCANO_SPAN = 60.6          # Phaetus, Dragon ACE Volcano: heat-sink top to nozzle tip (#263, owner's screenshot)
+VOLCANO_SPAN = 60.6          # Phaetus, Dragon ACE Volcano: heat-sink top to nozzle tip (#263): compared, no longer imposed
+DAV_TO_BLOCK = 45.5          # owner, 2026-11-20, measured on the real DAV: "the height of the DAV without MZE and nozzle",
+                             # read as heat-sink top -> heat-block bottom; the stand-in's (block seated on the heat break) is checked
+DAV_TO_TIP = 59.40           # owner, 2026-11-20: heat-sink top -> tip with the MZE and a 0.6 TC Undertaker nozzle (West3D);
+                             # 57.70 with a bimetal 0.2 (1.7 shorter). Supersedes Phaetus's 60.6 (their own nozzle, presumably)
 SPACER_T = 3.0
 OLD_SPAN = 51.0              # the stand-in's own top-to-tip in lite-72 (#263)
 UHF_GAP = 8.5                # lite-72: spacer top 434.8, UHF pocket ceiling 443.3 (measured here, checked)
@@ -69,7 +77,12 @@ MZE_STEP = os.environ.get("VT350_MZE_STEP", os.path.join(_REPO, "cad/vendor/tria
 MZE_PARTS = {"MZE": "TL-dragon-ace-MZE", "V6 nozzle": "TL-dragon-ace-MZE nozzle (brass V6)", "Sock": "TL-dragon-ace-MZE sock"}
 MZE = MZE_PARTS["MZE"]; MZE_RE = re.escape(MZE) + r"\d*$"
 HEATBREAK = r"Component\d*$"  # the stand-in's heat break (Component1 on the Left head; Component006 ... on the others) (M6 thread), held in the heat sink, screwed into the block
-BEACON_DZ = 2.60             # Beacon coil face above the carried tip (lite-24; Beacon's 2.6-3 zone; owner 2026-11-20)
+BEACON_DZ = 2.80             # Beacon coil face above the carried tip (Beacon's 2.6-3 zone; owner 2026-11-20: 2.80, so a
+                             # hot-tighten's 0.1-0.2 still leaves >= 2.6)
+BEACON_UP = 0.30             # the Beacon goes up this much; the carriage's Beacon pocket ceiling is cut as much deeper
+ROOF_MIN = 1.2               # mm of carriage left above the deeper ceiling (about 3 perimeters at 0.4)
+CAR_COPY = "COMPOUND004"     # the Right Dock's mirrored carriage copy (a Part); the Left Dock's COMPOUND003 links the carriage
+CAR_STL = "madmax-andrewmcgr-carriage-beacon/MadMaxCarriage Beacon RevH pocket 9mm belts.stl"   # cad/derived and parts/printed/vt350
 # The M2.5 hotend screws' overlaps after the pass, each capped. Seated on the DAV counterbore floor (Z 445.3), a
 # screw's 2.5 mm head reaches 447.8, and the parts DW-Tas puts on top of the body start at 446.8 over every screw
 # (in lite-72 too, over the UHF floor at 445.8: the screws then floated below the body, so nothing showed). Which
@@ -243,34 +256,115 @@ def main(p):
         lsc = unders[0] - min(gbox(s_).ZMin for s_ in sc)
         p.check(abs(lsc - SCREW_L) < 1e-3, f"{b.Label}: the hotend screws are M2.5 x {lsc:.2f} under the head (expected {SCREW_L})")
         blk0 = tight(linkgeo.gshape(h["block"]))
-        h.update(top=top, tip=tip, floor=floor, under=unders[0], dz_up=cd[0] - top, dz_low=cd[0] - VOLCANO_SPAN + MZE_TIP - blk0.ZMin,
-                 dz_screw=floor - unders[0], uhf_ceiling=cu[0], blk_rel=top - blk0.ZMin)
-        p.log(f"{b.Label}: seat Z {cd[0]:.3f} (heat sink +{h['dz_up']:.3f}); tip {tip:.3f} -> {cd[0] - VOLCANO_SPAN:.3f}; heat block "
-              f"{h['dz_low']:+.3f} (so {h['dz_up'] - h['dz_low']:.3f} further from the heat sink than in lite-72); counterbore floor "
+        # the block stays seated on the stand-in heat break's flange, where lite-72 has it; the MZE's stud screws up the
+        # block until it butts the heat break (a nozzle's or MZE's seal is against the heat break, hot-tightened), so its
+        # shoulder sits on the block only if the stud is no longer than the block's free thread below the heat break
+        HB0 = linkgeo.gshape(h["hbreak"]); hbz0 = tight(HB0).ZMin
+        fl0 = above(HB0, cx + 4.0, cy, blk0.ZMax)
+        free = hbz0 - blk0.ZMin; sgap = max(0.0, MZE_STUD - free)
+        p.check(abs(top - blk0.ZMin - DAV_TO_BLOCK) < TOL and fl0 is not None and abs(fl0 - blk0.ZMax) < 1e-3,
+                f"{b.Label}: the stand-in, block seated on the heat break's flange (gap {(fl0 or 0) - blk0.ZMax:.3f}), has heat-sink top -> "
+                f"block bottom {top - blk0.ZMin:.3f} (owner's DAV: {DAV_TO_BLOCK} +- {TOL})")
+        span = top - blk0.ZMin + sgap + MZE_TIP
+        p.check(abs(span - DAV_TO_TIP) < TOL, f"{b.Label}: block bottom {top - blk0.ZMin:.3f} + MZE shoulder gap {sgap:.3f} + the "
+                f"STEP's tip {MZE_TIP:.3f} = heat-sink top -> tip {span:.3f} (owner's DAV, 0.6 TC Undertaker: {DAV_TO_TIP} +- {TOL})")
+        h.update(top=top, tip=tip, floor=floor, under=unders[0], dz_up=cd[0] - top, dz_low=cd[0] - top,
+                 dz_screw=floor - unders[0], uhf_ceiling=cu[0], blk_rel=top - blk0.ZMin, free=free, sgap=sgap, span=span)
+        p.log(f"{b.Label}: seat Z {cd[0]:.3f} (heat sink and block +{h['dz_up']:.3f}); the block's thread below the heat break "
+              f"{free:.3f}, the MZE's stud {MZE_STUD:.3f}: shoulder {sgap:.3f} below the block; heat-sink top -> tip {span:.3f} "
+              f"(Phaetus {VOLCANO_SPAN}, lite-72 {OLD_SPAN}); tip {tip:.3f} -> {cd[0] - span:.3f}; counterbore floor "
               f"{floor:.3f}, screws {h['dz_screw']:+.3f}")
     if p.errs: return p.finish([])
-    # ---- the Beacon: held only by the carriage (its board top on the pocket ceiling, two M3s, not modelled, into it);
-    # nothing else is mounted to it. It goes down by as much as the carried tip, back to BEACON_DZ above it.
+    # ---- the Beacon stays where lite-72 has it (on the carriage, not moved): the 59.40 tip is 0.10 higher than lite-72's,
+    # so it ends BEACON_DZ above the carried tip, inside its 2.6-3 zone; raising it 0.10 to 2.60 would cut into the carriage
     bea = [o for o in pr.leaves if o.Label.startswith(BEACON)]
     car = [o for o in pr.leaves if o.Label == CARRIAGE]
-    p.check(len(bea) == 1 and bea[0].TypeId == "Part::Feature" and len(car) == 1, f"one Beacon part, one gantry carriage ({[o.Label for o in bea]})")
+    p.check(len(bea) == 1 and len(car) == 1, f"one Beacon part, one gantry carriage ({[o.Label for o in bea]})")
     if p.errs: return p.finish([])
     bea, car = bea[0], car[0]
-    on = [o.Label for o in pr.leaves if o.Name != bea.Name and linkgeo.link_target(o).Name == bea.Name]
-    BS = pr.shapes[bea.Name]
-    near = [o.Label for o in pr.leaves if o.Name not in (bea.Name, car.Name) and BS.BoundBox.intersect(pr.shapes[o.Name].BoundBox)
-            and BS.distToShape(pr.shapes[o.Name])[0] < 0.05]
-    d_car0 = BS.distToShape(pr.shapes[car.Name])[0]
-    p.check(not on and not near, f"nothing links to the Beacon or touches it but the carriage (links {on}, touching {near}; "
-                                 f"carriage {d_car0:.3f} away)")
-    hL = heads[master.Name]; tip_new = hL["seat"] - VOLCANO_SPAN
-    bz0 = pr.shapes[bea.Name].BoundBox.ZMin
-    dz_b = (tip_new - CARRY_DZ + BEACON_DZ) - bz0
-    btop = pr.shapes[bea.Name].BoundBox
-    ceil = [above(pr.shapes[car.Name], btop.Center.x + dx, btop.Center.y + dy, btop.ZMax - 0.5) for dx in (-8, 0, 8) for dy in (-4, 4)]
-    p.log(f"Beacon: face Z {bz0:.3f} -> {bz0 + dz_b:.3f} ({dz_b:+.3f}); top Z {btop.ZMax:.3f}, {d_car0:.3f} from the carriage; the "
-          f"carriage's material above it at 6 points {[round(z, 3) if z else None for z in ceil]}; lowered, its mount gets "
-          f"{-dz_b:.2f} mm longer (a shim or longer M3s)")
+    # the carriage's copies: the Left Dock's links the carriage (follows it); the Right Dock's is a mirrored Part
+    cp = [o for o in pr.leaves if o.Label == CAR_COPY]
+    lk = [o for o in pr.leaves if o.TypeId == "App::Link" and linkgeo.link_target(o) is car]
+    p.check(len(cp) == 1 and cp[0].TypeId == "Part::Feature" and len(lk) == 1, f"the carriage's dock copies: {CAR_COPY} (a Part) and one "
+            f"link ({[o.Label for o in lk]})")
+    if p.errs: return p.finish([])
+    cp = cp[0]
+    # the cut: the Beacon board's footprint, from its top (0.010 under the pocket ceiling) up by BEACON_UP
+    BS = pr.shapes[bea.Name]; board = max(BS.Solids, key=lambda x: x.BoundBox.XLength * x.BoundBox.YLength * (x.BoundBox.ZLength < 3))
+    bt = tight(board)
+    CUT = Part.makeBox(bt.XLength, bt.YLength, BEACON_UP + 0.02, V(bt.XMin, bt.YMin, bt.ZMax - 0.01))
+    G = pr.shapes[car.Name]; cb = tight(G)
+    d0 = BS.distToShape(G)[0]
+    p.check(abs(d0 - 0.01) < 0.005, f"the Beacon's board top {bt.ZMax:.3f} sits {d0:.3f} under the carriage's pocket ceiling")
+    zc = bt.ZMax + 0.01; zn = zc + BEACON_UP
+    G2 = G.cut(CUT); rem = G.common(CUT).Volume
+    p.check(G2.isValid() and len(G2.Solids) == len(G.Solids) and abs(G.Volume - G2.Volume - rem) < 0.05 and rem > 1,
+            f"the carriage's pocket ceiling {BEACON_UP} deeper: {rem:.2f} mm3 removed ({G.Volume:.1f} -> {G2.Volume:.1f}), solids {len(G2.Solids)}")
+    # Thickness maps over the board's two end ledges (the ceiling it bears on), before and after: carriage material from
+    # the ceiling up on vertical lines, 0.2 x 0.5 mm. The ledges' outer edges already slope to nothing (a chamfer-like
+    # edge in today's part); the cut shortens that slope. Owner 2026-11-20: fail only on a NEW thin feature (thinner than
+    # ROOF_MIN where nothing near was thin before), and the flat ledge tops (1.8 today) keep >= 1.5.
+    ends = sorted(G.common(CUT).Solids, key=lambda q: q.BoundBox.Center.x)
+    p.check(len(ends) == 2, f"the board's two end ledges ({len(ends)} pieces of ceiling over it)")
+    if p.errs: return p.finish([])
+    def tmap(S, z0, qb):
+        crop = S.common(Part.makeBox(qb.XLength + 1.2, qb.YLength + 1.2, 10.5, V(qb.XMin - 0.6, qb.YMin - 0.6, z0 - 0.5)))
+        out = {}
+        for i in range(int((qb.XLength + 1.2) / 0.2) + 1):
+            for j in range(int((qb.YLength + 1.2) / 0.5) + 1):
+                x, y = qb.XMin - 0.6 + i * 0.2, qb.YMin - 0.6 + j * 0.5
+                es = sorted((min(v.Point.z for v in e.Vertexes), max(v.Point.z for v in e.Vertexes))
+                            for e in Part.makeLine(V(x, y, z0 - 0.3), V(x, y, z0 + 10)).common(crop).Edges)
+                out[(i, j)] = (x, y, es[0][1] - z0 if es and abs(es[0][0] - z0) < 0.02 else 0.0)
+        return out
+    newthin, flat, mins = [], [], []
+    for q in ends:
+        qb = q.BoundBox; m0, m1 = tmap(G, zc, qb), tmap(G2, zn, qb)
+        inb = lambda v: bt.XMin + 0.05 <= v[0] <= bt.XMax - 0.05 and bt.YMin + 0.05 <= v[1] <= bt.YMax - 0.05   # under the board (cut)
+        m0 = {k: v for k, v in m0.items() if inb(v)}; m1 = {k: v for k, v in m1.items() if inb(v)}
+        thin0 = [k for k, v in m0.items() if 0 < v[2] < ROOF_MIN]; thin1 = [k for k, v in m1.items() if 0 < v[2] < ROOF_MIN]
+        near = lambda k: any(abs(k[0] - a_) <= 3 and abs(k[1] - b_) <= 1 for a_, b_ in thin0)   # within 0.6 x 0.5 mm of an old thin spot
+        newthin += [m1[k] for k in thin1 if not near(k)]
+        flat += [m1[k][2] for k, v in m0.items() if v[2] >= 1.79]
+        mins.append((min((v[2] for v in m0.values() if v[2] > 0), default=0), min((v[2] for v in m1.values() if v[2] > 0), default=0),
+                     len(thin0), len(thin1)))
+    p.log(f"end-ledge thickness maps (before / after: min over the material, lines thinner than {ROOF_MIN}): "
+          f"{[(round(a_, 3), round(b_, 3), c_, d_) for a_, b_, c_, d_ in mins]}")
+    p.check(not newthin, f"no new thin feature: after the cut, every spot thinner than {ROOF_MIN} is on today's sloped edges "
+            f"({len(newthin)} not: {[(round(x_, 2), round(y_, 2), round(t_, 3)) for x_, y_, t_ in newthin[:4]]})")
+    p.check(flat and min(flat) >= 1.5 - 1e-3, f"the ledges' flat tops (1.8 or more today) keep {min(flat) if flat else 0:.3f} mm above the "
+            f"new ceiling over {len(flat)} lines (>= 1.5)")
+    if p.errs: return p.finish([])
+    # the Right Dock's copy: the carriage mirrored in X (checked), cut the same way
+    G3 = pr.shapes[cp.Name]; c3 = tight(G3)
+    Mx = FreeCAD.Matrix(); Mx.A11 = -1; Mx.A14, Mx.A24, Mx.A34 = c3.XMin + cb.XMax, c3.YMin - cb.YMin, c3.ZMin - cb.ZMin
+    gm = tight(G.transformGeometry(Mx))
+    dbox = max(abs(getattr(gm, k) - getattr(c3, k)) for k in ("XMin", "XMax", "YMin", "YMax", "ZMin", "ZMax"))
+    p.check(abs(G.Volume - G3.Volume) < 0.5 and dbox < 0.01, f"{CAR_COPY} is the carriage mirrored in X ({G3.Volume:.1f} / {G.Volume:.1f} mm3; "
+            f"boxes agree to {dbox:.4f} after the move)")
+    if p.errs: return p.finish([])
+    CUT3 = CUT.transformGeometry(Mx); G4 = G3.cut(CUT3); rem3 = G3.common(CUT3).Volume
+    p.check(G4.isValid() and len(G4.Solids) == len(G3.Solids) and abs(rem3 - rem) < 0.05, f"{CAR_COPY}: {rem3:.2f} mm3 removed the same way")
+    # the printable STL: the carriage back in the STL's own frame (lite25_carriage_9mm.py's map: X along X, STL Y down -Z
+    # from the carriage top, STL Z +Y from its front face; checked here on the current STL)
+    stl_d = os.path.join(_REPO, "cad/derived", CAR_STL)
+    m0 = Mesh.Mesh(stl_d); sb = m0.BoundBox
+    Ms = FreeCAD.Matrix(); (Ms.A11, Ms.A12, Ms.A13), (Ms.A21, Ms.A22, Ms.A23), (Ms.A31, Ms.A32, Ms.A33) = (1, 0, 0), (0, 0, 1), (0, -1, 0)
+    Ms.A14, Ms.A24, Ms.A34 = cb.XMin, cb.YMin, cb.ZMax
+    sbm = FreeCAD.BoundBox(); [sbm.add(Ms.multiply(V(q.x - sb.XMin, q.y - sb.YMin, q.z - sb.ZMin))) for q in m0.Points]
+    dsb = max(abs(getattr(sbm, k) - getattr(cb, k)) for k in ("XMin", "XMax", "YMin", "YMax", "ZMin", "ZMax"))
+    smp = [Ms.multiply(V(q.x - sb.XMin, q.y - sb.YMin, q.z - sb.ZMin)) for q in m0.Points[::max(1, m0.CountPoints // 12)]]
+    dpt = max(G.distToShape(Part.Vertex(q))[0] for q in smp)
+    p.check(dsb < 0.02 and abs(m0.Volume - G.Volume) < 10.0 and dpt < 0.05, f"the current carriage STL is the model's carriage in "
+            f"lite25's frame (boxes agree to {dsb:.4f}; volumes {m0.Volume:.1f} / {G.Volume:.1f}, the STL's chords on round holes; "
+            f"{len(smp)} points within {dpt:.4f})")
+    if p.errs: return p.finish([])
+    back = G2.copy(); back.transformShape(Ms.inverse(), True); back.translate(V(sb.XMin, sb.YMin, sb.ZMin))
+    m1 = MeshPart.meshFromShape(Shape=back, LinearDeflection=0.01, AngularDeflection=0.1)
+    mb1 = m1.BoundBox; dmb = max(abs(getattr(mb1, k) - getattr(sb, k)) for k in ("XMin", "XMax", "YMin", "YMax", "ZMin", "ZMax"))
+    p.check(abs((m0.Volume - m1.Volume) - rem) < 1.0 and dmb < 0.02 and m1.isSolid() >= m0.isSolid() and m1.hasNonManifolds() <= m0.hasNonManifolds(),
+            f"printable carriage STL: {m1.CountFacets} facets, volume {m1.Volume:.1f} (was {m0.Volume:.1f}: the cut's {rem:.2f}), box as before to {dmb:.4f}; closed / non-manifold {m1.isSolid()} / {m1.hasNonManifolds()} (no worse than before: {m0.isSolid()} / {m0.hasNonManifolds()})")
+    car_out = (m1, stl_d)
     # ---- before: overlaps of every part this pass touches
     for h in heads.values():                    # the stand-in's nozzle and sock make way for the MZE assembly's
         h["old"] = [h["nozzle"]] + [o for o in h["g"]["lower"] if o.Label.startswith("TL-dragon")]
@@ -280,7 +374,7 @@ def main(p):
     if p.errs: return p.finish([])
     removed = {o.Name for h in heads.values() for o in h["g"]["spacer"] + h["old"]}
     changed = ({n for n in heads} | {o.Name for h in heads.values() for k in ("screw", "upper", "lower") for o in h["g"][k]
-                                     if not linkgeo.is_mesh(o)} | {bea.Name}) - removed
+                                     if not linkgeo.is_mesh(o)} | {bea.Name, car.Name, cp.Name, lk[0].Name}) - removed
     def pairs():
         out = set()
         for a in changed:
@@ -318,7 +412,7 @@ def main(p):
                     list(t_.ViewObject.ShapeAppearance) if gui and hasattr(t_.ViewObject, "ShapeAppearance") else None)
     new = {}
     for n, h in heads.items():
-        cx, cy = h["axis"]; bot = tight(linkgeo.gshape(h["block"])).ZMin
+        cx, cy = h["axis"]; bot = tight(linkgeo.gshape(h["block"])).ZMin - h["sgap"]
         cont = h["body"].getParentGeoFeatureGroup(); Cc = linkgeo.gplace(cont)
         new[n] = {}
         for k, label in MZE_PARTS.items():
@@ -333,7 +427,13 @@ def main(p):
     sp = [o for h in heads.values() for o in h["g"]["spacer"] + h["old"]]
     for o in sorted(sp, key=lambda o: o.TypeId != "App::Link"): doc.removeObject(o.Name)       # links first
     for n, h in heads.items(): h["nozzle"] = new[n]["V6 nozzle"]
-    move_global(bea, V(0, 0, dz_b))
+    # the Beacon up, the carriage's pocket ceiling and its mirrored dock copy cut to match (local frames kept)
+    move_global(bea, V(0, 0, BEACON_UP))
+    for o, sh in ((car, G2), (cp, G4)):
+        P0 = FreeCAD.Placement(o.Placement); Cg = linkgeo.gplace(o).multiply(o.Placement.inverse())
+        ap_ = list(o.ViewObject.ShapeAppearance) if gui and hasattr(o.ViewObject, "ShapeAppearance") else None
+        g_ = sh.copy(); g_.transformShape(Cg.multiply(P0).inverse().toMatrix(), True, False); g_.Placement = P0; o.Shape = g_
+        if ap_ is not None: o.ViewObject.ShapeAppearance = ap_
     doc.recompute(); pr.refresh()
     # ---- after
     p.check(not [o for o in doc.Objects if o.Label.startswith(SPACER)], "no spacer left")
@@ -346,22 +446,22 @@ def main(p):
                 ("XMin", "XMax", "YMin", "YMax", "ZMin", "ZMax")) < 1e-3, f"{b.Label}: where its fit puts it ({G.Volume:.2f} mm3, {got})")
         top = gbox(h["hs"]).ZMax; nb = tight(linkgeo.gshape(h["nozzle"])); tip = nb.ZMin
         p.check(abs(top - h["seat"]) < 1e-3, f"{b.Label}: heat-sink top {top:.3f} on the DAV ceiling {h['seat']:.3f}")
-        p.check(abs(top - tip - VOLCANO_SPAN) < TOL, f"{b.Label}: heat-sink top -> tip {top - tip:.3f} (Volcano {VOLCANO_SPAN} +- {TOL})")
+        p.check(abs(top - tip - h["span"]) < 1e-3, f"{b.Label}: heat-sink top -> tip {top - tip:.3f} (owner {DAV_TO_TIP}; Phaetus {VOLCANO_SPAN}, lite-72 {OLD_SPAN})")
         o0 = tips0[n]
         p.check(abs(nb.Center.x - o0.Center.x) < 1e-3 and abs(nb.Center.y - o0.Center.y) < 1e-3,
                 f"{b.Label}: tip XY unchanged ({nb.Center.x:.3f}, {nb.Center.y:.3f})")
         Mz = linkgeo.gshape(new[n]["MZE"]); mzb = tight(Mz); Bk = linkgeo.gshape(h["block"]); tb_ = tight(Bk)
         HBk = linkgeo.gshape(h["hbreak"]); hx, hy = h["axis"]
-        d_blk = Mz.distToShape(Bk)[0]
-        p.check(Mz.isValid() and abs(mzb.Center.x - hx) < 1e-3 and abs(mzb.Center.y - hy) < 1e-3 and d_blk < 1e-3
-                and abs(mzb.ZMin + MZE_L - tb_.ZMin) < 1e-3,
-                f"{b.Label}: the MZE on the hotend axis, its shoulder on the heat block's bottom Z {tb_.ZMin:.3f} (distance {d_blk:.4f})")
+        p.check(abs(top - tb_.ZMin - DAV_TO_BLOCK) < TOL, f"{b.Label}: heat-sink top -> block bottom {top - tb_.ZMin:.3f} ({DAV_TO_BLOCK} +- {TOL})")
+        sh = mzb.ZMin + MZE_L
+        p.check(Mz.isValid() and abs(mzb.Center.x - hx) < 1e-3 and abs(mzb.Center.y - hy) < 1e-3 and abs(tb_.ZMin - sh - h["sgap"]) < 1e-3,
+                f"{b.Label}: the MZE on the hotend axis, its shoulder {tb_.ZMin - sh:.3f} below the heat block's bottom Z {tb_.ZMin:.3f}")
         hb_bot = tight(HBk).ZMin; stud_gap = hb_bot - mzb.ZMax
         flange = above(HBk, hx + 4.0, hy, tb_.ZMax)              # the heat break's flange (r 4.25) over the block
         h["stud_gap"], h["flange_gap"] = stud_gap, (flange - tb_.ZMax) if flange else None
-        p.check(stud_gap >= -1e-3 and h["flange_gap"] is not None and h["flange_gap"] >= -1e-3,
-                f"{b.Label}: the MZE's stud stops {stud_gap:.3f} below the heat break; the block hangs {h['flange_gap'] or 0:.3f} "
-                f"below the heat break's flange (lite-72: 0; the block slides down the heat break's thread to reach {VOLCANO_SPAN})")
+        p.check(abs(stud_gap) < 1e-3 and h["flange_gap"] is not None and abs(h["flange_gap"]) < 1e-3,
+                f"{b.Label}: the MZE's stud butts the heat break (gap {stud_gap:.3f}); the block seated on the heat break's flange "
+                f"(gap {h['flange_gap'] or 0:.3f})")
         un = [above(linkgeo.gshape(s_), gbox(s_).Center.x + 1.9, gbox(s_).Center.y, gbox(s_).ZMin - 1) for s_ in h["g"]["screw"]]
         p.check(all(abs(u - h["floor"]) < 1e-3 for u in un), f"{b.Label}: screw heads on the counterbore floor {h['floor']:.3f} ({un})")
         eng = top - min(gbox(s_).ZMin for s_ in h["g"]["screw"]); spare = h["hole_depth"] - eng
@@ -376,7 +476,8 @@ def main(p):
                             screw_tip=round(min(x.ZMin for x in sb), 3),
                             screw_engagement_in_heatsink=round(top - min(x.ZMin for x in sb), 3),
                             heatsink_hole_depth=round(h["hole_depth"], 3),
-                            mze_stud_below_heat_break=round(h["stud_gap"], 3), block_below_heat_break_flange=round(h["flange_gap"], 3), body_at_screws=round(h["floor"] - top, 3),
+                            heatsink_top_to_block_bottom=round(top - tb_.ZMin, 3), heatsink_top_to_tip=round(top - tip, 3),
+                            mze_shoulder_below_block=round(h["sgap"], 3), block_thread_below_heat_break=round(h["free"], 3), body_at_screws=round(h["floor"] - top, 3),
                             screw_length_range=[round(h["floor"] - top + ENGAGE, 2), round(h["floor"] - top + h["hole_depth"] - BOTTOM_GAP, 2)])
         p.log(f"{b.Label}: {res[b.Label]}")
     # the stand-in heat block, and the MZE assembly under it (the Left head's)
@@ -395,11 +496,15 @@ def main(p):
     ducts = [o for o in pr.leaves if o.Label.startswith(DUCTS) and par.get(o.Name) is par.get(master.Name)]
     clear = {}
     clear["beacon_face_above_carried_tip"] = round(pr.shapes[bea.Name].BoundBox.ZMin - carried, 3)
+    BN, CN = pr.shapes[bea.Name], pr.shapes[car.Name]
+    ov, dn = BN.common(CN).Volume, BN.distToShape(CN)[0]
+    p.check(ov < 1e-3 and dn < 0.05, f"the raised Beacon touches or clears the deeper pocket ceiling (overlap {ov:.4f} mm3, gap {dn:.3f})")
+    for o in lk + [cp]:
+        p.check(abs(pr.shapes[o.Name].Volume - G2.Volume) < 0.5, f"{o.Label}: the same part as the carriage ({pr.shapes[o.Name].Volume:.1f} mm3)")
     clear["carriage_underside_above_carried_tip"] = round(pr.shapes[car.Name].BoundBox.ZMin - carried, 3)
-    clear["beacon_gap_under_its_seat"] = round(-dz_b, 3)
     if ducts: clear["ducts_4010_lowest_above_tip"] = round(min(litelib.obb(pr.shapes[o.Name]).ZMin for o in ducts) - tipL, 3)
-    p.check(len(clear) == 4, f"clearances measured: {clear} (lite-72: Beacon 2.60, carriage 3.0, ducts 2.41)")
-    p.check(abs(clear["beacon_face_above_carried_tip"] - BEACON_DZ) < TOL, f"the Beacon face is {clear['beacon_face_above_carried_tip']:.3f} above the carried tip ({BEACON_DZ} +- {TOL})")
+    p.check(len(clear) == 3, f"clearances measured: {clear} (lite-72: Beacon 2.60, carriage 3.0, ducts 2.41)")
+    p.check(abs(clear["beacon_face_above_carried_tip"] - BEACON_DZ) < TOL and 2.6 - 1e-6 <= clear["beacon_face_above_carried_tip"] <= 3.0, f"the Beacon face is {clear['beacon_face_above_carried_tip']:.3f} above the carried tip ({BEACON_DZ} +- {TOL}, in its 2.6-3 zone)")
     p.check(clear["beacon_face_above_carried_tip"] < clear["carriage_underside_above_carried_tip"], "the Beacon is still the carriage's lowest part")
     # overlaps after
     removed_now = set(removed)
@@ -437,8 +542,11 @@ def main(p):
     p.check(kn.get(SOCK_RULE, []) and len(kn[SOCK_RULE]) == 5, f"the sock over the MZE on all 5 heads ({kn.get(SOCK_RULE)})")
     p.dump({"mze": {"step": os.path.relpath(MZE_STEP, _REPO), "length_below_shoulder": round(MZE_L, 3), "stud": round(MZE_STUD, 3),
                     "od": round(MZE_OD, 3), "tip_below_shoulder": round(MZE_TIP, 3), "inside_step_overlaps": inner},
-            "beacon_dz": round(dz_b, 3), "heads": res, "stand_in_heat_block": block, "clearances": clear, "upstream": UPSTREAM_COMMIT,
+            "heads": res, "stand_in_heat_block": block, "clearances": clear, "upstream": UPSTREAM_COMMIT,
             "overlaps_gone": [(round(v, 2), a, b) for v, a, b in gone], "src": os.path.basename(SRC)})
+    m1, stl_d = car_out
+    for fn in ((stl_d, os.path.join(_REPO, "parts/printed/vt350", CAR_STL)) if not p.errs else ()):
+        m1.write(fn); p.log(f"wrote {os.path.relpath(fn, _REPO)} (a derived STL, written in a dry run too: it doesn't touch the model)")
     return p.finish([(doc, DST)])
 
 

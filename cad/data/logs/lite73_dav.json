@@ -11,25 +11,26 @@
    "Sock x V6 nozzle": 0.0
   }
  },
- "beacon_dz": -1.099,
  "heads": {
   "hex-main-body_DAV_o2_xol": {
    "tip_xyz": [
     -409.7,
     -32.461,
-    379.7
+    380.9
    ],
-   "tip_dz": -1.1,
+   "tip_dz": 0.1,
    "heatsink_top": 440.3,
    "uhf_ceiling": 443.3,
    "dav_ceiling": 440.3,
-   "heat_block_top": 413.2,
-   "heat_block_bottom": 393.2,
+   "heat_block_top": 414.8,
+   "heat_block_bottom": 394.8,
    "screw_tip": 435.3,
    "screw_engagement_in_heatsink": 5.0,
    "heatsink_hole_depth": 6.0,
-   "mze_stud_below_heat_break": 1.2,
-   "block_below_heat_break_flange": 1.6,
+   "heatsink_top_to_block_bottom": 45.5,
+   "heatsink_top_to_tip": 59.4,
+   "mze_shoulder_below_block": 0.4,
+   "block_thread_below_heat_break": 7.0,
    "body_at_screws": 5.0,
    "screw_length_range": [
     10.0,
@@ -40,19 +41,21 @@
    "tip_xyz": [
     -80.3,
     -32.461,
-    379.7
+    380.9
    ],
-   "tip_dz": -1.1,
+   "tip_dz": 0.1,
    "heatsink_top": 440.3,
    "uhf_ceiling": 443.3,
    "dav_ceiling": 440.3,
-   "heat_block_top": 413.2,
-   "heat_block_bottom": 393.2,
+   "heat_block_top": 414.8,
+   "heat_block_bottom": 394.8,
    "screw_tip": 435.3,
    "screw_engagement_in_heatsink": 5.0,
    "heatsink_hole_depth": 6.0,
-   "mze_stud_below_heat_break": 1.2,
-   "block_below_heat_break_flange": 1.6,
+   "heatsink_top_to_block_bottom": 45.5,
+   "heatsink_top_to_tip": 59.4,
+   "mze_shoulder_below_block": 0.4,
+   "block_thread_below_heat_break": 7.0,
    "body_at_screws": 5.0,
    "screw_length_range": [
     10.0,
@@ -63,19 +66,21 @@
    "tip_xyz": [
     -324.54,
     -32.461,
-    379.7
+    380.9
    ],
-   "tip_dz": -1.1,
+   "tip_dz": 0.1,
    "heatsink_top": 440.3,
    "uhf_ceiling": 443.3,
    "dav_ceiling": 440.3,
-   "heat_block_top": 413.2,
-   "heat_block_bottom": 393.2,
+   "heat_block_top": 414.8,
+   "heat_block_bottom": 394.8,
    "screw_tip": 435.3,
    "screw_engagement_in_heatsink": 5.0,
    "heatsink_hole_depth": 6.0,
-   "mze_stud_below_heat_break": 1.2,
-   "block_below_heat_break_flange": 1.6,
+   "heatsink_top_to_block_bottom": 45.5,
+   "heatsink_top_to_tip": 59.4,
+   "mze_shoulder_below_block": 0.4,
+   "block_thread_below_heat_break": 7.0,
    "body_at_screws": 5.0,
    "screw_length_range": [
     10.0,
@@ -86,19 +91,21 @@
    "tip_xyz": [
     -248.42,
     -32.461,
-    379.7
+    380.9
    ],
-   "tip_dz": -1.1,
+   "tip_dz": 0.1,
    "heatsink_top": 440.3,
    "uhf_ceiling": 443.3,
    "dav_ceiling": 440.3,
-   "heat_block_top": 413.2,
-   "heat_block_bottom": 393.2,
+   "heat_block_top": 414.8,
+   "heat_block_bottom": 394.8,
    "screw_tip": 435.3,
    "screw_engagement_in_heatsink": 5.0,
    "heatsink_hole_depth": 6.0,
-   "mze_stud_below_heat_break": 1.2,
-   "block_below_heat_break_flange": 1.6,
+   "heatsink_top_to_block_bottom": 45.5,
+   "heatsink_top_to_tip": 59.4,
+   "mze_shoulder_below_block": 0.4,
+   "block_thread_below_heat_break": 7.0,
    "body_at_screws": 5.0,
    "screw_length_range": [
     10.0,
@@ -109,19 +116,21 @@
    "tip_xyz": [
     -156.42,
     -32.461,
-    379.7
+    380.9
    ],
-   "tip_dz": -1.1,
+   "tip_dz": 0.1,
    "heatsink_top": 440.3,
    "uhf_ceiling": 443.3,
    "dav_ceiling": 440.3,
-   "heat_block_top": 413.2,
-   "heat_block_bottom": 393.2,
+   "heat_block_top": 414.8,
+   "heat_block_bottom": 394.8,
    "screw_tip": 435.3,
    "screw_engagement_in_heatsink": 5.0,
    "heatsink_hole_depth": 6.0,
-   "mze_stud_below_heat_break": 1.2,
-   "block_below_heat_break_flange": 1.6,
+   "heatsink_top_to_block_bottom": 45.5,
+   "heatsink_top_to_tip": 59.4,
+   "mze_shoulder_below_block": 0.4,
+   "block_thread_below_heat_break": 7.0,
    "body_at_screws": 5.0,
    "screw_length_range": [
     10.0,
@@ -142,7 +151,7 @@
    7.0,
    12.5
   ],
-  "nozzle_below_block": 13.5,
+  "nozzle_below_block": 13.9,
   "sock_box": [
    14.0,
    14.0,
@@ -151,10 +160,9 @@
   "nozzle_below_sock": 3.0
  },
  "clearances": {
-  "beacon_face_above_carried_tip": 2.6,
-  "carriage_underside_above_carried_tip": 4.1,
-  "beacon_gap_under_its_seat": 1.099,
-  "ducts_4010_lowest_above_tip": 3.513
+  "beacon_face_above_carried_tip": 2.799,
+  "carriage_underside_above_carried_tip": 2.9,
+  "ducts_4010_lowest_above_tip": 2.313
  },
  "upstream": "888755a97da9e1bd3062c35c914538342ef7d6f2",
  "overlaps_gone": [],
