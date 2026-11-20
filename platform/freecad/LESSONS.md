@@ -287,3 +287,12 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
   vertical lines (`Part.makeLine(...).common(shape).Edges`) round the axis give each part's material along Z, so
   "what is directly above the heat sink" is one number per line. Keep the lines off holes (at radius 8 on the
   diagonals they ran down the screw holes and found nothing).
+
+## A pass that writes a derived file must accept that file in its post-merge state (2026-11-20, lite-73)
+
+A pass that re-exports a printed STL writes it even in a dry run, and the PR commits it. The owner's GUI save runs
+*after* the merge, so it sees the new STL, not the one the pass was written against. lite-73's precheck ("the
+committed carriage STL is today's carriage") passed in every dry run and failed the real save: NOT SAVED. Make such
+checks accept both states (before and already-done), and don't rewrite a derived file that's already current, so its
+sha256 keeps matching the manifest and the print projects. Also: passes read `VT350_REPO`, default `~/Code/vt350`. A
+dry run from a worktree reads and writes the **main checkout** unless you set `VT350_REPO=$PWD`.
