@@ -59,6 +59,9 @@ TOL = 0.05
 # screw's 2.5 mm head reaches 447.8, and the parts DW-Tas puts on top of the body start at 446.8 over every screw
 # (in lite-72 too, over the UHF floor at 445.8: the screws then floated below the body, so nothing showed). Which
 # screw (or head) the A4Tv2 means here is an open question on #263; the pass reports it, it doesn't guess.
+SCREW_L = 10.0               # the hotend screws' length under the head: M2.5 x 10 SHCS (DIN 912), cut from longer OK
+ENGAGE = 5.0                 # full thread engagement: 2 x the diameter, in the aluminium heat sink
+BOTTOM_GAP = 0.5             # the screw's tip stays this far off the tapped hole's bottom
 HEADS_RULE = "screw head under the extruder adapter / Crossbow (reported, #263)"
 KNOWN = {HEADS_RULE: None,
          "screw in the stand-in heat sink's tapped hole (modelled at the minor diameter; 5.0 mm deep now, was 2.0)": (HEATSINK, 8.0),
@@ -190,6 +193,17 @@ def main(p):
         p.check(ok, f"{b.Label}: DAV counterbore floors {floors} (from the ceiling up); screw head undersides {unders}")
         if not ok: return p.finish([])
         floor = floors[0]
+        # the heat sink's tapped holes: on each screw's axis the heat sink has no material from its top down to the
+        # hole's bottom (the stand-in models the hole at the minor diameter, so the screw's own axis line is clear)
+        HS = linkgeo.gshape(h["hs"]); depths = []
+        for s_ in sc:
+            sb = gbox(s_); x, y = sb.Center.x, sb.Center.y
+            es = [max(v.Point.z for v in e.Vertexes) for e in Part.makeLine(V(x, y, top - 30), V(x, y, top + 1)).common(HS).Edges]
+            depths.append(top - max((z for z in es if z < top - 0.01), default=top - 30))
+        p.check(max(depths) - min(depths) < 1e-6 and min(depths) < 29, f"{b.Label}: the heat sink's 4 tapped holes, {depths} mm deep")
+        h["hole_depth"] = min(depths)
+        lsc = unders[0] - min(gbox(s_).ZMin for s_ in sc)
+        p.check(abs(lsc - SCREW_L) < 1e-3, f"{b.Label}: the hotend screws are M2.5 x {lsc:.2f} under the head (expected {SCREW_L})")
         h.update(top=top, tip=tip, floor=floor, under=unders[0], dz_up=cd[0] - top, dz_low=cd[0] - VOLCANO_SPAN - tip,
                  dz_screw=floor - unders[0], uhf_ceiling=cu[0])
         p.log(f"{b.Label}: seat Z {cd[0]:.3f} (heat sink +{h['dz_up']:.3f}); tip {tip:.3f} -> {cd[0] - VOLCANO_SPAN:.3f} "
@@ -247,13 +261,19 @@ def main(p):
                 f"{b.Label}: tip XY unchanged ({nb.Center.x:.3f}, {nb.Center.y:.3f})")
         un = [above(linkgeo.gshape(s_), gbox(s_).Center.x + 1.9, gbox(s_).Center.y, gbox(s_).ZMin - 1) for s_ in h["g"]["screw"]]
         p.check(all(abs(u - h["floor"]) < 1e-3 for u in un), f"{b.Label}: screw heads on the counterbore floor {h['floor']:.3f} ({un})")
+        eng = top - min(gbox(s_).ZMin for s_ in h["g"]["screw"]); spare = h["hole_depth"] - eng
+        p.check(eng >= ENGAGE - 1e-6 and spare >= BOTTOM_GAP - 1e-6,
+                f"{b.Label}: M2.5 x {SCREW_L:g} SHCS: {h['floor'] - top:.2f} mm through the body, {eng:.2f} mm into the heat sink "
+                f"(full engagement >= {ENGAGE}), {spare:.2f} short of the {h['hole_depth']:.2f} mm hole's bottom (>= {BOTTOM_GAP})")
         blk = tight(linkgeo.gshape(h["block"]))
         sb = [gbox(s_) for s_ in h["g"]["screw"]]
         res[b.Label] = dict(tip_xyz=[round(nb.Center.x, 3), round(nb.Center.y, 3), round(tip, 3)], tip_dz=round(tip - o0.ZMin, 3),
                             heatsink_top=round(top, 3), uhf_ceiling=round(h["uhf_ceiling"], 3), dav_ceiling=round(h["seat"], 3),
                             heat_block_top=round(blk.ZMax, 3), heat_block_bottom=round(blk.ZMin, 3),
                             screw_tip=round(min(x.ZMin for x in sb), 3),
-                            screw_engagement_in_heatsink=round(top - min(x.ZMin for x in sb), 3))
+                            screw_engagement_in_heatsink=round(top - min(x.ZMin for x in sb), 3),
+                            heatsink_hole_depth=round(h["hole_depth"], 3), body_at_screws=round(h["floor"] - top, 3),
+                            screw_length_range=[round(h["floor"] - top + ENGAGE, 2), round(h["floor"] - top + h["hole_depth"] - BOTTOM_GAP, 2)])
         p.log(f"{b.Label}: {res[b.Label]}")
     # the stand-in heat block and nozzle (the Left head's; all five are links to it)
     L = heads[master.Name]
@@ -276,6 +296,13 @@ def main(p):
     if len(bea) == 1: clear["beacon_face_above_carried_tip"] = round(pr.shapes[bea[0].Name].BoundBox.ZMin - carried, 3)
     if len(car) == 1: clear["carriage_underside_above_carried_tip"] = round(pr.shapes[car[0].Name].BoundBox.ZMin - carried, 3)
     if ducts: clear["ducts_4010_lowest_above_tip"] = round(min(litelib.obb(pr.shapes[o.Name]).ZMin for o in ducts) - tipL, 3)
+    if len(bea) == 1 and len(car) == 1:
+        # what holds the Beacon (#265, owner 2026-11-20: lower it 1.10 to 2.60 above the tip?): its board top against the
+        # carriage's pocket ceiling (lite-24), two M3s (not modelled) into the ceiling's pilot holes. Logged, not changed.
+        be, cs = pr.shapes[bea[0].Name], pr.shapes[car[0].Name]; bb_ = be.BoundBox
+        seat = [above(cs, bb_.Center.x + dx, bb_.Center.y + dy, bb_.ZMax - 0.5) for dx in (-8, 0, 8) for dy in (-4, 0, 4)]
+        p.log(f"Beacon: top Z {bb_.ZMax:.3f}; the carriage's material above it at 9 points: {[round(z, 3) if z else None for z in seat]}; "
+              f"lowering it {CARRY_DZ and clear.get('beacon_face_above_carried_tip', 0) - 2.6:.3f} to 2.60 would leave that gap under the ceiling")
     p.check(len(clear) == 3, f"clearances measured: {clear} (lite-72: Beacon 2.60, carriage 3.0, ducts 2.41)")
     # overlaps after
     removed_now = set(removed)
