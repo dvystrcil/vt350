@@ -32,6 +32,7 @@ flowchart TD
 | Only the reach changed (sweep re-run by hand) | `python3 cad/scripts/refresh.py N --from print_area` | seconds |
 | Changed a file in `parts/printed/` or `manifest.csv` | `python3 platform/parts/check-printed.py` (add `--write-index` to rebuild the README table) | seconds |
 | Will a part print without supports? (before any PETG test-fit) | `python3 platform/parts/slice-check.py <stl…>`: report + red-support preview; see `parts/slice/README.md` | ~1 s/part, up to ~1 min for big ones |
+| What has the build cost, and what's left to buy? (or after editing `bom/bom.csv`) | `python3 bom/totals.py`: spent / still to spend / grand total per currency, unpriced rows listed; `--check` only validates the CSV (rules in the script's docstring) | instant |
 | Checking pinned upstream STLs haven't drifted | `python3 platform/parts/check-printed.py --upstream` (network; CI doesn't run it) | ~1 min |
 | See what refresh *would* do, writing nothing | `python3 cad/scripts/refresh.py N --dry-run` | seconds |
 | Full colour renders of the whole printer, here on the laptop | `cad/render/render_full.sh [N] [samples]` (below) | ~6 min; prints the image paths |
