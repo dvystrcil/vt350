@@ -120,6 +120,11 @@ class RenderWritesReadmeImages(unittest.TestCase):
     def test_no_low_views_without_a_stand(self):
         self.assertFalse([n for n in os.listdir(self.out) if "-low_" in n])
 
+    def test_no_deprecation_warnings(self):
+        """#247: no API Blender 5.x marks for removal in 6.0 (the material and world node switches were the first)."""
+        log = [l for l in (self.blender.stdout + self.blender.stderr).splitlines() if "DeprecationWarning" in l]
+        self.assertEqual(log, [])
+
     def test_no_dock_views_without_a_dock_bar(self):
         self.assertFalse([n for n in os.listdir(self.out) if "-dock_" in n])
 
