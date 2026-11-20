@@ -35,8 +35,10 @@ max_temp: 300
 
 [include sub/more.cfg]
 """
-MORE = "[fan]\npin: !tool:PA10\n"
-MAP = ('{"target": "simulavr-atmega644p", "mcus": {"mcu": {"PF13": "PC0", "PG6": "PC1"},'
+MORE = ("[fan]\npin: !tool:PA10\n\n"
+        "[tools_calibrate]\npin: ^PG11  # an NC switch: high (pull-up) when pressed\n\n"
+        "[probe]\npin: !PG12\n")
+MAP = ('{"target": "simulavr-atmega644p", "mcus": {"mcu": {"PF13": "PC0", "PG6": "PC1", "PG11": "PC2", "PG12": "PC3"},'
        ' "tool": {"PA1": "PA0", "PA10": "PC1", "PB9": "PC0"}}}')
 
 
@@ -111,6 +113,24 @@ class Prepare(unittest.TestCase):
         cp.read_string(text.replace("[include src/printer.cfg]", ""))
         self.assertEqual(cp["stepper_x"]["homing_retract_dist"], "0")
         self.assertNotIn("extruder", cp.sections())
+
+    def test_simulated_probes_read_untriggered(self):
+        # a simulated input reads its pull-up (high): a probe's pin is inverted so it reads untriggered, as batch
+        # mode's probes do; "Probe triggered prior to movement" otherwise. Pull-up kept, simulated pin used.
+        self._prepare()
+        with open(os.path.join(self.data, "config", "printer.cfg")) as f:
+            text = f.read()
+        cp = configparser.ConfigParser(strict=False, inline_comment_prefixes=("#",))
+        cp.read_string(text.replace("[include src/printer.cfg]", ""))
+        self.assertEqual(cp["tools_calibrate"]["pin"], "^!PC2")
+        self.assertEqual(cp["probe"]["pin"], "PC3")
+        self.assertNotIn("fan", cp.sections())
+
+    def test_probe_pin_inversion(self):
+        self.assertEqual(prepare.invert_pin("^PC2"), "^!PC2")
+        self.assertEqual(prepare.invert_pin("^!PC2"), "^PC2")
+        self.assertEqual(prepare.invert_pin("!tool:PA1"), "tool:PA1")
+        self.assertEqual(prepare.invert_pin("~ tool:PA1"), "~!tool:PA1")
 
     def test_supervisord_runs_one_simulator_per_mcu_then_klippy_moonraker_nginx(self):
         paths = self._prepare()
