@@ -92,7 +92,7 @@ COPY --from=build /out/pysimulavr/ /opt/virtualprinter/pysimulavr/
 COPY --from=build /opt/moonraker/ /opt/moonraker/
 COPY --from=build /opt/moonraker-env/ /opt/moonraker-env/
 COPY --from=pinmap pinmap.py /opt/virtualprinter/pinmap.py
-COPY prepare.py reset_watch.py entrypoint.sh nginx.conf /opt/virtualprinter/
+COPY prepare.py reset_watch.py heatsim.py entrypoint.sh nginx.conf /opt/virtualprinter/
 # klippy, Moonraker and the configs a viewer edits all live in /opt/printer_data (the Kalico image's data folder);
 # ~/printer_data points there, for configs that name a file in it (a save file, [save_variables]).
 RUN mkdir -p /opt/printer_data/comms /opt/printer_data/database \
