@@ -4,7 +4,7 @@
 """
 import os, sys, unittest
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import json, tempfile
+import contextlib, io, json, tempfile
 import rules
 import licence_check
 
@@ -106,7 +106,9 @@ class LicenceCheck(unittest.TestCase):
     """licence_check.py on a scene.json with "parts" (a selection export) or on part indexes (a whole-model export)."""
 
     def setUp(self):
-        self.d = tempfile.mkdtemp()
+        t = tempfile.TemporaryDirectory(); self.addCleanup(t.cleanup); self.d = t.name
+        out = contextlib.redirect_stdout(io.StringIO()); out.__enter__()      # main() prints its verdict: keep it
+        self.addCleanup(out.__exit__, None, None, None)                         # out of the unittest log's tail
 
     def put(self, name, data):
         p = os.path.join(self.d, name); json.dump(data, open(p, "w")); return p

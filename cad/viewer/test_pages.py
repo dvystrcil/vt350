@@ -10,7 +10,8 @@ import pages
 
 class LicenceInputs(unittest.TestCase):
     def setUp(self):
-        self.docs = tempfile.mkdtemp(); self.run = tempfile.mkdtemp()
+        for a in ("docs", "run"):
+            t = tempfile.TemporaryDirectory(); self.addCleanup(t.cleanup); setattr(self, a, t.name)
         os.makedirs(os.path.join(self.run, "export"))
         pages.DOCS = self.docs
         pages.index_problems = lambda models: []                   # every index fresh, unless a test says otherwise
