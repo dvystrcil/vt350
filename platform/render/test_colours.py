@@ -140,6 +140,10 @@ class TheCommittedMap(unittest.TestCase):
                           (sleeve, "rubber"), (sleeve + "3", "dragon_orange"), (sleeve + "007", "rubber"),
                           (sleeve + "008", "dragon_orange")):
             self.assertEqual(co.role_of(m, lab + " (stand-in)", a4t, "Default"), role, lab + " (stand-in)")
+        # lite-73 (#263): the Trianglelab MZE assembly's nozzle and sock (FreeCAD numbers repeats)
+        for lab, role in (("TL-dragon-ace-MZE nozzle (brass V6)", "brass"), ("TL-dragon-ace-MZE nozzle (brass V6)004", "brass"),
+                          ("TL-dragon-ace-MZE sock", "rubber"), ("TL-dragon-ace-MZE sock003", "rubber")):
+            self.assertEqual(co.role_of(m, lab, a4t, "Default"), role, lab)
         for lab in ("Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)",
                     "Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)"):
             self.assertEqual(co.role_of(m, lab, th, "Default"), "o2s_heatsink", lab)
