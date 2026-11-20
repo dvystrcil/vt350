@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Three Pi 5 Models</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single reading column of a lab notebook entry; figures break out wider; one comparison table is the anchor. */
+:root {
+  --bg: #f3f5f1;          /* pale board-house grey-green */
+  --panel: #e6ebe3;
+  --fg: #1c2420;
+  --muted: #5a665f;
+  --rule: #c9d2c8;
+  --mask: #1f6b45;        /* solder-mask green, the accent */
+  --copper: #b5651d;      /* copper, the second voice */
+  --hot: #c4321f;
+  --cool: #8a8f93;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", Roboto, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #141916; --panel: #1c231f; --fg: #e3e9e4; --muted: #9aa8a0; --rule: #2e3a33;
+  --mask: #5cc28d; --copper: #e0954f; --hot: #ff7a63; --cool: #9aa0a4; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #141916; --panel: #1c231f; --fg: #e3e9e4; --muted: #9aa8a0; --rule: #2e3a33;
+  --mask: #5cc28d; --copper: #e0954f; --hot: #ff7a63; --cool: #9aa0a4; color-scheme: dark }
+
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+main { max-width: 1080px; margin: 0 auto; padding-block: 48px 72px; display: grid; gap: 56px; }
+.col { max-width: 66ch; }
+h1, h2 { font-family: var(--display); text-wrap: balance; letter-spacing: -0.01em; margin: 0; }
+h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800; line-height: 1.05; }
+h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; }
+p { margin: 0 0 12px; }
+.eyebrow { font: 500 0.78rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.lede { font-size: 1.2rem; color: var(--muted); margin-top: 18px; }
+.lede strong { color: var(--fg); }
+.verdict { font-family: var(--display); font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: var(--mask); margin-top: 22px; }
+code, .mono { font-family: var(--mono); font-size: 0.88em; }
+a { color: var(--mask); }
+
+.trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.cand { display: grid; gap: 8px; align-content: start; }
+.cand img { width: 100%; height: auto; border-radius: 4px; display: block; }
+.cand .who { font-weight: 600; }
+.cand .lic { font: 0.8rem var(--mono); color: var(--muted); }
+.tag { display: inline-block; font: 500 0.72rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; border: 1px solid currentColor; }
+.tag.no { color: var(--hot); } .tag.ok { color: var(--mask); } .tag.ref { color: var(--muted); }
+
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; min-width: 620px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font: 500 0.75rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+td.n { font-family: var(--mono); text-align: right; white-space: nowrap; }
+th.n { text-align: right; }
+tr.pick td { background: var(--panel); }
+tr.pick td:first-child { box-shadow: inset 3px 0 0 var(--mask); }
+
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+figure { margin: 0; display: grid; gap: 8px; }
+figure img { width: 100%; height: auto; border-radius: 4px; display: block; }
+figcaption { font-size: 0.9rem; color: var(--muted); }
+figcaption b { color: var(--fg); font-weight: 600; }
+.scale { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; font: 0.82rem var(--mono); color: var(--muted); }
+.ramp { height: 12px; width: min(320px, 100%); border-radius: 2px;
+  background: linear-gradient(90deg, #8c8c94 0%, #f2d933 10%, #f2730d 50%, #d90d0d 100%); }
+.row-label { font: 600 0.95rem var(--display); margin: 8px 0 4px; }
+
+.takeaways { display: grid; gap: 14px; padding: 0; margin: 0; list-style: none; }
+.takeaways li { padding-left: 18px; border-left: 2px solid var(--copper); }
+.small { font-size: 0.85rem; color: var(--muted); }
+.method { display: grid; gap: 8px; }
+
+@media (max-width: 720px) {
+  .trio, .pair { grid-template-columns: minmax(0, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<main>
+  <header class="col">
+    <div class="eyebrow">VT350 study · e-box · 2026-11-20</div>
+    <h1>Three Raspberry Pi 5 models, one board</h1>
+    <p class="lede">The VT350's e-box holds a Raspberry Pi 5. The model we had came from GrabCAD, and it was the last part we could show but not share. We compared it with Raspberry Pi's own STEP file and with a community simplification of that file. <strong>The lightest of the three is also the most faithful one we can use.</strong></p>
+    <p class="verdict">Sometimes simpler is better.</p>
+  </header>
+
+  <section>
+    <h2>The candidates</h2>
+    <div class="trio">
+      <div class="cand">
+        <img src="pi5-models/close-grabcad.jpg" alt="GrabCAD Pi 5 model, close-up of the Ethernet and USB corner. The Ethernet jack carries Trxcom markings.">
+        <div class="who">GrabCAD, by Mateusz Zelek</div>
+        <div class="lic">591 solids · 165k triangles</div>
+        <div><span class="tag no">show only</span></div>
+      </div>
+      <div class="cand">
+        <img src="pi5-models/close-official.jpg" alt="Official Raspberry Pi 5 model, close-up of the same corner, with every small SMD part present.">
+        <div class="who">Official, Raspberry Pi Ltd</div>
+        <div class="lic">2,689 solids · 1.63M triangles</div>
+        <div><span class="tag ref">MIT · the reference</span></div>
+      </div>
+      <div class="cand">
+        <img src="pi5-models/close-simplified.jpg" alt="Simplified Pi 5 model, close-up of the same corner, identical to the official one apart from missing tiny SMD parts.">
+        <div class="who">Simplified, by Eduard Mandache</div>
+        <div class="lic">25 solids · 183k triangles</div>
+        <div><span class="tag ok">CC BY-SA 4.0 · chosen</span></div>
+      </div>
+    </div>
+    <p class="small" style="margin-top:12px">Same camera, same scale, edges drawn. The official and simplified Ethernet jacks are the same part. The GrabCAD jack has a different body and a different vendor's markings.</p>
+  </section>
+
+  <section>
+    <h2>How close is each one to the official model?</h2>
+    <div class="col">
+      <p>Each model was moved to its best fit over the official one, so a constant offset doesn't count against it. Then every surface was measured against the official surface, weighted by area. We measured both ways: how far a model's surfaces sit from the official ones, and how much of the official board a model is missing.</p>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Model</th><th class="n">Within 0.1&nbsp;mm</th><th class="n">Over 0.5&nbsp;mm off</th><th class="n">Mean distance</th><th class="n">Official area missing</th><th class="n">STEP size</th><th class="n">Solids</th></tr></thead>
+        <tbody>
+          <tr><td>GrabCAD</td><td class="n">26%</td><td class="n">6.0%</td><td class="n">0.27&nbsp;mm</td><td class="n">17.8% over 0.5&nbsp;mm</td><td class="n">48.7&nbsp;MB</td><td class="n">591</td></tr>
+          <tr class="pick"><td>Simplified</td><td class="n">100%</td><td class="n">0%</td><td class="n">0.00&nbsp;mm</td><td class="n">1.4% over 0.5&nbsp;mm</td><td class="n">24.0&nbsp;MB</td><td class="n">25</td></tr>
+          <tr><td>Official</td><td class="n" colspan="4" style="text-align:left">the reference</td><td class="n">77.6&nbsp;MB</td><td class="n">2,689</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small" style="margin-top:10px">Before the fit, the GrabCAD board sat 1.6&nbsp;mm off vertically and it measured 89.04 × 57.19 × 20.95&nbsp;mm against the official 88.50 × 57.63 × 18.98. The 1.4% the simplified model lacks is the small SMD parts it removed on purpose.</p>
+  </section>
+
+  <section>
+    <h2>Where they differ</h2>
+    <div class="scale"><span>0&nbsp;mm</span><span class="ramp" role="img" aria-label="Colour scale: grey at 0 mm, yellow at 0.1 mm, orange at 0.5 mm, red at 1 mm or more"></span><span>1&nbsp;mm or more</span><span>grey matches · yellow 0.1 · orange 0.5 · red 1&nbsp;mm+</span></div>
+
+    <div class="row-label">GrabCAD</div>
+    <div class="pair">
+      <figure><img src="pi5-models/diff-grabcad-grabcad-top.jpg" alt="GrabCAD model from above, coloured by distance to the official surface: almost everything yellow to orange."><figcaption><b>GrabCAD, coloured by its distance to the official surface.</b> Nearly everything sits 0.1–0.5&nbsp;mm off; the large chip is the red one.</figcaption></figure>
+      <figure><img src="pi5-models/diff-grabcad-official-top.jpg" alt="Official model from above, coloured by distance to the GrabCAD surface: a red chip, orange components, missing small parts."><figcaption><b>Official, coloured by its distance to GrabCAD.</b> What GrabCAD has in a different place or lacks.</figcaption></figure>
+    </div>
+
+    <div class="row-label">Simplified</div>
+    <div class="pair">
+      <figure><img src="pi5-models/diff-simplified-simplified-top.jpg" alt="Simplified model from above, coloured by distance to the official surface: entirely grey."><figcaption><b>Simplified, coloured by its distance to the official surface.</b> All grey: what it kept matches to 0.05&nbsp;mm.</figcaption></figure>
+      <figure><img src="pi5-models/diff-simplified-official-top.jpg" alt="Official model from above, coloured by distance to the simplified surface: grey with small coloured SMD parts."><figcaption><b>Official, coloured by its distance to the simplified model.</b> Only the tiny SMD parts it dropped light up.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="col">
+    <h2>What we took from it</h2>
+    <ul class="takeaways">
+      <li><b>Detail isn't accuracy.</b> The GrabCAD model has printed chip markings and a labelled Ethernet jack, and it is the furthest of the three from the real board.</li>
+      <li><b>Leaving things out on purpose works.</b> The simplified model removes what a printer enclosure never touches: 2,689 solids become 25, and every connector and chip that matters for fit stays exactly where Raspberry Pi drew it.</li>
+      <li><b>The licence decides what you can share.</b> The official model is MIT and the simplified one CC BY-SA 4.0, so both can go in the VT350 parts library with their source recorded. The GrabCAD terms only let us show it.</li>
+    </ul>
+  </section>
+
+  <section class="col method">
+    <h2>Method and sources</h2>
+    <p class="small">Each STEP was read in FreeCAD and meshed at 0.05&nbsp;mm linear deflection. In Blender, each model was given a translation-only best fit (iterative closest point) onto the official mesh, and the distance from every face centre to the other surface was taken from a BVH tree and weighted by face area. The GrabCAD file is Y-up and was turned upright first. No VT350 model was opened or saved.</p>
+    <p class="small">Official: Raspberry Pi Ltd, "rpi-5 3D STEP - No Graphics small file" (RP-010083-CA-1), <a href="https://pip.raspberrypi.com/categories/892-raspberry-pi-5">pip.raspberrypi.com</a>, MIT, "for guidance only". Simplified: Eduard Mandache, <a href="https://www.printables.com/model/1816030-raspberry-pi-5-simplified-cad-reference-mock-model">Raspberry Pi 5 – Simplified CAD Reference / Mock Model</a>, CC BY-SA 4.0. GrabCAD: Mateusz Zelek, <a href="https://grabcad.com/library/raspberry-pi-5-2">Raspberry Pi 5</a>. Decision and file hashes: <a href="https://github.com/dvystrcil/vt350/issues/268#issuecomment-7044607498">vt350#268</a>.</p>
+  </section>
+</main>
+</body>
+</html>
