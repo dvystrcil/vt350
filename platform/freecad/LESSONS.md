@@ -257,3 +257,8 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
   rather than "same midpoint and length".
 - **Bed and top faces: compare with a tolerance of ~0.01 mm, not 1e-3**: a face's `CenterOfMass` along a tilted
   print direction (a cap printed on its 45 deg split face) came out 0.001 above the lowest vertex.
+- **A flat face after a boolean isn't always a `Plane`** (lite-72, 2026-11-19): lite-68's pad faces, made by
+  extruding, cutting and `removeSplitter()`, include flat faces whose `Surface` is not `Part.Plane`, so a filter on
+  `f.Surface.__class__.__name__ == "Plane"` found no top face on a 0.16 mm pad and `max()` raised. The STL showed the
+  face at once. To find a face at a height, test its vertices' heights (every vertex within ~1e-4 of it), not its
+  surface type.

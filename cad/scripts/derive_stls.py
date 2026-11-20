@@ -19,22 +19,24 @@ CARRIAGE = f"{REPO}/cad/derived/madmax-andrewmcgr-carriage-beacon"
 KEYPLATES = f"{REPO}/cad/derived/madmax-andrewmcgr-dock-keyslot-pads"
 # Parts of our own, with no upstream to register to: each printed on its largest planar face. (model, output, label +
 # group.) A separate table: the cluster's submitter (homelab gpu-batch-submit.py) reads JOBS to stage each job's old
-# model and upstream STL, and these have neither. Their model must be one a JOBS row already uses (lite-68 is).
+# model and upstream STL, and these have neither. Their model must be one a JOBS row already uses (lite-72 is).
 FLAT = [
     # lite-68 (vt350#59): the dock reaches to the cowl. The keyslot plate gets a pad per keyslot (and the moved
-    # rear-bottom keyslot a wing); printed on its outer face, pads up. lite-67's spacers are gone.
-    (68, f"{KEYPLATES}/Dock Asembly standoff pads left.stl",
+    # rear-bottom keyslot a wing); printed on its outer face, pads up. lite-67's spacers are gone. lite-72 fills the old
+    # keyslot and the pad overhang past the edge, and lowers the left rear-top keyslot flush (its 0.16 mm pad dropped).
+    (72, f"{KEYPLATES}/Dock Asembly standoff pads left.stl",
      ("Dock Asembly, standoff pads left (MadMax remix, GPL-3.0)", "Left Dock")),
-    (68, f"{KEYPLATES}/Dock Asembly standoff pads right.stl",
+    (72, f"{KEYPLATES}/Dock Asembly standoff pads right.stl",
      ("Dock Asembly, standoff pads right (MadMax remix, GPL-3.0)", "Right Dock")),
 ]
 ONLY = os.environ.get("VT350_ONLY")          # write only the jobs whose output name contains this
 # (old model, new model, output, upstream STL, old label + group, new label + group, which solid: "low" = lowest Z)
 JOBS = [
-    # lite-67 (vt350#59) cut the bosses off on the print face; lite-68 adds the spot-faces and short inserts: from lite-68
-    (22, 68, f"{DUCTS}/A4Tv2 Duct-4010-left MadMax dock.stl", f"{UP}/A4Tv2_4010_Ducts.stl",
+    # lite-67 (vt350#59) cut the bosses off on the print face; lite-68 adds the spot-faces and short inserts; lite-72 cuts
+    # lite-23's old rear-bottom stub off: from lite-72
+    (22, 72, f"{DUCTS}/A4Tv2 Duct-4010-left MadMax dock.stl", f"{UP}/A4Tv2_4010_Ducts.stl",
      ("[a]_Duct-4010-left", "Left Toolhead"), ("[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)", "Left Toolhead"), None),
-    (22, 68, f"{DUCTS}/A4Tv2 Duct-4010-right MadMax dock.stl", f"{UP}/A4Tv2_4010_Ducts.stl",
+    (22, 72, f"{DUCTS}/A4Tv2 Duct-4010-right MadMax dock.stl", f"{UP}/A4Tv2_4010_Ducts.stl",
      ("[a]_Duct-4010-right001", "Right Toolhead"), ("[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)", "Right Toolhead"), None),
     (22, 23, f"{ARMS}/Dock Arm {{net}}.stl", f"{ARMS}/Dock Arm +5mm.stl",
      ("Dock Arm v1 Bottom +5mm", "Left Dock"), ("Dock Arm v1 Bottom *", "Left Dock"), "low"),
