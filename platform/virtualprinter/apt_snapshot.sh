@@ -7,7 +7,7 @@
 # Rewrites the deb.debian.org URIs in /etc/apt/sources.list.d/debian.sources (the deb822 file the Debian and python
 # images ship) to snapshot.debian.org/archive/<debian|debian-security>/<timestamp>, and turns off the Release files'
 # Valid-Until check (a snapshot's Release file expires in days). Fails if any deb.debian.org source is left.
-# APT_ROOT (default empty: the real /etc/apt) is a folder standing in for / , for the tests (test_apt_snapshot.py).
+# APT_ROOT (default empty: the real /etc/apt) is a folder standing in for / , for the tests.
 set -eu
 ts=${1:?usage: apt_snapshot.sh <timestamp, e.g. 20261120T000000Z>}
 case $ts in
