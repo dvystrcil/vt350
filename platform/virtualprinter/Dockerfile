@@ -14,7 +14,10 @@
 #   simulavr      pedrolamas/simulavr 7d6905d (GPL-2.0-or-later): savannah's simulavr master plus CMake fixes for
 #                 current Debian; the mirror docker-klipper-simulavr builds from. Savannah's git was down (502) on
 #                 2026-11-19 when this was written. Checked by commit and by the sha256 of its tree (git archive), so
-#                 SIMULAVR_URL can point at any other copy (a fork, a local mirror) and still build the same source.
+#                 SIMULAVR_URL can point at any other copy and still build the same source. The fallback is the
+#                 owner's fork (all tags, so git describe works): --build-arg
+#                 SIMULAVR_URL=https://github.com/dvystrcil/simulavr.git. The monthly health review checks that
+#                 both still serve the commit and tree (check_sources.sh).
 #   firmware      Kalico at the kalisim image's own commit (/opt/dicts/KALICO_SHA), built for a simulavr atmega644p
 #                 from simulavr.config
 #   Moonraker     Arksine/moonraker v0.11.0 = 985c1d0 (GPL-3.0); its Python packages at the versions in

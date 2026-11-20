@@ -174,8 +174,11 @@ so a second one never replaces the first. Give `status` and `stop` the same `--p
 - **A reproducible build:** every input is pinned, and each pin is on [`cad/tools.md`](../tools.md) (CI fails when one
   isn't). Debian packages at exact versions from snapshot.debian.org as of `DEBIAN_SNAPSHOT` (a version Debian has
   since replaced still downloads); pip packages by version and sha256 (`--require-hashes`); simulavr by commit and by
-  the sha256 of its tree, so `--build-arg SIMULAVR_URL=<another copy>` (a fork, if the mirror goes away) builds the
-  same source or fails. The monthly health review watches the simulavr and Moonraker commits for upstream moves.
+  the sha256 of its tree, so another copy builds the same source or fails. If the pedrolamas mirror goes away, build
+  from the owner's fork (it has the tags simulavr's version needs): `docker build --build-arg
+  SIMULAVR_URL=https://github.com/dvystrcil/simulavr.git ...` (`virtualprinter.sh` builds with the default). The
+  monthly health review checks that both still serve the pinned commit and tree
+  (`platform/virtualprinter/check_sources.sh`), and watches the simulavr and Moonraker commits for upstream moves.
 - **Moonraker's `docs` root** is Kalico's `docs/` at the image's commit (the published Kalico image has none, and
   Moonraker warned "Supplied path (/opt/klipper/docs) for (docs) is invalid").
 - **What to click (AC2),** in Fluidd. `INITIALIZE_TOOLCHANGER` and `UNSELECT_TOOL` are klipper-toolchanger
