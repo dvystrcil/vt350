@@ -392,6 +392,30 @@ class TheCommittedMap(unittest.TestCase):
         for name in ("electronics", "stock_aluminium"):
             self.assertIn("PLACEHOLDER", m["roles"][name]["note"], name)
 
+    def test_emu_printed_white_accents_orange(self):
+        """Owner, 2026-11-19 (#149): the EMU's printed parts are white and orange, the printer's printed and accent
+        roles. Its accent parts carry the Voron [a]_ marker (the accent rule already takes them); the primary parts
+        have no marker, so they are named. Labels and groups as in vt350-emu-3.parts.json."""
+        m = co.load()
+        lane = "EMU 5-lane (DW-Tas) / Full Assembly - Left <1> / EMU - Single Lane <1>"
+        box, fil = lane + " / EMU Box Assembly <1>", lane + " / EMU Filamentalist Assembly <1>"
+        for lab, grp in (("Box_Base", box + " / Box-Base <1>"), ("Box_Latch", box + " / Box-Latch <1>"),
+                         ("Desiccant_Box_Base", box + " / Desiccant Box <1>"), ("border_inset", box + " / Box-Lid <1>"),
+                         ("Logo_Head", box + " / Box-Lid <1> / EMU head assembly <1>"),
+                         ("Chassis_L_688_Bearing", fil), ("Chassis_R_688_Bearing001", fil),
+                         ("EMU_Tensioner_Mount_with_Sensor", fil), ("LED_holder", fil), ("688_Bearing_Bushing", fil),
+                         ("Box_Mnt_Front_L", fil + " / Stepper Assembly <1>"),
+                         ("Multi_Lane_Base-Left", "EMU 5-lane (DW-Tas) / Full Assembly - Left <1>"),
+                         ("Multi_Lane_Base-Expander001", "EMU 5-lane (DW-Tas) / Full Assembly - Extender <2>"),
+                         ("Button_Front", "EMU 5-lane (DW-Tas) / Full Assembly - Left <1> / Front Button Assembly <1>")):
+            self.assertEqual(co.role_of(m, lab, grp, "Default"), "printed", lab)
+        for lab in ("[a]_Box_Lid_left", "[a]_Tensioner_Arm", "[a]_Idler_Roller_x001"):
+            self.assertEqual(co.role_of(m, lab, fil, "Default"), "accent", lab)
+        # bought parts stay out: the ECAS4 coupler, the switch, the clear diffuser
+        for lab in ("Main body", "Release clip", "Switch Body", "[t]_Button_Diffuser"):
+            self.assertIsNone(co.role_of(m, lab, box, "Default"), lab)
+        self.assertIsNone(co.role_of(m, "Box_Base", "Some other assembly", "Default"))     # only inside the EMU
+
     def test_existing_role_colours_are_unchanged(self):
         # vt350#149: reorganising by role adds roles; it never recolours one the owner already chose
         m = co.load()

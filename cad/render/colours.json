@@ -85,6 +85,8 @@
     {"role": "electronics", "label": "(?i)\\bPCB\\b|^Board~|USB camera board"},
     {"role": "brushed_steel", "label": "^_?MGN\\d|^MGN_|[Ss]haft", "note": "#149: linear rails, their carriages, shafts"},
     {"role": "rubber",   "label": "^Rubber( Foot|_Band)", "note": "#149: the EMU's feet and bands"},
+    {"role": "printed",  "group": "^EMU 5-lane", "label": "^(Box_Base|Box_Latch|Box_Mnt_Front_[LR]|Desiccant_Box_Base|border_inset|Logo_(Head|Eye_Left|Eye_Right|Nostril_Left|Nostril_Right)|Chassis_[LR]_688_Bearing|EMU_Tensioner_Mount_with_Sensor|LED_holder|688_Bearing_Bushing|Multi_Lane_Base-(Left|Right|Expander)|Button_(Front|Rear|Filter))\\d*$",
+     "note": "owner, 2026-11-19 (#149): the EMU's printed parts are white and orange like the printer's; its [a]_ parts are accent (the [a]_ rule above), these unmarked primary parts printed"},
     {"role": "hardware", "material": "^Steel", "note": "#149: any steel part left, so steel reads as steel rather than the model's colour"},
     {"role": "stock_aluminium", "material": "^Alumin", "note": "#149: any aluminium part left (the frame, monolith and Crossbow rules come first)"}
   ],
