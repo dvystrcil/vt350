@@ -45,15 +45,23 @@
    "model_note": "the printer with its e-box and EMU",
    "start_elevation": 25,
    "foot": "Real Blender Cycles renders (render.py, the render colour map, AgX Punchy, −1.4 EV), one every 10° round the printer at seven heights, from 40° below to 40° above, without the base board it stands on. The light turns with the camera. Drag sideways to turn it, up or down to change the height; arrow keys work too.",
-   "credits": "Parts: Z motors, drag chain, Z rails and their carriages, e-box brackets, DIN clips and SSR (GPL-3.0, Voron Design, Voron Trident), DIN rail holders (GPL-3.0, Voron Design; Voron Din Mount - Modified by elliottc, Printables 612483), backbone (GPL-3.0, clee), kinematic bed (GPL-3.0, tanaes), Monolith gantry and Carbonara beam (CC BY-NC-SA 4.0, Monolith3D), EMU and A4Tv2 (CC BY-NC-SA 4.0, DW-Tas), Orbiter (CC BY-NC-SA 4.0, Orbiter Projects), MadMax carriage, plate and clips (GPL-3.0, zruncho3d, andrewmcgr), Beacon RevH (MIT, Beacon3D), O2S and Smart Sensor (CC0-1.0, Lorincz Electronics), camera housing (public domain, lukeslabonline, Printables 305428), Raspberry Pi 5 model (Mateusz Zelek, GrabCAD, grabcad.com/library/raspberry-pi-5-2, non-commercial use with credit); the rest is this project's own (GPL-3.0-or-later). Each part keeps its licence (cad/viewer/licences.json, parts/printed/README.md); non-commercial use only.",
+   "credits": "Parts by Voron Design, elliottc, Monolith3D, zruncho3d, andrewmcgr, DW-Tas, Orbiter Projects, Lorincz Electronics, Beacon3D, tanaes, clee and lukeslabonline, and the Raspberry Pi 5 model by Mateusz Zelek (GrabCAD), each under its own licence (GPL-3.0, CC BY-NC-SA 4.0, MIT, CC0, public domain, GrabCAD's terms); the rest is this project's own (GPL-3.0-or-later). Who made what, with links: Credits and licences below. Non-commercial use only.",
    "links": [
     {
      "href": "index.html",
      "text": "All reference pages"
     },
     {
+     "href": "https://github.com/dvystrcil/vt350/blob/main/CREDITS.md",
+     "text": "Credits and licences"
+    },
+    {
      "href": "toolhead-turntable.html",
      "text": "Toolhead turntable"
+    },
+    {
+     "href": "https://grabcad.com/library/raspberry-pi-5-2",
+     "text": "Raspberry Pi 5 model (Mateusz Zelek, GrabCAD)"
     }
    ]
   }
