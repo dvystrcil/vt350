@@ -15,13 +15,21 @@
 ARG KALICO_SHA=991e1823e983a31d26b9264d2b6305fd64e3a09a
 # viesturz/klipper-toolchanger main as of 2026-04-07 (vt350#116 AC4)
 ARG TOOLCHANGER_SHA=94756dfde9b729fd69f9b8780067821c5c99a528
+# Debian packages: exact versions from snapshot.debian.org as of this moment (apt_snapshot.sh), so a rebuild gets the
+# same packages and a version Debian has since replaced still downloads (vt350#224; listed in cad/tools.md)
+ARG DEBIAN_SNAPSHOT=20261120T000000Z
 
 # --- build the dictionaries from source -------------------------------------------------------------------------
 FROM python:3.12-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS dicts
 ARG KALICO_SHA
-RUN apt-get update \
- && apt-get install -y --no-install-recommends git ca-certificates make gcc libc6-dev \
-        gcc-arm-none-eabi binutils-arm-none-eabi libnewlib-arm-none-eabi \
+ARG DEBIAN_SNAPSHOT
+COPY apt_snapshot.sh /usr/local/sbin/
+RUN sh /usr/local/sbin/apt_snapshot.sh "$DEBIAN_SNAPSHOT" \
+ && apt-get update \
+ && apt-get install -y --no-install-recommends \
+        git=1:2.39.5-0+deb12u3 ca-certificates=20250419~deb12u2 make=4.3-4.1 gcc=4:12.2.0-3 \
+        libc6-dev=2.36-9+deb12u14 gcc-arm-none-eabi=15:12.2.rel1-1 binutils-arm-none-eabi=2.40-2+18+b1 \
+        libnewlib-arm-none-eabi=3.3.0-1.3+deb12u1 \
  && rm -rf /var/lib/apt/lists/*
 RUN git init -q /src/kalico \
  && git -C /src/kalico fetch -q --depth 1 https://github.com/KalicoCrew/kalico.git "$KALICO_SHA" \

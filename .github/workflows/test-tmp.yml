@@ -3,6 +3,8 @@ on:
   pull_request:
   push:
     branches: [main]
+  # repin-virtualprinter.yml starts this on its own branches (a push made with GITHUB_TOKEN starts no runs)
+  workflow_dispatch:
 
 jobs:
   check:

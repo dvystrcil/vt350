@@ -355,9 +355,9 @@
       },
       {
        "filament": 1,
-       "path": "a4tv2/main-body_dragon-rapido-UHF_o2_xol.stl",
+       "path": "a4tv2/hex-main-body_DAV_o2_xol.stl",
        "qty": 2,
-       "sha256": "bf1bb79c9b672eca807577d7e6f5ae64e64bb99a685265c99c1ceb4f4e2da979"
+       "sha256": "6bd82ff7bc89ab5203fffc8b2f38241a76767c6c83337fd488bb975095e903a1"
       },
       {
        "filament": 2,
@@ -387,7 +387,7 @@
        "filament": 1,
        "path": "vt350/madmax-andrewmcgr-carriage-beacon/MadMaxCarriage Beacon RevH pocket 9mm belts.stl",
        "qty": 1,
-       "sha256": "c23ce864331d3f7c3057fa340eac09939ff320216d056217a50015b414f427db"
+       "sha256": "5276e811049ffcd84226c19aea63918191c38f066eb0c48d2c84a037089c76b0"
       }
      ]
     },

@@ -4,6 +4,8 @@
     python3 platform/virtualprinter/test_prepare.py
 """
 import configparser
+import contextlib
+import io
 import json
 import os
 import sys
@@ -256,6 +258,72 @@ class Prepare(unittest.TestCase):
         _write(stale, "x")
         self._prepare()
         self.assertFalse(os.path.exists(stale))
+
+
+class Check(unittest.TestCase):
+    """prepare.py --check: the drift check CI runs on the printer's config (writes nothing)."""
+
+    def setUp(self):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        self.src = os.path.join(tmp.name, "src")
+        _write(os.path.join(self.src, "printer", "printer.cfg"), PRINTER)
+        _write(os.path.join(self.src, "printer", "sub", "more.cfg"), MORE)
+        _write(os.path.join(self.src, "printer", "pinmap.json"), MAP)
+        self.sensors = os.path.join(tmp.name, "temperature_sensors.cfg")
+        _write(self.sensors, SENSORS)
+
+    def _check(self, extra="", pin_map=None):
+        if extra:
+            with open(os.path.join(self.src, "printer", "printer.cfg"), "a") as f:
+                f.write(extra)
+        if pin_map is not None:
+            _write(os.path.join(self.src, "printer", "pinmap.json"), json.dumps(pin_map))
+        return prepare.check(self.src, "printer/printer.cfg", "printer/pinmap.json", self.sensors)
+
+    def test_a_covered_config_passes_and_names_its_heaters(self):
+        self.assertEqual(self._check(), ([], ["extruder"]))
+
+    def test_a_new_pin_fails(self):
+        problems, _ = self._check("\n[fan_generic aux]\npin: tool:PB0\n")
+        self.assertEqual(problems, ["pin map: tool:PB0 ([fan_generic aux] pin) is not in the map"])
+
+    def test_a_heater_on_two_boards_or_with_an_unknown_sensor_fails(self):
+        m = json.loads(MAP)
+        m["mcus"]["mcu"].update({"PA1": "PB3", "PF3": "PA0"})
+        m["mcus"]["tool"].update({"PA2": "PA1"})
+        problems, heaters = self._check("\n[heater_bed]\nheater_pin: PA1\nsensor_pin: tool:PA2\n"
+                                        "sensor_type: Generic Beta\n\n"
+                                        "[heater_generic chamber]\nheater_pin: tool:PB9\nsensor_pin: PF3\n", m)
+        self.assertEqual(problems, ["heater not simulated: [heater_bed]: heater and sensor not on one simulated board",
+                                    "heater not simulated: [heater_generic chamber]: heater and sensor not on one "
+                                    "simulated board"])
+        self.assertEqual(heaters, ["extruder"])
+
+    def test_a_non_thermistor_sensor_fails(self):
+        m = json.loads(MAP)
+        m["mcus"]["mcu"].update({"PA1": "PB3", "PF3": "PA0"})
+        problems, _ = self._check("\n[heater_bed]\nheater_pin: PA1\nsensor_pin: PF3\nsensor_type: PT1000\n", m)
+        self.assertEqual(problems, ["heater not simulated: [heater_bed]: sensor_type 'PT1000' is not a thermistor"])
+
+    def test_a_missing_thermistor_list_is_an_error(self):
+        os.remove(self.sensors)
+        with self.assertRaisesRegex(ValueError, "no thermistor list"):
+            self._check()
+
+    def test_cli_says_ok_or_failed(self):
+        def run(*extra):
+            out = io.StringIO()
+            with contextlib.redirect_stdout(out):
+                rc = prepare.main(["--check", "--source", self.src, "--config", "printer/printer.cfg",
+                                   "--map", "printer/pinmap.json", "--sensors", self.sensors, *extra])
+            return rc, out.getvalue().splitlines()
+        rc, out = run()
+        self.assertEqual((rc, out[-1]), (0, "virtual-printer: check OK"))
+        self._check("\n[fan_generic aux]\npin: tool:PB0\n")
+        rc, out = run()
+        self.assertEqual((rc, out[-1]), (1, "virtual-printer: check FAILED"))
+        self.assertFalse(os.path.exists(os.path.join(self.src, "..", "data")))
 
 
 if __name__ == "__main__":
