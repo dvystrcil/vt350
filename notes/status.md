@@ -52,8 +52,8 @@ confirm which parts you already own.
 
 ## Baseline and the pass in flight
 
-**Baseline: `baseline-lite-71`** (tag on main, 2026-11-19). The tag's message lists the sha256 of
-`vt350-lite-71.FCStd`, `vt350-emu-4.FCStd` and `vt350-ebox-3.FCStd`; check the files in `~/Documents/VT350` with
+**Baseline: `baseline-lite-72`** (tag on main, 2026-11-19; `baseline-lite-71` before it). The tag's message lists the sha256 of
+`vt350-lite-72.FCStd`, `vt350-emu-4.FCStd` and `vt350-ebox-3.FCStd`; check the files in `~/Documents/VT350` with
 `sha256sum` before starting a pass.
 
 **One model pass in flight at a time.** Before starting a pass, claim its number here, in the same PR as the pass.
