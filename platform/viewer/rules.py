@@ -23,10 +23,12 @@ A **licence file**:
     {"shareable": [SPDX id, ...],
      "rules": [match + "licence": SPDX id + "source": where the licence was read]}
 The first rule that matches a part gives its licence. check() fails a part no rule matches (unknown) and a part
-whose licence isn't in "shareable".
+whose licence isn't in "shareable". A rule whose licence is "unknown" records an open question in its "source"
+(e.g. a part whose origin isn't traced yet): its parts fail as unknown, with the question in the log.
 """
 import json
 
+UNKNOWN = "unknown"                      # a rule's licence for a part whose licence is an open question
 KEYS = ("group", "group_prefix", "label", "label_prefix", "label_contains")
 
 
@@ -114,9 +116,10 @@ def check(lic, parts):
         path = p["path"] if isinstance(p["path"], list) else split_path(p["path"])
         licence, source = licence_of(lic, p["label"], path)
         where = " / ".join(path[1:] or path)
-        if licence is None:
-            problems.append(f"UNKNOWN licence: {p['label']}  [{where}]")
-            lines.append(f"UNKNOWN  {p['label']}  [{where}]")
+        if licence in (None, UNKNOWN):
+            q = f"  (open question: {source})" if source else ""
+            problems.append(f"UNKNOWN licence: {p['label']}  [{where}]{q}")
+            lines.append(f"UNKNOWN  {p['label']}  [{where}]{q}")
         elif licence not in share:
             problems.append(f"NOT SHAREABLE ({licence}): {p['label']}  [{where}]")
             lines.append(f"NO-SHARE {licence}  {p['label']}  [{where}]  ({source})")

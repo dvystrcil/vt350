@@ -1,10 +1,10 @@
 {
  "_doc": "The public pages of one subject, built from one lite-N by cad/viewer/pages.py (vt350#220). Top level: what to export, the render look (owner 2026-11-17: AgX Punchy, plastic 0.2, -1.4 EV; the key light turns and tilts with each camera), where pages go ('release' takes {model}). 'turntable': cameras and page text. 'viewer' (optional): the live 3D page, its GLB and its compare render.",
- "model": 62,
- "selection": null,
+ "model": 71,
+ "selection": "cad/viewer/printer.json",
  "extra": [
   "vt350-ebox-3.FCStd",
-  "vt350-emu-3.FCStd"
+  "vt350-emu-4.FCStd"
  ],
  "hide": [
   "role_board_t0"
@@ -45,7 +45,7 @@
    "model_note": "the printer with its e-box and EMU",
    "start_elevation": 25,
    "foot": "Real Blender Cycles renders (render.py, the render colour map, AgX Punchy, −1.4 EV), one every 10° round the printer at seven heights, from 40° below to 40° above, without the base board it stands on. The light turns with the camera. Drag sideways to turn it, up or down to change the height; arrow keys work too.",
-   "credits": "Each part keeps its licence (cad/viewer/licences.json, parts/printed/README.md); non-commercial use only.",
+   "credits": "Parts: e-box brackets, DIN clips and SSR (GPL-3.0, Voron Design, Voron Trident), DIN rail holders (GPL-3.0, Voron Design; Voron Din Mount - Modified by elliottc, Printables 612483), backbone (GPL-3.0, clee), kinematic bed (GPL-3.0, tanaes), Monolith gantry and Carbonara beam (CC BY-NC-SA 4.0, Monolith3D), EMU and A4Tv2 (CC BY-NC-SA 4.0, DW-Tas), Orbiter (CC BY-NC-SA 4.0, Orbiter Projects), MadMax carriage, plate and clips (GPL-3.0, zruncho3d, andrewmcgr), Beacon RevH (MIT, Beacon3D), O2S and Smart Sensor (CC0-1.0, Lorincz Electronics), camera housing (public domain, lukeslabonline, Printables 305428); the rest is this project's own (GPL-3.0-or-later). Each part keeps its licence (cad/viewer/licences.json, parts/printed/README.md); non-commercial use only.",
    "links": [
     {
      "href": "index.html",

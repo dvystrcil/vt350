@@ -16,8 +16,10 @@
 #
 # Every step but release/export/check takes [--run DIR]; default the newest
 # ~/Documents/VT350/renders/vt350-lite-<N>-<name>-pages-<UTC>/. Each step ends with "<step>: OK".
-# publish refuses unless every exported part's licence is cleared (cad/viewer/licences.json). The release it uploads
-# to is the settings' "release" for the run's lite-N (a new lite-N, a new release; old ones stay for old pages).
+# publish refuses unless every exported part's licence is cleared (cad/viewer/licences.json): a selection export's
+# parts from its scene.json, a whole-model export's (the printer) from the part indexes of the model and its extras.
+# The release it uploads to is the settings' "release" for the run's lite-N (a new lite-N, a new release; old ones
+# stay for old pages).
 # Writes to git only in publish (notes/reference/). Never saves a model.
 import glob, json, os, re, shlex, shutil, subprocess, sys, time
 
@@ -73,8 +75,32 @@ def lite(run): return prefix(run).replace("vt350-", "")                     # li
 def n_frames(s): return len(s["turntable"]["elevations"]) * s["turntable"]["azimuths"] if "turntable" in s else 0
 
 
+def index_problems(models):
+    """The part indexes (part_index.py) of these models that aren't fresh: one 'stale/missing/invalid  <model>' line each."""
+    p = subprocess.run(["python3", os.path.join(PLATFORM, "freecad", "part_index.py"), "--check"] + models,
+                       capture_output=True, text=True)
+    return [l for l in p.stdout.splitlines() if l.strip() and not l.startswith("fresh")]
+
+
+def licence_inputs(run):
+    """What the licence check reads: a selection export's scene.json (its "parts" are exactly what was exported), or
+    for a whole-model export (no selection, e.g. the printer) the part index of the model and of every extra file,
+    each beside its model in DOCS. An index lists every part, hidden ones and stand-ins too, so it is a superset of
+    the export. Refuses an index that is missing or stale (not made from the model's bytes now)."""
+    sc = os.path.join(run, "export", "scene.json"); scene = json.load(open(sc))
+    if scene.get("parts"): return [sc]
+    models = [os.path.join(DOCS, m) for m in [scene["model"]] + list(scene.get("extra", []))]
+    idx = [m[:-len(".FCStd")] + ".parts.json" for m in models]
+    missing = [i for i in idx if not os.path.isfile(i)]
+    if missing: die(f"no part index {', '.join(missing)}: export_meshes.py writes it, or run "
+                    f"platform/freecad/part_index.py (notes/scripts.md)")
+    bad = index_problems(models)
+    if bad: die("part index not fresh (rewrite it with platform/freecad/part_index.py): " + "; ".join(bad))
+    return idx
+
+
 def licence_check(run, must_pass):
-    rc = sh(["python3", os.path.join(VIEWER, "licence_check.py"), os.path.join(run, "export", "scene.json"), LICENCES,
+    rc = sh(["python3", os.path.join(VIEWER, "licence_check.py"), ":".join(licence_inputs(run)), LICENCES,
              os.path.join(run, "licences.log")])
     if rc and must_pass: die(f"licence check FAILED: see {run}/licences.log; add rules to {LICENCES} (with sources)")
     if rc: say(f"licence check: not every part is cleared (fine for a private preview; publish will refuse): "

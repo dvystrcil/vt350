@@ -4,7 +4,9 @@
 """
 import os, sys, unittest
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import contextlib, io, json, tempfile
 import rules
+import licence_check
 
 P_HEAD = ["Model v33", "Left Toolhead", "A4Tv2 (DW-Tas, CC BY-NC-SA 4.0) v1"]
 
@@ -84,6 +86,62 @@ class Licences(unittest.TestCase):
     def test_rule_without_source_refused(self):
         with self.assertRaises(ValueError):
             rules.check({"rules": [{"label": "x", "licence": "MIT"}]}, [])
+
+    def test_unknown_rule_fails_with_its_question(self):
+        lic = {"shareable": ["MIT"], "rules": [{"group": "Door", "licence": "unknown", "source": "owner: whose door?"}]}
+        lines, problems = rules.check(lic, [{"label": "Hinge", "path": ["M", "Door"]}])
+        self.assertEqual(len(problems), 1)
+        self.assertTrue(problems[0].startswith("UNKNOWN licence: Hinge"))
+        self.assertIn("owner: whose door?", problems[0])
+        self.assertTrue(lines[0].startswith("UNKNOWN  Hinge"))
+
+
+INDEX = {"format": "vt350-part-index/1", "model": "m.FCStd",
+         "parts": [{"name": "A", "label": "Own fan", "path": ["M", "X"], "consumed": False},
+                   {"name": "B", "label": "Mystery tool", "path": ["M", "X"], "consumed": True}]}
+LIC_FILE = {"shareable": ["MIT"], "rules": [{"label_prefix": "Own", "licence": "MIT", "source": "ours"}]}
+
+
+class LicenceCheck(unittest.TestCase):
+    """licence_check.py on a scene.json with "parts" (a selection export) or on part indexes (a whole-model export)."""
+
+    def setUp(self):
+        t = tempfile.TemporaryDirectory(); self.addCleanup(t.cleanup); self.d = t.name
+        out = contextlib.redirect_stdout(io.StringIO()); out.__enter__()      # main() prints its verdict: keep it
+        self.addCleanup(out.__exit__, None, None, None)                         # out of the unittest log's tail
+
+    def put(self, name, data):
+        p = os.path.join(self.d, name); json.dump(data, open(p, "w")); return p
+
+    def test_index_gives_its_unconsumed_parts(self):
+        parts = licence_check.parts_of(self.put("m.parts.json", INDEX))
+        self.assertEqual([p["label"] for p in parts], ["Own fan"])           # a consumed part is never exported
+
+    def test_scene_gives_its_parts(self):
+        sc = self.put("scene.json", {"parts": [{"label": "Own x", "path": "M / X"}]})
+        self.assertEqual(licence_check.parts_of(sc), [{"label": "Own x", "path": "M / X"}])
+
+    def test_scene_without_parts_is_none(self):
+        self.assertIsNone(licence_check.parts_of(self.put("scene.json", {"buckets": {}})))
+
+    def test_several_indexes_ok(self):
+        a = self.put("a.parts.json", INDEX); b = self.put("b.parts.json", INDEX)
+        lic = self.put("lic.json", LIC_FILE); log = os.path.join(self.d, "log")
+        self.assertEqual(licence_check.main(a + ":" + b, lic, log), 0)
+        text = open(log).read()
+        self.assertIn("2 parts, 0 problems", text)
+        self.assertTrue(text.endswith("licence-check: OK\n"))
+
+    def test_index_with_unknown_part_fails(self):
+        idx = dict(INDEX, parts=INDEX["parts"] + [{"name": "C", "label": "Vendor box", "path": ["M"], "consumed": False}])
+        lic = self.put("lic.json", LIC_FILE); log = os.path.join(self.d, "log")
+        self.assertEqual(licence_check.main(self.put("m.parts.json", idx), lic, log), 1)
+        self.assertIn("UNKNOWN licence: Vendor box", open(log).read())
+
+    def test_scene_without_parts_fails(self):
+        lic = self.put("lic.json", LIC_FILE); log = os.path.join(self.d, "log")
+        self.assertEqual(licence_check.main(self.put("scene.json", {}), lic, log), 1)
+        self.assertIn("licence-check: FAILED", open(log).read())
 
 
 if __name__ == "__main__":
