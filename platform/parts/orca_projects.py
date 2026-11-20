@@ -33,8 +33,8 @@ and the presets, and fails ("orca-projects: FAILED", exit 1) when:
   - a preset changed, or a project's .3mf is missing.
 It names the projects to regenerate. Otherwise the last line is "orca-projects: OK".
 
-Plain regeneration rewrites only the stale projects (Orca's 3MF holds timestamps, so an unchanged set keeps its
-file), and deletes the .3mf of a set that no longer exists. Orca is the flatpak (com.orcaslicer.OrcaSlicer) or
+Plain regeneration rewrites only the stale projects (Orca 2.5.1's output is byte-identical on a rerun, so this
+saves time, not diffs), and deletes the .3mf of a set that no longer exists. Orca is the flatpak (com.orcaslicer.OrcaSlicer) or
 ORCA_SLICER, as in slice-check.py; the flatpak can't see /tmp, so the output folder must be under $HOME.
 Stdlib only.
 """

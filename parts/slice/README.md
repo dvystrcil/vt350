@@ -74,7 +74,8 @@ with its sha256 and copies, and the sha256 of its three presets. `--check` (CI, 
 an STL changed, a qty or a set changed, a manifest row has no project or no entry in `sets.json`, the index lists a
 part that's gone, or a preset changed, and names the projects to regenerate. `cad/scripts/refresh.py` runs the
 generator after `check_printed`, so a pass that re-exports an STL regenerates its plate in the same PR. Plain
-regeneration rewrites only the stale projects: Orca's 3MF holds timestamps, so unchanged sets keep their files.
+regeneration rewrites only the stale projects (`--all` redoes them all; Orca 2.5.1's output is byte-identical on a
+rerun).
 
 New part: add its manifest row, then its path to `sets.json`'s `parts`, then regenerate. Each project's slice
 check (time, grams, filament per set) is #217 AC3.
