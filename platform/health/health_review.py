@@ -148,7 +148,7 @@ def main(argv=None):
     ap.add_argument("--repo", required=True)
     ap.add_argument("--branch", default="main")
     ap.add_argument("--out", required=True)
-    ap.add_argument("--dockerfile")
+    ap.add_argument("--dockerfile", action="append", default=[], help="repeatable: the pins of all of them")
     ap.add_argument("--git-pin", action="append", default=[], help="ARG_NAME=URL@ref")
     ap.add_argument("--image-pin", action="append", default=[], help="registry/repo:tag pinned by digest in --dockerfile")
     ap.add_argument("--run", action="append", default=[])
@@ -156,17 +156,23 @@ def main(argv=None):
     ap.add_argument("--scripts", action="append", default=[])
     a = ap.parse_args(argv)
     rows = [ci_check(ci_runs(a.repo, a.branch))]
-    args, froms = dockerfile_pins(open(a.dockerfile).read()) if a.dockerfile else ({}, [])
+    args, froms = {}, []
+    for path in a.dockerfile:
+        with open(path) as f:
+            more_args, more_froms = dockerfile_pins(f.read())
+        args.update(more_args)
+        froms += more_froms
+    where = ", ".join(a.dockerfile) or "no --dockerfile"
     for spec in a.git_pin:
         name, _, src = spec.partition("="); url, _, ref = src.rpartition("@")
         if name not in args:
-            rows.append((f"Version drift: {name}", "red", f"no ARG {name} in {a.dockerfile}")); continue
+            rows.append((f"Version drift: {name}", "red", f"no ARG {name} in {where}")); continue
         rows.append(pin_check(name, args[name], git_head(url, ref), f"{url} {ref}"))
     for image in a.image_pin:
         repo = image.rpartition(":")[0]
         pinned = next((d for img, d in froms if img == repo), None)
         if pinned is None:
-            rows.append((f"Version drift: {image}", "red", f"no FROM {repo}@sha256:… in {a.dockerfile}")); continue
+            rows.append((f"Version drift: {image}", "red", f"no FROM {repo}@sha256:… in {where}")); continue
         rows.append(pin_check(image, pinned, image_digest(image), image))
     rows += [run_check(c) for c in a.run]
     rows += [doc_check(d) for d in a.doc]
