@@ -21,6 +21,8 @@ on:
       - cad/data/logs/z_sweep.log
       - cad/data/logs/sweep_toolhead.log
       - .github/workflows/kalico-batch.yml
+  # repin-virtualprinter.yml starts this on its own branches (a push made with GITHUB_TOKEN starts no runs)
+  workflow_dispatch:
 
 jobs:
   test:
@@ -69,3 +71,9 @@ jobs:
       - name: Confirm the batch-mode run reached the end
         run: |
           tail -1 test-batch.log | grep -qx 'kalico-batch: OK'
+      # FROM the kalisim image just built: every virtual-printer pin (snapshot apt versions, simulavr commit and tree
+      # sha256, pip hashes, Fluidd sha256) is checked by building it (vt350#224)
+      - name: Build the virtual-printer image FROM it
+        run: |
+          docker build -q --build-arg KALISIM_IMAGE=vt350-kalisim:local --build-context pinmap=platform/klipper \
+            -t virtual-printer:ci platform/virtualprinter

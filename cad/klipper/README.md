@@ -212,6 +212,33 @@ so a second one never replaces the first. Give `status` and `stop` the same `--p
   ends at exactly `position_max` would do the same.
 - **What's pinned:** `platform/virtualprinter/Dockerfile` (simulavr, Moonraker, its Python packages, Fluidd).
 
+### Keeping pins current
+
+Two automations keep the pins above (and kalisim's) moving, with no AI and no hand edits; each opens a PR you merge
+once its checks are green. Every step is `cad/klipper/repin.sh`, which runs the same by hand from the repo root.
+
+- **Renovate** (`renovate.json`, on the shared `dvystrcil/renovate-config` preset, no automerge): one "virtual printer
+  pins" PR on the 1st of each month for the builder image digest (`python:3.12-slim-bookworm@sha256:…`), simulavr's
+  commit (`SIMULAVR_SHA`, pedrolamas/simulavr's `master`, a git-refs custom manager) and `setuptools`; and, as in every
+  repo on the preset, the GitHub Actions (third-party ones pinned by SHA). Renovate can't compute simulavr's tree
+  sha256, `pip_lock.py`'s hashes or `cad/tools.md`, so the **renovate-fixup** job in
+  `.github/workflows/repin-virtualprinter.yml` does, on Renovate's branch (`repin.sh fixup <merge base>`), and
+  commits them. Left out on purpose: Moonraker's packages (below), and the Kalico image, which moves with
+  `KALICO_SHA` by hand (the health review reports the drift).
+- **The monthly repin** (same workflow, the 2nd of each month, or Actions > "Repin the virtual printer" > Run):
+  `repin.sh monthly` moves `DEBIAN_SNAPSHOT` to that day in both Dockerfiles, re-pins every apt package to the
+  version the snapshot serves (`platform/kalisim/apt_repin.py`, in each stage's base image), re-resolves Moonraker's
+  python packages within Moonraker's own ranges at `MOONRAKER_SHA` (a `pip freeze` in the kalisim image, then
+  `pip_lock.py`), re-hashes, updates `cad/tools.md`, and builds both images: the build is the test. It opens a PR
+  (`repin/virtualprinter-<snapshot>`) only when a pin moved, and closes an older one still open.
+- **Checks on those PRs:** a push or PR made with the workflow's `GITHUB_TOKEN` starts no workflow runs, so both
+  jobs start `test-tmp` and `kalico-batch` themselves (`workflow_dispatch` on the branch; `kalico-batch` builds both
+  images). Not moved by either: `KALICO_SHA`, `TOOLCHANGER_SHA`, `MOONRAKER_SHA`, Fluidd (the health review watches
+  the commits).
+- **By hand:** `bash cad/klipper/repin.sh monthly` (needs docker; the two image builds take minutes), or one step:
+  `snapshot [TS]`, `moonraker`, `pip-lock`, `simulavr-tree`, `tools-page <git ref>`, `build`. Each ends with
+  "repin: <step> OK".
+
 ## The image (`kalisim/Dockerfile`)
 
 - **Runtime:** Kalico's published container, `ghcr.io/kalicocrew/kalico`, pinned by digest. Its `klippy/.version` is `v2026.11.00-30-g991e1823`.

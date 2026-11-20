@@ -1,0 +1,52 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "local>dvystrcil/renovate-config"
+  ],
+  "gitIgnoredAuthors": [
+    "41898282+github-actions[bot]@users.noreply.github.com"
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "The virtual printer's simulavr commit (vt350#224): pedrolamas/simulavr's master head. SIMULAVR_TREE_SHA256 must change with it; .github/workflows/repin-virtualprinter.yml (renovate-fixup) recomputes it on the renovate/* branch.",
+      "managerFilePatterns": [
+        "/^platform/virtualprinter/Dockerfile$/"
+      ],
+      "matchStrings": [
+        "ARG SIMULAVR_SHA=(?<currentDigest>[0-9a-f]{40})\\n"
+      ],
+      "currentValueTemplate": "master",
+      "depNameTemplate": "simulavr",
+      "packageNameTemplate": "https://github.com/pedrolamas/simulavr",
+      "datasourceTemplate": "git-refs"
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "The virtual printer's and kalisim's build pins (vt350#224) in one monthly PR: the builder image digest, simulavr's commit, simulavr's build python package. renovate-fixup (.github/workflows/repin-virtualprinter.yml) then recomputes what Renovate can't (simulavr's tree sha256, pip_lock.py's hashes) and updates cad/tools.md, which lists every pin.",
+      "matchFileNames": [
+        "platform/kalisim/**",
+        "platform/virtualprinter/**"
+      ],
+      "groupName": "virtual printer pins",
+      "schedule": [
+        "* 0-5 1 * *"
+      ]
+    },
+    {
+      "description": "Moonraker's python packages are a pip freeze of Moonraker's own requirement ranges, and its direct dependencies already sit at the top of those ranges: a Renovate bump past them fails the image's pip check. The monthly repin workflow re-resolves the whole list within the ranges instead (cad/repin-virtualprinter.sh moonraker).",
+      "matchFileNames": [
+        "platform/virtualprinter/moonraker-requirements.txt"
+      ],
+      "enabled": false
+    },
+    {
+      "description": "The Kalico runtime image is pinned by digest only and must hold the same commit as KALICO_SHA (test_kalico_batch.py checks klippy/.version), so it moves by hand with KALICO_SHA; the monthly health review reports the drift.",
+      "matchDepNames": [
+        "ghcr.io/kalicocrew/kalico"
+      ],
+      "enabled": false
+    }
+  ]
+}
