@@ -8,6 +8,8 @@ How a row counts (cost = units x unit_price; the build's cost, so only qty_neede
     (An "owned" row must have qty_owned >= qty_needed; a part still short is "to buy".)
   - status "to buy": the units already in hand, min(qty_owned, qty_needed), are spent;
     the rest, qty_needed - qty_owned (not below 0), is still to spend.
+  - status "decide": not decided yet (whether to buy it, or which one). Never counted in spent or still to spend;
+    listed apart with their count, like the unpriced rows. Its qty may be words ("as needed") and its price empty.
   - grand total = spent + still to spend.
   - A row with no unit_price is "unpriced": it's listed with its status and qty, never added as 0,
     so the totals are a floor until every row has a price.
@@ -16,10 +18,10 @@ Extra units bought (a 150-pack for 6 inserts) aren't counted: unit_price is per 
 The check (also run before totals; --check runs only it) fails when:
   - the header isn't exactly the AC3 columns;
   - category or item is empty;
-  - qty_needed or qty_owned isn't a non-negative number;
+  - qty_needed or qty_owned isn't a non-negative number (a "decide" row may write words, e.g. "as needed");
   - unit_price is set but isn't a non-negative number (no currency sign; that goes in `currency`);
   - a priced row's currency isn't a 3-letter code like USD;
-  - status isn't one of: owned, ordered, to buy;
+  - status isn't one of: owned, ordered, to buy, decide;
   - an "owned" row owns fewer than it needs;
   - stage isn't a stage issue #7 to #15 (written "#12"); the per-step Buy lists in #40 group by it.
 
@@ -39,10 +41,10 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_CSV = os.path.join(HERE, "bom.csv")
 HEADER = ["category", "item", "qty_needed", "qty_owned", "vendor", "link",
           "unit_price", "currency", "status", "stage", "notes"]
-STATUSES = ("owned", "ordered", "to buy")
+STATUSES = ("owned", "ordered", "to buy", "decide")
 STAGES = range(7, 16)  # the stage issues #7-#15
 
-Totals = namedtuple("Totals", "spent to_spend unpriced")
+Totals = namedtuple("Totals", "spent to_spend unpriced decide")
 
 
 def number(text):
@@ -61,6 +63,8 @@ def check_row(r):
         if not r[col].strip():
             errors.append(f"{col} is empty")
     for col in ("qty_needed", "qty_owned"):
+        if r["status"] == "decide":
+            continue  # undecided: the qty may be words ("as needed") or empty
         if number(r[col]) is None:
             errors.append(f"{col} {r[col]!r} isn't a non-negative number")
     price = r["unit_price"].strip()
@@ -105,8 +109,11 @@ def load(path):
 
 def compute(rows):
     """Totals per currency. Assumes the rows passed the check."""
-    spent, to_spend, unpriced = {}, {}, []
+    spent, to_spend, unpriced, decide = {}, {}, [], []
     for r in rows:
+        if r["status"] == "decide":
+            decide.append(r)
+            continue
         needed, owned = number(r["qty_needed"]), number(r["qty_owned"])
         if r["status"] in ("owned", "ordered"):
             paid, rest = needed, Decimal(0)
@@ -119,7 +126,7 @@ def compute(rows):
         price, cur = number(r["unit_price"]), r["currency"].strip()
         spent[cur] = spent.get(cur, Decimal(0)) + paid * price
         to_spend[cur] = to_spend.get(cur, Decimal(0)) + rest * price
-    return Totals(spent, to_spend, unpriced)
+    return Totals(spent, to_spend, unpriced, decide)
 
 
 def money(n):
@@ -139,6 +146,11 @@ def report(t, path):
         for r in t.unpriced:
             lines.append(f"  line {r['line']}: [{r['status']}] {r['item']} (need {r['qty_needed']}, "
                          f"own {r['qty_owned']}, stage {r['stage']})")
+    if t.decide:
+        lines.append(f"{len(t.decide)} decide row(s), not decided yet and not in the totals above:")
+        for r in t.decide:
+            price = f", {r['unit_price']} {r['currency']} each" if r["unit_price"].strip() else ""
+            lines.append(f"  line {r['line']}: {r['item']} (need {r['qty_needed']}{price}, stage {r['stage']})")
     return "\n".join(lines)
 
 

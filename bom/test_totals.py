@@ -83,6 +83,24 @@ class TestTotals(TempCSV):
         self.assertIn("grand total", out)
         self.assertIn("6.00", out)  # 2 + 4
 
+    def test_decide_rows_are_not_counted_and_listed_apart(self):
+        rows, errors = totals.load(self.write(
+            HEADER
+            + row("priced", needed="2", owned="0", price="5")                          # to spend 10
+            + row("maybe-psu", needed="1", owned="0", price="40", status="decide")    # not counted
+            + row("wire", needed="as needed", owned="0", price="", status="decide")    # not counted
+        ))
+        self.assertEqual(errors, [])
+        t = totals.compute(rows)
+        self.assertEqual(t.spent.get("USD", Decimal(0)), Decimal("0"))
+        self.assertEqual(t.to_spend["USD"], Decimal("10"))
+        self.assertEqual([r["item"] for r in t.decide], ["maybe-psu", "wire"])
+        self.assertEqual(t.unpriced, [])  # an unpriced decide row is listed once, under decide
+        out = totals.report(t, "bom.csv")
+        self.assertIn("2 decide row(s)", out)
+        self.assertIn("maybe-psu", out)
+        self.assertIn("as needed", out)
+
     def test_cli_prints_totals_and_marker(self):
         p = self.run_script("--csv", self.write(HEADER + row()))
         self.assertEqual(p.returncode, 0, p.stdout + p.stderr)
@@ -113,6 +131,17 @@ class TestCheck(TempCSV):
 
     def test_unknown_status(self):
         self.assertError(HEADER + row(status="bought"), "status")
+
+    def test_decide_row_may_have_a_word_qty_and_no_price(self):
+        self.assertEqual(self.errors_for(
+            HEADER + row(needed="as needed", owned="", price="", cur="", status="decide")), [])
+
+    def test_decide_row_still_checks_a_price_it_has(self):
+        self.assertError(HEADER + row(needed="as needed", price="$3", status="decide"), "unit_price")
+
+    def test_word_qty_only_for_decide(self):
+        for status in ("owned", "ordered", "to buy"):
+            self.assertError(HEADER + row(needed="as needed", status=status), "qty_needed")
 
     def test_stage_outside_the_stage_issues(self):
         for bad in ("", "12", "#6", "#16", "#12a"):
