@@ -1,14 +1,15 @@
 {
- "_doc": "vt350#220: the whole printer for the printer pages: every part of lite-N and its extras (cad/viewer/pages/printer.json) but the e-box's 'Electronics' group (Octopus, Pi 5, SSR and their brackets), which came mostly from GrabCAD and isn't shareable (owner, 2026-11-19, on #252): it is left out. A selection export also writes its exact part list to scene.json for the licence check. Format: platform/viewer/rules.py.",
+ "_doc": "vt350#220: the whole printer for the printer pages: every part of lite-N and its extras (cad/viewer/pages/printer.json) but the Raspberry Pi 5 model in the e-box's 'Electronics' group: a GrabCAD model whose page and author aren't confirmed, so it can't be credited yet (#252): it is left out. The rest of 'Electronics' (Octopus and Pi brackets, DIN clips, SSR) is Voron Trident CAD, GPL-3.0. A selection export also writes its exact part list to scene.json for the licence check. Format: platform/viewer/rules.py.",
  "include": [
   {"group_prefix": "4040-350x350x250 Voron Trident", "note": "the printer: frame, gantry, Z, bed, heads, docks, doors"},
   {"group_prefix": "Enclosure extras", "note": "panels, insulation, camera, lights, cable channel"},
   {"group_prefix": "Stand: levelling feet"},
   {"group_prefix": "E-box layout", "note": "the e-box's layout boxes, DIN rails and holders (vt350-ebox-N)"},
-  {"group_prefix": "EMU 5-lane", "note": "the EMU (vt350-emu-N)"}
+  {"group_prefix": "EMU 5-lane", "note": "the EMU (vt350-emu-N)"},
+  {"group": "Electronics", "note": "the e-box's Voron Trident brackets, DIN clips and SSR (vt350-ebox-N)"}
  ],
  "exclude": [
-  {"group": "Electronics", "note": "GrabCAD models, not shareable: left out"}
+  {"group": "RASPBERRY_PI_5_1 v1", "note": "GrabCAD Pi 5, creator not confirmed: left out"}
  ],
  "moves": {}
 }

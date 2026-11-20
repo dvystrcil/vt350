@@ -45,22 +45,47 @@ class LicenceInputs(unittest.TestCase):
 
 
 class PrinterSelection(unittest.TestCase):
-    """cad/viewer/printer.json: the whole printer but the GrabCAD electronics (owner, 2026-11-19, #252)."""
+    """cad/viewer/printer.json: the whole printer but the GrabCAD Raspberry Pi 5 model, whose author isn't read yet
+    (#252). The rest of the e-box's Electronics group is Voron Trident CAD, GPL-3.0 (2026-11-19)."""
+
+    PI5 = ["Electronics", "Pi Assembly", "RASPBERRY_PI_5_1 v1"]
 
     def setUp(self):
         sys.path.insert(0, os.path.join(pages.PLATFORM, "viewer")); import rules
         self.sel = rules.load_selection(os.path.join(pages.HERE, "printer.json"))
         self.lic = json.load(open(pages.LICENCES)); self.rules = rules
 
-    def test_electronics_left_out_rest_kept(self):
-        self.assertFalse(self.sel.pick("Main Relay Body", ["Electronics", "SSR"])[0])
+    def test_pi5_left_out_rest_kept(self):
+        self.assertFalse(self.sel.pick("BROADCOM_1", self.PI5)[0])
         for path in (["4040-350x350x250 Voron Trident v4 v33", "Z Assembly (1)"], ["Enclosure extras (lite-16)"],
-                     ["E-box layout, concept C on the inner frame (lite-54)"], ["EMU 5-lane (DW-Tas)"]):
+                     ["E-box layout, concept C on the inner frame (lite-54)"], ["EMU 5-lane (DW-Tas)"],
+                     ["Electronics", "SSR"], ["Electronics", "Pi Assembly"], ["Electronics", "Controllers", "Octopus"]):
             self.assertTrue(self.sel.pick("x", path)[0], path)
 
-    def test_electronics_not_shareable(self):
-        _, problems = self.rules.check(self.lic, [{"label": "Main Relay Body", "path": ["Electronics", "SSR"]}])
+    def test_pi5_not_shareable(self):
+        _, problems = self.rules.check(self.lic, [{"label": "BROADCOM_1", "path": self.PI5}])
         self.assertTrue(problems and problems[0].startswith("NOT SHAREABLE"))
+
+    def test_voron_electronics_cleared(self):
+        for label, path in (("Main Relay Body", ["Electronics", "SSR"]),
+                            ("Raspberry_Bracket", ["Electronics", "Pi Assembly"]),
+                            ("SOLID057", ["Electronics", "Pi Assembly", "DIN Clip (2)"]),
+                            ("Octopus Bracket", ["Electronics", "Controllers", "Octopus"])):
+            lines, problems = self.rules.check(self.lic, [{"label": label, "path": path}])
+            self.assertEqual(problems, [], label)
+            self.assertIn("GPL-3.0-only", lines[0])
+
+    def test_din_holders_cleared(self):
+        lines, problems = self.rules.check(self.lic, [{"label": "DIN rail holder (owner's Neptune DIN_frame_mount), "
+                                                       "mains rail, front upright",
+                                                       "path": ["E-box layout, concept C on the inner frame (lite-54)"]}])
+        self.assertEqual(problems, [])
+        self.assertIn("GPL-3.0-only", lines[0])
+
+    def test_page_credits_the_remixes(self):
+        credits = pages.settings("printer")["turntable"]["page"]["credits"]
+        for who in ("Voron Design", "elliottc", "clee", "DW-Tas", "Monolith3D"):
+            self.assertIn(who, credits)
 
     def test_settings_use_it(self):
         self.assertEqual(pages.settings("printer")["selection"], "cad/viewer/printer.json")
