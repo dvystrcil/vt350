@@ -1,0 +1,181 @@
+[    1.0s] read main-body_dragon-rapido-UHF_o2_xol.step: [('main-body_dragon-rapido-UHF_o2_xol', 23339.52), ('Support_Main-body-UHF', 3660.84)]
+[    2.1s] read main-body_DAV_o2_xol.step: [('main-body_DAV_o2_xol', 24721.59), ('Support_Main-body-UHF', 3660.84)]
+[    3.4s] read hex-main-body_DAV_o2_xol.step: [('outline hexagons', 15.47), ('solid hexagons', 6.84), ('solid hexagons001', 2.07), ('hex-main-body_DAV_o2_xol', 24434.96), ('outline hexagons001', 3.85), ('high-fan_decoration2', 15.18), ('outline hexagons002', 12.44), ('high-fan_decoration1', 125.99), ('solid hexagons002', 33.26), ('solid hexagons003', 9.2), ('solid hexagons004', 31.72), ('Support_Main-body-UHF', 3660.84), ('solid hexagons005', 30.44)]
+[    3.4s] ok   hex DAV STEP: the body + 11 inlays (1, ['outline hexagons', 'solid hexagons', 'solid hexagons001', 'outline hexagons001', 'high-fan_decoration2', 'outline hexagons002', 'high-fan_decoration1', 'solid hexagons002', 'solid hexagons003', 'solid hexagons004', 'solid hexagons005'])
+[    3.4s] ok   the DAV and UHF body STEPs share one frame (boxes BoundBox (-28.5218, -31.5144, -0.395716, 28.4077, 33.5004, 55.8114) / BoundBox (-28.5218, -31.5144, -0.395716, 28.4077, 33.5004, 55.8114))
+[    4.0s] ok   the inlays fill the hex body's recesses: body + inlays 24721.30 = plain DAV body 24721.59 mm3
+[    4.4s] ok   the DAV body's solids are valid
+[    8.0s] opened /home/dan/Documents/VT350/vt350-lite-72.FCStd
+[   20.8s] ok   5 UHF bodies, one part + links to it ([('A4Tv017', 'Part::Feature'), ('A4Tv075', 'App::Link'), ('A4Tv133', 'App::Link'), ('A4Tv191', 'App::Link'), ('A4Tv249', 'App::Link')])
+[   22.3s] ok   main-body_dragon-rapido-UHF_o2_xol: the UHF body STEP fits it (moved, Placement [Pos=(-409.697,-66.3114,424.3), Yaw-Pitch-Roll=(0,0,-90)])
+[   23.4s] ok   main-body_dragon-rapido-UHF_o2_xol001: the UHF body STEP fits it (moved, Placement [Pos=(-80.2967,-66.3114,424.3), Yaw-Pitch-Roll=(0,0,-90)])
+[   24.6s] ok   main-body_dragon-rapido-UHF_o2_xol002: the UHF body STEP fits it (moved, Placement [Pos=(-324.537,-66.3114,424.3), Yaw-Pitch-Roll=(0,0,-90)])
+[   25.7s] ok   main-body_dragon-rapido-UHF_o2_xol003: the UHF body STEP fits it (moved, Placement [Pos=(-248.417,-66.3114,424.3), Yaw-Pitch-Roll=(0,0,-90)])
+[   26.8s] ok   main-body_dragon-rapido-UHF_o2_xol004: the UHF body STEP fits it (moved, Placement [Pos=(-156.417,-66.3114,424.3), Yaw-Pitch-Roll=(0,0,-90)])
+[   26.8s] ok   every head's body has the same orientation
+[   27.0s] ok   main-body_dragon-rapido-UHF_o2_xol: one heat sink (['TL-dragon-Íâ¿ò-°«'])
+[   27.0s] ok   main-body_dragon-rapido-UHF_o2_xol: hotend parts {'spacer': 1, 'screw': 4, 'lower': 4, 'upper': 9}: lower ['TL-dragon-¹è½ºÌ×', 'Heat Block', 'E3D v6 HotEnd - Nozzle', 'Heat Block stand-in'], upper ['D2.3L7.5-Ñõ»¯ï¯ÌÕ´ÉÖù', 'TL-dragon-Íâ¿ò-°«', 'Component1', 'Component2', 'TL-dragon-¹è½ºÌ×3', 'TL-dragon-Íâ¿ò-°«001', 'D2.3L7.5-Ñõ»¯ï¯ÌÕ´ÉÖù001', 'D2.3L7.5-Ñõ»¯ï¯ÌÕ´ÉÖù002', 'D2.3L7.5-Ñõ»¯ï¯ÌÕ´ÉÖù003']
+[   27.0s] ok   main-body_dragon-rapido-UHF_o2_xol: one nozzle, one heat block
+[   27.2s] ok   main-body_dragon-rapido-UHF_o2_xol001: one heat sink (['TL-dragon-Íâ¿ò-°«002'])
+[   27.2s] ok   main-body_dragon-rapido-UHF_o2_xol001: hotend parts {'spacer': 1, 'screw': 4, 'lower': 4, 'upper': 9}: lower ['TL-dragon-¹è½ºÌ×001', 'Heat Block001', 'E3D v6 HotEnd - Nozzle001', 'Heat Block001 stand-in'], upper ['Component006', 'Component005', 'TL-dragon-Íâ¿ò-°«002', 'TL-dragon-Íâ¿ò-°«003', 'TL-dragon-¹è½ºÌ×002', 'D2.3L7.5-Ñõ»¯ï¯ÌÕ´ÉÖù004', 'D2.3L7.5-Ñõ»¯ï¯ÌÕ´ÉÖù005', 'D2.3L7.5-Ñõ»¯ï¯ÌÕ´ÉÖù006', 'D2.3L7.5-Ñõ»¯ï¯ÌÕ´ÉÖù007']
+[   27.2s] ok   main-body_dragon-rapido-UHF_o2_xol001: one nozzle, one heat block
+[   27.4s] ok   main-body_dragon-rapido-UHF_o2_xol002: one heat sink (['TL-dragon-Íâ¿ò-°«004'])
+[   27.4s] ok   main-body_dragon-rapido-UHF_o2_xol002: hotend parts {'spacer': 1, 'screw': 4, 'lower': 4, 'upper': 9}: lower ['TL-dragon-¹è½ºÌ×003', 'Heat Block002', 'E3D v6 HotEnd - Nozzle002', 'Heat Block002 stand-in'], upper ['Component028', 'Component027', 'TL-dragon-Íâ¿ò-°«004', 'TL-dragon-Íâ¿ò-°«005', 'TL-dragon-¹è½ºÌ×004', 'D2.3L7.5-Ñõ»¯ï¯ÌÕ´ÉÖù008', 'D2.3L7.5-Ñõ»¯ï¯ÌÕ´ÉÖù009', 'D2.3L7.5-Ñõ»¯ï¯ÌÕ´ÉÖù010', 'D2.3L7.5-Ñõ»¯ï¯ÌÕ´ÉÖù011']
+[   27.4s] ok   main-body_dragon-rapido-UHF_o2_xol002: one nozzle, one heat block
+[   27.6s] ok   main-body_dragon-rapido-UHF_o2_xol003: one heat sink (['TL-dragon-Íâ¿ò-°«006'])
+[   27.6s] ok   main-body_dragon-rapido-UHF_o2_xol003: hotend parts {'spacer': 1, 'screw': 4, 'lower': 4, 'upper': 9}: lower ['TL-dragon-¹è½ºÌ×005', 'Heat Block003', 'E3D v6 HotEnd - Nozzle003', 'Heat Block003 stand-in'], upper ['Component030', 'Component029', 'TL-dragon-Íâ¿ò-°«006', 'TL-dragon-Íâ¿ò-°«007', 'TL-dragon-¹è½ºÌ×006', 'D2.3L7.5-Ñõ»¯ï¯ÌÕ´ÉÖù012', 'D2.3L7.5-Ñõ»¯ï¯ÌÕ´ÉÖù013', 'D2.3L7.5-Ñõ»¯ï¯ÌÕ´ÉÖù014', 'D2.3L7.5-Ñõ»¯ï¯ÌÕ´ÉÖù015']
+[   27.6s] ok   main-body_dragon-rapido-UHF_o2_xol003: one nozzle, one heat block
+[   27.8s] ok   main-body_dragon-rapido-UHF_o2_xol004: one heat sink (['TL-dragon-Íâ¿ò-°«008'])
+[   27.8s] ok   main-body_dragon-rapido-UHF_o2_xol004: hotend parts {'spacer': 1, 'screw': 4, 'lower': 4, 'upper': 9}: lower ['TL-dragon-¹è½ºÌ×007', 'Heat Block004', 'E3D v6 HotEnd - Nozzle004', 'Heat Block004 stand-in'], upper ['Component052', 'Component051', 'TL-dragon-Íâ¿ò-°«008', 'TL-dragon-Íâ¿ò-°«009', 'TL-dragon-¹è½ºÌ×008', 'D2.3L7.5-Ñõ»¯ï¯ÌÕ´ÉÖù016', 'D2.3L7.5-Ñõ»¯ï¯ÌÕ´ÉÖù017', 'D2.3L7.5-Ñõ»¯ï¯ÌÕ´ÉÖù018', 'D2.3L7.5-Ñõ»¯ï¯ÌÕ´ÉÖù019']
+[   27.8s] ok   main-body_dragon-rapido-UHF_o2_xol004: one nozzle, one heat block
+[   30.5s] ok   main-body_dragon-rapido-UHF_o2_xol: a flat pocket ceiling over the heat sink (UHF [443.30000000000086, 443.3, 443.29999999999916, 443.3], DAV [440.2999999999996, 440.29999999999876, 440.2999999999979, 440.29999999999876])
+[   30.5s] ok   main-body_dragon-rapido-UHF_o2_xol: the spacer sits on the heat sink (431.800..434.800)
+[   30.5s] ok   main-body_dragon-rapido-UHF_o2_xol: lite-72's hotend floats 8.500 mm below the UHF body's pocket ceiling (Z 443.300; spacer top 434.800)
+[   30.5s] ok   main-body_dragon-rapido-UHF_o2_xol: the DAV ceiling (Z 440.300) is the UHF's less the spacer's 3.0 mm
+[   30.5s] ok   main-body_dragon-rapido-UHF_o2_xol: the stand-in's heat-sink top -> tip in lite-72 51.000 (expected 51.0)
+[   32.7s] ok   main-body_dragon-rapido-UHF_o2_xol: DAV counterbore floors [445.29999999999956, 445.29999999999956, 445.29999999999836, 445.29999999999836] (from the ceiling up); screw head undersides [439.8, 439.8, 439.8, 439.8]
+[   32.7s] main-body_dragon-rapido-UHF_o2_xol: seat Z 440.300 (heat sink +8.500); tip 380.800 -> 379.700 (-1.100); counterbore floor 445.300, screws +5.500
+[   35.4s] ok   main-body_dragon-rapido-UHF_o2_xol001: a flat pocket ceiling over the heat sink (UHF [443.30000000000086, 443.3, 443.29999999999916, 443.3], DAV [440.2999999999996, 440.29999999999876, 440.2999999999979, 440.29999999999876])
+[   35.4s] ok   main-body_dragon-rapido-UHF_o2_xol001: the spacer sits on the heat sink (431.800..434.800)
+[   35.4s] ok   main-body_dragon-rapido-UHF_o2_xol001: lite-72's hotend floats 8.500 mm below the UHF body's pocket ceiling (Z 443.300; spacer top 434.800)
+[   35.4s] ok   main-body_dragon-rapido-UHF_o2_xol001: the DAV ceiling (Z 440.300) is the UHF's less the spacer's 3.0 mm
+[   35.4s] ok   main-body_dragon-rapido-UHF_o2_xol001: the stand-in's heat-sink top -> tip in lite-72 51.000 (expected 51.0)
+[   37.6s] ok   main-body_dragon-rapido-UHF_o2_xol001: DAV counterbore floors [445.29999999999956, 445.29999999999956, 445.29999999999836, 445.29999999999836] (from the ceiling up); screw head undersides [439.8, 439.8, 439.8, 439.8]
+[   37.6s] main-body_dragon-rapido-UHF_o2_xol001: seat Z 440.300 (heat sink +8.500); tip 380.800 -> 379.700 (-1.100); counterbore floor 445.300, screws +5.500
+[   40.4s] ok   main-body_dragon-rapido-UHF_o2_xol002: a flat pocket ceiling over the heat sink (UHF [443.30000000000086, 443.3, 443.29999999999916, 443.3], DAV [440.2999999999996, 440.29999999999876, 440.2999999999979, 440.29999999999876])
+[   40.4s] ok   main-body_dragon-rapido-UHF_o2_xol002: the spacer sits on the heat sink (431.800..434.800)
+[   40.4s] ok   main-body_dragon-rapido-UHF_o2_xol002: lite-72's hotend floats 8.500 mm below the UHF body's pocket ceiling (Z 443.300; spacer top 434.800)
+[   40.4s] ok   main-body_dragon-rapido-UHF_o2_xol002: the DAV ceiling (Z 440.300) is the UHF's less the spacer's 3.0 mm
+[   40.4s] ok   main-body_dragon-rapido-UHF_o2_xol002: the stand-in's heat-sink top -> tip in lite-72 51.000 (expected 51.0)
+[   42.6s] ok   main-body_dragon-rapido-UHF_o2_xol002: DAV counterbore floors [445.29999999999956, 445.29999999999956, 445.29999999999836, 445.29999999999836] (from the ceiling up); screw head undersides [439.8, 439.8, 439.8, 439.8]
+[   42.6s] main-body_dragon-rapido-UHF_o2_xol002: seat Z 440.300 (heat sink +8.500); tip 380.800 -> 379.700 (-1.100); counterbore floor 445.300, screws +5.500
+[   45.3s] ok   main-body_dragon-rapido-UHF_o2_xol003: a flat pocket ceiling over the heat sink (UHF [443.30000000000086, 443.3, 443.29999999999916, 443.3], DAV [440.2999999999996, 440.29999999999876, 440.2999999999979, 440.29999999999876])
+[   45.3s] ok   main-body_dragon-rapido-UHF_o2_xol003: the spacer sits on the heat sink (431.800..434.800)
+[   45.3s] ok   main-body_dragon-rapido-UHF_o2_xol003: lite-72's hotend floats 8.500 mm below the UHF body's pocket ceiling (Z 443.300; spacer top 434.800)
+[   45.3s] ok   main-body_dragon-rapido-UHF_o2_xol003: the DAV ceiling (Z 440.300) is the UHF's less the spacer's 3.0 mm
+[   45.3s] ok   main-body_dragon-rapido-UHF_o2_xol003: the stand-in's heat-sink top -> tip in lite-72 51.000 (expected 51.0)
+[   47.5s] ok   main-body_dragon-rapido-UHF_o2_xol003: DAV counterbore floors [445.29999999999956, 445.29999999999956, 445.29999999999836, 445.29999999999836] (from the ceiling up); screw head undersides [439.8, 439.8, 439.8, 439.8]
+[   47.5s] main-body_dragon-rapido-UHF_o2_xol003: seat Z 440.300 (heat sink +8.500); tip 380.800 -> 379.700 (-1.100); counterbore floor 445.300, screws +5.500
+[   50.2s] ok   main-body_dragon-rapido-UHF_o2_xol004: a flat pocket ceiling over the heat sink (UHF [443.30000000000086, 443.3, 443.29999999999916, 443.3], DAV [440.2999999999996, 440.29999999999876, 440.2999999999979, 440.29999999999876])
+[   50.2s] ok   main-body_dragon-rapido-UHF_o2_xol004: the spacer sits on the heat sink (431.800..434.800)
+[   50.2s] ok   main-body_dragon-rapido-UHF_o2_xol004: lite-72's hotend floats 8.500 mm below the UHF body's pocket ceiling (Z 443.300; spacer top 434.800)
+[   50.2s] ok   main-body_dragon-rapido-UHF_o2_xol004: the DAV ceiling (Z 440.300) is the UHF's less the spacer's 3.0 mm
+[   50.2s] ok   main-body_dragon-rapido-UHF_o2_xol004: the stand-in's heat-sink top -> tip in lite-72 51.000 (expected 51.0)
+[   52.4s] ok   main-body_dragon-rapido-UHF_o2_xol004: DAV counterbore floors [445.29999999999956, 445.29999999999956, 445.29999999999836, 445.29999999999836] (from the ceiling up); screw head undersides [439.8, 439.8, 439.8, 439.8]
+[   52.4s] main-body_dragon-rapido-UHF_o2_xol004: seat Z 440.300 (heat sink +8.500); tip 380.800 -> 379.700 (-1.100); counterbore floor 445.300, screws +5.500
+[  314.1s] overlap pairs before: 596, 112 overlapping
+[  315.2s] ok   the body keeps its placement
+[  328.0s] ok   no spacer left
+[  328.0s] ok   the DAV body on all 5 heads (['hex-main-body_DAV_o2_xol', 'hex-main-body_DAV_o2_xol001', 'hex-main-body_DAV_o2_xol002', 'hex-main-body_DAV_o2_xol003', 'hex-main-body_DAV_o2_xol004'])
+[  328.6s] ok   hex-main-body_DAV_o2_xol: where its fit puts it (24721.30 mm3, BoundBox (-438.219, -66.7071, 390.8, -381.289, -10.5, 455.814))
+[  328.6s] ok   hex-main-body_DAV_o2_xol: heat-sink top 440.300 on the DAV ceiling 440.300
+[  328.6s] ok   hex-main-body_DAV_o2_xol: heat-sink top -> tip 60.600 (Volcano 60.6 +- 0.05)
+[  328.6s] ok   hex-main-body_DAV_o2_xol: tip XY unchanged (-409.700, -32.461)
+[  328.6s] ok   hex-main-body_DAV_o2_xol: screw heads on the counterbore floor 445.300 ([445.29999999999956, 445.29999999999956, 445.29999999999956, 445.29999999999956])
+[  328.7s] hex-main-body_DAV_o2_xol: {'tip_xyz': [-409.7, -32.461, 379.7], 'tip_dz': -1.1, 'heatsink_top': 440.3, 'uhf_ceiling': 443.3, 'dav_ceiling': 440.3, 'heat_block_top': 405.2, 'heat_block_bottom': 385.2, 'screw_tip': 435.3, 'screw_engagement_in_heatsink': 5.0}
+[  329.3s] ok   hex-main-body_DAV_o2_xol001: where its fit puts it (24721.30 mm3, BoundBox (-108.819, -66.7071, 390.8, -51.889, -10.5, 455.814))
+[  329.3s] ok   hex-main-body_DAV_o2_xol001: heat-sink top 440.300 on the DAV ceiling 440.300
+[  329.3s] ok   hex-main-body_DAV_o2_xol001: heat-sink top -> tip 60.600 (Volcano 60.6 +- 0.05)
+[  329.3s] ok   hex-main-body_DAV_o2_xol001: tip XY unchanged (-80.300, -32.461)
+[  329.3s] ok   hex-main-body_DAV_o2_xol001: screw heads on the counterbore floor 445.300 ([445.29999999999956, 445.29999999999956, 445.29999999999956, 445.29999999999956])
+[  329.3s] hex-main-body_DAV_o2_xol001: {'tip_xyz': [-80.3, -32.461, 379.7], 'tip_dz': -1.1, 'heatsink_top': 440.3, 'uhf_ceiling': 443.3, 'dav_ceiling': 440.3, 'heat_block_top': 405.2, 'heat_block_bottom': 385.2, 'screw_tip': 435.3, 'screw_engagement_in_heatsink': 5.0}
+[  329.9s] ok   hex-main-body_DAV_o2_xol002: where its fit puts it (24721.30 mm3, BoundBox (-353.059, -66.7071, 390.8, -296.129, -10.5, 455.814))
+[  329.9s] ok   hex-main-body_DAV_o2_xol002: heat-sink top 440.300 on the DAV ceiling 440.300
+[  329.9s] ok   hex-main-body_DAV_o2_xol002: heat-sink top -> tip 60.600 (Volcano 60.6 +- 0.05)
+[  329.9s] ok   hex-main-body_DAV_o2_xol002: tip XY unchanged (-324.540, -32.461)
+[  330.0s] ok   hex-main-body_DAV_o2_xol002: screw heads on the counterbore floor 445.300 ([445.29999999999956, 445.29999999999956, 445.29999999999956, 445.29999999999956])
+[  330.0s] hex-main-body_DAV_o2_xol002: {'tip_xyz': [-324.54, -32.461, 379.7], 'tip_dz': -1.1, 'heatsink_top': 440.3, 'uhf_ceiling': 443.3, 'dav_ceiling': 440.3, 'heat_block_top': 405.2, 'heat_block_bottom': 385.2, 'screw_tip': 435.3, 'screw_engagement_in_heatsink': 5.0}
+[  330.6s] ok   hex-main-body_DAV_o2_xol003: where its fit puts it (24721.30 mm3, BoundBox (-276.939, -66.7071, 390.8, -220.009, -10.5, 455.814))
+[  330.6s] ok   hex-main-body_DAV_o2_xol003: heat-sink top 440.300 on the DAV ceiling 440.300
+[  330.6s] ok   hex-main-body_DAV_o2_xol003: heat-sink top -> tip 60.600 (Volcano 60.6 +- 0.05)
+[  330.6s] ok   hex-main-body_DAV_o2_xol003: tip XY unchanged (-248.420, -32.461)
+[  330.7s] ok   hex-main-body_DAV_o2_xol003: screw heads on the counterbore floor 445.300 ([445.29999999999956, 445.29999999999956, 445.29999999999956, 445.29999999999956])
+[  330.7s] hex-main-body_DAV_o2_xol003: {'tip_xyz': [-248.42, -32.461, 379.7], 'tip_dz': -1.1, 'heatsink_top': 440.3, 'uhf_ceiling': 443.3, 'dav_ceiling': 440.3, 'heat_block_top': 405.2, 'heat_block_bottom': 385.2, 'screw_tip': 435.3, 'screw_engagement_in_heatsink': 5.0}
+[  331.3s] ok   hex-main-body_DAV_o2_xol004: where its fit puts it (24721.30 mm3, BoundBox (-184.939, -66.7071, 390.8, -128.009, -10.5, 455.814))
+[  331.3s] ok   hex-main-body_DAV_o2_xol004: heat-sink top 440.300 on the DAV ceiling 440.300
+[  331.3s] ok   hex-main-body_DAV_o2_xol004: heat-sink top -> tip 60.600 (Volcano 60.6 +- 0.05)
+[  331.3s] ok   hex-main-body_DAV_o2_xol004: tip XY unchanged (-156.420, -32.461)
+[  331.3s] ok   hex-main-body_DAV_o2_xol004: screw heads on the counterbore floor 445.300 ([445.29999999999956, 445.29999999999956, 445.29999999999956, 445.29999999999956])
+[  331.4s] hex-main-body_DAV_o2_xol004: {'tip_xyz': [-156.42, -32.461, 379.7], 'tip_dz': -1.1, 'heatsink_top': 440.3, 'uhf_ceiling': 443.3, 'dav_ceiling': 440.3, 'heat_block_top': 405.2, 'heat_block_bottom': 385.2, 'screw_tip': 435.3, 'screw_engagement_in_heatsink': 5.0}
+[  332.3s] stand-in heat block + nozzle (#263): {'width_x': 16.0, 'depth_y': 16.0, 'height_z': 20.0, 'volume_mm3': 1903.7, 'nozzle_box': [7.52, 7.83, 12.5], 'nozzle_below_block': 5.5, 'sock_box': [19.0, 19.3, 24.3], 'nozzle_below_sock': 2.7}
+[  332.4s] ok   clearances measured: {'beacon_face_above_carried_tip': 3.699, 'carriage_underside_above_carried_tip': 4.1, 'ducts_4010_lowest_above_tip': 3.513} (lite-72: Beacon 2.60, carriage 3.0, ducts 2.41)
+[  683.1s] overlaps gone (0): []
+[  683.1s]    new/worse overlap     7.66 mm3 (was 0.00)  [a]_orbiter-crossbow-adapter_o2_xol001  x  Hex socket head cap screw M2.5x0.45 x 006
+[  683.1s]    new/worse overlap     7.66 mm3 (was 0.00)  [a]_orbiter-crossbow-adapter_o2_xol004  x  Hex socket head cap screw M2.5x0.45 x 018
+[  683.1s]    new/worse overlap     7.66 mm3 (was 0.00)  [a]_orbiter-crossbow-adapter_o2_xol003  x  Hex socket head cap screw M2.5x0.45 x 014
+[  683.1s]    new/worse overlap     7.66 mm3 (was 0.00)  [a]_orbiter-crossbow-adapter_o2_xol  x  Hex socket head cap screw M2.5x0.45 x 002
+[  683.1s]    new/worse overlap     7.66 mm3 (was 0.00)  [a]_orbiter-crossbow-adapter_o2_xol002  x  Hex socket head cap screw M2.5x0.45 x 010
+[  683.1s]    new/worse overlap     7.66 mm3 (was 0.00)  [a]_orbiter-crossbow-adapter_o2_xol004  x  Hex socket head cap screw M2.5x0.45 x 016
+[  683.1s]    new/worse overlap     7.66 mm3 (was 0.00)  [a]_orbiter-crossbow-adapter_o2_xol  x  Hex socket head cap screw M2.5x0.45 x 10
+[  683.1s]    new/worse overlap     7.66 mm3 (was 0.00)  [a]_orbiter-crossbow-adapter_o2_xol001  x  Hex socket head cap screw M2.5x0.45 x 004
+[  683.1s]    new/worse overlap     7.66 mm3 (was 0.00)  [a]_orbiter-crossbow-adapter_o2_xol003  x  Hex socket head cap screw M2.5x0.45 x 012
+[  683.1s]    new/worse overlap     7.66 mm3 (was 0.00)  [a]_orbiter-crossbow-adapter_o2_xol002  x  Hex socket head cap screw M2.5x0.45 x 008
+[  683.1s]    new/worse overlap     6.73 mm3 (was 2.39)  Hex socket head cap screw M2.5x0.45 x 10  x  TL-dragon-Íâ¿ò-°« (stand-in)
+[  683.1s]    new/worse overlap     6.73 mm3 (was 2.39)  Hex socket head cap screw M2.5x0.45 x 002  x  TL-dragon-Íâ¿ò-°« (stand-in)
+[  683.1s]    new/worse overlap     6.73 mm3 (was 2.39)  Hex socket head cap screw M2.5x0.45 x 018  x  TL-dragon-Íâ¿ò-°«008 (stand-in)
+[  683.1s]    new/worse overlap     6.73 mm3 (was 2.39)  Hex socket head cap screw M2.5x0.45 x 004  x  TL-dragon-Íâ¿ò-°«002 (stand-in)
+[  683.1s]    new/worse overlap     6.73 mm3 (was 2.39)  TL-dragon-Íâ¿ò-°«004 (stand-in)  x  Hex socket head cap screw M2.5x0.45 x 011
+[  683.1s]    new/worse overlap     6.73 mm3 (was 2.39)  Hex socket head cap screw M2.5x0.45 x 017  x  TL-dragon-Íâ¿ò-°«008 (stand-in)
+[  683.1s]    new/worse overlap     6.73 mm3 (was 2.39)  Hex socket head cap screw M2.5x0.45 x 009  x  TL-dragon-Íâ¿ò-°«004 (stand-in)
+[  683.1s]    new/worse overlap     6.73 mm3 (was 2.39)  Hex socket head cap screw M2.5x0.45 x 001  x  TL-dragon-Íâ¿ò-°« (stand-in)
+[  683.1s]    new/worse overlap     6.73 mm3 (was 2.39)  TL-dragon-Íâ¿ò-°«006 (stand-in)  x  Hex socket head cap screw M2.5x0.45 x 015
+[  683.1s]    new/worse overlap     6.73 mm3 (was 2.39)  TL-dragon-Íâ¿ò-°«008 (stand-in)  x  Hex socket head cap screw M2.5x0.45 x 019
+[  683.1s]    new/worse overlap     6.73 mm3 (was 2.39)  Hex socket head cap screw M2.5x0.45 x 006  x  TL-dragon-Íâ¿ò-°«002 (stand-in)
+[  683.1s]    new/worse overlap     6.73 mm3 (was 2.39)  Hex socket head cap screw M2.5x0.45 x 014  x  TL-dragon-Íâ¿ò-°«006 (stand-in)
+[  683.1s]    new/worse overlap     6.73 mm3 (was 2.39)  Hex socket head cap screw M2.5x0.45 x 005  x  TL-dragon-Íâ¿ò-°«002 (stand-in)
+[  683.1s]    new/worse overlap     6.73 mm3 (was 2.39)  Hex socket head cap screw M2.5x0.45 x 016  x  TL-dragon-Íâ¿ò-°«008 (stand-in)
+[  683.1s]    new/worse overlap     6.73 mm3 (was 2.39)  Hex socket head cap screw M2.5x0.45 x 012  x  TL-dragon-Íâ¿ò-°«006 (stand-in)
+[  683.1s]    new/worse overlap     6.73 mm3 (was 2.39)  Hex socket head cap screw M2.5x0.45 x 010  x  TL-dragon-Íâ¿ò-°«004 (stand-in)
+[  683.1s]    new/worse overlap     6.73 mm3 (was 2.39)  TL-dragon-Íâ¿ò-°«002 (stand-in)  x  Hex socket head cap screw M2.5x0.45 x 007
+[  683.1s]    new/worse overlap     6.73 mm3 (was 2.39)  Hex socket head cap screw M2.5x0.45 x 008  x  TL-dragon-Íâ¿ò-°«004 (stand-in)
+[  683.1s]    new/worse overlap     6.73 mm3 (was 2.39)  Hex socket head cap screw M2.5x0.45 x 013  x  TL-dragon-Íâ¿ò-°«006 (stand-in)
+[  683.1s]    new/worse overlap     6.73 mm3 (was 2.39)  TL-dragon-Íâ¿ò-°« (stand-in)  x  Hex socket head cap screw M2.5x0.45 x 003
+[  683.1s]    new/worse overlap     5.80 mm3 (was 0.00)  Crossbow - Main Body003  x  Hex socket head cap screw M2.5x0.45 x 015
+[  683.1s]    new/worse overlap     5.80 mm3 (was 0.00)  Crossbow - Main Body  x  Hex socket head cap screw M2.5x0.45 x 003
+[  683.1s]    new/worse overlap     5.80 mm3 (was 0.00)  Crossbow - Main Body004  x  Hex socket head cap screw M2.5x0.45 x 019
+[  683.1s]    new/worse overlap     5.80 mm3 (was 0.00)  Crossbow - Main Body001  x  Hex socket head cap screw M2.5x0.45 x 007
+[  683.1s]    new/worse overlap     5.80 mm3 (was 0.00)  Crossbow - Main Body002  x  Hex socket head cap screw M2.5x0.45 x 011
+[  683.1s]    new/worse overlap     5.80 mm3 (was 0.00)  Crossbow - Main Body  x  Hex socket head cap screw M2.5x0.45 x 001
+[  683.1s]    new/worse overlap     5.80 mm3 (was 0.00)  Crossbow - Main Body002  x  Hex socket head cap screw M2.5x0.45 x 009
+[  683.1s]    new/worse overlap     5.80 mm3 (was 0.00)  Crossbow - Main Body001  x  Hex socket head cap screw M2.5x0.45 x 005
+[  683.1s]    new/worse overlap     5.80 mm3 (was 0.00)  Crossbow - Main Body004  x  Hex socket head cap screw M2.5x0.45 x 017
+[  683.1s]    new/worse overlap     5.80 mm3 (was 0.00)  Crossbow - Main Body003  x  Hex socket head cap screw M2.5x0.45 x 013
+[  683.1s]    new/worse overlap     3.98 mm3 (was 0.00)  Crossbow - Main Body002  x  Hex socket head cap screw M2.5x0.45 x 008
+[  683.1s]    new/worse overlap     3.98 mm3 (was 0.00)  Crossbow - Main Body  x  Hex socket head cap screw M2.5x0.45 x 10
+[  683.1s]    new/worse overlap     3.98 mm3 (was 0.00)  Crossbow - Main Body003  x  Hex socket head cap screw M2.5x0.45 x 012
+[  683.1s]    new/worse overlap     3.98 mm3 (was 0.00)  Crossbow - Main Body001  x  Hex socket head cap screw M2.5x0.45 x 004
+[  683.1s]    new/worse overlap     3.98 mm3 (was 0.00)  Crossbow - Main Body004  x  Hex socket head cap screw M2.5x0.45 x 016
+[  683.1s]    new/worse overlap     3.98 mm3 (was 0.00)  Crossbow - Main Body002  x  Hex socket head cap screw M2.5x0.45 x 010
+[  683.1s]    new/worse overlap     3.98 mm3 (was 0.00)  Crossbow - Main Body  x  Hex socket head cap screw M2.5x0.45 x 002
+[  683.1s]    new/worse overlap     3.98 mm3 (was 0.00)  Crossbow - Main Body001  x  Hex socket head cap screw M2.5x0.45 x 006
+[  683.1s]    new/worse overlap     3.98 mm3 (was 0.00)  Crossbow - Main Body004  x  Hex socket head cap screw M2.5x0.45 x 018
+[  683.1s]    new/worse overlap     3.98 mm3 (was 0.00)  Crossbow - Main Body003  x  Hex socket head cap screw M2.5x0.45 x 014
+[  683.1s]    new/worse overlap     0.16 mm3 (was 0.00)  hex-main-body_DAV_o2_xol004  x  Hex socket head cap screw M2.5x0.45 x 017
+[  683.1s]    new/worse overlap     0.16 mm3 (was 0.00)  hex-main-body_DAV_o2_xol001  x  Hex socket head cap screw M2.5x0.45 x 004
+[  683.1s]    new/worse overlap     0.16 mm3 (was 0.00)  hex-main-body_DAV_o2_xol003  x  Hex socket head cap screw M2.5x0.45 x 012
+[  683.1s]    new/worse overlap     0.16 mm3 (was 0.00)  hex-main-body_DAV_o2_xol003  x  Hex socket head cap screw M2.5x0.45 x 013
+[  683.1s]    new/worse overlap     0.16 mm3 (was 0.00)  hex-main-body_DAV_o2_xol001  x  Hex socket head cap screw M2.5x0.45 x 005
+[  683.1s]    new/worse overlap     0.16 mm3 (was 0.00)  hex-main-body_DAV_o2_xol002  x  Hex socket head cap screw M2.5x0.45 x 008
+[  683.1s]    new/worse overlap     0.16 mm3 (was 0.00)  hex-main-body_DAV_o2_xol004  x  Hex socket head cap screw M2.5x0.45 x 016
+[  683.1s]    new/worse overlap     0.16 mm3 (was 0.00)  hex-main-body_DAV_o2_xol  x  Hex socket head cap screw M2.5x0.45 x 001
+[  683.1s]    new/worse overlap     0.16 mm3 (was 0.00)  hex-main-body_DAV_o2_xol002  x  Hex socket head cap screw M2.5x0.45 x 009
+[  683.1s]    new/worse overlap     0.16 mm3 (was 0.00)  hex-main-body_DAV_o2_xol  x  Hex socket head cap screw M2.5x0.45 x 10
+[  683.1s]    new/worse overlap     0.16 mm3 (was 0.00)  hex-main-body_DAV_o2_xol002  x  Hex socket head cap screw M2.5x0.45 x 010
+[  683.1s]    new/worse overlap     0.16 mm3 (was 0.00)  hex-main-body_DAV_o2_xol003  x  Hex socket head cap screw M2.5x0.45 x 015
+[  683.1s]    new/worse overlap     0.16 mm3 (was 0.00)  hex-main-body_DAV_o2_xol004  x  Hex socket head cap screw M2.5x0.45 x 019
+[  683.1s]    new/worse overlap     0.16 mm3 (was 0.00)  hex-main-body_DAV_o2_xol004  x  Hex socket head cap screw M2.5x0.45 x 018
+[  683.1s]    new/worse overlap     0.16 mm3 (was 0.00)  hex-main-body_DAV_o2_xol003  x  Hex socket head cap screw M2.5x0.45 x 014
+[  683.1s]    new/worse overlap     0.16 mm3 (was 0.00)  hex-main-body_DAV_o2_xol  x  Hex socket head cap screw M2.5x0.45 x 002
+[  683.1s]    new/worse overlap     0.16 mm3 (was 0.00)  hex-main-body_DAV_o2_xol  x  Hex socket head cap screw M2.5x0.45 x 003
+[  683.1s]    new/worse overlap     0.16 mm3 (was 0.00)  hex-main-body_DAV_o2_xol001  x  Hex socket head cap screw M2.5x0.45 x 007
+[  683.1s]    new/worse overlap     0.16 mm3 (was 0.00)  hex-main-body_DAV_o2_xol001  x  Hex socket head cap screw M2.5x0.45 x 006
+[  683.1s]    new/worse overlap     0.16 mm3 (was 0.00)  hex-main-body_DAV_o2_xol002  x  Hex socket head cap screw M2.5x0.45 x 011
+[  683.1s] known: screw head under the extruder adapter / Crossbow (reported, #263): 30 pairs, 3.98..7.66 mm3
+[  683.1s] known: screw in the stand-in heat sink's tapped hole (modelled at the minor diameter; 5.0 mm deep now, was 2.0): 20 pairs, 6.73..6.73 mm3
+[  683.1s] known: screw through the DAV body's 0.2 mm print bridging layers: 20 pairs, 0.16..0.16 mm3
+[  683.1s] ok   all 20 screw heads hit the adapter or the Crossbow body (20): the open question on #263
+[  683.1s] ok   no other new or worse overlap of a changed part (0: [])
+[  684.8s] ok   every other solid's box unchanged (0: [])
+[  684.8s] verify: 0 problems
+[  684.8s] DRY RUN (headless): all checks passed, not saved
+[  685.0s] litepool: peak RSS: workers max 1871 MB, sum 9355 MB; parent 3256 MB
