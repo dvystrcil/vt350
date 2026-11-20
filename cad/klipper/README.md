@@ -142,11 +142,15 @@ so a second one never replaces the first. Give `status` and `stop` the same `--p
   the start log lists them), it follows the heater pin's PWM and drives the thermistor's ADC pin with the reading a
   first-order heater would give: ambient 25 °C, heating toward 25 + 350 °C at full power (a bed: 25 + 120), cooling
   back to 25 °C when off. So `M104`/`M109`, `SET_HEATER_TEMPERATURE` and Fluidd's heater fields heat to the target,
-  hold it under Kalico's own PID, and cool when set to 0, with no verify_heater shutdown. The model runs in the
-  board's simulated time (klippy's print time), so the PID sees a plant like a real one; on the wall clock it is
-  10 to 20 times slower than simulated time: a hotend took about TIMING to reach 200 °C (2026-11-19, busy machine),
-  slower than a real one. Not modelled: filament, part fans, the heat a bed puts into the air. A board restart starts
-  its heaters again at 25 °C. The VT350 has no `[heater_bed]` yet, so `M140`/`M190` set nothing.
+  hold it under Kalico's own PID, and cool when set to 0. The model runs in the board's simulated time (klippy's
+  print time), so the PID sees a plant like a real one; but simulavr runs 10 to 25 times slower than real time, so
+  on the wall clock heating is much slower than on a printer: on 2026-11-19 (a busy machine), `M104 T0 S200` reached
+  197 °C after about 10 minutes, held 198 to 201 °C, and after `M104 T0 S0` fell to 152 °C in 5 minutes.
+  verify_heater counts wall-clock time, so the container's top config stretches its checks on each simulated heater
+  30 times (`[verify_heater extruder]` `check_gain_time: 600`, `max_error: 3600`); a heater that doesn't heat still
+  shuts the printer down, only later. A first try with the model on the wall clock heated at real speed, but the PID
+  (which runs in print time) lagged it and swung by ±10 °C. Not modelled: filament, part fans. A board restart
+  starts its heaters again at 25 °C. The VT350 has no `[heater_bed]` yet, so `M140`/`M190` answer "Unknown command".
 - **Probes:** a simulated input reads its pull-up, so `^PG11` (the Zero's NC switch: high when pressed) read
   triggered and `TC_GET_PROBE_POSITION` stopped at once with "Probe triggered prior to movement". The top config
   inverts it (`^!`), so the probe reads untriggered, as in batch mode, and each probing move runs its full distance
@@ -175,7 +179,9 @@ so a second one never replaces the first. Give `status` and `stop` the same `--p
   5. `T1`, then `UNSELECT_TOOL` (console): "Dropping off tool T…", with "Unknown command:
      STOP_TOOL_PROBE_CRASH_DETECTION" (expected, as in batch mode), then "Tool unselected".
   6. The part-fan sliders (`part_fan_t0`, `part_fan_t1`); `SET_FAN_SPEED FAN=part_fan_t0 SPEED=0.5`.
-  7. `TC_*` macros: `TC_ADJUST_OFFSET` with no arguments answers "Tool must be specified" (expected). The probing
+  7. Heat: `M104 T0 S200` (or T0's extruder field in Fluidd). The temperature climbs, slowly (Heaters heat, above),
+     and holds near 200 °C; `M104 T0 S0` lets it cool.
+  8. `TC_*` macros: `TC_ADJUST_OFFSET` with no arguments answers "Tool must be specified" (expected). The probing
      ones (`TC_GET_PROBE_POSITION`, `TC_FIND_TOOL_OFFSETS`) run with T0 over the Zero on the printer; here they may
      stop the printer (Probes, above).
 
