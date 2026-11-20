@@ -98,6 +98,9 @@ class Prepare(unittest.TestCase):
         self.assertEqual(cp["mcu"]["serial"], os.path.join(self.run_dir, "mcu.tty"))
         self.assertEqual(cp["mcu tool"]["serial"], os.path.join(self.run_dir, "tool.tty"))
         self.assertEqual(cp["mcu"]["baud"], "250000")
+        # no DTR on a pty: every board is reset by command, and reset_watch.py restarts its simulator
+        self.assertEqual(cp["mcu"]["restart_method"], "command")
+        self.assertEqual(cp["mcu tool"]["restart_method"], "command")
 
     def test_homing_on_simulated_endstops_does_not_retract(self):
         # a simulated endstop input reads its pull-up: triggered from the start, so a homing retract never clears it
@@ -114,8 +117,11 @@ class Prepare(unittest.TestCase):
         cp = configparser.ConfigParser(interpolation=None)
         cp.read(paths["supervisord"])
         progs = sorted(s for s in cp.sections() if s.startswith("program:"))
-        self.assertEqual(progs, ["program:klippy", "program:moonraker", "program:nginx",
+        self.assertEqual(progs, ["program:klippy", "program:moonraker", "program:nginx", "program:reset-watch",
                                  "program:simulavr-mcu", "program:simulavr-tool"])
+        watch = cp["program:reset-watch"]["command"]
+        self.assertIn(os.path.join(self.data, "logs", "klippy.log"), watch)
+        self.assertIn(paths["supervisord"], watch)
         sim = cp["program:simulavr-tool"]["command"]
         self.assertIn("-p " + os.path.join(self.run_dir, "tool.tty"), sim)
         self.assertIn("-m atmega644p", sim)

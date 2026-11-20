@@ -56,13 +56,23 @@ case $cmd in
         docker rm -f "$name" > /dev/null 2>&1 || true
         docker run -d --rm --name "$name" -p "127.0.0.1:$port:8080" -v "$source:/src:ro" "$tag" \
             --source /src --config "$config" --map "$map" "${home_files[@]}" > /dev/null
+        # On a busy machine a simulated board can answer klippy's connect too slowly; klippy then stops with an error
+        # (state shutdown or error) and a host restart (as Fluidd's RESTART) usually connects. Up to 3 tries.
+        tries=0
         for _ in $(seq 120); do
             s=$(state)
             [ "$s" = ready ] && { echo "virtual-printer: ready"; echo "virtual-printer: Fluidd at http://127.0.0.1:$port/"; exit 0; }
             docker inspect "$name" > /dev/null 2>&1 || { echo "virtual-printer: the container exited"; exit 1; }
+            if [ "$s" = shutdown ] || [ "$s" = error ]; then
+                (( tries < 3 )) || break
+                tries=$((tries + 1))
+                echo "virtual-printer: klippy stopped while connecting ($s); restarting it ($tries of 3)"
+                curl -fsS -X POST --max-time 10 "http://127.0.0.1:$port/printer/restart" > /dev/null || true
+                sleep 5
+            fi
             sleep 2
         done
-        echo "virtual-printer: not ready after 240 s (klippy: $(state)); the end of klippy.log:"
+        echo "virtual-printer: not ready (klippy: $(state)); the end of klippy.log:"
         docker exec "$name" tail -n 30 /opt/printer_data/logs/klippy.log || true
         exit 1 ;;
     status)
