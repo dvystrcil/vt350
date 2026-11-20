@@ -276,3 +276,14 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
   `f.Surface.__class__.__name__ == "Plane"` found no top face on a 0.16 mm pad and `max()` raised. The STL showed the
   face at once. To find a face at a height, test its vertices' heights (every vertex within ~1e-4 of it), not its
   surface type.
+- **A designer's variant STEPs often share one frame: fit the variant you have, place the one you want** (lite-73,
+  vt350#263, 2026-11-19). DW-Tas's `main-body_<hotend>_*.step` files all have the same box and differ only round the
+  hotend pocket, so `dupes.fit(uhf_step_shape, model_body)` (a rigid move, checked vertex by vertex) gives the move that
+  puts `hex-main-body_DAV_*.step` exactly where the UHF body was, with no hole matching. Check the shared frame first
+  (equal boxes, the faces that differ all in one region).
+- **An assembly's parts can look mounted and not touch** (lite-73). lite-15 took the Dragon ACE stand-in, spacer and
+  screws from DW-Tas's `A4Tv2_assembly.step` as placed there; the spacer's top was 8.5 mm below the UHF body's pocket
+  ceiling, and every nozzle figure since was measured off a floating hotend. Box overlaps can't show a gap. Probe it:
+  vertical lines (`Part.makeLine(...).common(shape).Edges`) round the axis give each part's material along Z, so
+  "what is directly above the heat sink" is one number per line. Keep the lines off holes (at radius 8 on the
+  diagonals they ran down the screw holes and found nothing).
