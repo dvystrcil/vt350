@@ -12,6 +12,8 @@ The VT350 is a heavily modified Voron Trident 350 built around a [MadMax](https:
 
 The model and renders always show all five tools. The first build will run **two** (T0 and T1, the outer docks). The other three are added later without changing the frame.
 
+**Why five toolheads?** After using a four-lane Pico MMU for a long while, I found I needed four lanes for mixing colours and one extra lane for black or support material.
+
 ### At a glance
 
 | | |
