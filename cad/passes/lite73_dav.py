@@ -71,8 +71,9 @@ def above(shape, x, y, z0, z1=520.0):
 
 
 def ceiling(shape, cx, cy, z0, r=8.0):
-    """The body's material straight above the hotend: lowest Z above z0 on 8 lines at radius r round the axis."""
-    zs = [above(shape, cx + r * math.cos(a), cy + r * math.sin(a), z0) for a in [k * math.pi / 4 for k in range(8)]]
+    """The body's material straight above the hotend: lowest Z above z0 on 4 lines at radius r round the axis, along X
+    and Y (the diagonals at r 8 are the hotend screws' holes)."""
+    zs = [above(shape, cx + r * math.cos(a), cy + r * math.sin(a), z0) for a in [k * math.pi / 2 for k in range(4)]]
     return zs
 
 
