@@ -58,5 +58,43 @@ class TheToolsPage(unittest.TestCase):
                 self.assertIn(what, out)
                 self.assertEqual(out.count("\nFAIL ") + out.startswith("FAIL "), 1, out)
 
+
+class TheSync(unittest.TestCase):
+    """cad/sync-tools-page.py carries a changed pin onto the page (vt350#224: Renovate and the monthly repin)."""
+
+    @classmethod
+    def setUpClass(cls):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("sync_tools_page", os.path.join(HERE, "sync-tools-page.py"))
+        cls.sync = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cls.sync)
+
+    def test_changed_pins_replace_their_old_values_only(self):
+        page = ("| a | `git=1:2.39.5-0+deb12u3`, `make=4.3-4.1` | `actions/checkout@v7` |\n"
+                "| b | `git=1:2.39.5-0+deb12u3` `git=1:2.39.5-0+deb12u30` | `20261120T000000Z` |\n")
+        before = {("apt", "git"): {"git=1:2.39.5-0+deb12u3", "git=1:2.47.3-0+deb13u1"},
+                  ("action", "actions/checkout"): {"actions/checkout@v7"},
+                  ("DEBIAN_SNAPSHOT", ""): {"20261120T000000Z"}}
+        after = {("apt", "git"): {"git=1:2.39.5-0+deb12u4", "git=1:2.47.3-0+deb13u1"},
+                 ("action", "actions/checkout"): {"actions/checkout@" + "a" * 40},
+                 ("DEBIAN_SNAPSHOT", ""): {"20261201T000000Z"}}
+        new, notes = self.sync.sync(page, before, after)
+        self.assertEqual(new, page.replace("deb12u3`", "deb12u4`").replace("@v7", "@" + "a" * 40)
+                         .replace("20261120T000000Z", "20261201T000000Z"))
+        self.assertIn("deb12u30", new)
+        self.assertEqual(len(notes), 3, notes)
+
+    def test_a_new_pin_is_reported_for_a_hand_edit(self):
+        new, notes = self.sync.sync("page", {}, {("apt", "swig"): {"swig=4.3.0-1"}})
+        self.assertEqual(new, "page")
+        self.assertIn("add it to cad/tools.md by hand", notes[0])
+
+    def test_names(self):
+        self.assertEqual(self.sync.name("python:3.12-slim@sha256:ab"), "python")
+        self.assertEqual(self.sync.name("tornado==6.5.8"), "tornado")
+        self.assertEqual(self.sync.name("g++=4:14.2.0-1"), "g++")
+        self.assertEqual(self.sync.name("20261120T000000Z"), "")
+
+
 if __name__ == "__main__":
     unittest.main()
