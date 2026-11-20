@@ -86,7 +86,7 @@ class TheCommittedMap(unittest.TestCase):
         m = co.load()
         frame = "4040-350x350x250 Voron Trident v4 v33 / 4040-350 VT Frame v12 / Horizontals"
         self.assertEqual(co.role_of(m, "2040 (2) (new front)", frame, "Aluminum-6061-T6"), "frame")
-        self.assertIsNone(co.role_of(m, "Dock", frame, "Aluminum-6061-T6"))           # milled dock, not extrusion
+        self.assertNotEqual(co.role_of(m, "Dock", frame, "Aluminum-6061-T6"), "frame")  # milled dock, not extrusion
         self.assertEqual(co.role_of(m, "Dock crossbar (placeholder, 2040)", frame, "Aluminum-6061-T6"), "frame")  # user, 2026-11-08
         self.assertEqual(co.role_of(m, "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
                                     "Left Toolhead", "ABS-Generic"), "accent")
@@ -98,7 +98,7 @@ class TheCommittedMap(unittest.TestCase):
             self.assertEqual(co.role_of(m, lab, "4040-350x350x250 Voron Trident v4 v33 / XY left: _XY_left", "Aluminum-6061-T6"), "monolith")
         for lab in ("695 W5 bearing005", "F695 flanged bearing022", "_MR148ZZ Outer Ring (1)", "_MR148ZZ Ball013"):
             self.assertEqual(co.role_of(m, lab, "x", "Steel-Generic"), "bearing", lab)
-        self.assertIsNone(co.role_of(m, "D5x36mm pin001", "x", "Steel-Generic"))
+        self.assertEqual(co.role_of(m, "D5x36mm pin001", "x", "Steel-Generic"), "hardware")      # #149
         self.assertEqual(co.role_of(m, "backbone-350 v2", "4040-350x350x250 Voron Trident v4 v33", "Steel-Generic"), "backbone")
 
     def test_committed_rules_on_lite32_toolhead(self):
@@ -112,7 +112,7 @@ class TheCommittedMap(unittest.TestCase):
                          ("Component19", orb + " / LDO_36STH17-1004AHG v6 (1)")):
             self.assertEqual(co.role_of(m, lab, grp, "Default"), "orbiter", lab)
         self.assertIsNone(co.role_of(m, "Bowden Left", orb + " / BrassCouplerRing 4mm PFTE v1", "Default"))  # PTFE tube
-        self.assertIsNone(co.role_of(m, "Orbiter Spider Shaft v4 (1)", orb, "Steel-Generic"))              # steel stays steel
+        self.assertEqual(co.role_of(m, "Orbiter Spider Shaft v4 (1)", orb, "Steel-Generic"), "brushed_steel")  # steel (#149)
         self.assertEqual(co.role_of(m, "_MR148ZZ Ball017", orb + " / Orbiter 8MM bearing", "Steel-Generic"), "bearing")
         for lab in ("Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0)",
                     "Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)"):
@@ -164,7 +164,7 @@ class TheCommittedMap(unittest.TestCase):
                          ("Component19", orb + " / LDO_36STH17-1004AHG v6 (1) / LDO Stepper (1) (1)")):
             self.assertEqual(co.role_of(m, lab, grp, mat), "orbiter", lab)
         self.assertIsNone(co.role_of(m, "Bowden Left", orb + " / BrassCouplerRing 4mm PFTE v1", mat))   # PTFE tube
-        self.assertIsNone(co.role_of(m, "Orbiter Spider Shaft v4 (1)", orb, "Steel-Generic"))           # steel stays steel
+        self.assertEqual(co.role_of(m, "Orbiter Spider Shaft v4 (1)", orb, "Steel-Generic"), "brushed_steel")  # steel stays steel (#149)
 
     def test_stepper_motors_are_black(self):
         # vt350#220 (owner, 2026-11-18: "We need to give the stepper motors their proper color, they are white"):
@@ -178,7 +178,8 @@ class TheCommittedMap(unittest.TestCase):
             self.assertEqual(co.role_of(m, lab, grp, "Default"), "stepper", lab)
         self.assertEqual(co.role_of(m, "_Stepper_shaft_S45R", top + " / Rear right: _Rear_right / NEMA17 with 45mm long shaft",
                                     "Default"), "brushed_steel")
-        self.assertIsNone(co.role_of(m, "Leadscrew (rod)", top + " / Z_Motor_Left / NEMA17 Leadscrew 400mm", "Steel-Generic"))
+        self.assertEqual(co.role_of(m, "Leadscrew (rod)", top + " / Z_Motor_Left / NEMA17 Leadscrew 400mm", "Steel-Generic"),
+                         "brushed_steel")                                                            # #149
 
     def test_committed_rules_on_lite27_stand_and_filter(self):
         m = co.load()
@@ -221,7 +222,7 @@ class TheCommittedMap(unittest.TestCase):
         z = "4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z"
         for lab in ("10x11 Chain Link", "10x11 Chain Link017", "10x11 Fixed End", "10x11 Unfixed End"):
             self.assertEqual(co.role_of(m, lab, z, "Default"), "accent", lab)
-        self.assertIsNone(co.role_of(m, "M3x8-Screw034", z, "Default"))
+        self.assertEqual(co.role_of(m, "M3x8-Screw034", z, "Default"), "hardware")              # not the accent (#149)
 
     def test_lite38_brass_felt_paint_door(self):
         """User, 2026-11-14 (#19): the O2S standoffs are brass (their screws in the same part may be brass too);
@@ -295,6 +296,111 @@ class TheCommittedMap(unittest.TestCase):
 
 
 
+    def test_hardware_on_real_lite71_labels(self):
+        """vt350#149 AC3: fasteners, washers, nuts, T-nuts, springs, pins and magnets are the hardware role, whatever
+        their material (Steel-Generic in the Trident frame, Default in the e-box door and the EMU). Labels and groups
+        as in vt350-lite-71.parts.json, vt350-ebox-3.parts.json and vt350-emu-3.parts.json; these were the largest
+        unmatched sets of the lite-71 audit."""
+        m = co.load()
+        top = "4040-350x350x250 Voron Trident v4 v33"
+        fr = top + " / 4040-350 VT Frame v12"
+        z = top + " / Z Assembly (1) / Z_Left"
+        emu = "EMU 5-lane (DW-Tas) / Full Assembly - Left <1> / EMU - Single Lane <1>"
+        for lab, grp, mat in (
+                ("M3x8-Screw", fr + " / Horizontals", "Steel-Generic"),
+                ("M3x8-Screw034", top + " / Z Assembly (1) / 10x11 Chain Z", "Default"),
+                ("M5-Washer", fr, "Steel-Generic"),
+                ("M5x50-Screw", fr, "Steel-Generic"),
+                ("M5x16-Screw", fr, "Steel-Generic"),
+                ("M3x12-Screw", fr, "Steel-Generic"),
+                ("M5x10 LP SHCS", fr, "Steel-Generic"),
+                ("M3x8 FHCS", fr, "Steel-Generic"),
+                ("M5 2020 drop-in T-nut", fr, "Steel-Generic"),
+                ("M3 Hammerhead T-Nut", fr, "Steel-Generic"),
+                ("M5 disc spring", z, "Steel-Generic"),
+                ("M5x0.5mm shim", z, "Steel-Generic"),
+                ("M3 Locknut", z, "Steel-Generic"),
+                ("Leadscrew Nut", z, "Default"),
+                ("_M4x4 set screw", z, "Steel-Generic"),
+                ("D5x36mm pin001", z, "Steel-Generic"),
+                ("M5x50 Dowel Pin (1)", top + " / Door (1) (1)", "Steel-Generic"),
+                ("E-box door: M3x8-Screw", "E-box door", "Default"),
+                ("E-box door: M5-Washer", "E-box door", "Default"),
+                ("M5x30-Screw e-box joint 4040 (2) Y490 Z-40 (DIN 912, lite-47)", "E-box joints", "Default"),
+                ("Hex socket countersunk head screw M3x0.5 x 8", emu, "Default"),
+                ("Socket button head screw M3x0.5 x 6", emu, "Steel-Generic"),
+                ("Square thin nut grade B M3x0.5", emu, "Default"),
+                ("Plain washer normal grade C M3", emu, "Default"),
+                ("Magnet 6x3", emu, "Default"),
+                ("MadMax magnet 6x3 N52 (plate Plate) 1", top + " / Left Dock", "Default"),
+                ("Trident kinematic 9 mm M3 sphere nut, rear", top + " / kinematic bed mount", "Steel-Generic"),
+                ("92125A138 (1)", top + " / Left Toolhead / Orbiter 2.5", "Steel-Generic")):   # McMaster: steel
+            self.assertEqual(co.role_of(m, lab, grp, mat), "hardware", lab)
+        r = m["roles"]["hardware"]
+        self.assertEqual(r["kind"], "steel")
+        self.assertIn("PLACEHOLDER", r["note"])               # the owner picks the hex (#101 rule: no silent colour)
+
+    def test_hardware_does_not_take_earlier_roles(self):
+        # the rules before it still win: the feet's M5 screws are brushed steel (#83), the O2S standoffs + screws brass
+        m = co.load()
+        stand = "4040-350x350x250 Voron Trident v4 v33 / Stand: levelling feet + base board (#83, placeholders)"
+        self.assertEqual(co.role_of(m, "Levelling foot 1 M5x16 screw 2 (DIN 912)", stand, "Default"), "brushed_steel")
+        self.assertEqual(co.role_of(m, "Orbitool O2S standoffs + screws (x)", "x / Left Toolhead", "Default"), "brass")
+
+    def test_inserts_brass_rails_and_shafts_steel_bearings_motors(self):
+        """vt350#149: heat-set inserts are brass; linear rails, shafts and the Z leadscrews brushed steel; the EMU's
+        688 and the MR825 bearings bearings; the EMU's stepper motors black like the printer's (#220)."""
+        m = co.load()
+        top = "4040-350x350x250 Voron Trident v4 v33"
+        emu = "EMU 5-lane (DW-Tas) / Full Assembly - Left <1> / EMU - Single Lane <1>"
+        for lab in ("M3 Threaded Insert", "M3 Threaded Insert017", "M3x5.74-Insert"):
+            self.assertEqual(co.role_of(m, lab, emu, "Default"), "brass", lab)
+        for lab, grp, mat in (("Leadscrew (rod)", top + " / Z_Motor_Left / NEMA17 Leadscrew 400mm", "Steel-Generic"),
+                              ("Leadscrew001 (rod)", top + " / Z_Motor_Left / NEMA17 Leadscrew 400mm", "Steel-Generic"),
+                              ("MGN9-400mm Y rail (L) - owned Berserker, steel", top, "Steel-Generic"),
+                              ("MGN12-400mm v1", top, "Steel-Generic"),
+                              ("MGN9H - Carriage_body (1)", top, "Steel-Generic"),
+                              ("_MGN9H", top, "Steel-Generic"),
+                              ("Orbiter Spider Shaft v4 (1)", top + " / Left Toolhead / Orbiter 2.5", "Steel-Generic"),
+                              ("_LDO 5 mm shaft", top, "Steel-Generic")):
+            self.assertEqual(co.role_of(m, lab, grp, mat), "brushed_steel", lab)
+        self.assertEqual(co.role_of(m, "MGN9H - Carriage_end_cap_screw (1)", top, "Steel-Generic"), "hardware")
+        for lab in ("688_Bearing", "688_Bearing (1)", "688_Bearing (1)012", "MR825 Ballbearing 5x8x2(Mirror) (1)",
+                    "1-Way_Bearing"):
+            self.assertEqual(co.role_of(m, lab, emu, "Default"), "bearing", lab)
+        for lab in ("Chassis_L_688_Bearing", "688_Bearing_Bushing"):     # printed parts named after their bearing
+            self.assertNotEqual(co.role_of(m, lab, emu, "Default"), "bearing", lab)
+        for lab in ("17HE08-1004S", "Stepper_Main_Body"):
+            self.assertEqual(co.role_of(m, lab, emu, "Default"), "stepper", lab)
+
+    def test_electronics_and_stock_aluminium(self):
+        """vt350#149: circuit boards are the electronics role; aluminium no earlier rule claims (the kinematic bed
+        mount's plates, the build plate) is stock aluminium, still never the frame."""
+        m = co.load()
+        top = "4040-350x350x250 Voron Trident v4 v33"
+        emu = "EMU 5-lane (DW-Tas) / Full Assembly - Left <1> / EMU - Single Lane <1>"
+        for lab in ("Board~W3QO", "Neopixel Mini Button PCB",
+                    "Nocturne USB camera board (Luke's Laboratory, 96 deg FOV)"):
+            self.assertEqual(co.role_of(m, lab, emu, "Default"), "electronics", lab)
+        kin = top + " / kinematic bed mount"
+        for lab in ("Trident kinematic A left bearing plate (3 mm)", "Trident kinematic H back top (2 mm)",
+                    "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)"):
+            self.assertEqual(co.role_of(m, lab, kin, "Aluminum-Generic"), "stock_aluminium", lab)
+        frame = top + " / 4040-350 VT Frame v12 / Horizontals"
+        self.assertEqual(co.role_of(m, "Dock", frame, "Aluminum-6061-T6"), "stock_aluminium")   # milled, not the frame
+        self.assertEqual(co.role_of(m, "2040 (2) (new front)", frame, "Aluminum-6061-T6"), "frame")
+        for name in ("electronics", "stock_aluminium"):
+            self.assertIn("PLACEHOLDER", m["roles"][name]["note"], name)
+
+    def test_existing_role_colours_are_unchanged(self):
+        # vt350#149: reorganising by role adds roles; it never recolours one the owner already chose
+        m = co.load()
+        for name, hexv in (("frame", "#27461F"), ("accent", "#E2662A"), ("printed", "#E6E4DE"), ("bearing", "#E4E6EA"),
+                           ("brushed_steel", "#A7ABAF"), ("brushed_aluminium", "#BFC3C7"), ("stepper", "#161616"),
+                           ("brass", "#C9A44C"), ("monolith", "#161616"), ("backbone", "#1A1A1A")):
+            self.assertEqual(m["roles"][name]["hex"], hexv, name)
+
+
 class Audit(unittest.TestCase):
     """vt350#91: the parts no colour rule matched, grouped by group path and material, with counts. The export
     writes it to out/colour-audit.txt. The fixture is a parts list as export_meshes.py sees each part, because
@@ -313,6 +419,7 @@ class Audit(unittest.TestCase):
         before = frame[0]["label"]
         frame[0]["label"] = before.replace("|^Dock crossbar", "")
         self.assertNotEqual(frame[0]["label"], before, "the vt350#88 crossbar rule is no longer written this way")
+        m["rules"] = [r for r in m["rules"] if not (r.get("material") == "^Alumin" and not r.get("label"))]  # #149 catch-all
         return m
 
     def listed(self, groups):
@@ -333,23 +440,43 @@ class Audit(unittest.TestCase):
     def test_groups_by_group_and_material_with_counts(self):
         groups = co.audit(co.load(), self.parts())
         got = [(g["n"], g["group"], g["material"], g["labels"]) for g in groups]
-        chain = "4040-350x350x250 Voron Trident v4 v33 / Z Assembly (1) / 10x11 Chain Z"
         sm = "StealthMax 300 (nevermore3d a3451c5, GPL-3.0), recessed concept"
         self.assertEqual(got, [                       # most parts first, then group, then material
-            (2, self.FRAME, "Steel-Generic", {"M5x16": 1, "M5x16001": 1}),     # not Default: the old log missed these
-            (2, chain, "Default", {"M3x8-Screw034": 2}),                        # the same label twice (an extra file)
             (2, sm, "Default", {"StealthMax Acrylic Panel": 1, "StealthMax fan (Delta BFB0712HF)": 1}),
-            (1, self.FRAME, "Aluminum-6061-T6", {"Dock": 1}),
             (1, "Enclosure extras (lite-16)", "Default", {"Nocturne lens": 1}),
-        ])
+        ])                                            # the screws and the milled dock have roles since #149
+
+    def test_a_label_twice_and_the_order(self):
+        parts = [("Bolt thing", "A", "Default"), ("Bolt thing", "A", "Default"), ("Lens", "B", "Default"),
+                 ("Plate", "A", "Unobtainium")]
+        groups = co.audit(MAP, parts)
+        self.assertEqual([(g["n"], g["group"], g["material"], g["labels"]) for g in groups],
+                         [(2, "A", "Default", {"Bolt thing": 2}), (1, "A", "Unobtainium", {"Plate": 1}),
+                          (1, "B", "Default", {"Lens": 1})])
+        self.assertIn("       Bolt thing  x2", co.audit_text(groups, 4).splitlines())
 
     def test_text_first_line_is_the_count(self):
         text = co.audit_text(co.audit(co.load(), self.parts()), len(self.parts()))
         lines = text.splitlines()
-        self.assertEqual(lines[0], "unmatched: 8 of 12 parts, in 5 group/material sets")
-        self.assertIn("  2  Steel-Generic  " + self.FRAME, lines)
-        self.assertIn("       M3x8-Screw034  x2", lines)
+        self.assertEqual(lines[0], "unmatched: 3 of 12 parts, in 2 group/material sets")
+        self.assertIn("  2  Default  StealthMax 300 (nevermore3d a3451c5, GPL-3.0), recessed concept", lines)
         self.assertTrue(text.endswith("\n"))
+
+    def test_the_largest_sets_lead(self):
+        """vt350#149 AC2: the batch notify comment quotes the audit's first 12 lines (homelab bin/gpu-batch-submit.py,
+        COLOUR_AUDIT_LINES). Those lines are the count, then the largest sets one line each (count, material, group),
+        then the totals by material; each set's labels come after."""
+        parts = ([("M3x8-Screw", "Frame", "Steel-Generic")] * 50 + [("Part 1", "EMU / Lane", "Default")] * 30
+                 + [("Plate", "Bed", "Aluminum-Generic")] * 20 + [(f"Odd {i}", f"G{i:02d}", "Default") for i in range(12)])
+        empty = {"roles": MAP["roles"], "rules": [{"role": "frame", "label": "^never$"}]}
+        lines = co.audit_text(co.audit(empty, parts), len(parts)).splitlines()
+        self.assertEqual(lines[0], "unmatched: 112 of 112 parts, in 15 group/material sets")
+        self.assertEqual(lines[1:4], [" 50  Steel-Generic  Frame", " 30  Default  EMU / Lane", " 20  Aluminum-Generic  Bed"])
+        head = lines[:12]
+        self.assertIn("by material: Steel-Generic 50, Default 42, Aluminum-Generic 20", head)
+        self.assertNotIn("       M3x8-Screw  x50", head)       # the labels wait until every summary line is out
+        self.assertIn("       M3x8-Screw  x50", lines)
+        self.assertEqual(sum(1 for l in head if l[:3].strip().isdigit()), co.AUDIT_TOP)   # the top N sets, no more
 
     def test_a_part_in_no_group(self):
         text = co.audit_text(co.audit(co.load(), [("loose", "", "Default")]), 1)

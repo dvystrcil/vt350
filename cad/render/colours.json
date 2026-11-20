@@ -23,7 +23,10 @@
     "glass_clear": {"hex": "#F4F7F8", "kind": "glass", "roughness": 0.03, "note": "the door window, clear sheet (acrylic or polycarbonate: #4) (user, 2026-11-14, #19)"},
     "brushed_aluminium": {"hex": "#BFC3C7", "kind": "aluminium", "roughness": 0.32, "note": "the CNC Crossbow on each head (main body, top cap, lever, blade caddy), brushed aluminium (user, 2026-11-14, #19); also the e-box DIN rails (user, 2026-11-16)"},
     "stepper": {"hex": "#161616", "kind": "paint", "roughness": 0.55, "note": "NEMA17 stepper bodies (A, B, 3 x Z), black (owner, 2026-11-18, #220); the real motors have silver end caps, but each body is one solid in the model, so all black until it is split"},
-    "o2s_heatsink": {"hex": "#2A5DB0", "kind": "aluminium", "roughness": 0.35, "note": "Orbitool O2S toolboard heat sink (13 fins), blue anodised aluminium (user, 2026-11-14, #19; split out of the board by lite-34; placeholder hex until photos)"}
+    "o2s_heatsink": {"hex": "#2A5DB0", "kind": "aluminium", "roughness": 0.35, "note": "Orbitool O2S toolboard heat sink (13 fins), blue anodised aluminium (user, 2026-11-14, #19; split out of the board by lite-34; placeholder hex until photos)"},
+    "hardware": {"hex": "#A7ABAF", "kind": "steel", "roughness": 0.3, "note": "PLACEHOLDER hex for the owner to pick (#149): fasteners, washers, nuts, T-nuts, pins, springs, magnets, and any steel part no other rule claims. Starts at brushed_steel's hex so nothing changes look before the owner decides (black oxide or stainless are the usual Voron choices)"},
+    "stock_aluminium": {"hex": "#BFC3C7", "kind": "aluminium", "roughness": 0.4, "note": "PLACEHOLDER hex for the owner to pick (#149): aluminium no earlier rule claims (the kinematic bed mount's plates, the build plate, the milled dock). Starts at brushed_aluminium's hex"},
+    "electronics": {"hex": "#1E4D2B", "kind": "plastic", "roughness": 0.5, "note": "PLACEHOLDER hex for the owner to pick (#149): circuit boards (PCBs), green solder mask; the owner's boards may be black"}
   },
   "rules": [
     {"role": "backbone", "label": "^backbone-350"},
@@ -72,7 +75,18 @@
     {"role": "board",   "label": "^Base board"},
     {"role": "accent",  "label": "^StealthMax .*(Latch|LogoCap|Hinge|hanger|cradle)"},
     {"role": "accent",  "group": "Chain", "label": "Chain Link|Fixed End|Unfixed End"},
-    {"role": "printed", "label": "^StealthMax (M_|3\\.|1\\.)"}
+    {"role": "printed", "label": "^StealthMax (M_|3\\.|1\\.)"},
+    {"role": "brass",   "label": "(?i)threaded insert|^M\\d+(\\.\\d+)?x[\\d.]+-Insert", "note": "#149: heat-set inserts, brass"},
+    {"role": "brushed_steel", "label": "^Leadscrew\\d* \\(rod\\)$", "note": "#149: the Z leadscrews; before the hardware rule, which takes 'screw'"},
+    {"role": "hardware", "label": "(?i)screw|washer|nut\\b|\\b[SBF]HCS\\b|dowel|\\bpin\\d*\\b|spring|shim|magnet\\b|DIN 913",
+     "note": "#149: fasteners and small hardware by name, whatever the material (Steel-Generic in the Trident, Default in the e-box door and the EMU); after every rule above, so the feet's screws stay brushed_steel and the O2S standoffs brass"},
+    {"role": "bearing",  "label": "^(688_Bearing( \\(\\d+\\))?|1-Way_Bearing|GE5C)\\d*$|^MR\\d+ Ballbearing ", "note": "#149: the EMU's bearings and the Z joints' spherical bearings; not the printed parts named after them (Chassis_L_688_Bearing)"},
+    {"role": "stepper",  "label": "^(17HE08-1004S|Stepper_Main_Body)\\d*$", "note": "#149: the EMU's lane motors, black like the printer's (#220)"},
+    {"role": "electronics", "label": "(?i)\\bPCB\\b|^Board~|USB camera board"},
+    {"role": "brushed_steel", "label": "^_?MGN\\d|^MGN_|[Ss]haft", "note": "#149: linear rails, their carriages, shafts"},
+    {"role": "rubber",   "label": "^Rubber( Foot|_Band)", "note": "#149: the EMU's feet and bands"},
+    {"role": "hardware", "material": "^Steel", "note": "#149: any steel part left, so steel reads as steel rather than the model's colour"},
+    {"role": "stock_aluminium", "material": "^Alumin", "note": "#149: any aluminium part left (the frame, monolith and Crossbow rules come first)"}
   ],
   "visibility": [
     {"tag": "dock_carriage_copy", "group": "(Left|Right) Dock / [^/]+ / Carriage(\\(Mirror\\))?( / |$)", "hide": "all",
