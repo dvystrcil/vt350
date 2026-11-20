@@ -21,6 +21,7 @@ Not a parts list: physical parts are the BOM (#22).
 | klipper-toolchanger | `94756dfde9b729fd69f9b8780067821c5c99a528` | `platform/kalisim/Dockerfile` (`TOOLCHANGER_SHA`) | GPL-3.0 | https://github.com/viesturz/klipper-toolchanger |
 | FreeCAD | `FreeCAD_26.3rc2-Linux-x86_64.AppImage` (26.3 RC2) | `platform/README.md` (`FREECAD_APPIMAGE`) | LGPL-2.0-or-later | https://www.freecad.org |
 | GitHub Actions: checkout | `actions/checkout@v7` | `.github/workflows/*.yml` | MIT | https://github.com/actions/checkout |
+| GitHub Actions: cache | `actions/cache@v4` | `.github/workflows/test-tmp.yml` (the static ffmpeg) | MIT | https://github.com/actions/cache |
 | GitHub Actions: Pages | `actions/configure-pages@v6`, `actions/upload-pages-artifact@v5`, `actions/deploy-pages@v5` | `.github/workflows/*.yml` | MIT | https://github.com/actions/deploy-pages |
 | Secret scan | `dvystrcil/secret-scan-action@v1` | `.github/workflows/*.yml` | the action's own | https://github.com/dvystrcil/secret-scan-action |
 | Temp-dir cleanup check | `dvystrcil/tmp-cleanup-action@v1` | `.github/workflows/*.yml` | the action's own | https://github.com/dvystrcil/tmp-cleanup-action |
@@ -34,6 +35,7 @@ Not a parts list: physical parts are the BOM (#22).
 | Docker | 29.10.0 | the Kalico simulation image (`platform/kalisim/`), `act` | Apache-2.0 | https://www.docker.com |
 | act | 0.2.98 | running the GitHub workflows locally | MIT | https://github.com/nektos/act |
 | ffmpeg | 9.0.2 | motion videos (`platform/render/motion.py`), `test_motion.py` | LGPL-2.1-or-later (GPL build) | https://ffmpeg.org |
+| ffmpeg, CI static build | 6.0.1 (John Van Sickle, `old-releases/ffmpeg-6.0.1-amd64-static.tar.xz`, sha256 `28268bf4…07a5`) | `test_motion.py` in `.github/workflows/test-tmp.yml`, from the Actions cache | GPL-3.0 (static build with libx264) | https://johnvansickle.com/ffmpeg/ |
 | restic | 0.19.1 | model backups (`cad/backup-models.sh`) | BSD-2-Clause | https://restic.net |
 | Python | 3.15.2 (CI: ubuntu-latest's python3) | every script and test | PSF-2.0 | https://www.python.org |
 | PrusaSlicer (flatpak `com.prusa3d.PrusaSlicer`) | 2.9.7 | the printed-parts slice check (`platform/parts/slice-check.py`) | AGPL-3.0 | https://github.com/prusa3d/PrusaSlicer |
