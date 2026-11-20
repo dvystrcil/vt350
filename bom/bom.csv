@@ -110,7 +110,8 @@ enclosure,"6x3 mm magnet, door latches",24,0,,,,,to buy,#14,"12 per door in the 
 enclosure,140 mm ceiling destratification fans (Noctua),as needed,0,,,,,decide,#14,notes/status.md 2026-11-04 + #14 AC4: 140 mm Noctua in the +100 mm headroom. Count and model not chosen.
 enclosure,Chamber heater,1,0,,,,,decide,#14,"#4 AC4: decided for 80 °C, revisit at 60 °C (check whether bed heat + insulation reach it before buying)."
 enclosure,Nevermore StealthMax kit,1,0,West3D,https://west3d.com/products/nevermore-stealthmax-complete-kit-for-3d-printer-air-filtrat,,,decide,#14,"bom/west3d-order.md 'check before ordering': may be owned. The model has a StealthMax 300 core (vt350-filter, lite-27..30)."
-enclosure,Aluminium sealing for the carbon-felt pads,as needed,0,,,,,decide,#14,"notes/status.md 2026-11-05: the felt pads are sealed in aluminium (0.5 mm liners in the model). Foil, tape or sheet: not chosen. The pads themselves are owned (status.md) but not yet in notes/parts-owned.md (AC1)."
+enclosure,"Carbon-felt insulation pad, 10 mm",3,3,,,,,owned,#14,"notes/parts-owned.md (Enclosure) and notes/status.md 2026-11-05: roof, back, right wall. Vendor and price not recorded."
+enclosure,Aluminium sealing for the carbon-felt pads,as needed,0,,,,,decide,#14,"notes/status.md 2026-11-05: the felt pads are sealed in aluminium (0.5 mm liners in the model). Foil, tape or sheet: not chosen. The pads themselves are the row above."
 frame,"Asmith DK-0808035A swivel levelling foot (M8x1.25, L 35, Ø40)",4,0,,,,,to buy,#9,"lite-44 (owner 2026-11-15: 'go with the Asmith DK-08 feet, board stays'): one per side 4040 end."
 frame,"Levelling-foot T-slot bracket, 40 x 40 x 8, tapped M8, 4 x M5 holes",4,0,,,,,decide,#9,lite-27/45: placeholder bracket under each side 4040; make or buy not chosen.
 frame,"Base board, 18 mm plywood/MDF, ~676 x 692",1,0,,,,,decide,#9,lite-27/44: placeholder board under the feet ('board stays'); size from the model.

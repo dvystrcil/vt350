@@ -55,6 +55,12 @@ those listings or the project READMEs linked from them.
 | SSR DIN clamp with heatsink | 1 | For the Omron SSR above. |
 | DIN holders | — | **To print** for any part that needs one. |
 
+## Enclosure
+
+| Part | Qty | Design impact |
+|---|---|---|
+| Carbon-felt insulation pad, 10 mm | 3 | Owned (`notes/status.md`, 2026-11-05). Sealed in aluminium; in the model the roof and back pads sit inside their panels (lite-69; the back one 3.9 mm until the compression test) and the right-wall pad between the panel and the electronics. **Test a pad for conductivity first** (#14). Vendor and size not recorded. |
+
 ## Filament
 
 | Part | Qty | Design impact |
