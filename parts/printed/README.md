@@ -89,7 +89,7 @@ link-only because its part list isn't chosen yet.
 | A4Tv2 LED diffuser | 2 | #12 | A4Tv2 | CC BY-NC-SA 4.0 | chamber material (#8 AC1); transparent filament ([t]) | [`a4tv2/[t]_LED_diffuser.stl`](a4tv2/%5Bt%5D_LED_diffuser.stl) |
 | A4Tv2 Orbiter Crossbow adapter | 2 | #12 | A4Tv2 | CC BY-NC-SA 4.0 | chamber material (#8 AC1); accent colour | [`a4tv2/[a]_orbiter-crossbow-adapter_o2_xol.stl`](a4tv2/%5Ba%5D_orbiter-crossbow-adapter_o2_xol.stl) |
 | A4Tv2 hotend-fan duct (Dragon UHF, 2510) | 2 | #12 | A4Tv2 | CC BY-NC-SA 4.0 | chamber material (#8 AC1) | [`a4tv2/Duct-HEF-Dragon-UHF.stl`](a4tv2/Duct-HEF-Dragon-UHF.stl) |
-| A4Tv2 main body (Dragon Rapido UHF, Orbiter, XOL) | 2 | #12 | A4Tv2 | CC BY-NC-SA 4.0 | chamber material (#8 AC1) | [`a4tv2/main-body_dragon-rapido-UHF_o2_xol.stl`](a4tv2/main-body_dragon-rapido-UHF_o2_xol.stl) |
+| A4Tv2 main body, hex (Dragon ACE Volcano, Orbiter, XOL) | 2 | #12 | A4Tv2 | CC BY-NC-SA 4.0 | chamber material (#8 AC1) | [`a4tv2/hex-main-body_DAV_o2_xol.stl`](a4tv2/hex-main-body_DAV_o2_xol.stl) |
 | MadMax dock keyslot plate, one per dock | 0 | #12 | MadMax / andrewmcgr | GPL-3.0 | chamber material (#8 AC1); upstream spelling 'Asembly'; replaced by vt350/madmax-andrewmcgr-dock-keyslot-pads (lite-68, #59) | [`madmax/andrewmcgr/Dock Asembly.stl`](madmax/andrewmcgr/Dock%20Asembly.stl) |
 | MadMax tool plate (XOL), one per head | 2 | #12 | MadMax / andrewmcgr | GPL-3.0 | chamber material (#8 AC1) | [`madmax/andrewmcgr/Plate Assembly.stl`](madmax/andrewmcgr/Plate%20Assembly.stl) |
 | MadMax tool plate back, one per head | 2 | #12 | MadMax / andrewmcgr | GPL-3.0 | chamber material (#8 AC1) | [`madmax/andrewmcgr/Plate Back.stl`](madmax/andrewmcgr/Plate%20Back.stl) |
