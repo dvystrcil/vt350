@@ -159,7 +159,7 @@ cad/viewer/pages.py check all                           # every settings file is
   GrabCAD models, not shareable: owner, 2026-11-19), so its parts list is the export's own `scene.json`.
 - **The whole printer's licences, by hand** (plain python, a second): with lite-71 it ends `licence-check: FAILED`,
   every failure an open question for the owner, asked in its rule's `source` (a rule with licence `unknown`): the
-  EMU file, the e-box DIN holders, the backbone. The by-hand command below also lists the electronics the
+  EMU file and the e-box DIN holders. The by-hand command below also lists the electronics the
   selection leaves out (`NO-SHARE`).
   ```bash
   D=~/Documents/VT350

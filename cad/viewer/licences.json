@@ -50,7 +50,7 @@
   {"group_prefix": "Door (1)", "licence": "GPL-3.0-or-later", "source": "this repo: owner's original STEP (owner, 2026-11-19, on #252), the front door"},
   {"group_prefix": "E-box door (lite-56", "licence": "GPL-3.0-or-later", "source": "this repo: owner's original STEP (owner, 2026-11-19, on #252), the front door mirrored by lite56_ebox_door.py"},
   {"group": "Electronics", "licence": "LicenseRef-GrabCAD-no-share", "source": "owner, 2026-11-19 (#252): the electronics in the original STEP came mostly from GrabCAD, whose models carry no licence that allows redistribution; not shareable, so cad/viewer/printer.json leaves the group out"},
-  {"label_prefix": "backbone-350", "licence": "unknown", "source": "the Trident Backbone by clee: clee/TridentBackbone is GPL-3.0 (GitHub licence at db6c74a, 2026-11-19) and the model's copy matches its DXF hole for hole (notes/parts-owned.md), but the solid itself is from the original STEP model (vt350-good.FCStd), whose source isn't recorded (#122: provenance-unverified). Where did it come from, and under what licence? Credit it to clee under GPL-3.0?"},
+  {"label_prefix": "backbone-350", "licence": "GPL-3.0-only", "source": "the Trident Backbone by clee: clee/TridentBackbone LICENSE (GPL-3.0 text, no 'or later'; read at main db6c74a, 2026-11-19); the model's copy matches its DXF hole for hole (notes/parts-owned.md); credited to clee, owner-confirmed 2026-11-19 (#252)"},
   {"label_prefix": "MGN", "licence": "GPL-3.0-or-later", "source": "this repo: owner's original STEP (owner, 2026-11-19, on #252), the linear rails and X carriage block (lite6/8/9 cut the Y rails from an original rail's section)"}
  ]
 }
