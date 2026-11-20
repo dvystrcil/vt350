@@ -43,8 +43,8 @@ jobs:
         run: python3 platform/parts/test_orca_projects.py 2>&1 | tee orca-test.log
       - name: Confirm every Orca projects test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' orca-test.log && tail -1 orca-test.log | grep -qx 'OK'
-      - name: Check the Orca projects against the manifest and the STLs
-        run: python3 platform/parts/orca_projects.py parts/slice/sets.json --check | tee orca-projects.log
+      - name: Check the Orca projects against the manifest, the STLs and their REUSE labels (#278)
+        run: python3 platform/parts/orca_projects.py parts/slice/sets.json --check --reuse REUSE.toml | tee orca-projects.log
       - name: Confirm the Orca projects check ran to the end
         run: |
           grep -qx 'orca-projects: OK' orca-projects.log

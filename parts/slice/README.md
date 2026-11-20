@@ -50,42 +50,45 @@ python3 platform/parts/slice-check.py --slicer prusa <stl…>                   
 OrcaSlicer projects (3MF) of every printed part, ready to open and print on the Neptune. They're generated, and
 committed so a lost file or a broken slicer setting can be restored from git.
 
-**Grouping (AC1, owner 2026-11-20): by subassembly, split by material.** One project per (subassembly, material),
-named `<subassembly>-<material>.3mf`, e.g. `toolhead-pet-gf.3mf`, `z-chamber-tbd.3mf`, `door-pet-gf.3mf`. Parts whose material is
-still open ("chamber material", #8 AC1) go in a "chamber material, TBD" set per subassembly. A set too big for the
-bed spills onto more plates of the same project. The grouping lives in `sets.json`:
-- `parts`: each manifest path → its subassembly (`subassemblies` lists them);
-- `materials`: the manifest's `material` text, matched by prefix → the set's material id and filament preset
-  (`orca/filament/`; the PET-GF sets use the owner's `Siraya Tech PET-GF`, the TBD sets the Neptune's PETG preset);
-- `qty`: the copies to place for an `as-needed` row (the LDO cable clips: 1 each of S/M/L, owner 2026-11-20; clone
-  more in Orca as needed);
+**Grouping (AC1, owner 2026-11-20): one project per work unit, a plate per material.** The projects are
+`kinematics.3mf` (X gantry and Z), `toolhead.3mf` (heads, MadMax carriage and the docks, which mate with them),
+`door.3mf`, `jigs.3mf` and `ebox.3mf` (every e-box part, Ambrosia ASA). Inside a project each material gets its own
+plate(s), each with its own filament preset; a plate whose parts' footprints pass `fill` (0.6) of the 235 × 235 bed
+spills onto another plate. The grouping lives in `sets.json`:
+- `units` and `parts`: each manifest path → its work unit;
+- `materials`: the manifest's `material` text, matched by prefix → the plate's material and filament preset
+  (`orca/filament/`: the owner's `Siraya Tech PET-GF` and `Ambrosia ASA - warmer`; the "chamber material, TBD"
+  (#8 AC1) and jig plates use the Neptune's PETG preset until that's decided);
+- `qty`: the copies to place for an `as-needed` row (the LDO cable clips: 1 each, owner 2026-11-20; clone more in
+  Orca as needed), and `own_plate`: a plate per clip size;
 - `skip`: rows not to place, with the reason (the Z rear carriage's 2-hole variant: lite-72 uses the 3-hole one);
-- **filament slots**: the Neptune feeds a 4-lane Pico MMU (owner 2026-11-20), so sets aren't split by colour. Each
-  project carries its material as filament 1, then `accent` (`[a]` parts: the same preset, the accent colour's spool)
-  and `clear` (`[t]` parts: the PETG preset), per `slots` / `slot_filaments`; every part is assigned its slot. A set
-  needing more than `max_filaments` (4) fails the generator, and so does a multi-filament set when the machine
+- **filament slots**: the Neptune feeds a 4-lane Pico MMU (owner 2026-11-20), so colours share a plate. A plate
+  carries its material's filament, then `accent` (`[a]` parts: the same preset, the accent colour's spool) and
+  `clear` (`[t]` parts: the PETG preset), per `slots` / `slot_filaments`; every part is assigned its filament. A plate
+  needing more than `max_filaments` (4) fails the generator, and so does a multi-filament plate when the machine
   preset has no `change_filament_gcode` (ours is the `… - MMU` variant, with the Pico's purge macro).
 
 Every copy is on a plate (quantities expanded), each part as its committed STL stands (print-oriented, no
-re-orienting), arranged by Orca on the Neptune's bed, with the machine, process and filament presets selected.
+re-orienting), arranged by Orca on its plate, with the machine, process and filament presets selected. Orca's own
+CLI builds each project from an assemble list (`--load-assemble-list`: plates, copies, filament per part).
 
 ```bash
 python3 platform/parts/orca_projects.py parts/slice/sets.json            # regenerate the stale projects (needs Orca)
 python3 platform/parts/orca_projects.py parts/slice/sets.json --check    # which are stale; no Orca ("orca-projects: OK")
-python3 platform/parts/orca_projects.py parts/slice/sets.json --list     # the sets and their parts
+python3 platform/parts/orca_projects.py parts/slice/sets.json --list     # the projects, plates and parts
 python3 platform/parts/orca_projects.py parts/slice/sets.json --all      # regenerate every project
 ```
 
-**The projects follow each part's content (AC5).** `projects/index.json` records, per project, every STL it placed
-with its sha256 and copies, and the sha256 of its three presets. `--check` (CI, `printed-parts` workflow) fails when
-an STL changed, a qty or a set changed, a manifest row has no project or no entry in `sets.json`, the index lists a
+**The projects follow each part's content (AC5).** `projects/index.json` records, per project, its filaments, the sha256 of
+its presets, and its plates: each STL with its sha256, copies and filament. `--check` (CI, `printed-parts` workflow) fails when
+an STL changed, a qty, plate, filament or work unit changed, a manifest row has no project or no entry in `sets.json`, the index lists a
 part that's gone, or a preset changed, and names the projects to regenerate. `cad/scripts/refresh.py` runs the
 generator after `check_printed`, so a pass that re-exports an STL regenerates its plate in the same PR. Plain
 regeneration rewrites only the stale projects (`--all` redoes them all; Orca 2.5.1's output is byte-identical on a
 rerun).
 
 New part: add its manifest row, then its path to `sets.json`'s `parts`, then regenerate. Each project's slice
-check (time, grams, filament per set) is #217 AC3.
+check (time, grams, filament per plate) is #217 AC3.
 
 ## Reading the support number
 

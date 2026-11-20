@@ -96,36 +96,37 @@ precedence = "override"
 SPDX-FileCopyrightText = "Raspberry Pi Ltd"
 SPDX-License-Identifier = "MIT"
 
-# The OrcaSlicer print projects (#217) bundle the printed parts' meshes, so each 3MF carries the licences of the parts
-# it holds (parts/slice/projects/index.json lists them per project; the index itself and the TBD electronics-bay
-# project are the repo default). Regenerating can move a part between projects: keep these in step with the index.
+# The OrcaSlicer print projects (#217): one per work unit, bundling the printed parts' meshes, so each 3MF carries the
+# licences of the parts it holds (parts/slice/projects/index.json lists them per project; the index itself is the repo
+# default). `orca_projects.py --check --reuse REUSE.toml` (CI) fails when a project has no label of its own here or
+# its label misses a licence of its parts (#278).
 [[annotations]]
-path = ["parts/slice/projects/z-*.3mf", "parts/slice/projects/jigs-*.3mf"]
+path = "parts/slice/projects/jigs.3mf"
 precedence = "override"
 SPDX-FileCopyrightText = "Voron Design"
 SPDX-License-Identifier = "GPL-3.0-only"
 
 [[annotations]]
-path = "parts/slice/projects/door-*.3mf"
+path = "parts/slice/projects/door.3mf"
 precedence = "override"
 SPDX-FileCopyrightText = "tanaes (whopping_Voron_mods)"
 SPDX-License-Identifier = "GPL-3.0-only"
 
 [[annotations]]
-path = "parts/slice/projects/docks-*.3mf"
+path = "parts/slice/projects/kinematics.3mf"
 precedence = "override"
-SPDX-FileCopyrightText = ["andrewmcgr", "zruncho3d and the MadMax contributors", "2026 Daniel Vystrcil"]
-SPDX-License-Identifier = "GPL-3.0-only"
-
-[[annotations]]
-path = "parts/slice/projects/gantry-*.3mf"
-precedence = "override"
-SPDX-FileCopyrightText = ["andrewmcgr", "zruncho3d and the MadMax contributors", "Monolith3D", "2026 Daniel Vystrcil"]
+SPDX-FileCopyrightText = ["Voron Design", "zruncho3d and the MadMax contributors", "Monolith3D"]
 SPDX-License-Identifier = "GPL-3.0-only AND CC-BY-NC-SA-4.0"
 
 [[annotations]]
-path = "parts/slice/projects/toolhead-*.3mf"
+path = "parts/slice/projects/toolhead.3mf"
 precedence = "override"
 SPDX-FileCopyrightText = ["andrewmcgr", "zruncho3d and the MadMax contributors", "DW-Tas",
                           "Lorincz Electronics (Orbiter-Toolboards)", "2026 Daniel Vystrcil"]
 SPDX-License-Identifier = "GPL-3.0-only AND CC-BY-NC-SA-4.0 AND CC0-1.0"
+
+[[annotations]]
+path = "parts/slice/projects/ebox.3mf"
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Daniel Vystrcil"
+SPDX-License-Identifier = "GPL-3.0-or-later"

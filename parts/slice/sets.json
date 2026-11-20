@@ -1,43 +1,67 @@
 {
-  "_doc": "The VT350's print sets for platform/parts/orca_projects.py (#217). AC1, owner 2026-11-20: group by subassembly, split by material. Each manifest row with a path and qty > 0 maps to a subassembly here; its material comes from the manifest's `material` column, matched by prefix against `materials` (first match wins). One OrcaSlicer project per (subassembly, material), in projects/<subassembly>-<material id>.3mf. `qty` gives the copies to place for a row whose manifest qty isn't a whole number ('as-needed'; the LDO cable clips: 1 each of S/M/L, owner 2026-11-20, more are cloned in Orca as needed). `skip` lists rows not to place. The Neptune has a 4-lane Pico MMU (owner 2026-11-20), so a project carries up to `max_filaments` filaments: its material as slot 1, then `accent` ([a] parts, same preset, the accent colour's spool) and `clear` ([t] parts, the PETG preset), per `slots`. Paths are the manifest's (relative to parts/printed/); preset paths are relative to orca/.",
+  "_doc": "The VT350's print projects for platform/parts/orca_projects.py (#217). Owner 2026-11-20: one OrcaSlicer project per work unit (`units`), a plate per material inside it (each with its own filament preset); the 4-lane Pico MMU lets a plate carry up to `max_filaments` filaments: its material, then `accent` ([a] parts: the same preset, the accent colour's spool) and `clear` ([t] parts: the PETG preset), per `slots`. Docks go with the toolhead (they mate) on their own chamber-material plate; Z is part of kinematics; every e-box part is one `ebox` project in Ambrosia ASA (the owner's `Ambrosia ASA - warmer` preset). `qty`: copies for an 'as-needed' row (LDO cable clips: 1 each, owner 2026-11-20; clone more in Orca); `own_plate`: a plate per clip size (owner). `skip`: rows not placed. Paths are the manifest's (relative to parts/printed/); preset paths are relative to orca/; `bed_mm` is the Neptune 4 Pro's 235 x 235 bed (the vendor machine profile's printable_area).",
   "manifest": "../printed/manifest.csv",
   "stl_root": "../printed",
   "orca": "orca/orca.json",
   "out": "projects",
-  "materials": [
-    {"match": "PET-GF", "id": "pet-gf", "label": "PET-GF", "filament": "filament/Siraya Tech PET-GF.json"},
-    {"match": "chamber material", "id": "chamber-tbd", "label": "chamber material, TBD (#8 AC1)", "filament": "filament/E RPETG Red - MMU - cht-mze + bimetal.json"},
-    {"match": "electronics bay", "id": "electronics-tbd", "label": "electronics bay material, TBD (#4/#5)", "filament": "filament/E RPETG Red - MMU - cht-mze + bimetal.json"},
-    {"match": "any material", "id": "any", "label": "any material (assembly jigs)", "filament": "filament/E RPETG Red - MMU - cht-mze + bimetal.json"}
+  "bed_mm": [
+    235,
+    235
   ],
-  "subassemblies": {
-    "z": "Z axis: Z carriages, covers, rail stops, rear extrusion brackets (#10)",
-    "jigs": "assembly jigs: drill guides, rail guides (#9, #10, #11)",
-    "gantry": "X gantry: MadMax carriage, belt clips, cable clips (#11)",
-    "toolhead": "toolheads: A4Tv2, MadMax tool plates, ducts, O2S wire restraints (#12)",
-    "docks": "MadMax docks: arms and keyslot plates (#12)",
+  "fill": 0.6,
+  "max_filaments": 4,
+  "materials": [
+    {
+      "match": "PET-GF",
+      "id": "pet-gf",
+      "label": "PET-GF",
+      "filament": "filament/Siraya Tech PET-GF.json"
+    },
+    {
+      "match": "Ambrosia ASA",
+      "id": "asa",
+      "label": "Ambrosia ASA",
+      "filament": "filament/Ambrosia ASA - warmer.json"
+    },
+    {
+      "match": "chamber material",
+      "id": "chamber-tbd",
+      "label": "chamber material, TBD (#8 AC1)",
+      "filament": "filament/E RPETG Red - MMU - cht-mze + bimetal.json"
+    },
+    {
+      "match": "any material",
+      "id": "any",
+      "label": "any material (assembly jigs)",
+      "filament": "filament/E RPETG Red - MMU - cht-mze + bimetal.json"
+    }
+  ],
+  "units": {
+    "kinematics": "kinematics: X gantry, belt clips, cable clips, Z carriages, rail stops, rear extrusion brackets (#10, #11)",
+    "toolhead": "toolheads and docks: A4Tv2, MadMax carriage and tool plates, ducts, O2S wire restraints; dock arms and keyslot plates (#11, #12)",
     "door": "Clicky-Clack door: hinges, handle, latch, panel clip (#9, #14)",
-    "ebay": "electronics bay: driver base (#13)"
+    "jigs": "assembly jigs: drill guides, rail guides (#9, #10, #11)",
+    "ebox": "e-box: every electronics-bay part, in Ambrosia ASA (owner 2026-11-20): the BTT TMC5160 driver base (#13)"
   },
   "parts": {
-    "voron-trident/z_carriage_left.stl": "z",
-    "voron-trident/z_carriage_right.stl": "z",
-    "voron-trident/[a]_z_carriage_left.stl": "z",
-    "voron-trident/[a]_z_carriage_right.stl": "z",
-    "voron-trident/z_carriage_rear_2hole.stl": "z",
-    "voron-trident/z_carriage_rear_3hole.stl": "z",
-    "voron-trident/[a]_z_rail_stop_x3.stl": "z",
-    "voron-trident/z_rear_extrusionbracket_left.stl": "z",
-    "voron-trident/z_rear_extrusionbracket_right.stl": "z",
+    "voron-trident/z_carriage_left.stl": "kinematics",
+    "voron-trident/z_carriage_right.stl": "kinematics",
+    "voron-trident/[a]_z_carriage_left.stl": "kinematics",
+    "voron-trident/[a]_z_carriage_right.stl": "kinematics",
+    "voron-trident/z_carriage_rear_2hole.stl": "kinematics",
+    "voron-trident/z_carriage_rear_3hole.stl": "kinematics",
+    "voron-trident/[a]_z_rail_stop_x3.stl": "kinematics",
+    "voron-trident/z_rear_extrusionbracket_left.stl": "kinematics",
+    "voron-trident/z_rear_extrusionbracket_right.stl": "kinematics",
     "voron-trident/10mm_extrusion_drill_guide.stl": "jigs",
     "voron-trident/140mm_extrusion_drill_guide.stl": "jigs",
     "voron-trident/MGN9_rail_guide_x2.stl": "jigs",
     "voron-trident/MGN12_rail_guide_x2.stl": "jigs",
-    "ldo-monolith/Cable_management_clip_S.stl": "gantry",
-    "ldo-monolith/Cable_management_clip_M.stl": "gantry",
-    "ldo-monolith/Cable_management_clip_L.stl": "gantry",
-    "madmax/SpeedClip_4mm_Gap_9mm.stl": "gantry",
-    "vt350/madmax-andrewmcgr-carriage-beacon/MadMaxCarriage Beacon RevH pocket 9mm belts.stl": "gantry",
+    "ldo-monolith/Cable_management_clip_S.stl": "kinematics",
+    "ldo-monolith/Cable_management_clip_M.stl": "kinematics",
+    "ldo-monolith/Cable_management_clip_L.stl": "kinematics",
+    "madmax/SpeedClip_4mm_Gap_9mm.stl": "kinematics",
+    "vt350/madmax-andrewmcgr-carriage-beacon/MadMaxCarriage Beacon RevH pocket 9mm belts.stl": "toolhead",
     "madmax/andrewmcgr/Plate Assembly.stl": "toolhead",
     "madmax/andrewmcgr/Plate Back.stl": "toolhead",
     "a4tv2/main-body_dragon-rapido-UHF_o2_xol.stl": "toolhead",
@@ -49,10 +73,10 @@
     "vt350/a4tv2-duct-4010-madmax-dock/A4Tv2 Duct-4010-right MadMax dock.stl": "toolhead",
     "orbiter-toolboards/O2S-WirerestrainBody.stl": "toolhead",
     "orbiter-toolboards/O2S-Wirestrain_Lock.stl": "toolhead",
-    "madmax/andrewmcgr/Dock Asembly.stl": "docks",
-    "vt350/madmax-andrewmcgr-dock-arm/Dock Arm -9.06mm.stl": "docks",
-    "vt350/madmax-andrewmcgr-dock-keyslot-pads/Dock Asembly standoff pads left.stl": "docks",
-    "vt350/madmax-andrewmcgr-dock-keyslot-pads/Dock Asembly standoff pads right.stl": "docks",
+    "madmax/andrewmcgr/Dock Asembly.stl": "toolhead",
+    "vt350/madmax-andrewmcgr-dock-arm/Dock Arm -9.06mm.stl": "toolhead",
+    "vt350/madmax-andrewmcgr-dock-keyslot-pads/Dock Asembly standoff pads left.stl": "toolhead",
+    "vt350/madmax-andrewmcgr-dock-keyslot-pads/Dock Asembly standoff pads right.stl": "toolhead",
     "clicky-clack/Hinge-L-solid-2X.stl": "door",
     "clicky-clack/Hinge-L-sleeve-2X.stl": "door",
     "clicky-clack/Handle.stl": "door",
@@ -60,9 +84,13 @@
     "clicky-clack/Handle-Hinge_Bottom.stl": "door",
     "clicky-clack/Latch.stl": "door",
     "clicky-clack/Panel_Clip.stl": "door",
-    "vt350/btt5160-base-4-middle-screws/btt5160-base-4-middle-screws.stl": "ebay"
+    "vt350/btt5160-base-4-middle-screws/btt5160-base-4-middle-screws.stl": "ebox"
   },
-  "max_filaments": 4,
+  "own_plate": [
+    "ldo-monolith/Cable_management_clip_S.stl",
+    "ldo-monolith/Cable_management_clip_M.stl",
+    "ldo-monolith/Cable_management_clip_L.stl"
+  ],
   "slot_filaments": {
     "accent": null,
     "clear": "filament/E RPETG Red - MMU - cht-mze + bimetal.json"
@@ -81,5 +109,11 @@
     "ldo-monolith/Cable_management_clip_S.stl": 1,
     "ldo-monolith/Cable_management_clip_M.stl": 1,
     "ldo-monolith/Cable_management_clip_L.stl": 1
+  },
+  "spdx": {
+    "GPL-3.0": "GPL-3.0-only",
+    "CC BY-NC-SA 4.0": "CC-BY-NC-SA-4.0",
+    "CC0-1.0": "CC0-1.0",
+    "GPL-3.0-or-later": "GPL-3.0-or-later"
   }
 }
