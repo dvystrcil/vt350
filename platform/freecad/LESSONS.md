@@ -166,6 +166,14 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
 
 ## Gotchas
 
+- **An object can sit in two Groups: walk up from the innermost one** (found 2026-11-19, lite-72, vt350#220). A part
+  inside a group inside an `App::Part` is listed in the group's `Group` **and** the App::Part's. A walk that takes the
+  first container it meets in `doc.Objects` (`par.setdefault(child, container)`) often gets the App::Part, and the
+  path loses the groups in between: `export_meshes.py` wrote `Voron Trident v4 / Front right` where the part index had
+  `Voron Trident v4 / Monolith gantry (…) / Front right`, so 510 parts' paths differed and the licence rules written on
+  the index's paths missed 267 of them. Use `linkgeo.group_parents()` + `group_path()` (the innermost container),
+  which both now share; tested in `test_group_parents.py`. Renders didn't change (no colour or selection rule names
+  the dropped groups), only the paths.
 - **Changing a linked part's shape: keep its Placement.** An `App::Link` applies its own placement to its target's
   geometry under the target's Placement. Setting `o.Shape` to a global-frame result (the usual `loc.Placement =
   container.inverse() * loc.Placement`) also rewrites `o.Placement`. The target still looks right, but every link to

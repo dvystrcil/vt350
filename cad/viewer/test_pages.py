@@ -112,6 +112,14 @@ class PrinterSelection(unittest.TestCase):
         for who in ("Voron Design", "elliottc", "clee", "DW-Tas", "Monolith3D"):
             self.assertIn(who, credits)
 
+    def test_every_page_links_the_credits(self):
+        for name in ("printer", "toolhead"):
+            self.assertEqual(pages.check_one(name, pages.settings(name)), [], name)
+        s = pages.settings("printer")
+        s["turntable"]["page"]["links"] = [l for l in s["turntable"]["page"]["links"]
+                                           if not l["href"].endswith("CREDITS.md")]
+        self.assertIn("printer: turntable.page.links has no link to CREDITS.md", pages.check_one("printer", s))
+
     def test_settings_use_it(self):
         self.assertEqual(pages.settings("printer")["selection"], "cad/viewer/printer.json")
 

@@ -71,6 +71,10 @@ jobs:
         run: python3 platform/freecad/test_part_index.py 2>&1 | tee test-part-index.log
       - name: Confirm every part_index test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-part-index.log && tail -1 test-part-index.log | grep -qx 'OK'
+      - name: Test the group paths shared by the part index and the render export (linkgeo.group_parents, #220)
+        run: python3 platform/freecad/test_group_parents.py 2>&1 | tee test-group-parents.log
+      - name: Confirm every group_parents test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-group-parents.log && tail -1 test-group-parents.log | grep -qx 'OK'
       - name: Install numpy + scipy for the cable rod model (the only scipy user)
         run: python3 -m pip install --user --break-system-packages numpy scipy
       - name: Test the flap + guide cable rod model (gradients, catenary, segment distance; #3)

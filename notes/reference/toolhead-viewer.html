@@ -45,9 +45,9 @@ footer a { color: inherit; }
 </style>
 
 <header>
-  <h1>VT350 · Left head on the <span>MadMax carriage</span></h1>
+  <h1 id="t-title">…</h1>
   <div class="facts">
-    <span>model <b>lite-62</b></span>
+    <span>model <b id="t-model">…</b></span>
     <span>GLB <b id="f-size">…</b></span>
     <span>loaded in <b id="f-time">…</b></span>
     <span><b id="f-tris">…</b> triangles</span>
@@ -65,27 +65,35 @@ footer a { color: inherit; }
   <div class="hint">drag: turn · right-drag / two fingers: pan · wheel / pinch: zoom</div>
 </div>
 <figure>
-  <img src="toolhead-viewer/render-compare.jpg" alt="Cycles render of the same toolhead and carriage, seen from the front right and above" width="1280" height="720">
-  <figcaption><b>The render, for comparison (AC2).</b> Blender Cycles, 128 samples, the same export and colour map, render.py's lights at −1.4 EV with the "AgX - Punchy" look and less shiny plastic (owner's pick, 2026-11-17; the README renders still use −1.0 EV and the plain look). It's a still picture: the live view on the left is the one you can turn.
-  <b>Match render camera</b> puts the live view at this camera: 35 mm lens, from the front right and above. The live view has no ray-traced shadows or reflections, so expect the same colours with flatter lighting.</figcaption>
+  <img id="t-compare" src="toolhead-viewer/render-compare.jpg" alt="" width="1280" height="720">
+  <figcaption><b>The render, for comparison.</b> <span id="t-caption"></span> <b>Match render camera</b> puts the live view at this camera. The live view has no ray-traced shadows or reflections, so expect the same colours with flatter lighting.</figcaption>
 </figure>
 </main>
 
-<footer>
-  A4Tv2 toolhead with Orbiter 2.5, Smart Sensor and Orbitool O2S, on the MadMax plate and the gantry carriage with its Beacon, from the lite-62 CAD model (<a href="https://github.com/dvystrcil/vt350/issues/220">vt350#220</a>). Colours are the render colour map's.
-  Parts: A4Tv2 and Orbiter (CC BY-NC-SA 4.0, <a href="https://github.com/DW-Tas/A4Tv2">DW-Tas</a> / Orbiter Projects), MadMax carriage, plate and clips (GPL-3.0, <a href="https://github.com/zruncho3d/madmax">zruncho3d, andrewmcgr</a>), Beacon RevH (MIT, Beacon3D), O2S and Smart Sensor (CC0-1.0, Lorincz Electronics); blowers modelled from measurements. Each part keeps its licence; non-commercial use only.<br>
-  <a href="index.html">All reference pages</a> · <a href="toolhead-turntable.html">Turntable of real renders</a>
-</footer>
+<footer><span id="t-about"></span> <span id="t-credits"></span><br><span id="t-links"></span></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/loaders/GLTFLoader.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/environments/RoomEnvironment.js"></script>
 <script>
-(function () {
-  const t0 = performance.now();
-  // frame_view.py's "compare" view on the lite-62 toolhead export, rendered by render.py into render-compare.jpg
-  const RENDER_CAM = { pos: [-103.12, -106.035, 634.056], look: [-247.198, 234.784, 465.138], lens_mm: 35 };
+// toolhead-viewer/viewer.json: {"title", "title_accent", "model", "glb" (a .glb, or a .gltf.json with its buffer embedded, for
+// hosts that don't serve .glb), "cam": {"pos", "look", "lens_mm"} (frame_view.py's "compare" view, model mm),
+// "compare_alt", "caption", "about", "credits", "links": [{"href", "text"}]}. Template: platform/viewer/viewer_page.py.
+const t0 = performance.now();
+fetch("toolhead-viewer/viewer.json").then(r => { if (!r.ok) throw new Error("viewer.json " + r.status); return r.json(); })
+  .then(start).catch(e => { document.getElementById("status").textContent = "Couldn't load the viewer settings (" + String(e.message).slice(0, 120) + ")."; });
+function start(cfg) {
+  const t = document.getElementById("t-title"); t.textContent = cfg.title + " ";
+  const sp = document.createElement("span"); sp.textContent = cfg.title_accent || ""; t.appendChild(sp);
+  document.getElementById("t-model").textContent = cfg.model;
+  document.getElementById("t-compare").alt = cfg.compare_alt || "";
+  document.getElementById("t-caption").textContent = cfg.caption || "";
+  document.getElementById("t-about").textContent = cfg.about || "";
+  document.getElementById("t-credits").textContent = cfg.credits || "";
+  const ln = document.getElementById("t-links");
+  (cfg.links || []).forEach((l, k) => { if (k) ln.append(" · "); const a = document.createElement("a"); a.href = l.href; a.textContent = l.text; ln.appendChild(a); });
+  const RENDER_CAM = cfg.cam;
   let match = null;
   const stage = document.getElementById("stage"), status = document.getElementById("status");
   const fmtMB = n => (n / 1048576).toFixed(2) + " MB";
@@ -113,11 +121,12 @@ footer a { color: inherit; }
   }
   new ResizeObserver(resize).observe(stage); resize();
 
-  fetch("toolhead-viewer/vt350-lite-62-toolhead.glb").then(r => {
+  fetch("toolhead-viewer/" + cfg.glb).then(r => {
     if (!r.ok) throw new Error("GLB " + r.status);
     return r.arrayBuffer();
-  }).then(buf => {
-    document.getElementById("f-size").textContent = fmtMB(buf.byteLength);
+  }).then(raw => {
+    document.getElementById("f-size").textContent = fmtMB(raw.byteLength);
+    const buf = isGlb(raw) ? raw : glbFromEmbedded(new TextDecoder().decode(raw));
     new THREE.GLTFLoader().parse(buf, "", gltf => {
       const root = gltf.scene;
       const box = new THREE.Box3().setFromObject(root), c = box.getCenter(new THREE.Vector3()), s = box.getSize(new THREE.Vector3());
@@ -155,5 +164,21 @@ footer a { color: inherit; }
     spin.setAttribute("aria-pressed", String(controls.autoRotate));
   });
   (function loop() { requestAnimationFrame(loop); controls.update(); renderer.render(scene, camera); })();
-})();
+}
+function isGlb(b) { return b.byteLength >= 4 && new DataView(b).getUint32(0, true) === 0x46546C67; }
+// A glTF JSON with its buffer as a data: URI -> a GLB in memory (a sandbox that blocks fetch() of data: URIs can't
+// load the JSON form directly).
+function glbFromEmbedded(text) {
+  const doc = JSON.parse(text), b64 = doc.buffers[0].uri.slice(doc.buffers[0].uri.indexOf(",") + 1);
+  delete doc.buffers[0].uri;
+  const raw = atob(b64), bin = new Uint8Array((raw.length + 3) & ~3);
+  for (let i = 0; i < raw.length; i++) bin[i] = raw.charCodeAt(i);
+  const js = new TextEncoder().encode(JSON.stringify(doc));
+  const jpad = (js.length + 3) & ~3, glb = new Uint8Array(12 + 8 + jpad + 8 + bin.length), dv = new DataView(glb.buffer);
+  dv.setUint32(0, 0x46546C67, true); dv.setUint32(4, 2, true); dv.setUint32(8, glb.length, true);
+  dv.setUint32(12, jpad, true); dv.setUint32(16, 0x4E4F534A, true);
+  glb.fill(0x20, 20, 20 + jpad); glb.set(js, 20);
+  dv.setUint32(20 + jpad, bin.length, true); dv.setUint32(24 + jpad, 0x004E4942, true); glb.set(bin, 28 + jpad);
+  return glb.buffer;
+}
 </script>

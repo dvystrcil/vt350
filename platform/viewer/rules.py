@@ -21,7 +21,8 @@ dock and on the gantry): export_meshes.py measures it and refuses if the two box
 
 A **licence file**:
     {"shareable": [SPDX id, ...],
-     "rules": [match + "licence": SPDX id + "source": where the licence was read]}
+     "rules": [match + "licence": SPDX id + "source": where the licence was read + optional "credit": whose part it
+               is, read by platform/pages/credits.py, not here]}
 The first rule that matches a part gives its licence. check() fails a part no rule matches (unknown) and a part
 whose licence isn't in "shareable". A rule whose licence is "unknown" records an open question in its "source"
 (e.g. a part whose origin isn't traced yet): its parts fail as unknown, with the question in the log.

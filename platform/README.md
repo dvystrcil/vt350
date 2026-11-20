@@ -20,7 +20,7 @@ code. The printer side imports from here, not the other way round.
 | `parts/` | `check-printed.py` (printed parts against their manifest and the BOM) and `slice-check.py` (supports, keep-outs and print estimates, via OrcaSlicer or `--slicer prusa`) | `python3`; slice-check also needs the Orca (or PrusaSlicer) flatpak |
 | `klipper/` | The web front end's client config, Fluidd or Mainsail, vendored unchanged; `frontend.py` reports which one a printer's config includes and switches it. `pinmap.py`: a config's MCU pins (with its includes) mapped onto simulated boards, one simulavr atmega644p per `[mcu]`, for a live klippy with no hardware (#224); `generate` writes the map, `check` fails when the config uses a pin the map doesn't cover ("pinmap: OK"), `apply` writes a copy of the config tree with the pins swapped | `python3` |
 | `virtualprinter/` | A virtual printer (#224): an image FROM the kalisim image that runs klippy live, one simulavr atmega644p per `[mcu]` (Kalico's AVR firmware, `simulavr.config`), Moonraker and Fluidd (behind nginx) under supervisord. At start, `prepare.py` copies the printer's config with its pins moved (`klipper/pinmap.py apply`), points each `[mcu]` at its simulator, seeds `--home-file`s, and writes the Moonraker and supervisord configs; `reset_watch.py` restarts a board's simulator when klippy resets it (simulavr has no watchdog). `virtualprinter.sh build/start/status/stop`; nothing is kept when it stops | `docker` |
-| `pages/` | `check_index.py`: the guard that runs before the reference pages are published; `fetch_assets.py`: puts the pages' large files (release assets, checked by sha256) in place | `python3`, `gh` |
+| `pages/` | `check_index.py`: the guard that runs before the reference pages are published; `fetch_assets.py`: puts the pages' large files (release assets, checked by sha256) in place; `credits.py`: a `CREDITS.md`, one row per upstream project, from `REUSE.toml`, the licence rules and a projects file (`--check` fails when it is stale) | `python3`, `gh` |
 | `testing/` | `check_test_tmp.sh`: every plain-python test must leave its `TMPDIR` empty | `bash` |
 
 **What we've learned about FreeCAD** (what makes a model slow to open, hidden parts, stand-ins, App::Links, and the gotchas that cost us time): [`freecad/LESSONS.md`](freecad/LESSONS.md). Add to it the day something is learned.
@@ -36,6 +36,7 @@ python3 platform/parts/check-printed.py                         # "check-printed
 python3 platform/parts/slice-check.py parts/printed/vt350/<part>/*.stl
 python3 platform/pages/check_index.py notes/reference           # "check-index: OK"
 python3 platform/pages/fetch_assets.py notes/reference/assets.json   # "fetch-assets: OK"; --from-dir DIR to skip the download
+python3 platform/pages/credits.py --projects cad/credits.json --reuse REUSE.toml --licences cad/viewer/licences.json --licence-dir LICENSES --out CREDITS.md   # "credits: OK"; --check in CI
 bash platform/testing/check_test_tmp.sh                         # "check-test-tmp: OK"
 python3 platform/klipper/pinmap.py check --config cad/klipper/printer.cfg --map cad/klipper/pinmap.json   # "pinmap: OK"
 bash cad/klipper/virtual-printer.sh start                      # platform/virtualprinter with the VT350's config; "virtual-printer: ready" (stop: "virtual-printer: stopped")
@@ -89,6 +90,7 @@ The printer passes its data to these tools by path or environment variable:
 | `parts/slice-check.py` | the slicer presets and keep-out boxes | `parts/slice/orca/orca.json` (the Neptune presets), `parts/slice/petg-0.4-0.2.ini` (`--slicer prusa`), `parts/slice/keepout.json` (`--orca`, `--profile`, `--keepout`) |
 | `pages/check_index.py` | the pages folder | its argument (default `notes/reference`) |
 | `pages/fetch_assets.py` | the manifest of release assets | its argument; `--repo` or `GITHUB_REPOSITORY` |
+| `pages/credits.py` | the projects file, REUSE.toml, the licence rules, the licence texts | `--projects`, `--reuse`, `--licences`, `--licence-dir`, `--out` (the VT350's: `cad/credits.json`, `REUSE.toml`, `cad/viewer/licences.json`, `LICENSES`, `CREDITS.md`) |
 
 ## Still VT350-specific (phase 3 of #122)
 

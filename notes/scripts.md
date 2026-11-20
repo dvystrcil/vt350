@@ -149,6 +149,11 @@ cad/viewer/pages.py check all                           # every settings file is
 ```
 
 - The steps can also run one at a time: `export`, `views`, `glb`, `render [--lane]`, `collect`, `stage`, `publish`.
+- **Credits.** Every page's footer links to [`CREDITS.md`](../CREDITS.md) (`pages.py check` refuses a page without the
+  link). It is generated: after a new licence rule (give it a `"credit"`: a project key in `cad/credits.json`, or
+  `"own"`) or a new `REUSE.toml` entry, run
+  `python3 platform/pages/credits.py --projects cad/credits.json --reuse REUSE.toml --licences cad/viewer/licences.json --licence-dir LICENSES --out CREDITS.md`
+  and commit the result. CI (`viewer`) fails when it is stale.
   RUN is `~/Documents/VT350/renders/vt350-lite-<N>-<name>-pages-<UTC>/`; each step uses the newest, `--run DIR`
   picks another. Each ends with `<step>: OK`.
 - **The look** (owner, 2026-11-17): AgX Punchy, plastic specular 0.2, −1.4 EV; the key light turns and tilts with each
@@ -297,6 +302,7 @@ $APP freecadcmd $PWD/cad/passes/liteNN_<what>.py   # headless = dry run: all che
 | `refresh-chain` | `cad/scripts/test_refresh.py`, `cad/scripts/test_derive_stls.py`, `test_litepool.py`, `test_prove_parallel.py`, `test_part_index.py` | the chain's sync, step runner or markers break, `derive_stls` stops honouring `VT350_MODELS`, or the part index's schema/staleness check breaks |
 | `render-colours` | `platform/render/test_colours.py`, `cad/render/test_render_full.py` | the colour rules break, or `render_full.sh` misjudges the export (a real `FAILED` passes, or the index hook's `index: FAILED` fails it) |
 | `secret-scan` | gitleaks | a secret in the diff |
+| `viewer` (credits steps) | `platform/pages/test_credits.py`, `platform/pages/credits.py --check` | `CREDITS.md` is stale against `REUSE.toml` or `cad/viewer/licences.json`, a licence rule has no `credit`, or a REUSE holder has no project in `cad/credits.json` |
 
 ## One-off and investigation scripts
 
