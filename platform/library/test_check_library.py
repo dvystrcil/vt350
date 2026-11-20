@@ -144,6 +144,35 @@ class Library(unittest.TestCase):
         probs, n = cl.check(self.lib)
         self.assertEqual((probs, n), ([], 2))
 
+    def test_no_file_entry_keeps_its_licence_file(self):
+        lic = b"MIT License\n"
+        self.add(data=None, committed=False, files=[
+            {"path": "widget.step", "sha256": SHA},
+            {"path": "LICENSE.txt", "sha256": hashlib.sha256(lic).hexdigest(), "committed": True}])
+        self.assertOneProblem("LICENSE.txt: listed in source.json but missing")
+        self.write("electronics/widget/someone/LICENSE.txt", lic)
+        self.assertEqual(self.probs(), [])
+        self.write("electronics/widget/someone/LICENSE.txt", b"edited\n")
+        self.assertOneProblem("sha256")
+
+    def test_printed_entry_points_at_manifest_rows(self):
+        manifest = os.path.join(self.root, "manifest.csv")
+        with open(manifest, "w") as f:
+            f.write("path,part,sha256\nkit/clip.stl,Clip,abc\n")
+        self.add(data=None, files=[], printed=["kit/clip.stl"])
+        self.assertOneProblem("files: needs at least 1")
+        self.write("electronics/widget/someone/source.json",
+                   json.dumps({k: v for k, v in entry(printed=["kit/clip.stl"]).items() if k != "files"}).encode())
+        self.assertEqual(self.probs(manifest_path=manifest), [])
+        self.write("electronics/widget/someone/source.json",
+                   json.dumps({k: v for k, v in entry(printed=["kit/gone.stl"]).items() if k != "files"}).encode())
+        self.assertOneProblem("not a row of the printed-parts manifest", manifest_path=manifest)
+
+    def test_entry_with_no_files_and_no_printed_fails(self):
+        self.write("electronics/widget/someone/source.json",
+                   json.dumps({k: v for k, v in entry().items() if k != "files"}).encode())
+        self.assertOneProblem("lists no files and no printed parts")
+
     def test_reuse_label_must_match(self):
         self.add()
         reuse = os.path.join(self.root, "REUSE.toml")
@@ -180,7 +209,7 @@ class Library(unittest.TestCase):
 class ThisRepo(unittest.TestCase):
     def test_repo_library_passes(self):
         r = subprocess.run([sys.executable, SCRIPT, "--library", "cad/library", "--reuse", "REUSE.toml",
-                            "--projects", "cad/credits.json"], cwd=REPO, capture_output=True, text=True)
+                            "--projects", "cad/credits.json", "--manifest", "parts/printed/manifest.csv"], cwd=REPO, capture_output=True, text=True)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
         self.assertEqual(r.stdout.strip().splitlines()[-1], "library-check: OK")
 

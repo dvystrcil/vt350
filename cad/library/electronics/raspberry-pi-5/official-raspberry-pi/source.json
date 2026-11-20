@@ -12,10 +12,11 @@
   "archive": {"name": "rpi-5 3D STEP - No Graphics small file (zip)", "sha256": "6841637b4cfa97637bf34b529bfe896f24d9634b2c40b57a156781f55d88f06f"},
   "files": [
     {"path": "rpi-5b_no_graphics.step", "sha256": "78164070c1cc7ab854382950d2e85926c6e35432f1e5a146b733397a7c6afb44", "size": 77627469},
-    {"path": "LICENSE.txt", "sha256": "4ca2d350552b24137e55587e13fb09a249b757c6af49652ff02ea524d154c7fc", "size": 1881}
+    {"path": "LICENSE.txt", "sha256": "4ca2d350552b24137e55587e13fb09a249b757c6af49652ff02ea524d154c7fc", "committed": true}
   ],
   "notes": [
     "Redistributable but large (78 MB, 2,689 solids); add if wanted. It is the reference the simplified model (cad/library/electronics/raspberry-pi-5/simplified-mandache/) was compared against, vt350#268.",
-    "Not used in the model."
+    "Not used in the model.",
+    "LICENSE.txt (from the zip) is committed: the MIT notice, and Raspberry Pi Ltd's disclaimer that the model is for guidance only and fitment needs measuring the real board. It covers the simplified remix too (owner, 2026-11-20)."
   ]
 }

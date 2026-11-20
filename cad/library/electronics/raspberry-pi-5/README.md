@@ -3,7 +3,7 @@
 | Variant | Author | Licence | In git | Used in the model |
 |---|---|---|---|---|
 | [`simplified-mandache/`](simplified-mandache/source.json) | Eduard Mandache | CC BY-SA 4.0 | yes (24 MB STEP) | **yes, from pass lite-74** |
-| [`official-raspberry-pi/`](official-raspberry-pi/source.json) | Raspberry Pi Ltd | MIT | no (78 MB; add if wanted) | no: the reference |
+| [`official-raspberry-pi/`](official-raspberry-pi/source.json) | Raspberry Pi Ltd | MIT | only its `LICENSE.txt` (the STEP is 78 MB; add if wanted) | no: the reference |
 
 **Why the simplified one** (owner, 2026-11-20): it matches the official model to within 0.1 mm over all of its
 surface (only the small SMD parts are gone: 25 solids against 2,689), it can be shared, and it replaces the GrabCAD

@@ -22,7 +22,7 @@ code. The printer side imports from here, not the other way round.
 | `virtualprinter/` | A virtual printer (#224): an image FROM the kalisim image that runs klippy live, one simulavr atmega644p per `[mcu]` (Kalico's AVR firmware, `simulavr.config`), Moonraker and Fluidd (behind nginx) under supervisord. At start, `prepare.py` copies the printer's config with its pins moved (`klipper/pinmap.py apply`), points each `[mcu]` at its simulator, seeds `--home-file`s, and writes the Moonraker and supervisord configs; `reset_watch.py` restarts a board's simulator when klippy resets it (simulavr has no watchdog). `virtualprinter.sh build/start/status/stop`; nothing is kept when it stops | `docker` |
 | `pages/` | `check_index.py`: the guard that runs before the reference pages are published; `fetch_assets.py`: puts the pages' large files (release assets, checked by sha256) in place; `credits.py`: a `CREDITS.md`, one row per upstream project, from `REUSE.toml`, the licence rules and a projects file (`--check` fails when it is stale) | `python3`, `gh` |
 | `docs/` | `step_parts.py`: each assembly page's Print and Buy tables (the parts for that stage only), from the printed-parts manifest and the BOM, written between `<!-- step-parts:begin -->` / `<!-- step-parts:end -->` markers; `--check` fails on a stale block or a page with parts but no markers | `python3` |
-| `library/` | `check_library.py`: a parts library (`<library>/<category>/<part>/<variant>/source.json` plus the files; the category must be in the schema's list and match the folder): each `source.json` against the library's `schema.json`, each committed file's sha256, no file for a no-file entry, no file without a `source.json`; with `--reuse` / `--projects`, each file's REUSE label and each entry's credit agree (#268) | `python3` |
+| `library/` | `check_library.py`: a parts library (`<library>/<category>/<part>/<variant>/source.json` plus the files; the category must be in the schema's list and match the folder): each `source.json` against the library's `schema.json`, each committed file's sha256, no file for a no-file entry, no file without a `source.json`; with `--reuse` / `--projects` / `--manifest`, each file's REUSE label, each entry's credit and each printed part's manifest row agree (#268) | `python3` |
 | `testing/` | `check_test_tmp.sh`: every plain-python test must leave its `TMPDIR` empty | `bash` |
 
 **What we've learned about FreeCAD** (what makes a model slow to open, hidden parts, stand-ins, App::Links, and the gotchas that cost us time): [`freecad/LESSONS.md`](freecad/LESSONS.md). Add to it the day something is learned.
@@ -39,7 +39,7 @@ python3 platform/parts/slice-check.py parts/printed/vt350/<part>/*.stl
 python3 platform/pages/check_index.py notes/reference           # "check-index: OK"
 python3 platform/pages/fetch_assets.py notes/reference/assets.json   # "fetch-assets: OK"; --from-dir DIR to skip the download
 python3 platform/pages/credits.py --projects cad/credits.json --reuse REUSE.toml --licences cad/viewer/licences.json --licence-dir LICENSES --out CREDITS.md   # "credits: OK"; --check in CI
-python3 platform/library/check_library.py --library cad/library --reuse REUSE.toml --projects cad/credits.json   # "library-check: OK"
+python3 platform/library/check_library.py --library cad/library --reuse REUSE.toml --projects cad/credits.json --manifest parts/printed/manifest.csv   # "library-check: OK"
 bash platform/testing/check_test_tmp.sh                         # "check-test-tmp: OK"
 python3 platform/docs/step_parts.py                            # rewrite the Print/Buy tables in docs/assembly/stage-N-*.md; --check in CI ("step-parts: OK")
 python3 platform/klipper/pinmap.py check --config cad/klipper/printer.cfg --map cad/klipper/pinmap.json   # "pinmap: OK"
@@ -95,7 +95,7 @@ The printer passes its data to these tools by path or environment variable:
 | `parts/slice-check.py` | the slicer presets and keep-out boxes | `parts/slice/orca/orca.json` (the Neptune presets), `parts/slice/petg-0.4-0.2.ini` (`--slicer prusa`), `parts/slice/keepout.json` (`--orca`, `--profile`, `--keepout`) |
 | `pages/check_index.py` | the pages folder | its argument (default `notes/reference`) |
 | `pages/fetch_assets.py` | the manifest of release assets | its argument; `--repo` or `GITHUB_REPOSITORY` |
-| `library/check_library.py` | the library folder (with its `schema.json`), REUSE.toml, the projects file | `--library`, `--schema`, `--reuse`, `--projects` (the VT350's: `cad/library`, `cad/library/schema.json`, `REUSE.toml`, `cad/credits.json`) |
+| `library/check_library.py` | the library folder (with its `schema.json`), REUSE.toml, the projects file | `--library`, `--schema`, `--reuse`, `--projects`, `--manifest` (the VT350's: `cad/library`, `cad/library/schema.json`, `REUSE.toml`, `cad/credits.json`, `parts/printed/manifest.csv`) |
 | `pages/credits.py` | the projects file, REUSE.toml, the licence rules, the licence texts | `--projects`, `--reuse`, `--licences`, `--licence-dir`, `--out` (the VT350's: `cad/credits.json`, `REUSE.toml`, `cad/viewer/licences.json`, `LICENSES`, `CREDITS.md`) |
 
 ## Still VT350-specific (phase 3 of #122)

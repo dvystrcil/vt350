@@ -1,7 +1,7 @@
 # cad/library/: every part's CAD, with its source and licence
 
-**Draft for the owner's approval (vt350#268 AC1).** The questions at the end are open (the first is answered); nothing here is final until
-the owner approves this page on the PR.
+**Draft for the owner's approval (vt350#268 AC1).** The owner answered the open questions on 2026-11-20
+([decisions](#decisions-owner-2026-11-20)); his approval of this page on the PR closes AC1.
 
 The library is the one place to rebuild the printer in CAD, or print a replacement part, without the FreeCAD model
 (which lives outside git). Each part keeps a snapshot of the file as we used it, with where it came from and under
@@ -30,7 +30,7 @@ cad/library/
 - **Several variants of one part sit side by side** under `<part>/`, and the part's `README.md` says which one the
   model uses and why, linking any comparison.
 - **One variant per folder**, files flat beside `source.json` (no sub-folders). A STEP for every part; an STL too only
-  when the STL is what upstream publishes (see the questions: printed STLs stay in `parts/printed/` for now).
+  when the STL is what upstream publishes. Printed STLs stay in `parts/printed/` ([printed parts](#printed-parts)).
 - **Files are never edited after they're committed.** The sha256 in `source.json` is of the download; a new upstream
   version is a new download with a new sha256 and date. A part we change is our remix, with its own variant (see
   [our own parts](#our-own-parts)).
@@ -60,7 +60,8 @@ STEP, CC BY-SA 4.0) and Raspberry Pi Ltd's own
 | `committed` | no | Default: the same as `redistributable`. `false` keeps a shareable part out of git anyway (too large, not used) |
 | `credit` | no | The project key in `cad/credits.json` that credits it in `CREDITS.md` |
 | `archive` | no | `{name, sha256}` of the zip the files came out of |
-| `files` | yes | `[{path, sha256, upstream_name?, size?}]`: every file, as downloaded |
+| `files` | yes, unless `printed` | `[{path, sha256, upstream_name?, size?, committed?}]`: every file, as downloaded. A file's own `committed: true` keeps it in git in a no-file entry (upstream's `LICENSE.txt`) |
+| `printed` | no | A printed part's rows in `parts/printed/manifest.csv` (its `path` column), instead of copies of the STLs |
 | `notes` | no | Anything a rebuilder needs: "owner confirmed matches the real part", what a remix changed, why this part |
 
 ## Parts we can't share: the no-file entry
@@ -69,7 +70,32 @@ A part whose licence doesn't allow redistribution (GrabCAD's terms: show only, w
 gets a `source.json` with `"redistributable": false` and **no file**. It still records the URL, the licence and the
 sha256 of what we downloaded, so anyone can download it themselves and check they have the same file. The check fails
 if the file is ever committed. A shareable part we leave out (`"committed": false`) works the same way, with a note
-saying why (the official Raspberry Pi 5 model: "redistributable but large; add if wanted").
+saying why (the official Raspberry Pi 5 model: "redistributable but large; add if wanted"). Upstream's licence file
+is small, so it is committed even in a no-file entry (the official Pi 5's `LICENSE.txt`: the MIT notice and the
+"guidance only" disclaimer), marked `"committed": true` on that file and labelled in `REUSE.toml`.
+
+## Big files
+
+- **By default a part is a no-file entry**: URL, licence and sha256, no file.
+- **Commit the file when the model uses the part** (the simplified Pi 5, 24 MB), so the printer can be rebuilt from
+  the repo.
+- **A huge file** (near GitHub's 100 MB limit per file) goes up as a release asset instead; the entry stays no-file,
+  with a note naming the release and asset (as the public pages do with their GLBs).
+
+## Printed parts
+
+Printed STLs stay in `parts/printed/`, and `parts/printed/manifest.csv` stays their record (source repo, commit,
+sha256, licence; `check-printed.py` checks them). The library points at them instead of copying them: a printed
+part's entry lists its manifest rows and no files (or only its STEP, when upstream publishes one):
+
+```json
+{"category": "motion", "title": "Z carriage", "author": "Voron Design",
+ "source_url": "https://github.com/VoronDesign/Voron-Trident", "licence": "GPL-3.0-only",
+ "licence_source": "LICENSE in the repo", "downloaded": "2026-11-20", "redistributable": true,
+ "printed": ["voron-trident/z_carriage_left.stl", "voron-trident/z_carriage_right.stl"]}
+```
+
+`check_library.py --manifest parts/printed/manifest.csv` fails when a listed row is no longer in the manifest.
 
 ## Our own parts
 
@@ -95,25 +121,18 @@ Each fact has one home; the check makes the others agree with it instead of copy
 | `REUSE.toml` | the licence label of every file in git (`reuse lint`, CI `reuse`) | `check_library.py --reuse` fails when a committed file's label differs from its `source.json` |
 | `cad/credits.json` → `CREDITS.md` | one credit row per upstream project | an entry's `credit` names the project; `--projects` fails on an unknown key |
 | `cad/viewer/licences.json` | which parts the public pages may show | none yet (it matches model labels, not files) |
-| `parts/printed/manifest.csv` | the printed STLs: source repo, commit, sha256, licence | none yet: question 2 |
-| `cad/vendor/` (#265) | the MZE STEP and its README | none yet: question 3 |
+| `parts/printed/manifest.csv` | the printed STLs: source repo, commit, sha256, licence | a printed part's entry lists its rows (`printed`); `--manifest` fails on a missing row |
+| `cad/vendor/` (#265, not merged) | the MZE STEP and its README | moves into the library (decision 3) |
 
-## Questions for the owner (AC1)
+## Decisions (owner, 2026-11-20)
 
-1. ~~**Folder names**~~ **Answered (owner, 2026-11-20):** by part, not by author:
-   `<category>/<part>/<variant>/`, as above.
-2. **Printed parts:** keep the STLs in `parts/printed/` with `manifest.csv` as their record (it already has the
-   sha256, source, commit and licence), and give the library only their STEP, with a `printed` field pointing at the
-   manifest rows? Or move the STLs into the library and retire the manifest's provenance columns?
-3. **`cad/vendor/`:** once #265 merges, move `cad/vendor/trianglelab-mze-robertsamples/` into
-   `cad/library/hotend/mze/trianglelab-robertsamples/` (its README becomes `source.json` + notes), so there's one folder
-   for downloaded CAD? Or keep `cad/vendor/` for files the passes import, and the library for everything else?
-4. **Hand-written or generated:** today each committed file's licence is written twice, in `source.json` and in
-   `REUSE.toml`, and the check fails when they differ. Fine as is, or should a script write the `REUSE.toml`
-   annotations (and the credit rows) from the `source.json` files?
-5. **Big files:** the simplified Pi 5 STEP (24 MB) goes in git as it is. For the official one (78 MB) and anything
-   that size: leave it a no-file entry, commit it anyway, or keep it as a release asset with its sha256 here (as the
-   public pages do with their GLBs)?
-6. **The MIT notice:** the simplified Pi 5 remixes Raspberry Pi Ltd's MIT model, so `REUSE.toml` lists both
-   holders and the entry's notes quote "Copyright (c) 2026 Raspberry Pi Ltd". Enough, or also commit the official
-   zip's `LICENSE.txt` beside it?
+1. **Folder names:** by part, not by author: `<category>/<part>/<variant>/`, as above.
+2. **Printed parts:** the STLs stay in `parts/printed/`, with `manifest.csv` as their record; the library points at
+   the manifest rows ([printed parts](#printed-parts)).
+3. **`cad/vendor/` moves into the library.** It exists only on #265's branch (the Trianglelab MZE). Whichever of #265
+   and #274 merges second moves `cad/vendor/trianglelab-mze-robertsamples/` to
+   `cad/library/hotend/trianglelab-mze/<variant>/`, with a `source.json` made from its README.
+4. **Each licence stays in both `source.json` and `REUSE.toml`**, and `check_library.py --reuse` keeps them equal.
+5. **Big files:** no-file by default; commit when the model uses the part; a release asset if it's huge
+   ([big files](#big-files)).
+6. **The MIT notice:** Raspberry Pi Ltd's `LICENSE.txt` is committed beside the official entry's `source.json`.

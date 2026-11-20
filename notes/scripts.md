@@ -108,7 +108,7 @@ no page yet are only warnings.
 downloaded); [`cad/library/README.md`](../cad/library/README.md) explains the layout. After adding or changing an entry:
 
 ```bash
-python3 platform/library/check_library.py --library cad/library --reuse REUSE.toml --projects cad/credits.json
+python3 platform/library/check_library.py --library cad/library --reuse REUSE.toml --projects cad/credits.json --manifest parts/printed/manifest.csv
 # last line "library-check: OK"; each problem is a "library-check: FAIL ..." line
 ```
 
@@ -329,7 +329,7 @@ $APP freecadcmd $PWD/cad/passes/liteNN_<what>.py   # headless = dry run: all che
 |---|---|---|
 | `printed-parts` | `platform/parts/test_check_printed.py`, `platform/parts/check-printed.py` | manifest, sha256 or BOM drift |
 | `printed-parts` (step-parts steps) | `platform/docs/test_step_parts.py`, `platform/docs/step_parts.py --check` | an assembly page's Print/Buy tables are stale against the manifest or `bom/bom.csv` |
-| `printed-parts` (library steps) | `platform/library/test_check_library.py`, `platform/library/check_library.py` | a `source.json` is invalid, a library file's sha256 differs, a no-file entry has a file, a file has no `source.json`, an entry's category is unknown or not its folder, or a file's `REUSE.toml` label or an entry's credit disagrees |
+| `printed-parts` (library steps) | `platform/library/test_check_library.py`, `platform/library/check_library.py` | a `source.json` is invalid, a library file's sha256 differs, a no-file entry has a file, a file has no `source.json`, an entry's category is unknown or not its folder, a file's `REUSE.toml` label or an entry's credit disagrees, or a printed part's manifest row is gone |
 | `print-area` | `cad/studies/test_print_area.py` | `print-area.svg` is stale against the sweep log |
 | `slice-check` | `platform/parts/test_slice_check.py`, `keepout.json` validity, `orca/orca.json` naming real presets | the G-code parser (absolute or relative E, arcs), Orca's statistics, keep-out or report logic breaks |
 | `refresh-chain` | `cad/scripts/test_refresh.py`, `cad/scripts/test_derive_stls.py`, `test_litepool.py`, `test_prove_parallel.py`, `test_part_index.py` | the chain's sync, step runner or markers break, `derive_stls` stops honouring `VT350_MODELS`, or the part index's schema/staleness check breaks |

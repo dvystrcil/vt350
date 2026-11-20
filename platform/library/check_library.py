@@ -2,6 +2,7 @@
 """Check a parts library: every entry's source.json is valid and every file in the library is accounted for.
 
     python3 platform/library/check_library.py --library cad/library [--reuse REUSE.toml] [--projects cad/credits.json]
+        [--manifest parts/printed/manifest.csv]
     # last line "library-check: OK"; exit 1 with every problem listed otherwise
 
 Generic (stdlib only); the layout is <library>/<category>/<part>/<variant>/source.json, several variants of one part
@@ -9,7 +10,10 @@ side by side (README.md in the library says why):
 - each source.json validates against <library>/schema.json (or --schema): a small JSON Schema subset is read
   (type, required, properties, additionalProperties, items, minItems, minLength, pattern, enum); the schema's
   enum on "category" is the list of categories, and the entry's first folder must be its category;
-- a committed entry (by default, a redistributable one) has each listed file, with the listed sha256;
+- a committed entry (by default, a redistributable one) has each listed file, with the listed sha256; a file can
+  say "committed" itself (a no-file entry's LICENSE.txt);
+- a printed part's entry may list no files and point at its printed-parts manifest rows ("printed") instead; with
+  --manifest, each row must exist (the manifest's own check covers the STLs and their sha256);
 - a no-file entry (redistributable false, or committed false) has none of its listed files present, and a
   redistributable false entry can't say committed true;
 - any other file fails: one beside source.json that it doesn't list, or one in a folder with no source.json.
@@ -17,7 +21,7 @@ side by side (README.md in the library says why):
 - with --reuse, each committed file's licence in REUSE.toml (the last matching annotation) must be the entry's;
 - with --projects (a credits projects file, platform/pages/credits.py format), an entry's "credit" must be a key in it.
 """
-import argparse, hashlib, json, os, re, sys, tomllib
+import argparse, csv, hashlib, json, os, re, sys, tomllib
 
 ENTRY = "source.json"
 ALWAYS_OK = {"README.md"}
@@ -93,7 +97,7 @@ def reuse_licence_of(rel, annotations):
     return lic
 
 
-def check_entry(entry_dir, schema, reuse=None, reuse_root=None, credits=None, category=None):
+def check_entry(entry_dir, schema, reuse=None, reuse_root=None, credits=None, category=None, printed=None):
     """-> (problems, set of file names the entry accounts for)."""
     name = os.path.join(entry_dir, ENTRY)
     try:
@@ -110,15 +114,25 @@ def check_entry(entry_dir, schema, reuse=None, reuse_root=None, credits=None, ca
     committed = data.get("committed", redist)
     if committed and not redist:
         probs.append(f"{name}: committed is true but the part isn't redistributable")
-    paths = [f["path"] for f in data["files"]]
+    files = data.get("files", [])
+    if not files and not data.get("printed"):
+        probs.append(f"{name}: lists no files and no printed parts")
+    if printed is not None:
+        for row in data.get("printed", []):
+            if row not in printed:
+                probs.append(f"{name}: printed part {row!r} is not a row of the printed-parts manifest")
+    paths = [f["path"] for f in files]
     for p in sorted({p for p in paths if paths.count(p) > 1}):
         probs.append(f"{name}: {p} listed twice")
     if credits is not None and "credit" in data and data["credit"] not in credits:
         probs.append(f"{name}: credit {data['credit']!r} is not a project in the projects file")
-    for f in data["files"]:
+    for f in files:
         path = os.path.join(entry_dir, f["path"])
         present = os.path.isfile(path)
-        if committed and redist:
+        here = f.get("committed", committed)
+        if here and not redist and not committed:
+            probs.append(f"{path}: committed is true but the part isn't redistributable")
+        elif here and redist:
             if not present:
                 probs.append(f"{path}: listed in {ENTRY} but missing")
                 continue
@@ -131,12 +145,12 @@ def check_entry(entry_dir, schema, reuse=None, reuse_root=None, credits=None, ca
                 if lic != data["licence"]:
                     probs.append(f"{path}: REUSE.toml says {lic}, {ENTRY} says {data['licence']}")
         elif present:
-            why = "isn't redistributable" if not redist else "says committed: false"
+            why = "isn't redistributable" if not redist else "says committed: false for it"
             probs.append(f"{path}: present, but {ENTRY} {why}")
     return probs, {ENTRY} | set(paths)
 
 
-def check(library, schema_path=None, reuse_path=None, projects_path=None):
+def check(library, schema_path=None, reuse_path=None, projects_path=None, manifest_path=None):
     """-> (problems, number of entries)."""
     schema_path = schema_path or os.path.join(library, "schema.json")
     with open(schema_path, encoding="utf-8") as f:
@@ -147,6 +161,10 @@ def check(library, schema_path=None, reuse_path=None, projects_path=None):
     if projects_path:
         with open(projects_path, encoding="utf-8") as f:
             credits = {p["key"] for p in json.load(f).get("projects", [])}
+    printed = None
+    if manifest_path:
+        with open(manifest_path, newline="", encoding="utf-8") as f:
+            printed = {row["path"] for row in csv.DictReader(f)}
     probs, n = [], 0
     lib = os.path.normpath(library)
     for d, dirs, files in os.walk(lib):
@@ -157,7 +175,7 @@ def check(library, schema_path=None, reuse_path=None, projects_path=None):
             if depth != 3:
                 probs.append(f"{os.path.join(d, ENTRY)}: entries go in <library>/<category>/<part>/<variant>/, not here")
             n += 1
-            p, covered = check_entry(d, schema, reuse, reuse_root, credits, rel.split(os.sep)[0])
+            p, covered = check_entry(d, schema, reuse, reuse_root, credits, rel.split(os.sep)[0], printed)
             probs += p
             for name in sorted(set(files) - covered - ALWAYS_OK):
                 probs.append(f"{os.path.join(d, name)}: not listed in {ENTRY}")
@@ -177,8 +195,9 @@ def main(argv=None):
     ap.add_argument("--schema", help="source.json schema (default: <library>/schema.json)")
     ap.add_argument("--reuse", help="REUSE.toml: committed files' licences must match it")
     ap.add_argument("--projects", help="credits projects file: an entry's 'credit' must be a key in it")
+    ap.add_argument("--manifest", help="printed-parts manifest (CSV with a 'path' column): an entry's 'printed' rows must be in it")
     a = ap.parse_args(argv)
-    probs, n = check(a.library, a.schema, a.reuse, a.projects)
+    probs, n = check(a.library, a.schema, a.reuse, a.projects, a.manifest)
     for p in probs:
         print(f"library-check: FAIL {p}")
     if probs:

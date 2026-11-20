@@ -33,7 +33,7 @@ jobs:
       - name: Check the parts library
         run: |
           set -o pipefail
-          python3 platform/library/check_library.py --library cad/library --reuse REUSE.toml --projects cad/credits.json | tee library.log
+          python3 platform/library/check_library.py --library cad/library --reuse REUSE.toml --projects cad/credits.json --manifest parts/printed/manifest.csv | tee library.log
       - name: Confirm the library check ran to the end
         run: |
           grep -qx 'library-check: OK' library.log

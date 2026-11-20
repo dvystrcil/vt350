@@ -12,8 +12,7 @@
     "licence",
     "licence_source",
     "downloaded",
-    "redistributable",
-    "files"
+    "redistributable"
   ],
   "additionalProperties": false,
   "properties": {
@@ -105,7 +104,7 @@
     "files": {
       "type": "array",
       "minItems": 1,
-      "description": "Every file of the part, as downloaded. When committed (by default: when redistributable) each one is in the entry's folder and must match its sha256; otherwise none may be.",
+      "description": "Every file of the part, as downloaded. When committed (by default: when redistributable) each one is in the entry's folder and must match its sha256; otherwise none may be. Required unless 'printed' is given.",
       "items": {
         "type": "object",
         "required": [
@@ -132,9 +131,22 @@
           "size": {
             "type": "integer",
             "description": "Size in bytes, for no-file entries."
+          },
+          "committed": {
+            "type": "boolean",
+            "description": "Overrides the entry's committed for this file: true keeps a small file (the upstream LICENSE.txt) in git even in a no-file entry of a redistributable part."
           }
         }
       }
+    },
+    "printed": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "A printed part: its rows in the printed-parts manifest (the 'path' column, e.g. 'voron-trident/z_carriage_left.stl'). The STLs stay there, with the manifest as their record; the library doesn't copy them."
     },
     "notes": {
       "type": "array",
