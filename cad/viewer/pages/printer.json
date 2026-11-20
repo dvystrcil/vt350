@@ -1,10 +1,10 @@
 {
  "_doc": "The public pages of one subject, built from one lite-N by cad/viewer/pages.py (vt350#220). Top level: what to export, the render look (owner 2026-11-17: AgX Punchy, plastic 0.2, -1.4 EV; the key light turns and tilts with each camera), where pages go ('release' takes {model}). 'turntable': cameras and page text. 'viewer' (optional): the live 3D page, its GLB and its compare render.",
- "model": 62,
+ "model": 71,
  "selection": null,
  "extra": [
   "vt350-ebox-3.FCStd",
-  "vt350-emu-3.FCStd"
+  "vt350-emu-4.FCStd"
  ],
  "hide": [
   "role_board_t0"
