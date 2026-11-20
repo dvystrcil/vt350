@@ -8,10 +8,6 @@
     {
      "label": "PET-GF",
      "preset": "filament/Siraya Tech PET-GF.json"
-    },
-    {
-     "label": "chamber material, TBD (#8 AC1)",
-     "preset": "filament/E RPETG Red - MMU - cht-mze + bimetal.json"
     }
    ],
    "file": "door.3mf",
@@ -19,7 +15,7 @@
    "licenses": [
     "GPL-3.0"
    ],
-   "orca_plates": 2,
+   "orca_plates": 1,
    "plates": [
     {
      "filaments": [
@@ -39,42 +35,33 @@
        "path": "clicky-clack/Hinge-L-sleeve-2X.stl",
        "qty": 3,
        "sha256": "a052bb029f5758da2552417accdee0df6e23d63e6c597824625902a86340f32b"
-      }
-     ]
-    },
-    {
-     "filaments": [
-      2
-     ],
-     "label": "chamber material, TBD (#8 AC1)",
-     "material": "chamber-tbd",
-     "parts": [
+      },
       {
-       "filament": 2,
+       "filament": 1,
        "path": "clicky-clack/Handle.stl",
        "qty": 1,
        "sha256": "a2f596a1e2c64dffd3f80d2cc12171ee723ebad4b84bd4c76b107a6a2fcd0d34"
       },
       {
-       "filament": 2,
+       "filament": 1,
        "path": "clicky-clack/Handle-Hinge_Top.stl",
        "qty": 1,
        "sha256": "772ad3170575dbc6e4a1f8ef6c09c45dcd14294cd52626bd19286c2e7a8f4017"
       },
       {
-       "filament": 2,
+       "filament": 1,
        "path": "clicky-clack/Handle-Hinge_Bottom.stl",
        "qty": 1,
        "sha256": "cbbb4667ca3e0c441e44c18c1c9099725028111d7f86436126764d0672c361e6"
       },
       {
-       "filament": 2,
+       "filament": 1,
        "path": "clicky-clack/Latch.stl",
        "qty": 1,
        "sha256": "52aff26fe7d564f4b88791b5868cc04250f3131708a40dbc1cc4ec53261e7ca7"
       },
       {
-       "filament": 2,
+       "filament": 1,
        "path": "clicky-clack/Panel_Clip.stl",
        "qty": 1,
        "sha256": "818d4f975891d1d4c372d1d8ae824266a056b450e219ae3ce71a2a656ff54f4c"
@@ -83,7 +70,6 @@
     }
    ],
    "presets": {
-    "filament: filament/E RPETG Red - MMU - cht-mze + bimetal.json": "abe65f295c629c83a938eefb6875a4761ab727b3cc45df589907dae115b781f9",
     "filament: filament/Siraya Tech PET-GF.json": "bc6681681563dfa91a682ff847a8fd8c3a113a416ac8206f9af22744e1544dab",
     "machine": "28a0f61f0723d3cf8df4fb4ad4575e0866354462686c3043947fe440f34abbbc",
     "process": "e3b5c948adad808afb84e8b3f60757b8ffafa30f8b5a35ef09d200180f161eac"
@@ -335,10 +321,6 @@
     {
      "label": "clear",
      "preset": "filament/E RPETG Red - MMU - cht-mze + bimetal.json"
-    },
-    {
-     "label": "chamber material, TBD (#8 AC1)",
-     "preset": "filament/E RPETG Red - MMU - cht-mze + bimetal.json"
     }
    ],
    "file": "toolhead.3mf",
@@ -418,6 +400,12 @@
      "parts": [
       {
        "filament": 1,
+       "path": "vt350/madmax-andrewmcgr-dock-arm/Dock Arm -9.06mm.stl",
+       "qty": 4,
+       "sha256": "790882c3ef472ba29d2c67861647535e56b99847e6610dfdfdbe918248b03472"
+      },
+      {
+       "filament": 1,
        "path": "vt350/a4tv2-duct-4010-madmax-dock/A4Tv2 Duct-4010-left MadMax dock.stl",
        "qty": 2,
        "sha256": "92fcc06ca9e79815273298fd3cb82d2e5f04cca09cc1ca67c1780cee27ad8a12"
@@ -439,30 +427,30 @@
        "path": "orbiter-toolboards/O2S-Wirestrain_Lock.stl",
        "qty": 2,
        "sha256": "0f36f3c586a9dd2554af61a35e807d68c8cd79c786732ace324a57ef907acaad"
+      },
+      {
+       "filament": 1,
+       "path": "vt350/madmax-andrewmcgr-dock-keyslot-pads/Dock Asembly standoff pads left.stl",
+       "qty": 1,
+       "sha256": "a4a387aa8b30a9aa53178ab9432149970e8d17ec592b933388d6feae319113ae"
       }
      ]
     },
     {
      "filaments": [
-      4
+      1
      ],
-     "label": "chamber material, TBD (#8 AC1)",
-     "material": "chamber-tbd",
+     "label": "PET-GF",
+     "material": "pet-gf",
      "parts": [
       {
-       "filament": 4,
-       "path": "vt350/madmax-andrewmcgr-dock-arm/Dock Arm -9.06mm.stl",
-       "qty": 4,
-       "sha256": "790882c3ef472ba29d2c67861647535e56b99847e6610dfdfdbe918248b03472"
-      },
-      {
-       "filament": 4,
+       "filament": 1,
        "path": "vt350/madmax-andrewmcgr-dock-keyslot-pads/Dock Asembly standoff pads left.stl",
-       "qty": 3,
+       "qty": 2,
        "sha256": "a4a387aa8b30a9aa53178ab9432149970e8d17ec592b933388d6feae319113ae"
       },
       {
-       "filament": 4,
+       "filament": 1,
        "path": "vt350/madmax-andrewmcgr-dock-keyslot-pads/Dock Asembly standoff pads right.stl",
        "qty": 2,
        "sha256": "53584b8707072df9254a424a75b917ffd5828efd6cfb3d99cf0ada0260566971"

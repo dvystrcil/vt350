@@ -1,5 +1,5 @@
 {
-  "_doc": "The VT350's print projects for platform/parts/orca_projects.py (#217). Owner 2026-11-20: one OrcaSlicer project per work unit (`units`), a plate per material inside it (each with its own filament preset); the 4-lane Pico MMU lets a plate carry up to `max_filaments` filaments: its material, then `accent` ([a] parts: the same preset, the accent colour's spool) and `clear` ([t] parts: the PETG preset), per `slots`. Docks go with the toolhead (they mate) on their own chamber-material plate; Z is part of kinematics; every e-box part is one `ebox` project in Ambrosia ASA (the owner's `Ambrosia ASA - warmer` preset). `qty`: copies for an 'as-needed' row (LDO cable clips: 1 each, owner 2026-11-20; clone more in Orca); `own_plate`: a plate per clip size (owner). `skip`: rows not placed. Paths are the manifest's (relative to parts/printed/); preset paths are relative to orca/; `bed_mm` is the Neptune 4 Pro's 235 x 235 bed (the vendor machine profile's printable_area).",
+  "_doc": "The VT350's print projects for platform/parts/orca_projects.py (#217). Owner 2026-11-20: one OrcaSlicer project per work unit (`units`), a plate per material inside it (each with its own filament preset); the 4-lane Pico MMU lets a plate carry up to `max_filaments` filaments: its material, then `accent` ([a] parts: the same preset, the accent colour's spool) and `clear` ([t] parts: the PETG preset), per `slots`. Docks go with the toolhead (they mate); anything inside the chamber is PET-GF (owner 2026-11-20, #8 AC1); Z is part of kinematics; every e-box part is one `ebox` project in Ambrosia ASA (the owner's `Ambrosia ASA - warmer` preset). `qty`: copies for an 'as-needed' row (LDO cable clips: 1 each, owner 2026-11-20; clone more in Orca); `own_plate`: a plate per clip size (owner). `skip`: rows not placed. Paths are the manifest's (relative to parts/printed/); preset paths are relative to orca/; `bed_mm` is the Neptune 4 Pro's 235 x 235 bed (the vendor machine profile's printable_area).",
   "manifest": "../printed/manifest.csv",
   "stl_root": "../printed",
   "orca": "orca/orca.json",
@@ -22,12 +22,6 @@
       "id": "asa",
       "label": "Ambrosia ASA",
       "filament": "filament/Ambrosia ASA - warmer.json"
-    },
-    {
-      "match": "chamber material",
-      "id": "chamber-tbd",
-      "label": "chamber material, TBD (#8 AC1)",
-      "filament": "filament/E RPETG Red - MMU - cht-mze + bimetal.json"
     },
     {
       "match": "any material",

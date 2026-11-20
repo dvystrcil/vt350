@@ -57,8 +57,9 @@ plate(s), each with its own filament preset; a plate whose parts' footprints pas
 spills onto another plate. The grouping lives in `sets.json`:
 - `units` and `parts`: each manifest path → its work unit;
 - `materials`: the manifest's `material` text, matched by prefix → the plate's material and filament preset
-  (`orca/filament/`: the owner's `Siraya Tech PET-GF` and `Ambrosia ASA - warmer`; the "chamber material, TBD"
-  (#8 AC1) and jig plates use the Neptune's PETG preset until that's decided);
+  (`orca/filament/`: the owner's `Siraya Tech PET-GF` and `Ambrosia ASA - warmer`. Owner 2026-11-20 (#8 AC1):
+  anything inside the chamber is PET-GF, docks and door parts included; the e-box is outside it, in ASA. The jig
+  plate uses the Neptune's PETG preset);
 - `qty`: the copies to place for an `as-needed` row (the LDO cable clips: 1 each, owner 2026-11-20; clone more in
   Orca as needed), and `own_plate`: a plate per clip size;
 - `skip`: rows not to place, with the reason (the Z rear carriage's 2-hole variant: lite-72 uses the 3-hole one);
