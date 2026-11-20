@@ -4,7 +4,7 @@
 #
 #   virtualprinter.sh start  --kconfig DIR --source DIR --config REL --map REL [--home-file REL=SRC ...] [--port N]
 #   virtualprinter.sh status [--port N]      # "virtual-printer: ready" when Moonraker's /printer/info says so
-#   virtualprinter.sh stop                   # "virtual-printer: stopped"
+#   virtualprinter.sh stop   [--port N]      # "virtual-printer: stopped"
 #   virtualprinter.sh build  --kconfig DIR   # the images only (start builds them too)
 #
 # start builds the kalisim image (platform/kalisim, with the printer's MCU Kconfig fragments from --kconfig) and the
@@ -12,6 +12,8 @@
 # SRC are relative to --source. It waits until klippy is ready (or fails, with the logs' tail).
 # Everything the printer writes (configs, logs, Moonraker's database, the save file) is inside the container and goes
 # when it stops (docker run --rm): no volume, nothing on the host. Port default 8080, bound to 127.0.0.1 only.
+# Each port is its own printer: the container is "virtual-printer" on 8080 and "virtual-printer-<N>" on any other
+# port, so a second one (--port 8090) never replaces the first; stop and status take the same --port.
 set -euo pipefail
 here=$(cd "$(dirname "$0")" && pwd)
 platform=$(dirname "$here")
@@ -32,6 +34,7 @@ while (( $# )); do
         *) echo "virtual-printer: unknown option $1"; exit 2 ;;
     esac
 done
+[ "$port" = 8080 ] || name="virtual-printer-$port"
 
 build() {
     [ -n "$kconfig" ] || { echo "virtual-printer: build needs --kconfig"; exit 2; }
@@ -83,5 +86,5 @@ case $cmd in
         docker stop "$name" > /dev/null 2>&1 || true
         docker inspect "$name" > /dev/null 2>&1 && { echo "virtual-printer: still running"; exit 1; }
         echo "virtual-printer: stopped" ;;
-    *) sed -n '2,15p' "$0"; exit 2 ;;
+    *) sed -n '2,16p' "$0"; exit 2 ;;
 esac
