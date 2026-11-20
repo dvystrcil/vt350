@@ -115,19 +115,30 @@ def audit(m, parts):
     return sorted(out, key=lambda g: (-g["n"], g["group"], g["material"]))
 
 
+AUDIT_TOP = 8      # sets summarised one line each under the count: with it and the totals, the first 12 lines
+
+
 def audit_text(groups, total):
-    """colour-audit.txt. The first line is the count, so a report can quote it alone; then each set
-    ("<n>  <material>  <group>", "(no group)" for a top-level part) with its labels under it, "x<k>" when a label occurs k > 1 times.
-    groups None = the colour map is off."""
+    """colour-audit.txt. A report quotes its first lines (the gpu-batch notify comment quotes 12: homelab
+    bin/gpu-batch-submit.py, COLOUR_AUDIT_LINES), so they summarise (vt350#149): the count; the AUDIT_TOP largest
+    sets, one line each ("<n>  <material>  <group>", "(no group)" for a top-level part); the totals by material.
+    Then every set with its labels under it, "x<k>" when a label occurs k > 1 times. groups None = the colour map
+    is off."""
     if groups is None:
         return "unmatched: n/a (colour map off: every part keeps the model's colour)\n"
     n = sum(g["n"] for g in groups)
     if not n:
         return f"unmatched: 0 of {total} parts\n"
-    lines = [f"unmatched: {n} of {total} parts, in {len(groups)} group/material sets",
-             "(they keep the model's colour; a printed part among them needs a rule in colours.json)", ""]
+    head = lambda g: f"{g['n']:>3}  {g['material']}  {g['group'] or '(no group)'}"
+    by_mat = {}
     for g in groups:
-        lines.append(f"{g['n']:>3}  {g['material']}  {g['group'] or '(no group)'}")
+        by_mat[g["material"]] = by_mat.get(g["material"], 0) + g["n"]
+    lines = [f"unmatched: {n} of {total} parts, in {len(groups)} group/material sets"]
+    lines += [head(g) for g in groups[:AUDIT_TOP]]
+    lines += ["by material: " + ", ".join(f"{k} {v}" for k, v in sorted(by_mat.items(), key=lambda kv: (-kv[1], kv[0]))),
+              "(they keep the model's colour; a part among them needs a rule in colours.json, or is listed as kept)", ""]
+    for g in groups:
+        lines.append(head(g))
         lines += [f"       {lab}" + (f"  x{k}" if k > 1 else "") for lab, k in g["labels"].items()]
     return "\n".join(lines) + "\n"
 

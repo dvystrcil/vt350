@@ -185,7 +185,12 @@ VT350_REUSE_EXPORT=<run>/export cad/render/render_full.sh   # changed only a rol
 - **Colours** live in `cad/render/colours.json`: role colours plus ordered rules on label, group and material.
   - Changed only a role's hex? Re-run with `VT350_REUSE_EXPORT`.
   - Added or changed a rule? Run a full export.
-  - `export.log` lists the parts no rule coloured.
+  - `export.log` lists the parts no rule coloured. `colour-audit.txt` (beside it) leads with the count, the 8 largest
+    unmatched sets (count, material, group) and the totals by material, so a report quoting its first 12 lines shows
+    them (#149); each set's labels follow.
+  - Fasteners, washers, nuts, pins, springs and magnets are the `hardware` role, any steel left over is too, and any
+    aluminium left over is `stock_aluminium`; circuit boards are `electronics` (#149; their hexes are placeholders
+    until the owner picks).
   - Photo references: #75.
 
 ### `cad/klipper/virtual-printer.sh`: the VT350 in Fluidd, on simulated boards (#224)

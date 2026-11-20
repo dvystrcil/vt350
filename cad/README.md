@@ -121,8 +121,11 @@ VT350_REUSE_EXPORT=<run>/export cad/render/render_full.sh   # changed only a rol
   | GT2 belts | brown, almost black |
   | LDO Monolith milled parts (`VC9-*`, `VT9-*`) | matte black |
   | ball bearings (695, F695, MR148ZZ) | chrome |
+  | hardware: screws, washers, nuts, T-nuts, pins, springs, magnets, any other steel part (`hardware`, #149) | brushed steel, #A7ABAF (**placeholder**, owner to pick) |
+  | any other aluminium part: kinematic bed plates, build plate, milled dock (`stock_aluminium`, #149) | aluminium, #BFC3C7 (**placeholder**, owner to pick) |
+  | circuit boards (`electronics`, #149) | green solder mask, #1E4D2B (**placeholder**, owner to pick) |
 
-  Parts no rule matches keep the model's colour. The export writes them to `colour-audit.txt` beside `scene.json`, whatever their material: grouped by group path and material, with counts, the count on the first line (`colours.audit`, vt350#91). `export.log`'s `colour map:` line repeats that count. Add a rule for any that are printed.
+  Parts no rule matches keep the model's colour. The export writes them to `colour-audit.txt` beside `scene.json`, whatever their material: grouped by group path and material, with counts, the count on the first line, then the 8 largest sets and the totals by material (`colours.audit`, vt350#91, #149). `export.log`'s `colour map:` line repeats that count. Add a rule for any that are printed.
 - **Tests:** `render/colours.py` holds the shared rule matcher, tested by `render/test_colours.py` (CI `render-colours`). `render/test_render_full.py` (same CI, stub FreeCAD + Blender) checks how `render_full.sh` judges the export: a `FAILED` or a missing `done:` line fails it, the part-index hook's `index: FAILED` does not (#90). `VT350_DOCS` moves its output folder.
 - **Voron logos** (the filter's front hinge and top cap) render orange with the recessed part white: `render/logos.py` picks the inset faces (tested by `render/test_logos.py`, FreeCAD: `$APP freecadcmd $PWD/platform/render/test_logos.py`). Every export that shows the printer's look (`export_meshes.py`, `export_exploded.py`) must use `colours.role_of` and `logos.split`; `test_colours.Aligned` fails CI if one doesn't, or if a new `export_*.py` isn't classified.
 
