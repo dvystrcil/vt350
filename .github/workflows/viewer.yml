@@ -34,6 +34,10 @@ jobs:
         run: python3 platform/viewer/test_viewer_page.py 2>&1 | tee test-viewer-page.log
       - name: Confirm every viewer_page test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-viewer-page.log && tail -1 test-viewer-page.log | grep -qx 'OK'
+      - name: Test pages.py's licence check inputs (selection vs whole-model export)
+        run: python3 cad/viewer/test_pages.py 2>&1 | tee test-pages.log
+      - name: Confirm every pages test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-pages.log && tail -1 test-pages.log | grep -qx 'OK'
       - name: Every pages settings file has what the steps need
         run: |
           python3 cad/viewer/pages.py check all 2>&1 | tee pages-check.log
