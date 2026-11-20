@@ -26,3 +26,14 @@ jobs:
       - name: Confirm the step-parts check ran to the end
         run: |
           grep -qx 'step-parts: OK' step-parts.log
+      # vt350#268: the parts library (cad/library/): every source.json valid, every file listed with its sha256,
+      # nothing committed for a no-file entry, REUSE.toml and cad/credits.json agreeing with each entry
+      - name: Test the library check
+        run: python3 platform/library/test_check_library.py
+      - name: Check the parts library
+        run: |
+          set -o pipefail
+          python3 platform/library/check_library.py --library cad/library --reuse REUSE.toml --projects cad/credits.json --manifest parts/printed/manifest.csv | tee library.log
+      - name: Confirm the library check ran to the end
+        run: |
+          grep -qx 'library-check: OK' library.log

@@ -79,3 +79,19 @@ path = ["cad/derived/a4tv2-duct-4010-madmax-dock/**", "parts/printed/vt350/a4tv2
 precedence = "override"
 SPDX-FileCopyrightText = ["DW-Tas", "2026 Daniel Vystrcil"]
 SPDX-License-Identifier = "CC-BY-NC-SA-4.0"
+
+# The parts library (vt350#268, cad/library/README.md): each entry's source.json records its source and licence, and
+# platform/library/check_library.py --reuse fails when a committed file's label here differs from it.
+[[annotations]]
+path = "cad/library/electronics/raspberry-pi-5/simplified-mandache/*.step"
+precedence = "override"
+SPDX-FileCopyrightText = ["Eduard Mandache (Raspberry Pi 5 simplified model)", "Raspberry Pi Ltd"]
+SPDX-License-Identifier = "CC-BY-SA-4.0"
+
+# Upstream's licence file for a no-file entry (vt350#268 Q6). reuse lint skips LICENSE* files, so this label is for
+# check_library.py --reuse, which compares it with the entry's source.json.
+[[annotations]]
+path = "cad/library/electronics/raspberry-pi-5/official-raspberry-pi/LICENSE.txt"
+precedence = "override"
+SPDX-FileCopyrightText = "Raspberry Pi Ltd"
+SPDX-License-Identifier = "MIT"
