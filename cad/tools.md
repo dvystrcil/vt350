@@ -21,7 +21,7 @@ Not a parts list: physical parts are the BOM (#22).
 | MCU dictionary build, Debian bookworm | kalisim: `git=1:2.39.5-0+deb12u3`, `ca-certificates=20250419~deb12u2`, `make=4.3-4.1`, `gcc=4:12.2.0-3`, `libc6-dev=2.36-9+deb12u14`, `gcc-arm-none-eabi=15:12.2.rel1-1`, `binutils-arm-none-eabi=2.40-2+18+b1`, `libnewlib-arm-none-eabi=3.3.0-1.3+deb12u1` | `platform/kalisim/Dockerfile` (`dicts` stage) | GPL (git, make, gcc, binutils), LGPL-2.1 (glibc), BSD-style (newlib), MPL-2.0 (ca-certificates) | https://packages.debian.org/bookworm/gcc-arm-none-eabi |
 | klipper-toolchanger | `94756dfde9b729fd69f9b8780067821c5c99a528` | `platform/kalisim/Dockerfile` (`TOOLCHANGER_SHA`) | GPL-3.0 | https://github.com/viesturz/klipper-toolchanger |
 | FreeCAD | `FreeCAD_26.3rc2-Linux-x86_64.AppImage` (26.3 RC2) | `platform/README.md` (`FREECAD_APPIMAGE`) | LGPL-2.0-or-later | https://www.freecad.org |
-| GitHub Actions: checkout | `actions/checkout@v7` | `.github/workflows/*.yml` | MIT | https://github.com/actions/checkout |
+| GitHub Actions: checkout | `actions/checkout@v7`; `actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1` (v7, by SHA: `repin-virtualprinter.yml`, which can write to the repo) | `.github/workflows/*.yml` | MIT | https://github.com/actions/checkout |
 | GitHub Actions: cache | `actions/cache@v4` | `.github/workflows/test-tmp.yml` (the static ffmpeg) | MIT | https://github.com/actions/cache |
 | GitHub Actions: Pages | `actions/configure-pages@v6`, `actions/upload-pages-artifact@v5`, `actions/deploy-pages@v5` | `.github/workflows/*.yml` | MIT | https://github.com/actions/deploy-pages |
 | Secret scan | `dvystrcil/secret-scan-action@v1` | `.github/workflows/*.yml` | the action's own | https://github.com/dvystrcil/secret-scan-action |
