@@ -22,7 +22,7 @@ SHA = hashlib.sha256(DATA).hexdigest()
 
 
 def entry(**over):
-    e = {"title": "Widget", "author": "Someone", "source_url": "https://example.com/widget",
+    e = {"category": "electronics", "title": "Widget", "author": "Someone", "source_url": "https://example.com/widget",
          "licence": "CC-BY-SA-4.0", "licence_source": "the page, 2026-11-20", "downloaded": "2026-11-20",
          "redistributable": True, "files": [{"path": "widget.step", "sha256": SHA}]}
     e.update(over)
@@ -45,7 +45,7 @@ class Library(unittest.TestCase):
             f.write(data)
         return path
 
-    def add(self, src="someone/widget", data=DATA, **over):
+    def add(self, src="electronics/widget/someone", data=DATA, **over):
         self.write(f"{src}/source.json", json.dumps(entry(**over)).encode())
         if data is not None:
             self.write(f"{src}/widget.step", data)
@@ -61,7 +61,7 @@ class Library(unittest.TestCase):
 
     def test_good_entry_passes(self):
         self.add()
-        self.write("someone/widget/README.md", b"notes\n")
+        self.write("electronics/widget/someone/README.md", b"notes\n")
         probs, n = cl.check(self.lib)
         self.assertEqual((probs, n), ([], 1))
 
@@ -74,12 +74,12 @@ class Library(unittest.TestCase):
         self.assertOneProblem("missing")
 
     def test_file_without_source_json_fails(self):
-        self.write("someone/loose/thing.step", DATA)
+        self.write("electronics/loose/thing.step", DATA)
         self.assertOneProblem("no source.json covers")
 
     def test_unlisted_file_beside_source_json_fails(self):
         self.add()
-        self.write("someone/widget/extra.stl", DATA)
+        self.write("electronics/widget/someone/extra.stl", DATA)
         self.assertOneProblem("not listed in source.json")
 
     def test_stray_file_at_top_fails(self):
@@ -97,7 +97,7 @@ class Library(unittest.TestCase):
     def test_committed_false_keeps_files_out(self):
         self.add(data=None, committed=False, notes=["large; add if wanted"])
         self.assertEqual(self.probs(), [])
-        self.write("someone/widget/widget.step", DATA)
+        self.write("electronics/widget/someone/widget.step", DATA)
         self.assertOneProblem("committed: false")
 
     def test_committed_true_without_redistribution_fails(self):
@@ -107,8 +107,8 @@ class Library(unittest.TestCase):
     def test_schema_missing_field_fails(self):
         e = entry()
         del e["licence"]
-        self.write("someone/widget/source.json", json.dumps(e).encode())
-        self.write("someone/widget/widget.step", DATA)
+        self.write("electronics/widget/someone/source.json", json.dumps(e).encode())
+        self.write("electronics/widget/someone/widget.step", DATA)
         self.assertOneProblem("missing required field 'licence'")
 
     def test_schema_bad_values_fail(self):
@@ -122,13 +122,27 @@ class Library(unittest.TestCase):
         self.assertOneProblem("files[0].sha256")
 
     def test_unreadable_json_fails(self):
-        self.write("someone/widget/source.json", b"{not json")
+        self.write("electronics/widget/someone/source.json", b"{not json")
         self.assertOneProblem("can't read")
 
     def test_entry_at_wrong_depth_fails(self):
-        self.add(src="flat")
-        self.write("flat/widget.step", DATA)
+        self.add(src="electronics/widget")
         self.assertOneProblem("entries go in")
+
+    def test_category_must_match_folder(self):
+        self.add(src="hotend/widget/someone")
+        self.assertOneProblem("but it sits in hotend/")
+
+    def test_unknown_category_fails(self):
+        self.add(src="gadgets/widget/someone", category="gadgets")
+        self.assertOneProblem(".category")
+
+    def test_variants_side_by_side_with_part_readme(self):
+        self.add(src="electronics/widget/someone")
+        self.add(src="electronics/widget/official", data=None, committed=False)
+        self.write("electronics/widget/README.md", b"the model uses someone's\n")
+        probs, n = cl.check(self.lib)
+        self.assertEqual((probs, n), ([], 2))
 
     def test_reuse_label_must_match(self):
         self.add()
@@ -138,7 +152,7 @@ class Library(unittest.TestCase):
                     'SPDX-FileCopyrightText = "us"\n')
         self.assertOneProblem("REUSE.toml says GPL-3.0-or-later", reuse_path=reuse)
         with open(reuse, "a") as f:
-            f.write('[[annotations]]\npath = "cad/library/someone/widget/*.step"\nprecedence = "override"\n'
+            f.write('[[annotations]]\npath = "cad/library/electronics/widget/someone/*.step"\nprecedence = "override"\n'
                     'SPDX-License-Identifier = "CC-BY-SA-4.0"\nSPDX-FileCopyrightText = "Someone"\n')
         self.assertEqual(self.probs(reuse_path=reuse), [])
 
@@ -157,7 +171,7 @@ class Library(unittest.TestCase):
         ok = subprocess.run([sys.executable, SCRIPT, "--library", self.lib], capture_output=True, text=True)
         self.assertEqual(ok.returncode, 0, ok.stdout + ok.stderr)
         self.assertEqual(ok.stdout.strip().splitlines()[-1], "library-check: OK")
-        self.write("someone/widget/extra.stl", DATA)
+        self.write("electronics/widget/someone/extra.stl", DATA)
         bad = subprocess.run([sys.executable, SCRIPT, "--library", self.lib], capture_output=True, text=True)
         self.assertEqual(bad.returncode, 1)
         self.assertNotIn("library-check: OK", bad.stdout)

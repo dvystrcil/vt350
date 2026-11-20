@@ -1,6 +1,6 @@
 # cad/library/: every part's CAD, with its source and licence
 
-**Draft for the owner's approval (vt350#268 AC1).** The questions at the end are open; nothing here is final until
+**Draft for the owner's approval (vt350#268 AC1).** The questions at the end are open (the first is answered); nothing here is final until
 the owner approves this page on the PR.
 
 The library is the one place to rebuild the printer in CAD, or print a replacement part, without the FreeCAD model
@@ -9,28 +9,37 @@ what licence, so we stay traceable if an author later changes the licence, updat
 
 ## Layout
 
+The library is for finding a part, so it's sorted by part, not by author (owner, 2026-11-20). The author is a field
+in `source.json`.
+
 ```
 cad/library/
-  README.md                 this page
-  schema.json               JSON Schema for source.json
-  <source>/                 who made it: the author or company, lower-case, hyphens (eduard-mandache, raspberry-pi-ltd)
-    <part>/                 one part (raspberry-pi-5-simplified)
-      source.json           where it came from, its licence, the sha256 of each file as downloaded
-      <file>.step           the file(s), unchanged from the download (renamed only to drop spaces)
-      README.md             optional: longer notes
+  README.md                       this page
+  schema.json                     JSON Schema for source.json (it holds the list of categories)
+  <category>/                     one of the categories below (electronics)
+    <part>/                       the part (raspberry-pi-5)
+      README.md                   which variant the model uses, and why
+      <variant>/                  one source of that part: what it is, then whose (simplified-mandache, official-raspberry-pi)
+        source.json               where it came from, its licence, the sha256 of each file as downloaded
+        <file>.step               the file(s), unchanged from the download (renamed only to drop spaces)
+        README.md                 optional: longer notes
 ```
 
-- **One part per folder**, files flat beside `source.json` (no sub-folders). A STEP for every part; an STL too only
+- **Categories** (a fixed list; `schema.json` rejects any other, and an entry's `category` must be its folder):
+  `electronics`, `hotend`, `motion`, `fasteners`, `frame`, `toolhead`, `enclosure`. Add one only with the owner.
+- **Several variants of one part sit side by side** under `<part>/`, and the part's `README.md` says which one the
+  model uses and why, linking any comparison.
+- **One variant per folder**, files flat beside `source.json` (no sub-folders). A STEP for every part; an STL too only
   when the STL is what upstream publishes (see the questions: printed STLs stay in `parts/printed/` for now).
 - **Files are never edited after they're committed.** The sha256 in `source.json` is of the download; a new upstream
-  version is a new download with a new sha256 and date. A part we change is our remix, with its own entry (see
+  version is a new download with a new sha256 and date. A part we change is our remix, with its own variant (see
   [our own parts](#our-own-parts)).
-- `<source>` is who made the part, not the site: an author with models on Printables and GitHub keeps one folder.
 
-Worked examples:
-[`eduard-mandache/raspberry-pi-5-simplified/`](eduard-mandache/raspberry-pi-5-simplified/source.json) (a committed
-STEP, CC BY-SA 4.0) and [`raspberry-pi-ltd/raspberry-pi-5/`](raspberry-pi-ltd/raspberry-pi-5/source.json) (a no-file
-entry: MIT, but 78 MB).
+Worked example: [`electronics/raspberry-pi-5/`](electronics/raspberry-pi-5/README.md), with the simplified model
+by Eduard Mandache ([`simplified-mandache/`](electronics/raspberry-pi-5/simplified-mandache/source.json), a committed
+STEP, CC BY-SA 4.0) and Raspberry Pi Ltd's own
+([`official-raspberry-pi/`](electronics/raspberry-pi-5/official-raspberry-pi/source.json), a no-file entry: MIT, but
+78 MB).
 
 ## source.json
 
@@ -38,6 +47,7 @@ entry: MIT, but 78 MB).
 
 | Field | Required | What it holds |
 |---|---|---|
+| `category` | yes | One of the categories above; the entry's first folder |
 | `title` | yes | The part's name as its source page gives it |
 | `author` | yes | The person or company to credit |
 | `handle` | no | Their user name on the site (`@EduardMandac_3771478`) |
@@ -64,8 +74,8 @@ saying why (the official Raspberry Pi 5 model: "redistributable but large; add i
 ## Our own parts
 
 Our own parts (the frame, the remixes, the parts modelled from measurements) exist only inside the FreeCAD model. They
-will be exported from the latest lite-N into `cad/library/vt350/<part>/` by a **read-only** FreeCAD run (AC3; not
-built yet):
+will be exported from the latest lite-N into `cad/library/<category>/<part>/vt350/` (variant
+`vt350`) by a **read-only** FreeCAD run (AC3; not built yet):
 
 - a platform script that opens lite-N, exports each listed part as STEP and **never saves the model**, run on the
   batch lane, from a printer-side list of parts (label or group prefix → part folder);
@@ -81,7 +91,7 @@ Each fact has one home; the check makes the others agree with it instead of copy
 
 | File | Is the source of truth for | Link to the library |
 |---|---|---|
-| `cad/library/*/*/source.json` | a part's provenance: URL, date, sha256 as downloaded, licence as read, notes | — |
+| `cad/library/*/*/*/source.json` | a part's provenance: URL, date, sha256 as downloaded, licence as read, notes | — |
 | `REUSE.toml` | the licence label of every file in git (`reuse lint`, CI `reuse`) | `check_library.py --reuse` fails when a committed file's label differs from its `source.json` |
 | `cad/credits.json` → `CREDITS.md` | one credit row per upstream project | an entry's `credit` names the project; `--projects` fails on an unknown key |
 | `cad/viewer/licences.json` | which parts the public pages may show | none yet (it matches model labels, not files) |
@@ -90,13 +100,13 @@ Each fact has one home; the check makes the others agree with it instead of copy
 
 ## Questions for the owner (AC1)
 
-1. **Folder names:** `<source>` = the author or company (`eduard-mandache/`), as drafted here. Or would you rather
-   it be the `cad/credits.json` project key, or the site (`printables/`)?
+1. ~~**Folder names**~~ **Answered (owner, 2026-11-20):** by part, not by author:
+   `<category>/<part>/<variant>/`, as above.
 2. **Printed parts:** keep the STLs in `parts/printed/` with `manifest.csv` as their record (it already has the
    sha256, source, commit and licence), and give the library only their STEP, with a `printed` field pointing at the
    manifest rows? Or move the STLs into the library and retire the manifest's provenance columns?
 3. **`cad/vendor/`:** once #265 merges, move `cad/vendor/trianglelab-mze-robertsamples/` into
-   `cad/library/robert-samples/trianglelab-mze/` (its README becomes `source.json` + notes), so there's one folder
+   `cad/library/hotend/mze/trianglelab-robertsamples/` (its README becomes `source.json` + notes), so there's one folder
    for downloaded CAD? Or keep `cad/vendor/` for files the passes import, and the library for everything else?
 4. **Hand-written or generated:** today each committed file's licence is written twice, in `source.json` and in
    `REUSE.toml`, and the check fails when they differ. Fine as is, or should a script write the `REUSE.toml`

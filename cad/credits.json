@@ -70,7 +70,7 @@
   {"key": "rpi5-simplified", "name": "Raspberry Pi 5 – Simplified CAD Reference / Mock Model", "by": "Eduard Mandache, remixing Raspberry Pi Ltd's official model (MIT)",
    "links": [["Raspberry Pi 5 – Simplified CAD Reference / Mock Model (Printables 1816030)", "https://www.printables.com/model/1816030-raspberry-pi-5-simplified-cad-reference-mock-model"],
              ["Raspberry Pi 5 mechanical data (Raspberry Pi Ltd)", "https://pip.raspberrypi.com/categories/892-raspberry-pi-5"]],
-   "used": "The Raspberry Pi 5 STEP in the parts library (cad/library/eduard-mandache/raspberry-pi-5-simplified/); it replaces the GrabCAD Pi 5 in the model from pass lite-74",
+   "used": "The Raspberry Pi 5 STEP in the parts library (cad/library/electronics/raspberry-pi-5/simplified-mandache/); it replaces the GrabCAD Pi 5 in the model from pass lite-74",
    "reuse": ["Eduard Mandache (Raspberry Pi 5 simplified model)", "Raspberry Pi Ltd"]},
   {"key": "frontends", "name": "fluidd-config", "by": "Alex Zellner and the Fluidd / Mainsail contributors",
    "links": [["fluidd-config", "https://github.com/fluidd-core/fluidd-config"], ["mainsail-config", "https://github.com/mainsail-crew/mainsail-config"]],

@@ -83,7 +83,7 @@ SPDX-License-Identifier = "CC-BY-NC-SA-4.0"
 # The parts library (vt350#268, cad/library/README.md): each entry's source.json records its source and licence, and
 # platform/library/check_library.py --reuse fails when a committed file's label here differs from it.
 [[annotations]]
-path = "cad/library/eduard-mandache/raspberry-pi-5-simplified/*.step"
+path = "cad/library/electronics/raspberry-pi-5/simplified-mandache/*.step"
 precedence = "override"
 SPDX-FileCopyrightText = ["Eduard Mandache (Raspberry Pi 5 simplified model)", "Raspberry Pi Ltd"]
 SPDX-License-Identifier = "CC-BY-SA-4.0"

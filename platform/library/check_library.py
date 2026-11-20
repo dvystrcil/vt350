@@ -4,9 +4,11 @@
     python3 platform/library/check_library.py --library cad/library [--reuse REUSE.toml] [--projects cad/credits.json]
     # last line "library-check: OK"; exit 1 with every problem listed otherwise
 
-Generic (stdlib only); the layout is <library>/<source>/<part>/source.json (README.md in the library says why):
+Generic (stdlib only); the layout is <library>/<category>/<part>/<variant>/source.json, several variants of one part
+side by side (README.md in the library says why):
 - each source.json validates against <library>/schema.json (or --schema): a small JSON Schema subset is read
-  (type, required, properties, additionalProperties, items, minItems, minLength, pattern, enum);
+  (type, required, properties, additionalProperties, items, minItems, minLength, pattern, enum); the schema's
+  enum on "category" is the list of categories, and the entry's first folder must be its category;
 - a committed entry (by default, a redistributable one) has each listed file, with the listed sha256;
 - a no-file entry (redistributable false, or committed false) has none of its listed files present, and a
   redistributable false entry can't say committed true;
@@ -91,7 +93,7 @@ def reuse_licence_of(rel, annotations):
     return lic
 
 
-def check_entry(entry_dir, schema, reuse=None, reuse_root=None, credits=None):
+def check_entry(entry_dir, schema, reuse=None, reuse_root=None, credits=None, category=None):
     """-> (problems, set of file names the entry accounts for)."""
     name = os.path.join(entry_dir, ENTRY)
     try:
@@ -102,6 +104,8 @@ def check_entry(entry_dir, schema, reuse=None, reuse_root=None, credits=None):
     probs = [f"{name}: {p}" for p in validate(data, schema)]
     if probs:
         return probs, {ENTRY} | {f.get("path") for f in data.get("files", []) if isinstance(f, dict)}
+    if category is not None and data.get("category") != category:
+        probs.append(f"{name}: category {data.get('category')!r} but it sits in {category}/")
     redist = data["redistributable"]
     committed = data.get("committed", redist)
     if committed and not redist:
@@ -150,10 +154,10 @@ def check(library, schema_path=None, reuse_path=None, projects_path=None):
         rel = os.path.relpath(d, lib)
         depth = 0 if rel == "." else rel.count(os.sep) + 1
         if ENTRY in files:
-            if depth != 2:
-                probs.append(f"{os.path.join(d, ENTRY)}: entries go in <library>/<source>/<part>/, not here")
+            if depth != 3:
+                probs.append(f"{os.path.join(d, ENTRY)}: entries go in <library>/<category>/<part>/<variant>/, not here")
             n += 1
-            p, covered = check_entry(d, schema, reuse, reuse_root, credits)
+            p, covered = check_entry(d, schema, reuse, reuse_root, credits, rel.split(os.sep)[0])
             probs += p
             for name in sorted(set(files) - covered - ALWAYS_OK):
                 probs.append(f"{os.path.join(d, name)}: not listed in {ENTRY}")

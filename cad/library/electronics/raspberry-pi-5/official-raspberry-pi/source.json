@@ -1,4 +1,5 @@
 {
+  "category": "electronics",
   "title": "rpi-5 3D STEP - No Graphics small file (RP-010083-CA-1)",
   "author": "Raspberry Pi Ltd",
   "source_url": "https://pip.raspberrypi.com/categories/892-raspberry-pi-5",
@@ -14,7 +15,7 @@
     {"path": "LICENSE.txt", "sha256": "4ca2d350552b24137e55587e13fb09a249b757c6af49652ff02ea524d154c7fc", "size": 1881}
   ],
   "notes": [
-    "Redistributable but large (78 MB, 2,689 solids); add if wanted. It is the reference the simplified model (cad/library/eduard-mandache/raspberry-pi-5-simplified/) was compared against, vt350#268.",
+    "Redistributable but large (78 MB, 2,689 solids); add if wanted. It is the reference the simplified model (cad/library/electronics/raspberry-pi-5/simplified-mandache/) was compared against, vt350#268.",
     "Not used in the model."
   ]
 }
