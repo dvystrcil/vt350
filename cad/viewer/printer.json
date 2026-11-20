@@ -1,0 +1,14 @@
+{
+ "_doc": "vt350#220: the whole printer for the printer pages: every part of lite-N and its extras (cad/viewer/pages/printer.json) but the e-box's 'Electronics' group (Octopus, Pi 5, SSR and their brackets), which came mostly from GrabCAD and isn't shareable (owner, 2026-11-19, on #252): it is left out. A selection export also writes its exact part list to scene.json for the licence check. Format: platform/viewer/rules.py.",
+ "include": [
+  {"group_prefix": "4040-350x350x250 Voron Trident", "note": "the printer: frame, gantry, Z, bed, heads, docks, doors"},
+  {"group_prefix": "Enclosure extras", "note": "panels, insulation, camera, lights, cable channel"},
+  {"group_prefix": "Stand: levelling feet"},
+  {"group_prefix": "E-box layout", "note": "the e-box's layout boxes, DIN rails and holders (vt350-ebox-N)"},
+  {"group_prefix": "EMU 5-lane", "note": "the EMU (vt350-emu-N)"}
+ ],
+ "exclude": [
+  {"group": "Electronics", "note": "GrabCAD models, not shareable: left out"}
+ ],
+ "moves": {}
+}

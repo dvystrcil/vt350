@@ -155,9 +155,12 @@ cad/viewer/pages.py check all                           # every settings file is
   whole-model export (`printer`, no selection) is checked on the part indexes beside the model and each extra
   (`<model>.parts.json`, `platform/freecad/part_index.py`; the export writes them, and the check refuses a missing or
   stale one). An index lists hidden parts and stand-ins too, so it checks a little more than the export holds.
+  `printer` uses the selection `cad/viewer/printer.json`: everything but the e-box's `Electronics` group (mostly
+  GrabCAD models, not shareable: owner, 2026-11-19), so its parts list is the export's own `scene.json`.
 - **The whole printer's licences, by hand** (plain python, a second): with lite-71 it ends `licence-check: FAILED`,
   every failure an open question for the owner, asked in its rule's `source` (a rule with licence `unknown`): the
-  original STEP's parts (frame, Z, doors, rails, electronics), the EMU file, the e-box DIN holders, the backbone.
+  EMU file, the e-box DIN holders, the backbone. The by-hand command below also lists the electronics the
+  selection leaves out (`NO-SHARE`).
   ```bash
   D=~/Documents/VT350
   python3 platform/viewer/licence_check.py $D/vt350-lite-71.parts.json:$D/vt350-ebox-3.parts.json:$D/vt350-emu-4.parts.json \

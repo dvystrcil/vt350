@@ -44,5 +44,27 @@ class LicenceInputs(unittest.TestCase):
             pages.licence_inputs(self.run)
 
 
+class PrinterSelection(unittest.TestCase):
+    """cad/viewer/printer.json: the whole printer but the GrabCAD electronics (owner, 2026-11-19, #252)."""
+
+    def setUp(self):
+        sys.path.insert(0, os.path.join(pages.PLATFORM, "viewer")); import rules
+        self.sel = rules.load_selection(os.path.join(pages.HERE, "printer.json"))
+        self.lic = json.load(open(pages.LICENCES)); self.rules = rules
+
+    def test_electronics_left_out_rest_kept(self):
+        self.assertFalse(self.sel.pick("Main Relay Body", ["Electronics", "SSR"])[0])
+        for path in (["4040-350x350x250 Voron Trident v4 v33", "Z Assembly (1)"], ["Enclosure extras (lite-16)"],
+                     ["E-box layout, concept C on the inner frame (lite-54)"], ["EMU 5-lane (DW-Tas)"]):
+            self.assertTrue(self.sel.pick("x", path)[0], path)
+
+    def test_electronics_not_shareable(self):
+        _, problems = self.rules.check(self.lic, [{"label": "Main Relay Body", "path": ["Electronics", "SSR"]}])
+        self.assertTrue(problems and problems[0].startswith("NOT SHAREABLE"))
+
+    def test_settings_use_it(self):
+        self.assertEqual(pages.settings("printer")["selection"], "cad/viewer/printer.json")
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
