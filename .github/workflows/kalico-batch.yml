@@ -39,6 +39,15 @@ jobs:
         run: python3 platform/klipper/test_frontend.py 2>&1 | tee test-frontend.log
       - name: Confirm every front-end test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-frontend.log && tail -1 test-frontend.log | grep -qx 'OK'
+      - name: Test the pin-map generator (pinmap.py; no Kalico)
+        run: python3 platform/klipper/test_pinmap.py 2>&1 | tee test-pinmap.log
+      - name: Confirm every pin-map test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-pinmap.log && tail -1 test-pinmap.log | grep -qx 'OK'
+      - name: Check the pin map covers every pin in printer.cfg (vt350#224 AC3)
+        run: |
+          python3 platform/klipper/pinmap.py check --config cad/klipper/printer.cfg --map cad/klipper/pinmap.json \
+            | tee pinmap.log
+          tail -1 pinmap.log | grep -qx 'pinmap: OK'
       - name: Test the batch-mode runner against a fake klippy (kalisim; no Kalico)
         run: python3 platform/kalisim/test_kalisim.py 2>&1 | tee test-kalisim.log
       - name: Confirm every kalisim test ran

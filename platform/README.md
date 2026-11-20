@@ -18,7 +18,7 @@ code. The printer side imports from here, not the other way round.
 | `render/` | FreeCAD mesh export (`export_meshes.py`), Blender render (`render.py`), the colour-map engine (`colours.py`) and logo split (`logos.py`) | FreeCAD, then Blender |
 | `kalisim/` | Kalico batch mode with no hardware: run G-code through the real firmware and check the moves. The image includes klipper-toolchanger (pinned), for printers whose config uses it. klippy runs with a sandbox `HOME` holding an empty `printer_data/config/`, for configs that keep a file there (`[save_variables]`); `home_files` / `--home-file REL=SRC` copies a file in first (e.g. a save file seeded from its template) | `docker` (Kalico's published image, pinned by digest) |
 | `parts/` | `check-printed.py` (printed parts against their manifest and the BOM) and `slice-check.py` (supports, keep-outs and print estimates, via OrcaSlicer or `--slicer prusa`) | `python3`; slice-check also needs the Orca (or PrusaSlicer) flatpak |
-| `klipper/` | The web front end's client config, Fluidd or Mainsail, vendored unchanged; `frontend.py` reports which one a printer's config includes and switches it | `python3` |
+| `klipper/` | The web front end's client config, Fluidd or Mainsail, vendored unchanged; `frontend.py` reports which one a printer's config includes and switches it. `pinmap.py`: a config's MCU pins (with its includes) mapped onto simulated boards, one simulavr atmega644p per `[mcu]`, for a live klippy with no hardware (#224); `generate` writes the map, `check` fails when the config uses a pin the map doesn't cover ("pinmap: OK"), `apply` writes a copy of the config tree with the pins swapped | `python3` |
 | `pages/` | `check_index.py`: the guard that runs before the reference pages are published; `fetch_assets.py`: puts the pages' large files (release assets, checked by sha256) in place | `python3`, `gh` |
 | `testing/` | `check_test_tmp.sh`: every plain-python test must leave its `TMPDIR` empty | `bash` |
 
@@ -36,6 +36,7 @@ python3 platform/parts/slice-check.py parts/printed/vt350/<part>/*.stl
 python3 platform/pages/check_index.py notes/reference           # "check-index: OK"
 python3 platform/pages/fetch_assets.py notes/reference/assets.json   # "fetch-assets: OK"; --from-dir DIR to skip the download
 bash platform/testing/check_test_tmp.sh                         # "check-test-tmp: OK"
+python3 platform/klipper/pinmap.py check --config cad/klipper/printer.cfg --map cad/klipper/pinmap.json   # "pinmap: OK"
 bash cad/klipper/test_in_container.sh                           # builds platform/kalisim with the VT350's MCU configs; "kalico-batch: OK"
 cad/render/render_full.sh 30                                    # FreeCAD export + Blender render of vt350-lite-30
 cad/viewer/export_glb.sh 62                                     # a licence-checked GLB of a selection, for the 3D viewer ("glb-export: OK")
@@ -79,6 +80,7 @@ The printer passes its data to these tools by path or environment variable:
 | `freecad/timeline.py` | the rig: XY mapping, bed Z, each head's dock and pickup offset | `--rig` (the VT350's: `cad/motion/rig.json`) |
 | `freecad/player.py` | the model, the groups file ({group: [object Name]}), the timeline and the rig | `MOTION_*` environment variables (the VT350's launcher: `cad/motion/play.py`) |
 | `klipper/frontend.py` | the config that includes the front end | `--config` (the VT350's: `cad/klipper/frontend.cfg`) |
+| `klipper/pinmap.py` | the printer's top config, and its pin map | `--config`, `--map` (the VT350's: `cad/klipper/printer.cfg`, `cad/klipper/pinmap.json`) |
 | `kalisim/Dockerfile` | the MCU Kconfig fragments | the `kconfig` build context: `docker build --build-context kconfig=cad/klipper/kconfig platform/kalisim` |
 | `parts/check-printed.py` | the manifest and BOM | `--root` (default: this checkout), reads `parts/printed/manifest.csv` and `bom/printed-parts.md` |
 | `parts/slice-check.py` | the slicer presets and keep-out boxes | `parts/slice/orca/orca.json` (the Neptune presets), `parts/slice/petg-0.4-0.2.ini` (`--slicer prusa`), `parts/slice/keepout.json` (`--orca`, `--profile`, `--keepout`) |
