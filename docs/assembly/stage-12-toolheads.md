@@ -15,7 +15,7 @@ What to print and what to buy for this stage only. The tables are generated from
 |---|---|---|---|
 | MadMax tool plate (XOL), one per head | 2 | [Plate Assembly.stl](../../parts/printed/madmax/andrewmcgr/Plate%20Assembly.stl) | GPL-3.0 |
 | MadMax tool plate back, one per head | 2 | [Plate Back.stl](../../parts/printed/madmax/andrewmcgr/Plate%20Back.stl) | GPL-3.0 |
-| A4Tv2 main body (Dragon Rapido UHF, Orbiter, XOL) | 2 | [main-body_dragon-rapido-UHF_o2_xol.stl](../../parts/printed/a4tv2/main-body_dragon-rapido-UHF_o2_xol.stl) | CC BY-NC-SA 4.0 |
+| A4Tv2 main body, hex (Dragon ACE Volcano, Orbiter, XOL) | 2 | [hex-main-body_DAV_o2_xol.stl](../../parts/printed/a4tv2/hex-main-body_DAV_o2_xol.stl) | CC BY-NC-SA 4.0 |
 | A4Tv2 Orbiter Crossbow adapter | 2 | [\[a\]_orbiter-crossbow-adapter_o2_xol.stl](../../parts/printed/a4tv2/%5Ba%5D_orbiter-crossbow-adapter_o2_xol.stl) | CC BY-NC-SA 4.0 |
 | A4Tv2 hotend-fan duct (Dragon UHF, 2510) | 2 | [Duct-HEF-Dragon-UHF.stl](../../parts/printed/a4tv2/Duct-HEF-Dragon-UHF.stl) | CC BY-NC-SA 4.0 |
 | A4Tv2 LED carrier | 2 | [LED_Carrier.stl](../../parts/printed/a4tv2/LED_Carrier.stl) | CC BY-NC-SA 4.0 |
