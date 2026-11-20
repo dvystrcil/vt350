@@ -103,7 +103,7 @@ class Sync(unittest.TestCase):
 class Steps(unittest.TestCase):
     def test_plan_order_and_model(self):
         names = [s.name for s in rf.plan(26, root="/r", app="/app")]
-        self.assertEqual(names, ["part_index", "derive_stls", "sync_printed", "check_printed", "sweep", "z_sweep",
+        self.assertEqual(names, ["part_index", "derive_stls", "sync_printed", "check_printed", "orca_projects", "sweep", "z_sweep",
                                  "print_area", "test_print_area"])
         sweep = next(s for s in rf.plan(26, root="/r", app="/app") if s.name == "sweep")
         self.assertEqual(sweep.env["VT350_MODEL"], "/home/dan/Documents/VT350/vt350-lite-26.FCStd")
@@ -297,7 +297,7 @@ class Lane(unittest.TestCase):
 
     def test_lane_plan_submits_then_runs_only_the_repo_writing_steps(self):
         names = [s.name for s in rf.lane_plan(35, root="/r", app="/app", models="/m", notify="dvystrcil/homelab#2257")]
-        self.assertEqual(names, ["submit", "derive_stls", "sync_printed", "check_printed"])
+        self.assertEqual(names, ["submit", "derive_stls", "sync_printed", "check_printed", "orca_projects"])
 
     def test_submit_step_is_the_homelab_chain_on_this_checkout_and_model(self):
         s = rf.lane_plan(35, root="/r", app="/app", models="/m", notify="dvystrcil/homelab#2257",
@@ -470,7 +470,7 @@ class Cli(unittest.TestCase):
         r = self.run_cli("35", "--dry-run", "--notify", "dvystrcil/homelab#2257")
         self.assertEqual(r.returncode, 0, r.stderr)
         names = [l.split()[0] for l in r.stdout.splitlines() if l and not l.startswith("would")]
-        self.assertEqual(names, ["submit", "derive_stls", "sync_printed", "check_printed"])
+        self.assertEqual(names, ["submit", "derive_stls", "sync_printed", "check_printed", "orca_projects"])
         self.assertIn("chain vt350-refresh", r.stdout)
 
 
@@ -507,6 +507,12 @@ class MarkersMatchTheRealTools(unittest.TestCase):
     def test_check_printed_marker(self):
         out = self.real_output(os.path.join(self.ROOT, "platform/parts/check-printed.py"), "--root", self.ROOT)
         self.assertRegex(out, self.marker_of("check_printed"))
+
+    def test_orca_projects_marker(self):
+        # --check prints the same last line as a generating run, without needing Orca
+        out = self.real_output(os.path.join(self.ROOT, "platform/parts/orca_projects.py"),
+                               os.path.join(self.ROOT, "parts/slice/sets.json"), "--check")
+        self.assertRegex(out, self.marker_of("orca_projects"))
 
     def test_part_index_marker(self):
         # needs FreeCAD to produce, so: the committed log of a real run (cad/data/logs/part_index.log, 2026-11-09)

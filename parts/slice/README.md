@@ -45,6 +45,40 @@ python3 platform/parts/slice-check.py --slicer prusa <stl…>                   
   `harbor.sirddail.net/ai/gpu-batch-orcaslicer`, the same Flathub build, byte-identical G-code
   (gpu-batch-docker#13 AC5).
 
+## Print projects: `projects/` (#217)
+
+OrcaSlicer projects (3MF) of every printed part, ready to open and print on the Neptune. They're generated, and
+committed so a lost file or a broken slicer setting can be restored from git.
+
+**Grouping (AC1, owner 2026-11-20): by subassembly, split by material.** One project per (subassembly, material),
+named `<subassembly>-<material>.3mf`, e.g. `toolhead-chamber-tbd.3mf`, `door-pet-gf.3mf`. Parts whose material is
+still open ("chamber material", #8 AC1) go in a "chamber material, TBD" set per subassembly. A set too big for the
+bed spills onto more plates of the same project. The grouping lives in `sets.json`:
+- `parts`: each manifest path → its subassembly (`subassemblies` lists them);
+- `materials`: the manifest's `material` text, matched by prefix → the set's material id and filament preset
+  (`orca/filament/`; the PET-GF sets use the owner's `Siraya Tech PET-GF`, the TBD sets the Neptune's PETG preset);
+- `qty`: the copies to place for an `as-needed` row.
+
+Every copy is on a plate (quantities expanded), each part as its committed STL stands (print-oriented, no
+re-orienting), arranged by Orca on the Neptune's bed, with the machine, process and filament presets selected.
+
+```bash
+python3 platform/parts/orca_projects.py parts/slice/sets.json            # regenerate the stale projects (needs Orca)
+python3 platform/parts/orca_projects.py parts/slice/sets.json --check    # which are stale; no Orca ("orca-projects: OK")
+python3 platform/parts/orca_projects.py parts/slice/sets.json --list     # the sets and their parts
+python3 platform/parts/orca_projects.py parts/slice/sets.json --all      # regenerate every project
+```
+
+**The projects follow each part's content (AC5).** `projects/index.json` records, per project, every STL it placed
+with its sha256 and copies, and the sha256 of its three presets. `--check` (CI, `printed-parts` workflow) fails when
+an STL changed, a qty or a set changed, a manifest row has no project or no entry in `sets.json`, the index lists a
+part that's gone, or a preset changed, and names the projects to regenerate. `cad/scripts/refresh.py` runs the
+generator after `check_printed`, so a pass that re-exports an STL regenerates its plate in the same PR. Plain
+regeneration rewrites only the stale projects: Orca's 3MF holds timestamps, so unchanged sets keep their files.
+
+New part: add its manifest row, then its path to `sets.json`'s `parts`, then regenerate. Each project's slice
+check (time, grams, filament per set) is #217 AC3.
+
 ## Reading the support number
 
 The number is what the slicer's **automatic** supports would add. Parts designed to print without supports (Voron,
