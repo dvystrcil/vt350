@@ -32,7 +32,9 @@ flowchart TD
 | Only the reach changed (sweep re-run by hand) | `python3 cad/scripts/refresh.py N --from print_area` | seconds |
 | Changed a file in `parts/printed/` or `manifest.csv` | `python3 platform/parts/check-printed.py` (add `--write-index` to rebuild the README table) | seconds |
 | Will a part print without supports? (before any PETG test-fit) | `python3 platform/parts/slice-check.py <stl…>`: report + red-support preview; see `parts/slice/README.md` | ~1 s/part, up to ~1 min for big ones |
-| What has the build cost, and what's left to buy? (or after editing `bom/bom.csv`) | `python3 bom/totals.py`: spent / still to spend / grand total per currency, unpriced rows listed; `--check` only validates the CSV (rules in the script's docstring) | instant |
+| What has the build cost, and what's left to buy? (or after editing `bom/bom.csv`) | `python3 bom/totals.py`: spent / still to spend / grand total per currency, unpriced and `decide` (undecided, not counted) rows listed; `--check` only validates the CSV (rules in the script's docstring) | instant |
+| Changed a pin in `cad/klipper/printer.cfg` (or a file it includes) | `python3 platform/klipper/pinmap.py generate --config cad/klipper/printer.cfg --map cad/klipper/pinmap.json`, then `... check ...` ("pinmap: OK"; CI runs the check) | instant |
+| Click through the Kalico macros in Fluidd, before the hardware exists (#224) | `bash cad/klipper/virtual-printer.sh start` ("virtual-printer: ready", Fluidd at http://127.0.0.1:8080/), `... stop` ("virtual-printer: stopped"); below | ~30 s cached, ~5 min first build |
 | Checking pinned upstream STLs haven't drifted | `python3 platform/parts/check-printed.py --upstream` (network; CI doesn't run it) | ~1 min |
 | See what refresh *would* do, writing nothing | `python3 cad/scripts/refresh.py N --dry-run` | seconds |
 | Full colour renders of the whole printer, here on the laptop | `cad/render/render_full.sh [N] [samples]` (below) | ~6 min; prints the image paths |
@@ -151,8 +153,20 @@ cad/viewer/pages.py check all                           # every settings file is
   picks another. Each ends with `<step>: OK`.
 - **The look** (owner, 2026-11-17): AgX Punchy, plastic specular 0.2, −1.4 EV; the key light turns and tilts with each
   camera. `printer` hides the base board (`"hide": ["role_board_t0"]`).
-- **publish refuses** unless every part's licence is cleared in `cad/viewer/licences.json` (the whole printer's aren't
-  yet). `--upload 0` writes the pages but leaves the zip and GLB in RUN.
+- **publish refuses** unless every part's licence is cleared in `cad/viewer/licences.json`. `--upload 0` writes the
+  pages but leaves the zip and GLB in RUN. A selection export (`toolhead`) is checked on its `scene.json` parts. A
+  whole-model export (`printer`, no selection) is checked on the part indexes beside the model and each extra
+  (`<model>.parts.json`, `platform/freecad/part_index.py`; the export writes them, and the check refuses a missing or
+  stale one). An index lists hidden parts and stand-ins too, so it checks a little more than the export holds.
+  `printer` uses the selection `cad/viewer/printer.json`: every part of the model and its extras, so its parts list is
+  the export's own `scene.json`. The GrabCAD Pi 5 is shared under GrabCAD's terms, crediting Mateusz Zelek on the page.
+- **The whole printer's licences, by hand** (plain python, a second): with lite-71 it ends `licence-check: OK`. A
+  failure with licence `unknown` would be an open question, asked in its rule's `source`.
+  ```bash
+  D=~/Documents/VT350
+  python3 platform/viewer/licence_check.py $D/vt350-lite-71.parts.json:$D/vt350-ebox-3.parts.json:$D/vt350-emu-4.parts.json \
+      cad/viewer/licences.json /tmp/printer-licences.log     # one line per part; the log's last line is the verdict
+  ```
 - **Big files:** each lite-N gets its own release (`viewer-assets-lite-<N>`); files are named by their sha256 and
   recorded in `notes/reference/assets.json`, which the pages workflow fetches and checks. Old releases stay, so a
   page still on main keeps working until the new one merges.
@@ -173,6 +187,22 @@ VT350_REUSE_EXPORT=<run>/export cad/render/render_full.sh   # changed only a rol
   - Added or changed a rule? Run a full export.
   - `export.log` lists the parts no rule coloured.
   - Photo references: #75.
+
+### `cad/klipper/virtual-printer.sh`: the VT350 in Fluidd, on simulated boards (#224)
+
+```bash
+bash cad/klipper/virtual-printer.sh start    # builds the kalisim and virtual-printer images, starts, waits for klippy
+                                             # "virtual-printer: ready"; Fluidd at http://127.0.0.1:8080/
+bash cad/klipper/virtual-printer.sh status   # "virtual-printer: ready" (exit 1 otherwise)
+bash cad/klipper/virtual-printer.sh stop     # "virtual-printer: stopped"
+```
+
+- **What it is:** live Kalico with `printer.cfg`, each MCU a simulavr board, plus Moonraker and Fluidd, in one
+  container on this laptop. No registry, no cluster. Details and limits: `cad/klipper/README.md`, "The virtual printer".
+- **What it writes:** nothing outside the container (repo mounted read-only, `docker run --rm`, no volume). Config
+  edits made in Fluidd are lost on stop.
+- **When it fails:** `start` prints the end of `klippy.log`. `docker logs virtual-printer` has every process's output.
+- **Who can run it:** anyone with Docker. The first build compiles simulavr (a few minutes).
 
 ### `platform/freecad/part_index.py`: layout questions with `jq`, not FreeCAD (#90)
 

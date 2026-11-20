@@ -1,0 +1,113 @@
+[   73.1s] opened (read-only) /home/dan/Documents/VT350/vt350-lite-22.FCStd
+[   73.1s] ok   Left: one original duct '[a]_Duct-4010-left' in lite-22 (1)
+[   73.2s] ok   Right: one original duct '[a]_Duct-4010-right001' in lite-22 (1)
+[  130.5s] opened (read-only) /home/dan/Documents/VT350/vt350-lite-67.FCStd
+[  130.5s] ok   Left: MadMax's keyslot plate in lite-67 (['Dock Asembly'])
+[  131.6s] Left: MadMax's plate's overhangs (h, mm2, over-a-hole): [(4.0, 3.27, 1.0), (4.0, 3.27, 1.0), (4.0, 5.72, 0.95), (4.0, 5.73, 0.95), (4.0, 5.73, 0.95), (4.0, 7.08, 0.86), (4.0, 7.08, 0.86), (4.0, 7.08, 0.86), (4.0, 7.25, 0.86), (4.0, 7.25, 0.86), (4.0, 7.25, 0.86), (4.0, 9.0, 0.85), (4.0, 9.01, 0.85), (4.0, 9.01, 0.85), (4.0, 9.01, 0.85), (4.0, 11.85, 0.85), (4.0, 11.85, 0.85)]
+[  131.6s] ok   Right: MadMax's keyslot plate in lite-67 (['Dock Asembly(Mirror)'])
+[  132.6s] Right: MadMax's plate's overhangs (h, mm2, over-a-hole): [(4.0, 3.27, 1.0), (4.0, 3.27, 1.0), (4.0, 5.72, 0.95), (4.0, 5.73, 0.95), (4.0, 5.73, 0.95), (4.0, 7.08, 0.86), (4.0, 7.08, 0.86), (4.0, 7.08, 0.86), (4.0, 7.25, 0.86), (4.0, 7.25, 0.86), (4.0, 7.25, 0.86), (4.0, 9.0, 0.85), (4.0, 9.01, 0.85), (4.0, 9.01, 0.85), (4.0, 9.01, 0.85), (4.0, 11.85, 0.85), (4.0, 11.85, 0.85)]
+[  188.7s] opened /home/dan/Documents/VT350/vt350-lite-71.FCStd
+[  202.4s] ok   Left: one cowl '[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)' (1)
+[  202.4s] ok   Right: one cowl '[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)' (1)
+[  202.4s] cowl copies (links): {'Left': ['[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)001', '[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)002'], 'Right': ['[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)001']}
+[  212.2s] ok   Left: the cowl overlays the original duct (less pockets and print chamfers, lite-70/71) (10090.1 of 10242.7 mm3)
+[  235.0s] ok   Left: three solids proud of the original duct ([80.05, 75.24, 138.48])
+[  235.0s] ok   Left: three insert pockets ([(-67.9, 3.039), (-67.9, 23.039), (-20.15, 4.539)])
+[  235.0s] ok   Left: two top stubs carry pockets, one stub doesn't (2, 1)
+[  236.0s] ok   Left: the stub holds lite-23's dia 2.9 screw tail ([(-13.9, 23.039)])
+[  236.0s] ok   Left: the stub sits on lite-23's 20 x 54 screw square (tops 20.000 apart; stub [54.0, 57.585] from them)
+[  236.0s] ok   Left: the stub is 12.78 mm clear of lite-68's rear-bottom spot-face
+[  239.3s] ok   Left: one valid solid after the cut (1, valid True)
+[  239.6s] ok   Left: volume 10383.78 - stub 138.48 = 10245.28
+[  255.8s] ok   Left: proud of the original now: the two top stubs only ([80.05, 75.24])
+[  267.3s] ok   Left: cut into the original unchanged (77.80 vs 77.80 mm3)
+[  267.3s] ok   Left: no screw tail left ([])
+[  267.4s] Left: {'stub_mm3': 138.48, 'stub_axis_yz': [-13.9, 23.039], 'clear_of_rb_spot_mm': 12.78, 'volume': [10383.78, 10245.28]}
+[  270.4s] ok   Right: the cowl overlays the original duct (less pockets and print chamfers, lite-70/71) (10115.6 of 10270.1 mm3)
+[  279.6s] ok   Right: three solids proud of the original duct ([138.48, 80.05, 75.24])
+[  279.6s] ok   Right: three insert pockets ([(-67.9, 3.039), (-67.9, 23.039), (-20.15, 4.539)])
+[  279.6s] ok   Right: two top stubs carry pockets, one stub doesn't (2, 1)
+[  280.5s] ok   Right: the stub holds lite-23's dia 2.9 screw tail ([(-13.9, 23.039)])
+[  280.5s] ok   Right: the stub sits on lite-23's 20 x 54 screw square (tops 20.000 apart; stub [54.0, 57.585] from them)
+[  280.5s] ok   Right: the stub is 12.78 mm clear of lite-68's rear-bottom spot-face
+[  282.8s] ok   Right: one valid solid after the cut (1, valid True)
+[  283.2s] ok   Right: volume 10411.11 - stub 138.48 = 10272.60
+[  288.6s] ok   Right: proud of the original now: the two top stubs only ([80.05, 75.24])
+[  295.1s] ok   Right: cut into the original unchanged (77.80 vs 77.80 mm3)
+[  295.1s] ok   Right: no screw tail left ([])
+[  295.3s] Right: {'stub_mm3': 138.48, 'stub_axis_yz': [-13.9, 23.039], 'clear_of_rb_spot_mm': 12.78, 'volume': [10411.11, 10272.6]}
+[  295.8s] ok   Left: one keyslot plate in Left Dock (['Dock Asembly, standoff pads left (MadMax remix, GPL-3.0)'])
+[  295.8s] ok   Right: one keyslot plate in Right Dock (['Dock Asembly, standoff pads right (MadMax remix, GPL-3.0)'])
+[  296.7s] keyslot plate copies: {'Left': [('Dock Asembly, standoff pads left Dock slot 2 (L) (MadMax remix, GPL-3.0)', 'Part::Feature'), ('Dock Asembly, standoff pads left Dock slot 4 (L) (MadMax remix, GPL-3.0)', 'Part::Feature')], 'Right': [('Dock Asembly(Mirror)001', 'App::Link')]}
+[  296.7s] ok   the three slot docks' plates (3)
+[  296.8s] ok   Left plate: prints on a face normal to X (Vector (-1.0, 0.0, -0.0))
+[  296.8s] ok   Left plate: MadMax's 6 mm plate under the pads (inner face at h 6.000)
+[  310.4s] ok   Left plate: three keyslots [(-67.261, 442.3), (-65.761, 394.55), (-47.261, 442.3)]; the old rear-bottom site among [(-48.76, 436.05), (-47.26, 388.3), (-28.76, 436.05)] holds the 5 sloped overhangs ([(-47.260999999999996, 388.3)])
+[  314.4s] ok   Left plate: the old-keyslot fill lies inside the plate's outline
+[  314.4s] ok   Left plate: no live keyslot near the fill
+[  318.4s] ok   Left plate: the old keyslot is solid (31.30 mm3 filled)
+[  320.4s] ok   Left plate h 0.3: outline unchanged (2216.13 -> 2216.13), only holes filled (material 1974.58 -> 1982.07)
+[  322.4s] ok   Left plate h 2.0: outline unchanged (2280.60 -> 2280.60), only holes filled (material 2046.77 -> 2052.93)
+[  324.4s] ok   Left plate h 3.9: outline unchanged (2299.63 -> 2299.63), only holes filled (material 2067.20 -> 2072.67)
+[  326.4s] ok   Left plate h 4.1: outline unchanged (2306.75 -> 2306.75), only holes filled (material 2065.36 -> 2079.79)
+[  328.4s] ok   Left plate h 5.0: outline unchanged (2306.75 -> 2306.75), only holes filled (material 2037.74 -> 2037.74)
+[  330.4s] ok   Left plate h 5.9: outline unchanged (2284.17 -> 2284.17), only holes filled (material 2002.13 -> 2003.09)
+[  339.5s] ok   Left plate: the overhang past the edge at h 4.00 is flat (1.00)
+[  339.5s] ok   Left plate: the overhang past the edge at h 4.00 is flat (1.00)
+[  339.5s] ok   Left plate: the overhang past the edge at h 4.00 is flat (1.00)
+[  339.5s] ok   Left plate: overhangs past the edge to fill (3)
+[  342.5s] ok   Left plate: pads under 1.0 mm ([0.161] of [0.161, 7.423, 7.688]); expected 1
+[  343.5s] ok   Left plate: the thin pad (0.161 mm, 16.34 mm3) lies in its footprint prism
+[  347.4s] ok   Left plate: the pad's lips sit 0.161 mm above MadMax's h 4 ([4.171, 4.171, 4.171])
+[  349.4s] ok   Left plate: the band h 3.960..4.121 is straight-walled (0 vertices in it; section 143.523 / 143.523 mm2)
+[  355.0s] ok   Left plate: lowering takes out the band (23.130 vs 23.136 mm3)
+[  356.5s] ok   Left plate: nothing stands above the plate face in the footprint
+[  364.5s] ok   Left plate: above the band the keyslot is lite-68's, 0.161 mm lower (h, section now, section was +t: [(4.01, 98.753, 98.753), (4.06, 101.437, 101.437), (5.0, 101.437, 101.437), (5.9, 101.437, 101.437)])
+[  364.9s] ok   Left plate: one valid solid (1, valid True)
+[  366.5s] ok   Left plate: every pad left stands >= 1.0 mm ([7.423, 7.688])
+[  371.5s] ok   Left plate: the lowered keyslot's lips are at h 4, as MadMax's ([4.01, 4.01, 4.01])
+[  371.5s] ok   Left plate: every overhang left is over a hole in the plate ([(4.01, 1.0), (4.01, 1.0), (4.01, 1.0), (11.7, 1.0), (11.43, 1.0)])
+[  371.5s] ok   Left plate: still prints on the same face
+[  371.8s] Left plate: {'old_keyslot_yz': [-47.26, 388.3], 'old_keyslot_filled_mm3': 31.3, 'edge_fill_mm3': 28.49, 'thin_pad_dropped_mm3': 23.13, 'lips': [(4.01, 0.21), (4.01, 0.22), (4.01, 2.25), (11.43, 8.5), (11.7, 8.5)], 'volume': [14086.9, 14123.55]}
+[  371.9s] ok   Right plate: prints on a face normal to X (Vector (1.0, 1.2000000000000003e-16, 1.2246467991473537e-16))
+[  371.9s] ok   Right plate: MadMax's 6 mm plate under the pads (inner face at h 6.000)
+[  386.7s] ok   Right plate: three keyslots [(-67.261, 442.3), (-65.761, 394.55), (-47.261, 442.3)]; the old rear-bottom site among [(-48.76, 436.05), (-47.26, 388.3), (-28.76, 436.05)] holds the 5 sloped overhangs ([(-47.260999999999996, 388.3)])
+[  389.7s] ok   Right plate: the old-keyslot fill lies inside the plate's outline
+[  389.7s] ok   Right plate: no live keyslot near the fill
+[  392.7s] ok   Right plate: the old keyslot is solid (31.30 mm3 filled)
+[  394.7s] ok   Right plate h 0.3: outline unchanged (2216.06 -> 2216.06), only holes filled (material 1974.58 -> 1982.07)
+[  396.7s] ok   Right plate h 2.0: outline unchanged (2280.54 -> 2280.54), only holes filled (material 2046.77 -> 2052.93)
+[  398.7s] ok   Right plate h 3.9: outline unchanged (2299.57 -> 2299.57), only holes filled (material 2067.20 -> 2072.67)
+[  400.7s] ok   Right plate h 4.1: outline unchanged (2306.69 -> 2306.69), only holes filled (material 2065.36 -> 2079.79)
+[  402.7s] ok   Right plate h 5.0: outline unchanged (2306.69 -> 2306.69), only holes filled (material 2079.79 -> 2079.79)
+[  404.7s] ok   Right plate h 5.9: outline unchanged (2284.11 -> 2284.11), only holes filled (material 2044.18 -> 2045.14)
+[  413.8s] ok   Right plate: the overhang past the edge at h 4.00 is flat (1.00)
+[  413.8s] ok   Right plate: the overhang past the edge at h 4.00 is flat (1.00)
+[  413.8s] ok   Right plate: the overhang past the edge at h 4.00 is flat (1.00)
+[  413.8s] ok   Right plate: overhangs past the edge to fill (3)
+[  416.8s] ok   Right plate: pads under 1.0 mm ([] of [4.161, 7.423, 7.688]); expected 0
+[  417.1s] ok   Right plate: one valid solid (1, valid True)
+[  417.8s] ok   Right plate: every pad left stands >= 1.0 mm ([4.161, 7.423, 7.688])
+[  422.7s] ok   Right plate: every overhang left is over a hole in the plate ([(8.17, 1.0), (8.17, 1.0), (8.17, 1.0), (11.43, 1.0), (11.7, 1.0)])
+[  422.8s] ok   Right plate: still prints on the same face
+[  422.9s] Right plate: {'old_keyslot_yz': [-47.26, 388.3], 'old_keyslot_filled_mm3': 31.3, 'edge_fill_mm3': 28.49, 'thin_pad_dropped_mm3': 0.0, 'lips': [(8.17, 0.21), (8.17, 0.22), (8.17, 2.25), (11.43, 8.5), (11.7, 8.5)], 'volume': [14661.03, 14720.8]}
+[  458.0s] plate overlaps before: {}
+[  458.2s] ok   Left: the keyslot plate keeps its placement
+[  458.8s] ok   Right: the keyslot plate keeps its placement
+[  459.0s] ok   Left: the cowl keeps its placement
+[  459.1s] ok   Right: the cowl keeps its placement
+[  474.4s] ok   Left: saved shape valid, 10245.28 mm3
+[  474.7s] ok   Left: copy [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)001 follows (10245.28)
+[  474.9s] ok   Left: copy [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)002 follows (10245.28)
+[  475.3s] ok   Right: saved shape valid, 10272.60 mm3
+[  475.6s] ok   Right: copy [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)001 follows (10272.60)
+[  476.0s] ok   Left keyslot plate: saved shape valid, 14123.55 mm3
+[  476.2s] ok   Left: copy Dock Asembly, standoff pads left Dock slot 2 (L) (MadMax remix, GPL-3.0) follows (14123.55)
+[  476.4s] ok   Left: copy Dock Asembly, standoff pads left Dock slot 4 (L) (MadMax remix, GPL-3.0) follows (14123.55)
+[  476.8s] ok   Right keyslot plate: saved shape valid, 14720.80 mm3
+[  477.0s] ok   Right: copy Dock Asembly(Mirror)001 follows (14720.80)
+[  541.6s] ok   no new overlap of a keyslot plate (0: [])
+[  543.7s] ok   every other solid's box unchanged (0: [])
+[  543.7s] verify: 0 problems
+[  551.5s] SAVED /home/dan/Documents/VT350/vt350-lite-72.FCStd 37658882
+[  551.6s] litepool: peak RSS: workers max 5425 MB, sum 16275 MB; parent 5425 MB
