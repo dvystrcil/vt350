@@ -214,25 +214,11 @@ def index_doc(doc, model, p=None):
     boxes = m.boxes
     seconds = time.time() - t0
     leaves = {o.Name for o in m.leaves}
-    cands = {}                       # object Name -> every container whose Group lists it
-    for g in doc.Objects:
-        for k in (getattr(g, 'Group', []) or []): cands.setdefault(k.Name, []).append(g)
-
-    def above(g, seen=()):           # every container g sits in, transitively
-        r = set()
-        for c in cands.get(g.Name, []):
-            if c.Name not in seen and c.Name not in r: r |= {c.Name} | above(c, seen + (g.Name,))
-        return r
-
-    par = {}                         # the innermost container: an object inside a group inside an App::Part is listed
-    for n, cs in cands.items():      # in both Groups; the group is the one the App::Part is above
-        inner = [c for c in cs if not any(c.Name in above(x) for x in cs if x is not c)]
-        par[n] = inner[0] if inner else cs[0]
+    import linkgeo
+    par = linkgeo.group_parents(doc.Objects)     # the innermost container (shared with export_meshes.py)
 
     def path(o):
-        r, q = [], par.get(o.Name)
-        while q is not None: r.append(q.Label); q = par.get(q.Name)
-        return list(reversed(r))
+        return linkgeo.group_path(o, par)
 
     parts = []
     for o in sorted(m.leaves, key=lambda o: o.Name):

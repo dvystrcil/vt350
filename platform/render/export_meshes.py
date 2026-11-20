@@ -60,16 +60,12 @@ try:
       doc = FreeCAD.openDocument(path_); log("opened", path_)
       G = GROUPS if path_ == MODEL else STATIC     # the groups name MODEL's objects; an extra file's may reuse a Name
       leaves = {o.Name: o for o in doc.Objects if linkgeo.is_leaf(o)}
-      par = {}
-      for g in doc.Objects:
-          for k in (getattr(g, 'Group', []) or []): par.setdefault(k.Name, g)
+      par = linkgeo.group_parents(doc.Objects)    # innermost container: the same paths as the part index (#220)
       by_real = {o.StandInFor: o for o in doc.Objects if getattr(o, "StandInFor", "")}   # stand-ins, shapes or meshes (#195)
       real = set(by_real)
       if real: log(f"stand-ins: {len(real)}, drawing the {'stand-ins' if STANDINS else 'real parts'}")
       def gpath(o):
-          r, p = [], par.get(o.Name)
-          while p is not None: r.append(p.Label); p = par.get(p.Name)
-          return " / ".join(reversed(r))
+          return " / ".join(linkgeo.group_path(o, par))
       for o in leaves.values():
         vo = o.ViewObject if FreeCAD.GuiUp else None
         tgt = linkgeo.link_target(o)                 # a link shows its target's colour and material

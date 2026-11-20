@@ -294,6 +294,10 @@ def check_one(name, s):
     if "turntable" not in s and "viewer" not in s: out.append(f"{name}: neither turntable nor viewer")
     if "turntable" in s: out += problems(name, s["turntable"], NEED_TT, "turntable.")
     if "viewer" in s: out += problems(name, s["viewer"], NEED_VW, "viewer.")
+    for part in ("turntable", "viewer"):     # every public page links the credits list (CREDITS.md, vt350#220)
+        links = s.get(part, {}).get("page", {}).get("links", [])
+        if part in s and not any(str(l.get("href", "")).endswith("/CREDITS.md") for l in links if isinstance(l, dict)):
+            out.append(f"{name}: {part}.page.links has no link to CREDITS.md")
     if s.get("selection") and not os.path.isfile(os.path.join(ROOT, s["selection"])):
         out.append(f"{name}: selection {s['selection']} doesn't exist")
     if not os.path.isdir(os.path.join(ROOT, s.get("publish", {}).get("pages", "-"))):

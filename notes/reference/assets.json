@@ -2,16 +2,22 @@
  "_doc": "Large files for these pages, kept as GitHub release assets and put in place by platform/pages/fetch_assets.py when the pages workflow runs (vt350#220). Change an asset: upload it to a release and update its sha256 here.",
  "assets": [
   {
-   "release": "viewer-assets-lite-62",
-   "asset": "vt350-lite-62-toolhead.glb",
-   "into": "toolhead-viewer",
-   "sha256": "3283d89343749ab32d048a2b6b42e2ef895dc5f08fa5a645e3f2ead226ea98fa"
+   "release": "viewer-assets-lite-72",
+   "asset": "vt350-lite-72-toolhead-turntable-frames-a047f689.zip",
+   "into": "toolhead-turntable",
+   "sha256": "a047f689f57d6ed764f3a34e632e68760f75d59aab707294c72a99d3cf050d3d"
   },
   {
-   "release": "viewer-assets-lite-62",
-   "asset": "vt350-lite-62-toolhead-turntable-frames-1c5ca876.zip",
-   "into": "toolhead-turntable",
-   "sha256": "1c5ca8763f8c2334abb887139b6bc959b9723bb69a6ecbde967d4e44dc538bce"
+   "release": "viewer-assets-lite-72",
+   "asset": "vt350-lite-72-toolhead-viewer-7d2ccaa3.glb",
+   "into": "toolhead-viewer",
+   "sha256": "7d2ccaa358297568f9bd5822b2078a3e218f00469ff25999ecfaa602a4b0edcb"
+  },
+  {
+   "release": "viewer-assets-lite-72",
+   "asset": "vt350-lite-72-printer-turntable-frames-ca16e5d6.zip",
+   "into": "printer-turntable",
+   "sha256": "ca16e5d63daaf3156bf4488a61ea8de330dca2d3f3fb74375a4821ff9888b366"
   }
  ]
 }
