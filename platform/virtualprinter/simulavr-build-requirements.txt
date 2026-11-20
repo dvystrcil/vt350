@@ -1,0 +1,5 @@
+# The Python packages simulavr's build needs (vt350#224): setuptools, which python 3.12+ no longer bundles, for its
+# python module. Build stage only. Hashes by pip_lock.py:
+#   python3 platform/virtualprinter/pip_lock.py platform/virtualprinter/simulavr-build-requirements.txt
+setuptools==80.9.0 \
+    --hash=sha256:062d34222ad13e0cc312a4c02d73f059e86a4acbfbdea8f8f76b28c99f306922

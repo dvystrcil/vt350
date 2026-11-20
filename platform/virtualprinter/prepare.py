@@ -3,6 +3,8 @@
 
     prepare.py --source /src --config cad/klipper/printer.cfg --map cad/klipper/pinmap.json \\
                [--home-file REL=SRC ...] --supervisord-out <file>
+    prepare.py --check --source . --config cad/klipper/printer.cfg --map cad/klipper/pinmap.json \\
+               [--sensors <Kalico's klippy/extras/temperature_sensors.cfg>]     # "virtual-printer: check OK"
 
 Run by entrypoint.sh in the virtual-printer image. --config, --map and each SRC are paths inside --source (the
 printer's files, mounted read-only); nothing under --source is written. It writes:
@@ -21,7 +23,15 @@ printer's files, mounted read-only); nothing under --source is written. It write
                              heat), klippy, Moonraker, nginx, and reset_watch.py (restarts a board's simulator when
                              klippy resets it)
 
-Each run replaces what the last one wrote. Generic: no printer knowledge. Plain python3, standard library only.
+Each run replaces what the last one wrote.
+
+--check writes nothing: it fails when the virtual printer no longer covers the config (drift, e.g. printer.cfg gains a
+[heater_bed] or a fan): a pin the pin map doesn't cover (or one it has that the config dropped), or a heater the
+container wouldn't simulate (heater and sensor on different boards, or a sensor_type that isn't a thermistor in
+--sensors or the config's own [thermistor] sections). Such a heater would read a steady idle value, and a target
+on it would shut the printer down. CI runs it on the printer's config.
+
+Generic: no printer knowledge. Plain python3, standard library only.
 """
 import argparse
 import json
@@ -30,7 +40,10 @@ import shutil
 import sys
 
 import heatsim
-import pinmap
+
+# pinmap.py sits next to this file in the image, and in platform/klipper in the repo (prepare.py --check, in CI)
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "klipper"))
+import pinmap  # noqa: E402
 
 KALICO = "/opt/klipper"
 KLIPPY_PYTHON = "/opt/venv/bin/python"
@@ -151,6 +164,20 @@ def heater_specs(cfg, mcus, sensors):
         spec.update(heatsim.KINDS[heatsim.kind_of(name)])
         out.setdefault(hchip, []).append(spec)
     return out, skipped
+
+
+def check(source, config, pin_map, sensors_cfg=SENSORS_CFG):
+    """(problems, simulated heaters) for the config: problems is [] when the pin map covers every MCU pin, exactly,
+    and every heater would be simulated (see heater_specs). Writes nothing."""
+    source = os.path.abspath(source)
+    loaded = pinmap.load(_inside(source, config, "--config"))
+    problems = [f"pin map: {p}" for p in pinmap.check(pinmap.pin_uses(loaded), load_map(_inside(source, pin_map, "--map")))]
+    if not os.path.exists(sensors_cfg):
+        raise ValueError(f"no thermistor list at {sensors_cfg} (Kalico's klippy/extras/temperature_sensors.cfg; "
+                         "pass --sensors)")
+    specs, skipped = heater_specs(loaded, pinmap.mcu_names(loaded), thermistors(pinmap.load(sensors_cfg), loaded))
+    problems += [f"heater not simulated: {why}" for why in skipped]
+    return problems, sorted(h["name"] for v in specs.values() for h in v)
 
 
 def verify_heaters(cfg, names):
@@ -321,7 +348,22 @@ def main(argv):
     ap.add_argument("--data", default=os.environ.get("VP_DATA", "/opt/printer_data"))
     ap.add_argument("--run", default=os.environ.get("VP_RUN", "/tmp/virtualprinter"))
     ap.add_argument("--home", default=os.path.expanduser("~"))
+    ap.add_argument("--check", action="store_true", help="write nothing; fail if the virtual printer doesn't cover "
+                    "the config (pins, heaters)")
+    ap.add_argument("--sensors", default=SENSORS_CFG, help="--check: Kalico's temperature_sensors.cfg")
     a = ap.parse_args(argv)
+    if a.check:
+        problems, heaters = check(a.source, a.config, a.map, a.sensors)
+        for p in problems:
+            print(f"virtual-printer: {p}")
+        if problems:
+            print(f"virtual-printer: fix the config, or regenerate the map: python3 platform/klipper/pinmap.py "
+                  f"generate --config {a.config} --map {a.map}")
+            print("virtual-printer: check FAILED")
+            return 1
+        print(f"virtual-printer: simulated heaters: {', '.join(heaters) or 'none'}")
+        print("virtual-printer: check OK")
+        return 0
     home_files = {}
     for h in a.home_file:
         rel, sep, src = h.partition("=")
