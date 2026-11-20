@@ -32,6 +32,7 @@ flowchart TD
 | Only the reach changed (sweep re-run by hand) | `python3 cad/scripts/refresh.py N --from print_area` | seconds |
 | Changed a file in `parts/printed/` or `manifest.csv` | `python3 platform/parts/check-printed.py` (add `--write-index` to rebuild the README table) | seconds |
 | Will a part print without supports? (before any PETG test-fit) | `python3 platform/parts/slice-check.py <stl…>`: report + red-support preview; see `parts/slice/README.md` | ~1 s/part, up to ~1 min for big ones |
+| Changed `parts/printed/manifest.csv` or `bom/bom.csv`, or added an assembly page | `python3 platform/docs/step_parts.py`: rewrites each `docs/assembly/stage-N-*.md` page's Print and Buy tables; CI runs `--check` | instant |
 | What has the build cost, and what's left to buy? (or after editing `bom/bom.csv`) | `python3 bom/totals.py`: spent / still to spend / grand total per currency, unpriced and `decide` (undecided, not counted) rows listed; `--check` only validates the CSV (rules in the script's docstring) | instant |
 | Changed a pin in `cad/klipper/printer.cfg` (or a file it includes) | `python3 platform/klipper/pinmap.py generate --config cad/klipper/printer.cfg --map cad/klipper/pinmap.json`, then `... check ...` ("pinmap: OK"; CI runs the check) | instant |
 | Click through the Kalico macros in Fluidd, before the hardware exists (#224) | `bash cad/klipper/virtual-printer.sh start` ("virtual-printer: ready", Fluidd at http://127.0.0.1:8080/), `... stop` ("virtual-printer: stopped"); below | ~30 s cached, ~5 min first build |
@@ -84,6 +85,22 @@ It fails on:
 - a missing file or a wrong sha256;
 - a part that isn't in the manifest, or a BOM "print" row with no part;
 - a remix copy that differs from `cad/derived/`. `refresh.py` fixes that one for you.
+
+### `platform/docs/step_parts.py`: the parts for each assembly step (#40)
+
+```bash
+python3 platform/docs/step_parts.py            # rewrite the Print/Buy tables in docs/assembly/stage-N-*.md
+python3 platform/docs/step_parts.py --check    # what CI runs; must end "step-parts: OK"
+```
+
+Each assembly page `docs/assembly/stage-N-<name>.md` lists the parts for stage N between
+`<!-- step-parts:begin -->` and `<!-- step-parts:end -->`: what to **print** (from `parts/printed/manifest.csv`, linking
+the committed file or the upstream one) and what to **buy** (from `bom/bom.csv`; a `per head` row's qty is for one
+head). Don't edit the tables: fix the CSV and re-run. The two files spell the stage differently and both are accepted:
+the manifest writes `12`, the BOM writes `#12`. A new page gets its tables once it has the two marker lines.
+
+`--check` fails on a stale table, or on a page whose stage has parts but which has no markers. Stages with parts and
+no page yet are only warnings.
 
 ### Sweep and print area (run by refresh; you can also run them alone)
 
@@ -297,6 +314,7 @@ $APP freecadcmd $PWD/cad/passes/liteNN_<what>.py   # headless = dry run: all che
 | Workflow | Runs | Fails when |
 |---|---|---|
 | `printed-parts` | `platform/parts/test_check_printed.py`, `platform/parts/check-printed.py` | manifest, sha256 or BOM drift |
+| `printed-parts` (step-parts steps) | `platform/docs/test_step_parts.py`, `platform/docs/step_parts.py --check` | an assembly page's Print/Buy tables are stale against the manifest or `bom/bom.csv` |
 | `print-area` | `cad/studies/test_print_area.py` | `print-area.svg` is stale against the sweep log |
 | `slice-check` | `platform/parts/test_slice_check.py`, `keepout.json` validity, `orca/orca.json` naming real presets | the G-code parser (absolute or relative E, arcs), Orca's statistics, keep-out or report logic breaks |
 | `refresh-chain` | `cad/scripts/test_refresh.py`, `cad/scripts/test_derive_stls.py`, `test_litepool.py`, `test_prove_parallel.py`, `test_part_index.py` | the chain's sync, step runner or markers break, `derive_stls` stops honouring `VT350_MODELS`, or the part index's schema/staleness check breaks |

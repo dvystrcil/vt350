@@ -18,3 +18,11 @@ jobs:
       - name: Confirm the check ran to the end
         run: |
           grep -qx 'check-printed: OK' check.log
+      # vt350#40: each assembly page's generated Print/Buy tables match the manifest and bom/bom.csv
+      - name: Test the per-step parts tables generator
+        run: python3 platform/docs/test_step_parts.py
+      - name: Check the per-step parts tables in docs/assembly
+        run: python3 platform/docs/step_parts.py --check | tee step-parts.log
+      - name: Confirm the step-parts check ran to the end
+        run: |
+          grep -qx 'step-parts: OK' step-parts.log
