@@ -17,6 +17,11 @@ need() {   # need <what> <value>: the value must be on the page
     if [[ -z "$2" ]]; then echo "FAIL $1: no pin found in the repo"; fail=$((fail + 1)); return; fi
     if grep -qF -- "$2" "$PAGE"; then echo "ok   $1: $2"; else echo "FAIL $1: $2 is not on cad/tools.md"; fail=$((fail + 1)); fi
 }
+# kalisim's Debian snapshot and every name=version word in its apt-get install lines (and their continuations)
+need "kalisim DEBIAN_SNAPSHOT" "$(sed -n 's/^ARG DEBIAN_SNAPSHOT=//p' "$DF")"
+while read -r pkg; do need "kalisim apt package" "$pkg"; done < <(
+    sed -e ':a' -e '/\\$/N; s/\\\n//; ta' "$DF" | grep 'apt-get install' \
+        | grep -oE '[a-z0-9][a-z0-9.+-]*=[0-9][^ =\\]*' | sort -u)
 need "Kalico commit" "$(sed -n 's/^ARG KALICO_SHA=//p' "$DF")"
 need "klipper-toolchanger commit" "$(sed -n 's/^ARG TOOLCHANGER_SHA=//p' "$DF")"
 while read -r img; do need "image" "$img"; done < <(sed -n 's/^FROM \([^ ]*\).*/\1/p' "$DF")
