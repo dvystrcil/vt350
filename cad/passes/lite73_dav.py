@@ -354,17 +354,24 @@ def main(p):
     sbm = FreeCAD.BoundBox(); [sbm.add(Ms.multiply(V(q.x - sb.XMin, q.y - sb.YMin, q.z - sb.ZMin))) for q in m0.Points]
     dsb = max(abs(getattr(sbm, k) - getattr(cb, k)) for k in ("XMin", "XMax", "YMin", "YMax", "ZMin", "ZMax"))
     smp = [Ms.multiply(V(q.x - sb.XMin, q.y - sb.YMin, q.z - sb.ZMin)) for q in m0.Points[::max(1, m0.CountPoints // 12)]]
+    # The committed STL is either today's carriage (before this pass's cut) or already the cut one: #265 merged the
+    # re-exported STL before the owner's GUI run, so the run that saves sees the cut STL. Accept either; only re-export
+    # when it's still the old one.
     dpt = max(G.distToShape(Part.Vertex(q))[0] for q in smp)
-    p.check(dsb < 0.02 and abs(m0.Volume - G.Volume) < 10.0 and dpt < 0.05, f"the current carriage STL is the model's carriage in "
-            f"lite25's frame (boxes agree to {dsb:.4f}; volumes {m0.Volume:.1f} / {G.Volume:.1f}, the STL's chords on round holes; "
-            f"{len(smp)} points within {dpt:.4f})")
+    dpt2 = max(G2.distToShape(Part.Vertex(q))[0] for q in smp)
+    stl_cut = abs(m0.Volume - G2.Volume) < abs(m0.Volume - G.Volume)
+    ref, dref = (G2, dpt2) if stl_cut else (G, dpt)
+    p.check(dsb < 0.02 and abs(m0.Volume - ref.Volume) < 10.0 and dref < 0.05, f"the current carriage STL is the model's carriage "
+            f"({'already cut' if stl_cut else 'before the cut'}) in lite25's frame (boxes agree to {dsb:.4f}; volumes "
+            f"{m0.Volume:.1f} / {ref.Volume:.1f}, the STL's chords on round holes; {len(smp)} points within {dref:.4f})")
     if p.errs: return p.finish([])
     back = G2.copy(); back.transformShape(Ms.inverse(), True); back.translate(V(sb.XMin, sb.YMin, sb.ZMin))
     m1 = MeshPart.meshFromShape(Shape=back, LinearDeflection=0.01, AngularDeflection=0.1)
     mb1 = m1.BoundBox; dmb = max(abs(getattr(mb1, k) - getattr(sb, k)) for k in ("XMin", "XMax", "YMin", "YMax", "ZMin", "ZMax"))
-    p.check(abs((m0.Volume - m1.Volume) - rem) < 1.0 and dmb < 0.02 and m1.isSolid() >= m0.isSolid() and m1.hasNonManifolds() <= m0.hasNonManifolds(),
+    p.check(abs((m0.Volume - m1.Volume) - (0.0 if stl_cut else rem)) < 1.0 and dmb < 0.02 and m1.isSolid() >= m0.isSolid() and m1.hasNonManifolds() <= m0.hasNonManifolds(),
             f"printable carriage STL: {m1.CountFacets} facets, volume {m1.Volume:.1f} (was {m0.Volume:.1f}: the cut's {rem:.2f}), box as before to {dmb:.4f}; closed / non-manifold {m1.isSolid()} / {m1.hasNonManifolds()} (no worse than before: {m0.isSolid()} / {m0.hasNonManifolds()})")
     car_out = (m1, stl_d)
+    if stl_cut: p.log("the committed carriage STL is already the cut one: not rewritten (its sha256 stays the manifest's)")
     # ---- before: overlaps of every part this pass touches
     for h in heads.values():                    # the stand-in's nozzle and sock make way for the MZE assembly's
         h["old"] = [h["nozzle"]] + [o for o in h["g"]["lower"] if o.Label.startswith("TL-dragon")]
@@ -545,7 +552,7 @@ def main(p):
             "heads": res, "stand_in_heat_block": block, "clearances": clear, "upstream": UPSTREAM_COMMIT,
             "overlaps_gone": [(round(v, 2), a, b) for v, a, b in gone], "src": os.path.basename(SRC)})
     m1, stl_d = car_out
-    for fn in ((stl_d, os.path.join(_REPO, "parts/printed/vt350", CAR_STL)) if not p.errs else ()):
+    for fn in ((stl_d, os.path.join(_REPO, "parts/printed/vt350", CAR_STL)) if not p.errs and not stl_cut else ()):
         m1.write(fn); p.log(f"wrote {os.path.relpath(fn, _REPO)} (a derived STL, written in a dry run too: it doesn't touch the model)")
     return p.finish([(doc, DST)])
 
