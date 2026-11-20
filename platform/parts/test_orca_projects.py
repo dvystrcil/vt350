@@ -37,6 +37,7 @@ class Fixture(unittest.TestCase):
                           "slice/orca/filament/gf.json": "{}", "slice/orca/filament/petg.json": "{}"}.items():
             self.put(rel, body)
         self.put("slice/orca/orca.json", json.dumps({"vendors": [], "machine": "machine/m.json", "process": "process/p.json"}))
+        self.put("slice/orca/machine/m.json", json.dumps({"change_filament_gcode": "MMU_CHANGE"}))
         self.rows = [("a/one.stl", "2", "chamber material (#8 AC1)"), ("a/two.stl", "1", "chamber material (#8 AC1)"),
                      ("b/hinge.stl", "3", "PET-GF (owner)"), ("", "1", "link only"), ("a/old.stl", "0", "chamber material")]
         self.sets = {"manifest": "../printed/manifest.csv", "stl_root": "../printed", "orca": "orca/orca.json",
@@ -64,7 +65,7 @@ class Fixture(unittest.TestCase):
         """an index as the generator writes it, without Orca"""
         c = self.cfg(); sets, errors = self.plan(); self.assertEqual(errors, [])
         os.makedirs(c["out"], exist_ok=True)
-        idx = {"projects": {n: op.index_entry(n, s, op.preset_shas(c, s["filament"]), 1) for n, s in sets.items()}}
+        idx = {"projects": {n: op.index_entry(n, s, op.preset_shas(c, s["filaments"]), 1) for n, s in sets.items()}}
         for n in sets: open(os.path.join(c["out"], n + ".3mf"), "w").close()
         op.write_index(c["out"], idx)
 
@@ -109,11 +110,71 @@ class TestGrouping(Fixture):
 
     def test_sets_entry_without_manifest_row(self):
         self.sets["parts"]["gone.stl"] = "door"; self.write()
-        self.assertTrue(any("gone.stl: in the sets file but not in the manifest" in e for e in self.plan()[1]))
+        self.assertTrue(any("gone.stl: in the sets file's `parts` but not in the manifest" in e for e in self.plan()[1]))
 
     def test_missing_stl(self):
         os.remove(os.path.join(self.d, "printed/a/one.stl"))
         self.assertTrue(any("a/one.stl: STL missing" in e for e in self.plan()[1]))
+
+
+class TestSlots(Fixture):
+    """a 4-lane MMU: a project carries its material, then accent / clear slots, at most max_filaments"""
+    def mmu(self, **slots):
+        self.sets.update(max_filaments=4, slot_filaments={"accent": None, "clear": "filament/petg.json"}, slots=slots)
+        self.write()
+
+    def test_one_filament_without_slots(self):
+        sets, _ = self.plan()
+        self.assertEqual(sets["door-pet-gf"]["filaments"], ["filament/gf.json"])
+        self.assertEqual([p["filament"] for p in sets["door-pet-gf"]["parts"]], [1])
+
+    def test_accent_and_clear_slots(self):
+        self.rows[1] = ("a/two.stl", "1", "PET-GF"); self.sets["parts"]["a/two.stl"] = "door"
+        self.mmu(**{"a/two.stl": "clear"})
+        self.put("printed/a/acc.stl", "acc"); self.rows.append(("a/acc.stl", "1", "PET-GF"))
+        self.sets["parts"]["a/acc.stl"] = "door"; self.sets["slots"]["a/acc.stl"] = "accent"; self.write()
+        sets, errors = self.plan()
+        self.assertEqual(errors, [])
+        d = sets["door-pet-gf"]
+        self.assertEqual(d["slots"], ["main", "accent", "clear"])
+        self.assertEqual(d["filaments"], ["filament/gf.json", "filament/gf.json", "filament/petg.json"])
+        self.assertEqual({p["path"]: p["filament"] for p in d["parts"]}, {"b/hinge.stl": 1, "a/two.stl": 3, "a/acc.stl": 2})
+
+    def test_too_many_filaments_fails(self):
+        self.mmu(**{"a/two.stl": "clear"})
+        self.sets["max_filaments"] = 1; self.write()
+        self.assertTrue(any("toolhead-chamber-tbd: needs 2 filaments (main, clear), the machine takes 1" in e
+                            for e in self.plan()[1]))
+
+    def test_unknown_slot_is_an_error(self):
+        self.sets["slots"] = {"a/two.stl": "glow"}; self.write()
+        with self.assertRaises(ValueError): self.cfg()
+
+    def test_several_filaments_need_an_mmu_machine(self):
+        self.mmu(**{"a/two.stl": "clear"})
+        self.build_index()
+        self.put("slice/orca/machine/m.json", "{}")
+        rc, out = self.check()
+        self.assertEqual(rc, 1)
+        self.assertIn("no change_filament_gcode", out)
+
+    def test_slot_change_is_stale(self):
+        self.build_index()
+        self.mmu(**{"a/two.stl": "clear"})
+        rc, out = self.check()
+        self.assertEqual(rc, 1)
+        self.assertIn("a/two.stl: filament slot 1 -> 2", out)
+        self.assertIn("filaments changed", out)
+
+    def test_skip_leaves_a_row_unplaced(self):
+        self.sets["skip"] = {"a/two.stl": "the other variant is used"}; self.write()
+        sets, errors = self.plan()
+        self.assertEqual(errors, [])
+        self.assertEqual([p["path"] for p in sets["toolhead-chamber-tbd"]["parts"]], ["a/one.stl"])
+
+    def test_sets_keys_must_name_manifest_rows(self):
+        self.sets["skip"] = {"gone.stl": "x"}; self.write()
+        self.assertTrue(any("gone.stl: in the sets file's `skip` but not in the manifest" in e for e in self.plan()[1]))
 
 
 class TestIndexAndCheck(Fixture):
@@ -122,9 +183,10 @@ class TestIndexAndCheck(Fixture):
         idx = json.load(open(os.path.join(self.d, "slice/projects/index.json")))
         e = idx["projects"]["toolhead-chamber-tbd"]
         self.assertEqual(e["copies"], 3)
-        self.assertEqual(e["parts"][0], {"path": "a/one.stl", "qty": 2, "sha256": op.sha256(os.path.join(self.d, "printed/a/one.stl"))})
+        self.assertEqual(e["parts"][0], {"path": "a/one.stl", "qty": 2, "filament": 1,
+                                         "sha256": op.sha256(os.path.join(self.d, "printed/a/one.stl"))})
         self.assertEqual(e["licenses"], ["GPL-3.0"])
-        self.assertEqual(set(e["presets"]), {"machine", "process", "filament"})
+        self.assertEqual(set(e["presets"]), {"machine", "process", "filament: filament/petg.json"})
 
     def test_check_ok(self):
         self.build_index()
@@ -184,7 +246,7 @@ class TestIndexAndCheck(Fixture):
         self.put("slice/orca/filament/gf.json", '{"nozzle_temperature": ["290"]}')
         rc, out = self.check()
         self.assertEqual(rc, 1)
-        self.assertIn("STALE door-pet-gf: filament preset changed", out)
+        self.assertIn("STALE door-pet-gf: filament: filament/gf.json preset changed", out)
         self.assertNotIn("STALE toolhead", out)
 
     def test_missing_3mf(self):

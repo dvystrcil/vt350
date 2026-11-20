@@ -1,5 +1,5 @@
 {
-  "_doc": "The VT350's print sets for platform/parts/orca_projects.py (#217). AC1, owner 2026-11-20: group by subassembly, split by material. Each manifest row with a path and qty > 0 maps to a subassembly here; its material comes from the manifest's `material` column, matched by prefix against `materials` (first match wins). One OrcaSlicer project per (subassembly, material), in projects/<subassembly>-<material id>.3mf. `qty` gives the copies to place for a row whose manifest qty isn't a whole number ('as-needed'). Paths are the manifest's (relative to parts/printed/); preset paths are relative to orca/.",
+  "_doc": "The VT350's print sets for platform/parts/orca_projects.py (#217). AC1, owner 2026-11-20: group by subassembly, split by material. Each manifest row with a path and qty > 0 maps to a subassembly here; its material comes from the manifest's `material` column, matched by prefix against `materials` (first match wins). One OrcaSlicer project per (subassembly, material), in projects/<subassembly>-<material id>.3mf. `qty` gives the copies to place for a row whose manifest qty isn't a whole number ('as-needed'; the LDO cable clips: 1 each of S/M/L, owner 2026-11-20, more are cloned in Orca as needed). `skip` lists rows not to place. The Neptune has a 4-lane Pico MMU (owner 2026-11-20), so a project carries up to `max_filaments` filaments: its material as slot 1, then `accent` ([a] parts, same preset, the accent colour's spool) and `clear` ([t] parts, the PETG preset), per `slots`. Paths are the manifest's (relative to parts/printed/); preset paths are relative to orca/.",
   "manifest": "../printed/manifest.csv",
   "stl_root": "../printed",
   "orca": "orca/orca.json",
@@ -61,6 +61,21 @@
     "clicky-clack/Latch.stl": "door",
     "clicky-clack/Panel_Clip.stl": "door",
     "vt350/btt5160-base-4-middle-screws/btt5160-base-4-middle-screws.stl": "ebay"
+  },
+  "max_filaments": 4,
+  "slot_filaments": {
+    "accent": null,
+    "clear": "filament/E RPETG Red - MMU - cht-mze + bimetal.json"
+  },
+  "slots": {
+    "voron-trident/[a]_z_carriage_left.stl": "accent",
+    "voron-trident/[a]_z_carriage_right.stl": "accent",
+    "voron-trident/[a]_z_rail_stop_x3.stl": "accent",
+    "a4tv2/[a]_orbiter-crossbow-adapter_o2_xol.stl": "accent",
+    "a4tv2/[t]_LED_diffuser.stl": "clear"
+  },
+  "skip": {
+    "voron-trident/z_carriage_rear_2hole.stl": "lite-72 builds the Z rear carriage as the 3-hole (Generic) variant: it carries the leadscrew nut, M5 nut, locknuts and screws; the 2-hole (IGUS) body is the unused alternative (owner 2026-11-20: whichever the printer uses; #10 AC4)"
   },
   "qty": {
     "ldo-monolith/Cable_management_clip_S.stl": 1,

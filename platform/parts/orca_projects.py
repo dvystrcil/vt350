@@ -15,19 +15,27 @@ slice-check.py reads: vendors, machine, process), the output folder, and:
   - `subassemblies`: {id: description}.
   - `parts`: {manifest path: subassembly id}. Every manifest row with a path and a qty other than 0 must be here.
   - `qty`: {manifest path: copies} for a row whose qty isn't a whole number (e.g. "as-needed").
+  - `skip`: {manifest path: reason} for a row not to place (e.g. one of two alternatives the printer doesn't use).
+  - `slots`: {manifest path: slot}: a part printed in another filament than its set's main one, e.g. "accent"
+    (an accent colour) or "clear". `slot_filaments`: {slot: filament preset, or null for the set's main one}.
+    A project carries its main filament as slot 1, then each other slot its parts use, in `slot_filaments` order;
+    every part is assigned its slot's filament. `max_filaments` (default 1) caps the slots per project, e.g. 4
+    for a 4-lane MMU: a set that would need more is an error. More than one slot also needs a machine preset with
+    a `change_filament_gcode`.
 Relative paths in the sets file are relative to the sets file's folder.
 
 A set is one (subassembly, material) pair: project `<out>/<subassembly>-<material id>.3mf`. OrcaSlicer's own CLI
 loads the set's STLs, clones each to its quantity (--clone-objects), keeps each part as the STL stands (--orient 0:
-the committed STLs are print-oriented) and arranges them on the machine's bed (--arrange 1). What doesn't fit goes
+the committed STLs are print-oriented), gives each its filament slot (--load-filaments, --load-filament-ids) and
+arranges them on the machine's bed (--arrange 1, several filaments allowed on one plate). What doesn't fit goes
 onto more plates of the same project; the machine, process and filament presets are selected, and the 3MF carries
 their settings.
 
-The index, `<out>/index.json`, records for each project its STLs with their sha256 and copies, the sha256 of the
-three presets it used, its plate count, and the licences of its parts (the manifest's `license` column, so the
+The index, `<out>/index.json`, records for each project its STLs with their sha256, copies and filament slot, its
+filaments, the sha256 of the presets it used, its plate count, and the licences of its parts (the manifest's `license` column, so the
 printer's REUSE annotations can name them). --check compares it with the manifest, the sets file, the STLs on disk
 and the presets, and fails ("orca-projects: FAILED", exit 1) when:
-  - an STL's sha256 differs from the one its project recorded, or its qty or set changed;
+  - an STL's sha256 differs from the one its project recorded, or its qty, slot or set changed;
   - a manifest row (path, qty > 0) has no project, or no entry in `parts`;
   - the index lists a part, or a project, that the manifest and sets no longer give;
   - a preset changed, or a project's .3mf is missing.
@@ -72,7 +80,10 @@ def load_sets(path):
         cfg[k] = os.path.normpath(os.path.join(base, cfg[k]))
     for k in ("materials", "subassemblies", "parts"):
         if k not in cfg: raise ValueError(f"{path}: needs `{k}`")
-    cfg.setdefault("qty", {})
+    cfg.setdefault("qty", {}); cfg.setdefault("skip", {}); cfg.setdefault("slots", {})
+    cfg.setdefault("slot_filaments", {}); cfg.setdefault("max_filaments", 1)
+    bad = sorted(set(cfg["slots"].values()) - set(cfg["slot_filaments"]))
+    if bad: raise ValueError(f"{path}: slots {bad} have no entry in `slot_filaments`")
     ids = [m["id"] for m in cfg["materials"]]
     if len(set(ids)) != len(ids): raise ValueError(f"{path}: material ids repeat: {ids}")
     cfg["_path"] = path
@@ -112,6 +123,7 @@ def plan(rows, cfg, hash_fn=sha256):
         else:
             errors.append(f"{p}: qty {q!r} isn't a whole number; give the copies to place in the sets file's `qty`"); continue
         seen.add(p)
+        if p in cfg["skip"]: continue                            # not placed, on purpose (the reason is in the file)
         sub = cfg["parts"].get(p)
         if sub is None:
             errors.append(f"{p}: no subassembly (add it to the sets file's `parts`)"); continue
@@ -125,26 +137,53 @@ def plan(rows, cfg, hash_fn=sha256):
             errors.append(f"{p}: STL missing ({stl})"); continue
         s = sets.setdefault(set_name(sub, mat["id"]), dict(subassembly=sub, material=mat["id"], label=mat["label"],
                                                              filament=mat["filament"], parts=[]))
-        s["parts"].append(dict(path=p, qty=n, sha256=hash_fn(stl), license=(r.get("license") or "").strip()))
-    for p in cfg["parts"]:
-        if p not in seen and not any((r.get("path") or "").strip() == p for r in rows):
-            errors.append(f"{p}: in the sets file but not in the manifest")
+        s["parts"].append(dict(path=p, qty=n, sha256=hash_fn(stl), license=(r.get("license") or "").strip(),
+                               slot=cfg["slots"].get(p, "main")))
+    paths = {(r.get("path") or "").strip() for r in rows}
+    for k in ("parts", "skip", "slots", "qty"):
+        for p in cfg[k]:
+            if p not in paths: errors.append(f"{p}: in the sets file's `{k}` but not in the manifest")
+    for name, st in sets.items():
+        errors += assign_slots(name, st, cfg)
     return dict(sorted(sets.items())), errors
 
 
-def preset_shas(cfg, filament):
-    """sha256 of the machine, process and filament presets a set uses"""
+def assign_slots(name, s, cfg):
+    """the set's filaments (slot 1 = its main one, then each other slot its parts use, in `slot_filaments` order),
+    and each part's 1-based filament number. Returns errors (too many filaments for the machine)."""
+    used = {p["slot"] for p in s["parts"]}
+    order = ["main"] + [k for k in cfg["slot_filaments"] if k in used and k != "main"]
+    s["slots"] = order
+    s["filaments"] = [s["filament"] if k == "main" else (cfg["slot_filaments"][k] or s["filament"]) for k in order]
+    for p in s["parts"]: p["filament"] = order.index(p["slot"]) + 1
+    if len(order) > cfg["max_filaments"]:
+        return [f"{name}: needs {len(order)} filaments ({', '.join(order)}), the machine takes {cfg['max_filaments']}"]
+    return []
+
+
+def preset_shas(cfg, filaments):
+    """sha256 of the machine, process and filament presets a set uses (filaments: one path or a list)"""
     orca = json.load(open(cfg["orca"])); d = os.path.dirname(cfg["orca"])
-    return {"machine": sha256(os.path.join(d, orca["machine"])), "process": sha256(os.path.join(d, orca["process"])),
-            "filament": sha256(os.path.join(d, filament))}
+    out = {"machine": sha256(os.path.join(d, orca["machine"])), "process": sha256(os.path.join(d, orca["process"]))}
+    for f in ([filaments] if isinstance(filaments, str) else filaments):
+        out["filament: " + f] = sha256(os.path.join(d, f))
+    return out
+
+
+def machine_changes_filament(cfg):
+    """True when the machine preset has a filament-change G-code (an MMU), so a project can use several slots"""
+    orca = json.load(open(cfg["orca"]))
+    m = json.load(open(os.path.join(os.path.dirname(cfg["orca"]), orca["machine"])))
+    return bool((m.get("change_filament_gcode") or "").strip())
 
 
 def index_entry(name, s, presets, plates):
     return dict(file=name + ".3mf", subassembly=s["subassembly"], material=s["material"], label=s["label"],
-                filament=s["filament"], presets=presets, plates=plates,
+                filament=s["filament"], filaments=s["filaments"], slots=s["slots"], presets=presets, plates=plates,
                 copies=sum(p["qty"] for p in s["parts"]),
                 licenses=sorted({p.get("license") or "?" for p in s["parts"]}),
-                parts=[dict(path=p["path"], qty=p["qty"], sha256=p["sha256"]) for p in s["parts"]])
+                parts=[dict(path=p["path"], qty=p["qty"], sha256=p["sha256"], filament=p["filament"])
+                       for p in s["parts"]])
 
 
 def stale(sets, index, presets_for, out_dir=None):
@@ -162,12 +201,14 @@ def stale(sets, index, presets_for, out_dir=None):
             elif have[p]["sha256"] != want[p]["sha256"]: why.setdefault(name, []).append(f"{p}: STL changed (sha256)")
             elif have[p]["qty"] != want[p]["qty"]:
                 why.setdefault(name, []).append(f"{p}: qty {have[p]['qty']} -> {want[p]['qty']}")
+            elif have[p].get("filament") != want[p]["filament"]:
+                why.setdefault(name, []).append(f"{p}: filament slot {have[p].get('filament')} -> {want[p]['filament']}")
         for p in sorted(set(have) - set(want)):
             why.setdefault(name, []).append(f"{p}: in the project but no longer in this set")
         pr = presets_for(s)
-        for k in sorted(pr):
-            if got.get("presets", {}).get(k) != pr[k]: why.setdefault(name, []).append(f"{k} preset changed")
-        if got.get("filament") != s["filament"]: why.setdefault(name, []).append("filament preset changed")
+        for k in sorted(set(pr) | set(got.get("presets", {}))):
+            if got.get("presets", {}).get(k) != pr.get(k): why.setdefault(name, []).append(f"{k} preset changed")
+        if got.get("filaments") != s["filaments"]: why.setdefault(name, []).append("filaments changed")
         if out_dir and not os.path.isfile(os.path.join(out_dir, got.get("file", name + ".3mf"))):
             why.setdefault(name, []).append(".3mf missing")
     for name in sorted(set(projects) - set(sets)):
@@ -225,8 +266,13 @@ def generate(name, s, cfg, dd, presets, sc, work):
     """one project: Orca loads, clones, arranges and exports the 3MF. Returns its plate count."""
     od = os.path.join(work, name); shutil.rmtree(od, ignore_errors=True); os.makedirs(od)
     stls = [os.path.join(cfg["stl_root"], p["path"]) for p in s["parts"]]
+    # --load-filament-ids: one filament number per loaded object; each clone keeps its object's filament.
+    # --allow-multicolor-oneplate / --allow-mix-temp: arrange keeps several filaments (e.g. PET-GF + clear PETG)
+    # on one plate, as the MMU prints them, instead of moving each filament to its own plate.
     cmd = sc.ORCA_SLICER + ["--datadir", dd, "--load-settings", f"{presets['machine']};{presets['process']}",
-                            "--load-filaments", presets[s["filament"]], "--orient", "0", "--arrange", "1",
+                            "--load-filaments", ";".join(presets[f] for f in s["filaments"]),
+                            "--load-filament-ids", ",".join(str(p["filament"]) for p in s["parts"]),
+                            "--allow-multicolor-oneplate", "--allow-mix-temp", "--orient", "0", "--arrange", "1",
                             "--clone-objects", ",".join(str(p["qty"]) for p in s["parts"]),
                             "--outputdir", od, "--export-3mf", name + ".3mf"] + stls
     r = subprocess.run(cmd, capture_output=True, text=True)
@@ -251,16 +297,17 @@ def main(argv=None):
     cfg = load_sets(a.sets)
     sets, errors = plan(load_manifest(cfg["manifest"]), cfg)
     index = load_index(cfg["out"])
-    shas = {}
+    if any(len(s["filaments"]) > 1 for s in sets.values()) and not machine_changes_filament(cfg):
+        errors.append("a set uses several filaments, but the machine preset has no change_filament_gcode (not an MMU)")
     def presets_for(s):
-        if s["filament"] not in shas: shas[s["filament"]] = preset_shas(cfg, s["filament"])
-        return shas[s["filament"]]
+        return preset_shas(cfg, s["filaments"])
     why = stale(sets, index, presets_for, cfg["out"])
 
     if a.list:
         for name, s in sets.items():
             print(f"{name}: {s['label']}, {sum(p['qty'] for p in s['parts'])} copies of {len(s['parts'])} parts")
-            for p in s["parts"]: print(f"    {p['qty']} x {p['path']}")
+            for i, f in enumerate(s["filaments"], 1): print(f"  filament {i} ({s['slots'][i - 1]}): {f}")
+            for p in s["parts"]: print(f"    {p['qty']} x {p['path']}  [filament {p['filament']}]")
         for e in errors: print(f"ERROR {e}")
         return 1 if errors else 0
 
@@ -297,7 +344,7 @@ def main(argv=None):
         sc = _slice_check()
         work = os.path.join(cfg["out"], ".work"); shutil.rmtree(work, ignore_errors=True); os.makedirs(work)
         dd = os.path.join(work, "datadir")
-        presets = orca_datadir(dd, cfg, sorted({s["filament"] for s in sets.values()}), sc.orca_profiles_dir())
+        presets = orca_datadir(dd, cfg, sorted({f for s in sets.values() for f in s["filaments"]}), sc.orca_profiles_dir())
         index["orca"] = orca_version(sc)
         for n in todo:
             plates = generate(n, sets[n], cfg, dd, presets, sc, work)

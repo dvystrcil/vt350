@@ -51,13 +51,20 @@ OrcaSlicer projects (3MF) of every printed part, ready to open and print on the 
 committed so a lost file or a broken slicer setting can be restored from git.
 
 **Grouping (AC1, owner 2026-11-20): by subassembly, split by material.** One project per (subassembly, material),
-named `<subassembly>-<material>.3mf`, e.g. `toolhead-chamber-tbd.3mf`, `door-pet-gf.3mf`. Parts whose material is
+named `<subassembly>-<material>.3mf`, e.g. `toolhead-pet-gf.3mf`, `z-chamber-tbd.3mf`, `door-pet-gf.3mf`. Parts whose material is
 still open ("chamber material", #8 AC1) go in a "chamber material, TBD" set per subassembly. A set too big for the
 bed spills onto more plates of the same project. The grouping lives in `sets.json`:
 - `parts`: each manifest path → its subassembly (`subassemblies` lists them);
 - `materials`: the manifest's `material` text, matched by prefix → the set's material id and filament preset
   (`orca/filament/`; the PET-GF sets use the owner's `Siraya Tech PET-GF`, the TBD sets the Neptune's PETG preset);
-- `qty`: the copies to place for an `as-needed` row.
+- `qty`: the copies to place for an `as-needed` row (the LDO cable clips: 1 each of S/M/L, owner 2026-11-20; clone
+  more in Orca as needed);
+- `skip`: rows not to place, with the reason (the Z rear carriage's 2-hole variant: lite-72 uses the 3-hole one);
+- **filament slots**: the Neptune feeds a 4-lane Pico MMU (owner 2026-11-20), so sets aren't split by colour. Each
+  project carries its material as filament 1, then `accent` (`[a]` parts: the same preset, the accent colour's spool)
+  and `clear` (`[t]` parts: the PETG preset), per `slots` / `slot_filaments`; every part is assigned its slot. A set
+  needing more than `max_filaments` (4) fails the generator, and so does a multi-filament set when the machine
+  preset has no `change_filament_gcode` (ours is the `… - MMU` variant, with the Pico's purge macro).
 
 Every copy is on a plate (quantities expanded), each part as its committed STL stands (print-oriented, no
 re-orienting), arranged by Orca on the Neptune's bed, with the machine, process and filament presets selected.
