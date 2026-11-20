@@ -9,7 +9,7 @@ It's a modified version of a GPL-3.0 part.
 | Original licence | GPL-3.0 (the madmax repository's `LICENSE`) |
 | Modified | 2026-11-18, by Daniel Vystrcil (with Claude Code) |
 | Change | **The dock reaches to the cowl** (vt350#59, owner's idea): a **pad** on the plate's inner face at each keyslot, carrying the keyslot's 2 mm head channel at its face, so the screw head meets the same keyslot nearer the toolhead. The plate's through-hole at each parked screw runs on through the pad. The **rear-bottom keyslot moves 18.5 mm forward and 6.25 mm up** (the cowl is only 2 mm deep where it was) and the plate grows a wing to carry it; the old keyslot is filled. Each pad face is square to the screw and stops ≥ 1 mm from the toolhead over the whole 6 mm pickup slide (the play the dock needs). |
-| Pads (mm) | front-top 7.69, rear-bottom 7.42, rear-top 4.16 (right) / **0.16 (left)**: the left head's Crossbow lever stands 1.75 mm off the plate there |
+| Pads (mm) | front-top 7.69, rear-bottom 7.42, rear-top 4.16 (right) / **none (left)**: the left head's Crossbow lever stands 1.75 mm off the plate there, so that keyslot sits flush in the plate face (lite-72 lowered it 0.16 mm: lite-68's 0.16 mm pad sliced as one stray layer) |
 | Why | lite-23 put the dock screws on bosses on the 4010 duct, which couldn't print flat. lite-67 cut them off into a separate spacer, which nothing could hold on (the screw heads stand proud as docking hooks, so they clamp nothing). On the dock the extension is free: it doesn't ride on the toolhead |
 | How it was made | `cad/passes/lite68_dock_pads.py` (lite-67 → lite-68); `cad/scripts/derive_stls.py` lays each plate on its outer face (pads up) |
 

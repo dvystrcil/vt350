@@ -263,3 +263,8 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
   misses it. Compare sorted box sizes, and also measure each STEP product in its own frame: walk the STEP text from
   `PRODUCT` to its shape representation and take the box of its `VERTEX_POINT`s (plain python, no FreeCAD). That
   box is short on curved faces (it holds no arc bulge), so accept a match when either measure agrees.
+- **A flat face after a boolean isn't always a `Plane`** (lite-72, 2026-11-19): lite-68's pad faces, made by
+  extruding, cutting and `removeSplitter()`, include flat faces whose `Surface` is not `Part.Plane`, so a filter on
+  `f.Surface.__class__.__name__ == "Plane"` found no top face on a 0.16 mm pad and `max()` raised. The STL showed the
+  face at once. To find a face at a height, test its vertices' heights (every vertex within ~1e-4 of it), not its
+  surface type.
