@@ -62,7 +62,7 @@ partial versions that have to be rebuilt in order (lite-67 to lite-71 did this).
 
 | Pass in flight | Branch | Builds on |
 |---|---|---|
-| none: lite-72 merged with #249; next is lite-73 | | lite-72 |
+| **lite-73** (#263): hex DAV main body + Dragon ACE Volcano stand-in, no spacer | `feat/263-lite73-dav` | lite-72 |
 
 ## Where things are
 
