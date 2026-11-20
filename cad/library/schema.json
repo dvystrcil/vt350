@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/dvystrcil/vt350/blob/main/cad/library/schema.json",
+  "title": "Parts library entry (source.json)",
+  "description": "One part in cad/library/<source>/<part>/: where it came from, under what licence, and the sha256 of each file as downloaded. vt350#268; cad/library/README.md explains each field. platform/library/check_library.py validates it (stdlib only, so it reads only: type, required, properties, additionalProperties, items, minItems, minLength, pattern, enum).",
+  "type": "object",
+  "required": ["title", "author", "source_url", "licence", "licence_source", "downloaded", "redistributable", "files"],
+  "additionalProperties": false,
+  "properties": {
+    "title": {"type": "string", "minLength": 1, "description": "The part's name as its source page gives it."},
+    "author": {"type": "string", "minLength": 1, "description": "The person or company to credit."},
+    "handle": {"type": "string", "minLength": 1, "description": "The author's user name on the source site, if any (e.g. @EduardMandac_3771478)."},
+    "source_url": {"type": "string", "pattern": "^https://", "description": "The page the file was downloaded from."},
+    "licence": {"type": "string", "pattern": "^(LicenseRef-[A-Za-z0-9.-]+|[A-Za-z0-9][A-Za-z0-9.+-]*)$", "description": "An SPDX licence id, or a LicenseRef-* defined in cad/credits.json."},
+    "licence_source": {"type": "string", "minLength": 1, "description": "Where and when the licence was read (e.g. 'owner's screenshot of the Printables page, 2026-11-20')."},
+    "downloaded": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$", "description": "The date the files were downloaded (YYYY-MM-DD)."},
+    "upstream_version": {"type": "string", "minLength": 1, "description": "The upstream version, commit, or 'updated' date shown on the page."},
+    "redistributable": {"type": "boolean", "description": "Whether the licence lets this repo share the files. false: no file may be committed; the entry keeps the URL, licence and sha256 so anyone can fetch and verify it."},
+    "committed": {"type": "boolean", "description": "Default: the same as redistributable. false on a redistributable part keeps it a no-file entry anyway (e.g. too large for now); its files must then be absent too."},
+    "credit": {"type": "string", "minLength": 1, "description": "The project key in cad/credits.json that credits this part, when CREDITS.md lists it."},
+    "archive": {
+      "type": "object",
+      "description": "The download the files came out of, when it was an archive.",
+      "required": ["name", "sha256"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Every file of the part, as downloaded. When committed (by default: when redistributable) each one is in the entry's folder and must match its sha256; otherwise none may be.",
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256"],
+        "additionalProperties": false,
+        "properties": {
+          "path": {"type": "string", "pattern": "^[^/\\\\]+$", "description": "The file name in the entry's folder (no sub-folders, no spaces wanted)."},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$", "description": "sha256 of the file as downloaded (committed files are never edited)."},
+          "upstream_name": {"type": "string", "minLength": 1, "description": "The file's name upstream (or in the archive), when it was renamed."},
+          "size": {"type": "integer", "description": "Size in bytes, for no-file entries."}
+        }
+      }
+    },
+    "notes": {"type": "array", "items": {"type": "string", "minLength": 1}, "description": "Anything a rebuilder needs: 'owner confirmed matches the real part', what the remix changed, why this part."}
+  }
+}
