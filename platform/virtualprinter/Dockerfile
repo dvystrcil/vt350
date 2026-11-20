@@ -37,7 +37,8 @@ RUN sha=$(cat /src/KALICO_SHA) \
  && test "$(git -C /src/kalico rev-parse HEAD)" = "$sha"
 COPY simulavr.config build_firmware.sh /src/
 RUN bash /src/build_firmware.sh /src/kalico /src/simulavr.config /out/firmware \
- && cp /src/KALICO_SHA /out/firmware/KALICO_SHA
+ && cp /src/KALICO_SHA /out/firmware/KALICO_SHA \
+ && cp -r /src/kalico/docs /out/docs
 # Fluidd's static files, from the release zip
 ARG FLUIDD_VERSION
 ARG FLUIDD_SHA256
@@ -84,6 +85,9 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
 COPY --from=firmware /out/firmware/ /opt/virtualprinter/firmware/
 COPY --from=firmware /out/fluidd/ /opt/fluidd/
+# Kalico's docs at the same commit: Moonraker serves <klipper_path>/docs as its "docs" root and warns ("Supplied path
+# (/opt/klipper/docs) for (docs) is invalid") when it's missing, and the published Kalico image ships without them
+COPY --from=firmware /out/docs/ /opt/klipper/docs/
 COPY --from=build /out/pysimulavr/ /opt/virtualprinter/pysimulavr/
 COPY --from=build /opt/moonraker/ /opt/moonraker/
 COPY --from=build /opt/moonraker-env/ /opt/moonraker-env/

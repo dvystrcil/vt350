@@ -118,6 +118,9 @@ bash cad/klipper/virtual-printer.sh status   # "virtual-printer: ready"
 bash cad/klipper/virtual-printer.sh stop     # "virtual-printer: stopped"
 ```
 
+Each port is its own printer: the container is `virtual-printer` on 8080 and `virtual-printer-<N>` with `--port N`,
+so a second one never replaces the first. Give `status` and `stop` the same `--port`.
+
 - **The boards:** each `[mcu]` (the Octopus, `o2s_left`, `o2s_right`) is its own simulavr atmega644p running Kalico's
   AVR firmware, built at the kalisim image's Kalico commit. `pinmap.json` moves every pin onto that board; the config
   copy the container runs (`config/src/cad/klipper/printer.cfg` in Fluidd's config editor) is `pinmap.py apply`'s
@@ -125,7 +128,8 @@ bash cad/klipper/virtual-printer.sh stop     # "virtual-printer: stopped"
 - **What the container adds** in its top `printer.cfg`: each `[mcu]`'s `serial` (its simulator's pty, 250000 baud)
   and `restart_method: command`, and `homing_retract_dist: 0` for `stepper_x`, `stepper_y` and `stepper_z`. A simulated endstop reads its pull-up, so
   it is triggered from the start: without the retract, `G28` ends at once at `position_endstop`, as
-  mainsail-crew/virtual-klipper-printer does.
+  mainsail-crew/virtual-klipper-printer does. Each probe's pin (`[tools_calibrate]` here) is inverted there, so it
+  reads untriggered (below).
 - **The save file:** `madmax/offset_save_file.cfg` is copied to `~/printer_data/config/offset_save_file.cfg` at each
   start, as the batch tests seed it.
 - **Nothing persists:** configs, logs, Moonraker's database and the save file live in the container and go when it
@@ -134,15 +138,46 @@ bash cad/klipper/virtual-printer.sh stop     # "virtual-printer: stopped"
   reads a steady 124.3 °C (simulavr's idle ADC input), so a heater given a target never heats and Kalico shuts down
   with "not heating at expected rate" after about 30 s. `FIRMWARE_RESTART` clears that: simulavr has no watchdog to
   reboot a board, so `reset_watch.py` restarts each board's simulator when klippy resets it.
-- **Slow boards:** simulavr runs far below real time (klippy measures each board at about 1.2 of its 20 MHz). On a
-  busy machine a board can miss klippy's 5 s connect window and klippy stops with an error; `start` then restarts
-  klippy, up to 3 times, and says so.
-- **What to click (AC2):** home (`G28`), then the batch test's sequence: `INITIALIZE_TOOLCHANGER`, `T0`, `T1`,
-  `UNSELECT_TOOL`; the part-fan sliders; the `TC_*` macros. Checked from the API on 2026-11-19: `G28`, `T0`, `T1`,
-  `UNSELECT_TOOL` and `SET_FAN_SPEED FAN=part_fan_t0` run, with the batch run's two unknown commands
-  (`SET_INPUT_SHAPER`, `STOP_TOOL_PROBE_CRASH_DETECTION`). Without `INITIALIZE_TOOLCHANGER`, `T0` answers "Cannot
-  select tool, toolchanger status is uninitialized" (no tool detection yet, above). A tool change takes one to a few
-  minutes on simulavr, longer on a busy machine.
+- **Probes:** a simulated input reads its pull-up, so `^PG11` (the Zero's NC switch: high when pressed) read
+  triggered and `TC_GET_PROBE_POSITION` stopped at once with "Probe triggered prior to movement". The top config
+  inverts it (`^!`), so the probe reads untriggered, as in batch mode, and each probing move runs its full distance
+  (down to Z `position_min`). On hardware the switch is closed (low) until touched, so the real config needs no
+  change. A probing move is a live move the board must keep pace with, and on a busy machine a simulated board can
+  fall behind and shut down ("Timer too close", 2026-11-19, two virtual printers on one machine); `FIRMWARE_RESTART`
+  clears it. The offset macros' plumbing is checked in batch mode instead (`TcOffsets`, below).
+- **Slow boards:** simulavr runs far below real time: klippy measures each board at 1 to 1.5 of its 20 MHz, and
+  says so at connect ("MCU 'mcu' configured for 20000000Hz but running at 2000000Hz!" or similar). That warning is
+  expected; nothing to fix. On a busy machine a board can miss klippy's 5 s connect window and klippy stops with an
+  error; `start` then restarts klippy, up to 3 times, and says so.
+- **Moonraker's `docs` root** is Kalico's `docs/` at the image's commit (the published Kalico image has none, and
+  Moonraker warned "Supplied path (/opt/klipper/docs) for (docs) is invalid").
+- **What to click (AC2),** in Fluidd. `INITIALIZE_TOOLCHANGER` and `UNSELECT_TOOL` are klipper-toolchanger
+  commands, not macros, so Fluidd has no button for them: type them in the console. `T0`, `T1` and the `TC_*` macros
+  are under Macros (or typed).
+  1. Home: the home button, or `G28`. The head ends in the homing corner, X 346 Y 340.19 Z 0.
+  2. Move off the corner: `G0 X175 Y175 Z10 F6000` (or the jog buttons). Why: see "Probing in the corner" below.
+  3. `INITIALIZE_TOOLCHANGER` (console): "toolchanger initialized, active None". Without it, `T0` answers "Cannot
+     select tool, toolchanger status is uninitialized" (no tool detection yet, above). Any error during a tool
+     change puts the toolchanger back to uninitialized (klipper-toolchanger does that on every command error), so
+     after one, run it again.
+  4. `T0`: "Picking up tool T0", then two "Unknown command: SET_INPUT_SHAPER" (expected: no `[input_shaper]` yet, as
+     in batch mode), then "Selected tool 0 (tool T0)". A tool change takes one to a few minutes on simulavr, longer
+     on a busy machine.
+  5. `T1`, then `UNSELECT_TOOL` (console): "Dropping off tool T…", with "Unknown command:
+     STOP_TOOL_PROBE_CRASH_DETECTION" (expected, as in batch mode), then "Tool unselected".
+  6. The part-fan sliders (`part_fan_t0`, `part_fan_t1`); `SET_FAN_SPEED FAN=part_fan_t0 SPEED=0.5`.
+  7. `TC_*` macros: `TC_ADJUST_OFFSET` with no arguments answers "Tool must be specified" (expected). The probing
+     ones (`TC_GET_PROBE_POSITION`, `TC_FIND_TOOL_OFFSETS`) run with T0 over the Zero on the printer; here they may
+     stop the printer (Probes, above).
+
+  **Probing in the corner:** on 2026-11-19, `G28`, then `TC_GET_PROBE_POSITION` in the corner, then `T0` failed
+  with four "Move out of range: 346.000 340.190 1.000" and left the toolchanger uninitialized. A probing move (even
+  one that stops at once) ends by setting the head's position from its stepper positions; for CoreXY that is
+  y = ((x+y) − (x−y)) / 2, which gives Y 340.19000000000005, past `position_max` 340.19 by a rounding error. `T0`
+  saves that position and its last leg moves back to it (`t_command_restore_axis: XYZ`), and Kalico refuses it.
+  `T0` straight after `G28` works (exact position), and so does anything after a move off the corner. Not a macro
+  bug: on the printer the probe runs over the Zero (Y −12.5), never at an axis limit, but any probing move that
+  ends at exactly `position_max` would do the same.
 - **What's pinned:** `platform/virtualprinter/Dockerfile` (simulavr, Moonraker, its Python packages, Fluidd).
 
 ## The image (`kalisim/Dockerfile`)
