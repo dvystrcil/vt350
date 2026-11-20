@@ -11,9 +11,12 @@ expected rate") the first time a heater is given a target.
 For each heater in heaters.json (written by prepare.py from the printer's config), this follows the heater pin's
 output on the simulated board, feeds its duty to a first-order thermal model (ThermalModel: heating toward ambient +
 duty * rise, with time constant tau), and drives the sensor's ADC pin with the voltage the thermistor would give at
-that temperature (Kalico's own Thermistor.calc_adc, so the reading round-trips exactly). The model runs in wall-clock
-time, as verify_heater does: simulavr runs far below real time, and a model in simulated time would heat too slowly
-for verify_heater's checks.
+that temperature (Kalico's own Thermistor.calc_adc, so the reading round-trips exactly).
+
+The model runs in the board's simulated time, which is klippy's print time: the PID sees the plant it would see on a
+printer. simulavr runs 10 to 20 times slower than real time, so on the wall clock a heater heats that much slower.
+A model on the wall clock instead heats at real speed but runs ahead of klippy's control loop (its readings and PWM
+updates come in print time), and the PID then swings by tens of degrees (tried 2026-11-19).
 
 heaters.json: [{"name", "heater_pin": "C3", "inverted": false, "sensor_pin": "A0", "pullup": 4700, "inline": 0,
 "thermistor": {"t1", "r1", "t2", "r2", "t3", "r3"} or {"t1", "r1", "beta"}, "rise", "tau"}], pins as simulavr names
@@ -25,12 +28,11 @@ import math
 import optparse
 import os
 import sys
-import time
 
 KALICO = "/opt/klipper"
 AMBIENT = 25.0          # C, where every heater starts and cools to
 VCC = 5.0               # simulavr's supply and ADC reference (avrdevice.cpp: v_supply(5.0); Klipper's AVR ADC uses AVcc)
-STEP_NS = 10 ** 7       # the model's update interval, in simulated time (10 ms; about 0.1 s of wall clock)
+STEP_NS = 10 ** 7       # the model's update interval, in simulated time: 10 ms of print time
 SIMULAVR_FREQ = 10 ** 9  # simulavr's clock: ns
 
 
@@ -72,9 +74,11 @@ class DutyMeter:
         return duty
 
 
-# Model parameters per heater kind. Rise is how far full power settles above ambient; tau sets the pace. A hotend
-# reaches 200 C in about 30 s at full power, a bed 60 C in about 30 s: quicker than most real ones, slow enough for
-# Kalico's PID to settle and for verify_heater (2 C per 20 s, or 60 s for a bed) to pass with a wide margin.
+# Model parameters per heater kind, in print-time seconds. Rise is how far full power settles above ambient; tau sets
+# the pace. A hotend reaches 200 C in 28 s at full power, a bed 60 C in 31 s: quicker than most real ones (simulavr's
+# slow clock stretches each 10 to 25 times on the wall clock), and slow enough for Kalico's PID, tuned on a real
+# hotend, to hold the target within about 2 C (with tau 20 it swung by 6 C). verify_heater counts wall-clock time, so
+# prepare.py stretches its checks (VERIFY_STRETCH).
 KINDS = {"bed": {"rise": 120.0, "tau": 90.0}, "hotend": {"rise": 350.0, "tau": 40.0}}
 
 
@@ -129,12 +133,12 @@ def main(argv):
 
         def __init__(self, sc, items):
             pysimulavr.PySimulationMember.__init__(self)
-            self.sc, self.items, self.wall = sc, items, time.monotonic()
+            self.sc, self.items, self.last = sc, items, sc.GetCurrentTime()
             sc.Add(self)
 
         def DoStep(self, trueHwStep):
-            now, wall = self.sc.GetCurrentTime(), time.monotonic()
-            dt, self.wall = wall - self.wall, wall
+            now = self.sc.GetCurrentTime()
+            dt, self.last = (now - self.last) / SIMULAVR_FREQ, now
             for meter, model, therm, sensor in self.items:
                 model.step(dt, meter.take(now))
                 sensor.SetAnalogValue(therm.calc_adc(model.temp) * VCC)
@@ -170,6 +174,7 @@ def main(argv):
         meter = DutyMeter(sc.GetCurrentTime())
         hpin = HeaterPin(sc, meter, bool(h.get("inverted")))
         sensor = pysimulavr.Pin()
+        sensor.SetPin("a")        # an analog source (simulavr's examples/python/adc.py); without it the pin floats
         model = ThermalModel(h["rise"], h["tau"])
         therm = _thermistor(h)
         sensor.SetAnalogValue(therm.calc_adc(model.temp) * VCC)

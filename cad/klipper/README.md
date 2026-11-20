@@ -134,10 +134,19 @@ so a second one never replaces the first. Give `status` and `stop` the same `--p
   start, as the batch tests seed it.
 - **Nothing persists:** configs, logs, Moonraker's database and the save file live in the container and go when it
   stops. Edits made in Fluidd's config editor are lost; to keep one, make it in `cad/klipper/` and restart.
-- **Same limits as batch mode, plus:** probes never trigger; the endstops read triggered; each simulated thermistor
-  reads a steady 124.3 °C (simulavr's idle ADC input), so a heater given a target never heats and Kalico shuts down
-  with "not heating at expected rate" after about 30 s. `FIRMWARE_RESTART` clears that: simulavr has no watchdog to
-  reboot a board, so `reset_watch.py` restarts each board's simulator when klippy resets it.
+- **Same limits as batch mode, plus:** probes never trigger and the endstops read triggered. A board that klippy
+  resets (`FIRMWARE_RESTART`, or the restart after a shutdown) is restarted by `reset_watch.py`: simulavr has no
+  watchdog to reboot it.
+- **Heaters heat:** each board runs `platform/virtualprinter/heatsim.py` (Kalico's `scripts/avrsim.py` plus a
+  thermal model). For each heater whose sensor is a thermistor on the same board (here `extruder` and `extruder1`;
+  the start log lists them), it follows the heater pin's PWM and drives the thermistor's ADC pin with the reading a
+  first-order heater would give: ambient 25 °C, heating toward 25 + 350 °C at full power (a bed: 25 + 120), cooling
+  back to 25 °C when off. So `M104`/`M109`, `SET_HEATER_TEMPERATURE` and Fluidd's heater fields heat to the target,
+  hold it under Kalico's own PID, and cool when set to 0, with no verify_heater shutdown. The model runs in the
+  board's simulated time (klippy's print time), so the PID sees a plant like a real one; on the wall clock it is
+  10 to 20 times slower than simulated time: a hotend took about TIMING to reach 200 °C (2026-11-19, busy machine),
+  slower than a real one. Not modelled: filament, part fans, the heat a bed puts into the air. A board restart starts
+  its heaters again at 25 °C. The VT350 has no `[heater_bed]` yet, so `M140`/`M190` set nothing.
 - **Probes:** a simulated input reads its pull-up, so `^PG11` (the Zero's NC switch: high when pressed) read
   triggered and `TC_GET_PROBE_POSITION` stopped at once with "Probe triggered prior to movement". The top config
   inverts it (`^!`), so the probe reads untriggered, as in batch mode, and each probing move runs its full distance

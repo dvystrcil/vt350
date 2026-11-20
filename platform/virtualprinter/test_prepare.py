@@ -194,6 +194,23 @@ class Prepare(unittest.TestCase):
         self.assertEqual((h["rise"], h["tau"]), (350.0, 40.0))
         self.assertEqual(out["heaters"], ["extruder"])
 
+    def test_simulated_heaters_get_stretched_verify_heater_checks(self):
+        self._prepare()
+        with open(os.path.join(self.data, "config", "printer.cfg")) as f:
+            text = f.read()
+        cp = configparser.ConfigParser(strict=False)
+        cp.read_string(text.replace("[include src/printer.cfg]", ""))
+        s = prepare.VERIFY_STRETCH
+        self.assertEqual(float(cp["verify_heater extruder"]["check_gain_time"]), 20 * s)
+        self.assertEqual(float(cp["verify_heater extruder"]["max_error"]), 120 * s)
+
+    def test_verify_heaters_scales_the_printers_own_values(self):
+        cfg = prepare.pinmap.Config()
+        cfg.sections = {"verify_heater heater_bed": {"check_gain_time": "90", "max_error": "200"}}
+        s = prepare.VERIFY_STRETCH
+        self.assertEqual(prepare.verify_heaters(cfg, ["heater_bed", "extruder1"]),
+                         [("extruder1", 20.0 * s, 120.0 * s), ("heater_bed", 90.0 * s, 200.0 * s)])
+
     def test_heater_specs_kinds_inversion_custom_thermistors_and_skips(self):
         cfg = prepare.pinmap.Config()
         cfg.sections = {
