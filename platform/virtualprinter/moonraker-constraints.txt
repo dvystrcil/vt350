@@ -1,0 +1,37 @@
+# Exact versions of Moonraker's Python dependencies (vt350#224), resolved from Moonraker 985c1d0's (v0.11.0)
+# scripts/moonraker-requirements.txt ranges on 2026-11-19, as wheels for CPython 3.13 (the Kalico image's python).
+# Used as pip constraints (-c), so a dependency Moonraker drops isn't installed. Refresh when Moonraker moves:
+# install its requirements into an empty venv in the kalisim image and paste pip freeze here.
+aiofiles==25.1.0
+apprise==1.13.0
+certifi==2026.10.23
+charset-normalizer==3.5.2
+click==8.5.1
+dbus-fast==5.0.22
+distro==1.9.0
+idna==3.20
+ifaddr==0.2.0
+importlib_metadata==9.0.0
+inotify-simple==2.0.1
+Jinja2==3.1.6
+ldap3==2.9.1
+libnacl==2.1.0
+Markdown==3.11.3
+MarkupSafe==3.0.4
+oauthlib==4.0.1
+paho-mqtt==2.1.0
+pillow==12.3.0
+preprocess_cancellation==0.2.1
+pyasn1==0.6.5
+pyserial==3.4
+python-periphery==2.4.1
+PyYAML==6.0.3
+requests==2.34.2
+requests-oauthlib==2.0.0
+smart_open==9.0.6
+streaming-form-data==2.1.0
+tornado==6.5.8
+urllib3==2.8.0
+wrapt==2.5.2
+zeroconf==0.150.0
+zipp==4.1.2
