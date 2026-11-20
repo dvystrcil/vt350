@@ -55,6 +55,15 @@ BEACON = "Beacon RevH"
 CARRIAGE = "COMPOUND"        # the gantry carriage's label (lite-62; the dock copies are COMPOUND003/004)
 DUCTS = "[a]_Duct-4010-"
 TOL = 0.05
+# The M2.5 hotend screws' overlaps after the pass, each capped. Seated on the DAV counterbore floor (Z 445.3), a
+# screw's 2.5 mm head reaches 447.8, and the parts DW-Tas puts on top of the body start at 446.8 over every screw
+# (in lite-72 too, over the UHF floor at 445.8: the screws then floated below the body, so nothing showed). Which
+# screw (or head) the A4Tv2 means here is an open question on #263; the pass reports it, it doesn't guess.
+HEADS_RULE = "screw head under the extruder adapter / Crossbow (reported, #263)"
+KNOWN = {HEADS_RULE: None,
+         "screw in the stand-in heat sink's tapped hole (modelled at the minor diameter; 5.0 mm deep now, was 2.0)": (HEATSINK, 8.0),
+         "screw through the DAV body's 0.2 mm print bridging layers": (NEW_BODY, 0.5)}
+KNOWN_HEADS = (("[a]_orbiter-crossbow-adapter_o2_xol", 10.0), ("Crossbow - Main Body", 10.0))
 
 
 def load(path, p):
@@ -81,6 +90,14 @@ def move_global(o, d):
     """Move o (a part, a link or a mesh) by the global vector d, through its own Placement."""
     C = linkgeo.gplace(o).multiply(o.Placement.inverse())
     o.Placement = C.inverse().multiply(FreeCAD.Placement(d, FreeCAD.Rotation())).multiply(C).multiply(o.Placement)
+
+
+def tight(s):
+    """The overlap of BoundBox and optimalBoundingBox: each can overshoot on B-splines, both contain the shape
+    (LESSONS.md; the heat block's BoundBox is 0.75 mm too tall)."""
+    a, b = s.BoundBox, litelib.obb(s)
+    return FreeCAD.BoundBox(max(a.XMin, b.XMin), max(a.YMin, b.YMin), max(a.ZMin, b.ZMin),
+                            min(a.XMax, b.XMax), min(a.YMax, b.YMax), min(a.ZMax, b.ZMax))
 
 
 def gbox(o):
@@ -230,7 +247,7 @@ def main(p):
                 f"{b.Label}: tip XY unchanged ({nb.Center.x:.3f}, {nb.Center.y:.3f})")
         un = [above(linkgeo.gshape(s_), gbox(s_).Center.x + 1.9, gbox(s_).Center.y, gbox(s_).ZMin - 1) for s_ in h["g"]["screw"]]
         p.check(all(abs(u - h["floor"]) < 1e-3 for u in un), f"{b.Label}: screw heads on the counterbore floor {h['floor']:.3f} ({un})")
-        blk = linkgeo.gshape(h["block"]).BoundBox; tb = litelib.obb(linkgeo.gshape(h["block"]))
+        blk = tight(linkgeo.gshape(h["block"]))
         sb = [gbox(s_) for s_ in h["g"]["screw"]]
         res[b.Label] = dict(tip_xyz=[round(nb.Center.x, 3), round(nb.Center.y, 3), round(tip, 3)], tip_dz=round(tip - o0.ZMin, 3),
                             heatsink_top=round(top, 3), uhf_ceiling=round(h["uhf_ceiling"], 3), dav_ceiling=round(h["seat"], 3),
@@ -241,12 +258,11 @@ def main(p):
     # the stand-in heat block and nozzle (the Left head's; all five are links to it)
     L = heads[master.Name]
     B, N = linkgeo.gshape(L["block"]), linkgeo.gshape(L["nozzle"])
-    bb, tb, nbb = B.BoundBox, litelib.obb(B), N.BoundBox
+    bb, nbb = tight(B), tight(N)
     sock = [o for o in L["g"]["lower"] if o.Label.startswith("TL-dragon")]
-    sk = gbox(sock[0]) if sock else None
+    sk = tight(linkgeo.gshape(sock[0])) if sock else None
     block = dict(width_x=round(bb.XLength, 2), depth_y=round(bb.YLength, 2), height_z=round(bb.ZLength, 2),
-                 obb=[round(tb.XLength, 2), round(tb.YLength, 2), round(tb.ZLength, 2)], volume_mm3=round(B.Volume, 1),
-                 nozzle_box=[round(nbb.XLength, 2), round(nbb.YLength, 2), round(nbb.ZLength, 2)],
+                 volume_mm3=round(B.Volume, 1), nozzle_box=[round(nbb.XLength, 2), round(nbb.YLength, 2), round(nbb.ZLength, 2)],
                  nozzle_below_block=round(bb.ZMin - nbb.ZMin, 2),
                  sock_box=[round(sk.XLength, 2), round(sk.YLength, 2), round(sk.ZLength, 2)] if sk else None,
                  nozzle_below_sock=round(sk.ZMin - nbb.ZMin, 2) if sk else None)
@@ -269,8 +285,25 @@ def main(p):
     worse = sorted(((v, lab(a), lab(b), before.get((a, b), 0.0)) for (a, b), v in after.items() if v > before.get((a, b), 0.0) + 0.01), reverse=True)
     gone = sorted(((before[k], lab(k[0]), lab(k[1])) for k in before if before[k] > 0.01 and after.get(k, 0.0) < 0.01), reverse=True)
     p.log(f"overlaps gone ({len(gone)}): {[(round(v, 2), a, b) for v, a, b in gone[:20]]}")
-    p.check(not worse, f"no new or worse overlap of a changed part ({len(worse)}: "
-                       f"{[(round(v, 2), a, b, round(w, 2)) for v, a, b, w in worse[:12]]})")
+    for v, a, b, w in worse: p.log(f"   new/worse overlap {v:8.2f} mm3 (was {w:.2f})  {a}  x  {b}")
+    def known(a, b, v):
+        """The screws' expected or reported overlaps (see KNOWN): (rule, cap) or None."""
+        if not (a.startswith(SCREW) or b.startswith(SCREW)): return None
+        other = b if a.startswith(SCREW) else a
+        for rule, pc in KNOWN.items():
+            for prefix, cap in ([pc] if pc else KNOWN_HEADS):
+                if other.startswith(prefix) and v <= cap: return rule
+        return None
+    left, kn, hit = [], {}, set()
+    for v, a, b, w in worse:
+        r = known(a, b, v)
+        if r: kn.setdefault(r, []).append(round(v, 2))
+        else: left.append((v, a, b, w))
+        if r == HEADS_RULE: hit.add(a if a.startswith(SCREW) else b)
+    for r, vs in kn.items(): p.log(f"known: {r}: {len(vs)} pairs, {min(vs)}..{max(vs)} mm3")
+    p.check(len(hit) == 20, f"all 20 screw heads hit the adapter or the Crossbow body ({len(hit)}): the open question on #263")
+    p.check(not left, f"no other new or worse overlap of a changed part ({len(left)}: "
+                      f"{[(round(v, 2), a, b, round(w, 2)) for v, a, b, w in left[:12]]})")
     moved = [lab(k) for k, b in box0.items() if k not in changed and k not in removed_now
              and (k not in pr.shapes or not pr.shapes[k].BoundBox.isInside(b) or not b.isInside(pr.shapes[k].BoundBox))]
     p.check(not moved, f"every other solid's box unchanged ({len(moved)}: {moved[:5]})")
