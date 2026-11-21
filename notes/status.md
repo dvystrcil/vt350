@@ -63,7 +63,7 @@ partial versions that have to be rebuilt in order (lite-67 to lite-71 did this).
 
 | Pass in flight | Branch | Builds on |
 |---|---|---|
-| **lite-73** (#263): hex DAV main body + Dragon ACE Volcano stand-in, no spacer | `feat/263-lite73-dav` | lite-72 |
+| **lite-74** (#263): rebuild the Right Dock's carriage copy (lite-73's has B-spline faces; the sweep refused it) | `feat/lite74-dock-copy` | lite-73 |
 
 ## Where things are
 

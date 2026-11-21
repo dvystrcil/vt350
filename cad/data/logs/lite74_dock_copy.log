@@ -1,0 +1,26 @@
+[    5.5s] opened /home/dan/Documents/VT350/vt350-lite-72.FCStd
+[   21.2s] ok   lite-72: one gantry carriage, one COMPOUND004 (1, 1)
+[   23.1s] ok   lite-72: COMPOUND004 passes the sweep's test (T (164.714, -257.725, 0.315), volume diff 0.000, box residual 0.0054)
+[   57.8s] ok   lite-72: COMPOUND004 is the carriage translated by T (copy -> carriage 0 points off, worst 0.01420; carriage -> copy 0 off, worst 0.01420)
+[   78.2s] lite-72: the X mirror fits the copy too (0 of 31 points off it, worst 0.0000): the carriage is symmetric in X there, so lite-72 can't tell; lite-73's off-centre cut can (below)
+[  121.1s] opened /home/dan/Documents/VT350/vt350-lite-73.FCStd
+[  135.3s] ok   lite-73: one gantry carriage, COMPOUND004 a Part
+[  135.3s] ok   lite-73: the Left Dock's COMPOUND003 links the carriage (follows it, nothing to fix)
+[  135.7s] ok   lite-73: the carriage is lite-72's less lite-73's pocket cut (25.08 mm3)
+[  137.7s] ok   lite-73: COMPOUND004 fails the sweep's test as reported (volume diff 0.000, box residual 7.8360): the fix applies
+[  148.0s] lite-73's cut on the copy, measured: 50 vertices of its B-spline (cut) faces vs the carriage moved by T: 1 more than 0.02 off, worst 0.2492 (replaced below either way)
+[  148.8s] ok   the copy's fault is its faces: B-spline faces 0 in lite-72 -> 4; tight box residual 0.0142 vs BoundBox's 7.836
+[  151.3s] ok   the new copy: the carriage moved by T, placement baked
+[  167.5s] ok   COMPOUND004: placement kept, valid, 2 solids
+[  169.4s] ok   COMPOUND004 passes the sweep's test (volume diff 0.0000, box residual 0.0000)
+[  169.4s] ok   the pickup offset is lite-72's (164.714, -257.725, 0.315; moved 0.00000)
+[  177.7s] ok   COMPOUND004: its vertices on the moved carriage (0 off, worst 0.00000)
+[  178.5s] ok   COMPOUND004: the carriage's faces again (B-spline faces 0, carriage 0)
+[  180.3s] ok   COMPOUND003 (Left) still passes the sweep's test (box residual 0.0000)
+[  230.4s] COMPOUND004 overlaps now (lite-72): [('SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)004', 3.542, 3.807), ('SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)005', 4.352, 3.807)]
+[  230.4s] ok   known: the dock's two belt clips in the copy's pockets [3.542, 4.352] mm3 (lite-72 [3.807, 3.807]; total 7.895 vs 7.614)
+[  230.4s] ok   no other new or worse overlap of COMPOUND004 against lite-72's copy ([])
+[  232.4s] ok   every other solid's box unchanged (0: [])
+[  233.3s] verify: 0 problems
+[  233.3s] DRY RUN (headless): all checks passed, not saved
+[  233.6s] litepool: peak RSS: workers max 1724 MB, sum 6896 MB; parent 4754 MB
