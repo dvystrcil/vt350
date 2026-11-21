@@ -44,7 +44,7 @@ flowchart TD
 | Where is part X? What sits below/above Z? (no FreeCAD) | `jq` on `~/Documents/VT350/<model>.parts.json` (below; `part_index.py --check` first) | instant |
 | A GLB of part of the printer for the 3D viewer (licence-checked) | `cad/viewer/export_glb.sh [N] [selection.json]` (below) | a few minutes; prints the GLB path, `glb-export: OK` |
 | A render of a sweep pose (clash in red) | `export_pose.py`, then `gpu-batch-submit.py` (below) | ~5 min, result posted to the issue |
-| A new model change (lite-N) | a GUI pass script: Claude writes it, you click **Wait** | 5–40 min |
+| A new model change (lite-N) | a GUI pass script: Claude writes it, you click **Wait**; at the end a box says SAVED or NOT SAVED (#280; `PASS_GUI_NOTICE=report` for unattended runs) | 5–40 min |
 
 ## The everyday commands
 
