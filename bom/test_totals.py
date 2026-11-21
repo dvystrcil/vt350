@@ -24,8 +24,8 @@ spec.loader.exec_module(totals)
 HEADER = "category,item,qty_needed,qty_owned,vendor,link,unit_price,currency,status,stage,notes\n"
 
 
-def row(item="part", needed="2", owned="0", price="1.50", cur="USD", status="to buy", stage="#12"):
-    return f"cat,{item},{needed},{owned},Shop,,{price},{cur},{status},{stage},\n"
+def row(item="part", needed="2", owned="0", price="1.50", cur="USD", status="to buy", stage="#12", cat="cat"):
+    return f"{cat},{item},{needed},{owned},Shop,,{price},{cur},{status},{stage},\n"
 
 
 class TempCSV(unittest.TestCase):
@@ -167,6 +167,60 @@ class TestCheck(TempCSV):
         p = self.run_script("--csv", self.write(HEADER + row(needed="x")))
         self.assertEqual(p.returncode, 1)
         self.assertNotIn("bom-totals: OK", p.stdout)
+
+
+class TestHeads(TempCSV):
+    """`per head` rows list one head's parts; --heads N (default 2) multiplies their qty_needed."""
+
+    def bom(self):
+        return self.write(
+            HEADER
+            + row("orbiter", needed="2", owned="1", price="10", cat="per head")  # per head: 2 needed, 1 owned
+            + row("frame", needed="4", owned="0", price="1")                      # shared: never multiplied
+        )
+
+    def test_one_head(self):
+        rows, errors = totals.load(self.bom(), heads=1)
+        self.assertEqual(errors, [])
+        t = totals.compute(rows, heads=1)
+        self.assertEqual(t.spent["USD"], Decimal("10"))       # the 1 owned
+        self.assertEqual(t.to_spend["USD"], Decimal("14"))    # 1 more orbiter + 4 frame
+
+    def test_three_heads(self):
+        rows, _ = totals.load(self.bom(), heads=3)
+        t = totals.compute(rows, heads=3)
+        self.assertEqual(t.spent["USD"], Decimal("10"))       # still the 1 owned
+        self.assertEqual(t.to_spend["USD"], Decimal("54"))    # 6 - 1 = 5 orbiters + 4 frame
+
+    def test_default_is_two_heads(self):
+        self.assertEqual(totals.DEFAULT_HEADS, 2)
+        rows, _ = totals.load(self.bom())
+        self.assertEqual(totals.compute(rows).to_spend["USD"], Decimal("34"))  # 3 orbiters + 4 frame
+
+    def test_ordered_per_head_row_counts_every_head(self):
+        rows, _ = totals.load(self.write(HEADER + row(needed="3", price="1", status="ordered", cat="per head")))
+        self.assertEqual(totals.compute(rows, heads=2).spent["USD"], Decimal("6"))
+
+    def test_owned_per_head_row_must_cover_every_head(self):
+        text = HEADER + row(needed="1", owned="2", price="1", status="owned", cat="per head")
+        self.assertEqual(totals.load(self.write(text), heads=2)[1], [])
+        errors = totals.load(self.write(text), heads=3)[1]
+        self.assertTrue(any("owned" in e for e in errors), errors)
+
+    def test_report_names_the_head_count(self):
+        rows, _ = totals.load(self.bom(), heads=3)
+        out = totals.report(totals.compute(rows, heads=3), "bom.csv")
+        self.assertIn("for 3 heads", out.splitlines()[0])
+
+    def test_cli_heads_flag(self):
+        p = self.run_script("--heads", "3", "--csv", self.bom())
+        self.assertEqual(p.returncode, 0, p.stdout + p.stderr)
+        self.assertIn("for 3 heads", p.stdout.splitlines()[0])
+        self.assertIn("still to spend 54.00", p.stdout)
+
+    def test_cli_rejects_zero_heads(self):
+        p = self.run_script("--heads", "0", "--csv", self.bom())
+        self.assertNotEqual(p.returncode, 0)
 
 
 class TestRepo(unittest.TestCase):
