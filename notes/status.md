@@ -63,7 +63,7 @@ partial versions that have to be rebuilt in order (lite-67 to lite-71 did this).
 
 | Pass in flight | Branch | Builds on |
 |---|---|---|
-| (none: lite-74 saved 2026-11-20 20:44 PST; next is lite-75, the Pi 5 swap) | | |
+| **lite-75** (#268): the e-box's Pi 5 becomes Mandache's simplified model, placed by its mount (lite-74 + ebox-3 → lite-75 + ebox-4) | `feat/lite75-pi5` | lite-74 |
 
 ## Where things are
 
