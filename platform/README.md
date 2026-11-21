@@ -113,7 +113,12 @@ Moving the code here didn't make it generic yet. These VT350 assumptions are sti
   `VT350_WORKERS`. **The rule for these (agreed 2026-11-16):** a platform input has a neutral name that says what
   it is (a model path, an output folder, a colour map), and the printer passes its own values in. The printer's
   names stay on the printer's side: its launchers, passes and values. New inputs follow the rule from the start
-  (`RENDER_STANDINS`, `FREECAD_APPIMAGE`); these 16 get renamed with #125 and the values-file moves, not piecemeal.
+  (`RENDER_STANDINS`, `FREECAD_APPIMAGE`, `PASS_GUI_NOTICE`); these 16 get renamed with #125 and the values-file moves, not piecemeal.
+- **A GUI pass shows its outcome** (`freecad/outcome.py`, vt350#280). When `litelib.Pass` ends a GUI run, it shows
+  SAVED (each file and its size) or NOT SAVED (the first 5 failed checks) in a message box and the Report view, with
+  the log's path. The box waits for a click. For an unattended GUI run (an agent, a script) set
+  `PASS_GUI_NOTICE=report` (Report view only) or `none` (the log only). Headless runs are unchanged. The log's lines
+  are the same as before.
 - `parts/check-printed.py` names this repository (`THIS_REPO`) and its licence.
 - The default paths in the tables above are the VT350's folders.
 
