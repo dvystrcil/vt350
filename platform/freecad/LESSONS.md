@@ -338,3 +338,11 @@ seat on are one plane on every boss, and that nothing is higher. The same probe 
   resets it to the default grey.
 - FreeCAD reads this STEP's PCB as grey and blue, not the green the file names (`COLOUR_RGB('Opaque(0,140,73)')`). A
   `colours.json` role (by label, "PCB") is the dependable way to colour it.
+
+## Assigning `o.Shape` also sets `o.Placement` from the shape (2026-11-21, lite-76)
+
+`feature.Shape = g` copies `g.Placement` into `feature.Placement`. A shape moved into the object's frame (for example
+with `transformShape(gplace(o).inverse())`) has an identity Placement, so assigning it wipes the feature's own
+Placement. lite-76's first dry run put the A/B stepper 50 mm low that way. The Z motor came out right only because its
+Placement happened to be identity. Set `g.Placement = o.Placement` before assigning, with the geometry expressed in
+the frame of `o.Placement`.

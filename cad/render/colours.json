@@ -30,6 +30,7 @@
   },
   "rules": [
     {"role": "backbone", "label": "^backbone-350"},
+    {"role": "brushed_aluminium", "group": "NEMA17 ", "label": "^(_Stepper_stator|Motor_Body)\\d* (front|rear) cap$", "note": "the steppers' end caps, silver (owner, 2026-11-18, #237); split from the bodies by lite-76"},
     {"role": "stepper", "group": "NEMA17 ", "label": "^(_Stepper_stator|Motor_Body)\\d*$", "note": "owner, 2026-11-18, #220: they rendered white"},
     {"role": "brushed_steel", "group": "NEMA17 ", "label": "^_Stepper_shaft"},
     {"role": "brass", "label": "^Orbitool O2S standoffs \\+ screws "},
