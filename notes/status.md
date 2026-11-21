@@ -63,7 +63,7 @@ partial versions that have to be rebuilt in order (lite-67 to lite-71 did this).
 
 | Pass in flight | Branch | Builds on |
 |---|---|---|
-| **lite-75** (#268): the e-box's Pi 5 becomes Mandache's simplified model, placed by its mount (lite-74 + ebox-3 → lite-75 + ebox-4) | `feat/lite75-pi5` | lite-74 |
+| **lite-76** (#237): the five steppers' end caps become their own parts, silver (lite-75 → lite-76) | `feat/237-stepper-caps` | lite-75 |
 
 ## Where things are
 

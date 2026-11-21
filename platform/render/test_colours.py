@@ -177,7 +177,7 @@ class TheCommittedMap(unittest.TestCase):
 
     def test_stepper_motors_are_black(self):
         # vt350#220 (owner, 2026-11-18: "We need to give the stepper motors their proper color, they are white"):
-        # black body; the silver end caps need the one-solid body split first.
+        # black body; the silver end caps are their own parts from lite-76 (#237).
         m = co.load()
         top = "4040-350x350x250 Voron Trident v4 v33"
         for lab, grp in (("_Stepper_stator", top + " / Rear right: _Rear_right / NEMA17 with 45mm long shaft"),
@@ -185,6 +185,11 @@ class TheCommittedMap(unittest.TestCase):
                          ("Motor_Body", top + " / Z_Motor_Left / NEMA17 Leadscrew 400mm"),
                          ("Motor_Body002", top + " / Z_Motor_Rear / NEMA17 Leadscrew 400mm (2)")):
             self.assertEqual(co.role_of(m, lab, grp, "Default"), "stepper", lab)
+        for lab, grp in (("_Stepper_stator front cap", top + " / Rear right: _Rear_right / NEMA17 with 45mm long shaft"),
+                         ("_Stepper_stator001 rear cap", top + " / Rear left: _Rear_left / NEMA17 with 45mm long shaft001"),
+                         ("Motor_Body front cap", top + " / Z_Motor_Left / NEMA17 Leadscrew 400mm"),
+                         ("Motor_Body002 rear cap", top + " / Z_Motor_Rear / NEMA17 Leadscrew 400mm (2)")):
+            self.assertEqual(co.role_of(m, lab, grp, "Default"), "brushed_aluminium", lab)       # #237, lite-76
         self.assertEqual(co.role_of(m, "_Stepper_shaft_S45R", top + " / Rear right: _Rear_right / NEMA17 with 45mm long shaft",
                                     "Default"), "brushed_steel")
         self.assertEqual(co.role_of(m, "Leadscrew (rod)", top + " / Z_Motor_Left / NEMA17 Leadscrew 400mm", "Steel-Generic"),
