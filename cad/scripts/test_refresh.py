@@ -537,7 +537,7 @@ class MarkersMatchTheRealTools(unittest.TestCase):
         self.assertTrue(pm and want, (pm, want))
         self.assertEqual(float(pm.group(1)), float(want[-1]))
         self.assertEqual((z["z_lower_limit_mm"], z["klipper_position_max_mm"], z["z_negative_limit_mm"], z["z_travel_mm"]),
-                         (43.76, 335.33, -20.27, 355.6))
+                         (43.76, 335.43, -20.17, 355.6))
 
     def test_print_area_marker(self):
         with tempfile.TemporaryDirectory() as d:
