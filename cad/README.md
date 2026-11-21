@@ -490,12 +490,12 @@ Both ends are measured on the saved model by `cad/studies/z_sweep.py` (#82). It'
 
 | Klipper Z | Bed position | Limited by |
 |---|---|---|
-| **+330.33** (`position_max`, `cad/klipper/printer.cfg`) | the configured floor | 5 mm above the lower stop (user, 2026-11-09) |
-| +335.33 | the mechanical lower stop | the 2020 T on the backbone (crash limit behind the configured one) |
+| **+330.43** (`position_max`, `cad/klipper/printer.cfg`) | the configured floor | 5 mm above the lower stop (user, 2026-11-09) |
+| +335.43 | the mechanical lower stop | the 2020 T on the backbone (crash limit behind the configured one) |
 | 0 | the nozzle touches the magnet sheet | — |
-| **−20.27** | the mechanical top, with the toolhead parked | the rear Z block on its rail stop |
+| **−20.17** | the mechanical top, with the toolhead parked | the rear Z block on its rail stop |
 
-With a steel sheet of thickness *t*, Z0 moves up by *t*: `position_max` becomes 330.33 − *t* (mechanical 335.33 − *t*) and the top −20.27 − *t*. `test_refresh.py` fails if `printer.cfg`'s `position_max` differs from `klipper_position_max_configured_mm` in the committed log. `position_min` must stay above the top with margin. Below Z0 the bed only clears the toolhead when the toolhead is parked: with a head over the bed, the bed meets the nozzle at Z 0.
+With a steel sheet of thickness *t*, Z0 moves up by *t*: `position_max` becomes 330.43 − *t* (mechanical 335.43 − *t*) and the top −20.17 − *t*. `test_refresh.py` fails if `printer.cfg`'s `position_max` differs from `klipper_position_max_configured_mm` in the committed log. `position_min` must stay above the top with margin. Below Z0 the bed only clears the toolhead when the toolhead is parked: with a head over the bed, the bed meets the nozzle at Z 0.
 
 Runners-up, i.e. what would limit next:
 - **Bottom, Z rails:** the left and right Z blocks' bottom end caps reach their rails' bottom ends at dZ −242.10. That's only **0.10 mm** past the stop: the blocks stay on the rails, just. The rear block has 4.50 mm.

@@ -8,7 +8,7 @@
 {"seq": 8, "kind": "move", "pos": [346.0, 335.19, 0.0, 0.0], "speed": 50.0, "tool": "extruder"}
 {"seq": 9, "kind": "set_position", "pos": [346.0, 330.19, 0.0, 0.0], "tool": "extruder"}
 {"seq": 10, "kind": "set_position", "pos": [346.0, 340.19, 0.0, 0.0], "tool": "extruder"}
-{"seq": 11, "kind": "set_position", "pos": [346.0, 340.19, 495.495, 0.0], "tool": "extruder"}
+{"seq": 11, "kind": "set_position", "pos": [346.0, 340.19, 495.645, 0.0], "tool": "extruder"}
 {"seq": 12, "kind": "set_position", "pos": [346.0, 340.19, 0.0, 0.0], "tool": "extruder"}
 {"seq": 13, "kind": "move", "pos": [346.0, 340.19, 5.0, 0.0], "speed": 8.0, "tool": "extruder"}
 {"seq": 14, "kind": "set_position", "pos": [346.0, 340.19, 10.0, 0.0], "tool": "extruder"}
