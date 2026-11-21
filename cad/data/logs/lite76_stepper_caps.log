@@ -1,23 +1,23 @@
-[    3.8s] opened /home/dan/Documents/VT350/vt350-lite-75.FCStd
-[   17.4s] ok   the 5 motor bodies: 2 Part::Features (['Part::Feature', 'Part::Feature']), 3 links to them ([('_Stepper_stator001', '_Stepper_stator'), ('Motor_Body001', 'Motor_Body'), ('Motor_Body002', 'Motor_Body')])
-[   17.4s] ok   _Stepper_stator: along Z (42.66 x 42.66 x 49.00)
-[   17.4s] ok   Motor_Body: along Z (42.66 x 42.84 x 40.60)
-[   17.4s] ok   _Stepper_stator001: along Z (42.66 x 42.66 x 49.00)
-[   17.4s] ok   Motor_Body001: along Z (42.66 x 42.84 x 40.60)
-[   17.4s] ok   Motor_Body002: along Z (42.66 x 42.84 x 40.60)
-[   67.3s] ok   _Stepper_stator: the 42.2 stack from Z 456.30 to 486.70; seams on its planes at Z 456.3 / 486.7 (snapped [0.0, 0.0])
-[   67.9s] ok   _Stepper_stator: the shaft boss at one end (low Z; widths 21.3 / 42.0)
-[   67.9s]   _Stepper_stator: lengths low cap / stator / high cap [9.8, 30.4, 8.8]
-[  299.7s] ok   Motor_Body: the 42.2 stack from Z -39.70 to -17.70; seams on its planes at Z -39.7 / -17.7 (snapped [0.0, 0.0])
-[  302.6s] ok   Motor_Body: the shaft boss at one end (high Z; widths 42.0 / 21.3)
-[  302.7s]   Motor_Body low piece: 5 solids: 14453.78 mm3 [-479.1, -436.9, 10.9, 53.51, -48.5, -39.7]; 66.74 mm3 [-445.17, -439.83, 44.83, 50.17, -48.25, -39.7]; 66.74 mm3 [-445.17, -439.83, 13.83, 19.17, -48.25, -39.7]; 66.74 mm3 [-476.17, -470.83, 13.83, 19.17, -48.25, -39.7]; 66.74 mm3 [-476.17, -470.83, 44.83, 50.17, -48.25, -39.7]
-[  302.7s]   Motor_Body: lengths low cap / stator / high cap [8.8, 22.0, 9.8]
-[  317.3s] ok   _Stepper_stator: front cap / stator / rear cap, each one solid or one + small bits inside it [1, 1, 1], volume 79699.7 of 79699.7 (-0.0000 %), box within 0.00000, in order along Z [(446.5, 456.3), (456.3, 486.7), (486.7, 495.5)]
-[  318.0s] ok   Motor_Body: front cap / stator / rear cap, each one solid or one + small bits inside it [1, 1, 5], volume 63526.5 of 63526.5 (+0.0000 %), box within 0.00000, in order along Z [(-17.7, -7.9), (-39.7, -17.7), (-48.5, -39.7)]
-[  318.2s] ok   _Stepper_stator001: front cap / stator / rear cap, each one solid or one + small bits inside it [1, 1, 1], volume 79699.7 of 79699.7 (-0.0000 %), box within 0.00000, in order along Z [(446.5, 456.3), (456.3, 486.7), (486.7, 495.5)]
-[  318.9s] ok   Motor_Body001: front cap / stator / rear cap, each one solid or one + small bits inside it [1, 1, 5], volume 63526.5 of 63526.5 (+0.0000 %), box within 0.00000, in order along Z [(-17.6, -7.8), (-39.6, -17.6), (-48.4, -39.6)]
-[  319.6s] ok   Motor_Body002: front cap / stator / rear cap, each one solid or one + small bits inside it [1, 1, 5], volume 63526.5 of 63526.5 (+0.0000 %), box within 0.00000, in order along Z [(-18.6, -8.8), (-40.6, -18.6), (-49.4, -40.6)]
-[  321.6s] ok   every other solid's box unchanged (0: [])
-[  321.6s] ok   leaves 1545 -> 1555 (+10: two caps for each of 5 motors)
-[  321.6s] verify: 0 problems
-[  321.6s] DRY RUN (headless): all checks passed, not saved
+[   58.5s] opened /home/dan/Documents/VT350/vt350-lite-75.FCStd
+[   72.1s] ok   the 5 motor bodies: 2 Part::Features (['Part::Feature', 'Part::Feature']), 3 links to them ([('_Stepper_stator001', '_Stepper_stator'), ('Motor_Body001', 'Motor_Body'), ('Motor_Body002', 'Motor_Body')])
+[   72.1s] ok   _Stepper_stator: along Z (42.66 x 42.66 x 49.00)
+[   72.1s] ok   Motor_Body: along Z (42.66 x 42.84 x 40.60)
+[   72.1s] ok   _Stepper_stator001: along Z (42.66 x 42.66 x 49.00)
+[   72.1s] ok   Motor_Body001: along Z (42.66 x 42.84 x 40.60)
+[   72.1s] ok   Motor_Body002: along Z (42.66 x 42.84 x 40.60)
+[  124.6s] ok   _Stepper_stator: the 42.2 stack from Z 456.30 to 486.70; seams on its planes at Z 456.3 / 486.7 (snapped [0.0, 0.0])
+[  125.3s] ok   _Stepper_stator: the shaft boss at one end (low Z; widths 21.3 / 42.0)
+[  125.3s]   _Stepper_stator: lengths low cap / stator / high cap [9.8, 30.4, 8.8]
+[  366.6s] ok   Motor_Body: the 42.2 stack from Z -39.70 to -17.70; seams on its planes at Z -39.7 / -17.7 (snapped [0.0, 0.0])
+[  370.5s] ok   Motor_Body: the shaft boss at one end (high Z; widths 42.0 / 21.3)
+[  370.6s]   Motor_Body low piece: 5 solids: 14453.78 mm3 [-479.1, -436.9, 10.9, 53.51, -48.5, -39.7]; 66.74 mm3 [-445.17, -439.83, 44.83, 50.17, -48.25, -39.7]; 66.74 mm3 [-445.17, -439.83, 13.83, 19.17, -48.25, -39.7]; 66.74 mm3 [-476.17, -470.83, 13.83, 19.17, -48.25, -39.7]; 66.74 mm3 [-476.17, -470.83, 44.83, 50.17, -48.25, -39.7]
+[  370.6s]   Motor_Body: lengths low cap / stator / high cap [8.8, 22.0, 9.8]
+[  387.0s] ok   _Stepper_stator: front cap / stator / rear cap, each one solid or one + small bits inside it [1, 1, 1], volume 79699.7 of 79699.7 (-0.0000 %), box within 0.00000, in order along Z [(446.5, 456.3), (456.3, 486.7), (486.7, 495.5)]
+[  387.7s] ok   Motor_Body: front cap / stator / rear cap, each one solid or one + small bits inside it [1, 1, 5], volume 63526.5 of 63526.5 (+0.0000 %), box within 0.00000, in order along Z [(-17.7, -7.9), (-39.7, -17.7), (-48.5, -39.7)]
+[  387.9s] ok   _Stepper_stator001: front cap / stator / rear cap, each one solid or one + small bits inside it [1, 1, 1], volume 79699.7 of 79699.7 (-0.0000 %), box within 0.00000, in order along Z [(446.5, 456.3), (456.3, 486.7), (486.7, 495.5)]
+[  388.6s] ok   Motor_Body001: front cap / stator / rear cap, each one solid or one + small bits inside it [1, 1, 5], volume 63526.5 of 63526.5 (+0.0000 %), box within 0.00000, in order along Z [(-17.6, -7.8), (-39.6, -17.6), (-48.4, -39.6)]
+[  389.3s] ok   Motor_Body002: front cap / stator / rear cap, each one solid or one + small bits inside it [1, 1, 5], volume 63526.5 of 63526.5 (+0.0000 %), box within 0.00000, in order along Z [(-18.6, -8.8), (-40.6, -18.6), (-49.4, -40.6)]
+[  391.2s] ok   every other solid's box unchanged (0: [])
+[  391.2s] ok   leaves 1545 -> 1555 (+10: two caps for each of 5 motors)
+[  391.2s] verify: 0 problems
+[  398.3s] SAVED /home/dan/Documents/VT350/vt350-lite-76.FCStd 37280184
