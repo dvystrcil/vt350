@@ -65,6 +65,7 @@ CODE_PATH = [_HERE] + [p for p in (os.path.join(os.path.dirname(os.path.dirname(
 sys.path[:0] = [p for p in CODE_PATH if p not in sys.path]
 import batchvalues
 import litepool
+import outcome as _outcome
 from linkgeo import gplace, link_target, gshape, is_mesh, gmesh, is_leaf  # noqa: F401  (re-exported)
 
 V = FreeCAD.Vector
@@ -296,7 +297,7 @@ class Pass:
         os.makedirs(self.work + "/logs", exist_ok=True)
         self.log_path = f"{self.work}/logs/{name}.log"
         self.log_f = open(self.log_path, "w"); self.t0 = time.time()
-        self.errs = []
+        self.errs = []; self.n_checks = 0
         if volumes is not None: self.volumes = volumes
 
     # ---- skeleton
@@ -304,7 +305,7 @@ class Pass:
         self.log_f.write(f"[{time.time()-self.t0:7.1f}s] " + " ".join(str(x) for x in a) + "\n"); self.log_f.flush()
 
     def check(self, ok, what):
-        self.log(("ok   " if ok else "FAIL ") + what)
+        self.log(("ok   " if ok else "FAIL ") + what); self.n_checks += 1
         if not ok: self.errs.append(what)
         return bool(ok)
 
@@ -399,6 +400,11 @@ class Pass:
             body(self)
         except Exception:
             self.log("FAILED\n" + traceback.format_exc())
+            if not self.dry:
+                tb = traceback.format_exc().strip().splitlines()[-1]
+                self._notice(_outcome.Outcome("failed", f"{self.name}: FAILED, NOT SAVED",
+                                              f"The pass stopped on an error, so the model was NOT saved:\n\n  {tb}\n\n"
+                                              f"Log: {self.log_path}", []))
         finally:
             self.close()
             if exit: os._exit(0)
@@ -517,10 +523,27 @@ class Pass:
         json.dump(obj, open(f"{self.work}/logs/{self.name}.json", "w"), indent=1)
 
     def finish(self, saves):
-        """saves [(doc, path)]: written in order only in GUI mode and only with no failed check."""
+        """saves [(doc, path)]: written in order only in GUI mode and only with no failed check. The log gets the
+        same lines as ever; a GUI run also shows the outcome (outcome.py, vt350#280)."""
         self.log(f"verify: {len(self.errs)} problems"); [self.log("  " + x) for x in self.errs]
-        if self.errs: self.log("NOT SAVED")
-        elif self.dry: self.log("DRY RUN (headless): all checks passed, not saved")
-        else:
-            for doc, path in saves:
-                doc.saveAs(path); self.log("SAVED", path, os.path.getsize(path))
+        saved = []
+        if not self.errs and not self.dry:
+            for doc, path in saves:              # each SAVED line as it happens: a failing later save keeps the earlier
+                doc.saveAs(path); saved.append((path, os.path.getsize(path))); self.log("SAVED", *saved[-1])
+        o = _outcome.outcome(self.name, self.errs, self.dry, self.log_path, self.n_checks, saved)
+        if o.kind != "saved": [self.log(line) for line in o.log_lines]
+        if not self.dry: self._notice(o)
+
+    def _notice(self, o):
+        """GUI only: the outcome in the Report view and, unless PASS_GUI_NOTICE says otherwise, a message box. run()
+        ends the process after the pass, so the box is what the owner sees; it waits for a click."""
+        mode = _outcome.notice_mode(os.environ)
+        if mode == "none" or not FreeCAD.GuiUp: return
+        try:
+            FreeCAD.Console.PrintMessage(f"{o.title}\n{o.text}\n")
+            if mode != "box": return
+            from PySide import QtGui
+            box = {"saved": QtGui.QMessageBox.information}.get(o.kind, QtGui.QMessageBox.warning)
+            box(None, o.title, o.text)
+        except Exception as e:               # never let the notice hide the outcome: it is already in the log
+            self.log(f"(GUI notice not shown: {e})")
