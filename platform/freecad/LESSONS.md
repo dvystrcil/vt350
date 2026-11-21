@@ -325,3 +325,16 @@ again at r 2.5 (107.7). Placed on 108.05, the board overlapped all four standoff
 boss, probe lines at several radii and angles round it (lite75_pi5.py: r 1.0..2.5, every 30°). Check that the radii you
 seat on are one plane on every boss, and that nothing is higher. The same probe showed the GrabCAD board it replaces sat
 0.75 mm inside those standoffs.
+
+## A STEP's colours: ImportGui keeps them, Import drops them, and the render takes one per object (2026-11-21, lite-75)
+
+- `Import.insert` (App only) imports a STEP's shapes without colours. In a GUI run, `ImportGui.insert` gives the part a
+  per-face `ShapeAppearance` (12,882 entries for the simplified Pi 5).
+- The render export (`platform/render/export_meshes.py`) colours each object by its first `ShapeAppearance` entry. One
+  25-solid feature rendered all one colour, so give each solid its own Part::Feature.
+- A solid's first face is not its colour: every first face of the Pi 5 was the STEP's light grey. Use the solid's most
+  common face colour.
+- Set the appearance **after** `doc.recompute()` and `Gui.updateGui()`. Before that, the new feature's first redraw
+  resets it to the default grey.
+- FreeCAD reads this STEP's PCB as grey and blue, not the green the file names (`COLOUR_RGB('Opaque(0,140,73)')`). A
+  `colours.json` role (by label, "PCB") is the dependable way to colour it.

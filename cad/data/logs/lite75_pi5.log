@@ -1,37 +1,42 @@
 [    0.1s] ok   cad/library/electronics/raspberry-pi-5/simplified-mandache/raspberry_pi_5.step is the library's file (sha256 0e2d7a12b43e)
-[   11.7s] ok   the STEP: one part of 25 solids ([('Raspberry_Pi_5_No_History v2', 25)])
-[   12.5s] ok   one PCB solid (1)
-[   12.5s] ok   the PCB's 4 mounting holes, Ø2.7, 58.0 x 49.0 ([(3.5, 3.5), (3.5, 52.5), (61.5, 3.5), (61.5, 52.5)]); PCB Z 0.030..1.306 (1.276 thick)
-[   20.7s] opened /home/dan/Documents/VT350/vt350-ebox-3.FCStd
-[   22.0s] ok   ebox-3: the GrabCAD Pi (1), Pi Assembly (1), the bracket (1), its 4 screws (4)
-[   22.2s] the GrabCAD Pi: 29 objects, 28 solids-bearing, box BoundBox (104.647, 280.48, 361.905, 125.594, 369.52, 419.095)
-[   22.2s] ok   the bracket's 4 pilot holes, Ø1.9, 58.0 x 49.0 along X ([(284.249, 366.739), (284.249, 415.739), (342.249, 366.739), (342.249, 415.739)])
-[   29.7s] the bracket's top round the pilot holes (r: X min..max over 4 holes x 12 angles): {1.0: (107.75, 107.75, 48), 1.5: (108.1, 108.1, 48), 1.75: (108.1, 108.1, 48), 2.0: (108.1, 108.1, 48), 2.5: (107.7, 107.7, 48)}
-[   29.7s] ok   a flat standoff top round every pilot hole, r 1.5..2.0, nothing higher: X 108.1000..108.1000
-[   29.7s] ok   M2x10 Selftapping screw006: on a pilot hole's axis ((284.249, 415.739))
-[   29.7s] ok   M2x10 Selftapping screw007: on a pilot hole's axis ((284.249, 366.739))
-[   29.7s] ok   M2x10 Selftapping screw008: on a pilot hole's axis ((342.249, 366.739))
-[   29.7s] ok   M2x10 Selftapping screw009: on a pilot hole's axis ((342.249, 415.739))
-[   29.7s] ok   the screws' tip / head-underside / head-top planes [(99.43, 109.43, 109.93)]
-[   31.3s] ok   the board's 4 holes on the pilot axes (worst 0.0000 mm)
-[   31.3s] ok   the PCB's back on the standoff tops (X 108.1000 / 108.1000)
-[   31.3s] the screws: head undersides X 109.4300, the PCB's front 109.3760: moved -0.0540 along their axes
-[   31.5s] new board box BoundBox (106.65, 280.299, 361.608, 125.596, 368.799, 419.239); the GrabCAD board's BoundBox (104.647, 280.48, 361.905, 125.594, 369.52, 419.095)
-[   31.6s] ok   the board inside the e-box (BoundBox (106.65, 280.299, 361.608, 125.596, 368.799, 419.239))
-[   46.2s] ok   Raspberry Pi 5 (simplified): 25 solids where the fit puts it (15102.4 mm3; box within 0.00000)
-[   46.2s] ok   M2x10 Selftapping screw006: head on the PCB's front (109.3760 / 109.3760)
-[   46.2s] ok   M2x10 Selftapping screw007: head on the PCB's front (109.3760 / 109.3760)
-[   46.2s] ok   M2x10 Selftapping screw008: head on the PCB's front (109.3760 / 109.3760)
-[   46.2s] ok   M2x10 Selftapping screw009: head on the PCB's front (109.3760 / 109.3760)
-[   85.2s] overlaps of the new board and the screws now: [(6.138, 'M2x10 Selftapping screw009', 'Raspberry_Bracket'), (6.138, 'M2x10 Selftapping screw008', 'Raspberry_Bracket'), (6.138, 'M2x10 Selftapping screw007', 'Raspberry_Bracket'), (6.138, 'M2x10 Selftapping screw006', 'Raspberry_Bracket')]
-[   85.2s] ok   no new or worse overlap of the board or the screws with any e-box part ([])
-[   85.6s] ok   the e-box's overall box unchanged (within 0.00000): the envelope that lite-57 sized from it still fits
-[   85.6s] ok   every other e-box solid's box unchanged (0: [])
-[  141.2s] opened /home/dan/Documents/VT350/vt350-lite-74.FCStd
-[  154.8s] ok   lite-74's e-box envelope (['Ebox envelope (contents in vt350-ebox-3.FCStd)'])
-[  168.3s] the envelope's box BoundBox (64.2, -58, -9, 146, 545, 636); the e-box's contents before BoundBox (64.2, -58, -9, 146, 545, 636), after BoundBox (64.2, -58, -9, 146, 545, 636)
-[  168.3s] ok   lite-75: 1545 solids as lite-74, the envelope's box unchanged ('Ebox envelope (contents in vt350-ebox-4.FCStd)')
-[  168.3s] verify: 0 problems
-[  170.5s] SAVED /home/dan/Documents/VT350/vt350-ebox-4.FCStd 12036134
-[  177.2s] SAVED /home/dan/Documents/VT350/vt350-lite-75.FCStd 37254679
-[  177.4s] litepool: peak RSS: workers max 1396 MB, sum 4188 MB; parent 5443 MB
+[   12.4s] ok   the STEP: one part of 25 solids ([('Raspberry_Pi_5_No_History v2', 25)])
+[   13.3s] ok   one PCB solid (1)
+[   13.3s] ok   the PCB's 4 mounting holes, Ø2.7, 58.0 x 49.0 ([(3.5, 3.5), (3.5, 52.5), (61.5, 3.5), (61.5, 52.5)]); PCB Z 0.030..1.306 (1.276 thick)
+[   21.3s] opened /home/dan/Documents/VT350/vt350-ebox-3.FCStd
+[   22.6s] ok   ebox-3: the GrabCAD Pi (1), Pi Assembly (1), the bracket (1), its 4 screws (4)
+[   22.8s] the GrabCAD Pi: 29 objects, 28 solids-bearing, box BoundBox (104.647, 280.48, 361.905, 125.594, 369.52, 419.095)
+[   22.8s] ok   the bracket's 4 pilot holes, Ø1.9, 58.0 x 49.0 along X ([(284.249, 366.739), (284.249, 415.739), (342.249, 366.739), (342.249, 415.739)])
+[   30.2s] the bracket's top round the pilot holes (r: X min..max over 4 holes x 12 angles): {1.0: (107.75, 107.75, 48), 1.5: (108.1, 108.1, 48), 1.75: (108.1, 108.1, 48), 2.0: (108.1, 108.1, 48), 2.5: (107.7, 107.7, 48)}
+[   30.2s] ok   a flat standoff top round every pilot hole, r 1.5..2.0, nothing higher: X 108.1000..108.1000
+[   30.2s] ok   M2x10 Selftapping screw006: on a pilot hole's axis ((284.249, 415.739))
+[   30.3s] ok   M2x10 Selftapping screw007: on a pilot hole's axis ((284.249, 366.739))
+[   30.3s] ok   M2x10 Selftapping screw008: on a pilot hole's axis ((342.249, 366.739))
+[   30.3s] ok   M2x10 Selftapping screw009: on a pilot hole's axis ((342.249, 415.739))
+[   30.3s] ok   the screws' tip / head-underside / head-top planes [(99.43, 109.43, 109.93)]
+[   31.8s] ok   the board's 4 holes on the pilot axes (worst 0.0000 mm)
+[   31.8s] ok   the PCB's back on the standoff tops (X 108.1000 / 108.1000)
+[   31.8s] the screws: head undersides X 109.4300, the PCB's front 109.3760: moved -0.0540 along their axes
+[   31.9s] new board box BoundBox (106.65, 280.299, 361.608, 125.596, 368.799, 419.239); the GrabCAD board's BoundBox (104.647, 280.48, 361.905, 125.594, 369.52, 419.095)
+[   32.1s] ok   the board inside the e-box (BoundBox (106.65, 280.299, 361.608, 125.596, 368.799, 419.239))
+[   35.5s] the STEP: 12882 faces, each found in its solid
+[   39.6s] colours: Raspberry Pi 5 part 00 (0.45, 0.47, 0.5), Raspberry Pi 5 part 01 (0.45, 0.47, 0.5), Raspberry Pi 5 part 02 (0.45, 0.47, 0.5), Raspberry Pi 5 part 03 (0.45, 0.47, 0.5), Raspberry Pi 5 part 04 (0.45, 0.47, 0.5), Raspberry Pi 5 part 05 (0.45, 0.47, 0.5), Raspberry Pi 5 part 06 (0.45, 0.47, 0.5), Raspberry Pi 5 part 07 (0.45, 0.47, 0.5), Raspberry Pi 5 part 08 (0.45, 0.47, 0.5), Raspberry Pi 5 part 09 (0.45, 0.47, 0.5), Raspberry Pi 5 part 10 (0.45, 0.47, 0.5), Raspberry Pi 5 part 11 (0.45, 0.47, 0.5), Raspberry Pi 5 part 12 (0.45, 0.47, 0.5), Raspberry Pi 5 part 13 (0.45, 0.47, 0.5), Raspberry Pi 5 part 14 (0.45, 0.47, 0.5), Raspberry Pi 5 part 15 (0.45, 0.47, 0.5), Raspberry Pi 5 part 16 (0.45, 0.47, 0.5), Raspberry Pi 5 part 17 (0.45, 0.47, 0.5), Raspberry Pi 5 part 18 (0.45, 0.47, 0.5), Raspberry Pi 5 part 19 (0.45, 0.47, 0.5), Raspberry Pi 5 part 20 (0.45, 0.47, 0.5), Raspberry Pi 5 PCB (0.45, 0.47, 0.5), Raspberry Pi 5 part 22 (0.45, 0.47, 0.5), Raspberry Pi 5 part 23 (0.45, 0.47, 0.5), Raspberry Pi 5 part 24 (0.45, 0.47, 0.5)
+[   39.8s] the STEP's face colours: [((0.8, 0.8, 0.8), 9785), ((0.216, 0.557, 1.0), 1641), ((0.467, 0.467, 0.467), 951), ((1.0, 0.922, 0.529), 491), ((1.0, 1.0, 1.0), 7), ((0.698, 0.698, 0.698), 7)]
+[   39.8s] wanted: (0.22, 0.56, 1.0), (0.8, 0.8, 0.8)
+[   44.5s] ok   Raspberry Pi 5 (simplified, Mandache): 25 one-solid parts where the fit puts them (15102.4 mm3; box within 0.00000)
+[   44.8s] ok   each part shows its STEP solid's most common face colour (12882 face colours read; 2 colours on the parts; the PCB's green comes from colours.json's electronics role)
+[   44.8s] ok   M2x10 Selftapping screw006: head on the PCB's front (109.3760 / 109.3760)
+[   44.8s] ok   M2x10 Selftapping screw007: head on the PCB's front (109.3760 / 109.3760)
+[   44.8s] ok   M2x10 Selftapping screw008: head on the PCB's front (109.3760 / 109.3760)
+[   44.8s] ok   M2x10 Selftapping screw009: head on the PCB's front (109.3760 / 109.3760)
+[   56.3s] overlaps of the new board and the screws now (the board's own parts with each other not checked): [(6.138, 'M2x10 Selftapping screw009', 'Raspberry_Bracket'), (6.138, 'M2x10 Selftapping screw008', 'Raspberry_Bracket'), (6.138, 'M2x10 Selftapping screw007', 'Raspberry_Bracket'), (6.138, 'M2x10 Selftapping screw006', 'Raspberry_Bracket')]
+[   56.3s] ok   no new or worse overlap of the board or the screws with any e-box part ([])
+[   56.5s] ok   the e-box's overall box unchanged (within 0.00000): the envelope that lite-57 sized from it still fits
+[   56.5s] ok   every other e-box solid's box unchanged (0: [])
+[  112.6s] opened /home/dan/Documents/VT350/vt350-lite-74.FCStd
+[  126.0s] ok   lite-74's e-box envelope (['Ebox envelope (contents in vt350-ebox-3.FCStd)'])
+[  139.1s] the envelope's box BoundBox (64.2, -58, -9, 146, 545, 636); the e-box's contents before BoundBox (64.2, -58, -9, 146, 545, 636), after BoundBox (64.2, -58, -9, 146, 545, 636)
+[  139.1s] ok   lite-75: 1545 solids as lite-74, the envelope's box unchanged ('Ebox envelope (contents in vt350-ebox-4.FCStd)')
+[  139.1s] verify: 0 problems
+[  141.2s] SAVED /home/dan/Documents/VT350/vt350-ebox-4.FCStd 11621006
+[  148.0s] SAVED /home/dan/Documents/VT350/vt350-lite-75.FCStd 37206643
+[  148.2s] litepool: peak RSS: workers max 1404 MB, sum 2808 MB; parent 5422 MB

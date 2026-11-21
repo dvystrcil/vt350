@@ -4,8 +4,9 @@
 # all its surface, 25 solids, CC BY-SA 4.0), from cad/library/electronics/raspberry-pi-5/simplified-mandache/.
 #  - Out: the GrabCAD Pi 5 (Mateusz Zelek; show-only terms), the App::Part `RASPBERRY_PI_5_1 v1` and everything in it.
 #    It sat 0.735 mm inside the bracket's standoffs, its holes 0.12-0.14 mm off the screws.
-#  - In: a new App::Part `Raspberry Pi 5 (simplified, Mandache)` in `Pi Assembly`, holding the STEP's 25 solids as one
-#    part (its own group, so cad/viewer/licences.json can credit it). Placed by the real mount, not by the old board:
+#  - In: a new App::Part `Raspberry Pi 5 (simplified, Mandache)` in `Pi Assembly`, holding the STEP's 25 solids as 25 parts,
+#    each with its STEP colour, the PCB labelled `Raspberry Pi 5 PCB` (its own group, so cad/viewer/licences.json
+#    can credit it). Placed by the real mount, not by the old board:
 #    its 4 mounting holes (Ø2.7, 58 x 49) on the bracket's 4 pilot-hole axes, its PCB's back face on the bracket's
 #    standoff tops. Orientation as the old board: components face +X, the USB/Ethernet end at +Y, Ethernet at low Z
 #    (STEP x -> +Y, y -> +Z, z -> +X).
@@ -78,7 +79,10 @@ def main(p):
     src = json.load(open(os.path.join(LIB, "source.json")))
     sha = hashlib.sha256(open(STEP, "rb").read()).hexdigest()
     p.check(sha == src["files"][0]["sha256"], f"{os.path.relpath(STEP, _REPO)} is the library's file (sha256 {sha[:12]})")
-    sd = FreeCAD.newDocument("pi5step"); Import.insert(STEP, sd.Name)
+    sd = FreeCAD.newDocument("pi5step")
+    if FreeCAD.GuiUp:                            # ImportGui keeps the STEP's per-face colours; Import.insert drops them
+        import ImportGui; ImportGui.insert(STEP, sd.Name); FreeCAD.Gui.updateGui()
+    else: Import.insert(STEP, sd.Name)
     so = [o for o in sd.Objects if o.TypeId == "Part::Feature" and o.Shape.Solids]
     p.check(len(so) == 1 and len(so[0].Shape.Solids) == 25, f"the STEP: one part of 25 solids ({[(o.Label, len(o.Shape.Solids)) for o in so]})")
     if p.errs: return p.finish([])
@@ -177,40 +181,74 @@ def main(p):
     box0 = {n: s.BoundBox for n, s in eb.shapes.items() if n not in gone_leaf}
     all0 = FreeCAD.BoundBox(); [all0.add(s.BoundBox) for s in eb.shapes.values()]
     # ---- write the e-box
-    gui = FreeCAD.GuiUp
+    # one Part::Feature per STEP solid, each with its own STEP colour (the render export takes one colour per object,
+    # its first appearance entry: one 25-solid feature rendered all one colour). The PCB's label has "PCB" in it, so
+    # cad/render/colours.json's electronics rule colours it like the e-box's other boards.
+    PS, GS = P.Solids, G.Solids
+    i_pcb = next(i for i, x in enumerate(PS) if x.isSame(pcb))
+    PF = P.Faces; hs = {}                         # each solid's faces, by their index in the whole shape's faces
+    for k, f in enumerate(PF): hs.setdefault(f.hashCode(), []).append(k)
+    faces_of = [[next(k for k in hs.get(f.hashCode(), []) if PF[k].isSame(f)) for f in x.Faces] for x in PS]
+    p.log(f"the STEP: {len(PF)} faces, each found in its solid")
     looks = None
-    if gui:
+    if FreeCAD.GuiUp:
         try: looks = list(so[0].ViewObject.ShapeAppearance)
         except Exception as e: p.log(f"  STEP appearance not read: {e}")
     for o in sorted(gone + [old], key=lambda o: o.TypeId == "App::Part"):   # leaves first, then the groups
         ed.removeObject(o.Name)
     npart = ed.addObject("App::Part", "Pi5Simplified"); npart.Label = NEW_PART; assy.addObject(npart)
-    nb = ed.addObject("Part::Feature", "Pi5Board"); npart.addObject(nb); nb.Label = NEW_BOARD
-    C = linkgeo.gplace(nb).multiply(nb.Placement.inverse())
-    g_ = G.copy(); g_.transformShape(C.inverse().toMatrix(), True, False); nb.Shape = g_
+    C = linkgeo.gplace(npart)                    # a new feature in npart has an identity Placement
+    board = []
+    for i, x in enumerate(GS):
+        f = ed.addObject("Part::Feature", f"Pi5Solid{i:02d}"); npart.addObject(f)
+        bb = PS[i].BoundBox
+        f.Label = "Raspberry Pi 5 PCB" if i == i_pcb else \
+            f"Raspberry Pi 5 part {i:02d} ({bb.XLength:.1f} x {bb.YLength:.1f} x {bb.ZLength:.1f})"
+        g_ = x.copy(); g_.transformShape(C.inverse().toMatrix(), True, False); f.Shape = g_
+        board.append(f)
     if looks:
-        try: nb.ViewObject.ShapeAppearance = looks
-        except Exception as e: p.log(f"  appearance not set: {e}")
+        p.log("colours: " + ", ".join(f"{f.Label.split(' (')[0]} {tuple(round(c, 2) for c in f.ViewObject.ShapeAppearance[0].DiffuseColor[:3])}"
+                                      for f in board))
     for s in sc:                                 # slide along X (their axis); Part::Features: through the Placement
         Cs = linkgeo.gplace(s).multiply(s.Placement.inverse())
         s.Placement = Cs.inverse().multiply(FreeCAD.Placement(V(sdx, 0, 0), FreeCAD.Rotation())).multiply(Cs).multiply(s.Placement)
+    ed.recompute()
+    want = {}
+    if looks:                                    # after the recompute: a new feature's first redraw sets its default colour
+        FreeCAD.Gui.updateGui()
+        from collections import Counter
+        key = lambda m: tuple(round(c, 3) for c in m.DiffuseColor[:3])
+        p.log(f"the STEP's face colours: {Counter(key(m) for m in looks).most_common()}")
+        for i, f in enumerate(board):            # the solid's most common face colour (a body, not its first face)
+            top = Counter(key(looks[k]) for k in faces_of[i]).most_common(1)[0][0]
+            m = next(looks[k] for k in faces_of[i] if key(looks[k]) == top); want[f.Name] = tuple(round(c, 2) for c in top)
+            try: f.ViewObject.ShapeAppearance = [m]
+            except Exception as e: p.log(f"  appearance not set on {f.Label}: {e}")
+        p.log("wanted: " + ", ".join(sorted({str(tuple(round(c, 2) for c in f.ViewObject.ShapeAppearance[0].DiffuseColor[:3])) for f in board})))
     FreeCAD.closeDocument(sd.Name)
-    ed.recompute(); eb.refresh()
+    eb.refresh()
     # ---- after (e-box)
-    NB = eb.shapes[nb.Name]
+    NB = Part.makeCompound([eb.shapes[f.Name] for f in board])
     dbx = max(abs(getattr(NB.BoundBox, k) - getattr(gb, k)) for k in ("XMin", "XMax", "YMin", "YMax", "ZMin", "ZMax"))
-    p.check(abs(NB.Volume - P.Volume) < 0.05 and len(NB.Solids) == 25 and dbx < TOL,
-            f"{NEW_BOARD}: 25 solids where the fit puts it ({NB.Volume:.1f} mm3; box within {dbx:.5f})")
+    p.check(abs(NB.Volume - P.Volume) < 0.05 and len(board) == 25 and all(len(eb.shapes[f.Name].Solids) == 1 for f in board) and dbx < TOL,
+            f"{NEW_PART}: 25 one-solid parts where the fit puts them ({NB.Volume:.1f} mm3; box within {dbx:.5f})")
+    if FreeCAD.GuiUp:
+        got = {f.Name: tuple(round(c, 2) for c in f.ViewObject.ShapeAppearance[0].DiffuseColor[:3]) for f in board}
+        p.check(len(looks or []) == len(P.Faces) and len(want) == 25 and got == want,
+                f"each part shows its STEP solid's most common face colour ({len(looks or [])} face colours read; "
+                f"{len(set(got.values()))} colours on the parts; the PCB's green comes from colours.json's electronics role)")
     for s in sc:
         pl = sorted(f.BoundBox.XMin for f in eb.shapes[s.Name].Faces if f.Surface.__class__.__name__ == "Plane" and abs(f.Surface.Axis.x) > 0.999)
         p.check(abs(pl[1] - front) < TOL, f"{s.Label}: head on the PCB's front ({pl[1]:.4f} / {front:.4f})")
-    new = {nb.Name} | screws
+    bnames = {f.Name for f in board}
+    new = bnames | screws
     P1 = pairs(new, eb.shapes, set())
     after = dict(zip(P1, p.volumes([(eb.shapes[a], eb.shapes[b]) for a, b in P1])))
     lab = lambda n: ed.getObject(n).Label
     hits = sorted(((round(v, 3), lab(a), lab(b), round(before.get((a, b), 0.0), 3)) for (a, b), v in after.items()
-                   if v > 1e-3 and v > before.get((a, b), 0.0) + 0.01), reverse=True)
-    p.log(f"overlaps of the new board and the screws now: {sorted(((round(v, 3), lab(a), lab(b)) for (a, b), v in after.items() if v > 1e-3), reverse=True)}")
+                   if v > 1e-3 and v > before.get((a, b), 0.0) + 0.01 and not (a in bnames and b in bnames)), reverse=True)
+    p.log(f"overlaps of the new board and the screws now (the board's own parts with each other not checked): "
+          f"{sorted(((round(v, 3), lab(a), lab(b)) for (a, b), v in after.items() if v > 1e-3 and not (a in bnames and b in bnames)), reverse=True)}")
     for v, a, b, w in hits:                    # where: the overlap's box, per solid of the board
         A = eb.shapes[next(n for n in new | set(eb.shapes) if lab(n) == a)]; Bs = eb.shapes[next(n for n in eb.shapes if lab(n) == b)]
         for sa in (A.Solids if len(A.Solids) > 1 else [A]):
