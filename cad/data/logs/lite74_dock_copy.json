@@ -1,0 +1,24 @@
+{
+ "T_lite72": [
+  164.7142,
+  -257.725,
+  0.315
+ ],
+ "mirror_points_off": 0,
+ "bspline_faces": {
+  "lite72": 0,
+  "lite73": 4,
+  "lite74": 0
+ },
+ "before": {
+  "volume_diff": 0.0004,
+  "box_residual": 7.836
+ },
+ "after": {
+  "volume_diff": 0.0,
+  "box_residual": 0.0
+ },
+ "carriage_cut_mm3": 25.078,
+ "src": "vt350-lite-73.FCStd",
+ "ref": "vt350-lite-72.FCStd"
+}

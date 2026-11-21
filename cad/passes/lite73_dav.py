@@ -336,6 +336,9 @@ def main(p):
             f"new ceiling over {len(flat)} lines (>= 1.5)")
     if p.errs: return p.finish([])
     # the Right Dock's copy: the carriage mirrored in X (checked), cut the same way
+    # FOUND AFTER THE SAVE: the copy is the carriage TRANSLATED (this box check can't tell, the carriage is symmetric in X),
+    # and transformGeometry below turns the cut tool into B-splines whose BoundBox overshoots 7.8 mm, so the sweep refused
+    # lite-73. lite74_dock_copy.py rebuilds COMPOUND004 as the carriage moved by T (LESSONS.md).
     G3 = pr.shapes[cp.Name]; c3 = tight(G3)
     Mx = FreeCAD.Matrix(); Mx.A11 = -1; Mx.A14, Mx.A24, Mx.A34 = c3.XMin + cb.XMax, c3.YMin - cb.YMin, c3.ZMin - cb.ZMin
     gm = tight(G.transformGeometry(Mx))

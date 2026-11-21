@@ -296,3 +296,23 @@ committed carriage STL is today's carriage") passed in every dry run and failed 
 checks accept both states (before and already-done), and don't rewrite a derived file that's already current, so its
 sha256 keeps matching the manifest and the print projects. Also: passes read `VT350_REPO`, default `~/Code/vt350`. A
 dry run from a worktree reads and writes the **main checkout** unless you set `VT350_REPO=$PWD`.
+
+## A mirror by `transformGeometry` makes B-splines, and BoundBox lies about them (2026-11-20, lite-73 → lite-74)
+
+lite-73 cut the carriage's Beacon pocket deeper, then cut the Right Dock's copy of the carriage (`COMPOUND004`) with
+the same cut tool mirrored in X by `shape.transformGeometry(matrix)`. The cut landed in the right place, but
+`transformGeometry` turns planes into **B-spline faces**, and `BoundBox` overshoots on B-splines: the copy's box grew
+7.8 mm in Y with its volume unchanged. `sweep_toolhead.py` compares boxes, so it refused lite-73 ("dock carriage copy
+isn't the gantry carriage part"). `optimalBoundingBox` (`litelib.obb`) still agreed to 0.014. Four more things this
+fix taught us:
+
+- **Move rigidly with `transformShape`, `translate`, `rotate` or `mirror`, never `transformGeometry`**, which is for
+  scaling. `Shape.mirror(base, normal)` keeps exact planes; a mirror through `transformGeometry` also made each
+  `distToShape` take minutes.
+- **`Shape.translate` only changes `Shape.Placement`** (and `linkgeo.gshape` puts the global placement there too). Code
+  that then sets the shape's Placement, as every pass's "write in the object's own frame" step does, silently drops the
+  move. Bake first: `pl = s.Placement; s.Placement = FreeCAD.Placement(); s.transformShape(pl.toMatrix(), True, False)`.
+- **Booleans between near-coincident copies are useless** (`lite72_carriage.cut(lite73_carriage)` gave 16,600 mm³ for
+  a 25 mm³ cut). Compare such shapes by sample vertices and `distToShape` instead.
+- **A box check can't tell a mirror from a translation** of a part that's symmetric in X, as this carriage is. lite-74
+  checks the copy point by point against the carriage moved by the pickup offset.
