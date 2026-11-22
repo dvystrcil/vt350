@@ -26,9 +26,11 @@
     "o2s_heatsink": {"hex": "#2A5DB0", "kind": "aluminium", "roughness": 0.35, "note": "Orbitool O2S toolboard heat sink (13 fins), blue anodised aluminium (user, 2026-11-14, #19; split out of the board by lite-34; placeholder hex until photos)"},
     "hardware": {"hex": "#A7ABAF", "kind": "steel", "roughness": 0.3, "note": "PLACEHOLDER hex for the owner to pick (#149): fasteners, washers, nuts, T-nuts, pins, springs, magnets, and any steel part no other rule claims. Starts at brushed_steel's hex so nothing changes look before the owner decides (black oxide or stainless are the usual Voron choices)"},
     "stock_aluminium": {"hex": "#BFC3C7", "kind": "aluminium", "roughness": 0.4, "note": "PLACEHOLDER hex for the owner to pick (#149): aluminium no earlier rule claims (the kinematic bed mount's plates, the build plate, the milled dock). Starts at brushed_aluminium's hex"},
-    "electronics": {"hex": "#1E4D2B", "kind": "plastic", "roughness": 0.5, "note": "PLACEHOLDER hex for the owner to pick (#149): circuit boards (PCBs), green solder mask; the owner's boards may be black"}
+    "electronics": {"hex": "#1E4D2B", "kind": "plastic", "roughness": 0.5, "note": "PLACEHOLDER hex for the owner to pick (#149): circuit boards (PCBs), green solder mask; the owner's boards may be black"},
+    "tracking": {"hex": "#E0218A", "kind": "plastic", "roughness": 0.5, "note": "a render-only tracking colour (magenta, used by nothing else) so a part stands out in motion videos: the Beacon (owner, 2026-11-22, vt350#291: it was white and blended into the carriage). Not the real part's colour"}
   },
   "rules": [
+    {"role": "tracking", "label": "^Beacon RevH ", "note": "vt350#291: the Beacon, magenta so it can be followed in the videos (owner 2026-11-22)"},
     {"role": "backbone", "label": "^backbone-350"},
     {"role": "brushed_aluminium", "group": "NEMA17 ", "label": "^(_Stepper_stator|Motor_Body)\\d* (front|rear) cap$", "note": "the steppers' end caps, silver (owner, 2026-11-18, #237); split from the bodies by lite-76"},
     {"role": "stepper", "group": "NEMA17 ", "label": "^(_Stepper_stator|Motor_Body)\\d*$", "note": "owner, 2026-11-18, #220: they rendered white"},
