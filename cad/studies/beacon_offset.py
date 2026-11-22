@@ -23,6 +23,11 @@ BEACON = "Beacon"                                        # the Beacon body's obj
 NOW = 27.4                                               # today's y_offset (beacon.cfg)
 OFFSETS = (27.4, 22.0, 20.0, 18.0, 17.0, 16.0, 15.0, 14.0, 13.5, 13.0, 12.0, 10.0)
 TOL = 0.01                                               # mm3
+DOCK_OFFSET = 15.0                                       # the docking check's offset: the smallest that clears the head
+SHUTTLE_Y = -26.96          # printer Y: MadMax's params_safe_shuttle_y (cad/klipper/toolchanger.cfg)
+SHUTTLE_X, SHUTTLE_N = (4.0, 346.0), 18                  # printer X along the dock row
+MODEL_FROM_PRINTER = (-420.0, 30.5)                      # cad/klipper/xy_mapping.json
+DOCK_ZONE_Y = 120.0                                      # model Y: parts whose box starts in front of this are checked
 STEP = os.path.expanduser("~/Documents/VT350/downloads/beacon/Beacon_RevH_Assm_Normal.STEP")  # Beacon's CAD (MIT)
 
 
@@ -50,6 +55,7 @@ def main():
     log_f = open(os.path.join(work, "logs", "beacon_offset.log"), "w"); t0 = time.time()
     def log(*a):
         s = f"[{time.time() - t0:7.1f}s] " + " ".join(str(x) for x in a); print(s, flush=True); log_f.write(s + "\n"); log_f.flush()
+    os.environ["SWEEP_BOXES"] = "1"            # every leaf's box (front_reach.py does the same), for the dock zone
     plan = st.plan_stage(clashlib.FREECADCMD)
     log(f"model {st.MODEL} (read-only); Beacon offsets tried: {', '.join(f'{d:g}' for d in OFFSETS)} (today {NOW})")
     out = dict(model=os.path.basename(st.MODEL), now=NOW, heads={})
@@ -71,8 +77,56 @@ def main():
         log(f"   {h}: smallest clear offset tried: {fc}")
         out["heads"][h] = dict(rows=rows, smallest_clear=fc)
     cone(plan, out, log)
+    out["docking"] = docking(plan, n, log)
     json.dump(out, open(os.path.join(work, "beacon_offset.json"), "w"), indent=1)
     log("done (read-only, nothing saved)")
+
+
+def dock_poses(plan, dy=DOCK_OFFSET):
+    """{pose: {group: translation}} with the Beacon at offset dy: each head's own dock pickup poses (sweep_toolhead's,
+    the head on the carriage), and the bare carriage along the dock row at MadMax's shuttle Y (both heads docked)."""
+    shift = (0.0, -(NOW - dy), 0.0)
+    plus = lambda t: tuple(a + b for a, b in zip(t, shift))
+    out = {}
+    for h in plan["carried"]:
+        for pid, tr in plan["poses"][h].items():
+            if pid.startswith("dock pickup"):
+                out[f"{h}: {pid}"] = {"head_" + h: tr["head"], "beacon": plus(tr["carriage"])}
+    c = plan["carried"]["Left"]
+    (nx, ny, _), (tx, ty, _) = c["nozzle"], c["T"]
+    for i in range(SHUTTLE_N):
+        x = SHUTTLE_X[0] + (SHUTTLE_X[1] - SHUTTLE_X[0]) * i / (SHUTTLE_N - 1)
+        xm, ym = x + MODEL_FROM_PRINTER[0], SHUTTLE_Y + MODEL_FROM_PRINTER[1]
+        out[f"bare carriage, shuttle X {x:.0f}"] = {"beacon": plus((xm - nx + tx, ym - ny + ty, 0.0))}
+    return out
+
+
+def docking(plan, n, log):
+    """The Beacon at DOCK_OFFSET against everything but the carriage family, at the dock poses."""
+    import clashlib
+    groups = {"beacon": [BEACON]}
+    for h in plan["carried"]:
+        groups["head_" + h] = [p for p in plan["heads"][h] if p != plan["tubes"][h]]
+    skip = set(plan["carriage"]) | set(plan["gantry"]) | set(plan["belt"]) | set(plan["bed"]) | set(plan["exclude"]) \
+        | set(plan["tubes"].values()) | {BEACON}
+    near = [o for o, b in plan["boxes"].items() if o not in skip and b[4] < DOCK_ZONE_Y and o not in
+            {p for g in groups.values() for p in g}]
+    ps = dock_poses(plan)
+    res = clashlib.run(st.MODEL, groups=groups, poses=ps, fixed=near, n=n, tol=TOL, log=log,
+                       skip_group_pairs=[("head_Left", "head_Right")])
+    found = {}
+    for r in res["results"]:
+        if BEACON in (r["a"], r["b"]): found.setdefault(r["pose"], []).append((r["volume"], r["la"], r["lb"]))
+    for e in res["errors"]:
+        if BEACON in (e["a"], e["b"]): found.setdefault(e["pose"], []).append((-1.0, e["la"], e["lb"] + " [error]"))
+    log(f"-- docking, the Beacon at y_offset {DOCK_OFFSET:g}: {len(ps)} poses against {len(near)} parts in the dock zone"
+        " (both heads, the docks, the bed-edge probe)")
+    rows = []
+    for pid in ps:
+        hit = sorted(found.get(pid, []), reverse=True)
+        rows.append(dict(pose=pid, contacts=[[round(v, 2), a, b] for v, a, b in hit[:5]]))
+        log(f"   {pid}: " + ("clear" if not hit else "; ".join(f"{a} x {b} {v:.1f} mm3" for v, a, b in hit[:3])))
+    return rows
 
 
 def cone(plan, out, log):

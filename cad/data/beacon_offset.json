@@ -536,5 +536,111 @@
     }
    ]
   }
- }
+ },
+ "docking": [
+  {
+   "pose": "Left: dock pickup, top",
+   "contacts": []
+  },
+  {
+   "pose": "Left: dock pickup at the large opening, top",
+   "contacts": []
+  },
+  {
+   "pose": "Left: dock pickup, bottom",
+   "contacts": []
+  },
+  {
+   "pose": "Left: dock pickup at the large opening, bottom",
+   "contacts": []
+  },
+  {
+   "pose": "Right: dock pickup, top",
+   "contacts": []
+  },
+  {
+   "pose": "Right: dock pickup at the large opening, top",
+   "contacts": []
+  },
+  {
+   "pose": "Right: dock pickup, bottom",
+   "contacts": []
+  },
+  {
+   "pose": "Right: dock pickup at the large opening, bottom",
+   "contacts": []
+  },
+  {
+   "pose": "bare carriage, shuttle X 4",
+   "contacts": []
+  },
+  {
+   "pose": "bare carriage, shuttle X 24",
+   "contacts": []
+  },
+  {
+   "pose": "bare carriage, shuttle X 44",
+   "contacts": []
+  },
+  {
+   "pose": "bare carriage, shuttle X 64",
+   "contacts": []
+  },
+  {
+   "pose": "bare carriage, shuttle X 84",
+   "contacts": []
+  },
+  {
+   "pose": "bare carriage, shuttle X 105",
+   "contacts": []
+  },
+  {
+   "pose": "bare carriage, shuttle X 125",
+   "contacts": []
+  },
+  {
+   "pose": "bare carriage, shuttle X 145",
+   "contacts": []
+  },
+  {
+   "pose": "bare carriage, shuttle X 165",
+   "contacts": []
+  },
+  {
+   "pose": "bare carriage, shuttle X 185",
+   "contacts": []
+  },
+  {
+   "pose": "bare carriage, shuttle X 205",
+   "contacts": []
+  },
+  {
+   "pose": "bare carriage, shuttle X 225",
+   "contacts": []
+  },
+  {
+   "pose": "bare carriage, shuttle X 245",
+   "contacts": []
+  },
+  {
+   "pose": "bare carriage, shuttle X 266",
+   "contacts": []
+  },
+  {
+   "pose": "bare carriage, shuttle X 286",
+   "contacts": []
+  },
+  {
+   "pose": "bare carriage, shuttle X 306",
+   "contacts": []
+  },
+  {
+   "pose": "bare carriage, shuttle X 326",
+   "contacts": []
+  },
+  {
+   "pose": "bare carriage, shuttle X 346",
+   "contacts": []
+  }
+ ]
 }
