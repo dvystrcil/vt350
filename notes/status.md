@@ -63,7 +63,7 @@ partial versions that have to be rebuilt in order (lite-67 to lite-71 did this).
 
 | Pass in flight | Branch | Builds on |
 |---|---|---|
-| (none: lite-76 saved 2026-11-21 12:48 PST, #287 merged; next is lite-77) | | |
+| lite-77 (the PEI sheet, vt350#291; saved 2026-11-22 09:21 PST, refresh on the lane) | `feat/lite77-pei-sheet` | lite-76 |
 
 ## Where things are
 
