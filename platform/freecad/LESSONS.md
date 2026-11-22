@@ -346,3 +346,27 @@ with `transformShape(gplace(o).inverse())`) has an identity Placement, so assign
 Placement. lite-76's first dry run put the A/B stepper 50 mm low that way. The Z motor came out right only because its
 Placement happened to be identity. Set `g.Placement = o.Placement` before assigning, with the geometry expressed in
 the frame of `o.Placement`.
+
+## Memory, not cores, sets a sweep's speed (2026-11-22, lite-77)
+
+The batch lane's refresh sweep took 1 h 58 min – 2 h 01 min for lite-75, 76 and 77 on a 32-thread server that was
+about 1% busy. Its log said `clashlib: 5 workers`. The pool sizes itself as
+`min(CPUs − 2, (free MB − reserve) ÷ MB per worker)`, and each worker opens its own copy of the model (2.8 GB budgeted
+per worker, 1 GB reserve), so the job's 16 GiB memory limit allowed 5 workers, half the CPU cap of 10. Adding CPUs
+would have changed nothing. The fix is memory: 30 GiB fits 10 (dvystrcil/gpu-batch#55). The laptop is the same:
+32 GB runs 4 workers on 12 threads.
+
+- When a long run feels slow, read the `N workers` line before anything else, and compare it with the cores.
+- In a container the limit that counts is the cgroup's (`memory.max`), not the host's `/proc/meminfo`.
+- Run times and recommended hardware for outside users: [`../HARDWARE.md`](../HARDWARE.md).
+
+## `import FreeCAD` works only in the AppImage's own Python (2026-11-22)
+
+`python3 platform/freecad/test_litelib.py` fails with `ModuleNotFoundError: No module named 'FreeCAD'` even with
+FreeCAD installed: the module lives inside the AppImage. Run any test that imports FreeCAD as
+`$APP freecadcmd $PWD/<test>` (test_litelib: 68 tests, test_logos: 10, both OK). A plain-python test that imports
+numpy/scipy (`cad/studies/flap_guide/test_rod.py`) is the opposite case: it needs the system's `python3-numpy` and
+`python3-scipy`, and under `freecadcmd` it exits 0 without running anything, because `unittest.main()` sits behind
+`if __name__ == "__main__"`. Don't read either failure as "needs an environment we don't have" until it has been
+tried in the right interpreter.
+
