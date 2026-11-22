@@ -1,9 +1,42 @@
 #!/usr/bin/env python3
 """Tests for beacon_scan.py (vt350#291). Run: python3 cad/motion/test_beacon_scan.py"""
-import os, sys, unittest
+import os, sys, tempfile, unittest
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import beacon_scan as bs  # noqa: E402
+
+
+class FromTheConfig(unittest.TestCase):
+    """The video's values are beacon.cfg's and printer.cfg's (owner 2026-11-22: link the cfg to the rendering)."""
+
+    def test_committed_values(self):
+        s = bs.settings()
+        self.assertEqual(s["offset"], (0.0, 27.4))
+        self.assertEqual(s["axis_min"], (4.0, -82.43)); self.assertEqual(s["axis_max"], (346.0, 340.19))
+        self.assertEqual(len(s["tilt_points"]), 3)
+
+    def test_a_changed_cfg_changes_the_path(self):
+        with open(bs.BEACON_CFG) as f:
+            text = f.read()
+        with tempfile.TemporaryDirectory() as d:
+            p = os.path.join(d, "beacon.cfg")
+            with open(p, "w") as f:
+                f.write(text.replace("mesh_min: 5.48, 5.48", "mesh_min: 20, 30").replace("probe_count: 15, 15", "probe_count: 7, 9"))
+            s = bs.settings(beacon_cfg=p)
+        self.assertEqual(s["mesh_min"], (20.0, 30.0)); self.assertEqual(s["probe_count"], (7, 9))
+        path = bs.scan_path(s["mesh_min"], s["mesh_max"], s["probe_count"], s["offset"])
+        self.assertAlmostEqual(path[0][0], 20.0); self.assertAlmostEqual(path[0][1], 30.0 - 27.4)
+
+    def test_committed_gcode_is_what_the_cfg_gives(self):
+        """Edit beacon.cfg, then: python3 cad/motion/beacon_scan.py > cad/motion/beacon_scan.gcode, and rerun Kalico
+        for the timeline (cad/motion/README.md)."""
+        with open(os.path.join(os.path.dirname(bs.__file__), "beacon_scan.gcode")) as f:
+            self.assertEqual(f.read(), bs.gcode())
+
+    def test_printer_cfg_does_not_include_beacon_cfg_yet(self):
+        """Kalico batch mode can't load [beacon]; printer.cfg includes beacon.cfg when the Beacon is wired."""
+        import pinmap
+        self.assertNotIn(os.path.abspath(bs.BEACON_CFG), pinmap.load(bs.PRINTER_CFG).files)
 
 
 class Overscan(unittest.TestCase):

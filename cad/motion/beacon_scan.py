@@ -18,27 +18,53 @@ _handle_connect's auto overscan, arc_points), reimplemented here:
     nozzle range to the axis limits.
   - the scan flies at Z = trigger_distance (2) at bed_mesh speed.
 
-MESH_MIN/MAX are the coil positions the mesh would ask for. PROPOSED: the coil fully on the plate (vt350#291: printer
-5.48 .. 344.52; the owner hasn't chosen the mesh limits). Plain python3, standard library only. VT350-specific.
+Every value comes from the config, so the video shows what the printer would do (owner, 2026-11-22):
+cad/klipper/beacon.cfg ([beacon], [bed_mesh], [z_tilt]; not included by printer.cfg yet) and the X/Y axis limits from
+printer.cfg and its includes (cad_values.cfg). Plain python3, standard library only. VT350-specific.
 """
 import math
+import os
 import sys
 
-BEACON_XY = (0.0, 27.4)      # [beacon] x_offset, y_offset: the coil centre less the nozzle (lite24_beacon.py)
-MESH_MIN = (5.48, 5.48)      # PROPOSED, coil on the plate (vt350#291)
-MESH_MAX = (344.52, 344.52)
-PROBE_COUNT = (15, 15)
-AXIS_MIN = (4.0, -82.43)     # cad_values / printer.cfg position_min, X and Y
-AXIS_MAX = (346.0, 340.19)
-HOME_XY = (175.0, 175.0)     # where the nozzle taps Z0 (Beacon home_xy_position, contact homing). PROPOSED: the centre
-TRIGGER_Z = 2.0              # [beacon] trigger_distance default: the scan height
-# [z_tilt] points: where the nozzle taps. Klipper (Config_Reference [z_tilt]): nozzle coordinates, with the probe over the
-# bed; z_positions are the pivots (the leadscrews), not probe points. These are Voron's stock Trident 350 points
-# (VoronDesign/Voron-Trident Firmware/Octopus/Trident_Octopus_Config.cfg, 350 build: 30,5 / 175,295 / 320,5; its
-# z_positions -66,11 / 175,402 / 416,11). Ours, from lite-76 (printer XY): front left (-38, 1.5), rear (175.2, 419.6),
-# front right (388, 1.5), in stepper_z, z1, z2 order. PROPOSED: the front taps at Y 5 wait on vt350#291's front reach.
-TILT_POINTS = ((30.0, 5.0), (175.0, 295.0), (320.0, 5.0))
-SCAN_SPEED = 300.0           # mm/s. PROPOSED; [bed_mesh] speed (Beacon's default is 50; max_velocity is 300)
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
+sys.path[:0] = [os.path.join(ROOT, "platform", "klipper")]
+import pinmap  # noqa: E402
+
+BEACON_CFG = os.path.join(ROOT, "cad", "klipper", "beacon.cfg")
+PRINTER_CFG = os.path.join(ROOT, "cad", "klipper", "printer.cfg")
+TRIGGER_Z = 2.0              # [beacon] trigger_distance (Beacon's default; not set in beacon.cfg): the scan height
+
+
+def _xy(v):
+    a, b = (float(t) for t in v.split(","))
+    return (a, b)
+
+
+def _xy_list(v):
+    return tuple(_xy(line) for line in v.strip().splitlines() if line.strip())
+
+
+def settings(beacon_cfg=BEACON_CFG, printer_cfg=PRINTER_CFG):
+    """The values the video uses, from the config files."""
+    b = pinmap.load(beacon_cfg).sections
+    p = pinmap.load(printer_cfg).sections
+    pc = [int(t) for t in b["bed_mesh"]["probe_count"].split(",")]
+    return dict(
+        offset=(float(b["beacon"].get("x_offset", 0)), float(b["beacon"].get("y_offset", 0))),
+        home_xy=_xy(b["beacon"]["home_xy_position"]),
+        direction=b["beacon"].get("mesh_main_direction", "y").lower(),
+        mesh_min=_xy(b["bed_mesh"]["mesh_min"]), mesh_max=_xy(b["bed_mesh"]["mesh_max"]),
+        probe_count=(pc[0], pc[-1]), speed=float(b["bed_mesh"]["speed"]),
+        tilt_points=_xy_list(b["z_tilt"]["points"]),
+        axis_min=(float(p["stepper_x"]["position_min"]), float(p["stepper_y"]["position_min"])),
+        axis_max=(float(p["stepper_x"]["position_max"]), float(p["stepper_y"]["position_max"])))
+
+
+S = settings()
+BEACON_XY, HOME_XY, TILT_POINTS = S["offset"], S["home_xy"], S["tilt_points"]
+MESH_MIN, MESH_MAX, PROBE_COUNT = S["mesh_min"], S["mesh_max"], S["probe_count"]
+AXIS_MIN, AXIS_MAX, SCAN_SPEED, DIRECTION = S["axis_min"], S["axis_max"], S["speed"], S["direction"]
 
 
 def arc_points(cx, cy, r, start_deg, span_deg):
@@ -50,7 +76,7 @@ def arc_points(cx, cy, r, start_deg, span_deg):
 
 
 def overscan(mesh_min=MESH_MIN, mesh_max=MESH_MAX, count=PROBE_COUNT, offset=BEACON_XY, axis_min=AXIS_MIN,
-             axis_max=AXIS_MAX, direction="y"):
+             axis_max=AXIS_MAX, direction=DIRECTION):
     """_handle_connect's auto overscan (mesh_overscan unset)."""
     a, p = (1, 0) if direction == "y" else (0, 1)          # along the lines, across them
     lo, hi = mesh_min[a] - offset[a], mesh_max[a] - offset[a]
@@ -58,7 +84,7 @@ def overscan(mesh_min=MESH_MIN, mesh_max=MESH_MAX, count=PROBE_COUNT, offset=BEA
     return min(max(0.0, lo - axis_min[a]), max(0.0, axis_max[a] - hi), space + 2.0)
 
 
-def scan_path(mesh_min=MESH_MIN, mesh_max=MESH_MAX, count=PROBE_COUNT, offset=BEACON_XY, over=None, direction="y"):
+def scan_path(mesh_min=MESH_MIN, mesh_max=MESH_MAX, count=PROBE_COUNT, offset=BEACON_XY, over=None, direction=DIRECTION):
     """Nozzle XY points of the scan, in order (_generate_path)."""
     if over is None:
         over = overscan(mesh_min, mesh_max, count, offset, direction=direction)
