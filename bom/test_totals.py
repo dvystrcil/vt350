@@ -223,11 +223,65 @@ class TestHeads(TempCSV):
         self.assertNotEqual(p.returncode, 0)
 
 
+ROUNDS = [{"name": "One", "stages": [7, 8], "why": "first"},
+          {"name": "Two", "stages": [9, 10, 11, 12, 13, 14, 15], "why": "rest"}]
+
+
+class TestRounds(TempCSV):
+    """--rounds (#22, owner 2026-11-21: "I will not be able to buy all the parts at once")."""
+
+    def test_rows_go_to_the_round_of_their_stage(self):
+        rows, _ = totals.load(self.write(HEADER + row("frame bar", stage="#7") + row("hotend", stage="#12")))
+        r = totals.plan_rounds(rows, ROUNDS)
+        self.assertEqual([x["item"] for x in r[0]["buy"]], ["frame bar"])
+        self.assertEqual([x["item"] for x in r[1]["buy"]], ["hotend"])
+
+    def test_only_what_is_still_to_buy(self):
+        text = HEADER + row("bought", status="ordered", stage="#7") + row("in hand", needed="2", owned="2", stage="#7")
+        text += row("half", needed="4", owned="1", price="2.00", stage="#7")
+        rows, _ = totals.load(self.write(text))
+        one = totals.plan_rounds(rows, ROUNDS)[0]
+        self.assertEqual([(x["item"], x["rest"]) for x in one["buy"]], [("half", Decimal(3))])
+        self.assertEqual(one["cost"], {"USD": Decimal("6.00")})
+
+    def test_per_head_rows_count_every_head(self):
+        rows, _ = totals.load(self.write(HEADER + row("nozzle", needed="1", owned="1", stage="#12", cat="per head")))
+        two = totals.plan_rounds(rows, ROUNDS, heads=3)[1]
+        self.assertEqual(two["buy"][0]["rest"], Decimal(2))
+
+    def test_decide_and_unpriced_rows_are_listed_apart(self):
+        text = HEADER + row("which psu", status="decide", needed="as needed", price="", cur="", stage="#7")
+        text += row("bolts", price="", cur="", stage="#7")
+        rows, _ = totals.load(self.write(text))
+        one = totals.plan_rounds(rows, ROUNDS)[0]
+        self.assertEqual([x["item"] for x in one["decide"]], ["which psu"])
+        self.assertEqual([x["item"] for x in one["buy"]], ["bolts"])
+        self.assertEqual(one["cost"], {})
+        self.assertEqual(one["unpriced"], 1)
+
+    def test_every_stage_in_exactly_one_round(self):
+        self.assertEqual(totals.check_rounds(ROUNDS), [])
+        self.assertTrue(totals.check_rounds([{"name": "A", "stages": [7], "why": ""}]))      # 8..15 missing
+        self.assertTrue(totals.check_rounds(ROUNDS + [{"name": "B", "stages": [7], "why": ""}]))  # 7 twice
+
+    def test_markdown_has_a_section_per_round_and_its_cost(self):
+        rows, _ = totals.load(self.write(HEADER + row("frame bar", needed="2", price="10.00", stage="#7")))
+        md = totals.rounds_markdown(totals.plan_rounds(rows, ROUNDS), heads=2)
+        self.assertIn("## Round 1: One", md)
+        self.assertIn("## Round 2: Two", md)
+        self.assertIn("USD 20.00", md)
+        self.assertIn("frame bar", md)
+
+
 class TestRepo(unittest.TestCase):
     def test_real_bom_passes_the_check(self):
         p = subprocess.run([sys.executable, SCRIPT, "--check"], capture_output=True, text=True)
         self.assertEqual(p.returncode, 0, p.stdout + p.stderr)
         self.assertEqual(p.stdout.strip().splitlines()[-1], "bom-check: OK")
+
+    def test_buying_rounds_page_is_fresh(self):
+        p = subprocess.run([sys.executable, SCRIPT, "--rounds", "--check-page"], capture_output=True, text=True)
+        self.assertEqual(p.returncode, 0, p.stdout + p.stderr)
 
     def test_real_bom_totals_run(self):
         p = subprocess.run([sys.executable, SCRIPT], capture_output=True, text=True)
