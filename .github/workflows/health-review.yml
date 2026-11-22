@@ -30,12 +30,18 @@ jobs:
         id: checks
         continue-on-error: true
         run: |
+          # the virtual printer's simulavr commit and tree sha256: both sources must still serve them (vt350#224)
+          df=platform/virtualprinter/Dockerfile
+          vp_simulavr="$(sed -n 's/^ARG SIMULAVR_SHA=//p' $df) $(sed -n 's/^ARG SIMULAVR_TREE_SHA256=//p' $df)"
           python3 platform/health/health_review.py --repo "${{ github.repository }}" --out report.md \
-            --dockerfile platform/kalisim/Dockerfile \
+            --dockerfile platform/kalisim/Dockerfile --dockerfile platform/virtualprinter/Dockerfile \
             --git-pin KALICO_SHA=https://github.com/KalicoCrew/kalico@main \
             --git-pin TOOLCHANGER_SHA=https://github.com/viesturz/klipper-toolchanger@main \
+            --git-pin SIMULAVR_SHA=https://github.com/pedrolamas/simulavr@master \
+            --git-pin MOONRAKER_SHA=https://github.com/Arksine/moonraker@master \
             --image-pin ghcr.io/kalicocrew/kalico:main \
             --run "bash platform/testing/check_test_tmp.sh" \
+            --run "bash platform/virtualprinter/check_sources.sh $vp_simulavr https://github.com/pedrolamas/simulavr.git https://github.com/dvystrcil/simulavr.git" \
             --doc notes/status.md --doc cad/README.md --scripts cad/scripts
       - name: Open or update the health review issue
         run: |

@@ -30,7 +30,7 @@ The firmware is [Kalico](https://github.com/KalicoCrew/kalico) (user, 2026-11-09
 |---|---|---|---|
 | X | 4.00 | 346.00 | `sweep_toolhead.log`: "first nozzle X with no new overlap" −416.0 / −74.0, both heads |
 | Y | −82.43 | 340.19 | `sweep_toolhead.log`: "nozzle Y reach −51.93 .. 370.69", both heads |
-| Z | −15 | 330.33 | min: not a CAD limit (see below); max: `z_sweep.log` `klipper_position_max_configured_mm` |
+| Z | −15 | 330.43 | min: not a CAD limit (see below); max: `z_sweep.log` `klipper_position_max_configured_mm` |
 
 X and Y are mapped by the proposed `xy_mapping.json`: origin at the print square's front-left corner, model (−420.0, 30.5); X+ = model +X, Y+ = model +Y. With that mapping the CAD gives a 342 × 422.6 mm XY box, so it is **not** the 350 mm square. The nozzle stops 4 mm short of each X edge of the print square and 9.81 mm short of its rear edge (Y 340.19 of 350), while Y below 0 reaches the docks.
 
@@ -90,6 +90,9 @@ python3 cad/klipper/test_dock_params.py            # no Docker: toolchanger.cfg 
 python3 platform/klipper/test_frontend.py          # no Docker: the front-end switch and the vendored client configs
 python3 platform/klipper/test_pinmap.py            # no Docker: the pin-map generator and its check
 python3 platform/klipper/pinmap.py check --config cad/klipper/printer.cfg --map cad/klipper/pinmap.json   # "pinmap: OK"
+python3 cad/klipper/test_virtual_printer.py        # no Docker: a new [heater_bed] fails the virtual printer's drift check
+python3 platform/virtualprinter/prepare.py --check --source . --config cad/klipper/printer.cfg \
+    --map cad/klipper/pinmap.json --sensors <Kalico's klippy/extras/temperature_sensors.cfg>   # "virtual-printer: check OK"
 bash cad/klipper/test_in_container.sh      # Docker: builds the image, runs the Kalico tests; "kalico-batch: OK"
 ```
 
@@ -134,10 +137,23 @@ so a second one never replaces the first. Give `status` and `stop` the same `--p
   start, as the batch tests seed it.
 - **Nothing persists:** configs, logs, Moonraker's database and the save file live in the container and go when it
   stops. Edits made in Fluidd's config editor are lost; to keep one, make it in `cad/klipper/` and restart.
-- **Same limits as batch mode, plus:** probes never trigger; the endstops read triggered; each simulated thermistor
-  reads a steady 124.3 °C (simulavr's idle ADC input), so a heater given a target never heats and Kalico shuts down
-  with "not heating at expected rate" after about 30 s. `FIRMWARE_RESTART` clears that: simulavr has no watchdog to
-  reboot a board, so `reset_watch.py` restarts each board's simulator when klippy resets it.
+- **Same limits as batch mode, plus:** probes never trigger and the endstops read triggered. A board that klippy
+  resets (`FIRMWARE_RESTART`, or the restart after a shutdown) is restarted by `reset_watch.py`: simulavr has no
+  watchdog to reboot it.
+- **Heaters heat:** each board runs `platform/virtualprinter/heatsim.py` (Kalico's `scripts/avrsim.py` plus a
+  thermal model). For each heater whose sensor is a thermistor on the same board (here `extruder` and `extruder1`;
+  the start log lists them), it follows the heater pin's PWM and drives the thermistor's ADC pin with the reading a
+  first-order heater would give: ambient 25 °C, heating toward 25 + 350 °C at full power (a bed: 25 + 120), cooling
+  back to 25 °C when off. So `M104`/`M109`, `SET_HEATER_TEMPERATURE` and Fluidd's heater fields heat to the target,
+  hold it under Kalico's own PID, and cool when set to 0. The model runs in the board's simulated time (klippy's
+  print time), so the PID sees a plant like a real one; but simulavr runs 10 to 25 times slower than real time, so
+  on the wall clock heating is much slower than on a printer: on 2026-11-19 (a busy machine), `M104 T0 S200` reached
+  197 °C after about 10 minutes, held 198 to 201 °C, and after `M104 T0 S0` fell to 152 °C in 5 minutes.
+  verify_heater counts wall-clock time, so the container's top config stretches its checks on each simulated heater
+  30 times (`[verify_heater extruder]` `check_gain_time: 600`, `max_error: 3600`); a heater that doesn't heat still
+  shuts the printer down, only later. A first try with the model on the wall clock heated at real speed, but the PID
+  (which runs in print time) lagged it and swung by ±10 °C. Not modelled: filament, part fans. A board restart
+  starts its heaters again at 25 °C. The VT350 has no `[heater_bed]` yet, so `M140`/`M190` answer "Unknown command".
 - **Probes:** a simulated input reads its pull-up, so `^PG11` (the Zero's NC switch: high when pressed) read
   triggered and `TC_GET_PROBE_POSITION` stopped at once with "Probe triggered prior to movement". The top config
   inverts it (`^!`), so the probe reads untriggered, as in batch mode, and each probing move runs its full distance
@@ -149,6 +165,20 @@ so a second one never replaces the first. Give `status` and `stop` the same `--p
   says so at connect ("MCU 'mcu' configured for 20000000Hz but running at 2000000Hz!" or similar). That warning is
   expected; nothing to fix. On a busy machine a board can miss klippy's 5 s connect window and klippy stops with an
   error; `start` then restarts klippy, up to 3 times, and says so.
+- **When `printer.cfg` gains a pin** (a `[heater_bed]`, a fan; #15), CI fails until the virtual printer covers it:
+  `pinmap.py check` (the new pin isn't in `pinmap.json`: regenerate it with `pinmap.py generate`, which keeps the
+  other pins where they are) and `prepare.py --check` (the same, plus every heater must be one the container
+  simulates: heater and thermistor on the same board, and a `sensor_type` that is a thermistor in Kalico's list at
+  the kalisim commit). A heater it can't simulate would read a steady 25 °C and shut the printer down on a target.
+  `test_virtual_printer.py` adds a fake `[heater_bed]` to a copy of this folder and expects both to fail.
+- **A reproducible build:** every input is pinned, and each pin is on [`cad/tools.md`](../tools.md) (CI fails when one
+  isn't). Debian packages at exact versions from snapshot.debian.org as of `DEBIAN_SNAPSHOT` (a version Debian has
+  since replaced still downloads); pip packages by version and sha256 (`--require-hashes`); simulavr by commit and by
+  the sha256 of its tree, so another copy builds the same source or fails. If the pedrolamas mirror goes away, build
+  from the owner's fork (it has the tags simulavr's version needs): `docker build --build-arg
+  SIMULAVR_URL=https://github.com/dvystrcil/simulavr.git ...` (`virtualprinter.sh` builds with the default). The
+  monthly health review checks that both still serve the pinned commit and tree
+  (`platform/virtualprinter/check_sources.sh`), and watches the simulavr and Moonraker commits for upstream moves.
 - **Moonraker's `docs` root** is Kalico's `docs/` at the image's commit (the published Kalico image has none, and
   Moonraker warned "Supplied path (/opt/klipper/docs) for (docs) is invalid").
 - **What to click (AC2),** in Fluidd. `INITIALIZE_TOOLCHANGER` and `UNSELECT_TOOL` are klipper-toolchanger
@@ -166,7 +196,9 @@ so a second one never replaces the first. Give `status` and `stop` the same `--p
   5. `T1`, then `UNSELECT_TOOL` (console): "Dropping off tool T…", with "Unknown command:
      STOP_TOOL_PROBE_CRASH_DETECTION" (expected, as in batch mode), then "Tool unselected".
   6. The part-fan sliders (`part_fan_t0`, `part_fan_t1`); `SET_FAN_SPEED FAN=part_fan_t0 SPEED=0.5`.
-  7. `TC_*` macros: `TC_ADJUST_OFFSET` with no arguments answers "Tool must be specified" (expected). The probing
+  7. Heat: `M104 T0 S200` (or T0's extruder field in Fluidd). The temperature climbs, slowly (Heaters heat, above),
+     and holds near 200 °C; `M104 T0 S0` lets it cool.
+  8. `TC_*` macros: `TC_ADJUST_OFFSET` with no arguments answers "Tool must be specified" (expected). The probing
      ones (`TC_GET_PROBE_POSITION`, `TC_FIND_TOOL_OFFSETS`) run with T0 over the Zero on the printer; here they may
      stop the printer (Probes, above).
 
@@ -179,6 +211,33 @@ so a second one never replaces the first. Give `status` and `stop` the same `--p
   bug: on the printer the probe runs over the Zero (Y −12.5), never at an axis limit, but any probing move that
   ends at exactly `position_max` would do the same.
 - **What's pinned:** `platform/virtualprinter/Dockerfile` (simulavr, Moonraker, its Python packages, Fluidd).
+
+### Keeping pins current
+
+Two automations keep the pins above (and kalisim's) moving, with no AI and no hand edits; each opens a PR you merge
+once its checks are green. Every step is `cad/klipper/repin.sh`, which runs the same by hand from the repo root.
+
+- **Renovate** (`renovate.json`, on the shared `dvystrcil/renovate-config` preset, no automerge): one "virtual printer
+  pins" PR on the 1st of each month for the builder image digest (`python:3.12-slim-bookworm@sha256:…`), simulavr's
+  commit (`SIMULAVR_SHA`, pedrolamas/simulavr's `master`, a git-refs custom manager) and `setuptools`; and, as in every
+  repo on the preset, the GitHub Actions (third-party ones pinned by SHA). Renovate can't compute simulavr's tree
+  sha256, `pip_lock.py`'s hashes or `cad/tools.md`, so the **renovate-fixup** job in
+  `.github/workflows/repin-virtualprinter.yml` does, on Renovate's branch (`repin.sh fixup <merge base>`), and
+  commits them. Left out on purpose: Moonraker's packages (below), and the Kalico image, which moves with
+  `KALICO_SHA` by hand (the health review reports the drift).
+- **The monthly repin** (same workflow, the 2nd of each month, or Actions > "Repin the virtual printer" > Run):
+  `repin.sh monthly` moves `DEBIAN_SNAPSHOT` to that day in both Dockerfiles, re-pins every apt package to the
+  version the snapshot serves (`platform/kalisim/apt_repin.py`, in each stage's base image), re-resolves Moonraker's
+  python packages within Moonraker's own ranges at `MOONRAKER_SHA` (a `pip freeze` in the kalisim image, then
+  `pip_lock.py`), re-hashes, updates `cad/tools.md`, and builds both images: the build is the test. It opens a PR
+  (`repin/virtualprinter-<snapshot>`) only when a pin moved, and closes an older one still open.
+- **Checks on those PRs:** a push or PR made with the workflow's `GITHUB_TOKEN` starts no workflow runs, so both
+  jobs start `test-tmp` and `kalico-batch` themselves (`workflow_dispatch` on the branch; `kalico-batch` builds both
+  images). Not moved by either: `KALICO_SHA`, `TOOLCHANGER_SHA`, `MOONRAKER_SHA`, Fluidd (the health review watches
+  the commits).
+- **By hand:** `bash cad/klipper/repin.sh monthly` (needs docker; the two image builds take minutes), or one step:
+  `snapshot [TS]`, `moonraker`, `pip-lock`, `simulavr-tree`, `tools-page <git ref>`, `build`. Each ends with
+  "repin: <step> OK".
 
 ## The image (`kalisim/Dockerfile`)
 

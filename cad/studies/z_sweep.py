@@ -34,7 +34,8 @@ import contact
 
 MODEL = os.environ.get("VT350_MODEL", "/home/dan/Documents/VT350/vt350-lite-29.FCStd")
 ENVELOPE = re.compile(r"^.+ envelope \(contents in ([^()]+\.FCStd)\)$")
-PLATE, MAGNET, NOZZLE = "LDO 350 build plate", "Magnetic sheet", "E3D v6 HotEnd - Nozzle"
+PLATE, MAGNET = "LDO 350 build plate", "Magnetic sheet"
+NOZZLE = ("TL-dragon-ace-MZE nozzle (brass V6)", "E3D v6 HotEnd - Nozzle")   # lite-73+ (MZE assembly), lite-72 and older
 BLOCK_GROUP, BLOCK_PART, RAIL_GROUP = "MGN9H (", "MGN9H - Carriage", "MGN9 - 400mm"
 RAY_GRID = 0.5          # mm between ray probes over a block or rail footprint
 CARRIED_POSE = "centre, top"

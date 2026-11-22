@@ -135,6 +135,15 @@ class TheCommittedMap(unittest.TestCase):
                           ("003", "rubber"), ("004", "dragon_orange"), ("005", "rubber"), ("006", "dragon_orange"),
                           ("007", "rubber"), ("008", "dragon_orange")):
             self.assertEqual(co.role_of(m, sleeve + suf, a4t, "Default"), role, sleeve + suf)
+        # lite-73 (#263) renames the hotend parts "... (stand-in)" (no Volcano CAD): same colours
+        for lab, role in ((sink, "dragon_heatsink"), (sink + "001", "copper"), (sink + "008", "dragon_heatsink"),
+                          (sleeve, "rubber"), (sleeve + "3", "dragon_orange"), (sleeve + "007", "rubber"),
+                          (sleeve + "008", "dragon_orange")):
+            self.assertEqual(co.role_of(m, lab + " (stand-in)", a4t, "Default"), role, lab + " (stand-in)")
+        # lite-73 (#263): the Trianglelab MZE assembly's nozzle and sock (FreeCAD numbers repeats)
+        for lab, role in (("TL-dragon-ace-MZE nozzle (brass V6)", "brass"), ("TL-dragon-ace-MZE nozzle (brass V6)004", "brass"),
+                          ("TL-dragon-ace-MZE sock", "rubber"), ("TL-dragon-ace-MZE sock003", "rubber")):
+            self.assertEqual(co.role_of(m, lab, a4t, "Default"), role, lab)
         for lab in ("Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)",
                     "Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)"):
             self.assertEqual(co.role_of(m, lab, th, "Default"), "o2s_heatsink", lab)
@@ -168,7 +177,7 @@ class TheCommittedMap(unittest.TestCase):
 
     def test_stepper_motors_are_black(self):
         # vt350#220 (owner, 2026-11-18: "We need to give the stepper motors their proper color, they are white"):
-        # black body; the silver end caps need the one-solid body split first.
+        # black body; the silver end caps are their own parts from lite-76 (#237).
         m = co.load()
         top = "4040-350x350x250 Voron Trident v4 v33"
         for lab, grp in (("_Stepper_stator", top + " / Rear right: _Rear_right / NEMA17 with 45mm long shaft"),
@@ -176,6 +185,11 @@ class TheCommittedMap(unittest.TestCase):
                          ("Motor_Body", top + " / Z_Motor_Left / NEMA17 Leadscrew 400mm"),
                          ("Motor_Body002", top + " / Z_Motor_Rear / NEMA17 Leadscrew 400mm (2)")):
             self.assertEqual(co.role_of(m, lab, grp, "Default"), "stepper", lab)
+        for lab, grp in (("_Stepper_stator front cap", top + " / Rear right: _Rear_right / NEMA17 with 45mm long shaft"),
+                         ("_Stepper_stator001 rear cap", top + " / Rear left: _Rear_left / NEMA17 with 45mm long shaft001"),
+                         ("Motor_Body front cap", top + " / Z_Motor_Left / NEMA17 Leadscrew 400mm"),
+                         ("Motor_Body002 rear cap", top + " / Z_Motor_Rear / NEMA17 Leadscrew 400mm (2)")):
+            self.assertEqual(co.role_of(m, lab, grp, "Default"), "brushed_aluminium", lab)       # #237, lite-76
         self.assertEqual(co.role_of(m, "_Stepper_shaft_S45R", top + " / Rear right: _Rear_right / NEMA17 with 45mm long shaft",
                                     "Default"), "brushed_steel")
         self.assertEqual(co.role_of(m, "Leadscrew (rod)", top + " / Z_Motor_Left / NEMA17 Leadscrew 400mm", "Steel-Generic"),

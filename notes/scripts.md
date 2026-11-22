@@ -32,17 +32,19 @@ flowchart TD
 | Only the reach changed (sweep re-run by hand) | `python3 cad/scripts/refresh.py N --from print_area` | seconds |
 | Changed a file in `parts/printed/` or `manifest.csv` | `python3 platform/parts/check-printed.py` (add `--write-index` to rebuild the README table) | seconds |
 | Will a part print without supports? (before any PETG test-fit) | `python3 platform/parts/slice-check.py <stl…>`: report + red-support preview; see `parts/slice/README.md` | ~1 s/part, up to ~1 min for big ones |
+| Changed a printed part's STL, its qty or material, or `parts/slice/sets.json` (#217) | `python3 platform/parts/orca_projects.py parts/slice/sets.json`: regenerates the stale OrcaSlicer projects in `parts/slice/projects/` (one 3MF per work unit, a plate per material, MMU filament slots, Neptune presets selected); `--check` (CI, no Orca) names the stale ones; `--all` redoes all; see `parts/slice/README.md` | a few s per project |
 | Changed `parts/printed/manifest.csv` or `bom/bom.csv`, or added an assembly page | `python3 platform/docs/step_parts.py`: rewrites each `docs/assembly/stage-N-*.md` page's Print and Buy tables; CI runs `--check` | instant |
 | What has the build cost, and what's left to buy? (or after editing `bom/bom.csv`) | `python3 bom/totals.py [--heads N]`: spent / still to spend / grand total per currency for N toolheads (default 2; `per head` rows list one head's parts and are multiplied by N), unpriced and `decide` (undecided, not counted) rows listed; `--check` only validates the CSV (rules in the script's docstring) | instant |
 | Changed a pin in `cad/klipper/printer.cfg` (or a file it includes) | `python3 platform/klipper/pinmap.py generate --config cad/klipper/printer.cfg --map cad/klipper/pinmap.json`, then `... check ...` ("pinmap: OK"; CI runs the check) | instant |
 | Click through the Kalico macros in Fluidd, before the hardware exists (#224) | `bash cad/klipper/virtual-printer.sh start` ("virtual-printer: ready", Fluidd at http://127.0.0.1:8080/), `... stop` ("virtual-printer: stopped"); below | ~30 s cached, ~5 min first build |
+| Repin the virtual printer's build (new Debian snapshot, apt versions, Moonraker's packages, hashes, `cad/tools.md`); CI does it monthly and on Renovate's PRs (#224) | `bash cad/klipper/repin.sh monthly` ("repin: monthly OK"); one step: `snapshot`, `moonraker`, `pip-lock`, `simulavr-tree`, `tools-page <ref>`, `build`; see `cad/klipper/README.md`, "Keeping pins current" | minutes (two image builds) |
 | Checking pinned upstream STLs haven't drifted | `python3 platform/parts/check-printed.py --upstream` (network; CI doesn't run it) | ~1 min |
 | See what refresh *would* do, writing nothing | `python3 cad/scripts/refresh.py N --dry-run` | seconds |
 | Full colour renders of the whole printer, here on the laptop | `cad/render/render_full.sh [N] [samples]` (below) | ~6 min; prints the image paths |
 | Where is part X? What sits below/above Z? (no FreeCAD) | `jq` on `~/Documents/VT350/<model>.parts.json` (below; `part_index.py --check` first) | instant |
 | A GLB of part of the printer for the 3D viewer (licence-checked) | `cad/viewer/export_glb.sh [N] [selection.json]` (below) | a few minutes; prints the GLB path, `glb-export: OK` |
 | A render of a sweep pose (clash in red) | `export_pose.py`, then `gpu-batch-submit.py` (below) | ~5 min, result posted to the issue |
-| A new model change (lite-N) | a GUI pass script: Claude writes it, you click **Wait** | 5–40 min |
+| A new model change (lite-N) | a GUI pass script: Claude writes it, you click **Wait**; at the end a box says SAVED or NOT SAVED (#280; `PASS_GUI_NOTICE=report` for unattended runs) | 5–40 min |
 
 ## The everyday commands
 
@@ -54,7 +56,7 @@ python3 cad/scripts/refresh.py 26 --from sweep   # start part-way
 python3 cad/scripts/refresh.py 26 --dry-run      # plan + which parts/printed copies would change
 ```
 
-- **What it runs, in order:** `part_index` (the model's box index and its companions', below; skipped if fresh) → `derive_stls` → `sync_printed` → `check_printed` → `sweep` → `print_area` → `test_print_area`.
+- **What it runs, in order:** `part_index` (the model's box index and its companions', below; skipped if fresh) → `derive_stls` → `sync_printed` → `check_printed` → `orca_projects` (regenerates the print projects whose STLs changed, #217) → `sweep` → `print_area` → `test_print_area`.
 - **When a step fails:** it stops and prints `refresh: FAILED: step X …`, naming the log to read. A missing completion line also counts as a failure.
 - **On success:** it prints `refresh: OK` and a summary: STLs re-copied, reach vs the committed sweep, and print area. The summary is also saved to `cad/data/logs/refresh.log`.
 - **What it never does:** save a model or commit. Afterwards, `git diff --stat` shows what changed, and you commit it.
@@ -101,6 +103,20 @@ the manifest writes `12`, the BOM writes `#12`. A new page gets its tables once 
 
 `--check` fails on a stale table, or on a page whose stage has parts but which has no markers. Stages with parts and
 no page yet are only warnings.
+
+### `platform/library/check_library.py`: the parts library (#268)
+
+`cad/library/<category>/<part>/<variant>/` keeps each part's CAD with a `source.json` (source, licence, sha256 as
+downloaded); [`cad/library/README.md`](../cad/library/README.md) explains the layout. After adding or changing an entry:
+
+```bash
+python3 platform/library/check_library.py --library cad/library --reuse REUSE.toml --projects cad/credits.json --manifest parts/printed/manifest.csv
+# last line "library-check: OK"; each problem is a "library-check: FAIL ..." line
+```
+
+- A committed file also needs its `REUSE.toml` annotation (the check fails when the label differs from
+  `source.json`), and a `credit` names its project in `cad/credits.json`; then regenerate `CREDITS.md` (below).
+- `sha256sum FILE` gives the value for `source.json`. Never edit a committed file: the sha256 is of the download.
 
 ### Sweep and print area (run by refresh; you can also run them alone)
 
@@ -314,7 +330,9 @@ $APP freecadcmd $PWD/cad/passes/liteNN_<what>.py   # headless = dry run: all che
 | Workflow | Runs | Fails when |
 |---|---|---|
 | `printed-parts` | `platform/parts/test_check_printed.py`, `platform/parts/check-printed.py` | manifest, sha256 or BOM drift |
+| `printed-parts` (Orca projects steps) | `platform/parts/test_orca_projects.py`, `platform/parts/orca_projects.py parts/slice/sets.json --check --reuse REUSE.toml` | a project in `parts/slice/projects/` is stale: an STL's sha256, a qty, a plate, a filament or a preset changed, or a manifest row has no project (#217). Fix: rerun the generator (the `--only …` line it prints). Or a project's REUSE label is wrong (#278): `ERROR REUSE <project>: … has no REUSE label of its own` (a renamed or new project) or `… lacks <licence>` (a part moved in). Fix: add or widen that project's `[[annotations]]` in `REUSE.toml` so its `SPDX-License-Identifier` names every licence in its `index.json` entry (`licenses`), then regenerate `CREDITS.md` (`platform/pages/credits.py`, the `viewer` row below) |
 | `printed-parts` (step-parts steps) | `platform/docs/test_step_parts.py`, `platform/docs/step_parts.py --check` | an assembly page's Print/Buy tables are stale against the manifest or `bom/bom.csv` |
+| `printed-parts` (library steps) | `platform/library/test_check_library.py`, `platform/library/check_library.py` | a `source.json` is invalid, a library file's sha256 differs, a no-file entry has a file, a file has no `source.json`, an entry's category is unknown or not its folder, a file's `REUSE.toml` label or an entry's credit disagrees, or a printed part's manifest row is gone |
 | `print-area` | `cad/studies/test_print_area.py` | `print-area.svg` is stale against the sweep log |
 | `slice-check` | `platform/parts/test_slice_check.py`, `keepout.json` validity, `orca/orca.json` naming real presets | the G-code parser (absolute or relative E, arcs), Orca's statistics, keep-out or report logic breaks |
 | `refresh-chain` | `cad/scripts/test_refresh.py`, `cad/scripts/test_derive_stls.py`, `test_litepool.py`, `test_prove_parallel.py`, `test_part_index.py` | the chain's sync, step runner or markers break, `derive_stls` stops honouring `VT350_MODELS`, or the part index's schema/staleness check breaks |

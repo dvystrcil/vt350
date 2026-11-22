@@ -1,0 +1,22 @@
+{
+  "category": "electronics",
+  "title": "Raspberry Pi 5 – Simplified CAD Reference / Mock Model",
+  "author": "Eduard Mandache",
+  "handle": "@EduardMandac_3771478",
+  "source_url": "https://www.printables.com/model/1816030-raspberry-pi-5-simplified-cad-reference-mock-model",
+  "licence": "CC-BY-SA-4.0",
+  "licence_source": "owner's screenshot of the Printables page, 2026-11-20 (Printables refuses automated reads)",
+  "downloaded": "2026-11-20",
+  "upstream_version": "updated 2026-08-19",
+  "redistributable": true,
+  "credit": "rpi5-simplified",
+  "archive": {"name": "Printables download of model 1816030 (zip)", "sha256": "6563a31de3a328299b1674fcaf0789af60af0a10ae622ab9563035e44bad392a"},
+  "files": [
+    {"path": "raspberry_pi_5.step", "sha256": "0e2d7a12b43e810fc3cd9b46898f5ea75448a268d06094dc2e133939006148fd"}
+  ],
+  "notes": [
+    "A remix of Raspberry Pi Ltd's official model (MIT, Copyright (c) 2026 Raspberry Pi Ltd; the reference entry is cad/library/electronics/raspberry-pi-5/official-raspberry-pi/): small SMD parts removed, connectors kept. 25 solids, against the official model's 2,689.",
+    "Matches the official model: 100% of its surface within 0.1 mm, 1.4% of the official's area missing (the dropped SMD parts), mean distance 0.00 mm (translation-only best fit; vt350#268, 2026-11-20).",
+    "Chosen by the owner (2026-11-20) to replace the GrabCAD Pi 5 (Mateusz Zelek; not redistributable) in the model, in pass lite-75 (vt350-ebox-4.FCStd)."
+  ]
+}

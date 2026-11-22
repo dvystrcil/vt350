@@ -1,0 +1,21 @@
+{
+  "category": "hotend",
+  "title": "Trianglelab MZE w/sock",
+  "author": "Robert Samples",
+  "handle": "@RobertSamples_345778",
+  "source_url": "https://www.printables.com/model/1391903-trianglelab-mze-wsock",
+  "licence": "CC0-1.0",
+  "licence_source": "owner's screenshot of the Printables page, 2026-11-20 (Printables refuses automated reads); the remixed original (Printables 1263324, Bolado) is CC0 too",
+  "downloaded": "2026-11-20",
+  "upstream_version": "updated 2025-08-22",
+  "redistributable": true,
+  "credit": "trianglelab-mze",
+  "files": [
+    {"path": "Trianglelabs_MZE_v3.step", "sha256": "443e233bf8b370951e16f2bf381c72dc0f0ee9fc5fb36bf61d2feea68a712e2e", "upstream_name": "Trianglelabs MZE v3.step"}
+  ],
+  "notes": [
+    "A remix of 'MZE DLC V6 Melt Zone Extender' by Bolado (https://www.printables.com/model/1263324-mze-dlc-v6-melt-zone-extender): 'Corrected some minor dimensions, modeled silicone sock'.",
+    "An assembly of three solids, MZE, V6 nozzle and Sock, placed as fitted (the MZE's shoulder at Z 0, its M6 stud up). lite73_dav.py (vt350#263) hangs it under each toolhead's heat block stand-in.",
+    "Chosen because the owner's own Dragon ACE Volcano has an MZE of this shape (owner, 2026-11-20). Moved here from cad/vendor/ (cad/library/README.md, decision 3)."
+  ]
+}

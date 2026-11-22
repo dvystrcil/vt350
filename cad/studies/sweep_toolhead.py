@@ -59,7 +59,7 @@ GANTRY_LABELS = ("Carbonara CF X beam 20x20 430",)
 CARRIAGE_PATHS = {"Carriage (1)"}
 CARRIAGE_LABELS = ("MGN_12_H_CARRAGE v1",)
 EXCLUDE_PATHS = {"10x11 Chain Z"}
-NOZZLE = "E3D v6 HotEnd - Nozzle"
+NOZZLE = ("TL-dragon-ace-MZE nozzle (brass V6)", "E3D v6 HotEnd - Nozzle")   # lite-73+ (MZE assembly), lite-72 and older
 
 
 # ------------------------------------------------------------------------------------------------ stage 1: plan

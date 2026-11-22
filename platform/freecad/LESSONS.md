@@ -276,3 +276,73 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
   `f.Surface.__class__.__name__ == "Plane"` found no top face on a 0.16 mm pad and `max()` raised. The STL showed the
   face at once. To find a face at a height, test its vertices' heights (every vertex within ~1e-4 of it), not its
   surface type.
+- **A designer's variant STEPs often share one frame: fit the variant you have, place the one you want** (lite-73,
+  vt350#263, 2026-11-19). DW-Tas's `main-body_<hotend>_*.step` files all have the same box and differ only round the
+  hotend pocket, so `dupes.fit(uhf_step_shape, model_body)` (a rigid move, checked vertex by vertex) gives the move that
+  puts `hex-main-body_DAV_*.step` exactly where the UHF body was, with no hole matching. Check the shared frame first
+  (equal boxes, the faces that differ all in one region).
+- **An assembly's parts can look mounted and not touch** (lite-73). lite-15 took the Dragon ACE stand-in, spacer and
+  screws from DW-Tas's `A4Tv2_assembly.step` as placed there; the spacer's top was 8.5 mm below the UHF body's pocket
+  ceiling, and every nozzle figure since was measured off a floating hotend. Box overlaps can't show a gap. Probe it:
+  vertical lines (`Part.makeLine(...).common(shape).Edges`) round the axis give each part's material along Z, so
+  "what is directly above the heat sink" is one number per line. Keep the lines off holes (at radius 8 on the
+  diagonals they ran down the screw holes and found nothing).
+
+## A pass that writes a derived file must accept that file in its post-merge state (2026-11-20, lite-73)
+
+A pass that re-exports a printed STL writes it even in a dry run, and the PR commits it. The owner's GUI save runs
+*after* the merge, so it sees the new STL, not the one the pass was written against. lite-73's precheck ("the
+committed carriage STL is today's carriage") passed in every dry run and failed the real save: NOT SAVED. Make such
+checks accept both states (before and already-done), and don't rewrite a derived file that's already current, so its
+sha256 keeps matching the manifest and the print projects. Also: passes read `VT350_REPO`, default `~/Code/vt350`. A
+dry run from a worktree reads and writes the **main checkout** unless you set `VT350_REPO=$PWD`.
+
+## A mirror by `transformGeometry` makes B-splines, and BoundBox lies about them (2026-11-20, lite-73 → lite-74)
+
+lite-73 cut the carriage's Beacon pocket deeper, then cut the Right Dock's copy of the carriage (`COMPOUND004`) with
+the same cut tool mirrored in X by `shape.transformGeometry(matrix)`. The cut landed in the right place, but
+`transformGeometry` turns planes into **B-spline faces**, and `BoundBox` overshoots on B-splines: the copy's box grew
+7.8 mm in Y with its volume unchanged. `sweep_toolhead.py` compares boxes, so it refused lite-73 ("dock carriage copy
+isn't the gantry carriage part"). `optimalBoundingBox` (`litelib.obb`) still agreed to 0.014. Four more things this
+fix taught us:
+
+- **Move rigidly with `transformShape`, `translate`, `rotate` or `mirror`, never `transformGeometry`**, which is for
+  scaling. `Shape.mirror(base, normal)` keeps exact planes; a mirror through `transformGeometry` also made each
+  `distToShape` take minutes.
+- **`Shape.translate` only changes `Shape.Placement`** (and `linkgeo.gshape` puts the global placement there too). Code
+  that then sets the shape's Placement, as every pass's "write in the object's own frame" step does, silently drops the
+  move. Bake first: `pl = s.Placement; s.Placement = FreeCAD.Placement(); s.transformShape(pl.toMatrix(), True, False)`.
+- **Booleans between near-coincident copies are useless** (`lite72_carriage.cut(lite73_carriage)` gave 16,600 mm³ for
+  a 25 mm³ cut). Compare such shapes by sample vertices and `distToShape` instead.
+- **A box check can't tell a mirror from a translation** of a part that's symmetric in X, as this carriage is. lite-74
+  checks the copy point by point against the carriage moved by the pickup offset.
+
+## A standoff's "top" depends on where you probe it: measure a ring (2026-11-21, lite-75)
+
+Placing the Pi 5 on its bracket, the first probe took the standoff top 1.3 mm from each pilot hole's axis: X 108.05.
+That point is on the chamfer round the hole. The flat top is X 108.100, from r 1.5 to 2.0, and the edge rounds off
+again at r 2.5 (107.7). Placed on 108.05, the board overlapped all four standoffs (1.98 mm³). Before seating a part on a
+boss, probe lines at several radii and angles round it (lite75_pi5.py: r 1.0..2.5, every 30°). Check that the radii you
+seat on are one plane on every boss, and that nothing is higher. The same probe showed the GrabCAD board it replaces sat
+0.75 mm inside those standoffs.
+
+## A STEP's colours: ImportGui keeps them, Import drops them, and the render takes one per object (2026-11-21, lite-75)
+
+- `Import.insert` (App only) imports a STEP's shapes without colours. In a GUI run, `ImportGui.insert` gives the part a
+  per-face `ShapeAppearance` (12,882 entries for the simplified Pi 5).
+- The render export (`platform/render/export_meshes.py`) colours each object by its first `ShapeAppearance` entry. One
+  25-solid feature rendered all one colour, so give each solid its own Part::Feature.
+- A solid's first face is not its colour: every first face of the Pi 5 was the STEP's light grey. Use the solid's most
+  common face colour.
+- Set the appearance **after** `doc.recompute()` and `Gui.updateGui()`. Before that, the new feature's first redraw
+  resets it to the default grey.
+- FreeCAD reads this STEP's PCB as grey and blue, not the green the file names (`COLOUR_RGB('Opaque(0,140,73)')`). A
+  `colours.json` role (by label, "PCB") is the dependable way to colour it.
+
+## Assigning `o.Shape` also sets `o.Placement` from the shape (2026-11-21, lite-76)
+
+`feature.Shape = g` copies `g.Placement` into `feature.Placement`. A shape moved into the object's frame (for example
+with `transformShape(gplace(o).inverse())`) has an identity Placement, so assigning it wipes the feature's own
+Placement. lite-76's first dry run put the A/B stepper 50 mm low that way. The Z motor came out right only because its
+Placement happened to be identity. Set `g.Placement = o.Placement` before assigning, with the geometry expressed in
+the frame of `o.Placement`.

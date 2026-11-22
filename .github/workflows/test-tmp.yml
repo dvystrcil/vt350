@@ -3,6 +3,8 @@ on:
   pull_request:
   push:
     branches: [main]
+  # repin-virtualprinter.yml starts this on its own branches (a push made with GITHUB_TOKEN starts no runs)
+  workflow_dispatch:
 
 jobs:
   check:
@@ -13,8 +15,32 @@ jobs:
       - uses: actions/checkout@v7
       # ffmpeg: platform/render/test_motion.py encodes a real video (vt350#135). Without it that test skips, and a
       # skip is not the bare "OK" the check below accepts.
-      - name: Install ffmpeg
-        run: sudo apt-get update -q && sudo apt-get install -y -q --no-install-recommends ffmpeg
+      # A pinned static build from the Actions cache, not apt: apt-get update + install took 14 s on a good day and
+      # 23 min on a bad one (vt350 PR #269, 2026-11-20), for tests that run in ~15 s. The tarball is John Van
+      # Sickle's static build (GPL-3.0, includes libx264); old-releases/ URLs don't move. Bump URL, sha256 and key together.
+      - name: Restore static ffmpeg
+        id: ffmpeg-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/ffmpeg-static
+          key: ffmpeg-static-6.0.1-28268bf402f1
+      - name: Download static ffmpeg (cache miss only)
+        if: steps.ffmpeg-cache.outputs.cache-hit != 'true'
+        env:
+          FFMPEG_URL: https://johnvansickle.com/ffmpeg/old-releases/ffmpeg-6.0.1-amd64-static.tar.xz
+          FFMPEG_SHA256: 28268bf402f1083833ea269331587f60a242848880073be8016501d864bd07a5
+        run: |
+          curl -sSfL --retry 3 -o "$RUNNER_TEMP/ffmpeg.tar.xz" "$FFMPEG_URL"
+          echo "$FFMPEG_SHA256  $RUNNER_TEMP/ffmpeg.tar.xz" | sha256sum -c -
+          mkdir -p ~/ffmpeg-static
+          tar -xJf "$RUNNER_TEMP/ffmpeg.tar.xz" -C ~/ffmpeg-static --strip-components=1 \
+            --wildcards '*/ffmpeg' '*/ffprobe' '*/GPLv3.txt'
+          rm "$RUNNER_TEMP/ffmpeg.tar.xz"
+      - name: Put ffmpeg on PATH
+        run: |
+          echo "$HOME/ffmpeg-static" >> "$GITHUB_PATH"
+          "$HOME/ffmpeg-static/ffmpeg" -hide_banner -version | head -1
+          "$HOME/ffmpeg-static/ffmpeg" -hide_banner -encoders | grep -q libx264
       # numpy + scipy: cad/studies/flap_guide/test_rod.py (the cable rod model, #3)
       - name: Install numpy + scipy
         run: python3 -m pip install --user --break-system-packages numpy scipy
