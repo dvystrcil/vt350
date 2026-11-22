@@ -1,0 +1,116 @@
+#!/usr/bin/env python3
+"""G-code for one Beacon start-of-print on the VT350, for the motion video (vt350#291). The owner's order (2026-11-22):
+  1. home with no head on the carriage: X, Y, then a coarse Z by Beacon proximity (the Beacon is on the carriage, so
+     it needs no head; there is no nozzle to tap yet);
+  2. pick up T0;
+  3. Z_TILT_ADJUST by nozzle taps, one near each of the three Z leadscrews;
+  4. a nozzle tap at the home position: the true Z0 (contact homing);
+  5. the Beacon's bed-mesh scan path.
+
+    python3 cad/motion/beacon_scan.py > cad/motion/beacon_scan.gcode      # then run it through Kalico batch mode
+
+The scan path is Beacon's own (beacon3d/beacon_klipper@3ccd2e6 beacon.py, GPL-3.0: BeaconMeshHelper._generate_path,
+_handle_connect's auto overscan, arc_points), reimplemented here:
+  - lines run along mesh_main_direction (default y), one per probe_count in the other axis, serpentine;
+  - the nozzle path is the mesh (coil positions) less the Beacon's offset;
+  - at each line end the head runs past the mesh by the overscan, turning on two arcs. With mesh_overscan unset
+    (-1) it is min(room before the mesh's start, room after its end, line spacing + 2), the rooms measured from the
+    nozzle range to the axis limits.
+  - the scan flies at Z = trigger_distance (2) at bed_mesh speed.
+
+MESH_MIN/MAX are the coil positions the mesh would ask for. PROPOSED: the coil fully on the plate (vt350#291: printer
+5.48 .. 344.52; the owner hasn't chosen the mesh limits). Plain python3, standard library only. VT350-specific.
+"""
+import math
+import sys
+
+BEACON_XY = (0.0, 27.4)      # [beacon] x_offset, y_offset: the coil centre less the nozzle (lite24_beacon.py)
+MESH_MIN = (5.48, 5.48)      # PROPOSED, coil on the plate (vt350#291)
+MESH_MAX = (344.52, 344.52)
+PROBE_COUNT = (15, 15)
+AXIS_MIN = (4.0, -82.43)     # cad_values / printer.cfg position_min, X and Y
+AXIS_MAX = (346.0, 340.19)
+HOME_XY = (175.0, 175.0)     # where the nozzle taps Z0 (Beacon home_xy_position, contact homing). PROPOSED: the centre
+TRIGGER_Z = 2.0              # [beacon] trigger_distance default: the scan height
+# [z_tilt] points: where the nozzle taps. Klipper (Config_Reference [z_tilt]): nozzle coordinates, with the probe over the
+# bed; z_positions are the pivots (the leadscrews), not probe points. These are Voron's stock Trident 350 points
+# (VoronDesign/Voron-Trident Firmware/Octopus/Trident_Octopus_Config.cfg, 350 build: 30,5 / 175,295 / 320,5; its
+# z_positions -66,11 / 175,402 / 416,11). Ours, from lite-76 (printer XY): front left (-38, 1.5), rear (175.2, 419.6),
+# front right (388, 1.5), in stepper_z, z1, z2 order. PROPOSED: the front taps at Y 5 wait on vt350#291's front reach.
+TILT_POINTS = ((30.0, 5.0), (175.0, 295.0), (320.0, 5.0))
+SCAN_SPEED = 300.0           # mm/s. PROPOSED; [bed_mesh] speed (Beacon's default is 50; max_velocity is 300)
+
+
+def arc_points(cx, cy, r, start_deg, span_deg):
+    """beacon.py arc_points: points on an arc no more than 0.1 mm off it."""
+    a0, span = math.radians(start_deg), math.radians(span_deg)
+    d = math.acos(1 - 0.1 / r)
+    n = int(math.ceil(abs(span) / d))
+    return [(cx + math.cos(a0 + span * i / n) * r, cy + math.sin(a0 + span * i / n) * r) for i in range(n + 1)]
+
+
+def overscan(mesh_min=MESH_MIN, mesh_max=MESH_MAX, count=PROBE_COUNT, offset=BEACON_XY, axis_min=AXIS_MIN,
+             axis_max=AXIS_MAX, direction="y"):
+    """_handle_connect's auto overscan (mesh_overscan unset)."""
+    a, p = (1, 0) if direction == "y" else (0, 1)          # along the lines, across them
+    lo, hi = mesh_min[a] - offset[a], mesh_max[a] - offset[a]
+    space = (mesh_max[p] - mesh_min[p]) / (count[p] - 1)
+    return min(max(0.0, lo - axis_min[a]), max(0.0, axis_max[a] - hi), space + 2.0)
+
+
+def scan_path(mesh_min=MESH_MIN, mesh_max=MESH_MAX, count=PROBE_COUNT, offset=BEACON_XY, over=None, direction="y"):
+    """Nozzle XY points of the scan, in order (_generate_path)."""
+    if over is None:
+        over = overscan(mesh_min, mesh_max, count, offset, direction=direction)
+    a, p = (1, 0) if direction == "y" else (0, 1)
+    begin_a, end_a = mesh_min[a] - offset[a], mesh_max[a] - offset[a]
+    begin_p, end_p = mesh_min[p] - offset[p], mesh_max[p] - offset[p]
+    n = count[p]
+    step = (end_p - begin_p) / (n - 1)
+    r = min(step / 2, over)
+    pts = []
+    for i in range(n):
+        pos_p = begin_p + step * i
+        even = i % 2 == 0
+        line = ((begin_a, pos_p), (end_a, pos_p)) if even else ((end_a, pos_p), (begin_a, pos_p))
+        if pts and r > 0:
+            if even:
+                c = begin_a - over + r
+                pts += arc_points(c, pos_p - step + r, r, -90, -90) + arc_points(c, pos_p - r, r, -180, -90)
+            else:
+                c = end_a + over - r
+                pts += arc_points(c, pos_p - step + r, r, -90, 90) + arc_points(c, pos_p - r, r, 0, 90)
+        pts += list(line)
+    return [(q, pa) for pa, q in pts] if direction == "y" else pts
+
+
+def gcode():
+    f = lambda v: f"{v:.3f}".rstrip("0").rstrip(".")
+    path = scan_path()
+    tap = lambda x, y: [f"G1 X{f(x)} Y{f(y)} Z5 F18000", "G1 Z0 F180", "G1 Z5 F600"]
+    out = [
+        "; VT350 start of print with the Beacon (vt350#291), for the motion video. Generated by cad/motion/beacon_scan.py.",
+        "; Homing is instant in batch mode (set_position); the dives and taps below are the moves the homing makes.",
+        "G28", "G90", "INITIALIZE_TOOLCHANGER",
+        "; 1. coarse Z, no head on the carriage: Beacon proximity at the home position (G28 Z METHOD=PROXIMITY),",
+        ";    the carriage dives until the coil is at trigger_distance",
+        f"G1 X{f(HOME_XY[0])} Y{f(HOME_XY[1])} Z10 F6000", f"G1 Z{f(TRIGGER_Z)} F300", "G1 Z10 F600",
+        "; 2. pick up T0 (left)", "T0",
+        "; 3. Z_TILT_ADJUST PROBE_METHOD=CONTACT: a nozzle tap near each Z leadscrew (one pass shown)",
+    ]
+    for x, y in TILT_POINTS:
+        out += tap(x, y)
+    out += [
+        "; 4. nozzle tap at the home position: the true Z0 (G28 Z METHOD=CONTACT CALIBRATE=1)",
+        *tap(*HOME_XY),
+        f"; 5. the Beacon scan (BED_MESH_CALIBRATE): coil mesh {MESH_MIN} .. {MESH_MAX}, {PROBE_COUNT[0]} lines along Y,"
+        f" overscan {overscan():.2f} mm, at Z {f(TRIGGER_Z)} and {f(SCAN_SPEED)} mm/s",
+        f"G1 X{f(path[0][0])} Y{f(path[0][1])} F18000", f"G1 Z{f(TRIGGER_Z)} F600",
+    ]
+    out += [f"G1 X{f(x)} Y{f(y)} F{f(SCAN_SPEED * 60)}" for x, y in path[1:]]
+    out += ["G1 Z10 F600"]
+    return "\n".join(out) + "\n"
+
+
+if __name__ == "__main__":
+    sys.stdout.write(gcode())

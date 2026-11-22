@@ -100,6 +100,20 @@ def side_view(rig, head="Left", distance=750.0, rise=340.0, lens_mm=40.0):
             "lens_mm": lens_mm, "ev": 0.4}
 
 
+def bed_side_view(rig, y_window=(-120.0, 400.0), above=10.0, lens_mm=70.0):
+    """vt350#291: level with the nozzle (the bed top while it scans), from the left side (its panel hidden,
+    colours.json), looking straight along +X, so the plate's front and back edges, the Beacon's path over the plate
+    and the docked heads at the front are all in one side-on picture. A long lens from far back keeps it close to
+    orthographic. y_window: model Y to fit across the frame at the plate's middle X (16:9)."""
+    hs = rig["heads"]
+    xs = [h["nozzle"][0] for h in hs.values()]
+    nz = hs[rig["reference_head"]]["nozzle"][2]
+    mid_x = (min(xs) + max(xs)) / 2
+    look = [mid_x, sum(y_window) / 2, nz + above]
+    d = (y_window[1] - y_window[0]) * lens_mm / 36.0               # 36 mm sensor width
+    return {"name": "bed_side", "pos": [mid_x - d, look[1], look[2]], "look": look, "lens_mm": lens_mm, "ev": 0.4}
+
+
 def make_frames(rig, timeline_path, fps, every, carried=None, last_seq=None):
     """fps None: one frame per move end (timeline.py --moves), for stills at exact points. last_seq: only the records up
     to that seq (e.g. one head's drop-off and pick-up)."""
@@ -150,7 +164,8 @@ def prepare(a, rig):
         print(f"export: reusing {exp}")
     with open(os.path.join(exp, "scene.json")) as f:
         scene = json.load(f)
-    scene["views"] = [side_view(rig, a.head) if a.view == "dock_side" else dock_view(rig)]
+    scene["views"] = [side_view(rig, a.head) if a.view == "dock_side" else bed_side_view(rig) if a.view == "bed_side"
+                      else dock_view(rig)]
     ff = make_frames(rig, a.timeline, a.fps, a.every, last_seq=a.last_seq)
     motion.check_scene(ff, scene)
     for name, obj in (("scene.json", scene), ("frames.json", ff)):
@@ -181,8 +196,9 @@ def main(argv):
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--out", default=VIDEO, help="encode: the MP4 (default notes/reference/toolchange-docks/toolchange-docks.mp4)")
     ap.add_argument("--at", help="stills: printer X,Y")
-    ap.add_argument("--view", choices=("docks", "dock_side"), default="docks",
-                    help="docks: both docks from the front (default); dock_side: one dock from its side, panel hidden (#291)")
+    ap.add_argument("--view", choices=("docks", "dock_side", "bed_side"), default="docks",
+                    help="docks: both docks from the front (default); dock_side: one dock from its side, panel hidden (#291); "
+                         "bed_side: level with the bed from the left, panel hidden (#291, with --timeline cad/motion/beacon_scan_timeline.jsonl)")
     ap.add_argument("--head", default="Left", help="dock_side: whose dock (default Left)")
     ap.add_argument("--last-seq", type=int, help="only the timeline up to this seq (32: the Left head's drop-off + pick-up)")
     a = ap.parse_args(argv)
@@ -213,6 +229,11 @@ def main(argv):
         cmd = submit_cmd(exp, 128, "1920x1080", len(at), a.notify, 3600, frames=name, view=a.view)
     else:
         cmd = submit_cmd(exp, a.samples, a.size, len(ff["frames"]), a.notify, a.deadline, view=a.view)
+    if a.what == "submit" and a.timeline != TIMELINE:     # a frames file of its own, beside the tool-change one
+        name = "frames-" + os.path.splitext(os.path.basename(a.timeline))[0] + ".json"
+        with open(os.path.join(exp, name), "w") as f:
+            json.dump(ff, f, indent=1)
+        cmd[cmd.index("--frames") + 1] = name
     if a.what == "prepare":
         print("next: python3 cad/motion/render_frames.py submit   (the batch lane)")
         return 0
