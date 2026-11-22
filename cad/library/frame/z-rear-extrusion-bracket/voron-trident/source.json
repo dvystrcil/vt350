@@ -1,0 +1,20 @@
+{
+  "category": "frame",
+  "title": "Voron Trident Z rear extrusion bracket (left/right)",
+  "author": "Voron Design",
+  "source_url": "https://github.com/VoronDesign/Voron-Trident",
+  "licence": "GPL-3.0-only",
+  "licence_source": "the upstream repository's licence, recorded per row in parts/printed/manifest.csv ('GPL-3.0')",
+  "downloaded": "2026-11-06",
+  "upstream_version": "commit 86eae85057df4e3d1a07fe7eae44d6126724fe00",
+  "redistributable": true,
+  "credit": "voron-trident",
+  "printed": [
+    "voron-trident/z_rear_extrusionbracket_left.stl",
+    "voron-trident/z_rear_extrusionbracket_right.stl"
+  ],
+  "notes": [
+    "A printed part: its STLs, upstream paths and sha256s are in parts/printed/manifest.csv; this entry points at those rows instead of copying the files (cad/library/README.md, 'Printed parts').",
+    "'downloaded' is the date the first of these STLs was committed to parts/printed/ (git log)."
+  ]
+}

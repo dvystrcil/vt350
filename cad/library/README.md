@@ -122,16 +122,15 @@ Each fact has one home; the check makes the others agree with it instead of copy
 | `cad/credits.json` → `CREDITS.md` | one credit row per upstream project | an entry's `credit` names the project; `--projects` fails on an unknown key |
 | `cad/viewer/licences.json` | which parts the public pages may show | none yet (it matches model labels, not files) |
 | `parts/printed/manifest.csv` | the printed STLs: source repo, commit, sha256, licence | a printed part's entry lists its rows (`printed`); `--manifest` fails on a missing row |
-| `cad/vendor/` (#265, not merged) | the MZE STEP and its README | moves into the library (decision 3) |
+| `cad/vendor/` (gone) | — | the MZE STEP moved to `hotend/melt-zone-extender/trianglelab-mze-robertsamples/` (decision 3, vt350#268) |
 
 ## Decisions (owner, 2026-11-20)
 
 1. **Folder names:** by part, not by author: `<category>/<part>/<variant>/`, as above.
 2. **Printed parts:** the STLs stay in `parts/printed/`, with `manifest.csv` as their record; the library points at
    the manifest rows ([printed parts](#printed-parts)).
-3. **`cad/vendor/` moves into the library.** It exists only on #265's branch (the Trianglelab MZE). Whichever of #265
-   and #274 merges second moves `cad/vendor/trianglelab-mze-robertsamples/` to
-   `cad/library/hotend/trianglelab-mze/<variant>/`, with a `source.json` made from its README.
+3. **`cad/vendor/` moves into the library.** Done 2026-11-21: the Trianglelab MZE is
+   `cad/library/hotend/melt-zone-extender/trianglelab-mze-robertsamples/`, with a `source.json` made from its README.
 4. **Each licence stays in both `source.json` and `REUSE.toml`**, and `check_library.py --reuse` keeps them equal.
 5. **Big files:** no-file by default; commit when the model uses the part; a release asset if it's huge
    ([big files](#big-files)).

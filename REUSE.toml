@@ -60,7 +60,7 @@ SPDX-FileCopyrightText = "Lorincz Electronics (Orbiter-Toolboards)"
 SPDX-License-Identifier = "CC0-1.0"
 
 [[annotations]]
-path = "cad/vendor/trianglelab-mze-robertsamples/**"
+path = "cad/library/hotend/melt-zone-extender/trianglelab-mze-robertsamples/**"
 precedence = "override"
 SPDX-FileCopyrightText = ["Robert Samples (Trianglelab MZE w/sock)", "Bolado (MZE DLC V6 Melt Zone Extender)"]
 SPDX-License-Identifier = "CC0-1.0"

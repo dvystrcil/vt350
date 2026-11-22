@@ -69,7 +69,7 @@ BEACON = "Beacon RevH"
 CARRIAGE = "COMPOUND"        # the gantry carriage's label (lite-62; the dock copies are COMPOUND003/004)
 DUCTS = "[a]_Duct-4010-"
 TOL = 0.05
-MZE_STEP = os.environ.get("VT350_MZE_STEP", os.path.join(_REPO, "cad/vendor/trianglelab-mze-robertsamples/Trianglelabs_MZE_v3.step"))
+MZE_STEP = os.environ.get("VT350_MZE_STEP", os.path.join(_REPO, "cad/library/hotend/melt-zone-extender/trianglelab-mze-robertsamples/Trianglelabs_MZE_v3.step"))
 # "Trianglelab MZE w/sock" by Robert Samples (Printables 1391903, CC0-1.0), a remix of Bolado's "MZE DLC V6 Melt Zone
 # Extender" (Printables 1263324, CC0-1.0): an assembly of the MZE, a brass V6 nozzle and the silicone sock. The owner's
 # own DAV on the LH Stinger has an MZE of this shape (2026-11-20). Its sizes are the sellers' published ones, corrected
