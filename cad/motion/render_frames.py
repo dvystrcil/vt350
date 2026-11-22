@@ -88,14 +88,14 @@ def dock_view(rig, distance=1120.0, rise=270.0, lens_mm=50.0):
     return {"name": "docks", "pos": pos, "look": look, "lens_mm": lens_mm, "ev": -0.5}
 
 
-def side_view(rig, head="Left", distance=650.0, rise=60.0, lens_mm=50.0):
+def side_view(rig, head="Left", distance=750.0, rise=340.0, lens_mm=40.0):
     """vt350#291: a camera beside one dock, looking along X at it from that head's side of the printer (the side panel
     is hidden in this view, colours.json), aimed between the docked nozzle and the pickup approach, so the push into
     the dock, the slide and the pull out are all in frame."""
     h = rig["heads"][head]
     nx, ny, nz = h["nozzle"]
     side = -1 if nx < sum(v["nozzle"][0] for v in rig["heads"].values()) / len(rig["heads"]) else 1
-    look = [nx, ny + 35.0, nz + 30.0]
+    look = [nx, ny + 50.0, nz + 20.0]       # rise: over the frame's top side rail, which hides the dock from level (still 1)
     return {"name": "dock_side", "pos": [nx + side * distance, look[1], look[2] + rise], "look": look,
             "lens_mm": lens_mm, "ev": 0.4}
 
