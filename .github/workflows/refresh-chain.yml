@@ -51,6 +51,10 @@ jobs:
         run: python3 cad/studies/test_front_reach_map.py 2>&1 | tee test-front-reach-map.log
       - name: Confirm every front_reach_map test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-front-reach-map.log && tail -1 test-front-reach-map.log | grep -qx 'OK'
+      - name: Test the Beacon offset study's pose maths (beacon_offset, #291; no FreeCAD)
+        run: python3 cad/studies/test_beacon_offset.py 2>&1 | tee test-beacon-offset.log
+      - name: Confirm every beacon_offset test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-beacon-offset.log && tail -1 test-beacon-offset.log | grep -qx 'OK'
       - name: Test the dock-row analysis (dock_layout, #19 AC2; no FreeCAD)
         run: python3 cad/studies/test_dock_layout.py 2>&1 | tee test-dock.log
       - name: Confirm every dock_layout test ran

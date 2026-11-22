@@ -1,0 +1,540 @@
+{
+ "model": "vt350-lite-77.FCStd",
+ "now": 27.4,
+ "heads": {
+  "Left": {
+   "rows": [
+    {
+     "offset": 27.4,
+     "contacts": []
+    },
+    {
+     "offset": 22.0,
+     "contacts": []
+    },
+    {
+     "offset": 20.0,
+     "contacts": []
+    },
+    {
+     "offset": 18.0,
+     "contacts": []
+    },
+    {
+     "offset": 17.0,
+     "contacts": []
+    },
+    {
+     "offset": 16.0,
+     "contacts": []
+    },
+    {
+     "offset": 15.0,
+     "contacts": []
+    },
+    {
+     "offset": 14.0,
+     "contacts": [
+      [
+       11.5,
+       "TL-dragon-ace-MZE sock",
+       "Beacon RevH Normal (Beacon CAD, MIT)"
+      ]
+     ]
+    },
+    {
+     "offset": 13.5,
+     "contacts": [
+      [
+       22.13,
+       "TL-dragon-ace-MZE sock",
+       "Beacon RevH Normal (Beacon CAD, MIT)"
+      ]
+     ]
+    },
+    {
+     "offset": 13.0,
+     "contacts": [
+      [
+       33.27,
+       "TL-dragon-ace-MZE sock",
+       "Beacon RevH Normal (Beacon CAD, MIT)"
+      ],
+      [
+       1.49,
+       "TL-dragon-ace-MZE",
+       "Beacon RevH Normal (Beacon CAD, MIT)"
+      ]
+     ]
+    },
+    {
+     "offset": 12.0,
+     "contacts": [
+      [
+       54.4,
+       "TL-dragon-ace-MZE sock",
+       "Beacon RevH Normal (Beacon CAD, MIT)"
+      ],
+      [
+       8.51,
+       "TL-dragon-ace-MZE",
+       "Beacon RevH Normal (Beacon CAD, MIT)"
+      ],
+      [
+       0.63,
+       "Plate",
+       "Beacon RevH Normal (Beacon CAD, MIT)"
+      ]
+     ]
+    },
+    {
+     "offset": 10.0,
+     "contacts": [
+      [
+       83.87,
+       "TL-dragon-ace-MZE sock",
+       "Beacon RevH Normal (Beacon CAD, MIT)"
+      ],
+      [
+       24.9,
+       "TL-dragon-ace-MZE nozzle (brass V6)",
+       "Beacon RevH Normal (Beacon CAD, MIT)"
+      ],
+      [
+       20.97,
+       "Plate",
+       "Beacon RevH Normal (Beacon CAD, MIT)"
+      ],
+      [
+       16.45,
+       "TL-dragon-ace-MZE",
+       "Beacon RevH Normal (Beacon CAD, MIT)"
+      ]
+     ]
+    }
+   ],
+   "smallest_clear": 15.0,
+   "keep_out": [
+    {
+     "offset": 27.4,
+     "inside": [
+      [
+       203.9,
+       "Plate"
+      ]
+     ]
+    },
+    {
+     "offset": 22.0,
+     "inside": [
+      [
+       226.28,
+       "Plate"
+      ]
+     ]
+    },
+    {
+     "offset": 20.0,
+     "inside": [
+      [
+       209.98,
+       "Plate"
+      ]
+     ]
+    },
+    {
+     "offset": 18.0,
+     "inside": [
+      [
+       176.11,
+       "Plate"
+      ]
+     ]
+    },
+    {
+     "offset": 17.0,
+     "inside": [
+      [
+       147.81,
+       "Plate"
+      ]
+     ]
+    },
+    {
+     "offset": 16.0,
+     "inside": [
+      [
+       102.63,
+       "Plate"
+      ]
+     ]
+    },
+    {
+     "offset": 15.0,
+     "inside": [
+      [
+       59.77,
+       "Plate"
+      ],
+      [
+       5.17,
+       "TL-dragon-ace-MZE sock"
+      ]
+     ]
+    },
+    {
+     "offset": 14.0,
+     "inside": [
+      [
+       28.7,
+       "TL-dragon-ace-MZE sock"
+      ],
+      [
+       24.7,
+       "Plate"
+      ],
+      [
+       0.58,
+       "TL-dragon-ace-MZE"
+      ]
+     ]
+    },
+    {
+     "offset": 13.5,
+     "inside": [
+      [
+       40.71,
+       "TL-dragon-ace-MZE sock"
+      ],
+      [
+       11.26,
+       "Plate"
+      ],
+      [
+       3.2,
+       "TL-dragon-ace-MZE"
+      ]
+     ]
+    },
+    {
+     "offset": 13.0,
+     "inside": [
+      [
+       50.95,
+       "TL-dragon-ace-MZE sock"
+      ],
+      [
+       9.25,
+       "TL-dragon-ace-MZE"
+      ],
+      [
+       5.61,
+       "Heat Block (stand-in)"
+      ],
+      [
+       2.04,
+       "Plate"
+      ]
+     ]
+    },
+    {
+     "offset": 12.0,
+     "inside": [
+      [
+       87.56,
+       "Heat Block (stand-in)"
+      ],
+      [
+       67.05,
+       "TL-dragon-ace-MZE sock"
+      ],
+      [
+       35.57,
+       "TL-dragon-ace-MZE"
+      ]
+     ]
+    },
+    {
+     "offset": 10.0,
+     "inside": [
+      [
+       93.21,
+       "TL-dragon-ace-MZE sock"
+      ],
+      [
+       19.53,
+       "TL-dragon-ace-MZE nozzle (brass V6)"
+      ]
+     ]
+    }
+   ]
+  },
+  "Right": {
+   "rows": [
+    {
+     "offset": 27.4,
+     "contacts": []
+    },
+    {
+     "offset": 22.0,
+     "contacts": []
+    },
+    {
+     "offset": 20.0,
+     "contacts": []
+    },
+    {
+     "offset": 18.0,
+     "contacts": []
+    },
+    {
+     "offset": 17.0,
+     "contacts": []
+    },
+    {
+     "offset": 16.0,
+     "contacts": []
+    },
+    {
+     "offset": 15.0,
+     "contacts": []
+    },
+    {
+     "offset": 14.0,
+     "contacts": [
+      [
+       11.5,
+       "TL-dragon-ace-MZE sock001",
+       "Beacon RevH Normal (Beacon CAD, MIT)"
+      ]
+     ]
+    },
+    {
+     "offset": 13.5,
+     "contacts": [
+      [
+       22.13,
+       "TL-dragon-ace-MZE sock001",
+       "Beacon RevH Normal (Beacon CAD, MIT)"
+      ]
+     ]
+    },
+    {
+     "offset": 13.0,
+     "contacts": [
+      [
+       33.27,
+       "TL-dragon-ace-MZE sock001",
+       "Beacon RevH Normal (Beacon CAD, MIT)"
+      ],
+      [
+       1.49,
+       "TL-dragon-ace-MZE001",
+       "Beacon RevH Normal (Beacon CAD, MIT)"
+      ]
+     ]
+    },
+    {
+     "offset": 12.0,
+     "contacts": [
+      [
+       54.4,
+       "TL-dragon-ace-MZE sock001",
+       "Beacon RevH Normal (Beacon CAD, MIT)"
+      ],
+      [
+       8.51,
+       "TL-dragon-ace-MZE001",
+       "Beacon RevH Normal (Beacon CAD, MIT)"
+      ],
+      [
+       0.63,
+       "Plate(Mirror)",
+       "Beacon RevH Normal (Beacon CAD, MIT)"
+      ]
+     ]
+    },
+    {
+     "offset": 10.0,
+     "contacts": [
+      [
+       83.87,
+       "TL-dragon-ace-MZE sock001",
+       "Beacon RevH Normal (Beacon CAD, MIT)"
+      ],
+      [
+       24.9,
+       "TL-dragon-ace-MZE nozzle (brass V6)001",
+       "Beacon RevH Normal (Beacon CAD, MIT)"
+      ],
+      [
+       20.97,
+       "Plate(Mirror)",
+       "Beacon RevH Normal (Beacon CAD, MIT)"
+      ],
+      [
+       16.45,
+       "TL-dragon-ace-MZE001",
+       "Beacon RevH Normal (Beacon CAD, MIT)"
+      ]
+     ]
+    }
+   ],
+   "smallest_clear": 15.0,
+   "keep_out": [
+    {
+     "offset": 27.4,
+     "inside": [
+      [
+       203.9,
+       "Plate(Mirror)"
+      ]
+     ]
+    },
+    {
+     "offset": 22.0,
+     "inside": [
+      [
+       226.28,
+       "Plate(Mirror)"
+      ]
+     ]
+    },
+    {
+     "offset": 20.0,
+     "inside": [
+      [
+       209.98,
+       "Plate(Mirror)"
+      ]
+     ]
+    },
+    {
+     "offset": 18.0,
+     "inside": [
+      [
+       176.11,
+       "Plate(Mirror)"
+      ]
+     ]
+    },
+    {
+     "offset": 17.0,
+     "inside": [
+      [
+       147.81,
+       "Plate(Mirror)"
+      ]
+     ]
+    },
+    {
+     "offset": 16.0,
+     "inside": [
+      [
+       102.63,
+       "Plate(Mirror)"
+      ]
+     ]
+    },
+    {
+     "offset": 15.0,
+     "inside": [
+      [
+       59.77,
+       "Plate(Mirror)"
+      ],
+      [
+       5.17,
+       "TL-dragon-ace-MZE sock001"
+      ]
+     ]
+    },
+    {
+     "offset": 14.0,
+     "inside": [
+      [
+       28.7,
+       "TL-dragon-ace-MZE sock001"
+      ],
+      [
+       24.7,
+       "Plate(Mirror)"
+      ],
+      [
+       0.58,
+       "TL-dragon-ace-MZE001"
+      ]
+     ]
+    },
+    {
+     "offset": 13.5,
+     "inside": [
+      [
+       40.71,
+       "TL-dragon-ace-MZE sock001"
+      ],
+      [
+       11.26,
+       "Plate(Mirror)"
+      ],
+      [
+       3.2,
+       "TL-dragon-ace-MZE001"
+      ]
+     ]
+    },
+    {
+     "offset": 13.0,
+     "inside": [
+      [
+       50.95,
+       "TL-dragon-ace-MZE sock001"
+      ],
+      [
+       9.25,
+       "TL-dragon-ace-MZE001"
+      ],
+      [
+       5.61,
+       "Heat Block001 (stand-in)"
+      ],
+      [
+       2.04,
+       "Plate(Mirror)"
+      ]
+     ]
+    },
+    {
+     "offset": 12.0,
+     "inside": [
+      [
+       87.56,
+       "Heat Block001 (stand-in)"
+      ],
+      [
+       67.05,
+       "TL-dragon-ace-MZE sock001"
+      ],
+      [
+       35.57,
+       "TL-dragon-ace-MZE001"
+      ]
+     ]
+    },
+    {
+     "offset": 10.0,
+     "inside": [
+      [
+       93.21,
+       "TL-dragon-ace-MZE sock001"
+      ],
+      [
+       19.53,
+       "TL-dragon-ace-MZE nozzle (brass V6)001"
+      ]
+     ]
+    }
+   ]
+  }
+ }
+}
