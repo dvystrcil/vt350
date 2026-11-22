@@ -47,7 +47,6 @@ What to print and what to buy for this stage only. The tables are generated from
 | M3x16 button head (BHCS), A4Tv2 | 4 per head | to buy |  |
 | M3 thin square nut (DIN 562), A4Tv2 | 8 per head | to buy |  |
 | M2x10 self-tapping screw, 4010 blowers | 8 per head | to buy |  |
-| M2.5x6 socket head (SHCS), UHF hotend | 4 per head | decide |  |
 | Dock bar fixings: M5 screws | 9 | decide |  |
 | M3x10 socket head (SHCS), dock saddles | 4 | to buy |  |
 | Dock keyslot-plate screws: M3 SHCS | 12 | decide |  |
@@ -59,6 +58,7 @@ What to print and what to buy for this stage only. The tables are generated from
 | Vindr Berserker 4010B-24V-P blower (part cooling) | 2 per head | to buy |  |
 | Berserker VINDR 2510A-24V-A axial fan (hotend) | 1 per head | decide | [West3D](https://west3d.com/products/berserker-vindr-ultra-performance-2510-axial-fan-24v-2510a-24v-a-25x10mm) |
 | Phaetus Dragon ACE Volcano hotend | 1 per head | to buy |  |
+| TC Undertaker nozzle, 0.6 mm | 1 per head | to buy |  |
 | Crossbow CNC filament cutter (DW-Tas, aluminium) | 1 per head | decide | [West3D](https://west3d.com/products/crossbow-cnc-filament-cutter-for-a4t-sherpa-mini-orbiter-v2-5-and-other-flat-top-extruders-by-dw-tas) |
 | Neopixel LED PCB (RGBW preferred) | 3 per head | to buy |  |
 | 28 AWG wire, red / black / blue, ~400 mm each per head | 1 per head | to buy |  |
