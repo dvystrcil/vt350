@@ -1,13 +1,13 @@
-[  160.5s] A4Tv2 Duct-4010-left MadMax dock.stl: old part = component 0 of A4Tv2_4010_Ducts.stl (volume 10243.7 vs 10242.7); rotation 114.40 deg; max vertex distance 0.0064 mm (median 0.0001)
-[  161.1s]    wrote cad/derived/a4tv2-duct-4010-madmax-dock/A4Tv2 Duct-4010-left MadMax dock.stl: 30476 facets, 48.95 x 63.32 x 23.66 mm, volume 10245.3 (old 10242.7); solid valid True
-[  316.8s] A4Tv2 Duct-4010-right MadMax dock.stl: old part = component 1 of A4Tv2_4010_Ducts.stl (volume 10271.1 vs 10270.1); rotation 114.40 deg; max vertex distance 0.0050 mm (median 0.0003)
-[  317.5s]    wrote cad/derived/a4tv2-duct-4010-madmax-dock/A4Tv2 Duct-4010-right MadMax dock.stl: 32001 facets, 48.95 x 63.32 x 23.66 mm, volume 10272.6 (old 10270.1); solid valid True
-[  367.9s] Dock Arm -9.06mm.stl: old part = component 0 of Dock Arm +5mm.stl (volume 12880.2 vs 12880.3); rotation 0.00 deg; max vertex distance 0.0001 mm (median 0.0000)
-[  368.2s]    wrote cad/derived/madmax-andrewmcgr-dock-arm/Dock Arm -9.06mm.stl: 10298 facets, 36.50 x 48.67 x 30.00 mm, volume 11521.8 (old 12880.3); solid valid True
-[  415.7s] MadMaxCarriage Beacon RevH pocket.stl: old part = component 0 of MadMaxCarriage.stl (volume 18413.7 vs 18425.7); rotation 90.00 deg; max vertex distance 0.0155 mm (median 0.0034)
-[  417.1s]    wrote cad/derived/madmax-andrewmcgr-carriage-beacon/MadMaxCarriage Beacon RevH pocket.stl: 51922 facets, 54.42 x 63.52 x 12.60 mm, volume 18150.9 (old 18425.7); solid valid True
-[  417.7s] Dock Asembly standoff pads left.stl: our own part, flat on its largest planar face (lite-72)
-[  417.9s]    wrote cad/derived/madmax-andrewmcgr-dock-keyslot-pads/Dock Asembly standoff pads left.stl: 21158 facets, 98.00 x 38.15 x 13.69 mm, volume 14123.6; solid valid True
-[  418.4s] Dock Asembly standoff pads right.stl: our own part, flat on its largest planar face (lite-72)
-[  418.6s]    wrote cad/derived/madmax-andrewmcgr-dock-keyslot-pads/Dock Asembly standoff pads right.stl: 22512 facets, 98.00 x 38.15 x 13.69 mm, volume 14720.8; solid valid True
-[  418.6s] done: 6 of 6 written
+[  157.9s] A4Tv2 Duct-4010-left MadMax dock.stl: old part = component 0 of A4Tv2_4010_Ducts.stl (volume 10243.7 vs 10242.7); rotation 114.40 deg; max vertex distance 0.0064 mm (median 0.0001)
+[  158.6s]    wrote cad/derived/a4tv2-duct-4010-madmax-dock/A4Tv2 Duct-4010-left MadMax dock.stl: 30476 facets, 48.95 x 63.32 x 23.66 mm, volume 10245.3 (old 10242.7); solid valid True
+[  311.3s] A4Tv2 Duct-4010-right MadMax dock.stl: old part = component 1 of A4Tv2_4010_Ducts.stl (volume 10271.1 vs 10270.1); rotation 114.40 deg; max vertex distance 0.0050 mm (median 0.0003)
+[  311.9s]    wrote cad/derived/a4tv2-duct-4010-madmax-dock/A4Tv2 Duct-4010-right MadMax dock.stl: 32001 facets, 48.95 x 63.32 x 23.66 mm, volume 10272.6 (old 10270.1); solid valid True
+[  360.7s] Dock Arm -9.06mm.stl: old part = component 0 of Dock Arm +5mm.stl (volume 12880.2 vs 12880.3); rotation 0.00 deg; max vertex distance 0.0001 mm (median 0.0000)
+[  360.9s]    wrote cad/derived/madmax-andrewmcgr-dock-arm/Dock Arm -9.06mm.stl: 10298 facets, 36.50 x 48.67 x 30.00 mm, volume 11521.8 (old 12880.3); solid valid True
+[  406.6s] MadMaxCarriage Beacon RevH pocket.stl: old part = component 0 of MadMaxCarriage.stl (volume 18413.7 vs 18425.7); rotation 90.00 deg; max vertex distance 0.0155 mm (median 0.0034)
+[  407.9s]    wrote cad/derived/madmax-andrewmcgr-carriage-beacon/MadMaxCarriage Beacon RevH pocket.stl: 51922 facets, 54.42 x 63.52 x 12.60 mm, volume 18150.9 (old 18425.7); solid valid True
+[  408.5s] Dock Asembly standoff pads left.stl: our own part, flat on its largest planar face (lite-72)
+[  408.7s]    wrote cad/derived/madmax-andrewmcgr-dock-keyslot-pads/Dock Asembly standoff pads left.stl: 21158 facets, 98.00 x 38.15 x 13.69 mm, volume 14123.6; solid valid True
+[  409.1s] Dock Asembly standoff pads right.stl: our own part, flat on its largest planar face (lite-72)
+[  409.3s]    wrote cad/derived/madmax-andrewmcgr-dock-keyslot-pads/Dock Asembly standoff pads right.stl: 22512 facets, 98.00 x 38.15 x 13.69 mm, volume 14720.8; solid valid True
+[  409.4s] done: 6 of 6 written

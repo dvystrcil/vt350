@@ -1,5 +1,5 @@
 {
- "model": "/work/vt350-lite-75-20261121t200339-dc84-sweep/in/vt350-lite-75.FCStd",
+ "model": "/work/vt350-lite-76-20261121t235655-334c-sweep/in/vt350-lite-76.FCStd",
  "plate_top": 285.76060992516267,
  "magnet_top": 287.16060992516265,
  "lower": {
@@ -176,24 +176,24 @@
     "backbone-350 v2"
    ],
    [
-    246.3039071510921,
+    246.3039071510919,
     "M3 Locknut002",
-    "Motor_Body002"
+    "Motor_Body002 front cap"
    ],
    [
-    246.30390715109777,
+    246.30390715109758,
     "M3x12-Screw009",
-    "Motor_Body002"
+    "Motor_Body002 front cap"
    ],
    [
-    246.30390715110073,
+    246.30390715110053,
     "M3x12-Screw008",
-    "Motor_Body002"
+    "Motor_Body002 front cap"
    ],
    [
-    246.3039071511021,
+    246.3039071511019,
     "M3 Locknut003",
-    "Motor_Body002"
+    "Motor_Body002 front cap"
    ],
    [
     246.47350635080383,
@@ -221,9 +221,9 @@
     "backbone-350 v2"
    ],
    [
-    246.5539070510928,
+    246.5539070510926,
     "Leadscrew Nut001",
-    "Motor_Body002"
+    "Motor_Body002 front cap"
    ],
    [
     246.57350635086155,
@@ -286,14 +286,14 @@
     "M3x12-Screw022"
    ],
    [
-    247.30390705096502,
+    247.30390705096482,
     "M3x12-Screw014",
-    "Motor_Body001"
+    "Motor_Body001 front cap"
    ],
    [
-    247.30390705096502,
+    247.30390705096482,
     "M3x12-Screw015",
-    "Motor_Body001"
+    "Motor_Body001 front cap"
    ],
    [
     247.4039062499922,
@@ -301,14 +301,14 @@
     "M3x12-Screw019"
    ],
    [
-    247.4039070510353,
+    247.4039070510351,
     "M3x12-Screw006",
-    "Motor_Body"
+    "Motor_Body front cap"
    ],
    [
-    247.4039070510378,
+    247.4039070510376,
     "M3x12-Screw007",
-    "Motor_Body"
+    "Motor_Body front cap"
    ],
    [
     247.40397510080513,
@@ -336,24 +336,24 @@
     "backbone-350 v2"
    ],
    [
-    248.3039070509668,
+    248.30390705096661,
     "M3 Locknut004",
-    "Motor_Body001"
+    "Motor_Body001 front cap"
    ],
    [
-    248.303907050967,
+    248.3039070509668,
     "M3 Locknut005",
-    "Motor_Body001"
+    "Motor_Body001 front cap"
    ],
    [
-    248.40390705103763,
+    248.40390705103744,
     "M3 Locknut001",
-    "Motor_Body"
+    "Motor_Body front cap"
    ],
    [
-    248.40390705103914,
+    248.40390705103894,
     "M3 Locknut",
-    "Motor_Body"
+    "Motor_Body front cap"
    ],
    [
     248.40397520092085,
@@ -361,14 +361,14 @@
     "backbone-350 v2"
    ],
    [
-    248.55781320097196,
+    248.55781320097176,
     "Leadscrew Nut002",
-    "Motor_Body001"
+    "Motor_Body001 front cap"
    ],
    [
-    248.65781320103775,
+    248.65781320103756,
     "Leadscrew Nut",
-    "Motor_Body"
+    "Motor_Body front cap"
    ],
    [
     250.0039062499332,
