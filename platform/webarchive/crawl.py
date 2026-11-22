@@ -10,7 +10,8 @@ which gets through sites that refuse plain HTTP clients and builds pages that ne
     <out>/collections/<name>/text/INDEX.md   every page, with its file
     <out>/<name>.log                         the crawler's log
 
-Re-running a site replaces its collection, so a re-crawl picks up changed docs.
+Re-running a site replaces its collection, so a re-crawl picks up changed docs. The copies are other people's
+copyright and never go in git: --out inside a git checkout is refused. Note facts in your own words, with a link.
 
     python3 platform/webarchive/crawl.py SITES.json --out DIR [--only NAME ...] [--text-only]
 
@@ -109,6 +110,15 @@ def write_text(pages, text_dir):
     return len(pages)
 
 
+def git_root(path):
+    """The git work tree that holds `path` (or would, once made), or None."""
+    p = Path(path)
+    while not p.exists():
+        p = p.parent
+    r = subprocess.run(["git", "-C", str(p), "rev-parse", "--show-toplevel"], capture_output=True, text=True)
+    return r.stdout.strip() if r.returncode == 0 else None
+
+
 def run_crawl(site, out):
     log = out / f"{site['name']}.log"
     cmd = ["docker", "run", "--rm", "--user", f"{os.getuid()}:{os.getgid()}", "-v", f"{out}:/crawls",
@@ -130,6 +140,10 @@ def main(argv=None):
     if unknown:
         sys.exit(f"webarchive: no such site: {', '.join(sorted(unknown))}")
     out = Path(a.out).expanduser().resolve()
+    repo = git_root(out)
+    if repo:
+        sys.exit(f"webarchive: --out {out} is inside the git checkout {repo}; crawled sites are other people's "
+                 "copyright (Beacon's docs are CC BY-NC-ND), so keep them outside git")
     out.mkdir(parents=True, exist_ok=True)
     ok = True
     for site in sites:
