@@ -43,5 +43,22 @@ class Bisection(unittest.TestCase):
         self.assertEqual(fr.next_round(state, res=2.0), {})
 
 
+class Classify(unittest.TestCase):
+    def res(self, results=(), errors=()):
+        return dict(results=[dict(pose=p, a=a, b=b, la=a, lb=b, volume=v) for p, a, b, v in results],
+                    errors=[dict(pose=p, a=a, b=b, la=a, lb=b, error="Null shape") for p, a, b in errors])
+
+    def test_baseline_pairs_are_ignored(self):
+        got = fr.classify(self.res([("-400.00 3.10", "n", "o", 5.0), ("-400.00 3.10", "p", "q", 1.0)]),
+                          {-400.0: 3.1}, base={("p", "q")})
+        self.assertEqual(got, {-400.0: [(5.0, "n", "o")]})
+
+    def test_a_common_error_blocks_the_pose(self):
+        """A failed common() can't prove a pose clear, so it counts as a contact (vt350#291: 3 Null-shape errors)."""
+        got = fr.classify(self.res(errors=[("-134.35 3.10", "smart sensor", "o2s")]), {-134.35: 3.1, -100.0: 3.1}, set())
+        self.assertTrue(got[-134.35]); self.assertEqual(got[-134.35][0][0], -1.0)
+        self.assertEqual(got[-100.0], [])
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

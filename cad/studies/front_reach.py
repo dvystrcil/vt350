@@ -48,6 +48,19 @@ def next_round(state, res=RES):
     return {x: (b + c) / 2 for x, (b, c) in state.items() if b is not None and c is not None and c - b > res}
 
 
+def classify(res, tries, base):
+    """clashlib result -> {x: [(volume, label_a, label_b)]} of contacts not in the baseline. A pair whose common()
+    failed counts as a contact (volume -1): an error can't prove the pose clear, so it never makes one clear."""
+    got = {x: [] for x in tries}
+    for r in res["results"]:
+        x = float(r["pose"].split()[0])
+        if (r["a"], r["b"]) not in base: got[x].append((r["volume"], r["la"], r["lb"]))
+    for e in res["errors"]:
+        x = float(e["pose"].split()[0])
+        if (e["a"], e["b"]) not in base: got[x].append((-1.0, e["la"], e["lb"] + " [common() error]"))
+    return got
+
+
 def update(state, tried, blocked):
     """Record one round: tried {x: y}, blocked {x: bool}."""
     for x, y in tried.items():
@@ -60,7 +73,9 @@ def main():
     n = int(sys.argv[1]) if len(sys.argv) > 1 else clashlib.default_n()
     work = os.environ.get("VT350_WORK", os.path.join(os.path.dirname(HERE), "data"))
     os.makedirs(os.path.join(work, "logs"), exist_ok=True)
-    log_f = open(os.path.join(work, "logs", "front_reach.log"), "w"); t0 = time.time()
+    log_f = open(os.path.join(work, "logs", "front_reach.log"), "a"); t0 = time.time()
+    cache_p = os.path.join(work, "front_reach_cache.json")   # every pose checked so far: a re-run skips them
+    cache = json.load(open(cache_p)) if os.path.exists(cache_p) else {}
     def log(*a):
         s = f"[{time.time() - t0:7.1f}s] " + " ".join(str(x) for x in a); print(s, flush=True); log_f.write(s + "\n"); log_f.flush()
     os.environ["SWEEP_BOXES"] = "1"
@@ -95,16 +110,17 @@ def main():
 
         def check(tries, tag):
             """tries {x: y} -> {x: [(volume, a, b)]} of overlaps not in the baseline."""
-            poses = {f"{x:.2f} {y:.2f}": pose(x, y) for x, y in tries.items()}
-            res = clashlib.run(st.MODEL, groups=groups, poses=poses, fixed=fixed, n=n, tol=TOL, log=log,
-                               skip_group_pairs=[("carriage", "head")])
-            for e in res["errors"]: log(f"   ERROR {e['pose']}: {e['la']} x {e['lb']}: {e['error']}")
-            if res["errors"]: raise RuntimeError(f"{len(res['errors'])} common() errors in {tag}")
-            got = {x: [] for x in tries}
-            for r in res["results"]:
-                x = float(r["pose"].split()[0])
-                if (r["a"], r["b"]) not in base: got[x].append((r["volume"], r["la"], r["lb"]))
-            return got
+            key = lambda x, y: f"{h} {x:.2f} {y:.2f}"
+            todo = {x: y for x, y in tries.items() if key(x, y) not in cache}
+            if todo:
+                poses = {f"{x:.2f} {y:.2f}": pose(x, y) for x, y in todo.items()}
+                res = clashlib.run(st.MODEL, groups=groups, poses=poses, fixed=fixed, n=n, tol=TOL, log=log,
+                                   skip_group_pairs=[("carriage", "head")])
+                for e in res["errors"]: log(f"   ERROR (counted as a contact) {e['pose']}: {e['la']} x {e['lb']}: {e['error']}")
+                for x, v in classify(res, todo, base).items(): cache[key(x, todo[x])] = v
+                json.dump(cache, open(cache_p, "w"))
+            log(f"   {h} {tag}: {len(tries)} poses ({len(tries) - len(todo)} from the cache)")
+            return {x: [tuple(c) for c in cache[key(x, y)]] for x, y in tries.items()}
 
         base = set()
         cx, cy = (x_lo + x_hi) / 2, (y_lo + y_hi) / 2
