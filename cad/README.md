@@ -483,9 +483,9 @@ Both ends are measured on the saved model by `cad/studies/z_sweep.py` (#82). It'
 | | Bed dZ from the model pose | LDO plate top Z | What limits it |
 |---|---|---|---|
 | **Lowest** | **−242.00** | **43.76** | the bed-frame 2020 T (front bar and spine) lands on `backbone-350 v2` |
-| **Nozzle touch** (a head carried over the print centre) | **+93.33** | **379.09** | the magnet sheet touches the nozzle; Left and Right heads the same |
+| **Nozzle touch** (a head carried over the print centre) | **+92.43** | **378.19** | the PEI sheet touches the nozzle; Left and Right heads the same (lite-77; +93.43 on the magnet sheet before) |
 | **Mechanical top** (toolhead parked at either dock) | **+113.60** | **399.36** | the rear Z block's end cap reaches its `rail_stop`, ray probe and boolean agree (113.60 / 113.604); the left and right blocks would reach theirs at +118.00 |
-| **Max print height** | | | **335.33 mm**, magnet-sheet top from the lower stop to the nozzle (no steel sheet modelled; with one, subtract its thickness) |
+| **Max print height** | | | **334.43 mm**, PEI-sheet top from the lower stop to the nozzle (lite-77) |
 | **Full travel** | | | **355.60 mm**, lower stop to mechanical top |
 | **Configured floor** (printer.cfg) | **−237.00** | **48.76** | 5.00 mm above the lower stop (`contact.FLOOR_MARGIN`, user 2026-11-09): both bed-frame 2020s (front crossbar `2020 (1)`, spine `2020 (2)`) stop 5 mm above the backbone |
 
@@ -493,12 +493,12 @@ Both ends are measured on the saved model by `cad/studies/z_sweep.py` (#82). It'
 
 | Klipper Z | Bed position | Limited by |
 |---|---|---|
-| **+330.43** (`position_max`, `cad/klipper/printer.cfg`) | the configured floor | 5 mm above the lower stop (user, 2026-11-09) |
-| +335.43 | the mechanical lower stop | the 2020 T on the backbone (crash limit behind the configured one) |
-| 0 | the nozzle touches the magnet sheet | — |
-| **−20.17** | the mechanical top, with the toolhead parked | the rear Z block on its rail stop |
+| **+329.43** (`position_max`, `cad/klipper/cad_values.cfg`) | the configured floor | 5 mm above the lower stop (user, 2026-11-09) |
+| +334.43 | the mechanical lower stop | the 2020 T on the backbone (crash limit behind the configured one) |
+| 0 | the nozzle touches the PEI sheet (1.0 mm on the magnet sheet, from lite-77) | — |
+| **−21.17** | the mechanical top, with the toolhead parked | the rear Z block on its rail stop |
 
-With a steel sheet of thickness *t*, Z0 moves up by *t*: `position_max` becomes 330.43 − *t* (mechanical 335.43 − *t*) and the top −20.17 − *t*. `test_refresh.py` fails if `printer.cfg`'s `position_max` differs from `klipper_position_max_configured_mm` in the committed log. `position_min` must stay above the top with margin. Below Z0 the bed only clears the toolhead when the toolhead is parked: with a head over the bed, the bed meets the nozzle at Z 0.
+From lite-77 the model has the owner's 1.0 mm PEI spring-steel sheet, so Z0 is on it (before: on the magnet sheet, 1 mm lower). A sheet of another thickness *t* moves every row by 1.0 − *t*. `test_refresh.py` fails if `printer.cfg`'s `position_max` differs from `klipper_position_max_configured_mm` in the committed log. `position_min` must stay above the top with margin. Below Z0 the bed only clears the toolhead when the toolhead is parked: with a head over the bed, the bed meets the nozzle at Z 0.
 
 Runners-up, i.e. what would limit next:
 - **Bottom, Z rails:** the left and right Z blocks' bottom end caps reach their rails' bottom ends at dZ −242.10. That's only **0.10 mm** past the stop: the blocks stay on the rails, just. The rear block has 4.50 mm.

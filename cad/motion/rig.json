@@ -12,7 +12,7 @@
   },
   "bed": {
     "group": "bed",
-    "top_dz": 93.42
+    "top_dz": 92.42
   },
   "gantry_groups": [
     "gantry",

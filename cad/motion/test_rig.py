@@ -94,9 +94,9 @@ class Committed(unittest.TestCase):
         self.assertEqual(fr[-1]["groups"]["Right"], [0.0, 0.0, 0.0])
 
     def test_bed_reaches_the_configured_floor(self):
-        # z_sweep.log's floor is bed dZ -237.00 at printer Z 330.43; the log's 2-decimal top dZ leaves 0.01 mm
+        # z_sweep.log's floor is bed dZ -237.00 at printer Z 329.43 (lite-77); the log's 2-decimal top dZ leaves 0.01 mm
         r = json.loads(read(HERE, "rig.json"))
-        self.assertAlmostEqual(timeline.groups(r, (175.0, 175.0, 330.43), None)["bed"][2], -237.0, delta=0.011)
+        self.assertAlmostEqual(timeline.groups(r, (175.0, 175.0, 329.43), None)["bed"][2], -237.0, delta=0.011)
 
 
 if __name__ == "__main__":
