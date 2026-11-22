@@ -8,6 +8,7 @@ which gets through sites that refuse plain HTTP clients and builds pages that ne
     <out>/collections/<name>/<name>.wacz     the archive: open it offline in https://replayweb.page (or its app)
     <out>/collections/<name>/text/*.md       one Markdown file per page: title, URL, crawl time, then the page text
     <out>/collections/<name>/text/INDEX.md   every page, with its file
+    <out>/collections/<name>/text/images/    each page's images (taken from the WARC); each page's .md lists its own
     <out>/<name>.log                         the crawler's log
 
 Re-running a site replaces its collection, so a re-crawl picks up changed docs. The copies are other people's
@@ -17,12 +18,16 @@ copyright and never go in git: --out inside a git checkout is refused. Note fact
 
 SITES.json: {"sites": [{"name": "...", "url": "https://...", "scope": "prefix", "page_limit": 200,
              "exclude": ["regex", ...], "note": "..."}]}
+  "urls": [...] in place of "url" crawls several start pages into one collection (e.g. scope "page": just those).
   scope: browsertrix --scopeType (page, page-spa, prefix, host, domain); default "prefix".
+  extra_hops: also save pages this many links beyond the scope (browsertrix --extraHops); default 0.
   --text-only rewrites text/ from an existing crawl without crawling again.
 
 Prints "webarchive: OK" when every site crawled and gave at least one page of text; exit 1 otherwise.
 """
 import argparse
+import gzip
+import hashlib
 import json
 import os
 import re
@@ -35,6 +40,9 @@ from pathlib import Path
 IMAGE = "webrecorder/browsertrix-crawler@sha256:261da066ea1a581558ca99b77e7a70a7183e73865f77b832c1823d816a6c75f0"
 NAME_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 SCOPES = {"page", "page-spa", "prefix", "host", "domain"}
+MIN_IMAGE_BYTES = 2048  # smaller ones are icons, spacers and tracking pixels
+IMAGE_EXT = {"image/jpeg": ".jpg", "image/png": ".png", "image/webp": ".webp", "image/gif": ".gif",
+             "image/svg+xml": ".svg", "image/avif": ".avif"}
 
 
 def load_sites(path):
@@ -46,8 +54,12 @@ def load_sites(path):
         if s["name"] in names:
             raise ValueError(f"site name {s['name']!r} appears twice")
         names.add(s["name"])
-        if not s.get("url", "").startswith(("http://", "https://")):
-            raise ValueError(f"site {s['name']}: url must start with http(s)://")
+        urls = s.get("urls") or [s.get("url", "")]
+        if ("url" in s) == ("urls" in s):
+            raise ValueError(f"site {s['name']}: give either url or urls")
+        if not all(u.startswith(("http://", "https://")) for u in urls):
+            raise ValueError(f"site {s['name']}: every url must start with http(s)://")
+        s["urls"] = urls
         if s.get("scope", "prefix") not in SCOPES:
             raise ValueError(f"site {s['name']}: scope must be one of {sorted(SCOPES)}")
     return sites
@@ -55,9 +67,14 @@ def load_sites(path):
 
 def crawl_args(site):
     """The browsertrix `crawl` arguments for one site."""
-    args = ["crawl", "--url", site["url"], "--collection", site["name"], "--scopeType", site.get("scope", "prefix"),
-            "--text", "to-pages", "--generateWACZ", "--overwrite", "--workers", "2", "--delay", "1",
-            "--timeout", "60", "--pageLimit", str(site.get("page_limit", 500))]
+    args = ["crawl"]
+    for u in site.get("urls") or [site["url"]]:
+        args += ["--url", u]
+    args += ["--collection", site["name"], "--scopeType", site.get("scope", "prefix"),
+             "--text", "to-pages", "--generateWACZ", "--overwrite", "--workers", "2", "--delay", "1",
+             "--timeout", "60", "--pageLimit", str(site.get("page_limit", 500))]
+    if site.get("extra_hops"):
+        args += ["--extraHops", str(site["extra_hops"])]
     for rx in site.get("exclude", []):
         args += ["--exclude", rx]
     return args
@@ -74,9 +91,69 @@ def slug(url):
     return (s or "index")[:120]
 
 
+def warc_records(path):
+    """(WARC headers, HTTP headers, body) for each response record in a .warc.gz; browsertrix stores bodies decoded."""
+    with gzip.open(path, "rb") as f:
+        data = f.read()
+    i = 0
+    while True:
+        i = data.find(b"WARC/1.", i)
+        if i < 0:
+            return
+        end = data.find(b"\r\n\r\n", i)
+        head = dict(_header_lines(data[i:end]))
+        n = int(head.get("content-length", 0))
+        block = data[end + 4:end + 4 + n]
+        i = end + 4 + n
+        if head.get("warc-type") != "response" or not block.startswith(b"HTTP/"):
+            continue
+        hend = block.find(b"\r\n\r\n")
+        http = dict(_header_lines(block[:hend]))
+        body = block[hend + 4:]
+        if "chunked" in http.get("transfer-encoding", ""):
+            body = _dechunk(body)
+        yield head, http, body
+
+
+def _header_lines(raw):
+    for line in raw.decode("latin1").split("\r\n")[1:]:
+        k, sep, v = line.partition(":")
+        if sep:
+            yield k.strip().lower(), v.strip()
+
+
+def _dechunk(body):
+    out, i = bytearray(), 0
+    while True:
+        j = body.find(b"\r\n", i)
+        size = int(body[i:j].split(b";")[0] or b"0", 16) if j >= 0 else 0
+        if size == 0:
+            return bytes(out)
+        out += body[j + 2:j + 2 + size]
+        i = j + 2 + size + 2
+
+
+def read_images(archive_dir):
+    """{page id: [(url, content type, bytes)]}: the images each page loaded, from the crawl's WARC files."""
+    by_page, seen = {}, set()
+    for f in sorted(Path(archive_dir).glob("*.warc.gz")):
+        for head, http, body in warc_records(f):
+            ctype = http.get("content-type", "").split(";")[0].strip().lower()
+            page = head.get("warc-page-id")
+            if ctype not in IMAGE_EXT or not page or len(body) < MIN_IMAGE_BYTES:
+                continue
+            url = head.get("warc-target-uri", "")
+            if (page, url) in seen:
+                continue
+            seen.add((page, url))
+            by_page.setdefault(page, []).append((url, ctype, body))
+    return by_page
+
+
 def read_pages(pages_dir):
-    """The crawled pages with text, one per page: `/x` and `/x/` are one page, and the longer text wins."""
-    best = {}
+    """The crawled pages with text, one per page: `/x` and `/x/` are one page, and the longer text wins.
+    Each page keeps `ids`, every crawl id its spellings had, so images loaded by either spelling stay with it."""
+    best, ids = {}, {}
     for f in sorted(Path(pages_dir).glob("*.jsonl")):
         for line in f.read_text().splitlines():
             if not line.strip():
@@ -85,13 +162,15 @@ def read_pages(pages_dir):
             if "url" not in d or not d.get("text"):
                 continue  # the header line, or a page that gave no text (a PDF, a redirect)
             k = norm_url(d["url"])
+            ids.setdefault(k, []).append(d.get("id"))
             if k not in best or len(d["text"]) > len(best[k]["text"]):
                 best[k] = d
-    return [best[k] for k in sorted(best)]
+    return [dict(best[k], ids=ids[k]) for k in sorted(best)]
 
 
-def write_text(pages, text_dir):
-    """One Markdown file per page plus INDEX.md; returns the number of pages written."""
+def write_text(pages, text_dir, images=None):
+    """One Markdown file per page plus INDEX.md; returns the number of pages written. `images` (from read_images)
+    are saved under images/<page>/ and listed at the end of their page's file, largest first."""
     text_dir = Path(text_dir)
     if text_dir.exists():
         shutil.rmtree(text_dir)
@@ -103,8 +182,23 @@ def write_text(pages, text_dir):
             name += "-x"
         used.add(name)
         title = (p.get("title") or p["url"]).strip()
-        (text_dir / f"{name}.md").write_text(
-            f"# {title}\n\nSource: {p['url']}\nCrawled: {p.get('ts', '')}\n\n---\n\n{p['text'].strip()}\n")
+        md = f"# {title}\n\nSource: {p['url']}\nCrawled: {p.get('ts', '')}\n\n---\n\n{p['text'].strip()}\n"
+        imgs = {}
+        for pid in p.get("ids") or [p.get("id")]:
+            for url, ctype, body in (images or {}).get(pid, []):
+                imgs.setdefault(url, (ctype, body))
+        if imgs:
+            d = text_dir / "images" / name
+            d.mkdir(parents=True)
+            lines = []
+            for url, (ctype, body) in sorted(imgs.items(), key=lambda kv: -len(kv[1][1])):
+                stem = re.sub(r"[^A-Za-z0-9._-]+", "-", url.split("?")[0].rstrip("/").rsplit("/", 1)[-1])[:60]
+                stem = re.sub(r"\.[A-Za-z0-9]{2,5}$", "", stem) or "image"
+                fn = f"{stem}-{hashlib.sha256(body).hexdigest()[:8]}{IMAGE_EXT[ctype]}"
+                (d / fn).write_bytes(body)
+                lines.append(f"- [images/{name}/{fn}](images/{name}/{fn}) ({len(body) // 1024} KB) <- {url}")
+            md += f"\n## Images ({len(lines)})\n\n" + "\n".join(lines) + "\n"
+        (text_dir / f"{name}.md").write_text(md)
         rows.append(f"| [{title}]({name}.md) | {p['url']} |")
     (text_dir / "INDEX.md").write_text("# Pages\n\n| Page | URL |\n|---|---|\n" + "\n".join(rows) + "\n")
     return len(pages)
@@ -156,7 +250,8 @@ def main(argv=None):
                 print(f"FAIL   {site['name']}: crawler exit {rc}; see {log}")
                 ok = False
                 continue
-        n = write_text(read_pages(coll / "pages"), coll / "text") if (coll / "pages").is_dir() else 0
+        n = (write_text(read_pages(coll / "pages"), coll / "text", read_images(coll / "archive"))
+             if (coll / "pages").is_dir() else 0)
         if n == 0:
             print(f"FAIL   {site['name']}: no page text in {coll}")
             ok = False
