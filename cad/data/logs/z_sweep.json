@@ -1,21 +1,22 @@
 {
- "model": "/work/vt350-lite-76-20261121t235655-334c-sweep/in/vt350-lite-76.FCStd",
+ "model": "/work/vt350-lite-77-20261122t172901-ef95-sweep/in/vt350-lite-77.FCStd",
  "plate_top": 285.76060992516267,
  "magnet_top": 287.16060992516265,
+ "sheet_top": 288.16060992516265,
  "lower": {
   "dz": -242.00390624999864,
   "plate_top": 43.75670367516403,
   "why": "2020 (2) lands on backbone-350 v2"
  },
  "upper": {
-  "dz": 93.42829622491956,
-  "plate_top": 379.18890615008223,
+  "dz": 92.42829622491956,
+  "plate_top": 378.18890615008223,
   "head": "Left",
-  "why": "Magnetic sheet (1.4 mm) touches TL-dragon-ace-MZE nozzle (brass V6)"
+  "why": "PEI spring-steel sheet (1.0 mm) touches TL-dragon-ace-MZE nozzle (brass V6)"
  },
  "print_height": {
-  "Left": 335.4322024749182,
-  "Right": 335.43220267756243
+  "Left": 334.4322024749182,
+  "Right": 334.43220267756243
  },
  "top": {
   "dz": 113.59999989998363,
@@ -23,9 +24,9 @@
   "why": "the top end of MGN9H (3) reaches the top end of SOLID034"
  },
  "klipper": {
-  "position_max": 335.4322024749182,
-  "position_max_configured": 330.4322024749182,
-  "z_negative": -20.171703675064066,
+  "position_max": 334.4322024749182,
+  "position_max_configured": 329.4322024749182,
+  "z_negative": -21.171703675064066,
   "travel": 355.60390614998227
  },
  "parked": {
@@ -66,7 +67,7 @@
    "SOLID037"
   ]
  ],
- "docked_upper": 96.22749172477194,
+ "docked_upper": 95.22749172477194,
  "problems": [],
  "contacts": {
   "down": [
@@ -423,14 +424,44 @@
   ],
   "up Left": [
    [
+    92.42829622491956,
+    "PEI spring-steel sheet (1.0 mm)",
+    "TL-dragon-ace-MZE nozzle (brass V6)"
+   ],
+   [
     93.42829622491956,
     "Magnetic sheet (1.4 mm)",
     "TL-dragon-ace-MZE nozzle (brass V6)"
    ],
    [
+    94.76055299734162,
+    "PEI spring-steel sheet (1.0 mm)",
+    "[a]_Duct-4010-right"
+   ],
+   [
+    94.76055299734583,
+    "PEI spring-steel sheet (1.0 mm)",
+    "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
+   ],
+   [
     94.82829622491954,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "TL-dragon-ace-MZE nozzle (brass V6)"
+   ],
+   [
+    95.22749172477194,
+    "PEI spring-steel sheet (1.0 mm)",
+    "Beacon RevH Normal (Beacon CAD, MIT)"
+   ],
+   [
+    95.32829632483737,
+    "PEI spring-steel sheet (1.0 mm)",
+    "COMPOUND"
+   ],
+   [
+    95.42829622491956,
+    "PEI spring-steel sheet (1.0 mm)",
+    "TL-dragon-ace-MZE sock"
    ],
    [
     95.76055299734162,
@@ -483,6 +514,11 @@
     "TL-dragon-ace-MZE sock"
    ],
    [
+    97.92829612491954,
+    "PEI spring-steel sheet (1.0 mm)",
+    "TL-dragon-ace-MZE"
+   ],
+   [
     98.92829612491954,
     "Magnetic sheet (1.4 mm)",
     "TL-dragon-ace-MZE"
@@ -495,14 +531,44 @@
   ],
   "up Right": [
    [
+    92.4282964275638,
+    "PEI spring-steel sheet (1.0 mm)",
+    "TL-dragon-ace-MZE nozzle (brass V6)001"
+   ],
+   [
     93.4282964275638,
     "Magnetic sheet (1.4 mm)",
     "TL-dragon-ace-MZE nozzle (brass V6)001"
    ],
    [
+    94.76055319998596,
+    "PEI spring-steel sheet (1.0 mm)",
+    "[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
+   ],
+   [
+    94.76055319999006,
+    "PEI spring-steel sheet (1.0 mm)",
+    "[a]_Duct-4010-left001"
+   ],
+   [
     94.82829642756377,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "TL-dragon-ace-MZE nozzle (brass V6)001"
+   ],
+   [
+    95.22749172477194,
+    "PEI spring-steel sheet (1.0 mm)",
+    "Beacon RevH Normal (Beacon CAD, MIT)"
+   ],
+   [
+    95.32829632483737,
+    "PEI spring-steel sheet (1.0 mm)",
+    "COMPOUND"
+   ],
+   [
+    95.4282964275638,
+    "PEI spring-steel sheet (1.0 mm)",
+    "TL-dragon-ace-MZE sock001"
    ],
    [
     95.76055319998596,
@@ -553,6 +619,11 @@
     97.82829642756377,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "TL-dragon-ace-MZE sock001"
+   ],
+   [
+    97.92829632756377,
+    "PEI spring-steel sheet (1.0 mm)",
+    "TL-dragon-ace-MZE001"
    ],
    [
     98.92829632756377,
