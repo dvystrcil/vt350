@@ -1,0 +1,10 @@
+{
+  "_doc": "Buying rounds (#22, owner 2026-11-21: \"I will not be able to buy all the parts at once\"). Each stage issue (#7-#15) is in exactly one round; a row's stage puts it in a round. Rounds follow the build: each one lets the next stage start. Edit and run python3 bom/totals.py --rounds --write-page.",
+  "rounds": [
+    {"name": "Frame", "stages": [7, 8, 9], "why": "The frame, its fasteners and the filament: printing parts and building the frame can start. The extrusion order waits on #243 (gantry height)."},
+    {"name": "Motion", "stages": [10, 11], "why": "Z axis, bed and gantry on the frame: everything that moves, before anything drives it."},
+    {"name": "Electronics", "stages": [13], "why": "Boards, supplies and wiring: the axes can be homed and tested with no toolhead fitted."},
+    {"name": "Toolheads", "stages": [12], "why": "The toolchanger and the heads. Per-head rows are costed for every head; one head's worth is largely owned already."},
+    {"name": "Enclosure and calibration", "stages": [14, 15], "why": "Panels, doors, roof, chamber fans and heater, then first power-on and calibration: the printer prints before it's closed in."}
+  ]
+}
