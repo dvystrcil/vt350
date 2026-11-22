@@ -530,8 +530,9 @@ class MarkersMatchTheRealTools(unittest.TestCase):
         log = open(os.path.join(self.ROOT, "cad/data/logs/z_sweep.log")).read()
         self.assertRegex(log, self.marker_of("z_sweep"))
         z = contact.parse(log)
-        # cad/klipper/printer.cfg carries the configured floor the committed log measured (user 2026-11-09)
-        cfg = open(os.path.join(self.ROOT, "cad/klipper/printer.cfg")).read()
+        # the config carries the configured floor the committed log measured (user 2026-11-09); it is in the generated
+        # cad/klipper/cad_values.cfg since vt350#294
+        cfg = open(os.path.join(self.ROOT, "cad/klipper/cad_values.cfg")).read()
         pm = re.search(r"(?ms)^\[stepper_z\]\n.*?^position_max:\s*([0-9.]+)", cfg)  # [stepper_z]'s, not the first
         want = re.findall(r"klipper_position_max_configured_mm=([0-9.]+)", log)
         self.assertTrue(pm and want, (pm, want))

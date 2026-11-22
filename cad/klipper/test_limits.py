@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Tests for limits.py: printer.cfg's limits against the committed CAD logs, and the envelope G-code (vt350#116).
+"""Tests for limits.py: the config's limits against the committed CAD logs, the generated cad_values.cfg (vt350#294)
+and the envelope G-code (vt350#116).
 
 Plain python3, no FreeCAD, no Kalico:  python3 cad/klipper/test_limits.py
 """
@@ -127,8 +128,8 @@ class CadLimits(unittest.TestCase):
         cad = {"x": (4.0, 346.0), "y": (-82.43, 340.19), "z": (0.0, 330.33)}
         self.assertEqual(limits.differences(cad, cad), [])
         cfg = dict(cad, x=(4.0, 346.01), z=(1.0, 330.33))
-        self.assertEqual(limits.differences(cfg, cad), ["x position_max: printer.cfg 346.01, CAD 346.0",
-                                                        "z position_min: printer.cfg 1.0, CAD 0.0"])
+        self.assertEqual(limits.differences(cfg, cad), ["x position_max: config 346.01, CAD 346.0",
+                                                        "z position_min: config 1.0, CAD 0.0"])
 
     def test_z_min_may_go_below_the_cad_floor(self):
         # Z0 is set by the Beacon nozzle tap and moves by fractions of a mm per nozzle; a negative position_min is a
@@ -136,7 +137,7 @@ class CadLimits(unittest.TestCase):
         cad = {"x": (4.0, 346.0), "y": (-82.43, 340.19), "z": (0.0, 330.33)}
         self.assertEqual(limits.differences(dict(cad, z=(-15.0, 330.33)), cad), [])
         self.assertEqual(limits.differences(dict(cad, x=(3.0, 346.0), y=(-83.0, 340.19)), cad),
-                         ["x position_min: printer.cfg 3.0, CAD 4.0", "y position_min: printer.cfg -83.0, CAD -82.43"])
+                         ["x position_min: config 3.0, CAD 4.0", "y position_min: config -83.0, CAD -82.43"])
 
 
 class Envelope(unittest.TestCase):
@@ -205,7 +206,25 @@ class Committed(unittest.TestCase):
     """The committed files agree with each other."""
 
     def setUp(self):
-        self.cfg = limits.parse_cfg(read(HERE, "printer.cfg"))
+        self.cfg = limits.load_cfg()                      # printer.cfg and its includes (vt350#294)
+
+    def test_cad_values_cfg_is_what_the_logs_give(self):  # vt350#294 AC2
+        want = limits.cad_values_cfg(read(LOGS, "sweep_toolhead.log"), read(LOGS, "z_sweep.log"), limits.load_mapping())
+        self.assertEqual(read(HERE, "cad_values.cfg"), want,
+                         "regenerate: python3 cad/klipper/limits.py --cfg > cad/klipper/cad_values.cfg")
+
+    def test_printer_cfg_includes_cad_values_cfg(self):
+        self.assertIn(os.path.join(HERE, "cad_values.cfg"), limits.pinmap.load(os.path.join(HERE, "printer.cfg")).files)
+
+    def test_no_other_file_sets_a_cad_limit(self):        # one place for every CAD number (vt350#294)
+        for f in limits.pinmap.load(os.path.join(HERE, "printer.cfg")).files:
+            if os.path.basename(f) == "cad_values.cfg":
+                continue
+            c = limits.parse_cfg(read(f)) if f.startswith(HERE) else {}
+            for sec in ("stepper_x", "stepper_y"):
+                for key in ("position_min", "position_max", "position_endstop"):
+                    self.assertNotIn(key, c.get(sec, {}), f"{f}: [{sec}] {key}")
+            self.assertNotIn("position_max", c.get("stepper_z", {}), f"{f}: [stepper_z] position_max")
 
     def test_printer_cfg_limits_come_from_the_cad_logs(self):
         cad = limits.cad_limits(read(LOGS, "sweep_toolhead.log"), read(LOGS, "z_sweep.log"), limits.load_mapping())
@@ -217,10 +236,11 @@ class Committed(unittest.TestCase):
         self.assertEqual(float(self.cfg["stepper_z"]["position_max"]), float(want[-1]))
 
     def test_every_limit_names_its_log(self):
-        text = read(HERE, "printer.cfg")
-        for sec in ("stepper_x", "stepper_y", "stepper_z"):
-            body = re.search(rf"(?ms)^\[{sec}\]\n(.*?)(?=^\[|\Z)", text).group(1)
-            for key in ("position_min", "position_max"):
+        for sec, key, fname in (("stepper_x", "position_min", "cad_values.cfg"), ("stepper_x", "position_max", "cad_values.cfg"),
+                                ("stepper_y", "position_min", "cad_values.cfg"), ("stepper_y", "position_max", "cad_values.cfg"),
+                                ("stepper_z", "position_min", "steppers.cfg"), ("stepper_z", "position_max", "cad_values.cfg")):
+            with self.subTest(sec=sec, key=key):
+                body = re.search(rf"(?ms)^\[{sec}\]\n(.*?)(?=^\[|\Z)", read(HERE, fname)).group(1)
                 before = body[:body.index(f"\n{key}:")]
                 want = (r"zruncho3d/madmax@[0-9a-f]{40}" if (sec, key) == ("stepper_z", "position_min")
                         else r"cad/data/logs/\w+\.log")
@@ -254,9 +274,13 @@ class Cli(unittest.TestCase):
         self.assertEqual(out[-1], "limits: OK")
 
     def test_check_fails_on_a_difference(self):
+        cfg = limits.load_cfg()
+        cfg["stepper_x"]["position_max"] = "347.00"
         with self.assertRaisesRegex(SystemExit, "x position_max"):
-            limits.main(["--check"], cfg_text=read(HERE, "printer.cfg").replace("position_max: 346.00",
-                                                                                 "position_max: 347.00"))
+            limits.main(["--check"], cfg=cfg)
+
+    def test_cfg(self):
+        self.assertEqual(limits.main(["--cfg"]), [read(HERE, "cad_values.cfg").rstrip("\n")])
 
     def test_unknown_arguments_print_usage(self):
         with self.assertRaisesRegex(SystemExit, "--check"):
