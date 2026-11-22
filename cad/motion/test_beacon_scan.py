@@ -67,16 +67,26 @@ class Path(unittest.TestCase):
             self.assertTrue(bs.AXIS_MIN[0] <= x <= bs.AXIS_MAX[0] and bs.AXIS_MIN[1] - 1e-9 <= y <= bs.AXIS_MAX[1] + 1e-9)
 
     def test_order_is_coarse_home_pickup_tilt_tap_scan(self):
-        """Owner 2026-11-22: coarse Z by proximity with no head, then T0, the tilt taps, the Z0 tap, the scan."""
+        """Owner 2026-11-22: coarse Z by proximity with no head, then T0, the tilt taps, the Z0 taps, the scan."""
         g = bs.gcode().splitlines()
-        dive, t0 = g.index("G1 Z2 F300"), g.index("T0")
-        taps = [i for i, l in enumerate(g) if l == "G1 Z0 F180"]
-        scan = g.index("G1 Z2 F600")
+        bc = bs.S["beacon"]
+        tap = f"G1 Z0 F{bc['autocal_speed'] * 60:g}"
+        dive = g.index(f"G1 Z{bs.TRIGGER_Z:g} F{bc['speed'] * 60:g}")
+        t0 = g.index("T0")
+        taps = [i for i, l in enumerate(g) if l == tap]
+        scan_start = [i for i, l in enumerate(g) if l.startswith("; 5.")][0]
         self.assertLess(dive, t0)
-        self.assertEqual(len(taps), len(bs.TILT_POINTS) + 1)
-        self.assertLess(t0, taps[0]); self.assertLess(taps[-1], scan)
-        self.assertIn(f"G1 X175 Y175 Z5 F18000", g[taps[-1] - 1])     # the last tap is the Z0 one, at home
+        self.assertEqual(len(taps), len(bs.TILT_POINTS) + bc["autocal_sample_count"])
+        self.assertLess(t0, taps[0]); self.assertLess(taps[-1], scan_start)
 
+    def test_moves_use_the_cfg_speeds_and_heights(self):
+        g = bs.gcode().splitlines()
+        zt, bm = bs.S["z_tilt"], bs.S["bed_mesh"]
+        for x, y in bs.TILT_POINTS:
+            self.assertIn(f"G1 X{x:g} Y{y:g} F{zt['speed'] * 60:g}", g)
+        self.assertIn(f"G1 Z{zt['horizontal_move_z']:g} F{bs.S['beacon']['autocal_retract_speed'] * 60:g}", g)
+        scan = [l for l in g if l.endswith(f"F{bm['speed'] * 60:g}")]
+        self.assertGreater(len(scan), 30)
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
