@@ -26,6 +26,8 @@ code. The printer side imports from here, not the other way round.
 | `webarchive/` | `crawl.py`: offline copies of the web sites a build reads (vendor docs, shops), from a sites file: each site crawled by browsertrix-crawler (headless Chrome in docker, pinned by digest; gets past sites that refuse plain HTTP clients), kept as a WACZ archive (open in replayweb.page) plus one Markdown file of text per page, each page's images (from the WARC, listed in its `.md`) and an `INDEX.md`; refuses an `--out` inside a git checkout; `--text-only` rebuilds the text without crawling | `docker`, `python3` |
 | `testing/` | `check_test_tmp.sh`: every plain-python test must leave its `TMPDIR` empty | `bash` |
 
+**What to run the tools on, and how long they take** (recommended hardware, measured run times, why memory sets the speed): [`HARDWARE.md`](HARDWARE.md).
+
 **What we've learned about FreeCAD** (what makes a model slow to open, hidden parts, stand-ins, App::Links, and the gotchas that cost us time): [`freecad/LESSONS.md`](freecad/LESSONS.md). Add to it the day something is learned.
 
 ## Running them by hand
