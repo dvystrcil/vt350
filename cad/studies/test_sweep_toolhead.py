@@ -15,6 +15,26 @@ FAKE = textwrap.dedent("""\
     """)
 
 
+class FrontClear(unittest.TestCase):
+    """#291: the clear X range along the front edge, from each side inward, and blocked poses inside it."""
+    def test_clear_from_each_side_inward(self):
+        row = {("left", -420.0): 2, ("left", -415.0): 0, ("left", -410.0): 0, ("middle", -300.0): 0,
+               ("right", -70.0): 5, ("right", -75.0): 3, ("right", -80.0): 0}
+        self.assertEqual(sweep_toolhead.front_clear(row), (-415.0, -80.0, []))
+
+    def test_a_blocked_pose_inside_is_reported(self):
+        row = {("left", -420.0): 0, ("middle", -300.0): 1, ("right", -70.0): 0}
+        self.assertEqual(sweep_toolhead.front_clear(row), (-420.0, -70.0, [-300.0]))
+
+    def test_a_blocked_edge_scan_past_the_first_clear_is_reported(self):
+        row = {("right", -70.0): 1, ("right", -75.0): 0, ("right", -80.0): 2, ("left", -420.0): 0}
+        self.assertEqual(sweep_toolhead.front_clear(row), (-420.0, -75.0, [-80.0]))
+
+    def test_a_side_blocked_all_the_way_gives_none(self):
+        row = {("right", -70.0): 1, ("right", -75.0): 1, ("left", -420.0): 0}
+        self.assertEqual(sweep_toolhead.front_clear(row), (-420.0, None, []))
+
+
 class BedBottom(unittest.TestCase):
     """The bed-bottom poses use the configured floor (printer.cfg: 5 mm above the measured lower stop,
     litelib.BED_FLOOR_DZ), never the bounding-box estimate: on lite-29 that landed the 2020 on the filter ENVELOPE box
