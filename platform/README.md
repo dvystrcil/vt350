@@ -23,6 +23,7 @@ code. The printer side imports from here, not the other way round.
 | `pages/` | `check_index.py`: the guard that runs before the reference pages are published; `fetch_assets.py`: puts the pages' large files (release assets, checked by sha256) in place; `credits.py`: a `CREDITS.md`, one row per upstream project, from `REUSE.toml`, the licence rules and a projects file (`--check` fails when it is stale) | `python3`, `gh` |
 | `docs/` | `step_parts.py`: each assembly page's Print and Buy tables (the parts for that stage only), from the printed-parts manifest and the BOM, written between `<!-- step-parts:begin -->` / `<!-- step-parts:end -->` markers; `--check` fails on a stale block or a page with parts but no markers | `python3` |
 | `library/` | `check_library.py`: a parts library (`<library>/<category>/<part>/<variant>/source.json` plus the files; the category must be in the schema's list and match the folder): each `source.json` against the library's `schema.json`, each committed file's sha256, no file for a no-file entry, no file without a `source.json`; with `--reuse` / `--projects` / `--manifest`, each file's REUSE label, each entry's credit and each printed part's manifest row agree (#268) | `python3` |
+| `webarchive/` | `crawl.py`: offline copies of the web sites a build reads (vendor docs, shops), from a sites file: each site crawled by browsertrix-crawler (headless Chrome in docker, pinned by digest; gets past sites that refuse plain HTTP clients), kept as a WACZ archive (open in replayweb.page) plus one Markdown file of text per page and an `INDEX.md`; `--text-only` rebuilds the text without crawling | `docker`, `python3` |
 | `testing/` | `check_test_tmp.sh`: every plain-python test must leave its `TMPDIR` empty | `bash` |
 
 **What we've learned about FreeCAD** (what makes a model slow to open, hidden parts, stand-ins, App::Links, and the gotchas that cost us time): [`freecad/LESSONS.md`](freecad/LESSONS.md). Add to it the day something is learned.
@@ -42,6 +43,7 @@ python3 platform/pages/fetch_assets.py notes/reference/assets.json   # "fetch-as
 python3 platform/pages/credits.py --projects cad/credits.json --reuse REUSE.toml --licences cad/viewer/licences.json --licence-dir LICENSES --out CREDITS.md   # "credits: OK"; --check in CI
 python3 platform/library/check_library.py --library cad/library --reuse REUSE.toml --projects cad/credits.json --manifest parts/printed/manifest.csv   # "library-check: OK"
 bash platform/testing/check_test_tmp.sh                         # "check-test-tmp: OK"
+python3 platform/webarchive/crawl.py cad/data/web-sources.json --out ~/Documents/VT350/web   # offline copies of the sites; --only NAME; "webarchive: OK"
 python3 platform/docs/step_parts.py                            # rewrite the Print/Buy tables in docs/assembly/stage-N-*.md; --check in CI ("step-parts: OK")
 python3 platform/klipper/pinmap.py check --config cad/klipper/printer.cfg --map cad/klipper/pinmap.json   # "pinmap: OK"
 bash cad/klipper/virtual-printer.sh start                      # platform/virtualprinter with the VT350's config; "virtual-printer: ready" (stop: "virtual-printer: stopped")

@@ -1,0 +1,20 @@
+{
+  "_about": "Web sites the VT350 build reads, kept offline by platform/webarchive/crawl.py (notes/scripts.md). Output goes to ~/Documents/VT350/web, not git.",
+  "sites": [
+    {
+      "name": "beacon-docs",
+      "url": "https://docs.beacon3d.com/",
+      "scope": "host",
+      "page_limit": 300,
+      "note": "Beacon probe documentation (config, commands, models, mounting angles). Its sitemap.xml lists every page as 'None', so crawl the links."
+    },
+    {
+      "name": "beacon3d",
+      "url": "https://beacon3d.com/",
+      "scope": "host",
+      "page_limit": 300,
+      "exclude": ["/cart", "/checkout", "/my-account", "[?&]add-to-cart=", "[?&]orderby=", "/wp-json/", "/feed/?$", "/wp-login"],
+      "note": "Beacon's main site (WordPress shop): product pages, dimensions, mounts."
+    }
+  ]
+}
