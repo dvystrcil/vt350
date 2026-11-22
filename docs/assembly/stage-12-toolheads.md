@@ -31,11 +31,39 @@ What to print and what to buy for this stage only. The tables are generated from
 | Buy | Qty | Status | Vendor |
 |---|---|---|---|
 | Mellow MultiHead Zero (black) nozzle offset probe | 1 | to buy | [West3D (SKU MEL2020)](https://west3d.com/products/mellow-multiohead-zero-precision-xyz-nozzle-offset-calibration-tool-black) |
-| M3 heat-set insert, short: M3x3x5 (3 mm long, 5 mm OD), brass (YuGtcen, 150 pcs) | 6 | ordered | [Amazon (YuGtcen)](https://www.amazon.com/YuGtcen-Threaded-Inserts/dp/B0CN2PMPY8) |
+| M3 heat-set insert, short: M3x3x5 (3 mm long, 5 mm OD), brass (YuGtcen, 150 pcs) | 3 per head | ordered | [Amazon (YuGtcen)](https://www.amazon.com/YuGtcen-Threaded-Inserts/dp/B0CN2PMPY8) |
 | M3 male-female round standoff, 4 mm body, Ø5 max 5.5, M3x4 stud (e.g. PATIKIL M3x4+4 stainless, 10-pack) | 5 | ordered | Amazon (PATIKIL) |
-| M3x6 flat-head screw (FHCS), carbon steel (strongly magnetic), head 5.8-6 mm | 6 | ordered | Amazon |
+| M3x6 flat-head screw (FHCS), carbon steel (strongly magnetic), head 5.8-6 mm | 3 per head | ordered | Amazon |
 | M3 male-female round standoff, 8 mm body, Ø5, M3x6 stud (AWclub M3x8+6 304 stainless, 12-pack) | 1 | ordered | Amazon (AWclub) |
-| 6x3 mm N52 magnet (West3D, nickel or black epoxy) | 63 | to buy | [West3D](https://west3d.com/products/6mm-x-3mm-round-neomydium-magnets) |
+| 6x3 mm N52 magnet, MadMax carriage (West3D, nickel or black epoxy) | 6 | to buy | [West3D](https://west3d.com/products/6mm-x-3mm-round-neomydium-magnets) |
+| 6x3 mm N52 magnet, tool plate + dock keyslot plate (West3D, nickel or black epoxy) | 9 per head | to buy | [West3D](https://west3d.com/products/6mm-x-3mm-round-neomydium-magnets) |
+| Beacon RevH, Normal (SKU WES2566NOR) | 1 | to buy | [West3D](https://west3d.com/products/beacon-probe-eddy-current-surface-scanner-for-3d-printers?variant=46106145882324) |
+| MadMax carriage hardware (one set) | 1 | to buy |  |
+| MadMax tool-plate hardware, per head | 1 per head | to buy |  |
+| M3x8 or M3x6 flat head (FHCS), strongly magnetic steel, A4T head side | 3 per head | to buy |  |
+| M3x16 + M3x12 (SHCS or BHCS), A4T head side | 1 per head | to buy |  |
+| M3x8 socket head (SHCS), A4Tv2 | 4 per head | to buy |  |
+| M3x6 button head (BHCS), A4Tv2 | 6 per head | to buy |  |
+| M3x16 button head (BHCS), A4Tv2 | 4 per head | to buy |  |
+| M3 thin square nut (DIN 562), A4Tv2 | 8 per head | to buy |  |
+| M2x10 self-tapping screw, 4010 blowers | 8 per head | to buy |  |
+| Dock bar fixings: M5 screws | 9 | decide |  |
+| M3x10 socket head (SHCS), dock saddles | 4 | to buy |  |
+| Dock keyslot-plate screws: M3 SHCS | 12 | decide |  |
+| M5 drop-in T-nut, 6 mm slot | 9 | to buy | [West3D](https://west3d.com/products/roll-in-drop-in-t-nuts-for-2020-extrusions-m3-3mm-and-m5-5mm-threads) |
+| M3 drop-in T-nut, 6 mm slot | 4 | to buy | [West3D](https://west3d.com/products/roll-in-drop-in-t-nuts-for-2020-extrusions-m3-3mm-and-m5-5mm-threads) |
+| Orbitool O2S toolhead board | 1 per head | to buy | [West3D](https://west3d.com/products/orbitool-toolhead-pcb-board-for-orbiter-2-o2-and-smart-orbiter-3-so3-by-ldo-motors?variant=45224824832212) |
+| Orbiter Smart Filament Sensor (OSS) kit | 1 per head | to buy | [West3D](https://west3d.com/products/orbiter-filament-sensor-complete-kit-for-orbiter-extruder-v20-by-ldo-motors) |
+| LDO Orbiter V2.5 extruder (with 36STH20 motor) | 1 per head | to buy | [West3D](https://west3d.com/products/ldo-orbiter-extruder-v2-5-orbiter-v2-5-and-v2-0-to-v2-5-upgrade-kit) |
+| Vindr Berserker 4010B-24V-P blower (part cooling) | 2 per head | to buy |  |
+| Berserker VINDR 2510A-24V-A axial fan (hotend) | 1 per head | decide | [West3D](https://west3d.com/products/berserker-vindr-ultra-performance-2510-axial-fan-24v-2510a-24v-a-25x10mm) |
+| Phaetus Dragon ACE Volcano hotend | 1 per head | to buy |  |
+| TC Undertaker nozzle, 0.6 mm | 1 per head | to buy |  |
+| Crossbow CNC filament cutter (DW-Tas, aluminium) | 1 per head | decide | [West3D](https://west3d.com/products/crossbow-cnc-filament-cutter-for-a4t-sherpa-mini-orbiter-v2-5-and-other-flat-top-extruders-by-dw-tas) |
+| Neopixel LED PCB (RGBW preferred) | 3 per head | to buy |  |
+| 28 AWG wire, red / black / blue, ~400 mm each per head | 1 per head | to buy |  |
+| O2S USB cable, ~3 m | 1 per head | decide |  |
+| PTFE bowden, OD 4.12 mm, ~0.6 m | 1 per head | decide |  |
 <!-- step-parts:end -->
 
 ## Dock screws on each head (lite-68, #59)
