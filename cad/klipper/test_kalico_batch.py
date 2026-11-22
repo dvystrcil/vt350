@@ -66,7 +66,7 @@ class PinnedKalico(Base):
                          read(KALISIM, "plugins", "move_timeline.py"))
 
     def test_one_dictionary_per_mcu_for_its_chip(self):
-        cfg = limits.parse_cfg(read(CFG))
+        cfg = limits.load_cfg(CFG)                       # printer.cfg + includes (vt350#294)
         self.assertEqual(sorted(k for k in cfg if k == "mcu" or k.startswith("mcu ")),
                          sorted("mcu" if m == "mcu" else f"mcu {m}" for m in MCUS))
         for frag, chip in CHIPS.items():
@@ -133,7 +133,7 @@ class Envelope(Base):
         self.assertEqual(refused, [f"past {a}_{e}" for a in "xyz" for e in ("min", "max")])
 
     def test_walk_visits_the_negative_z_position_min(self):     # vt350#116: accepted by real Kalico in test_envelope
-        zmin = float(re.search(r"(?ms)^\[stepper_z\].*?^position_min: *(-?[0-9.]+)", read(HERE, "printer.cfg")).group(1))
+        zmin = float(limits.load_cfg(CFG)["stepper_z"]["position_min"])      # printer.cfg + includes (vt350#294)
         self.assertLess(zmin, 0)
         zs = [t["z"] for t in kalisim.move_targets(kalisim.parse_blocks(read(HERE, "envelope.gcode"))["in-range"])]
         self.assertIn(zmin, zs)
@@ -142,7 +142,7 @@ class Envelope(Base):
         want = re.findall(r"klipper_position_max_configured_mm=([0-9.]+)", read(ROOT, "cad/data/logs/z_sweep.log"))
         zs = [t["z"] for t in kalisim.move_targets(kalisim.parse_blocks(read(HERE, "envelope.gcode"))["in-range"])]
         self.assertEqual(max(zs), float(want[-1]))
-        self.assertEqual(float(limits.parse_cfg(read(CFG))["stepper_z"]["position_max"]), float(want[-1]))
+        self.assertEqual(float(limits.load_cfg(CFG)["stepper_z"]["position_max"]), float(want[-1]))
 
 
 TOOLCHANGER = os.environ.get("KALISIM_TOOLCHANGER", "/opt/toolchanger")

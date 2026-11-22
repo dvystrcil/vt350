@@ -130,7 +130,7 @@ class Committed(unittest.TestCase):
                         self.assertIn("# source:", above)
 
     def test_params_are_inside_the_axis_limits(self):
-        lim = limits.cfg_limits(limits.parse_cfg(read(HERE, "printer.cfg")))
+        lim = limits.cfg_limits(limits.load_cfg())       # printer.cfg + includes: the limits are in cad_values.cfg
         p = dock_params.derive_committed()
         for k, v in p["toolchanger"].items():
             with self.subTest(k=k):
