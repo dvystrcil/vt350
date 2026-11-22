@@ -64,5 +64,23 @@ class Text(unittest.TestCase):
         self.assertEqual(crawl.slug("https://x.com/A_b/c?d=1"), "x-com-a-b-c-d-1")
 
 
+class OutsideGit(unittest.TestCase):
+    def test_refuses_out_in_a_checkout(self):
+        here = Path(__file__).resolve().parent
+        if not crawl.git_root(here):
+            self.skipTest("not in a git checkout")
+        with tempfile.TemporaryDirectory() as t:
+            sites = Path(t) / "sites.json"
+            sites.write_text(json.dumps({"sites": [{"name": "a", "url": "https://x/"}]}))
+            with self.assertRaises(SystemExit) as cm:
+                crawl.main([str(sites), "--out", str(here / "not-made-yet" / "web")])
+            self.assertIn("outside git", str(cm.exception))
+            self.assertFalse((here / "not-made-yet").exists())
+
+    def test_allows_out_outside(self):
+        with tempfile.TemporaryDirectory() as t:
+            self.assertIsNone(crawl.git_root(Path(t) / "web"))
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
