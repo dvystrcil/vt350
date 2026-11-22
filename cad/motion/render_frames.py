@@ -88,10 +88,25 @@ def dock_view(rig, distance=1120.0, rise=270.0, lens_mm=50.0):
     return {"name": "docks", "pos": pos, "look": look, "lens_mm": lens_mm, "ev": -0.5}
 
 
-def make_frames(rig, timeline_path, fps, every, carried=None):
-    """fps None: one frame per move end (timeline.py --moves), for stills at exact points."""
+def side_view(rig, head="Left", distance=650.0, rise=60.0, lens_mm=50.0):
+    """vt350#291: a camera beside one dock, looking along X at it from that head's side of the printer (the side panel
+    is hidden in this view, colours.json), aimed between the docked nozzle and the pickup approach, so the push into
+    the dock, the slide and the pull out are all in frame."""
+    h = rig["heads"][head]
+    nx, ny, nz = h["nozzle"]
+    side = -1 if nx < sum(v["nozzle"][0] for v in rig["heads"].values()) / len(rig["heads"]) else 1
+    look = [nx, ny + 35.0, nz + 30.0]
+    return {"name": "dock_side", "pos": [nx + side * distance, look[1], look[2] + rise], "look": look,
+            "lens_mm": lens_mm, "ev": 0.4}
+
+
+def make_frames(rig, timeline_path, fps, every, carried=None, last_seq=None):
+    """fps None: one frame per move end (timeline.py --moves), for stills at exact points. last_seq: only the records up
+    to that seq (e.g. one head's drop-off and pick-up)."""
     with open(timeline_path) as f:
         records = [json.loads(line) for line in f if line.strip()]
+    if last_seq is not None:
+        records = [r for r in records if r["seq"] <= last_seq]
     return motion.frames_file(timeline.frames(rig, records, fps, carried), fps or 1, every)
 
 
@@ -103,9 +118,9 @@ def frames_at(ff, x, y, tol=0.01):
     return at
 
 
-def submit_cmd(export, samples, size, n, notify, deadline, view="docks", frames="frames.json"):
+def submit_cmd(export, samples, size, n, notify, deadline, view="docks", frames="frames.json", name="vt350-motion"):
     return ["python3", os.path.join(HOMELAB, "bin", "gpu-batch-submit.py"), "blender",
-            "--input", export, "--script", os.path.join(RENDER, "render.py"), "--name", "vt350-motion",
+            "--input", export, "--script", os.path.join(RENDER, "render.py"), "--name", name,
             "--expect", "out/frame-*.png", "--min-outputs", str(n), "--deadline", str(deadline), "--notify", notify,
             "--", str(samples), "--frames", frames, "--view", view, "--size", size]
 
@@ -135,8 +150,8 @@ def prepare(a, rig):
         print(f"export: reusing {exp}")
     with open(os.path.join(exp, "scene.json")) as f:
         scene = json.load(f)
-    scene["views"] = [dock_view(rig)]
-    ff = make_frames(rig, a.timeline, a.fps, a.every)
+    scene["views"] = [side_view(rig, a.head) if a.view == "dock_side" else dock_view(rig)]
+    ff = make_frames(rig, a.timeline, a.fps, a.every, last_seq=a.last_seq)
     motion.check_scene(ff, scene)
     for name, obj in (("scene.json", scene), ("frames.json", ff)):
         with open(os.path.join(exp, name), "w") as f:
@@ -166,13 +181,17 @@ def main(argv):
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--out", default=VIDEO, help="encode: the MP4 (default notes/reference/toolchange-docks/toolchange-docks.mp4)")
     ap.add_argument("--at", help="stills: printer X,Y")
+    ap.add_argument("--view", choices=("docks", "dock_side"), default="docks",
+                    help="docks: both docks from the front (default); dock_side: one dock from its side, panel hidden (#291)")
+    ap.add_argument("--head", default="Left", help="dock_side: whose dock (default Left)")
+    ap.add_argument("--last-seq", type=int, help="only the timeline up to this seq (32: the Left head's drop-off + pick-up)")
     a = ap.parse_args(argv)
     with open(a.rig) as f:
         rig = json.load(f)
     if a.what == "encode":
         if not a.frames_dir:
             ap.error("encode needs the frames dir")
-        ff = make_frames(rig, a.timeline, a.fps, a.every)   # the frames alone: encode needs no export (vt350#144)
+        ff = make_frames(rig, a.timeline, a.fps, a.every, last_seq=a.last_seq)   # the frames alone: encode needs no export (vt350#144)
         os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
         motion.encode(a.frames_dir, ff, a.out)
         print(f"wrote {a.out} ({os.path.getsize(a.out) / 1e6:.1f} MB, {len(ff['frames'])} frames)")
@@ -182,7 +201,7 @@ def main(argv):
         if not a.at:
             ap.error("stills needs --at X,Y")
         x, y = (float(v) for v in a.at.split(","))
-        at = frames_at(make_frames(rig, a.timeline, None, 1), x, y)
+        at = frames_at(make_frames(rig, a.timeline, None, 1, last_seq=a.last_seq), x, y)
         sub = {"fps": ff["fps"], "frames": at}
         name = f"stills-{x:g}_{y:g}.json"
         with open(os.path.join(exp, name), "w") as f:
@@ -191,9 +210,9 @@ def main(argv):
             f["i"] = 90000 + k                         # move-end frames: their own numbers, beside the video's
         print(f"{len(at)} move ends at X {x:g} Y {y:g}: " + ", ".join(
             f"frame-{f['i']} seq {f['seq']} carried {f['carried']}" for f in at))
-        cmd = submit_cmd(exp, 128, "1920x1080", len(at), a.notify, 3600, frames=name)
+        cmd = submit_cmd(exp, 128, "1920x1080", len(at), a.notify, 3600, frames=name, view=a.view)
     else:
-        cmd = submit_cmd(exp, a.samples, a.size, len(ff["frames"]), a.notify, a.deadline)
+        cmd = submit_cmd(exp, a.samples, a.size, len(ff["frames"]), a.notify, a.deadline, view=a.view)
     if a.what == "prepare":
         print("next: python3 cad/motion/render_frames.py submit   (the batch lane)")
         return 0

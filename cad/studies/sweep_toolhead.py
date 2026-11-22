@@ -28,8 +28,6 @@
 # reach) + the centre, each with the bed at the top (magnet sheet at the nozzle tip: Z0, no steel sheet modelled) and
 # at the bottom; plus the head's own dock pickup at both bed heights, at the parked position and at the keyslots'
 # large opening (SLIDE forward: the attach move, #52); plus the saved model pose (baseline).
-# Per head also (#291): the X reach at the Y centre (X_SCAN), and a front-edge scan at the square's front edge and at that
-# edge less the Beacon's Y offset (FRONT_SCAN), bed at the top: '<head> head, front edge nozzle Y <y>: clear X <lo> .. <hi>'.
 import json, os, subprocess, sys, time
 
 WORK = os.environ.get("VT350_WORK", "/home/dan/Code/vt350/cad/data")
@@ -49,13 +47,6 @@ BEAM = "Beacon RevH"                   # label prefix of the Beacon (lite-24); m
 BELTS = ("GT2 9mm belt, lower (Monolith 2WD)", "GT2 9mm belt, upper (Monolith 2WD)")
 BELT_CLIP = (-480.0, 243.2, 400.0, -10.0, 294.5, 460.0)   # XY joints' Y band (VC9-J* plates), lite-23 probe
 X_SCAN = 40.0, 1.0                     # nozzle X scanned inward from each side of the print square: span, step (mm)
-# #291 front-edge scan: can the carried head reach the print square's front edge across its whole width, with the other
-# head parked in its dock? Nozzle Y values: the square's front edge, and that edge less the Beacon's Y offset (where the
-# nozzle must be for the coil to scan the edge). Bed at the top (the Beacon scans ~3 mm over it). Coarse, to fit the
-# lane's deadline: edge spans scanned inward at EDGE step from the square's sides (the far side, toward the parked
-# head, gets the longer span), the stretch between them at MIDDLE step.
-BEACON_DY = 27.4                       # Beacon coil centre - nozzle, Y (Klipper [beacon] y_offset; lite24_beacon.py, lite-26)
-FRONT_SCAN = dict(far=90.0, own=20.0, edge=5.0, middle=40.0)
 CARRIAGE_PART = ("Carriage (1)", "COMPOUND")          # (group, label) of the gantry's MadMax carriage body
 BED_PATHS = {"Bed frame", "Z_Bed_Left", "Z_Bed_Right", "Z_Bed_Rear", "Z_Carriage_Left", "Z_Carriage_Right",
              "Z_Carriage_Rear_2-hole (IGUS)", "Z_Carriage_Rear_3-Hole (Generic)", "MGN9H (2)", "MGN9H (3)",
@@ -200,7 +191,7 @@ def plan(out):
     dz_bottom, note = bed_bottom(land, BED_LOWEST_DZ, BED_FLOOR_DZ)
     notes.append(note)
     # poses
-    poses, meta = {}, {}
+    poses, meta, carried = {}, {}, {}
     x_lo, x_hi = PLATE_X0 + (PLATE_W - PRINT_W) / 2, PLATE_X0 + (PLATE_W + PRINT_W) / 2
     y_lo, y_hi = PLATE_Y0 + (PLATE_W - PRINT_W) / 2, PLATE_Y0 + (PLATE_W + PRINT_W) / 2
     for h in HEADS:
@@ -211,6 +202,7 @@ def plan(out):
         y_front = ny + Y_TRAVEL[0] - ty
         notes.append(f"{h} carried: nozzle tip Z {tip_z:.2f}; bed top dZ {dz_top:+.2f} (magnet top {mag.ZMax:.2f} -> "
                      f"{mag.ZMax + dz_top:.2f}); nozzle Y reach {y_front:.2f} .. {y_reach:.2f} (print square Y {y_lo:.1f} .. {y_hi:.1f})")
+        carried[h] = dict(nozzle=nozzles[h], T=T[h], dz_top=dz_top, square=(x_lo, y_lo, x_hi, y_hi))
         poses[h] = {}
         def add(pid, nozzle_xy, dz, what, slide=0.0):
             if nozzle_xy is None:
@@ -239,22 +231,13 @@ def plan(out):
                 tc = (x - nx + tx, (y_lo + y_hi) / 2 - ny + ty, 0.0)
                 xs[pid] = {"gantry": (0, tc[1], 0), "belt": (0, tc[1], 0), "carriage": tc, "head": (tc[0] - tx, tc[1] - ty, tc[2] - tz)}
         poses[h + " X scan"] = xs
-        fs = {}
-        own = "left" if nx < (x_lo + x_hi) / 2 else "right"          # the side of this head's own dock
-        span = {own: FRONT_SCAN["own"], ("right" if own == "left" else "left"): FRONT_SCAN["far"]}
-        for y in (y_lo - BEACON_DY, y_lo):
-            xs_ = [("left", x_lo + i * FRONT_SCAN["edge"]) for i in range(int(span["left"] / FRONT_SCAN["edge"]) + 1)]
-            xs_ += [("right", x_hi - i * FRONT_SCAN["edge"]) for i in range(int(span["right"] / FRONT_SCAN["edge"]) + 1)]
-            m0, m1 = x_lo + span["left"], x_hi - span["right"]
-            n_mid = max(1, round((m1 - m0) / FRONT_SCAN["middle"]))
-            xs_ += [("middle", m0 + (m1 - m0) * (i + 0.5) / n_mid) for i in range(n_mid)]
-            for side, x in xs_:
-                tc = (x - nx + tx, y - ny + ty, 0.0)
-                if not (Y_TRAVEL[0] - 1e-6 <= tc[1] <= Y_TRAVEL[1] + 1e-6): raise RuntimeError(f"front scan Y {y:.2f}: gantry dY {tc[1]:.2f} out of travel")
-                fs[f"front Y {y:.1f} {side} {x:.1f}"] = {"bed": (0, 0, dz_top), "gantry": (0, tc[1], 0), "belt": (0, tc[1], 0),
-                                                       "carriage": tc, "head": (tc[0] - tx, tc[1] - ty, tc[2] - tz)}
-        poses[h + " front scan"] = fs
-    json.dump(dict(bed=bed, gantry=gantry, belt=belts, carriage=carriage, heads=heads, tool=tool, exclude=exclude, dock_copies=dock_copies,
+    boxes = {}
+    if os.environ.get("SWEEP_BOXES"):                     # front_reach.py (#291): every leaf's box, to pick what a head can hit
+        ex = set(exclude)
+        for o in leaves:
+            if o.Name not in ex:
+                b = bb(o); boxes[o.Name] = [b.XMin, b.YMin, b.ZMin, b.XMax, b.YMax, b.ZMax]
+    json.dump(dict(carried=carried, boxes=boxes, bed=bed, gantry=gantry, belt=belts, carriage=carriage, heads=heads, tool=tool, exclude=exclude, dock_copies=dock_copies,
                    tubes={h: t.Name for h, t in tubes.items()}, poses=poses, meta=meta, notes=notes, labels=lab),
               open(out, "w"))
 
@@ -273,41 +256,6 @@ def plan_stage(freecadcmd):
 
 
 # ------------------------------------------------------------------------------------------------ stage 2: check
-def front_clear(rows_by_x):
-    """#291: from one front-edge row of poses {(side, x): n_new_overlaps}, the clear X range: the first clear X scanning
-    inward from each side, and every pose inside it that is still blocked (so a gap can't hide behind the edge scans)."""
-    def first(side, rev):
-        xs = sorted((x for s, x in rows_by_x if s == side), reverse=rev)
-        return next((x for x in xs if not rows_by_x[side, x]), None)
-    lo, hi = first("left", False), first("right", True)
-    inside = [] if lo is None or hi is None else sorted(x for (s, x), k in rows_by_x.items() if k and lo < x < hi)
-    return lo, hi, inside
-
-
-def front_scan(h, plan_, groups, clip, bskip, const, n, log, clashlib):
-    """#291: the carried head along the print square's front edge (bed at the top, the other head parked)."""
-    fp = plan_["poses"][h + " front scan"]
-    fres = clashlib.run(MODEL, groups=groups, poses=fp, exclude=plan_["exclude"] + [plan_["tubes"][h]],
-                        n=n, tol=0.01, log=log, clip=clip, skip_group_pairs=bskip)
-    front_scan.stats = fres["stats"]
-    for e in fres["errors"]: log(f"   ERROR {e['pose']}: {e['la']} x {e['lb']}: {e['error']}")
-    ys = sorted({p.split()[2] for p in fp}, key=float)
-    for y in ys:
-        log(f"-- {h} front scan, nozzle Y {y} (bed top; overlaps not already in the saved model):")
-        row = {}
-        for pid in [p for p in fp if p.split()[2] == y]:
-            side, x = pid.split()[3], float(pid.split()[4])
-            rows = [r for r in fres["results"] if r["pose"] == pid and (r["a"], r["b"]) not in const
-                    and not (r["la"].startswith("MGN12-400mm") or r["lb"].startswith("MGN12-400mm"))]
-            row[side, x] = len(rows)
-            hits = sorted({f"{r['la']} x {r['lb']}" for r in rows})
-            log(f"   {side:>6} X {x:7.1f}: {len(rows):2} overlaps, {sum(r['volume'] for r in rows):8.2f} mm3"
-                + (f"; {'; '.join(hits[:4])}{' ...' if len(hits) > 4 else ''}" if hits else ""))
-        lo, hi, inside = front_clear(row)
-        log(f"   {h} head, front edge nozzle Y {y}: clear X {lo} .. {hi}"
-            + (f"; blocked inside at X {', '.join(f'{x:.1f}' for x in inside)}" if inside else "; no blocked pose inside"))
-
-
 def main():
     import clashlib
     n = int(sys.argv[1]) if len(sys.argv) > 1 else clashlib.default_n()
@@ -370,8 +318,6 @@ def main():
                 if first_clear is None and not rows: first_clear = pid.split()[-1]
             log(f"   {h} head, {side} side: first nozzle X with no new overlap {first_clear} (print square edge {pids[0].split()[-1]})")
         summary[h + " X scan"] = xres["stats"]
-        front_scan(h, plan_, groups, clip, BSKIP, const, n, log, clashlib)
-        summary[h + " front scan"] = front_scan.stats
         # tool-internal: the head against its plate (they move together, so this is pose-independent)
         t = plan_["tool"][h]
         ires = clashlib.run(MODEL, groups=dict(head=t["head"], plate=t["plate"]), fixed=[], n=min(n, 4), tol=0.01, log=log)
