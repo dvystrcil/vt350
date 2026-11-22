@@ -34,7 +34,7 @@ import contact
 
 MODEL = os.environ.get("VT350_MODEL", "/home/dan/Documents/VT350/vt350-lite-29.FCStd")
 ENVELOPE = re.compile(r"^.+ envelope \(contents in ([^()]+\.FCStd)\)$")
-PLATE, MAGNET = "LDO 350 build plate", "Magnetic sheet"
+PLATE, MAGNET, SHEET = "LDO 350 build plate", "Magnetic sheet", "PEI spring-steel sheet"   # SHEET: lite-77 on
 NOZZLE = ("TL-dragon-ace-MZE nozzle (brass V6)", "E3D v6 HotEnd - Nozzle")   # lite-73+ (MZE assembly), lite-72 and older
 BLOCK_GROUP, BLOCK_PART, RAIL_GROUP = "MGN9H (", "MGN9H - Carriage", "MGN9 - 400mm"
 RAY_GRID = 0.5          # mm between ray probes over a block or rail footprint
@@ -101,15 +101,15 @@ def limits(plate_top, lower_contact, rails, uppers, top_contact, rails_up=()):
         d, (a, b) = u
         heights[h] = d + dl
         lines.append(f"{h} head carried over the centre: bed dZ +{d:.2f}, {a} touches {b}; print height {d + dl:.2f}")
-        if not (a.startswith(MAGNET) and b.startswith(NOZZLE)):
-            problems.append(f"{h} head carried over the centre: {a} touches {b} before the nozzle reaches the magnet sheet")
+        if not (a.startswith((SHEET, MAGNET)) and b.startswith(NOZZLE)):
+            problems.append(f"{h} head carried over the centre: {a} touches {b} before the nozzle reaches the print surface")
         if best is None or d < best[0]: best = (d, h, a, b)
     if best is None: raise RuntimeError("no upper limit: no head touches the bed")
     d, h, a, b = best
     upper = {"dz": d, "plate_top": plate_top + d, "head": h, "why": f"{a} touches {b}"}
     lines.append(contact.line("z_upper_limit_mm", plate_top + d,
                               f"LDO plate top; bed dZ +{d:.2f} from the model pose: {h} head carried, {a} touches {b}"))
-    lines.append(contact.line("print_height_mm", d + dl, f"magnet-sheet top, from the lower stop to the {h} nozzle"))
+    lines.append(contact.line("print_height_mm", d + dl, f"print-surface top, from the lower stop to the {h} nozzle"))
     tops = [(top_contact[0], f"{top_contact[1][0]} touches {top_contact[1][1]}")] if top_contact else []
     tops += [(t, f"the top end of {b} reaches the top end of {r}") for t, b, r in rails_up]
     if not tops: raise RuntimeError("no mechanical top: no contact and no rail end with the toolhead parked")
@@ -121,14 +121,13 @@ def limits(plate_top, lower_contact, rails, uppers, top_contact, rails_up=()):
     klipper = {"position_max": d + dl, "position_max_configured": d + dl - fm, "z_negative": d - dt, "travel": dt + dl}
     floor = {"dz": -dl + fm, "plate_top": plate_top - dl + fm}
     lines.append(contact.line("klipper_position_max_mm", d + dl, "Klipper Z at the lower stop; Z0 = the nozzle on the "
-                              "magnet sheet (with a steel sheet, subtract its thickness)"))
+                              "print surface (the PEI sheet from lite-77; the magnet sheet before)"))
     lines.append(contact.line("z_negative_limit_mm", d - dt, "Klipper Z at the mechanical top, toolhead parked off the "
                               f"bed: bed dZ +{dt:.2f}, {twhy}"))
     lines.append(contact.line("z_travel_mm", dt + dl, "the bed's full travel, lower stop to mechanical top"))
     lines.append(contact.line("klipper_position_max_configured_mm", d + dl - fm,
                               f"printer.cfg [stepper_z] position_max: the bed stops {fm:.2f} mm above the lower stop "
-                              f"(bed dZ {-dl + fm:.2f}, plate top {plate_top - dl + fm:.2f}); minus the steel sheet's "
-                              "thickness"))
+                              f"(bed dZ {-dl + fm:.2f}, plate top {plate_top - dl + fm:.2f})"))
     return {"lower": lower, "upper": upper, "top": top, "floor": floor, "print_height": heights, "klipper": klipper, "lines": lines,
             "problems": problems}
 
@@ -190,7 +189,8 @@ def main(p):
         if len(c) != 1: raise RuntimeError(f"{len(c)} bed solids labelled {prefix!r}...")
         return c[0]
     tops = {}
-    for what in (PLATE, MAGNET):
+    has_sheet = any(lab[("printer", n)].startswith(SHEET) for n in bed)
+    for what in (PLATE, MAGNET) + ((SHEET,) if has_sheet else ()):
         k = one(what); b = box[k]; cx, cy = (b[0] + b[3]) / 2, (b[1] + b[4]) / 2
         s = span(k, grid(cx - 1.5, cx + 1.5, cy - 1.5, cy + 1.5, 1.0), b)
         if s is None: raise RuntimeError(f"no ray meets {lab[k]} at its centre")
@@ -278,11 +278,12 @@ def main(p):
           "; rail top ends: " + "; ".join(f"{g} +{d:.2f}" for d, g, _ in rails_hi))
     L = limits(tops[PLATE], low, rails_lo, ups, parked_top(parked), rails_hi)
     for l in L["lines"]: p.log(l)
-    p.log(f"magnet-sheet top at the model pose {tops[MAGNET]:.3f}: lower stop {tops[MAGNET] + L['lower']['dz']:.2f}, "
-          f"upper stop {tops[MAGNET] + L['upper']['dz']:.2f} (no steel sheet modelled)")
+    surf = SHEET if has_sheet else MAGNET
+    p.log(f"print-surface ({surf}) top at the model pose {tops[surf]:.3f}: lower stop {tops[surf] + L['lower']['dz']:.2f}, "
+          f"upper stop {tops[surf] + L['upper']['dz']:.2f}")
     for x in L["problems"]: p.check(False, x)
     p.check(True, "every limit measured by boolean contact or ray probe")
-    p.dump(dict(model=MODEL, plate_top=tops[PLATE], magnet_top=tops[MAGNET], lower=L["lower"], upper=L["upper"],
+    p.dump(dict(model=MODEL, plate_top=tops[PLATE], magnet_top=tops[MAGNET], sheet_top=tops.get(SHEET), lower=L["lower"], upper=L["upper"],
                 print_height=L["print_height"], top=L["top"], klipper=L["klipper"],
                 parked={h: v[0] if v else None for h, v in parked.items()}, rails_lower=rails_lo, rails_upper=rails_hi,
                 docked_upper=docked[0] if docked else None, problems=L["problems"],

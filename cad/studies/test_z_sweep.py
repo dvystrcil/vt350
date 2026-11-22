@@ -134,7 +134,7 @@ class Limits(unittest.TestCase):
                                    f"LDO plate top; bed dZ +94.50 from the model pose: Right head carried, "
                                    f"{self.MAG} touches {self.NOZ}"), r["lines"])
         self.assertIn(contact.line("print_height_mm", 94.5 + 240.0,
-                                   "magnet-sheet top, from the lower stop to the Right nozzle"), r["lines"])
+                                   "print-surface top, from the lower stop to the Right nozzle"), r["lines"])
         self.assertEqual(r["upper"]["head"], "Right")
         self.assertEqual(r["print_height"], {"Left": 335.0, "Right": 334.5})
         self.assertEqual(r["problems"], [])
@@ -177,6 +177,14 @@ class Limits(unittest.TestCase):
                            {"Left": self.up(90.0, a="Magnetic sheet (2 mm)", b="E3D v6 HotEnd - Nozzle001")})
         self.assertEqual(r["problems"], [])
 
+    def test_the_pei_sheet_is_the_print_surface(self):
+        """lite-77 (vt350#291): the nozzle first touches the PEI sheet; that's no problem, anything else still is."""
+        r = lim(self.PLATE, hit(240.0, "a", "b"), [],
+                {"Left": self.up(90.0, a="PEI spring-steel sheet (1.0 mm)", b="E3D v6 HotEnd - Nozzle001")})
+        self.assertEqual(r["problems"], [])
+        r = lim(self.PLATE, hit(240.0, "a", "b"), [], {"Left": self.up(90.0, a="Heater pad", b="E3D v6 HotEnd - Nozzle")})
+        self.assertTrue(any("print surface" in p for p in r["problems"]))
+
 
 class ParkedTop(unittest.TestCase):
     """The toolhead can park at either dock, so the mechanical top is the higher parking; a parking with nothing
@@ -213,7 +221,7 @@ class FullTravel(unittest.TestCase):
         self.assertAlmostEqual(r["floor"]["plate_top"], self.PLATE - 237.0)
         self.assertIn(contact.line("klipper_position_max_configured_mm", 93.33 + 242.0 - 5.0,
                                    "printer.cfg [stepper_z] position_max: the bed stops 5.00 mm above the lower stop "
-                                   "(bed dZ -237.00, plate top 48.76); minus the steel sheet's thickness"), r["lines"])
+                                   "(bed dZ -237.00, plate top 48.76)"), r["lines"])
         # not a required key: a log without it still parses (KEYS unchanged)
         self.assertNotIn("klipper_position_max_configured_mm", contact.KEYS)
 
@@ -228,8 +236,8 @@ class FullTravel(unittest.TestCase):
     def test_the_lines_and_parse(self):
         r = self.r()
         self.assertIn(contact.line("klipper_position_max_mm", 93.33 + 242.0,
-                                   "Klipper Z at the lower stop; Z0 = the nozzle on the magnet sheet (with a steel "
-                                   "sheet, subtract its thickness)"), r["lines"])
+                                   "Klipper Z at the lower stop; Z0 = the nozzle on the print surface (the PEI "
+                                   "sheet from lite-77; the magnet sheet before)"), r["lines"])
         self.assertIn(contact.line("z_negative_limit_mm", 93.33 - 110.0,
                                    "Klipper Z at the mechanical top, toolhead parked off the bed: bed dZ +110.00, "
                                    "Z_Carriage_Left touches XY joint"), r["lines"])

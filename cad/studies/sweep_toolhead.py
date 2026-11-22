@@ -25,7 +25,7 @@
 #  - the carried head's own bowden tube (a rigid route from its docked pose; the parked head's tube stays in, fixed).
 # USB cables are not in the model.
 # Poses per head: nozzle at the 4 corners of the 350 print square (plate inset 2.5 mm; rear clamped to the gantry's Y
-# reach) + the centre, each with the bed at the top (magnet sheet at the nozzle tip: Z0, no steel sheet modelled) and
+# reach) + the centre, each with the bed at the top (the print surface at the nozzle tip: Z0; the PEI sheet from lite-77) and
 # at the bottom; plus the head's own dock pickup at both bed heights, at the parked position and at the keyslots'
 # large opening (SLIDE forward: the attach move, #52); plus the saved model pose (baseline).
 import json, os, subprocess, sys, time
@@ -52,7 +52,8 @@ BED_PATHS = {"Bed frame", "Z_Bed_Left", "Z_Bed_Right", "Z_Bed_Rear", "Z_Carriage
              "Z_Carriage_Rear_2-hole (IGUS)", "Z_Carriage_Rear_3-Hole (Generic)", "MGN9H (2)", "MGN9H (3)",
              "MGN9H (4)", "kinematic bed mount v1",
              "Nozzle offset probe (lite-61, #186)"}    # bolted to the bed frame's front edge: rides with the bed
-BED_LABEL_PREFIX = ("LDO 350 build plate", "Magnetic sheet", "Heater pad")
+BED_LABEL_PREFIX = ("LDO 350 build plate", "Magnetic sheet", "Heater pad", "PEI spring-steel sheet")
+SHEET = "PEI spring-steel sheet"   # the print surface since lite-77; before it, the magnet sheet was
 BED_LOOSE = ("M5x16-Screw001", "M5-Washer001")       # bed-frame bolt filed under the frame (lite-10 found it)
 GANTRY_PATHS = {"XY left: _XY_left", "XY right: _XY_right", "Gantry assembly"}
 GANTRY_LABELS = ("Carbonara CF X beam 20x20 430",)
@@ -166,8 +167,12 @@ def plan(out):
         if len(nz) != 1: raise RuntimeError(f"{h}: {len(nz)} nozzles")
         b = bb(nz[0]); nozzles[h] = ((b.XMin + b.XMax) / 2, (b.YMin + b.YMax) / 2, b.ZMin)
         notes.append(f"{h}: docked nozzle tip ({nozzles[h][0]:.2f}, {nozzles[h][1]:.2f}, {nozzles[h][2]:.2f})")
-    # bed travel: top = magnet sheet at the nozzle tip; bottom = first bed solid to land on a fixed solid below it
-    mag = bb(one("Magnetic sheet (1.4 mm)"))
+    # bed travel: top = the print surface at the nozzle tip (the PEI sheet from lite-77, the magnet sheet before);
+    # bottom = first bed solid to land on a fixed solid below it
+    sheet = [o for o in leaves if o.Label.startswith(SHEET)]
+    if len(sheet) > 1: raise RuntimeError(f"{len(sheet)} solids labelled {SHEET!r}...")
+    mag = bb(sheet[0]) if sheet else bb(one("Magnetic sheet (1.4 mm)"))
+    surface = "PEI sheet" if sheet else "magnet"
     bedset, movset = set(bed), set(allg) | set(exclude)
     fixed = [o for o in leaves if o.Name not in movset]
     land = []
@@ -200,7 +205,7 @@ def plan(out):
         dz_top = tip_z - mag.ZMax
         y_reach = ny + Y_TRAVEL[1] - ty                    # nozzle Y with the gantry at its rear stop
         y_front = ny + Y_TRAVEL[0] - ty
-        notes.append(f"{h} carried: nozzle tip Z {tip_z:.2f}; bed top dZ {dz_top:+.2f} (magnet top {mag.ZMax:.2f} -> "
+        notes.append(f"{h} carried: nozzle tip Z {tip_z:.2f}; bed top dZ {dz_top:+.2f} ({surface} top {mag.ZMax:.2f} -> "
                      f"{mag.ZMax + dz_top:.2f}); nozzle Y reach {y_front:.2f} .. {y_reach:.2f} (print square Y {y_lo:.1f} .. {y_hi:.1f})")
         carried[h] = dict(nozzle=nozzles[h], T=T[h], dz_top=dz_top, square=(x_lo, y_lo, x_hi, y_hi))
         poses[h] = {}

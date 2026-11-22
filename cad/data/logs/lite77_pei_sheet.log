@@ -1,0 +1,13 @@
+[   82.4s] opened /home/dan/Documents/VT350/vt350-lite-76.FCStd
+[  100.3s] ok   one magnet sheet (['Magnetic sheet (1.4 mm)']), no PEI sheet yet (0)
+[  100.3s] magnet sheet Magnetic sheet (1.4 mm): X -422.500..-67.500 Y 28.000..383.000 top Z 287.161
+[  101.5s] ok   the sheet's bottom on the magnet sheet's top (Z 287.161), its top 1.0 above
+[  175.2s] ok   the sheet overlaps nothing at the model pose ([])
+[  189.7s] ok   one PEI spring-steel sheet (1.0 mm) leaf (1)
+[  189.7s] ok   in place: the magnet sheet's footprint 355.00 x 355.00, Z 287.161..288.161 (off by 0.00e+00)
+[  189.7s] ok   in the magnet sheet's group (4040-350x350x250 Voron Trident v4 v33)
+[  191.6s] ok   every other solid's box unchanged (0: [])
+[  191.6s] ok   leaves 1555 -> 1556 (+1)
+[  191.6s] FINDING: the Mellow MultiHead Zero ball top Z 297.16 is 9.00 above the new print surface (was 10.00 above the magnet sheet)
+[  191.6s] verify: 0 problems
+[  211.7s] SAVED /home/dan/Documents/VT350/vt350-lite-77.FCStd 37281190

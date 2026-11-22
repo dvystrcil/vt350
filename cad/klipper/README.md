@@ -51,7 +51,7 @@ source), and `test_limits.py` recomputes each one from that log:
 |---|---|---|---|
 | X | 4.00 | 346.00 | `sweep_toolhead.log`: "first nozzle X with no new overlap" −416.0 / −74.0, both heads |
 | Y | −82.43 | 340.19 | `sweep_toolhead.log`: "nozzle Y reach −51.93 .. 370.69", both heads |
-| Z | −15 | 330.43 | min: not a CAD limit (see below); max: `z_sweep.log` `klipper_position_max_configured_mm` |
+| Z | −15 | 329.43 | min: not a CAD limit (see below); max: `z_sweep.log` `klipper_position_max_configured_mm` |
 
 X and Y are mapped by the proposed `xy_mapping.json`: origin at the print square's front-left corner, model (−420.0, 30.5); X+ = model +X, Y+ = model +Y. With that mapping the CAD gives a 342 × 422.6 mm XY box, so it is **not** the 350 mm square. The nozzle stops 4 mm short of each X edge of the print square and 9.81 mm short of its rear edge (Y 340.19 of 350), while Y below 0 reaches the docks.
 

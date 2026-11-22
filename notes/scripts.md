@@ -120,6 +120,27 @@ python3 platform/library/check_library.py --library cad/library --reuse REUSE.to
   `source.json`), and a `credit` names its project in `cad/credits.json`; then regenerate `CREDITS.md` (below).
 - `sha256sum FILE` gives the value for `source.json`. Never edit a committed file: the sha256 is of the download.
 
+### `platform/webarchive/crawl.py`: offline copies of vendor sites (Beacon, Mellow)
+
+Some sites we need refuse automated fetches. This crawls each site in `cad/data/web-sources.json` with a real
+headless Chrome (browsertrix-crawler in docker) and keeps an offline copy outside git:
+
+```bash
+python3 platform/webarchive/crawl.py cad/data/web-sources.json --out ~/Documents/VT350/web             # every site
+python3 platform/webarchive/crawl.py cad/data/web-sources.json --out ~/Documents/VT350/web --only beacon-docs
+```
+
+- `~/Documents/VT350/web/collections/<name>/text/*.md`: the text of each page, for reading or `grep`; `INDEX.md` lists them.
+- `.../text/images/<page>/`: the images each page loaded (drawings, photos), listed largest first at the end of that
+  page's `.md`. Vendors often put the key facts (dimensions, mounting) only in images.
+- `~/Documents/VT350/web/collections/<name>/<name>.wacz`: the whole site, to browse offline in https://replayweb.page.
+- Never commit the copies: they are other people's copyright (Beacon's docs are CC BY-NC-ND 4.0; the shop has no
+  licence, so all rights reserved). Put facts in our notes in our own words, with a link. `--out` inside a git
+  checkout is refused.
+- A re-run replaces that site's copy. To keep another site, add a row to `cad/data/web-sources.json` (`scope`:
+  `host` for a whole site, `prefix` for one section, `page` with a `urls` list for just those pages; `exclude`
+  regexes for cart or login pages).
+
 ### Sweep and print area (run by refresh; you can also run them alone)
 
 ```bash

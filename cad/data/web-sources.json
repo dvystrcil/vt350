@@ -1,0 +1,40 @@
+{
+  "_about": "Web sites the VT350 build reads, kept offline by platform/webarchive/crawl.py (notes/scripts.md). Output goes to ~/Documents/VT350/web, not git.",
+  "sites": [
+    {
+      "name": "beacon-docs",
+      "url": "https://docs.beacon3d.com/",
+      "scope": "host",
+      "page_limit": 300,
+      "note": "Beacon probe documentation (config, commands, models, mounting angles). Its sitemap.xml lists every page as 'None', so crawl the links."
+    },
+    {
+      "name": "beacon3d",
+      "url": "https://beacon3d.com/",
+      "scope": "host",
+      "page_limit": 300,
+      "exclude": [
+        "/cart",
+        "/checkout",
+        "/my-account",
+        "[?&]add-to-cart=",
+        "[?&]orderby=",
+        "/wp-json/",
+        "/feed/?$",
+        "/wp-login"
+      ],
+      "note": "Beacon's main site (WordPress shop): product pages, dimensions, mounts."
+    },
+    {
+      "name": "mellow-zero",
+      "urls": [
+        "https://3dmellow.com/products/mellow-multihead-zero-high-precision-xyz-nozzle-offset-calibration-tool-probe-for-idex-stealthchanger",
+        "https://3dmellow.com/blog/detail/unlocking-perfect-multi-color-alignment-a-deep-dive-into-the-mellow-multihead-zero",
+        "https://3dmellow.com/products/mellow-multihead-zero-precision-xyz-nozzle-offset-calibration-tool"
+      ],
+      "scope": "page",
+      "page_limit": 50,
+      "note": "Mellow MultiHead Zero (XYZ nozzle-offset probe for toolchangers): both product pages and the blog deep-dive (vt350#291). Its 'User Manual' link goes to the wiki front page; mellow.klipper.cn (sitemap, 1056 URLs) and Mellow-3D on GitHub had no MultiHead Zero page on 2026-11-22."
+    }
+  ]
+}
