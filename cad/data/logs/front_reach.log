@@ -1,0 +1,166 @@
+[   72.7s] model /home/dan/Documents/VT350/vt350-lite-76.FCStd (read-only)
+[   72.7s] Left carried (Right and the slot heads docked): swept box X -454.1..-39.4 Y -30.8..192.9 Z 380.6..549.8; checked against 334 fixed and 2 bed solids (of 1509)
+[   72.7s] clashlib: 4 workers on vt350-lite-76.FCStd, 1 poses, job dir /tmp/clashlib-nejin0ms
+[  143.1s] clashlib: done in 70.4s (load <= 6.5s, check <= 60.7s); 46700 pair-poses, 399 box hits, 0 overlaps > 0.01 mm3, 0 errors
+[  143.1s] clashlib: peak RSS: workers max 1016 MB, sum 3821 MB; parent 17 MB
+[  143.1s] Left baseline (nozzle at the centre -245.0, 205.5): 0 overlapping pairs, ignored after: none
+[  143.1s] clashlib: 4 workers on vt350-lite-76.FCStd, 35 poses, job dir /tmp/clashlib-n6n83gnr
+[ 5261.0s] clashlib: done in 5117.9s (load <= 6.7s, check <= 5111.3s); 1634500 pair-poses, 19056 box hits, 6420 overlaps > 0.01 mm3, 3 errors
+[ 5261.0s] clashlib: peak RSS: workers max 1947 MB, sum 7303 MB; parent 22 MB
+[ 5261.0s]    ERROR (counted as a contact) -295.29 3.10: Square thin nut grade B M3x0.003 x hex-main-body_DAV_o2_xol002: ValueError('Null shape')
+[ 5261.0s]    ERROR (counted as a contact) -144.41 3.10: hex-main-body_DAV_o2_xol x TL-dragon-ace-MZE004: ValueError('Null shape')
+[ 5261.0s]    ERROR (counted as a contact) -134.35 3.10: Orbiter Smart Sensor v4.2 Left (Orbiter-Toolboards 52a5a33, CC0-1.0) x Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: ValueError('Null shape')
+[ 5261.0s]    Left Y_LO: 35 poses (0 from the cache)
+[ 5261.0s] clashlib: 4 workers on vt350-lite-76.FCStd, 35 poses, job dir /tmp/clashlib-ex90l251
+[ 8007.2s] clashlib: done in 2746.1s (load <= 3.8s, check <= 2740.3s); 1634500 pair-poses, 13034 box hits, 0 overlaps > 0.01 mm3, 0 errors
+[ 8007.2s] clashlib: peak RSS: workers max 1127 MB, sum 4416 MB; parent 22 MB
+[ 8007.2s]    Left Y_HI: 35 poses (0 from the cache)
+[ 8007.2s] clashlib: 4 workers on vt350-lite-76.FCStd, 32 poses, job dir /tmp/clashlib-9dvck8uj
+[10974.3s] clashlib: done in 2967.1s (load <= 3.6s, check <= 2961.6s); 1494400 pair-poses, 12653 box hits, 4 overlaps > 0.01 mm3, 0 errors
+[10974.3s] clashlib: peak RSS: workers max 1120 MB, sum 4445 MB; parent 22 MB
+[10974.3s]    Left round 1: 32 poses (0 from the cache)
+[10974.3s]    Left round 1: 32 poses, 4 blocked
+[10974.3s] clashlib: 4 workers on vt350-lite-76.FCStd, 32 poses, job dir /tmp/clashlib-w_qe0dnn
+[14621.7s] clashlib: done in 3647.4s (load <= 3.7s, check <= 3641.6s); 1494400 pair-poses, 14470 box hits, 1177 overlaps > 0.01 mm3, 0 errors
+[14621.7s] clashlib: peak RSS: workers max 1654 MB, sum 6532 MB; parent 22 MB
+[14621.7s]    Left round 2: 32 poses (0 from the cache)
+[14621.7s]    Left round 2: 32 poses, 27 blocked
+[14621.7s] clashlib: 4 workers on vt350-lite-76.FCStd, 32 poses, job dir /tmp/clashlib-zrd3emnq
+[17930.4s] clashlib: done in 3308.6s (load <= 3.7s, check <= 3302.9s); 1494400 pair-poses, 13164 box hits, 334 overlaps > 0.01 mm3, 0 errors
+[17930.4s] clashlib: peak RSS: workers max 1460 MB, sum 5744 MB; parent 22 MB
+[17930.4s]    Left round 3: 32 poses (0 from the cache)
+[17930.4s]    Left round 3: 32 poses, 23 blocked
+[17930.4s] clashlib: 4 workers on vt350-lite-76.FCStd, 32 poses, job dir /tmp/clashlib-2tbnzox6
+[20854.9s] clashlib: done in 2924.5s (load <= 3.6s, check <= 2918.9s); 1494400 pair-poses, 12573 box hits, 29 overlaps > 0.01 mm3, 0 errors
+[20854.9s] clashlib: peak RSS: workers max 1413 MB, sum 5515 MB; parent 22 MB
+[20855.0s]    Left round 4: 32 poses (0 from the cache)
+[20855.0s]    Left round 4: 32 poses, 7 blocked
+[20855.0s] clashlib: 4 workers on vt350-lite-76.FCStd, 32 poses, job dir /tmp/clashlib-yjzrn_v6
+[23770.4s] clashlib: done in 2915.5s (load <= 3.6s, check <= 2909.9s); 1494400 pair-poses, 12623 box hits, 86 overlaps > 0.01 mm3, 0 errors
+[23770.4s] clashlib: peak RSS: workers max 1382 MB, sum 5464 MB; parent 22 MB
+[23770.5s]    Left round 5: 32 poses (0 from the cache)
+[23770.5s]    Left round 5: 32 poses, 24 blocked
+[23770.5s] clashlib: 4 workers on vt350-lite-76.FCStd, 32 poses, job dir /tmp/clashlib-0om1j0wi
+[26667.5s] clashlib: done in 2897.0s (load <= 3.7s, check <= 2891.4s); 1494400 pair-poses, 12541 box hits, 9 overlaps > 0.01 mm3, 0 errors
+[26667.5s] clashlib: peak RSS: workers max 1393 MB, sum 5440 MB; parent 22 MB
+[26667.5s]    Left round 6: 32 poses (0 from the cache)
+[26667.5s]    Left round 6: 32 poses, 6 blocked
+[26667.5s] -- Left: nozzle front limit per X (model coordinates; blocked .. clear, the first hit at the blocked Y)
+[26667.5s]    Left X  -416.00: front limit Y 3.10 (clear at the scan's front end)
+[26667.5s]    Left X  -405.94: front limit Y 3.10 (clear at the scan's front end)
+[26667.5s]    Left X  -395.88: front limit Y 3.10 (clear at the scan's front end)
+[26667.5s]    Left X  -385.82: front limit Y 9.11 (blocked at 7.91: [a]_Duct-4010-right x [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)001 0.7 mm3)
+[26667.5s]    Left X  -375.76: front limit Y 30.74 (blocked at 29.53: KnurledNut (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.6 mm3)
+[26667.5s]    Left X  -365.71: front limit Y 30.74 (blocked at 29.53: KnurledNut (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 1.0 mm3)
+[26667.5s]    Left X  -355.65: front limit Y 34.34 (blocked at 33.14: Latch (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 9.0 mm3; FlyShaft2 (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.2 mm3)
+[26667.5s]    Left X  -345.59: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 15.3 mm3; _MR148ZZ Shield1 x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.6 mm3; _MR148ZZ Outer Ring x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.3 mm3)
+[26667.5s]    Left X  -335.53: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 35.0 mm3; _MR148ZZ Shield1 x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 1.5 mm3; Orbiter Spider Shaft v4 (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.9 mm3)
+[26667.5s]    Left X  -325.47: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 36.7 mm3; HubHousing V5 With Logo (1) x Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 5.2 mm3; _MR148ZZ Outer Ring x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 1.1 mm3)
+[26667.5s]    Left X  -315.41: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 21.9 mm3; _MR148ZZ Shield1 x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.9 mm3; Orbiter Spider Shaft v4 (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.8 mm3)
+[26667.5s]    Left X  -305.35: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 1.4 mm3)
+[26667.5s]    Left X  -295.29: front limit Y 30.74 (blocked at 29.53: KnurledNut (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.9 mm3)
+[26667.5s]    Left X  -285.24: front limit Y 34.34 (blocked at 33.14: Latch (1) (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 1.4 mm3)
+[26667.5s]    Left X  -275.18: front limit Y 46.36 (blocked at 45.15: Mellow MultiHead Zero probe (bushing, pin, D 10 ball; estimated from the photo) x [a]_Duct-4010-right 0.0 mm3)
+[26667.5s]    Left X  -265.12: front limit Y 52.36 (blocked at 51.16: Mellow MultiHead Zero probe (bushing, pin, D 10 ball; estimated from the photo) x [a]_Duct-4010-right 0.2 mm3)
+[26667.5s]    Left X  -255.06: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 38.6 mm3; _MR148ZZ Shield1 x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 1.4 mm3; Orbiter Spider Shaft v4 (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.9 mm3)
+[26667.5s]    Left X  -245.00: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 38.7 mm3; HubHousing V5 With Logo (1) x Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 5.2 mm3; _MR148ZZ Shield1 x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 1.1 mm3)
+[26667.5s]    Left X  -234.94: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 19.0 mm3; _MR148ZZ Shield1 x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.7 mm3; Orbiter Spider Shaft v4 (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.4 mm3)
+[26667.5s]    Left X  -224.88: front limit Y 52.36 (blocked at 51.16: Mellow MultiHead Zero probe (bushing, pin, D 10 ball; estimated from the photo) x [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0) 0.2 mm3)
+[26667.5s]    Left X  -214.82: front limit Y 45.15 (blocked at 43.95: Mellow MultiHead Zero probe (bushing, pin, D 10 ball; estimated from the photo) x [a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0) 0.6 mm3)
+[26667.5s]    Left X  -204.76: front limit Y 30.74 (blocked at 29.53: KnurledNut (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 1.1 mm3)
+[26667.5s]    Left X  -194.71: front limit Y 30.74 (blocked at 29.53: KnurledNut (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 0.9 mm3)
+[26667.5s]    Left X  -184.65: front limit Y 34.34 (blocked at 33.14: Latch (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 9.7 mm3; HubHousing V5 With Logo (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 2.8 mm3; FlyShaft2 (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 1.8 mm3)
+[26667.5s]    Left X  -174.59: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 17.0 mm3; _MR148ZZ Outer Ring x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 0.6 mm3; _MR148ZZ Shield1 x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 0.6 mm3)
+[26667.5s]    Left X  -164.53: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 41.5 mm3; _MR148ZZ Shield1 x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 1.3 mm3; Orbiter Spider Shaft v4 (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 0.9 mm3)
+[26667.5s]    Left X  -154.47: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 36.3 mm3; HubHousing V5 With Logo (1) x Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 5.2 mm3; _MR148ZZ Shield1 x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 1.2 mm3)
+[26667.5s]    Left X  -144.41: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 19.3 mm3; _MR148ZZ Shield1 x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 0.7 mm3; _MR148ZZ Outer Ring x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 0.5 mm3)
+[26667.5s]    Left X  -134.35: front limit Y 34.34 (blocked at 33.14: HubHousing V5 With Logo (1) x Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 1.7 mm3)
+[26667.5s]    Left X  -124.29: front limit Y 30.74 (blocked at 29.53: KnurledNut (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0) 0.9 mm3)
+[26667.5s]    Left X  -114.24: front limit Y 34.34 (blocked at 33.14: Latch (1) (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0) 6.4 mm3)
+[26667.5s]    Left X  -104.18: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0) 7.7 mm3)
+[26667.5s]    Left X   -94.12: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0) 22.4 mm3; Orbiter Spider Shaft v4 (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0) 1.1 mm3; _MR148ZZ Shield1 x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0) 0.9 mm3)
+[26667.5s]    Left X   -84.06: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0) 38.5 mm3; HubHousing V5 With Logo (1) x Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0) 3.8 mm3; _MR148ZZ Shield1 x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0) 1.3 mm3)
+[26667.5s]    Left X   -74.00: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0) 25.5 mm3; HubHousing V5 With Logo (1) x Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0) 4.0 mm3; _MR148ZZ Shield1 x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0) 1.2 mm3)
+[26667.5s] Right carried (Left and the slot heads docked): swept box X -454.1..-39.4 Y -30.8..192.9 Z 380.6..549.8; checked against 334 fixed and 2 bed solids (of 1509)
+[26667.5s] clashlib: 4 workers on vt350-lite-76.FCStd, 1 poses, job dir /tmp/clashlib-k73tjgwh
+[26721.4s] clashlib: done in 53.9s (load <= 3.7s, check <= 48.2s); 46700 pair-poses, 399 box hits, 0 overlaps > 0.01 mm3, 0 errors
+[26721.4s] clashlib: peak RSS: workers max 1066 MB, sum 3861 MB; parent 22 MB
+[26721.4s] Right baseline (nozzle at the centre -245.0, 205.5): 0 overlapping pairs, ignored after: none
+[26721.4s] clashlib: 4 workers on vt350-lite-76.FCStd, 35 poses, job dir /tmp/clashlib-bmh7av20
+[31202.4s] clashlib: done in 4480.9s (load <= 3.9s, check <= 4474.9s); 1634500 pair-poses, 18759 box hits, 6247 overlaps > 0.01 mm3, 3 errors
+[31202.4s] clashlib: peak RSS: workers max 1965 MB, sum 7015 MB; parent 24 MB
+[31202.4s]    ERROR (counted as a contact) -295.29 3.10: Square thin nut grade B M3x0.011 x hex-main-body_DAV_o2_xol002: ValueError('Null shape')
+[31202.4s]    ERROR (counted as a contact) -144.41 3.10: hex-main-body_DAV_o2_xol001 x TL-dragon-ace-MZE004: ValueError('Null shape')
+[31202.4s]    ERROR (counted as a contact) -134.35 3.10: Orbiter Smart Sensor v4.2 Right (Orbiter-Toolboards 52a5a33, CC0-1.0) x Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002: ValueError('Null shape')
+[31202.4s]    Right Y_LO: 35 poses (0 from the cache)
+[31202.5s] clashlib: 4 workers on vt350-lite-76.FCStd, 35 poses, job dir /tmp/clashlib-01c_c94h
+[34040.3s] clashlib: done in 2837.9s (load <= 3.7s, check <= 2832.1s); 1634500 pair-poses, 13035 box hits, 0 overlaps > 0.01 mm3, 0 errors
+[34040.3s] clashlib: peak RSS: workers max 1198 MB, sum 4478 MB; parent 24 MB
+[34040.4s]    Right Y_HI: 35 poses (0 from the cache)
+[34040.4s] clashlib: 4 workers on vt350-lite-76.FCStd, 33 poses, job dir /tmp/clashlib-xlkgcpr8
+[37125.9s] clashlib: done in 3085.5s (load <= 4.2s, check <= 3079.1s); 1541100 pair-poses, 11721 box hits, 4 overlaps > 0.01 mm3, 0 errors
+[37125.9s] clashlib: peak RSS: workers max 1189 MB, sum 4430 MB; parent 24 MB
+[37125.9s]    Right round 1: 33 poses (0 from the cache)
+[37125.9s]    Right round 1: 33 poses, 4 blocked
+[37125.9s] clashlib: 4 workers on vt350-lite-76.FCStd, 33 poses, job dir /tmp/clashlib-amd5vc_z
+[40953.1s] clashlib: done in 3827.2s (load <= 3.8s, check <= 3821.3s); 1541100 pair-poses, 13531 box hits, 1143 overlaps > 0.01 mm3, 0 errors
+[40953.1s] clashlib: peak RSS: workers max 1758 MB, sum 6083 MB; parent 24 MB
+[40953.2s]    Right round 2: 33 poses (0 from the cache)
+[40953.2s]    Right round 2: 33 poses, 28 blocked
+[40953.2s] clashlib: 4 workers on vt350-lite-76.FCStd, 33 poses, job dir /tmp/clashlib-ik7wyahd
+[44378.2s] clashlib: done in 3425.0s (load <= 3.8s, check <= 3419.1s); 1541100 pair-poses, 12121 box hits, 319 overlaps > 0.01 mm3, 0 errors
+[44378.2s] clashlib: peak RSS: workers max 1569 MB, sum 5521 MB; parent 24 MB
+[44378.3s]    Right round 3: 33 poses (0 from the cache)
+[44378.3s]    Right round 3: 33 poses, 22 blocked
+[44378.3s] clashlib: 4 workers on vt350-lite-76.FCStd, 33 poses, job dir /tmp/clashlib-ei6_s04_
+[47735.9s] clashlib: done in 3357.7s (load <= 4.1s, check <= 3351.4s); 1541100 pair-poses, 11485 box hits, 25 overlaps > 0.01 mm3, 0 errors
+[47735.9s] clashlib: peak RSS: workers max 1496 MB, sum 5376 MB; parent 24 MB
+[47736.0s]    Right round 4: 33 poses (0 from the cache)
+[47736.0s]    Right round 4: 33 poses, 6 blocked
+[47736.0s] clashlib: 4 workers on vt350-lite-76.FCStd, 33 poses, job dir /tmp/clashlib-wfqumdue
+[50646.1s] clashlib: done in 2910.1s (load <= 3.7s, check <= 2904.3s); 1541100 pair-poses, 11542 box hits, 90 overlaps > 0.01 mm3, 0 errors
+[50646.1s] clashlib: peak RSS: workers max 1481 MB, sum 5268 MB; parent 24 MB
+[50646.1s]    Right round 5: 33 poses (0 from the cache)
+[50646.1s]    Right round 5: 33 poses, 25 blocked
+[50646.1s] clashlib: 4 workers on vt350-lite-76.FCStd, 33 poses, job dir /tmp/clashlib-xxz4l87k
+[53598.0s] clashlib: done in 2951.8s (load <= 4.5s, check <= 2945.2s); 1541100 pair-poses, 11462 box hits, 12 overlaps > 0.01 mm3, 0 errors
+[53598.0s] clashlib: peak RSS: workers max 1454 MB, sum 5221 MB; parent 24 MB
+[53598.0s]    Right round 6: 33 poses (0 from the cache)
+[53598.0s]    Right round 6: 33 poses, 8 blocked
+[53598.0s] -- Right: nozzle front limit per X (model coordinates; blocked .. clear, the first hit at the blocked Y)
+[53598.0s]    Right X  -416.00: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0) 40.1 mm3; _MR148ZZ Shield1 (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0) 1.4 mm3; Orbiter Spider Shaft v4 (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0) 0.9 mm3)
+[53598.0s]    Right X  -405.94: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0) 37.7 mm3; HubHousing V5 With Logo (1) (1) x Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0) 5.2 mm3; _MR148ZZ Outer Ring (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0) 1.1 mm3)
+[53598.0s]    Right X  -395.88: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0) 19.1 mm3; _MR148ZZ Shield1 (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0) 0.6 mm3; _MR148ZZ Outer Ring (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0) 0.4 mm3)
+[53598.0s]    Right X  -385.82: front limit Y 34.34 (blocked at 33.14: HubHousing V5 With Logo (1) (1) x Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0) 0.2 mm3)
+[53598.0s]    Right X  -375.76: front limit Y 30.74 (blocked at 29.53: KnurledNut (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.6 mm3)
+[53598.0s]    Right X  -365.71: front limit Y 30.74 (blocked at 29.53: KnurledNut (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 1.0 mm3)
+[53598.0s]    Right X  -355.65: front limit Y 34.34 (blocked at 33.14: Latch (1) (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 9.0 mm3; FlyShaft2 (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.2 mm3)
+[53598.0s]    Right X  -345.59: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 15.3 mm3; _MR148ZZ Shield1 (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.6 mm3; _MR148ZZ Outer Ring (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.3 mm3)
+[53598.0s]    Right X  -335.53: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 35.0 mm3; _MR148ZZ Shield1 (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 1.5 mm3; Orbiter Spider Shaft v4 (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.9 mm3)
+[53598.0s]    Right X  -325.47: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 36.7 mm3; HubHousing V5 With Logo (1) (1) x Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 5.2 mm3; _MR148ZZ Outer Ring (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 1.1 mm3)
+[53598.0s]    Right X  -315.41: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 21.9 mm3; _MR148ZZ Shield1 (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.9 mm3; Orbiter Spider Shaft v4 (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.8 mm3)
+[53598.0s]    Right X  -305.35: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 1.4 mm3)
+[53598.0s]    Right X  -295.29: front limit Y 30.74 (blocked at 29.53: KnurledNut (1) (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.9 mm3)
+[53598.0s]    Right X  -285.24: front limit Y 34.34 (blocked at 33.14: Latch (1) (1) (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 1.4 mm3)
+[53598.0s]    Right X  -275.18: front limit Y 46.36 (blocked at 45.15: Mellow MultiHead Zero probe (bushing, pin, D 10 ball; estimated from the photo) x [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0) 0.0 mm3)
+[53598.0s]    Right X  -265.12: front limit Y 52.36 (blocked at 51.16: Mellow MultiHead Zero probe (bushing, pin, D 10 ball; estimated from the photo) x [a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0) 0.2 mm3)
+[53598.0s]    Right X  -255.06: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 38.6 mm3; _MR148ZZ Shield1 (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 1.4 mm3; Orbiter Spider Shaft v4 (1) (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.9 mm3)
+[53598.0s]    Right X  -245.00: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 38.7 mm3; HubHousing V5 With Logo (1) (1) x Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 5.2 mm3; _MR148ZZ Shield1 (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 1.1 mm3)
+[53598.0s]    Right X  -234.94: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 19.0 mm3; _MR148ZZ Shield1 (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.7 mm3; Orbiter Spider Shaft v4 (1) (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.4 mm3)
+[53598.0s]    Right X  -224.88: front limit Y 52.36 (blocked at 51.16: Mellow MultiHead Zero probe (bushing, pin, D 10 ball; estimated from the photo) x [a]_Duct-4010-left001 0.2 mm3)
+[53598.0s]    Right X  -214.82: front limit Y 46.36 (blocked at 45.15: Mellow MultiHead Zero probe (bushing, pin, D 10 ball; estimated from the photo) x [a]_Duct-4010-left001 0.0 mm3)
+[53598.0s]    Right X  -204.76: front limit Y 30.74 (blocked at 29.53: KnurledNut (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 1.1 mm3)
+[53598.0s]    Right X  -194.71: front limit Y 30.74 (blocked at 29.53: KnurledNut (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 0.9 mm3)
+[53598.0s]    Right X  -184.65: front limit Y 34.34 (blocked at 33.14: Latch (1) (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 9.7 mm3; HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 2.8 mm3; FlyShaft2 (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 1.8 mm3)
+[53598.0s]    Right X  -174.59: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 17.0 mm3; _MR148ZZ Outer Ring (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 0.6 mm3; _MR148ZZ Shield1 (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 0.6 mm3)
+[53598.0s]    Right X  -164.53: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 41.5 mm3; _MR148ZZ Shield1 (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 1.3 mm3; Orbiter Spider Shaft v4 (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 0.9 mm3)
+[53598.0s]    Right X  -154.47: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 36.3 mm3; HubHousing V5 With Logo (1) (1) x Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 5.2 mm3; _MR148ZZ Shield1 (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 1.2 mm3)
+[53598.0s]    Right X  -144.41: front limit Y 35.54 (blocked at 34.34: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 19.3 mm3; _MR148ZZ Shield1 (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 0.7 mm3; _MR148ZZ Outer Ring (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 0.5 mm3)
+[53598.0s]    Right X  -134.35: front limit Y 34.34 (blocked at 33.14: HubHousing V5 With Logo (1) (1) x Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 1.7 mm3)
+[53598.0s]    Right X  -124.29: front limit Y 28.33 (blocked at 27.13: hex-main-body_DAV_o2_xol001 x Hex socket head cap screw M3x0.50 x 030 1.9 mm3)
+[53598.0s]    Right X  -114.24: front limit Y 27.13 (blocked at 25.93: hex-main-body_DAV_o2_xol001 x Plate002 199.4 mm3; hex-main-body_DAV_o2_xol001 x MadMax magnet 6x3 N52 (plate Plate002) 3 8.0 mm3)
+[53598.0s]    Right X  -104.18: front limit Y 25.93 (blocked at 24.73: [a]_Duct-4010-left001 x Plate002 15.7 mm3)
+[53598.0s]    Right X   -94.12: front limit Y 6.70 (blocked at 5.50: [a]_Duct-4010-left001 x [a]_Duct-4010-right002 0.2 mm3)
+[53598.0s]    Right X   -84.06: front limit Y 3.10 (clear at the scan's front end)
+[53598.0s]    Right X   -74.00: front limit Y 3.10 (clear at the scan's front end)
+[53598.0s] done (read-only, nothing saved)

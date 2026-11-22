@@ -63,7 +63,7 @@ partial versions that have to be rebuilt in order (lite-67 to lite-71 did this).
 
 | Pass in flight | Branch | Builds on |
 |---|---|---|
-| lite-77 (the PEI sheet, vt350#291; saved 2026-11-22 09:21 PST, refreshed on the lane, chain `vt350-lite-77-20261122t172901-ef95`: reach and print area unchanged, every Z limit 1.00 lower, `position_max` 329.43) | `feat/lite77-pei-sheet` | lite-76 |
+| (none: lite-77 saved 2026-11-22 09:21 PST, #298 merged; next is lite-78, the Mellow position, vt350#291) | | |
 
 ## Where things are
 
