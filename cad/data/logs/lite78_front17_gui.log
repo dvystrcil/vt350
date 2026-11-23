@@ -1,0 +1,129 @@
+[   50.8s] opened /home/dan/Documents/VT350/vt350-lite-77.FCStd
+[   64.1s] 1556 leaves: 920 move -17, 32 spliced, 2 belts, 4 rail pieces replaced, 5 stay by name (['2040 (2)', '2040 Z post (R)', '2040(Mirror) Z post (L)', 'EMU envelope (contents in vt350-emu-4.FCStd)', 'backbone-350 v2'])
+[   64.1s]    splice: 2020 e-box inner cross member, bottom, Z -30..-10 (lite-53) [4040-350 VT Frame v12] Y -70.0..480.0
+[   64.1s]    splice: 2020 e-box inner cross member, top, Z 650..670 (lite-53) [4040-350 VT Frame v12] Y -70.0..480.0
+[   64.1s]    splice: 2040 (3) [4040-350 VT Frame v12] Y -70.0..480.0
+[   64.1s]    splice: 2040 (3)001 [4040-350 VT Frame v12] Y -70.0..480.0
+[   64.1s]    splice: 2040 e-box outer side rail, bottom (lite-46) [4040-350 VT Frame v12] Y -70.0..480.0
+[   64.1s]    splice: 2040 e-box outer side rail, top (lite-46) [4040-350 VT Frame v12] Y -70.0..480.0
+[   64.1s]    splice: 4040 (1) [4040-350 VT Frame v12] Y -70.0..480.0
+[   64.1s]    splice: 4040 (1)001 [4040-350 VT Frame v12] Y -70.0..480.0
+[   64.1s]    splice: 4040 (1)002 [4040-350 VT Frame v12] Y -70.0..480.0
+[   64.1s]    splice: 4040 (1)003 [4040-350 VT Frame v12] Y -70.0..480.0
+[   64.1s]    splice: Base board (18 mm, plywood/MDF, placeholder) [] Y -151.0..541.0
+[   64.1s]    splice: E-box door window (3 mm clear sheet, as the front door's), 610 x 740 [lite-58: in the frame slot, 539 x 669] [E-box door (lite-56, mirrored from Door (1) (1))] Y -54.5..484.5
+[   64.1s]    splice: E-box door window gasket (rubber glazing strip, U on the sheet's edge, in the frame slot; lite-58) [E-box door (lite-56, mirrored from Door (1) (1))] Y -55.5..485.5
+[   64.1s]    splice: E-box door: 2040 (2) (1) [E-box door (lite-56, mirrored from Door (1) (1))] Y -50.0..480.0
+[   64.1s]    splice: E-box door: 2040 (2) (1)001 [E-box door (lite-56, mirrored from Door (1) (1))] Y -50.0..480.0
+[   64.1s]    splice: E-box top panel (3 mm) [E-box panels and front grille (lite-59)] Y -90.0..520.0
+[   64.1s]    splice: E-box top panel (3 mm) paint, outside [E-box panels and front grille (lite-59)] Y -90.0..520.0
+[   64.1s]    splice: Ebox envelope (contents in vt350-ebox-4.FCStd) [] Y -58.0..545.0
+[   64.1s]    splice: LED channel left (24 V COB, warm white) [] Y -20.0..470.0
+[   64.1s]    splice: LED channel right (24 V COB, warm white) [] Y -20.0..470.0
+[   64.1s]    splice: Left side panel (3 mm) [] Y -76.0..520.0
+[   64.1s]    splice: Left side panel (3 mm) paint, outside [] Y -76.0..520.0
+[   64.1s]    splice: Right side panel (3 mm) [] Y -76.0..520.0
+[   64.1s]    splice: Right side panel (3 mm) paint, outside [] Y -76.0..520.0
+[   64.1s]    splice: Right wall felt (pad 3) [Insulation: carbon felt sealed in aluminium] Y -28.0..480.0
+[   64.1s]    splice: Right wall felt liner, inner [Insulation: carbon felt sealed in aluminium] Y -28.0..480.0
+[   64.1s]    splice: Right wall felt liner, outer [Insulation: carbon felt sealed in aluminium] Y -28.0..480.0
+[   64.1s]    splice: Roof felt (pad 1) [Insulation: carbon felt sealed in aluminium] Y -70.0..438.0
+[   64.1s]    splice: Roof felt liner, inner [Insulation: carbon felt sealed in aluminium] Y -70.0..438.0
+[   64.1s]    splice: Roof felt liner, outer [Insulation: carbon felt sealed in aluminium] Y -70.0..438.0
+[   64.1s]    splice: Roof panel (3 mm) [] Y -90.0..520.0
+[   64.1s]    splice: Roof panel (3 mm) paint, outside [] Y -90.0..520.0
+[   64.1s] ok   four old Y rail pieces (['MGN9 Y rail front extension (L) - 73.9 mm, printed or cut steel (docking only)', 'MGN9 Y rail front extension (R) - 73.9 mm, printed or cut steel (docking only)', 'MGN9-400mm Y rail (L) - owned Berserker, steel', 'MGN9-400mm Y rail (R) - owned Berserker, steel'])
+[   64.1s] ok   two belts (2)
+[   64.1s] ok   five Bowden tubes and five O2S cables (5, 5)
+[   64.1s] ok   lite-61's probe: 4 parts to remove (["Mellow MultiHead Zero body (aluminium, 20 x 17.2 x 22, from Mellow's drawing)", 'Mellow MultiHead Zero probe (bushing, pin, D 10 ball; estimated from the photo)', "Mellow MultiHead Zero switch + XH2.54 plug (in the body's slot, stand-in)", 'Nozzle offset probe bracket (printed ABS, vt350, GPL-3.0-or-later)'])
+[   64.1s] ok   no moved or spliced leaf is attached (an attachment would undo the move): []
+[   64.1s]    2 unchanged links share a spliced shape, so they get their own copy first: ['Back felt liner, inner', 'Back felt liner, outer']
+[   64.1s]    13 spliced parts are links: each becomes its own Part::Feature
+[   64.1s] ok   nothing else links to lite-61's probe parts: []
+[   64.1s] collision baseline: 967 parts vs the rest (lite-77) ...
+[ 1354.6s] collision baseline (lite-77): 2606 pairs, 77 overlaps
+[ 1437.6s]    belt GT2 9mm belt, lower (Monolith 2WD): 1 strand(s) spliced at Y [100.0]
+[ 1437.7s]    belt GT2 9mm belt, upper (Monolith 2WD): 1 strand(s) spliced at Y [100.0]
+[ 2005.7s]    5 parts on the tube + cable runs in front of Y 125 move with them: ['Zip tie, black (2.5 mm)']
+[ 2006.2s]    rail R: 490 from Y -50.50; 0 holes (the 400 had 0)
+[ 2019.1s]    rail L: 490 from Y -50.50; 0 holes (the 400 had 0)
+[ 2019.2s] ok   PEI sheet 1, plate 1, heater 1, bed front 2020 1
+[ 2172.2s] ok   5 zip ties moved -17 with their runs ([])
+[ 2172.3s] ok   lite-61's bracket and Zero removed ([])
+[ 2172.3s] ok   920 front leaves moved exactly -17 (0 not: [])
+[ 2172.3s] ok   every other leaf unchanged (0 changed: [])
+[ 2172.3s] ok   spliced 2020 e-box inner cross member, bottom, Z -30..-10 (lite-53) at Y 30: Y -87.00..480.00 (was -70.00..480.00), solids 1/1, valid True, vol 103270 (want 103270)
+[ 2172.4s] ok   spliced 2020 e-box inner cross member, top, Z 650..670 (lite-53) at Y 30: Y -87.00..480.00 (was -70.00..480.00), solids 1/1, valid True, vol 103270 (want 103270)
+[ 2172.5s] ok   spliced 2040 (3) at Y 30: Y -87.00..480.00 (was -70.00..480.00), solids 1/1, valid True, vol 184543 (want 184543)
+[ 2172.6s] ok   spliced 2040 (3)001 at Y 30: Y -87.00..480.00 (was -70.00..480.00), solids 1/1, valid True, vol 184543 (want 184543)
+[ 2172.7s] ok   spliced 2040 e-box outer side rail, bottom (lite-46) at Y 30: Y -87.00..480.00 (was -70.00..480.00), solids 1/1, valid True, vol 181657 (want 181657)
+[ 2172.8s] ok   spliced 2040 e-box outer side rail, top (lite-46) at Y 30: Y -87.00..480.00 (was -70.00..480.00), solids 1/1, valid True, vol 181657 (want 181657)
+[ 2173.0s] ok   spliced 4040 (1) at Y 30: Y -87.00..480.00 (was -70.00..480.00), solids 1/1, valid True, vol 273583 (want 273583)
+[ 2173.1s] ok   spliced 4040 (1)001 at Y 30: Y -87.00..480.00 (was -70.00..480.00), solids 1/1, valid True, vol 273583 (want 273583)
+[ 2173.3s] ok   spliced 4040 (1)002 at Y 30: Y -87.00..480.00 (was -70.00..480.00), solids 1/1, valid True, vol 273583 (want 273583)
+[ 2173.4s] ok   spliced 4040 (1)003 at Y 30: Y -87.00..480.00 (was -70.00..480.00), solids 1/1, valid True, vol 273583 (want 273583)
+[ 2173.4s] ok   spliced Base board (18 mm, plywood/MDF, placeholder) at Y 30: Y -168.01..541.00 (was -151.01..541.00), solids 1/1, valid True, vol 8622704 (want 8622704)
+[ 2173.4s] ok   spliced E-box door window (3 mm clear sheet, as the front door's), 610 x 740 [lite-58: in the frame slot, 539 x 669] at Y 30: Y -71.50..484.50 (was -54.50..484.50), solids 1/1, valid True, vol 1115892 (want 1115892)
+[ 2173.4s] ok   spliced E-box door window gasket (rubber glazing strip, U on the sheet's edge, in the frame slot; lite-58) at Y 30: Y -72.50..485.50 (was -55.50..485.50), solids 12/12, valid True, vol 47556 (want 47556)
+[ 2173.7s] ok   spliced E-box door: 2040 (2) (1) at Y 30: Y -67.00..480.00 (was -50.00..480.00), solids 2/2, valid True, vol 178034 (want 178034)
+[ 2173.9s] ok   spliced E-box door: 2040 (2) (1)001 at Y 30: Y -67.00..480.00 (was -50.00..480.00), solids 2/2, valid True, vol 178034 (want 178034)
+[ 2173.9s] ok   spliced E-box top panel (3 mm) at Y 30: Y -107.00..520.00 (was -90.00..520.00), solids 1/1, valid True, vol 228228 (want 228228)
+[ 2173.9s] ok   spliced E-box top panel (3 mm) paint, outside at Y 30: Y -107.00..520.00 (was -90.00..520.00), solids 1/1, valid True, vol 16302 (want 16302)
+[ 2173.9s] ok   spliced Ebox envelope (contents in vt350-ebox-4.FCStd) at Y 30: Y -75.00..545.00 (was -58.00..545.00), solids 1/1, valid True, vol 32711820 (want 32711820)
+[ 2173.9s] ok   spliced LED channel left (24 V COB, warm white) at Y 30: Y -37.00..470.00 (was -20.00..470.00), solids 1/1, valid True, vol 64896 (want 64896)
+[ 2173.9s] ok   spliced LED channel right (24 V COB, warm white) at Y 30: Y -37.00..470.00 (was -20.00..470.00), solids 1/1, valid True, vol 64896 (want 64896)
+[ 2173.9s] ok   spliced Left side panel (3 mm) at Y 30: Y -93.00..520.00 (was -76.00..520.00), solids 1/1, valid True, vol 1270136 (want 1270136)
+[ 2173.9s] ok   spliced Left side panel (3 mm) paint, outside at Y 30: Y -93.00..520.00 (was -76.00..520.00), solids 1/1, valid True, vol 90724 (want 90724)
+[ 2173.9s] ok   spliced Right side panel (3 mm) at Y 30: Y -93.00..520.00 (was -76.00..520.00), solids 1/1, valid True, vol 1132824 (want 1132824)
+[ 2173.9s] ok   spliced Right side panel (3 mm) paint, outside at Y 30: Y -93.00..520.00 (was -76.00..520.00), solids 1/1, valid True, vol 80916 (want 80916)
+[ 2173.9s] ok   spliced Right wall felt (pad 3) at Y 30: Y -45.00..480.00 (was -28.00..480.00), solids 1/1, valid True, vol 2446500 (want 2446500)
+[ 2173.9s] ok   spliced Right wall felt liner, inner at Y 30: Y -45.00..480.00 (was -28.00..480.00), solids 1/1, valid True, vol 122325 (want 122325)
+[ 2173.9s] ok   spliced Right wall felt liner, outer at Y 30: Y -45.00..480.00 (was -28.00..480.00), solids 1/1, valid True, vol 122325 (want 122325)
+[ 2173.9s] ok   spliced Roof felt (pad 1) at Y 30: Y -87.00..438.00 (was -70.00..438.00), solids 1/1, valid True, vol 2467500 (want 2467500)
+[ 2173.9s] ok   spliced Roof felt liner, inner at Y 30: Y -87.00..438.00 (was -70.00..438.00), solids 1/1, valid True, vol 123375 (want 123375)
+[ 2173.9s] ok   spliced Roof felt liner, outer at Y 30: Y -87.00..438.00 (was -70.00..438.00), solids 1/1, valid True, vol 123375 (want 123375)
+[ 2174.0s] ok   spliced Roof panel (3 mm) at Y 30: Y -107.00..520.00 (was -90.00..520.00), solids 1/1, valid True, vol 963270 (want 963270)
+[ 2174.1s] ok   spliced Roof panel (3 mm) paint, outside at Y 30: Y -107.00..520.00 (was -90.00..520.00), solids 1/1, valid True, vol 68843 (want 68843)
+[ 2174.2s] ok   spliced Bowden Left at Y 126: Y -54.30..482.67 (was -37.30..482.67), solids 1/1, valid True, vol 8391 (want 8363)
+[ 2174.3s] ok   spliced Bowden Right at Y 126: Y -54.30..482.67 (was -37.30..482.67), solids 1/1, valid True, vol 8391 (want 8363)
+[ 2174.4s] ok   spliced Bowden slot 2 at Y 126: Y -54.30..482.67 (was -37.30..482.67), solids 1/1, valid True, vol 8391 (want 8363)
+[ 2174.4s] ok   spliced Bowden slot 3 at Y 126: Y -54.30..482.67 (was -37.30..482.67), solids 1/1, valid True, vol 8391 (want 8363)
+[ 2174.5s] ok   spliced Bowden slot 4 at Y 126: Y -54.30..482.67 (was -37.30..482.67), solids 1/1, valid True, vol 8391 (want 8363)
+[ 2174.8s] ok   spliced O2S USB cable slot 1 (Ø5.1, ~3 m; modelled lock to the side pack) at Y 125: Y -11.21..545.26 (was 5.79..545.26), solids 1/1, valid True, vol 31066 (want 31065)
+[ 2175.1s] ok   spliced O2S USB cable slot 2 (Ø5.1, ~3 m; modelled lock to the side pack) at Y 125: Y -11.21..545.59 (was 5.79..545.59), solids 1/1, valid True, vol 29114 (want 29114)
+[ 2175.3s] ok   spliced O2S USB cable slot 3 (Ø5.1, ~3 m; modelled lock to the side pack) at Y 125: Y -11.21..545.84 (was 5.79..545.84), solids 1/1, valid True, vol 27003 (want 27003)
+[ 2175.6s] ok   spliced O2S USB cable slot 4 (Ø5.1, ~3 m; modelled lock to the side pack) at Y 125: Y -11.21..546.17 (was 5.79..546.17), solids 1/1, valid True, vol 25149 (want 25149)
+[ 2175.8s] ok   spliced O2S USB cable slot 5 (Ø5.1, ~3 m; modelled lock to the side pack) at Y 125: Y -11.21..546.44 (was 5.79..546.44), solids 1/1, valid True, vol 23095 (want 23095)
+[ 2175.8s] ok   Bowden Left: cut at Y 126, section perimeter 0.00 % off pi x d
+[ 2175.8s] ok   Bowden Right: cut at Y 126, section perimeter 0.00 % off pi x d
+[ 2175.8s] ok   Bowden slot 2: cut at Y 126, section perimeter 0.00 % off pi x d
+[ 2175.8s] ok   Bowden slot 3: cut at Y 126, section perimeter 0.00 % off pi x d
+[ 2175.8s] ok   Bowden slot 4: cut at Y 126, section perimeter 0.00 % off pi x d
+[ 2175.8s] ok   O2S USB cable slot 1 (Ø5.1, ~3: cut at Y 125, section perimeter 0.01 % off pi x d
+[ 2175.8s] ok   O2S USB cable slot 2 (Ø5.1, ~3: cut at Y 125, section perimeter 0.01 % off pi x d
+[ 2175.8s] ok   O2S USB cable slot 3 (Ø5.1, ~3: cut at Y 125, section perimeter 0.01 % off pi x d
+[ 2175.8s] ok   O2S USB cable slot 4 (Ø5.1, ~3: cut at Y 125, section perimeter 0.01 % off pi x d
+[ 2175.8s] ok   O2S USB cable slot 5 (Ø5.1, ~3: cut at Y 125, section perimeter 0.01 % off pi x d
+[ 2175.8s] ok   belt GT2 9mm belt, lower (Monolith 2WD): valid True, Y -100.09..486.49 (was -83.09..486.49), vol 24150 -> 24572
+[ 2175.8s] ok   belt GT2 9mm belt, upper (Monolith 2WD): valid True, Y -100.09..486.49 (was -83.09..486.49), vol 24150 -> 24572
+[ 2175.8s] ok   rail R: Y -50.50..439.50 (490.00 long), 0.46 from the front mount and 0.46 from the rear one (gap 473.93 -> 490.93)
+[ 2175.8s] ok   rail L: Y -50.50..439.50 (490.00 long), 0.46 from the front mount and 0.46 from the rear one (gap 473.93 -> 490.93)
+[ 2175.9s] ok   Mellow MultiHead Zero body (aluminium, 20 x : one valid solid, 7568 mm3
+[ 2175.9s] ok   Mellow MultiHead Zero probe (bushing, pin, D: one valid solid, 1916 mm3
+[ 2175.9s] ok   Mellow MultiHead Zero switch + XH2.54 plug (: one valid solid, 288 mm3
+[ 2175.9s] ok   Nozzle offset probe bracket (low, lite-78) (: one valid solid, 10946 mm3
+[ 2175.9s] ok   bracket chamfered: 12 bottom + 13 top edges, 0 reduced, failed []
+[ 2175.9s] ok   the bracket prints Z-up on one flat face (519 mm2 at Z 240.00, the 2020's bottom): faces that would hang 0.0 mm2 (lite-71's rule)
+[ 2175.9s] ok   the bracket's back plate sits on the bed 2020's face (gap 0.0000)
+[ 2175.9s] ok   bracket top Z 266.16: 8.10 under the heater pad
+[ 2175.9s] ok   ball top Z 289.16: 1.00 above the PEI (Z 288.16; want 1.0)
+[ 2175.9s] ok   only the probe stands above the PEI ([])
+[ 2175.9s] ok   in front of the plate and sheet (Y 28.00): bushing 0.50 (>= 0.5), ball 2.00 (>= 2)
+[ 2175.9s] ok   both heads reach all 4 sides of the ball at printer (50, -9.5) with 6 overtravel: margin 0.70 (front_reach_front17.json)
+[ 2225.0s] ok   over the bed's Z travel (dZ -242 .. +5) the Zero's swept box X -385..-355 Y 6..61 hits no fixed part: []
+[ 2225.0s] ok   every new part is bed-side by the motion code's Z band
+[ 2225.0s] ok   roles {'body': 'brushed_aluminium', 'probe': 'brushed_steel', 'switch': 'black_plastic', 'bracket': 'printed'}
+[ 3595.8s] collision check: 2585 pairs, 77 overlaps now, 77 in lite-77; 0 gone: []
+[ 3595.8s] ok   COLLISIONS: no overlap lite-77 didn't have (0 new: []; the Zero: [])
+[ 3595.8s] verify: 0 problems
+[ 3613.4s] SAVED /home/dan/Documents/VT350/vt350-lite-78.FCStd 38101650
