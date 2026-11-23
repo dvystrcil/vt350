@@ -63,6 +63,9 @@ def front_names(model, boxes):
     grp = {p["name"] for p in _listing(model) if len(p["path"]) > 1 and any(k in p["path"][1] for k in FRONT_GROUPS)}
     return {o for o, b in boxes.items() if b[4] <= FRONT_Y or o in grp}
 MELLOW = "Mellow MultiHead Zero"
+# Left out of a what-if with the Mellow: the docked heads' Bowden tubes and O2S cables. A stretched frame re-routes them
+# (lite-78 part B), so their shapes moved as rigid bodies would be wrong anyway, and they made each pose ~6x slower.
+WHATIF_SKIP = ("Bowden ", "O2S USB cable slot ")
 SCAN_EXTRA = float(os.environ.get("FRONT_REACH_SCAN_EXTRA", "0"))
 X_RANGE = (-416.0, -74.0)  # the nozzle's X reach (sweep_toolhead.log, tightest head per side)
 X_N = 35                  # X positions across it (~10 mm apart)
@@ -190,7 +193,7 @@ def main():
         swc = swept_box(boxes, car, (X_RANGE[0] - nx + tx, X_RANGE[1] - nx + tx), y_lo_scan - ny + ty, Y_HI[1] - ny + ty)
         sweep = tuple(min(a, b) for a, b in zip(sw[:3], swc[:3])) + tuple(max(a, b) for a, b in zip(sw[3:], swc[3:]))
         skip = set(plan["gantry"]) | set(plan["belt"]) | moving | {plan["tubes"][h]} | set(plan["exclude"])
-        if F or R: skip |= {o for o in boxes if lab.get(o, o).startswith(MELLOW)}
+        if F or R: skip |= {o for o in boxes if lab.get(o, o).startswith((MELLOW,) + WHATIF_SKIP)}
         bed = [b for b in plan["bed"] if b not in skip and hits([v + (dz_top if i in (2, 5) else 0) for i, v in enumerate(boxes[b])], sweep)]
         cand = [o for o in boxes if o not in skip and o not in set(plan["bed"])]
         fset = front_names(st.MODEL, boxes) if F else set()

@@ -3,6 +3,7 @@
 
     python3 cad/studies/front_reach_map.py            # writes cad/data/beacon-coverage.svg
     python3 cad/studies/front_reach_map.py --check    # fails when the committed SVG isn't what the data gives
+    ... --data cad/data/front_reach_front17.json --out cad/data/beacon-coverage-front17.svg   # a what-if run's data
 
 Reads cad/data/front_reach.json (cad/studies/front_reach.py: each head's nozzle front limit per X, model coordinates),
 cad/klipper/xy_mapping.json (model -> printer XY) and cad/klipper/beacon.cfg (the Beacon offset, the mesh). For each
@@ -102,20 +103,25 @@ def svg(lim, mesh_min, model=""):
     return "\n".join(o) + "\n"
 
 
-def build():
-    data = json.load(open(DATA))
-    return svg(limits(data), beacon_scan.MESH_MIN, data.get("model", "").replace(".FCStd", ""))
+def build(data_path=DATA):
+    data = json.load(open(data_path))
+    name = data.get("model", "").replace(".FCStd", "")
+    st = data.get("stretch") or [0, 0]
+    if any(st): name += f" what-if: front +{st[0]:g}, Beacon {data['beacon_dy']:g}"
+    return svg(limits(data), beacon_scan.MESH_MIN, name)
 
 
 def main(argv):
-    text = build()
+    arg = lambda k, d: argv[argv.index(k) + 1] if k in argv else d
+    out = arg("--out", OUT)
+    text = build(arg("--data", DATA))
     if "--check" in argv:
-        ok = os.path.exists(OUT) and open(OUT).read() == text
+        ok = os.path.exists(out) and open(out).read() == text
         print("front_reach_map: OK" if ok else "front_reach_map: STALE: run python3 cad/studies/front_reach_map.py")
         return 0 if ok else 1
-    with open(OUT, "w") as f:
+    with open(out, "w") as f:
         f.write(text)
-    print(f"wrote {os.path.relpath(OUT, ROOT)}")
+    print(f"wrote {os.path.relpath(out, ROOT)}")
     return 0
 
 

@@ -38,5 +38,13 @@ class TiltReach(unittest.TestCase):
         self.assertEqual(bad, [], f"z_tilt points too close to a head's front limit: {bad}")
 
 
+class WhatIfMap(unittest.TestCase):
+    def test_committed_front17_map_is_what_its_data_gives(self):
+        """cad/data/beacon-coverage-front17.svg from front_reach_front17.json (vt350#291: front +17, Beacon at 15)."""
+        d = os.path.join(frm.ROOT, "cad", "data")
+        self.assertEqual(open(os.path.join(d, "beacon-coverage-front17.svg")).read(),
+                         frm.build(os.path.join(d, "front_reach_front17.json")))
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
