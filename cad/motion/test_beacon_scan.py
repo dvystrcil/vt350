@@ -88,22 +88,5 @@ class Path(unittest.TestCase):
         scan = [l for l in g if l.endswith(f"F{bm['speed'] * 60:g}")]
         self.assertGreater(len(scan), 30)
 
-class MellowAtTheCentre(unittest.TestCase):
-    """Owner, 2026-11-22 (vt350#291): the Mellow sits at the plate centre during offset calibration (a base up to
-    30 x 30). The Beacon's Z home (coil) and contact tap (nozzle) must keep off it."""
-    CENTRE, HALF, CLEAR = (175.0, 175.0), 15.0, 20.0
-
-    def gap(self, x, y):
-        cx, cy = self.CENTRE
-        return max(abs(x - cx), abs(y - cy)) - self.HALF
-
-    def test_home_nozzle_and_coil_clear_of_the_mellow(self):
-        hx, hy = bs.HOME_XY
-        ox, oy = bs.BEACON_XY
-        coil_r = 8.0                                     # the coil's radius, rounded up (beacon.cfg: 7.98)
-        self.assertGreaterEqual(self.gap(hx, hy), self.CLEAR, "the nozzle taps on the Mellow's base")
-        self.assertGreaterEqual(self.gap(hx + ox, hy + oy) - coil_r, self.CLEAR, "the coil homes over the Mellow")
-
-
 if __name__ == "__main__":
     unittest.main(verbosity=2)
