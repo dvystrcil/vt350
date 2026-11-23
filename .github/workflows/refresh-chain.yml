@@ -59,6 +59,10 @@ jobs:
         run: python3 cad/studies/test_dock_layout.py 2>&1 | tee test-dock.log
       - name: Confirm every dock_layout test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-dock.log && tail -1 test-dock.log | grep -qx 'OK'
+      - name: Test the Mellow bed-edge reach study (mellow_edge_reach, #291; no FreeCAD)
+        run: python3 cad/studies/test_mellow_edge_reach.py 2>&1 | tee test-mellow-edge.log
+      - name: Confirm every mellow_edge_reach test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-mellow-edge.log && tail -1 test-mellow-edge.log | grep -qx 'OK'
       - name: Test the serial-vs-parallel proof runner (prove_parallel, #45; fake freecadcmd)
         run: python3 cad/studies/test_prove_parallel.py 2>&1 | tee test-prove.log
       - name: Confirm every prove_parallel test ran
