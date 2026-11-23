@@ -382,3 +382,14 @@ failed by ~300 mm3 on an 8458 mm3 tube: `Shape.Volume` of the original was ~4 % 
 - Check a splice of a swept part against the sum of the pieces it was cut into, not against its original `Volume`,
   and allow ~0.5 %.
 - Exact-volume checks (1e-5) still hold for prism-like parts (extrusions, boxes, panels): keep them there.
+
+## Rebuilding a part from the pass that made it loses every later retrofit (2026-11-23, lite-78)
+
+vt350-lite-78 (vt350#291) moved the nozzle-offset probe bracket by deleting it and rebuilding it with lite-61's code.
+That brought back lite-61's shape, which needs supports. lite-71 had already fixed it at the owner's request: the arm
+was carried down so the part prints on one flat face. The owner caught it in the preview STL.
+
+- Before rebuilding a part from its original pass, search the later passes for its label (`grep -l "<label>"
+  cad/passes/*.py`), and carry their changes into the rebuild. Better still, move the model's current part when the
+  change is a plain move.
+- Keep the later pass's check in the rebuild too (here: lite-71's "no face hangs" test), so the fix can't be lost again.

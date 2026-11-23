@@ -20,13 +20,14 @@
 #    INSTRUCTIONS.md puts a fixed mount's probe top ~1 mm above the print surface (lite-61's was ~9), and the sheet's
 #    tab is at the front centre. Ball at printer (50, -9.5): the left window where both heads reach all four sides of
 #    it with 6 mm overtravel (cad/studies/mellow_edge_reach.py), its bushing 0.5 mm in front of the plate. lite-61's
-#    bracket and Zero are removed and rebuilt there with lite-61's geometry (bracket on the bed's front 2020).
+#    bracket and Zero are removed and rebuilt there with lite-61's geometry (bracket on the bed's front 2020) AND
+#    lite-71's retrofit (the arm down to the plates' lowest edge: it prints Z-up on one flat face, no supports).
 # Checks (refuses to save on any): every leaf moved exactly -17, unchanged, spliced, removed (rails, lite-61's probe)
 # or new (rails, the Zero and its bracket); spliced parts valid with their solid count, their front end -17 and their
 # volume + section x 17; tubes and cables cut where the section's perimeter is within 1 % of pi x d; rails 490 long,
 # 0.46 mm from each mount, valid; the Zero: each part one valid solid, the bracket on the 2020's face and >= 3 below
-# the heater, the ball top 1.0 above the PEI and only the probe above the PEI, the bushing >= 0.5 and ball >= 2 in
-# front of the plate and sheet, both heads reach all 4 sides (front_reach_front17.json), over the bed's Z travel it
+# the heater, printing Z-up on one flat face with no hanging faces (lite-71); the ball top 1.0 above the PEI and only
+# the probe above it; the bushing >= 0.5 and ball >= 2 in front of the plate and sheet; both heads reach all 4 sides (front_reach_front17.json), over the bed's Z travel it
 # hits no fixed part; no leaf left with an attachment that would undo the move on recompute;
 # COLLISIONS vs lite-77: every moved, spliced or new part against the rest, no overlap that lite-77 didn't have.
 import FreeCAD, Part, os, sys, math, json
@@ -174,14 +175,16 @@ def edge_zero(x0, by, ball_top, fb, heater_zmin):
     zc_top = heater_zmin - HEATER_GAP
     back = bx(x0 - 15, x0 + 15, fb.YMin - BR_T, fb.YMin, fb.ZMin, min(fb.ZMax, zc_top))
     front = bx(x0 - 12, x0 + 12, yb, yb + BR_T, min(body_bot - 4, fb.ZMin), min(zc_top, body_top))
-    arm = bx(x0 - 8, x0 + 8, yb, fb.YMin - BR_T, fb.ZMin + 6, fb.ZMin + 16)
+    # the arm runs down to the plates' lowest edge, so all three stand on one flat face and it prints Z-up with no
+    # supports: lite-71's fix of lite-61's bracket (owner, 2026-11-19), here built in rather than carried down
+    arm = bx(x0 - 8, x0 + 8, yb, fb.YMin - BR_T, fb.ZMin, fb.ZMin + 16)
     rib = bx(x0 - 2, x0 + 2, yb + BR_T, fb.YMin - BR_T, fb.ZMin + 16, min(zc_top, fb.ZMax))
     holes = [Part.makeCylinder(1.7, BR_T + 2, V(x0 + dx, fb.YMin - BR_T - 1, (fb.ZMin + fb.ZMax) / 2), V(0, 1, 0))
              for dx in (-10, 10)]
     zc = (body_bot + body_top) / 2
     holes += [Part.makeCylinder(1.7, BR_T + 2, V(x0 + dx, yb - 1, zc + dz), V(0, 1, 0)) for dx, dz in ((-5, 5), (5, -5))]
     bracket = back.fuse([front, arm, rib]).removeSplitter().cut(Part.makeCompound(holes)).removeSplitter()
-    bracket, info = printchamfer.chamfer(bracket, V(0, -1, 0), **CHAMFER)     # printed on its back plate
+    bracket, info = printchamfer.chamfer(bracket, V(0, 0, 1), **CHAMFER)      # printed on its flat bottom, Z up
     return {"body": ("Mellow MultiHead Zero body (aluminium, 20 x 17.2 x 22, from Mellow's drawing)", body),
             "probe": ("Mellow MultiHead Zero probe (bushing, pin, D 10 ball; estimated from the photo)", probe),
             "switch": ("Mellow MultiHead Zero switch + XH2.54 plug (in the body's slot, stand-in)", switch),
@@ -437,6 +440,14 @@ def main(p):
     p.check(not binfo.get("failed"), f"bracket chamfered: {binfo['bottom']} bottom + {binfo['top']} top edges, "
                                     f"{len(binfo['reduced'])} reduced, failed {binfo.get('failed')}")
     fb, hb, pb, sb = box[fr[0]], box[heater[0]], box[plate[0]], box[pei[0]]
+    brs = sh["bracket"]; z0b = brs.BoundBox.ZMin
+    flat = sum(f.Area for f in brs.Faces if isinstance(f.Surface, Part.Plane) and f.BoundBox.ZMax < z0b + 1e-3)
+    # lite-71 checked before chamfering; here the shape is chamfered, so its first-layer chamfers (45 deg, all within
+    # CHAMFER["bottom"] of the bed, meant to be there) are left out
+    hang = sum(f.Area for f in brs.Faces if isinstance(f.Surface, Part.Plane) and f.normalAt(0, 0).z < -0.7
+               and f.BoundBox.ZMax > z0b + CHAMFER["bottom"] + 0.01)
+    p.check(abs(z0b - fb.ZMin) < TOL and hang < 1.0, f"the bracket prints Z-up on one flat face ({flat:.0f} mm2 at Z {z0b:.2f}, the "
+                                                    f"2020's bottom): faces that would hang {hang:.1f} mm2 (lite-71's rule)")
     d = sh["bracket"].distToShape(m.shapes[fr[0]])[0]
     p.check(d < TOL, f"the bracket's back plate sits on the bed 2020's face (gap {d:.4f})")
     p.check(hb.ZMin - sh["bracket"].BoundBox.ZMax >= HEATER_GAP - TOL,
