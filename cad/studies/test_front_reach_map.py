@@ -16,7 +16,10 @@ class Limits(unittest.TestCase):
 
 class Committed(unittest.TestCase):
     def test_svg_is_current(self):
-        self.assertEqual(frm.main(["--check"]), 0, "run python3 cad/studies/front_reach_map.py")
+        import contextlib, io
+        with contextlib.redirect_stdout(io.StringIO()):     # its "front_reach_map: OK" would land after unittest's "OK"
+            rc = frm.main(["--check"])                     # (stdout is buffered), and CI reads the log's last line
+        self.assertEqual(rc, 0, "run python3 cad/studies/front_reach_map.py")
 
     def test_both_heads_are_drawn(self):
         text = frm.build()
