@@ -36,6 +36,10 @@ HERE = os.path.abspath(__file__)
 _HERE = os.path.dirname(HERE)    # then the checkout's code folders (vt350#122); a gpu-batch pod stages all flat in _HERE
 sys.path[:0] = [_HERE] + [p for p in (os.path.join(os.path.dirname(os.path.dirname(_HERE)), d) for d in ("cad/scripts", "platform/freecad")) if os.path.isdir(p)]
 Y_TRAVEL = (-277.19, 145.43)           # gantry dY limits, lite9_rails.log (joint/mount hard stops; Z moves since keep them)
+# SWEEP_Y_STRETCH="front,rear" (mm, vt350#291): a what-if for a deeper frame: the front and rear rail mounts moved out
+# by those amounts, so the hard stops move with them. Studies only; a lite-N pass makes it real.
+_STRETCH = [float(v) for v in os.environ.get("SWEEP_Y_STRETCH", "0,0").split(",")]
+Y_TRAVEL = (Y_TRAVEL[0] - _STRETCH[0], Y_TRAVEL[1] + _STRETCH[1])
 PLATE_X0, PLATE_Y0, PLATE_W, PRINT_W = -422.5, 28.0, 355.0, 350.0
 # Tool side of each dock: the MadMax plate + Plate Back (the brackets were removed in lite-23).
 HEADS = {"Left": dict(group="Left Toolhead", dock="Left Dock", tube="Bowden Left", copy="COMPOUND003",

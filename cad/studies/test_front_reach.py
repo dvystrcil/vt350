@@ -60,5 +60,23 @@ class Classify(unittest.TestCase):
         self.assertEqual(got[-100.0], [])
 
 
+class FrontSet(unittest.TestCase):
+    """The what-if's front set (vt350#291): boxes in front of FRONT_Y, plus whole head and dock groups."""
+    def test_group_members_move_even_when_they_end_behind_the_cut(self):
+        import json, tempfile
+        with tempfile.TemporaryDirectory() as d:
+            model = os.path.join(d, "m.FCStd")
+            parts = [dict(name="tb", path=["root", "Toolhead slot 2 (L)"]), dict(name="dock", path=["root", "Left Dock"]),
+                     dict(name="rail", path=["root", "Frame"]), dict(name="bar", path=["root", "Frame"])]
+            json.dump(dict(parts=parts), open(os.path.join(d, "m.parts.json"), "w"))
+            boxes = {"tb": [0, -40, 0, 1, -3, 1], "dock": [0, -60, 0, 1, 20, 1], "rail": [0, -30, 0, 1, 400, 1],
+                     "bar": [0, -75, 0, 1, -55, 1]}
+            self.assertEqual(fr.front_names(model, boxes), {"tb", "dock", "bar"})
+
+    def test_no_listing_is_an_error_not_an_empty_set(self):
+        with self.assertRaises(SystemExit):
+            fr.front_names("/nonexistent/m.FCStd", {})
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

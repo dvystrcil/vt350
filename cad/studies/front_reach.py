@@ -24,7 +24,30 @@ sys.path[:0] = [HERE] + [p for p in (os.path.join(os.path.dirname(os.path.dirnam
                                      for d in ("cad/scripts", "platform/freecad")) if os.path.isdir(p)]
 import sweep_toolhead as st  # noqa: E402
 
-BEACON_DY = 27.4          # Beacon coil centre - nozzle, Y (Klipper [beacon] y_offset; lite24_beacon.py, lite-26)
+BEACON_DY = float(os.environ.get("FRONT_REACH_BEACON_DY", "27.4"))  # coil centre - nozzle, Y (beacon.cfg y_offset)
+# What-if for a deeper frame (vt350#291), with SWEEP_Y_STRETCH="front,rear" (sweep_toolhead.py widens the hard stops):
+#  - every solid whose box ends in front of FRONT_Y (the five heads, the docks and dock bar, the front frame, the front
+#    rail mounts, the doors and the e-box front; no bed or Z part is there) is moved forward by `front`;
+#  - every solid whose box starts behind REAR_Y (the rear rail mounts and motors, the rear 2020, the back panel) by `rear`;
+#  - the Mellow (the nozzle-offset probe) is left out: it goes on the plate only for calibration (owner, 2026-11-22);
+#  - the scan starts SCAN_EXTRA further forward, so the log shows the margin, not just "clear";
+#  - a rear check: the gantry, carriage and head at the new rear stop, per X.
+# Parts that cross either plane (side extrusions, panels, felt, belts, cables) stay where they are: a pass would
+# lengthen them, and the head never reaches them.
+FRONT_Y, REAR_Y = -5.0, 440.5
+FRONT_GROUPS = ("Toolhead", "Dock")    # whole groups move too: a docked head's toolboard and screws end behind FRONT_Y
+
+
+def front_names(model, boxes):
+    """The what-if's front set: every solid whose box ends in front of FRONT_Y, and every solid of a head or dock group
+    (by the model's parts listing, <model>.parts.json, which refresh.py keeps beside it)."""
+    pj = os.path.splitext(model)[0] + ".parts.json"
+    if not os.path.exists(pj): raise SystemExit(f"what-if needs {pj} (the head and dock groups)")
+    d = json.load(open(pj)); d = d["parts"] if isinstance(d, dict) else d
+    grp = {p["name"] for p in d if len(p["path"]) > 1 and any(k in p["path"][1] for k in FRONT_GROUPS)}
+    return {o for o, b in boxes.items() if b[4] <= FRONT_Y or o in grp}
+MELLOW = "Mellow MultiHead Zero"
+SCAN_EXTRA = float(os.environ.get("FRONT_REACH_SCAN_EXTRA", "0"))
 X_RANGE = (-416.0, -74.0)  # the nozzle's X reach (sweep_toolhead.log, tightest head per side)
 X_N = 35                  # X positions across it (~10 mm apart)
 Y_HI = (80.0, 140.0)      # clear-side bracket; the second is tried only where the first is blocked
@@ -68,6 +91,55 @@ def update(state, tried, blocked):
         else: state[x][1] = y
 
 
+def rear_check(h, c, plan, xs, skip, n, log):
+    """The gantry, carriage and carried head at the (stretched) rear stop, at each X, bed at the top: against the rear
+    parts moved back by `rear`, everything else fixed, the bed. Contacts not in the centre-pose baseline."""
+    import clashlib
+    F, R = st._STRETCH
+    boxes, lab = plan["boxes"], plan["labels"]
+    (nx, ny, nz), (tx, ty, tz), dz_top = c["nozzle"], c["T"], c["dz_top"]
+    head, car, gan = plan["heads"][h], plan["carriage"], plan["gantry"]
+    y = ny + st.Y_TRAVEL[1] - ty                       # nozzle Y with the gantry at the rear stop
+    xs = xs[::3]                                       # every third X: the rear is open but for the Z parts and mounts
+    # what the moving parts can reach at the rear stop, across these X (gantry: Y only; head and carriage: X and Y)
+    ty_c = y - ny + ty
+    sw = swept_box(boxes, head, (xs[0] - nx, xs[-1] - nx), ty_c - ty, ty_c - ty, -tz)
+    swc = swept_box(boxes, car, (xs[0] - nx + tx, xs[-1] - nx + tx), ty_c, ty_c)
+    swg = swept_box(boxes, gan, (0.0, 0.0), ty_c, ty_c)
+    sweep = tuple(min(a, b, g) for a, b, g in zip(sw[:3], swc[:3], swg[:3])) + tuple(max(a, b, g) for a, b, g in zip(sw[3:], swc[3:], swg[3:]))
+    sh = lambda b: [b[0], b[1] + R, b[2], b[3], b[4] + R, b[5]]
+    up = lambda b: [v + (dz_top if i in (2, 5) else 0) for i, v in enumerate(b)]
+    rear = [o for o in boxes if o not in skip and o not in set(plan["bed"]) and o not in set(gan) and boxes[o][1] >= REAR_Y
+            and hits(sh(boxes[o]), sweep)]
+    bed = [b for b in plan["bed"] if b not in skip and hits(up(boxes[b]), sweep)]
+    fixed = [o for o in boxes if o not in skip and o not in set(plan["bed"]) and o not in set(gan) and boxes[o][1] < REAR_Y
+             and hits(boxes[o], sweep)]
+    def pose(x, yy):
+        tc = (x - nx + tx, yy - ny + ty, 0.0)
+        return {"bed": (0, 0, dz_top), "carriage": tc, "head": (tc[0] - tx, tc[1] - ty, tc[2] - tz),
+                "gantry": (0.0, tc[1], 0.0), "rear": (0.0, R, 0.0)}
+    groups = dict(bed=bed, carriage=car, head=head, gantry=gan, rear=rear)
+    sk = [("carriage", "head"), ("carriage", "gantry"), ("gantry", "head"), ("bed", "rear")]
+    cx = (c["square"][0] + c["square"][2]) / 2
+    b0 = clashlib.run(st.MODEL, groups=groups, poses={"centre": pose(cx, (c["square"][1] + c["square"][3]) / 2)},
+                      fixed=fixed, n=n, tol=TOL, log=log, skip_group_pairs=sk)
+    base = {(r["a"], r["b"]) for r in b0["results"]}
+    res = clashlib.run(st.MODEL, groups=groups, poses={f"{x:.2f}": pose(x, y) for x in xs}, fixed=fixed, n=n, tol=TOL,
+                       log=log, skip_group_pairs=sk)
+    found = {}
+    for r in res["results"]:
+        if (r["a"], r["b"]) not in base: found.setdefault(r["pose"], []).append((r["volume"], r["la"], r["lb"]))
+    for e in res["errors"]: found.setdefault(e["pose"], []).append((-1.0, e["la"], e["lb"] + " [error]"))
+    log(f"-- {h} at the rear stop (nozzle Y {y:.2f} model): gantry + carriage + head vs {len(rear)} rear solids moved "
+        f"+{R:g}, {len(fixed)} fixed, {len(bed)} bed (baseline {len(base)} pairs ignored)")
+    rows = []
+    for x in xs:
+        hit = sorted(found.get(f"{x:.2f}", []), reverse=True)
+        rows.append(dict(x=x, y=round(y, 2), contacts=[[round(v, 2), a, b] for v, a, b in hit[:5]]))
+        log(f"   {h} rear X {x:8.2f}: " + ("clear" if not hit else "; ".join(f"{a} x {b} {v:.1f} mm3" for v, a, b in hit[:3])))
+    return rows
+
+
 def main():
     import clashlib
     n = int(sys.argv[1]) if len(sys.argv) > 1 else clashlib.default_n()
@@ -82,11 +154,16 @@ def main():
     plan = st.plan_stage(clashlib.FREECADCMD)
     log(f"model {st.MODEL} (read-only)")
     boxes, lab = plan["boxes"], plan["labels"]
-    out = dict(model=os.path.basename(st.MODEL), beacon_dy=BEACON_DY, res=RES, heads={})
+    F, R = st._STRETCH
+    out = dict(model=os.path.basename(st.MODEL), beacon_dy=BEACON_DY, res=RES, heads={}, stretch=[F, R])
+    shifted = lambda b, dy: [b[0], b[1] + dy, b[2], b[3], b[4] + dy, b[5]]
+    if F or R:
+        log(f"WHAT-IF: frame {F:g} mm deeper at the front, {R:g} at the rear (Y travel {st.Y_TRAVEL[0]:.2f} .. "
+            f"{st.Y_TRAVEL[1]:.2f}); the Mellow left out; Beacon y_offset {BEACON_DY:g}")
     for h, c in plan["carried"].items():
         (nx, ny, nz), (tx, ty, tz), dz_top = c["nozzle"], c["T"], c["dz_top"]
         x_lo, y_lo, x_hi, y_hi = c["square"]
-        y_lo_scan = y_lo - BEACON_DY
+        y_lo_scan = y_lo - BEACON_DY - SCAN_EXTRA
         other = [o for o in plan["carried"] if o != h][0]
         head, car = plan["heads"][h], plan["carriage"]
         moving = set(head) | set(car)
@@ -96,17 +173,26 @@ def main():
         swc = swept_box(boxes, car, (X_RANGE[0] - nx + tx, X_RANGE[1] - nx + tx), y_lo_scan - ny + ty, Y_HI[1] - ny + ty)
         sweep = tuple(min(a, b) for a, b in zip(sw[:3], swc[:3])) + tuple(max(a, b) for a, b in zip(sw[3:], swc[3:]))
         skip = set(plan["gantry"]) | set(plan["belt"]) | moving | {plan["tubes"][h]} | set(plan["exclude"])
-        bed = [b for b in plan["bed"] if hits([v + (dz_top if i in (2, 5) else 0) for i, v in enumerate(boxes[b])], sweep)]
-        fixed = [o for o in boxes if o not in skip and o not in set(plan["bed"]) and hits(boxes[o], sweep)]
+        if F or R: skip |= {o for o in boxes if lab.get(o, o).startswith(MELLOW)}
+        bed = [b for b in plan["bed"] if b not in skip and hits([v + (dz_top if i in (2, 5) else 0) for i, v in enumerate(boxes[b])], sweep)]
+        cand = [o for o in boxes if o not in skip and o not in set(plan["bed"])]
+        fset = front_names(st.MODEL, boxes) if F else set()
+        front = [o for o in cand if o in fset and hits(shifted(boxes[o], -F), sweep)]
+        fixed = [o for o in cand if o not in fset and hits(boxes[o], sweep)]
         log(f"{h} carried ({other} and the slot heads docked): swept box X {sweep[0]:.1f}..{sweep[3]:.1f} "
             f"Y {sweep[1]:.1f}..{sweep[4]:.1f} Z {sweep[2]:.1f}..{sweep[5]:.1f}; checked against {len(fixed)} fixed "
             f"and {len(bed)} bed solids (of {len(boxes)})")
         groups = dict(bed=bed, carriage=car, head=head)
+        if front:
+            groups["front"] = front
+            log(f"   {len(front)} front solids moved {-F:g} in Y with the frame")
 
         def pose(x, y):
             tc = (x - nx + tx, y - ny + ty, 0.0)
             if not (st.Y_TRAVEL[0] - 1e-6 <= tc[1] <= st.Y_TRAVEL[1] + 1e-6): raise RuntimeError(f"Y {y:.2f} out of travel")
-            return {"bed": (0, 0, dz_top), "carriage": tc, "head": (tc[0] - tx, tc[1] - ty, tc[2] - tz)}
+            pz = {"bed": (0, 0, dz_top), "carriage": tc, "head": (tc[0] - tx, tc[1] - ty, tc[2] - tz)}
+            if front: pz["front"] = (0.0, -F, 0.0)
+            return pz
 
         def check(tries, tag):
             """tries {x: y} -> {x: [(volume, a, b)]} of overlaps not in the baseline."""
@@ -133,9 +219,12 @@ def main():
         state = {x: [None, None] for x in xs}
         what = {}
         lo = check({x: y_lo_scan for x in xs}, "Y_LO")
-        hi = check({x: Y_HI[0] for x in xs}, "Y_HI")
+        # what-if runs ask pass/fail first: an X clear at Y_LO needs no Y_HI check (that one only guards the
+        # one-boundary assumption, which the plain run keeps checking)
+        hi = check({x: Y_HI[0] for x in xs if lo[x] or not (F or R)}, "Y_HI")
         for x in xs:
             what[x] = lo[x]
+            if x not in hi: state[x] = [None, y_lo_scan]; continue
             state[x] = [y_lo_scan if lo[x] else None, None if hi[x] else Y_HI[0]]
             if not lo[x]: state[x] = [None, y_lo_scan]
             if not lo[x] and hi[x]: log(f"   {h} X {x}: NOT ONE BOUNDARY: clear at Y {y_lo_scan:.2f}, blocked at {Y_HI[0]}")
@@ -164,6 +253,7 @@ def main():
             log(f"   {h} X {x:8.2f}: front limit Y {('%.2f' % c) if c is not None else 'none'}"
                 + (f" (blocked at {b:.2f}: " + "; ".join(f"{a} x {bb} {v:.1f} mm3" for v, a, bb in first) + ")" if b is not None else " (clear at the scan's front end)"))
         out["heads"][h] = rows
+        if R: out.setdefault("rear", {})[h] = rear_check(h, c, plan, xs, skip, n, log)
     json.dump(out, open(os.path.join(work, "front_reach.json"), "w"), indent=1)
     log("done (read-only, nothing saved)")
 
