@@ -15,11 +15,11 @@ T0
 ; 3. Z_TILT_ADJUST PROBE_METHOD=CONTACT: [z_tilt] points at its speed and horizontal_move_z, a tap at each
 ;    (one pass shown; the real command repeats until within retry_tolerance)
 G1 Z10 F600
-G1 X30 Y5 F12000
+G1 X30 Y7 F12000
 G1 Z0 F180
 G1 Z2 F600
 G1 Z10 F600
-G1 X320 Y5 F12000
+G1 X320 Y7 F12000
 G1 Z0 F180
 G1 Z2 F600
 G1 Z10 F600

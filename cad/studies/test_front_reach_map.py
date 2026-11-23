@@ -23,5 +23,20 @@ class Committed(unittest.TestCase):
         self.assertIn("Left head carried", text); self.assertIn("Right head carried", text)
 
 
+class TiltReach(unittest.TestCase):
+    def test_limit_is_the_worst_neighbour(self):
+        lim = [(0.0, 30.0), (10.0, 40.0), (20.0, 20.0)]
+        self.assertEqual(frm.nozzle_limit(lim, 15.0, 10.0), 25.0)
+        self.assertEqual(frm.nozzle_limit(lim, 15.0, 99.0), float("inf"))
+
+    def test_every_z_tilt_point_is_reachable_by_both_heads(self):
+        """cad/klipper/beacon.cfg [z_tilt] points vs the committed front reach (vt350#291): 1 mm of margin."""
+        import json
+        data = json.load(open(frm.DATA))
+        lim = frm.limits(data)
+        bad = [r for r in frm.tilt_reach(frm.beacon_scan.TILT_POINTS, lim, data["beacon_dy"]) if not r[3]]
+        self.assertEqual(bad, [], f"z_tilt points too close to a head's front limit: {bad}")
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

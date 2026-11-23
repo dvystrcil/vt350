@@ -35,6 +35,21 @@ def limits(data=None, mapping=None):
             for h, rows in data["heads"].items()}
 
 
+def nozzle_limit(lim, beacon_dy, x):
+    """A head's nozzle front limit (printer Y) at printer X, from its coil limits: the worst of the rows within one X
+    step of x (conservative between samples). inf when no row is near (outside the measured X range)."""
+    xs = [a for a, _ in lim]
+    step = max(b - a for a, b in zip(xs, xs[1:])) if len(xs) > 1 else 0.0
+    near = [y - beacon_dy for a, y in lim if abs(a - x) <= step + 1e-6]
+    return max(near) if near else float("inf")
+
+
+def tilt_reach(points, lim, beacon_dy, margin=1.0):
+    """[(point, head, nozzle limit, ok)] for each Z-tilt point and head: ok when the point is margin behind the limit."""
+    return [((x, y), h, nozzle_limit(lim[h], beacon_dy, x), y >= nozzle_limit(lim[h], beacon_dy, x) + margin)
+            for x, y in points for h in sorted(lim)]
+
+
 def svg(lim, mesh_min, model=""):
     W, H, L, R, T, B = 1100, 540, 80, 30, 70, 95
     X0, X1, Y0, Y1 = 0, 350, -10, 60
