@@ -16,17 +16,20 @@
 #  - The five Bowden tubes and five O2S cables run from each docked head back along Y to the roof-exit clamps, which
 #    stay: each is spliced like the frame, at the Y in 100..300 where its section is most nearly a circle of its own
 #    diameter (the run is straight along Y there), so the head end moves -17 with its head and the run is 17 longer.
-#  - The Mellow MultiHead Zero leaves the bed (owner, 2026-11-22): lite-61's bracket and Zero are removed. The Zero
-#    parks on the backbone (steel) on a printed carrier with 4 magnets, centred in X on the strip in front of the bed
-#    (the bed comes down to ~20 mm over the backbone everywhere behind Y 28). It goes on the plate centre only to
-#    calibrate, by hand (tc_offsets.cfg MELLOW_CALIBRATE_START/RUN): not modelled there, or every sweep would see it.
+#  - The Mellow MultiHead Zero stays on the bed's front edge, LOWER and to the LEFT (owner, 2026-11-23): Nudge's
+#    INSTRUCTIONS.md puts a fixed mount's probe top ~1 mm above the print surface (lite-61's was ~9), and the sheet's
+#    tab is at the front centre. Ball at printer (50, -9.5): the left window where both heads reach all four sides of
+#    it with 6 mm overtravel (cad/studies/mellow_edge_reach.py), its bushing 0.5 mm in front of the plate. lite-61's
+#    bracket and Zero are removed and rebuilt there with lite-61's geometry (bracket on the bed's front 2020).
 # Checks (refuses to save on any): every leaf moved exactly -17, unchanged, spliced, removed (rails, lite-61's probe)
-# or new (rails, carrier); spliced parts valid with their solid count, their front end -17 and their volume +
-# section x 17; tubes and cables cut where the section's perimeter is within 1 % of pi x d; rails 490 long, 0.46 mm
-# from each mount, valid; the carrier one valid chamfered solid on the backbone's top, the Zero on the carrier, all
-# clear of the bed at its lowest (>= 3 mm); no leaf left with an attachment that would undo the move on recompute;
+# or new (rails, the Zero and its bracket); spliced parts valid with their solid count, their front end -17 and their
+# volume + section x 17; tubes and cables cut where the section's perimeter is within 1 % of pi x d; rails 490 long,
+# 0.46 mm from each mount, valid; the Zero: each part one valid solid, the bracket on the 2020's face and >= 3 below
+# the heater, the ball top 1.0 above the PEI and only the probe above the PEI, the bushing >= 0.5 and ball >= 2 in
+# front of the plate and sheet, both heads reach all 4 sides (front_reach_front17.json), over the bed's Z travel it
+# hits no fixed part; no leaf left with an attachment that would undo the move on recompute;
 # COLLISIONS vs lite-77: every moved, spliced or new part against the rest, no overlap that lite-77 didn't have.
-import FreeCAD, Part, os, sys, math
+import FreeCAD, Part, os, sys, math, json
 _REPO = os.environ.get("VT350_REPO", "/home/dan/Code/vt350")
 sys.path[:0] = [os.path.join(_REPO, "platform/freecad"), os.path.join(_REPO, "platform/render")]
 import litelib, linkgeo, printchamfer, colours
@@ -53,14 +56,15 @@ TUBE_Y = tuple(float(y) for y in range(100, 301))      # where to look for each 
 RUN_GROUP = "O2S cables + channel"                     # lite-40: the zip ties along each tube + cable run
 OLD_PROBE = "Nozzle offset probe (lite-61"             # lite-61's group: bracket + Zero, removed
 TOL = 1e-3
-# the parked Zero (model coordinates): the backbone's front strip, centred on the plate in X
-X0 = -245.0
+# the Zero on the bed's front edge (owner, 2026-11-23). Ball centre at printer (50, -9.5): model = printer + (-420, 30.5)
+# (cad/klipper/xy_mapping.json, read below)
+BALL_PX, BALL_PY = 50.0, -9.5
+BALL_ABOVE_PEI = 1.0                                        # its top over the print surface (Nudge INSTRUCTIONS.md)
+OVERTRAVEL = 6.0                                            # Nudge's table; ours needs ~5 (mellow_edge_reach.py)
 BODY_X, BODY_Y, BODY_H, PROBE_H = 20.0, 17.2, 22.0, 23.0    # lite-61 (Mellow's drawing; the probe estimated)
 BUSH_D, BUSH_H, PIN_D, BALL_D = 13.0, 10.0, 5.0, 10.0
-SW_Y = 6.0                                                  # the switch + plug stand out of the body's front
-BASE_T, BACK_T, BASE_MARGIN = 4.0, 4.0, 1.0
-MAG_D, MAG_H, MAG_CLR = 10.0, 3.0, 0.1                      # 4 x D10 x 3 N52 discs, flush with the base's underside
-BED_CLEAR = 3.0
+BR_T, HEATER_GAP = 4.0, 3.0                                 # lite-61's bracket: wall, and its gap under the heater pad
+BED2020 = "2020 (1)"                                        # the bed's front 2020 (lite-61: X -480..-10, Y 60.8, Z 240)
 CHAMFER = printchamfer.profile(os.path.join(_REPO, "cad/data/print-profile.json"))
 LIC = "(printed ABS, vt350, GPL-3.0-or-later)"
 
@@ -154,35 +158,34 @@ def splice_tube(s, ys_candidates, dy, d):
     return new, ys, fs[0].Area, best[1], pieces
 
 
-def parked_zero(y_front, z0):
-    """The Zero on its carrier, the switch's front at y_front, the carrier's underside at z0: {key: (label, shape)}."""
-    bx = lambda x0, x1, y0, y1, za, zb: Part.makeBox(x1 - x0, y1 - y0, zb - za, V(x0, y0, za))
-    b0 = y_front + SW_Y                                   # the body's front
-    b1 = b0 + BODY_Y                                      # its rear (mounting) face
-    zb, zt = z0 + BASE_T, z0 + BASE_T + BODY_H
-    body = bx(X0 - BODY_X / 2, X0 + BODY_X / 2, b0, b1, zb, zt)
-    yc = (b0 + b1) / 2
-    bz = zt + PROBE_H - BALL_D / 2
-    probe = Part.makeCylinder(BUSH_D / 2, BUSH_H, V(X0, yc, zt)).fuse(
-        [Part.makeCylinder(PIN_D / 2, bz - zt - BUSH_H, V(X0, yc, zt + BUSH_H)), Part.makeSphere(BALL_D / 2, V(X0, yc, bz))]).removeSplitter()
-    switch = bx(X0 - 4, X0 + 4, y_front, b0, zb, zb + 6)
-    # the carrier: a base under the whole Zero, a back plate the body bolts to (lite-61's 2 x M3 holes)
-    base = bx(X0 - 15, X0 + 15, y_front - BASE_MARGIN, b1 + BACK_T, z0, zb)
-    back = bx(X0 - 12, X0 + 12, b1, b1 + BACK_T, zb, zt)
-    zc = (zb + zt) / 2
-    holes = [Part.makeCylinder(1.7, BACK_T + 2, V(X0 + dx, b1 - 1, zc + dz), V(0, 1, 0)) for dx, dz in ((-5, 5), (5, -5))]
-    yl = (y_front - BASE_MARGIN + b1 + BACK_T) / 2
-    mags = [(X0 + dx, yl + dy_) for dx in (-8.5, 8.5) for dy_ in (-7.0, 7.0)]
-    pockets = [Part.makeCylinder(MAG_D / 2 + MAG_CLR, MAG_H, V(x, y, z0)) for x, y in mags]
-    carrier = base.fuse([back]).removeSplitter().cut(Part.makeCompound(holes + pockets)).removeSplitter()
-    carrier, info = printchamfer.chamfer(carrier, V(0, 0, 1), **CHAMFER)
-    out = {"body": ("Mellow MultiHead Zero body (aluminium, 20 x 17.2 x 22, from Mellow's drawing), parked", body),
-           "probe": ("Mellow MultiHead Zero probe (bushing, pin, D 10 ball; estimated from the photo), parked", probe),
-           "switch": ("Mellow MultiHead Zero switch + XH2.54 plug (in the body's slot, stand-in), parked", switch),
-           "carrier": (f"Mellow parking carrier (magnetic, on the backbone) {LIC}", carrier)}
-    for i, (x, y) in enumerate(mags):
-        out[f"mag{i}"] = (f"Mellow carrier magnet {i + 1} (D10 x 3 N52 disc)", Part.makeCylinder(MAG_D / 2, MAG_H, V(x, y, z0)))
-    return out, info
+def edge_zero(x0, by, ball_top, fb, heater_zmin):
+    """lite-61's Zero and bracket at ball centre (x0, by) with the ball's top at ball_top (model coordinates): the body
+    under the probe, the bracket's back plate on the bed 2020's front face fb (a BoundBox), an arm forward under the
+    plate, a front plate the body bolts to; nothing of it within HEATER_GAP of the heater pad. {key: (label, shape)}."""
+    bx = lambda x0_, x1, y0, y1, za, zb: Part.makeBox(x1 - x0_, y1 - y0, zb - za, V(x0_, y0, za))
+    bz = ball_top - BALL_D / 2
+    body_top = ball_top - PROBE_H; body_bot = body_top - BODY_H
+    body = bx(x0 - BODY_X / 2, x0 + BODY_X / 2, by - BODY_Y / 2, by + BODY_Y / 2, body_bot, body_top)
+    probe = Part.makeCylinder(BUSH_D / 2, BUSH_H, V(x0, by, body_top)).fuse(
+        [Part.makeCylinder(PIN_D / 2, bz - (body_top + BUSH_H), V(x0, by, body_top + BUSH_H)),
+         Part.makeSphere(BALL_D / 2, V(x0, by, bz))]).removeSplitter()
+    switch = bx(x0 - 4, x0 + 4, by - BODY_Y / 2 - 6, by - BODY_Y / 2, body_bot, body_bot + 6)
+    yb = by + BODY_Y / 2                                      # the body's rear (mounting) face
+    zc_top = heater_zmin - HEATER_GAP
+    back = bx(x0 - 15, x0 + 15, fb.YMin - BR_T, fb.YMin, fb.ZMin, min(fb.ZMax, zc_top))
+    front = bx(x0 - 12, x0 + 12, yb, yb + BR_T, min(body_bot - 4, fb.ZMin), min(zc_top, body_top))
+    arm = bx(x0 - 8, x0 + 8, yb, fb.YMin - BR_T, fb.ZMin + 6, fb.ZMin + 16)
+    rib = bx(x0 - 2, x0 + 2, yb + BR_T, fb.YMin - BR_T, fb.ZMin + 16, min(zc_top, fb.ZMax))
+    holes = [Part.makeCylinder(1.7, BR_T + 2, V(x0 + dx, fb.YMin - BR_T - 1, (fb.ZMin + fb.ZMax) / 2), V(0, 1, 0))
+             for dx in (-10, 10)]
+    zc = (body_bot + body_top) / 2
+    holes += [Part.makeCylinder(1.7, BR_T + 2, V(x0 + dx, yb - 1, zc + dz), V(0, 1, 0)) for dx, dz in ((-5, 5), (5, -5))]
+    bracket = back.fuse([front, arm, rib]).removeSplitter().cut(Part.makeCompound(holes)).removeSplitter()
+    bracket, info = printchamfer.chamfer(bracket, V(0, -1, 0), **CHAMFER)     # printed on its back plate
+    return {"body": ("Mellow MultiHead Zero body (aluminium, 20 x 17.2 x 22, from Mellow's drawing)", body),
+            "probe": ("Mellow MultiHead Zero probe (bushing, pin, D 10 ball; estimated from the photo)", probe),
+            "switch": ("Mellow MultiHead Zero switch + XH2.54 plug (in the body's slot, stand-in)", switch),
+            "bracket": (f"Nozzle offset probe bracket (low, lite-78) {LIC}", bracket)}, info
 
 
 def rail_490(r400, y0):
@@ -368,22 +371,27 @@ def main(p):
         f.Placement = FreeCAD.Placement(); f.Shape = to_local(f, r)
         new_rails[side] = f
     for n in rails_old: doc.removeObject(n)
-    # ---- 4. lite-61's probe off the bed; the Zero parked on the backbone
+    # ---- 4. lite-61's probe off the bed, rebuilt lower and to the left on the bed's front edge (owner, 2026-11-23)
     grp_old = next((g for g in doc.Objects if g.TypeId == "App::Part" and g.Label.startswith(OLD_PROBE)), None)
     for n in old_probe: doc.removeObject(n)
     if grp_old is not None: doc.removeObject(grp_old.Name)
-    bb_ = m.shapes[next(n for n, l in lab.items() if l.startswith("backbone-350"))].BoundBox
-    bed_front = min(box[n].YMin for n in lab if lab[n].startswith(("PEI spring-steel", "Magnetic sheet")))
-    strip = (bb_.YMin, bed_front)
-    depth = BASE_MARGIN + SW_Y + BODY_Y + BACK_T                  # the carrier's Y depth
-    y_front = (strip[0] + strip[1] - depth) / 2 + BASE_MARGIN     # centred on the strip
-    parts, cinfo = parked_zero(y_front, bb_.ZMax)
+    one = lambda pre: [n for n, l in lab.items() if l.startswith(pre)]
+    pei, plate, heater = one("PEI spring-steel"), one("LDO 350 build plate"), one("Heater pad LDO")
+    fr = [n for n, l in lab.items() if l == BED2020 and box[n].ZMin > 200 and box[n].YMax < 100]
+    p.check(len(pei) == len(plate) == len(heater) == len(fr) == 1,
+            f"PEI sheet {len(pei)}, plate {len(plate)}, heater {len(heater)}, bed front 2020 {len(fr)}")
+    if p.errs: return p.finish([])
+    mp = json.load(open(os.path.join(_REPO, "cad/klipper/xy_mapping.json")))
+    (ox, oy), (gx, gy) = mp["origin_model_xy"], mp["sign_xy"]
+    zx, zy = ox + gx * BALL_PX, oy + gy * BALL_PY                  # the ball centre, model XY
+    pei_top = box[pei[0]].ZMax
+    parts, binfo = edge_zero(zx, zy, pei_top + BALL_ABOVE_PEI, box[fr[0]], box[heater[0]].ZMin)
     root = m.root("4040-350x350x250 Voron Trident")
-    grp = doc.addObject("App::Part", "OffsetProbeParked"); grp.Label = "Nozzle offset probe, parked on the backbone (lite-78, #291)"
+    grp = doc.addObject("App::Part", "OffsetProbe78"); grp.Label = "Nozzle offset probe, low on the bed edge (lite-78, #291)"
     root.addObject(grp)
     made = {}
     for k, (label, sh) in parts.items():
-        o = doc.addObject("Part::Feature", "MHZP_" + k); grp.addObject(o)
+        o = doc.addObject("Part::Feature", "MHZ78_" + k); grp.addObject(o)
         o.Placement = FreeCAD.Placement(); o.Shape = to_local(o, sh); o.Label = label; made[k] = o
     doc.recompute()
     m.refresh()
@@ -422,40 +430,49 @@ def main(p):
                 and abs(b.YMin - fm2 - (gap0 + DY - RAIL_L) / 2) < TOL and abs(rm - b.YMax - (gap0 + DY - RAIL_L) / 2) < TOL,
                 f"rail {side}: Y {b.YMin:.2f}..{b.YMax:.2f} ({b.YLength:.2f} long), {b.YMin - fm2:.2f} from the front "
                 f"mount and {rm - b.YMax:.2f} from the rear one (gap {gap0:.2f} -> {gap0 + DY:.2f})")
-    # the parked Zero
+    # the Zero on the bed edge
     sh = {k: m.shapes[o.Name] for k, o in made.items()}
     for k, o in made.items():
         p.check(sh[k].isValid() and len(sh[k].Solids) == 1, f"{o.Label[:44]}: one valid solid, {sh[k].Volume:.0f} mm3")
-    cb = sh["carrier"].BoundBox
-    p.check(abs(cb.ZMin - bb_.ZMax) < TOL and bb_.YMin <= cb.YMin and cb.YMax <= strip[1] - BED_CLEAR,
-            f"the carrier on the backbone's top (Z {cb.ZMin:.2f} = {bb_.ZMax:.2f}), Y {cb.YMin:.1f}..{cb.YMax:.1f} inside the "
-            f"strip {strip[0]:.1f}..{strip[1]:.1f} with {strip[1] - cb.YMax:.1f} to the bed's front edge")
-    p.check(abs(sh["body"].BoundBox.ZMin - cb.ZMin - BASE_T) < TOL, "the Zero's body stands on the carrier's base")
-    p.check(not cinfo.get("failed"), f"carrier chamfered: {cinfo['bottom']} bottom + {cinfo['top']} top edges, "
-                                    f"{len(cinfo['reduced'])} reduced, failed {cinfo.get('failed')}")
-    for i in range(4):
-        mb = sh[f"mag{i}"]
-        p.check(mb.common(sh["carrier"]).Volume < TOL and abs(mb.BoundBox.ZMin - bb_.ZMax) < TOL,
-                f"magnet {i + 1} in its pocket, on the backbone")
-    # the bed at its lowest (BED_LOWEST_DZ): every bed-side leaf within 40 mm, moved down, >= BED_CLEAR off the Zero
+    p.check(not binfo.get("failed"), f"bracket chamfered: {binfo['bottom']} bottom + {binfo['top']} top edges, "
+                                    f"{len(binfo['reduced'])} reduced, failed {binfo.get('failed')}")
+    fb, hb, pb, sb = box[fr[0]], box[heater[0]], box[plate[0]], box[pei[0]]
+    d = sh["bracket"].distToShape(m.shapes[fr[0]])[0]
+    p.check(d < TOL, f"the bracket's back plate sits on the bed 2020's face (gap {d:.4f})")
+    p.check(hb.ZMin - sh["bracket"].BoundBox.ZMax >= HEATER_GAP - TOL,
+            f"bracket top Z {sh['bracket'].BoundBox.ZMax:.2f}: {hb.ZMin - sh['bracket'].BoundBox.ZMax:.2f} under the heater pad")
+    pr_b = sh["probe"].BoundBox
+    p.check(abs(pr_b.ZMax - pei_top - BALL_ABOVE_PEI) < TOL, f"ball top Z {pr_b.ZMax:.2f}: {pr_b.ZMax - pei_top:.2f} above the PEI "
+                                                           f"(Z {pei_top:.2f}; want {BALL_ABOVE_PEI})")
+    high = [k for k in ("body", "switch", "bracket") if sh[k].BoundBox.ZMax > pei_top - TOL]
+    p.check(not high, f"only the probe stands above the PEI ({high})")
+    edge = min(pb.YMin, sb.YMin)
+    gap_b, gap_ball = edge - (zy + BUSH_D / 2), edge - (zy + BALL_D / 2)
+    p.check(gap_b >= 0.5 - TOL and gap_ball >= 2 - TOL,
+            f"in front of the plate and sheet (Y {edge:.2f}): bushing {gap_b:.2f} (>= 0.5), ball {gap_ball:.2f} (>= 2)")
+    sys.path.insert(0, os.path.join(_REPO, "cad/studies"))
+    import mellow_edge_reach as mer
+    limit = mer.both_heads(json.load(open(mer.DATA)))
+    rmg = mer.margin(limit, BALL_PX, BALL_PY, OVERTRAVEL)
+    p.check(rmg >= 0, f"both heads reach all 4 sides of the ball at printer ({BALL_PX:g}, {BALL_PY:g}) with {OVERTRAVEL:g} "
+                      f"overtravel: margin {rmg:.2f} (front_reach_front17.json)")
+    # over the bed's Z travel (BED_LOWEST_DZ .. +5, the plate past the nozzle) the new parts hit nothing fixed
     allb = FreeCAD.BoundBox()
     for s_ in sh.values(): allb.add(s_.BoundBox)
-    zone = FreeCAD.BoundBox(allb.XMin - 40, allb.YMin - 40, allb.ZMin - 40 - BED_LOWEST_DZ, allb.XMax + 40, allb.YMax + 40,
-                            allb.ZMax + 40 - BED_LOWEST_DZ)
-    bedside = [o for o in m.leaves if BED_Z[0] <= m.boxes[o.Name].ZMin <= BED_Z[1] and m.boxes[o.Name].ZMax <= BED_Z[1]
-               and m.boxes[o.Name].intersect(zone)]
-    dmin, who = 999.0, ""
-    zero = Part.makeCompound(list(sh.values()))
-    for o in bedside:
-        b = m.shapes[o.Name].copy(); b.translate(V(0, 0, BED_LOWEST_DZ))
-        d = zero.distToShape(b)[0]
-        if d < dmin: dmin, who = d, o.Label
-    p.check(dmin >= BED_CLEAR, f"the bed at its lowest (dZ {BED_LOWEST_DZ:g}) keeps {dmin:.1f} mm off the parked Zero "
-                               f"(>= {BED_CLEAR:g}; nearest {who[:40]}, {len(bedside)} bed parts near)")
+    sweep = Part.makeBox(allb.XLength, allb.YLength, allb.ZLength - BED_LOWEST_DZ + 5.0,
+                         V(allb.XMin, allb.YMin, allb.ZMin + BED_LOWEST_DZ))
+    bedside = lambda b: BED_Z[0] <= b.ZMin <= BED_Z[1] and b.ZMax <= BED_Z[1]
+    mine0 = {o.Name for o in made.values()}
+    zhits = [o.Label[:40] for o in m.leaves if o.Name not in mine0 and "envelope" not in o.Label
+             and not bedside(m.boxes[o.Name]) and m.boxes[o.Name].intersect(sweep.BoundBox)
+             and sweep.common(m.shapes[o.Name]).Volume > TOL]
+    p.check(not zhits, f"over the bed's Z travel (dZ {BED_LOWEST_DZ:g} .. +5) the Zero's swept box "
+                       f"X {allb.XMin:.0f}..{allb.XMax:.0f} Y {allb.YMin:.0f}..{allb.YMax:.0f} hits no fixed part: {zhits[:8]}")
+    p.check(all(bedside(s_.BoundBox) for s_ in sh.values()), "every new part is bed-side by the motion code's Z band")
     cmap = colours.load(f"{_REPO}/cad/render/colours.json")
     roles = {k: colours.role_of(cmap, o.Label, grp.Label, "Default") for k, o in made.items()}
-    p.check(roles["body"] == "brushed_aluminium" and roles["probe"] == "brushed_steel" and roles["switch"] == "black_plastic"
-            and roles["carrier"] == "printed" and all(roles[f"mag{i}"] == "brushed_steel" for i in range(4)), f"roles {roles}")
+    p.check(roles == dict(body="brushed_aluminium", probe="brushed_steel", switch="black_plastic", bracket="printed"),
+            f"roles {roles}")
     # COLLISIONS vs lite-77
     watched_now = {(renamed.get(n, n)) for n in watched if n not in rails_old} | {f.Name for f in new_rails.values()}
     rtag = {f.Name: f"Y rail {s}" for s, f in new_rails.items()}
@@ -471,21 +488,32 @@ def main(p):
     zero_hits = [h for h in hits1 if h[0] in {o.Label for o in made.values()}]
     r1 = type("R", (), {"hits": hits1})
     p.check(not new_hits and not zero_hits, f"COLLISIONS: no overlap lite-77 didn't have ({len(new_hits)} new: {new_hits[:8]}; "
-                                            f"parked Zero: {zero_hits[:4]})")
+                                            f"the Zero: {zero_hits[:4]})")
     pv = os.environ.get("LITE78_PREVIEW")
     if pv:
         role = lambda o: colours.role_of(cmap, o.Label, "", "Default")
         near = lambda bb, zone: bb.intersect(zone)
-        # 1. the parked Zero with what's round it, the bed at its lowest
+        # 1. the Zero on the bed edge with what's round it (the bed at the model pose)
         z1 = FreeCAD.BoundBox(allb.XMin - 120, allb.YMin - 60, allb.ZMin - 30, allb.XMax + 120, allb.YMax + 90, allb.ZMax + 60)
         sc1 = [(o.Label, m.shapes[o.Name], role(o)) for o in m.leaves if o.Name not in mine and near(m.boxes[o.Name], z1)
-               and not (BED_Z[0] <= m.boxes[o.Name].ZMin <= BED_Z[1] and m.boxes[o.Name].ZMax <= BED_Z[1])]
-        z1b = FreeCAD.BoundBox(z1.XMin, z1.YMin, z1.ZMin - BED_LOWEST_DZ, z1.XMax, z1.YMax, z1.ZMax - BED_LOWEST_DZ)
+               and "envelope" not in o.Label]
+        sc1 += [(o.Label, sh[k], role(o)) for k, o in made.items()]
+        # 1b. side-on (owner, 2026-11-23): the bed raised to the calibration pose (the docked heads' nozzle tips at the
+        # ball's top less lower_z 0.2; the tip Z from sweep_toolhead.log), every part in an X slab round the Zero
+        import re as _re
+        tips = [float(z) for z in _re.findall(r"carried: nozzle tip Z ([0-9.]+)",
+                                              open(os.path.join(_REPO, "cad/data/logs/sweep_toolhead.log")).read())]
+        bed_dz = min(tips) - (sh["probe"].BoundBox.ZMax - 0.2)
+        zs = FreeCAD.BoundBox(allb.XMin - 60, -260, allb.ZMin - 40, allb.XMax + 60, allb.YMax + 60, allb.ZMax + bed_dz + 220)
+        sc1s = []
         for o in m.leaves:
             b = m.boxes[o.Name]
-            if BED_Z[0] <= b.ZMin <= BED_Z[1] and b.ZMax <= BED_Z[1] and near(b, z1b):
-                t = m.shapes[o.Name].copy(); t.translate(V(0, 0, BED_LOWEST_DZ)); sc1.append((o.Label + " (bed at its lowest)", t, role(o)))
-        sc1 += [(o.Label, sh[k], role(o)) for k, o in made.items()]
+            if "envelope" in o.Label: continue
+            up = o.Name in mine or (BED_Z[0] <= b.ZMin <= BED_Z[1] and b.ZMax <= BED_Z[1])
+            t = m.shapes[o.Name]
+            if up: t = t.copy(); t.translate(V(0, 0, bed_dz))
+            if near(t.BoundBox, zs): sc1s.append((o.Label, t, role(o)))
+        p.log(f"preview: side scene, bed +{bed_dz:.2f} (nozzle tips {min(tips):.2f}), {len(sc1s)} parts")
         # 2. tubes and cables, before (lite-77) and after, with the docked heads after
         sc2 = [(lab[n] + " BEFORE", old_shapes[n], "before") for n in tubes | cables]
         sc2 += [(lab[n], m.shapes[renamed.get(n, n)], "after") for n in tubes | cables]
@@ -496,12 +524,12 @@ def main(p):
         sc3a = [(lab[n], old_shapes[n], role(doc.getObject(renamed.get(n, n))) if doc.getObject(renamed.get(n, n)) else "Default")
                 for n in old_shapes if n in lab and near(old_shapes[n].BoundBox, z3) and n not in env]
         sc3b = [(o.Label, m.shapes[o.Name], role(o)) for o in m.leaves if near(m.boxes[o.Name], z3) and o.Name not in env]
-        preview(pv, {"zero_parked": sc1, "tubes_cables": sc2, "front_before": sc3a, "front_after": sc3b})
+        preview(pv, {"zero_edge": sc1, "zero_side": sc1s, "tubes_cables": sc2, "front_before": sc3a, "front_after": sc3b})
         p.log(f"preview STLs in {pv}: {len(sc1)}, {len(sc2)}, {len(sc3a)}, {len(sc3b)} parts")
     p.dump(dict(dy=DY, front=len(front), spliced={lab[n]: v[0] for n, v in spliced.items()}, rail_y0=y0,
-                mount_gap=[gap0, gap0 + DY], parked_zero=dict(y_front=y_front, strip=list(strip), bed_gap=dmin),
+                mount_gap=[gap0, gap0 + DY], mellow=dict(ball_printer=[BALL_PX, BALL_PY], ball_model=[zx, zy], ball_top_above_pei=BALL_ABOVE_PEI, reach_margin=rmg),
                 collisions=dict(now=len(r1.hits), lite77=len(base_hits), new=new_hits, gone=gone_hits),
-                hardware="carrier: 2 x M3x25 + nut (Zero to carrier), 4 x D10 x 3 N52 discs (glued in)"))
+                hardware="2 x M3x8 + T-nut (bracket to bed 2020), 2 x M3x25 + nut (Zero to bracket)"))
     return p.finish([(doc, DST)])
 
 
