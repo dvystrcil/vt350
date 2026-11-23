@@ -7,7 +7,7 @@ INITIALIZE_TOOLCHANGER
 ; 1. coarse Z, no head on the carriage (G28 Z METHOD=PROXIMITY): to home_xy_position at home_z_hop, then the
 ;    carriage dives at [beacon] speed until the coil is at trigger_distance, and hops back
 G1 Z10 F900
-G1 X175 Y175 F3000
+G1 X175 Y100 F3000
 G1 Z2 F300
 G1 Z5 F900
 ; 2. pick up T0 (left)
@@ -28,7 +28,7 @@ G1 Z0 F180
 G1 Z2 F600
 G1 Z10 F600
 ; 4. the true Z0 (G28 Z METHOD=CONTACT CALIBRATE=1): to home_xy_position, then autocal_sample_count taps
-G1 X175 Y175 F3000
+G1 X175 Y100 F3000
 G1 Z0 F180
 G1 Z2 F600
 G1 Z0 F180
