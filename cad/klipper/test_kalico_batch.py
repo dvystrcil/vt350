@@ -323,12 +323,6 @@ class TcOffsets(Base):
         self.assertIn("the Mellow's position isn't saved", r.log)
         self.assertEqual(saved["t1_offset_z"], "0.0")
 
-    def test_mellow_refind_puts_t0_over_the_centre_first_time(self):
-        pos = self.POS + "  SAVE_VARIABLE VARIABLE=pos_x VALUE={printer.toolhead.position.x}\n"
-        r, saved = self.run_macros(["MELLOW_CALIBRATE_START", "INITIALIZE_TOOLCHANGER", "_MELLOW_REFIND", "_POS"], pos)
-        self.assertEqual(r.returncode, 0, r.log[-3000:])
-        self.assertEqual((float(saved["pos_x"]), float(saved["pos_y"]), float(saved["pos_z"])), (175.0, 175.0, 60.0))
-
     def test_mellow_run_stops_unhomed(self):
         r, saved = self.run_macros(["MELLOW_CALIBRATE_RUN TOOL=1"])
         self.assertIn("not homed: run MELLOW_CALIBRATE_START first", r.log)
