@@ -393,3 +393,21 @@ was carried down so the part prints on one flat face. The owner caught it in the
   cad/passes/*.py`), and carry their changes into the rebuild. Better still, move the model's current part when the
   change is a plain move.
 - Keep the later pass's check in the rebuild too (here: lite-71's "no face hangs" test), so the fix can't be lost again.
+
+## Rounding a printed part: build order, and the first-layer chamfer as a taper (2026-11-23, lite-78)
+
+The Mellow bracket (two plates and an arm, vt350#291) in the cast style (`parts/printed/README.md`): rounded, blended,
+mating faces flat, a 0.5 chamfer on the bed. What OCC (FreeCAD 26.3) would and wouldn't do:
+
+- **Order matters.** Fillet the arm's joins with the plates while the plates are still sharp prisms (with their outline
+  corners drawn in the 2D profile). Once a plate's rim is rounded, the same join fillets fail at every radius.
+- **A plate's rim as one tangent chain** (both sides, the R4 corner arcs and the top) rounds cleanly in one `makeFillet`.
+  Rounding the outline by intersecting rounded extrusions (side view x plan x front view) gives a crease at each
+  corner instead.
+- **The first-layer chamfer can't be an edge chamfer where a rim round runs down to the bed:** `makeChamfer` on those
+  bottom edges fails (4 of 24 per edge), and chamfering first makes the rim fillet invalid. Instead cut the bottom
+  0.5 mm off and fuse back the footprint face extruded 0.5 down with `Part::Extrusion` `TaperAngle = -45`: same result,
+  no edge operations.
+- **`Shape.BoundBox` is loose on fillet (B-spline) surfaces:** a "stays inside the box" test on it fails for nothing.
+  Use `optimalBoundingBox()`.
+- Pick edges by plane and position, never by index: every fillet renumbers them.

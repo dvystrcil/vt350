@@ -33,6 +33,18 @@ numbers are in [`cad/data/print-profile.json`](../../cad/data/print-profile.json
   layers** (0.8, 0.6, 0.4, 0.2; under one layer, none): "the slicer will fight trying to make 0.25 work".
 - **Bores: none**, unless it's a countersink for a flat-head screw (owner: "bores do not need chaphers unless its for
   a flathead screw of course"). A countersink is part of the design, not a chamfer added afterwards.
+- **Style: a cast part** (owner, 2026-11-23). The printer's colours are those of old machine tools, and their parts
+  were cast, so they have the curves a casting needs to release from its mould: no sharp outside corners and blended
+  inside ones. Our own parts and our remixes carry that look, as the dock plates and the A4Tv2 parts already do:
+  - outside corners of a part's outline rounded about **R3–R4** (dock plate R3/R4.3, standoff pads R4, A4Tv2 body
+    R4), and thin walls' edges fully round;
+  - **inside corners blended** (a fillet where a web or arm meets a wall), never a sharp notch;
+  - the print rules above still win: **an edge on the print plate is never filleted, only chamfered** (0.5; owner,
+    2026-11-23), the first-layer face stays flat, and nothing may hang (a rounded top edge replaces the 1.0 chamfer
+    where it's used). Rounding the outline seen from above is fine: the bottom edge just follows the curve, chamfered.
+  - **mating faces stay flat** for full contact (owner, 2026-11-23): a face that bears on another part (a bracket's
+    face on an extrusion, a face something bolts against) is not rounded; its edges get only the 0.5 chamfer. The
+    rounding goes on the other side.
 - "First layer" and "top" follow the part's **print orientation**, so settle that first and write it in the pass and
   the part's README. A pass that builds a printed part makes and checks the chamfers with
   `platform/freecad/printchamfer.py` (`chamfer()`, then `unchamfered()`; reduced and skipped edges are logged).
