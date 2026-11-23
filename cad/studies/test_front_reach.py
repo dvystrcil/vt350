@@ -73,6 +73,19 @@ class FrontSet(unittest.TestCase):
                      "bar": [0, -75, 0, 1, -55, 1]}
             self.assertEqual(fr.front_names(model, boxes), {"tb", "dock", "bar"})
 
+    def test_rear_set_leaves_z_and_the_backbone(self):
+        import json, tempfile
+        with tempfile.TemporaryDirectory() as d:
+            model = os.path.join(d, "m.FCStd")
+            parts = [dict(name="mount", label="VT9-RRA", path=["root", "Monolith"]),
+                     dict(name="post", label="2020 (3)", path=["root", "Frame"]),
+                     dict(name="nut", label="Leadscrew Nut001", path=["root", "Z Assembly (1)"]),
+                     dict(name="side", label="2040 (3)", path=["root", "Frame"])]
+            json.dump(dict(parts=parts), open(os.path.join(d, "m.parts.json"), "w"))
+            boxes = {"mount": [0, 441, 0, 1, 500, 1], "post": [0, 480, 0, 1, 500, 1], "nut": [0, 441, 0, 1, 461, 1],
+                     "side": [0, -70, 0, 1, 480, 1]}
+            self.assertEqual(fr.rear_names(model, boxes), {"mount"})
+
     def test_no_listing_is_an_error_not_an_empty_set(self):
         with self.assertRaises(SystemExit):
             fr.front_names("/nonexistent/m.FCStd", {})

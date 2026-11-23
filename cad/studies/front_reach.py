@@ -38,13 +38,29 @@ FRONT_Y, REAR_Y = -5.0, 440.5
 FRONT_GROUPS = ("Toolhead", "Dock")    # whole groups move too: a docked head's toolboard and screws end behind FRONT_Y
 
 
+REAR_STAY_GROUPS = ("Z Assembly", "kinematic bed")   # the bed follows the backbone, so all of Z stays (owner, 2026-11-22)
+REAR_STAY_LABELS = ("2020 (3)", "backbone")            # the rear Z post (carries the rear Z rail) and the backbone
+
+
+def _listing(model):
+    pj = os.path.splitext(model)[0] + ".parts.json"
+    if not os.path.exists(pj): raise SystemExit(f"what-if needs {pj} (the head and dock groups)")
+    d = json.load(open(pj))
+    return d["parts"] if isinstance(d, dict) else d
+
+
+def rear_names(model, boxes):
+    """The what-if's rear set: solids whose box starts behind REAR_Y, except the Z parts and the bed (they stay)."""
+    stay = {p["name"] for p in _listing(model)
+            if (len(p["path"]) > 1 and any(k in p["path"][1] for k in REAR_STAY_GROUPS))
+            or p["label"].startswith(REAR_STAY_LABELS)}
+    return {o for o, b in boxes.items() if b[1] >= REAR_Y and o not in stay}
+
+
 def front_names(model, boxes):
     """The what-if's front set: every solid whose box ends in front of FRONT_Y, and every solid of a head or dock group
     (by the model's parts listing, <model>.parts.json, which refresh.py keeps beside it)."""
-    pj = os.path.splitext(model)[0] + ".parts.json"
-    if not os.path.exists(pj): raise SystemExit(f"what-if needs {pj} (the head and dock groups)")
-    d = json.load(open(pj)); d = d["parts"] if isinstance(d, dict) else d
-    grp = {p["name"] for p in d if len(p["path"]) > 1 and any(k in p["path"][1] for k in FRONT_GROUPS)}
+    grp = {p["name"] for p in _listing(model) if len(p["path"]) > 1 and any(k in p["path"][1] for k in FRONT_GROUPS)}
     return {o for o, b in boxes.items() if b[4] <= FRONT_Y or o in grp}
 MELLOW = "Mellow MultiHead Zero"
 SCAN_EXTRA = float(os.environ.get("FRONT_REACH_SCAN_EXTRA", "0"))
@@ -109,10 +125,11 @@ def rear_check(h, c, plan, xs, skip, n, log):
     sweep = tuple(min(a, b, g) for a, b, g in zip(sw[:3], swc[:3], swg[:3])) + tuple(max(a, b, g) for a, b, g in zip(sw[3:], swc[3:], swg[3:]))
     sh = lambda b: [b[0], b[1] + R, b[2], b[3], b[4] + R, b[5]]
     up = lambda b: [v + (dz_top if i in (2, 5) else 0) for i, v in enumerate(b)]
-    rear = [o for o in boxes if o not in skip and o not in set(plan["bed"]) and o not in set(gan) and boxes[o][1] >= REAR_Y
+    rset = rear_names(st.MODEL, boxes)
+    rear = [o for o in boxes if o not in skip and o not in set(plan["bed"]) and o not in set(gan) and o in rset
             and hits(sh(boxes[o]), sweep)]
     bed = [b for b in plan["bed"] if b not in skip and hits(up(boxes[b]), sweep)]
-    fixed = [o for o in boxes if o not in skip and o not in set(plan["bed"]) and o not in set(gan) and boxes[o][1] < REAR_Y
+    fixed = [o for o in boxes if o not in skip and o not in set(plan["bed"]) and o not in set(gan) and o not in rset
              and hits(boxes[o], sweep)]
     def pose(x, yy):
         tc = (x - nx + tx, yy - ny + ty, 0.0)
