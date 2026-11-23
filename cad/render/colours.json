@@ -45,6 +45,8 @@
     {"role": "brushed_steel", "label": "^Mellow MultiHead Zero probe "},
     {"role": "black_plastic", "label": "^Mellow MultiHead Zero switch "},
     {"role": "printed", "label": "^Nozzle offset probe bracket "},
+    {"role": "printed", "label": "^Mellow parking carrier ", "note": "lite-78: the Zero parks on the backbone (#291)"},
+    {"role": "brushed_steel", "label": "^Mellow carrier magnet "},
     {"role": "accent", "label": "^E-box grille (mesh|badge) ", "note": "lite-59: the e-box front grille, the large skirt's style (owner, 2026-11-16)"},
     {"role": "printed", "label": "^Cable channel (body|post \\d|arm \\d)"},
     {"role": "brushed_aluminium", "label": "^Crossbow - (Main Body|Top Cap|Lever|Blade caddy)\\d*$"},

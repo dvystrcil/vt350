@@ -370,3 +370,15 @@ numpy/scipy (`cad/studies/flap_guide/test_rod.py`) is the opposite case: it need
 `if __name__ == "__main__"`. Don't read either failure as "needs an environment we don't have" until it has been
 tried in the right interpreter.
 
+
+## A swept tube's own Volume can be several % off; check a splice against its cut pieces
+
+vt350-lite-78 (vt350#291) lengthened lite-36's Bowden tubes (a B-spline sweep plus a short cylinder end, one closed
+shell, `isValid()` True) by cutting them across and filling the gap. The check "new volume = old volume + section x 17"
+failed by ~300 mm3 on an 8458 mm3 tube: `Shape.Volume` of the original was ~4 % high. The two cut pieces
+(`common()` with a box on each side of the cut) summed to 8137, and the result to that plus the fill, give or take
+~0.3 % (B-spline volume integration; a compound of the same pieces gave yet another figure, 8395).
+
+- Check a splice of a swept part against the sum of the pieces it was cut into, not against its original `Volume`,
+  and allow ~0.5 %.
+- Exact-volume checks (1e-5) still hold for prism-like parts (extrusions, boxes, panels): keep them there.

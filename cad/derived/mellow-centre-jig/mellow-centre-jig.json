@@ -1,0 +1,79 @@
+{
+ "checks": [
+  [
+   "ok",
+   "one valid solid, 43573 mm3 (55 g of ABS-ish)"
+  ],
+  [
+   "ok",
+   "fits the bed: 204.7 x 202.3 x 11.0"
+  ],
+  [
+   "ok",
+   "the probe's axis on the plate centre (175.0, 175.0) (pocket centre 175.00, 173.50: the carrier's base isn't centred on the probe)"
+  ],
+  [
+   "ok",
+   "the jig clears the body in the pocket (0.0000 mm3)"
+  ],
+  [
+   "ok",
+   "the jig clears the probe in the pocket (0.0000 mm3)"
+  ],
+  [
+   "ok",
+   "the jig clears the switch in the pocket (0.0000 mm3)"
+  ],
+  [
+   "ok",
+   "the jig clears the carrier in the pocket (0.0000 mm3)"
+  ],
+  [
+   "ok",
+   "the jig clears the mag0 in the pocket (0.0000 mm3)"
+  ],
+  [
+   "ok",
+   "the jig clears the mag1 in the pocket (0.0000 mm3)"
+  ],
+  [
+   "ok",
+   "the jig clears the mag2 in the pocket (0.0000 mm3)"
+  ],
+  [
+   "ok",
+   "the jig clears the mag3 in the pocket (0.0000 mm3)"
+  ],
+  [
+   "ok",
+   "lifts straight off: no jig over the Zero's outline"
+  ],
+  [
+   "ok",
+   "nothing in the plate"
+  ],
+  [
+   "ok",
+   "both lips on the plate's edges (gaps 0.0000, 0.0000)"
+  ],
+  [
+   "ok",
+   "chamfers: 28 first-layer + 34 top edges, 34 reduced, missed []"
+  ]
+ ],
+ "box": [
+  -5.5,
+  199.2,
+  -5.5,
+  196.8,
+  -8.0,
+  3.0
+ ],
+ "pocket": [
+  159.8,
+  190.2,
+  159.2,
+  187.8
+ ],
+ "volume": 43573.2
+}
