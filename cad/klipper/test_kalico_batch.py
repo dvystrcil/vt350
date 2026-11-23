@@ -307,6 +307,38 @@ class TcOffsets(Base):
         self.assertNotEqual(off, [0.0, 0.0, 0.0])     # batch mode's synthetic contacts give T1 a non-zero Z offset
         self.assertEqual(round(loc[0], 3), ZERO_XY[0])
 
+    # MELLOW_CALIBRATE_START / _RUN (tc_offsets.cfg, vt350#291): the Mellow goes on the plate by hand between them
+    POS = ("[gcode_macro _POS]\ngcode:\n  SAVE_VARIABLE VARIABLE=pos_y VALUE={printer.toolhead.position.y}\n"
+           "  SAVE_VARIABLE VARIABLE=pos_z VALUE={printer.toolhead.position.z}\n")
+
+    def test_mellow_start_homes_and_drops_the_bed(self):
+        r, saved = self.run_macros(["MELLOW_CALIBRATE_START", "_POS"], self.POS)
+        self.assertEqual(r.returncode, 0, r.log[-3000:])
+        y, z = float(saved["pos_y"]), float(saved["pos_z"])
+        self.assertEqual(z, 60.0)                        # bed_z: the nozzles ~10 mm above the Mellow's pin
+        self.assertGreater(y, 300.0)                     # the toolhead at the back, out of the hands' way
+
+    def test_mellow_run_stops_without_a_probe_position(self):
+        r, saved = self.run_macros(["MELLOW_CALIBRATE_START", "MELLOW_CALIBRATE_RUN TOOL=1"])
+        self.assertIn("the Mellow's position isn't saved", r.log)
+        self.assertEqual(saved["t1_offset_z"], "0.0")
+
+    def test_mellow_run_stops_unhomed(self):
+        r, saved = self.run_macros(["MELLOW_CALIBRATE_RUN TOOL=1"])
+        self.assertIn("not homed: run MELLOW_CALIBRATE_START first", r.log)
+
+    def test_mellow_two_steps_save_the_offsets(self):
+        r, saved = self.run_macros(["MELLOW_CALIBRATE_START", "INITIALIZE_TOOLCHANGER", "T0",
+                                    f"G0 X{ZERO_XY[0]} Y{ZERO_XY[1]} Z110 F6000", "TC_GET_PROBE_POSITION",
+                                    "MELLOW_CALIBRATE_RUN TOOL=1", "_POS"], self.POS)
+        self.assertEqual(r.returncode, 0, r.log[-3000:])
+        # T0's baseline and T1 both start at the saved position, so the simulator's contacts give 0: what matters is
+        # that the offset run happened and its result was saved
+        self.assertEqual([float(saved[f"t1_offset_{a}"]) for a in "xyz"], self.logged(r, "Tool offset"))
+        # then the bed back down and the toolhead at the back, for the hands to take the Mellow off
+        self.assertEqual(float(saved["pos_z"]), 60.0)
+        self.assertGreater(float(saved["pos_y"]), 300.0)
+
     def test_madmax_s_own_macros_fail_on_kalico(self):
         # the reason tc_offsets.cfg replaces them: Kalico reports last_result, not last_x/y/z_result
         r, saved = self.run_macros(self.SEQ, f"[include {os.path.join(HERE, 'madmax', 'tc_offset_calibration_macros.cfg')}]\n"
