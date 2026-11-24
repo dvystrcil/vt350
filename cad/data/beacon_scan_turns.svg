@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="992" height="1249" font-family="sans-serif" font-size="13">
 <rect width="100%" height="100%" fill="white"/>
-<text x="10" y="44.0" font-weight="bold">1. Lines along Y, auto overscan 23.07 (today's direction)</text>
+<text x="10" y="44.0" font-weight="bold">1. Lines along Y (Beacon's default direction), auto overscan 23.07</text>
 <rect x="24.7" y="52.0" width="923.0" height="167.7" fill="#ddd"/>
 <text x="946.4" y="233.7" text-anchor="end" fill="#555">plate front edge</text>
 <rect x="45.4" y="52.0" width="881.5" height="120.3" fill="#7a3fbf" fill-opacity="0.12" stroke="#7a3fbf" stroke-dasharray="4 3"/>

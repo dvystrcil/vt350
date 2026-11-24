@@ -57,9 +57,9 @@ def printable(reach, plate):
                      "rear": r(sq[3] - area[3])}}
 
 
-# vt350#291: the Beacon is to move to y_offset 15 (owner, 2026-11-22; lite-78's front +17 was sized for it). Until
-# beacon.cfg says so, the drawing shows the coil at the planned offset and says beacon.cfg's value beside it.
-PLANNED_BEACON_DY = 15.0
+# vt350#291: a planned y_offset to draw instead of beacon.cfg's (None = beacon.cfg's). The move to 15 was dropped:
+# the owner kept 27.4 (2026-11-24, PR #309), so the drawing follows beacon.cfg again.
+PLANNED_BEACON_DY = None
 BEACON_CFG = os.path.join(CAD, "klipper", "beacon.cfg")
 FRONT_REACH = os.path.join(CAD, "data", "front_reach_front17.json")     # per-X front reach (lite-77 + 17 = lite-78)
 MAPPING = os.path.join(CAD, "klipper", "xy_mapping.json")
@@ -80,6 +80,8 @@ def beacon_area(reach, plate, beacon, front, mapping, dy=PLANNED_BEACON_DY):
     """Where the coil reaches with both heads (the worse head at each X), in plate coordinates, and the planned mesh
     against it. front: front_reach JSON (per head, per X: "clear" = the nozzle's furthest forward model Y; the file's
     beacon_dy doesn't enter, any coil offset dy is added here); reach: parse_reach (model coords, for X and the rear)."""
+    if dy is None:
+        dy = beacon["dy"]
     (ox, oy), (gx, gy) = mapping["origin_model_xy"], mapping["sign_xy"]
     x0, y0, plate_w, _ = plate
     to_plate = lambda px, py: (round(px + ox - x0, 2), round(py + oy - y0, 2))      # printer -> plate (sign +1)

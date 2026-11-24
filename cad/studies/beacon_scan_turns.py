@@ -48,7 +48,7 @@ def cases(safe, cap):
     c = []
     mn, mx = (MESH_X[0], m0y), (MESH_X[1], MESH_MAX_Y)
     o = bs.overscan(mn, mx, bs.PROBE_COUNT, (0.0, DY), direction="y")
-    c.append(dict(title=f"1. Lines along Y, auto overscan {o:.2f} (today's direction)", mesh_min=mn, over=o, d="y"))
+    c.append(dict(title=f"1. Lines along Y (Beacon's default direction), auto overscan {o:.2f}", mesh_min=mn, over=o, d="y"))
     o = bs.overscan(mn, mx, bs.PROBE_COUNT, (0.0, DY), direction="x")
     c.append(dict(title=f"2. Lines along X (mesh_main_direction: x), auto overscan {o:.2f}", mesh_min=mn, over=o, d="x"))
     mn3 = (MESH_X[0], round(m0y + cap, 2))

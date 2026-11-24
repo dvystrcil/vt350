@@ -10,6 +10,7 @@ See [What this printer will be](../README.md#what-this-printer-will-be) in the R
 
 | Date | Decision | Where |
 |---|---|---|
+| 2026-11-24 | **The Beacon stays at y_offset 27.4 on today's MadMax carriage** (owner; vt350#291, PR #309). Moving it to 15 would need a new mount (its screws land in front of the carriage). With the head at its front limit (nozzle printer Y −11.67, lite-78 front) the coil's footprint starts at plate Y 9.53, which the owner accepts. The mesh's front row is the coil centre there (printer Y 15.73), and the scan runs along X so its turns stay behind the front limit. Too far forward is preferred to too far back: config is tuned later from the real mesh in Fluidd | `cad/klipper/beacon.cfg`, `cad/studies/beacon_scan_footprint.py`, `cad/studies/beacon_scan_turns.py` |
 | 2026-11-10 | **Web front end: Fluidd** (Mainsail stays a one-line switch: `platform/klipper/frontend.py --use mainsail`). Firmware is Kalico; tool-change macros are MadMax's `r2pdx_config-v2-Kalico-Beacon` on klipper-toolchanger | `cad/klipper/README.md`, #116 |
 | 2026-11-04 | **+100 mm between the gantry and the frame top**, for bowden/USB clearance; gantry height and Z travel unchanged | `cad/README.md` |
 | 2026-11-04 | Frame bars crossing the change are **re-extruded from their end profile** (parametric), not cut-and-spliced | `cad/README.md` |
@@ -63,7 +64,7 @@ partial versions that have to be rebuilt in order (lite-67 to lite-71 did this).
 
 | Pass in flight | Branch | Builds on |
 |---|---|---|
-| lite-79 (the Beacon to y_offset 15, vt350#291). **BLOCKED on a mount decision (owner):** at 15 the Beacon's two M3 screws land 7.4 mm in front of the MadMax carriage, under the tool plate with 3.4 mm of air (`cad/studies/beacon_mount_room.py`). No pass written yet; draft PR holds the study and `beacon.cfg` y_offset 15 | `feat/291-lite79-beacon-15` | lite-78 |
+| (none) | | |
 
 ## Where things are
 
