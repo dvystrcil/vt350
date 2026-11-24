@@ -4,7 +4,7 @@
 Run: python3 cad/studies/test_print_area.py
 """
 import importlib.util
-import os
+import json, os
 import subprocess
 import sys
 import tempfile
@@ -69,6 +69,41 @@ class Svg(unittest.TestCase):
             subprocess.run([sys.executable, SCRIPT, "--out", out], check=True, capture_output=True)
             with open(out, encoding="utf-8") as f, open(os.path.join(CAD, "data", "print-area.svg"), encoding="utf-8") as g:
                 self.assertEqual(f.read(), g.read(), "cad/data/print-area.svg is stale: run python3 cad/studies/print_area.py")
+
+
+class Beacon(unittest.TestCase):
+    """vt350#291: the coil's reach (both heads, the planned y_offset) and beacon.cfg's mesh, drawn on the same page."""
+    def committed(self):
+        reach = pa.parse_reach(open(os.path.join(CAD, "data", "logs", "sweep_toolhead.log")).read())
+        plate = pa.parse_plate(open(os.path.join(HERE, "sweep_toolhead.py")).read())
+        b = pa.beacon_area(reach, plate, pa.parse_beacon(open(pa.BEACON_CFG).read()), json.load(open(pa.FRONT_REACH)),
+                           json.load(open(pa.MAPPING)))
+        return reach, plate, b
+
+    def test_front_margin_is_the_what_if_s(self):
+        # cad/data/front_reach_front17.json: worst nozzle printer Y -11.67, coil 3.33 at y_offset 15, mesh front 5.48
+        _, _, b = self.committed()
+        self.assertEqual(b["dy"], 15.0)
+        self.assertEqual(b["margin"]["front"], 2.15)
+        self.assertTrue(all(v >= 0 for v in b["margin"].values()), b["margin"])
+
+    def test_the_coil_offset_moves_the_front_edge(self):
+        reach, plate, _ = self.committed()
+        args = (pa.parse_beacon(open(pa.BEACON_CFG).read()), json.load(open(pa.FRONT_REACH)), json.load(open(pa.MAPPING)))
+        far = pa.beacon_area(reach, plate, *args, dy=27.4)
+        self.assertAlmostEqual(far["margin"]["front"], 2.15 - 12.4, places=2)     # 12.4 further back: mesh not reached
+
+    def test_svg_draws_and_labels_it(self):
+        reach, plate, b = self.committed()
+        svg = pa.svg(pa.printable(reach, plate), b)
+        self.assertIn("<polygon", svg)
+        self.assertIn("planned y_offset 15", svg)
+        self.assertIn("front 2.15", svg)
+        self.assertNotIn("NOT REACHED", svg)
+
+    def test_parse_beacon(self):
+        c = pa.parse_beacon("[beacon]\nx_offset: 0\ny_offset: 27.4\n[bed_mesh]\nmesh_min: 5.48, 5.48\nmesh_max: 344.52, 344.52\n")
+        self.assertEqual(c, {"dx": 0.0, "dy": 27.4, "mesh_min": (5.48, 5.48), "mesh_max": (344.52, 344.52)})
 
 
 if __name__ == "__main__":
