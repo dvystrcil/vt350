@@ -7,8 +7,8 @@
 <line x1="559.7" y1="46.0" x2="559.7" y2="602.0" stroke="#7a3fbf" stroke-dasharray="4 3"/>
 <text x="562.7" y="44" fill="#7a3fbf">mesh_min 7.98</text>
 <rect x="448.0" y="176.0" width="588.0" height="28.0" fill="#999" fill-opacity="0.5"/>
-<polygon points="584.2,111.6 822.2,111.6 825.0,176.0 581.4,176.0" fill="#1f5fbf" fill-opacity="0.22" stroke="#1f5fbf" stroke-width="1.5"/>
-<rect x="584.2" y="75.2" width="238.0" height="36.4" fill="#1f5fbf" fill-opacity="0.6" stroke="#1f5fbf"/>
+<polygon points="584.2,111.6 822.2,111.6 825.0,176.0 581.4,176.0" fill="#1f5fbf" fill-opacity="0.4" stroke="#1f5fbf" stroke-width="2"/>
+<rect x="584.2" y="75.2" width="238.0" height="36.4" fill="#1f5fbf" fill-opacity="0.85" stroke="#1f5fbf"/>
 <line x1="703.2" y1="176.0" x2="703.2" y2="75.2" stroke="#222" stroke-dasharray="2 2"/>
 <text x="703.2" y="70.2" text-anchor="middle" fill="#1f5fbf">coil centre 18.23</text>
 <text x="577.4" y="172.0" text-anchor="end" fill="#1f5fbf" font-weight="bold">front edge 9.53</text>
@@ -16,23 +16,23 @@
 <text x="319.6" y="132.0" text-anchor="middle" fill="#1f5fbf">nozzle -9.17</text>
 <text x="8" y="64.0" fill="#1f5fbf" font-weight="bold">X 175: most of the width</text>
 <rect x="448.0" y="360.0" width="588.0" height="28.0" fill="#999" fill-opacity="0.5"/>
-<polygon points="520.8,295.6 758.8,295.6 761.6,360.0 518.0,360.0" fill="#d08a00" fill-opacity="0.22" stroke="#d08a00" stroke-width="1.5"/>
-<rect x="520.8" y="259.2" width="238.0" height="36.4" fill="#d08a00" fill-opacity="0.6" stroke="#d08a00"/>
+<polygon points="520.8,295.6 758.8,295.6 761.6,360.0 518.0,360.0" fill="#c62828" fill-opacity="0.4" stroke="#c62828" stroke-width="2"/>
+<rect x="520.8" y="259.2" width="238.0" height="36.4" fill="#c62828" fill-opacity="0.85" stroke="#c62828"/>
 <line x1="639.8" y1="360.0" x2="639.8" y2="259.2" stroke="#222" stroke-dasharray="2 2"/>
-<text x="639.8" y="254.2" text-anchor="middle" fill="#d08a00">coil centre 13.70</text>
-<text x="514.0" y="356.0" text-anchor="end" fill="#d08a00" font-weight="bold">front edge 5.00</text>
-<polygon points="256.2,332.0 251.2,320.0 261.2,320.0" fill="#d08a00"/>
-<text x="256.2" y="316.0" text-anchor="middle" fill="#d08a00">nozzle -13.70</text>
-<text x="8" y="248.0" fill="#d08a00" font-weight="bold">X 54.29: gap between docks</text>
+<text x="639.8" y="254.2" text-anchor="middle" fill="#c62828">coil centre 13.70</text>
+<text x="514.0" y="356.0" text-anchor="end" fill="#c62828" font-weight="bold">front edge 5.00</text>
+<polygon points="256.2,332.0 251.2,320.0 261.2,320.0" fill="#c62828"/>
+<text x="256.2" y="316.0" text-anchor="middle" fill="#c62828">nozzle -13.70</text>
+<text x="8" y="248.0" fill="#c62828" font-weight="bold">X 54.29: gap between docks</text>
 <rect x="448.0" y="544.0" width="588.0" height="28.0" fill="#999" fill-opacity="0.5"/>
-<polygon points="489.0,479.6 727.0,479.6 729.8,544.0 486.2,544.0" fill="#2a9d4b" fill-opacity="0.22" stroke="#2a9d4b" stroke-width="1.5"/>
-<rect x="489.0" y="443.2" width="238.0" height="36.4" fill="#2a9d4b" fill-opacity="0.6" stroke="#2a9d4b"/>
+<polygon points="489.0,479.6 727.0,479.6 729.8,544.0 486.2,544.0" fill="#1b8a3a" fill-opacity="0.4" stroke="#1b8a3a" stroke-width="2"/>
+<rect x="489.0" y="443.2" width="238.0" height="36.4" fill="#1b8a3a" fill-opacity="0.85" stroke="#1b8a3a"/>
 <line x1="608.0" y1="544.0" x2="608.0" y2="443.2" stroke="#222" stroke-dasharray="2 2"/>
-<text x="608.0" y="438.2" text-anchor="middle" fill="#2a9d4b">coil centre 11.43</text>
-<text x="482.2" y="540.0" text-anchor="end" fill="#2a9d4b" font-weight="bold">front edge 2.73</text>
-<polygon points="224.4,516.0 219.4,504.0 229.4,504.0" fill="#2a9d4b"/>
-<text x="224.4" y="500.0" text-anchor="middle" fill="#2a9d4b">nozzle -15.97</text>
-<text x="8" y="432.0" fill="#2a9d4b" font-weight="bold">X 205.18: best spot</text>
+<text x="608.0" y="438.2" text-anchor="middle" fill="#1b8a3a">coil centre 11.43</text>
+<text x="482.2" y="540.0" text-anchor="end" fill="#1b8a3a" font-weight="bold">front edge 2.73</text>
+<polygon points="224.4,516.0 219.4,504.0 229.4,504.0" fill="#1b8a3a"/>
+<text x="224.4" y="500.0" text-anchor="middle" fill="#1b8a3a">nozzle -15.97</text>
+<text x="8" y="432.0" fill="#1b8a3a" font-weight="bold">X 205.18: best spot</text>
 <text x="10" y="624.0" font-weight="bold">Beacon at y_offset 27.4, head at its forward limit (worse head, lite-78 front). Side view, front to the left, plate Y (printer Y = plate Y − 2.5). 1 mm = 14 px.</text>
 <text x="10" y="646.0">Triangle: nozzle tip at scan Z 2. Box: coil housing (17 across, face 4.6 above the bed). Trapezoid: 17 → 17.40 across at the bed.</text>
 <text x="10" y="666.0">The flare is a stand-in (Beacon's keep-out cone above the board, mirrored down); Beacon publishes no downward sensing cone.</text>

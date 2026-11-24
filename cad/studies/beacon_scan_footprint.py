@@ -60,7 +60,7 @@ def svg(rows, half, dy):
     LH = (zhi - zlo) * sc + 30                                     # lane height px
     W, top0 = (y1 - y0) * sc, 50
     pl = lambda y: y - PLATE_FRONT                                 # printer -> plate Y
-    cols = ("#1f5fbf", "#d08a00", "#2a9d4b")
+    cols = ("#1f5fbf", "#c62828", "#1b8a3a")         # blue, red, green: one per lane
     zf = SCAN_Z + COIL_ABOVE_TIP
     H = top0 + 3 * LH
     s = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W:.0f}" height="{H + 120:.0f}" font-family="sans-serif" font-size="13">',
@@ -76,9 +76,9 @@ def svg(rows, half, dy):
         s.append(f'<rect x="{X(0):.1f}" y="{Z(0):.1f}" width="{X(y1) - X(0):.1f}" height="{2 * sc:.1f}" fill="#999" fill-opacity="0.5"/>')
         c_ = pl(r["coil"]); h0 = HOUSING_D / 2
         pts = [(X(c_ - h0), Z(zf)), (X(c_ + h0), Z(zf)), (X(c_ + half), Z(0)), (X(c_ - half), Z(0))]
-        s.append(f'<polygon points="{" ".join(f"{u:.1f},{v:.1f}" for u, v in pts)}" fill="{col}" fill-opacity="0.22" stroke="{col}" stroke-width="1.5"/>')
+        s.append(f'<polygon points="{" ".join(f"{u:.1f},{v:.1f}" for u, v in pts)}" fill="{col}" fill-opacity="0.4" stroke="{col}" stroke-width="2"/>')
         s.append(f'<rect x="{X(c_ - h0):.1f}" y="{Z(zf + HOUSING_H):.1f}" width="{HOUSING_D * sc:.1f}" height="{HOUSING_H * sc:.1f}" '
-                 f'fill="{col}" fill-opacity="0.6" stroke="{col}"/>')
+                 f'fill="{col}" fill-opacity="0.85" stroke="{col}"/>')
         s.append(f'<line x1="{X(c_):.1f}" y1="{Z(0):.1f}" x2="{X(c_):.1f}" y2="{Z(zf + HOUSING_H):.1f}" stroke="#222" stroke-dasharray="2 2"/>')
         s.append(f'<text x="{X(c_):.1f}" y="{Z(zf + HOUSING_H) - 5:.1f}" text-anchor="middle" fill="{col}">coil centre {r["plate_coil"]:.2f}</text>')
         s.append(f'<text x="{X(c_ - half) - 4:.1f}" y="{Z(0) - 4:.1f}" text-anchor="end" fill="{col}" font-weight="bold">front edge {r["plate_front"]:.2f}</text>')
