@@ -1,40 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1036" height="722" font-family="sans-serif" font-size="13">
+<svg xmlns="http://www.w3.org/2000/svg" width="1184" height="728" font-family="sans-serif" font-size="13">
 <rect width="100%" height="100%" fill="white"/>
-<line x1="448.0" y1="46.0" x2="448.0" y2="602.0" stroke="#444" stroke-dasharray="4 3"/>
-<text x="451.0" y="14" fill="#444">plate front 0</text>
-<line x1="518.0" y1="46.0" x2="518.0" y2="602.0" stroke="#444" stroke-dasharray="4 3"/>
-<text x="521.0" y="29" fill="#444">printable 5</text>
-<line x1="559.7" y1="46.0" x2="559.7" y2="602.0" stroke="#7a3fbf" stroke-dasharray="4 3"/>
-<text x="562.7" y="44" fill="#7a3fbf">mesh_min 7.98</text>
-<rect x="448.0" y="176.0" width="588.0" height="28.0" fill="#999" fill-opacity="0.5"/>
-<polygon points="584.2,111.6 822.2,111.6 825.0,176.0 581.4,176.0" fill="#1f5fbf" fill-opacity="0.4" stroke="#1f5fbf" stroke-width="2"/>
-<rect x="584.2" y="75.2" width="238.0" height="36.4" fill="#1f5fbf" fill-opacity="0.85" stroke="#1f5fbf"/>
-<line x1="703.2" y1="176.0" x2="703.2" y2="75.2" stroke="#222" stroke-dasharray="2 2"/>
-<text x="703.2" y="70.2" text-anchor="middle" fill="#1f5fbf">coil centre 18.23</text>
-<text x="577.4" y="172.0" text-anchor="end" fill="#1f5fbf" font-weight="bold">front edge 9.53</text>
-<polygon points="319.6,148.0 314.6,136.0 324.6,136.0" fill="#1f5fbf"/>
-<text x="319.6" y="132.0" text-anchor="middle" fill="#1f5fbf">nozzle -9.17</text>
-<text x="8" y="64.0" fill="#1f5fbf" font-weight="bold">X 175: most of the width</text>
-<rect x="448.0" y="360.0" width="588.0" height="28.0" fill="#999" fill-opacity="0.5"/>
-<polygon points="520.8,295.6 758.8,295.6 761.6,360.0 518.0,360.0" fill="#c62828" fill-opacity="0.4" stroke="#c62828" stroke-width="2"/>
-<rect x="520.8" y="259.2" width="238.0" height="36.4" fill="#c62828" fill-opacity="0.85" stroke="#c62828"/>
-<line x1="639.8" y1="360.0" x2="639.8" y2="259.2" stroke="#222" stroke-dasharray="2 2"/>
-<text x="639.8" y="254.2" text-anchor="middle" fill="#c62828">coil centre 13.70</text>
-<text x="514.0" y="356.0" text-anchor="end" fill="#c62828" font-weight="bold">front edge 5.00</text>
-<polygon points="256.2,332.0 251.2,320.0 261.2,320.0" fill="#c62828"/>
-<text x="256.2" y="316.0" text-anchor="middle" fill="#c62828">nozzle -13.70</text>
-<text x="8" y="248.0" fill="#c62828" font-weight="bold">X 54.29: gap between docks</text>
-<rect x="448.0" y="544.0" width="588.0" height="28.0" fill="#999" fill-opacity="0.5"/>
-<polygon points="489.0,479.6 727.0,479.6 729.8,544.0 486.2,544.0" fill="#1b8a3a" fill-opacity="0.4" stroke="#1b8a3a" stroke-width="2"/>
-<rect x="489.0" y="443.2" width="238.0" height="36.4" fill="#1b8a3a" fill-opacity="0.85" stroke="#1b8a3a"/>
-<line x1="608.0" y1="544.0" x2="608.0" y2="443.2" stroke="#222" stroke-dasharray="2 2"/>
-<text x="608.0" y="438.2" text-anchor="middle" fill="#1b8a3a">coil centre 11.43</text>
-<text x="482.2" y="540.0" text-anchor="end" fill="#1b8a3a" font-weight="bold">front edge 2.73</text>
-<polygon points="224.4,516.0 219.4,504.0 229.4,504.0" fill="#1b8a3a"/>
-<text x="224.4" y="500.0" text-anchor="middle" fill="#1b8a3a">nozzle -15.97</text>
-<text x="8" y="432.0" fill="#1b8a3a" font-weight="bold">X 205.18: best spot</text>
-<text x="10" y="624.0" font-weight="bold">Beacon at y_offset 27.4, head at its forward limit (worse head, lite-78 front). Side view, front to the left, plate Y (printer Y = plate Y − 2.5). 1 mm = 14 px.</text>
-<text x="10" y="646.0">Triangle: nozzle tip at scan Z 2. Box: coil housing (17 across, face 4.6 above the bed). Trapezoid: 17 → 17.40 across at the bed.</text>
-<text x="10" y="666.0">The flare is a stand-in (Beacon's keep-out cone above the board, mirrored down); Beacon publishes no downward sensing cone.</text>
-<text x="10" y="686.0">Bed mesh points are coil CENTRES: a straight front row can start no further forward than the X 175 lane.</text>
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker></defs>
+<line x1="352.0" y1="42.0" x2="352.0" y2="608.0" stroke="#444" stroke-dasharray="4 3"/>
+<text x="355.0" y="12" fill="#444" font-size="12">plate front 0</text>
+<line x1="432.0" y1="42.0" x2="432.0" y2="608.0" stroke="#444" stroke-dasharray="4 3"/>
+<text x="435.0" y="26" fill="#444" font-size="12">printable 5</text>
+<line x1="479.7" y1="42.0" x2="479.7" y2="608.0" stroke="#7a3fbf" stroke-dasharray="4 3"/>
+<text x="482.7" y="40" fill="#7a3fbf" font-size="12">mesh_min 7.98</text>
+<line x1="205.3" y1="42.0" x2="205.3" y2="608.0" stroke="#222" stroke-dasharray="1 3"/>
+<text x="201.3" y="38.0" text-anchor="end" font-weight="bold">head parked: nozzle -9.17</text>
+<rect x="352.0" y="256.0" width="832.0" height="40.0" fill="#999" fill-opacity="0.5"/>
+<text x="8" y="62.0" fill="#1f5fbf" font-weight="bold">y_offset 27.4 (today, option 3)</text>
+<polygon points="157.3,96.0 253.3,96.0 224.5,184.0 205.3,224.0 186.1,184.0" fill="#555" fill-opacity="0.7"/>
+<rect x="157.3" y="72.0" width="790.4" height="24.0" fill="#555" fill-opacity="0.45"/>
+<line x1="643.7" y1="72.0" x2="643.7" y2="115.0" stroke="#555" stroke-width="3"/>
+<line x1="205.3" y1="105.6" x2="643.7" y2="105.6" stroke="#1f5fbf" marker-end="url(#a)"/>
+<text x="424.5" y="101.6" text-anchor="middle" fill="#1f5fbf">27.4</text>
+<rect x="507.7" y="115.0" width="440.0" height="25.8" fill="#1f5fbf" fill-opacity="0.35" stroke="#1f5fbf"/>
+<rect x="507.7" y="140.8" width="272.0" height="41.6" fill="#1f5fbf" fill-opacity="0.8" stroke="#1f5fbf"/>
+<polygon points="507.7,182.4 779.7,182.4 782.9,256.0 504.5,256.0" fill="#1f5fbf" fill-opacity="0.35" stroke="#1f5fbf" stroke-width="2"/>
+<line x1="643.7" y1="256.0" x2="643.7" y2="182.4" stroke="#222" stroke-dasharray="2 2"/>
+<text x="643.7" y="286.6" text-anchor="middle" fill="#222">centre 18.23</text>
+<text x="499.5" y="240.0" text-anchor="end" fill="#1f5fbf" font-weight="bold">9.53</text>
+<text x="787.9" y="240.0" fill="#1f5fbf" font-weight="bold">26.93</text>
+<rect x="352.0" y="536.0" width="832.0" height="40.0" fill="#999" fill-opacity="0.5"/>
+<text x="8" y="342.0" fill="#c62828" font-weight="bold">y_offset 15 (planned)</text>
+<polygon points="157.3,376.0 253.3,376.0 224.5,464.0 205.3,504.0 186.1,464.0" fill="#555" fill-opacity="0.7"/>
+<rect x="157.3" y="352.0" width="592.0" height="24.0" fill="#555" fill-opacity="0.45"/>
+<line x1="445.3" y1="352.0" x2="445.3" y2="395.0" stroke="#555" stroke-width="3"/>
+<line x1="205.3" y1="385.6" x2="445.3" y2="385.6" stroke="#c62828" marker-end="url(#a)"/>
+<text x="325.3" y="381.6" text-anchor="middle" fill="#c62828">15</text>
+<rect x="309.3" y="395.0" width="440.0" height="25.8" fill="#c62828" fill-opacity="0.35" stroke="#c62828"/>
+<rect x="309.3" y="420.8" width="272.0" height="41.6" fill="#c62828" fill-opacity="0.8" stroke="#c62828"/>
+<polygon points="309.3,462.4 581.3,462.4 584.5,536.0 306.1,536.0" fill="#c62828" fill-opacity="0.35" stroke="#c62828" stroke-width="2"/>
+<line x1="445.3" y1="536.0" x2="445.3" y2="462.4" stroke="#222" stroke-dasharray="2 2"/>
+<text x="445.3" y="566.6" text-anchor="middle" fill="#222">centre 5.83</text>
+<text x="301.1" y="520.0" text-anchor="end" fill="#c62828" font-weight="bold">-2.87</text>
+<text x="589.5" y="520.0" fill="#c62828" font-weight="bold">14.53</text>
+<text x="10" y="630.0" font-weight="bold">Head parked at the safe front Y: nozzle plate Y -9.17 (printer -11.67), the furthest forward that is clear at every mesh X for both heads (lite-78 front). Scan Z 2.</text>
+<text x="10" y="650.0">Trapezoid: where the coil senses the plate, 17 across at the coil face (4.6 above the plate) → 17.40 at the plate. Bold numbers: its front and rear edge.</text>
+<text x="10" y="670.0">Side view, front to the left, plate Y (0 = the plate's front edge; printer Y = plate Y − 2.5). Head drawn schematically. 1 mm = 16 px.</text>
+<text x="10" y="690.0">The flare is a stand-in (Beacon's keep-out cone above the board, mirrored down); Beacon publishes no downward sensing cone.</text>
 </svg>
