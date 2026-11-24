@@ -21,22 +21,22 @@ Stages #7, #8, #9. Priced cost: **no priced rows yet**, plus 21 unpriced row(s).
 | Item | To buy | Unit price | Cost | Stage | Vendor |
 |---|---|---|---|---|---|
 | 4040 extrusion, 660 mm | 4 | - | - | #7 | - |
-| 4040 extrusion, 550 mm | 4 | - | - | #7 | - |
+| 4040 extrusion, 567 mm | 4 | - | - | #7 | - |
 | 2040 extrusion, 660 mm | 4 | - | - | #7 | - |
-| 2040 extrusion, 550 mm | 4 | - | - | #7 | - |
+| 2040 extrusion, 567 mm | 4 | - | - | #7 | - |
 | 2040 extrusion, 470 mm | 1 | - | - | #7 | - |
 | 2040 extrusion, 430 mm | 2 | - | - | #7 | - |
 | 2040 extrusion, 740 mm | 1 | - | - | #7 | - |
 | 2020 extrusion, 740 mm | 1 | - | - | #7 | - |
 | 2020 extrusion, 660 mm | 2 | - | - | #7 | - |
-| 2020 extrusion, 550 mm | 2 | - | - | #7 | - |
+| 2020 extrusion, 567 mm | 2 | - | - | #7 | - |
 | 2020 extrusion, 470 mm | 2 | - | - | #7 | - |
 | 2020 extrusion, 430 mm | 1 | - | - | #7 | - |
 | 2020 extrusion, 340 mm | 1 | - | - | #7 | - |
 | 2020 extrusion, 332 mm | 1 | - | - | #7 | - |
 | 2040 extrusion, 740 mm (door frame verticals) | 4 | - | - | #7 | - |
 | 2040 extrusion, 470 mm (front door frame rails) | 2 | - | - | #7 | - |
-| 2040 extrusion, 530 mm (e-box door frame rails) | 2 | - | - | #7 | - |
+| 2040 extrusion, 547 mm (e-box door frame rails) | 2 | - | - | #7 | - |
 | M5x14 socket head (SHCS, DIN 912), levelling-foot brackets | 16 | - | - | #9 | - |
 | M5 split lock washer (DIN 127), levelling-foot brackets | 16 | - | - | #9 | - |
 | M5 drop-in T-nut, 6 mm slot | 16 | - | - | #9 | West3D |
@@ -51,7 +51,7 @@ To decide before buying this round:
 - M5x30 socket head (SHCS, DIN 912) (#9)
 - M5 flat washer (ISO 7089 / DIN 125) (#9)
 - Levelling-foot T-slot bracket, 40 x 40 x 8, tapped M8, 4 x M5 holes (#9)
-- Base board, 18 mm plywood/MDF, ~676 x 692 (#9)
+- Base board, 18 mm plywood/MDF, ~676 x 709 (#9)
 - Ambrosia ASA, 1 kg (every printed part except toolhead and clear parts) (#8)
 - Ambrosia PET-GF, 1 kg (toolhead parts, MadMax plates, carriage) (#8)
 - Ambrosia PETG, 1 kg (clear parts) (#8)
@@ -172,14 +172,14 @@ To decide before buying this round:
 - T-nuts for panels, wiring and anything else on the frame (#14)
 - 24 V COB LED strip, warm white, + channel (#14)
 - Nocturne USB camera (Luke's Laboratory, 96°) (#14)
-- Left side panel, 3 mm, 596 x 740 (#14)
-- Right side panel, 3 mm, 596 x 660 (#14)
+- Left side panel, 3 mm, 613 x 740 (#14)
+- Right side panel, 3 mm, 613 x 660 (#14)
 - Back panel, 3 mm, 482 x 675 (#14)
-- Roof panel, 3 mm, 550 x 610 (#14)
-- E-box top panel, 3 mm, 130 x 610 (#14)
+- Roof panel, 3 mm, 550 x 627 (#14)
+- E-box top panel, 3 mm, 130 x 627 (#14)
 - E-box rear panel, 3 mm, 116 x 740 (#14)
 - Front door window, 3 mm clear, 479 x 669 (#14)
-- E-box door window, 3 mm clear, 539 x 669 (#14)
+- E-box door window, 3 mm clear, 556 x 669 (#14)
 - Door glazing / seal strip (#14)
 - Panel clips / mounting hardware (#14)
 - 140 mm ceiling destratification fans (Noctua) (#14)

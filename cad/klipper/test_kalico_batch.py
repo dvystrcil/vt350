@@ -209,7 +209,7 @@ class Toolchange(Base):
 
     def test_dock_zone_only_at_the_dock_xs_or_the_shuttle_line(self):
         # printer.cfg lets Y below 0 anywhere along X (the box limit). The macros go there only at a dock's park or
-        # detach X, or on the empty carriage's travel line, Y = params_safe_shuttle_y (-26.96 on the VT350: MadMax's
+        # detach X, or on the empty carriage's travel line, Y = params_safe_shuttle_y (-43.96 on the VT350 since lite-78: MadMax's
         # distance from the parked heads, which AC5 clash-checks)
         docks = {v for t in self.p["tools"].values() for v in (t["params_park_x"], t["params_detach_x"])}
         shuttle = self.p["toolchanger"]["params_safe_shuttle_y"]

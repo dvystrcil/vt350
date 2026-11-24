@@ -15,7 +15,7 @@ ROOT = os.path.dirname(os.path.dirname(HERE))
 class Params(unittest.TestCase):
     def test_reads_the_committed_config(self):
         attach, park = tc.read_params(open(os.path.join(ROOT, "cad/klipper/toolchanger.cfg")).read())
-        self.assertEqual(attach, -68.96)
+        self.assertEqual(attach, -85.96)                 # lite-78: the docks 17 forward (#291)
         self.assertEqual(park, {"extruder": 10.3, "extruder1": 339.7})
 
 
@@ -39,7 +39,7 @@ class States(unittest.TestCase):
     def test_the_committed_timeline(self):
         tl = [json.loads(l) for l in open(os.path.join(ROOT, "cad/klipper/toolchange_timeline.jsonl"))]
         moves = [tuple(r["pos"][:3]) for r in tl if r["kind"] == "move"]
-        ends = [b[0] for _, b in tc.carried_states(moves, -68.96, self.PARK)]
+        ends = [b[0] for _, b in tc.carried_states(moves, -85.96, self.PARK)]
         self.assertIn("Left", ends)
         self.assertIn("Right", ends)
         self.assertIsNone(ends[-1])                      # it ends with both heads back in their docks

@@ -63,7 +63,7 @@ partial versions that have to be rebuilt in order (lite-67 to lite-71 did this).
 
 | Pass in flight | Branch | Builds on |
 |---|---|---|
-| lite-78 (`cad/passes/lite78_front17.py`: the front 17 mm forward, one-piece 490 Y rails, tubes and cables spliced, the Mellow parked on the backbone) | `feat/291-beacon-front-scan` (PR #292, vt350#291) | lite-77; headless dry run clean 2026-11-22 23:00 PST (all checks, no new collisions vs lite-77); waits for the owner's review, then the owner's GUI run to save |
+| lite-78 (the front 17 mm forward, 490 Y rails, the Mellow low on the bed's front edge in a cast-look bracket, vt350#291; saved 2026-11-23 17:06 PST, refreshed on the lane, chain `vt350-lite-78-20261124t031612-ad54`: front reach −68.93 (`position_min` −99.43), print height unchanged 334.43, printable 342.0 × 340.19, dock params −17) | `feat/291-beacon-front-scan` (PR #292) | lite-77 |
 
 ## Where things are
 
