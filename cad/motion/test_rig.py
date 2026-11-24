@@ -88,15 +88,15 @@ class Committed(unittest.TestCase):
         records = [json.loads(l) for l in read(ROOT, "cad", "klipper", "toolchange_timeline.jsonl").splitlines() if l]
         fr = timeline.frames(r, records, fps=None)
         park_x = r["heads"]["Left"]["dock"][0]                          # T0's params_park_x, from toolchanger.cfg
-        at = [f for f in fr if f["pos"][:2] == [park_x, -68.96] and f["carried"] == "Left"][0]
+        at = [f for f in fr if f["pos"][:2] == [park_x, -85.96] and f["carried"] == "Left"][0]
         self.assertEqual(at["groups"]["Left"], [0.0, -6.0, -0.315])      # the 6 mm keyslot slide, model -Y
         self.assertEqual(fr[-1]["groups"]["Left"], [0.0, 0.0, 0.0])
         self.assertEqual(fr[-1]["groups"]["Right"], [0.0, 0.0, 0.0])
 
     def test_bed_reaches_the_configured_floor(self):
-        # z_sweep.log's floor is bed dZ -237.00 at printer Z 330.33; the log's 2-decimal top dZ leaves 0.01 mm
+        # z_sweep.log's floor is bed dZ -237.00 at printer Z 329.43 (lite-77); the log's 2-decimal top dZ leaves 0.01 mm
         r = json.loads(read(HERE, "rig.json"))
-        self.assertAlmostEqual(timeline.groups(r, (175.0, 175.0, 330.33), None)["bed"][2], -237.0, delta=0.011)
+        self.assertAlmostEqual(timeline.groups(r, (175.0, 175.0, 329.43), None)["bed"][2], -237.0, delta=0.011)
 
 
 if __name__ == "__main__":

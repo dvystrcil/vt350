@@ -24,7 +24,7 @@ TUBES = ("Bowden Left", "Bowden Right")
 CARRIAGE_PART = ("Carriage (1)", "COMPOUND")
 CARRIAGE_PATHS = {"Carriage (1)"}
 CARRIAGE_LABELS = ("MGN_12_H_CARRAGE v1",)
-NOZZLE = "E3D v6 HotEnd - Nozzle"
+NOZZLE = ("TL-dragon-ace-MZE nozzle (brass V6)", "E3D v6 HotEnd - Nozzle")   # lite-73+ (MZE assembly), lite-72 and older
 BEACON = "Beacon RevH"
 LOG = os.path.join(WORK, "logs", "carriage_clearance.log")
 T0 = time.time()
@@ -64,7 +64,7 @@ def main():
         t = com(linkgeo.gshape(one(d["copy"], d["dock"]))) - com(real)
         nz = [o for o in leaves if o.Label.startswith(NOZZLE) and d["group"] in P[o.Name]]
         if len(nz) != 1: raise RuntimeError(f"{h}: {len(nz)} nozzles")
-        b = linkgeo.gshape(nz[0]).BoundBox
+        b = linkgeo.gshape(nz[0]).optimalBoundingBox(True, False)   # BoundBox overshoots on B-splines (LESSONS.md)
         tip = V((b.XMin + b.XMax) / 2 - t.x, (b.YMin + b.YMax) / 2 - t.y, b.ZMin - t.z)
         log("")
         log(f"== {h} head carried: T_pick ({t.x:.3f}, {t.y:.3f}, {t.z:.3f}); nozzle tip ({tip.x:.2f}, {tip.y:.2f}, {tip.z:.3f})")

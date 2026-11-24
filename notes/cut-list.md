@@ -24,9 +24,9 @@ Lengths are the bar's long axis in mm.
 | 2020 | 332 | 1 | Bed frame | |
 
 Not extrusions, but part of the same order:
-- **Y rails: the owned 2 × Berserker MGN9H 400** (rear-flush) **+ 2 × 73.9 mm front extensions** (printed or cut steel; lite-9). They were MGN12 × 400.
+- **Y rails: 2 × Hiwin MGN9H 490, one piece** ([Motion Constrained](https://motionconstrained.com/store/hiwin-linear-guides/mgn-series/mgn-linear-guide-sets/hiwin-mgn9hz0c-long-block-linear-guides/); vt350#291, from lite-78). They replace the owned Berserker 400s + 73.9 mm front extensions (lite-9), which go to Z. The frame front moves 17 mm forward for them: the extrusion lengths here change with lite-78.
 - **X beam: Carbonara 350, 430 mm** CF tube (replaces the 2020).
-- **Z rails: 3 × MGN9 400; Z motors: 3 × 400 mm integrated lead screw** (lite-10).
+- **Z rails: 3 × MGN9 400** (2 owned Berserkers + 1 Berserker to buy, owner 2026-11-22); **Z motors: 3 × 400 mm integrated lead screw** (lite-10).
 - **Machining: re-drill the 4 gantry-joint holes in the verticals 50 mm higher** (lite-10 raises the gantry to Z 420–440).
 
 **Totals:** 4040: 2 × 740 + 4 × 550 + 2 × 470. 2040: 4 × 740 + 3 × 550 + 5 × 470 + 2 × 430. 2020: 2 × 470, 430, 340, 332.

@@ -38,7 +38,7 @@ Don't recompute while it plays. Some moved parts feed a boolean or compound, and
 python3 cad/motion/render_frames.py prepare                  # groups + ONE mesh export (FreeCAD GUI, xvfb) + frames.json
 python3 cad/motion/render_frames.py submit                   # Blender frames in the batch lane; result comment on #135
 python3 cad/motion/render_frames.py encode <job>/out         # frames -> notes/reference/toolchange-docks.mp4
-python3 cad/motion/render_frames.py stills --at 21,-68.96    # full-size stills at the move ends at a printer XY
+python3 cad/motion/render_frames.py stills --at 10.3,-85.96    # full-size stills at the move ends at a printer XY
 ```
 
 The meshes are exported **once**, at the model pose, with the player's groups (`play.py`'s cached groups file: clipped belts, dock copies left out). Each group's parts go in buckets of their own (`platform/render/export_meshes.py` with `VT350_GROUPS`), so Blender moves each group's objects by the frame's translation (`platform/render/render.py --frames`). Nothing is re-exported per frame. The export is cached in `$VT350_WORK/motion/render-<model>-<key>/export`, keyed by the groups file, the exporter (`export_meshes.py`, `colours.py`, `logos.py` and `groups.py`, the part of the motion code the export uses; editing `motion.py` doesn't force a re-export, #144) and the colour map. `encode` doesn't need the export at all: it builds the frames list itself. That directory is also the batch-lane input: `prepare` copies `colours.py`, `colours.json`, `motion.py` and `groups.py` into it, since the lane stages only the script. The camera, `docks`, is computed from the rig: aimed at the middle of the docked nozzles.

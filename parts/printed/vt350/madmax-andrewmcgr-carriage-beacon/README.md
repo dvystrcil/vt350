@@ -10,6 +10,7 @@
 | Made | 2026-11-06, by Daniel Vystrcil (with Claude Code), `cad/passes/lite25_carriage_9mm.py` |
 | Change | Same as below, plus: **both belt-clip pockets replaced with upstream's 9 mm ones**, taken from [`STL/Carriage_MGN12H_9mm.stl`](https://github.com/zruncho3d/madmax/blob/6bf670de9adcc5924e2fb552978161d7a9c7b1c8/STL/Carriage_MGN12H_9mm.stl) @ `6bf670d` (GPL-3.0). The pockets are 26 mm tall instead of 20, on the same centre line, with the same depth. Swap boxes (STL frame, from the bounding-box minimum): X −1…12.5 and 41.9…55.4, height 1.5…31 from the top, full depth. They hold every 6-vs-9 mm difference and none of andrewmcgr's changes (checked by vertex sets). 18 150.9 → 16 885.0 mm³ |
 | Clips | upstream `STL/SpeedClip_4mm_Gap_9mm.stl`, unmodified (not in this folder) |
+| lite-73 (#263, 2026-11-20) | **Beacon pocket ceiling 0.30 mm deeper** over the board's footprint, so the Beacon sits 0.30 higher: its coil face is **2.80** above the carried nozzle tip with the Dragon ACE Volcano + MZE + TC Undertaker (heat-sink top → tip 59.40, owner-measured). Owner, 2026-11-20: 2.80 so a hot-tighten's 0.1–0.2 still leaves ≥ 2.6. The end ledges the board bears on keep 1.55 mm (≥ 1.5); their sloped outer edges get 0.30 shorter, nothing new thin. The M3 pilot holes lose 0.30 of depth (5.36 → 5.06). 25.08 mm³ removed. Made by `cad/passes/lite73_dav.py` (written back in this file's frame, as lite-25) |
 | Frame | the original `MadMaxCarriage.stl`'s frame (same print orientation) |
 
 ## 6 mm-belt version (lite-24)

@@ -11,6 +11,7 @@
 #   ~1/3 bigger), for hosts that serve .json but not .glb (claude.ai artifacts). glbjson.py does the conversion.
 # Prints "glb: <path> <bytes> bytes, <n> triangles, <k> objects" and "glb-export: OK" at the end.
 import bpy, bmesh, json, math, os, sys
+if bpy.app.version < (5, 0): sys.exit("needs Blender 5.0+, where new materials and worlds come with node trees (#247)")
 argv = sys.argv[sys.argv.index("--") + 1:]
 OPTS = {}
 while any(a.startswith("--") for a in argv):
@@ -56,7 +57,7 @@ def pbr(key, b, roles):
 
 def material(key, b, roles):
     col, metal, rough, alpha, trans, emis = pbr(key, b, roles)
-    m = bpy.data.materials.new(key); m.use_nodes = True
+    m = bpy.data.materials.new(key)                  # 5.0+: new materials come with a Principled BSDF tree (#247)
     p = m.node_tree.nodes["Principled BSDF"]
     p.inputs["Base Color"].default_value = (*col, 1)
     p.inputs["Metallic"].default_value = metal; p.inputs["Roughness"].default_value = rough

@@ -29,6 +29,7 @@
 # so a run cut short resumes. --first/--count take a slice of the frames list (to split a long run).
 # Units: model mm -> scene metres (x 0.001).
 import bpy, json, math, os, sys
+if bpy.app.version < (5, 0): sys.exit("needs Blender 5.0+, where new materials and worlds come with node trees (#247)")
 argv = sys.argv[sys.argv.index("--") + 1:]
 OPTS = {}
 while any(a.startswith("--") for a in argv):
@@ -69,7 +70,7 @@ def kelvin_rgb(k):   # Tanner Helland's approximation, good enough for a strip c
     return tuple(max(0, min(255, c)) / 255 for c in (r, g, b))
 LED_K = 3800
 def material(name, color, kind, transparency=0.0, roughness=None):
-    m = bpy.data.materials.new(name); m.use_nodes = True
+    m = bpy.data.materials.new(name)                 # 5.0+: new materials come with a Principled BSDF tree (#247)
     p = m.node_tree.nodes["Principled BSDF"]
     p.inputs["Base Color"].default_value = (*color, 1)
     metal = kind in ("aluminium", "steel", "brass")
@@ -123,7 +124,7 @@ for L in scene_j["lights"]:
     li.data.energy = 6.0; li.data.color = kelvin_rgb(LED_K); li.rotation_euler = (math.pi, 0, 0)   # face -Z
     li.name = L["label"]
 # world: dim grey room
-w = bpy.data.worlds.new("room"); sc.world = w; w.use_nodes = True
+w = bpy.data.worlds.new("room"); sc.world = w       # 5.0+: comes with a Background node tree (#247)
 bg = w.node_tree.nodes["Background"]; bg.inputs["Color"].default_value = (0.05, 0.05, 0.055, 1); bg.inputs["Strength"].default_value = 0.4
 def add_cam(name, pos, look, fov_diag=None, lens_mm=None, sensor=36.0):
     cd = bpy.data.cameras.new(name); co = bpy.data.objects.new(name, cd); sc.collection.objects.link(co)

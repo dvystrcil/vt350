@@ -34,6 +34,19 @@ jobs:
         run: python3 platform/viewer/test_viewer_page.py 2>&1 | tee test-viewer-page.log
       - name: Confirm every viewer_page test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-viewer-page.log && tail -1 test-viewer-page.log | grep -qx 'OK'
+      - name: Test pages.py's licence check inputs (selection vs whole-model export)
+        run: python3 cad/viewer/test_pages.py 2>&1 | tee test-pages.log
+      - name: Confirm every pages test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-pages.log && tail -1 test-pages.log | grep -qx 'OK'
+      - name: Test the credits list maker (vt350#220)
+        run: python3 platform/pages/test_credits.py 2>&1 | tee test-credits.log
+      - name: Confirm every credits test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-credits.log && tail -1 test-credits.log | grep -qx 'OK'
+      - name: CREDITS.md is current with REUSE.toml and the licence rules
+        run: |
+          set -o pipefail
+          python3 platform/pages/credits.py --projects cad/credits.json --reuse REUSE.toml --licences cad/viewer/licences.json --licence-dir LICENSES --out CREDITS.md --check | tee credits.log
+          tail -1 credits.log | grep -qx 'credits: OK'
       - name: Every pages settings file has what the steps need
         run: |
           python3 cad/viewer/pages.py check all 2>&1 | tee pages-check.log

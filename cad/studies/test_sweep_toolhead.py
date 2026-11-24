@@ -90,5 +90,15 @@ class PlanStage(unittest.TestCase):
         self.assertEqual(os.listdir(self.temp), [])
 
 
+class RidesWithBed(unittest.TestCase):
+    def test_each_probe_group_rides_with_the_bed(self):
+        for g in ("Nozzle offset probe (lite-61, #186)", "Nozzle offset probe, low on the bed edge (lite-78, #291)"):
+            self.assertTrue(sweep_toolhead.rides_with_bed([g, "vt350"], "Nozzle offset probe bracket (low, lite-78)"), g)
+
+    def test_sheets_by_label_and_frame_parts_stay(self):
+        self.assertTrue(sweep_toolhead.rides_with_bed(["vt350"], "PEI spring-steel sheet (1.0 mm)"))
+        self.assertFalse(sweep_toolhead.rides_with_bed(["4040-350 VT Frame v12"], "2020 (1)"))
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

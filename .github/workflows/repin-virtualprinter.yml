@@ -1,0 +1,96 @@
+name: Repin the virtual printer
+# vt350#224: keep the virtual printer's and kalisim's build pins current with no AI (cad/klipper/README.md, "Keeping
+# pins current"). Every step is cad/klipper/repin.sh, which runs the same by hand.
+#   repin           monthly and by hand: a new Debian snapshot with the exact apt versions it serves, Moonraker's
+#                   python packages re-resolved within Moonraker's own ranges, fresh hashes, cad/tools.md, and both
+#                   images built (the build is the test). Opens a PR when anything changed.
+#   renovate-fixup  on Renovate's pushes to renovate/* (renovate.json): what Renovate can't compute (simulavr's tree
+#                   sha256 for a new SIMULAVR_SHA, pip_lock.py's hashes, cad/tools.md), committed to that branch.
+# A push or PR made with GITHUB_TOKEN starts no workflow runs, so each job then starts the PR's checks itself with
+# workflow_dispatch (the one event GITHUB_TOKEN may start) on the branch.
+on:
+  schedule:
+    - cron: "0 14 2 * *"          # the 2nd of each month, 14:00 UTC (06:00 / 07:00 Pacific); Renovate's group is on the 1st
+  workflow_dispatch:
+  push:
+    branches: ["renovate/**"]
+
+permissions: {}
+
+concurrency:
+  group: repin-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  repin:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Repin (snapshot, apt, Moonraker's packages, hashes, tools page) and build both images
+        run: |
+          bash cad/klipper/repin.sh monthly 2>&1 | tee "$RUNNER_TEMP/repin.log"
+          tail -1 "$RUNNER_TEMP/repin.log" | grep -qx 'repin: monthly OK'
+      - name: Open a PR if any pin changed
+        run: |
+          if git diff --quiet; then echo "repin: no pin changed"; exit 0; fi
+          ts=$(sed -n 's/^ARG DEBIAN_SNAPSHOT=//p' platform/virtualprinter/Dockerfile)
+          branch="repin/virtualprinter-$ts"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git commit -qam "virtual printer: repin to Debian snapshot $ts (#224)"
+          git push -q origin "$branch"
+          {
+            echo "The monthly repin (\`cad/klipper/repin.sh monthly\`, run ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}): Debian snapshot \`$ts\`, the exact apt versions it serves, Moonraker's python packages within Moonraker's ranges, fresh hashes, and \`cad/tools.md\`. Both images built in that run."
+            echo
+            echo '```'
+            grep -E '^  |^apt-repin|^pip-lock|^sync-tools-page' "$RUNNER_TEMP/repin.log"
+            echo '```'
+            echo
+            echo "Refs #224. Opened by .github/workflows/repin-virtualprinter.yml; its checks were started by that run (workflow_dispatch)."
+          } > "$RUNNER_TEMP/body.md"
+          url=$(gh pr create --base main --head "$branch" --title "virtual printer: repin to Debian snapshot $ts" \
+                --body-file "$RUNNER_TEMP/body.md")
+          echo "repin: opened $url"
+          # an older repin PR still open is superseded by this one
+          gh pr list --state open --json number,headRefName \
+            --jq ".[] | select(.headRefName | startswith(\"repin/virtualprinter-\")) | select(.headRefName != \"$branch\") | .number" \
+            | while read -r n; do gh pr close "$n" --delete-branch --comment "Superseded by $url."; done
+          gh workflow run test-tmp.yml --ref "$branch"
+          gh workflow run kalico-batch.yml --ref "$branch"
+
+  renovate-fixup:
+    if: github.event_name == 'push' && github.actor == 'renovate[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      actions: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0          # the merge base with main
+      - name: Recompute what Renovate can't (simulavr tree sha256, pip hashes, cad/tools.md)
+        run: |
+          base=$(git merge-base HEAD origin/main)
+          bash cad/klipper/repin.sh fixup "$base" 2>&1 | tee "$RUNNER_TEMP/fixup.log"
+          tail -1 "$RUNNER_TEMP/fixup.log" | grep -qx 'repin: fixup OK'
+      - name: Commit to the Renovate branch and start its checks
+        run: |
+          if git diff --quiet; then echo "renovate-fixup: nothing to change"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -qam "renovate-fixup: simulavr tree sha256, pip hashes, cad/tools.md (#224)"
+          git push -q origin "HEAD:$GITHUB_REF_NAME"
+          gh workflow run test-tmp.yml --ref "$GITHUB_REF_NAME"
+          gh workflow run kalico-batch.yml --ref "$GITHUB_REF_NAME"

@@ -17,6 +17,36 @@ def gplace(o):
     return (gplace(par) if par is not None else FreeCAD.Placement()).multiply(o.Placement)
 
 
+def group_parents(objects):
+    """{object Name: the container it sits in} for every object some container's Group lists. An object inside a
+    group inside an App::Part is listed in both Groups; its container is the innermost one (the group), so a path
+    walked up from it keeps every group. Taking the first container found instead dropped groups such as "Monolith
+    gantry" from export_meshes.py's paths, and the licence rules written on the part index's paths missed 267 parts
+    (vt350#220, lite-72). Pure Python over .Name / .Group: test_group_parents.py."""
+    cands = {}
+    for g in objects:
+        for k in (getattr(g, 'Group', []) or []): cands.setdefault(k.Name, []).append(g)
+
+    def above(g, seen=()):           # every container g sits in, transitively
+        r = set()
+        for c in cands.get(g.Name, []):
+            if c.Name not in seen and c.Name not in r: r |= {c.Name} | above(c, seen + (g.Name,))
+        return r
+
+    par = {}
+    for n, cs in cands.items():
+        inner = [c for c in cs if not any(c.Name in above(x) for x in cs if x is not c)]
+        par[n] = inner[0] if inner else cs[0]
+    return par
+
+
+def group_path(o, par):
+    """The labels of the containers o sits in, outermost first (par: group_parents())."""
+    r, q = [], par.get(o.Name)
+    while q is not None: r.append(q.Label); q = par.get(q.Name)
+    return list(reversed(r))
+
+
 def link_target(o):
     """What an App::Link finally points to (through chains of links); any other object itself."""
     return o.getLinkedObject(True) if o.TypeId == 'App::Link' else o

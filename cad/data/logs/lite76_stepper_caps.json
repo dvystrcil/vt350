@@ -1,0 +1,24 @@
+{
+ "_Stepper_stator": {
+  "seams_z": [
+   456.3,
+   486.7
+  ],
+  "lengths_low_mid_high": [
+   9.8,
+   30.4,
+   8.8
+  ]
+ },
+ "Motor_Body": {
+  "seams_z": [
+   -39.7,
+   -17.7
+  ],
+  "lengths_low_mid_high": [
+   8.8,
+   22.0,
+   9.8
+  ]
+ }
+}

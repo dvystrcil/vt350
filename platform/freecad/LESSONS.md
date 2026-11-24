@@ -166,6 +166,14 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
 
 ## Gotchas
 
+- **An object can sit in two Groups: walk up from the innermost one** (found 2026-11-19, lite-72, vt350#220). A part
+  inside a group inside an `App::Part` is listed in the group's `Group` **and** the App::Part's. A walk that takes the
+  first container it meets in `doc.Objects` (`par.setdefault(child, container)`) often gets the App::Part, and the
+  path loses the groups in between: `export_meshes.py` wrote `Voron Trident v4 / Front right` where the part index had
+  `Voron Trident v4 / Monolith gantry (…) / Front right`, so 510 parts' paths differed and the licence rules written on
+  the index's paths missed 267 of them. Use `linkgeo.group_parents()` + `group_path()` (the innermost container),
+  which both now share; tested in `test_group_parents.py`. Renders didn't change (no colour or selection rule names
+  the dropped groups), only the paths.
 - **Changing a linked part's shape: keep its Placement.** An `App::Link` applies its own placement to its target's
   geometry under the target's Placement. Setting `o.Shape` to a global-frame result (the usual `loc.Placement =
   container.inverse() * loc.Placement`) also rewrites `o.Placement`. The target still looks right, but every link to
@@ -257,3 +265,171 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
   rather than "same midpoint and length".
 - **Bed and top faces: compare with a tolerance of ~0.01 mm, not 1e-3**: a face's `CenterOfMass` along a tilted
   print direction (a cap printed on its 45 deg split face) came out 0.001 above the lowest vertex.
+- **Matching parts across two STEP files by size: a part's box is in world axes** (vt350#220, 2026-11-19). After
+  `Import.insert`, `Shape.BoundBox` includes the part's placement, so a part turned by anything but 90° (a T-nut
+  on a slanted clip) gets a bigger box than the same part upright in the other file, and a name + size match
+  misses it. Compare sorted box sizes, and also measure each STEP product in its own frame: walk the STEP text from
+  `PRODUCT` to its shape representation and take the box of its `VERTEX_POINT`s (plain python, no FreeCAD). That
+  box is short on curved faces (it holds no arc bulge), so accept a match when either measure agrees.
+- **A flat face after a boolean isn't always a `Plane`** (lite-72, 2026-11-19): lite-68's pad faces, made by
+  extruding, cutting and `removeSplitter()`, include flat faces whose `Surface` is not `Part.Plane`, so a filter on
+  `f.Surface.__class__.__name__ == "Plane"` found no top face on a 0.16 mm pad and `max()` raised. The STL showed the
+  face at once. To find a face at a height, test its vertices' heights (every vertex within ~1e-4 of it), not its
+  surface type.
+- **A designer's variant STEPs often share one frame: fit the variant you have, place the one you want** (lite-73,
+  vt350#263, 2026-11-19). DW-Tas's `main-body_<hotend>_*.step` files all have the same box and differ only round the
+  hotend pocket, so `dupes.fit(uhf_step_shape, model_body)` (a rigid move, checked vertex by vertex) gives the move that
+  puts `hex-main-body_DAV_*.step` exactly where the UHF body was, with no hole matching. Check the shared frame first
+  (equal boxes, the faces that differ all in one region).
+- **An assembly's parts can look mounted and not touch** (lite-73). lite-15 took the Dragon ACE stand-in, spacer and
+  screws from DW-Tas's `A4Tv2_assembly.step` as placed there; the spacer's top was 8.5 mm below the UHF body's pocket
+  ceiling, and every nozzle figure since was measured off a floating hotend. Box overlaps can't show a gap. Probe it:
+  vertical lines (`Part.makeLine(...).common(shape).Edges`) round the axis give each part's material along Z, so
+  "what is directly above the heat sink" is one number per line. Keep the lines off holes (at radius 8 on the
+  diagonals they ran down the screw holes and found nothing).
+
+## A pass that writes a derived file must accept that file in its post-merge state (2026-11-20, lite-73)
+
+A pass that re-exports a printed STL writes it even in a dry run, and the PR commits it. The owner's GUI save runs
+*after* the merge, so it sees the new STL, not the one the pass was written against. lite-73's precheck ("the
+committed carriage STL is today's carriage") passed in every dry run and failed the real save: NOT SAVED. Make such
+checks accept both states (before and already-done), and don't rewrite a derived file that's already current, so its
+sha256 keeps matching the manifest and the print projects. Also: passes read `VT350_REPO`, default `~/Code/vt350`. A
+dry run from a worktree reads and writes the **main checkout** unless you set `VT350_REPO=$PWD`.
+
+## A mirror by `transformGeometry` makes B-splines, and BoundBox lies about them (2026-11-20, lite-73 → lite-74)
+
+lite-73 cut the carriage's Beacon pocket deeper, then cut the Right Dock's copy of the carriage (`COMPOUND004`) with
+the same cut tool mirrored in X by `shape.transformGeometry(matrix)`. The cut landed in the right place, but
+`transformGeometry` turns planes into **B-spline faces**, and `BoundBox` overshoots on B-splines: the copy's box grew
+7.8 mm in Y with its volume unchanged. `sweep_toolhead.py` compares boxes, so it refused lite-73 ("dock carriage copy
+isn't the gantry carriage part"). `optimalBoundingBox` (`litelib.obb`) still agreed to 0.014. Four more things this
+fix taught us:
+
+- **Move rigidly with `transformShape`, `translate`, `rotate` or `mirror`, never `transformGeometry`**, which is for
+  scaling. `Shape.mirror(base, normal)` keeps exact planes; a mirror through `transformGeometry` also made each
+  `distToShape` take minutes.
+- **`Shape.translate` only changes `Shape.Placement`** (and `linkgeo.gshape` puts the global placement there too). Code
+  that then sets the shape's Placement, as every pass's "write in the object's own frame" step does, silently drops the
+  move. Bake first: `pl = s.Placement; s.Placement = FreeCAD.Placement(); s.transformShape(pl.toMatrix(), True, False)`.
+- **Booleans between near-coincident copies are useless** (`lite72_carriage.cut(lite73_carriage)` gave 16,600 mm³ for
+  a 25 mm³ cut). Compare such shapes by sample vertices and `distToShape` instead.
+- **A box check can't tell a mirror from a translation** of a part that's symmetric in X, as this carriage is. lite-74
+  checks the copy point by point against the carriage moved by the pickup offset.
+
+## A standoff's "top" depends on where you probe it: measure a ring (2026-11-21, lite-75)
+
+Placing the Pi 5 on its bracket, the first probe took the standoff top 1.3 mm from each pilot hole's axis: X 108.05.
+That point is on the chamfer round the hole. The flat top is X 108.100, from r 1.5 to 2.0, and the edge rounds off
+again at r 2.5 (107.7). Placed on 108.05, the board overlapped all four standoffs (1.98 mm³). Before seating a part on a
+boss, probe lines at several radii and angles round it (lite75_pi5.py: r 1.0..2.5, every 30°). Check that the radii you
+seat on are one plane on every boss, and that nothing is higher. The same probe showed the GrabCAD board it replaces sat
+0.75 mm inside those standoffs.
+
+## A STEP's colours: ImportGui keeps them, Import drops them, and the render takes one per object (2026-11-21, lite-75)
+
+- `Import.insert` (App only) imports a STEP's shapes without colours. In a GUI run, `ImportGui.insert` gives the part a
+  per-face `ShapeAppearance` (12,882 entries for the simplified Pi 5).
+- The render export (`platform/render/export_meshes.py`) colours each object by its first `ShapeAppearance` entry. One
+  25-solid feature rendered all one colour, so give each solid its own Part::Feature.
+- A solid's first face is not its colour: every first face of the Pi 5 was the STEP's light grey. Use the solid's most
+  common face colour.
+- Set the appearance **after** `doc.recompute()` and `Gui.updateGui()`. Before that, the new feature's first redraw
+  resets it to the default grey.
+- FreeCAD reads this STEP's PCB as grey and blue, not the green the file names (`COLOUR_RGB('Opaque(0,140,73)')`). A
+  `colours.json` role (by label, "PCB") is the dependable way to colour it.
+
+## Assigning `o.Shape` also sets `o.Placement` from the shape (2026-11-21, lite-76)
+
+`feature.Shape = g` copies `g.Placement` into `feature.Placement`. A shape moved into the object's frame (for example
+with `transformShape(gplace(o).inverse())`) has an identity Placement, so assigning it wipes the feature's own
+Placement. lite-76's first dry run put the A/B stepper 50 mm low that way. The Z motor came out right only because its
+Placement happened to be identity. Set `g.Placement = o.Placement` before assigning, with the geometry expressed in
+the frame of `o.Placement`.
+
+## Memory, not cores, sets a sweep's speed (2026-11-22, lite-77)
+
+The batch lane's refresh sweep took 1 h 58 min – 2 h 01 min for lite-75, 76 and 77 on a 32-thread server that was
+about 1% busy. Its log said `clashlib: 5 workers`. The pool sizes itself as
+`min(CPUs − 2, (free MB − reserve) ÷ MB per worker)`, and each worker opens its own copy of the model (2.8 GB budgeted
+per worker, 1 GB reserve), so the job's 16 GiB memory limit allowed 5 workers, half the CPU cap of 10. Adding CPUs
+would have changed nothing. The fix is memory: 30 GiB fits 10 (dvystrcil/gpu-batch#55). The laptop is the same:
+32 GB runs 4 workers on 12 threads.
+
+- When a long run feels slow, read the `N workers` line before anything else, and compare it with the cores.
+- In a container the limit that counts is the cgroup's (`memory.max`), not the host's `/proc/meminfo`.
+- Run times and recommended hardware for outside users: [`../HARDWARE.md`](../HARDWARE.md).
+
+## `import FreeCAD` works only in the AppImage's own Python (2026-11-22)
+
+`python3 platform/freecad/test_litelib.py` fails with `ModuleNotFoundError: No module named 'FreeCAD'` even with
+FreeCAD installed: the module lives inside the AppImage. Run any test that imports FreeCAD as
+`$APP freecadcmd $PWD/<test>` (test_litelib: 68 tests, test_logos: 10, both OK). A plain-python test that imports
+numpy/scipy (`cad/studies/flap_guide/test_rod.py`) is the opposite case: it needs the system's `python3-numpy` and
+`python3-scipy`, and under `freecadcmd` it exits 0 without running anything, because `unittest.main()` sits behind
+`if __name__ == "__main__"`. Don't read either failure as "needs an environment we don't have" until it has been
+tried in the right interpreter.
+
+
+## A swept tube's own Volume can be several % off; check a splice against its cut pieces
+
+vt350-lite-78 (vt350#291) lengthened lite-36's Bowden tubes (a B-spline sweep plus a short cylinder end, one closed
+shell, `isValid()` True) by cutting them across and filling the gap. The check "new volume = old volume + section x 17"
+failed by ~300 mm3 on an 8458 mm3 tube: `Shape.Volume` of the original was ~4 % high. The two cut pieces
+(`common()` with a box on each side of the cut) summed to 8137, and the result to that plus the fill, give or take
+~0.3 % (B-spline volume integration; a compound of the same pieces gave yet another figure, 8395).
+
+- Check a splice of a swept part against the sum of the pieces it was cut into, not against its original `Volume`,
+  and allow ~0.5 %.
+- Exact-volume checks (1e-5) still hold for prism-like parts (extrusions, boxes, panels): keep them there.
+
+## Rebuilding a part from the pass that made it loses every later retrofit (2026-11-23, lite-78)
+
+vt350-lite-78 (vt350#291) moved the nozzle-offset probe bracket by deleting it and rebuilding it with lite-61's code.
+That brought back lite-61's shape, which needs supports. lite-71 had already fixed it at the owner's request: the arm
+was carried down so the part prints on one flat face. The owner caught it in the preview STL.
+
+- Before rebuilding a part from its original pass, search the later passes for its label (`grep -l "<label>"
+  cad/passes/*.py`), and carry their changes into the rebuild. Better still, move the model's current part when the
+  change is a plain move.
+- Keep the later pass's check in the rebuild too (here: lite-71's "no face hangs" test), so the fix can't be lost again.
+
+## Rounding a printed part: build order, and the first-layer chamfer as a taper (2026-11-23, lite-78)
+
+The Mellow bracket (two plates and an arm, vt350#291) in the cast style (`parts/printed/README.md`): rounded, blended,
+mating faces flat, a 0.5 chamfer on the bed. What OCC (FreeCAD 26.3) would and wouldn't do:
+
+- **Order matters.** Fillet the arm's joins with the plates while the plates are still sharp prisms (with their outline
+  corners drawn in the 2D profile). Once a plate's rim is rounded, the same join fillets fail at every radius.
+- **A plate's rim as one tangent chain** (both sides, the R4 corner arcs and the top) rounds cleanly in one `makeFillet`.
+  Rounding the outline by intersecting rounded extrusions (side view x plan x front view) gives a crease at each
+  corner instead.
+- **The first-layer chamfer can't be an edge chamfer where a rim round runs down to the bed:** `makeChamfer` on those
+  bottom edges fails (4 of 24 per edge), and chamfering first makes the rim fillet invalid. Instead cut the bottom
+  0.5 mm off and fuse back the footprint face extruded 0.5 down with `Part::Extrusion` `TaperAngle = -45`: same result,
+  no edge operations.
+- **`Shape.BoundBox` is loose on fillet (B-spline) surfaces:** a "stays inside the box" test on it fails for nothing.
+  Use `optimalBoundingBox()`.
+- Pick edges by plane and position, never by index: every fillet renumbers them.
+
+## A pass's new group name must reach every list that sorts parts by group (2026-11-23, lite-78)
+
+lite-78 rebuilt the Mellow Zero and its bracket in a new group, "Nozzle offset probe, low on the bed edge (lite-78,
+#291)". The pass's own "bed-side" check used litelib's Z band and passed, but `sweep_toolhead.py` picks what rides
+with the bed from an exact set of group names, which still named lite-61's group. So the Z sweep took the Zero for a
+fixed part: the heater pad "landed" on it 8 mm down and print height fell from 334 to 100 mm. Found only at the
+refresh. Now the bed set also matches the prefix "Nozzle offset probe" (and so does `cad/viewer/licences.json`).
+Now there's one rule, `sweep_toolhead.rides_with_bed()`, and lite-78's pass checks its new parts with it, so the dry
+run catches this in minutes. A pass that adds bed parts should do the same. When a pass renames or regroups a part, grep the repo for the old group's label (`grep -rn "<old label>" --include=*.py
+--include=*.json`) and update each list in the same pass.
+
+## A GUI pass with no window, and a fair "before" render (2026-11-24, lite-79)
+
+- **A pass that needs the GUI (colours) can run without a window:** `PASS_GUI_NOTICE=none xvfb-run -a $APP <pass>.py`.
+  `xvfb-run` gives FreeCAD a virtual display, so `ViewObject` exists and colours are set and checked; `PASS_GUI_NOTICE=none`
+  skips the message box nobody would see to click (the outcome is still in the log). The process exits by itself.
+- **A render takes its colours from the checkout it runs in** (`VT350_REPO`: its `cad/render/colours.json`), not from the
+  model. Rendering the "before" model from the branch that changes `colours.json` shows the new colours on the old model.
+  For a fair before, export the old lite-N from main. lite-79's first "before" showed both parts already orange that way.
+- A part's colour in the FreeCAD file and in the renders can differ: the renders go by `colours.json` roles. lite-79's
+  camera housing was dark grey in the file and white in the renders.

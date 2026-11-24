@@ -1,0 +1,93 @@
+[   60.2s] model /home/dan/Documents/VT350/vt350-lite-77.FCStd (read-only); Beacon offsets tried: 27.4, 22, 20, 18, 17, 16, 15, 14, 13.5, 13, 12, 10 (today 27.4)
+[   60.2s] clashlib: 4 workers on vt350-lite-77.FCStd, 12 poses, job dir /tmp/clashlib-50x3qfbs
+[   87.7s] clashlib: done in 27.5s (load <= 3.8s, check <= 21.9s); 1512 pair-poses, 106 box hits, 11 overlaps > 0.01 mm3, 0 errors
+[   87.7s] clashlib: peak RSS: workers max 672 MB, sum 2461 MB; parent 17 MB
+[   87.7s] -- Left head carried: the Beacon body against 126 head parts
+[   87.7s]    y_offset  27.4: clear
+[   87.7s]    y_offset  22.0: clear
+[   87.7s]    y_offset  20.0: clear
+[   87.7s]    y_offset  18.0: clear
+[   87.7s]    y_offset  17.0: clear
+[   87.7s]    y_offset  16.0: clear
+[   87.7s]    y_offset  15.0: clear
+[   87.7s]    y_offset  14.0: TL-dragon-ace-MZE sock x Beacon RevH Normal (Beacon CAD, MIT) 11.5 mm3
+[   87.7s]    y_offset  13.5: TL-dragon-ace-MZE sock x Beacon RevH Normal (Beacon CAD, MIT) 22.1 mm3
+[   87.7s]    y_offset  13.0: TL-dragon-ace-MZE sock x Beacon RevH Normal (Beacon CAD, MIT) 33.3 mm3; TL-dragon-ace-MZE x Beacon RevH Normal (Beacon CAD, MIT) 1.5 mm3
+[   87.7s]    y_offset  12.0: TL-dragon-ace-MZE sock x Beacon RevH Normal (Beacon CAD, MIT) 54.4 mm3; TL-dragon-ace-MZE x Beacon RevH Normal (Beacon CAD, MIT) 8.5 mm3; Plate x Beacon RevH Normal (Beacon CAD, MIT) 0.6 mm3
+[   87.7s]    y_offset  10.0: TL-dragon-ace-MZE sock x Beacon RevH Normal (Beacon CAD, MIT) 83.9 mm3; TL-dragon-ace-MZE nozzle (brass V6) x Beacon RevH Normal (Beacon CAD, MIT) 24.9 mm3; Plate x Beacon RevH Normal (Beacon CAD, MIT) 21.0 mm3 (+1 more)
+[   87.7s]    Left: smallest clear offset tried: 15.0
+[   87.7s] clashlib: 4 workers on vt350-lite-77.FCStd, 12 poses, job dir /tmp/clashlib-j5w13pkx
+[  115.1s] clashlib: done in 27.4s (load <= 3.7s, check <= 21.7s); 1512 pair-poses, 106 box hits, 11 overlaps > 0.01 mm3, 0 errors
+[  115.1s] clashlib: peak RSS: workers max 689 MB, sum 2508 MB; parent 17 MB
+[  115.1s] -- Right head carried: the Beacon body against 126 head parts
+[  115.1s]    y_offset  27.4: clear
+[  115.1s]    y_offset  22.0: clear
+[  115.1s]    y_offset  20.0: clear
+[  115.1s]    y_offset  18.0: clear
+[  115.1s]    y_offset  17.0: clear
+[  115.1s]    y_offset  16.0: clear
+[  115.1s]    y_offset  15.0: clear
+[  115.1s]    y_offset  14.0: TL-dragon-ace-MZE sock001 x Beacon RevH Normal (Beacon CAD, MIT) 11.5 mm3
+[  115.1s]    y_offset  13.5: TL-dragon-ace-MZE sock001 x Beacon RevH Normal (Beacon CAD, MIT) 22.1 mm3
+[  115.1s]    y_offset  13.0: TL-dragon-ace-MZE sock001 x Beacon RevH Normal (Beacon CAD, MIT) 33.3 mm3; TL-dragon-ace-MZE001 x Beacon RevH Normal (Beacon CAD, MIT) 1.5 mm3
+[  115.1s]    y_offset  12.0: TL-dragon-ace-MZE sock001 x Beacon RevH Normal (Beacon CAD, MIT) 54.4 mm3; TL-dragon-ace-MZE001 x Beacon RevH Normal (Beacon CAD, MIT) 8.5 mm3; Plate(Mirror) x Beacon RevH Normal (Beacon CAD, MIT) 0.6 mm3
+[  115.1s]    y_offset  10.0: TL-dragon-ace-MZE sock001 x Beacon RevH Normal (Beacon CAD, MIT) 83.9 mm3; TL-dragon-ace-MZE nozzle (brass V6)001 x Beacon RevH Normal (Beacon CAD, MIT) 24.9 mm3; Plate(Mirror) x Beacon RevH Normal (Beacon CAD, MIT) 21.0 mm3 (+1 more)
+[  115.1s]    Right: smallest clear offset tried: 15.0
+[  141.1s] keep-out: coil axis X -245.00 Y 252.66; keep-out Z 387.59..407.59, radius 9.37 at its widest
+[  141.1s] -- Left head carried: parts inside Beacon's keep-out solid (its STEP: no metal there)
+[  141.1s]    y_offset  27.4: Plate 203.9 mm3
+[  141.1s]    y_offset  22.0: Plate 226.3 mm3
+[  141.1s]    y_offset  20.0: Plate 210.0 mm3
+[  141.1s]    y_offset  18.0: Plate 176.1 mm3
+[  141.1s]    y_offset  17.0: Plate 147.8 mm3
+[  141.1s]    y_offset  16.0: Plate 102.6 mm3
+[  141.1s]    y_offset  15.0: Plate 59.8 mm3; TL-dragon-ace-MZE sock 5.2 mm3
+[  141.1s]    y_offset  14.0: TL-dragon-ace-MZE sock 28.7 mm3; Plate 24.7 mm3; TL-dragon-ace-MZE 0.6 mm3
+[  141.1s]    y_offset  13.5: TL-dragon-ace-MZE sock 40.7 mm3; Plate 11.3 mm3; TL-dragon-ace-MZE 3.2 mm3
+[  141.1s]    y_offset  13.0: TL-dragon-ace-MZE sock 51.0 mm3; TL-dragon-ace-MZE 9.2 mm3; Heat Block (stand-in) 5.6 mm3; Plate 2.0 mm3
+[  141.1s]    y_offset  12.0: Heat Block (stand-in) 87.6 mm3; TL-dragon-ace-MZE sock 67.0 mm3; TL-dragon-ace-MZE 35.6 mm3
+[  141.1s]    y_offset  10.0: TL-dragon-ace-MZE sock 93.2 mm3; TL-dragon-ace-MZE nozzle (brass V6) 19.5 mm3
+[  141.1s] -- Right head carried: parts inside Beacon's keep-out solid (its STEP: no metal there)
+[  141.1s]    y_offset  27.4: Plate(Mirror) 203.9 mm3
+[  141.1s]    y_offset  22.0: Plate(Mirror) 226.3 mm3
+[  141.1s]    y_offset  20.0: Plate(Mirror) 210.0 mm3
+[  141.1s]    y_offset  18.0: Plate(Mirror) 176.1 mm3
+[  141.1s]    y_offset  17.0: Plate(Mirror) 147.8 mm3
+[  141.1s]    y_offset  16.0: Plate(Mirror) 102.6 mm3
+[  141.1s]    y_offset  15.0: Plate(Mirror) 59.8 mm3; TL-dragon-ace-MZE sock001 5.2 mm3
+[  141.1s]    y_offset  14.0: TL-dragon-ace-MZE sock001 28.7 mm3; Plate(Mirror) 24.7 mm3; TL-dragon-ace-MZE001 0.6 mm3
+[  141.1s]    y_offset  13.5: TL-dragon-ace-MZE sock001 40.7 mm3; Plate(Mirror) 11.3 mm3; TL-dragon-ace-MZE001 3.2 mm3
+[  141.1s]    y_offset  13.0: TL-dragon-ace-MZE sock001 51.0 mm3; TL-dragon-ace-MZE001 9.2 mm3; Heat Block001 (stand-in) 5.6 mm3; Plate(Mirror) 2.0 mm3
+[  141.1s]    y_offset  12.0: Heat Block001 (stand-in) 87.6 mm3; TL-dragon-ace-MZE sock001 67.0 mm3; TL-dragon-ace-MZE001 35.6 mm3
+[  141.1s]    y_offset  10.0: TL-dragon-ace-MZE sock001 93.2 mm3; TL-dragon-ace-MZE nozzle (brass V6)001 19.5 mm3
+[  141.1s] clashlib: 4 workers on vt350-lite-77.FCStd, 26 poses, job dir /tmp/clashlib-akdysyqv
+[  181.7s] clashlib: done in 40.6s (load <= 3.9s, check <= 34.5s); 4663776 pair-poses, 212 box hits, 0 overlaps > 0.01 mm3, 0 errors
+[  181.7s] clashlib: peak RSS: workers max 964 MB, sum 3647 MB; parent 17 MB
+[  181.7s] -- docking, the Beacon at y_offset 15: 26 poses against 708 parts in the dock zone (both heads, the docks, the bed-edge probe)
+[  181.7s]    Left: dock pickup, top: clear
+[  181.7s]    Left: dock pickup at the large opening, top: clear
+[  181.7s]    Left: dock pickup, bottom: clear
+[  181.7s]    Left: dock pickup at the large opening, bottom: clear
+[  181.7s]    Right: dock pickup, top: clear
+[  181.7s]    Right: dock pickup at the large opening, top: clear
+[  181.7s]    Right: dock pickup, bottom: clear
+[  181.7s]    Right: dock pickup at the large opening, bottom: clear
+[  181.7s]    bare carriage, shuttle X 4: clear
+[  181.7s]    bare carriage, shuttle X 24: clear
+[  181.7s]    bare carriage, shuttle X 44: clear
+[  181.7s]    bare carriage, shuttle X 64: clear
+[  181.7s]    bare carriage, shuttle X 84: clear
+[  181.7s]    bare carriage, shuttle X 105: clear
+[  181.7s]    bare carriage, shuttle X 125: clear
+[  181.7s]    bare carriage, shuttle X 145: clear
+[  181.7s]    bare carriage, shuttle X 165: clear
+[  181.7s]    bare carriage, shuttle X 185: clear
+[  181.7s]    bare carriage, shuttle X 205: clear
+[  181.7s]    bare carriage, shuttle X 225: clear
+[  181.7s]    bare carriage, shuttle X 245: clear
+[  181.7s]    bare carriage, shuttle X 266: clear
+[  181.7s]    bare carriage, shuttle X 286: clear
+[  181.7s]    bare carriage, shuttle X 306: clear
+[  181.7s]    bare carriage, shuttle X 326: clear
+[  181.7s]    bare carriage, shuttle X 346: clear
+[  181.7s] done (read-only, nothing saved)

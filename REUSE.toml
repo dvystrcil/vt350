@@ -30,6 +30,12 @@ SPDX-FileCopyrightText = "zruncho3d and the MadMax contributors"
 SPDX-License-Identifier = "GPL-3.0-only"
 
 [[annotations]]
+path = "cad/klipper/squiggly-purge/**"
+precedence = "override"
+SPDX-FileCopyrightText = "mjonuschat (voron-mods)"
+SPDX-License-Identifier = "GPL-3.0-only"
+
+[[annotations]]
 path = "platform/klipper/frontends/**"
 precedence = "override"
 SPDX-FileCopyrightText = "Alex Zellner and the Fluidd / Mainsail contributors"
@@ -60,6 +66,12 @@ SPDX-FileCopyrightText = "Lorincz Electronics (Orbiter-Toolboards)"
 SPDX-License-Identifier = "CC0-1.0"
 
 [[annotations]]
+path = "cad/library/hotend/melt-zone-extender/trianglelab-mze-robertsamples/**"
+precedence = "override"
+SPDX-FileCopyrightText = ["Robert Samples (Trianglelab MZE w/sock)", "Bolado (MZE DLC V6 Melt Zone Extender)"]
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
 path = "parts/printed/ldo-monolith/**"
 precedence = "override"
 SPDX-FileCopyrightText = "Monolith3D"
@@ -79,3 +91,54 @@ path = ["cad/derived/a4tv2-duct-4010-madmax-dock/**", "parts/printed/vt350/a4tv2
 precedence = "override"
 SPDX-FileCopyrightText = ["DW-Tas", "2026 Daniel Vystrcil"]
 SPDX-License-Identifier = "CC-BY-NC-SA-4.0"
+
+# The parts library (vt350#268, cad/library/README.md): each entry's source.json records its source and licence, and
+# platform/library/check_library.py --reuse fails when a committed file's label here differs from it.
+[[annotations]]
+path = "cad/library/electronics/raspberry-pi-5/simplified-mandache/*.step"
+precedence = "override"
+SPDX-FileCopyrightText = ["Eduard Mandache (Raspberry Pi 5 simplified model)", "Raspberry Pi Ltd"]
+SPDX-License-Identifier = "CC-BY-SA-4.0"
+
+# Upstream's licence file for a no-file entry (vt350#268 Q6). reuse lint skips LICENSE* files, so this label is for
+# check_library.py --reuse, which compares it with the entry's source.json.
+[[annotations]]
+path = "cad/library/electronics/raspberry-pi-5/official-raspberry-pi/LICENSE.txt"
+precedence = "override"
+SPDX-FileCopyrightText = "Raspberry Pi Ltd"
+SPDX-License-Identifier = "MIT"
+
+# The OrcaSlicer print projects (#217): one per work unit, bundling the printed parts' meshes, so each 3MF carries the
+# licences of the parts it holds (parts/slice/projects/index.json lists them per project; the index itself is the repo
+# default). `orca_projects.py --check --reuse REUSE.toml` (CI) fails when a project has no label of its own here or
+# its label misses a licence of its parts (#278).
+[[annotations]]
+path = "parts/slice/projects/jigs.3mf"
+precedence = "override"
+SPDX-FileCopyrightText = "Voron Design"
+SPDX-License-Identifier = "GPL-3.0-only"
+
+[[annotations]]
+path = "parts/slice/projects/door.3mf"
+precedence = "override"
+SPDX-FileCopyrightText = "tanaes (whopping_Voron_mods)"
+SPDX-License-Identifier = "GPL-3.0-only"
+
+[[annotations]]
+path = "parts/slice/projects/kinematics.3mf"
+precedence = "override"
+SPDX-FileCopyrightText = ["Voron Design", "zruncho3d and the MadMax contributors", "Monolith3D"]
+SPDX-License-Identifier = "GPL-3.0-only AND CC-BY-NC-SA-4.0"
+
+[[annotations]]
+path = "parts/slice/projects/toolhead.3mf"
+precedence = "override"
+SPDX-FileCopyrightText = ["andrewmcgr", "zruncho3d and the MadMax contributors", "DW-Tas",
+                          "Lorincz Electronics (Orbiter-Toolboards)", "2026 Daniel Vystrcil"]
+SPDX-License-Identifier = "GPL-3.0-only AND CC-BY-NC-SA-4.0 AND CC0-1.0"
+
+[[annotations]]
+path = "parts/slice/projects/ebox.3mf"
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Daniel Vystrcil"
+SPDX-License-Identifier = "GPL-3.0-or-later"

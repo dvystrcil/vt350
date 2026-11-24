@@ -1,0 +1,19 @@
+{
+ "sheet": {
+  "label": "PEI spring-steel sheet (1.0 mm)",
+  "thickness": 1.0,
+  "x": [
+   -422.5,
+   -67.5
+  ],
+  "y": [
+   28.0,
+   383.0
+  ],
+  "z": [
+   287.16060992516265,
+   288.16060992516265
+  ]
+ },
+ "mellow_ball_top_above_surface": 9.0
+}

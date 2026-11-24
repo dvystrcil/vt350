@@ -19,6 +19,10 @@ jobs:
         run: python3 cad/scripts/test_derive_stls.py 2>&1 | tee test-derive.log
       - name: Confirm every derive_stls test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-derive.log && tail -1 test-derive.log | grep -qx 'OK'
+      - name: Test the outcome a pass shows when it ends (outcome.py, #280; plain python3)
+        run: python3 platform/freecad/test_outcome.py 2>&1 | tee test-outcome.log
+      - name: Confirm every outcome test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-outcome.log && tail -1 test-outcome.log | grep -qx 'OK'
       - name: Test the check workers' pool and worker count (litepool, #45; plain python3 workers)
         run: python3 platform/freecad/test_litepool.py 2>&1 | tee test-litepool.log
       - name: Confirm every litepool test ran
@@ -39,10 +43,26 @@ jobs:
         run: python3 cad/studies/test_sweep_toolhead.py 2>&1 | tee test-sweep.log
       - name: Confirm every sweep_toolhead test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-sweep.log && tail -1 test-sweep.log | grep -qx 'OK'
+      - name: Test the front-reach bisection and box filter (front_reach, #291; no FreeCAD)
+        run: python3 cad/studies/test_front_reach.py 2>&1 | tee test-front-reach.log
+      - name: Confirm every front_reach test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-front-reach.log && tail -1 test-front-reach.log | grep -qx 'OK'
+      - name: Test the Beacon coverage map (front_reach_map, #291; committed SVG current)
+        run: python3 cad/studies/test_front_reach_map.py 2>&1 | tee test-front-reach-map.log
+      - name: Confirm every front_reach_map test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-front-reach-map.log && tail -1 test-front-reach-map.log | grep -qx 'OK'
+      - name: Test the Beacon offset study's pose maths (beacon_offset, #291; no FreeCAD)
+        run: python3 cad/studies/test_beacon_offset.py 2>&1 | tee test-beacon-offset.log
+      - name: Confirm every beacon_offset test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-beacon-offset.log && tail -1 test-beacon-offset.log | grep -qx 'OK'
       - name: Test the dock-row analysis (dock_layout, #19 AC2; no FreeCAD)
         run: python3 cad/studies/test_dock_layout.py 2>&1 | tee test-dock.log
       - name: Confirm every dock_layout test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-dock.log && tail -1 test-dock.log | grep -qx 'OK'
+      - name: Test the Mellow bed-edge reach study (mellow_edge_reach, #291; no FreeCAD)
+        run: python3 cad/studies/test_mellow_edge_reach.py 2>&1 | tee test-mellow-edge.log
+      - name: Confirm every mellow_edge_reach test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-mellow-edge.log && tail -1 test-mellow-edge.log | grep -qx 'OK'
       - name: Test the serial-vs-parallel proof runner (prove_parallel, #45; fake freecadcmd)
         run: python3 cad/studies/test_prove_parallel.py 2>&1 | tee test-prove.log
       - name: Confirm every prove_parallel test ran
@@ -71,6 +91,10 @@ jobs:
         run: python3 platform/freecad/test_part_index.py 2>&1 | tee test-part-index.log
       - name: Confirm every part_index test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-part-index.log && tail -1 test-part-index.log | grep -qx 'OK'
+      - name: Test the group paths shared by the part index and the render export (linkgeo.group_parents, #220)
+        run: python3 platform/freecad/test_group_parents.py 2>&1 | tee test-group-parents.log
+      - name: Confirm every group_parents test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-group-parents.log && tail -1 test-group-parents.log | grep -qx 'OK'
       - name: Install numpy + scipy for the cable rod models (flap_guide, lanyard)
         run: python3 -m pip install --user --break-system-packages numpy scipy
       - name: Test the flap + guide cable rod model (gradients, catenary, segment distance; #3)

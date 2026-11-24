@@ -1,0 +1,45 @@
+{
+ "title": "VT350 · Left head on the",
+ "title_accent": "MadMax carriage",
+ "model": "lite-72",
+ "cam": {
+  "pos": [
+   -102.889,
+   -105.472,
+   633.777
+  ],
+  "look": [
+   -246.729,
+   234.784,
+   465.138
+  ],
+  "lens_mm": 35.0
+ },
+ "compare_alt": "Cycles render of the same toolhead and carriage, seen from the front right and above",
+ "caption": "Blender Cycles, the same export and colour map, AgX Punchy look and less shiny plastic at −1.4 EV, 35 mm lens from the front right and above. It's a still picture: the live view on the left is the one you can turn.",
+ "about": "A4Tv2 toolhead with Orbiter 2.5, Smart Sensor and Orbitool O2S, on the MadMax plate and the gantry carriage with its Beacon (vt350#220). Colours are the render colour map's.",
+ "credits": "Parts: A4Tv2 and Orbiter (CC BY-NC-SA 4.0, DW-Tas / Orbiter Projects), MadMax carriage, plate and clips (GPL-3.0, zruncho3d, andrewmcgr), Beacon RevH (MIT, Beacon3D), O2S and Smart Sensor (CC0-1.0, Lorincz Electronics); blowers modelled from measurements. Each part keeps its licence; non-commercial use only.",
+ "links": [
+  {
+   "href": "index.html",
+   "text": "All reference pages"
+  },
+  {
+   "href": "https://github.com/dvystrcil/vt350/blob/main/CREDITS.md",
+   "text": "Credits and licences"
+  },
+  {
+   "href": "toolhead-turntable.html",
+   "text": "Turntable of real renders"
+  },
+  {
+   "href": "https://github.com/DW-Tas/A4Tv2",
+   "text": "A4Tv2 (DW-Tas)"
+  },
+  {
+   "href": "https://github.com/zruncho3d/madmax",
+   "text": "MadMax (zruncho3d)"
+  }
+ ],
+ "glb": "vt350-lite-72-toolhead-viewer-7d2ccaa3.glb"
+}

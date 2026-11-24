@@ -1,0 +1,135 @@
+{
+	"adaptive_pressure_advance_bridges": [
+		"0.023"
+	],
+	"adaptive_pressure_advance_model": [
+		""
+	],
+	"adaptive_pressure_advance_overhangs": [
+		"1"
+	],
+	"chamber_temperature": [
+		"60"
+	],
+	"close_fan_the_first_x_layers": [
+		"1"
+	],
+	"complete_print_exhaust_fan_speed": [
+		"100"
+	],
+	"dont_slow_down_outer_wall": [
+		"1"
+	],
+	"enable_pressure_advance": [
+		"1"
+	],
+	"fan_cooling_layer_time": [
+		"25"
+	],
+	"fan_max_speed": [
+		"10"
+	],
+	"filament_cooling_final_speed": [
+		"0"
+	],
+	"filament_cooling_initial_speed": [
+		"0"
+	],
+	"filament_cooling_moves": [
+		"0"
+	],
+	"filament_cost": [
+		"22.99"
+	],
+	"filament_density": [
+		"1.08"
+	],
+	"filament_extruder_variant": [
+		"Direct Drive Standard"
+	],
+	"filament_flow_ratio": [
+		"0.9497"
+	],
+	"filament_loading_speed": [
+		"0"
+	],
+	"filament_loading_speed_start": [
+		"0"
+	],
+	"filament_max_volumetric_speed": [
+		"27"
+	],
+	"filament_minimal_purge_on_wipe_tower": [
+		"0"
+	],
+	"filament_multitool_ramming_flow": [
+		"0"
+	],
+	"filament_multitool_ramming_volume": [
+		"0"
+	],
+	"filament_retract_when_changing_layer": [
+		"0"
+	],
+	"filament_settings_id": [
+		"Ambrosia ASA - warmer"
+	],
+	"filament_shrink": [
+		"99.6%"
+	],
+	"filament_start_gcode": [
+		"; Filament gcode\nSET_GCODE_OFFSET Z=0.145\nMPC_SET HEATER=extruder FILAMENT_DENSITY=[filament_density] FILAMENT_HEAT_CAPACITY=1.8\n"
+	],
+	"filament_unloading_speed": [
+		"0"
+	],
+	"filament_unloading_speed_start": [
+		"0"
+	],
+	"filament_vendor": [
+		"Ambrosia"
+	],
+	"from": "User",
+	"hot_plate_temp": [
+		"110"
+	],
+	"hot_plate_temp_initial_layer": [
+		"110"
+	],
+	"inherits": "Generic ASA @Elegoo",
+	"name": "Ambrosia ASA - warmer",
+	"nozzle_temperature_range_high": [
+		"260"
+	],
+	"nozzle_temperature_range_low": [
+		"230"
+	],
+	"pressure_advance": [
+		"0.028"
+	],
+	"reduce_fan_stop_start_freq": [
+		"0"
+	],
+	"slow_down_layer_time": [
+		"5"
+	],
+	"slow_down_min_speed": [
+		"25"
+	],
+	"supertack_plate_temp": [
+		"90"
+	],
+	"supertack_plate_temp_initial_layer": [
+		"90"
+	],
+	"temperature_vitrification": [
+		"88"
+	],
+	"textured_plate_temp": [
+		"110"
+	],
+	"textured_plate_temp_initial_layer": [
+		"110"
+	],
+	"version": "2.3.0.3"
+}

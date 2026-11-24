@@ -25,7 +25,7 @@
 #  - the carried head's own bowden tube (a rigid route from its docked pose; the parked head's tube stays in, fixed).
 # USB cables are not in the model.
 # Poses per head: nozzle at the 4 corners of the 350 print square (plate inset 2.5 mm; rear clamped to the gantry's Y
-# reach) + the centre, each with the bed at the top (magnet sheet at the nozzle tip: Z0, no steel sheet modelled) and
+# reach) + the centre, each with the bed at the top (the print surface at the nozzle tip: Z0; the PEI sheet from lite-77) and
 # at the bottom; plus the head's own dock pickup at both bed heights, at the parked position and at the keyslots'
 # large opening (SLIDE forward: the attach move, #52); plus the saved model pose (baseline).
 import json, os, subprocess, sys, time
@@ -35,7 +35,13 @@ MODEL = os.environ.get("VT350_MODEL", "/home/dan/Documents/VT350/vt350-lite-26.F
 HERE = os.path.abspath(__file__)
 _HERE = os.path.dirname(HERE)    # then the checkout's code folders (vt350#122); a gpu-batch pod stages all flat in _HERE
 sys.path[:0] = [_HERE] + [p for p in (os.path.join(os.path.dirname(os.path.dirname(_HERE)), d) for d in ("cad/scripts", "platform/freecad")) if os.path.isdir(p)]
-Y_TRAVEL = (-277.19, 145.43)           # gantry dY limits, lite9_rails.log (joint/mount hard stops; Z moves since keep them)
+# gantry dY limits, lite9_rails.log (joint/mount hard stops; Z moves since keep them). lite-78 (vt350#291) moved the
+# front rail mounts -17 (the rear stay): the front stop -277.19 -> -294.19. For lite-77 or older: SWEEP_Y_STRETCH=-17,0
+Y_TRAVEL = (-294.19, 145.43)
+# SWEEP_Y_STRETCH="front,rear" (mm, vt350#291): a what-if for a deeper frame: the front and rear rail mounts moved out
+# by those amounts, so the hard stops move with them. Studies only; a lite-N pass makes it real.
+_STRETCH = [float(v) for v in os.environ.get("SWEEP_Y_STRETCH", "0,0").split(",")]
+Y_TRAVEL = (Y_TRAVEL[0] - _STRETCH[0], Y_TRAVEL[1] + _STRETCH[1])
 PLATE_X0, PLATE_Y0, PLATE_W, PRINT_W = -422.5, 28.0, 355.0, 350.0
 # Tool side of each dock: the MadMax plate + Plate Back (the brackets were removed in lite-23).
 HEADS = {"Left": dict(group="Left Toolhead", dock="Left Dock", tube="Bowden Left", copy="COMPOUND003",
@@ -52,14 +58,28 @@ BED_PATHS = {"Bed frame", "Z_Bed_Left", "Z_Bed_Right", "Z_Bed_Rear", "Z_Carriage
              "Z_Carriage_Rear_2-hole (IGUS)", "Z_Carriage_Rear_3-Hole (Generic)", "MGN9H (2)", "MGN9H (3)",
              "MGN9H (4)", "kinematic bed mount v1",
              "Nozzle offset probe (lite-61, #186)"}    # bolted to the bed frame's front edge: rides with the bed
-BED_LABEL_PREFIX = ("LDO 350 build plate", "Magnetic sheet", "Heater pad")
+# any group whose label starts so rides with the bed too: each probe pass names its own group (lite-78's
+# "Nozzle offset probe, low on the bed edge (lite-78, #291)" was missed by the exact set above, and the Z sweep
+# took it for a fixed part the heater pad landed on 8 mm down)
+BED_PATH_PREFIX = ("Nozzle offset probe",)
+
+
+def rides_with_bed(path_labels, label):
+    """True if a leaf (its own label, and the labels of the groups above it) moves with the bed in the sweeps. The one
+    rule: the Z sweep, the toolhead sweep and the passes' own checks all ask this (lite-78's probe group was missed by
+    a second, different rule in its pass, and only the 2-hour refresh showed it)."""
+    path_labels = set(path_labels)
+    return bool(path_labels & BED_PATHS or any(q.startswith(BED_PATH_PREFIX) for q in path_labels)
+                or label.startswith(BED_LABEL_PREFIX) or label in BED_LOOSE)
+BED_LABEL_PREFIX = ("LDO 350 build plate", "Magnetic sheet", "Heater pad", "PEI spring-steel sheet")
+SHEET = "PEI spring-steel sheet"   # the print surface since lite-77; before it, the magnet sheet was
 BED_LOOSE = ("M5x16-Screw001", "M5-Washer001")       # bed-frame bolt filed under the frame (lite-10 found it)
 GANTRY_PATHS = {"XY left: _XY_left", "XY right: _XY_right", "Gantry assembly"}
 GANTRY_LABELS = ("Carbonara CF X beam 20x20 430",)
 CARRIAGE_PATHS = {"Carriage (1)"}
 CARRIAGE_LABELS = ("MGN_12_H_CARRAGE v1",)
 EXCLUDE_PATHS = {"10x11 Chain Z"}
-NOZZLE = "E3D v6 HotEnd - Nozzle"
+NOZZLE = ("TL-dragon-ace-MZE nozzle (brass V6)", "E3D v6 HotEnd - Nozzle")   # lite-73+ (MZE assembly), lite-72 and older
 
 
 # ------------------------------------------------------------------------------------------------ stage 1: plan
@@ -120,7 +140,7 @@ def plan(out):
         dock_copies += [o.Name for o in leaves if d["dock"] in P[o.Name] and ("Carriage" in P[o.Name] or "Carriage(Mirror)" in P[o.Name])]
     dock_copies = sorted(set(dock_copies))
     exclude = sorted(set([o.Name for o in leaves if P[o.Name] & EXCLUDE_PATHS] + dock_copies))
-    bed = [o.Name for o in leaves if (P[o.Name] & BED_PATHS or o.Label.startswith(BED_LABEL_PREFIX) or o.Label in BED_LOOSE)]
+    bed = [o.Name for o in leaves if rides_with_bed(P[o.Name], o.Label)]
     gantry = [o.Name for o in leaves if P[o.Name] & GANTRY_PATHS or o.Label in GANTRY_LABELS]
     carriage = [o.Name for o in leaves if P[o.Name] & CARRIAGE_PATHS or o.Label in CARRIAGE_LABELS]
     beacon = [o for o in leaves if o.Label.startswith(BEAM)]
@@ -166,8 +186,12 @@ def plan(out):
         if len(nz) != 1: raise RuntimeError(f"{h}: {len(nz)} nozzles")
         b = bb(nz[0]); nozzles[h] = ((b.XMin + b.XMax) / 2, (b.YMin + b.YMax) / 2, b.ZMin)
         notes.append(f"{h}: docked nozzle tip ({nozzles[h][0]:.2f}, {nozzles[h][1]:.2f}, {nozzles[h][2]:.2f})")
-    # bed travel: top = magnet sheet at the nozzle tip; bottom = first bed solid to land on a fixed solid below it
-    mag = bb(one("Magnetic sheet (1.4 mm)"))
+    # bed travel: top = the print surface at the nozzle tip (the PEI sheet from lite-77, the magnet sheet before);
+    # bottom = first bed solid to land on a fixed solid below it
+    sheet = [o for o in leaves if o.Label.startswith(SHEET)]
+    if len(sheet) > 1: raise RuntimeError(f"{len(sheet)} solids labelled {SHEET!r}...")
+    mag = bb(sheet[0]) if sheet else bb(one("Magnetic sheet (1.4 mm)"))
+    surface = "PEI sheet" if sheet else "magnet"
     bedset, movset = set(bed), set(allg) | set(exclude)
     fixed = [o for o in leaves if o.Name not in movset]
     land = []
@@ -191,7 +215,7 @@ def plan(out):
     dz_bottom, note = bed_bottom(land, BED_LOWEST_DZ, BED_FLOOR_DZ)
     notes.append(note)
     # poses
-    poses, meta = {}, {}
+    poses, meta, carried = {}, {}, {}
     x_lo, x_hi = PLATE_X0 + (PLATE_W - PRINT_W) / 2, PLATE_X0 + (PLATE_W + PRINT_W) / 2
     y_lo, y_hi = PLATE_Y0 + (PLATE_W - PRINT_W) / 2, PLATE_Y0 + (PLATE_W + PRINT_W) / 2
     for h in HEADS:
@@ -200,8 +224,9 @@ def plan(out):
         dz_top = tip_z - mag.ZMax
         y_reach = ny + Y_TRAVEL[1] - ty                    # nozzle Y with the gantry at its rear stop
         y_front = ny + Y_TRAVEL[0] - ty
-        notes.append(f"{h} carried: nozzle tip Z {tip_z:.2f}; bed top dZ {dz_top:+.2f} (magnet top {mag.ZMax:.2f} -> "
+        notes.append(f"{h} carried: nozzle tip Z {tip_z:.2f}; bed top dZ {dz_top:+.2f} ({surface} top {mag.ZMax:.2f} -> "
                      f"{mag.ZMax + dz_top:.2f}); nozzle Y reach {y_front:.2f} .. {y_reach:.2f} (print square Y {y_lo:.1f} .. {y_hi:.1f})")
+        carried[h] = dict(nozzle=nozzles[h], T=T[h], dz_top=dz_top, square=(x_lo, y_lo, x_hi, y_hi))
         poses[h] = {}
         def add(pid, nozzle_xy, dz, what, slide=0.0):
             if nozzle_xy is None:
@@ -230,7 +255,13 @@ def plan(out):
                 tc = (x - nx + tx, (y_lo + y_hi) / 2 - ny + ty, 0.0)
                 xs[pid] = {"gantry": (0, tc[1], 0), "belt": (0, tc[1], 0), "carriage": tc, "head": (tc[0] - tx, tc[1] - ty, tc[2] - tz)}
         poses[h + " X scan"] = xs
-    json.dump(dict(bed=bed, gantry=gantry, belt=belts, carriage=carriage, heads=heads, tool=tool, exclude=exclude, dock_copies=dock_copies,
+    boxes = {}
+    if os.environ.get("SWEEP_BOXES"):                     # front_reach.py (#291): every leaf's box, to pick what a head can hit
+        ex = set(exclude)
+        for o in leaves:
+            if o.Name not in ex:
+                b = bb(o); boxes[o.Name] = [b.XMin, b.YMin, b.ZMin, b.XMax, b.YMax, b.ZMax]
+    json.dump(dict(carried=carried, boxes=boxes, bed=bed, gantry=gantry, belt=belts, carriage=carriage, heads=heads, tool=tool, exclude=exclude, dock_copies=dock_copies,
                    tubes={h: t.Name for h, t in tubes.items()}, poses=poses, meta=meta, notes=notes, labels=lab),
               open(out, "w"))
 

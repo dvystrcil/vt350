@@ -1,0 +1,163 @@
+[   65.4s] model /home/dan/Documents/VT350/vt350-lite-77.FCStd (read-only)
+[   65.4s] WHAT-IF: frame 17 mm deeper at the front, 0 at the rear (Y travel -294.19 .. 145.43); the Mellow left out; Beacon y_offset 15
+[   65.4s] Left carried (Right and the slot heads docked): swept box X -454.1..-39.4 Y -26.4..192.9 Z 380.6..549.8; checked against 1 fixed and 1 bed solids (of 1510)
+[   65.4s]    128 front solids moved -17 in Y with the frame
+[   65.4s] clashlib: 6 workers on vt350-lite-77.FCStd, 1 poses, job dir /tmp/clashlib-czk1ljxc
+[  109.9s] clashlib: done in 44.4s (load <= 4.5s, check <= 37.3s); 18067 pair-poses, 1 box hits, 0 overlaps > 0.01 mm3, 0 errors
+[  109.9s] clashlib: peak RSS: workers max 1107 MB, sum 6612 MB; parent 20 MB
+[  109.9s] Left baseline (nozzle at the centre -245.0, 205.5): 0 overlapping pairs, ignored after: none
+[  109.9s] clashlib: 6 workers on vt350-lite-77.FCStd, 35 poses, job dir /tmp/clashlib-v34o7d1j
+[ 1191.7s] clashlib: done in 1081.8s (load <= 4.5s, check <= 1074.6s); 632345 pair-poses, 2248 box hits, 969 overlaps > 0.01 mm3, 0 errors
+[ 1191.7s] clashlib: peak RSS: workers max 1890 MB, sum 10016 MB; parent 20 MB
+[ 1191.7s]    Left Y_LO: 35 poses (0 from the cache)
+[ 1191.7s] clashlib: 6 workers on vt350-lite-77.FCStd, 31 poses, job dir /tmp/clashlib-orgotpgk
+[ 1241.5s] clashlib: done in 49.9s (load <= 6.2s, check <= 41.5s); 560077 pair-poses, 31 box hits, 0 overlaps > 0.01 mm3, 0 errors
+[ 1241.5s] clashlib: peak RSS: workers max 1107 MB, sum 6612 MB; parent 20 MB
+[ 1241.5s]    Left Y_HI: 31 poses (0 from the cache)
+[ 1241.5s] clashlib: 6 workers on vt350-lite-77.FCStd, 31 poses, job dir /tmp/clashlib-wofahiff
+[ 1290.6s] clashlib: done in 49.0s (load <= 6.4s, check <= 40.1s); 560077 pair-poses, 31 box hits, 0 overlaps > 0.01 mm3, 0 errors
+[ 1290.6s] clashlib: peak RSS: workers max 1107 MB, sum 6612 MB; parent 20 MB
+[ 1290.6s]    Left round 1: 31 poses (0 from the cache)
+[ 1290.6s]    Left round 1: 31 poses, 0 blocked
+[ 1290.6s] clashlib: 6 workers on vt350-lite-77.FCStd, 31 poses, job dir /tmp/clashlib-6poi2pyy
+[ 1339.1s] clashlib: done in 48.5s (load <= 5.8s, check <= 40.4s); 560077 pair-poses, 31 box hits, 0 overlaps > 0.01 mm3, 0 errors
+[ 1339.1s] clashlib: peak RSS: workers max 1106 MB, sum 6611 MB; parent 20 MB
+[ 1339.1s]    Left round 2: 31 poses (0 from the cache)
+[ 1339.1s]    Left round 2: 31 poses, 0 blocked
+[ 1339.1s] clashlib: 6 workers on vt350-lite-77.FCStd, 31 poses, job dir /tmp/clashlib-b4ezasr5
+[ 1593.1s] clashlib: done in 254.0s (load <= 5.8s, check <= 245.5s); 560077 pair-poses, 458 box hits, 101 overlaps > 0.01 mm3, 0 errors
+[ 1593.1s] clashlib: peak RSS: workers max 1743 MB, sum 9255 MB; parent 20 MB
+[ 1593.2s]    Left round 3: 31 poses (0 from the cache)
+[ 1593.2s]    Left round 3: 31 poses, 19 blocked
+[ 1593.2s] clashlib: 6 workers on vt350-lite-77.FCStd, 31 poses, job dir /tmp/clashlib-7oafejrn
+[ 1772.2s] clashlib: done in 179.0s (load <= 6.7s, check <= 169.2s); 560077 pair-poses, 154 box hits, 30 overlaps > 0.01 mm3, 0 errors
+[ 1772.2s] clashlib: peak RSS: workers max 1743 MB, sum 9281 MB; parent 20 MB
+[ 1772.2s]    Left round 4: 31 poses (0 from the cache)
+[ 1772.2s]    Left round 4: 31 poses, 11 blocked
+[ 1772.2s] clashlib: 6 workers on vt350-lite-77.FCStd, 31 poses, job dir /tmp/clashlib-lnn35ia_
+[ 1938.2s] clashlib: done in 166.0s (load <= 6.5s, check <= 156.6s); 560077 pair-poses, 114 box hits, 12 overlaps > 0.01 mm3, 0 errors
+[ 1938.2s] clashlib: peak RSS: workers max 1733 MB, sum 9213 MB; parent 20 MB
+[ 1938.2s]    Left round 5: 31 poses (0 from the cache)
+[ 1938.2s]    Left round 5: 31 poses, 6 blocked
+[ 1938.2s] clashlib: 6 workers on vt350-lite-77.FCStd, 31 poses, job dir /tmp/clashlib-0oeawx90
+[ 2141.8s] clashlib: done in 203.6s (load <= 7.2s, check <= 193.4s); 560077 pair-poses, 198 box hits, 37 overlaps > 0.01 mm3, 0 errors
+[ 2141.8s] clashlib: peak RSS: workers max 1739 MB, sum 9242 MB; parent 20 MB
+[ 2141.8s]    Left round 6: 31 poses (0 from the cache)
+[ 2141.8s]    Left round 6: 31 poses, 29 blocked
+[ 2141.8s] -- Left: nozzle front limit per X (model coordinates; blocked .. clear, the first hit at the blocked Y)
+[ 2141.8s]    Left X  -416.00: front limit Y 7.50 (clear at the scan's front end)
+[ 2141.8s]    Left X  -405.94: front limit Y 7.50 (clear at the scan's front end)
+[ 2141.8s]    Left X  -395.88: front limit Y 7.50 (clear at the scan's front end)
+[ 2141.8s]    Left X  -385.82: front limit Y 7.50 (clear at the scan's front end)
+[ 2141.8s]    Left X  -375.76: front limit Y 14.30 (blocked at 13.16: KnurledNut (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.0 mm3)
+[ 2141.8s]    Left X  -365.71: front limit Y 14.30 (blocked at 13.16: KnurledNut (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.1 mm3)
+[ 2141.8s]    Left X  -355.65: front limit Y 16.56 (blocked at 15.43: Latch (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 29.0 mm3; FlyShaft2 (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.7 mm3; HubHousing V5 With Logo (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.1 mm3)
+[ 2141.8s]    Left X  -345.59: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 10.0 mm3)
+[ 2141.8s]    Left X  -335.53: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 22.2 mm3)
+[ 2141.8s]    Left X  -325.47: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 23.6 mm3; HubHousing V5 With Logo (1) x Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.4 mm3)
+[ 2141.8s]    Left X  -315.41: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 14.4 mm3; HubHousing V5 With Logo (1) x Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.0 mm3)
+[ 2141.8s]    Left X  -305.35: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.3 mm3)
+[ 2141.8s]    Left X  -295.29: front limit Y 14.30 (blocked at 13.16: KnurledNut (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.1 mm3)
+[ 2141.8s]    Left X  -285.24: front limit Y 16.56 (blocked at 15.43: Latch (1) (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 5.7 mm3)
+[ 2141.8s]    Left X  -275.18: front limit Y 17.70 (blocked at 16.56: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 2.4 mm3)
+[ 2141.8s]    Left X  -265.12: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 12.8 mm3)
+[ 2141.8s]    Left X  -255.06: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 24.6 mm3)
+[ 2141.8s]    Left X  -245.00: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 24.7 mm3; HubHousing V5 With Logo (1) x Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.4 mm3)
+[ 2141.8s]    Left X  -234.94: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 12.4 mm3)
+[ 2141.8s]    Left X  -224.88: front limit Y 16.56 (blocked at 15.43: HubHousing V5 With Logo (1) x Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 5.0 mm3)
+[ 2141.8s]    Left X  -214.82: front limit Y 12.03 (blocked at 10.90: hex-main-body_DAV_o2_xol x Hex socket head cap screw M3x0.50 x 026 0.3 mm3)
+[ 2141.8s]    Left X  -204.76: front limit Y 14.30 (blocked at 13.16: KnurledNut (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 0.1 mm3)
+[ 2141.8s]    Left X  -194.71: front limit Y 14.30 (blocked at 13.16: KnurledNut (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 0.1 mm3)
+[ 2141.8s]    Left X  -184.65: front limit Y 17.70 (blocked at 16.56: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 1.3 mm3)
+[ 2141.8s]    Left X  -174.59: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 11.1 mm3)
+[ 2141.8s]    Left X  -164.53: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 26.4 mm3)
+[ 2141.8s]    Left X  -154.47: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 23.2 mm3; HubHousing V5 With Logo (1) x Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 0.4 mm3)
+[ 2141.8s]    Left X  -144.41: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 12.3 mm3)
+[ 2141.8s]    Left X  -134.35: front limit Y 16.56 (blocked at 15.43: HubHousing V5 With Logo (1) x Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 10.3 mm3)
+[ 2141.8s]    Left X  -124.29: front limit Y 14.30 (blocked at 13.16: KnurledNut (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0) 0.1 mm3)
+[ 2141.8s]    Left X  -114.24: front limit Y 16.56 (blocked at 15.43: Latch (1) (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0) 20.9 mm3)
+[ 2141.8s]    Left X  -104.18: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0) 4.3 mm3)
+[ 2141.8s]    Left X   -94.12: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0) 14.6 mm3)
+[ 2141.8s]    Left X   -84.06: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0) 24.8 mm3; HubHousing V5 With Logo (1) x Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0) 0.3 mm3)
+[ 2141.8s]    Left X   -74.00: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0) 15.2 mm3; HubHousing V5 With Logo (1) x Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0) 0.3 mm3)
+[ 2141.8s] Right carried (Left and the slot heads docked): swept box X -454.1..-39.4 Y -26.4..192.9 Z 380.6..549.8; checked against 1 fixed and 1 bed solids (of 1510)
+[ 2141.8s]    128 front solids moved -17 in Y with the frame
+[ 2141.8s] clashlib: 6 workers on vt350-lite-77.FCStd, 1 poses, job dir /tmp/clashlib-sh4vq9kt
+[ 2195.3s] clashlib: done in 53.4s (load <= 6.0s, check <= 44.4s); 18067 pair-poses, 1 box hits, 0 overlaps > 0.01 mm3, 0 errors
+[ 2195.3s] clashlib: peak RSS: workers max 1110 MB, sum 6632 MB; parent 21 MB
+[ 2195.3s] Right baseline (nozzle at the centre -245.0, 205.5): 0 overlapping pairs, ignored after: none
+[ 2195.3s] clashlib: 6 workers on vt350-lite-77.FCStd, 35 poses, job dir /tmp/clashlib-q869oyvj
+[ 3376.9s] clashlib: done in 1181.6s (load <= 6.4s, check <= 1171.6s); 632345 pair-poses, 2187 box hits, 949 overlaps > 0.01 mm3, 0 errors
+[ 3376.9s] clashlib: peak RSS: workers max 1910 MB, sum 9957 MB; parent 21 MB
+[ 3376.9s]    Right Y_LO: 35 poses (0 from the cache)
+[ 3376.9s] clashlib: 6 workers on vt350-lite-77.FCStd, 32 poses, job dir /tmp/clashlib-ss1jvqv3
+[ 3433.6s] clashlib: done in 56.7s (load <= 5.9s, check <= 48.2s); 578144 pair-poses, 32 box hits, 0 overlaps > 0.01 mm3, 0 errors
+[ 3433.6s] clashlib: peak RSS: workers max 1110 MB, sum 6634 MB; parent 21 MB
+[ 3433.6s]    Right Y_HI: 32 poses (0 from the cache)
+[ 3433.6s] clashlib: 6 workers on vt350-lite-77.FCStd, 32 poses, job dir /tmp/clashlib-nujuo_51
+[ 3494.8s] clashlib: done in 61.1s (load <= 6.4s, check <= 51.3s); 578144 pair-poses, 32 box hits, 0 overlaps > 0.01 mm3, 0 errors
+[ 3494.8s] clashlib: peak RSS: workers max 1111 MB, sum 6636 MB; parent 21 MB
+[ 3494.8s]    Right round 1: 32 poses (0 from the cache)
+[ 3494.8s]    Right round 1: 32 poses, 0 blocked
+[ 3494.8s] clashlib: 6 workers on vt350-lite-77.FCStd, 32 poses, job dir /tmp/clashlib-ox_cyxl5
+[ 3567.2s] clashlib: done in 72.4s (load <= 8.0s, check <= 60.4s); 578144 pair-poses, 32 box hits, 0 overlaps > 0.01 mm3, 0 errors
+[ 3567.2s] clashlib: peak RSS: workers max 1109 MB, sum 6632 MB; parent 21 MB
+[ 3567.2s]    Right round 2: 32 poses (0 from the cache)
+[ 3567.2s]    Right round 2: 32 poses, 0 blocked
+[ 3567.2s] clashlib: 6 workers on vt350-lite-77.FCStd, 32 poses, job dir /tmp/clashlib-nxftdpc1
+[ 3850.8s] clashlib: done in 283.6s (load <= 7.8s, check <= 273.3s); 578144 pair-poses, 447 box hits, 100 overlaps > 0.01 mm3, 0 errors
+[ 3850.8s] clashlib: peak RSS: workers max 1760 MB, sum 9276 MB; parent 21 MB
+[ 3850.9s]    Right round 3: 32 poses (0 from the cache)
+[ 3850.9s]    Right round 3: 32 poses, 18 blocked
+[ 3850.9s] clashlib: 6 workers on vt350-lite-77.FCStd, 32 poses, job dir /tmp/clashlib-dv57njnl
+[ 4037.0s] clashlib: done in 186.1s (load <= 6.7s, check <= 175.9s); 578144 pair-poses, 166 box hits, 27 overlaps > 0.01 mm3, 0 errors
+[ 4037.0s] clashlib: peak RSS: workers max 1751 MB, sum 9311 MB; parent 21 MB
+[ 4037.0s]    Right round 4: 32 poses (0 from the cache)
+[ 4037.0s]    Right round 4: 32 poses, 10 blocked
+[ 4037.0s] clashlib: 6 workers on vt350-lite-77.FCStd, 32 poses, job dir /tmp/clashlib-md4uy6bs
+[ 4213.9s] clashlib: done in 176.9s (load <= 5.8s, check <= 168.4s); 578144 pair-poses, 136 box hits, 15 overlaps > 0.01 mm3, 0 errors
+[ 4213.9s] clashlib: peak RSS: workers max 1741 MB, sum 9270 MB; parent 21 MB
+[ 4213.9s]    Right round 5: 32 poses (0 from the cache)
+[ 4213.9s]    Right round 5: 32 poses, 8 blocked
+[ 4213.9s] clashlib: 6 workers on vt350-lite-77.FCStd, 32 poses, job dir /tmp/clashlib-4rxdgh21
+[ 4425.7s] clashlib: done in 211.8s (load <= 5.6s, check <= 202.9s); 578144 pair-poses, 212 box hits, 36 overlaps > 0.01 mm3, 0 errors
+[ 4425.7s] clashlib: peak RSS: workers max 1746 MB, sum 9325 MB; parent 21 MB
+[ 4425.7s]    Right round 6: 32 poses (0 from the cache)
+[ 4425.7s]    Right round 6: 32 poses, 28 blocked
+[ 4425.7s] -- Right: nozzle front limit per X (model coordinates; blocked .. clear, the first hit at the blocked Y)
+[ 4425.7s]    Right X  -416.00: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0) 25.7 mm3; HubHousing V5 With Logo (1) (1) x Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0) 0.0 mm3)
+[ 4425.7s]    Right X  -405.94: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0) 24.5 mm3; HubHousing V5 With Logo (1) (1) x Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0) 0.4 mm3)
+[ 4425.7s]    Right X  -395.88: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0) 12.4 mm3)
+[ 4425.7s]    Right X  -385.82: front limit Y 16.56 (blocked at 15.43: HubHousing V5 With Logo (1) (1) x Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0) 3.2 mm3)
+[ 4425.7s]    Right X  -375.76: front limit Y 14.30 (blocked at 13.16: KnurledNut (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.0 mm3)
+[ 4425.7s]    Right X  -365.71: front limit Y 14.30 (blocked at 13.16: KnurledNut (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.1 mm3)
+[ 4425.7s]    Right X  -355.65: front limit Y 16.56 (blocked at 15.43: Latch (1) (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 29.0 mm3; FlyShaft2 (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.7 mm3; HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.1 mm3)
+[ 4425.7s]    Right X  -345.59: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 10.0 mm3)
+[ 4425.7s]    Right X  -335.53: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 22.2 mm3)
+[ 4425.7s]    Right X  -325.47: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 23.6 mm3; HubHousing V5 With Logo (1) (1) x Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.4 mm3)
+[ 4425.7s]    Right X  -315.41: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 14.4 mm3; HubHousing V5 With Logo (1) (1) x Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.0 mm3)
+[ 4425.7s]    Right X  -305.35: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.3 mm3)
+[ 4425.7s]    Right X  -295.29: front limit Y 14.30 (blocked at 13.16: KnurledNut (1) (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.1 mm3)
+[ 4425.7s]    Right X  -285.24: front limit Y 16.56 (blocked at 15.43: Latch (1) (1) (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 5.7 mm3)
+[ 4425.7s]    Right X  -275.18: front limit Y 17.70 (blocked at 16.56: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 2.4 mm3)
+[ 4425.7s]    Right X  -265.12: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 12.8 mm3)
+[ 4425.7s]    Right X  -255.06: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 24.6 mm3)
+[ 4425.7s]    Right X  -245.00: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 24.7 mm3; HubHousing V5 With Logo (1) (1) x Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 0.4 mm3)
+[ 4425.7s]    Right X  -234.94: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 12.4 mm3)
+[ 4425.7s]    Right X  -224.88: front limit Y 16.56 (blocked at 15.43: HubHousing V5 With Logo (1) (1) x Orbitool O2S v3.3 toolboard Right (Orbiter-Toolboards 52a5a33, CC0-1.0)001 5.0 mm3)
+[ 4425.7s]    Right X  -214.82: front limit Y 12.03 (blocked at 10.90: hex-main-body_DAV_o2_xol001 x Hex socket head cap screw M3x0.50 x 026 0.3 mm3)
+[ 4425.7s]    Right X  -204.76: front limit Y 14.30 (blocked at 13.16: KnurledNut (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 0.1 mm3)
+[ 4425.7s]    Right X  -194.71: front limit Y 14.30 (blocked at 13.16: KnurledNut (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 0.1 mm3)
+[ 4425.7s]    Right X  -184.65: front limit Y 17.70 (blocked at 16.56: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 1.3 mm3)
+[ 4425.7s]    Right X  -174.59: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 11.1 mm3)
+[ 4425.7s]    Right X  -164.53: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 26.4 mm3)
+[ 4425.7s]    Right X  -154.47: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 23.2 mm3; HubHousing V5 With Logo (1) (1) x Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 0.4 mm3)
+[ 4425.7s]    Right X  -144.41: front limit Y 18.83 (blocked at 17.70: HubHousing V5 With Logo (1) (1) x Orbitool O2S heat sink Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 12.3 mm3)
+[ 4425.7s]    Right X  -134.35: front limit Y 16.56 (blocked at 15.43: HubHousing V5 With Logo (1) (1) x Orbitool O2S v3.3 toolboard Left (Orbiter-Toolboards 52a5a33, CC0-1.0)002 10.3 mm3)
+[ 4425.7s]    Right X  -124.29: front limit Y 12.03 (blocked at 10.90: hex-main-body_DAV_o2_xol001 x Hex socket head cap screw M3x0.50 x 030 0.3 mm3)
+[ 4425.7s]    Right X  -114.24: front limit Y 10.90 (blocked at 9.77: hex-main-body_DAV_o2_xol001 x Plate002 15.8 mm3)
+[ 4425.7s]    Right X  -104.18: front limit Y 8.63 (blocked at 7.50: [a]_Duct-4010-left001 x Plate002 33.2 mm3)
+[ 4425.7s]    Right X   -94.12: front limit Y 7.50 (clear at the scan's front end)
+[ 4425.7s]    Right X   -84.06: front limit Y 7.50 (clear at the scan's front end)
+[ 4425.7s]    Right X   -74.00: front limit Y 7.50 (clear at the scan's front end)
+[ 4425.7s] done (read-only, nothing saved)
