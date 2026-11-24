@@ -1,18 +1,23 @@
-[    3.1s] opened /home/dan/Documents/VT350/vt350-lite-78.FCStd
-[   14.5s] ok   1 part(s) labelled 'Camera housing front...' (['Camera housing front (Printables 305428, public domain)'])
-[   14.5s] ok   1 part(s) labelled 'Camera housing back...' (['Camera housing back (Printables 305428, public domain)'])
-[   14.5s] ok   1 part(s) labelled 'Nozzle offset probe bracket ...' (['Nozzle offset probe bracket (low, lite-78) (printed ABS, vt350, GPL-3.0-or-later)'])
-[   14.5s] ok   Camera housing front (Printables 305428, public domain) is a Part::Feature, not a link (Part::Feature)
-[   14.5s] ok   Camera housing back (Printables 305428, public domain) is a Part::Feature, not a link (Part::Feature)
-[   14.5s] ok   Nozzle offset probe bracket (low, lite-78) (printed ABS, vt350, GPL-3.0-or-later) is a Part::Feature, not a link (Part::Feature)
-[   14.5s] part: Camera housing front (Printables 305428, public domain) (Encl014), 81 faces
-[   14.5s] part: Camera housing back (Printables 305428, public domain) (Encl015), 53 faces
-[   14.5s] part: Nozzle offset probe bracket (low, lite-78) (printed ABS, vt350, GPL-3.0-or-later) (MHZ78_bracket), 104 faces
-[   15.4s] headless: no ViewObject, colours not set (dry run checks the parts and the model only)
-[   28.1s] ok   every solid's box unchanged (0: [])
-[   28.1s] ok   leaves 1554 -> 1554 (unchanged)
-[   28.1s] ok   Camera housing front (Printables 305428, public domain): same volume and placement
-[   28.2s] ok   Camera housing back (Printables 305428, public domain): same volume and placement
-[   28.2s] ok   Nozzle offset probe bracket (low, lite-78) (printed ABS, vt350, GPL-3.0-or-later): same volume and placement
-[   28.2s] verify: 0 problems
-[   28.2s] DRY RUN (headless): all checks passed, not saved
+[   48.3s] opened /home/dan/Documents/VT350/vt350-lite-78.FCStd
+[   60.4s] ok   1 part(s) labelled 'Camera housing front...' (['Camera housing front (Printables 305428, public domain)'])
+[   60.4s] ok   1 part(s) labelled 'Camera housing back...' (['Camera housing back (Printables 305428, public domain)'])
+[   60.4s] ok   1 part(s) labelled 'Nozzle offset probe bracket ...' (['Nozzle offset probe bracket (low, lite-78) (printed ABS, vt350, GPL-3.0-or-later)'])
+[   60.4s] ok   Camera housing front (Printables 305428, public domain) is a Part::Feature, not a link (Part::Feature)
+[   60.4s] ok   Camera housing back (Printables 305428, public domain) is a Part::Feature, not a link (Part::Feature)
+[   60.4s] ok   Nozzle offset probe bracket (low, lite-78) (printed ABS, vt350, GPL-3.0-or-later) is a Part::Feature, not a link (Part::Feature)
+[   60.4s] part: Camera housing front (Printables 305428, public domain) (Encl014), 81 faces
+[   60.4s] part: Camera housing back (Printables 305428, public domain) (Encl015), 53 faces
+[   60.4s] part: Nozzle offset probe bracket (low, lite-78) (printed ABS, vt350, GPL-3.0-or-later) (MHZ78_bracket), 104 faces
+[   61.4s]   Camera housing front (Printables 305428, public domain): [(0.149, 0.149, 0.149)] -> [(0.886, 0.4, 0.165)]
+[   61.4s]   Camera housing back (Printables 305428, public domain): [(0.149, 0.149, 0.149)] -> [(0.886, 0.4, 0.165)]
+[   61.4s]   Nozzle offset probe bracket (low, lite-78) (printed ABS, vt350, GPL-3.0-or-later): [(0.447, 0.475, 0.502)] -> [(0.886, 0.4, 0.165)]
+[   76.0s] ok   every solid's box unchanged (0: [])
+[   76.0s] ok   leaves 1554 -> 1554 (unchanged)
+[   76.0s] ok   Camera housing front (Printables 305428, public domain): same volume and placement
+[   76.0s] ok   Camera housing front (Printables 305428, public domain): every face the accent #E2662A ([(0.886, 0.4, 0.165)])
+[   76.0s] ok   Camera housing back (Printables 305428, public domain): same volume and placement
+[   76.0s] ok   Camera housing back (Printables 305428, public domain): every face the accent #E2662A ([(0.886, 0.4, 0.165)])
+[   76.0s] ok   Nozzle offset probe bracket (low, lite-78) (printed ABS, vt350, GPL-3.0-or-later): same volume and placement
+[   76.0s] ok   Nozzle offset probe bracket (low, lite-78) (printed ABS, vt350, GPL-3.0-or-later): every face the accent #E2662A ([(0.886, 0.4, 0.165)])
+[   76.0s] verify: 0 problems
+[   82.4s] SAVED /home/dan/Documents/VT350/vt350-lite-79.FCStd 38142433
