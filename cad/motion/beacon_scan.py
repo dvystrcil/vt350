@@ -9,8 +9,10 @@
 The bed mesh is always the LAST measurement (owner, 2026-11-24): after the Z tilt, the Z0 and the tool pickup, because
 each of those changes what the mesh is measured against. Nothing after it may tap, home, tilt or change tools; only
 the purge line and the print follow. Any old mesh is cleared (BED_MESH_CLEAR) before the tilt. The shape follows the
-owner's Neptune PRINT_START (G28, SKEW_PROFILE LOAD, BED_MESH_CLEAR, BED_MESH_CALIBRATE, CLEAR_PAUSE, LINE_PURGE),
-with the toolchanger's steps added.
+owner's current Neptune PRINT_START (dvystrcil/neptune-4pro-klipper-backup, printer_data/config/macros.cfg, 2026-11):
+skew profile, heat the bed and hold the nozzle at a low temperature, soak, brush, Z_TILT_ADJUST, G28 Z + a tap,
+brush, BED_MESH_CLEAR + the eddy mesh, then the purge. Here: the toolchanger's steps added, heating left out (the
+video shows motion only).
 
     python3 cad/motion/beacon_scan.py > cad/motion/beacon_scan.gcode      # then run it through Kalico batch mode
 
