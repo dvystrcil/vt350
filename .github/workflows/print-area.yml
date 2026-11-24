@@ -15,3 +15,7 @@ jobs:
         run: python3 cad/studies/test_print_area.py 2>&1 | tee test.log
       - name: Confirm every test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test.log && tail -1 test.log | grep -qx 'OK'
+      - name: Test the Beacon scan footprint drawing
+        run: python3 cad/studies/test_beacon_scan_footprint.py 2>&1 | tee test-fp.log
+      - name: Confirm every footprint test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-fp.log && tail -1 test-fp.log | grep -qx 'OK'
