@@ -1,0 +1,595 @@
+{
+ "model": "vt350-lite-78.FCStd",
+ "now": 27.4,
+ "thread_needed": 5.0,
+ "docks": {
+  "COMPOUND003": [
+   {
+    "offset": 27.4,
+    "holes": [
+     {
+      "x": -425.5,
+      "y": -18.56,
+      "carriage_over_board": 5.76,
+      "first_part": null
+     },
+     {
+      "x": -393.9,
+      "y": -18.56,
+      "carriage_over_board": 5.76,
+      "first_part": null
+     }
+    ],
+    "head_parts_over_board": [
+     [
+      3.36,
+      "Plate"
+     ]
+    ],
+    "mountable_today": true
+   },
+   {
+    "offset": 25.0,
+    "holes": [
+     {
+      "x": -425.5,
+      "y": -20.96,
+      "carriage_over_board": 0.0,
+      "first_part": [
+       33.52,
+       "SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)003"
+      ]
+     },
+     {
+      "x": -393.9,
+      "y": -20.96,
+      "carriage_over_board": 0.0,
+      "first_part": [
+       33.55,
+       "SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)002"
+      ]
+     }
+    ],
+    "head_parts_over_board": [
+     [
+      3.36,
+      "Plate"
+     ]
+    ],
+    "mountable_today": false
+   },
+   {
+    "offset": 24.0,
+    "holes": [
+     {
+      "x": -425.5,
+      "y": -21.96,
+      "carriage_over_board": 0.0,
+      "first_part": [
+       33.51,
+       "SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)003"
+      ]
+     },
+     {
+      "x": -393.9,
+      "y": -21.96,
+      "carriage_over_board": 0.0,
+      "first_part": [
+       33.54,
+       "SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)002"
+      ]
+     }
+    ],
+    "head_parts_over_board": [
+     [
+      3.36,
+      "Plate"
+     ]
+    ],
+    "mountable_today": false
+   },
+   {
+    "offset": 23.0,
+    "holes": [
+     {
+      "x": -425.5,
+      "y": -22.96,
+      "carriage_over_board": 0.0,
+      "first_part": null
+     },
+     {
+      "x": -393.9,
+      "y": -22.96,
+      "carriage_over_board": 0.0,
+      "first_part": null
+     }
+    ],
+    "head_parts_over_board": [
+     [
+      3.36,
+      "Plate"
+     ]
+    ],
+    "mountable_today": false
+   },
+   {
+    "offset": 22.0,
+    "holes": [
+     {
+      "x": -425.5,
+      "y": -23.96,
+      "carriage_over_board": 0.0,
+      "first_part": null
+     },
+     {
+      "x": -393.9,
+      "y": -23.96,
+      "carriage_over_board": 0.0,
+      "first_part": null
+     }
+    ],
+    "head_parts_over_board": [
+     [
+      3.36,
+      "Plate"
+     ],
+     [
+      5.19,
+      "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
+     ],
+     [
+      5.19,
+      "[a]_Duct-4010-right"
+     ]
+    ],
+    "mountable_today": false
+   },
+   {
+    "offset": 20.0,
+    "holes": [
+     {
+      "x": -425.5,
+      "y": -25.96,
+      "carriage_over_board": 0.0,
+      "first_part": [
+       3.36,
+       "Plate"
+      ]
+     },
+     {
+      "x": -393.9,
+      "y": -25.96,
+      "carriage_over_board": 0.0,
+      "first_part": [
+       3.36,
+       "Plate"
+      ]
+     }
+    ],
+    "head_parts_over_board": [
+     [
+      3.36,
+      "Plate"
+     ],
+     [
+      3.89,
+      "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
+     ],
+     [
+      3.89,
+      "[a]_Duct-4010-right"
+     ]
+    ],
+    "mountable_today": false
+   },
+   {
+    "offset": 18.0,
+    "holes": [
+     {
+      "x": -425.5,
+      "y": -27.96,
+      "carriage_over_board": 0.0,
+      "first_part": [
+       3.36,
+       "Plate"
+      ]
+     },
+     {
+      "x": -393.9,
+      "y": -27.96,
+      "carriage_over_board": 0.0,
+      "first_part": [
+       3.36,
+       "Plate"
+      ]
+     }
+    ],
+    "head_parts_over_board": [
+     [
+      0.92,
+      "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
+     ],
+     [
+      0.92,
+      "[a]_Duct-4010-right"
+     ],
+     [
+      3.36,
+      "Plate"
+     ],
+     [
+      6.39,
+      "Plain washer normal grade C M001"
+     ],
+     [
+      6.39,
+      "Plain washer normal grade C M3"
+     ],
+     [
+      7.14,
+      "Hex socket head cap screw M3x0.50 x 012"
+     ],
+     [
+      7.14,
+      "Hex socket head cap screw M3x0.50 x 013"
+     ]
+    ],
+    "mountable_today": false
+   },
+   {
+    "offset": 15.0,
+    "holes": [
+     {
+      "x": -425.5,
+      "y": -30.96,
+      "carriage_over_board": 0.0,
+      "first_part": [
+       3.36,
+       "Plate"
+      ]
+     },
+     {
+      "x": -393.9,
+      "y": -30.96,
+      "carriage_over_board": 0.0,
+      "first_part": [
+       3.36,
+       "Plate"
+      ]
+     }
+    ],
+    "head_parts_over_board": [
+     [
+      -0.29,
+      "[a]_Duct-4010-right"
+     ],
+     [
+      -0.28,
+      "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
+     ],
+     [
+      0.0,
+      "TL-dragon-ace-MZE sock"
+     ],
+     [
+      3.36,
+      "Plate"
+     ],
+     [
+      6.39,
+      "Plain washer normal grade C M001"
+     ],
+     [
+      6.39,
+      "Plain washer normal grade C M3"
+     ],
+     [
+      6.91,
+      "Hex socket head cap screw M3x0.50 x 012"
+     ],
+     [
+      6.91,
+      "Hex socket head cap screw M3x0.50 x 013"
+     ]
+    ],
+    "mountable_today": false
+   }
+  ],
+  "COMPOUND004": [
+   {
+    "offset": 27.4,
+    "holes": [
+     {
+      "x": -96.09,
+      "y": -18.56,
+      "carriage_over_board": 5.76,
+      "first_part": null
+     },
+     {
+      "x": -64.49,
+      "y": -18.56,
+      "carriage_over_board": 5.76,
+      "first_part": null
+     }
+    ],
+    "head_parts_over_board": [
+     [
+      3.36,
+      "Plate(Mirror)"
+     ]
+    ],
+    "mountable_today": true
+   },
+   {
+    "offset": 25.0,
+    "holes": [
+     {
+      "x": -96.09,
+      "y": -20.96,
+      "carriage_over_board": 0.0,
+      "first_part": [
+       33.54,
+       "SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)004"
+      ]
+     },
+     {
+      "x": -64.49,
+      "y": -20.96,
+      "carriage_over_board": 0.0,
+      "first_part": [
+       33.53,
+       "SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)005"
+      ]
+     }
+    ],
+    "head_parts_over_board": [
+     [
+      3.36,
+      "Plate(Mirror)"
+     ]
+    ],
+    "mountable_today": false
+   },
+   {
+    "offset": 24.0,
+    "holes": [
+     {
+      "x": -96.09,
+      "y": -21.96,
+      "carriage_over_board": 0.0,
+      "first_part": [
+       33.53,
+       "SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)004"
+      ]
+     },
+     {
+      "x": -64.49,
+      "y": -21.96,
+      "carriage_over_board": 0.0,
+      "first_part": [
+       33.52,
+       "SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)005"
+      ]
+     }
+    ],
+    "head_parts_over_board": [
+     [
+      3.36,
+      "Plate(Mirror)"
+     ]
+    ],
+    "mountable_today": false
+   },
+   {
+    "offset": 23.0,
+    "holes": [
+     {
+      "x": -96.09,
+      "y": -22.96,
+      "carriage_over_board": 0.0,
+      "first_part": null
+     },
+     {
+      "x": -64.49,
+      "y": -22.96,
+      "carriage_over_board": 0.0,
+      "first_part": null
+     }
+    ],
+    "head_parts_over_board": [
+     [
+      3.36,
+      "Plate(Mirror)"
+     ]
+    ],
+    "mountable_today": false
+   },
+   {
+    "offset": 22.0,
+    "holes": [
+     {
+      "x": -96.09,
+      "y": -23.96,
+      "carriage_over_board": 0.0,
+      "first_part": null
+     },
+     {
+      "x": -64.49,
+      "y": -23.96,
+      "carriage_over_board": 0.0,
+      "first_part": null
+     }
+    ],
+    "head_parts_over_board": [
+     [
+      3.36,
+      "Plate(Mirror)"
+     ],
+     [
+      5.19,
+      "[a]_Duct-4010-left001"
+     ],
+     [
+      5.19,
+      "[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
+     ]
+    ],
+    "mountable_today": false
+   },
+   {
+    "offset": 20.0,
+    "holes": [
+     {
+      "x": -96.09,
+      "y": -25.96,
+      "carriage_over_board": 0.0,
+      "first_part": [
+       3.36,
+       "Plate(Mirror)"
+      ]
+     },
+     {
+      "x": -64.49,
+      "y": -25.96,
+      "carriage_over_board": 0.0,
+      "first_part": [
+       3.36,
+       "Plate(Mirror)"
+      ]
+     }
+    ],
+    "head_parts_over_board": [
+     [
+      3.36,
+      "Plate(Mirror)"
+     ],
+     [
+      3.89,
+      "[a]_Duct-4010-left001"
+     ],
+     [
+      3.89,
+      "[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
+     ]
+    ],
+    "mountable_today": false
+   },
+   {
+    "offset": 18.0,
+    "holes": [
+     {
+      "x": -96.09,
+      "y": -27.96,
+      "carriage_over_board": 0.0,
+      "first_part": [
+       3.36,
+       "Plate(Mirror)"
+      ]
+     },
+     {
+      "x": -64.49,
+      "y": -27.96,
+      "carriage_over_board": 0.0,
+      "first_part": [
+       3.36,
+       "Plate(Mirror)"
+      ]
+     }
+    ],
+    "head_parts_over_board": [
+     [
+      0.89,
+      "[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
+     ],
+     [
+      0.95,
+      "[a]_Duct-4010-left001"
+     ],
+     [
+      3.36,
+      "Plate(Mirror)"
+     ],
+     [
+      6.39,
+      "Plain washer normal grade C M002"
+     ],
+     [
+      6.39,
+      "Plain washer normal grade C M003"
+     ],
+     [
+      7.14,
+      "Hex socket head cap screw M3x0.50 x 016"
+     ],
+     [
+      7.14,
+      "Hex socket head cap screw M3x0.50 x 017"
+     ]
+    ],
+    "mountable_today": false
+   },
+   {
+    "offset": 15.0,
+    "holes": [
+     {
+      "x": -96.09,
+      "y": -30.96,
+      "carriage_over_board": 0.0,
+      "first_part": [
+       3.36,
+       "Plate(Mirror)"
+      ]
+     },
+     {
+      "x": -64.49,
+      "y": -30.96,
+      "carriage_over_board": 0.0,
+      "first_part": [
+       3.36,
+       "Plate(Mirror)"
+      ]
+     }
+    ],
+    "head_parts_over_board": [
+     [
+      -0.29,
+      "[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
+     ],
+     [
+      -0.28,
+      "[a]_Duct-4010-left001"
+     ],
+     [
+      0.0,
+      "TL-dragon-ace-MZE sock001"
+     ],
+     [
+      3.36,
+      "Plate(Mirror)"
+     ],
+     [
+      6.39,
+      "Plain washer normal grade C M002"
+     ],
+     [
+      6.39,
+      "Plain washer normal grade C M003"
+     ],
+     [
+      6.91,
+      "Hex socket head cap screw M3x0.50 x 016"
+     ],
+     [
+      6.91,
+      "Hex socket head cap screw M3x0.50 x 017"
+     ]
+    ],
+    "mountable_today": false
+   }
+  ]
+ },
+ "smallest_mountable_offset_tried": {
+  "COMPOUND003": 27.4,
+  "COMPOUND004": 27.4
+ }
+}
