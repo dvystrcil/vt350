@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Draw the bed plate, the 350 print square and the area the carried nozzle can reach (#67).
+"""Draw the bed plate, the 350 print square, the area the carried nozzle can reach (#67) and the Beacon's (#291).
 
 Reads the reach from sweep_toolhead.py's log and the plate constants from sweep_toolhead.py itself, so the
 drawing follows the model: re-run this after every sweep. Plain python3, no FreeCAD.
@@ -9,7 +9,7 @@ drawing follows the model: re-run this after every sweep. Plain python3, no Free
 Coordinates in the drawing are plate coordinates: the plate's front-left corner = 0,0, X to the right, Y to the
 rear, viewed from above. The printable area is the reach of the TIGHTEST head on each side, clamped to the square.
 """
-import argparse
+import argparse, json
 import os
 import re
 
@@ -57,7 +57,55 @@ def printable(reach, plate):
                      "rear": r(sq[3] - area[3])}}
 
 
-def svg(a):
+# vt350#291: the Beacon is to move to y_offset 15 (owner, 2026-11-22; lite-78's front +17 was sized for it). Until
+# beacon.cfg says so, the drawing shows the coil at the planned offset and says beacon.cfg's value beside it.
+PLANNED_BEACON_DY = 15.0
+BEACON_CFG = os.path.join(CAD, "klipper", "beacon.cfg")
+FRONT_REACH = os.path.join(CAD, "data", "front_reach_front17.json")     # per-X front reach (lite-77 + 17 = lite-78)
+MAPPING = os.path.join(CAD, "klipper", "xy_mapping.json")
+
+
+def parse_beacon(cfg):
+    """beacon.cfg -> {dx, dy, mesh_min, mesh_max} (printer mm; offsets = coil centre less nozzle)."""
+    def val(key):
+        m = re.search(rf"^{key}:\s*(.+)$", cfg, re.M)
+        if not m:
+            raise ValueError(f"beacon.cfg: no {key}")
+        return [float(v) for v in m.group(1).split("#")[0].split(",")]
+    return {"dx": val("x_offset")[0], "dy": val("y_offset")[0], "mesh_min": tuple(val("mesh_min")),
+            "mesh_max": tuple(val("mesh_max"))}
+
+
+def beacon_area(reach, plate, beacon, front, mapping, dy=PLANNED_BEACON_DY):
+    """Where the coil reaches with both heads (the worse head at each X), in plate coordinates, and the planned mesh
+    against it. front: front_reach JSON (per head, per X: "clear" = the nozzle's furthest forward model Y; the file's
+    beacon_dy doesn't enter, any coil offset dy is added here); reach: parse_reach (model coords, for X and the rear)."""
+    (ox, oy), (gx, gy) = mapping["origin_model_xy"], mapping["sign_xy"]
+    x0, y0, plate_w, _ = plate
+    to_plate = lambda px, py: (round(px + ox - x0, 2), round(py + oy - y0, 2))      # printer -> plate (sign +1)
+    pr = lambda mx, my: (gx * (mx - ox), gy * (my - oy))                           # model -> printer
+    noz = {h: [(round(gx * (r["x"] - ox), 2), round(gy * (r["clear"] - oy), 2)) for r in rows]
+           for h, rows in front["heads"].items()}
+    step = max(max(b - a for (a, _), (b, _) in zip(v, v[1:])) for v in noz.values())
+    def nozzle_front(x):                       # worst head, worst row within one X step (as front_reach_map)
+        return max(max(y for a, y in v if abs(a - x) <= step + 1e-6) for v in noz.values())
+    (nx0, _), (nx1, ny1) = pr(reach["x_min"], reach["y_min"]), pr(reach["x_max"], reach["y_max"])
+    xs = sorted({nx0, nx1} | {a for v in noz.values() for a, _ in v if nx0 <= a <= nx1})
+    pf, pb = to_plate(0, 0)[1] * -1, plate_w - to_plate(0, 0)[1]                    # plate front / rear in printer Y
+    cfront = [(x + beacon["dx"], max(pf, nozzle_front(x) + dy)) for x in xs]
+    rear = min(pb, ny1 + dy)
+    poly = [to_plate(x, y) for x, y in cfront] + [to_plate(cfront[-1][0], rear), to_plate(cfront[0][0], rear)]
+    (mx0, my0), (mx1, my1) = beacon["mesh_min"], beacon["mesh_max"]
+    worst = max(y for x, y in cfront if mx0 - step <= x <= mx1 + step)
+    r2 = lambda v: round(v, 2)
+    return {"dy": dy, "cfg_dy": beacon["dy"], "poly": poly, "mesh": to_plate(mx0, my0) + to_plate(mx1, my1),
+            "mesh_printer": (mx0, my0, mx1, my1),
+            "margin": {"front": r2(my0 - worst), "rear": r2(rear - my1), "left": r2(mx0 - cfront[0][0]),
+                       "right": r2(cfront[-1][0] - mx1)},
+            "model": front.get("model", ""), "stretch": front.get("stretch")}
+
+
+def svg(a, b=None):
     S, M = 2.0, 70                       # px per mm, margin px
     W = a["plate"][2]
     size = W * S + 2 * M
@@ -78,13 +126,37 @@ def svg(a):
     ox, oy = a["origin"]
     cx, cy = (ar[0] + ar[2]) / 2, (ar[1] + ar[3]) / 2
     f = lambda v: f"{v:g}"
+    H = 60 if b is None else 100
+    beacon = []
+    if b is not None:
+        pts = " ".join(f"{px(x)},{py(y)}" for x, y in b["poly"])
+        m, mg = b["mesh"], b["margin"]
+        ok = all(v >= 0 for v in mg.values())
+        which = (f'planned y_offset {f(b["dy"])} (#291; beacon.cfg still {f(b["cfg_dy"])})' if b["dy"] != b["cfg_dy"]
+                 else f'beacon.cfg y_offset {f(b["dy"])}')
+        beacon = [
+            f'<polygon points="{pts}" fill="#1f5fbf" fill-opacity="0.12" stroke="#1f5fbf" stroke-width="2"/>',
+            rect(m, fill="none", stroke="#7a2fb0", stroke_width="1.8", stroke_dasharray="4 4"),
+            text(float(px(cx)), float(py(cy)) + 92, f'Beacon mesh (purple dashed) {f(b["mesh_printer"][0])}, '
+                 f'{f(b["mesh_printer"][1])} … {f(b["mesh_printer"][2])}, {f(b["mesh_printer"][3])} printer', 13,
+                 fill="#7a2fb0"),
+            text(float(px(cx)), float(py(cy)) + 112,
+                 f'coil (blue) past the mesh: front {mg["front"]:g}, rear {mg["rear"]:g}, left {mg["left"]:g}, '
+                 f'right {mg["right"]:g}' + ("" if ok else "  NOT REACHED"), 13,
+                 fill="#1f5fbf" if ok else "#b03030", weight="bold"),
+            text(M / 2, size + 40, f'Blue: where the Beacon coil reaches, both heads, {which}.', 12, "start",
+                 fill="#1f5fbf"),
+            text(M / 2, size + 60, f'Its front edge per X: cad/data/front_reach_front17.json ({b["model"]}, front +17). '
+                 f'Purple dashed: beacon.cfg\'s mesh (coil positions).', 12, "start", fill="#1f5fbf"),
+        ]
     out = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{size:.0f}" height="{size + 60:.0f}" '
-        f'viewBox="0 0 {size:.0f} {size + 60:.0f}" font-family="Helvetica, Arial, sans-serif">',
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{size:.0f}" height="{size + H:.0f}" '
+        f'viewBox="0 0 {size:.0f} {size + H:.0f}" font-family="Helvetica, Arial, sans-serif">',
         f'<rect width="100%" height="100%" fill="#ffffff"/>',
         rect(a["plate"], fill="#d9d9d9", stroke="#555", stroke_width="1.5"),
         rect(sq, fill="#f2f2f2", stroke="#333", stroke_width="1.5", stroke_dasharray="8 5"),
         rect(ar, fill="#2e9e5b", fill_opacity="0.35", stroke="#1b6e3c", stroke_width="2"),
+        *beacon,
         # title + legend
         text(size / 2, 26, f'Printable area on {a["model"]} (both heads: {", ".join(a["heads"])})', 16, weight="bold"),
         text(size / 2, 46, "top view, plate coordinates: front-left plate corner = 0,0, X right, Y to the rear (mm)", 12,
@@ -113,8 +185,9 @@ def svg(a):
         text(size / 2, M - 6, "REAR", 13, weight="bold", fill="#444"),
         text(M / 2, size + 20, "Grey: plate. Dashed: 350 print square (2.5 inset). Green: where the carried nozzle "
              "reaches, tightest head per side.", 12, "start", fill="#444"),
-        text(M / 2, size + 40, "Generated by cad/studies/print_area.py from cad/data/logs/sweep_toolhead.log (#67). "
-             "Do not edit by hand.", 12, "start", fill="#444"),
+        text(M / 2, size + (80 if b is not None else 40), "Generated by cad/studies/print_area.py from "
+             "cad/data/logs/sweep_toolhead.log (#67)" + (" + the Beacon's files" if b is not None else "")
+             + ". Do not edit by hand.", 12, "start", fill="#444"),
         "</svg>",
     ]
     return "\n".join(s for s in out if s) + "\n"
@@ -125,11 +198,22 @@ def main():
     ap.add_argument("--log", default=os.path.join(CAD, "data", "logs", "sweep_toolhead.log"))
     ap.add_argument("--src", default=os.path.join(HERE, "sweep_toolhead.py"))
     ap.add_argument("--out", default=os.path.join(CAD, "data", "print-area.svg"))
+    ap.add_argument("--beacon", default=BEACON_CFG, help="beacon.cfg (offsets, mesh)")
+    ap.add_argument("--front-reach", default=FRONT_REACH, help="per-X front reach JSON (front_reach_map.py)")
+    ap.add_argument("--mapping", default=MAPPING, help="xy_mapping.json (model -> printer)")
     args = ap.parse_args()
     with open(args.log, encoding="utf-8") as fl, open(args.src, encoding="utf-8") as fs:
-        a = printable(parse_reach(fl.read()), parse_plate(fs.read()))
+        reach, plate = parse_reach(fl.read()), parse_plate(fs.read())
+    a = printable(reach, plate)
+    b = None
+    if all(os.path.isfile(p) for p in (args.beacon, args.front_reach, args.mapping)):
+        with open(args.beacon, encoding="utf-8") as fb, open(args.front_reach, encoding="utf-8") as fr, \
+                open(args.mapping, encoding="utf-8") as fm:
+            b = beacon_area(reach, plate, parse_beacon(fb.read()), json.load(fr), json.load(fm))
+    else:
+        print("print_area: no beacon.cfg / front reach / mapping beside it: drawn without the Beacon")
     with open(args.out, "w", encoding="utf-8") as fo:
-        fo.write(svg(a))
+        fo.write(svg(a, b))
     print(f'{a["model"]}: printable {a["width"]} x {a["depth"]} mm, plate coords X {a["area"][0]}..{a["area"][2]}, '
           f'Y {a["area"][1]}..{a["area"][3]}; loss vs square {a["loss"]} -> {args.out}')
 
