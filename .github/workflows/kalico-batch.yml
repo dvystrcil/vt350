@@ -39,6 +39,10 @@ jobs:
         run: python3 cad/klipper/test_dock_params.py 2>&1 | tee test-dock-params.log
       - name: Confirm every dock-params test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-dock-params.log && tail -1 test-dock-params.log | grep -qx 'OK'
+      - name: Test the vendored purge macro and its settings
+        run: python3 cad/klipper/test_purge.py 2>&1 | tee test-purge.log
+      - name: Confirm every purge test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-purge.log && tail -1 test-purge.log | grep -qx 'OK'
       - name: Test the front-end switch and the vendored client configs (frontend.py; no Kalico)
         run: python3 platform/klipper/test_frontend.py 2>&1 | tee test-frontend.log
       - name: Confirm every front-end test ran

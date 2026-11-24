@@ -17,6 +17,7 @@ The firmware is [Kalico](https://github.com/KalicoCrew/kalico) (user, 2026-11-09
 | `toolchanger.cfg` | The tool changer: includes MadMax's macros (`madmax/`, unchanged) and sets the VT350's dock positions and two `[tool]`s. Included by `printer.cfg` |
 | `tc_offsets.cfg` | Nozzle offsets (#186): includes MadMax's offset-calibration macros, sets the Mellow MultiHead Zero's pin (an Octopus endstop input, DIAG3), replaces the three macros that would fail on Kalico, and checks the save file before a tool change. Included by `printer.cfg` |
 | `madmax/` | MadMax's `toolchanger.cfg`, `toolchanger_macros.cfg`, `tc_offset_calibration_macros.cfg` and `offset_save_file.cfg`, vendored unchanged from `zruncho3d/madmax@277a63c` (GPL-3.0) |
+| `squiggly-purge/` | Squiggly Purge (`SQUIGGLY_PURGE`), the purge line, vendored unchanged from `mjonuschat/voron-mods@4ee68e7` (GPL-3.0); the same macro as the owner's Neptune. Included by `printer.cfg` with `[exclude_object]` |
 | `dock_params.py` | VT350-specific. Derives every `params_*` in `toolchanger.cfg` from the CAD dock poses and checks the file against them |
 | `toolchange.gcode` | Picks up and docks each head: `T0`, `T1`, `UNSELECT_TOOL` |
 | `toolchange_timeline.jsonl` | Generated. Every move Kalico planned for `toolchange.gcode`, one JSON line each (the input for #116 AC5) |
