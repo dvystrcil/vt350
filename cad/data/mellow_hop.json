@@ -1,0 +1,1022 @@
+{
+ "pei_z": 288.16060992516265,
+ "probe_top": 1.0,
+ "probe_parts": [
+  "Mellow MultiHead Zero body (aluminium, 20 x 17.2 x 22, from Mellow's drawing)",
+  "Mellow MultiHead Zero probe (bushing, pin, D 10 ball; estimated from the photo)",
+  "Mellow MultiHead Zero switch + XH2.54 plug (in the body's slot, stand-in)",
+  "Nozzle offset probe bracket (low, lite-78) (printed ABS, vt350, GPL-3.0-or-later)"
+ ],
+ "unders": {
+  "Left 27.4": {
+   "parts": 9,
+   "lowest": -0.0,
+   "lowest_part": "TL-dragon-ace-MZE nozzle (brass V6)"
+  },
+  "empty 27.4": {
+   "parts": 2,
+   "lowest": 2.799,
+   "lowest_part": "Beacon RevH Normal (Beacon CAD, MIT)"
+  },
+  "Left 15": {
+   "parts": 9,
+   "lowest": -0.0,
+   "lowest_part": "TL-dragon-ace-MZE nozzle (brass V6)"
+  },
+  "empty 15": {
+   "parts": 2,
+   "lowest": 2.799,
+   "lowest_part": "Beacon RevH Normal (Beacon CAD, MIT)"
+  },
+  "Right 27.4": {
+   "parts": 9,
+   "lowest": -0.0,
+   "lowest_part": "TL-dragon-ace-MZE nozzle (brass V6)001"
+  },
+  "Right 15": {
+   "parts": 9,
+   "lowest": -0.0,
+   "lowest_part": "TL-dragon-ace-MZE nozzle (brass V6)001"
+  }
+ },
+ "motions": {
+  "T0 dropoff/pickup: carried along X detach, Y safe_toolhead <-> attach": {
+   "z": 1.2,
+   "clearance": 8.622,
+   "nozzle_model_xy": [
+    -404.7,
+    13.54
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -373.75,
+    21.0
+   ],
+   "probe_height": -0.698
+  },
+  "T0 into/out of its dock: X detach <-> park at Y attach": {
+   "z": 1.2,
+   "clearance": null,
+   "note": "never over the probe"
+  },
+  "T0 dropoff from the front edge x 7": {
+   "z": 1.2,
+   "clearance": null,
+   "note": "never over the probe"
+  },
+  "restore to the front edge x 7": {
+   "z": 1.2,
+   "clearance": null,
+   "note": "never over the probe"
+  },
+  "T0 dropoff from the front edge x 10": {
+   "z": 1.2,
+   "clearance": null,
+   "note": "never over the probe"
+  },
+  "restore to the front edge x 10": {
+   "z": 1.2,
+   "clearance": null,
+   "note": "never over the probe"
+  },
+  "T0 dropoff from the front edge x 13": {
+   "z": 1.2,
+   "clearance": null,
+   "note": "never over the probe"
+  },
+  "restore to the front edge x 13": {
+   "z": 1.2,
+   "clearance": null,
+   "note": "never over the probe"
+  },
+  "T0 dropoff from the front edge x 16": {
+   "z": 1.2,
+   "clearance": 11.365,
+   "nozzle_model_xy": [
+    -404.0,
+    33.0
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -373.5,
+    21.75
+   ],
+   "probe_height": -0.514
+  },
+  "restore to the front edge x 16": {
+   "z": 1.2,
+   "clearance": 11.365,
+   "nozzle_model_xy": [
+    -404.0,
+    33.0
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -373.5,
+    21.75
+   ],
+   "probe_height": -0.514
+  },
+  "T0 dropoff from the front edge x 19": {
+   "z": 1.2,
+   "clearance": 8.197,
+   "nozzle_model_xy": [
+    -401.0,
+    33.0
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -373.5,
+    21.75
+   ],
+   "probe_height": -0.514
+  },
+  "restore to the front edge x 19": {
+   "z": 1.2,
+   "clearance": 8.197,
+   "nozzle_model_xy": [
+    -401.0,
+    33.0
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -373.5,
+    21.75
+   ],
+   "probe_height": -0.514
+  },
+  "T0 dropoff from the front edge x 22": {
+   "z": 1.2,
+   "clearance": 5.142,
+   "nozzle_model_xy": [
+    -398.0,
+    33.0
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -373.0,
+    21.5
+   ],
+   "probe_height": -0.036
+  },
+  "restore to the front edge x 22": {
+   "z": 1.2,
+   "clearance": 5.142,
+   "nozzle_model_xy": [
+    -398.0,
+    33.0
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -373.0,
+    21.5
+   ],
+   "probe_height": -0.036
+  },
+  "T0 dropoff from the front edge x 25": {
+   "z": 1.2,
+   "clearance": 3.613,
+   "nozzle_model_xy": [
+    -395.0,
+    33.0
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -371.25,
+    21.25
+   ],
+   "probe_height": 0.832
+  },
+  "restore to the front edge x 25": {
+   "z": 1.2,
+   "clearance": 3.613,
+   "nozzle_model_xy": [
+    -395.0,
+    33.0
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -371.25,
+    21.25
+   ],
+   "probe_height": 0.832
+  },
+  "T0 dropoff from the front edge x 28": {
+   "z": 1.2,
+   "clearance": 2.917,
+   "nozzle_model_xy": [
+    -392.0,
+    33.0
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -371.0,
+    21.25
+   ],
+   "probe_height": 0.892
+  },
+  "restore to the front edge x 28": {
+   "z": 1.2,
+   "clearance": 2.917,
+   "nozzle_model_xy": [
+    -392.0,
+    33.0
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -371.0,
+    21.25
+   ],
+   "probe_height": 0.892
+  },
+  "T0 dropoff from the front edge x 31": {
+   "z": 1.2,
+   "clearance": 2.595,
+   "nozzle_model_xy": [
+    -389.72,
+    34.32
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -370.0,
+    21.0
+   ],
+   "probe_height": 1.0
+  },
+  "restore to the front edge x 31": {
+   "z": 1.2,
+   "clearance": 2.571,
+   "nozzle_model_xy": [
+    -389.0,
+    38.01
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -370.0,
+    21.0
+   ],
+   "probe_height": 1.0
+  },
+  "T0 dropoff from the front edge x 34": {
+   "z": 1.2,
+   "clearance": 2.58,
+   "nozzle_model_xy": [
+    -389.3,
+    38.04
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -370.25,
+    21.0
+   ],
+   "probe_height": 0.991
+  },
+  "restore to the front edge x 34": {
+   "z": 1.2,
+   "clearance": 2.889,
+   "nozzle_model_xy": [
+    -386.0,
+    44.52
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -368.25,
+    21.25
+   ],
+   "probe_height": 0.674
+  },
+  "T0 dropoff from the front edge x 37": {
+   "z": 1.2,
+   "clearance": 2.558,
+   "nozzle_model_xy": [
+    -388.5,
+    40.24
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -370.0,
+    20.75
+   ],
+   "probe_height": 0.991
+  },
+  "restore to the front edge x 37": {
+   "z": 1.2,
+   "clearance": 5.514,
+   "nozzle_model_xy": [
+    -383.0,
+    45.52
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -365.75,
+    21.0
+   ],
+   "probe_height": -1.369
+  },
+  "T0 dropoff from the front edge x 40": {
+   "z": 1.2,
+   "clearance": 2.563,
+   "nozzle_model_xy": [
+    -388.56,
+    42.89
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -370.5,
+    21.0
+   ],
+   "probe_height": 0.972
+  },
+  "restore to the front edge x 40": {
+   "z": 1.2,
+   "clearance": 10.222,
+   "nozzle_model_xy": [
+    -380.0,
+    51.03
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -365.75,
+    20.75
+   ],
+   "probe_height": -1.387
+  },
+  "T0 dropoff from the front edge x 43": {
+   "z": 1.2,
+   "clearance": 2.564,
+   "nozzle_model_xy": [
+    -387.87,
+    44.2
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -370.0,
+    21.0
+   ],
+   "probe_height": 1.0
+  },
+  "restore to the front edge x 43": {
+   "z": 1.2,
+   "clearance": 10.518,
+   "nozzle_model_xy": [
+    -377.0,
+    48.02
+   ],
+   "part": "hex-main-body_DAV_o2_xol",
+   "probe_point_model_xy": [
+    -370.25,
+    20.75
+   ],
+   "probe_height": 0.987
+  },
+  "T0 dropoff from the front edge x 46": {
+   "z": 1.2,
+   "clearance": 2.679,
+   "nozzle_model_xy": [
+    -386.95,
+    45.03
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -369.25,
+    21.75
+   ],
+   "probe_height": 0.885
+  },
+  "restore to the front edge x 46": {
+   "z": 1.2,
+   "clearance": 10.497,
+   "nozzle_model_xy": [
+    -374.0,
+    48.52
+   ],
+   "part": "hex-main-body_DAV_o2_xol",
+   "probe_point_model_xy": [
+    -370.0,
+    21.0
+   ],
+   "probe_height": 1.0
+  },
+  "T0 dropoff from the front edge x 49": {
+   "z": 1.2,
+   "clearance": 2.985,
+   "nozzle_model_xy": [
+    -386.7,
+    46.3
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -369.25,
+    22.25
+   ],
+   "probe_height": 0.78
+  },
+  "restore to the front edge x 49": {
+   "z": 1.2,
+   "clearance": 10.497,
+   "nozzle_model_xy": [
+    -371.0,
+    48.52
+   ],
+   "part": "hex-main-body_DAV_o2_xol",
+   "probe_point_model_xy": [
+    -370.0,
+    21.0
+   ],
+   "probe_height": 1.0
+  },
+  "T0 dropoff from the front edge x 52": {
+   "z": 1.2,
+   "clearance": 3.439,
+   "nozzle_model_xy": [
+    -385.95,
+    46.96
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -368.5,
+    23.0
+   ],
+   "probe_height": 0.326
+  },
+  "restore to the front edge x 52": {
+   "z": 1.2,
+   "clearance": 10.497,
+   "nozzle_model_xy": [
+    -368.0,
+    48.52
+   ],
+   "part": "hex-main-body_DAV_o2_xol",
+   "probe_point_model_xy": [
+    -370.0,
+    21.0
+   ],
+   "probe_height": 1.0
+  },
+  "T0 dropoff from the front edge x 55": {
+   "z": 1.2,
+   "clearance": 3.998,
+   "nozzle_model_xy": [
+    -385.46,
+    47.71
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -368.25,
+    23.0
+   ],
+   "probe_height": 0.233
+  },
+  "restore to the front edge x 55": {
+   "z": 1.2,
+   "clearance": 10.497,
+   "nozzle_model_xy": [
+    -365.0,
+    48.52
+   ],
+   "part": "hex-main-body_DAV_o2_xol",
+   "probe_point_model_xy": [
+    -370.0,
+    21.0
+   ],
+   "probe_height": 1.0
+  },
+  "T0 dropoff from the front edge x 58": {
+   "z": 1.2,
+   "clearance": 4.588,
+   "nozzle_model_xy": [
+    -385.44,
+    48.67
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -368.5,
+    23.5
+   ],
+   "probe_height": 0.061
+  },
+  "restore to the front edge x 58": {
+   "z": 1.2,
+   "clearance": 10.582,
+   "nozzle_model_xy": [
+    -362.0,
+    48.52
+   ],
+   "part": "hex-main-body_DAV_o2_xol",
+   "probe_point_model_xy": [
+    -369.5,
+    21.0
+   ],
+   "probe_height": 0.975
+  },
+  "T0 dropoff from the front edge x 61": {
+   "z": 1.2,
+   "clearance": 5.052,
+   "nozzle_model_xy": [
+    -384.63,
+    49.0
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -368.25,
+    23.0
+   ],
+   "probe_height": 0.233
+  },
+  "restore to the front edge x 61": {
+   "z": 1.2,
+   "clearance": 8.7,
+   "nozzle_model_xy": [
+    -359.0,
+    49.52
+   ],
+   "part": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "probe_point_model_xy": [
+    -374.25,
+    21.25
+   ],
+   "probe_height": -1.385
+  },
+  "T0 dropoff from the front edge x 64": {
+   "z": 1.2,
+   "clearance": 5.455,
+   "nozzle_model_xy": [
+    -385.13,
+    50.07
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -369.0,
+    23.5
+   ],
+   "probe_height": 0.21
+  },
+  "restore to the front edge x 64": {
+   "z": 1.2,
+   "clearance": 4.199,
+   "nozzle_model_xy": [
+    -356.0,
+    45.02
+   ],
+   "part": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "probe_point_model_xy": [
+    -373.5,
+    21.0
+   ],
+   "probe_height": -0.434
+  },
+  "T0 dropoff from the front edge x 67": {
+   "z": 1.2,
+   "clearance": 3.591,
+   "nozzle_model_xy": [
+    -353.0,
+    33.0
+   ],
+   "part": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "probe_point_model_xy": [
+    -373.0,
+    21.25
+   ],
+   "probe_height": -0.012
+  },
+  "restore to the front edge x 67": {
+   "z": 1.2,
+   "clearance": 2.63,
+   "nozzle_model_xy": [
+    -353.0,
+    44.52
+   ],
+   "part": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "probe_point_model_xy": [
+    -370.75,
+    21.25
+   ],
+   "probe_height": 0.935
+  },
+  "T0 dropoff from the front edge x 70": {
+   "z": 1.2,
+   "clearance": 2.588,
+   "nozzle_model_xy": [
+    -350.0,
+    33.0
+   ],
+   "part": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "probe_point_model_xy": [
+    -370.0,
+    21.25
+   ],
+   "probe_height": 0.991
+  },
+  "restore to the front edge x 70": {
+   "z": 1.2,
+   "clearance": 2.588,
+   "nozzle_model_xy": [
+    -350.0,
+    33.0
+   ],
+   "part": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "probe_point_model_xy": [
+    -370.0,
+    21.25
+   ],
+   "probe_height": 0.991
+  },
+  "T0 dropoff from the front edge x 73": {
+   "z": 1.2,
+   "clearance": 2.593,
+   "nozzle_model_xy": [
+    -350.16,
+    34.56
+   ],
+   "part": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "probe_point_model_xy": [
+    -370.0,
+    21.0
+   ],
+   "probe_height": 1.0
+  },
+  "restore to the front edge x 73": {
+   "z": 1.2,
+   "clearance": 3.147,
+   "nozzle_model_xy": [
+    -347.0,
+    33.0
+   ],
+   "part": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "probe_point_model_xy": [
+    -369.0,
+    21.25
+   ],
+   "probe_height": 0.892
+  },
+  "T0 dropoff from the front edge x 76": {
+   "z": 1.2,
+   "clearance": 2.599,
+   "nozzle_model_xy": [
+    -350.34,
+    35.98
+   ],
+   "part": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "probe_point_model_xy": [
+    -369.75,
+    21.25
+   ],
+   "probe_height": 0.987
+  },
+  "restore to the front edge x 76": {
+   "z": 1.2,
+   "clearance": 3.953,
+   "nozzle_model_xy": [
+    -344.0,
+    33.0
+   ],
+   "part": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "probe_point_model_xy": [
+    -368.0,
+    21.25
+   ],
+   "probe_height": 0.575
+  },
+  "T0 dropoff from the front edge x 79": {
+   "z": 1.2,
+   "clearance": 2.592,
+   "nozzle_model_xy": [
+    -350.62,
+    37.31
+   ],
+   "part": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "probe_point_model_xy": [
+    -369.75,
+    21.25
+   ],
+   "probe_height": 0.987
+  },
+  "restore to the front edge x 79": {
+   "z": 1.2,
+   "clearance": 6.085,
+   "nozzle_model_xy": [
+    -341.0,
+    33.0
+   ],
+   "part": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "probe_point_model_xy": [
+    -366.5,
+    21.75
+   ],
+   "probe_height": -0.514
+  },
+  "T0 dropoff from the front edge x 82": {
+   "z": 1.2,
+   "clearance": 2.581,
+   "nozzle_model_xy": [
+    -350.88,
+    38.51
+   ],
+   "part": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "probe_point_model_xy": [
+    -370.0,
+    21.25
+   ],
+   "probe_height": 0.991
+  },
+  "restore to the front edge x 82": {
+   "z": 1.2,
+   "clearance": 9.253,
+   "nozzle_model_xy": [
+    -338.0,
+    33.0
+   ],
+   "part": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "probe_point_model_xy": [
+    -366.5,
+    21.75
+   ],
+   "probe_height": -0.514
+  },
+  "T0 dropoff from the front edge x 85": {
+   "z": 1.2,
+   "clearance": 2.574,
+   "nozzle_model_xy": [
+    -351.26,
+    39.66
+   ],
+   "part": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "probe_point_model_xy": [
+    -370.0,
+    21.25
+   ],
+   "probe_height": 0.991
+  },
+  "restore to the front edge x 85": {
+   "z": 1.2,
+   "clearance": 12.448,
+   "nozzle_model_xy": [
+    -335.0,
+    33.0
+   ],
+   "part": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "probe_point_model_xy": [
+    -366.0,
+    21.5
+   ],
+   "probe_height": -1.048
+  },
+  "T0 dropoff from the front edge x 88": {
+   "z": 1.2,
+   "clearance": 2.558,
+   "nozzle_model_xy": [
+    -351.57,
+    40.68
+   ],
+   "part": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "probe_point_model_xy": [
+    -370.0,
+    21.25
+   ],
+   "probe_height": 0.991
+  },
+  "restore to the front edge x 88": {
+   "z": 1.2,
+   "clearance": null,
+   "note": "never over the probe"
+  },
+  "T0 dropoff from the front edge x 91": {
+   "z": 1.2,
+   "clearance": 2.55,
+   "nozzle_model_xy": [
+    -352.04,
+    41.69
+   ],
+   "part": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "probe_point_model_xy": [
+    -370.25,
+    21.0
+   ],
+   "probe_height": 0.991
+  },
+  "restore to the front edge x 91": {
+   "z": 1.2,
+   "clearance": null,
+   "note": "never over the probe"
+  },
+  "T0 dropoff from the front edge x 94": {
+   "z": 1.2,
+   "clearance": 2.563,
+   "nozzle_model_xy": [
+    -351.92,
+    42.4
+   ],
+   "part": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "probe_point_model_xy": [
+    -370.0,
+    20.5
+   ],
+   "probe_height": 0.972
+  },
+  "restore to the front edge x 94": {
+   "z": 1.2,
+   "clearance": null,
+   "note": "never over the probe"
+  },
+  "T0 dropoff from the front edge x 97": {
+   "z": 1.2,
+   "clearance": 2.541,
+   "nozzle_model_xy": [
+    -351.81,
+    43.06
+   ],
+   "part": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "probe_point_model_xy": [
+    -369.75,
+    21.0
+   ],
+   "probe_height": 0.994
+  },
+  "restore to the front edge x 97": {
+   "z": 1.2,
+   "clearance": null,
+   "note": "never over the probe"
+  },
+  "T0 dropoff from the front edge x 100": {
+   "z": 1.2,
+   "clearance": 2.564,
+   "nozzle_model_xy": [
+    -351.88,
+    43.74
+   ],
+   "part": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "probe_point_model_xy": [
+    -370.0,
+    21.25
+   ],
+   "probe_height": 0.991
+  },
+  "restore to the front edge x 100": {
+   "z": 1.2,
+   "clearance": null,
+   "note": "never over the probe"
+  },
+  "empty carriage: T0's dock moves, Y attach -> close -> safe_shuttle": {
+   "z": 1.2,
+   "clearance": null,
+   "note": "never over the probe"
+  },
+  "empty carriage: shuttle between the docks at Y safe_shuttle": {
+   "z": 1.2,
+   "clearance": 2.999,
+   "nozzle_model_xy": [
+    -374.16,
+    -13.46
+   ],
+   "part": "Beacon RevH Normal (Beacon CAD, MIT)",
+   "probe_point_model_xy": [
+    -370.0,
+    21.0
+   ],
+   "probe_height": 1.0
+  },
+  "empty carriage, Beacon at 15: shuttle between the docks": {
+   "z": 1.2,
+   "clearance": 3.1,
+   "nozzle_model_xy": [
+    -392.18,
+    -13.46
+   ],
+   "part": "COMPOUND",
+   "probe_point_model_xy": [
+    -370.0,
+    21.0
+   ],
+   "probe_height": 1.0
+  },
+  "T1 dropoff/pickup: carried along X detach": {
+   "z": 1.2,
+   "clearance": null,
+   "note": "never over the probe"
+  },
+  "Beacon scan, y_offset 27.4 (overscan 23.07)": {
+   "z": 2.0,
+   "clearance": 2.431,
+   "nozzle_model_xy": [
+    -366.09,
+    21.08
+   ],
+   "part": "TL-dragon-ace-MZE nozzle (brass V6)",
+   "probe_point_model_xy": [
+    -366.5,
+    21.0
+   ],
+   "probe_height": -0.431
+  },
+  "Beacon scan, y_offset 15 (overscan 10.67)": {
+   "z": 2.0,
+   "clearance": 2.28,
+   "nozzle_model_xy": [
+    -366.13,
+    20.28
+   ],
+   "part": "TL-dragon-ace-MZE nozzle (brass V6)",
+   "probe_point_model_xy": [
+    -366.75,
+    20.25
+   ],
+   "probe_height": -0.28
+  },
+  "printing the front edge, first layer (Beacon 27.4)": {
+   "z": 0.2,
+   "clearance": 1.588,
+   "nozzle_model_xy": [
+    -390.0,
+    33.0
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -370.0,
+    21.25
+   ],
+   "probe_height": 0.991
+  },
+  "printing the front edge, first layer (Beacon 15)": {
+   "z": 0.2,
+   "clearance": 1.588,
+   "nozzle_model_xy": [
+    -390.0,
+    33.0
+   ],
+   "part": "[a]_Duct-4010-right",
+   "probe_point_model_xy": [
+    -370.0,
+    21.25
+   ],
+   "probe_height": 0.991
+  }
+ },
+ "summary": {
+  "T0 dropoff/pickup: carried along X detach, Y safe_toolhead <-> attach": {
+   "worst": "T0 dropoff/pickup: carried along X detach, Y safe_toolhead <-> attach",
+   "z": 1.2,
+   "clearance": 8.622,
+   "part": "[a]_Duct-4010-right",
+   "at_z0": 7.422
+  },
+  "T0 into/out of its dock: X detach <-> park at Y attach": null,
+  "T0 dropoff from the front edge": {
+   "worst": "T0 dropoff from the front edge x 97",
+   "z": 1.2,
+   "clearance": 2.541,
+   "part": "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
+   "at_z0": 1.341
+  },
+  "restore to the front edge": {
+   "worst": "restore to the front edge x 31",
+   "z": 1.2,
+   "clearance": 2.571,
+   "part": "[a]_Duct-4010-right",
+   "at_z0": 1.371
+  },
+  "empty carriage: T0's dock moves, Y attach -> close -> safe_shuttle": null,
+  "empty carriage: shuttle between the docks at Y safe_shuttle": {
+   "worst": "empty carriage: shuttle between the docks at Y safe_shuttle",
+   "z": 1.2,
+   "clearance": 2.999,
+   "part": "Beacon RevH Normal (Beacon CAD, MIT)",
+   "at_z0": 1.799
+  },
+  "empty carriage, Beacon at 15: shuttle between the docks": {
+   "worst": "empty carriage, Beacon at 15: shuttle between the docks",
+   "z": 1.2,
+   "clearance": 3.1,
+   "part": "COMPOUND",
+   "at_z0": 1.9
+  },
+  "T1 dropoff/pickup: carried along X detach": null,
+  "Beacon scan, y_offset 27.4 (overscan 23.07)": {
+   "worst": "Beacon scan, y_offset 27.4 (overscan 23.07)",
+   "z": 2.0,
+   "clearance": 2.431,
+   "part": "TL-dragon-ace-MZE nozzle (brass V6)",
+   "at_z0": 0.431
+  },
+  "Beacon scan, y_offset 15 (overscan 10.67)": {
+   "worst": "Beacon scan, y_offset 15 (overscan 10.67)",
+   "z": 2.0,
+   "clearance": 2.28,
+   "part": "TL-dragon-ace-MZE nozzle (brass V6)",
+   "at_z0": 0.28
+  },
+  "printing the front edge, first layer (Beacon 27.4)": {
+   "worst": "printing the front edge, first layer (Beacon 27.4)",
+   "z": 0.2,
+   "clearance": 1.588,
+   "part": "[a]_Duct-4010-right",
+   "at_z0": 1.388
+  },
+  "printing the front edge, first layer (Beacon 15)": {
+   "worst": "printing the front edge, first layer (Beacon 15)",
+   "z": 0.2,
+   "clearance": 1.588,
+   "part": "[a]_Duct-4010-right",
+   "at_z0": 1.388
+  }
+ }
+}
