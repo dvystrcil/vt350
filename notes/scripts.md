@@ -61,6 +61,10 @@ python3 cad/scripts/refresh.py 26 --dry-run      # plan + which parts/printed co
 - **What it runs, in order:** `part_index` (the model's box index and its companions', below; skipped if fresh) → `derive_stls` → `sync_printed` → `check_printed` → `orca_projects` (regenerates the print projects whose STLs changed, #217) → `sweep` → `print_area` → `test_print_area`.
 - **When a step fails:** it stops and prints `refresh: FAILED: step X …`, naming the log to read. A missing completion line also counts as a failure.
 - **On success:** it prints `refresh: OK` and a summary: STLs re-copied, reach vs the committed sweep, and print area. The summary is also saved to `cad/data/logs/refresh.log`.
+- **On the batch lane (the default):** the chain runs the Z sweep first (~8 min), and its `z-guard` stops the chain when
+  print height moved more than 5 mm from the committed `z_sweep.log`, before the 2 h toolhead sweep (#291). If the
+  change is meant, add `--z-change-ok`. A step whose inputs match an earlier chain's succeeded step is reused (copied
+  in seconds), so a resubmit only reruns what changed; `--fresh` reruns everything.
 - **What it never does:** save a model or commit. Afterwards, `git diff --stat` shows what changed, and you commit it.
 - **Who can run it:** you, opencode, or a CI runner with the models mounted. It needs no judgement until the summary.
 - **What it can't do:**

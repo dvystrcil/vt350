@@ -7,7 +7,7 @@ What is still to buy, round by round in build order, for **2 heads** ('per head'
 | Round | Stages | Rows to buy | Priced cost | Unpriced | To decide |
 |---|---|---|---|---|---|
 | 1. Frame | #7, #8, #9 | 21 | - | 21 | 11 |
-| 2. Motion | #10, #11 | 14 | USD 251.94 | 12 | 6 |
+| 2. Motion | #10, #11 | 15 | USD 179.97 | 14 | 5 |
 | 3. Electronics | #13 | 7 | - | 7 | 5 |
 | 4. Toolheads | #12 | 24 | USD 110.84 | 20 | 6 |
 | 5. Enclosure and calibration | #14, #15 | 4 | - | 4 | 17 |
@@ -60,11 +60,11 @@ To decide before buying this round:
 
 Z axis, bed and gantry on the frame: everything that moves, before anything drives it.
 
-Stages #10, #11. Priced cost: **USD 251.94**, plus 12 unpriced row(s).
+Stages #10, #11. Priced cost: **USD 179.97**, plus 14 unpriced row(s).
 
 | Item | To buy | Unit price | Cost | Stage | Vendor |
 |---|---|---|---|---|---|
-| Z rail, MGN9H 400 mm, S class, 1 carriage (West3D Printing) | 3 | USD 23.99 | USD 71.97 | #10 | West3D |
+| Z rail, Berserker MGN9H-1R 400 mm, 1 carriage (West3D) | 1 | - | - | #10 | West3D |
 | Z motor, LDO 42STH40 Extended Height, 400 mm integrated TR8x4 lead screw | 3 | USD 59.99 | USD 179.97 | #10 | West3D |
 | M3x8 socket head (SHCS, ISO 4762), Z carriages | 31 | - | - | #10 | - |
 | M3x12 socket head (SHCS, ISO 4762), Z carriages | 14 | - | - | #10 | - |
@@ -78,6 +78,7 @@ Stages #10, #11. Priced cost: **USD 251.94**, plus 12 unpriced row(s).
 | M5 drop-in T-nut, 6 mm slot | 10 | - | - | #10 | West3D |
 | M5 2020 drop-in T-nut | 4 | - | - | #11 | West3D |
 | M3 hammerhead T-nut, Z carriages | 3 | - | - | #10 | - |
+| Y rail, Hiwin MGN9H 490 mm, 1 block (MGN9HZ0C set) | 2 | - | - | #11 | Motion Constrained |
 
 To decide before buying this round:
 
@@ -85,7 +86,6 @@ To decide before buying this round:
 - M5 screws, Backbone to the frame (#10)
 - Z chain / Z cable anchor hardware (#10)
 - Carbonara X beam through-bolts: M5 BHCS + nuts (#11)
-- MGN9 Y-rail front extension, 73.9 mm (#11)
 - X/Y endstop switch (Omron D2F or similar) (#11)
 
 ## Round 3: Electronics
