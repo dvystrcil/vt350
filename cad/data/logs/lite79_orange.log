@@ -1,0 +1,18 @@
+[    3.1s] opened /home/dan/Documents/VT350/vt350-lite-78.FCStd
+[   14.5s] ok   1 part(s) labelled 'Camera housing front...' (['Camera housing front (Printables 305428, public domain)'])
+[   14.5s] ok   1 part(s) labelled 'Camera housing back...' (['Camera housing back (Printables 305428, public domain)'])
+[   14.5s] ok   1 part(s) labelled 'Nozzle offset probe bracket ...' (['Nozzle offset probe bracket (low, lite-78) (printed ABS, vt350, GPL-3.0-or-later)'])
+[   14.5s] ok   Camera housing front (Printables 305428, public domain) is a Part::Feature, not a link (Part::Feature)
+[   14.5s] ok   Camera housing back (Printables 305428, public domain) is a Part::Feature, not a link (Part::Feature)
+[   14.5s] ok   Nozzle offset probe bracket (low, lite-78) (printed ABS, vt350, GPL-3.0-or-later) is a Part::Feature, not a link (Part::Feature)
+[   14.5s] part: Camera housing front (Printables 305428, public domain) (Encl014), 81 faces
+[   14.5s] part: Camera housing back (Printables 305428, public domain) (Encl015), 53 faces
+[   14.5s] part: Nozzle offset probe bracket (low, lite-78) (printed ABS, vt350, GPL-3.0-or-later) (MHZ78_bracket), 104 faces
+[   15.4s] headless: no ViewObject, colours not set (dry run checks the parts and the model only)
+[   28.1s] ok   every solid's box unchanged (0: [])
+[   28.1s] ok   leaves 1554 -> 1554 (unchanged)
+[   28.1s] ok   Camera housing front (Printables 305428, public domain): same volume and placement
+[   28.2s] ok   Camera housing back (Printables 305428, public domain): same volume and placement
+[   28.2s] ok   Nozzle offset probe bracket (low, lite-78) (printed ABS, vt350, GPL-3.0-or-later): same volume and placement
+[   28.2s] verify: 0 problems
+[   28.2s] DRY RUN (headless): all checks passed, not saved

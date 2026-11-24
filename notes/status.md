@@ -64,7 +64,7 @@ partial versions that have to be rebuilt in order (lite-67 to lite-71 did this).
 
 | Pass in flight | Branch | Builds on |
 |---|---|---|
-| (none) | | |
+| lite-79 (colour only: the camera housing and the Mellow Zero's bracket to the accent orange, owner 2026-11-24; dry run clean, waits on the owner's GUI save) | `feat/lite79-orange` | lite-78 |
 
 ## Where things are
 
