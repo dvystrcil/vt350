@@ -591,6 +591,14 @@ def main(p):
     p.check(not zhits, f"over the bed's Z travel (dZ {BED_LOWEST_DZ:g} .. +5) the Zero's swept box "
                        f"X {allb.XMin:.0f}..{allb.XMax:.0f} Y {allb.YMin:.0f}..{allb.YMax:.0f} hits no fixed part: {zhits[:8]}")
     p.check(all(bedside(s_.BoundBox) for s_ in sh.values()), "every new part is bed-side by the motion code's Z band")
+    import sweep_toolhead
+    def labels_above(o):
+        out, q = [], [g for g in doc.Objects if o in (getattr(g, "Group", []) or [])]
+        while q:
+            g = q.pop(); out.append(g.Label); q += [h for h in doc.Objects if g in (getattr(h, "Group", []) or [])]
+        return out
+    fixed = [o.Label[:40] for o in made.values() if not sweep_toolhead.rides_with_bed(labels_above(o), o.Label)]
+    p.check(not fixed, f"the sweeps move every new part with the bed (sweep_toolhead.rides_with_bed): not moved {fixed}")
     cmap = colours.load(f"{_REPO}/cad/render/colours.json")
     roles = {k: colours.role_of(cmap, o.Label, grp.Label, "Default") for k, o in made.items()}
     p.check(roles == dict(body="brushed_aluminium", probe="brushed_steel", switch="black_plastic", bracket="printed"),

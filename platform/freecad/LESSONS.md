@@ -419,5 +419,6 @@ lite-78 rebuilt the Mellow Zero and its bracket in a new group, "Nozzle offset p
 with the bed from an exact set of group names, which still named lite-61's group. So the Z sweep took the Zero for a
 fixed part: the heater pad "landed" on it 8 mm down and print height fell from 334 to 100 mm. Found only at the
 refresh. Now the bed set also matches the prefix "Nozzle offset probe" (and so does `cad/viewer/licences.json`).
-When a pass renames or regroups a part, grep the repo for the old group's label (`grep -rn "<old label>" --include=*.py
+Now there's one rule, `sweep_toolhead.rides_with_bed()`, and lite-78's pass checks its new parts with it, so the dry
+run catches this in minutes. A pass that adds bed parts should do the same. When a pass renames or regroups a part, grep the repo for the old group's label (`grep -rn "<old label>" --include=*.py
 --include=*.json`) and update each list in the same pass.

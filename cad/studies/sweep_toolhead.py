@@ -62,6 +62,15 @@ BED_PATHS = {"Bed frame", "Z_Bed_Left", "Z_Bed_Right", "Z_Bed_Rear", "Z_Carriage
 # "Nozzle offset probe, low on the bed edge (lite-78, #291)" was missed by the exact set above, and the Z sweep
 # took it for a fixed part the heater pad landed on 8 mm down)
 BED_PATH_PREFIX = ("Nozzle offset probe",)
+
+
+def rides_with_bed(path_labels, label):
+    """True if a leaf (its own label, and the labels of the groups above it) moves with the bed in the sweeps. The one
+    rule: the Z sweep, the toolhead sweep and the passes' own checks all ask this (lite-78's probe group was missed by
+    a second, different rule in its pass, and only the 2-hour refresh showed it)."""
+    path_labels = set(path_labels)
+    return bool(path_labels & BED_PATHS or any(q.startswith(BED_PATH_PREFIX) for q in path_labels)
+                or label.startswith(BED_LABEL_PREFIX) or label in BED_LOOSE)
 BED_LABEL_PREFIX = ("LDO 350 build plate", "Magnetic sheet", "Heater pad", "PEI spring-steel sheet")
 SHEET = "PEI spring-steel sheet"   # the print surface since lite-77; before it, the magnet sheet was
 BED_LOOSE = ("M5x16-Screw001", "M5-Washer001")       # bed-frame bolt filed under the frame (lite-10 found it)
@@ -131,8 +140,7 @@ def plan(out):
         dock_copies += [o.Name for o in leaves if d["dock"] in P[o.Name] and ("Carriage" in P[o.Name] or "Carriage(Mirror)" in P[o.Name])]
     dock_copies = sorted(set(dock_copies))
     exclude = sorted(set([o.Name for o in leaves if P[o.Name] & EXCLUDE_PATHS] + dock_copies))
-    bed = [o.Name for o in leaves if (P[o.Name] & BED_PATHS or any(q.startswith(BED_PATH_PREFIX) for q in P[o.Name])
-                                      or o.Label.startswith(BED_LABEL_PREFIX) or o.Label in BED_LOOSE)]
+    bed = [o.Name for o in leaves if rides_with_bed(P[o.Name], o.Label)]
     gantry = [o.Name for o in leaves if P[o.Name] & GANTRY_PATHS or o.Label in GANTRY_LABELS]
     carriage = [o.Name for o in leaves if P[o.Name] & CARRIAGE_PATHS or o.Label in CARRIAGE_LABELS]
     beacon = [o for o in leaves if o.Label.startswith(BEAM)]
