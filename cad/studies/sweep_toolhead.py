@@ -58,6 +58,10 @@ BED_PATHS = {"Bed frame", "Z_Bed_Left", "Z_Bed_Right", "Z_Bed_Rear", "Z_Carriage
              "Z_Carriage_Rear_2-hole (IGUS)", "Z_Carriage_Rear_3-Hole (Generic)", "MGN9H (2)", "MGN9H (3)",
              "MGN9H (4)", "kinematic bed mount v1",
              "Nozzle offset probe (lite-61, #186)"}    # bolted to the bed frame's front edge: rides with the bed
+# any group whose label starts so rides with the bed too: each probe pass names its own group (lite-78's
+# "Nozzle offset probe, low on the bed edge (lite-78, #291)" was missed by the exact set above, and the Z sweep
+# took it for a fixed part the heater pad landed on 8 mm down)
+BED_PATH_PREFIX = ("Nozzle offset probe",)
 BED_LABEL_PREFIX = ("LDO 350 build plate", "Magnetic sheet", "Heater pad", "PEI spring-steel sheet")
 SHEET = "PEI spring-steel sheet"   # the print surface since lite-77; before it, the magnet sheet was
 BED_LOOSE = ("M5x16-Screw001", "M5-Washer001")       # bed-frame bolt filed under the frame (lite-10 found it)
@@ -127,7 +131,8 @@ def plan(out):
         dock_copies += [o.Name for o in leaves if d["dock"] in P[o.Name] and ("Carriage" in P[o.Name] or "Carriage(Mirror)" in P[o.Name])]
     dock_copies = sorted(set(dock_copies))
     exclude = sorted(set([o.Name for o in leaves if P[o.Name] & EXCLUDE_PATHS] + dock_copies))
-    bed = [o.Name for o in leaves if (P[o.Name] & BED_PATHS or o.Label.startswith(BED_LABEL_PREFIX) or o.Label in BED_LOOSE)]
+    bed = [o.Name for o in leaves if (P[o.Name] & BED_PATHS or any(q.startswith(BED_PATH_PREFIX) for q in P[o.Name])
+                                      or o.Label.startswith(BED_LABEL_PREFIX) or o.Label in BED_LOOSE)]
     gantry = [o.Name for o in leaves if P[o.Name] & GANTRY_PATHS or o.Label in GANTRY_LABELS]
     carriage = [o.Name for o in leaves if P[o.Name] & CARRIAGE_PATHS or o.Label in CARRIAGE_LABELS]
     beacon = [o for o in leaves if o.Label.startswith(BEAM)]

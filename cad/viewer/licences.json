@@ -31,7 +31,7 @@
   {"label_prefix": "Printed bracket 20x25x25 (stand-in)", "licence": "GPL-3.0-or-later", "credit": "own", "source": "this repo: an outside-size box standing in for a downloaded bracket that can't be shared (lite53_ebox_inner_frame.py)"},
   {"group_prefix": "O2S cables + channel", "licence": "GPL-3.0-or-later", "credit": "own", "source": "this repo: cables, zip ties and the printed channel drawn by lite40_o2s_cables.py, lite70, lite71"},
   {"group_prefix": "E-box panels and front grille", "licence": "GPL-3.0-or-later", "credit": "own", "source": "this repo: panels and grille designed by lite59_ebox_panels.py / lite60_grille_ears.py"},
-  {"group_prefix": "Nozzle offset probe (lite-61", "licence": "GPL-3.0-or-later", "credit": "own", "source": "this repo: the Mellow MultiHead Zero drawn from Mellow's drawing and photo, and its bracket, by lite61_offset_probe.py"},
+  {"group_prefix": "Nozzle offset probe", "licence": "GPL-3.0-or-later", "credit": "own", "source": "this repo: the Mellow MultiHead Zero drawn from Mellow's drawing and photo, and its bracket, by lite61_offset_probe.py, rebuilt low by lite78_front17.py"},
   {"label_prefix": "Door window", "licence": "GPL-3.0-or-later", "credit": "own", "source": "this repo: sheet and glazing strip drawn by lite38 / lite58_door_glazing.py"},
   {"label_prefix": "E-box door window", "licence": "GPL-3.0-or-later", "credit": "own", "source": "this repo: sheet and glazing strip drawn by lite56 / lite58_door_glazing.py"},
   {"group_prefix": "E-box layout, concept C", "licence": "GPL-3.0-or-later", "credit": "own", "source": "this repo: the e-box layout's boxes at each part's size (lite54_ebox_layout.py) and TS35 rails to EN 60715 (lite57_din_rails.py)"},

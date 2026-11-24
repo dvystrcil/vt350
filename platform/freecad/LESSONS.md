@@ -411,3 +411,13 @@ mating faces flat, a 0.5 chamfer on the bed. What OCC (FreeCAD 26.3) would and w
 - **`Shape.BoundBox` is loose on fillet (B-spline) surfaces:** a "stays inside the box" test on it fails for nothing.
   Use `optimalBoundingBox()`.
 - Pick edges by plane and position, never by index: every fillet renumbers them.
+
+## A pass's new group name must reach every list that sorts parts by group (2026-11-23, lite-78)
+
+lite-78 rebuilt the Mellow Zero and its bracket in a new group, "Nozzle offset probe, low on the bed edge (lite-78,
+#291)". The pass's own "bed-side" check used litelib's Z band and passed, but `sweep_toolhead.py` picks what rides
+with the bed from an exact set of group names, which still named lite-61's group. So the Z sweep took the Zero for a
+fixed part: the heater pad "landed" on it 8 mm down and print height fell from 334 to 100 mm. Found only at the
+refresh. Now the bed set also matches the prefix "Nozzle offset probe" (and so does `cad/viewer/licences.json`).
+When a pass renames or regroups a part, grep the repo for the old group's label (`grep -rn "<old label>" --include=*.py
+--include=*.json`) and update each list in the same pass.
