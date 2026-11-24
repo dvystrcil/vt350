@@ -6,6 +6,8 @@
   3. Z_TILT_ADJUST by nozzle taps, one near each of the three Z leadscrews;
   4. a nozzle tap at the home position: the true Z0 (contact homing);
   5. the Beacon's bed-mesh scan path.
+The bed mesh always runs LAST (owner, 2026-11-24): after the Z tilt, the Z0 and the tool pickup, because each of
+those changes what the mesh is measured against. Nothing after it may tap, home, tilt or change tools.
 
     python3 cad/motion/beacon_scan.py > cad/motion/beacon_scan.gcode      # then run it through Kalico batch mode
 

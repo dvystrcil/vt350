@@ -88,6 +88,20 @@ class Path(unittest.TestCase):
         self.assertEqual(len(taps), len(bs.TILT_POINTS) + bc["autocal_sample_count"])
         self.assertLess(t0, taps[0]); self.assertLess(taps[-1], scan_start)
 
+    def test_bed_mesh_is_last(self):
+        """Owner 2026-11-24: Z tilt before the bed mesh, and the bed mesh always last. After the scan starts there are
+        only the scan's own moves and the final lift: no tap, home, tool change or tilt."""
+        g = bs.gcode().splitlines()
+        scan_start = [i for i, l in enumerate(g) if l.startswith("; 5.")][0]
+        after = [l for l in g[scan_start + 1:] if not l.startswith(";")]
+        tap = f"G1 Z0 F{bs.S['beacon']['autocal_speed'] * 60:g}"
+        self.assertNotIn(tap, after)
+        for l in after:
+            self.assertFalse(l.startswith(("G28", "T", "Z_TILT", "INITIALIZE")), l)
+        self.assertEqual(after[1], f"G1 Z{bs.TRIGGER_Z:g} F{bs.S['beacon']['speed'] * 60:g}")      # down to scan Z once
+        self.assertTrue(all(l.endswith(f"F{bs.S['bed_mesh']['speed'] * 60:g}") for l in after[2:-1]))  # the path
+        self.assertEqual(after[-1], f"G1 Z{bs.S['bed_mesh']['horizontal_move_z']:g} F{bs.S['beacon']['speed'] * 60:g}")
+
     def test_moves_use_the_cfg_speeds_and_heights(self):
         g = bs.gcode().splitlines()
         zt, bm = bs.S["z_tilt"], bs.S["bed_mesh"]
