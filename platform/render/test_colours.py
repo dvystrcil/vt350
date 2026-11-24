@@ -91,7 +91,9 @@ class TheCommittedMap(unittest.TestCase):
         self.assertEqual(co.role_of(m, "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)",
                                     "Left Toolhead", "ABS-Generic"), "accent")
         self.assertEqual(co.role_of(m, "Camera housing front (Printables 305428, public domain)",
-                                    "Enclosure extras (lite-16)", "Default"), "printed")
+                                    "Enclosure extras (lite-16)", "Default"), "accent")       # orange: owner, 2026-11-24
+        self.assertEqual(co.role_of(m, "Nozzle offset probe bracket (low, lite-78) (printed ABS, vt350, GPL-3.0-or-later)",
+                                    "Nozzle offset probe (lite-78)", "ABS-Generic"), "accent")  # orange: owner, 2026-11-24
         self.assertIsNone(co.role_of(m, "Nocturne lens", "Enclosure extras (lite-16)", "Default"))
         self.assertEqual(co.role_of(m, "GT2 9mm belt, lower (Monolith 2WD)", "4040-350x350x250 Voron Trident v4 v33", "Default"), "belt")
         for lab in ("VC9-JLA", "VT9-RRB", "VT9-FIA001"):

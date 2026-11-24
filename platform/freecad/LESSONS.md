@@ -422,3 +422,14 @@ refresh. Now the bed set also matches the prefix "Nozzle offset probe" (and so d
 Now there's one rule, `sweep_toolhead.rides_with_bed()`, and lite-78's pass checks its new parts with it, so the dry
 run catches this in minutes. A pass that adds bed parts should do the same. When a pass renames or regroups a part, grep the repo for the old group's label (`grep -rn "<old label>" --include=*.py
 --include=*.json`) and update each list in the same pass.
+
+## A GUI pass with no window, and a fair "before" render (2026-11-24, lite-79)
+
+- **A pass that needs the GUI (colours) can run without a window:** `PASS_GUI_NOTICE=none xvfb-run -a $APP <pass>.py`.
+  `xvfb-run` gives FreeCAD a virtual display, so `ViewObject` exists and colours are set and checked; `PASS_GUI_NOTICE=none`
+  skips the message box nobody would see to click (the outcome is still in the log). The process exits by itself.
+- **A render takes its colours from the checkout it runs in** (`VT350_REPO`: its `cad/render/colours.json`), not from the
+  model. Rendering the "before" model from the branch that changes `colours.json` shows the new colours on the old model.
+  For a fair before, export the old lite-N from main. lite-79's first "before" showed both parts already orange that way.
+- A part's colour in the FreeCAD file and in the renders can differ: the renders go by `colours.json` roles. lite-79's
+  camera housing was dark grey in the file and white in the renders.

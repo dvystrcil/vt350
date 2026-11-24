@@ -64,7 +64,7 @@ partial versions that have to be rebuilt in order (lite-67 to lite-71 did this).
 
 | Pass in flight | Branch | Builds on |
 |---|---|---|
-| (none) | | |
+| lite-79 (colour only: the camera housing and the Mellow Zero's bracket to the accent orange, owner 2026-11-24; saved 2026-11-24 by the owner's GUI run, 14 checks, `vt350-lite-79.FCStd` 38.1 MB; no refresh chain: no geometry change) | `feat/lite79-orange` (PR #313) | lite-78 |
 
 ## Where things are
 
