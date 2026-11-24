@@ -295,6 +295,12 @@ class Lane(unittest.TestCase):
     batch-lane chain; the laptop keeps the steps whose output is committed (derive_stls's STLs: the lane's
     tessellation differs, homelab#1961) and submits the chain first so both run at once"""
 
+    def test_lane_plan_passes_the_guard_and_reuse_flags(self):
+        plain = rf.lane_plan(35, root="/r", app="/app", models="/m")[0].cmd
+        self.assertNotIn("--z-change-ok", plain); self.assertNotIn("--fresh", plain)
+        both = rf.lane_plan(35, root="/r", app="/app", models="/m", z_change_ok=True, fresh=True)[0].cmd
+        self.assertIn("--z-change-ok", both); self.assertIn("--fresh", both)
+
     def test_lane_plan_submits_then_runs_only_the_repo_writing_steps(self):
         names = [s.name for s in rf.lane_plan(35, root="/r", app="/app", models="/m", notify="dvystrcil/homelab#2257")]
         self.assertEqual(names, ["submit", "derive_stls", "sync_printed", "check_printed", "orca_projects"])

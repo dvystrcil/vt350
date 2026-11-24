@@ -223,11 +223,12 @@ def plan(n, root=REPO, app=APP, start=None, models=MODELS_DIR):
     return steps[ORDER.index(start):] if start else steps
 
 
-def lane_plan(n, root=REPO, app=APP, models=MODELS_DIR, notify=None, submit=SUBMIT):
+def lane_plan(n, root=REPO, app=APP, models=MODELS_DIR, notify=None, submit=SUBMIT, z_change_ok=False, fresh=False):
     """Submit the vt350-refresh chain for vt350-lite-<n>, then the steps whose output is committed (homelab#2257)."""
     model = os.path.join(models, f"vt350-lite-{n}.FCStd")
     cmd = [sys.executable, submit, "chain", "vt350-refresh", "--model", model, "--models-dir", models, "--vt350", root,
-           "--sweep-deadline", str(SWEEP_DEADLINE_S)] + (["--notify", notify] if notify else [])
+           "--sweep-deadline", str(SWEEP_DEADLINE_S)] + (["--notify", notify] if notify else []) \
+        + (["--z-change-ok"] if z_change_ok else []) + (["--fresh"] if fresh else [])
     sub = Step("submit", cmd=cmd, log=os.path.join(root, SUBMIT_LOG), marker=CHAIN_RE)
     return [sub] + [s for s in plan(n, root=root, app=app, models=models) if s.name in LANE_LOCAL]
 
@@ -382,6 +383,11 @@ def parse_args(argv=None):
     mode.add_argument("--collect", nargs="?", const="", metavar="CHAIN-ID",
                       help="copy a finished chain's outputs into the repo (default: the last one submitted)")
     ap.add_argument("--notify", help="lane: OWNER/REPO#N the chain comments on when it ends")
+    ap.add_argument("--z-change-ok", action="store_true",
+                    help="lane: print height may move > 5 mm from the committed z_sweep.log (the chain's z-guard "
+                         "stops it otherwise, before the 2 h toolhead sweep; homelab gpu-batch-submit)")
+    ap.add_argument("--fresh", action="store_true",
+                    help="lane: rerun every step; by default a step whose inputs match an earlier chain's is reused")
     ap.add_argument("--from", dest="start", choices=ORDER, help="--local: start at this step")
     ap.add_argument("--dry-run", action="store_true", help="print the steps and what sync_printed would change")
     a = ap.parse_args(argv)
@@ -433,7 +439,7 @@ def main_collect(a):
 
 
 def main_lane(a):
-    steps = lane_plan(a.lite, notify=a.notify)
+    steps = lane_plan(a.lite, notify=a.notify, z_change_ok=a.z_change_ok, fresh=a.fresh)
     if a.dry_run:
         _show(steps); return 0
     if not os.path.isfile(MODELS.format(a.lite)):
