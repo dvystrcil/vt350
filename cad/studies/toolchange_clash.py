@@ -39,7 +39,7 @@ TIMELINE = os.path.join(ROOT, "cad/klipper/toolchange_timeline.jsonl")
 MAPPING = os.path.join(ROOT, "cad/klipper/xy_mapping.json")
 TOOLCHANGER = os.path.join(ROOT, "cad/klipper/toolchanger.cfg")
 STEP, STEP_FAR = 25.0, 100.0   # mm between poses along a move: near the docks (an end at printer Y < NEAR_Y), elsewhere
-NEAR_Y = 50.0                   # just past params_safe_toolhead_y 48.04; the print area is sweep_toolhead's (corners, X scans)
+NEAR_Y = 50.0                   # past params_safe_toolhead_y (48.04 to lite-77, 31.04 from lite-78); the print area is sweep_toolhead's (corners, X scans)
 # a block on its own rail: a sliding fit, whose volume changes with the rail's holes under it (sweep_toolhead's X scan
 # leaves out MGN12-400mm the same way)
 SLIDING = (("MGN12-400mm", "MGN_12_H_CARRAGE"), ("_MGN9H", "MGN9-400mm Y rail"), ("_MGN9H", "MGN9 Y rail front extension"))

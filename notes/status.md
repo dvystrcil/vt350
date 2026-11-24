@@ -63,7 +63,7 @@ partial versions that have to be rebuilt in order (lite-67 to lite-71 did this).
 
 | Pass in flight | Branch | Builds on |
 |---|---|---|
-| lite-77 (the PEI sheet, vt350#291; saved 2026-11-22 09:21 PST, refreshed on the lane, chain `vt350-lite-77-20261122t172901-ef95`: reach and print area unchanged, every Z limit 1.00 lower, `position_max` 329.43) | `feat/lite77-pei-sheet` | lite-76 |
+| lite-78 (the front 17 mm forward, 490 Y rails, the Mellow low on the bed's front edge in a cast-look bracket, vt350#291; saved 2026-11-23 17:06 PST, refreshed on the lane, chain `vt350-lite-78-20261124t031612-ad54`: front reach −68.93 (`position_min` −99.43), print height unchanged 334.43, printable 342.0 × 340.19, dock params −17) | `feat/291-beacon-front-scan` (PR #292) | lite-77 |
 
 ## Where things are
 

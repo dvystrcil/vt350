@@ -88,7 +88,7 @@ class Committed(unittest.TestCase):
         records = [json.loads(l) for l in read(ROOT, "cad", "klipper", "toolchange_timeline.jsonl").splitlines() if l]
         fr = timeline.frames(r, records, fps=None)
         park_x = r["heads"]["Left"]["dock"][0]                          # T0's params_park_x, from toolchanger.cfg
-        at = [f for f in fr if f["pos"][:2] == [park_x, -68.96] and f["carried"] == "Left"][0]
+        at = [f for f in fr if f["pos"][:2] == [park_x, -85.96] and f["carried"] == "Left"][0]
         self.assertEqual(at["groups"]["Left"], [0.0, -6.0, -0.315])      # the 6 mm keyslot slide, model -Y
         self.assertEqual(fr[-1]["groups"]["Left"], [0.0, 0.0, 0.0])
         self.assertEqual(fr[-1]["groups"]["Right"], [0.0, 0.0, 0.0])

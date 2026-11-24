@@ -370,3 +370,55 @@ numpy/scipy (`cad/studies/flap_guide/test_rod.py`) is the opposite case: it need
 `if __name__ == "__main__"`. Don't read either failure as "needs an environment we don't have" until it has been
 tried in the right interpreter.
 
+
+## A swept tube's own Volume can be several % off; check a splice against its cut pieces
+
+vt350-lite-78 (vt350#291) lengthened lite-36's Bowden tubes (a B-spline sweep plus a short cylinder end, one closed
+shell, `isValid()` True) by cutting them across and filling the gap. The check "new volume = old volume + section x 17"
+failed by ~300 mm3 on an 8458 mm3 tube: `Shape.Volume` of the original was ~4 % high. The two cut pieces
+(`common()` with a box on each side of the cut) summed to 8137, and the result to that plus the fill, give or take
+~0.3 % (B-spline volume integration; a compound of the same pieces gave yet another figure, 8395).
+
+- Check a splice of a swept part against the sum of the pieces it was cut into, not against its original `Volume`,
+  and allow ~0.5 %.
+- Exact-volume checks (1e-5) still hold for prism-like parts (extrusions, boxes, panels): keep them there.
+
+## Rebuilding a part from the pass that made it loses every later retrofit (2026-11-23, lite-78)
+
+vt350-lite-78 (vt350#291) moved the nozzle-offset probe bracket by deleting it and rebuilding it with lite-61's code.
+That brought back lite-61's shape, which needs supports. lite-71 had already fixed it at the owner's request: the arm
+was carried down so the part prints on one flat face. The owner caught it in the preview STL.
+
+- Before rebuilding a part from its original pass, search the later passes for its label (`grep -l "<label>"
+  cad/passes/*.py`), and carry their changes into the rebuild. Better still, move the model's current part when the
+  change is a plain move.
+- Keep the later pass's check in the rebuild too (here: lite-71's "no face hangs" test), so the fix can't be lost again.
+
+## Rounding a printed part: build order, and the first-layer chamfer as a taper (2026-11-23, lite-78)
+
+The Mellow bracket (two plates and an arm, vt350#291) in the cast style (`parts/printed/README.md`): rounded, blended,
+mating faces flat, a 0.5 chamfer on the bed. What OCC (FreeCAD 26.3) would and wouldn't do:
+
+- **Order matters.** Fillet the arm's joins with the plates while the plates are still sharp prisms (with their outline
+  corners drawn in the 2D profile). Once a plate's rim is rounded, the same join fillets fail at every radius.
+- **A plate's rim as one tangent chain** (both sides, the R4 corner arcs and the top) rounds cleanly in one `makeFillet`.
+  Rounding the outline by intersecting rounded extrusions (side view x plan x front view) gives a crease at each
+  corner instead.
+- **The first-layer chamfer can't be an edge chamfer where a rim round runs down to the bed:** `makeChamfer` on those
+  bottom edges fails (4 of 24 per edge), and chamfering first makes the rim fillet invalid. Instead cut the bottom
+  0.5 mm off and fuse back the footprint face extruded 0.5 down with `Part::Extrusion` `TaperAngle = -45`: same result,
+  no edge operations.
+- **`Shape.BoundBox` is loose on fillet (B-spline) surfaces:** a "stays inside the box" test on it fails for nothing.
+  Use `optimalBoundingBox()`.
+- Pick edges by plane and position, never by index: every fillet renumbers them.
+
+## A pass's new group name must reach every list that sorts parts by group (2026-11-23, lite-78)
+
+lite-78 rebuilt the Mellow Zero and its bracket in a new group, "Nozzle offset probe, low on the bed edge (lite-78,
+#291)". The pass's own "bed-side" check used litelib's Z band and passed, but `sweep_toolhead.py` picks what rides
+with the bed from an exact set of group names, which still named lite-61's group. So the Z sweep took the Zero for a
+fixed part: the heater pad "landed" on it 8 mm down and print height fell from 334 to 100 mm. Found only at the
+refresh. Now the bed set also matches the prefix "Nozzle offset probe" (and so does `cad/viewer/licences.json`).
+Now there's one rule, `sweep_toolhead.rides_with_bed()`, and lite-78's pass checks its new parts with it, so the dry
+run catches this in minutes. A pass that adds bed parts should do the same. When a pass renames or regroups a part, grep the repo for the old group's label (`grep -rn "<old label>" --include=*.py
+--include=*.json`) and update each list in the same pass.

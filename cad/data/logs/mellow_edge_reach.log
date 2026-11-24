@@ -1,0 +1,8 @@
+mellow_edge_reach: vt350-lite-77.FCStd, front stretch 17.0, Beacon y_offset 15.0
+  ball centre Y   -9.5, overtravel 5.0: X 45..54 (margin 1.7), X 206..225 (margin 1.7)
+  ball centre Y   -9.5, overtravel 6.0: X 45..54 (margin 0.7), X 206..225 (margin 0.7)
+  ball centre Y  -11.0, overtravel 5.0: X 45..54 (margin 0.2), X 206..225 (margin 0.2)
+  ball centre Y  -11.0, overtravel 6.0: nowhere
+  ball centre Y  -12.5, overtravel 5.0: nowhere
+  ball centre Y  -12.5, overtravel 6.0: nowhere
+  lite-61's spot (175, -12.5), overtravel 5: margin -5.83
