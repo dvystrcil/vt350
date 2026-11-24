@@ -4,6 +4,7 @@
 G28
 G90
 INITIALIZE_TOOLCHANGER
+; BED_MESH_CLEAR: no old mesh under the tilt and Z0 taps (not run here: batch mode has no [bed_mesh])
 ; 1. coarse Z, no head on the carriage (G28 Z METHOD=PROXIMITY): to home_xy_position at home_z_hop, then the
 ;    carriage dives at [beacon] speed until the coil is at trigger_distance, and hops back
 G1 Z10 F900

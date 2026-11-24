@@ -102,6 +102,13 @@ class Path(unittest.TestCase):
         self.assertTrue(all(l.endswith(f"F{bs.S['bed_mesh']['speed'] * 60:g}") for l in after[2:-1]))  # the path
         self.assertEqual(after[-1], f"G1 Z{bs.S['bed_mesh']['horizontal_move_z']:g} F{bs.S['beacon']['speed'] * 60:g}")
 
+    def test_old_mesh_cleared_before_the_tilt(self):
+        """As the owner's Neptune PRINT_START: BED_MESH_CLEAR before anything is measured."""
+        g = bs.gcode().splitlines()
+        clear = [i for i, l in enumerate(g) if "BED_MESH_CLEAR" in l][0]
+        tilt = [i for i, l in enumerate(g) if l.startswith("; 3.")][0]
+        self.assertLess(clear, tilt)
+
     def test_moves_use_the_cfg_speeds_and_heights(self):
         g = bs.gcode().splitlines()
         zt, bm = bs.S["z_tilt"], bs.S["bed_mesh"]

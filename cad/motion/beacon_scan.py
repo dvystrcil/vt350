@@ -6,8 +6,11 @@
   3. Z_TILT_ADJUST by nozzle taps, one near each of the three Z leadscrews;
   4. a nozzle tap at the home position: the true Z0 (contact homing);
   5. the Beacon's bed-mesh scan path.
-The bed mesh always runs LAST (owner, 2026-11-24): after the Z tilt, the Z0 and the tool pickup, because each of
-those changes what the mesh is measured against. Nothing after it may tap, home, tilt or change tools.
+The bed mesh is always the LAST measurement (owner, 2026-11-24): after the Z tilt, the Z0 and the tool pickup, because
+each of those changes what the mesh is measured against. Nothing after it may tap, home, tilt or change tools; only
+the purge line and the print follow. Any old mesh is cleared (BED_MESH_CLEAR) before the tilt. The shape follows the
+owner's Neptune PRINT_START (G28, SKEW_PROFILE LOAD, BED_MESH_CLEAR, BED_MESH_CALIBRATE, CLEAR_PAUSE, LINE_PURGE),
+with the toolchanger's steps added.
 
     python3 cad/motion/beacon_scan.py > cad/motion/beacon_scan.gcode      # then run it through Kalico batch mode
 
@@ -144,6 +147,7 @@ def gcode(s=None):
         "; from cad/klipper/beacon.cfg; don't edit. Batch mode has no probe: G28 is instant (set_position), and each",
         "; probing step below is written as the moves it makes.",
         "G28", "G90", "INITIALIZE_TOOLCHANGER",
+        "; BED_MESH_CLEAR: no old mesh under the tilt and Z0 taps (not run here: batch mode has no [bed_mesh])",
         "; 1. coarse Z, no head on the carriage (G28 Z METHOD=PROXIMITY): to home_xy_position at home_z_hop, then the",
         ";    carriage dives at [beacon] speed until the coil is at trigger_distance, and hops back",
         f"G1 Z{f(max(hop, zt['horizontal_move_z']))} {F(bc['home_z_hop_speed'])}",
