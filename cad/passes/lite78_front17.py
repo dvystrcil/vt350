@@ -159,6 +159,109 @@ def splice_tube(s, ys_candidates, dy, d):
     return new, ys, fs[0].Area, best[1], pieces
 
 
+# The bracket as one cast-look body (owner, 2026-11-23: "carry these [casting curves] into the parts we are remixing";
+# parts/printed/README.md "Style: a cast part"): mating faces flat with a 0.5 chamfer, the bed face only chamfered, the
+# rest rounded or blended. The build order is the one OCC accepts (platform/freecad/LESSONS.md "Rounding a printed part").
+ARM_HW, FRONT_T = 5.0, 8.0          # the arm's half width (clear of the back screws' heads), the front plate's thickness
+                                    # (for the Zero's M3 heat-set inserts)
+BACK_SCREW_DX, BACK_HEAD_R = 10.5, 2.75   # the back plate's M3x8 + T-nut screws, and an M3 SHCS head's radius
+INSERT_D, INSERT_DEPTH = 4.0, 9.0   # M3 heat-set insert hole (lite-71's size), from the front plate's front face
+R_TOP_CORNER = 4.0                  # the plates' top corners seen from the front (dock plates R3-R4.3, A4Tv2 R4)
+R_BLEND = 2.0                       # inside blends where the arm meets a plate, and the arm's top edges
+
+MATE_CHAMFER = 0.5                  # a mating face (on the 2020, against the Zero) stays flat: only this chamfer (owner)
+
+
+def _plain_line(e):
+    try: return isinstance(e.Curve, Part.Line)
+    except Exception: return False                       # OCC: "undefined curve type" on some edges
+
+
+def _outline_plate(x0, hw, ya, yb_, z0, zt):
+    """A plate's front outline (X +-hw, z0..zt, R_TOP_CORNER top corners drawn in) extruded from Y ya to yb_."""
+    import math
+    rc = R_TOP_CORNER; k = rc * (1 - math.cos(math.pi / 4))
+    P = lambda x, z: V(x, ya, z)
+    x1, x2 = x0 - hw, x0 + hw
+    w = Part.Wire([Part.LineSegment(P(x1, z0), P(x2, z0)).toShape(), Part.LineSegment(P(x2, z0), P(x2, zt - rc)).toShape(),
+                   Part.Arc(P(x2, zt - rc), P(x2 - k, zt - k), P(x2 - rc, zt)).toShape(),
+                   Part.LineSegment(P(x2 - rc, zt), P(x1 + rc, zt)).toShape(),
+                   Part.Arc(P(x1 + rc, zt), P(x1 + k, zt - k), P(x1, zt - rc)).toShape(),
+                   Part.LineSegment(P(x1, zt - rc), P(x1, z0)).toShape()])
+    return Part.Face(w).extrude(V(0, yb_ - ya, 0))
+
+
+def first_layer_taper(sh, z0, c):
+    """The first-layer chamfer as a taper: the bottom c mm cut off and the footprint, extruded c down from z0 + c with a
+    45 deg inward draft, fused back. Edge chamfers fail where a rim round runs down to the bed (LESSONS.md)."""
+    foot = [f for f in sh.Faces if isinstance(f.Surface, Part.Plane) and f.BoundBox.ZMax < z0 + 1e-6]
+    if len(foot) != 1: return sh, False
+    prev = FreeCAD.ActiveDocument
+    doc = FreeCAD.newDocument("lite78_taper_tmp")
+    try:
+        fo = doc.addObject("Part::Feature", "foot"); fo.Shape = foot[0].translated(V(0, 0, c))
+        ex = doc.addObject("Part::Extrusion", "band"); ex.Base = fo; ex.DirMode = "Custom"; ex.Dir = V(0, 0, -1)
+        ex.LengthFwd = c; ex.Solid = True; ex.TaperAngle = -45.0; doc.recompute()
+        band = ex.Shape.copy()
+    finally:
+        FreeCAD.closeDocument(doc.Name)
+        if prev is not None: FreeCAD.setActiveDocument(prev.Name)
+    bb = sh.BoundBox
+    top = sh.cut(Part.makeBox(bb.XLength + 20, bb.YLength + 20, c, V(bb.XMin - 10, bb.YMin - 10, z0)))
+    t = top.fuse(band).removeSplitter()
+    ok = band.isValid() and len(band.Solids) == 1 and t.isValid() and len(t.Solids) == 1
+    return (t, True) if ok else (sh, False)
+
+
+def cast_bracket(x0, yf, yr, z0, z_back, z_front, z_arm):
+    """The bracket in model coordinates, one cast-look body: the front plate Y yf..yf+FRONT_T (X +-12, to z_front, its
+    front face against the Zero), the back plate Y yr-BR_T..yr (X +-15, to z_back, its back face on the 2020), the arm
+    between them (X +-ARM_HW, to z_arm), blended R_BLEND into both plates, its top edges rounded; flat bottom at z0.
+    The first-layer taper is left to the caller (after the holes). Returns (shape, failed steps)."""
+    yfp, ybp = yf + FRONT_T, yr - BR_T
+    body = _outline_plate(x0, 12, yf, yfp, z0, z_front).fuse(
+        [_outline_plate(x0, 15, ybp, yr, z0, z_back),
+         Part.makeBox(2 * ARM_HW, ybp - yfp, z_arm - z0, V(x0 - ARM_HW, yfp, z0))]).removeSplitter()
+    failed = []
+    def step(name, fn):
+        nonlocal body
+        try:
+            t = fn(body)
+            if t.isValid() and len(t.Solids) == 1: body = t; return
+        except Exception: pass
+        failed.append(name)
+    # 1. the arm's joins with the plates (not on the bed) and its top edges, while the plates are still sharp
+    def joins_and_top(sh):
+        es = []
+        for e in sh.Edges:
+            if not _plain_line(e): continue
+            b = e.BoundBox
+            if b.ZMax < z0 + 1e-6: continue
+            join = b.YLength < 1e-6 and (abs(b.YMin - yfp) < 1e-6 or abs(b.YMin - ybp) < 1e-6) and \
+                b.XMin > x0 - ARM_HW - 1e-6 and b.XMax < x0 + ARM_HW + 1e-6 and b.ZMax < z_arm + 1e-6
+            top = b.XLength < 1e-6 and b.ZLength < 1e-6 and abs(b.ZMin - z_arm) < 1e-6 and abs(abs(b.XMin - x0) - ARM_HW) < 1e-6
+            if join or top: es.append(e)
+        return sh.makeFillet(R_BLEND, es)
+    step("arm blends", joins_and_top)
+    def on_plane(sh, y, skip_blend):
+        out = []
+        for e in sh.Edges:
+            b = e.BoundBox
+            if b.YLength > 1e-6 or abs(b.YMin - y) > 1e-6 or b.ZMax < z0 + 1e-6: continue
+            if skip_blend and b.XMax < x0 + ARM_HW + R_BLEND + 0.2 and b.XMin > x0 - ARM_HW - R_BLEND - 0.2 \
+                    and b.ZMax < z_arm + R_BLEND + 0.2: continue                  # the arm blends' own edges
+            out.append(e)
+        return out
+    # 2. the mating faces: flat, MATE_CHAMFER on their edges
+    for y, name in ((yf, "front mate chamfer"), (yr, "back mate chamfer")):
+        step(name, lambda sh, y=y: sh.makeChamfer(MATE_CHAMFER, on_plane(sh, y, False)))
+    # 3. the plates' other faces: the rim rounded as one tangent chain (sides, corners, top), no crease
+    for y, r, name in ((yfp, min(FRONT_T - MATE_CHAMFER, R_TOP_CORNER) - 0.05, "front rim"),
+                       (ybp, BR_T - MATE_CHAMFER - 0.05, "back rim")):
+        step(name, lambda sh, y=y, r=r: sh.makeFillet(r, on_plane(sh, y, True)))
+    return body, failed
+
+
 def edge_zero(x0, by, ball_top, fb, heater_zmin):
     """lite-61's Zero and bracket at ball centre (x0, by) with the ball's top at ball_top (model coordinates): the body
     under the probe, the bracket's back plate on the bed 2020's front face fb (a BoundBox), an arm forward under the
@@ -173,18 +276,19 @@ def edge_zero(x0, by, ball_top, fb, heater_zmin):
     switch = bx(x0 - 4, x0 + 4, by - BODY_Y / 2 - 6, by - BODY_Y / 2, body_bot, body_bot + 6)
     yb = by + BODY_Y / 2                                      # the body's rear (mounting) face
     zc_top = heater_zmin - HEATER_GAP
-    back = bx(x0 - 15, x0 + 15, fb.YMin - BR_T, fb.YMin, fb.ZMin, min(fb.ZMax, zc_top))
-    front = bx(x0 - 12, x0 + 12, yb, yb + BR_T, min(body_bot - 4, fb.ZMin), min(zc_top, body_top))
-    # the arm runs down to the plates' lowest edge, so all three stand on one flat face and it prints Z-up with no
-    # supports: lite-71's fix of lite-61's bracket (owner, 2026-11-19), here built in rather than carried down
-    arm = bx(x0 - 8, x0 + 8, yb, fb.YMin - BR_T, fb.ZMin, fb.ZMin + 16)
-    rib = bx(x0 - 2, x0 + 2, yb + BR_T, fb.YMin - BR_T, fb.ZMin + 16, min(zc_top, fb.ZMax))
-    holes = [Part.makeCylinder(1.7, BR_T + 2, V(x0 + dx, fb.YMin - BR_T - 1, (fb.ZMin + fb.ZMax) / 2), V(0, 1, 0))
-             for dx in (-10, 10)]
     zc = (body_bot + body_top) / 2
-    holes += [Part.makeCylinder(1.7, BR_T + 2, V(x0 + dx, yb - 1, zc + dz), V(0, 1, 0)) for dx, dz in ((-5, 5), (5, -5))]
-    bracket = back.fuse([front, arm, rib]).removeSplitter().cut(Part.makeCompound(holes)).removeSplitter()
-    bracket, info = printchamfer.chamfer(bracket, V(0, 0, 1), **CHAMFER)      # printed on its flat bottom, Z up
+    z0 = min(body_bot - 4, fb.ZMin)
+    bracket, cast = cast_bracket(x0, yb, fb.YMin, z0, min(fb.ZMax, zc_top), min(zc_top, body_top), fb.ZMin + 16)
+    # holes: the back plate's two M3 (x8 + T-nut into the 2020's slot), heads on the arm side, clear of the arm; the
+    # Zero's two M3x25 through its body into M3 heat-set inserts in the front plate (lite-61 had nuts, but its lower
+    # screw ran into the arm)
+    holes = [Part.makeCylinder(1.7, BR_T + 2, V(x0 + dx, fb.YMin - BR_T - 1, (fb.ZMin + fb.ZMax) / 2), V(0, 1, 0))
+             for dx in (-BACK_SCREW_DX, BACK_SCREW_DX)]
+    holes += [Part.makeCylinder(INSERT_D / 2, INSERT_DEPTH, V(x0 + dx, yb, zc + dz), V(0, 1, 0)) for dx, dz in ((-5, 5), (5, -5))]
+    bracket = bracket.cut(Part.makeCompound(holes)).removeSplitter()
+    bracket, taper_ok = first_layer_taper(bracket, z0, CHAMFER["bottom"])     # printed on its flat bottom, Z up
+    info = dict(bottom="taper band" if taper_ok else 0, top="rounded", reduced=[],
+                failed=cast + ([] if taper_ok else ["first-layer taper"]))
     return {"body": ("Mellow MultiHead Zero body (aluminium, 20 x 17.2 x 22, from Mellow's drawing)", body),
             "probe": ("Mellow MultiHead Zero probe (bushing, pin, D 10 ball; estimated from the photo)", probe),
             "switch": ("Mellow MultiHead Zero switch + XH2.54 plug (in the body's slot, stand-in)", switch),
@@ -450,6 +554,13 @@ def main(p):
                                                     f"2020's bottom): faces that would hang {hang:.1f} mm2 (lite-71's rule)")
     d = sh["bracket"].distToShape(m.shapes[fr[0]])[0]
     p.check(d < TOL, f"the bracket's back plate sits on the bed 2020's face (gap {d:.4f})")
+    heads = [Part.makeCylinder(BACK_HEAD_R + 0.25, 3.0 + 3.0, V(zx + dx, fb.YMin - BR_T - 3.0 - 3.0, (fb.ZMin + fb.ZMax) / 2),
+                               V(0, 1, 0)) for dx in (-BACK_SCREW_DX, BACK_SCREW_DX)]
+    hv = sum(h.common(sh["bracket"]).Volume for h in heads)
+    p.check(hv < TOL, f"the back screws' M3 SHCS heads (D {2 * BACK_HEAD_R:g} + 0.5, 3 tall, + 3 for the driver) clear the "
+                      f"bracket: {hv:.3f} mm3 (lite-61's arm hid them)")
+    p.check(INSERT_DEPTH >= 25.0 - BODY_Y + 0.5, f"the Zero's M3x25 reaches {25.0 - BODY_Y:.1f} into its insert hole "
+                                                 f"({INSERT_DEPTH:g} deep)")
     p.check(hb.ZMin - sh["bracket"].BoundBox.ZMax >= HEATER_GAP - TOL,
             f"bracket top Z {sh['bracket'].BoundBox.ZMax:.2f}: {hb.ZMin - sh['bracket'].BoundBox.ZMax:.2f} under the heater pad")
     pr_b = sh["probe"].BoundBox
@@ -540,7 +651,7 @@ def main(p):
     p.dump(dict(dy=DY, front=len(front), spliced={lab[n]: v[0] for n, v in spliced.items()}, rail_y0=y0,
                 mount_gap=[gap0, gap0 + DY], mellow=dict(ball_printer=[BALL_PX, BALL_PY], ball_model=[zx, zy], ball_top_above_pei=BALL_ABOVE_PEI, reach_margin=rmg),
                 collisions=dict(now=len(r1.hits), lite77=len(base_hits), new=new_hits, gone=gone_hits),
-                hardware="2 x M3x8 + T-nut (bracket to bed 2020), 2 x M3x25 + nut (Zero to bracket)"))
+                hardware="2 x M3x8 SHCS + T-nut (bracket to bed 2020), 2 x M3x25 SHCS into 2 x M3 heat-set inserts (D4.0 hole, <= 6 long; Zero to bracket)"))
     return p.finish([(doc, DST)])
 
 
