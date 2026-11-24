@@ -11,7 +11,7 @@ class FromTheConfig(unittest.TestCase):
 
     def test_committed_values(self):
         s = bs.settings()
-        self.assertEqual(s["offset"], (0.0, 27.4))
+        self.assertEqual(s["offset"], (0.0, 15.0))   # lite-79 (#291); 27.4 before
         self.assertEqual(s["axis_min"], (4.0, -99.43)); self.assertEqual(s["axis_max"], (346.0, 340.19))
         self.assertEqual(len(s["tilt_points"]), 3)
 
@@ -25,7 +25,7 @@ class FromTheConfig(unittest.TestCase):
             s = bs.settings(beacon_cfg=p)
         self.assertEqual(s["mesh_min"], (20.0, 30.0)); self.assertEqual(s["probe_count"], (7, 9))
         path = bs.scan_path(s["mesh_min"], s["mesh_max"], s["probe_count"], s["offset"])
-        self.assertAlmostEqual(path[0][0], 20.0); self.assertAlmostEqual(path[0][1], 30.0 - 27.4)
+        self.assertAlmostEqual(path[0][0], 20.0); self.assertAlmostEqual(path[0][1], 30.0 - 15.0)
 
     def test_committed_gcode_is_what_the_cfg_gives(self):
         """Edit beacon.cfg, then: python3 cad/motion/beacon_scan.py > cad/motion/beacon_scan.gcode, and rerun Kalico
@@ -41,8 +41,9 @@ class FromTheConfig(unittest.TestCase):
 
 class Overscan(unittest.TestCase):
     def test_vt350_rear_room_limits_it(self):
-        # nozzle Y range 5.48-27.4 .. 344.52-27.4 = -21.92 .. 317.12; rooms 60.49 front, 23.07 rear; spacing+2 = 26.22
-        self.assertAlmostEqual(bs.overscan(), 340.19 - (344.52 - 27.4), places=6)
+        # nozzle Y range 5.48-15 .. 344.52-15 = -9.52 .. 329.52; rooms 89.91 front, 10.67 rear; spacing+2 = 26.22
+        # (at lite-78's 27.4 it was 23.07: the smaller offset brings the nozzle 12.4 nearer the rear limit)
+        self.assertAlmostEqual(bs.overscan(), 340.19 - (344.52 - 15.0), places=6)
 
     def test_spacing_limits_it_with_room(self):
         self.assertAlmostEqual(bs.overscan((50, 50), (150, 150), (11, 11), (0, 0), (0, 0), (300, 300)), 12.0)
@@ -54,13 +55,13 @@ class Path(unittest.TestCase):
         o = bs.overscan()
         xs, ys = [q[0] for q in p], [q[1] for q in p]
         self.assertAlmostEqual(min(xs), 5.48); self.assertAlmostEqual(max(xs), 344.52)
-        self.assertAlmostEqual(min(ys), 5.48 - 27.4 - o, places=3)
-        self.assertAlmostEqual(max(ys), 344.52 - 27.4 + o, places=3)
+        self.assertAlmostEqual(min(ys), 5.48 - 15.0 - o, places=3)
+        self.assertAlmostEqual(max(ys), 344.52 - 15.0 + o, places=3)
 
     def test_lines_run_along_y_serpentine(self):
         p = bs.scan_path()
-        self.assertEqual(p[0], (5.48, 5.48 - 27.4)); self.assertEqual(p[1], (5.48, 344.52 - 27.4))
-        self.assertAlmostEqual(p[-1][0], 344.52); self.assertAlmostEqual(p[-1][1], 344.52 - 27.4)   # 15 lines: ends at the back
+        self.assertEqual(p[0], (5.48, 5.48 - 15.0)); self.assertEqual(p[1], (5.48, 344.52 - 15.0))
+        self.assertAlmostEqual(p[-1][0], 344.52); self.assertAlmostEqual(p[-1][1], 344.52 - 15.0)   # 15 lines: ends at the back
 
     def test_steps_stay_inside_the_axis_limits(self):
         for x, y in bs.scan_path():

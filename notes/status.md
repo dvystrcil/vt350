@@ -63,7 +63,7 @@ partial versions that have to be rebuilt in order (lite-67 to lite-71 did this).
 
 | Pass in flight | Branch | Builds on |
 |---|---|---|
-| lite-78 (the front 17 mm forward, 490 Y rails, the Mellow low on the bed's front edge in a cast-look bracket, vt350#291; saved 2026-11-23 17:06 PST, refreshed on the lane, chain `vt350-lite-78-20261124t031612-ad54`: front reach −68.93 (`position_min` −99.43), print height unchanged 334.43, printable 342.0 × 340.19, dock params −17) | `feat/291-beacon-front-scan` (PR #292) | lite-77 |
+| lite-79 (the Beacon to y_offset 15, vt350#291). **BLOCKED on a mount decision (owner):** at 15 the Beacon's two M3 screws land 7.4 mm in front of the MadMax carriage, under the tool plate with 3.4 mm of air (`cad/studies/beacon_mount_room.py`). No pass written yet; draft PR holds the study and `beacon.cfg` y_offset 15 | `feat/291-lite79-beacon-15` | lite-78 |
 
 ## Where things are
 

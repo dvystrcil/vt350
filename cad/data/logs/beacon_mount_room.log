@@ -1,0 +1,38 @@
+model vt350-lite-78.FCStd (read-only); Beacon board top Z 387.595; carriage front face Y 251.225
+pilot holes X -260.80 / -229.20, Y 256.161 (4.94 behind the carriage front)
+-- COMPOUND003 (dock pickup pose, offset -164.70, -274.73, 0.315): 64 head/dock parts near
+   y_offset  27.4: holes carriage 5.76 over the board, first part None; carriage 5.76 over the board, first part None -> screws into today's carriage
+      head parts over the board (gap above its top, part): [(3.36, 'Plate')]
+   y_offset  25.0: holes carriage 0.00 over the board, first part (33.52, 'SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)003'); carriage 0.00 over the board, first part (33.55, 'SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)002') -> NO room for the screws
+      head parts over the board (gap above its top, part): [(3.36, 'Plate')]
+   y_offset  24.0: holes carriage 0.00 over the board, first part (33.51, 'SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)003'); carriage 0.00 over the board, first part (33.54, 'SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)002') -> NO room for the screws
+      head parts over the board (gap above its top, part): [(3.36, 'Plate')]
+   y_offset  23.0: holes carriage 0.00 over the board, first part None; carriage 0.00 over the board, first part None -> NO room for the screws
+      head parts over the board (gap above its top, part): [(3.36, 'Plate')]
+   y_offset  22.0: holes carriage 0.00 over the board, first part None; carriage 0.00 over the board, first part None -> NO room for the screws
+      head parts over the board (gap above its top, part): [(3.36, 'Plate'), (5.19, '[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)'), (5.19, '[a]_Duct-4010-right')]
+   y_offset  20.0: holes carriage 0.00 over the board, first part (3.36, 'Plate'); carriage 0.00 over the board, first part (3.36, 'Plate') -> NO room for the screws
+      head parts over the board (gap above its top, part): [(3.36, 'Plate'), (3.89, '[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)'), (3.89, '[a]_Duct-4010-right')]
+   y_offset  18.0: holes carriage 0.00 over the board, first part (3.36, 'Plate'); carriage 0.00 over the board, first part (3.36, 'Plate') -> NO room for the screws
+      head parts over the board (gap above its top, part): [(0.92, '[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)'), (0.92, '[a]_Duct-4010-right'), (3.36, 'Plate'), (6.39, 'Plain washer normal grade C M001'), (6.39, 'Plain washer normal grade C M3'), (7.14, 'Hex socket head cap screw M3x0.50 x 012')]
+   y_offset  15.0: holes carriage 0.00 over the board, first part (3.36, 'Plate'); carriage 0.00 over the board, first part (3.36, 'Plate') -> NO room for the screws
+      head parts over the board (gap above its top, part): [(-0.29, '[a]_Duct-4010-right'), (-0.28, '[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)'), (0.0, 'TL-dragon-ace-MZE sock'), (3.36, 'Plate'), (6.39, 'Plain washer normal grade C M001'), (6.39, 'Plain washer normal grade C M3')]
+-- COMPOUND004 (dock pickup pose, offset 164.71, -274.73, 0.315): 68 head/dock parts near
+   y_offset  27.4: holes carriage 5.76 over the board, first part None; carriage 5.76 over the board, first part None -> screws into today's carriage
+      head parts over the board (gap above its top, part): [(3.36, 'Plate(Mirror)')]
+   y_offset  25.0: holes carriage 0.00 over the board, first part (33.54, 'SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)004'); carriage 0.00 over the board, first part (33.53, 'SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)005') -> NO room for the screws
+      head parts over the board (gap above its top, part): [(3.36, 'Plate(Mirror)')]
+   y_offset  24.0: holes carriage 0.00 over the board, first part (33.53, 'SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)004'); carriage 0.00 over the board, first part (33.52, 'SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)005') -> NO room for the screws
+      head parts over the board (gap above its top, part): [(3.36, 'Plate(Mirror)')]
+   y_offset  23.0: holes carriage 0.00 over the board, first part None; carriage 0.00 over the board, first part None -> NO room for the screws
+      head parts over the board (gap above its top, part): [(3.36, 'Plate(Mirror)')]
+   y_offset  22.0: holes carriage 0.00 over the board, first part None; carriage 0.00 over the board, first part None -> NO room for the screws
+      head parts over the board (gap above its top, part): [(3.36, 'Plate(Mirror)'), (5.19, '[a]_Duct-4010-left001'), (5.19, '[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)')]
+   y_offset  20.0: holes carriage 0.00 over the board, first part (3.36, 'Plate(Mirror)'); carriage 0.00 over the board, first part (3.36, 'Plate(Mirror)') -> NO room for the screws
+      head parts over the board (gap above its top, part): [(3.36, 'Plate(Mirror)'), (3.89, '[a]_Duct-4010-left001'), (3.89, '[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)')]
+   y_offset  18.0: holes carriage 0.00 over the board, first part (3.36, 'Plate(Mirror)'); carriage 0.00 over the board, first part (3.36, 'Plate(Mirror)') -> NO room for the screws
+      head parts over the board (gap above its top, part): [(0.89, '[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)'), (0.95, '[a]_Duct-4010-left001'), (3.36, 'Plate(Mirror)'), (6.39, 'Plain washer normal grade C M002'), (6.39, 'Plain washer normal grade C M003'), (7.14, 'Hex socket head cap screw M3x0.50 x 016')]
+   y_offset  15.0: holes carriage 0.00 over the board, first part (3.36, 'Plate(Mirror)'); carriage 0.00 over the board, first part (3.36, 'Plate(Mirror)') -> NO room for the screws
+      head parts over the board (gap above its top, part): [(-0.29, '[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)'), (-0.28, '[a]_Duct-4010-left001'), (0.0, 'TL-dragon-ace-MZE sock001'), (3.36, 'Plate(Mirror)'), (6.39, 'Plain washer normal grade C M002'), (6.39, 'Plain washer normal grade C M003')]
+smallest offset tried whose screws still go into today's carriage: {'COMPOUND003': 27.4, 'COMPOUND004': 27.4}
+done (read-only, nothing saved)

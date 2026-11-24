@@ -97,7 +97,7 @@ class Beacon(unittest.TestCase):
         reach, plate, b = self.committed()
         svg = pa.svg(pa.printable(reach, plate), b)
         self.assertIn("<polygon", svg)
-        self.assertIn("planned y_offset 15", svg)
+        self.assertIn("beacon.cfg y_offset 15", svg)      # lite-79 (#291) set beacon.cfg to the planned 15
         self.assertIn("front 2.15", svg)
         self.assertNotIn("NOT REACHED", svg)
 

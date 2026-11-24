@@ -7,7 +7,7 @@
 <rect x="86.0" y="86.0" width="678.1" height="678.1" fill="none" stroke="#7a2fb0" stroke-width="1.8" stroke-dasharray="4 4"/>
 <text x="425.0" y="526.8" font-size="13" text-anchor="middle" font-weight="normal" fill="#7a2fb0">Beacon mesh (purple dashed) 5.48, 5.48 … 344.52, 344.52 printer</text>
 <text x="425.0" y="546.8" font-size="13" text-anchor="middle" font-weight="bold" fill="#1f5fbf">coil (blue) past the mesh: front 2.15, rear 7.98, left 1.48, right 1.48</text>
-<text x="35.0" y="890.0" font-size="12" text-anchor="start" font-weight="normal" fill="#1f5fbf">Blue: where the Beacon coil reaches, both heads, planned y_offset 15 (#291; beacon.cfg still 27.4).</text>
+<text x="35.0" y="890.0" font-size="12" text-anchor="start" font-weight="normal" fill="#1f5fbf">Blue: where the Beacon coil reaches, both heads, beacon.cfg y_offset 15.</text>
 <text x="35.0" y="910.0" font-size="12" text-anchor="start" font-weight="normal" fill="#1f5fbf">Its front edge per X: cad/data/front_reach_front17.json (vt350-lite-77.FCStd, front +17). Purple dashed: beacon.cfg's mesh (coil positions).</text>
 <text x="425.0" y="26.0" font-size="16" text-anchor="middle" font-weight="bold" fill="#222">Printable area on vt350-lite-78 (both heads: Left, Right)</text>
 <text x="425.0" y="46.0" font-size="12" text-anchor="middle" font-weight="normal" fill="#555">top view, plate coordinates: front-left plate corner = 0,0, X right, Y to the rear (mm)</text>
