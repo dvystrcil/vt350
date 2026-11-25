@@ -217,7 +217,9 @@ h1 { font-size: 1.5rem; font-weight: 600; margin: 0; letter-spacing: -0.01em; te
   const $ = id => document.getElementById(id);
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   let D = null;
-  const st = { slot: 3, ei: 2000, mode: "dancer", t: 0, playing: !reduce, yaw: -0.62, pitch: 0.42 };
+  const MODES = ["dancer", "slide", "sliding", "tied", "stuck"];
+  const hashMode = (location.hash || "").slice(1);
+  const st = { slot: 3, ei: 2000, mode: MODES.includes(hashMode) ? (hashMode === "sliding" ? "slide" : hashMode) : "dancer", t: 0, playing: !reduce, yaw: -0.62, pitch: 0.42 };
   let C = {};
   function readColors() {
     const cs = getComputedStyle(document.documentElement);
