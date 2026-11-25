@@ -1,0 +1,307 @@
+{
+ "model": "/home/dan/Documents/VT350/vt350-lite-79.FCStd",
+ "design": {
+  "name": "under the bar, arm 240, down Z 640",
+  "hinge": [
+   490.0,
+   640.0
+  ],
+  "arm": 240.0,
+  "loop_up": [
+   251.01,
+   662.0
+  ],
+  "loop_down": [
+   250.0,
+   640.0
+  ],
+  "clear_moving": {
+   "now": 75.6,
+   "+10.3": 65.3
+  }
+ },
+ "result": {
+  "arms up": {
+   "ok": true,
+   "near": [
+    [
+     3.0,
+     "Roof felt liner, inner"
+    ],
+    [
+     3.13,
+     "4040 (1)004 one piece X -520..140 (lite-53)"
+    ],
+    [
+     3.5,
+     "Roof felt (pad 1)"
+    ]
+   ],
+   "moving": {
+    "now": [
+     [
+      60.39,
+      "carriage + carried Left head at the rear stop, swept over X"
+     ],
+     [
+      60.39,
+      "carriage + carried Right head at the rear stop, swept over X"
+     ],
+     [
+      157.47,
+      "gantry at its rear stop"
+     ]
+    ],
+    "+10.3": [
+     [
+      50.83,
+      "carriage + carried Left head at the rear stop, swept over X"
+     ],
+     [
+      50.83,
+      "carriage + carried Right head at the rear stop, swept over X"
+     ],
+     [
+      147.19,
+      "gantry at its rear stop"
+     ]
+    ]
+   }
+  },
+  "arm 1 down": {
+   "ok": true,
+   "near": [
+    [
+     3.0,
+     "Roof felt liner, inner"
+    ],
+    [
+     3.13,
+     "4040 (1)004 one piece X -520..140 (lite-53)"
+    ],
+    [
+     3.5,
+     "Roof felt (pad 1)"
+    ]
+   ],
+   "moving": {
+    "now": [
+     [
+      83.95,
+      "carriage + carried Left head at the rear stop, swept over X"
+     ],
+     [
+      83.95,
+      "carriage + carried Right head at the rear stop, swept over X"
+     ],
+     [
+      185.5,
+      "gantry at its rear stop"
+     ]
+    ],
+    "+10.3": [
+     [
+      73.65,
+      "carriage + carried Left head at the rear stop, swept over X"
+     ],
+     [
+      73.65,
+      "carriage + carried Right head at the rear stop, swept over X"
+     ],
+     [
+      175.2,
+      "gantry at its rear stop"
+     ]
+    ]
+   }
+  },
+  "arm 2 down": {
+   "ok": true,
+   "near": [
+    [
+     3.0,
+     "Roof felt liner, inner"
+    ],
+    [
+     3.13,
+     "4040 (1)004 one piece X -520..140 (lite-53)"
+    ],
+    [
+     3.5,
+     "Roof felt (pad 1)"
+    ]
+   ],
+   "moving": {
+    "now": [
+     [
+      83.95,
+      "carriage + carried Left head at the rear stop, swept over X"
+     ],
+     [
+      83.95,
+      "carriage + carried Right head at the rear stop, swept over X"
+     ],
+     [
+      185.5,
+      "gantry at its rear stop"
+     ]
+    ],
+    "+10.3": [
+     [
+      73.65,
+      "carriage + carried Left head at the rear stop, swept over X"
+     ],
+     [
+      73.65,
+      "carriage + carried Right head at the rear stop, swept over X"
+     ],
+     [
+      175.2,
+      "gantry at its rear stop"
+     ]
+    ]
+   }
+  },
+  "arm 3 down": {
+   "ok": true,
+   "near": [
+    [
+     3.0,
+     "Roof felt liner, inner"
+    ],
+    [
+     3.13,
+     "4040 (1)004 one piece X -520..140 (lite-53)"
+    ],
+    [
+     3.5,
+     "Roof felt (pad 1)"
+    ]
+   ],
+   "moving": {
+    "now": [
+     [
+      83.95,
+      "carriage + carried Left head at the rear stop, swept over X"
+     ],
+     [
+      83.95,
+      "carriage + carried Right head at the rear stop, swept over X"
+     ],
+     [
+      185.5,
+      "gantry at its rear stop"
+     ]
+    ],
+    "+10.3": [
+     [
+      73.65,
+      "carriage + carried Left head at the rear stop, swept over X"
+     ],
+     [
+      73.65,
+      "carriage + carried Right head at the rear stop, swept over X"
+     ],
+     [
+      175.2,
+      "gantry at its rear stop"
+     ]
+    ]
+   }
+  },
+  "arm 4 down": {
+   "ok": true,
+   "near": [
+    [
+     3.0,
+     "Roof felt liner, inner"
+    ],
+    [
+     3.13,
+     "4040 (1)004 one piece X -520..140 (lite-53)"
+    ],
+    [
+     3.5,
+     "Roof felt (pad 1)"
+    ]
+   ],
+   "moving": {
+    "now": [
+     [
+      83.95,
+      "carriage + carried Left head at the rear stop, swept over X"
+     ],
+     [
+      83.95,
+      "carriage + carried Right head at the rear stop, swept over X"
+     ],
+     [
+      185.5,
+      "gantry at its rear stop"
+     ]
+    ],
+    "+10.3": [
+     [
+      73.65,
+      "carriage + carried Left head at the rear stop, swept over X"
+     ],
+     [
+      73.65,
+      "carriage + carried Right head at the rear stop, swept over X"
+     ],
+     [
+      175.2,
+      "gantry at its rear stop"
+     ]
+    ]
+   }
+  },
+  "arm 5 down": {
+   "ok": true,
+   "near": [
+    [
+     3.0,
+     "Roof felt liner, inner"
+    ],
+    [
+     3.13,
+     "4040 (1)004 one piece X -520..140 (lite-53)"
+    ],
+    [
+     3.5,
+     "Roof felt (pad 1)"
+    ]
+   ],
+   "moving": {
+    "now": [
+     [
+      83.95,
+      "carriage + carried Left head at the rear stop, swept over X"
+     ],
+     [
+      83.95,
+      "carriage + carried Right head at the rear stop, swept over X"
+     ],
+     [
+      185.5,
+      "gantry at its rear stop"
+     ]
+    ],
+    "+10.3": [
+     [
+      73.65,
+      "carriage + carried Left head at the rear stop, swept over X"
+     ],
+     [
+      73.65,
+      "carriage + carried Right head at the rear stop, swept over X"
+     ],
+     [
+      175.2,
+      "gantry at its rear stop"
+     ]
+    ]
+   }
+  }
+ }
+}

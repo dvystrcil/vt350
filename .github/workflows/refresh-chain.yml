@@ -95,7 +95,7 @@ jobs:
         run: python3 platform/freecad/test_group_parents.py 2>&1 | tee test-group-parents.log
       - name: Confirm every group_parents test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-group-parents.log && tail -1 test-group-parents.log | grep -qx 'OK'
-      - name: Install numpy + scipy for the cable rod models (flap_guide, lanyard)
+      - name: Install numpy + scipy for the cable rod models (flap_guide, lanyard, bowden arms)
         run: python3 -m pip install --user --break-system-packages numpy scipy
       - name: Test the flap + guide cable rod model (gradients, catenary, segment distance; #3)
         run: python3 cad/studies/flap_guide/test_rod.py 2>&1 | tee test-flap-guide.log
@@ -105,3 +105,7 @@ jobs:
         run: python3 cad/studies/lanyard/test_lrod.py 2>&1 | tee test-lanyard.log
       - name: Confirm every lanyard test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-lanyard.log && tail -1 test-lanyard.log | grep -qx 'OK'
+      - name: Test the bowden-arm geometry (two-span rod gradients vs lrod, the arm and the lock reach; #312)
+        run: python3 cad/studies/test_bowden_arms.py 2>&1 | tee test-bowden-arms.log
+      - name: Confirm every bowden-arm test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-bowden-arms.log && tail -1 test-bowden-arms.log | grep -qx 'OK'
