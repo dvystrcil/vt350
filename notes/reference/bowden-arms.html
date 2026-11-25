@@ -137,7 +137,7 @@ h1 { font-size: 1.5rem; font-weight: 600; margin: 0; letter-spacing: -0.01em; te
   <header>
     <div class="eyebrow">vt350 #312 · study, not a model pass</div>
     <h1>Bowden arms, walked over the bed</h1>
-    <p class="lede">The solved shape of the active tool's bundle at every lock position of the lite-78 bed, from the roof exit, through the arm's loop, to the O2S lock. Design: hinge under the rear top bar (Y 490, Z 640), arm 240 mm, loop at Z 662 raised and Z 640 lowered. Gantry at today's height.</p>
+    <p class="lede">The solved shape of the active tool's bundle at every lock position of the lite-78 bed, from the roof exit, through the arm's loop, to the O2S lock. Design: hinge under the rear top bar (Y 490, Z 640), arm 240 mm, loop at Z 662 raised and Z 640 lowered. Gantry at today's height. It opens on the dancer: the roof exit clamps the bundle, and a weighted sheave behind the gantry holds the slack.</p>
   </header>
 
   <div class="controls">
@@ -159,7 +159,7 @@ h1 { font-size: 1.5rem; font-weight: 600; margin: 0; letter-spacing: -0.01em; te
   <div class="block" id="block">
     <div class="cell"><span class="k">Lock at</span><span class="v" id="r-pos">–</span><span class="s">X, Y (mm)</span></div>
     <div class="cell"><span class="k">Bundle length</span><span class="v" id="r-len">–</span><span class="s" id="r-len-s">roof exit to lock</span></div>
-    <div class="cell"><span class="k">Take-up</span><span class="v" id="r-tu">–</span><div class="meter"><i id="r-tu-m"></i></div><span class="s" id="r-tu-s">pulled in, of its travel</span></div>
+    <div class="cell"><span class="k" id="r-tu-k">Take-up</span><span class="v" id="r-tu">–</span><div class="meter"><i id="r-tu-m"></i></div><span class="s" id="r-tu-s">pulled in, of its travel</span></div>
     <div class="cell"><span class="k">Tightest bend</span><span class="v" id="r-rb">–</span><span class="s">away from the lock</span></div>
     <div class="cell"><span class="k">At the lock</span><span class="v" id="r-rl">–</span><span class="s">last 60 mm</span></div>
     <div class="cell"><span class="k">Lowest point</span><span class="v" id="r-low">–</span><span class="s">from the lock top</span></div>
@@ -170,10 +170,11 @@ h1 { font-size: 1.5rem; font-weight: 600; margin: 0; letter-spacing: -0.01em; te
     <span><i class="sw" style="background:var(--bad)"></i>bend tighter than R 51</span>
     <span><i class="sw" style="background:var(--parked)"></i>parked bundles, loops up</span>
     <span><i class="sw" style="background:var(--arm)"></i>arms</span>
-    <span><i class="sw" style="background:var(--frame)"></i>ceiling felt, rear top bar, bed reach</span>
+    <span><i class="sw" style="background:var(--frame)"></i>ceiling felt, rear top bar, bed reach; gantry at its rear stop (dancer, side view)</span>
   </div>
 
   <div class="notes">
+    <p><b>Dancer (static lines).</b> The lines from the EMU to the roof are static, so the roof exit clamps the bundle. From the exit a fixed channel takes it down behind the gantry to a 20 g sheave (R 53.6) hanging on its own loop of bundle. The bundle goes back up through a second fixed channel, forward over the heads to the arm's tip, then down to the head. As the head needs more bundle, the sheave rises; as it needs less, the sheave drops. All five tools solve at every position. The sheaves travel 102–157 mm and stay above Z 116, and the channels bend no tighter than R 69. FreeCAD finds the route clear of lite-79, with thin margins of 1.1–2.6 mm. The red stretch above the lock is the same one as in the other modes (R 41 at EI 2000): the dancer doesn't cause it and doesn't fix it. Shown at EI 2000 only.</p>
     <p><b>Sliding loop.</b> The bundle runs freely through the loop and the roof-exit guide, with a 0.2 N take-up above the roof holding the slack (the study's assumption; see the note below on static lines). Every position solves; away from the lock every bend stays above R 51 and nothing drops below the lock.</p>
     <p><b>Tied loop.</b> The bundle is clamped in the loop at one cut length, so the spare length has nowhere to go. In this design it doubles back through the loop (up to 154°), bends tighter than R 51 away from the lock (R 34–48) and presses on the parked bundles. In lower-loop designs it sagged below the lock instead. None of the 30 searched designs passed tied. Shown for T0, T2 and T4 at EI 2000.</p>
     <p><b>Cam stalled.</b> The new tool's arm stays up. Every position is still reached. The red stretch just above the lock appears in every mode: the lock holds the bundle straight up and the pull bends it sideways, so it needs a bend limiter or a stiffer bundle (EI ≳ 6500).</p>
@@ -190,9 +191,10 @@ h1 { font-size: 1.5rem; font-weight: 600; margin: 0; letter-spacing: -0.01em; te
   </section>
 
   <section class="more">
-    <h2>Next: the slack stays in the chamber, held by a dancer</h2>
+    <h2>Why a dancer: the slack stays in the chamber</h2>
     <p>The sliding loop above assumes the bundle can also slide out through the roof exit to a take-up above the roof (#244's model). It can't: the lines from the EMU to the roof are static (owner, 2026-11-25), so the roof exit clamps the bundle and every bit of spare length stays inside the chamber. The shortest bundle any position needs is about 297 mm, with the head right under its loop. The longest is about 612 mm, for T0 and T4 at the far front corner on the other side of the bed (493 mm for T2). So up to about 315 mm of slack has to be held somewhere inside.</p>
-    <p>The owner's idea is a dancer: a second, springy arm from the loop end of the main arm, reaching back toward the roof exit, whose hook presses gently down on the bundle about halfway along the roof span and may swing below the main arm. A hand estimate says a V in that 200 mm span, its point pushed 85 mm down to just above the heads, stores only about 60 mm. Holding 315 mm that way would take about 240 mm of drop, into the heads' path. Behind the gantry's rear stop (Y > 440) nothing moves, so a deeper hanging loop there is one place the slack could go. Bunching the loops toward the centre also shrinks the range. The hook needs a saddle or roller of R 51 or more, and more pull tightens the bend at the lock (roughly R ∝ 1/√pull). Not modelled yet.</p>
+    <p>The owner's idea is a dancer: a second, springy arm from the loop end of the main arm, reaching back toward the roof exit, whose hook presses gently down on the bundle about halfway along the roof span and may swing below the main arm. A hand estimate says a V in that 200 mm span, its point pushed 85 mm down to just above the heads, stores only about 60 mm. Holding 315 mm that way would take about 240 mm of drop, into the heads' path. Behind the gantry's rear stop (Y > 440) nothing moves, so a deeper hanging loop there is one place the slack could go. Bunching the loops toward the centre also shrinks the range. The hook needs a saddle or roller of R 51 or more, and more pull tightens the bend at the lock (roughly R ∝ 1/√pull).</p>
+    <p>The deeper loop behind the gantry is what the <b>dancer</b> mode above shows (<a href="https://github.com/dvystrcil/vt350/pull/318">vt350#318</a>). The sheaves hang below the gantry in two stacks either side of the Z axis: T0 and T1 on the left, T2–T4 on the right, each tool in its own plane Y 446, 459 or 472. Only the legs rise through the gap behind the gantry. Most of the pull at the loop (0.27–0.37 N) is the legs' own weight, so the lightest dancer is best: a heavier one only tightens the bend at the lock. Not modelled: the channels' and sheaves' mounts, and friction in the channels.</p>
   </section>
 
   <footer class="sources">
@@ -201,6 +203,7 @@ h1 { font-size: 1.5rem; font-weight: 600; margin: 0; letter-spacing: -0.01em; te
       <li>The study: <code>cad/studies/bowden_arms_reach.py</code> (geometry, the rod model, the design search) and <code>cad/studies/bowden_arms.py</code> (FreeCAD clearance on lite-79), from <a href="https://github.com/dvystrcil/vt350/pull/315">vt350#315</a>. Write-up on <a href="https://github.com/dvystrcil/vt350/issues/312">vt350#312</a>.</li>
       <li>The shapes on this page: <code>cad/studies/bowden_arms_shapes.py</code>, which reruns the study's walk for the chosen design (<code>cad/data/bowden_arms_design.json</code>) and writes <code>bowden-arms/shapes.js</code>. Its first line names the commit.</li>
       <li>The rod model and the roof exits: <code>cad/studies/lanyard/lrod.py</code> (<a href="https://github.com/dvystrcil/vt350/pull/244">vt350#244</a>), from the flap-guide study's <code>flap_guide/rod.py</code> (<a href="https://github.com/dvystrcil/vt350/issues/3">vt350#3</a>). Bundle stiffness EI is not measured yet. #3 asks for a cantilever test.</li>
+      <li>The dancer: <code>cad/studies/bowden_arms_dancer.py</code> (the route, the sheave's height at each position, every bend) and <code>cad/studies/bowden_arms_dancer_clear.py</code> (FreeCAD clearance on lite-79), from <a href="https://github.com/dvystrcil/vt350/pull/318">vt350#318</a>. The page reads its saved shapes (<code>cad/data/bowden_arms_dancer_shapes.json</code>, EI 2000, 20 g) with <code>bowden_arms_shapes.py --dancer</code>.</li>
       <li>The lock positions: lite-79 (O2S lock at +0.28, +43.38 mm from the nozzle tip) over lite-78's printable area.</li>
     </ul>
     <p>2026-11-25 · vt350#312</p>
@@ -214,7 +217,7 @@ h1 { font-size: 1.5rem; font-weight: 600; margin: 0; letter-spacing: -0.01em; te
   const $ = id => document.getElementById(id);
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   let D = null;
-  const st = { slot: 3, ei: 2000, mode: "slide", t: 0, playing: !reduce, yaw: -0.62, pitch: 0.42 };
+  const st = { slot: 3, ei: 2000, mode: "dancer", t: 0, playing: !reduce, yaw: -0.62, pitch: 0.42 };
   let C = {};
   function readColors() {
     const cs = getComputedStyle(document.documentElement);
@@ -237,14 +240,15 @@ h1 { font-size: 1.5rem; font-weight: 600; margin: 0; letter-spacing: -0.01em; te
     for (const [id, key] of [["slot","slot"],["ei","ei"],["mode","mode"]])
       for (const b of $(id).children) b.setAttribute("aria-pressed", String(b.dataset.val === String(st[key])));
     // tied runs exist for 1, 3, 5 at EI 2000; stalled runs for 1, 3, 5 at EI 2000
-    for (const b of $("slot").children) b.disabled = st.mode !== "slide" && ![1,3,5].includes(+b.dataset.val);
+    for (const b of $("slot").children) b.disabled = !["slide", "dancer"].includes(st.mode) && ![1,3,5].includes(+b.dataset.val);
     for (const b of $("ei").children) b.disabled = st.mode !== "slide" && +b.dataset.val !== 2000;
   }
 
-  const keyOf = () => st.mode === "slide" ? `slide|${st.slot}|${st.ei}` : st.mode === "tied" ? `tied|${st.slot}|2000` : `slide|${st.slot}|2000|stuck`;
+  const keyOf = () => st.mode === "dancer" ? `dancer|${st.slot}|2000` : st.mode === "slide" ? `slide|${st.slot}|${st.ei}` : st.mode === "tied" ? `tied|${st.slot}|2000` : `slide|${st.slot}|2000|stuck`;
   let cur = null, frames = [], Lmin = 0, Lmax = 1;
   function onCase() {
-    if (st.mode !== "slide") { if (![1,3,5].includes(st.slot)) st.slot = 3; st.ei = 2000; syncButtons(); }
+    if (st.mode === "dancer") { st.ei = 2000; syncButtons(); }
+    else if (st.mode !== "slide") { if (![1,3,5].includes(st.slot)) st.slot = 3; st.ei = 2000; syncButtons(); }
     cur = D.cases[keyOf()];
     frames = cur ? cur.walk.map((w, i) => w ? i : -1).filter(i => i >= 0) : [];
     // take-up travel: the sliding bundle's length range over the walk and parked (the take-up feeds out or pulls in)
@@ -271,7 +275,7 @@ h1 { font-size: 1.5rem; font-weight: 600; margin: 0; letter-spacing: -0.01em; te
     const parked = [];
     for (let k = 1; k <= 5; k++) {
       if (k === st.slot) continue;
-      const c = D.cases[`slide|${k}|${st.mode === "slide" ? st.ei : 2000}`];
+      const c = D.cases[st.mode === "dancer" ? `dancer|${k}|2000` : `slide|${k}|${st.mode === "slide" ? st.ei : 2000}`];
       if (c && c.parked) parked.push({ slot: k, shape: c.parked });
     }
     return { s, parked };
@@ -300,10 +304,10 @@ h1 { font-size: 1.5rem; font-weight: 600; margin: 0; letter-spacing: -0.01em; te
   }
 
   // --- projection ------------------------------------------------------------------------------------------------
-  const CEN = [-245, 230, 600];
   function proj3d(W, H) {
     const cy = Math.cos(st.yaw), sy = Math.sin(st.yaw), cp = Math.cos(st.pitch), sp = Math.sin(st.pitch);
-    const sc = Math.min(W, H) / 640;
+    const dn = st.mode === "dancer", CEN = dn ? [-245, 230, 430] : [-245, 230, 600];
+    const sc = Math.min(W, H) / (dn ? 820 : 640);
     return ([x, y, z]) => {
       x -= CEN[0]; y -= CEN[1]; z -= CEN[2];
       const xr = x * cy - y * sy, yr = x * sy + y * cy;
@@ -361,6 +365,27 @@ h1 { font-size: 1.5rem; font-weight: 600; margin: 0; letter-spacing: -0.01em; te
       const c = P(a.loop); g.strokeStyle = a.k === st.slot ? C.arm : C.parked; g.lineWidth = 1.6;
       g.beginPath(); g.arc(c[0], c[1], opts.loopR || 4, 0, Math.PI * 2); g.stroke();
     }
+    // dancer: every tool's fixed rear route (channels, legs, sheave), parked ones at their parked height
+    if (st.mode === "dancer" && D.dancer) {
+      const dd = D.dancer;
+      for (let k = 1; k <= 5; k++) {
+        const r = dd.route[k], act = k === st.slot;
+        const z = act ? sc.s.z : (D.cases[`dancer|${k}|2000`].parked || {}).z;
+        if (z == null) continue;
+        const col = act ? C.bundle : C.parked, w = act ? (opts.w || 2.6) : 2.0;
+        poly(g, r.exit.map(P), col, w);
+        poly(g, (act ? r.ret : r.ret_up).map(P), col, w);
+        poly(g, [[r.legs[0], r.y, dd.z_g], [r.legs[0], r.y, z]].map(P), col, w);
+        poly(g, [[r.legs[1], r.y, dd.z_g], [r.legs[1], r.y, z]].map(P), col, w);
+        const circ = []; for (let i = 0; i <= 40; i++) { const a = i / 40 * 2 * Math.PI; circ.push([r.cx + dd.rp * Math.cos(a), r.y, z + dd.rp * Math.sin(a)]); }
+        poly(g, circ.map(P), act ? C.arm : C.parked, act ? 2.2 : 1.4);
+        const c = P([r.cx, r.y, z]); g.fillStyle = act ? C.arm : C.parked; g.beginPath(); g.arc(c[0], c[1], act ? 3 : 2, 0, 7); g.fill();
+      }
+      if (opts.gantry) {
+        const box = [[-245, 388.7, 411.5], [-245, 440, 411.5], [-245, 440, 448.5], [-245, 388.7, 448.5], [-245, 388.7, 411.5]];
+        poly(g, box.map(P), C.frame, 1.2, [3, 3]);
+      }
+    }
     // hinge
     const hz = P([opts.hingeX ?? -245, D.design.hinge[0], D.design.hinge[1]]);
     g.fillStyle = C.ink; g.beginPath(); g.arc(hz[0], hz[1], 2.5, 0, 7); g.fill();
@@ -380,12 +405,14 @@ h1 { font-size: 1.5rem; font-weight: 600; margin: 0; letter-spacing: -0.01em; te
         const a = P([-430, -60, D.ceil]); g.fillText("ceiling felt Z 679", a[0] + 4, a[1] - 6);
         const [[x0, y0]] = D.lock_reach; const b = P([x0, y0, D.head_z]); g.fillText("bed reach at the lock top", b[0] + 4, b[1] + 14);
       } });
-    render($("cyz"), (W, H) => projOrtho(W, H, 1, 2, [-70, 520, 530, 690]), { w: 2.4, loopR: 5, hingeX: -245,
+    const dn = st.mode === "dancer";
+    render($("cyz"), (W, H) => projOrtho(W, H, 1, 2, dn ? [-70, 520, 100, 690] : [-70, 520, 530, 690]), { w: 2.4, loopR: 5, hingeX: -245, gantry: true,
       labels: (g, P) => {
         g.fillStyle = C.muted; g.font = "10px " + getComputedStyle(document.body).getPropertyValue("--mono");
         const a = P([0, -60, D.ceil]); g.fillText("Z 679", a[0], a[1] - 4);
         const b = P([0, -60, D.head_z]); g.fillText("lock top", b[0], b[1] - 4);
-        const c = P([0, 500, 530]); g.fillText("rear", c[0] - 26, c[1] - 2);
+        const c = P([0, 500, dn ? 100 : 530]); g.fillText("rear", c[0] - 26, c[1] - 2);
+        if (dn) { const e = P([0, 330, 420]); g.fillText("gantry", e[0] - 4, e[1] + 4); }
       } });
     render($("cxy"), (W, H) => projOrtho(W, H, 0, 1, [-445, -45, -70, 520]), { w: 2.2, loopR: 3,
       labels: (g, P) => {
@@ -401,6 +428,21 @@ h1 { font-size: 1.5rem; font-weight: 600; margin: 0; letter-spacing: -0.01em; te
     $("pos").value = String(i); $("posout").textContent = `${frames.length ? i + 1 : 0} / ${frames.length}`;
     if (!w) return;
     $("r-pos").textContent = `${w.head[0].toFixed(0)}, ${w.head[1].toFixed(0)}`;
+    if (st.mode === "dancer") {
+      const r = D.dancer.route[st.slot], top = cur.top, low = cur.low;
+      $("r-len").textContent = cur.L_total.toFixed(0) + " mm";
+      $("r-len-s").textContent = "fixed: roof exit to lock; the sheave takes up the rest";
+      $("r-tu-k").textContent = "Dancer";
+      $("r-tu").textContent = "Z " + w.z.toFixed(0);
+      $("r-tu-m").style.width = (100 * (top - w.z) / Math.max(top - low, 1)).toFixed(1) + "%";
+      $("r-tu-s").textContent = `sheave centre; travel ${(top - low).toFixed(0)} (Z ${low.toFixed(0)}–${top.toFixed(0)})`;
+      const rb = Math.min(w.rb, r.exit_R, r.return_R);
+      const e1 = $("r-rb"); e1.textContent = fmtR(rb); e1.className = "v " + (rb >= D.min_r ? "ok" : "bad");
+      const e2 = $("r-rl"); e2.textContent = fmtR(w.rl); e2.className = "v " + (w.rl >= D.min_r ? "ok" : "bad");
+      const e3 = $("r-low"); e3.textContent = (w.low >= 0 ? "+" : "") + w.low.toFixed(1) + " mm"; e3.className = "v " + (w.low >= -0.5 ? "ok" : "bad");
+      return;
+    }
+    $("r-tu-k").textContent = "Take-up";
     $("r-len").textContent = w.L.toFixed(0) + " mm";
     const tied = st.mode === "tied";
     $("r-len-s").textContent = tied ? "fixed: the bundle is tied in the loop" : `range ${Lmin.toFixed(0)}–${Lmax.toFixed(0)} over the walk`;
@@ -446,7 +488,7 @@ h1 { font-size: 1.5rem; font-weight: 600; margin: 0; letter-spacing: -0.01em; te
     D = d; $("loading").hidden = true;
     seg("slot", [1,2,3,4,5].map(k => [k, "T" + (k - 1)]), "slot");
     seg("ei", [[700,"700"],[2000,"2000"],[7000,"7000"]], "ei");
-    seg("mode", [["slide","sliding"],["tied","tied"],["stuck","cam stalled, arm up"]], "mode");
+    seg("mode", [["dancer","dancer (static lines)"],["slide","sliding"],["tied","tied"],["stuck","cam stalled, arm up"]], "mode");
     $("play").textContent = st.playing ? "Pause" : "Play";
     syncButtons(); onCase(); spacingTable(); requestAnimationFrame(tick);
   }
