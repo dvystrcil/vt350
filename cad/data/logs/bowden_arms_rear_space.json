@@ -1,0 +1,2275 @@
+{
+ "model": "/home/dan/Documents/VT350/vt350-lite-79.FCStd",
+ "exit_x": {
+  "1": -409.7,
+  "2": -324.54,
+  "3": -248.42,
+  "4": -156.42,
+  "5": -80.3
+ },
+ "span": 40.0,
+ "result": {
+  "1": {
+   "now": [
+    {
+     "z": 440.0,
+     "min_free": 26.3,
+     "min_at_x": -439.7,
+     "min_wall": "F695 flanged bearing017",
+     "moving_back": 440.0,
+     "exit_free": 26.4,
+     "exit_wall": "VC9-RTA001"
+    },
+    {
+     "z": 450.0,
+     "min_free": 34.4,
+     "min_at_x": -449.7,
+     "min_wall": "_Stepper_stator001 front cap",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 460.0,
+     "min_free": 34.3,
+     "min_at_x": -449.7,
+     "min_wall": "_Stepper_stator001",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 470.0,
+     "min_free": 34.3,
+     "min_at_x": -449.7,
+     "min_wall": "_Stepper_stator001",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 480.0,
+     "min_free": 34.3,
+     "min_at_x": -449.7,
+     "min_wall": "_Stepper_stator001",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 490.0,
+     "min_free": 34.4,
+     "min_at_x": -449.7,
+     "min_wall": "_Stepper_stator001 rear cap",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 500.0,
+     "min_free": 76.5,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 510.0,
+     "min_free": 76.5,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 520.0,
+     "min_free": 76.5,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 530.0,
+     "min_free": 76.5,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 540.0,
+     "min_free": 76.5,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 550.0,
+     "min_free": 76.5,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 560.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 570.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 580.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 590.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 600.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 610.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 620.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 630.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 640.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 650.0,
+     "min_free": 101.0,
+     "min_at_x": -449.7,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 101.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    },
+    {
+     "z": 660.0,
+     "min_free": 106.0,
+     "min_at_x": -449.7,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 106.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    },
+    {
+     "z": 670.0,
+     "min_free": 100.0,
+     "min_at_x": -449.7,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 100.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    }
+   ],
+   "+10.3": [
+    {
+     "z": 440.0,
+     "min_free": 26.3,
+     "min_at_x": -439.7,
+     "min_wall": "F695 flanged bearing017",
+     "moving_back": 440.0,
+     "exit_free": 26.4,
+     "exit_wall": "VC9-RTA001"
+    },
+    {
+     "z": 450.0,
+     "min_free": 18.0,
+     "min_at_x": -449.7,
+     "min_wall": "_Stepper_stator001 front cap",
+     "moving_back": 440.0,
+     "exit_free": 60.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 460.0,
+     "min_free": 34.3,
+     "min_at_x": -449.7,
+     "min_wall": "_Stepper_stator001",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 470.0,
+     "min_free": 34.3,
+     "min_at_x": -449.7,
+     "min_wall": "_Stepper_stator001",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 480.0,
+     "min_free": 34.3,
+     "min_at_x": -449.7,
+     "min_wall": "_Stepper_stator001",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 490.0,
+     "min_free": 34.4,
+     "min_at_x": -449.7,
+     "min_wall": "_Stepper_stator001 rear cap",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 500.0,
+     "min_free": 76.5,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 510.0,
+     "min_free": 76.5,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 520.0,
+     "min_free": 76.5,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 530.0,
+     "min_free": 76.5,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 540.0,
+     "min_free": 76.5,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 550.0,
+     "min_free": 76.5,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 560.0,
+     "min_free": 76.5,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 570.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 580.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 590.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 600.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 610.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 620.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 630.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 640.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 650.0,
+     "min_free": 101.0,
+     "min_at_x": -449.7,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 101.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    },
+    {
+     "z": 660.0,
+     "min_free": 106.0,
+     "min_at_x": -449.7,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 106.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    },
+    {
+     "z": 670.0,
+     "min_free": 100.0,
+     "min_at_x": -449.7,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 100.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    }
+   ]
+  },
+  "2": {
+   "now": [
+    {
+     "z": 440.0,
+     "min_free": 41.0,
+     "min_at_x": -364.54,
+     "min_wall": "2020",
+     "moving_back": 440.0,
+     "exit_free": 41.0,
+     "exit_wall": "2020"
+    },
+    {
+     "z": 450.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 460.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 470.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 480.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 490.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 500.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 510.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 520.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 530.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 540.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 550.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 560.0,
+     "min_free": 120.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 570.0,
+     "min_free": 120.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 580.0,
+     "min_free": 120.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 590.0,
+     "min_free": 120.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 600.0,
+     "min_free": 120.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 610.0,
+     "min_free": 120.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 620.0,
+     "min_free": 120.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 630.0,
+     "min_free": 120.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 640.0,
+     "min_free": 120.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 650.0,
+     "min_free": 101.0,
+     "min_at_x": -364.54,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 101.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    },
+    {
+     "z": 660.0,
+     "min_free": 106.0,
+     "min_at_x": -364.54,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 106.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    },
+    {
+     "z": 670.0,
+     "min_free": 100.0,
+     "min_at_x": -364.54,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 100.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    }
+   ],
+   "+10.3": [
+    {
+     "z": 440.0,
+     "min_free": 41.0,
+     "min_at_x": -364.54,
+     "min_wall": "2020",
+     "moving_back": 440.0,
+     "exit_free": 41.0,
+     "exit_wall": "2020"
+    },
+    {
+     "z": 450.0,
+     "min_free": 60.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 440.0,
+     "exit_free": 60.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 460.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 470.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 480.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 490.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 500.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 510.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 520.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 530.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 540.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 550.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 560.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 570.0,
+     "min_free": 120.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 580.0,
+     "min_free": 120.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 590.0,
+     "min_free": 120.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 600.0,
+     "min_free": 120.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 610.0,
+     "min_free": 120.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 620.0,
+     "min_free": 120.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 630.0,
+     "min_free": 120.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 640.0,
+     "min_free": 120.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 650.0,
+     "min_free": 101.0,
+     "min_at_x": -364.54,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 101.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    },
+    {
+     "z": 660.0,
+     "min_free": 106.0,
+     "min_at_x": -364.54,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 106.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    },
+    {
+     "z": 670.0,
+     "min_free": 100.0,
+     "min_at_x": -364.54,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 100.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    }
+   ]
+  },
+  "3": {
+   "now": [
+    {
+     "z": 440.0,
+     "min_free": 41.0,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "2020",
+     "moving_back": 440.0,
+     "exit_free": 41.0,
+     "exit_wall": "2020"
+    },
+    {
+     "z": 450.0,
+     "min_free": 76.5,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 460.0,
+     "min_free": 76.5,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 470.0,
+     "min_free": 76.5,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 480.0,
+     "min_free": 76.5,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 490.0,
+     "min_free": 76.5,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 500.0,
+     "min_free": 76.5,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 510.0,
+     "min_free": 76.5,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 520.0,
+     "min_free": 76.5,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 530.0,
+     "min_free": 76.5,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 540.0,
+     "min_free": 76.5,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 550.0,
+     "min_free": 76.5,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 560.0,
+     "min_free": 120.1,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 570.0,
+     "min_free": 120.1,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 580.0,
+     "min_free": 120.1,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 590.0,
+     "min_free": 120.1,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 600.0,
+     "min_free": 120.1,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 610.0,
+     "min_free": 120.1,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 620.0,
+     "min_free": 120.1,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 630.0,
+     "min_free": 120.1,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 640.0,
+     "min_free": 120.1,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 650.0,
+     "min_free": 101.0,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 101.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    },
+    {
+     "z": 660.0,
+     "min_free": 106.0,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 106.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    },
+    {
+     "z": 670.0,
+     "min_free": 100.0,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 100.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    }
+   ],
+   "+10.3": [
+    {
+     "z": 440.0,
+     "min_free": 41.0,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "2020",
+     "moving_back": 440.0,
+     "exit_free": 41.0,
+     "exit_wall": "2020"
+    },
+    {
+     "z": 450.0,
+     "min_free": 60.1,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 440.0,
+     "exit_free": 60.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 460.0,
+     "min_free": 76.5,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 470.0,
+     "min_free": 76.5,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 480.0,
+     "min_free": 76.5,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 490.0,
+     "min_free": 76.5,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 500.0,
+     "min_free": 76.5,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 510.0,
+     "min_free": 76.5,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 520.0,
+     "min_free": 76.5,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 530.0,
+     "min_free": 76.5,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 540.0,
+     "min_free": 76.5,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 550.0,
+     "min_free": 76.5,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 560.0,
+     "min_free": 76.5,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 570.0,
+     "min_free": 120.1,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 580.0,
+     "min_free": 120.1,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 590.0,
+     "min_free": 120.1,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 600.0,
+     "min_free": 120.1,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 610.0,
+     "min_free": 120.1,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 620.0,
+     "min_free": 120.1,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 630.0,
+     "min_free": 120.1,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 640.0,
+     "min_free": 120.1,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 650.0,
+     "min_free": 101.0,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 101.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    },
+    {
+     "z": 660.0,
+     "min_free": 106.0,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 106.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    },
+    {
+     "z": 670.0,
+     "min_free": 100.0,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 100.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    }
+   ]
+  },
+  "4": {
+   "now": [
+    {
+     "z": 440.0,
+     "min_free": 41.0,
+     "min_at_x": -196.42,
+     "min_wall": "2020",
+     "moving_back": 440.0,
+     "exit_free": 41.0,
+     "exit_wall": "2020"
+    },
+    {
+     "z": 450.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 460.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 470.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 480.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 490.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 500.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 510.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 520.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 530.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 540.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 550.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 560.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 570.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 580.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 590.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 600.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 610.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 620.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 630.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 640.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 650.0,
+     "min_free": 101.0,
+     "min_at_x": -196.42,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 101.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    },
+    {
+     "z": 660.0,
+     "min_free": 106.0,
+     "min_at_x": -196.42,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 106.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    },
+    {
+     "z": 670.0,
+     "min_free": 100.0,
+     "min_at_x": -196.42,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 100.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    }
+   ],
+   "+10.3": [
+    {
+     "z": 440.0,
+     "min_free": 41.0,
+     "min_at_x": -196.42,
+     "min_wall": "2020",
+     "moving_back": 440.0,
+     "exit_free": 41.0,
+     "exit_wall": "2020"
+    },
+    {
+     "z": 450.0,
+     "min_free": 60.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 440.0,
+     "exit_free": 60.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 460.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 470.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 480.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 490.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 500.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 510.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 520.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 530.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 540.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 550.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 560.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 570.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 580.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 590.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 600.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 610.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 620.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 630.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 640.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 650.0,
+     "min_free": 101.0,
+     "min_at_x": -196.42,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 101.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    },
+    {
+     "z": 660.0,
+     "min_free": 106.0,
+     "min_at_x": -196.42,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 106.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    },
+    {
+     "z": 670.0,
+     "min_free": 100.0,
+     "min_at_x": -196.42,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 100.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    }
+   ]
+  },
+  "5": {
+   "now": [
+    {
+     "z": 440.0,
+     "min_free": 26.4,
+     "min_at_x": -100.3,
+     "min_wall": "VC9-RTA",
+     "moving_back": 440.0,
+     "exit_free": 26.4,
+     "exit_wall": "VC9-RTA"
+    },
+    {
+     "z": 450.0,
+     "min_free": 34.4,
+     "min_at_x": -40.3,
+     "min_wall": "_Stepper_stator front cap",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 460.0,
+     "min_free": 34.3,
+     "min_at_x": -40.3,
+     "min_wall": "_Stepper_stator",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 470.0,
+     "min_free": 34.3,
+     "min_at_x": -40.3,
+     "min_wall": "_Stepper_stator",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 480.0,
+     "min_free": 34.3,
+     "min_at_x": -40.3,
+     "min_wall": "_Stepper_stator",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 490.0,
+     "min_free": 34.4,
+     "min_at_x": -40.3,
+     "min_wall": "_Stepper_stator rear cap",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 500.0,
+     "min_free": 76.5,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 510.0,
+     "min_free": 76.5,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 520.0,
+     "min_free": 76.5,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 530.0,
+     "min_free": 76.5,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 540.0,
+     "min_free": 76.5,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 550.0,
+     "min_free": 76.5,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 560.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 570.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 580.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 590.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 600.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 610.0,
+     "min_free": 68.4,
+     "min_at_x": -40.3,
+     "min_wall": "Camera housing front (Printables 305428, public domain)",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 620.0,
+     "min_free": 54.1,
+     "min_at_x": -40.3,
+     "min_wall": "Camera housing front (Printables 305428, public domain)",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 630.0,
+     "min_free": 39.7,
+     "min_at_x": -40.3,
+     "min_wall": "Camera housing front (Printables 305428, public domain)",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 640.0,
+     "min_free": 40.1,
+     "min_at_x": -40.3,
+     "min_wall": "Camera housing front (Printables 305428, public domain)",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 650.0,
+     "min_free": 101.0,
+     "min_at_x": -120.3,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 101.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    },
+    {
+     "z": 660.0,
+     "min_free": 106.0,
+     "min_at_x": -120.3,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 106.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    },
+    {
+     "z": 670.0,
+     "min_free": 100.0,
+     "min_at_x": -120.3,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 100.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    }
+   ],
+   "+10.3": [
+    {
+     "z": 440.0,
+     "min_free": 26.4,
+     "min_at_x": -100.3,
+     "min_wall": "VC9-RTA",
+     "moving_back": 440.0,
+     "exit_free": 26.4,
+     "exit_wall": "VC9-RTA"
+    },
+    {
+     "z": 450.0,
+     "min_free": 18.0,
+     "min_at_x": -40.3,
+     "min_wall": "_Stepper_stator front cap",
+     "moving_back": 440.0,
+     "exit_free": 60.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 460.0,
+     "min_free": 34.3,
+     "min_at_x": -40.3,
+     "min_wall": "_Stepper_stator",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 470.0,
+     "min_free": 34.3,
+     "min_at_x": -40.3,
+     "min_wall": "_Stepper_stator",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 480.0,
+     "min_free": 34.3,
+     "min_at_x": -40.3,
+     "min_wall": "_Stepper_stator",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 490.0,
+     "min_free": 34.4,
+     "min_at_x": -40.3,
+     "min_wall": "_Stepper_stator rear cap",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 500.0,
+     "min_free": 76.5,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 510.0,
+     "min_free": 76.5,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 520.0,
+     "min_free": 76.5,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 530.0,
+     "min_free": 76.5,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 540.0,
+     "min_free": 76.5,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 550.0,
+     "min_free": 76.5,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 560.0,
+     "min_free": 76.5,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 570.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 580.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 590.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 600.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 610.0,
+     "min_free": 68.4,
+     "min_at_x": -40.3,
+     "min_wall": "Camera housing front (Printables 305428, public domain)",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 620.0,
+     "min_free": 54.1,
+     "min_at_x": -40.3,
+     "min_wall": "Camera housing front (Printables 305428, public domain)",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 630.0,
+     "min_free": 39.7,
+     "min_at_x": -40.3,
+     "min_wall": "Camera housing front (Printables 305428, public domain)",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 640.0,
+     "min_free": 40.1,
+     "min_at_x": -40.3,
+     "min_wall": "Camera housing front (Printables 305428, public domain)",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 650.0,
+     "min_free": 101.0,
+     "min_at_x": -120.3,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 101.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    },
+    {
+     "z": 660.0,
+     "min_free": 106.0,
+     "min_at_x": -120.3,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 106.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    },
+    {
+     "z": 670.0,
+     "min_free": 100.0,
+     "min_at_x": -120.3,
+     "min_wall": "4040 (1)004 one piece X -520..140 (lite-53)",
+     "moving_back": 380.0,
+     "exit_free": 100.0,
+     "exit_wall": "4040 (1)004 one piece X -520..140 (lite-53)"
+    }
+   ]
+  }
+ },
+ "envelope": {
+  "now": [
+   [
+    "gantry",
+    [
+     -477.9996440312446,
+     -12.000355968754453,
+     388.65446609407456,
+     439.9655339059317,
+     411.49999999999994,
+     448.50000000000006
+    ]
+   ],
+   [
+    "carriage + Left head",
+    [
+     -458.0616403959004,
+     -34.62651446263618,
+     336.4478879754872,
+     423.5840880502445,
+     380.5849999000826,
+     550.0529135921723
+    ]
+   ],
+   [
+    "carriage + Right head",
+    [
+     -458.06164039590044,
+     -34.626514462636074,
+     336.44788803334217,
+     423.5840881080995,
+     380.58500010272917,
+     550.0529137948213
+    ]
+   ]
+  ],
+  "+10.3": [
+   [
+    "gantry",
+    [
+     -477.9996440312446,
+     -12.000355968754453,
+     388.65446609407456,
+     439.9655339059317,
+     421.79999999999995,
+     458.80000000000007
+    ]
+   ],
+   [
+    "carriage + Left head",
+    [
+     -458.0616403959004,
+     -34.62651446263618,
+     336.4478879754872,
+     423.5840880502445,
+     390.8849999000826,
+     560.3529135921723
+    ]
+   ],
+   [
+    "carriage + Right head",
+    [
+     -458.06164039590044,
+     -34.626514462636074,
+     336.44788803334217,
+     423.5840881080995,
+     390.8850001027292,
+     560.3529137948212
+    ]
+   ]
+  ]
+ }
+}
