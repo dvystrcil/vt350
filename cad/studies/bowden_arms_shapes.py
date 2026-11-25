@@ -1,7 +1,8 @@
 """Every solved bundle shape of the bowden-arm study (vt350#312), for the reference page notes/reference/bowden-arms.html.
 Plain python3 + numpy + scipy; read-only, opens no model. About 2 minutes on 10 workers.
 
-    python3 cad/studies/bowden_arms_shapes.py     # writes notes/reference/bowden-arms/shapes.js
+    python3 cad/studies/bowden_arms_shapes.py            # writes notes/reference/bowden-arms/shapes.js
+    python3 cad/studies/bowden_arms_shapes.py --dancer   # only (re)writes the dancer cases into the existing file
 
 It reruns bowden_arms_reach.walk for the chosen design (cad/data/bowden_arms_design.json), gantry at today's height:
   - sliding loop: all 5 tools at EI 700 / 2000 / 7000;
@@ -9,6 +10,9 @@ It reruns bowden_arms_reach.walk for the chosen design (cad/data/bowden_arms_des
   - tied loop: tools 1, 3, 5 at EI 2000, at the cut length its free-length stage finds (as run_modes does);
 and the loop-spacing comparison (owner's question, 2026-11-25): the same design with the loops bunched around the
 bed's centre X (pitch 60 and 30 mm) instead of each over its own roof exit, the roof exits unchanged.
+and the dancer route (bowden_arms_dancer.py, read from cad/data/bowden_arms_dancer_shapes.json, not rerun: EI 2000,
+the 20 g dancer, all 5 tools): per lock position the head span and the pulley's height, plus each tool's fixed rear
+route (exit channel, legs, return channel and free run to the loop, arm down and up) and its sheave.
 Each shape is the roof span + head span as one polyline (X, Y, Z, 0.1 mm), with the bend radius at each node as the
 study measures it (the clamps' ghost joints folded into the end nodes; the loop node = the turn through the loop)."""
 import json, math, os, subprocess, sys
@@ -108,6 +112,59 @@ def case(r, loop):
     return dict(walk=walk, parked=pk)
 
 
+DANCER_SHAPES = os.path.join(REPO, "cad", "data", "bowden_arms_dancer_shapes.json")
+DANCER_ROWS = os.path.join(REPO, "cad", "data", "bowden_arms_dancer.json")
+DANCER_W = "0.2"
+
+
+def dancer_data():
+    """The dancer cases (`dancer|<slot>|2000`) and the route's fixed parts, from bowden_arms_dancer.py's output."""
+    sh, d = json.load(open(DANCER_SHAPES)), json.load(open(DANCER_ROWS))
+    span = ba.Span(2000.0, ba.N_HEAD, g1=ba.DOWN)
+    def head(X, zc):
+        X = np.array(X); m = ba.shape(span, X, ba.LOCK_ZONE)
+        L = float(np.sum(np.linalg.norm(np.diff(X, axis=0), axis=1)))
+        out = dict(p=np.round(X, 1).ravel().tolist(), r=[round(float(min(x, 9999)), 1) for x in radii(X, None, ba.DOWN)])
+        out.update(z=round(float(zc), 1), L=round(L, 1), rb=round(m["minR_body"], 1), rl=round(m["minR_zone"], 1),
+                   low=round(m["lowest"] - ba.HEAD_Z, 1))
+        return out
+    cases, route = {}, {}
+    for slot in range(1, 6):
+        c = sh[f"T{slot - 1}|{DANCER_W}"]
+        row = next(r for r in d["rows"] if r["tool"] == slot - 1 and r["EI"] == 2000.0 and str(r["W"]) == DANCER_W)
+        walk = []
+        for X, zc, hd in zip(c["walk"], c["zc"], c["heads"]):
+            if X is None or zc is None: walk.append(None); continue
+            w = head(X, zc); w["head"] = hd; walk.append(w)
+        cases[f"dancer|{slot}|2000"] = dict(walk=walk, parked=head(c["parked"], c["zc_parked"]) if c["parked"] else None,
+                                            L_total=row["L_total"], top=row["pulley_top"], low=row["pulley_low"])
+        k = next(k for k, v in c["rear"].items() if v is not None)
+        ex, rt = c["rear"][k]; rt_up = c["rear_up"][k][1]
+        route[slot] = dict(exit=[[round(v, 1) for v in q] for q in ex[:-1]],      # roof exit .. the guide (no leg)
+                           ret=[[round(v, 1) for v in q] for q in rt[1:]],        # the guide .. C .. the loop (arm down)
+                           ret_up=[[round(v, 1) for v in q] for q in rt_up[1:]],  # .. the loop (arm up)
+                           legs=[round(ex[-1][0], 1), round(rt[0][0], 1)], y=d["pulley"][str(slot)][1],
+                           cx=d["pulley"][str(slot)][0], exit_R=row["exit_R"], return_R=row["return_R"])
+    return dict(rp=d["RP"], z_g=ex[-2][2], weight_n=float(DANCER_W), route=route), cases
+
+
+def write(data):
+    sha = subprocess.run(["git", "-C", REPO, "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
+    os.makedirs(os.path.dirname(OUT), exist_ok=True)
+    with open(OUT, "w") as f:
+        f.write(f"// Solved bundle shapes for bowden-arms.html (vt350#312), from cad/studies/bowden_arms_shapes.py at {sha}.\n")
+        f.write("window.ARMS_DATA = " + json.dumps(data, separators=(",", ":")) + ";\n")
+    print(f"wrote {OUT} ({os.path.getsize(OUT) / 1e6:.1f} MB, {len(data['cases'])} cases)")
+
+
+def dancer_only():
+    txt = open(OUT).read()
+    data = json.loads(txt[txt.index("=") + 1:].strip().rstrip(";"))
+    data["dancer"], dc = dancer_data()
+    data["cases"] = {k: v for k, v in data["cases"].items() if not k.startswith("dancer|")} | dc
+    write(data)
+
+
 def main():
     main_jobs = [(s, DESIGN, e, "now", STEP, "slide", None, False) for s in range(1, 6) for e in ba.EIS]
     main_jobs += [(s, DESIGN, 2000.0, "now", STEP, "slide", None, True) for s in (1, 3, 5)]
@@ -139,18 +196,15 @@ def main():
                                 lock_R=g("lock_minR"), body_R=g("body_minR"), roof_R=g("roof_minR"),
                                 touch_pct=g("touch_parked_pct", max), to_parked=g("to_parked_min")))
             print(spacing[-1], flush=True)
-    sha = subprocess.run(["git", "-C", REPO, "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
     data = dict(design=DESIGN, ceil=lrod.Z_CEIL, head_z=ba.HEAD_Z, min_r=ba.MIN_R, lock_zone=ba.LOCK_ZONE,
                 takeup=ba.TAKEUP, exit_x={s: lrod.EXIT_X[s] for s in range(1, 6)},
                 exits={s: np.round(lrod.exit_point(s), 1).tolist() for s in range(1, 6)},
                 lock_reach=[ba.lock_xy((ba.REACH_X[0], ba.REACH_Y[0])), ba.lock_xy((ba.REACH_X[1], ba.REACH_Y[1]))],
                 cases=cases, spacing=spacing)
-    os.makedirs(os.path.dirname(OUT), exist_ok=True)
-    with open(OUT, "w") as f:
-        f.write(f"// Solved bundle shapes for bowden-arms.html (vt350#312), from cad/studies/bowden_arms_shapes.py at {sha}.\n")
-        f.write("window.ARMS_DATA = " + json.dumps(data, separators=(",", ":")) + ";\n")
-    print(f"wrote {OUT} ({os.path.getsize(OUT) / 1e6:.1f} MB, {len(cases)} cases)")
+    data["dancer"], dc = dancer_data()
+    data["cases"].update(dc)
+    write(data)
 
 
 if __name__ == "__main__":
-    main()
+    dancer_only() if "--dancer" in sys.argv[1:] else main()
