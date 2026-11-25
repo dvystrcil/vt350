@@ -5,6 +5,7 @@ import math, os, sys, unittest
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import bowden_arms_reach as ba
+import bowden_arms_dancer as bd
 import lrod
 
 
@@ -122,6 +123,59 @@ class TestSpan(unittest.TestCase):
         self.assertLess(m["minR_zone"], m["minR_body"])                      # the ghost joint into -Z
         self.assertEqual(min(m["minR_body"], m["minR_zone"]), m["minR"])
         self.assertTrue(math.isinf(ba.shape(R, X)["minR_zone"]))               # no zone asked: none reported
+
+
+class TestDancer(unittest.TestCase):
+    def test_legs_two_radii_apart(self):
+        for s in range(1, 6):
+            le, lr = bd.legs(s)
+            self.assertAlmostEqual(abs(le - lr), 2 * bd.RP)
+            self.assertAlmostEqual((le + lr) / 2, bd.PULLEY[s][0])
+            self.assertAlmostEqual(lr, bd.PULLEY[s][0] + bd.RETURN_SIDE[s] * bd.RP)
+        self.assertGreaterEqual(bd.RP - 2.55, ba.MIN_R)            # the inner tube in the groove
+
+    def test_stacks_fit_their_gaps(self):
+        # left gap: the rear-left corner idler plate (X <= -385.5) | the Z axis's bed carriage (X >= -262.9);
+        # right gap: the Z axis (X <= -229.8) | the rear-right plate (X >= -104.5). Legs +-4.6, sheaves RP + 4.6 + 2.
+        for s, (cx, y) in bd.PULLEY.items():
+            half = bd.RP + ba.BUNDLE_W / 2 + 2.0
+            lo, hi = (-385.5, -262.9) if cx < -246 else (-229.8, -104.5)
+            self.assertGreater(cx - half, lo + 1.0, s)
+            self.assertLess(cx + half, hi - 1.0, s)
+
+    def test_pulleys_clear_the_z_axis_and_each_other(self):
+        # the rear-centre Z axis (carriage, leadscrew, 2020 (3)) at X -263..-230: no pulley spans it; pulleys that
+        # overlap in X sit in different planes, 14 mm apart or more (bundle 9.2)
+        half = bd.RP + ba.BUNDLE_W / 2 + 2.0
+        for s, (cx, y) in bd.PULLEY.items():
+            self.assertTrue(cx + half < -263.0 or cx - half > -230.0, s)
+            for o, (cx2, y2) in bd.PULLEY.items():
+                if o != s and abs(cx - cx2) < 2 * half: self.assertGreaterEqual(abs(y - y2), 12.0, (s, o))
+
+    def test_q_on_the_arm(self):
+        for loop in (bd.DESIGN["loop_down"], bd.DESIGN["loop_up"]):
+            Q = bd.q_point(3, loop)
+            hy, hz = bd.DESIGN["hinge"]
+            # on the line hinge -> loop
+            cross = (Q[1] - hy) * (loop[1] - hz) - (Q[2] - hz) * (loop[0] - hy)
+            self.assertAlmostEqual(cross, 0.0, places=6)
+            self.assertAlmostEqual(Q[1], bd.Y_Q)
+            self.assertAlmostEqual(Q[0], lrod.EXIT_X[3])
+
+    def test_pulley_height_inverts_rear_length(self):
+        # a synthetic rear table: each span grows 1 mm per mm the pulley drops -> 2 per mm in all
+        rear = {z: (1000.0 - z, 900.0 - z, 60.0, 60.0, None, None, 10.0) for z in (500.0, 400.0, 300.0)}
+        for z in (480.0, 420.0, 300.0):
+            need = bd.rear_length(rear, z)
+            self.assertAlmostEqual(bd.pulley_at(rear, need), z, places=6)
+        top = bd.rear_length(rear, 500.0)
+        self.assertAlmostEqual(bd.pulley_at(rear, top - 20.0), 510.0)      # above the grid: 10 higher (2 per mm)
+        self.assertIsNone(bd.rear_length(rear, 520.0))
+
+    def test_clear_of_moving(self):
+        X = [(-245.0, 300.0, 600.0), (-245.0, 450.0, 420.0)]          # over a head; behind all travel
+        self.assertAlmostEqual(bd.clear_of_moving(X, 0.0), 600.0 - ba.BUNDLE_W / 2 - 550.37)
+        self.assertEqual(bd.clear_of_moving([(-245.0, 450.0, 420.0)], 0.0), math.inf)
 
 if __name__ == "__main__":
     unittest.main()

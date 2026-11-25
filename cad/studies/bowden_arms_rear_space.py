@@ -11,6 +11,8 @@
 # a line along +Y from Y_FROM and records what it meets:
 #   - the moving envelope: the gantry, and the carriage + carried heads swept over X, all at the rear stop
 #     (sweep_toolhead.Y_TRAVEL), as boxes (conservative), at today's height and #243's +10.3;
+#   - the bed's parts that reach behind Y_FROM, each swept over the bed's Z travel (saved pose up to its top,
+#     sweep_toolhead's dz_top) as its own box;
 #   - every fixed solid (not the bed or the moving groups; the bundles themselves listed apart, since they re-route).
 # The free depth at (X, Z) = from the moving envelope's back (or Y_FROM if nothing moving is at that height) to the
 # first fixed solid behind it. Reported per tool as the free depth at each Z (the narrowest over the tool's X band and
@@ -25,7 +27,7 @@ MODEL = os.environ.get("VT350_MODEL", "/home/dan/Documents/VT350/vt350-lite-79.F
 EXIT_X = {1: -409.7, 2: -324.54, 3: -248.42, 4: -156.42, 5: -80.3}   # lanyard/lrod.py (lite70_roof_exit_low.json)
 EXIT_Y, CEIL = 449.0, 679.0
 SPAN, DX = 40.0, 10.0              # each tool's X band (a U turning in the back wall's plane is ~100 wide at R 51)
-Z_LO, DZ = 440.0, 10.0
+Z_LO, DZ = float(os.environ.get("REAR_Z_LO", "440")), 10.0   # REAR_Z_LO: how far down to look
 Y_FROM, Y_TO = 380.0, 560.0
 RAISE = {"now": 0.0, "+10.3": 10.3}
 BUNDLE = ("Bowden ", "O2S USB cable", "Zip tie, black (2.5 mm) slot")
@@ -77,8 +79,14 @@ def main(p):
                 sw.add(union(plan["carriage"], (tc[0], tc[1], dz)))
                 sw.add(union(plan["heads"][h], (tc[0] - tx, tc[1] - ty, -tz + dz)))
             boxes.append((f"carriage + {h} head", sw))
+        dz_top = max(plan["carried"][h]["dz_top"] for h in ("Left", "Right"))
+        for n in plan["bed"]:                      # each bed part swept over its Z travel on its own (the union's box
+            b = FreeCAD.BoundBox(pr.shapes[n].BoundBox)   # runs to Y 499 and would block the whole rear)
+            if not b.isValid(): continue
+            t = FreeCAD.BoundBox(b); t.move(V(0, 0, dz_top)); b.add(t)
+            if b.YMax > Y_FROM and b.intersect(region): boxes.append((f"bed part {lab.get(n, n)}, over its Z travel", b))
         env[rname] = boxes
-        for what, b in boxes:
+        for what, b in boxes[:3] + [bx for bx in boxes[3:] if rname == "now"]:
             p.log(f"   moving ({rname}) {what} at the rear stop: X {b.XMin:.1f}..{b.XMax:.1f}, Y {b.YMin:.1f}..{b.YMax:.1f}, "
                   f"Z {b.ZMin:.1f}..{b.ZMax:.1f}")
 
