@@ -41,7 +41,7 @@ jobs:
           echo "$HOME/ffmpeg-static" >> "$GITHUB_PATH"
           "$HOME/ffmpeg-static/ffmpeg" -hide_banner -version | head -1
           "$HOME/ffmpeg-static/ffmpeg" -hide_banner -encoders | grep -q libx264
-      # numpy + scipy: cad/studies/flap_guide/test_rod.py and lanyard/test_lrod.py (the cable rod models, #3, #218)
+      # numpy + scipy: cad/studies/flap_guide/test_rod.py, lanyard/test_lrod.py, test_bowden_arms.py (cable rod models, #3, #218, #312)
       - name: Install numpy + scipy
         run: python3 -m pip install --user --break-system-packages numpy scipy
       # Each test file runs with its own empty TMPDIR. Anything left behind fails the check: leaked test dirs once
