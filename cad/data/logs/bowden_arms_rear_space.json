@@ -12,6 +12,348 @@
   "1": {
    "now": [
     {
+     "z": 60.0,
+     "min_free": 125.0,
+     "min_at_x": -449.7,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 70.0,
+     "min_free": 125.0,
+     "min_at_x": -449.7,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 80.0,
+     "min_free": 125.0,
+     "min_at_x": -449.7,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 90.0,
+     "min_free": 125.0,
+     "min_at_x": -449.7,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 100.0,
+     "min_free": 125.0,
+     "min_at_x": -449.7,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 110.0,
+     "min_free": 125.0,
+     "min_at_x": -449.7,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 120.0,
+     "min_free": 125.0,
+     "min_at_x": -449.7,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 130.0,
+     "min_free": 125.0,
+     "min_at_x": -449.7,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 140.0,
+     "min_free": 125.0,
+     "min_at_x": -449.7,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 150.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 160.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 170.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 180.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 190.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 200.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 210.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 220.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 230.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 240.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 250.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 260.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 270.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 280.0,
+     "min_free": 117.1,
+     "min_at_x": -419.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 290.0,
+     "min_free": 117.1,
+     "min_at_x": -419.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 300.0,
+     "min_free": 117.1,
+     "min_at_x": -419.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 310.0,
+     "min_free": 117.1,
+     "min_at_x": -419.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 320.0,
+     "min_free": 117.1,
+     "min_at_x": -419.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 330.0,
+     "min_free": 117.1,
+     "min_at_x": -419.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 340.0,
+     "min_free": 117.1,
+     "min_at_x": -419.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 350.0,
+     "min_free": 117.1,
+     "min_at_x": -419.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 360.0,
+     "min_free": 117.1,
+     "min_at_x": -419.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 370.0,
+     "min_free": 117.1,
+     "min_at_x": -419.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 380.0,
+     "min_free": 117.1,
+     "min_at_x": -419.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 390.0,
+     "min_free": 76.5,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 400.0,
+     "min_free": 76.5,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 410.0,
+     "min_free": 76.5,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 420.0,
+     "min_free": 26.4,
+     "min_at_x": -409.7,
+     "min_wall": "VC9-RTA001",
+     "moving_back": 440.0,
+     "exit_free": 26.4,
+     "exit_wall": "VC9-RTA001"
+    },
+    {
+     "z": 430.0,
+     "min_free": 25.2,
+     "min_at_x": -439.7,
+     "min_wall": "F695 flanged bearing015",
+     "moving_back": 440.0,
+     "exit_free": 26.4,
+     "exit_wall": "VC9-RTA001"
+    },
+    {
      "z": 440.0,
      "min_free": 26.3,
      "min_at_x": -439.7,
@@ -229,6 +571,348 @@
     }
    ],
    "+10.3": [
+    {
+     "z": 60.0,
+     "min_free": 125.0,
+     "min_at_x": -449.7,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 70.0,
+     "min_free": 125.0,
+     "min_at_x": -449.7,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 80.0,
+     "min_free": 125.0,
+     "min_at_x": -449.7,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 90.0,
+     "min_free": 125.0,
+     "min_at_x": -449.7,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 100.0,
+     "min_free": 125.0,
+     "min_at_x": -449.7,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 110.0,
+     "min_free": 125.0,
+     "min_at_x": -449.7,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 120.0,
+     "min_free": 125.0,
+     "min_at_x": -449.7,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 130.0,
+     "min_free": 125.0,
+     "min_at_x": -449.7,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 140.0,
+     "min_free": 125.0,
+     "min_at_x": -449.7,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 150.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 160.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 170.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 180.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 190.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 200.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 210.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 220.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 230.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 240.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 250.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 260.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 270.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 280.0,
+     "min_free": 117.1,
+     "min_at_x": -419.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 290.0,
+     "min_free": 117.1,
+     "min_at_x": -419.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 300.0,
+     "min_free": 117.1,
+     "min_at_x": -419.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 310.0,
+     "min_free": 117.1,
+     "min_at_x": -419.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 320.0,
+     "min_free": 117.1,
+     "min_at_x": -419.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 330.0,
+     "min_free": 117.1,
+     "min_at_x": -419.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 340.0,
+     "min_free": 117.1,
+     "min_at_x": -419.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 350.0,
+     "min_free": 117.1,
+     "min_at_x": -419.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 360.0,
+     "min_free": 117.1,
+     "min_at_x": -419.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 370.0,
+     "min_free": 117.1,
+     "min_at_x": -419.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 380.0,
+     "min_free": 117.1,
+     "min_at_x": -419.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 390.0,
+     "min_free": 120.1,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 400.0,
+     "min_free": 76.5,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 410.0,
+     "min_free": 76.5,
+     "min_at_x": -449.7,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 420.0,
+     "min_free": 42.8,
+     "min_at_x": -409.7,
+     "min_wall": "VC9-RTA001",
+     "moving_back": 423.6,
+     "exit_free": 42.8,
+     "exit_wall": "VC9-RTA001"
+    },
+    {
+     "z": 430.0,
+     "min_free": 25.2,
+     "min_at_x": -439.7,
+     "min_wall": "F695 flanged bearing015",
+     "moving_back": 440.0,
+     "exit_free": 26.4,
+     "exit_wall": "VC9-RTA001"
+    },
     {
      "z": 440.0,
      "min_free": 26.3,
@@ -450,6 +1134,348 @@
   "2": {
    "now": [
     {
+     "z": 60.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link018",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link018"
+    },
+    {
+     "z": 70.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link013",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link013"
+    },
+    {
+     "z": 80.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link013",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link013"
+    },
+    {
+     "z": 90.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link019",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link019"
+    },
+    {
+     "z": 100.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link002",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link002"
+    },
+    {
+     "z": 110.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link002",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link002"
+    },
+    {
+     "z": 120.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link016",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link016"
+    },
+    {
+     "z": 130.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link016",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link016"
+    },
+    {
+     "z": 140.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link006",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link006"
+    },
+    {
+     "z": 150.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link008",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link008"
+    },
+    {
+     "z": 160.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link008",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link008"
+    },
+    {
+     "z": 170.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link005",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link005"
+    },
+    {
+     "z": 180.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link005",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link005"
+    },
+    {
+     "z": 190.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link001",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link001"
+    },
+    {
+     "z": 200.0,
+     "min_free": 101.4,
+     "min_at_x": -314.54,
+     "min_wall": "10x11 Chain Link014",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link001"
+    },
+    {
+     "z": 210.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link014",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link014"
+    },
+    {
+     "z": 220.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link007",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link007"
+    },
+    {
+     "z": 230.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link007",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link007"
+    },
+    {
+     "z": 240.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link004",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link004"
+    },
+    {
+     "z": 250.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link004",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link004"
+    },
+    {
+     "z": 260.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link"
+    },
+    {
+     "z": 270.0,
+     "min_free": 101.4,
+     "min_at_x": -314.54,
+     "min_wall": "10x11 Chain Link003",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link003"
+    },
+    {
+     "z": 280.0,
+     "min_free": 98.4,
+     "min_at_x": -314.54,
+     "min_wall": "10x11 Chain Link003",
+     "moving_back": 383.0,
+     "exit_free": 98.4,
+     "exit_wall": "10x11 Chain Link003"
+    },
+    {
+     "z": 290.0,
+     "min_free": 98.4,
+     "min_at_x": -314.54,
+     "min_wall": "10x11 Chain Link017",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 300.0,
+     "min_free": 98.4,
+     "min_at_x": -284.54,
+     "min_wall": "10x11 Chain Link010",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 310.0,
+     "min_free": 117.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 320.0,
+     "min_free": 117.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 330.0,
+     "min_free": 117.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 340.0,
+     "min_free": 117.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 350.0,
+     "min_free": 117.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 360.0,
+     "min_free": 117.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 370.0,
+     "min_free": 117.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 380.0,
+     "min_free": 117.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 390.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 400.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 410.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 420.0,
+     "min_free": 41.0,
+     "min_at_x": -364.54,
+     "min_wall": "2020",
+     "moving_back": 440.0,
+     "exit_free": 41.0,
+     "exit_wall": "2020"
+    },
+    {
+     "z": 430.0,
+     "min_free": 46.3,
+     "min_at_x": -364.54,
+     "min_wall": "2020",
+     "moving_back": 440.0,
+     "exit_free": 46.3,
+     "exit_wall": "2020"
+    },
+    {
      "z": 440.0,
      "min_free": 41.0,
      "min_at_x": -364.54,
@@ -667,6 +1693,348 @@
     }
    ],
    "+10.3": [
+    {
+     "z": 60.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link018",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link018"
+    },
+    {
+     "z": 70.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link013",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link013"
+    },
+    {
+     "z": 80.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link013",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link013"
+    },
+    {
+     "z": 90.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link019",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link019"
+    },
+    {
+     "z": 100.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link002",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link002"
+    },
+    {
+     "z": 110.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link002",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link002"
+    },
+    {
+     "z": 120.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link016",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link016"
+    },
+    {
+     "z": 130.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link016",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link016"
+    },
+    {
+     "z": 140.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link006",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link006"
+    },
+    {
+     "z": 150.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link008",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link008"
+    },
+    {
+     "z": 160.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link008",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link008"
+    },
+    {
+     "z": 170.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link005",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link005"
+    },
+    {
+     "z": 180.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link005",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link005"
+    },
+    {
+     "z": 190.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link001",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link001"
+    },
+    {
+     "z": 200.0,
+     "min_free": 101.4,
+     "min_at_x": -314.54,
+     "min_wall": "10x11 Chain Link014",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link001"
+    },
+    {
+     "z": 210.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link014",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link014"
+    },
+    {
+     "z": 220.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link007",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link007"
+    },
+    {
+     "z": 230.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link007",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link007"
+    },
+    {
+     "z": 240.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link004",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link004"
+    },
+    {
+     "z": 250.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link004",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link004"
+    },
+    {
+     "z": 260.0,
+     "min_free": 101.4,
+     "min_at_x": -324.54,
+     "min_wall": "10x11 Chain Link",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link"
+    },
+    {
+     "z": 270.0,
+     "min_free": 101.4,
+     "min_at_x": -314.54,
+     "min_wall": "10x11 Chain Link003",
+     "moving_back": 380.0,
+     "exit_free": 101.4,
+     "exit_wall": "10x11 Chain Link003"
+    },
+    {
+     "z": 280.0,
+     "min_free": 98.4,
+     "min_at_x": -314.54,
+     "min_wall": "10x11 Chain Link003",
+     "moving_back": 383.0,
+     "exit_free": 98.4,
+     "exit_wall": "10x11 Chain Link003"
+    },
+    {
+     "z": 290.0,
+     "min_free": 98.4,
+     "min_at_x": -314.54,
+     "min_wall": "10x11 Chain Link017",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 300.0,
+     "min_free": 98.4,
+     "min_at_x": -284.54,
+     "min_wall": "10x11 Chain Link010",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 310.0,
+     "min_free": 117.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 320.0,
+     "min_free": 117.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 330.0,
+     "min_free": 117.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 340.0,
+     "min_free": 117.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 350.0,
+     "min_free": 117.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 360.0,
+     "min_free": 117.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 370.0,
+     "min_free": 117.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 380.0,
+     "min_free": 117.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 390.0,
+     "min_free": 120.1,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 400.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 410.0,
+     "min_free": 76.5,
+     "min_at_x": -364.54,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 420.0,
+     "min_free": 57.4,
+     "min_at_x": -364.54,
+     "min_wall": "2020",
+     "moving_back": 423.6,
+     "exit_free": 57.4,
+     "exit_wall": "2020"
+    },
+    {
+     "z": 430.0,
+     "min_free": 46.3,
+     "min_at_x": -364.54,
+     "min_wall": "2020",
+     "moving_back": 440.0,
+     "exit_free": 46.3,
+     "exit_wall": "2020"
+    },
     {
      "z": 440.0,
      "min_free": 41.0,
@@ -888,6 +2256,348 @@
   "3": {
    "now": [
     {
+     "z": 60.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 70.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 80.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 90.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 100.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 110.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 120.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 130.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 140.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 150.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 160.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 170.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 180.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 190.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 200.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 210.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 220.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 230.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 240.0,
+     "min_free": 12.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "SOLID034",
+     "moving_back": 461.1,
+     "exit_free": 12.4,
+     "exit_wall": "SOLID034"
+    },
+    {
+     "z": 250.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 260.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 270.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 280.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 290.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 300.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 310.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 320.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 330.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 340.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 350.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 360.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 370.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 380.0,
+     "min_free": 65.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 383.0,
+     "exit_free": 65.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 390.0,
+     "min_free": 49.9,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "SOLID034",
+     "moving_back": 423.6,
+     "exit_free": 49.9,
+     "exit_wall": "SOLID034"
+    },
+    {
+     "z": 400.0,
+     "min_free": 51.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "SOLID035",
+     "moving_back": 423.6,
+     "exit_free": 51.4,
+     "exit_wall": "SOLID035"
+    },
+    {
+     "z": 410.0,
+     "min_free": 51.5,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "SOLID035",
+     "moving_back": 423.6,
+     "exit_free": 51.5,
+     "exit_wall": "SOLID035"
+    },
+    {
+     "z": 420.0,
+     "min_free": 40.0,
+     "min_at_x": -238.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 440.0,
+     "exit_free": 40.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 430.0,
+     "min_free": 46.3,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "2020",
+     "moving_back": 440.0,
+     "exit_free": 46.3,
+     "exit_wall": "2020"
+    },
+    {
      "z": 440.0,
      "min_free": 41.0,
      "min_at_x": -288.41999999999996,
@@ -1105,6 +2815,348 @@
     }
    ],
    "+10.3": [
+    {
+     "z": 60.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 70.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 80.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 90.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 100.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 110.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 120.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 130.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 140.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 150.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 160.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 170.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 180.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 190.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 200.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 210.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 220.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 230.0,
+     "min_free": 68.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 380.0,
+     "exit_free": 68.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 240.0,
+     "min_free": 12.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "SOLID034",
+     "moving_back": 461.1,
+     "exit_free": 12.4,
+     "exit_wall": "SOLID034"
+    },
+    {
+     "z": 250.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 260.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 270.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 280.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 290.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 300.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 310.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 320.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 330.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 340.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 350.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 360.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 370.0,
+     "min_free": 0.0,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 499.0,
+     "exit_free": 0.0,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 380.0,
+     "min_free": 65.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "Leadscrew002 (rod)",
+     "moving_back": 383.0,
+     "exit_free": 65.4,
+     "exit_wall": "Leadscrew002 (rod)"
+    },
+    {
+     "z": 390.0,
+     "min_free": 93.5,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "SOLID034",
+     "moving_back": 380.0,
+     "exit_free": 93.5,
+     "exit_wall": "SOLID034"
+    },
+    {
+     "z": 400.0,
+     "min_free": 51.4,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "SOLID035",
+     "moving_back": 423.6,
+     "exit_free": 51.4,
+     "exit_wall": "SOLID035"
+    },
+    {
+     "z": 410.0,
+     "min_free": 51.5,
+     "min_at_x": -248.41999999999996,
+     "min_wall": "SOLID035",
+     "moving_back": 423.6,
+     "exit_free": 51.5,
+     "exit_wall": "SOLID035"
+    },
+    {
+     "z": 420.0,
+     "min_free": 56.4,
+     "min_at_x": -238.41999999999996,
+     "min_wall": "2020 (3)",
+     "moving_back": 423.6,
+     "exit_free": 56.4,
+     "exit_wall": "2020 (3)"
+    },
+    {
+     "z": 430.0,
+     "min_free": 46.3,
+     "min_at_x": -288.41999999999996,
+     "min_wall": "2020",
+     "moving_back": 440.0,
+     "exit_free": 46.3,
+     "exit_wall": "2020"
+    },
     {
      "z": 440.0,
      "min_free": 41.0,
@@ -1326,6 +3378,348 @@
   "4": {
    "now": [
     {
+     "z": 60.0,
+     "min_free": 125.0,
+     "min_at_x": -196.42,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 70.0,
+     "min_free": 125.0,
+     "min_at_x": -196.42,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 80.0,
+     "min_free": 125.0,
+     "min_at_x": -196.42,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 90.0,
+     "min_free": 125.0,
+     "min_at_x": -196.42,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 100.0,
+     "min_free": 125.0,
+     "min_at_x": -196.42,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 110.0,
+     "min_free": 125.0,
+     "min_at_x": -196.42,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 120.0,
+     "min_free": 125.0,
+     "min_at_x": -196.42,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 130.0,
+     "min_free": 125.0,
+     "min_at_x": -196.42,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 140.0,
+     "min_free": 125.0,
+     "min_at_x": -196.42,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 150.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 160.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 170.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 180.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 190.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 200.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 210.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 220.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 230.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 240.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 250.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 260.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 270.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 280.0,
+     "min_free": 117.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 290.0,
+     "min_free": 117.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 300.0,
+     "min_free": 117.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 310.0,
+     "min_free": 117.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 320.0,
+     "min_free": 117.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 330.0,
+     "min_free": 117.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 340.0,
+     "min_free": 117.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 350.0,
+     "min_free": 117.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 360.0,
+     "min_free": 117.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 370.0,
+     "min_free": 117.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 380.0,
+     "min_free": 117.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 390.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 400.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 410.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 420.0,
+     "min_free": 41.0,
+     "min_at_x": -196.42,
+     "min_wall": "2020",
+     "moving_back": 440.0,
+     "exit_free": 41.0,
+     "exit_wall": "2020"
+    },
+    {
+     "z": 430.0,
+     "min_free": 46.3,
+     "min_at_x": -196.42,
+     "min_wall": "2020",
+     "moving_back": 440.0,
+     "exit_free": 46.3,
+     "exit_wall": "2020"
+    },
+    {
      "z": 440.0,
      "min_free": 41.0,
      "min_at_x": -196.42,
@@ -1543,6 +3937,348 @@
     }
    ],
    "+10.3": [
+    {
+     "z": 60.0,
+     "min_free": 125.0,
+     "min_at_x": -196.42,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 70.0,
+     "min_free": 125.0,
+     "min_at_x": -196.42,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 80.0,
+     "min_free": 125.0,
+     "min_at_x": -196.42,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 90.0,
+     "min_free": 125.0,
+     "min_at_x": -196.42,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 100.0,
+     "min_free": 125.0,
+     "min_at_x": -196.42,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 110.0,
+     "min_free": 125.0,
+     "min_at_x": -196.42,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 120.0,
+     "min_free": 125.0,
+     "min_at_x": -196.42,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 130.0,
+     "min_free": 125.0,
+     "min_at_x": -196.42,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 140.0,
+     "min_free": 125.0,
+     "min_at_x": -196.42,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 150.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 160.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 170.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 180.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 190.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 200.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 210.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 220.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 230.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 240.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 250.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 260.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 270.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 280.0,
+     "min_free": 117.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 290.0,
+     "min_free": 117.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 300.0,
+     "min_free": 117.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 310.0,
+     "min_free": 117.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 320.0,
+     "min_free": 117.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 330.0,
+     "min_free": 117.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 340.0,
+     "min_free": 117.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 350.0,
+     "min_free": 117.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 360.0,
+     "min_free": 117.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 370.0,
+     "min_free": 117.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 380.0,
+     "min_free": 117.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 390.0,
+     "min_free": 120.1,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 400.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 410.0,
+     "min_free": 76.5,
+     "min_at_x": -196.42,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 420.0,
+     "min_free": 57.4,
+     "min_at_x": -196.42,
+     "min_wall": "2020",
+     "moving_back": 423.6,
+     "exit_free": 57.4,
+     "exit_wall": "2020"
+    },
+    {
+     "z": 430.0,
+     "min_free": 46.3,
+     "min_at_x": -196.42,
+     "min_wall": "2020",
+     "moving_back": 440.0,
+     "exit_free": 46.3,
+     "exit_wall": "2020"
+    },
     {
      "z": 440.0,
      "min_free": 41.0,
@@ -1764,6 +4500,348 @@
   "5": {
    "now": [
     {
+     "z": 60.0,
+     "min_free": 125.0,
+     "min_at_x": -120.3,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 70.0,
+     "min_free": 125.0,
+     "min_at_x": -120.3,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 80.0,
+     "min_free": 125.0,
+     "min_at_x": -120.3,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 90.0,
+     "min_free": 125.0,
+     "min_at_x": -120.3,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 100.0,
+     "min_free": 125.0,
+     "min_at_x": -120.3,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 110.0,
+     "min_free": 125.0,
+     "min_at_x": -120.3,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 120.0,
+     "min_free": 125.0,
+     "min_at_x": -120.3,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 130.0,
+     "min_free": 125.0,
+     "min_at_x": -120.3,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 140.0,
+     "min_free": 125.0,
+     "min_at_x": -120.3,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 150.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 160.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 170.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 180.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 190.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 200.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 210.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 220.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 230.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 240.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 250.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 260.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 270.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 280.0,
+     "min_free": 117.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 290.0,
+     "min_free": 117.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 300.0,
+     "min_free": 117.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 310.0,
+     "min_free": 117.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 320.0,
+     "min_free": 117.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 330.0,
+     "min_free": 117.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 340.0,
+     "min_free": 117.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 350.0,
+     "min_free": 117.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 360.0,
+     "min_free": 117.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 370.0,
+     "min_free": 117.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 380.0,
+     "min_free": 117.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 390.0,
+     "min_free": 76.5,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 400.0,
+     "min_free": 76.5,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 410.0,
+     "min_free": 76.5,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 420.0,
+     "min_free": 26.3,
+     "min_at_x": -50.3,
+     "min_wall": "F695 flanged bearing012",
+     "moving_back": 440.0,
+     "exit_free": 26.4,
+     "exit_wall": "VC9-RTA"
+    },
+    {
+     "z": 430.0,
+     "min_free": 25.2,
+     "min_at_x": -50.3,
+     "min_wall": "F695 flanged bearing010",
+     "moving_back": 440.0,
+     "exit_free": 26.4,
+     "exit_wall": "VC9-RTA"
+    },
+    {
      "z": 440.0,
      "min_free": 26.4,
      "min_at_x": -100.3,
@@ -1981,6 +5059,348 @@
     }
    ],
    "+10.3": [
+    {
+     "z": 60.0,
+     "min_free": 125.0,
+     "min_at_x": -120.3,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 70.0,
+     "min_free": 125.0,
+     "min_at_x": -120.3,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 80.0,
+     "min_free": 125.0,
+     "min_at_x": -120.3,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 90.0,
+     "min_free": 125.0,
+     "min_at_x": -120.3,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 100.0,
+     "min_free": 125.0,
+     "min_at_x": -120.3,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 110.0,
+     "min_free": 125.0,
+     "min_at_x": -120.3,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 120.0,
+     "min_free": 125.0,
+     "min_at_x": -120.3,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 130.0,
+     "min_free": 125.0,
+     "min_at_x": -120.3,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 140.0,
+     "min_free": 125.0,
+     "min_at_x": -120.3,
+     "min_wall": "Back Panel001",
+     "moving_back": 380.0,
+     "exit_free": 125.0,
+     "exit_wall": "Back Panel001"
+    },
+    {
+     "z": 150.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 160.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 170.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 180.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 190.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 200.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 210.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 220.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 230.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 240.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 250.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 260.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 270.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 280.0,
+     "min_free": 117.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 290.0,
+     "min_free": 117.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 300.0,
+     "min_free": 117.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 310.0,
+     "min_free": 117.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 320.0,
+     "min_free": 117.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 330.0,
+     "min_free": 117.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 340.0,
+     "min_free": 117.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 350.0,
+     "min_free": 117.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 360.0,
+     "min_free": 117.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 370.0,
+     "min_free": 117.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 380.0,
+     "min_free": 117.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 383.0,
+     "exit_free": 117.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 390.0,
+     "min_free": 120.1,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 380.0,
+     "exit_free": 120.1,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 400.0,
+     "min_free": 76.5,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 410.0,
+     "min_free": 76.5,
+     "min_at_x": -120.3,
+     "min_wall": "Back felt liner, inner",
+     "moving_back": 423.6,
+     "exit_free": 76.5,
+     "exit_wall": "Back felt liner, inner"
+    },
+    {
+     "z": 420.0,
+     "min_free": 42.6,
+     "min_at_x": -50.3,
+     "min_wall": "F695 flanged bearing012",
+     "moving_back": 423.6,
+     "exit_free": 42.8,
+     "exit_wall": "VC9-RTA"
+    },
+    {
+     "z": 430.0,
+     "min_free": 25.2,
+     "min_at_x": -50.3,
+     "min_wall": "F695 flanged bearing010",
+     "moving_back": 440.0,
+     "exit_free": 26.4,
+     "exit_wall": "VC9-RTA"
+    },
     {
      "z": 440.0,
      "min_free": 26.4,
@@ -2234,6 +5654,446 @@
      380.58500010272917,
      550.0529137948213
     ]
+   ],
+   [
+    "bed part 2020 (2), over its Z travel",
+    [
+     -255.0000000000005,
+     -234.999999999999,
+     80.80000000000001,
+     412.80000000000007,
+     239.99999999999864,
+     352.4243901775665
+    ]
+   ],
+   [
+    "bed part LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore), over its Z travel",
+    [
+     -422.5,
+     -67.5,
+     28.0,
+     383.0,
+     275.76060992516267,
+     378.1850001027292
+    ]
+   ],
+   [
+    "bed part M5 Hex Nut001, over its Z travel",
+    [
+     -249.5191020081383,
+     -240.28149770107015,
+     421.48270547172245,
+     430.7203097787906,
+     248.50000010000056,
+     344.9243902775671
+    ]
+   ],
+   [
+    "bed part SOLID031, over its Z travel",
+    [
+     -262.9118395214126,
+     -229.79924747072872,
+     413.1128012217481,
+     498.99999999998914,
+     245.50000009999644,
+     378.0715668784443
+    ]
+   ],
+   [
+    "bed part SOLID032, over its Z travel",
+    [
+     -262.91183952141336,
+     -229.79924747072556,
+     413.11280122174946,
+     498.9999999999909,
+     245.50000009999826,
+     378.07156687844497
+    ]
+   ],
+   [
+    "bed part M3x5.74-Insert010, over its Z travel",
+    [
+     -262.8999721280295,
+     -257.15997212802864,
+     484.22499999998655,
+     488.77499999998724,
+     250.22500010000758,
+     347.19939027757425
+    ]
+   ],
+   [
+    "bed part M3x5.74-Insert011, over its Z travel",
+    [
+     -262.8999721280283,
+     -257.15997212802745,
+     487.72499999998644,
+     492.27499999998713,
+     258.2250001000076,
+     355.19939027757425
+    ]
+   ],
+   [
+    "bed part M3x5.74-Insert012, over its Z travel",
+    [
+     -262.8999721280279,
+     -257.15997212802705,
+     491.2249999999866,
+     495.7749999999873,
+     250.22500010000758,
+     347.19939027757425
+    ]
+   ],
+   [
+    "bed part M3x8-Screw009, over its Z travel",
+    [
+     -255.3806484023395,
+     -249.42749130073133,
+     461.99999999998704,
+     472.99999999998704,
+     254.4734215492065,
+     352.8509688283812
+    ]
+   ],
+   [
+    "bed part M3x8-Screw010, over its Z travel",
+    [
+     -240.3806484023395,
+     -234.42749130073133,
+     461.99999999998687,
+     472.99999999998687,
+     254.47342154920548,
+     352.8509688283802
+    ]
+   ],
+   [
+    "bed part M3x8-Screw011, over its Z travel",
+    [
+     -240.38064840233866,
+     -234.4274913007305,
+     461.9999999999866,
+     472.99999999998664,
+     270.47342154920545,
+     368.8509688283802
+    ]
+   ],
+   [
+    "bed part M3x8-Screw012, over its Z travel",
+    [
+     -255.38064840233855,
+     -249.4274913007304,
+     461.9999999999868,
+     472.99999999998687,
+     270.4734215492065,
+     368.8509688283812
+    ]
+   ],
+   [
+    "bed part M3x12-Screw008, over its Z travel",
+    [
+     -247.87687840541003,
+     -241.92372130380187,
+     438.9936570581038,
+     444.946814159712,
+     237.5000001000085,
+     344.924390277575
+    ]
+   ],
+   [
+    "bed part M3x12-Screw009, over its Z travel",
+    [
+     -247.87687840541014,
+     -241.92372130380198,
+     455.2566570581037,
+     461.2098141597119,
+     237.50000010000554,
+     344.92439027757206
+    ]
+   ],
+   [
+    "bed part M3x5.74-Insert013, over its Z travel",
+    [
+     -262.8999721280279,
+     -257.15997212802705,
+     487.7249999999871,
+     492.2749999999878,
+     258.2250001000073,
+     355.19939027757397
+    ]
+   ],
+   [
+    "bed part M3x5.74-Insert014, over its Z travel",
+    [
+     -262.89997212802825,
+     -257.1599721280274,
+     487.7249999999871,
+     492.2749999999878,
+     250.2250001000073,
+     347.199390277574
+    ]
+   ],
+   [
+    "bed part M5x16-Screw068, over its Z travel",
+    [
+     -249.65029985460322,
+     -240.15029985460322,
+     421.35150762525774,
+     430.85150762525774,
+     248.0000001000002,
+     359.1743902775667
+    ]
+   ],
+   [
+    "bed part Trident kinematic G back bottom (3 mm), over its Z travel",
+    [
+     -260.02100865444544,
+     -229.7795910547626,
+     356.69999999998765,
+     441.22221642509936,
+     260.0000001000003,
+     355.42439027756683
+    ]
+   ],
+   [
+    "bed part Trident kinematic H back top (2 mm), over its Z travel",
+    [
+     -259.7709845941399,
+     -230.02961511506842,
+     356.6999999999876,
+     409.79999999998773,
+     267.0979992993596,
+     361.52238947692615
+    ]
+   ],
+   [
+    "bed part Trident kinematic M5x20 dowel pin, rear, over its Z travel",
+    [
+     -242.45055238629817,
+     -237.45055238629817,
+     365.79999999998756,
+     385.79999999998756,
+     262.1000001000003,
+     359.5243902775668
+    ]
+   ],
+   [
+    "bed part Magnetic sheet (1.4 mm), over its Z travel",
+    [
+     -422.5,
+     -67.5,
+     28.0,
+     383.0,
+     285.76060992516267,
+     379.58500010272917
+    ]
+   ],
+   [
+    "bed part Heater pad LDO-SHPAC-350-120-750 (1.5 mm, outline measured with calipers), over its Z travel",
+    [
+     -421.5,
+     -68.5,
+     29.0,
+     382.0,
+     274.26060992516256,
+     368.1850001027292
+    ]
+   ],
+   [
+    "bed part Leadscrew Nut001, over its Z travel",
+    [
+     -255.90029985460592,
+     -233.90029985460592,
+     439.1015076252569,
+     461.1015076252569,
+     237.23205090756952,
+     342.1923394699983
+    ]
+   ],
+   [
+    "bed part MGN9H - Carriage_end_cap_screw (1)004, over its Z travel",
+    [
+     -252.04047293209499,
+     -249.43738279151364,
+     470.7814670348339,
+     473.38455717541524,
+     245.11717091294375,
+     338.8244591284931
+    ]
+   ],
+   [
+    "bed part MGN9H - Carriage_end_cap_screw (1)005, over its Z travel",
+    [
+     -240.54047293209499,
+     -237.93738279151364,
+     470.7814670348289,
+     473.38455717541024,
+     245.1171709129397,
+     338.824459128489
+    ]
+   ],
+   [
+    "bed part MGN9H - Carriage_end_cap_screw (1)006, over its Z travel",
+    [
+     -252.06281630261716,
+     -249.45972616203582,
+     470.7814670348306,
+     473.38455717541194,
+     284.50000010005084,
+     378.20728831560024
+    ]
+   ],
+   [
+    "bed part MGN9H - Carriage_end_cap_screw (1)007, over its Z travel",
+    [
+     -240.5628163026182,
+     -237.95972616203684,
+     470.7814670348266,
+     473.38455717540796,
+     284.5000001000478,
+     378.2072883155972
+    ]
+   ],
+   [
+    "bed part M3 Locknut002, over its Z travel",
+    [
+     -248.07572633516193,
+     -241.72487337405485,
+     455.0578091283487,
+     461.40866208945477,
+     237.5000000999998,
+     333.92439027756814
+    ]
+   ],
+   [
+    "bed part M3 Locknut003, over its Z travel",
+    [
+     -248.07572633516145,
+     -241.72487337405437,
+     438.7948091283555,
+     445.1456620894617,
+     237.5000001000098,
+     333.92439027757814
+    ]
+   ],
+   [
+    "bed part MGN9H - Carriage_end_cap (1)002, over its Z travel",
+    [
+     -255.0001990941331,
+     -235.0001990941295,
+     470.2999999999863,
+     477.999999999996,
+     245.50006895092085,
+     338.8244591284938
+    ]
+   ],
+   [
+    "bed part MGN9H - Carriage_end_cap (1)003, over its Z travel",
+    [
+     -254.99999999997908,
+     -234.99999999997766,
+     470.2999999999861,
+     477.99999999998965,
+     284.5000001000475,
+     377.8243902776191
+    ]
+   ],
+   [
+    "bed part Trident kinematic J leaf spring, rear (flat, before preload), over its Z travel",
+    [
+     -254.9225092514363,
+     -228.8130135330893,
+     371.13680660703216,
+     410.6432679278902,
+     275.3809100251627,
+     368.1850002027292
+    ]
+   ],
+   [
+    "bed part MGN9H - Carriage_end (1)002, over its Z travel",
+    [
+     -255.00019909414237,
+     -235.0001990941388,
+     470.29999999999876,
+     478.0000000000054,
+     246.40006895092085,
+     342.92445912849377
+    ]
+   ],
+   [
+    "bed part MGN9H - Carriage_end (1)003, over its Z travel",
+    [
+     -254.9999999999921,
+     -234.9999999999884,
+     470.2999999999956,
+     478.0000000000022,
+     280.4000001000465,
+     376.92439027762003
+    ]
+   ],
+   [
+    "bed part MGN9H - Carriage_body (1)001, over its Z travel",
+    [
+     -255.0001990941414,
+     -235.00019909412924,
+     469.9999999999983,
+     478.0000000000054,
+     250.50006895092085,
+     372.8244591284938
+    ]
+   ],
+   [
+    "bed part Trident kinematic 9 mm M3 sphere nut, rear, over its Z travel",
+    [
+     -249.400299854604,
+     -240.400299854604,
+     372.00000000000006,
+     381.00000000000006,
+     265.0497475683061,
+     366.0052666200219
+    ]
+   ],
+   [
+    "bed part GE5C001, over its Z travel",
+    [
+     -251.90029985460401,
+     -237.90029985460401,
+     419.10150762525774,
+     433.10150762525774,
+     258.00000010000014,
+     356.424390277567
+    ]
+   ],
+   [
+    "bed part Trident kinematic I bearing retain, rear (3 mm), over its Z travel",
+    [
+     -260.02100865444555,
+     -229.77959105476253,
+     410.98079882541623,
+     441.22221642509925,
+     263.0000001000003,
+     358.42439027756683
+    ]
+   ],
+   [
+    "bed part Trident kinematic M5x20 dowel pin, rear001, over its Z travel",
+    [
+     -252.35004732290986,
+     -247.35004732290986,
+     365.79999999998756,
+     385.79999999998756,
+     262.1000001000003,
+     359.5243902775668
+    ]
+   ],
+   [
+    "bed part PEI spring-steel sheet (1.0 mm), over its Z travel",
+    [
+     -422.5,
+     -67.5,
+     28.0,
+     383.0,
+     287.16060992516265,
+     380.58500010272917
+    ]
    ]
   ],
   "+10.3": [
@@ -2268,6 +6128,446 @@
      423.5840881080995,
      390.8850001027292,
      560.3529137948212
+    ]
+   ],
+   [
+    "bed part 2020 (2), over its Z travel",
+    [
+     -255.0000000000005,
+     -234.999999999999,
+     80.80000000000001,
+     412.80000000000007,
+     239.99999999999864,
+     352.4243901775665
+    ]
+   ],
+   [
+    "bed part LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore), over its Z travel",
+    [
+     -422.5,
+     -67.5,
+     28.0,
+     383.0,
+     275.76060992516267,
+     378.1850001027292
+    ]
+   ],
+   [
+    "bed part M5 Hex Nut001, over its Z travel",
+    [
+     -249.5191020081383,
+     -240.28149770107015,
+     421.48270547172245,
+     430.7203097787906,
+     248.50000010000056,
+     344.9243902775671
+    ]
+   ],
+   [
+    "bed part SOLID031, over its Z travel",
+    [
+     -262.9118395214126,
+     -229.79924747072872,
+     413.1128012217481,
+     498.99999999998914,
+     245.50000009999644,
+     378.0715668784443
+    ]
+   ],
+   [
+    "bed part SOLID032, over its Z travel",
+    [
+     -262.91183952141336,
+     -229.79924747072556,
+     413.11280122174946,
+     498.9999999999909,
+     245.50000009999826,
+     378.07156687844497
+    ]
+   ],
+   [
+    "bed part M3x5.74-Insert010, over its Z travel",
+    [
+     -262.8999721280295,
+     -257.15997212802864,
+     484.22499999998655,
+     488.77499999998724,
+     250.22500010000758,
+     347.19939027757425
+    ]
+   ],
+   [
+    "bed part M3x5.74-Insert011, over its Z travel",
+    [
+     -262.8999721280283,
+     -257.15997212802745,
+     487.72499999998644,
+     492.27499999998713,
+     258.2250001000076,
+     355.19939027757425
+    ]
+   ],
+   [
+    "bed part M3x5.74-Insert012, over its Z travel",
+    [
+     -262.8999721280279,
+     -257.15997212802705,
+     491.2249999999866,
+     495.7749999999873,
+     250.22500010000758,
+     347.19939027757425
+    ]
+   ],
+   [
+    "bed part M3x8-Screw009, over its Z travel",
+    [
+     -255.3806484023395,
+     -249.42749130073133,
+     461.99999999998704,
+     472.99999999998704,
+     254.4734215492065,
+     352.8509688283812
+    ]
+   ],
+   [
+    "bed part M3x8-Screw010, over its Z travel",
+    [
+     -240.3806484023395,
+     -234.42749130073133,
+     461.99999999998687,
+     472.99999999998687,
+     254.47342154920548,
+     352.8509688283802
+    ]
+   ],
+   [
+    "bed part M3x8-Screw011, over its Z travel",
+    [
+     -240.38064840233866,
+     -234.4274913007305,
+     461.9999999999866,
+     472.99999999998664,
+     270.47342154920545,
+     368.8509688283802
+    ]
+   ],
+   [
+    "bed part M3x8-Screw012, over its Z travel",
+    [
+     -255.38064840233855,
+     -249.4274913007304,
+     461.9999999999868,
+     472.99999999998687,
+     270.4734215492065,
+     368.8509688283812
+    ]
+   ],
+   [
+    "bed part M3x12-Screw008, over its Z travel",
+    [
+     -247.87687840541003,
+     -241.92372130380187,
+     438.9936570581038,
+     444.946814159712,
+     237.5000001000085,
+     344.924390277575
+    ]
+   ],
+   [
+    "bed part M3x12-Screw009, over its Z travel",
+    [
+     -247.87687840541014,
+     -241.92372130380198,
+     455.2566570581037,
+     461.2098141597119,
+     237.50000010000554,
+     344.92439027757206
+    ]
+   ],
+   [
+    "bed part M3x5.74-Insert013, over its Z travel",
+    [
+     -262.8999721280279,
+     -257.15997212802705,
+     487.7249999999871,
+     492.2749999999878,
+     258.2250001000073,
+     355.19939027757397
+    ]
+   ],
+   [
+    "bed part M3x5.74-Insert014, over its Z travel",
+    [
+     -262.89997212802825,
+     -257.1599721280274,
+     487.7249999999871,
+     492.2749999999878,
+     250.2250001000073,
+     347.199390277574
+    ]
+   ],
+   [
+    "bed part M5x16-Screw068, over its Z travel",
+    [
+     -249.65029985460322,
+     -240.15029985460322,
+     421.35150762525774,
+     430.85150762525774,
+     248.0000001000002,
+     359.1743902775667
+    ]
+   ],
+   [
+    "bed part Trident kinematic G back bottom (3 mm), over its Z travel",
+    [
+     -260.02100865444544,
+     -229.7795910547626,
+     356.69999999998765,
+     441.22221642509936,
+     260.0000001000003,
+     355.42439027756683
+    ]
+   ],
+   [
+    "bed part Trident kinematic H back top (2 mm), over its Z travel",
+    [
+     -259.7709845941399,
+     -230.02961511506842,
+     356.6999999999876,
+     409.79999999998773,
+     267.0979992993596,
+     361.52238947692615
+    ]
+   ],
+   [
+    "bed part Trident kinematic M5x20 dowel pin, rear, over its Z travel",
+    [
+     -242.45055238629817,
+     -237.45055238629817,
+     365.79999999998756,
+     385.79999999998756,
+     262.1000001000003,
+     359.5243902775668
+    ]
+   ],
+   [
+    "bed part Magnetic sheet (1.4 mm), over its Z travel",
+    [
+     -422.5,
+     -67.5,
+     28.0,
+     383.0,
+     285.76060992516267,
+     379.58500010272917
+    ]
+   ],
+   [
+    "bed part Heater pad LDO-SHPAC-350-120-750 (1.5 mm, outline measured with calipers), over its Z travel",
+    [
+     -421.5,
+     -68.5,
+     29.0,
+     382.0,
+     274.26060992516256,
+     368.1850001027292
+    ]
+   ],
+   [
+    "bed part Leadscrew Nut001, over its Z travel",
+    [
+     -255.90029985460592,
+     -233.90029985460592,
+     439.1015076252569,
+     461.1015076252569,
+     237.23205090756952,
+     342.1923394699983
+    ]
+   ],
+   [
+    "bed part MGN9H - Carriage_end_cap_screw (1)004, over its Z travel",
+    [
+     -252.04047293209499,
+     -249.43738279151364,
+     470.7814670348339,
+     473.38455717541524,
+     245.11717091294375,
+     338.8244591284931
+    ]
+   ],
+   [
+    "bed part MGN9H - Carriage_end_cap_screw (1)005, over its Z travel",
+    [
+     -240.54047293209499,
+     -237.93738279151364,
+     470.7814670348289,
+     473.38455717541024,
+     245.1171709129397,
+     338.824459128489
+    ]
+   ],
+   [
+    "bed part MGN9H - Carriage_end_cap_screw (1)006, over its Z travel",
+    [
+     -252.06281630261716,
+     -249.45972616203582,
+     470.7814670348306,
+     473.38455717541194,
+     284.50000010005084,
+     378.20728831560024
+    ]
+   ],
+   [
+    "bed part MGN9H - Carriage_end_cap_screw (1)007, over its Z travel",
+    [
+     -240.5628163026182,
+     -237.95972616203684,
+     470.7814670348266,
+     473.38455717540796,
+     284.5000001000478,
+     378.2072883155972
+    ]
+   ],
+   [
+    "bed part M3 Locknut002, over its Z travel",
+    [
+     -248.07572633516193,
+     -241.72487337405485,
+     455.0578091283487,
+     461.40866208945477,
+     237.5000000999998,
+     333.92439027756814
+    ]
+   ],
+   [
+    "bed part M3 Locknut003, over its Z travel",
+    [
+     -248.07572633516145,
+     -241.72487337405437,
+     438.7948091283555,
+     445.1456620894617,
+     237.5000001000098,
+     333.92439027757814
+    ]
+   ],
+   [
+    "bed part MGN9H - Carriage_end_cap (1)002, over its Z travel",
+    [
+     -255.0001990941331,
+     -235.0001990941295,
+     470.2999999999863,
+     477.999999999996,
+     245.50006895092085,
+     338.8244591284938
+    ]
+   ],
+   [
+    "bed part MGN9H - Carriage_end_cap (1)003, over its Z travel",
+    [
+     -254.99999999997908,
+     -234.99999999997766,
+     470.2999999999861,
+     477.99999999998965,
+     284.5000001000475,
+     377.8243902776191
+    ]
+   ],
+   [
+    "bed part Trident kinematic J leaf spring, rear (flat, before preload), over its Z travel",
+    [
+     -254.9225092514363,
+     -228.8130135330893,
+     371.13680660703216,
+     410.6432679278902,
+     275.3809100251627,
+     368.1850002027292
+    ]
+   ],
+   [
+    "bed part MGN9H - Carriage_end (1)002, over its Z travel",
+    [
+     -255.00019909414237,
+     -235.0001990941388,
+     470.29999999999876,
+     478.0000000000054,
+     246.40006895092085,
+     342.92445912849377
+    ]
+   ],
+   [
+    "bed part MGN9H - Carriage_end (1)003, over its Z travel",
+    [
+     -254.9999999999921,
+     -234.9999999999884,
+     470.2999999999956,
+     478.0000000000022,
+     280.4000001000465,
+     376.92439027762003
+    ]
+   ],
+   [
+    "bed part MGN9H - Carriage_body (1)001, over its Z travel",
+    [
+     -255.0001990941414,
+     -235.00019909412924,
+     469.9999999999983,
+     478.0000000000054,
+     250.50006895092085,
+     372.8244591284938
+    ]
+   ],
+   [
+    "bed part Trident kinematic 9 mm M3 sphere nut, rear, over its Z travel",
+    [
+     -249.400299854604,
+     -240.400299854604,
+     372.00000000000006,
+     381.00000000000006,
+     265.0497475683061,
+     366.0052666200219
+    ]
+   ],
+   [
+    "bed part GE5C001, over its Z travel",
+    [
+     -251.90029985460401,
+     -237.90029985460401,
+     419.10150762525774,
+     433.10150762525774,
+     258.00000010000014,
+     356.424390277567
+    ]
+   ],
+   [
+    "bed part Trident kinematic I bearing retain, rear (3 mm), over its Z travel",
+    [
+     -260.02100865444555,
+     -229.77959105476253,
+     410.98079882541623,
+     441.22221642509925,
+     263.0000001000003,
+     358.42439027756683
+    ]
+   ],
+   [
+    "bed part Trident kinematic M5x20 dowel pin, rear001, over its Z travel",
+    [
+     -252.35004732290986,
+     -247.35004732290986,
+     365.79999999998756,
+     385.79999999998756,
+     262.1000001000003,
+     359.5243902775668
+    ]
+   ],
+   [
+    "bed part PEI spring-steel sheet (1.0 mm), over its Z travel",
+    [
+     -422.5,
+     -67.5,
+     28.0,
+     383.0,
+     287.16060992516265,
+     380.58500010272917
     ]
    ]
   ]
