@@ -48,18 +48,20 @@ def groups(index, cut, tool):
     return {"groups": {}, "clip": clip, "hide": hide}
 
 
-VIEWS = [  # name, camera position, look-at (model mm), lens
-    ("cut_side", (-2050, 190, 330), (-324, 190, 330), 35),          # straight at the cut face: the whole system
-    ("cut_3q", (-1500, -1000, 1150), (-300, 230, 330), 35),         # 3/4 from the front-left, above
-    ("head_close", (-640, -260, 760), (-330, 40, 600), 50),         # the head, the lock, the split clip, the inlet
-    ("rear_mounts", (-900, 120, 330), (-245, 470, 220), 30),        # into the back: rails, foot, cap, leg guides
+VIEWS = [  # name, camera position, look-at (model mm), lens, exposure
+    ("cut_side", (-2050, 190, 330), (-324, 190, 330), 35, -0.6),     # straight at the cut face (the sheave is edge-on)
+    ("cut_3q", (-1500, -1000, 1150), (-300, 230, 330), 35, -0.6),    # 3/4 from the front-left, above
+    ("system_front", (-1250, -420, 880), (-330, 240, 440), 40, -0.3),  # T1's whole run: head, span, arm, rear, sheave
+    ("system_rear", (-1250, 1000, 760), (-320, 320, 420), 35, 0.0),  # from behind-left: rails, sheave, arm, mounts
+    ("head_close", (-640, -260, 760), (-330, 40, 600), 50, -0.6),    # the head, the lock, the split clip, the inlet
+    ("rear_mounts", (-900, 120, 330), (-245, 470, 220), 30, 0.8),    # into the back: rails, foot, cap, leg guides
 ]
 
 
 def views(exp):
     p = f"{exp}/scene.json"
     sc = json.load(open(p))
-    sc["views"] = [{"name": n, "pos": list(pos), "look": list(look), "lens_mm": lens, "ev": -0.6} for n, pos, look, lens in VIEWS]
+    sc["views"] = [{"name": n, "pos": list(pos), "look": list(look), "lens_mm": lens, "ev": ev} for n, pos, look, lens, ev in VIEWS]
     json.dump(sc, open(p, "w"))
     return [v[0] for v in VIEWS]
 
