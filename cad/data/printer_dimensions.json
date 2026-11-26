@@ -1,6 +1,6 @@
 {
  "model": 80,
- "generated": "2026-11-26 08:46 UTC",
+ "generated": "2026-11-26 18:24 UTC",
  "outside": {
   "frame": [
    680.0,
@@ -74,6 +74,6 @@
   "index": "vt350-lite-80.parts.json",
   "sweep": "sweep_toolhead.log (lite-80)",
   "z": "z_sweep.log (lite-80)",
-  "renders": "vt350-lite-80-20261126T055942Z"
+  "renders": "vt350-lite-80-20261126T181955Z"
  }
 }
