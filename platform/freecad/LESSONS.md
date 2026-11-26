@@ -451,3 +451,17 @@ and a pass's `try` can't catch it (the log just stops after the last check). `pa
 on the same path raises `Part.OCCError` instead, which a pass can catch and fall back from (lite-81 falls back to a
 chain of cylinders and spheres along the resampled points). If a headless run's log stops with no `FAILED` line, run
 it again with stdout kept: the crash trace names the OCC call.
+
+## A clip round two touching runs: fuse the bodies first, then cut every bore (2026-11-26, lite-81)
+
+- **Bore each sleeve for its own run, fuse the sleeves, and the walls sit inside the neighbour.** The PTFE tube and the
+  O2S cable touch, so the tube sleeve's 1.6 mm wall ran through the cable. Dry run 10 found 80–140 mm³ per clip.
+  Build it this way instead: fuse the outer cylinders into one body, fuse the bores, then `body.cut(bores)` once.
+- **Cutting the swept runs out of the clip fails silently.** `clip.cut(run_solid)` on the chain-of-cylinders runs left
+  two of the five clips unchanged, and dry run 11 still found the overlaps. Don't rely on a boolean with a sweep for a
+  part's shape.
+- **Many small spheres and cylinders fused into one part make OCC fail:** `multiFuse` then `cut` returned a Null shape
+  or an invalid solid on 3 of 5 tools. A straight 12 mm clip on a run with R > 50 sags only ~0.2 mm, so it needs no
+  curve. Keep a part's solid simple.
+- **Check one part fast before the full pass.** A probe that imports the pass (`LITE81_AS_LIB=1`), builds one bundle
+  and reports `common` volumes takes 45 s. A dry run takes ~40 min.

@@ -42,6 +42,9 @@ import lite78_front17 as l78
 from litelib import MODELS
 V = FreeCAD.Vector
 SRC, DST = f"{MODELS}/vt350-lite-80.FCStd", f"{MODELS}/vt350-lite-81.FCStd"
+# LITE81_PREVIEW=<path>: a GUI run saves there instead, a preview for renders (not a model version; the same checks
+# must pass first). Used for the owner's cutaway before lite-80 is approved (2026-11-26).
+DST = os.environ.get("LITE81_PREVIEW") or DST
 DATA = os.path.join(_REPO, "cad", "data")
 DESIGN = json.load(open(os.path.join(DATA, "bowden_arms_design.json")))["design"]
 DANCER = json.load(open(os.path.join(DATA, "bowden_arms_dancer.json")))
@@ -68,7 +71,16 @@ AXLE_L = 13.0                                 # plane to plane: its ends sit in 
 PLATE_T, PLATE_W = 2.0, 24.0                  # the lane guide plates: thickness (Y) and width (X)
 SLOT_W = 5.4
 Z_TOP, Z_G = DANCER["z_top"], 470.0
-TIE_Z = (404.0, 410.0)
+# The RAILS (owner 2026-11-26: "have the axle travel in a slotted rail held in place between the bottom and gantry
+# extrusions"): every plate runs full height, from a FOOT on the backbone (it sits on the bottom rear 4040) to a CAP
+# under the gantry's rear 2020 (X -415..-75, Y 480..500, Z 430..450). The two outer plates are the rails: flanged
+# outward (a U) for stiffness. The leg guides at Z 470 sit on a BRIDGE between them, screwed to the 2020's front face.
+FOOT_Z, CAP_Z = (-2.0, 8.0), (418.0, 430.0)   # the backbone's top is Z -2; the gantry 2020's underside Z 430
+BELT_Y, BELT_Z0 = 466.5, 427.0                # the lower XY belt's rear run (Y 463.8..465.5, from Z 428.75: dry run 10):
+                                              # the cap stays under Z BELT_Z0 in front of Y BELT_Y, full height behind it
+FLANGE = (3.0, 8.0)                           # rail flange: X thickness, Y depth (outward)
+GANTRY_2020 = dict(y=(480.0, 500.0), z=(430.0, 450.0), x=(-415.0, -75.0))
+M5 = 2.75                                     # M5 clearance hole radius
 LEG_BLOCK = (20.0, 6.0)                       # leg guide block: X width, Z height; holes 12 x 6.5
 HOLE = (12.0, 6.5)
 TOL = 1e-3
@@ -140,9 +152,41 @@ def axle(cx, y, zc):
     return Part.makeCylinder(BEARING[1], AXLE_L, V(cx, y - AXLE_L / 2, zc), V(0, 1, 0))
 
 
-def plate(cx, yc, z0, slot):
-    p = Part.makeBox(PLATE_W, PLATE_T, TIE_Z[0] - z0, V(cx - PLATE_W / 2, yc - PLATE_T / 2, z0))
+def plate(cx, yc, slot, side=0):
+    """A full-height slotted plate, foot to cap; side -1 / +1: an outer rail, flanged toward -Y / +Y."""
+    z0, z1 = FOOT_Z[1], CAP_Z[0]
+    p = Part.makeBox(PLATE_W, PLATE_T, z1 - z0, V(cx - PLATE_W / 2, yc - PLATE_T / 2, z0))
+    if side:
+        y0 = yc + PLATE_T / 2 if side > 0 else yc - PLATE_T / 2 - FLANGE[1]
+        for x0 in (cx - PLATE_W / 2, cx + PLATE_W / 2 - FLANGE[0]):
+            p = p.fuse(Part.makeBox(FLANGE[0], FLANGE[1], z1 - z0, V(x0, y0, z0)))
+        p = p.removeSplitter()
     return p.cut(Part.makeBox(SLOT_W, PLATE_T + 2, slot[1] - slot[0], V(cx - SLOT_W / 2, yc - PLATE_T / 2 - 1, slot[0])))
+
+
+def rail_ends(cx, ycs):
+    """The foot (on the backbone, two M5 through it) and the cap (one M5 up into the gantry 2020's bottom slot)."""
+    yf, yb = ycs[0] - PLATE_T / 2 - FLANGE[1], ycs[-1] + PLATE_T / 2 + FLANGE[1]
+    foot = Part.makeBox(PLATE_W, yb - yf, FOOT_Z[1] - FOOT_Z[0], V(cx - PLATE_W / 2, yf, FOOT_Z[0]))
+    for y in (yf + 4.0, yb - 4.0):
+        foot = foot.cut(Part.makeCylinder(M5, 20, V(cx, y, FOOT_Z[0] - 5)))
+    ycap = sum(GANTRY_2020["y"]) / 2
+    cap = Part.makeBox(PLATE_W, GANTRY_2020["y"][1] - yf, BELT_Z0 - CAP_Z[0], V(cx - PLATE_W / 2, yf, CAP_Z[0])).fuse(
+        Part.makeBox(PLATE_W, GANTRY_2020["y"][1] - BELT_Y, CAP_Z[1] - CAP_Z[0], V(cx - PLATE_W / 2, BELT_Y, CAP_Z[0]))
+    ).removeSplitter()
+    cap = cap.cut(Part.makeCylinder(M5, 20, V(cx, ycap, CAP_Z[0] - 5)))
+    return foot, cap
+
+
+def leg_bridge(cx, ys):
+    """The bar between a stack's two leg guides, and the tab that screws it to the gantry 2020's front face."""
+    rp = DANCER["RP"]
+    y0, y1 = min(ys) - 6.5, GANTRY_2020["y"][0]
+    bar = Part.makeBox(2 * (rp - LEG_BLOCK[0] / 2), y1 - y0, LEG_BLOCK[1],
+                       V(cx - rp + LEG_BLOCK[0] / 2, y0, Z_G - LEG_BLOCK[1] / 2))
+    tab = Part.makeBox(PLATE_W, 4.0, Z_G + LEG_BLOCK[1] / 2 - (CAP_Z[1] + 2.0), V(cx - PLATE_W / 2, y1 - 4.0, CAP_Z[1] + 2.0))
+    tab = tab.cut(Part.makeCylinder(M5, 10, V(cx, y1 - 6, sum(GANTRY_2020["z"]) / 2), V(0, 1, 0)))
+    return bar.fuse(tab).removeSplitter()
 
 
 def leg_block(x, ys):
@@ -161,8 +205,13 @@ CABLE_OFF, TUBE_OFF = -CABLE_R, TUBE_R + 0.05  # across the bundle (n: the sheav
 CEIL = 679.0                                   # the roof exit's lower end: the studied route starts here
 LOCK_TOP = 560.11                              # lite-80's O2S locks' top: the cable enters straight down
 INLET_Y = -50.14                               # the PTFE's entry into the Orbiter at Z LOCK_TOP (probe of lite-80)
-SPLIT_DZ = 60.0                                # the tube leaves the bundle this far above the lock (placeholder: the
-                                               # owner hasn't chosen how the PTFE gets from the bundle to the inlet)
+BRANCH_R = 51.0                                # the PTFE's branch to the Orbiter inlet: no bend under R 51 (the cable's
+                                               # limit, lite-40). The inlet is 41 mm in front of the lock, so the tube
+                                               # leaves the bundle ~120 mm behind the lock (Z ~635), not just above it:
+                                               # 20 mm above the lock gives R 9, 60 mm R 44 (owner 2026-11-26: "use your
+                                               # recommendation")
+CLIP_L, CLIP_WALL, CLIP_GAP, CLIP_BACK = 12.0, 1.6, 0.4, 14.0   # the printed clip at the split: length, wall, bore
+                                               # clearance, its centre this far back along the bundle from the split
 TUBES = ["Bowden Left", "Bowden slot 2", "Bowden slot 3", "Bowden slot 4", "Bowden Right"]
 CABLES = [f"O2S USB cable slot {i} " for i in range(1, 6)]
 TIES = [f"Zip tie, black (2.5 mm) slot {i} at " for i in range(1, 6)]
@@ -251,18 +300,63 @@ def sweep(pts, r, t0=None, t1=None):
     return Part.makeCompound(segs + balls), length, "chain"
 
 
+def branch(p0, d0, inlet, inlet_dir):
+    """The gentlest cubic from p0 (leaving along d0) into the inlet (arriving along inlet_dir), never below the inlet.
+    -> (min radius, [V] 40 points after p0) or (0, None)."""
+    import numpy as np
+    P0, D0 = np.array(p0), np.array(d0); P3, D3 = np.array(inlet), np.array(inlet_dir)
+    u = np.linspace(0, 1, 160)[:, None]
+    best = (0.0, None)
+    for a in np.arange(10.0, 210.0, 10.0):
+        for b in np.arange(10.0, 210.0, 10.0):
+            P1, P2 = P0 + D0 * a, P3 - D3 * b
+            B = (1 - u) ** 3 * P0 + 3 * (1 - u) ** 2 * u * P1 + 3 * (1 - u) * u ** 2 * P2 + u ** 3 * P3
+            if B[:, 2].min() < P3[2] - 0.5: continue
+            d1 = 3 * ((1 - u) ** 2 * (P1 - P0) + 2 * (1 - u) * u * (P2 - P1) + u ** 2 * (P3 - P2))
+            d2 = 6 * ((1 - u) * (P2 - 2 * P1 + P0) + u * (P3 - 2 * P2 + P1))
+            R = 1.0 / (np.linalg.norm(np.cross(d1, d2), axis=1) / np.linalg.norm(d1, axis=1) ** 3).max()
+            if R > best[0]: best = (R, [V(*q) for q in B[4::4]])
+    return best
+
+
+def clip_at(ax, runs):
+    """The split clip: one straight body round both runs (two cylinders fused, walls CLIP_WALL), then BOTH bores cut
+    from it (CLIP_GAP over each run). Dry runs 10-11: each sleeve bored only for its own run left its wall inside the
+    neighbour run (the tube and cable touch), 80-140 mm3; sleeves built along the curved runs failed in OCC."""
+    body = bore = None
+    for c, r in runs:
+        o = Part.makeCylinder(r + CLIP_GAP + CLIP_WALL, CLIP_L, c - ax * (CLIP_L / 2), ax)
+        b = Part.makeCylinder(r + CLIP_GAP, CLIP_L + 2.0, c - ax * (CLIP_L / 2 + 1.0), ax)
+        body = o if body is None else body.fuse(o)
+        bore = b if bore is None else bore.fuse(b)
+    return body.cut(bore).removeSplitter()
+
+
 def bundle(t, tube_top, cable_top, inlet, inlet_dir):
     """New in-chamber tube and cable for tool t: from the old runs' crossings of the ceiling (tube_top, cable_top) along
-    the studied route; the cable into its lock, the tube split off SPLIT_DZ above it to the Orbiter inlet."""
+    the studied route; the cable into its lock; the tube leaves the bundle at the split nearest the head whose branch
+    to the Orbiter inlet bends no tighter than BRANCH_R, with a printed clip holding the pair just behind the split.
+    -> (cable, tube, clip, info)"""
     pts, mid = centreline(t)
     tan, n = frames(pts, mid)
     lock = pts[-1]
     cab = [cable_top] + [p + n[i] * CABLE_OFF for i, p in enumerate(pts)][2:-3] + [lock + V(0, 0, 8), lock]
-    split = next(i for i in range(len(pts) - 1, -1, -1) if pts[i].z >= lock.z + SPLIT_DZ)
-    tub = [tube_top] + [p + n[i] * TUBE_OFF for i, p in enumerate(pts)][2:split] + [inlet - inlet_dir * 15.0, inlet]
+    toff = [p + n[i] * TUBE_OFF for i, p in enumerate(pts)]
+    split, R, tail = None, 0.0, None
+    for i in range(len(pts) - 3, mid, -1):           # from the head back: the first split that bends gently enough
+        if pts[i].z < lock.z + 15.0: continue
+        R, tail = branch(toff[i], tan[i], inlet, inlet_dir)
+        if R >= BRANCH_R: split = i; break
+    if split is None: return None, None, None, dict(n_pts=len(pts))
+    tub = [tube_top] + toff[2:split + 1] + tail
+    acc, j = 0.0, split                              # the clip's centre: CLIP_BACK back along the bundle from the split
+    while j > mid and acc < CLIP_BACK: acc += (pts[j] - pts[j - 1]).Length; j -= 1
     c, lc, hc = sweep(cab, CABLE_R)
     t_, lt, ht = sweep(tub, TUBE_R)
-    return c, t_, dict(split_z=round(pts[split].z, 1), n_pts=len(pts), cable_len=round(lc), tube_len=round(lt), how=(hc, ht))
+    clip = clip_at(tan[j], [(toff[j], TUBE_R), (pts[j] + n[j] * CABLE_OFF, CABLE_R)])
+    return c, t_, clip, dict(split_z=round(pts[split].z, 1), split_y=round(pts[split].y, 1), branch_r=round(R, 1),
+                             clip_at=tuple(round(x, 1) for x in pts[j]), n_pts=len(pts), cable_len=round(lc),
+                             tube_len=round(lt), how=(hc, ht))
 
 
 def slot_arm(s, t, x, hinge, loop):
@@ -312,7 +406,6 @@ def build():
         ys = sorted(y for _, y in members)
         lo = lowest(tools)
         slot = (lo - SLOT_W / 2 - 5.0, Z_TOP + SLOT_W / 2 + 1.0)
-        z0 = slot[0] - 12.0
         for t, y in members:
             zc = parked_z(t)
             info["sheaves"][t] = (cx, y, zc)
@@ -323,11 +416,17 @@ def build():
         ycs = [y - AXLE_L / 2 for y in ys] + [ys[-1] + AXLE_L / 2]
         info["plates"][cx] = ycs; info["slots"][cx] = slot
         for j, yc in enumerate(ycs):
-            parts.append((f"plate{cx:g}_{j}", f"Dancer lane guide plate X {cx:g} #{j + 1} (printed, slot Z {slot[0]:.0f}.."
-                          f"{slot[1]:.0f}) [lite-81, #312]", plate(cx, yc, z0, slot), "printed"))
-        tie = Part.makeBox(PLATE_W, ycs[-1] - ycs[0] + PLATE_T, TIE_Z[1] - TIE_Z[0],
-                           V(cx - PLATE_W / 2, ycs[0] - PLATE_T / 2, TIE_Z[0]))
-        parts.append((f"tie{cx:g}", f"Dancer lane guide top tie X {cx:g} (printed) [lite-81, #312]", tie, "printed"))
+            side = -1 if j == 0 else (1 if j == len(ycs) - 1 else 0)
+            what = "rail (flanged)" if side else "lane guide plate"
+            parts.append((f"plate{cx:g}_{j}", f"Dancer {what} X {cx:g} #{j + 1} (printed, Z {FOOT_Z[1]:g}..{CAP_Z[0]:g}, "
+                          f"slot Z {slot[0]:.0f}..{slot[1]:.0f}) [lite-81, #312]", plate(cx, yc, slot, side), "printed"))
+        foot, cap = rail_ends(cx, ycs)
+        parts.append((f"foot{cx:g}", f"Dancer rail foot X {cx:g} (printed; on the backbone, 2 x M5 through it) [lite-81, #312]",
+                      foot, "printed"))
+        parts.append((f"cap{cx:g}", f"Dancer rail cap X {cx:g} (printed; M5 up into the gantry's rear 2020) [lite-81, #312]",
+                      cap, "printed"))
+        parts.append((f"bridge{cx:g}", f"Dancer leg guide bridge X {cx:g} (printed; M5 into the gantry 2020's front face) "
+                      f"[lite-81, #312]", leg_bridge(cx, ys), "printed"))
         for side, lx in (("exit", cx - DANCER["RP"]), ("return", cx + DANCER["RP"])):
             parts.append((f"leg{cx:g}{side}", f"Dancer leg guide X {lx:.1f}, {side} legs, Z {Z_G:g} (printed) [lite-81, #312]",
                           leg_block(lx, ys), "printed"))
@@ -390,9 +489,12 @@ def main(p):
         above = centre_at(ot, LOCK_TOP + 10.0, lambda c: c.y < 0)
         inlet_dir = unit(inlet - above)
         lock = centre_at(oc, LOCK_TOP, lambda c: c.y < 0 and c.x < 0)
-        new_c, new_t, r = bundle(t, tube_top, cable_top, inlet, inlet_dir)
-        p.check(new_c is not None and new_t is not None, f"T{t}: the new tube and cable sweep to valid solids")
+        new_c, new_t, clip, r = bundle(t, tube_top, cable_top, inlet, inlet_dir)
+        p.check(new_c is not None and new_t is not None, f"T{t}: the new tube and cable sweep to valid solids, the "
+                f"tube's branch to the inlet no tighter than R {BRANCH_R:g} ({r.get('branch_r')})")
         if new_c is None or new_t is None: continue
+        parts.append((f"clip{t}", f"Bundle split clip T{t}: the PTFE leaves the O2S cable here for the Orbiter inlet "
+                      f"(printed) [lite-81, #312]", clip, "printed"))
         pts, _ = centreline(t)
         p.check((pts[-1] - lock).Length < 0.5, f"T{t}: the studied route ends at this head's lock ({(pts[-1] - lock).Length:.2f} off)")
         big = 2000.0
@@ -402,7 +504,7 @@ def main(p):
         runs[t] = (Part.makeCompound(kt + [new_t]), Part.makeCompound(kc + [new_c]))
         routes[t] = dict(r, tube_top=tuple(round(x, 2) for x in tube_top), cable_top=tuple(round(x, 2) for x in cable_top),
                          )
-        p.log(f"   T{t}: route {r['n_pts']} points, tube splits at Z {r['split_z']} ({r['how']}); new in-chamber tube ~{routes[t]['tube_len']:.0f}"
+        p.log(f"   T{t}: route {r['n_pts']} points, tube splits at Y {r['split_y']} Z {r['split_z']}, branch R {r['branch_r']}, clip at {r['clip_at']} ({r['how']}); new in-chamber tube ~{routes[t]['tube_len']:.0f}"
               f" mm, cable ~{routes[t]['cable_len']:.0f} mm; kept {len(kt)} tube / {len(kc)} cable pieces")
     if p.errs: return p.finish([])
     # ---- COLLISIONS: lite-80's overlaps of the old runs and ties, then the new parts and runs, against everything else
