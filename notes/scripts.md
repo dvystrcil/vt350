@@ -29,6 +29,7 @@ flowchart TD
 |---|---|---|
 | Before any model edit, and after saving a new lite-N | `cad/backup-models.sh --verify` | minutes (restic) |
 | **After every new lite-N or remix change** | `python3 cad/scripts/refresh.py N` | ~18 min |
+| After a refresh, to update the dimensions page (outside size, print area and volume) | `python3 cad/studies/printer_dimensions.py N` ("printer-dimensions: OK"; writes `notes/reference/printer-dimensions.html`) | ~1 min |
 | Only the reach changed (sweep re-run by hand) | `python3 cad/scripts/refresh.py N --from print_area` | seconds |
 | Changed a file in `parts/printed/` or `manifest.csv` | `python3 platform/parts/check-printed.py` (add `--write-index` to rebuild the README table) | seconds |
 | Will a part print without supports? (before any PETG test-fit) | `python3 platform/parts/slice-check.py <stl…>`: report + red-support preview; see `parts/slice/README.md` | ~1 s/part, up to ~1 min for big ones |
