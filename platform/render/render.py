@@ -156,6 +156,8 @@ def add_ortho_side(name, centre, width, x, clip_x):
     return co
 DOCK_BAR = ("2020 dock bar", "Dock bar 2020")          # the front dock bar's labels (lite-31, lite-32)
 EBOX_FRAME = ("2020 e-box inner upright",)            # the e-box's inner frame (lite-53, vt350#5)
+EBOX_CLIP_X = float(OPTS.get("ebox-clip", "210"))     # ebox_side's near plane: beyond the e-box door (X 132..201), which colours.json hides
+                                                     # for this view (owner 2026-11-26; 165 cut inside the door frame)
 views = []
 c = scene_j["camera"]
 if scene_j.get("views"):                             # explicit cameras (export_pose.py): render only these, key-lit
@@ -180,7 +182,7 @@ if not scene_j.get("views"):
     # the e-box (vt350#5): its whole outer side, Z -50..690 (1460 wide at 16:9 is 821 tall), seen from outside, ortho;
     # the clip plane at X 165 is just outside the e-box's outer members (X 140..160), so nothing outside it is drawn
     if any(lab.startswith(EBOX_FRAME) for b in scene_j["buckets"].values() for lab in b.get("labels", [])):
-        views.append(("ebox_side", add_ortho_side("ebox_side", (215, 320), 1460, 1500, 165), 1.0, 0.4))
+        views.append(("ebox_side", add_ortho_side("ebox_side", (215, 320), 1460, 1500, EBOX_CLIP_X), 1.0, 0.4))
         # two glamour shots of the whole machine (owner, 2026-11-16): the scene is X -554..201, Y -151..548,
         # Z -108..1040 with the EMU on the roof (its top is cut off in "outside"). "glamour": outside's direction, far
         # enough back for all 1150 mm of height; "glamour_ebox": the printer turned ~30 degrees to the left (the camera

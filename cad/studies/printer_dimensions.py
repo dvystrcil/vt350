@@ -37,7 +37,7 @@ OUT = os.path.join(REPO, "notes", "reference", "printer-dimensions.html")
 IMG_DIR = os.path.join(REPO, "notes", "reference", "printer-dimensions")
 JSON_OUT = os.path.join(REPO, "cad", "data", "printer_dimensions.json")
 RENDERS = [("glamour", "The whole printer, EMU on the roof"), ("outside", "Three-quarter front, as you'd walk up to it"),
-           ("low_front", "Low front: the doors, the bed and the gantry"), ("ebox_side", "The e-box side")]
+           ("low_front", "Low front: the doors, the bed and the gantry"), ("ebox_side", "The e-box side, its door taken off for this view")]
 FRAME_GROUP = "VT Frame"        # the frame's group label contains this (4040-350 VT Frame v12)
 FRAME_BAR = re.compile(r"^(4040|2040|2020)")   # its extrusions (the group also holds the back panel and fasteners)
 INCH = 25.4

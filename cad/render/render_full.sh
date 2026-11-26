@@ -5,8 +5,8 @@
 #
 # 1. FreeCAD GUI (needed: hidden parts and the model's own colours only exist in GUI mode) runs export_meshes.py on
 #    the model plus the ebox file (VT350_EXTRA). Parts are coloured by cad/render/colours.json: frame RAL 6011 green powder
-#    coat, printed PET-GF white, [a]_ accents PET-GF orange. Anything else keeps the model's colour. A FreeCAD
-#    window opens and closes by itself; if GNOME says "Not Responding", click Wait.
+#    coat, printed PET-GF white, [a]_ accents PET-GF orange. Anything else keeps the model's colour. FreeCAD runs on a
+#    virtual display (xvfb-run) when it is installed; VT350_SHOW_GUI=1 shows the window instead.
 # 2. Blender (snap, headless) renders the "obico" (chamber camera) and "outside" (3/4 front) views on the RTX 2070.
 #    A model with the e-box also gets "ebox_side" and two glamour shots, "glamour" (all of it, EMU included) and
 #    "glamour_ebox" (turned to look in through the e-box door); see platform/render/render.py.
@@ -34,9 +34,11 @@ if [[ -n "${VT350_REUSE_EXPORT:-}" ]]; then
 else
     EXP="$RUN/export"; mkdir -p "$EXP"
     echo "[$(date +%T)] FreeCAD export: $(basename "$MODEL") ${EXTRA:++ $(basename "${EXTRA//:/ + }")} -> $EXP"
-    env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia \
-        VT350_MODEL="$MODEL" VT350_EXTRA="$EXTRA" VT350_RENDER_OUT="$EXP" \
-        "$APP" "$PLATFORM/export_meshes.py" >"$RUN/freecad.out" 2>&1 || true   # FreeCAD's exit code is meaningless (os._exit)
+    # no window on the owner's screen (owner 2026-11-26): a virtual display when xvfb-run is there; VT350_SHOW_GUI=1 shows it
+    if [[ -z "${VT350_SHOW_GUI:-}" ]] && command -v xvfb-run >/dev/null; then GUI=(xvfb-run -a); GPU=(); else
+        GUI=(); GPU=(__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia); fi
+    env "${GPU[@]}" VT350_MODEL="$MODEL" VT350_EXTRA="$EXTRA" VT350_RENDER_OUT="$EXP" \
+        "${GUI[@]}" "$APP" "$PLATFORM/export_meshes.py" >"$RUN/freecad.out" 2>&1 || true   # FreeCAD's exit code is meaningless (os._exit)
     # "index: FAILED ..." is the part-index hook's, non-fatal by design (#90): only other FAILED lines fail the export
     if grep -v "] index: " "$EXP/export.log" 2>/dev/null | grep -q "FAILED" || ! grep -q "] done: " "$EXP/export.log" 2>/dev/null; then
         echo "render_full: export FAILED; see $EXP/export.log and $RUN/freecad.out" >&2; exit 1
