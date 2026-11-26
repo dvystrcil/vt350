@@ -33,6 +33,13 @@ Steps of --local, in order. It stops at the first failure and names the step and
   print_area       cad/studies/print_area.py -> cad/data/print-area.svg
   test_print_area  cad/studies/test_print_area.py
 
+SKIPPING UNCHANGED LINKS (#324, --local): each step declares what it reads (inputs(): code, config, earlier logs, and the
+model's part index: labels and boxes, so a pass that only recolours or hides parts changes nothing a sweep sees). A step
+whose fingerprint (platform/chain/fingerprint.py) matches its last successful run, kept in cad/data/logs/
+refresh_inputs.json, is reused: its committed outputs stay. --fresh reruns every step; --fresh STEP [STEP ...] reruns
+those and everything downstream (DEPS). The summary lists each step as run / reused / forced / always. The lane's own
+reuse (homelab gpu-batch-submit.py) still digests the whole model file (a follow-up, #324 AC3).
+
 It never writes a model file (every step is read-only on the .FCStd) and never commits. Committing and the PR stay with
 the caller. The summary (STLs changed, reach vs the committed sweep log, Z travel vs the committed z_sweep log, print area) goes to stdout and to
 cad/data/logs/refresh.log. Every step is checked for a completion marker as well as its exit code, because a step can
@@ -67,7 +74,7 @@ TOOLS = {"part_index": "platform/freecad/part_index.py", "derive_stls": "cad/scr
          "z_sweep": "cad/studies/z_sweep.py", "print_area": "cad/studies/print_area.py",
          "test_print_area": "cad/studies/test_print_area.py"}
 # Code folders, searched after this file's own folder (where a gpu-batch pod stages everything flat).
-CODE_DIRS = ("cad/scripts", "cad/studies", "platform/freecad")
+CODE_DIRS = ("cad/scripts", "cad/studies", "platform/freecad", "platform/chain")
 MANIFEST = "parts/printed/manifest.csv"
 PRINTED = "parts/printed"
 SETS = "parts/slice/sets.json"                                      # the print sets for orca_projects (#217)
@@ -187,6 +194,74 @@ def envelope_docs(model):
     return _module("z_sweep").envelope_paths(model)
 
 
+# ---- what each link reads (#324): a link whose fingerprint matches its last successful run is reused, not rerun.
+INPUTS_RECORD = "cad/data/logs/refresh_inputs.json"
+STUDY_CODE = ["cad/studies/*.py", "cad/scripts/*.py", "platform/freecad/*.py", "cad/klipper/*.cfg", "cad/klipper/*.json"]
+NOT_CODE = ["test_*", "refresh.py"]           # tests, and this driver, don't change a link's result
+DEPS = {"part_index": [], "derive_stls": [], "sync_printed": ["derive_stls"], "check_printed": ["sync_printed"],
+        "orca_projects": ["sync_printed"], "sweep": ["part_index"], "z_sweep": ["part_index"],
+        "print_area": ["sweep", "z_sweep"], "test_print_area": ["print_area"]}
+
+
+def inputs(n, root=REPO, models=MODELS_DIR):
+    """{link: declaration} for fingerprint.fingerprint() / decide(). A model-reading link reads its model through the
+    part index (labels and boxes): a pass that only recolours or hides parts changes nothing it sees."""
+    model = os.path.join(models, f"vt350-lite-{n}.FCStd")
+    ix = lambda m: m[:-len(".FCStd")] + ".parts.json"
+    try:
+        env_docs = envelope_docs(model) if os.path.isfile(model) else []
+    except Exception:
+        # lint-allow-silent: an envelope list we can't read just leaves z_sweep's fingerprint without those
+        # documents' indexes; the model's own index still covers its envelope placeholders
+        env_docs = []
+    return {
+        "part_index": {"always": "skips a fresh <model>.parts.json by itself"},
+        "derive_stls": {"always": "reads its own fixed older models and the upstream STLs, not lite-N"},
+        "sync_printed": {"always": "compares each row's sha256 by itself"},
+        "check_printed": {"always": "seconds"},
+        "orca_projects": {"always": "rebuilds only the projects whose inputs changed"},
+        "sweep": {"files": STUDY_CODE, "exclude": NOT_CODE, "indexes": [ix(model)]},
+        "z_sweep": {"files": STUDY_CODE, "exclude": NOT_CODE, "indexes": [ix(model)] + [ix(d) for d in env_docs]},
+        "print_area": {"files": [TOOLS["print_area"], SWEEP_LOG, Z_LOG, "cad/klipper/*.cfg", "cad/klipper/*.json",
+                                 "cad/data/front_reach_*.json"]},
+        "test_print_area": {"files": [TOOLS["test_print_area"], TOOLS["print_area"], "cad/data/print-area.svg",
+                                      SWEEP_LOG, Z_LOG]},
+    }
+
+
+def _fp():
+    sys.path[:0] = [p for p in _code_path() if p not in sys.path]
+    return _module("fingerprint")
+
+
+class Gate:
+    """Per link, just before it would run: reuse it, or run it and record its fingerprint once it succeeded."""
+
+    def __init__(self, n, root=REPO, models=MODELS_DIR, fresh=None, record=None):
+        self.f = _fp()
+        self.n, self.root, self.models = n, root, models
+        self.decl = inputs(n, root, models)
+        self.forced = self.f.forced_set(fresh, ORDER, DEPS)
+        self.rec = self.f.Records(record or os.path.join(root, INPUTS_RECORD))
+        self.verdicts, self._fp = {}, {}
+
+    def __call__(self, step):
+        d = self.decl.get(step.name)
+        fp = self.f.fingerprint(self.root, d)[0] if d and "always" not in d else None
+        self._fp[step.name] = fp
+        v = self.f.decide(step.name, d, fp, self.rec.get(step.name), self.forced)
+        self.verdicts[step.name] = v
+        return v[0] == "reused"
+
+    def done(self, step):
+        fp = self._fp.get(step.name)
+        if fp is not None:
+            self.rec.put(step.name, fp, f"vt350-lite-{self.n}", time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()))
+
+    def lines(self):
+        return [f"{k}: {v} ({why})" for k, (v, why) in self.verdicts.items()]
+
+
 def plan(n, root=REPO, app=APP, start=None, models=MODELS_DIR):
     if start is not None and start not in ORDER:
         raise ValueError(f"unknown step {start!r}; steps are {ORDER}")
@@ -295,30 +370,39 @@ def collect_plan(index, root=REPO, models=MODELS_DIR):
     return [adopt] + [s for s in plan(0, root=root, models=models) if s.name == "test_print_area"]
 
 
-def run(steps, cwd=REPO, root=REPO, on_step=None):
+def run(steps, cwd=REPO, root=REPO, on_step=None, gate=None):
+    """gate (Gate or None): reused links are skipped; a link that ran is recorded once it passed its checks."""
     for s in steps:
-        if on_step: on_step(s)
-        if s.fn is not None:
-            try:
-                s.result = s.fn(root)
-            except StepError as e:
-                raise StepError(f"step {s.name} failed: {e}") from None
+        if gate is not None and gate(s):
+            if on_step: on_step(s, "reused")
             continue
-        log = s.log if os.path.isabs(s.log) else os.path.join(cwd, s.log)
-        os.makedirs(os.path.dirname(log), exist_ok=True)
-        t0 = time.time()
-        with open(log, "w") as lf:
-            rc = subprocess.call(s.cmd, cwd=cwd, stdout=lf, stderr=subprocess.STDOUT, env=dict(os.environ, **s.env))
-        if rc != 0:
-            raise StepError(f"step {s.name} failed: exit {rc}; see {log}")
-        if s.marker:
-            mi = s.marker_in or log
-            mi = mi if os.path.isabs(mi) else os.path.join(cwd, mi)
-            body = open(mi, encoding="utf-8", errors="replace").read() if os.path.isfile(mi) else ""
-            if body and mi != log and os.path.getmtime(mi) < t0 - 1:
-                raise StepError(f"step {s.name} failed: {mi} was not written by this run (an old log; exit was 0); see {log}")
-            if not re.search(s.marker, body):
-                raise StepError(f"step {s.name} failed: completion marker /{s.marker}/ not in {mi} (exit was 0); see {log}")
+        if on_step: on_step(s)
+        _run_one(s, cwd, root)
+        if gate is not None: gate.done(s)
+
+
+def _run_one(s, cwd, root):
+    if s.fn is not None:
+        try:
+            s.result = s.fn(root)
+        except StepError as e:
+            raise StepError(f"step {s.name} failed: {e}") from None
+        return
+    log = s.log if os.path.isabs(s.log) else os.path.join(cwd, s.log)
+    os.makedirs(os.path.dirname(log), exist_ok=True)
+    t0 = time.time()
+    with open(log, "w") as lf:
+        rc = subprocess.call(s.cmd, cwd=cwd, stdout=lf, stderr=subprocess.STDOUT, env=dict(os.environ, **s.env))
+    if rc != 0:
+        raise StepError(f"step {s.name} failed: exit {rc}; see {log}")
+    if s.marker:
+        mi = s.marker_in or log
+        mi = mi if os.path.isabs(mi) else os.path.join(cwd, mi)
+        body = open(mi, encoding="utf-8", errors="replace").read() if os.path.isfile(mi) else ""
+        if body and mi != log and os.path.getmtime(mi) < t0 - 1:
+            raise StepError(f"step {s.name} failed: {mi} was not written by this run (an old log; exit was 0); see {log}")
+        if not re.search(s.marker, body):
+            raise StepError(f"step {s.name} failed: completion marker /{s.marker}/ not in {mi} (exit was 0); see {log}")
 
 
 def _print_area():
@@ -386,11 +470,17 @@ def parse_args(argv=None):
     ap.add_argument("--z-change-ok", action="store_true",
                     help="lane: print height may move > 5 mm from the committed z_sweep.log (the chain's z-guard "
                          "stops it otherwise, before the 2 h toolhead sweep; homelab gpu-batch-submit)")
-    ap.add_argument("--fresh", action="store_true",
-                    help="lane: rerun every step; by default a step whose inputs match an earlier chain's is reused")
+    ap.add_argument("--fresh", nargs="*", metavar="STEP", default=None,
+                    help="rerun every step (no names), or these steps and everything downstream of them (--local); "
+                         "by default a step whose inputs match its last successful run is reused (#324)")
     ap.add_argument("--from", dest="start", choices=ORDER, help="--local: start at this step")
     ap.add_argument("--dry-run", action="store_true", help="print the steps and what sync_printed would change")
     a = ap.parse_args(argv)
+    if a.fresh and not a.local:
+        ap.error("--fresh STEP needs --local (the lane's --fresh reruns its whole chain)")
+    if a.fresh:
+        bad = [f for f in a.fresh if f not in ORDER]
+        if bad: ap.error(f"--fresh: unknown steps {bad}; steps are {ORDER}")
     if a.start and not a.local:
         ap.error("--from needs --local (the lane run is always: submit, derive_stls, sync_printed, check_printed, orca_projects)")
     return a
@@ -439,7 +529,7 @@ def main_collect(a):
 
 
 def main_lane(a):
-    steps = lane_plan(a.lite, notify=a.notify, z_change_ok=a.z_change_ok, fresh=a.fresh)
+    steps = lane_plan(a.lite, notify=a.notify, z_change_ok=a.z_change_ok, fresh=a.fresh is not None)
     if a.dry_run:
         _show(steps); return 0
     if not os.path.isfile(MODELS.format(a.lite)):
@@ -466,14 +556,18 @@ def main(argv=None):
     if not a.local:
         return main_lane(a)
     steps = plan(a.lite, start=a.start)
+    gate = Gate(a.lite, fresh=a.fresh)
     if a.dry_run:
-        _show(steps); return 0
+        _show(steps)
+        for line in dry_verdicts(steps, gate): print(line)
+        return 0
     if any(s.name in ("part_index", "sweep", "z_sweep") for s in steps) and not os.path.isfile(MODELS.format(a.lite)):
         print(f"refresh: FAILED: no model {MODELS.format(a.lite)}"); return 1
     prev, prev_z = _git_head(SWEEP_LOG), _git_head(Z_LOG)
     t0 = time.time()
     try:
-        run(steps, on_step=lambda s: print(f"[{time.time() - t0:6.0f}s] {s.name}", flush=True))
+        run(steps, on_step=lambda s, v=None: print(f"[{time.time() - t0:6.0f}s] {s.name}{' (reused)' if v else ''}", flush=True),
+            gate=gate)
     except StepError as e:
         print(f"refresh: FAILED: {e}"); return 1
     by = {s.name: s for s in steps}
@@ -481,11 +575,34 @@ def main(argv=None):
     sweep = open(os.path.join(REPO, SWEEP_LOG), encoding="utf-8").read() if "sweep" in by else None
     z_log = open(os.path.join(REPO, Z_LOG), encoding="utf-8").read() if "z_sweep" in by else None
     area = None
-    if "print_area" in by:
+    if "print_area" in by and os.path.isfile(by["print_area"].log):
         area = open(by["print_area"].log, encoding="utf-8").read().strip().splitlines()[-1]
     index = _index_status(by["part_index"].env["VT350_INDEX_MODELS"].split(":")) if "part_index" in by else None
-    s = summary(changed or [], sweep, prev, area, index, z_log, prev_z)
+    s = summary(changed or [], sweep, prev, area, index, z_log, prev_z) + "\nlinks:\n" + "\n".join("  " + x for x in gate.lines())
     return _finish(s, list(by), t0)
+
+
+def dry_verdicts(steps, gate):
+    """What a --local run would do per link, from the inputs as they are now: a link downstream of one that runs
+    is shown as running after it (its inputs are that link's new outputs)."""
+    out, moving = [], set()
+    try:
+        model = os.path.join(gate.models, f"vt350-lite-{gate.n}.FCStd")
+        stale = [os.path.basename(m) for m, st in _index_status([model]) if st != "fresh"]
+    except Exception as e:
+        stale = [f"(index status unknown: {e})"]
+    for s in steps:
+        ups = [u for u in DEPS.get(s.name, []) if u in moving]
+        gate(s)
+        v, why = gate.verdicts[s.name]
+        if v == "reused" and ups:
+            v, why = "run", f"after {', '.join(ups)} (its new outputs)"
+        if s.name in ("sweep", "z_sweep") and stale and v == "reused":
+            v, why = "run?", f"part_index rebuilds {', '.join(stale)} first; decided after it"
+        if v in ("run", "forced", "run?"):
+            moving.add(s.name)
+        out.append(f"{s.name}: {v} ({why})")
+    return out
 
 
 if __name__ == "__main__":
