@@ -1,11 +1,37 @@
 {
  "about": "Cross-section values of the VT350's aluminium extrusions, for the frame beam model (platform/fem/frame.py, vt350#322). mm, mm^2, mm^4. w >= h: Iw bends the bar so it deflects along its w (wide) side, Ih along its h side; for a square profile they are equal.",
  "source": "Misumi HFS5 series catalogue (slot 6), sectional area and second moments of area: HFS5-2020 183 mm^2, 0.742e4 mm^4 both axes; HFS5-2040 324 mm^2, 1.358e4 / 5.13e4 mm^4; HFS5-4040 472 mm^2, 8.89e4 mm^4 both axes. https://in.misumi-ec.com/pdf/fa/2015/p2_557.pdf, https://api.uk.misumi-ec.com/vona2/detail/110302684350. No supplier is chosen yet (bom/buying-rounds.md, vt350#7): these are typical 20 mm series values; check them against the chosen supplier's data.",
- "J_note": "PLACEHOLDER. Misumi doesn't publish torsion constants. J here is roughly 15% of the solid square's 0.141 a^4 (open slots make these profiles weak in torsion). Replace with a value computed from the profile's cross-section before the study's results are quoted (vt350#322).",
- "material": {"name": "6063-T5 / 6N01-T5 aluminium", "E": 69000, "nu": 0.33, "rho": 2.7e-9},
+ "J_note": "Torsion constants J are published values for profiles of the same size and bending inertia (Misumi doesn't publish J): 2020 slot 6: 0.07-0.08 cm^4 (item Profile 5 20x20, https://www.item24.com/en-ae/profil-5-20x20-natur-44804; Rexroth 3842993231 datasheet, https://boxic24.com/english/datasheet/pdf/index/id/14681/), 750 used; 2040: 0.68 cm^4 (20x40 slot-6 datasheet, https://www.framingtech.com/products/metric-profiles/20mm-with-5mm-t-slot/20-x-40-05), 6800 used; 4040: 1.36 cm^4 for item Profile 8 40x40 light, Ix 9.00 cm^4 like Misumi's 8.89 (https://www.item24.com/en-ae/profil-8-40x40-natur-2603), 13600 used. Typical, not the chosen supplier's (none chosen yet): check them once one is. Open slots make these profiles weak in torsion: J is about a tenth of I.",
+ "material": {
+  "name": "6063-T5 / 6N01-T5 aluminium",
+  "E": 69000,
+  "nu": 0.33,
+  "rho": 2.7e-09
+ },
  "profiles": {
-  "2020": {"w": 20, "h": 20, "A": 183, "Iw": 7420, "Ih": 7420, "J": 3400},
-  "2040": {"w": 40, "h": 20, "A": 324, "Iw": 51300, "Ih": 13580, "J": 9000},
-  "4040": {"w": 40, "h": 40, "A": 472, "Iw": 88900, "Ih": 88900, "J": 54000}
+  "2020": {
+   "w": 20,
+   "h": 20,
+   "A": 183,
+   "Iw": 7420,
+   "Ih": 7420,
+   "J": 750
+  },
+  "2040": {
+   "w": 40,
+   "h": 20,
+   "A": 324,
+   "Iw": 51300,
+   "Ih": 13580,
+   "J": 6800
+  },
+  "4040": {
+   "w": 40,
+   "h": 40,
+   "A": 472,
+   "Iw": 88900,
+   "Ih": 88900,
+   "J": 13600
+  }
  }
 }

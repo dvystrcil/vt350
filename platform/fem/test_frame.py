@@ -7,7 +7,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import frame as F
 
 PROF = {"2020": {"w": 20, "h": 20, "A": 183, "Iw": 7420, "Ih": 7420, "J": 3000},
-        "2040": {"w": 40, "h": 20, "A": 324, "Iw": 5.13e4, "Ih": 1.358e4, "J": 6000}}
+        "2040": {"w": 40, "h": 20, "A": 324, "Iw": 5.13e4, "Ih": 1.358e4, "J": 6000},
+        "4040": {"w": 40, "h": 40, "A": 472, "Iw": 8.89e4, "Ih": 8.89e4, "J": 13600}}
 AL = {"E": 69000.0, "nu": 0.33, "rho": 2.7e-9}
 CCX = os.environ.get("CCX")
 
@@ -49,9 +50,9 @@ class Bars(unittest.TestCase):
 class Joints(unittest.TestCase):
     def test_corner_joint_is_offset_by_the_half_widths(self):
         bars = F.bars_from_index(ell(), PROF)
-        self.assertEqual(F.joints(bars), [(0, 490.0, 1, 10)])
+        self.assertEqual(F.joints(bars), [(0, 490.0, 1, 10, "touch")])
         m = F.Mesh(bars, F.joints(bars))
-        [(a, b, _)] = m.links
+        [(a, b, _, kind)] = m.links
         self.assertAlmostEqual(math.dist(m.nodes[a - 1], m.nodes[b - 1]), math.hypot(10, 0), places=6)
 
     def test_apart_bars_dont_join(self):
@@ -60,7 +61,7 @@ class Joints(unittest.TestCase):
 
     def test_parallel_side_by_side_join_at_both_overlap_ends(self):
         ix = {"parts": [part("2020 a", (0, 300), (-10, 10), (0, 20)), part("2020 b", (100, 500), (10, 30), (0, 20))]}
-        self.assertEqual(F.joints(F.bars_from_index(ix, PROF)), [(0, 100, 1, 100), (0, 300, 1, 300)])
+        self.assertEqual(F.joints(F.bars_from_index(ix, PROF)), [(0, 100, 1, 100, "touch"), (0, 300, 1, 300, "touch")])
 
     def test_meeting_centre_lines_share_a_node(self):
         ix = {"parts": [part("2020 a", (0, 300), (-10, 10), (-10, 10)), part("2020 b", (300, 600), (-10, 10), (-10, 10))]}
@@ -70,7 +71,67 @@ class Joints(unittest.TestCase):
         self.assertEqual(len(m.nodes), 25)                         # 12 + 12 elements, one shared node
 
 
+def gantry_corner():
+    """A side 2040 along Y and a rear 2020 along X that stops 65 mm short of it, held by a top and a bottom plate."""
+    return {"parts": [part("2040 side", (-520, -480), (-90, 480), (430, 450)),
+                      part("2020 rear", (-415, -75), (480, 500), (430, 450)),
+                      part("Plate top", (-500, -386.5), (441, 500), (450, 460)),
+                      part("Plate bottom", (-500, -386.5), (441, 500), (420, 430)),
+                      part("Belt", (-500, -386.5), (300, 500), (470, 480)),
+                      part("4040 upright", (-540, -500), (480, 520), (0, 650)),       # the plates' boxes touch it too
+                      part("M5 screw side", (-504, -496), (450, 460), (420, 440)),
+                      part("M5 screw rear", (-410, -400), (485, 495), (420, 440))]}
+
+
+class Plates(unittest.TestCase):
+    def test_plate_joins_bars_that_dont_touch_once(self):
+        ix = gantry_corner()
+        bars = F.bars_from_index(ix, PROF)
+        self.assertEqual([x for x in F.joints(bars) if 2 not in (x[0], x[2])], [])
+        pj = F.plate_joints(bars, ix, lambda p: p["label"].startswith("Plate"), fastener=lambda p: p["label"].startswith("M5"))
+        self.assertEqual(pj, [(0, 460.5, 1, -400.75, "plate")])    # Y 441..480 on the side, X -415..-386.5 on the rear
+        self.assertEqual(F.groups(2, pj), [[0, 1]])
+
+    def test_fasteners_decide_which_bars_a_plate_joins(self):
+        ix = gantry_corner()
+        bars = F.bars_from_index(ix, PROF)
+        plate = lambda p: p["label"].startswith("Plate")
+        self.assertEqual(len(F.plate_joints(bars, ix, plate)), 5)   # by boxes alone: side-rear, plus the upright twice per plate
+        pj = F.plate_joints(bars, ix, plate, fastener=lambda p: p["label"].startswith("M5"))
+        self.assertEqual([(bars[i].label, bars[j].label) for i, _, j, _, _ in pj], [("2040 side", "2020 rear")])
+
+    def test_each_kind_gets_its_own_stiffness(self):
+        ix = gantry_corner()
+        bars = F.bars_from_index(ix, PROF)
+        m = F.Mesh(bars[:2], F.plate_joints(bars[:2], ix, lambda p: p["label"].startswith("Plate")))
+        inp = F.deck(m, PROF, AL, {"name": "bolted", "k_rot": 1e9, "kinds": {"plate": {"k_rot": 1e6}}},
+                     {"name": "t", "kind": "static", "fixed": [1]}).splitlines()
+        i = inp.index("*BEAM SECTION, ELSET=L_plate_XY, MATERIAL=LINK, SECTION=GENERAL")
+        l = math.dist(m.nodes[m.links[0][0] - 1], m.nodes[m.links[0][1] - 1])
+        self.assertAlmostEqual(float(inp[i + 1].split(",")[1]), 1e6 * l / AL["E"], delta=1e-3)
+
+
+class Supports(unittest.TestCase):
+    def test_foot_under_a_bar_gives_a_station_at_its_centre(self):
+        ix = cantilever(); ix["parts"].append(part("Foot", (440, 480), (-20, 20), (-28, -20)))
+        bars = F.bars_from_index(ix, PROF)
+        st = F.supports(bars, ix, lambda p: p["label"] == "Foot")
+        self.assertEqual(st, [(0, 460.0)])
+        self.assertEqual(F.Mesh(bars, [], st).at(0, 460.0), F.Mesh(bars, [], st).at(0, 460.0))
+
+    def test_foot_touching_nothing_is_an_error(self):
+        ix = cantilever(); ix["parts"].append(part("Foot", (440, 480), (-20, 20), (-40, -30)))
+        with self.assertRaises(F.FrameError):
+            F.supports(F.bars_from_index(ix, PROF), ix, lambda p: p["label"] == "Foot")
+
+
 class Deck(unittest.TestCase):
+    def test_long_set_lists_are_split(self):
+        ix = {"parts": [part(f"2020 b{k}", (0, 100), (30 * k, 30 * k + 20), (0, 20)) for k in range(20)]}
+        bars = F.bars_from_index(ix, PROF)
+        inp = F.deck(F.Mesh(bars, []), PROF, AL, {"name": "rigid"}, {"name": "t", "kind": "static", "fixed": [1]})
+        self.assertTrue(all(len(line) <= 132 for line in inp.splitlines()))
+
     def test_elements_no_longer_than_max(self):
         bars = F.bars_from_index(cantilever(), PROF)
         m = F.Mesh(bars, [], max_elem=30)

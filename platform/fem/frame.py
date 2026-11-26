@@ -91,8 +91,8 @@ def _gap(a, b):
 
 
 def joints(bars, touch=TOUCH):
-    """-> [(i, t_i, j, t_j)]: bar i at t_i (along its axis) joins bar j at t_j. Crossing or end-on bars join once at
-    their closest points; parallel bars side by side join at both ends of their overlap."""
+    """-> [(i, t_i, j, t_j, "touch")]: bar i at t_i (along its axis) joins bar j at t_j. Crossing or end-on bars join
+    once at their closest points; parallel bars side by side join at both ends of their overlap."""
     out = []
     for i, a in enumerate(bars):
         for j in range(i + 1, len(bars)):
@@ -102,14 +102,72 @@ def joints(bars, touch=TOUCH):
             if a.axis != b.axis:
                 ta = min(max(b.c[a.axis], a.lo), a.hi)
                 tb = min(max(a.c[b.axis], b.lo), b.hi)
-                out.append((i, ta, j, tb))
+                out.append((i, ta, j, tb, "touch"))
             else:
                 lo, hi = max(a.lo, b.lo), min(a.hi, b.hi)
                 if hi - lo > touch:
-                    out += [(i, lo, j, lo), (i, hi, j, hi)]
+                    out += [(i, lo, j, lo, "touch"), (i, hi, j, hi, "touch")]
                 else:                                  # end to end, in line
                     t = (lo + hi) / 2
-                    out.append((i, t, j, t))
+                    out.append((i, t, j, t, "touch"))
+    return out
+
+
+def _pbox(p):
+    b = p["bbox"]
+    return [b["xmin"], b["ymin"], b["zmin"]], [b["xmax"], b["ymax"], b["zmax"]]
+
+
+def _touch(a, b, touch=TOUCH):
+    (la, ha), (lb, hb) = a, b
+    return max(max(lb[k] - ha[k], la[k] - hb[k]) for k in range(3)) <= touch
+
+
+def plate_joints(bars, index, select, fastener=None, kind="plate", touch=TOUCH):
+    """Parts that clamp two or more bars without the bars touching (a corner plate, a gusset, a motor mount screwed into
+    both): -> [(i, t_i, j, t_j, kind)], one per pair of bars a selected part joins, at the middle of where the part
+    covers each bar. A part joins a bar its box touches, and, with fastener(part) -> bool given, only where a fastener's
+    box touches both (a box can overlap a bar the part isn't screwed to). Several parts on the same pair at the same
+    place (a top and a bottom plate) give one joint."""
+    fasteners = [_pbox(p) for p in index["parts"] if fastener and fastener(p)]
+    out, seen = [], set()
+    for p in index["parts"]:
+        if not select(p):
+            continue
+        lo, hi = _pbox(p)
+        on = []
+        for i, bar in enumerate(bars):
+            bb = _box(bar)
+            if not _touch((lo, hi), bb, touch):
+                continue
+            if fastener and not any(_touch(f, (lo, hi), touch) and _touch(f, bb, touch) for f in fasteners):
+                continue
+            a = bar.axis
+            on.append((i, (max(lo[a], bar.lo) + min(hi[a], bar.hi)) / 2))
+        for x in range(len(on)):
+            for y in range(x + 1, len(on)):
+                (i, ti), (j, tj) = on[x], on[y]
+                key = (i, round(ti, 1), j, round(tj, 1))
+                if key not in seen:
+                    seen.add(key)
+                    out.append((i, ti, j, tj, kind))
+    return out
+
+
+def supports(bars, index, select, touch=TOUCH):
+    """Where the frame rests or is held (feet, a lifting point): -> [(bar index, t)], one per selected part, on the bar
+    its box touches (the first, if several), at the part's centre along that bar. A selected part touching no bar is an
+    error: a foot that holds nothing would leave the frame floating."""
+    out = []
+    for p in index["parts"]:
+        if not select(p):
+            continue
+        lo, hi = _pbox(p)
+        on = [i for i, b in enumerate(bars) if _touch((lo, hi), _box(b), touch)]
+        if not on:
+            raise FrameError(f"{p['label']!r} touches no bar")
+        b = bars[on[0]]
+        out.append((on[0], min(max((lo[b.axis] + hi[b.axis]) / 2, b.lo), b.hi)))
     return out
 
 
@@ -120,11 +178,12 @@ class Mesh:
         """stations: [(bar index, t)] that must be nodes."""
         self.bars, self.nodes, self.elems, self.links = bars, [], [], []
         self._at = {}
-        for i, ti, j, tj in jts:                       # centre lines that meet: one node, no link
+        jts = [tuple(x) + ("touch",) * (5 - len(x)) for x in jts]
+        for i, ti, j, tj, _ in jts:                    # centre lines that meet: one node, no link
             if math.dist(bars[i].point(ti), bars[j].point(tj)) < 1e-6:
                 self._at[(j, round(tj, 6))] = self.node(i, ti)
         cuts = {i: {b.lo, b.hi} for i, b in enumerate(bars)}
-        for i, ti, j, tj in jts:
+        for i, ti, j, tj, _ in jts:
             cuts[i].add(ti); cuts[j].add(tj)
         for i, t in stations:
             cuts[i].add(t)
@@ -137,10 +196,10 @@ class Mesh:
                     cur = self.node(i, t0 + (t1 - t0) * s / n if s < n else t1)
                     self.elems.append((prev, cur, i))
                     prev = cur
-        for i, ti, j, tj in jts:
+        for i, ti, j, tj, kind in jts:
             a, b = self.node(i, ti), self.node(j, tj)
             if a != b:
-                self.links.append((a, b, (i, j)))
+                self.links.append((a, b, (i, j), kind))
 
     def node(self, i, t):
         key = (i, round(t, 6))
@@ -165,8 +224,8 @@ def groups(n_bars, jts):
         while up[i] != i:
             up[i] = up[up[i]]; i = up[i]
         return i
-    for i, _, j, _ in jts:
-        up[root(i)] = root(j)
+    for x in jts:
+        up[root(x[0])] = root(x[2])
     out = {}
     for i in range(n_bars):
         out.setdefault(root(i), []).append(i)
@@ -200,16 +259,17 @@ def deck(mesh, profiles, material, style, case):
     for a, b, i in mesh.elems:
         e += 1
         sets.setdefault(f"B{i}", []).append((e, a, b))
-    links = {"LINKS_Z": [], "LINKS_XY": []}          # direction 1 must not lie along the link
-    for a, b, pair in mesh.links:
+    links = {}                                      # (kind, "Z" or "XY"): direction 1 must not lie along the link
+    for a, b, pair, kind in mesh.links:
         e += 1
         d = [q - p for p, q in zip(mesh.nodes[a - 1], mesh.nodes[b - 1])]
-        links["LINKS_Z" if abs(d[2]) > 0.7 * math.hypot(*d) else "LINKS_XY"].append((e, a, b))
-    links = {k: v for k, v in links.items() if v}
+        links.setdefault((kind, "Z" if abs(d[2]) > 0.7 * math.hypot(*d) else "XY"), []).append((e, a, b))
+    links = {f"L_{re.sub(r'[^A-Za-z0-9]', '_', k)}_{v}": rows for (k, v), rows in sorted(links.items())}
     for name, rows in list(sets.items()) + list(links.items()):
         L.append(f"*ELEMENT, TYPE=U1, ELSET={name}")
         L += [f"{n}, {a}, {b}" for n, a, b in rows]
-    L += ["*ELSET, ELSET=EBARS"] + [", ".join(sets)]
+    names = list(sets)
+    L += ["*ELSET, ELSET=EBARS"] + [", ".join(names[k:k + 8]) for k in range(0, len(names), 8)]   # ccx: short lines
     masses = case.get("masses", [])
     for k, (node, m) in enumerate(masses):
         e += 1
@@ -223,16 +283,20 @@ def deck(mesh, profiles, material, style, case):
         # direction 1 is across the wide side: bending that deflects along it uses Iw
         L += [f"*BEAM SECTION, ELSET={name}, MATERIAL=FRAME, SECTION=GENERAL",
               f"{p['A']:g}, {p['Iw']:g}, 0., {p['Ih']:g}, {p['J']:g}", ", ".join(f"{v:g}" for v in _normal1(bar))]
-    if links:
-        # axial and shear stiff; bending and torsion from the joint style (a short beam of length l bends by
-        # M l / (E I): I = k_rot l / E gives the spring k_rot)
+    # links: axial and shear stiff; bending and torsion from the joint style, per kind of joint (a short beam of
+    # length l bends by M l / (E I): I = k_rot l / E gives the spring k_rot). style: {"name", "k_rot",
+    # "kinds": {kind: {"k_rot"}}}: a kind not named takes the style's own k_rot (none: rigid)
+    kinds = {}
+    for a, b, pair, kind in mesh.links:
+        kinds.setdefault(re.sub(r"[^A-Za-z0-9]", "_", kind), kind)
+    for name, rows in links.items():
+        kind = kinds[name[2:name.rindex("_")]]
+        k_rot = style.get("kinds", {}).get(kind, style).get("k_rot")
+        l = sum(_link_length(mesh, a, b) for _, a, b in rows) / len(rows)
         A = 100 * stiff
-        lmean = sum(_link_length(mesh, a, b) for rows in links.values() for _, a, b in rows) / sum(map(len, links.values()))
-        I, J = (style["k_rot"] * lmean / E, style["k_rot"] * lmean / G) if style.get("k_rot") else (100 * stiff,) * 2
-        for name, normal in (("LINKS_Z", "1, 0, 0"), ("LINKS_XY", "0, 0, 1")):
-            if name in links:
-                L += [f"*BEAM SECTION, ELSET={name}, MATERIAL=LINK, SECTION=GENERAL", f"{A:g}, {I:g}, 0., {I:g}, {J:g}",
-                      normal]
+        I, J = (k_rot * l / E, k_rot * l / G) if k_rot else (100 * stiff,) * 2
+        L += [f"*BEAM SECTION, ELSET={name}, MATERIAL=LINK, SECTION=GENERAL", f"{A:g}, {I:g}, 0., {I:g}, {J:g}",
+              "1, 0, 0" if name.endswith("_Z") else "0, 0, 1"]
     for k, (node, m) in enumerate(masses):
         L += [f"*MASS, ELSET=M{k}", f"{m:g}"]
     L += ["*BOUNDARY"] + [f"{n}, 1, 6" for n in case["fixed"]]
