@@ -21,22 +21,22 @@ Stages #7, #8, #9. Priced cost: **no priced rows yet**, plus 21 unpriced row(s).
 | Item | To buy | Unit price | Cost | Stage | Vendor |
 |---|---|---|---|---|---|
 | 4040 extrusion, 660 mm | 4 | - | - | #7 | - |
-| 4040 extrusion, 567 mm | 4 | - | - | #7 | - |
+| 4040 extrusion, 570 mm | 4 | - | - | #7 | - |
 | 2040 extrusion, 660 mm | 4 | - | - | #7 | - |
-| 2040 extrusion, 567 mm | 4 | - | - | #7 | - |
+| 2040 extrusion, 570 mm | 4 | - | - | #7 | - |
 | 2040 extrusion, 470 mm | 1 | - | - | #7 | - |
 | 2040 extrusion, 440 mm | 2 | - | - | #7 | - |
 | 2040 extrusion, 740 mm | 1 | - | - | #7 | - |
 | 2020 extrusion, 740 mm | 1 | - | - | #7 | - |
 | 2020 extrusion, 660 mm | 2 | - | - | #7 | - |
-| 2020 extrusion, 567 mm | 2 | - | - | #7 | - |
+| 2020 extrusion, 570 mm | 2 | - | - | #7 | - |
 | 2020 extrusion, 470 mm | 2 | - | - | #7 | - |
 | 2020 extrusion, 440 mm | 1 | - | - | #7 | - |
 | 2020 extrusion, 340 mm | 1 | - | - | #7 | - |
 | 2020 extrusion, 332 mm | 1 | - | - | #7 | - |
 | 2040 extrusion, 740 mm (door frame verticals) | 4 | - | - | #7 | - |
 | 2040 extrusion, 470 mm (front door frame rails) | 2 | - | - | #7 | - |
-| 2040 extrusion, 547 mm (e-box door frame rails) | 2 | - | - | #7 | - |
+| 2040 extrusion, 550 mm (e-box door frame rails) | 2 | - | - | #7 | - |
 | M5x14 socket head (SHCS, DIN 912), levelling-foot brackets | 16 | - | - | #9 | - |
 | M5 split lock washer (DIN 127), levelling-foot brackets | 16 | - | - | #9 | - |
 | M5 drop-in T-nut, 6 mm slot | 16 | - | - | #9 | West3D |
