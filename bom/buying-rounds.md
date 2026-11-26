@@ -7,9 +7,9 @@ What is still to buy, round by round in build order, for **2 heads** ('per head'
 | Round | Stages | Rows to buy | Priced cost | Unpriced | To decide |
 |---|---|---|---|---|---|
 | 1. Frame | #7, #8, #9 | 21 | - | 21 | 11 |
-| 2. Motion | #10, #11 | 15 | USD 179.97 | 14 | 5 |
+| 2. Motion | #10, #11 | 14 | USD 179.97 | 13 | 5 |
 | 3. Electronics | #13 | 7 | - | 7 | 5 |
-| 4. Toolheads | #12 | 24 | USD 110.84 | 20 | 6 |
+| 4. Toolheads | #12 | 21 | USD 3.51 | 20 | 6 |
 | 5. Enclosure and calibration | #14, #15 | 4 | - | 4 | 17 |
 
 ## Round 1: Frame
@@ -60,11 +60,10 @@ To decide before buying this round:
 
 Z axis, bed and gantry on the frame: everything that moves, before anything drives it.
 
-Stages #10, #11. Priced cost: **USD 179.97**, plus 14 unpriced row(s).
+Stages #10, #11. Priced cost: **USD 179.97**, plus 13 unpriced row(s).
 
 | Item | To buy | Unit price | Cost | Stage | Vendor |
 |---|---|---|---|---|---|
-| Z rail, Berserker MGN9H-1R 400 mm, 1 carriage (West3D) | 1 | - | - | #10 | West3D |
 | Z motor, LDO 42STH40 Extended Height, 400 mm integrated TR8x4 lead screw | 3 | USD 59.99 | USD 179.97 | #10 | West3D |
 | M3x8 socket head (SHCS, ISO 4762), Z carriages | 31 | - | - | #10 | - |
 | M3x12 socket head (SHCS, ISO 4762), Z carriages | 14 | - | - | #10 | - |
@@ -116,14 +115,11 @@ To decide before buying this round:
 
 The toolchanger and the heads. Per-head rows are costed for every head; one head's worth is largely owned already.
 
-Stages #12. Priced cost: **USD 110.84**, plus 20 unpriced row(s).
+Stages #12. Priced cost: **USD 3.51**, plus 20 unpriced row(s).
 
 | Item | To buy | Unit price | Cost | Stage | Vendor |
 |---|---|---|---|---|---|
-| Mellow MultiHead Zero (black) nozzle offset probe | 1 | USD 19.99 | USD 19.99 | #12 | West3D (SKU MEL2020) |
-| 6x3 mm N52 magnet, MadMax carriage (West3D, nickel or black epoxy) | 6 | USD 0.39 | USD 2.34 | #12 | West3D |
-| 6x3 mm N52 magnet, tool plate + dock keyslot plate (West3D, nickel or black epoxy) | 18 | USD 0.39 | USD 7.02 | #12 | West3D |
-| Beacon RevH, Normal (SKU WES2566NOR) | 1 | USD 81.49 | USD 81.49 | #12 | West3D |
+| 6x3 mm N52 magnet, tool plate + dock keyslot plate (West3D, nickel or black epoxy) | 9 | USD 0.39 | USD 3.51 | #12 | West3D |
 | MadMax carriage hardware (one set) | 1 | - | - | #12 | - |
 | MadMax tool-plate hardware, per head | 2 | - | - | #12 | - |
 | M3x8 or M3x6 flat head (FHCS), strongly magnetic steel, A4T head side | 6 | - | - | #12 | - |

@@ -6,13 +6,12 @@ is bought, set its `bom.csv` status to `ordered`/`owned` and take it off here.
 
 ## To order
 
+Bought 2026-11-25 (owner) and taken off this list: the Mellow MultiHead Zero, the Beacon RevH Normal, the third Berserker Z rail, 15 magnets.
+
 | Item | Qty | Link | Price seen | Notes |
 |---|---|---|---|---|
-| **6×3 mm N52 magnets**, nickel or black epoxy | **63** (+ a few spares) | [6mm x 3mm Round Neodymium Magnets](https://west3d.com/products/6mm-x-3mm-round-neomydium-magnets) | from $0.39 each (2026-11-18) | 15 for the five dock keyslot plates (3 each, #59) + 48 for the MadMax carriage and tool plates (lite-64, #60). For the PETG prototype alone: 3. MadMax: must be real N52 from a known vendor. Install: `docs/assembly/stage-12-toolheads.md` step 6 |
-| Mellow MultiHead Zero offset probe (black) | 1 | [SKU MEL2020](https://west3d.com/products/mellow-multiohead-zero-precision-xyz-nozzle-offset-calibration-tool-black) | $19.99 (2026-11-17) | Per-head XY+Z offsets (#186) |
-| Beacon RevH, **Normal** | 1 | [Beacon, style "Beacon H Normal", SKU WES2566NOR](https://west3d.com/products/beacon-probe-eddy-current-surface-scanner-for-3d-printers?variant=46106145882324) | $81.49 (2026-11-17) | One per printer, on the MadMax carriage. Owner's choice (2026-11-17), `notes/parts-owned.md` |
+| **6×3 mm N52 magnets**, nickel or black epoxy | **9** (+ a few spares) | [6mm x 3mm Round Neodymium Magnets](https://west3d.com/products/6mm-x-3mm-round-neomydium-magnets) | from $0.39 each (2026-11-18) | The second head's 6 (tool plate) + 3 (dock keyslot plate). 15 bought 2026-11-25 (carriage 6 + the first head's 9). The door latches' 24 are their own row in `bom.csv`. MadMax: must be real N52 from a known vendor. Install: `docs/assembly/stage-12-toolheads.md` step 6 |
 | Berserker VINDR 2510A-24V-A hotend fan | 1 per head (confirm how many are owned) | [2510 axial fan](https://west3d.com/products/berserker-vindr-ultra-performance-2510-axial-fan-24v-2510a-24v-a-25x10mm) | | **Out of stock** 2026-11-17; restock notification set |
-| **Z rails**, Berserker MGN9H-1R 400 mm, 1 carriage | **1** (2 owned) | [Berserker MGN9H 400](https://west3d.com/products/berserker-mgn9h-1r-150-300-350-400-linear-rails-viking-skis-with-carriages) | not read for 400 (USD 24.99 shown for 150 mm, 2026-11-23) | Owner 2026-11-22: the 2 owned Berserkers (were Y) go to Z; one more to match them. Was 3 × West3D Printing MGN9H 400 S. |
 | **Z motors**, LDO 42STH40, "Extended Height (400mm Lead Screw)", TR8×4 | 3 | [LDO 42STH40 Extended Height](https://west3d.com/products/ldo-42sth40-1684l300e-tr8x4-voron-edition-nema-17?variant=44301298303188) | $59.99 each (2026-11-04) | The 400 mm integrated lead screw (lite-10). Owner: still to buy (2026-11-18) |
 
 ## Check before ordering: West3D rows from the 2026-11-04 still-to-buy list (#22)
