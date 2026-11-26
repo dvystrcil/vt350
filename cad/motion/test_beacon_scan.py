@@ -12,7 +12,7 @@ class FromTheConfig(unittest.TestCase):
     def test_committed_values(self):
         s = bs.settings()
         self.assertEqual(s["offset"], (0.0, 27.4))
-        self.assertEqual(s["axis_min"], (4.0, -99.43)); self.assertEqual(s["axis_max"], (346.0, 340.19))
+        self.assertEqual(s["axis_min"], (4.0, -102.43)); self.assertEqual(s["axis_max"], (346.0, 340.19))
         self.assertEqual(len(s["tilt_points"]), 3)
 
     def test_a_changed_cfg_changes_the_path(self):

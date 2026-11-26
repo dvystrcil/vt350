@@ -51,8 +51,8 @@ source), and `test_limits.py` recomputes each one from that log:
 | Axis | min | max | Source (in `cad/data/logs/`) |
 |---|---|---|---|
 | X | 4.00 | 346.00 | `sweep_toolhead.log`: "first nozzle X with no new overlap" −416.0 / −74.0, both heads |
-| Y | −99.43 | 340.19 | `sweep_toolhead.log`: "nozzle Y reach −68.93 .. 370.69", both heads (lite-78) |
-| Z | −15 | 329.43 | min: not a CAD limit (see below); max: `z_sweep.log` `klipper_position_max_configured_mm` |
+| Y | −102.43 | 340.19 | `sweep_toolhead.log`: "nozzle Y reach −71.93 .. 370.69", both heads (lite-80) |
+| Z | −15 | 339.43 | min: not a CAD limit (see below); max: `z_sweep.log` `klipper_position_max_configured_mm` |
 
 X and Y are mapped by the proposed `xy_mapping.json`: origin at the print square's front-left corner, model (−420.0, 30.5); X+ = model +X, Y+ = model +Y. With that mapping the CAD gives a 342 × 422.6 mm XY box, so it is **not** the 350 mm square. The nozzle stops 4 mm short of each X edge of the print square and 9.81 mm short of its rear edge (Y 340.19 of 350), while Y below 0 reaches the docks.
 
@@ -80,16 +80,16 @@ MadMax's dock path, with the VT350's values (printer coordinates, PROPOSED mappi
 |---|---|---|
 | `[tool T0] params_park_x` / `params_detach_x` | 10.30 / 15.30 | `sweep_toolhead.log` "Left: docked nozzle tip (−409.70, …)"; detach 5 mm (MadMax) away from the keyslot plate, which is on the left head's −X side |
 | `[tool T1] params_park_x` / `params_detach_x` | 339.70 / 334.70 | "Right: docked nozzle tip (−80.30, …)"; the mirror image, so detach goes −X |
-| `params_attach_y` | −85.96 | docked nozzle Y −49.46 (lite-78: the docks 17 forward, #291), minus the 6.0 mm keyslot slide to the large opening (`sweep_toolhead.log`) |
-| `params_close_y` | −63.96 | MadMax's distance from its parked Y (+16), kept |
-| `params_safe_shuttle_y` | −43.96 | MadMax's distance (+36). **Unchecked:** set for MadMax's heads; #116 AC5 clash-checks it |
-| `params_safe_toolhead_y` | 31.04 | MadMax's distance (+111). **Unchecked**, as above |
+| `params_attach_y` | −88.96 | docked nozzle Y −52.46 (lite-80: the docks 3 more forward, #243), minus the 6.0 mm keyslot slide to the large opening (`sweep_toolhead.log`) |
+| `params_close_y` | −66.96 | MadMax's distance from its parked Y (+16), kept |
+| `params_safe_shuttle_y` | −46.96 | MadMax's distance (+36). **Unchecked:** set for MadMax's heads; #116 AC5 clash-checks it |
+| `params_safe_toolhead_y` | 28.04 | MadMax's distance (+111). **Unchecked**, as above |
 
 Pickup runs `safe_shuttle_y` (at the current X) → `park_x` → `close_y` → `attach_y` (path speed) → `detach_x` (path speed) → `safe_toolhead_y` → back to where the change started. Dropoff runs `detach_x, safe_toolhead_y` → `attach_y` → `park_x` (path speed) → `close_y` (path speed) → `safe_shuttle_y`.
 
 What batch mode shows about the macros on this config:
 - **Two unknown commands**, which Kalico reports and skips: `SET_INPUT_SHAPER` (MadMax's `after_change_gcode`; needs an `[input_shaper]`) and `STOP_TOOL_PROBE_CRASH_DETECTION` (MadMax's `dropoff_gcode`; only `[tool_probe_endstop]` registers it, and MadMax's own Beacon config leaves that out too). The test fails if another one appears.
-- **The empty carriage goes below Y 0 away from the docks.** It travels at `safe_shuttle_y` (−43.96) along X, and after `UNSELECT_TOOL` it returns diagonally from the dock. Every other move below Y 0 is at a dock's park or detach X.
+- **The empty carriage goes below Y 0 away from the docks.** It travels at `safe_shuttle_y` (−46.96) along X, and after `UNSELECT_TOOL` it returns diagonally from the dock. Every other move below Y 0 is at a dock's park or detach X.
 - **The timeline's `tool` is the active extruder, not what's on the carriage.** klipper-toolchanger switches the extruder before the pickup moves, so the empty carriage's approach to a dock is already labelled with the new tool.
 - **No tool detection yet.** MadMax starts by reading a `[gcode_button tool<n>_detect]` per tool. The O2S inputs for that aren't decided, so `toolchanger.cfg` starts with no tool on the carriage, as in the model.
 

@@ -4,7 +4,7 @@
     python3 cad/motion/render_frames.py prepare            # groups + ONE mesh export + frames.json (FreeCAD GUI, xvfb)
     python3 cad/motion/render_frames.py submit [--dry-run] # the frames go to the batch lane (Blender, GPU)
     python3 cad/motion/render_frames.py encode <frames dir> [--out notes/reference/....mp4]
-    python3 cad/motion/render_frames.py stills --at 10.3,-85.96 # AC5: full-size stills of the frames at a printer XY
+    python3 cad/motion/render_frames.py stills --at 10.3,-88.96 # AC5: full-size stills of the frames at a printer XY
 
 How:
   1. Groups: cad/motion/play.py's groups file (sweep_toolhead.py's plan stage, cached): bed, gantry, belt, carriage,
