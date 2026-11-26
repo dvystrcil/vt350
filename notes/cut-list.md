@@ -20,14 +20,14 @@ Lengths are the bar's long axis in mm; the names are the model's labels.
 | 2040 | 660 | 2 | Front uprights, Z −10..650 (lite-46) |
 | 2040 | 470 | 1 | Front bottom bar under the Backbone's front holes |
 | 2040 | **567** | 2 | Gantry sides (lite-78: was 550) |
-| 2040 | 430 | 2 | Z posts (carry the front Z rails); **440 if #243 raises the gantry** |
+| 2040 | **440** | 2 | Z posts (carry the front Z rails); was 430: #243 raises the gantry 10.3 mm (owner, 2026-11-25) |
 | 2040 | **567** | 2 | E-box outer side rails, top + bottom (lite-46; lite-78: was 550) |
 | 2040 | 740 | 1 | E-box rear outer upright, Z −50..690 (lite-47) |
 | 2020 | 740 | 1 | E-box front outer upright, Z −50..690 (lite-47) |
 | 2020 | 660 | 2 | E-box inner uprights, front + rear (lite-53) |
 | 2020 | **567** | 2 | E-box inner cross members, top + bottom (lite-53; lite-78: was 550) |
 | 2020 | 470 | 1 | Dock bar (lite-31/32, #19) |
-| 2020 | 430 | 1 | Rear vertical below the gantry; **440 if #243 raises the gantry** |
+| 2020 | **440** | 1 | Rear vertical below the gantry; was 430: #243 (owner, 2026-11-25) |
 | 2020 | 340 | 1 | Gantry rear |
 | 2020 | 470 | 1 | Bed frame |
 | 2020 | 332 | 1 | Bed frame |
@@ -42,13 +42,13 @@ Lengths are the bar's long axis in mm; the names are the model's labels.
 | 2040 | **547** | 2 | E-box door, rails (lite-56; lite-78: was 530) |
 
 **Totals (38 bars: 30 frame, the same 30 lite-48 rebuilt, + 8 door):** 4040: 4 × 660 + 4 × 567.
-2040: 5 × 740 + 4 × 660 + 4 × 567 + 3 × 470 + 2 × 547 + 2 × 430. 2020: 740 + 2 × 660 + 2 × 567 + 2 × 470 + 430 + 340 + 332.
+2040: 5 × 740 + 4 × 660 + 4 × 567 + 3 × 470 + 2 × 547 + 2 × 440. 2020: 740 + 2 × 660 + 2 × 567 + 2 × 470 + 440 + 340 + 332.
 
 Not extrusions, but part of the same order:
 - **Y rails: 2 × Hiwin MGN9H 490, one piece** ([Motion Constrained](https://motionconstrained.com/store/hiwin-linear-guides/mgn-series/mgn-linear-guide-sets/hiwin-mgn9hz0c-long-block-linear-guides/); vt350#291, from lite-78). They replace the owned Berserker 400s + 73.9 mm front extensions (lite-9), which go to Z. The frame front moves 17 mm forward for them: the extrusion lengths here change with lite-78.
 - **X beam: Carbonara 350, 430 mm** CF tube (replaces the 2020).
 - **Z rails: 3 × MGN9 400** (3 owned Berserkers: the third bought 2026-11-25; owner 2026-11-22); **Z motors: 3 × 400 mm integrated lead screw** (lite-10).
-- **Machining: the 4 gantry-joint holes in the uprights at the gantry's height** (Z 420–440 since lite-10; Z 430–450 if #243 raises it).
+- **Machining: the 4 gantry-joint holes in the uprights at the gantry's height** (Z 430.3–450.3 with #243's +10.3 mm raise, owner 2026-11-25; Z 420–440 before).
 
 ## Before ordering (stage issue #7)
 
@@ -57,9 +57,10 @@ Not extrusions, but part of the same order:
 - [ ] Machining list per bar added here.
 - [x] Dock bar: profile, length, height and joints decided (lite-31/32, #19 AC7; see below).
 - [ ] Z post joints decided (lite-6 placeholder).
-- [ ] Gantry height decided (#243): today Z 420–440, or 10.3 mm higher for ~345.6 mm of print height with 10 mm of
-      Z overtravel kept. Changes the Z posts and the rear 2020 vertical (430 → 440) and the gantry-joint holes in the
-      verticals (+50 → +60 mm over stock). Owner, 2026-11-18: settle it before the frame is ordered.
+- [x] Gantry height decided (#243): **raise it 10.3 mm** (owner, 2026-11-25), to Z 430.3–450.3: ~344.7 mm of print
+      height, ~10.9 mm of Z overtravel left for a shorter head. The Z posts and the rear 2020 vertical go 430 → 440 and
+      the gantry-joint holes in the verticals +50 → +60 mm over stock. The outside height doesn't change. The lite-80
+      pass that raises the gantry in the model confirms the exact lengths.
 - [ ] Re-measured from the model after any further frame change (last: lite-68, 2026-11-18; lite-78's +17 applied
       2026-11-25 from its splice log). Re-run
       `frame_plus100.py`'s cut-list section, or measure in FreeCAD.

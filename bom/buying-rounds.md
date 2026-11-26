@@ -25,13 +25,13 @@ Stages #7, #8, #9. Priced cost: **no priced rows yet**, plus 21 unpriced row(s).
 | 2040 extrusion, 660 mm | 4 | - | - | #7 | - |
 | 2040 extrusion, 567 mm | 4 | - | - | #7 | - |
 | 2040 extrusion, 470 mm | 1 | - | - | #7 | - |
-| 2040 extrusion, 430 mm | 2 | - | - | #7 | - |
+| 2040 extrusion, 440 mm | 2 | - | - | #7 | - |
 | 2040 extrusion, 740 mm | 1 | - | - | #7 | - |
 | 2020 extrusion, 740 mm | 1 | - | - | #7 | - |
 | 2020 extrusion, 660 mm | 2 | - | - | #7 | - |
 | 2020 extrusion, 567 mm | 2 | - | - | #7 | - |
 | 2020 extrusion, 470 mm | 2 | - | - | #7 | - |
-| 2020 extrusion, 430 mm | 1 | - | - | #7 | - |
+| 2020 extrusion, 440 mm | 1 | - | - | #7 | - |
 | 2020 extrusion, 340 mm | 1 | - | - | #7 | - |
 | 2020 extrusion, 332 mm | 1 | - | - | #7 | - |
 | 2040 extrusion, 740 mm (door frame verticals) | 4 | - | - | #7 | - |
