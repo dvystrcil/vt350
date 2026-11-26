@@ -442,3 +442,12 @@ had read at the start, and assigned it back with `o.Shape = ...`. Assigning a sh
 new collisions with the gantry bars. Its box check passed because it compared against the *old* box. Fix: when a
 part is reshaped after a step has moved it, build the new shape from the moved one (or translate it by the move), and
 check its box against the box the plan expects, never "unchanged".
+
+## `Wire.makePipe` can segfault; sweep with `makePipeShell` (2026-11-25, lite-81)
+
+Sweeping a circle along a long approximated B-spline (a bowden route, ~400 points smoothed and fitted) with
+`path.makePipe(face)` crashed FreeCAD with SIGSEGV inside `BRepFill_Pipe::MakeShape`: the process dies, no exception,
+and a pass's `try` can't catch it (the log just stops after the last check). `path.makePipeShell([profile], True, True)`
+on the same path raises `Part.OCCError` instead, which a pass can catch and fall back from (lite-81 falls back to a
+chain of cylinders and spheres along the resampled points). If a headless run's log stops with no `FAILED` line, run
+it again with stdout kept: the crash trace names the OCC call.
