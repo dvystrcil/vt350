@@ -1,0 +1,33 @@
+[    3.0s] opened /home/dan/Documents/VT350/vt350-lite-79.FCStd
+[   14.6s] model /home/dan/Documents/VT350/vt350-lite-79.FCStd (read-only); 1554 solids; layout from dock_lever.py: plunger X nozzle -4.0, Z 463.0, lane X -24.0, Z 672.0
+[   15.4s] T0: 133 head solids in its dock
+[  392.7s] ok   T0 plunger: ok (face Y -63.6056332491251 parked, flat within 1.5 over +-3 mm; still under the tip detached; block/rod gap 1.97, needs >= 1.0)
+[  392.7s]       face parked: 9/9 rays hit, Y -63.61..-63.03 (HubHousing V5 With Logo (1))
+[  392.7s]       face large opening: 9/9 rays hit, Y -69.61..-69.03 (HubHousing V5 With Logo (1))
+[  392.7s]       face detached +X: 9/9 rays hit, Y -69.62..-69.03 (HubHousing V5 With Logo (1))
+[  392.7s]       face detached -X: 9/9 rays hit, Y -69.28..-69.03 (HubHousing V5 With Logo (1))
+[  392.7s]       block to its head: parked 3.0, large opening 1.97, detached +X 1.97, detached -X 1.97
+[  398.5s] ok   T0 cable: clear (smallest gap 4.50, needs >= 1.0; 0 route points where a moving part could reach)
+[  398.5s]          4.50  Roof felt liner, inner
+[  398.5s]          5.00  Roof felt (pad 1)
+[  399.3s] T1: 124 head solids in its dock
+[ 1693.5s] ok   T1 plunger: ok (face Y -63.6056332491251 parked, flat within 1.5 over +-3 mm; still under the tip detached; block/rod gap 1.97, needs >= 1.0)
+[ 1693.5s]       face parked: 9/9 rays hit, Y -63.61..-63.03 (HubHousing V5 With Logo (1)0)
+[ 1693.5s]       face large opening: 9/9 rays hit, Y -69.61..-69.03 (HubHousing V5 With Logo (1)0)
+[ 1693.5s]       face detached +X: 9/9 rays hit, Y -69.62..-69.03 (HubHousing V5 With Logo (1)0)
+[ 1693.5s]       face detached -X: 9/9 rays hit, Y -69.28..-69.03 (HubHousing V5 With Logo (1)0)
+[ 1693.5s]       block to its head: parked 3.0, large opening 1.97, detached +X 1.97, detached -X 1.97
+[ 1695.7s] ok   T1 cable: clear (smallest gap 4.50, needs >= 1.0; 0 route points where a moving part could reach)
+[ 1695.7s]          4.50  Roof felt liner, inner
+[ 1695.7s]          5.00  Roof felt (pad 1)
+[ 1696.6s] T2: 124 head solids in its dock
+[ 3376.4s] ok   T2 plunger: ok (face Y -63.60563324912414 parked, flat within 1.5 over +-3 mm; still under the tip detached; block/rod gap 1.97, needs >= 1.0)
+[ 3376.4s]       face parked: 9/9 rays hit, Y -63.61..-63.03 (HubHousing V5 With Logo (1) )
+[ 3376.4s]       face large opening: 9/9 rays hit, Y -69.61..-69.03 (HubHousing V5 With Logo (1) )
+[ 3376.4s]       face detached +X: 9/9 rays hit, Y -69.62..-69.03 (HubHousing V5 With Logo (1) )
+[ 3376.4s]       face detached -X: 9/9 rays hit, Y -69.28..-69.03 (HubHousing V5 With Logo (1) )
+[ 3376.4s]       block to its head: parked 3.0, large opening 1.97, detached +X 1.97, detached -X 1.97
+[ 3378.6s] ok   T2 cable: clear (smallest gap 4.50, needs >= 1.0; 0 route points where a moving part could reach)
+[ 3378.6s]          4.50  Roof felt liner, inner
+[ 3378.6s]          5.00  Roof felt (pad 1)
+[ 3379.5s] T3: 124 head solids in its dock

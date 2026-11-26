@@ -1,0 +1,33 @@
+[    0.0s] vt350#312 dock lever: each parked head holds its arm up through a plunger and a pull cable; the arm drops when the head leaves (read-only; dock_lever.py)
+[    0.0s] plunger X nozzle -4.0, Z 463.0, free reach 15.0 behind the bar (Y -72.5); head front Y -63.3; lane X bundle -24.0, Z 672.0; tab 44.0 in front of the hinge; housing bends R 25.0, mu 0.15
+[    2.3s] T0: ok  closest 5.9 (T0 arm up (own; housing)), next 9.5 (T0 arm up (own; housing))
+[    2.3s]     arm ~19.9 g; moment 81.3 N.mm (weight 26.0, bundle 55.3 at 0.365 N); wire 1.85 N at the tab; housing 703 mm, bends 154 deg (R >= 25.0), friction x1.65 -> 3.05 N at the plunger
+[    2.3s]     tab lift 4.05 mm; plunger in 5.8 parked (1.7 spare), 11.8 at the large opening; push on the parked head 5.51 N, at the large opening 7.91 N (compliance preload 3.81 N); dropping, the arm pulls 1.12 N at the plunger end
+[    4.4s] T1: ok  closest 5.9 (T1 arm up (own; housing)), next 9.5 (T1 arm up (own; housing))
+[    4.4s]     arm ~19.9 g; moment 78.3 N.mm (weight 26.0, bundle 52.3 at 0.345 N); wire 1.78 N at the tab; housing 703 mm, bends 154 deg (R >= 25.0), friction x1.65 -> 2.94 N at the plunger
+[    4.4s]     tab lift 4.05 mm; plunger in 5.8 parked (1.7 spare), 11.8 at the large opening; push on the parked head 5.37 N, at the large opening 7.77 N (compliance preload 3.67 N); dropping, the arm pulls 1.08 N at the plunger end
+[    6.5s] T2: ok  closest 5.9 (T2 arm up (own; housing)), next 9.5 (T2 arm up (own; housing))
+[    6.5s]     arm ~19.9 g; moment 76.4 N.mm (weight 26.0, bundle 50.5 at 0.333 N); wire 1.74 N at the tab; housing 703 mm, bends 154 deg (R >= 25.0), friction x1.65 -> 2.87 N at the plunger
+[    6.5s]     tab lift 4.05 mm; plunger in 5.8 parked (1.7 spare), 11.8 at the large opening; push on the parked head 5.29 N, at the large opening 7.69 N (compliance preload 3.59 N); dropping, the arm pulls 1.05 N at the plunger end
+[    8.6s] T3: ok  closest 5.9 (T3 arm up (own; housing)), next 9.5 (T3 arm up (own; housing))
+[    8.6s]     arm ~19.9 g; moment 78.4 N.mm (weight 26.0, bundle 52.4 at 0.346 N); wire 1.78 N at the tab; housing 703 mm, bends 154 deg (R >= 25.0), friction x1.65 -> 2.94 N at the plunger
+[    8.6s]     tab lift 4.05 mm; plunger in 5.8 parked (1.7 spare), 11.8 at the large opening; push on the parked head 5.38 N, at the large opening 7.78 N (compliance preload 3.68 N); dropping, the arm pulls 1.08 N at the plunger end
+[   10.6s] T4: ok  closest 5.9 (T4 arm up (own; housing)), next 9.5 (T4 arm up (own; housing))
+[   10.6s]     arm ~19.9 g; moment 81.3 N.mm (weight 26.0, bundle 55.3 at 0.365 N); wire 1.85 N at the tab; housing 703 mm, bends 154 deg (R >= 25.0), friction x1.65 -> 3.05 N at the plunger
+[   10.6s]     tab lift 4.05 mm; plunger in 5.8 parked (1.7 spare), 11.8 at the large opening; push on the parked head 5.51 N, at the large opening 7.91 N (compliance preload 3.81 N); dropping, the arm pulls 1.12 N at the plunger end
+[   10.6s] failure cases:
+[   12.1s]    normal (arms of parked heads up): T3 parked, arm up vs T2 active: 9.0 mm (smallest of 20 pairs; below 0 the bundles brush, which the dancer study's walks already allow)
+[   13.4s]    wire broken: T2 parked with its arm down vs T1 active: -4.8 mm; the bundles press together at 18 of 150 positions
+[   13.4s]    wire broken: T3 parked with its arm down vs T4 active: -4.7 mm; the bundles press together at 24 of 148 positions
+[   13.4s]    wire broken: T1 parked with its arm down vs T2 active: -4.3 mm; the bundles press together at 4 of 152 positions
+[   13.4s]    wire broken: T1 parked with its arm down vs T0 active: -4.1 mm; the bundles press together at 22 of 148 positions
+[   13.4s]    wire broken: T2 parked with its arm down vs T3 active: -4.0 mm; the bundles press together at 10 of 150 positions
+[   13.4s]    wire broken: T3 parked with its arm down vs T2 active: -3.2 mm; the bundles press together at 4 of 152 positions
+[   13.4s]    wire broken: T2 parked with its arm down vs T0 active: -0.7 mm; the bundles press together at 2 of 148 positions
+[   13.4s]    wire broken: T1 parked with its arm down vs T3 active: -0.6 mm; the bundles press together at 1 of 150 positions
+[   13.4s]    wire broken: T2 parked with its arm down vs T4 active: -0.3 mm; the bundles press together at 2 of 148 positions
+[   13.4s]    wire broken: T3 parked with its arm down vs T1 active: -0.2 mm; the bundles press together at 2 of 150 positions
+[   13.4s]    plunger stuck in: the arm stays up with its head out: the reference page's 'cam stalled' case (bowden_arms_reach.py: every position solves)
+[   13.4s] dock lever: ok (travel, forces, room against the bundles and the arms)
+[   13.4s] dock lever, a wire broken: bundles press together (a risk to weigh, not part of the verdict above)
+[   13.5s] wrote /home/dan/Code/vt350-312-arms/cad/data/dock_lever.json
