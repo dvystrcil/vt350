@@ -54,7 +54,7 @@ def walk_spaced(args):
     lx = loop_x(slot, SPACING[name])
     P_down, P_up = np.array([lx, *DESIGN["loop_down"]]), np.array([lx, *DESIGN["loop_up"]])
     roof = roof_span_at(slot, EI, lx)
-    key = (slot, name, EI, "now", "slide")
+    key = (slot, name, EI, "lite-80", "slide")
     pts = ba.path(slot, STEP)
     if roof is None: return key, dict(roof=None, walk=[dict(ok=False)] * len(pts), parked=dict(ok=False))
     R = ba.Span(EI, ba.N_HEAD, g1=ba.DOWN)
@@ -166,17 +166,17 @@ def dancer_only():
 
 
 def main():
-    main_jobs = [(s, DESIGN, e, "now", STEP, "slide", None, False) for s in range(1, 6) for e in ba.EIS]
-    main_jobs += [(s, DESIGN, 2000.0, "now", STEP, "slide", None, True) for s in (1, 3, 5)]
-    main_jobs += [(s, DESIGN, 2000.0, "now", STEP, "tied", None, False) for s in (1, 3, 5)]
+    main_jobs = [(s, DESIGN, e, "lite-80", STEP, "slide", None, False) for s in range(1, 6) for e in ba.EIS]
+    main_jobs += [(s, DESIGN, 2000.0, "lite-80", STEP, "slide", None, True) for s in (1, 3, 5)]
+    main_jobs += [(s, DESIGN, 2000.0, "lite-80", STEP, "tied", None, False) for s in (1, 3, 5)]
     with Pool(int(os.environ.get("ARMS_WORKERS", "10"))) as pool:
         res = dict(pool.imap_unordered(ba.walk, main_jobs))
         tied = []
         for s in (1, 3, 5):
-            r = res[(s, DESIGN["name"], 2000.0, "now", "tied")]
+            r = res[(s, DESIGN["name"], 2000.0, "lite-80", "tied")]
             ok = [p for p in r["walk"] if p.get("ok")]
             if ok and len(ok) == len(r["walk"]):
-                tied.append((s, DESIGN, 2000.0, "now", STEP, "tied", max(p["L"] for p in ok), False))
+                tied.append((s, DESIGN, 2000.0, "lite-80", STEP, "tied", max(p["L"] for p in ok), False))
         res.update(dict(pool.imap_unordered(ba.walk, tied)))
         spaced = dict(pool.imap_unordered(walk_spaced, [(s, e, n) for n in SPACING for s in range(1, 6) for e in ba.EIS]))
 
@@ -189,10 +189,10 @@ def main():
     spacing = []
     for n, pitch in SPACING.items():
         for e in ba.EIS:
-            rows = ba.summarise(spaced, dict(DESIGN, name=n), range(1, 6), "now", e, "slide")
+            rows = ba.summarise(spaced, dict(DESIGN, name=n), range(1, 6), "lite-80", e, "slide")
             g = lambda key, f=min: f(r[key] for r in rows.values())
             spacing.append(dict(layout=n, loop_x=[round(loop_x(s, pitch)) for s in range(1, 6)], EI=int(e),
-                                ok=ba.passes(rows, DESIGN, "now"), takeup=g("takeup_travel", max),
+                                ok=ba.passes(rows, DESIGN, "lite-80"), takeup=g("takeup_travel", max),
                                 lock_R=g("lock_minR"), body_R=g("body_minR"), roof_R=g("roof_minR"),
                                 touch_pct=g("touch_parked_pct", max), to_parked=g("to_parked_min")))
             print(spacing[-1], flush=True)

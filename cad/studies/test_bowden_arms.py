@@ -14,12 +14,13 @@ def num_grad(f, v, h=1e-5):
 
 
 class TestGeometry(unittest.TestCase):
-    def test_dock_lock_is_lite79s_lock(self):
+    def test_dock_lock_is_lite80s_lock(self):
         # lite-79 probe: slot 1's lock box X -414.82..-404.02 (centre -409.42), Y -12.71..-0.68; the channel sits
-        # +0.615 in Y from the box centre (lite-35: box centre 10.305, lrod/rod DOCK_Y 10.92)
+        # +0.615 in Y from the box centre (lite-35: box centre 10.305, lrod/rod DOCK_Y 10.92). lite-80 moved the
+        # docks 3 mm forward (#243).
         x, y = ba.dock_lock(1)
         self.assertAlmostEqual(x, -409.42, places=2)
-        self.assertAlmostEqual(y, (-12.71 - 0.68) / 2 + 0.615, delta=0.02)
+        self.assertAlmostEqual(y, (-12.71 - 0.68) / 2 + 0.615 - 3.0, delta=0.02)
         self.assertAlmostEqual(ba.dock_lock(5)[0], (-85.42 - 74.62) / 2, places=2)
 
     def test_path_covers_the_printable_area(self):

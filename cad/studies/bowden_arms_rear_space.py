@@ -1,5 +1,5 @@
 # vt350#312: is there room behind the gantry's rear stop for each tool's slack loop? Headless, read-only, never saves:
-#   VT350_REPO=$PWD $APP freecadcmd $PWD/cad/studies/bowden_arms_rear_space.py     (VT350_MODEL to pick; default lite-79)
+#   VT350_REPO=$PWD $APP freecadcmd $PWD/cad/studies/bowden_arms_rear_space.py     (VT350_MODEL to pick; default lite-80)
 # Log: $VT350_WORK/logs/bowden_arms_rear_space.log (+ .json).
 #
 # The owner's lines from the EMU to the roof are static, so the roof exit clamps each bundle and up to ~315 mm of slack
@@ -23,13 +23,13 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path[:0] = [HERE] + [p for p in (os.path.join(os.path.dirname(os.path.dirname(HERE)), d)
                                      for d in ("cad/scripts", "platform/freecad")) if os.path.isdir(p)]
 
-MODEL = os.environ.get("VT350_MODEL", "/home/dan/Documents/VT350/vt350-lite-79.FCStd")
+MODEL = os.environ.get("VT350_MODEL", "/home/dan/Documents/VT350/vt350-lite-80.FCStd")
 EXIT_X = {1: -409.7, 2: -324.54, 3: -248.42, 4: -156.42, 5: -80.3}   # lanyard/lrod.py (lite70_roof_exit_low.json)
 EXIT_Y, CEIL = 449.0, 679.0
 SPAN, DX = 40.0, 10.0              # each tool's X band (a U turning in the back wall's plane is ~100 wide at R 51)
 Z_LO, DZ = float(os.environ.get("REAR_Z_LO", "440")), 10.0   # REAR_Z_LO: how far down to look
 Y_FROM, Y_TO = 380.0, 560.0
-RAISE = {"now": 0.0, "+10.3": 10.3}
+RAISE = {"lite-80": 0.0}           # run on lite-80: the gantry is already at #243's +10
 BUNDLE = ("Bowden ", "O2S USB cable", "Zip tie, black (2.5 mm) slot")
 
 
@@ -86,7 +86,7 @@ def main(p):
             t = FreeCAD.BoundBox(b); t.move(V(0, 0, dz_top)); b.add(t)
             if b.YMax > Y_FROM and b.intersect(region): boxes.append((f"bed part {lab.get(n, n)}, over its Z travel", b))
         env[rname] = boxes
-        for what, b in boxes[:3] + [bx for bx in boxes[3:] if rname == "now"]:
+        for what, b in boxes[:3] + [bx for bx in boxes[3:] if rname == "lite-80"]:
             p.log(f"   moving ({rname}) {what} at the rear stop: X {b.XMin:.1f}..{b.XMax:.1f}, Y {b.YMin:.1f}..{b.YMax:.1f}, "
                   f"Z {b.ZMin:.1f}..{b.ZMax:.1f}")
 
@@ -127,14 +127,14 @@ def main(p):
         result[slot] = per
         p.log(f"T{slot - 1} (roof exit X {ex}, band {xs[0]:.0f}..{xs[-1]:.0f}): free Y depth behind the moving parts, by Z")
         for i, z in enumerate(zs):
-            a, b = per["now"][i], per["+10.3"][i]
-            p.log(f"   Z {z:5.0f}: now {a['min_free']:6.1f} (exit X {a['exit_free']:6.1f}; wall: {a['min_wall']}; "
-                  f"moving back Y {a['moving_back']:.1f})   +10.3 {b['min_free']:6.1f}")
+            a = per["lite-80"][i]
+            p.log(f"   Z {z:5.0f}: {a['min_free']:6.1f} (exit X {a['exit_free']:6.1f}; wall: {a['min_wall']}; "
+                  f"moving back Y {a['moving_back']:.1f})")
     # the deepest U each tool could hang: the lowest Z down to which the band keeps at least NEED free, from the arm
     for need in (12.0, 20.0, 30.0):
         line = []
         for slot in EXIT_X:
-            rows = result[slot]["+10.3"]
+            rows = result[slot]["lite-80"]
             ok = [r["z"] for r in rows if r["min_free"] >= need]
             # contiguous from the ceiling down
             low = None
@@ -142,7 +142,7 @@ def main(p):
                 if r["min_free"] >= need: low = r["z"]
                 else: break
             line.append(f"T{slot - 1} down to Z {low:.0f}" if low is not None else f"T{slot - 1} none")
-        p.log(f"with >= {need:.0f} mm free in Y over the whole band (gantry +10.3): " + "; ".join(line))
+        p.log(f"with >= {need:.0f} mm free in Y over the whole band (lite-80): " + "; ".join(line))
     p.dump(dict(model=MODEL, exit_x=EXIT_X, span=SPAN, result=result,
                 envelope={r: [(w, [b.XMin, b.XMax, b.YMin, b.YMax, b.ZMin, b.ZMax]) for w, b in v] for r, v in env.items()}))
     p.finish([])
