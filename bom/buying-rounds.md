@@ -9,7 +9,7 @@ What is still to buy, round by round in build order, for **2 heads** ('per head'
 | 1. Frame | #7, #8, #9 | 21 | - | 21 | 11 |
 | 2. Motion | #10, #11 | 14 | USD 179.97 | 13 | 5 |
 | 3. Electronics | #13 | 7 | - | 7 | 5 |
-| 4. Toolheads | #12 | 21 | USD 3.51 | 20 | 6 |
+| 4. Toolheads | #12 | 22 | USD 3.51 | 21 | 5 |
 | 5. Enclosure and calibration | #14, #15 | 4 | - | 4 | 17 |
 
 ## Round 1: Frame
@@ -115,7 +115,7 @@ To decide before buying this round:
 
 The toolchanger and the heads. Per-head rows are costed for every head; one head's worth is largely owned already.
 
-Stages #12. Priced cost: **USD 3.51**, plus 20 unpriced row(s).
+Stages #12. Priced cost: **USD 3.51**, plus 21 unpriced row(s).
 
 | Item | To buy | Unit price | Cost | Stage | Vendor |
 |---|---|---|---|---|---|
@@ -138,6 +138,7 @@ Stages #12. Priced cost: **USD 3.51**, plus 20 unpriced row(s).
 | Vindr Berserker 4010B-24V-P blower (part cooling) | 2 | - | - | #12 | - |
 | Phaetus Dragon ACE Volcano hotend | 1 | - | - | #12 | - |
 | TC Undertaker nozzle, 0.6 mm | 1 | - | - | #12 | - |
+| Crossbow CNC filament cutter (DW-Tas, aluminium) | 1 | - | - | #12 | West3D |
 | Neopixel LED PCB (RGBW preferred) | 6 | - | - | #12 | - |
 | 28 AWG wire, red / black / blue, ~400 mm each per head | 2 | - | - | #12 | - |
 
@@ -146,7 +147,6 @@ To decide before buying this round:
 - Dock bar fixings: M5 screws (#12)
 - Dock keyslot-plate screws: M3 SHCS (#12)
 - Berserker VINDR 2510A-24V-A axial fan (hotend) (#12)
-- Crossbow CNC filament cutter (DW-Tas, aluminium) (#12)
 - O2S USB cable, ~3 m (#12)
 - PTFE bowden, OD 4.12 mm, ~0.6 m (#12)
 
