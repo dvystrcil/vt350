@@ -552,5 +552,73 @@ class MarkersMatchTheRealTools(unittest.TestCase):
         self.assertRegex(out, self.marker_of("print_area"))
 
 
+
+class SkipUnchanged(unittest.TestCase):
+    """#324: a link whose inputs match its last successful run is reused; --fresh forces a link and its downstream."""
+
+    def setUp(self):
+        import json
+        self.json = json
+        self.tmp = tempfile.TemporaryDirectory(); self.addCleanup(self.tmp.cleanup); self.root = self.tmp.name
+        self.models = os.path.join(self.root, "models"); os.makedirs(self.models)
+        for rel in ("cad/studies/sweep_toolhead.py", "cad/studies/z_sweep.py", "cad/studies/print_area.py"):
+            p = os.path.join(self.root, rel); os.makedirs(os.path.dirname(p), exist_ok=True); open(p, "w").write("# v1\n")
+        self.record = os.path.join(self.root, "cad/data/logs/refresh_inputs.json")
+
+    def index(self, n, x=0.0):
+        parts = [{"name": "a", "label": "2040 (1)", "material": "Aluminum",
+                  "bbox": {"xmin": x, "xmax": x + 40, "ymin": 0, "ymax": 20, "zmin": 0, "zmax": 500}}]
+        self.json.dump({"parts": parts}, open(os.path.join(self.models, f"vt350-lite-{n}.parts.json"), "w"))
+
+    def gate(self, n, fresh=None):
+        return rf.Gate(n, root=self.root, models=self.models, fresh=fresh, record=self.record)
+
+    def ran(self, g, names):
+        for name in names:
+            s = rf.Step(name)
+            if not g(s): g.done(s)
+        return {k: v[0] for k, v in g.verdicts.items()}
+
+    def test_skip_colour_only_pass_reuses_the_sweeps(self):
+        self.index(78); self.index(79)                       # lite-79: colours only, the same boxes
+        first = self.ran(self.gate(78), ["sweep", "z_sweep"])
+        self.assertEqual(first, {"sweep": "run", "z_sweep": "run"})
+        self.assertEqual(self.ran(self.gate(79), ["sweep", "z_sweep"]), {"sweep": "reused", "z_sweep": "reused"})
+
+    def test_skip_moved_part_reruns(self):
+        self.index(78); self.index(80, x=3.0)
+        self.ran(self.gate(78), ["sweep"])
+        self.assertEqual(self.ran(self.gate(80), ["sweep"]), {"sweep": "run"})
+
+    def test_skip_code_change_reruns(self):
+        self.index(78); self.ran(self.gate(78), ["sweep"])
+        open(os.path.join(self.root, "cad/studies/sweep_toolhead.py"), "w").write("# v2\n")
+        self.assertEqual(self.ran(self.gate(78), ["sweep"]), {"sweep": "run"})
+
+    def test_skip_test_files_and_driver_dont_count(self):
+        self.index(78); self.ran(self.gate(78), ["sweep"])
+        p = os.path.join(self.root, "cad/scripts"); os.makedirs(p, exist_ok=True)
+        open(os.path.join(p, "test_new.py"), "w").write("x"); open(os.path.join(p, "refresh.py"), "w").write("x")
+        self.assertEqual(self.ran(self.gate(78), ["sweep"]), {"sweep": "reused"})
+
+    def test_skip_fresh_forces_link_and_downstream(self):
+        self.index(78)
+        self.ran(self.gate(78), ["sweep", "z_sweep", "print_area", "test_print_area"])
+        got = self.ran(self.gate(78, fresh=["z_sweep"]), ["sweep", "z_sweep", "print_area", "test_print_area"])
+        self.assertEqual(got, {"sweep": "reused", "z_sweep": "forced", "print_area": "forced", "test_print_area": "forced"})
+        got = self.ran(self.gate(78, fresh=[]), ["sweep"])
+        self.assertEqual(got, {"sweep": "forced"})
+
+    def test_skip_every_link_declared(self):
+        decl = rf.inputs(80, root=self.root, models=self.models)
+        self.assertEqual(sorted(decl), sorted(rf.ORDER))
+        self.assertEqual(sorted(rf.DEPS), sorted(rf.ORDER))
+
+    def test_skip_failed_link_not_recorded(self):
+        self.index(78)
+        g = self.gate(78); s = rf.Step("sweep")
+        self.assertFalse(g(s))                               # it would run; it fails, so done() is never called
+        self.assertEqual(self.ran(self.gate(78), ["sweep"]), {"sweep": "run"})
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

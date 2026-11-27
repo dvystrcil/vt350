@@ -15,6 +15,10 @@ jobs:
         run: python3 cad/scripts/test_refresh.py 2>&1 | tee test.log
       - name: Confirm every test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test.log && tail -1 test.log | grep -qx 'OK'
+      - name: Test the link fingerprints (skip unchanged links, #324; plain python3)
+        run: python3 platform/chain/test_fingerprint.py 2>&1 | tee test-fingerprint.log
+      - name: Confirm every fingerprint test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-fingerprint.log && tail -1 test-fingerprint.log | grep -qx 'OK'
       - name: Test where derive_stls reads its models from (the batch lane sets VT350_MODELS)
         run: python3 cad/scripts/test_derive_stls.py 2>&1 | tee test-derive.log
       - name: Confirm every derive_stls test ran
