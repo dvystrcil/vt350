@@ -1,52 +1,42 @@
-[    0.0s] model /home/dan/Documents/VT350/vt350-lite-79.FCStd (read-only)
+[    0.0s] model /home/dan/Documents/VT350/vt350-lite-80.FCStd (read-only)
 [    0.0s] design (bowden_arms_reach.py): under the bar, arm 240, down Z 640; hinge (Y, Z) [490.0, 640.0], arm 240.0, loop up [251.01, 662.0], down [250.0, 640.0]
 [    0.0s] arm 8.0 wide x 12.0 deep, centre -12.0 in X from its bundle; loop ring R 14.0/10.0 x 10.0; cam envelope R 16.0 at 40.0 from the hinge (a guess: the cam isn't designed yet)
-[    3.2s] opened /home/dan/Documents/VT350/vt350-lite-79.FCStd
-[   54.2s] fixed solids 1035; left out: 443 moving, 46 sweep_toolhead exclusions, 30 bundle solids (Bowden Left, Bowden Right, Bowden slot 2, ...)
-[   54.7s] arms up: box [-429.7, -66.3, 246.0, 490.5, 605.7, 676.0]
-[   55.3s]    moving (now): gantry at its rear stop: Y 388.7..440.0, Z 411.5..448.5
-[   55.3s]    moving (now): carriage + carried Left head at the rear stop, swept over X: Y 336.4..423.6, Z 380.6..550.1
-[   55.3s]    moving (now): carriage + carried Right head at the rear stop, swept over X: Y 336.4..423.6, Z 380.6..550.1
-[   56.0s]    moving (+10.3): gantry at its rear stop: Y 388.7..440.0, Z 421.8..458.8
-[   56.0s]    moving (+10.3): carriage + carried Left head at the rear stop, swept over X: Y 336.4..423.6, Z 390.9..560.4
-[   56.0s]    moving (+10.3): carriage + carried Right head at the rear stop, swept over X: Y 336.4..423.6, Z 390.9..560.4
-[   62.8s] ok   arms up: clear (smallest gap 3.00, needs >= 1.0)
-[   62.8s]          3.00  Roof felt liner, inner
-[   62.8s]          3.13  4040 (1)004 one piece X -520..140 (lite-53)
-[   62.8s]          3.50  Roof felt (pad 1)
-[   62.8s]         60.39  moving, gantry now: carriage + carried Left head at the rear stop, swept over X (box, conservative)
-[   62.8s]         50.83  moving, gantry +10.3: carriage + carried Left head at the rear stop, swept over X (box, conservative)
-[   65.5s] ok   arm 1 down: clear (smallest gap 3.00, needs >= 1.0)
-[   65.5s]          3.00  Roof felt liner, inner
-[   65.5s]          3.13  4040 (1)004 one piece X -520..140 (lite-53)
-[   65.5s]          3.50  Roof felt (pad 1)
-[   65.5s]         83.95  moving, gantry now: carriage + carried Left head at the rear stop, swept over X (box, conservative)
-[   65.5s]         73.65  moving, gantry +10.3: carriage + carried Left head at the rear stop, swept over X (box, conservative)
-[   68.3s] ok   arm 2 down: clear (smallest gap 3.00, needs >= 1.0)
-[   68.3s]          3.00  Roof felt liner, inner
-[   68.3s]          3.13  4040 (1)004 one piece X -520..140 (lite-53)
-[   68.3s]          3.50  Roof felt (pad 1)
-[   68.3s]         83.95  moving, gantry now: carriage + carried Left head at the rear stop, swept over X (box, conservative)
-[   68.3s]         73.65  moving, gantry +10.3: carriage + carried Left head at the rear stop, swept over X (box, conservative)
-[   71.0s] ok   arm 3 down: clear (smallest gap 3.00, needs >= 1.0)
-[   71.0s]          3.00  Roof felt liner, inner
-[   71.0s]          3.13  4040 (1)004 one piece X -520..140 (lite-53)
-[   71.0s]          3.50  Roof felt (pad 1)
-[   71.0s]         83.95  moving, gantry now: carriage + carried Left head at the rear stop, swept over X (box, conservative)
-[   71.0s]         73.65  moving, gantry +10.3: carriage + carried Left head at the rear stop, swept over X (box, conservative)
-[   73.8s] ok   arm 4 down: clear (smallest gap 3.00, needs >= 1.0)
-[   73.8s]          3.00  Roof felt liner, inner
-[   73.8s]          3.13  4040 (1)004 one piece X -520..140 (lite-53)
-[   73.8s]          3.50  Roof felt (pad 1)
-[   73.8s]         83.95  moving, gantry now: carriage + carried Left head at the rear stop, swept over X (box, conservative)
-[   73.8s]         73.65  moving, gantry +10.3: carriage + carried Left head at the rear stop, swept over X (box, conservative)
-[   76.6s] ok   arm 5 down: clear (smallest gap 3.00, needs >= 1.0)
-[   76.6s]          3.00  Roof felt liner, inner
-[   76.6s]          3.13  4040 (1)004 one piece X -520..140 (lite-53)
-[   76.6s]          3.50  Roof felt (pad 1)
-[   76.6s]         83.95  moving, gantry now: carriage + carried Left head at the rear stop, swept over X (box, conservative)
-[   76.6s]         73.65  moving, gantry +10.3: carriage + carried Left head at the rear stop, swept over X (box, conservative)
-[   76.6s] verify: 0 problems
-[   76.6s] DRY RUN (headless): all checks passed, not saved
-[   76.6s] bowden_arms: done (read-only, nothing saved)
-[   76.7s] litepool: peak RSS: workers max 1856 MB, sum 5568 MB; parent 1856 MB
+[    3.5s] opened /home/dan/Documents/VT350/vt350-lite-80.FCStd
+[   58.7s] fixed solids 1035; left out: 443 moving, 46 sweep_toolhead exclusions, 30 bundle solids (Bowden Left, Bowden Right, Bowden slot 2, ...)
+[   59.2s] arms up: box [-429.7, -66.3, 246.0, 490.5, 605.7, 676.0]
+[   59.9s]    moving (lite-80): gantry at its rear stop: Y 388.7..440.0, Z 421.5..458.5
+[   59.9s]    moving (lite-80): carriage + carried Left head at the rear stop, swept over X: Y 336.4..423.6, Z 390.6..560.1
+[   59.9s]    moving (lite-80): carriage + carried Right head at the rear stop, swept over X: Y 336.4..423.6, Z 390.6..560.1
+[   63.2s] ok   arms up: clear (smallest gap 3.00, needs >= 1.0)
+[   63.2s]          3.00  Roof felt liner, inner
+[   63.2s]          3.13  4040 (1)004 one piece X -520..140 (lite-53)
+[   63.2s]          3.50  Roof felt (pad 1)
+[   63.2s]         51.10  moving, gantry lite-80: carriage + carried Left head at the rear stop, swept over X (box, conservative)
+[   66.2s] ok   arm 1 down: clear (smallest gap 3.00, needs >= 1.0)
+[   66.2s]          3.00  Roof felt liner, inner
+[   66.2s]          3.13  4040 (1)004 one piece X -520..140 (lite-53)
+[   66.2s]          3.50  Roof felt (pad 1)
+[   66.2s]         73.95  moving, gantry lite-80: carriage + carried Left head at the rear stop, swept over X (box, conservative)
+[   69.4s] ok   arm 2 down: clear (smallest gap 3.00, needs >= 1.0)
+[   69.4s]          3.00  Roof felt liner, inner
+[   69.4s]          3.13  4040 (1)004 one piece X -520..140 (lite-53)
+[   69.4s]          3.50  Roof felt (pad 1)
+[   69.4s]         73.95  moving, gantry lite-80: carriage + carried Left head at the rear stop, swept over X (box, conservative)
+[   72.6s] ok   arm 3 down: clear (smallest gap 3.00, needs >= 1.0)
+[   72.6s]          3.00  Roof felt liner, inner
+[   72.6s]          3.13  4040 (1)004 one piece X -520..140 (lite-53)
+[   72.6s]          3.50  Roof felt (pad 1)
+[   72.6s]         73.95  moving, gantry lite-80: carriage + carried Left head at the rear stop, swept over X (box, conservative)
+[   75.8s] ok   arm 4 down: clear (smallest gap 3.00, needs >= 1.0)
+[   75.8s]          3.00  Roof felt liner, inner
+[   75.8s]          3.13  4040 (1)004 one piece X -520..140 (lite-53)
+[   75.8s]          3.50  Roof felt (pad 1)
+[   75.8s]         73.95  moving, gantry lite-80: carriage + carried Left head at the rear stop, swept over X (box, conservative)
+[   79.2s] ok   arm 5 down: clear (smallest gap 3.00, needs >= 1.0)
+[   79.2s]          3.00  Roof felt liner, inner
+[   79.2s]          3.13  4040 (1)004 one piece X -520..140 (lite-53)
+[   79.2s]          3.50  Roof felt (pad 1)
+[   79.2s]         73.95  moving, gantry lite-80: carriage + carried Left head at the rear stop, swept over X (box, conservative)
+[   79.2s] verify: 0 problems
+[   79.2s] DRY RUN (headless): all checks passed, not saved
+[   79.2s] bowden_arms: done (read-only, nothing saved)

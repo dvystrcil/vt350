@@ -1,5 +1,5 @@
 {
- "model": "/home/dan/Documents/VT350/vt350-lite-79.FCStd",
+ "model": "/home/dan/Documents/VT350/vt350-lite-80.FCStd",
  "design": {
   "name": "under the bar, arm 240, down Z 640",
   "hinge": [
@@ -16,8 +16,7 @@
    640.0
   ],
   "clear_moving": {
-   "now": 75.6,
-   "+10.3": 65.3
+   "lite-80": 65.6
   }
  },
  "result": {
@@ -38,31 +37,17 @@
     ]
    ],
    "moving": {
-    "now": [
+    "lite-80": [
      [
-      60.39,
+      51.1,
       "carriage + carried Left head at the rear stop, swept over X"
      ],
      [
-      60.39,
+      51.1,
       "carriage + carried Right head at the rear stop, swept over X"
      ],
      [
-      157.47,
-      "gantry at its rear stop"
-     ]
-    ],
-    "+10.3": [
-     [
-      50.83,
-      "carriage + carried Left head at the rear stop, swept over X"
-     ],
-     [
-      50.83,
-      "carriage + carried Right head at the rear stop, swept over X"
-     ],
-     [
-      147.19,
+      147.49,
       "gantry at its rear stop"
      ]
     ]
@@ -85,31 +70,17 @@
     ]
    ],
    "moving": {
-    "now": [
+    "lite-80": [
      [
-      83.95,
+      73.95,
       "carriage + carried Left head at the rear stop, swept over X"
      ],
      [
-      83.95,
+      73.95,
       "carriage + carried Right head at the rear stop, swept over X"
      ],
      [
-      185.5,
-      "gantry at its rear stop"
-     ]
-    ],
-    "+10.3": [
-     [
-      73.65,
-      "carriage + carried Left head at the rear stop, swept over X"
-     ],
-     [
-      73.65,
-      "carriage + carried Right head at the rear stop, swept over X"
-     ],
-     [
-      175.2,
+      175.5,
       "gantry at its rear stop"
      ]
     ]
@@ -132,31 +103,17 @@
     ]
    ],
    "moving": {
-    "now": [
+    "lite-80": [
      [
-      83.95,
+      73.95,
       "carriage + carried Left head at the rear stop, swept over X"
      ],
      [
-      83.95,
+      73.95,
       "carriage + carried Right head at the rear stop, swept over X"
      ],
      [
-      185.5,
-      "gantry at its rear stop"
-     ]
-    ],
-    "+10.3": [
-     [
-      73.65,
-      "carriage + carried Left head at the rear stop, swept over X"
-     ],
-     [
-      73.65,
-      "carriage + carried Right head at the rear stop, swept over X"
-     ],
-     [
-      175.2,
+      175.5,
       "gantry at its rear stop"
      ]
     ]
@@ -179,31 +136,17 @@
     ]
    ],
    "moving": {
-    "now": [
+    "lite-80": [
      [
-      83.95,
+      73.95,
       "carriage + carried Left head at the rear stop, swept over X"
      ],
      [
-      83.95,
+      73.95,
       "carriage + carried Right head at the rear stop, swept over X"
      ],
      [
-      185.5,
-      "gantry at its rear stop"
-     ]
-    ],
-    "+10.3": [
-     [
-      73.65,
-      "carriage + carried Left head at the rear stop, swept over X"
-     ],
-     [
-      73.65,
-      "carriage + carried Right head at the rear stop, swept over X"
-     ],
-     [
-      175.2,
+      175.5,
       "gantry at its rear stop"
      ]
     ]
@@ -226,31 +169,17 @@
     ]
    ],
    "moving": {
-    "now": [
+    "lite-80": [
      [
-      83.95,
+      73.95,
       "carriage + carried Left head at the rear stop, swept over X"
      ],
      [
-      83.95,
+      73.95,
       "carriage + carried Right head at the rear stop, swept over X"
      ],
      [
-      185.5,
-      "gantry at its rear stop"
-     ]
-    ],
-    "+10.3": [
-     [
-      73.65,
-      "carriage + carried Left head at the rear stop, swept over X"
-     ],
-     [
-      73.65,
-      "carriage + carried Right head at the rear stop, swept over X"
-     ],
-     [
-      175.2,
+      175.5,
       "gantry at its rear stop"
      ]
     ]
@@ -273,31 +202,17 @@
     ]
    ],
    "moving": {
-    "now": [
+    "lite-80": [
      [
-      83.95,
+      73.95,
       "carriage + carried Left head at the rear stop, swept over X"
      ],
      [
-      83.95,
+      73.95,
       "carriage + carried Right head at the rear stop, swept over X"
      ],
      [
-      185.5,
-      "gantry at its rear stop"
-     ]
-    ],
-    "+10.3": [
-     [
-      73.65,
-      "carriage + carried Left head at the rear stop, swept over X"
-     ],
-     [
-      73.65,
-      "carriage + carried Right head at the rear stop, swept over X"
-     ],
-     [
-      175.2,
+      175.5,
       "gantry at its rear stop"
      ]
     ]

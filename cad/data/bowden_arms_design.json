@@ -15,354 +15,14 @@
    640.0
   ],
   "clear_moving": {
-   "now": 75.6,
-   "+10.3": 65.3
+   "lite-80": 65.6
   }
  },
  "mode": "slide",
  "takeup_N": 0.2,
  "verify": [
   {
-   "raise_": "now",
-   "EI": 700.0,
-   "ok": true,
-   "lock_ok": false,
-   "slots": {
-    "1": {
-     "solved": true,
-     "unsolved": 0,
-     "n": 148,
-     "roof_ok": true,
-     "parked_ok": true,
-     "bundle_L": [
-      295,
-      603
-     ],
-     "takeup_travel": 308,
-     "roof_minR": 60.4,
-     "body_minR": 153.2,
-     "lock_minR": 27.7,
-     "lowest_below_lock": 0.0,
-     "loop_turn_max": 157,
-     "ceiling_pct": 0,
-     "to_parked_min": 10.3,
-     "touch_parked_pct": 0,
-     "parked_lowest": 0.0
-    },
-    "2": {
-     "solved": true,
-     "unsolved": 0,
-     "n": 150,
-     "roof_ok": true,
-     "parked_ok": true,
-     "bundle_L": [
-      296,
-      533
-     ],
-     "takeup_travel": 237,
-     "roof_minR": 60.4,
-     "body_minR": 154.2,
-     "lock_minR": 28.3,
-     "lowest_below_lock": 0.0,
-     "loop_turn_max": 157,
-     "ceiling_pct": 0,
-     "to_parked_min": 10.3,
-     "touch_parked_pct": 0,
-     "parked_lowest": 0.0
-    },
-    "3": {
-     "solved": true,
-     "unsolved": 0,
-     "n": 152,
-     "roof_ok": true,
-     "parked_ok": true,
-     "bundle_L": [
-      295,
-      489
-     ],
-     "takeup_travel": 194,
-     "roof_minR": 60.4,
-     "body_minR": 158.9,
-     "lock_minR": 28.8,
-     "lowest_below_lock": 0.0,
-     "loop_turn_max": 157,
-     "ceiling_pct": 0,
-     "to_parked_min": 10.1,
-     "touch_parked_pct": 0,
-     "parked_lowest": 0.0
-    },
-    "4": {
-     "solved": true,
-     "unsolved": 0,
-     "n": 150,
-     "roof_ok": true,
-     "parked_ok": true,
-     "bundle_L": [
-      296,
-      540
-     ],
-     "takeup_travel": 243,
-     "roof_minR": 60.4,
-     "body_minR": 154.9,
-     "lock_minR": 28.2,
-     "lowest_below_lock": 0.0,
-     "loop_turn_max": 157,
-     "ceiling_pct": 0,
-     "to_parked_min": 10.5,
-     "touch_parked_pct": 0,
-     "parked_lowest": 0.0
-    },
-    "5": {
-     "solved": true,
-     "unsolved": 0,
-     "n": 148,
-     "roof_ok": true,
-     "parked_ok": true,
-     "bundle_L": [
-      295,
-      603
-     ],
-     "takeup_travel": 308,
-     "roof_minR": 60.4,
-     "body_minR": 152.8,
-     "lock_minR": 27.7,
-     "lowest_below_lock": 0.0,
-     "loop_turn_max": 157,
-     "ceiling_pct": 0,
-     "to_parked_min": 10.0,
-     "touch_parked_pct": 0,
-     "parked_lowest": 0.0
-    }
-   }
-  },
-  {
-   "raise_": "now",
-   "EI": 2000.0,
-   "ok": true,
-   "lock_ok": false,
-   "slots": {
-    "1": {
-     "solved": true,
-     "unsolved": 0,
-     "n": 148,
-     "roof_ok": true,
-     "parked_ok": true,
-     "bundle_L": [
-      297,
-      612
-     ],
-     "takeup_travel": 316,
-     "roof_minR": 79.5,
-     "body_minR": 110.6,
-     "lock_minR": 42.7,
-     "lowest_below_lock": 0.0,
-     "loop_turn_max": 168,
-     "ceiling_pct": 0,
-     "to_parked_min": 8.9,
-     "touch_parked_pct": 0,
-     "parked_lowest": 0.0
-    },
-    "2": {
-     "solved": true,
-     "unsolved": 0,
-     "n": 150,
-     "roof_ok": true,
-     "parked_ok": true,
-     "bundle_L": [
-      297,
-      542
-     ],
-     "takeup_travel": 244,
-     "roof_minR": 79.5,
-     "body_minR": 110.8,
-     "lock_minR": 43.2,
-     "lowest_below_lock": 0.0,
-     "loop_turn_max": 167,
-     "ceiling_pct": 0,
-     "to_parked_min": 9.0,
-     "touch_parked_pct": 0,
-     "parked_lowest": 0.0
-    },
-    "3": {
-     "solved": true,
-     "unsolved": 0,
-     "n": 152,
-     "roof_ok": true,
-     "parked_ok": true,
-     "bundle_L": [
-      297,
-      497
-     ],
-     "takeup_travel": 201,
-     "roof_minR": 79.5,
-     "body_minR": 112.5,
-     "lock_minR": 43.6,
-     "lowest_below_lock": 0.0,
-     "loop_turn_max": 168,
-     "ceiling_pct": 0,
-     "to_parked_min": 8.8,
-     "touch_parked_pct": 0,
-     "parked_lowest": 0.0
-    },
-    "4": {
-     "solved": true,
-     "unsolved": 0,
-     "n": 150,
-     "roof_ok": true,
-     "parked_ok": true,
-     "bundle_L": [
-      298,
-      548
-     ],
-     "takeup_travel": 251,
-     "roof_minR": 79.5,
-     "body_minR": 111.5,
-     "lock_minR": 43.1,
-     "lowest_below_lock": 0.0,
-     "loop_turn_max": 167,
-     "ceiling_pct": 0,
-     "to_parked_min": 8.9,
-     "touch_parked_pct": 0,
-     "parked_lowest": 0.0
-    },
-    "5": {
-     "solved": true,
-     "unsolved": 0,
-     "n": 148,
-     "roof_ok": true,
-     "parked_ok": true,
-     "bundle_L": [
-      297,
-      612
-     ],
-     "takeup_travel": 315,
-     "roof_minR": 79.5,
-     "body_minR": 110.4,
-     "lock_minR": 42.7,
-     "lowest_below_lock": 0.0,
-     "loop_turn_max": 168,
-     "ceiling_pct": 0,
-     "to_parked_min": 8.8,
-     "touch_parked_pct": 0,
-     "parked_lowest": 0.0
-    }
-   }
-  },
-  {
-   "raise_": "now",
-   "EI": 7000.0,
-   "ok": true,
-   "lock_ok": true,
-   "slots": {
-    "1": {
-     "solved": true,
-     "unsolved": 0,
-     "n": 148,
-     "roof_ok": true,
-     "parked_ok": true,
-     "bundle_L": [
-      298,
-      630
-     ],
-     "takeup_travel": 332,
-     "roof_minR": 100.0,
-     "body_minR": 98.3,
-     "lock_minR": 58.4,
-     "lowest_below_lock": 0.0,
-     "loop_turn_max": 177,
-     "ceiling_pct": 0,
-     "to_parked_min": -7.3,
-     "touch_parked_pct": 16,
-     "parked_lowest": 0.0
-    },
-    "2": {
-     "solved": true,
-     "unsolved": 0,
-     "n": 150,
-     "roof_ok": true,
-     "parked_ok": true,
-     "bundle_L": [
-      299,
-      558
-     ],
-     "takeup_travel": 259,
-     "roof_minR": 100.0,
-     "body_minR": 98.6,
-     "lock_minR": 58.4,
-     "lowest_below_lock": 0.0,
-     "loop_turn_max": 176,
-     "ceiling_pct": 0,
-     "to_parked_min": -1.6,
-     "touch_parked_pct": 5,
-     "parked_lowest": 0.0
-    },
-    "3": {
-     "solved": true,
-     "unsolved": 0,
-     "n": 152,
-     "roof_ok": true,
-     "parked_ok": true,
-     "bundle_L": [
-      298,
-      510
-     ],
-     "takeup_travel": 212,
-     "roof_minR": 100.0,
-     "body_minR": 98.7,
-     "lock_minR": 58.4,
-     "lowest_below_lock": 0.0,
-     "loop_turn_max": 178,
-     "ceiling_pct": 0,
-     "to_parked_min": 0.9,
-     "touch_parked_pct": 0,
-     "parked_lowest": 0.0
-    },
-    "4": {
-     "solved": true,
-     "unsolved": 0,
-     "n": 150,
-     "roof_ok": true,
-     "parked_ok": true,
-     "bundle_L": [
-      299,
-      565
-     ],
-     "takeup_travel": 266,
-     "roof_minR": 100.0,
-     "body_minR": 97.8,
-     "lock_minR": 58.4,
-     "lowest_below_lock": 0.0,
-     "loop_turn_max": 175,
-     "ceiling_pct": 0,
-     "to_parked_min": -3.2,
-     "touch_parked_pct": 5,
-     "parked_lowest": 0.0
-    },
-    "5": {
-     "solved": true,
-     "unsolved": 0,
-     "n": 148,
-     "roof_ok": true,
-     "parked_ok": true,
-     "bundle_L": [
-      298,
-      630
-     ],
-     "takeup_travel": 332,
-     "roof_minR": 100.0,
-     "body_minR": 98.6,
-     "lock_minR": 58.4,
-     "lowest_below_lock": 0.0,
-     "loop_turn_max": 178,
-     "ceiling_pct": 0,
-     "to_parked_min": -7.4,
-     "touch_parked_pct": 12,
-     "parked_lowest": 0.0
-    }
-   }
-  },
-  {
-   "raise_": "+10.3",
+   "raise_": "lite-80",
    "EI": 700.0,
    "ok": true,
    "lock_ok": false,
@@ -379,12 +39,12 @@
      ],
      "takeup_travel": 316,
      "roof_minR": 60.4,
-     "body_minR": 149.1,
+     "body_minR": 149.2,
      "lock_minR": 27.2,
      "lowest_below_lock": 0.0,
      "loop_turn_max": 161,
      "ceiling_pct": 0,
-     "to_parked_min": 8.5,
+     "to_parked_min": 8.8,
      "touch_parked_pct": 0,
      "parked_lowest": 0.0
     },
@@ -396,16 +56,16 @@
      "parked_ok": true,
      "bundle_L": [
       286,
-      530
+      531
      ],
      "takeup_travel": 245,
      "roof_minR": 60.4,
-     "body_minR": 150.4,
+     "body_minR": 150.6,
      "lock_minR": 27.6,
      "lowest_below_lock": 0.0,
      "loop_turn_max": 161,
      "ceiling_pct": 0,
-     "to_parked_min": 8.6,
+     "to_parked_min": 8.8,
      "touch_parked_pct": 0,
      "parked_lowest": 0.0
     },
@@ -417,16 +77,16 @@
      "parked_ok": true,
      "bundle_L": [
       285,
-      486
+      489
      ],
-     "takeup_travel": 201,
+     "takeup_travel": 203,
      "roof_minR": 60.4,
-     "body_minR": 154.4,
+     "body_minR": 154.7,
      "lock_minR": 28.0,
      "lowest_below_lock": 0.0,
      "loop_turn_max": 161,
      "ceiling_pct": 0,
-     "to_parked_min": 8.5,
+     "to_parked_min": 8.6,
      "touch_parked_pct": 0,
      "parked_lowest": 0.0
     },
@@ -442,12 +102,12 @@
      ],
      "takeup_travel": 251,
      "roof_minR": 60.4,
-     "body_minR": 150.7,
-     "lock_minR": 27.5,
+     "body_minR": 150.8,
+     "lock_minR": 27.6,
      "lowest_below_lock": 0.0,
      "loop_turn_max": 161,
      "ceiling_pct": 0,
-     "to_parked_min": 8.9,
+     "to_parked_min": 9.1,
      "touch_parked_pct": 0,
      "parked_lowest": 0.0
     },
@@ -463,19 +123,19 @@
      ],
      "takeup_travel": 316,
      "roof_minR": 60.4,
-     "body_minR": 149.8,
+     "body_minR": 149.9,
      "lock_minR": 27.2,
      "lowest_below_lock": 0.0,
      "loop_turn_max": 161,
      "ceiling_pct": 0,
-     "to_parked_min": 8.4,
+     "to_parked_min": 8.6,
      "touch_parked_pct": 0,
      "parked_lowest": 0.0
     }
    }
   },
   {
-   "raise_": "+10.3",
+   "raise_": "lite-80",
    "EI": 2000.0,
    "ok": true,
    "lock_ok": false,
@@ -487,7 +147,7 @@
      "roof_ok": true,
      "parked_ok": true,
      "bundle_L": [
-      286,
+      287,
       611
      ],
      "takeup_travel": 324,
@@ -497,7 +157,7 @@
      "lowest_below_lock": 0.0,
      "loop_turn_max": 172,
      "ceiling_pct": 0,
-     "to_parked_min": 7.2,
+     "to_parked_min": 7.4,
      "touch_parked_pct": 0,
      "parked_lowest": 0.0
     },
@@ -511,14 +171,14 @@
       287,
       540
      ],
-     "takeup_travel": 253,
+     "takeup_travel": 252,
      "roof_minR": 79.5,
-     "body_minR": 107.8,
-     "lock_minR": 42.2,
+     "body_minR": 108.0,
+     "lock_minR": 42.3,
      "lowest_below_lock": 0.0,
      "loop_turn_max": 171,
      "ceiling_pct": 0,
-     "to_parked_min": 7.4,
+     "to_parked_min": 7.6,
      "touch_parked_pct": 0,
      "parked_lowest": 0.0
     },
@@ -529,17 +189,17 @@
      "roof_ok": true,
      "parked_ok": true,
      "bundle_L": [
-      286,
-      494
+      287,
+      497
      ],
-     "takeup_travel": 208,
+     "takeup_travel": 211,
      "roof_minR": 79.5,
-     "body_minR": 107.5,
+     "body_minR": 107.7,
      "lock_minR": 42.4,
      "lowest_below_lock": 0.0,
      "loop_turn_max": 172,
      "ceiling_pct": 0,
-     "to_parked_min": 7.2,
+     "to_parked_min": 7.4,
      "touch_parked_pct": 0,
      "parked_lowest": 0.0
     },
@@ -550,17 +210,17 @@
      "roof_ok": true,
      "parked_ok": true,
      "bundle_L": [
-      287,
+      288,
       547
      ],
      "takeup_travel": 259,
      "roof_minR": 79.5,
-     "body_minR": 107.8,
+     "body_minR": 108.0,
      "lock_minR": 42.2,
      "lowest_below_lock": 0.0,
      "loop_turn_max": 171,
      "ceiling_pct": 0,
-     "to_parked_min": 7.3,
+     "to_parked_min": 7.5,
      "touch_parked_pct": 0,
      "parked_lowest": 0.0
     },
@@ -571,24 +231,24 @@
      "roof_ok": true,
      "parked_ok": true,
      "bundle_L": [
-      286,
+      287,
       610
      ],
      "takeup_travel": 324,
      "roof_minR": 79.5,
-     "body_minR": 108.0,
+     "body_minR": 108.1,
      "lock_minR": 42.0,
      "lowest_below_lock": 0.0,
      "loop_turn_max": 172,
      "ceiling_pct": 0,
-     "to_parked_min": 7.4,
+     "to_parked_min": 7.5,
      "touch_parked_pct": 0,
      "parked_lowest": 0.0
     }
    }
   },
   {
-   "raise_": "+10.3",
+   "raise_": "lite-80",
    "EI": 7000.0,
    "ok": true,
    "lock_ok": true,
@@ -605,12 +265,12 @@
      ],
      "takeup_travel": 341,
      "roof_minR": 100.0,
-     "body_minR": 91.8,
-     "lock_minR": 52.9,
+     "body_minR": 92.0,
+     "lock_minR": 53.1,
      "lowest_below_lock": 0.0,
      "loop_turn_max": 177,
      "ceiling_pct": 0,
-     "to_parked_min": -8.8,
+     "to_parked_min": -8.7,
      "touch_parked_pct": 32,
      "parked_lowest": 0.0
     },
@@ -621,17 +281,17 @@
      "roof_ok": true,
      "parked_ok": true,
      "bundle_L": [
-      288,
+      289,
       556
      ],
      "takeup_travel": 268,
      "roof_minR": 100.0,
-     "body_minR": 91.8,
-     "lock_minR": 52.9,
+     "body_minR": 92.0,
+     "lock_minR": 53.1,
      "lowest_below_lock": 0.0,
      "loop_turn_max": 175,
      "ceiling_pct": 0,
-     "to_parked_min": -5.9,
+     "to_parked_min": -5.8,
      "touch_parked_pct": 11,
      "parked_lowest": 0.0
     },
@@ -643,17 +303,17 @@
      "parked_ok": true,
      "bundle_L": [
       288,
-      507
+      511
      ],
-     "takeup_travel": 220,
+     "takeup_travel": 223,
      "roof_minR": 100.0,
-     "body_minR": 91.9,
-     "lock_minR": 53.0,
+     "body_minR": 92.2,
+     "lock_minR": 53.1,
      "lowest_below_lock": 0.0,
      "loop_turn_max": 177,
      "ceiling_pct": 0,
-     "to_parked_min": -4.8,
-     "touch_parked_pct": 7,
+     "to_parked_min": -4.7,
+     "touch_parked_pct": 6,
      "parked_lowest": 0.0
     },
     "4": {
@@ -666,14 +326,14 @@
       289,
       563
      ],
-     "takeup_travel": 275,
+     "takeup_travel": 274,
      "roof_minR": 100.0,
-     "body_minR": 91.7,
-     "lock_minR": 52.9,
+     "body_minR": 91.9,
+     "lock_minR": 53.1,
      "lowest_below_lock": 0.0,
      "loop_turn_max": 175,
      "ceiling_pct": 0,
-     "to_parked_min": -7.9,
+     "to_parked_min": -7.8,
      "touch_parked_pct": 9,
      "parked_lowest": 0.0
     },
@@ -689,13 +349,13 @@
      ],
      "takeup_travel": 341,
      "roof_minR": 100.0,
-     "body_minR": 92.0,
-     "lock_minR": 53.0,
+     "body_minR": 92.2,
+     "lock_minR": 53.1,
      "lowest_below_lock": 0.0,
      "loop_turn_max": 177,
      "ceiling_pct": 0,
-     "to_parked_min": -9.2,
-     "touch_parked_pct": 24,
+     "to_parked_min": -9.0,
+     "touch_parked_pct": 22,
      "parked_lowest": 0.0
     }
    }

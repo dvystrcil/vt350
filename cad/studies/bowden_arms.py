@@ -1,5 +1,5 @@
 # vt350#312 AC2: do the per-tool bowden arms clear the printer? Headless, read-only, never saves:
-#   $APP freecadcmd $PWD/cad/studies/bowden_arms.py          (VT350_MODEL to pick a model; default lite-79)
+#   $APP freecadcmd $PWD/cad/studies/bowden_arms.py          (VT350_MODEL to pick a model; default lite-80)
 # Log: $VT350_WORK/logs/bowden_arms.log (+ bowden_arms.json). Its verdict lines: "arms up: clear" (or NOT clear), and
 # "arm N down: clear" for each arm lowered on its own, each part within 5 mm listed with its gap.
 #
@@ -24,7 +24,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path[:0] = [HERE] + [p for p in (os.path.join(os.path.dirname(os.path.dirname(HERE)), d)
                                      for d in ("cad/scripts", "platform/freecad")) if os.path.isdir(p)]
 
-MODEL = os.environ.get("VT350_MODEL", "/home/dan/Documents/VT350/vt350-lite-79.FCStd")
+MODEL = os.environ.get("VT350_MODEL", "/home/dan/Documents/VT350/vt350-lite-80.FCStd")
 DESIGN = os.environ.get("BOWDEN_ARMS_DESIGN", os.path.join(os.path.dirname(HERE), "data", "bowden_arms_design.json"))
 EXIT_X = {1: -409.7, 2: -324.54, 3: -248.42, 4: -156.42, 5: -80.3}   # lanyard/lrod.py (lite70_roof_exit_low.json)
 ARM_W, ARM_HALF, ARM_SIDE = 8.0, 6.0, -12.0
@@ -32,7 +32,7 @@ LOOP_R, LOOP_IN, LOOP_LEN = 14.0, 10.0, 10.0
 CAM_R, CAM_AT = 16.0, 40.0
 NEAR = 5.0                       # list every part this close
 CLEAR = 1.0                      # "clear" = every gap at least this
-RAISE = {"now": 0.0, "+10.3": 10.3}
+RAISE = {"lite-80": 0.0}           # the model is lite-80: the gantry is already at #243's +10
 BUNDLE = ("Bowden ", "O2S USB cable slot", "Zip tie, black (2.5 mm) slot")
 
 

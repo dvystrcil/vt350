@@ -1,5 +1,5 @@
 # vt350#312: does the dancer route clear the printer? Headless, read-only, never saves:
-#   VT350_REPO=$PWD $APP freecadcmd $PWD/cad/studies/bowden_arms_dancer_clear.py     (VT350_MODEL; default lite-79)
+#   VT350_REPO=$PWD $APP freecadcmd $PWD/cad/studies/bowden_arms_dancer_clear.py     (VT350_MODEL; default lite-80)
 # Log: $VT350_WORK/logs/bowden_arms_dancer_clear.log (+ .json). Its verdict lines: "T<n> dancer: clear" (or NOT clear),
 # "tools apart: clear", and "dancer route: clear" at the end.
 #
@@ -23,7 +23,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path[:0] = [HERE] + [p for p in (os.path.join(os.path.dirname(os.path.dirname(HERE)), d)
                                      for d in ("cad/scripts", "platform/freecad")) if os.path.isdir(p)]
 
-MODEL = os.environ.get("VT350_MODEL", "/home/dan/Documents/VT350/vt350-lite-79.FCStd")
+MODEL = os.environ.get("VT350_MODEL", "/home/dan/Documents/VT350/vt350-lite-80.FCStd")
 DATA = os.path.join(os.path.dirname(HERE), "data")
 W = os.environ.get("DANCER_W", "0.2")
 BUNDLE_R = 4.6                     # half the bundle's width (PTFE 4 + O2S cable 5.1 side by side, 9.2)

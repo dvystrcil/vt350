@@ -60,11 +60,12 @@ PULLEY = {1: (-324.2, 446.0), 2: (-324.2, 459.0),                       # (centr
 RETURN_SIDE = {1: +1, 2: +1, 3: +1, 4: +1, 5: +1}   # the return leg (cx + side RP): a stack's returns share a leg and
                                                     # fan out to their arms without crossing
 Z_ARM = DESIGN["hinge"][1]                  # the arm's hinge-end height
+LOCK_DZ = ba.GANTRY_RAISE["lite-80"]          # the locks ride with the gantry: lite-80 = lite-79's lock Z + 10
 Y_Q = 255.0                                # the return span meets the arm's line here (Y): at its tip, by the loop
-Z_G = float(os.environ.get("DANCER_Z_G", "470"))   # the channels' lower ends: just above the gantry (458.8 at +10.3)
+Z_G = float(os.environ.get("DANCER_Z_G", "470"))   # the channels' lower ends: just above the gantry (458.5 at lite-80's +10)
 C_Y, C_Z = 340.0, 640.0                    # the return channel's upper end: forward over the heads, level, at X arm
                                            # (searched: Y 340..400 x Z 625..655; Y 340, Z 640 bends least, R >= 84)
-HEAD_TOP = 560.37 + 10.3 + ba.BUNDLE_W / 2 + 4.0   # nothing of a channel in front of Y_HEADS lower than this
+HEAD_TOP = 560.37 + 10.0 + ba.BUNDLE_W / 2 + 4.0   # nothing of a channel in front of Y_HEADS lower than this
 Y_HEADS = 423.58 + ba.BUNDLE_W / 2 + 4.0
 Z_TOP = float(os.environ.get("DANCER_Z_TOP", "340"))   # the pulley's highest centre: the sheave (R RP + 4.6 + 3 rim)
                                                        # stays under the gantry (Z 411.5): only its legs pass up
@@ -240,7 +241,7 @@ def rear_spans(args):
         free = float(np.linalg.norm(P - C))
         Xe, Le, Re_R = ce; Xr, Lr, Rr_R = cr
         Xe_s, Xr_s = Xe[::25], np.vstack([Xr[::25], [Xr[-1]], [P]])
-        clear = min(clear_of_moving(Xe_s, 10.3), clear_of_moving(Xr_s, 10.3))
+        clear = min(clear_of_moving(Xe_s, 10.0), clear_of_moving(Xr_s, 10.0))
         rows = {}
         for z in zs:
             leg = Z_G - z
@@ -257,7 +258,7 @@ def head_walk(args):
     slot, EI, Ts = args
     xb = arm_x(slot)
     P_down, P_up = np.array([xb, *DESIGN["loop_down"]]), np.array([xb, *DESIGN["loop_up"]])
-    pts = ba.path(slot, STEP)
+    pts = ba.path(slot, STEP, dz=LOCK_DZ)
     R = ba.Span(EI, N_HEAD, g1=ba.DOWN)
     def rec(P, b, prev, T, t_arm):
         s = ba.solve_span(R, P, b, None, T, prev, ta=t_arm)
@@ -320,7 +321,7 @@ def main():
         for p in (1, 2):
             jobs = []
             for s in range(1, 6):
-                n = len(ba.path(s, STEP))
+                n = len(ba.path(s, STEP, dz=LOCK_DZ))
                 for e in ba.EIS:
                     for W in WEIGHTS:
                         Ts = [W / 2 + lrod.W_LIN * (Z_ARM - (Z_TOP - 60))] * (n + 1)
@@ -376,13 +377,13 @@ def main():
                            loop_turn=round(max(max(w["turn"] for w in ok), hw["parked"]["turn"])),
                            body_R=round(min(min(w["minR_body"] for w in ok), hw["parked"]["minR_body"]), 1),
                            lock_R=round(min(min(w["minR_lock"] for w in ok), hw["parked"]["minR_lock"]), 1),
-                           lowest=round(min(w["lowest"] for w in ok) - ba.HEAD_Z, 1))
+                           lowest=round(min(w["lowest"] for w in ok) - (ba.HEAD_Z + LOCK_DZ), 1))
                 row["fits_top"] = row["pulley_top"] <= Z_TOP + 0.5
                 row["floor_ok"] = row["pulley_bottom"] >= FLOOR
                 rows.append(row)
                 log(f"   T{s - 1} EI {e:5.0f} W {W:.1f} N: pulley Z {row['pulley_low']:.0f}..{row['pulley_top']:.0f} "
                     f"(travel {row['travel']:.0f}, bottom {row['pulley_bottom']:.0f}); pull at the loop {row['T_loop']}; "
-                    f"rear spans {clear:.0f} over the moving parts (+10.3); bends: exit {exit_R:.0f}, return {ret_R:.0f}, head span {row['body_R']:.0f}, lock {row['lock_R']:.1f}; "
+                    f"rear spans {clear:.0f} over the moving parts (lite-80, +10); bends: exit {exit_R:.0f}, return {ret_R:.0f}, head span {row['body_R']:.0f}, lock {row['lock_R']:.1f}; "
                     f"loop turn {row['loop_turn']} deg; lowest {row['lowest']:+.1f}; {row['unsolved']} unsolved")
     ok_rows = [r for r in rows if r.get("solved")]
     log("summary, by weight (all tools, all EI):")

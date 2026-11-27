@@ -1,10 +1,10 @@
 {
- "model": "/home/dan/Documents/VT350/vt350-lite-79.FCStd",
+ "model": "/home/dan/Documents/VT350/vt350-lite-80.FCStd",
  "weight": "0.2",
  "result": {
   "1": {
    "ok": true,
-   "worst": 1.09,
+   "worst": 1.43,
    "fixed": [
     [
      3.74,
@@ -16,63 +16,25 @@
     ]
    ],
    "moving": {
-    "now": [
-     [
-      1.09,
-      "bed part SOLID031, over its Z travel"
-     ],
-     [
-      1.09,
-      "bed part SOLID032, over its Z travel"
-     ],
+    "lite-80": [
      [
       1.43,
       "gantry"
-     ],
-     [
-      3.98,
-      "bed part Trident kinematic G back bottom (3 mm), over its Z travel"
-     ],
-     [
-      3.98,
-      "bed part Trident kinematic I bearing retain, rear (3 mm), over its Z travel"
-     ]
-    ],
-    "+10.3": [
-     [
-      1.09,
-      "bed part SOLID031, over its Z travel"
-     ],
-     [
-      1.09,
-      "bed part SOLID032, over its Z travel"
-     ],
-     [
-      1.43,
-      "gantry"
-     ],
-     [
-      3.98,
-      "bed part Trident kinematic G back bottom (3 mm), over its Z travel"
-     ],
-     [
-      3.98,
-      "bed part Trident kinematic I bearing retain, rear (3 mm), over its Z travel"
      ]
     ]
    },
    "travel": [
-    182.6390325008157,
+    178.46981008257137,
     340.0,
-    284.19292559771645
+    284.8717996275125
    ]
   },
   "2": {
    "ok": true,
-   "worst": 1.09,
+   "worst": 3.74,
    "fixed": [
     [
-     3.73,
+     3.74,
      "Roof felt liner, inner"
     ],
     [
@@ -81,31 +43,12 @@
     ]
    ],
    "moving": {
-    "now": [
-     [
-      1.09,
-      "bed part SOLID031, over its Z travel"
-     ],
-     [
-      1.09,
-      "bed part SOLID032, over its Z travel"
-     ]
-    ],
-    "+10.3": [
-     [
-      1.09,
-      "bed part SOLID031, over its Z travel"
-     ],
-     [
-      1.09,
-      "bed part SOLID032, over its Z travel"
-     ]
-    ]
+    "lite-80": []
    },
    "travel": [
-    218.19397614375123,
+    214.22287127638322,
     339.99999999999994,
-    319.57856119059124
+    320.42860863737815
    ]
   },
   "3": {
@@ -122,96 +65,39 @@
     ]
    ],
    "moving": {
-    "now": [
+    "lite-80": [
      [
       1.43,
       "gantry"
-     ],
-     [
-      2.58,
-      "bed part Trident kinematic G back bottom (3 mm), over its Z travel"
-     ],
-     [
-      2.58,
-      "bed part Trident kinematic I bearing retain, rear (3 mm), over its Z travel"
-     ],
-     [
-      2.6,
-      "bed part SOLID031, over its Z travel"
-     ],
-     [
-      2.6,
-      "bed part SOLID032, over its Z travel"
-     ]
-    ],
-    "+10.3": [
-     [
-      1.43,
-      "gantry"
-     ],
-     [
-      2.58,
-      "bed part Trident kinematic G back bottom (3 mm), over its Z travel"
-     ],
-     [
-      2.58,
-      "bed part Trident kinematic I bearing retain, rear (3 mm), over its Z travel"
-     ],
-     [
-      2.6,
-      "bed part SOLID031, over its Z travel"
-     ],
-     [
-      2.6,
-      "bed part SOLID032, over its Z travel"
      ]
     ]
    },
    "travel": [
-    238.21702975157245,
+    233.34638521939894,
     340.0,
     340.0
    ]
   },
   "4": {
    "ok": true,
-   "worst": 2.6,
+   "worst": 3.72,
    "fixed": [
     [
-     3.75,
+     3.72,
      "Roof felt liner, inner"
     ],
     [
-     4.07,
+     4.05,
      "Roof felt (pad 1)"
     ]
    ],
    "moving": {
-    "now": [
-     [
-      2.6,
-      "bed part SOLID031, over its Z travel"
-     ],
-     [
-      2.6,
-      "bed part SOLID032, over its Z travel"
-     ]
-    ],
-    "+10.3": [
-     [
-      2.6,
-      "bed part SOLID031, over its Z travel"
-     ],
-     [
-      2.6,
-      "bed part SOLID032, over its Z travel"
-     ]
-    ]
+    "lite-80": []
    },
    "travel": [
-    214.96354370330027,
-    339.99999999999994,
-    316.1994066190174
+    210.99073195668177,
+    340.0,
+    317.0292968620312
    ]
   },
   "5": {
@@ -227,11 +113,11 @@
      "2020"
     ],
     [
-     3.59,
+     3.66,
      "Roof felt liner, inner"
     ],
     [
-     3.92,
+     3.99,
      "Roof felt (pad 1)"
     ],
     [
@@ -240,31 +126,12 @@
     ]
    ],
    "moving": {
-    "now": [
-     [
-      2.6,
-      "bed part SOLID031, over its Z travel"
-     ],
-     [
-      2.6,
-      "bed part SOLID032, over its Z travel"
-     ]
-    ],
-    "+10.3": [
-     [
-      2.6,
-      "bed part SOLID031, over its Z travel"
-     ],
-     [
-      2.6,
-      "bed part SOLID032, over its Z travel"
-     ]
-    ]
+    "lite-80": []
    },
    "travel": [
-    182.8313160176756,
+    178.65668775324912,
     340.0,
-    284.43449817884664
+    285.1142979206097
    ]
   }
  },
@@ -286,20 +153,20 @@
    "T1 active, T0 parked"
   ],
   [
-   2.51,
-   "T2 active, T4 parked"
-  ],
-  [
-   2.51,
-   "T4 active, T2 parked"
-  ],
-  [
-   3.0,
+   2.65,
    "T2 active, T3 parked"
   ],
   [
-   3.0,
+   2.65,
    "T3 active, T2 parked"
+  ],
+  [
+   4.57,
+   "T2 active, T4 parked"
+  ],
+  [
+   4.57,
+   "T4 active, T2 parked"
   ],
   [
    30.23,

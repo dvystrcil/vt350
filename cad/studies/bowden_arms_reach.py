@@ -56,11 +56,11 @@ DESIGN = os.path.join(CAD, "data", "bowden_arms_design.json")
 # --- the printer (lite-78/79) ---------------------------------------------------------------------------------------
 MIN_R = 51.0                                   # lite-40: 10 x the O2S cable's OD (5.1 mm, measured)
 NOZZLE_DOCK = {1: -409.70, 2: -324.54, 3: -248.42, 4: -156.42, 5: -80.30}   # docked nozzle X (lite-79 probe)
-NOZZLE_DOCK_Y = -49.46
+NOZZLE_DOCK_Y = -49.46 - 3.0                   # lite-80: the front (docks, heads) 3 mm forward (#243)
 LOCK_FROM_NOZZLE = (0.28, 43.38)               # lock channel - nozzle tip, XY, both head types (lite-79)
 REACH_X, REACH_Y = (-416.0, -74.0), (30.5, 370.69)   # nozzle, lite-78 printable area (sweep_toolhead.log)
 HEAD_Z = lrod.HEAD_Z                           # 550.11, the lock's top (lite-79 probe: 550.11)
-GANTRY_RAISE = {"now": 0.0, "+10.3": 10.3}     # #243
+GANTRY_RAISE = {"lite-80": 10.0}               # #243, decided 2026-11-25: lite-80 = these lite-79 Z values + 10.0
 # what moves in XY, as a profile over Y: (Y max, Z top) over the whole travel, gantry at its rear stop (dY +145.43)
 MOVING = [(423.58, 550.37), (440.0, 448.5)]    # carried head (O2S restraint body top), gantry (VC9-J* joints)
 MARGIN = 10.0                                  # what the lowered arm and loop keep above the moving parts' top
@@ -455,15 +455,15 @@ def main():
             ds = designs()
             log(f"search: {len(ds)} designs x loop tied / sliding; slots 1, 3, 5; EI 2000; gantry now; step 68")
             for d in ds: log(f"   {d['name']}: loop up {d['loop_up']}, down {d['loop_down']}, arm clear of moving {d['clear_moving']}")
-            ds_ok = [d for d in ds if d["clear_moving"]["+10.3"] >= MARGIN]
-            log(f"   {len(ds_ok)} keep >= {MARGIN} over the moving parts with the gantry +10.3; searching those")
-            res = run_modes(pool, ds_ok, (1, 3, 5), [2000.0], ["now"], 68.0, ("tied", "slide"))
+            ds_ok = [d for d in ds if d["clear_moving"]["lite-80"] >= MARGIN]
+            log(f"   {len(ds_ok)} keep >= {MARGIN} over the moving parts with the gantry at lite-80 (+10); searching those")
+            res = run_modes(pool, ds_ok, (1, 3, 5), [2000.0], ["lite-80"], 68.0, ("tied", "slide"))
             scored = []
             for mode in ("tied", "slide"):
                 npass = 0
                 for d in ds_ok:
-                    rows = summarise(res, d, (1, 3, 5), "now", 2000.0, mode)
-                    ok = passes(rows, d, "now")
+                    rows = summarise(res, d, (1, 3, 5), "lite-80", 2000.0, mode)
+                    ok = passes(rows, d, "lite-80")
                     npass += ok
                     log(f"   {'PASS' if ok else 'fail'} [{mode}] {d['name']}")
                     for s, r in rows.items(): log(f"        slot {s}: {r}")
@@ -478,9 +478,14 @@ def main():
             scored.sort(key=lambda t: t[0], reverse=True)
             best = scored[0][1]
             log(f"search: {'best' if scored[0][0][0] else 'NO design passes; closest'} (sliding loop): {best['name']}")
-        log(f"verify: {best['name']}, sliding loop; all 5 slots; EI {EIS}; gantry {list(GANTRY_RAISE)}; step 34")
+        # a design read back from bowden_arms_design.json carries the clearances of the gantry heights it was made
+        # for (lite-79: "now", "+10.3"): recompute them for today's
+        best["clear_moving"] = {k: round(arm_clear_of_moving(best["hinge"], best["loop_down"], dz), 1)
+                                for k, dz in GANTRY_RAISE.items()}
+        log(f"verify: {best['name']}, sliding loop; all 5 slots; EI {EIS}; gantry {list(GANTRY_RAISE)}; step 34; "
+            f"arm + loop over the moving parts {best['clear_moving']}")
         res = run_modes(pool, [best], (1, 2, 3, 4, 5), EIS, list(GANTRY_RAISE), 34.0, ("slide",))
-        stuck = dict(pool.imap_unordered(walk, [(s, best, e, "now", 34.0, "slide", None, True)
+        stuck = dict(pool.imap_unordered(walk, [(s, best, e, "lite-80", 34.0, "slide", None, True)
                                                 for s in range(1, 6) for e in EIS]))
     allok, lockok, table = True, True, []
     for h in GANTRY_RAISE:
@@ -496,7 +501,7 @@ def main():
     log("if the cam stalls with the new tool's arm still UP (sliding loop, gantry now):")
     for e in EIS:
         for s in range(1, 6):
-            r = stuck[(s, best["name"], e, "now", "slide", "stuck up")]
+            r = stuck[(s, best["name"], e, "lite-80", "slide", "stuck up")]
             ok = [p for p in r["walk"] if p.get("ok")]
             log(f"   EI {e:.0f} slot {s}: {len(r['walk']) - len(ok)} of {len(r['walk'])} positions unsolved"
                 + (f"; tightest bend away from the lock {min(p['minR_body'] for p in ok):.1f}, at the lock "
