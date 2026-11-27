@@ -1,0 +1,268 @@
+[    0.0s] model /home/dan/Documents/VT350/vt350-lite-80.FCStd (read-only)
+[    3.7s] opened /home/dan/Documents/VT350/vt350-lite-80.FCStd
+[   68.7s] region X -470..-20, Y 380..560, Z 420..709: 131 fixed solids, 15 bundle solids (left out: they re-route)
+[   68.7s]    fixed  X  -520.0..   30.0  Y -110.0.. 520.0  Z  687.4.. 695.6  Roof panel (3 mm)
+[   68.7s]    fixed  X  -520.0..   30.0  Y -110.0.. 520.0  Z  687.4.. 698.2  Roof panel (3 mm) paint, outside
+[   68.7s]    fixed  X  -480.0..  -10.0  Y  -90.0.. 438.0  Z  679.0.. 679.5  Roof felt liner, inner
+[   68.7s]    fixed  X  -480.0..  -10.0  Y  -90.0.. 438.0  Z  679.5.. 689.5  Roof felt (pad 1)
+[   68.7s]    fixed  X  -480.0..  -10.0  Y  -90.0.. 438.0  Z  689.5.. 690.0  Roof felt liner, outer
+[   68.7s]    fixed  X  -480.0.. -464.0  Y  -40.0.. 470.0  Z  642.0.. 650.0  LED channel left (24 V COB, warm white)
+[   68.7s]    fixed  X   -26.0..  -10.0  Y  -40.0.. 470.0  Z  642.0.. 650.0  LED channel right (24 V COB, warm white)
+[   68.7s]    fixed  X   -77.5..  -17.1  Y  414.3.. 474.5  Z  606.0.. 646.2  Camera housing front (Printables 305428, public domain)
+[   68.7s]    fixed  X   -71.4..  -23.1  Y  421.5.. 467.3  Z  613.7.. 639.0  Nocturne USB camera board (Luke's Laboratory, 96 deg FOV)
+[   68.7s]    fixed  X   -72.4..  -16.1  Y  422.5.. 476.2  Z  618.3.. 648.8  Camera housing back (Printables 305428, public domain)
+[   68.7s]    fixed  X   -56.5..  -40.9  Y  434.3.. 449.9  Z  615.9.. 630.2  Nocturne lens
+[   68.7s]    fixed  X  -480.0..  -10.0  Y  438.0.. 480.0  Z  689.5.. 690.0  Roof felt strip liner, outer
+[   68.7s]    fixed  X  -480.0..  -10.0  Y  438.0.. 480.0  Z  679.0.. 679.5  Roof felt strip liner, inner
+[   68.7s]    fixed  X  -480.0..  -10.0  Y  438.0.. 480.0  Z  679.5.. 689.5  Roof felt strip (pad 3)
+[   68.7s]    fixed  X  -501.0.. -385.5  Y  440.0.. 501.0  Z  421.5.. 431.5  VT9-RLB
+[   68.7s]    fixed  X  -501.0.. -385.5  Y  440.0.. 501.0  Z  448.5.. 458.5  VT9-RLA
+[   68.7s]    fixed  X  -104.5..   11.0  Y  440.0.. 501.0  Z  448.5.. 458.5  VT9-RRA
+[   68.7s]    fixed  X  -104.5..   11.0  Y  440.0.. 501.0  Z  421.5.. 431.5  VT9-RRB
+[   68.7s]    fixed  X   -95.2..  -59.2  Y  444.0.. 498.0  Z  688.0.. 711.4  Roof exit clamp base slot 5 (vt350, GPL-3.0-or-later)
+[   68.7s]    fixed  X  -430.8.. -394.8  Y  444.0.. 498.0  Z  688.0.. 711.4  Roof exit clamp base slot 1 (vt350, GPL-3.0-or-later)
+[   68.7s]    fixed  X  -345.6.. -309.6  Y  444.0.. 498.0  Z  688.0.. 711.4  Roof exit clamp base slot 2 (vt350, GPL-3.0-or-later)
+[   68.7s]    fixed  X  -177.5.. -141.5  Y  444.0.. 498.0  Z  688.0.. 711.4  Roof exit clamp base slot 4 (vt350, GPL-3.0-or-later)
+[   68.7s]    fixed  X  -263.3.. -227.3  Y  444.0.. 498.0  Z  688.0.. 711.4  Roof exit clamp base slot 3 (vt350, GPL-3.0-or-later)
+[   68.7s]    fixed  X  -465.0.. -450.0  Y  450.8.. 465.8  Z  426.5.. 428.0  _Pulley flange 15x10x1.5mm005
+[   68.7s]    fixed  X  -465.0.. -450.0  Y  450.8.. 465.8  Z  439.0.. 440.5  _Pulley flange 15x10x1.5mm006
+[   68.7s]    fixed  X   -40.0..  -25.0  Y  450.8.. 465.8  Z  439.5.. 441.0  _Pulley flange 15x10x1.5mm003
+[   68.7s]    fixed  X   -40.0..  -25.0  Y  450.8.. 465.8  Z  452.0.. 453.5  _Pulley flange 15x10x1.5mm002
+[   68.7s]    fixed  X   -40.0..  -25.0  Y  450.8.. 465.8  Z  422.0.. 426.0  F695 flanged bearing008
+[   68.7s]    fixed  X  -465.0.. -450.0  Y  450.8.. 465.8  Z  422.0.. 426.0  F695 flanged bearing013
+[   68.7s]    fixed  X  -465.0.. -450.0  Y  450.8.. 465.8  Z  454.0.. 458.0  F695 flanged bearing016
+[   68.7s]    fixed  X   -40.0..  -25.0  Y  450.8.. 465.8  Z  454.0.. 458.0  F695 flanged bearing011
+[   68.7s]    fixed  X  -463.6.. -451.4  Y  452.1.. 464.4  Z  426.5.. 440.5  _GT2 20T toothed core004
+[   68.7s]    fixed  X   -38.6..  -26.4  Y  452.1.. 464.4  Z  439.5.. 453.5  _GT2 20T toothed core002
+[   68.7s]    fixed  X  -462.5.. -452.5  Y  453.3.. 463.3  Z  425.9.. 426.5  M5 disc spring008
+[   68.7s]    fixed  X   -37.5..  -27.5  Y  453.3.. 463.3  Z  453.5.. 454.1  M5 disc spring005
+[   68.7s]    fixed  X   -37.5..  -27.5  Y  453.3.. 463.3  Z  439.0.. 439.5  M5 disc spring004
+[   68.7s]    fixed  X  -462.5.. -452.5  Y  453.3.. 463.3  Z  440.5.. 441.0  M5 disc spring009
+[   68.7s]    fixed  X   -36.5..  -28.5  Y  454.3.. 462.3  Z  426.0.. 439.0  M5x13 spacer (8mm OD, no threads)
+[   68.7s]    fixed  X  -461.5.. -453.5  Y  454.3.. 462.3  Z  441.0.. 454.0  M5x13 spacer (8mm OD, no threads)001
+[   68.7s]    fixed  X  -460.0.. -455.0  Y  455.8.. 460.8  Z  422.0.. 458.0  _LDO 5 mm shaft001
+[   68.7s]    fixed  X   -35.0..  -30.0  Y  455.8.. 460.8  Z  422.0.. 458.0  _LDO 5 mm shaft
+[   68.7s]    fixed  X   -53.8..  -11.2  Y  457.7.. 500.3  Z  466.3.. 496.7  _Stepper_stator
+[   68.7s]    fixed  X  -478.8.. -436.2  Y  457.7.. 500.3  Z  466.3.. 496.7  _Stepper_stator001
+[   68.7s]    fixed  X   -53.5..  -11.5  Y  458.0.. 500.0  Z  456.5.. 466.3  _Stepper_stator front cap
+[   68.7s]    fixed  X   -53.5..  -11.5  Y  458.0.. 500.0  Z  496.7.. 505.5  _Stepper_stator rear cap
+[   68.7s]    fixed  X  -478.5.. -436.5  Y  458.0.. 500.0  Z  456.5.. 466.3  _Stepper_stator001 front cap
+[   68.7s]    fixed  X  -478.5.. -436.5  Y  458.0.. 500.0  Z  496.7.. 505.5  _Stepper_stator001 rear cap
+[   68.7s]    fixed  X   -90.2..  -64.2  Y  458.3.. 481.4  Z  695.8.. 715.8  Roof exit clamp cap slot 5 (vt350, GPL-3.0-or-later)
+[   68.7s]    fixed  X  -258.3.. -232.3  Y  458.3.. 481.4  Z  695.8.. 715.8  Roof exit clamp cap slot 3 (vt350, GPL-3.0-or-later)
+[   68.7s]    fixed  X  -425.8.. -399.8  Y  458.3.. 481.4  Z  695.8.. 715.8  Roof exit clamp cap slot 1 (vt350, GPL-3.0-or-later)
+[   68.7s]    fixed  X  -340.6.. -314.6  Y  458.3.. 481.4  Z  695.8.. 715.8  Roof exit clamp cap slot 2 (vt350, GPL-3.0-or-later)
+[   68.7s]    fixed  X  -172.5.. -146.5  Y  458.3.. 481.4  Z  695.8.. 715.8  Roof exit clamp cap slot 4 (vt350, GPL-3.0-or-later)
+[   68.7s]    fixed  X   -50.8..  -45.3  Y  460.8.. 466.3  Z  454.5.. 461.5  M3x5 LP SHCS
+[   68.7s]    fixed  X  -444.7.. -439.2  Y  460.8.. 466.3  Z  454.5.. 461.5  M3x5 LP SHCS001
+[   68.7s]    fixed  X   -54.0..  -39.0  Y  464.0.. 479.0  Z  427.0.. 431.0  F695 flanged bearing012
+[   68.7s]    fixed  X   -54.0..  -39.0  Y  464.0.. 479.0  Z  436.0.. 440.0  F695 flanged bearing010
+[   68.7s]    fixed  X  -451.0.. -436.0  Y  464.0.. 479.0  Z  440.0.. 444.0  F695 flanged bearing015
+[   68.7s]    fixed  X  -451.0.. -436.0  Y  464.0.. 479.0  Z  449.0.. 453.0  F695 flanged bearing017
+[   68.7s]    fixed  X   -53.0..  -40.0  Y  465.0.. 478.0  Z  431.0.. 436.0  695 W5 bearing002
+[   68.7s]    fixed  X  -450.0.. -437.0  Y  465.0.. 478.0  Z  444.0.. 449.0  695 W5 bearing003
+[   68.7s]    fixed  X  -461.2.. -453.8  Y  465.7.. 473.1  Z  420.0.. 425.5  M3x4 special BHCS003
+[   68.7s]    fixed  X   -36.2..  -28.8  Y  465.7.. 473.1  Z  420.0.. 425.5  M3x4 special BHCS001
+[   68.7s]    fixed  X   -88.7..  -73.9  Y  465.7.. 480.5  Z  421.5.. 454.0  VC9-RTB
+[   68.7s]    fixed  X  -416.2.. -401.4  Y  465.7.. 480.5  Z  426.0.. 458.5  VC9-RTB001
+[   68.7s]    fixed  X  -103.5..  -41.5  Y  466.4.. 479.8  Z  423.7.. 451.5  VC9-RTA
+[   68.7s]    fixed  X  -448.5.. -386.5  Y  466.4.. 479.8  Z  428.5.. 456.3  VC9-RTA001
+[   68.7s]    fixed  X   -50.5..  -42.5  Y  467.5.. 475.5  Z  426.5.. 427.0  M5x0.5mm shim
+[   68.7s]    fixed  X  -447.5.. -439.5  Y  467.5.. 475.5  Z  439.5.. 440.0  M5x0.5mm shim004
+[   68.7s]    fixed  X   -50.5..  -42.5  Y  467.5.. 475.5  Z  440.0.. 440.5  M5x0.5mm shim001
+[   68.7s]    fixed  X  -447.5.. -439.5  Y  467.5.. 475.5  Z  453.0.. 453.5  M5x0.5mm shim005
+[   68.7s]    fixed  X  -413.8.. -403.8  Y  468.1.. 478.1  Z  421.5.. 433.2  M5x10 ULP SHCS001
+[   68.7s]    fixed  X  -413.8.. -403.8  Y  468.1.. 478.1  Z  422.9.. 423.5  M5 disc spring007
+[   68.7s]    fixed  X   -86.2..  -76.2  Y  468.1.. 478.1  Z  456.5.. 457.0  M5 disc spring006
+[   68.7s]    fixed  X   -86.2..  -76.2  Y  468.1.. 478.1  Z  446.8.. 458.5  M5x10 ULP SHCS
+[   68.7s]    fixed  X   -49.5..  -43.5  Y  468.5.. 474.5  Z  424.1.. 432.1  M3x8 FHCS009
+[   68.7s]    fixed  X  -446.5.. -440.5  Y  468.5.. 474.5  Z  428.9.. 436.9  M3x8 FHCS010
+[   68.7s]    fixed  X  -446.5.. -440.5  Y  468.5.. 474.5  Z  447.9.. 455.9  M3x8 FHCS011
+[   68.7s]    fixed  X   -49.5..  -43.5  Y  468.5.. 474.5  Z  443.1.. 451.1  M3x8 FHCS008
+[   68.7s]    fixed  X  -107.5..  -64.0  Y  468.8.. 477.3  Z  429.3.. 437.8  M5x40 LP SHCS
+[   68.7s]    fixed  X  -426.0.. -382.5  Y  468.8.. 477.3  Z  442.2.. 450.7  M5x40 LP SHCS001
+[   68.7s]    fixed  X  -446.0.. -441.0  Y  469.0.. 474.0  Z  430.8.. 454.8  Custom M3x24mm standoff (5mm OD, F-F threads)001
+[   68.7s]    fixed  X   -49.0..  -44.0  Y  469.0.. 474.0  Z  425.2.. 449.2  Custom M3x24mm standoff (5mm OD, F-F threads)
+[   68.8s]    fixed  X  -104.0.. -103.5  Y  469.1.. 477.1  Z  429.5.. 437.5  M5x0.5mm shim002
+[   68.8s]    fixed  X  -386.5.. -386.0  Y  469.1.. 477.1  Z  442.5.. 450.5  M5x0.5mm shim003
+[   68.8s]    fixed  X  -465.0.. -450.0  Y  471.5.. 486.5  Z  433.5.. 441.0  _Pulley removable hub 15x10x7.5mm003
+[   68.8s]    fixed  X   -40.0..  -25.0  Y  471.5.. 486.5  Z  439.0.. 446.5  _Pulley removable hub 15x10x7.5mm002
+[   68.8s]    fixed  X  -465.0.. -450.0  Y  471.5.. 486.5  Z  452.0.. 453.5  _Pulley flange 15x10x1.5mm007
+[   68.8s]    fixed  X   -40.0..  -25.0  Y  471.5.. 486.5  Z  426.5.. 428.0  _Pulley flange 15x10x1.5mm004
+[   68.8s]    fixed  X  -465.0.. -450.0  Y  471.5.. 486.5  Z  421.4.. 425.4  F695 flanged bearing014
+[   68.8s]    fixed  X   -40.0..  -25.0  Y  471.5.. 486.5  Z  421.4.. 425.4  F695 flanged bearing009
+[   68.8s]    fixed  X  -459.4.. -455.5  Y  472.5.. 476.5  Z  435.3.. 439.2  _M4x4 set screw007
+[   68.8s]    fixed  X   -34.5..  -30.6  Y  472.5.. 476.5  Z  440.8.. 444.7  _M4x4 set screw005
+[   68.8s]    fixed  X   -38.6..  -26.4  Y  472.9.. 485.1  Z  426.5.. 446.5  _GT2 20T toothed core003
+[   68.8s]    fixed  X  -463.6.. -451.4  Y  472.9.. 485.1  Z  433.5.. 453.5  _GT2 20T toothed core005
+[   68.8s]    fixed  X   -35.0..  -30.0  Y  476.5.. 481.5  Z  413.5.. 503.0  _Stepper_shaft_S45R
+[   68.8s]    fixed  X  -460.0.. -455.0  Y  476.5.. 481.5  Z  413.5.. 503.0  _Stepper_shaft_S45R001
+[   68.8s]    fixed  X  -464.0.. -460.0  Y  477.0.. 480.9  Z  435.3.. 439.2  _M4x4 set screw006
+[   68.8s]    fixed  X   -30.0..  -26.0  Y  477.0.. 480.9  Z  440.8.. 444.7  _M4x4 set screw004
+[   68.8s]    fixed  X  -255.0.. -235.0  Y  480.0.. 500.0  Z  -10.0.. 430.0  2020 (3)
+[   68.8s]    fixed  X  -415.0..  -75.0  Y  480.0.. 500.0  Z  430.0.. 450.0  2020
+[   68.8s]    fixed  X  -520.0..  140.0  Y  480.0.. 520.0  Z  650.0.. 690.0  4040 (1)004 one piece X -520..140 (lite-53)
+[   68.8s]    fixed  X  -461.2.. -453.8  Y  484.9.. 492.3  Z  420.0.. 425.5  M3x4 special BHCS002
+[   68.8s]    fixed  X   -36.2..  -28.8  Y  484.9.. 492.3  Z  420.0.. 425.5  M3x4 special BHCS
+[   68.8s]    fixed  X   -85.5..  -77.0  Y  485.8.. 494.3  Z  421.5.. 435.0  M5x10 LP SHCS010
+[   68.8s]    fixed  X  -101.0..  -92.5  Y  485.8.. 494.3  Z  421.5.. 435.0  M5x10 LP SHCS011
+[   68.8s]    fixed  X  -413.0.. -404.5  Y  485.8.. 494.3  Z  421.5.. 435.0  M5x10 LP SHCS016
+[   68.8s]    fixed  X  -397.5.. -389.0  Y  485.8.. 494.3  Z  421.5.. 435.0  M5x10 LP SHCS017
+[   68.8s]    fixed  X   -85.5..  -77.0  Y  485.8.. 494.3  Z  445.0.. 458.5  M5x10 LP SHCS008
+[   68.8s]    fixed  X  -101.0..  -92.5  Y  485.8.. 494.3  Z  445.0.. 458.5  M5x10 LP SHCS009
+[   68.8s]    fixed  X  -397.5.. -389.0  Y  485.8.. 494.3  Z  445.0.. 458.5  M5x10 LP SHCS018
+[   68.8s]    fixed  X  -413.0.. -404.5  Y  485.8.. 494.3  Z  445.0.. 458.5  M5x10 LP SHCS019
+[   68.8s]    fixed  X  -412.9.. -399.9  Y  486.2.. 493.9  Z  431.4.. 435.7  M5 2020 drop-in T-nut019
+[   68.8s]    fixed  X  -412.9.. -399.9  Y  486.2.. 493.9  Z  444.3.. 448.6  M5 2020 drop-in T-nut018
+[   68.8s]    fixed  X  -397.4.. -384.4  Y  486.2.. 493.9  Z  431.4.. 435.7  M5 2020 drop-in T-nut016
+[   68.8s]    fixed  X  -397.4.. -384.4  Y  486.2.. 493.9  Z  444.3.. 448.6  M5 2020 drop-in T-nut017
+[   68.8s]    fixed  X  -105.6..  -92.6  Y  486.2.. 493.9  Z  431.4.. 435.7  M5 2020 drop-in T-nut010
+[   68.8s]    fixed  X   -90.1..  -77.1  Y  486.2.. 493.9  Z  431.4.. 435.7  M5 2020 drop-in T-nut011
+[   68.8s]    fixed  X  -105.6..  -92.6  Y  486.2.. 493.9  Z  444.3.. 448.6  M5 2020 drop-in T-nut008
+[   68.8s]    fixed  X   -90.1..  -77.1  Y  486.2.. 493.9  Z  444.3.. 448.6  M5 2020 drop-in T-nut009
+[   68.8s]    fixed  X  -445.0.. -439.0  Y  491.5.. 497.5  Z  421.7.. 461.7  M3x40 FHCS004
+[   68.8s]    fixed  X   -51.0..  -45.0  Y  491.5.. 497.5  Z  421.7.. 461.7  M3x40 FHCS002
+[   68.8s]    fixed  X   -51.0..  -45.0  Y  491.5.. 497.5  Z  427.5.. 452.5  M3x25mm spacer (6mm OD, no threads)002
+[   68.8s]    fixed  X  -445.0.. -439.0  Y  491.5.. 497.5  Z  427.5.. 452.5  M3x25mm spacer (6mm OD, no threads)003
+[   68.8s]    fixed  X  -480.0..  -10.0  Y  500.1.. 500.6  Z  142.0.. 650.0  Back felt liner, inner
+[   68.8s]    fixed  X  -480.0..  -10.0  Y  500.6.. 504.5  Z  142.0.. 650.0  Back felt (pad 2)
+[   68.8s]    fixed  X  -392.0.. -368.0  Y  503.0.. 546.5  Z  668.0.. 732.5  Cable channel post 2 (printed, M5 to the rear 4040)
+[   68.8s]    fixed  X  -198.0.. -174.0  Y  503.0.. 546.5  Z  668.0.. 732.5  Cable channel post 3 (printed, M5 to the rear 4040)
+[   68.8s]    fixed  X  -467.0.. -443.0  Y  503.0.. 546.5  Z  668.0.. 732.5  Cable channel post 1 (printed, M5 to the rear 4040)
+[   68.8s]    fixed  X  -480.0..  -10.0  Y  504.5.. 505.0  Z  142.0.. 650.0  Back felt liner, outer
+[   68.8s]    fixed  X  -488.0..   -6.0  Y  505.0.. 507.8  Z  -18.9.. 656.1  Back Panel001
+[   68.8s]    fixed  X  -488.0..   -6.0  Y  507.8.. 508.0  Z  -18.9.. 656.1  Back Panel001 paint, outside
+[   69.9s]    moving (lite-80) gantry at the rear stop: X -478.0..-12.0, Y 388.7..440.0, Z 421.5..458.5
+[   69.9s]    moving (lite-80) carriage + Left head at the rear stop: X -458.1..-34.6, Y 336.4..423.6, Z 390.6..560.1
+[   69.9s]    moving (lite-80) carriage + Right head at the rear stop: X -458.1..-34.6, Y 336.4..423.6, Z 390.6..560.1
+[  110.1s] T0 (roof exit X -409.7, band -450..-370): free Y depth behind the moving parts, by Z
+[  110.1s]    Z   440:   25.2 (exit X   26.4; wall: F695 flanged bearing015; moving back Y 440.0)
+[  110.1s]    Z   450:   26.3 (exit X   26.4; wall: F695 flanged bearing017; moving back Y 440.0)
+[  110.1s]    Z   460:   34.4 (exit X   76.5; wall: _Stepper_stator001 front cap; moving back Y 423.6)
+[  110.1s]    Z   470:   34.3 (exit X   76.5; wall: _Stepper_stator001; moving back Y 423.6)
+[  110.1s]    Z   480:   34.3 (exit X   76.5; wall: _Stepper_stator001; moving back Y 423.6)
+[  110.1s]    Z   490:   34.3 (exit X   76.5; wall: _Stepper_stator001; moving back Y 423.6)
+[  110.1s]    Z   500:   34.4 (exit X   76.5; wall: _Stepper_stator001 rear cap; moving back Y 423.6)
+[  110.1s]    Z   510:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  110.1s]    Z   520:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  110.1s]    Z   530:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  110.1s]    Z   540:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  110.1s]    Z   550:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  110.1s]    Z   560:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  110.1s]    Z   570:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  110.1s]    Z   580:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  110.1s]    Z   590:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  110.1s]    Z   600:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  110.1s]    Z   610:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  110.1s]    Z   620:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  110.1s]    Z   630:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  110.1s]    Z   640:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  110.1s]    Z   650:  101.0 (exit X  101.0; wall: 4040 (1)004 one piece X -520..140 (lite-53); moving back Y 380.0)
+[  110.1s]    Z   660:  106.0 (exit X  106.0; wall: 4040 (1)004 one piece X -520..140 (lite-53); moving back Y 380.0)
+[  110.1s]    Z   670:  100.0 (exit X  100.0; wall: 4040 (1)004 one piece X -520..140 (lite-53); moving back Y 380.0)
+[  147.0s] T1 (roof exit X -324.54, band -365..-285): free Y depth behind the moving parts, by Z
+[  147.0s]    Z   440:   46.3 (exit X   46.3; wall: 2020; moving back Y 440.0)
+[  147.0s]    Z   450:   41.0 (exit X   41.0; wall: 2020; moving back Y 440.0)
+[  147.0s]    Z   460:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  147.0s]    Z   470:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  147.0s]    Z   480:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  147.0s]    Z   490:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  147.0s]    Z   500:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  147.0s]    Z   510:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  147.0s]    Z   520:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  147.0s]    Z   530:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  147.0s]    Z   540:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  147.0s]    Z   550:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  147.0s]    Z   560:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  147.0s]    Z   570:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  147.0s]    Z   580:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  147.0s]    Z   590:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  147.0s]    Z   600:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  147.0s]    Z   610:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  147.0s]    Z   620:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  147.0s]    Z   630:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  147.0s]    Z   640:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  147.0s]    Z   650:  101.0 (exit X  101.0; wall: 4040 (1)004 one piece X -520..140 (lite-53); moving back Y 380.0)
+[  147.0s]    Z   660:  106.0 (exit X  106.0; wall: 4040 (1)004 one piece X -520..140 (lite-53); moving back Y 380.0)
+[  147.0s]    Z   670:  100.0 (exit X  100.0; wall: 4040 (1)004 one piece X -520..140 (lite-53); moving back Y 380.0)
+[  186.2s] T2 (roof exit X -248.42, band -288..-208): free Y depth behind the moving parts, by Z
+[  186.2s]    Z   440:   46.3 (exit X   46.3; wall: 2020; moving back Y 440.0)
+[  186.2s]    Z   450:   41.0 (exit X   41.0; wall: 2020; moving back Y 440.0)
+[  186.2s]    Z   460:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  186.2s]    Z   470:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  186.2s]    Z   480:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  186.2s]    Z   490:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  186.2s]    Z   500:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  186.2s]    Z   510:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  186.2s]    Z   520:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  186.2s]    Z   530:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  186.2s]    Z   540:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  186.2s]    Z   550:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  186.2s]    Z   560:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  186.2s]    Z   570:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  186.2s]    Z   580:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  186.2s]    Z   590:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  186.2s]    Z   600:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  186.2s]    Z   610:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  186.2s]    Z   620:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  186.2s]    Z   630:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  186.2s]    Z   640:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  186.2s]    Z   650:  101.0 (exit X  101.0; wall: 4040 (1)004 one piece X -520..140 (lite-53); moving back Y 380.0)
+[  186.2s]    Z   660:  106.0 (exit X  106.0; wall: 4040 (1)004 one piece X -520..140 (lite-53); moving back Y 380.0)
+[  186.2s]    Z   670:  100.0 (exit X  100.0; wall: 4040 (1)004 one piece X -520..140 (lite-53); moving back Y 380.0)
+[  216.2s] T3 (roof exit X -156.42, band -196..-116): free Y depth behind the moving parts, by Z
+[  216.2s]    Z   440:   46.3 (exit X   46.3; wall: 2020; moving back Y 440.0)
+[  216.2s]    Z   450:   41.0 (exit X   41.0; wall: 2020; moving back Y 440.0)
+[  216.2s]    Z   460:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  216.2s]    Z   470:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  216.2s]    Z   480:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  216.2s]    Z   490:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  216.2s]    Z   500:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  216.2s]    Z   510:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  216.2s]    Z   520:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  216.2s]    Z   530:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  216.2s]    Z   540:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  216.2s]    Z   550:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  216.2s]    Z   560:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  216.2s]    Z   570:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  216.2s]    Z   580:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  216.2s]    Z   590:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  216.2s]    Z   600:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  216.2s]    Z   610:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  216.2s]    Z   620:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  216.2s]    Z   630:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  216.2s]    Z   640:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  216.2s]    Z   650:  101.0 (exit X  101.0; wall: 4040 (1)004 one piece X -520..140 (lite-53); moving back Y 380.0)
+[  216.2s]    Z   660:  106.0 (exit X  106.0; wall: 4040 (1)004 one piece X -520..140 (lite-53); moving back Y 380.0)
+[  216.2s]    Z   670:  100.0 (exit X  100.0; wall: 4040 (1)004 one piece X -520..140 (lite-53); moving back Y 380.0)
+[  248.5s] T4 (roof exit X -80.3, band -120..-40): free Y depth behind the moving parts, by Z
+[  248.5s]    Z   440:   25.2 (exit X   26.4; wall: F695 flanged bearing010; moving back Y 440.0)
+[  248.5s]    Z   450:   26.4 (exit X   26.4; wall: VC9-RTA; moving back Y 440.0)
+[  248.5s]    Z   460:   34.4 (exit X   76.5; wall: _Stepper_stator front cap; moving back Y 423.6)
+[  248.5s]    Z   470:   34.3 (exit X   76.5; wall: _Stepper_stator; moving back Y 423.6)
+[  248.5s]    Z   480:   34.3 (exit X   76.5; wall: _Stepper_stator; moving back Y 423.6)
+[  248.5s]    Z   490:   34.3 (exit X   76.5; wall: _Stepper_stator; moving back Y 423.6)
+[  248.5s]    Z   500:   34.4 (exit X   76.5; wall: _Stepper_stator rear cap; moving back Y 423.6)
+[  248.5s]    Z   510:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  248.5s]    Z   520:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  248.5s]    Z   530:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  248.5s]    Z   540:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  248.5s]    Z   550:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  248.5s]    Z   560:   76.5 (exit X   76.5; wall: Back felt liner, inner; moving back Y 423.6)
+[  248.5s]    Z   570:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  248.5s]    Z   580:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  248.5s]    Z   590:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  248.5s]    Z   600:  120.1 (exit X  120.1; wall: Back felt liner, inner; moving back Y 380.0)
+[  248.5s]    Z   610:   68.4 (exit X  120.1; wall: Camera housing front (Printables 305428, public domain); moving back Y 380.0)
+[  248.5s]    Z   620:   54.1 (exit X  120.1; wall: Camera housing front (Printables 305428, public domain); moving back Y 380.0)
+[  248.5s]    Z   630:   39.7 (exit X  120.1; wall: Camera housing front (Printables 305428, public domain); moving back Y 380.0)
+[  248.5s]    Z   640:   40.1 (exit X  120.1; wall: Camera housing front (Printables 305428, public domain); moving back Y 380.0)
+[  248.5s]    Z   650:  101.0 (exit X  101.0; wall: 4040 (1)004 one piece X -520..140 (lite-53); moving back Y 380.0)
+[  248.5s]    Z   660:  106.0 (exit X  106.0; wall: 4040 (1)004 one piece X -520..140 (lite-53); moving back Y 380.0)
+[  248.5s]    Z   670:  100.0 (exit X  100.0; wall: 4040 (1)004 one piece X -520..140 (lite-53); moving back Y 380.0)
+[  248.5s] with >= 12 mm free in Y over the whole band (lite-80): T0 down to Z 440; T1 down to Z 440; T2 down to Z 440; T3 down to Z 440; T4 down to Z 440
+[  248.5s] with >= 20 mm free in Y over the whole band (lite-80): T0 down to Z 440; T1 down to Z 440; T2 down to Z 440; T3 down to Z 440; T4 down to Z 440
+[  248.5s] with >= 30 mm free in Y over the whole band (lite-80): T0 down to Z 460; T1 down to Z 440; T2 down to Z 440; T3 down to Z 440; T4 down to Z 460
+[  248.5s] verify: 0 problems
+[  248.5s] DRY RUN (headless): all checks passed, not saved
+[  248.5s] bowden_arms_rear_space: done (read-only, nothing saved)

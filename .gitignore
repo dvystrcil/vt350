@@ -13,6 +13,7 @@ cad/data/motion/
 
 # flap_guide study shapes (~15 MB); the summary is cad/data/logs/flap_guide_summary.json
 cad/data/logs/flap_guide_raw.json
+cad/data/logs/lanyard_raw.json
 
 # the reference pages' release assets, put in place by platform/pages/fetch_assets.py (notes/reference/assets.json)
 notes/reference/toolhead-turntable/frames/

@@ -1,0 +1,220 @@
+{
+ "model": "/home/dan/Documents/VT350/vt350-lite-80.FCStd",
+ "weight": "0.2",
+ "result": {
+  "1": {
+   "ok": true,
+   "worst": 1.43,
+   "fixed": [
+    [
+     3.74,
+     "Roof felt liner, inner"
+    ],
+    [
+     4.07,
+     "Roof felt (pad 1)"
+    ]
+   ],
+   "moving": {
+    "lite-80": [
+     [
+      1.43,
+      "gantry"
+     ]
+    ]
+   },
+   "travel": [
+    178.46981008257137,
+    340.0,
+    284.8717996275125
+   ]
+  },
+  "2": {
+   "ok": true,
+   "worst": 3.74,
+   "fixed": [
+    [
+     3.74,
+     "Roof felt liner, inner"
+    ],
+    [
+     4.06,
+     "Roof felt (pad 1)"
+    ]
+   ],
+   "moving": {
+    "lite-80": []
+   },
+   "travel": [
+    214.22287127638322,
+    339.99999999999994,
+    320.42860863737815
+   ]
+  },
+  "3": {
+   "ok": true,
+   "worst": 1.43,
+   "fixed": [
+    [
+     3.7,
+     "Roof felt liner, inner"
+    ],
+    [
+     4.03,
+     "Roof felt (pad 1)"
+    ]
+   ],
+   "moving": {
+    "lite-80": [
+     [
+      1.43,
+      "gantry"
+     ]
+    ]
+   },
+   "travel": [
+    233.34638521939894,
+    340.0,
+    340.0
+   ]
+  },
+  "4": {
+   "ok": true,
+   "worst": 3.72,
+   "fixed": [
+    [
+     3.72,
+     "Roof felt liner, inner"
+    ],
+    [
+     4.05,
+     "Roof felt (pad 1)"
+    ]
+   ],
+   "moving": {
+    "lite-80": []
+   },
+   "travel": [
+    210.99073195668177,
+    340.0,
+    317.0292968620312
+   ]
+  },
+  "5": {
+   "ok": true,
+   "worst": 1.3,
+   "fixed": [
+    [
+     1.3,
+     "M5x40 LP SHCS"
+    ],
+    [
+     3.4,
+     "2020"
+    ],
+    [
+     3.66,
+     "Roof felt liner, inner"
+    ],
+    [
+     3.99,
+     "Roof felt (pad 1)"
+    ],
+    [
+     4.8,
+     "M5x0.5mm shim002"
+    ]
+   ],
+   "moving": {
+    "lite-80": []
+   },
+   "travel": [
+    178.65668775324912,
+    340.0,
+    285.1142979206097
+   ]
+  }
+ },
+ "pairs": [
+  [
+   1.48,
+   "T3 active, T4 parked"
+  ],
+  [
+   1.48,
+   "T4 active, T3 parked"
+  ],
+  [
+   1.71,
+   "T0 active, T1 parked"
+  ],
+  [
+   1.71,
+   "T1 active, T0 parked"
+  ],
+  [
+   2.65,
+   "T2 active, T3 parked"
+  ],
+  [
+   2.65,
+   "T3 active, T2 parked"
+  ],
+  [
+   4.57,
+   "T2 active, T4 parked"
+  ],
+  [
+   4.57,
+   "T4 active, T2 parked"
+  ],
+  [
+   30.23,
+   "T1 active, T2 parked"
+  ],
+  [
+   30.23,
+   "T2 active, T1 parked"
+  ],
+  [
+   36.8,
+   "T0 active, T2 parked"
+  ],
+  [
+   36.8,
+   "T1 active, T3 parked"
+  ],
+  [
+   36.8,
+   "T2 active, T0 parked"
+  ],
+  [
+   36.8,
+   "T3 active, T1 parked"
+  ],
+  [
+   36.92,
+   "T0 active, T3 parked"
+  ],
+  [
+   36.92,
+   "T1 active, T4 parked"
+  ],
+  [
+   36.92,
+   "T3 active, T0 parked"
+  ],
+  [
+   36.92,
+   "T4 active, T1 parked"
+  ],
+  [
+   40.13,
+   "T0 active, T4 parked"
+  ],
+  [
+   40.13,
+   "T4 active, T0 parked"
+  ]
+ ]
+}

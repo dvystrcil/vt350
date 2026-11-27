@@ -1,0 +1,54 @@
+[    0.0s] model /home/dan/Documents/VT350/vt350-lite-80.FCStd (read-only); route from bowden_arms_dancer.py, EI 2000, dancer weight 0.2 N; sheave R 60.2 x 10.0; bundle tube R 4.6
+[    3.3s] opened /home/dan/Documents/VT350/vt350-lite-80.FCStd
+[   55.1s] fixed solids 1035
+[   55.1s] T0: pulley centre X -324.2, plane Y 446.0, Z 178..340 (parked 285); route box X -414..-264, Y 245..452, Z 118..682
+[   55.1s] T1: pulley centre X -324.2, plane Y 459.0, Z 214..340 (parked 320); route box X -384..-264, Y 245..464, Z 154..682
+[   55.1s] T2: pulley centre X -167.0, plane Y 446.0, Z 233..340 (parked 340); route box X -253..-107, Y 245..452, Z 173..682
+[   55.2s] T3: pulley centre X -167.0, plane Y 459.0, Z 211..340 (parked 317); route box X -227..-106, Y 245..467, Z 151..682
+[   55.2s] T4: pulley centre X -167.0, plane Y 472.0, Z 179..340 (parked 285); route box X -227..-76, Y 245..478, Z 118..682
+[   60.2s] ok   T0 dancer: clear (smallest gap 1.43, needs >= 1.0; pulley Z 178..340)
+[   60.2s]          3.74  Roof felt liner, inner
+[   60.2s]          4.07  Roof felt (pad 1)
+[   60.2s]          1.43  moving (lite-80): gantry (box, conservative)
+[   61.4s] ok   T1 dancer: clear (smallest gap 3.74, needs >= 1.0; pulley Z 214..340)
+[   61.4s]          3.74  Roof felt liner, inner
+[   61.4s]          4.06  Roof felt (pad 1)
+[   62.6s] ok   T2 dancer: clear (smallest gap 1.43, needs >= 1.0; pulley Z 233..340)
+[   62.6s]          3.70  Roof felt liner, inner
+[   62.6s]          4.03  Roof felt (pad 1)
+[   62.6s]          1.43  moving (lite-80): gantry (box, conservative)
+[   64.0s] ok   T3 dancer: clear (smallest gap 3.72, needs >= 1.0; pulley Z 211..340)
+[   64.0s]          3.72  Roof felt liner, inner
+[   64.0s]          4.05  Roof felt (pad 1)
+[   67.4s] ok   T4 dancer: clear (smallest gap 1.30, needs >= 1.0; pulley Z 179..340)
+[   67.4s]          1.30  M5x40 LP SHCS
+[   67.4s]          3.40  2020
+[   67.4s]          3.66  Roof felt liner, inner
+[   67.4s]          3.99  Roof felt (pad 1)
+[   67.4s]          4.80  M5x0.5mm shim002
+[   68.4s] ok   tools apart: clear (closest T3 active, T4 parked 1.48; the active tool's whole travel against the others parked)
+[   68.4s]          1.48  T3 active, T4 parked
+[   68.4s]          1.48  T4 active, T3 parked
+[   68.4s]          1.71  T0 active, T1 parked
+[   68.4s]          1.71  T1 active, T0 parked
+[   68.4s]          2.65  T2 active, T3 parked
+[   68.4s]          2.65  T3 active, T2 parked
+[   68.4s]          4.57  T2 active, T4 parked
+[   68.4s]          4.57  T4 active, T2 parked
+[   68.4s]         30.23  T1 active, T2 parked
+[   68.4s]         30.23  T2 active, T1 parked
+[   68.4s]         36.80  T0 active, T2 parked
+[   68.4s]         36.80  T1 active, T3 parked
+[   68.4s]         36.80  T2 active, T0 parked
+[   68.4s]         36.80  T3 active, T1 parked
+[   68.4s]         36.92  T0 active, T3 parked
+[   68.4s]         36.92  T1 active, T4 parked
+[   68.4s]         36.92  T3 active, T0 parked
+[   68.4s]         36.92  T4 active, T1 parked
+[   68.4s]         40.13  T0 active, T4 parked
+[   68.4s]         40.13  T4 active, T0 parked
+[   68.4s] dancer route: clear
+[   68.4s] verify: 0 problems
+[   68.4s] DRY RUN (headless): all checks passed, not saved
+[   68.4s] bowden_arms_dancer_clear: done (read-only, nothing saved)
+[   68.4s] litepool: peak RSS: workers max 1895 MB, sum 3790 MB; parent 1895 MB
