@@ -36,8 +36,9 @@ HERE = os.path.abspath(__file__)
 _HERE = os.path.dirname(HERE)    # then the checkout's code folders (vt350#122); a gpu-batch pod stages all flat in _HERE
 sys.path[:0] = [_HERE] + [p for p in (os.path.join(os.path.dirname(os.path.dirname(_HERE)), d) for d in ("cad/scripts", "platform/freecad")) if os.path.isdir(p)]
 # gantry dY limits, lite9_rails.log (joint/mount hard stops; Z moves since keep them). lite-78 (vt350#291) moved the
-# front rail mounts -17 (the rear stay): the front stop -277.19 -> -294.19. For lite-77 or older: SWEEP_Y_STRETCH=-17,0
-Y_TRAVEL = (-294.19, 145.43)
+# front rail mounts -17 (the rear stay): the front stop -277.19 -> -294.19. lite-80 (#243) moved them -3 more:
+# -297.19. For lite-78/79: SWEEP_Y_STRETCH=-3,0; for lite-77 or older: SWEEP_Y_STRETCH=-20,0
+Y_TRAVEL = (-297.19, 145.43)
 # SWEEP_Y_STRETCH="front,rear" (mm, vt350#291): a what-if for a deeper frame: the front and rear rail mounts moved out
 # by those amounts, so the hard stops move with them. Studies only; a lite-N pass makes it real.
 _STRETCH = [float(v) for v in os.environ.get("SWEEP_Y_STRETCH", "0,0").split(",")]

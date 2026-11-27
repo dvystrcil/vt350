@@ -1,0 +1,145 @@
+[    3.2s] opened /home/dan/Documents/VT350/vt350-lite-79.FCStd
+[   18.5s]    uprights the riding joint screws pass through, re-drilled +10: {'4040 upright Z -10..650 (lite-46)': (417.4, 452.6), '4040(Mirror) upright Z -10..650 (lite-46)': (417.4, 452.6), '2040 upright Z -10..650 (lite-46)': (417.2, 452.8), '2040(Mirror) upright Z -10..650 (lite-46)': (417.2, 452.8)}
+[   18.5s] 1554 leaves. STEP 1 (front -3): 920 move, 32 spliced, 2 belts, 2 rails move -1.5, 5 tubes + 5 cables spliced; stay by name ['2040 (2)', '2040 Z post (R)', '2040(Mirror) Z post (L)', 'EMU envelope (contents in vt350-emu-4.FCStd)', 'backbone-350 v2']
+[   18.5s]    splice Y: 2020 e-box inner cross member, bottom, Z -30..-10 (lite-53) [4040-350 VT Frame v12] Y -87.0..480.0
+[   18.5s]    splice Y: 2020 e-box inner cross member, top, Z 650..670 (lite-53) [4040-350 VT Frame v12] Y -87.0..480.0
+[   18.5s]    splice Y: 2040 (3) [4040-350 VT Frame v12] Y -87.0..480.0
+[   18.5s]    splice Y: 2040 (3)001 [4040-350 VT Frame v12] Y -87.0..480.0
+[   18.5s]    splice Y: 2040 e-box outer side rail, bottom (lite-46) [4040-350 VT Frame v12] Y -87.0..480.0
+[   18.5s]    splice Y: 2040 e-box outer side rail, top (lite-46) [4040-350 VT Frame v12] Y -87.0..480.0
+[   18.5s]    splice Y: 4040 (1) [4040-350 VT Frame v12] Y -87.0..480.0
+[   18.5s]    splice Y: 4040 (1)001 [4040-350 VT Frame v12] Y -87.0..480.0
+[   18.5s]    splice Y: 4040 (1)002 [4040-350 VT Frame v12] Y -87.0..480.0
+[   18.5s]    splice Y: 4040 (1)003 [4040-350 VT Frame v12] Y -87.0..480.0
+[   18.5s]    splice Y: Base board (18 mm, plywood/MDF, placeholder) [] Y -168.0..541.0
+[   18.5s]    splice Y: E-box door window (3 mm clear sheet, as the front door's), 610 x 740 [lite-58: in the frame slot, 539 x 669] [E-box door (lite-56, mirrored from Door (1) (1))] Y -71.5..484.5
+[   18.5s]    splice Y: E-box door window gasket (rubber glazing strip, U on the sheet's edge, in the frame slot; lite-58) [E-box door (lite-56, mirrored from Door (1) (1))] Y -72.5..485.5
+[   18.5s]    splice Y: E-box door: 2040 (2) (1) [E-box door (lite-56, mirrored from Door (1) (1))] Y -67.0..480.0
+[   18.5s]    splice Y: E-box door: 2040 (2) (1)001 [E-box door (lite-56, mirrored from Door (1) (1))] Y -67.0..480.0
+[   18.5s]    splice Y: E-box top panel (3 mm) [E-box panels and front grille (lite-59)] Y -107.0..520.0
+[   18.5s]    splice Y: E-box top panel (3 mm) paint, outside [E-box panels and front grille (lite-59)] Y -107.0..520.0
+[   18.5s]    splice Y: Ebox envelope (contents in vt350-ebox-4.FCStd) [] Y -75.0..545.0
+[   18.5s]    splice Y: LED channel left (24 V COB, warm white) [] Y -37.0..470.0
+[   18.5s]    splice Y: LED channel right (24 V COB, warm white) [] Y -37.0..470.0
+[   18.5s]    splice Y: Left side panel (3 mm) [] Y -93.0..520.0
+[   18.5s]    splice Y: Left side panel (3 mm) paint, outside [] Y -93.0..520.0
+[   18.5s]    splice Y: Right side panel (3 mm) [] Y -93.0..520.0
+[   18.5s]    splice Y: Right side panel (3 mm) paint, outside [] Y -93.0..520.0
+[   18.5s]    splice Y: Right wall felt (pad 3) [Insulation: carbon felt sealed in aluminium] Y -45.0..480.0
+[   18.5s]    splice Y: Right wall felt liner, inner [Insulation: carbon felt sealed in aluminium] Y -45.0..480.0
+[   18.5s]    splice Y: Right wall felt liner, outer [Insulation: carbon felt sealed in aluminium] Y -45.0..480.0
+[   18.5s]    splice Y: Roof felt (pad 1) [Insulation: carbon felt sealed in aluminium] Y -87.0..438.0
+[   18.5s]    splice Y: Roof felt liner, inner [Insulation: carbon felt sealed in aluminium] Y -87.0..438.0
+[   18.5s]    splice Y: Roof felt liner, outer [Insulation: carbon felt sealed in aluminium] Y -87.0..438.0
+[   18.5s]    splice Y: Roof panel (3 mm) [] Y -107.0..520.0
+[   18.5s]    splice Y: Roof panel (3 mm) paint, outside [] Y -107.0..520.0
+[   18.5s] STEP 2 (gantry +10): 937 ride; Z bars spliced: ['2020 (3)', '2040 Z post (R)', '2040(Mirror) Z post (L)']
+[   18.5s]    rides:    3 in (root)
+[   18.5s]    rides:   22 in 4040-350 VT Frame v12
+[   18.5s]    rides:   10 in Carriage (1)
+[   18.5s]    rides:   10 in Dock slot 2 (L)
+[   18.5s]    rides:   11 in Dock slot 3 (R)
+[   18.5s]    rides:    9 in Dock slot 4 (L)
+[   18.5s]    rides:    1 in Gantry assembly
+[   18.5s]    rides:   19 in Left Dock
+[   18.5s]    rides:  118 in Left Toolhead
+[   18.5s]    rides:  241 in Monolith gantry (LDO milled, 2WD VT 9mm)
+[   18.5s]    rides:   19 in Right Dock
+[   18.5s]    rides:  118 in Right Toolhead
+[   18.5s]    rides:  118 in Toolhead slot 2 (L)
+[   18.5s]    rides:  118 in Toolhead slot 3 (R)
+[   18.5s]    rides:  118 in Toolhead slot 4 (L)
+[   18.5s]    rides:    2 in _11_9mm_2WD_belts_FT_FT v1
+[   18.5s]    frame screws that ride (21): ['M2.5x14-Screw', 'M2.5x14-Screw001', 'M2.5x14-Screw002', 'M2.5x14-Screw003', 'M2.5x14-Screw004', 'M5-Washer010', 'M5-Washer011', 'M5-Washer012', 'M5-Washer013', 'M5-Washer035', 'M5-Washer036', 'M5-Washer055', 'M5-Washer056', 'M5x16-Screw007', 'M5x16-Screw008', 'M5x16-Screw022', 'M5x16-Screw023', 'M5x50-Screw003', 'M5x50-Screw004', 'M5x50-Screw021', 'M5x50-Screw022']
+[   18.5s]    in the gantry's Z band over the chamber but staying (4): [(-10.0, '2040 upright Z -10..650 (lite-46)', '4040-350 VT Frame v12'), (-10.0, '2040(Mirror) upright Z -10..650 (lite-46)', '4040-350 VT Frame v12'), (399.0, 'SOLID035', 'Z Assembly (1)'), (402.0, 'M3x8-Screw021', 'Z Assembly (1)')]
+[   18.5s] ok   two 490 Y rails (['MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)', 'MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)'])
+[   18.5s] ok   two belts (2)
+[   18.5s] ok   five tubes and five cables (5, 5)
+[   18.5s] ok   2 Z posts and the rear vertical (['2020 (3)', '2040 Z post (R)', '2040(Mirror) Z post (L)'])
+[   18.5s] ok   the Z bars aren't touched by step 1
+[   18.5s]    riders also spliced in Y: ['2040 (3)', '2040 (3)001'] (unexpected: [])
+[   18.5s] ok   only the gantry side bars are both spliced and raised ([])
+[   18.5s] ok   no moved or spliced leaf is attached: []
+[   18.5s]    0 unchanged links share a reshaped shape, get their own copy first: []
+[ 1086.5s] collision baseline (lite-79): 2458 pairs, 64 overlaps
+[ 1086.6s] rails before: gaps to the front / rear mounts {'MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)': (0.4644660940672978, 0.46446609406729067), 'MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)': (0.46446609406729067, 0.46446609406729067)}
+[ 1095.5s]    belt GT2 9mm belt, lower (Monolith 2WD): strands spliced at Y [101.0]
+[ 1095.7s]    belt GT2 9mm belt, upper (Monolith 2WD): strands spliced at Y [101.0]
+[ 1433.1s]    5 parts on the tube + cable runs in front of Y 109 move -3 with them
+[ 1803.4s]    0 zip ties below the tubes' Z cut (Z 517.5) move +10: []
+[ 1815.7s] ok   1503 leaves moved exactly as planned (front -3, rails -1.5, riders +10, the rest unchanged): 0 not: []
+[ 1815.7s] ok   spliced 2020 e-box inner cross member, bottom, Z -30..-10 (lite-53) at Y 30: Y -90.00..480.00 (was -87.00..480.00), Z +0.00, solids 1/1, vol 103816 (want 103816)
+[ 1815.8s] ok   spliced 2020 e-box inner cross member, top, Z 650..670 (lite-53) at Y 30: Y -90.00..480.00 (was -87.00..480.00), Z +0.00, solids 1/1, vol 103816 (want 103816)
+[ 1815.8s] ok   spliced 2040 (3) at Y 30: Y -90.00..480.00 (was -87.00..480.00), Z +10.00, solids 1/1, vol 185520 (want 185520)
+[ 1815.9s] ok   spliced 2040 (3)001 at Y 30: Y -90.00..480.00 (was -87.00..480.00), Z +10.00, solids 1/1, vol 185520 (want 185520)
+[ 1815.9s] ok   spliced 2040 e-box outer side rail, bottom (lite-46) at Y 30: Y -90.00..480.00 (was -87.00..480.00), Z +0.00, solids 1/1, vol 182618 (want 182618)
+[ 1816.0s] ok   spliced 2040 e-box outer side rail, top (lite-46) at Y 30: Y -90.00..480.00 (was -87.00..480.00), Z +0.00, solids 1/1, vol 182618 (want 182618)
+[ 1816.1s] ok   spliced 4040 (1) at Y 30: Y -90.00..480.00 (was -87.00..480.00), Z +0.00, solids 1/1, vol 275030 (want 275030)
+[ 1816.2s] ok   spliced 4040 (1)001 at Y 30: Y -90.00..480.00 (was -87.00..480.00), Z +0.00, solids 1/1, vol 275030 (want 275030)
+[ 1816.2s] ok   spliced 4040 (1)002 at Y 30: Y -90.00..480.00 (was -87.00..480.00), Z +0.00, solids 1/1, vol 275030 (want 275030)
+[ 1816.3s] ok   spliced 4040 (1)003 at Y 30: Y -90.00..480.00 (was -87.00..480.00), Z +0.00, solids 1/1, vol 275030 (want 275030)
+[ 1816.3s] ok   spliced Base board (18 mm, plywood/MDF, placeholder) at Y 30: Y -171.01..541.00 (was -168.01..541.00), Z +0.00, solids 1/1, vol 8659189 (want 8659189)
+[ 1816.3s] ok   spliced E-box door window (3 mm clear sheet, as the front door's), 610 x 740 [lite-58: in the frame slot, 539 x 669] at Y 30: Y -74.50..484.50 (was -71.50..484.50), Z +0.00, solids 1/1, vol 1121913 (want 1121913)
+[ 1816.3s] ok   spliced E-box door window gasket (rubber glazing strip, U on the sheet's edge, in the frame slot; lite-58) at Y 30: Y -75.50..485.50 (was -72.50..485.50), Z +0.00, solids 12/12, vol 47673 (want 47673)
+[ 1816.5s] ok   spliced E-box door: 2040 (2) (1) at Y 30: Y -70.00..480.00 (was -67.00..480.00), Z +0.00, solids 2/2, vol 179010 (want 179010)
+[ 1816.6s] ok   spliced E-box door: 2040 (2) (1)001 at Y 30: Y -70.00..480.00 (was -67.00..480.00), Z +0.00, solids 2/2, vol 179010 (want 179010)
+[ 1816.6s] ok   spliced E-box top panel (3 mm) at Y 30: Y -110.00..520.00 (was -107.00..520.00), Z +0.00, solids 1/1, vol 229320 (want 229320)
+[ 1816.6s] ok   spliced E-box top panel (3 mm) paint, outside at Y 30: Y -110.00..520.00 (was -107.00..520.00), Z +0.00, solids 1/1, vol 16380 (want 16380)
+[ 1816.6s] ok   spliced Ebox envelope (contents in vt350-ebox-4.FCStd) at Y 30: Y -78.00..545.00 (was -75.00..545.00), Z +0.00, solids 1/1, vol 32870103 (want 32870103)
+[ 1816.6s] ok   spliced LED channel left (24 V COB, warm white) at Y 30: Y -40.00..470.00 (was -37.00..470.00), Z +0.00, solids 1/1, vol 65280 (want 65280)
+[ 1816.6s] ok   spliced LED channel right (24 V COB, warm white) at Y 30: Y -40.00..470.00 (was -37.00..470.00), Z +0.00, solids 1/1, vol 65280 (want 65280)
+[ 1816.6s] ok   spliced Left side panel (3 mm) at Y 30: Y -96.00..520.00 (was -93.00..520.00), Z +0.00, solids 1/1, vol 1276352 (want 1276352)
+[ 1816.6s] ok   spliced Left side panel (3 mm) paint, outside at Y 30: Y -96.00..520.00 (was -93.00..520.00), Z +0.00, solids 1/1, vol 91168 (want 91168)
+[ 1816.6s] ok   spliced Right side panel (3 mm) at Y 30: Y -96.00..520.00 (was -93.00..520.00), Z +0.00, solids 1/1, vol 1138368 (want 1138368)
+[ 1816.6s] ok   spliced Right side panel (3 mm) paint, outside at Y 30: Y -96.00..520.00 (was -93.00..520.00), Z +0.00, solids 1/1, vol 81312 (want 81312)
+[ 1816.6s] ok   spliced Right wall felt (pad 3) at Y 30: Y -48.00..480.00 (was -45.00..480.00), Z +0.00, solids 1/1, vol 2460480 (want 2460480)
+[ 1816.6s] ok   spliced Right wall felt liner, inner at Y 30: Y -48.00..480.00 (was -45.00..480.00), Z +0.00, solids 1/1, vol 123024 (want 123024)
+[ 1816.6s] ok   spliced Right wall felt liner, outer at Y 30: Y -48.00..480.00 (was -45.00..480.00), Z +0.00, solids 1/1, vol 123024 (want 123024)
+[ 1816.6s] ok   spliced Roof felt (pad 1) at Y 30: Y -90.00..438.00 (was -87.00..438.00), Z +0.00, solids 1/1, vol 2481600 (want 2481600)
+[ 1816.6s] ok   spliced Roof felt liner, inner at Y 30: Y -90.00..438.00 (was -87.00..438.00), Z +0.00, solids 1/1, vol 124080 (want 124080)
+[ 1816.6s] ok   spliced Roof felt liner, outer at Y 30: Y -90.00..438.00 (was -87.00..438.00), Z +0.00, solids 1/1, vol 124080 (want 124080)
+[ 1816.6s] ok   spliced Roof panel (3 mm) at Y 30: Y -110.00..520.00 (was -107.00..520.00), Z +0.00, solids 1/1, vol 967890 (want 967890)
+[ 1816.7s] ok   spliced Roof panel (3 mm) paint, outside at Y 30: Y -110.00..520.00 (was -107.00..520.00), Z +0.00, solids 1/1, vol 69173 (want 69173)
+[ 1816.8s] ok   belt GT2 9mm belt, upper (Monolith 2WD): valid True, Y -103.09..486.49, Z +10.00
+[ 1816.8s] ok   belt GT2 9mm belt, lower (Monolith 2WD): valid True, Y -103.09..486.49, Z +10.00
+[ 1816.9s] ok   Z bar 2020 (3) spliced at Z 100: Z -10.00..430.00, 440.00 long (want 440), solids 1/1, vol 80139 (want 80139)
+[ 1816.9s] ok   2020 (3): 440 long (440.00)
+[ 1816.9s] ok   Z bar 2040 Z post (R) spliced at Z 100: Z -10.00..430.00, 440.00 long (want 440), solids 1/1, vol 138320 (want 138320)
+[ 1816.9s] ok   2040 Z post (R): 440 long (440.00)
+[ 1816.9s] ok   Z bar 2040(Mirror) Z post (L) spliced at Z 100: Z -10.00..430.00, 440.00 long (want 440), solids 1/1, vol 138320 (want 138320)
+[ 1816.9s] ok   2040(Mirror) Z post (L): 440 long (440.00)
+[ 1817.0s] ok   re-drilled 2040 upright Z -10..650 (lite-46): 4 hole(s) in Z 417.2..452.8 moved +10; valid True, box moved as planned True, vol 207335.1 -> 207335.1
+[ 1817.1s] ok   re-drilled 2040(Mirror) upright Z -10..650 (lite-46): 4 hole(s) in Z 417.2..452.8 moved +10; valid True, box moved as planned True, vol 207335.1 -> 207335.1
+[ 1817.5s] ok   re-drilled 4040 upright Z -10..650 (lite-46): 8 hole(s) in Z 417.4..452.6 moved +10; valid True, box moved as planned True, vol 318535.6 -> 318535.6
+[ 1817.8s] ok   re-drilled 4040(Mirror) upright Z -10..650 (lite-46): 8 hole(s) in Z 417.4..452.6 moved +10; valid True, box moved as planned True, vol 318535.6 -> 318535.6
+[ 1818.4s] ok   2040(Mirror) Z post (L): its top meets a gantry bar (gap 0.0000)
+[ 1818.6s] ok   2020 (3): its top meets a gantry bar (gap 0.0000)
+[ 1819.3s] ok   2040 Z post (R): its top meets a gantry bar (gap 0.0000)
+[ 1819.4s] ok   Bowden Left: Y cut at 110 (0.00 % off pi d); Z cut 517.5..+10 (0.03 % off pi d, centres 0.164 apart); Y -57.30..482.67 (was -54.30..482.67), Z 517.15..712.67 (was 517.15..712.67); vol 8321 (Y-spliced 8418, after the Z cut 8304)
+[ 1819.4s] ok   Bowden Left: the roof end stays (Y max 482.67, Z max 712.67)
+[ 1819.4s] ok   Bowden Right: Y cut at 110 (0.00 % off pi d); Z cut 517.5..+10 (0.03 % off pi d, centres 0.164 apart); Y -57.30..482.67 (was -54.30..482.67), Z 517.15..712.67 (was 517.15..712.67); vol 8321 (Y-spliced 8418, after the Z cut 8304)
+[ 1819.4s] ok   Bowden Right: the roof end stays (Y max 482.67, Z max 712.67)
+[ 1819.5s] ok   Bowden slot 2: Y cut at 110 (0.00 % off pi d); Z cut 517.5..+10 (0.03 % off pi d, centres 0.164 apart); Y -57.30..482.67 (was -54.30..482.67), Z 517.15..712.67 (was 517.15..712.67); vol 8321 (Y-spliced 8418, after the Z cut 8304)
+[ 1819.5s] ok   Bowden slot 2: the roof end stays (Y max 482.67, Z max 712.67)
+[ 1819.5s] ok   Bowden slot 3: Y cut at 110 (0.00 % off pi d); Z cut 517.5..+10 (0.03 % off pi d, centres 0.164 apart); Y -57.30..482.67 (was -54.30..482.67), Z 517.15..712.67 (was 517.15..712.67); vol 8321 (Y-spliced 8418, after the Z cut 8304)
+[ 1819.5s] ok   Bowden slot 3: the roof end stays (Y max 482.67, Z max 712.67)
+[ 1819.6s] ok   Bowden slot 4: Y cut at 110 (0.00 % off pi d); Z cut 517.5..+10 (0.03 % off pi d, centres 0.164 apart); Y -57.30..482.67 (was -54.30..482.67), Z 517.15..712.67 (was 517.15..712.67); vol 8321 (Y-spliced 8418, after the Z cut 8304)
+[ 1819.6s] ok   Bowden slot 4: the roof end stays (Y max 482.67, Z max 712.67)
+[ 1819.7s] ok   O2S USB cable slot 1 (Ø5.1, ~3 m: Y cut at 109 (0.01 % off pi d); Z cut 559.5..+10 (0.00 % off pi d, centres 0.017 apart); Y -14.21..545.26 (was -11.21..545.26), Z 380.00..773.30 (was 380.00..773.30); vol 30923 (Y-spliced 31127, after the Z cut 30923)
+[ 1819.7s] ok   O2S USB cable slot 1 (Ø5.1, ~3 m: the roof end stays (Y max 545.26, Z max 773.30)
+[ 1819.9s] ok   O2S USB cable slot 2 (Ø5.1, ~3 m: Y cut at 109 (0.01 % off pi d); Z cut 559.5..+10 (0.00 % off pi d, centres 0.017 apart); Y -14.21..545.59 (was -11.21..545.59), Z 380.00..766.26 (was 380.00..766.26); vol 28971 (Y-spliced 29175, after the Z cut 28970)
+[ 1819.9s] ok   O2S USB cable slot 2 (Ø5.1, ~3 m: the roof end stays (Y max 545.59, Z max 766.26)
+[ 1820.0s] ok   O2S USB cable slot 3 (Ø5.1, ~3 m: Y cut at 109 (0.01 % off pi d); Z cut 559.5..+10 (0.00 % off pi d, centres 0.017 apart); Y -14.21..545.84 (was -11.21..545.84), Z 380.00..759.22 (was 380.00..759.22); vol 26860 (Y-spliced 27064, after the Z cut 26860)
+[ 1820.0s] ok   O2S USB cable slot 3 (Ø5.1, ~3 m: the roof end stays (Y max 545.84, Z max 759.22)
+[ 1820.2s] ok   O2S USB cable slot 4 (Ø5.1, ~3 m: Y cut at 109 (0.01 % off pi d); Z cut 559.5..+10 (0.00 % off pi d, centres 0.017 apart); Y -14.21..546.17 (was -11.21..546.17), Z 380.00..752.19 (was 380.00..752.19); vol 25006 (Y-spliced 25210, after the Z cut 25005)
+[ 1820.2s] ok   O2S USB cable slot 4 (Ø5.1, ~3 m: the roof end stays (Y max 546.17, Z max 752.19)
+[ 1820.3s] ok   O2S USB cable slot 5 (Ø5.1, ~3 m: Y cut at 109 (0.01 % off pi d); Z cut 559.5..+10 (0.00 % off pi d, centres 0.017 apart); Y -14.21..546.44 (was -11.21..546.44), Z 380.00..745.15 (was 380.00..745.15); vol 22952 (Y-spliced 23156, after the Z cut 22952)
+[ 1820.3s] ok   O2S USB cable slot 5 (Ø5.1, ~3 m: the roof end stays (Y max 546.44, Z max 745.15)
+[ 1820.3s] ok   rail MGN9 Y rail (L) : Y -52.00..438.00, 1.96 from the front mount and 1.96 from the rear
+[ 1820.3s] ok   rail MGN9 Y rail (R) : Y -52.00..438.00, 1.96 from the front mount and 1.96 from the rear
+[ 1820.3s] ok   5 nozzles, one tip Z: [380.9] -> [390.9]
+[ 3253.5s] collision check: 2459 pairs, 62 overlaps now, 64 in lite-79; gone [('4040 (1)003', 'Roof panel (3 mm)'), ('Roof panel (3 mm)', '4040 (1)003')]
+[ 3253.5s] ok   COLLISIONS: no overlap lite-79 didn't have (0 new: [])
+[ 3253.5s] verify: 0 problems
+[ 3253.5s] DRY RUN (headless): all checks passed, not saved
+[ 3253.7s] litepool: peak RSS: workers max 1917 MB, sum 3779 MB; parent 3688 MB

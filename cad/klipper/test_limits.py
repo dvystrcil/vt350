@@ -290,7 +290,7 @@ class Cli(unittest.TestCase):
         out = subprocess.run([sys.executable, os.path.join(HERE, "limits.py"), "--check"], capture_output=True,
                              text=True, check=True).stdout
         self.assertEqual(out.splitlines()[-1], "limits: OK")
-        self.assertIn("z: 0.0 .. 329.43", out)
+        self.assertIn("z: 0.0 .. 339.43", out)
 
     def test_gcode(self):
         self.assertEqual(limits.main(["--gcode"]), [read(HERE, "envelope.gcode").rstrip("\n")])
