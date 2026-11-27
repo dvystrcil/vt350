@@ -1,0 +1,79 @@
+{
+ "model": 80,
+ "generated": "2026-11-26 18:24 UTC",
+ "outside": {
+  "frame": [
+   680.0,
+   630.0,
+   740.0
+  ],
+  "printer": [
+   754.6,
+   719.5,
+   877.3
+  ],
+  "with_emu": [
+   754.6,
+   719.5,
+   1128.9
+  ]
+ },
+ "boxes": {
+  "frame": {
+   "xmin": -520.0,
+   "ymin": -110.0,
+   "zmin": -50.0,
+   "xmax": 160.0,
+   "ymax": 520.0,
+   "zmax": 690.0
+  },
+  "printer": {
+   "xmin": -553.5499,
+   "ymin": -171.0068,
+   "zmin": -107.5,
+   "xmax": 201.0068,
+   "ymax": 548.5,
+   "zmax": 769.8
+  },
+  "emu": {
+   "xmin": -491.0381,
+   "ymin": -83.7377,
+   "zmin": 693.0,
+   "xmax": 1.0381,
+   "ymax": 210.239,
+   "zmax": 1021.3534
+  },
+  "print_volume": {
+   "xmin": -416.0,
+   "xmax": -74.0,
+   "ymin": 30.5,
+   "ymax": 370.69,
+   "zmin": 46.46999999999997,
+   "zmax": 390.9
+  }
+ },
+ "print": {
+  "width": 342.0,
+  "depth": 340.19,
+  "height": 344.43,
+  "position_max": 344.43,
+  "z_travel": 355.6,
+  "loss": {
+   "left": 4.0,
+   "right": 4.0,
+   "front": 0.0,
+   "rear": 9.81
+  },
+  "volume_l": 40.07
+ },
+ "nozzle_z": 390.9,
+ "parts_count": 1548,
+ "stale": "",
+ "door_swing_note": "about the door's width",
+ "src": {
+  "index": "vt350-lite-80.parts.json",
+  "sweep": "sweep_toolhead.log (lite-80)",
+  "z": "z_sweep.log (lite-80)",
+  "renders": "vt350-lite-80-20261126T181955Z"
+ }
+}

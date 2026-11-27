@@ -1,790 +1,790 @@
-[   29.5s] model /work/vt350-lite-78-20261124t031612-ad54-sweep/in/vt350-lite-78.FCStd (read-only)
-[   29.5s] Beacon 'Beacon RevH Normal (Beacon CAD, MIT)' rides with the carriage
-[   29.5s] groups: bed 120, gantry 58, carriage 11, Left head 126, Right head 126 solids; excluded 46; 1554 leaves
-[   29.5s] Left: pickup carriage offset (-164.700, -274.725, 0.315) from the gantry carriage; same part: volume diff 0.000 mm3, box residual 0.000 mm
-[   29.5s]    NOTE Left: the dock expects the carriage +0.315 mm off the gantry carriage's Z
-[   29.5s] Right: pickup carriage offset (164.714, -274.725, 0.315) from the gantry carriage; same part: volume diff 0.000 mm3, box residual 0.000 mm
-[   29.5s]    NOTE Right: the dock expects the carriage +0.315 mm off the gantry carriage's Z
-[   29.5s] Left: docked nozzle tip (-409.70, -49.46, 380.90)
-[   29.5s] Right: docked nozzle tip (-80.30, -49.46, 380.90)
-[   29.5s] bed bottom: dZ -237.00 (the configured floor, litelib.BED_FLOOR_DZ: printer.cfg stops the bed 5.00 mm above the measured lower stop -242.00 from z_sweep.py); bounding-box estimate -239.50 (M3 Locknut002 lands on backbone-350 v2), next: -239.50 M3x12-Screw009 on backbone-350 v2; -239.50 M3x12-Screw008 on backbone-350 v2; -239.50 M3 Locknut003 on backbone-350 v2
-[   29.5s] Left carried: nozzle tip Z 380.58; bed top dZ +92.42 (PEI sheet top 288.16 -> 380.58); nozzle Y reach -68.93 .. 370.69 (print square Y 30.5 .. 380.5)
-[   29.5s] Right carried: nozzle tip Z 380.59; bed top dZ +92.42 (PEI sheet top 288.16 -> 380.59); nozzle Y reach -68.93 .. 370.69 (print square Y 30.5 .. 380.5)
-[   29.5s] excluded from every check: docks' carriage copies, the belts' side runs (outside the XY joints' Y band), the Z drag chain, the carried head's own bowden tube; the Beacon's USB cable is not in the model
-[   29.5s] belts: clipped to X -480.0..-10.0, Y 243.2..294.5 and moved with the gantry; not checked against the gantry or carriage
-[   29.6s] clashlib: 10 workers on vt350-lite-78.FCStd, 15 poses, job dir /tmp/clashlib-dpdnjjwn
-[  403.0s] clashlib: done in 373.4s (load <= 2.1s, check <= 368.4s); 6156810 pair-poses, 7570 box hits, 275 overlaps > 0.01 mm3, 0 errors
-[  403.0s] clashlib: peak RSS: workers max 1282 MB, sum 10412 MB; parent 16 MB
-[  403.0s] === Left head on the carriage (Right head parked in its dock): 275 overlaps, 0 common() errors
-[  403.0s] -- Left / front-left, top: front-left corner, bed top; nozzle (-420.0, 30.5, 380.58) bed dZ +92.42: 22 overlaps
-[  403.0s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[  403.0s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  403.0s]         52.57 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
-[  403.0s]         49.68 mm3  gantry: 695 W5 bearing005  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[  403.0s]         40.42 mm3  gantry: F695 flanged bearing025  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[  403.0s]         30.11 mm3  gantry: F695 flanged bearing022  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[  403.0s]          7.85 mm3  gantry: VC9-JLB  x  head: Plate
-[  403.0s]          5.54 mm3  gantry: F695 flanged bearing022  x  carriage: COMPOUND
-[  403.0s]          1.18 mm3  gantry: 695 W5 bearing005  x  carriage: COMPOUND
-[  403.0s]          0.82 mm3  gantry: F695 flanged bearing025  x  head: Plate
-[  403.0s]          0.35 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[  403.0s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s] -- Left / front-right, top: front-right corner, bed top; nozzle (-70.0, 30.5, 380.58) bed dZ +92.42: 24 overlaps
-[  403.0s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[  403.0s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  403.0s]         52.57 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
-[  403.0s]         49.40 mm3  gantry: 695 W5 bearing004  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[  403.0s]         41.64 mm3  gantry: F695 flanged bearing018  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[  403.0s]         37.51 mm3  gantry: F695 flanged bearing021  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[  403.0s]          7.85 mm3  gantry: VC9-JRB  x  head: Plate
-[  403.0s]          3.51 mm3  gantry: F695 flanged bearing018  x  carriage: COMPOUND
-[  403.0s]          2.20 mm3  gantry: F695 flanged bearing018  x  head: Plate
-[  403.0s]          0.96 mm3  gantry: 695 W5 bearing004  x  carriage: COMPOUND
-[  403.0s]          0.80 mm3  gantry: F695 flanged bearing021  x  head: Plate
-[  403.0s]          0.34 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[  403.0s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.10 mm3  gantry: 695 W5 bearing004  x  head: Plate
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s] -- Left / rear-left, top: rear-left corner (Y clamped to reach 370.69), bed top; nozzle (-420.0, 370.7, 380.58) bed dZ +92.42: 22 overlaps
-[  403.0s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[  403.0s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  403.0s]         52.57 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
-[  403.0s]         49.68 mm3  gantry: 695 W5 bearing005  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[  403.0s]         40.42 mm3  gantry: F695 flanged bearing025  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[  403.0s]         30.11 mm3  gantry: F695 flanged bearing022  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[  403.0s]          7.85 mm3  gantry: VC9-JLB  x  head: Plate
-[  403.0s]          5.54 mm3  gantry: F695 flanged bearing022  x  carriage: COMPOUND
-[  403.0s]          1.18 mm3  gantry: 695 W5 bearing005  x  carriage: COMPOUND
-[  403.0s]          0.82 mm3  gantry: F695 flanged bearing025  x  head: Plate
-[  403.0s]          0.35 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[  403.0s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s] -- Left / rear-right, top: rear-right corner (Y clamped to reach 370.69), bed top; nozzle (-70.0, 370.7, 380.58) bed dZ +92.42: 24 overlaps
-[  403.0s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[  403.0s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  403.0s]         52.57 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
-[  403.0s]         49.40 mm3  gantry: 695 W5 bearing004  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[  403.0s]         41.64 mm3  gantry: F695 flanged bearing018  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[  403.0s]         37.51 mm3  gantry: F695 flanged bearing021  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[  403.0s]          7.85 mm3  gantry: VC9-JRB  x  head: Plate
-[  403.0s]          3.51 mm3  gantry: F695 flanged bearing018  x  carriage: COMPOUND
-[  403.0s]          2.20 mm3  gantry: F695 flanged bearing018  x  head: Plate
-[  403.0s]          0.96 mm3  gantry: 695 W5 bearing004  x  carriage: COMPOUND
-[  403.0s]          0.80 mm3  gantry: F695 flanged bearing021  x  head: Plate
-[  403.0s]          0.34 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[  403.0s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.10 mm3  gantry: 695 W5 bearing004  x  head: Plate
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s] -- Left / centre, top: centre corner, bed top; nozzle (-245.0, 205.5, 380.58) bed dZ +92.42: 13 overlaps
-[  403.0s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[  403.0s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  403.0s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s] -- Left / dock pickup, top: own dock pickup (parked), bed top; nozzle (-409.7, -49.5, 380.58) bed dZ +92.42: 13 overlaps
-[  403.0s]        171.61 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[  403.0s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  403.0s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s] -- Left / dock pickup at the large opening, top: own dock pickup slid 6.0 mm forward to the keyslots' large opening, bed top; nozzle (-409.7, -55.5, 380.58) bed dZ +92.42: 13 overlaps
-[  403.0s]        171.61 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[  403.0s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  403.0s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s] -- Left / front-left, bottom: front-left corner, bed bottom; nozzle (-420.0, 30.5, 380.58) bed dZ -237.00: 22 overlaps
-[  403.0s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[  403.0s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  403.0s]         52.57 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
-[  403.0s]         49.68 mm3  gantry: 695 W5 bearing005  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[  403.0s]         40.42 mm3  gantry: F695 flanged bearing025  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[  403.0s]         30.11 mm3  gantry: F695 flanged bearing022  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[  403.0s]          7.85 mm3  gantry: VC9-JLB  x  head: Plate
-[  403.0s]          5.54 mm3  gantry: F695 flanged bearing022  x  carriage: COMPOUND
-[  403.0s]          1.18 mm3  gantry: 695 W5 bearing005  x  carriage: COMPOUND
-[  403.0s]          0.82 mm3  gantry: F695 flanged bearing025  x  head: Plate
-[  403.0s]          0.35 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[  403.0s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  403.0s] -- Left / front-right, bottom: front-right corner, bed bottom; nozzle (-70.0, 30.5, 380.58) bed dZ -237.00: 24 overlaps
-[  403.0s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[  403.0s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  403.0s]         52.57 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
-[  403.0s]         49.40 mm3  gantry: 695 W5 bearing004  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[  403.0s]         41.64 mm3  gantry: F695 flanged bearing018  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[  403.0s]         37.51 mm3  gantry: F695 flanged bearing021  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[  403.0s]          7.85 mm3  gantry: VC9-JRB  x  head: Plate
-[  403.0s]          3.51 mm3  gantry: F695 flanged bearing018  x  carriage: COMPOUND
-[  403.0s]          2.20 mm3  gantry: F695 flanged bearing018  x  head: Plate
-[  403.0s]          0.96 mm3  gantry: 695 W5 bearing004  x  carriage: COMPOUND
-[  403.0s]          0.80 mm3  gantry: F695 flanged bearing021  x  head: Plate
-[  403.0s]          0.34 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[  403.0s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.10 mm3  gantry: 695 W5 bearing004  x  head: Plate
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  403.0s] -- Left / rear-left, bottom: rear-left corner (Y clamped to reach 370.69), bed bottom; nozzle (-420.0, 370.7, 380.58) bed dZ -237.00: 22 overlaps
-[  403.0s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[  403.0s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  403.0s]         52.57 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
-[  403.0s]         49.68 mm3  gantry: 695 W5 bearing005  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[  403.0s]         40.42 mm3  gantry: F695 flanged bearing025  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[  403.0s]         30.11 mm3  gantry: F695 flanged bearing022  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[  403.0s]          7.85 mm3  gantry: VC9-JLB  x  head: Plate
-[  403.0s]          5.54 mm3  gantry: F695 flanged bearing022  x  carriage: COMPOUND
-[  403.0s]          1.18 mm3  gantry: 695 W5 bearing005  x  carriage: COMPOUND
-[  403.0s]          0.82 mm3  gantry: F695 flanged bearing025  x  head: Plate
-[  403.0s]          0.35 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[  403.0s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  403.0s] -- Left / rear-right, bottom: rear-right corner (Y clamped to reach 370.69), bed bottom; nozzle (-70.0, 370.7, 380.58) bed dZ -237.00: 24 overlaps
-[  403.0s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[  403.0s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  403.0s]         52.57 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
-[  403.0s]         49.40 mm3  gantry: 695 W5 bearing004  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[  403.0s]         41.64 mm3  gantry: F695 flanged bearing018  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[  403.0s]         37.51 mm3  gantry: F695 flanged bearing021  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[  403.0s]          7.85 mm3  gantry: VC9-JRB  x  head: Plate
-[  403.0s]          3.51 mm3  gantry: F695 flanged bearing018  x  carriage: COMPOUND
-[  403.0s]          2.20 mm3  gantry: F695 flanged bearing018  x  head: Plate
-[  403.0s]          0.96 mm3  gantry: 695 W5 bearing004  x  carriage: COMPOUND
-[  403.0s]          0.80 mm3  gantry: F695 flanged bearing021  x  head: Plate
-[  403.0s]          0.34 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[  403.0s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.10 mm3  gantry: 695 W5 bearing004  x  head: Plate
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  403.0s] -- Left / centre, bottom: centre corner, bed bottom; nozzle (-245.0, 205.5, 380.58) bed dZ -237.00: 13 overlaps
-[  403.0s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[  403.0s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  403.0s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  403.0s] -- Left / dock pickup, bottom: own dock pickup (parked), bed bottom; nozzle (-409.7, -49.5, 380.58) bed dZ -237.00: 13 overlaps
-[  403.0s]        171.61 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[  403.0s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  403.0s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  403.0s] -- Left / dock pickup at the large opening, bottom: own dock pickup slid 6.0 mm forward to the keyslots' large opening, bed bottom; nozzle (-409.7, -55.5, 380.58) bed dZ -237.00: 13 overlaps
-[  403.0s]        171.61 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[  403.0s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[  403.0s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[  403.0s] -- Left / model: saved model pose (baseline: nothing moved, both heads docked);: 13 overlaps
-[  403.0s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[  403.0s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)
-[  403.0s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)
-[  403.0s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034
-[  403.0s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034
-[  403.0s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029
-[  403.0s] clashlib: 10 workers on vt350-lite-78.FCStd, 82 poses, job dir /tmp/clashlib-ft9vumdi
-[ 3049.9s] clashlib: done in 2647.0s (load <= 2.0s, check <= 2643.4s); 21947628 pair-poses, 45111 box hits, 289 overlaps > 0.01 mm3, 0 errors
-[ 3049.9s] clashlib: peak RSS: workers max 1455 MB, sum 11016 MB; parent 16 MB
-[ 3049.9s] -- Left X scan, left side (nozzle X, Y at the centre; overlaps not already in the saved model):
-[ 3049.9s]    X  -420.0:  9 overlaps,   188.51 mm3; moving parts: COMPOUND, Plate, SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[ 3049.9s]    X  -419.0:  6 overlaps,    84.47 mm3; moving parts: COMPOUND, Plate, SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[ 3049.9s]    X  -418.0:  3 overlaps,    24.87 mm3; moving parts: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[ 3049.9s]    X  -417.0:  2 overlaps,     1.80 mm3; moving parts: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[ 3049.9s]    X  -416.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -415.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -414.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -413.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -412.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -411.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -410.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -409.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -408.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -407.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -406.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -405.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -404.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -403.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -402.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -401.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -400.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -399.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -398.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -397.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -396.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -395.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -394.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -393.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -392.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -391.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -390.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -389.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -388.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -387.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -386.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -385.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -384.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -383.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -382.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -381.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -380.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    Left head, left side: first nozzle X with no new overlap -416.0 (print square edge -420.0)
-[ 3049.9s] -- Left X scan, right side (nozzle X, Y at the centre; overlaps not already in the saved model):
-[ 3049.9s]    X   -70.0: 11 overlaps,   196.89 mm3; moving parts: COMPOUND, Plate, SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 3049.9s]    X   -71.0:  7 overlaps,    90.69 mm3; moving parts: COMPOUND, Plate, SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 3049.9s]    X   -72.0:  3 overlaps,    28.75 mm3; moving parts: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 3049.9s]    X   -73.0:  2 overlaps,     3.18 mm3; moving parts: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 3049.9s]    X   -74.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -75.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -76.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -77.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -78.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -79.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -80.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -81.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -82.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -83.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -84.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -85.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -86.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -87.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -88.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -89.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -90.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -91.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -92.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -93.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -94.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -95.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -96.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -97.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -98.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X   -99.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -100.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -101.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -102.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -103.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -104.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -105.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -106.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -107.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -108.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -109.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    X  -110.0:  0 overlaps,     0.00 mm3
-[ 3049.9s]    Left head, right side: first nozzle X with no new overlap -74.0 (print square edge -70.0)
-[ 3050.0s] clashlib: 4 workers on vt350-lite-78.FCStd, 1 poses, job dir /tmp/clashlib-fwpb0mw5
-[ 3059.8s] clashlib: done in 9.8s (load <= 2.0s, check <= 6.4s); 944 pair-poses, 21 box hits, 2 overlaps > 0.01 mm3, 0 errors
-[ 3059.8s] clashlib: peak RSS: workers max 642 MB, sum 2523 MB; parent 16 MB
-[ 3059.8s] -- Left tool-internal (head vs MadMax Plate + Plate Back):
-[ 3059.8s]          7.61 mm3  head: Hex socket head cap screw M3x0.50 x 014  x  plate: Plate
-[ 3059.8s]          7.61 mm3  head: Hex socket head cap screw M3x0.50 x 015  x  plate: Plate
-[ 3059.8s] clashlib: 10 workers on vt350-lite-78.FCStd, 15 poses, job dir /tmp/clashlib-6q0ok9tg
-[ 3479.7s] clashlib: done in 420.0s (load <= 2.0s, check <= 416.4s); 6156810 pair-poses, 7681 box hits, 271 overlaps > 0.01 mm3, 0 errors
-[ 3479.7s] clashlib: peak RSS: workers max 1288 MB, sum 10431 MB; parent 16 MB
-[ 3479.7s] === Right head on the carriage (Left head parked in its dock): 271 overlaps, 0 common() errors
-[ 3479.7s] -- Right / front-left, top: front-left corner, bed top; nozzle (-420.0, 30.5, 380.59) bed dZ +92.42: 21 overlaps
-[ 3479.7s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[ 3479.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[ 3479.7s]         52.00 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
-[ 3479.7s]         49.35 mm3  gantry: 695 W5 bearing005  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[ 3479.7s]         40.19 mm3  gantry: F695 flanged bearing025  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[ 3479.7s]          7.85 mm3  gantry: VC9-JLB  x  head: Plate(Mirror)
-[ 3479.7s]          5.43 mm3  gantry: F695 flanged bearing022  x  carriage: COMPOUND
-[ 3479.7s]          1.13 mm3  gantry: 695 W5 bearing005  x  carriage: COMPOUND
-[ 3479.7s]          0.82 mm3  gantry: F695 flanged bearing025  x  head: Plate(Mirror)
-[ 3479.7s]          0.32 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s] -- Right / front-right, top: front-right corner, bed top; nozzle (-70.0, 30.5, 380.59) bed dZ +92.42: 24 overlaps
-[ 3479.7s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[ 3479.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[ 3479.7s]         53.14 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
-[ 3479.7s]         49.74 mm3  gantry: 695 W5 bearing004  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 3479.7s]         41.90 mm3  gantry: F695 flanged bearing018  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 3479.7s]         37.70 mm3  gantry: F695 flanged bearing021  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 3479.7s]          7.85 mm3  gantry: VC9-JRB  x  head: Plate(Mirror)
-[ 3479.7s]          3.58 mm3  gantry: F695 flanged bearing018  x  carriage: COMPOUND
-[ 3479.7s]          2.20 mm3  gantry: F695 flanged bearing018  x  head: Plate(Mirror)
-[ 3479.7s]          1.00 mm3  gantry: 695 W5 bearing004  x  carriage: COMPOUND
-[ 3479.7s]          0.80 mm3  gantry: F695 flanged bearing021  x  head: Plate(Mirror)
-[ 3479.7s]          0.37 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.10 mm3  gantry: 695 W5 bearing004  x  head: Plate(Mirror)
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s] -- Right / rear-left, top: rear-left corner (Y clamped to reach 370.69), bed top; nozzle (-420.0, 370.7, 380.59) bed dZ +92.42: 21 overlaps
-[ 3479.7s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[ 3479.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[ 3479.7s]         52.00 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
-[ 3479.7s]         49.35 mm3  gantry: 695 W5 bearing005  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[ 3479.7s]         40.19 mm3  gantry: F695 flanged bearing025  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[ 3479.7s]          7.85 mm3  gantry: VC9-JLB  x  head: Plate(Mirror)
-[ 3479.7s]          5.43 mm3  gantry: F695 flanged bearing022  x  carriage: COMPOUND
-[ 3479.7s]          1.13 mm3  gantry: 695 W5 bearing005  x  carriage: COMPOUND
-[ 3479.7s]          0.82 mm3  gantry: F695 flanged bearing025  x  head: Plate(Mirror)
-[ 3479.7s]          0.32 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s] -- Right / rear-right, top: rear-right corner (Y clamped to reach 370.69), bed top; nozzle (-70.0, 370.7, 380.59) bed dZ +92.42: 24 overlaps
-[ 3479.7s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[ 3479.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[ 3479.7s]         53.14 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
-[ 3479.7s]         49.74 mm3  gantry: 695 W5 bearing004  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 3479.7s]         41.90 mm3  gantry: F695 flanged bearing018  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 3479.7s]         37.70 mm3  gantry: F695 flanged bearing021  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 3479.7s]          7.85 mm3  gantry: VC9-JRB  x  head: Plate(Mirror)
-[ 3479.7s]          3.58 mm3  gantry: F695 flanged bearing018  x  carriage: COMPOUND
-[ 3479.7s]          2.20 mm3  gantry: F695 flanged bearing018  x  head: Plate(Mirror)
-[ 3479.7s]          1.00 mm3  gantry: 695 W5 bearing004  x  carriage: COMPOUND
-[ 3479.7s]          0.80 mm3  gantry: F695 flanged bearing021  x  head: Plate(Mirror)
-[ 3479.7s]          0.37 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.10 mm3  gantry: 695 W5 bearing004  x  head: Plate(Mirror)
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s] -- Right / centre, top: centre corner, bed top; nozzle (-245.0, 205.5, 380.59) bed dZ +92.42: 13 overlaps
-[ 3479.7s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[ 3479.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s] -- Right / dock pickup, top: own dock pickup (parked), bed top; nozzle (-80.3, -49.5, 380.59) bed dZ +92.42: 13 overlaps
-[ 3479.7s]        178.61 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[ 3479.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s] -- Right / dock pickup at the large opening, top: own dock pickup slid 6.0 mm forward to the keyslots' large opening, bed top; nozzle (-80.3, -55.5, 380.59) bed dZ +92.42: 13 overlaps
-[ 3479.7s]        178.61 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[ 3479.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s] -- Right / front-left, bottom: front-left corner, bed bottom; nozzle (-420.0, 30.5, 380.59) bed dZ -237.00: 21 overlaps
-[ 3479.7s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[ 3479.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[ 3479.7s]         52.00 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
-[ 3479.7s]         49.35 mm3  gantry: 695 W5 bearing005  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[ 3479.7s]         40.19 mm3  gantry: F695 flanged bearing025  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[ 3479.7s]          7.85 mm3  gantry: VC9-JLB  x  head: Plate(Mirror)
-[ 3479.7s]          5.43 mm3  gantry: F695 flanged bearing022  x  carriage: COMPOUND
-[ 3479.7s]          1.13 mm3  gantry: 695 W5 bearing005  x  carriage: COMPOUND
-[ 3479.7s]          0.82 mm3  gantry: F695 flanged bearing025  x  head: Plate(Mirror)
-[ 3479.7s]          0.32 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s] -- Right / front-right, bottom: front-right corner, bed bottom; nozzle (-70.0, 30.5, 380.59) bed dZ -237.00: 24 overlaps
-[ 3479.7s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[ 3479.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[ 3479.7s]         53.14 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
-[ 3479.7s]         49.74 mm3  gantry: 695 W5 bearing004  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 3479.7s]         41.90 mm3  gantry: F695 flanged bearing018  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 3479.7s]         37.70 mm3  gantry: F695 flanged bearing021  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 3479.7s]          7.85 mm3  gantry: VC9-JRB  x  head: Plate(Mirror)
-[ 3479.7s]          3.58 mm3  gantry: F695 flanged bearing018  x  carriage: COMPOUND
-[ 3479.7s]          2.20 mm3  gantry: F695 flanged bearing018  x  head: Plate(Mirror)
-[ 3479.7s]          1.00 mm3  gantry: 695 W5 bearing004  x  carriage: COMPOUND
-[ 3479.7s]          0.80 mm3  gantry: F695 flanged bearing021  x  head: Plate(Mirror)
-[ 3479.7s]          0.37 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.10 mm3  gantry: 695 W5 bearing004  x  head: Plate(Mirror)
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s] -- Right / rear-left, bottom: rear-left corner (Y clamped to reach 370.69), bed bottom; nozzle (-420.0, 370.7, 380.59) bed dZ -237.00: 21 overlaps
-[ 3479.7s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[ 3479.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[ 3479.7s]         52.00 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
-[ 3479.7s]         49.35 mm3  gantry: 695 W5 bearing005  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[ 3479.7s]         40.19 mm3  gantry: F695 flanged bearing025  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[ 3479.7s]          7.85 mm3  gantry: VC9-JLB  x  head: Plate(Mirror)
-[ 3479.7s]          5.43 mm3  gantry: F695 flanged bearing022  x  carriage: COMPOUND
-[ 3479.7s]          1.13 mm3  gantry: 695 W5 bearing005  x  carriage: COMPOUND
-[ 3479.7s]          0.82 mm3  gantry: F695 flanged bearing025  x  head: Plate(Mirror)
-[ 3479.7s]          0.32 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s] -- Right / rear-right, bottom: rear-right corner (Y clamped to reach 370.69), bed bottom; nozzle (-70.0, 370.7, 380.59) bed dZ -237.00: 24 overlaps
-[ 3479.7s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[ 3479.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[ 3479.7s]         53.14 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
-[ 3479.7s]         49.74 mm3  gantry: 695 W5 bearing004  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 3479.7s]         41.90 mm3  gantry: F695 flanged bearing018  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 3479.7s]         37.70 mm3  gantry: F695 flanged bearing021  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 3479.7s]          7.85 mm3  gantry: VC9-JRB  x  head: Plate(Mirror)
-[ 3479.7s]          3.58 mm3  gantry: F695 flanged bearing018  x  carriage: COMPOUND
-[ 3479.7s]          2.20 mm3  gantry: F695 flanged bearing018  x  head: Plate(Mirror)
-[ 3479.7s]          1.00 mm3  gantry: 695 W5 bearing004  x  carriage: COMPOUND
-[ 3479.7s]          0.80 mm3  gantry: F695 flanged bearing021  x  head: Plate(Mirror)
-[ 3479.7s]          0.37 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.10 mm3  gantry: 695 W5 bearing004  x  head: Plate(Mirror)
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s] -- Right / centre, bottom: centre corner, bed bottom; nozzle (-245.0, 205.5, 380.59) bed dZ -237.00: 13 overlaps
-[ 3479.7s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
-[ 3479.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s] -- Right / dock pickup, bottom: own dock pickup (parked), bed bottom; nozzle (-80.3, -49.5, 380.59) bed dZ -237.00: 13 overlaps
-[ 3479.7s]        178.61 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[ 3479.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s] -- Right / dock pickup at the large opening, bottom: own dock pickup slid 6.0 mm forward to the keyslots' large opening, bed bottom; nozzle (-80.3, -55.5, 380.59) bed dZ -237.00: 13 overlaps
-[ 3479.7s]        178.61 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[ 3479.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
-[ 3479.7s] -- Right / model: saved model pose (baseline: nothing moved, both heads docked);: 13 overlaps
-[ 3479.7s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
-[ 3479.7s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)
-[ 3479.7s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034
-[ 3479.7s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034
-[ 3479.7s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029
-[ 3479.7s] clashlib: 10 workers on vt350-lite-78.FCStd, 82 poses, job dir /tmp/clashlib-w1k4lu2a
-[ 5988.3s] clashlib: done in 2508.6s (load <= 2.0s, check <= 2504.8s); 21947628 pair-poses, 45122 box hits, 288 overlaps > 0.01 mm3, 0 errors
-[ 5988.3s] clashlib: peak RSS: workers max 1447 MB, sum 11070 MB; parent 16 MB
-[ 5988.3s] -- Right X scan, left side (nozzle X, Y at the centre; overlaps not already in the saved model):
-[ 5988.3s]    X  -420.0:  8 overlaps,   157.10 mm3; moving parts: COMPOUND, Plate(Mirror), SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[ 5988.3s]    X  -419.0:  6 overlaps,    83.24 mm3; moving parts: COMPOUND, Plate(Mirror), SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[ 5988.3s]    X  -418.0:  3 overlaps,    24.35 mm3; moving parts: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[ 5988.3s]    X  -417.0:  2 overlaps,     1.76 mm3; moving parts: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
-[ 5988.3s]    X  -416.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -415.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -414.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -413.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -412.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -411.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -410.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -409.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -408.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -407.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -406.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -405.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -404.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -403.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -402.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -401.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -400.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -399.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -398.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -397.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -396.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -395.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -394.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -393.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -392.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -391.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -390.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -389.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -388.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -387.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -386.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -385.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -384.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -383.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -382.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -381.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -380.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    Right head, left side: first nozzle X with no new overlap -416.0 (print square edge -420.0)
-[ 5988.3s] -- Right X scan, right side (nozzle X, Y at the centre; overlaps not already in the saved model):
-[ 5988.3s]    X   -70.0: 11 overlaps,   198.38 mm3; moving parts: COMPOUND, Plate(Mirror), SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 5988.3s]    X   -71.0:  7 overlaps,    91.94 mm3; moving parts: COMPOUND, Plate(Mirror), SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 5988.3s]    X   -72.0:  3 overlaps,    29.30 mm3; moving parts: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 5988.3s]    X   -73.0:  2 overlaps,     3.26 mm3; moving parts: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
-[ 5988.3s]    X   -74.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -75.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -76.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -77.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -78.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -79.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -80.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -81.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -82.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -83.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -84.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -85.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -86.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -87.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -88.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -89.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -90.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -91.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -92.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -93.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -94.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -95.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -96.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -97.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -98.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X   -99.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -100.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -101.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -102.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -103.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -104.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -105.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -106.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -107.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -108.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -109.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    X  -110.0:  0 overlaps,     0.00 mm3
-[ 5988.3s]    Right head, right side: first nozzle X with no new overlap -74.0 (print square edge -70.0)
-[ 5988.3s] clashlib: 4 workers on vt350-lite-78.FCStd, 1 poses, job dir /tmp/clashlib-fxc_thlm
-[ 6002.4s] clashlib: done in 14.1s (load <= 3.0s, check <= 9.1s); 944 pair-poses, 21 box hits, 2 overlaps > 0.01 mm3, 0 errors
-[ 6002.4s] clashlib: peak RSS: workers max 649 MB, sum 2568 MB; parent 16 MB
-[ 6002.4s] -- Right tool-internal (head vs MadMax Plate + Plate Back):
-[ 6002.4s]          7.61 mm3  head: Hex socket head cap screw M3x0.50 x 018  x  plate: Plate(Mirror)
-[ 6002.4s]          7.61 mm3  head: Hex socket head cap screw M3x0.50 x 019  x  plate: Plate(Mirror)
-[ 6002.4s] timing: Left: wall 373.4s, 6156810 pair-poses, 7570 box hits; Left X scan: wall 2647.0s, 21947628 pair-poses, 45111 box hits; Right: wall 420.0s, 6156810 pair-poses, 7681 box hits; Right X scan: wall 2508.6s, 21947628 pair-poses, 45122 box hits
-[ 6002.4s] done (read-only, nothing saved)
+[   29.9s] model /work/vt350-lite-80-20261126t060108-704d-sweep/in/vt350-lite-80.FCStd (read-only)
+[   29.9s] Beacon 'Beacon RevH Normal (Beacon CAD, MIT)' rides with the carriage
+[   29.9s] groups: bed 120, gantry 58, carriage 11, Left head 126, Right head 126 solids; excluded 46; 1554 leaves
+[   29.9s] Left: pickup carriage offset (-164.700, -277.725, 0.315) from the gantry carriage; same part: volume diff 0.000 mm3, box residual 0.000 mm
+[   29.9s]    NOTE Left: the dock expects the carriage +0.315 mm off the gantry carriage's Z
+[   29.9s] Right: pickup carriage offset (164.714, -277.725, 0.315) from the gantry carriage; same part: volume diff 0.000 mm3, box residual 0.000 mm
+[   29.9s]    NOTE Right: the dock expects the carriage +0.315 mm off the gantry carriage's Z
+[   29.9s] Left: docked nozzle tip (-409.70, -52.46, 390.90)
+[   29.9s] Right: docked nozzle tip (-80.30, -52.46, 390.90)
+[   29.9s] bed bottom: dZ -237.00 (the configured floor, litelib.BED_FLOOR_DZ: printer.cfg stops the bed 5.00 mm above the measured lower stop -242.00 from z_sweep.py); bounding-box estimate -239.50 (M3 Locknut002 lands on backbone-350 v2), next: -239.50 M3x12-Screw009 on backbone-350 v2; -239.50 M3x12-Screw008 on backbone-350 v2; -239.50 M3 Locknut003 on backbone-350 v2
+[   29.9s] Left carried: nozzle tip Z 390.58; bed top dZ +102.42 (PEI sheet top 288.16 -> 390.58); nozzle Y reach -71.93 .. 370.69 (print square Y 30.5 .. 380.5)
+[   29.9s] Right carried: nozzle tip Z 390.59; bed top dZ +102.42 (PEI sheet top 288.16 -> 390.59); nozzle Y reach -71.93 .. 370.69 (print square Y 30.5 .. 380.5)
+[   29.9s] excluded from every check: docks' carriage copies, the belts' side runs (outside the XY joints' Y band), the Z drag chain, the carried head's own bowden tube; the Beacon's USB cable is not in the model
+[   29.9s] belts: clipped to X -480.0..-10.0, Y 243.2..294.5 and moved with the gantry; not checked against the gantry or carriage
+[   30.0s] clashlib: 10 workers on vt350-lite-80.FCStd, 15 poses, job dir /tmp/clashlib-hp98_yyo
+[  420.3s] clashlib: done in 390.4s (load <= 2.1s, check <= 385.8s); 6156810 pair-poses, 8105 box hits, 275 overlaps > 0.01 mm3, 0 errors
+[  420.3s] clashlib: peak RSS: workers max 1260 MB, sum 10443 MB; parent 17 MB
+[  420.3s] === Left head on the carriage (Right head parked in its dock): 275 overlaps, 0 common() errors
+[  420.3s] -- Left / front-left, top: front-left corner, bed top; nozzle (-420.0, 30.5, 390.58) bed dZ +102.42: 22 overlaps
+[  420.3s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  420.3s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  420.3s]         52.57 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
+[  420.3s]         49.68 mm3  gantry: 695 W5 bearing005  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[  420.3s]         40.42 mm3  gantry: F695 flanged bearing025  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[  420.3s]         30.11 mm3  gantry: F695 flanged bearing022  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[  420.3s]          7.85 mm3  gantry: VC9-JLB  x  head: Plate
+[  420.3s]          5.54 mm3  gantry: F695 flanged bearing022  x  carriage: COMPOUND
+[  420.3s]          1.18 mm3  gantry: 695 W5 bearing005  x  carriage: COMPOUND
+[  420.3s]          0.82 mm3  gantry: F695 flanged bearing025  x  head: Plate
+[  420.3s]          0.35 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[  420.3s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s] -- Left / front-right, top: front-right corner, bed top; nozzle (-70.0, 30.5, 390.58) bed dZ +102.42: 24 overlaps
+[  420.3s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[  420.3s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  420.3s]         52.57 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
+[  420.3s]         49.40 mm3  gantry: 695 W5 bearing004  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[  420.3s]         41.64 mm3  gantry: F695 flanged bearing018  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[  420.3s]         37.51 mm3  gantry: F695 flanged bearing021  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[  420.3s]          7.85 mm3  gantry: VC9-JRB  x  head: Plate
+[  420.3s]          3.51 mm3  gantry: F695 flanged bearing018  x  carriage: COMPOUND
+[  420.3s]          2.20 mm3  gantry: F695 flanged bearing018  x  head: Plate
+[  420.3s]          0.96 mm3  gantry: 695 W5 bearing004  x  carriage: COMPOUND
+[  420.3s]          0.80 mm3  gantry: F695 flanged bearing021  x  head: Plate
+[  420.3s]          0.34 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[  420.3s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.10 mm3  gantry: 695 W5 bearing004  x  head: Plate
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s] -- Left / rear-left, top: rear-left corner (Y clamped to reach 370.69), bed top; nozzle (-420.0, 370.7, 390.58) bed dZ +102.42: 22 overlaps
+[  420.3s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  420.3s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  420.3s]         52.57 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
+[  420.3s]         49.68 mm3  gantry: 695 W5 bearing005  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[  420.3s]         40.42 mm3  gantry: F695 flanged bearing025  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[  420.3s]         30.11 mm3  gantry: F695 flanged bearing022  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[  420.3s]          7.85 mm3  gantry: VC9-JLB  x  head: Plate
+[  420.3s]          5.54 mm3  gantry: F695 flanged bearing022  x  carriage: COMPOUND
+[  420.3s]          1.18 mm3  gantry: 695 W5 bearing005  x  carriage: COMPOUND
+[  420.3s]          0.82 mm3  gantry: F695 flanged bearing025  x  head: Plate
+[  420.3s]          0.35 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[  420.3s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s] -- Left / rear-right, top: rear-right corner (Y clamped to reach 370.69), bed top; nozzle (-70.0, 370.7, 390.58) bed dZ +102.42: 24 overlaps
+[  420.3s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[  420.3s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  420.3s]         52.57 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
+[  420.3s]         49.40 mm3  gantry: 695 W5 bearing004  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[  420.3s]         41.64 mm3  gantry: F695 flanged bearing018  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[  420.3s]         37.51 mm3  gantry: F695 flanged bearing021  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[  420.3s]          7.85 mm3  gantry: VC9-JRB  x  head: Plate
+[  420.3s]          3.51 mm3  gantry: F695 flanged bearing018  x  carriage: COMPOUND
+[  420.3s]          2.20 mm3  gantry: F695 flanged bearing018  x  head: Plate
+[  420.3s]          0.96 mm3  gantry: 695 W5 bearing004  x  carriage: COMPOUND
+[  420.3s]          0.80 mm3  gantry: F695 flanged bearing021  x  head: Plate
+[  420.3s]          0.34 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[  420.3s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.10 mm3  gantry: 695 W5 bearing004  x  head: Plate
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s] -- Left / centre, top: centre corner, bed top; nozzle (-245.0, 205.5, 390.58) bed dZ +102.42: 13 overlaps
+[  420.3s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  420.3s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  420.3s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s] -- Left / dock pickup, top: own dock pickup (parked), bed top; nozzle (-409.7, -52.5, 390.58) bed dZ +102.42: 13 overlaps
+[  420.3s]        171.61 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[  420.3s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  420.3s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s] -- Left / dock pickup at the large opening, top: own dock pickup slid 6.0 mm forward to the keyslots' large opening, bed top; nozzle (-409.7, -58.5, 390.58) bed dZ +102.42: 13 overlaps
+[  420.3s]        171.61 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[  420.3s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  420.3s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s] -- Left / front-left, bottom: front-left corner, bed bottom; nozzle (-420.0, 30.5, 390.58) bed dZ -237.00: 22 overlaps
+[  420.3s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  420.3s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  420.3s]         52.57 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
+[  420.3s]         49.68 mm3  gantry: 695 W5 bearing005  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[  420.3s]         40.42 mm3  gantry: F695 flanged bearing025  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[  420.3s]         30.11 mm3  gantry: F695 flanged bearing022  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[  420.3s]          7.85 mm3  gantry: VC9-JLB  x  head: Plate
+[  420.3s]          5.54 mm3  gantry: F695 flanged bearing022  x  carriage: COMPOUND
+[  420.3s]          1.18 mm3  gantry: 695 W5 bearing005  x  carriage: COMPOUND
+[  420.3s]          0.82 mm3  gantry: F695 flanged bearing025  x  head: Plate
+[  420.3s]          0.35 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[  420.3s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  420.3s] -- Left / front-right, bottom: front-right corner, bed bottom; nozzle (-70.0, 30.5, 390.58) bed dZ -237.00: 24 overlaps
+[  420.3s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[  420.3s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  420.3s]         52.57 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
+[  420.3s]         49.40 mm3  gantry: 695 W5 bearing004  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[  420.3s]         41.64 mm3  gantry: F695 flanged bearing018  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[  420.3s]         37.51 mm3  gantry: F695 flanged bearing021  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[  420.3s]          7.85 mm3  gantry: VC9-JRB  x  head: Plate
+[  420.3s]          3.51 mm3  gantry: F695 flanged bearing018  x  carriage: COMPOUND
+[  420.3s]          2.20 mm3  gantry: F695 flanged bearing018  x  head: Plate
+[  420.3s]          0.96 mm3  gantry: 695 W5 bearing004  x  carriage: COMPOUND
+[  420.3s]          0.80 mm3  gantry: F695 flanged bearing021  x  head: Plate
+[  420.3s]          0.34 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[  420.3s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.10 mm3  gantry: 695 W5 bearing004  x  head: Plate
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  420.3s] -- Left / rear-left, bottom: rear-left corner (Y clamped to reach 370.69), bed bottom; nozzle (-420.0, 370.7, 390.58) bed dZ -237.00: 22 overlaps
+[  420.3s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  420.3s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  420.3s]         52.57 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
+[  420.3s]         49.68 mm3  gantry: 695 W5 bearing005  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[  420.3s]         40.42 mm3  gantry: F695 flanged bearing025  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[  420.3s]         30.11 mm3  gantry: F695 flanged bearing022  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[  420.3s]          7.85 mm3  gantry: VC9-JLB  x  head: Plate
+[  420.3s]          5.54 mm3  gantry: F695 flanged bearing022  x  carriage: COMPOUND
+[  420.3s]          1.18 mm3  gantry: 695 W5 bearing005  x  carriage: COMPOUND
+[  420.3s]          0.82 mm3  gantry: F695 flanged bearing025  x  head: Plate
+[  420.3s]          0.35 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[  420.3s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  420.3s] -- Left / rear-right, bottom: rear-right corner (Y clamped to reach 370.69), bed bottom; nozzle (-70.0, 370.7, 390.58) bed dZ -237.00: 24 overlaps
+[  420.3s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[  420.3s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  420.3s]         52.57 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
+[  420.3s]         49.40 mm3  gantry: 695 W5 bearing004  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[  420.3s]         41.64 mm3  gantry: F695 flanged bearing018  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[  420.3s]         37.51 mm3  gantry: F695 flanged bearing021  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[  420.3s]          7.85 mm3  gantry: VC9-JRB  x  head: Plate
+[  420.3s]          3.51 mm3  gantry: F695 flanged bearing018  x  carriage: COMPOUND
+[  420.3s]          2.20 mm3  gantry: F695 flanged bearing018  x  head: Plate
+[  420.3s]          0.96 mm3  gantry: 695 W5 bearing004  x  carriage: COMPOUND
+[  420.3s]          0.80 mm3  gantry: F695 flanged bearing021  x  head: Plate
+[  420.3s]          0.34 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[  420.3s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.10 mm3  gantry: 695 W5 bearing004  x  head: Plate
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  420.3s] -- Left / centre, bottom: centre corner, bed bottom; nozzle (-245.0, 205.5, 390.58) bed dZ -237.00: 13 overlaps
+[  420.3s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[  420.3s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  420.3s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  420.3s] -- Left / dock pickup, bottom: own dock pickup (parked), bed bottom; nozzle (-409.7, -52.5, 390.58) bed dZ -237.00: 13 overlaps
+[  420.3s]        171.61 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[  420.3s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  420.3s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  420.3s] -- Left / dock pickup at the large opening, bottom: own dock pickup slid 6.0 mm forward to the keyslots' large opening, bed bottom; nozzle (-409.7, -58.5, 390.58) bed dZ -237.00: 13 overlaps
+[  420.3s]        171.61 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[  420.3s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[  420.3s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[  420.3s] -- Left / model: saved model pose (baseline: nothing moved, both heads docked);: 13 overlaps
+[  420.3s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[  420.3s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)
+[  420.3s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)
+[  420.3s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034
+[  420.3s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034
+[  420.3s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029
+[  420.4s] clashlib: 10 workers on vt350-lite-80.FCStd, 82 poses, job dir /tmp/clashlib-8m7nxb07
+[ 3053.7s] clashlib: done in 2633.4s (load <= 2.1s, check <= 2629.7s); 21947628 pair-poses, 45111 box hits, 289 overlaps > 0.01 mm3, 0 errors
+[ 3053.7s] clashlib: peak RSS: workers max 1441 MB, sum 11097 MB; parent 17 MB
+[ 3053.7s] -- Left X scan, left side (nozzle X, Y at the centre; overlaps not already in the saved model):
+[ 3053.7s]    X  -420.0:  9 overlaps,   188.51 mm3; moving parts: COMPOUND, Plate, SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[ 3053.7s]    X  -419.0:  6 overlaps,    84.47 mm3; moving parts: COMPOUND, Plate, SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[ 3053.7s]    X  -418.0:  3 overlaps,    24.87 mm3; moving parts: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[ 3053.7s]    X  -417.0:  2 overlaps,     1.80 mm3; moving parts: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[ 3053.7s]    X  -416.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -415.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -414.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -413.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -412.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -411.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -410.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -409.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -408.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -407.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -406.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -405.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -404.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -403.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -402.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -401.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -400.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -399.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -398.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -397.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -396.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -395.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -394.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -393.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -392.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -391.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -390.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -389.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -388.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -387.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -386.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -385.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -384.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -383.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -382.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -381.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -380.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    Left head, left side: first nozzle X with no new overlap -416.0 (print square edge -420.0)
+[ 3053.7s] -- Left X scan, right side (nozzle X, Y at the centre; overlaps not already in the saved model):
+[ 3053.7s]    X   -70.0: 11 overlaps,   196.89 mm3; moving parts: COMPOUND, Plate, SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 3053.7s]    X   -71.0:  7 overlaps,    90.69 mm3; moving parts: COMPOUND, Plate, SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 3053.7s]    X   -72.0:  3 overlaps,    28.75 mm3; moving parts: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 3053.7s]    X   -73.0:  2 overlaps,     3.18 mm3; moving parts: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 3053.7s]    X   -74.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -75.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -76.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -77.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -78.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -79.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -80.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -81.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -82.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -83.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -84.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -85.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -86.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -87.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -88.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -89.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -90.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -91.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -92.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -93.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -94.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -95.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -96.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -97.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -98.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X   -99.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -100.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -101.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -102.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -103.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -104.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -105.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -106.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -107.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -108.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -109.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    X  -110.0:  0 overlaps,     0.00 mm3
+[ 3053.7s]    Left head, right side: first nozzle X with no new overlap -74.0 (print square edge -70.0)
+[ 3053.8s] clashlib: 4 workers on vt350-lite-80.FCStd, 1 poses, job dir /tmp/clashlib-273bc1zp
+[ 3063.3s] clashlib: done in 9.5s (load <= 2.0s, check <= 6.2s); 944 pair-poses, 21 box hits, 2 overlaps > 0.01 mm3, 0 errors
+[ 3063.3s] clashlib: peak RSS: workers max 651 MB, sum 2552 MB; parent 17 MB
+[ 3063.3s] -- Left tool-internal (head vs MadMax Plate + Plate Back):
+[ 3063.3s]          7.61 mm3  head: Hex socket head cap screw M3x0.50 x 015  x  plate: Plate
+[ 3063.3s]          7.61 mm3  head: Hex socket head cap screw M3x0.50 x 014  x  plate: Plate
+[ 3063.3s] clashlib: 10 workers on vt350-lite-80.FCStd, 15 poses, job dir /tmp/clashlib-92l_ntrg
+[ 3509.2s] clashlib: done in 445.9s (load <= 2.1s, check <= 442.4s); 6156810 pair-poses, 8216 box hits, 271 overlaps > 0.01 mm3, 0 errors
+[ 3509.2s] clashlib: peak RSS: workers max 1344 MB, sum 10625 MB; parent 17 MB
+[ 3509.2s] === Right head on the carriage (Left head parked in its dock): 271 overlaps, 0 common() errors
+[ 3509.2s] -- Right / front-left, top: front-left corner, bed top; nozzle (-420.0, 30.5, 390.59) bed dZ +102.42: 21 overlaps
+[ 3509.2s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[ 3509.2s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[ 3509.2s]         52.00 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
+[ 3509.2s]         49.35 mm3  gantry: 695 W5 bearing005  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[ 3509.2s]         40.19 mm3  gantry: F695 flanged bearing025  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[ 3509.2s]          7.85 mm3  gantry: VC9-JLB  x  head: Plate(Mirror)
+[ 3509.2s]          5.43 mm3  gantry: F695 flanged bearing022  x  carriage: COMPOUND
+[ 3509.2s]          1.13 mm3  gantry: 695 W5 bearing005  x  carriage: COMPOUND
+[ 3509.2s]          0.82 mm3  gantry: F695 flanged bearing025  x  head: Plate(Mirror)
+[ 3509.2s]          0.32 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s] -- Right / front-right, top: front-right corner, bed top; nozzle (-70.0, 30.5, 390.59) bed dZ +102.42: 24 overlaps
+[ 3509.2s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[ 3509.2s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[ 3509.2s]         53.14 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
+[ 3509.2s]         49.74 mm3  gantry: 695 W5 bearing004  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 3509.2s]         41.90 mm3  gantry: F695 flanged bearing018  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 3509.2s]         37.70 mm3  gantry: F695 flanged bearing021  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 3509.2s]          7.85 mm3  gantry: VC9-JRB  x  head: Plate(Mirror)
+[ 3509.2s]          3.58 mm3  gantry: F695 flanged bearing018  x  carriage: COMPOUND
+[ 3509.2s]          2.20 mm3  gantry: F695 flanged bearing018  x  head: Plate(Mirror)
+[ 3509.2s]          1.00 mm3  gantry: 695 W5 bearing004  x  carriage: COMPOUND
+[ 3509.2s]          0.80 mm3  gantry: F695 flanged bearing021  x  head: Plate(Mirror)
+[ 3509.2s]          0.37 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.10 mm3  gantry: 695 W5 bearing004  x  head: Plate(Mirror)
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s] -- Right / rear-left, top: rear-left corner (Y clamped to reach 370.69), bed top; nozzle (-420.0, 370.7, 390.59) bed dZ +102.42: 21 overlaps
+[ 3509.2s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[ 3509.2s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[ 3509.2s]         52.00 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
+[ 3509.2s]         49.35 mm3  gantry: 695 W5 bearing005  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[ 3509.2s]         40.19 mm3  gantry: F695 flanged bearing025  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[ 3509.2s]          7.85 mm3  gantry: VC9-JLB  x  head: Plate(Mirror)
+[ 3509.2s]          5.43 mm3  gantry: F695 flanged bearing022  x  carriage: COMPOUND
+[ 3509.2s]          1.13 mm3  gantry: 695 W5 bearing005  x  carriage: COMPOUND
+[ 3509.2s]          0.82 mm3  gantry: F695 flanged bearing025  x  head: Plate(Mirror)
+[ 3509.2s]          0.32 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s] -- Right / rear-right, top: rear-right corner (Y clamped to reach 370.69), bed top; nozzle (-70.0, 370.7, 390.59) bed dZ +102.42: 24 overlaps
+[ 3509.2s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[ 3509.2s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[ 3509.2s]         53.14 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
+[ 3509.2s]         49.74 mm3  gantry: 695 W5 bearing004  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 3509.2s]         41.90 mm3  gantry: F695 flanged bearing018  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 3509.2s]         37.70 mm3  gantry: F695 flanged bearing021  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 3509.2s]          7.85 mm3  gantry: VC9-JRB  x  head: Plate(Mirror)
+[ 3509.2s]          3.58 mm3  gantry: F695 flanged bearing018  x  carriage: COMPOUND
+[ 3509.2s]          2.20 mm3  gantry: F695 flanged bearing018  x  head: Plate(Mirror)
+[ 3509.2s]          1.00 mm3  gantry: 695 W5 bearing004  x  carriage: COMPOUND
+[ 3509.2s]          0.80 mm3  gantry: F695 flanged bearing021  x  head: Plate(Mirror)
+[ 3509.2s]          0.37 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.10 mm3  gantry: 695 W5 bearing004  x  head: Plate(Mirror)
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s] -- Right / centre, top: centre corner, bed top; nozzle (-245.0, 205.5, 390.59) bed dZ +102.42: 13 overlaps
+[ 3509.2s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[ 3509.2s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s] -- Right / dock pickup, top: own dock pickup (parked), bed top; nozzle (-80.3, -52.5, 390.59) bed dZ +102.42: 13 overlaps
+[ 3509.2s]        178.61 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[ 3509.2s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s] -- Right / dock pickup at the large opening, top: own dock pickup slid 6.0 mm forward to the keyslots' large opening, bed top; nozzle (-80.3, -58.5, 390.59) bed dZ +102.42: 13 overlaps
+[ 3509.2s]        178.61 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[ 3509.2s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s] -- Right / front-left, bottom: front-left corner, bed bottom; nozzle (-420.0, 30.5, 390.59) bed dZ -237.00: 21 overlaps
+[ 3509.2s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[ 3509.2s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[ 3509.2s]         52.00 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
+[ 3509.2s]         49.35 mm3  gantry: 695 W5 bearing005  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[ 3509.2s]         40.19 mm3  gantry: F695 flanged bearing025  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[ 3509.2s]          7.85 mm3  gantry: VC9-JLB  x  head: Plate(Mirror)
+[ 3509.2s]          5.43 mm3  gantry: F695 flanged bearing022  x  carriage: COMPOUND
+[ 3509.2s]          1.13 mm3  gantry: 695 W5 bearing005  x  carriage: COMPOUND
+[ 3509.2s]          0.82 mm3  gantry: F695 flanged bearing025  x  head: Plate(Mirror)
+[ 3509.2s]          0.32 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s] -- Right / front-right, bottom: front-right corner, bed bottom; nozzle (-70.0, 30.5, 390.59) bed dZ -237.00: 24 overlaps
+[ 3509.2s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[ 3509.2s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[ 3509.2s]         53.14 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
+[ 3509.2s]         49.74 mm3  gantry: 695 W5 bearing004  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 3509.2s]         41.90 mm3  gantry: F695 flanged bearing018  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 3509.2s]         37.70 mm3  gantry: F695 flanged bearing021  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 3509.2s]          7.85 mm3  gantry: VC9-JRB  x  head: Plate(Mirror)
+[ 3509.2s]          3.58 mm3  gantry: F695 flanged bearing018  x  carriage: COMPOUND
+[ 3509.2s]          2.20 mm3  gantry: F695 flanged bearing018  x  head: Plate(Mirror)
+[ 3509.2s]          1.00 mm3  gantry: 695 W5 bearing004  x  carriage: COMPOUND
+[ 3509.2s]          0.80 mm3  gantry: F695 flanged bearing021  x  head: Plate(Mirror)
+[ 3509.2s]          0.37 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.10 mm3  gantry: 695 W5 bearing004  x  head: Plate(Mirror)
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s] -- Right / rear-left, bottom: rear-left corner (Y clamped to reach 370.69), bed bottom; nozzle (-420.0, 370.7, 390.59) bed dZ -237.00: 21 overlaps
+[ 3509.2s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[ 3509.2s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[ 3509.2s]         52.00 mm3  gantry: VC9-JLB  x  carriage: COMPOUND
+[ 3509.2s]         49.35 mm3  gantry: 695 W5 bearing005  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[ 3509.2s]         40.19 mm3  gantry: F695 flanged bearing025  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[ 3509.2s]          7.85 mm3  gantry: VC9-JLB  x  head: Plate(Mirror)
+[ 3509.2s]          5.43 mm3  gantry: F695 flanged bearing022  x  carriage: COMPOUND
+[ 3509.2s]          1.13 mm3  gantry: 695 W5 bearing005  x  carriage: COMPOUND
+[ 3509.2s]          0.82 mm3  gantry: F695 flanged bearing025  x  head: Plate(Mirror)
+[ 3509.2s]          0.32 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)003  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s] -- Right / rear-right, bottom: rear-right corner (Y clamped to reach 370.69), bed bottom; nozzle (-70.0, 370.7, 390.59) bed dZ -237.00: 24 overlaps
+[ 3509.2s]        170.77 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[ 3509.2s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[ 3509.2s]         53.14 mm3  gantry: VC9-JRB  x  carriage: COMPOUND
+[ 3509.2s]         49.74 mm3  gantry: 695 W5 bearing004  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 3509.2s]         41.90 mm3  gantry: F695 flanged bearing018  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 3509.2s]         37.70 mm3  gantry: F695 flanged bearing021  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 3509.2s]          7.85 mm3  gantry: VC9-JRB  x  head: Plate(Mirror)
+[ 3509.2s]          3.58 mm3  gantry: F695 flanged bearing018  x  carriage: COMPOUND
+[ 3509.2s]          2.20 mm3  gantry: F695 flanged bearing018  x  head: Plate(Mirror)
+[ 3509.2s]          1.00 mm3  gantry: 695 W5 bearing004  x  carriage: COMPOUND
+[ 3509.2s]          0.80 mm3  gantry: F695 flanged bearing021  x  head: Plate(Mirror)
+[ 3509.2s]          0.37 mm3  gantry: Custom M3x30 standoff (5mm OD, F-F threads)002  x  carriage: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.10 mm3  gantry: 695 W5 bearing004  x  head: Plate(Mirror)
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s] -- Right / centre, bottom: centre corner, bed bottom; nozzle (-245.0, 205.5, 390.59) bed dZ -237.00: 13 overlaps
+[ 3509.2s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1  [same in the saved model]
+[ 3509.2s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s] -- Right / dock pickup, bottom: own dock pickup (parked), bed bottom; nozzle (-80.3, -52.5, 390.59) bed dZ -237.00: 13 overlaps
+[ 3509.2s]        178.61 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[ 3509.2s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s] -- Right / dock pickup at the large opening, bottom: own dock pickup slid 6.0 mm forward to the keyslots' large opening, bed bottom; nozzle (-80.3, -58.5, 390.59) bed dZ -237.00: 13 overlaps
+[ 3509.2s]        178.61 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[ 3509.2s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)  [same in the saved model]
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029  [same in the saved model]
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034  [same in the saved model]
+[ 3509.2s] -- Right / model: saved model pose (baseline: nothing moved, both heads docked);: 13 overlaps
+[ 3509.2s]        170.79 mm3  gantry: MGN12-400mm v002  x  carriage: MGN_12_H_CARRAGE v1
+[ 3509.2s]         63.76 mm3  bed: Leadscrew Nut001  x  fixed: Leadscrew002 (rod)
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H  x  fixed: MGN9 Y rail (R) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)
+[ 3509.2s]          0.15 mm3  gantry: _MGN9H001  x  fixed: MGN9 Y rail (L) - Hiwin MGNR9 490 mm, one piece (Motion Constrained; vt350#291)
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)004  x  fixed: SOLID037
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)002  x  fixed: SOLID034
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)  x  fixed: SOLID029
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)001  x  fixed: SOLID029
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)003  x  fixed: SOLID034
+[ 3509.2s]          0.07 mm3  bed: MGN9H - Carriage_end_cap (1)005  x  fixed: SOLID037
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)002  x  fixed: SOLID037
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)001  x  fixed: SOLID034
+[ 3509.2s]          0.01 mm3  bed: MGN9H - Carriage_body (1)  x  fixed: SOLID029
+[ 3509.3s] clashlib: 10 workers on vt350-lite-80.FCStd, 82 poses, job dir /tmp/clashlib-s6bmhy8g
+[ 6237.9s] clashlib: done in 2728.8s (load <= 2.1s, check <= 2725.1s); 21947628 pair-poses, 45122 box hits, 288 overlaps > 0.01 mm3, 0 errors
+[ 6237.9s] clashlib: peak RSS: workers max 1457 MB, sum 11210 MB; parent 17 MB
+[ 6237.9s] -- Right X scan, left side (nozzle X, Y at the centre; overlaps not already in the saved model):
+[ 6237.9s]    X  -420.0:  8 overlaps,   157.10 mm3; moving parts: COMPOUND, Plate(Mirror), SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[ 6237.9s]    X  -419.0:  6 overlaps,    83.24 mm3; moving parts: COMPOUND, Plate(Mirror), SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[ 6237.9s]    X  -418.0:  3 overlaps,    24.35 mm3; moving parts: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[ 6237.9s]    X  -417.0:  2 overlaps,     1.76 mm3; moving parts: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)001
+[ 6237.9s]    X  -416.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -415.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -414.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -413.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -412.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -411.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -410.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -409.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -408.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -407.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -406.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -405.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -404.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -403.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -402.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -401.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -400.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -399.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -398.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -397.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -396.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -395.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -394.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -393.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -392.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -391.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -390.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -389.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -388.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -387.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -386.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -385.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -384.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -383.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -382.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -381.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -380.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    Right head, left side: first nozzle X with no new overlap -416.0 (print square edge -420.0)
+[ 6237.9s] -- Right X scan, right side (nozzle X, Y at the centre; overlaps not already in the saved model):
+[ 6237.9s]    X   -70.0: 11 overlaps,   198.38 mm3; moving parts: COMPOUND, Plate(Mirror), SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 6237.9s]    X   -71.0:  7 overlaps,    91.94 mm3; moving parts: COMPOUND, Plate(Mirror), SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 6237.9s]    X   -72.0:  3 overlaps,    29.30 mm3; moving parts: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 6237.9s]    X   -73.0:  2 overlaps,     3.26 mm3; moving parts: SpeedClip 4mm Gap 9mm (MadMax, GPL-3.0)
+[ 6237.9s]    X   -74.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -75.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -76.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -77.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -78.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -79.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -80.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -81.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -82.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -83.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -84.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -85.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -86.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -87.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -88.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -89.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -90.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -91.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -92.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -93.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -94.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -95.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -96.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -97.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -98.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X   -99.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -100.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -101.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -102.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -103.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -104.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -105.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -106.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -107.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -108.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -109.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    X  -110.0:  0 overlaps,     0.00 mm3
+[ 6237.9s]    Right head, right side: first nozzle X with no new overlap -74.0 (print square edge -70.0)
+[ 6237.9s] clashlib: 4 workers on vt350-lite-80.FCStd, 1 poses, job dir /tmp/clashlib-8hvb3jb6
+[ 6247.1s] clashlib: done in 9.2s (load <= 1.9s, check <= 6.0s); 944 pair-poses, 21 box hits, 2 overlaps > 0.01 mm3, 0 errors
+[ 6247.1s] clashlib: peak RSS: workers max 658 MB, sum 2615 MB; parent 17 MB
+[ 6247.1s] -- Right tool-internal (head vs MadMax Plate + Plate Back):
+[ 6247.1s]          7.61 mm3  head: Hex socket head cap screw M3x0.50 x 018  x  plate: Plate(Mirror)
+[ 6247.1s]          7.61 mm3  head: Hex socket head cap screw M3x0.50 x 019  x  plate: Plate(Mirror)
+[ 6247.1s] timing: Left: wall 390.4s, 6156810 pair-poses, 8105 box hits; Left X scan: wall 2633.4s, 21947628 pair-poses, 45111 box hits; Right: wall 445.9s, 6156810 pair-poses, 8216 box hits; Right X scan: wall 2728.8s, 21947628 pair-poses, 45122 box hits
+[ 6247.1s] done (read-only, nothing saved)

@@ -433,3 +433,12 @@ run catches this in minutes. A pass that adds bed parts should do the same. When
   For a fair before, export the old lite-N from main. lite-79's first "before" showed both parts already orange that way.
 - A part's colour in the FreeCAD file and in the renders can differ: the renders go by `colours.json` roles. lite-79's
   camera housing was dark grey in the file and white in the renders.
+
+## A pass that reshapes a part it has already moved must carry the move into the new shape (2026-11-25, lite-80)
+
+lite-80 moved the front uprights −3 in Y (by Placement), then re-drilled their gantry-joint holes from the shape it
+had read at the start, and assigned it back with `o.Shape = ...`. Assigning a shape sets the Placement from it (see
+"Assigning `o.Shape` also sets `o.Placement`"), so the uprights went back to their old Y and the dry run found 28
+new collisions with the gantry bars. Its box check passed because it compared against the *old* box. Fix: when a
+part is reshaped after a step has moved it, build the new shape from the moved one (or translate it by the move), and
+check its box against the box the plan expects, never "unchanged".

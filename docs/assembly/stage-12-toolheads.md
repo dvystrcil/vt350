@@ -30,14 +30,14 @@ What to print and what to buy for this stage only. The tables are generated from
 
 | Buy | Qty | Status | Vendor |
 |---|---|---|---|
-| Mellow MultiHead Zero (black) nozzle offset probe | 1 | to buy | [West3D (SKU MEL2020)](https://west3d.com/products/mellow-multiohead-zero-precision-xyz-nozzle-offset-calibration-tool-black) |
-| M3 heat-set insert, short: M3x3x5 (3 mm long, 5 mm OD), brass (YuGtcen, 150 pcs) | 3 per head | ordered | [Amazon (YuGtcen)](https://www.amazon.com/YuGtcen-Threaded-Inserts/dp/B0CN2PMPY8) |
-| M3 male-female round standoff, 4 mm body, Ø5 max 5.5, M3x4 stud (e.g. PATIKIL M3x4+4 stainless, 10-pack) | 5 | ordered | Amazon (PATIKIL) |
-| M3x6 flat-head screw (FHCS), carbon steel (strongly magnetic), head 5.8-6 mm | 3 per head | ordered | Amazon |
-| M3 male-female round standoff, 8 mm body, Ø5, M3x6 stud (AWclub M3x8+6 304 stainless, 12-pack) | 1 | ordered | Amazon (AWclub) |
-| 6x3 mm N52 magnet, MadMax carriage (West3D, nickel or black epoxy) | 6 | to buy | [West3D](https://west3d.com/products/6mm-x-3mm-round-neomydium-magnets) |
+| Mellow MultiHead Zero (black) nozzle offset probe | 1 | owned | [West3D (SKU MEL2020)](https://west3d.com/products/mellow-multiohead-zero-precision-xyz-nozzle-offset-calibration-tool-black) |
+| M3 heat-set insert, short: M3x3x5 (3 mm long, 5 mm OD), brass (YuGtcen, 150 pcs) | 3 per head | owned | [Amazon (YuGtcen)](https://www.amazon.com/YuGtcen-Threaded-Inserts/dp/B0CN2PMPY8) |
+| M3 male-female round standoff, 4 mm body, Ø5 max 5.5, M3x4 stud (e.g. PATIKIL M3x4+4 stainless, 10-pack) | 5 | owned | Amazon (PATIKIL) |
+| M3x6 flat-head screw (FHCS), carbon steel (strongly magnetic), head 5.8-6 mm | 3 per head | owned | Amazon |
+| M3 male-female round standoff, 8 mm body, Ø5, M3x6 stud (AWclub M3x8+6 304 stainless, 12-pack) | 1 | owned | Amazon (AWclub) |
+| 6x3 mm N52 magnet, MadMax carriage (West3D, nickel or black epoxy) | 6 | owned | [West3D](https://west3d.com/products/6mm-x-3mm-round-neomydium-magnets) |
 | 6x3 mm N52 magnet, tool plate + dock keyslot plate (West3D, nickel or black epoxy) | 9 per head | to buy | [West3D](https://west3d.com/products/6mm-x-3mm-round-neomydium-magnets) |
-| Beacon RevH, Normal (SKU WES2566NOR) | 1 | to buy | [West3D](https://west3d.com/products/beacon-probe-eddy-current-surface-scanner-for-3d-printers?variant=46106145882324) |
+| Beacon RevH, Normal (SKU WES2566NOR) | 1 | owned | [West3D](https://west3d.com/products/beacon-probe-eddy-current-surface-scanner-for-3d-printers?variant=46106145882324) |
 | MadMax carriage hardware (one set) | 1 | to buy |  |
 | MadMax tool-plate hardware, per head | 1 per head | to buy |  |
 | M3x8 or M3x6 flat head (FHCS), strongly magnetic steel, A4T head side | 3 per head | to buy |  |

@@ -544,7 +544,7 @@ class MarkersMatchTheRealTools(unittest.TestCase):
         self.assertTrue(pm and want, (pm, want))
         self.assertEqual(float(pm.group(1)), float(want[-1]))
         self.assertEqual((z["z_lower_limit_mm"], z["klipper_position_max_mm"], z["z_negative_limit_mm"], z["z_travel_mm"]),
-                         (43.76, 334.43, -21.17, 355.6))   # lite-77: Z0 on the 1.0 mm PEI sheet
+                         (43.76, 344.43, -11.17, 355.6))   # lite-80: the gantry +10 (lite-77: 334.43, -21.17)
 
     def test_print_area_marker(self):
         with tempfile.TemporaryDirectory() as d:
