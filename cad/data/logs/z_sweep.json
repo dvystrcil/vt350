@@ -1,5 +1,5 @@
 {
- "model": "/work/vt350-lite-78-20261124t031612-ad54-sweep/in/vt350-lite-78.FCStd",
+ "model": "/work/vt350-lite-80-20261126t060108-704d-sweep/in/vt350-lite-80.FCStd",
  "plate_top": 285.76060992516267,
  "magnet_top": 287.16060992516265,
  "sheet_top": 288.16060992516265,
@@ -9,14 +9,14 @@
   "why": "Nozzle offset probe bracket (low, lite-78) (printed ABS, vt350, GPL-3.0-or-later) lands on backbone-350 v2"
  },
  "upper": {
-  "dz": 92.42829622491996,
-  "plate_top": 378.18890615008263,
+  "dz": 102.42829622492093,
+  "plate_top": 388.1889061500836,
   "head": "Left",
   "why": "PEI spring-steel sheet (1.0 mm) touches TL-dragon-ace-MZE nozzle (brass V6)"
  },
  "print_height": {
-  "Left": 334.4322023749193,
-  "Right": 334.4322025775653
+  "Left": 344.4322023749203,
+  "Right": 344.432202577564
  },
  "top": {
   "dz": 113.59999989998363,
@@ -24,9 +24,9 @@
   "why": "the top end of MGN9H (3) reaches the top end of SOLID034"
  },
  "klipper": {
-  "position_max": 334.4322023749193,
-  "position_max_configured": 329.4322023749193,
-  "z_negative": -21.171703675063668,
+  "position_max": 344.4322023749203,
+  "position_max_configured": 339.4322023749203,
+  "z_negative": -11.171703675062702,
   "travel": 355.603906049983
  },
  "parked": {
@@ -67,7 +67,7 @@
    "SOLID037"
   ]
  ],
- "docked_upper": 95.22749172477194,
+ "docked_upper": 105.22749172477194,
  "problems": [],
  "contacts": {
   "down": [
@@ -434,214 +434,214 @@
   ],
   "up Left": [
    [
-    92.42829622491996,
+    102.42829622492093,
     "PEI spring-steel sheet (1.0 mm)",
     "TL-dragon-ace-MZE nozzle (brass V6)"
    ],
    [
-    93.42829622491996,
+    103.42829622492093,
     "Magnetic sheet (1.4 mm)",
     "TL-dragon-ace-MZE nozzle (brass V6)"
    ],
    [
-    94.76055299734202,
+    104.76055299734298,
     "PEI spring-steel sheet (1.0 mm)",
     "[a]_Duct-4010-right"
    ],
    [
-    94.76055299734622,
+    104.76055299734719,
     "PEI spring-steel sheet (1.0 mm)",
     "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
    ],
    [
-    94.82829622491994,
+    104.8282962249209,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "TL-dragon-ace-MZE nozzle (brass V6)"
    ],
    [
-    95.22749172477194,
+    105.22749172477194,
     "PEI spring-steel sheet (1.0 mm)",
     "Beacon RevH Normal (Beacon CAD, MIT)"
    ],
    [
-    95.32829632483737,
+    105.32829632483737,
     "PEI spring-steel sheet (1.0 mm)",
     "COMPOUND"
    ],
    [
-    95.42829622491996,
+    105.42829622492093,
     "PEI spring-steel sheet (1.0 mm)",
     "TL-dragon-ace-MZE sock"
    ],
    [
-    95.76055299734202,
+    105.76055299734298,
     "Magnetic sheet (1.4 mm)",
     "[a]_Duct-4010-right"
    ],
    [
-    95.76055299734622,
+    105.76055299734719,
     "Magnetic sheet (1.4 mm)",
     "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
    ],
    [
-    96.22749172477194,
+    106.22749172477194,
     "Magnetic sheet (1.4 mm)",
     "Beacon RevH Normal (Beacon CAD, MIT)"
    ],
    [
-    96.32829632483737,
+    106.32829632483737,
     "Magnetic sheet (1.4 mm)",
     "COMPOUND"
    ],
    [
-    96.42829622491996,
+    106.42829622492093,
     "Magnetic sheet (1.4 mm)",
     "TL-dragon-ace-MZE sock"
    ],
    [
-    97.160552997342,
+    107.16055299734296,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "[a]_Duct-4010-right"
    ],
    [
-    97.1605529973462,
+    107.16055299734717,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "[a]_Duct-4010-left MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
    ],
    [
-    97.62749172477191,
+    107.62749172477191,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "Beacon RevH Normal (Beacon CAD, MIT)"
    ],
    [
-    97.72829632483734,
+    107.72829632483734,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "COMPOUND"
    ],
    [
-    97.82829622491994,
+    107.8282962249209,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "TL-dragon-ace-MZE sock"
    ],
    [
-    97.92829612491994,
+    107.9282961249209,
     "PEI spring-steel sheet (1.0 mm)",
     "TL-dragon-ace-MZE"
    ],
    [
-    98.92829612491994,
+    108.9282961249209,
     "Magnetic sheet (1.4 mm)",
     "TL-dragon-ace-MZE"
    ],
    [
-    100.32829612491992,
+    110.32829612492088,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "TL-dragon-ace-MZE"
    ]
   ],
   "up Right": [
    [
-    92.42829642756595,
+    102.42829642756465,
     "PEI spring-steel sheet (1.0 mm)",
     "TL-dragon-ace-MZE nozzle (brass V6)001"
    ],
    [
-    93.42829642756595,
+    103.42829642756465,
     "Magnetic sheet (1.4 mm)",
     "TL-dragon-ace-MZE nozzle (brass V6)001"
    ],
    [
-    94.76055319998812,
+    104.76055319998682,
     "PEI spring-steel sheet (1.0 mm)",
     "[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
    ],
    [
-    94.76055319999222,
+    104.76055319999091,
     "PEI spring-steel sheet (1.0 mm)",
     "[a]_Duct-4010-left001"
    ],
    [
-    94.82829642756593,
+    104.82829642756462,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "TL-dragon-ace-MZE nozzle (brass V6)001"
    ],
    [
-    95.22749172477194,
+    105.22749172477194,
     "PEI spring-steel sheet (1.0 mm)",
     "Beacon RevH Normal (Beacon CAD, MIT)"
    ],
    [
-    95.32829632483737,
+    105.32829632483737,
     "PEI spring-steel sheet (1.0 mm)",
     "COMPOUND"
    ],
    [
-    95.42829642756595,
+    105.42829642756465,
     "PEI spring-steel sheet (1.0 mm)",
     "TL-dragon-ace-MZE sock001"
    ],
    [
-    95.76055319998812,
+    105.76055319998682,
     "Magnetic sheet (1.4 mm)",
     "[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
    ],
    [
-    95.76055319999222,
+    105.76055319999091,
     "Magnetic sheet (1.4 mm)",
     "[a]_Duct-4010-left001"
    ],
    [
-    96.22749172477194,
+    106.22749172477194,
     "Magnetic sheet (1.4 mm)",
     "Beacon RevH Normal (Beacon CAD, MIT)"
    ],
    [
-    96.32829632483737,
+    106.32829632483737,
     "Magnetic sheet (1.4 mm)",
     "COMPOUND"
    ],
    [
-    96.42829642756595,
+    106.42829642756465,
     "Magnetic sheet (1.4 mm)",
     "TL-dragon-ace-MZE sock001"
    ],
    [
-    97.1605531999881,
+    107.1605531999868,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "[a]_Duct-4010-right MadMax dock bosses (remix, CC BY-NC-SA 4.0)"
    ],
    [
-    97.1605531999922,
+    107.16055319999089,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "[a]_Duct-4010-left001"
    ],
    [
-    97.62749172477191,
+    107.62749172477191,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "Beacon RevH Normal (Beacon CAD, MIT)"
    ],
    [
-    97.72829632483734,
+    107.72829632483734,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "COMPOUND"
    ],
    [
-    97.82829642756593,
+    107.82829642756462,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "TL-dragon-ace-MZE sock001"
    ],
    [
-    97.92829632756593,
+    107.92829632756462,
     "PEI spring-steel sheet (1.0 mm)",
     "TL-dragon-ace-MZE001"
    ],
    [
-    98.92829632756593,
+    108.92829632756462,
     "Magnetic sheet (1.4 mm)",
     "TL-dragon-ace-MZE001"
    ],
    [
-    100.32829632756591,
+    110.3282963275646,
     "LDO 350 build plate (real: 355 sq x 10, 3.4 + 6.5x4.9 cbore)",
     "TL-dragon-ace-MZE001"
    ]
