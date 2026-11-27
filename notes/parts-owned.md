@@ -59,7 +59,7 @@ those listings or the project READMEs linked from them.
 | Time relay TBT7-C1 (0.1 s – 10 days) | 1 | Bought to power the drivers before the mainboard (TMC5160T Plus sequencing, row above). Intended wiring: the 60 V motor supply switches on with the printer, and the relay delays the mainboard's 24 V supply by a second or two. Before wiring it, confirm from the relay's own manual its function mode (it must be set to **on-delay**), its coil voltage and its contact rating. |
 | [Nitehawk Hexa 6+1 USB adapter](https://west3d.com/search?type=product&q=Nitehawk+Hexa) | 1 | USB hub for toolhead boards (link is a search, not the product page). |
 | DIN fuse holders, 5×20 mm glass | 7+ | **Owned (owner, 2026-11-27).** The e-box's F1, F2, F4–F8 (lite-54 layout); the fuses must be 5×20 mm glass, ratings still to choose (`bom/bom.csv`). |
-| DIN circuit breaker, 15 A | 1 | **Owned (owner, 2026-11-27).** Q1 on the mains rail (lite-54). The layout wants **2-pole** (live and neutral); confirm this one is before wiring it. |
+| DIN circuit breaker, single-pole, 20 A | 1 | **Owned (owner, 2026-11-27).** Q1 on the mains rail (lite-54). Single-pole: it breaks the live only, so the inlet must be wired with live on the breaker. The layout drew a 2-pole breaker (36 wide); this one is 18 wide. |
 | Buck converter, 24 V to 5 V, 10 A, 50 W | 1 | **Owned (owner, 2026-11-27).** Feeds the Pi 5 from F8; 10 A covers the Pi 5's 5 A. |
 | Wago lever connectors | — | Owned. |
 | SSR DIN clamp with heatsink | 1 | For the Omron SSR above. |
