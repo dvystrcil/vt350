@@ -8,7 +8,7 @@ What is still to buy, round by round in build order, for **2 heads** ('per head'
 |---|---|---|---|---|---|
 | 1. Frame | #7, #8, #9 | 21 | - | 21 | 11 |
 | 2. Motion | #10, #11 | 14 | USD 179.97 | 13 | 5 |
-| 3. Electronics | #13 | 6 | - | 6 | 4 |
+| 3. Electronics | #13 | 4 | - | 4 | 4 |
 | 4. Toolheads | #12 | 22 | USD 3.51 | 21 | 5 |
 | 5. Enclosure and calibration | #14, #15 | 4 | - | 4 | 16 |
 
@@ -91,15 +91,13 @@ To decide before buying this round:
 
 Boards, supplies and wiring: the axes can be homed and tested with no toolhead fitted.
 
-Stages #13. Priced cost: **no priced rows yet**, plus 6 unpriced row(s).
+Stages #13. Priced cost: **no priced rows yet**, plus 4 unpriced row(s).
 
 | Item | To buy | Unit price | Cost | Stage | Vendor |
 |---|---|---|---|---|---|
 | M3x8 button head, e-box grille | 18 | - | - | #13 | - |
 | M3 drop-in T-nut, 6 mm slot | 18 | - | - | #13 | West3D |
 | DIN rail TS35 x 7.5, 538 mm | 5 | - | - | #13 | - |
-| Q1: 2-pole circuit breaker, DIN | 1 | - | - | #13 | - |
-| Buck converter 24 V to 5 V for the Pi 5 | 1 | - | - | #13 | - |
 | C14 mains inlet with fuse and EMI filter | 1 | - | - | #13 | - |
 
 To decide before buying this round:
