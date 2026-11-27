@@ -21,7 +21,7 @@ those listings or the project READMEs linked from them.
 | Part | Qty | Design impact |
 |---|---|---|
 | [Kinematic mount, Voron Trident, aluminium (standard)](https://west3d.com/products/kinematics-mount-voron-trident) | 1 | The model already has a kinematic bed mount. Its geometry needs checking against this one. |
-| [LDO 350 aluminium build plate kit](https://west3d.com/products/voron-v2-4-aluminum-build-plate-complete-kit-by-ldo-systems-heater-magnet-and-fuse-pre-applied-to-plate) | 1 | Heater, magnet and fuse come pre-applied. |
+| [LDO 350 aluminium build plate kit](https://west3d.com/products/voron-v2-4-aluminum-build-plate-complete-kit-by-ldo-systems-heater-magnet-and-fuse-pre-applied-to-plate) | 1 | Heater, magnet and fuse come pre-applied. The fuse is the bed's thermal fuse: no separate one to buy (owner, 2026-11-27). |
 | [Berserker Plata textured flex plate, 355×355](https://west3d.com/products/berserker-plata-print-surface-flex-plate-single-sided-texture) | 1 | Together with the plate and kinematic mount, sets the bed stack height and therefore Z travel. |
 
 ## Toolhead
@@ -66,6 +66,7 @@ those listings or the project READMEs linked from them.
 
 | Part | Qty | Design impact |
 |---|---|---|
+| [Nocturne USB camera (Luke's Laboratory, 96°)](https://west3d.com/products/nocturne-usb-camera-for-3d-printers-by-lukes-laboratory) | 1 | **Owned (owner, 2026-11-27).** The chamber camera (#14), rated to 70 °C. |
 | Carbon-felt insulation pad, 10 mm | 3 | Owned (`notes/status.md`, 2026-11-05). Sealed in aluminium; in the model the roof and back pads sit inside their panels (lite-69; the back one 3.9 mm until the compression test) and the right-wall pad between the panel and the electronics. **Test a pad for conductivity first** (#14). Vendor and size not recorded. |
 
 ## Filament

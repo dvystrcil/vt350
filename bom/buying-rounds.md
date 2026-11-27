@@ -8,9 +8,9 @@ What is still to buy, round by round in build order, for **2 heads** ('per head'
 |---|---|---|---|---|---|
 | 1. Frame | #7, #8, #9 | 21 | - | 21 | 11 |
 | 2. Motion | #10, #11 | 14 | USD 179.97 | 13 | 5 |
-| 3. Electronics | #13 | 7 | - | 7 | 5 |
+| 3. Electronics | #13 | 7 | - | 7 | 4 |
 | 4. Toolheads | #12 | 22 | USD 3.51 | 21 | 5 |
-| 5. Enclosure and calibration | #14, #15 | 4 | - | 4 | 17 |
+| 5. Enclosure and calibration | #14, #15 | 4 | - | 4 | 16 |
 
 ## Round 1: Frame
 
@@ -107,7 +107,6 @@ To decide before buying this round:
 
 - Fuses for F1, F2, F4-F8 (#13)
 - Mains switch (#13)
-- 125 °C thermal fuse (bed) (#13)
 - Wiring duct, 40 x 40 (#13)
 - Wire, crimps, ferrules, connectors, sleeving, zip ties (#13)
 
@@ -167,7 +166,6 @@ To decide before buying this round:
 
 - T-nuts for panels, wiring and anything else on the frame (#14)
 - 24 V COB LED strip, warm white, + channel (#14)
-- Nocturne USB camera (Luke's Laboratory, 96°) (#14)
 - Left side panel, 3 mm, 613 x 740 (#14)
 - Right side panel, 3 mm, 613 x 660 (#14)
 - Back panel, 3 mm, 482 x 675 (#14)
