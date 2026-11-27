@@ -8,9 +8,9 @@ What is still to buy, round by round in build order, for **2 heads** ('per head'
 |---|---|---|---|---|---|
 | 1. Frame | #7, #8, #9 | 21 | - | 21 | 11 |
 | 2. Motion | #10, #11 | 14 | USD 179.97 | 13 | 5 |
-| 3. Electronics | #13 | 7 | - | 7 | 5 |
-| 4. Toolheads | #12 | 21 | USD 3.51 | 20 | 6 |
-| 5. Enclosure and calibration | #14, #15 | 4 | - | 4 | 17 |
+| 3. Electronics | #13 | 4 | - | 4 | 4 |
+| 4. Toolheads | #12 | 22 | USD 3.51 | 21 | 5 |
+| 5. Enclosure and calibration | #14, #15 | 4 | - | 4 | 16 |
 
 ## Round 1: Frame
 
@@ -91,23 +91,19 @@ To decide before buying this round:
 
 Boards, supplies and wiring: the axes can be homed and tested with no toolhead fitted.
 
-Stages #13. Priced cost: **no priced rows yet**, plus 7 unpriced row(s).
+Stages #13. Priced cost: **no priced rows yet**, plus 4 unpriced row(s).
 
 | Item | To buy | Unit price | Cost | Stage | Vendor |
 |---|---|---|---|---|---|
 | M3x8 button head, e-box grille | 18 | - | - | #13 | - |
 | M3 drop-in T-nut, 6 mm slot | 18 | - | - | #13 | West3D |
 | DIN rail TS35 x 7.5, 538 mm | 5 | - | - | #13 | - |
-| DIN fuse holder | 7 | - | - | #13 | - |
-| Q1: 2-pole circuit breaker, DIN | 1 | - | - | #13 | - |
-| Buck converter 24 V to 5 V for the Pi 5 | 1 | - | - | #13 | - |
 | C14 mains inlet with fuse and EMI filter | 1 | - | - | #13 | - |
 
 To decide before buying this round:
 
 - Fuses for F1, F2, F4-F8 (#13)
 - Mains switch (#13)
-- 125 °C thermal fuse (bed) (#13)
 - Wiring duct, 40 x 40 (#13)
 - Wire, crimps, ferrules, connectors, sleeving, zip ties (#13)
 
@@ -115,7 +111,7 @@ To decide before buying this round:
 
 The toolchanger and the heads. Per-head rows are costed for every head; one head's worth is largely owned already.
 
-Stages #12. Priced cost: **USD 3.51**, plus 20 unpriced row(s).
+Stages #12. Priced cost: **USD 3.51**, plus 21 unpriced row(s).
 
 | Item | To buy | Unit price | Cost | Stage | Vendor |
 |---|---|---|---|---|---|
@@ -138,6 +134,7 @@ Stages #12. Priced cost: **USD 3.51**, plus 20 unpriced row(s).
 | Vindr Berserker 4010B-24V-P blower (part cooling) | 2 | - | - | #12 | - |
 | Phaetus Dragon ACE Volcano hotend | 1 | - | - | #12 | - |
 | TC Undertaker nozzle, 0.6 mm | 1 | - | - | #12 | - |
+| Crossbow CNC filament cutter (DW-Tas, aluminium) | 1 | - | - | #12 | West3D |
 | Neopixel LED PCB (RGBW preferred) | 6 | - | - | #12 | - |
 | 28 AWG wire, red / black / blue, ~400 mm each per head | 2 | - | - | #12 | - |
 
@@ -146,7 +143,6 @@ To decide before buying this round:
 - Dock bar fixings: M5 screws (#12)
 - Dock keyslot-plate screws: M3 SHCS (#12)
 - Berserker VINDR 2510A-24V-A axial fan (hotend) (#12)
-- Crossbow CNC filament cutter (DW-Tas, aluminium) (#12)
 - O2S USB cable, ~3 m (#12)
 - PTFE bowden, OD 4.12 mm, ~0.6 m (#12)
 
@@ -167,7 +163,6 @@ To decide before buying this round:
 
 - T-nuts for panels, wiring and anything else on the frame (#14)
 - 24 V COB LED strip, warm white, + channel (#14)
-- Nocturne USB camera (Luke's Laboratory, 96°) (#14)
 - Left side panel, 3 mm, 613 x 740 (#14)
 - Right side panel, 3 mm, 613 x 660 (#14)
 - Back panel, 3 mm, 482 x 675 (#14)

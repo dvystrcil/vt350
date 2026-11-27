@@ -59,7 +59,7 @@ What to print and what to buy for this stage only. The tables are generated from
 | Berserker VINDR 2510A-24V-A axial fan (hotend) | 1 per head | decide | [West3D](https://west3d.com/products/berserker-vindr-ultra-performance-2510-axial-fan-24v-2510a-24v-a-25x10mm) |
 | Phaetus Dragon ACE Volcano hotend | 1 per head | to buy |  |
 | TC Undertaker nozzle, 0.6 mm | 1 per head | to buy |  |
-| Crossbow CNC filament cutter (DW-Tas, aluminium) | 1 per head | decide | [West3D](https://west3d.com/products/crossbow-cnc-filament-cutter-for-a4t-sherpa-mini-orbiter-v2-5-and-other-flat-top-extruders-by-dw-tas) |
+| Crossbow CNC filament cutter (DW-Tas, aluminium) | 1 per head | to buy | [West3D](https://west3d.com/products/crossbow-cnc-filament-cutter-for-a4t-sherpa-mini-orbiter-v2-5-and-other-flat-top-extruders-by-dw-tas) |
 | Neopixel LED PCB (RGBW preferred) | 3 per head | to buy |  |
 | 28 AWG wire, red / black / blue, ~400 mm each per head | 1 per head | to buy |  |
 | O2S USB cable, ~3 m | 1 per head | decide |  |
