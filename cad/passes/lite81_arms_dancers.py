@@ -32,7 +32,7 @@
 # axle ends inside their plates' slots, sheaves clear of the plates; each route ends at its head's lock; COLLISIONS:
 # nothing new overlaps lite-80 (the old runs' and ties' overlaps are the baseline: none), and the new parts and runs
 # don't overlap each other (a tool's own tube and cable may touch: they are bundled).
-import FreeCAD, Part, os, sys, math, json
+import FreeCAD, Part, os, sys, math, json, re, time
 _REPO = os.environ.get("VT350_REPO", "/home/dan/Code/vt350")
 sys.path[:0] = [os.path.join(_REPO, "platform/freecad"), os.path.join(_REPO, "platform/render"),
                 os.path.join(_REPO, "cad/passes")]
@@ -64,11 +64,16 @@ SHAFT_R = 2.5                                 # the hinge shaft, 5 mm
 SHAFT_X = (-432.0, -58.0)
 BRACKET_X = ((-432.0, -424.0), (-66.0, -58.0))
 BAR_UNDERSIDE = 650.0                         # the rear top 4040 (Y 480..520, Z 650..690)
-SHEAVE_R, SHEAVE_T = DANCER["RP"] + 4.6, 10.0
+SHEAVE_R, SHEAVE_T = DANCER["RP"] + 4.6, 8.0   # 8 thick (was 10): room for grooved plates in the 13 mm pitch
 GROOVE_W, GROOVE_IN = 5.6, DANCER["RP"] - 2.55 - 2.55 - 0.6   # groove bottom: the cable (inner, centre RP - 2.55) + 0.6
 BEARING = (8.0, 2.5, 5.0)                     # 625: OD/2, ID/2, width
-AXLE_L = 13.0                                 # plane to plane: its ends sit in the middle of the plates
-PLATE_T, PLATE_W = 2.0, 24.0                  # the lane guide plates: thickness (Y) and width (X)
+PITCH = 13.0                                  # the dancer study's plane pitch (Y 446 / 459 / 472)
+GROOVE_D, PLATE_GAP = 1.6, 0.4                # the plates' blind axle grooves: depth; sheave face to plate face
+# The axle: a 5 mm steel dowel pin pressed into the 625's inner race (owner 2026-11-26: "a steel dowel for the axle ...
+# friction fit"). Its ends slide in BLIND grooves, one per axle end: dry run 10's shared through-slots let two
+# neighbours' axle ends meet as one sheave passed the other (owner, from the cutaway).
+AXLE_L = SHEAVE_T + 2 * (PLATE_GAP + GROOVE_D) - 0.2   # 11.8: 0.1 short of each groove's bottom
+PLATE_T, PLATE_W = PITCH - SHEAVE_T - 2 * PLATE_GAP, 24.0   # the plates: 4.2 thick (Y), 24 wide (X); web 1.0 between grooves
 SLOT_W = 5.4
 Z_TOP, Z_G = DANCER["z_top"], 470.0
 # The RAILS (owner 2026-11-26: "have the axle travel in a slotted rail held in place between the bottom and gantry
@@ -83,6 +88,18 @@ GANTRY_2020 = dict(y=(480.0, 500.0), z=(430.0, 450.0), x=(-415.0, -75.0))
 M5 = 2.75                                     # M5 clearance hole radius
 LEG_BLOCK = (20.0, 6.0)                       # leg guide block: X width, Z height; holes 12 x 6.5
 HOLE = (12.0, 6.5)
+# PRINTING (owner 2026-11-26: "these lanes might be hard to print in one piece ... how to plate them for the neptune"):
+# a plate is 410 tall; the Neptune 4 Pro takes 220 x 220 (cad/data/print-profile.json) and ~250 in Z. So each stack is
+# one COMB printed standing in three SECTIONS: its plates widened in their own planes (no sheave runs there) out to a
+# POST beyond the sheaves, the post tying them together; split at SPLIT_Z, outside the axle grooves (Z ~162..344), so
+# no seam crosses a groove. Two M4 tie rods down the post clamp the sections from the foot to the cap.
+# The post goes on one side only: the bed's rear kinematic mount and lead screw sweep X -263..-230 (Y 357..499) through
+# all of Z, between the stacks (X -324.2 can't reach past -266, X -167 not past -225).
+POST_SIDE = {-324.2: -1, -167.0: 1}
+POST_DX, POST_W = 66.0, 10.0                  # post centre from the stack's X; width in X (2.8 clear of a sheave or leg)
+ROD_R, ROD_HOLE, ROD_INSET, NUT_POCKET = 2.0, 2.2, 6.0, (4.4, 4.0)   # M4 rod; its hole; from the post's Y ends; nut
+SPLIT_Z = (155.0, 350.0)
+PRINT_XY, PRINT_Z = 220.0, 250.0              # the Neptune's bed with margin; its Z with margin
 TOL = 1e-3
 
 
@@ -152,16 +169,50 @@ def axle(cx, y, zc):
     return Part.makeCylinder(BEARING[1], AXLE_L, V(cx, y - AXLE_L / 2, zc), V(0, 1, 0))
 
 
-def plate(cx, yc, slot, side=0):
-    """A full-height slotted plate, foot to cap; side -1 / +1: an outer rail, flanged toward -Y / +Y."""
+def plate(cx, yc, slot, side=0, faces=(-1, 1), xspan=None):
+    """A full-height plate, foot to cap, with a blind axle groove GROOVE_D deep in each face that has a sheave
+    (faces: -1 = its -Y face, +1 = its +Y face); side -1 / +1: an outer rail, flanged outward (toward -Y / +Y)."""
     z0, z1 = FOOT_Z[1], CAP_Z[0]
-    p = Part.makeBox(PLATE_W, PLATE_T, z1 - z0, V(cx - PLATE_W / 2, yc - PLATE_T / 2, z0))
+    xa, xb = xspan or (cx - PLATE_W / 2, cx + PLATE_W / 2)
+    p = Part.makeBox(xb - xa, PLATE_T, z1 - z0, V(xa, yc - PLATE_T / 2, z0))
     if side:
         y0 = yc + PLATE_T / 2 if side > 0 else yc - PLATE_T / 2 - FLANGE[1]
         for x0 in (cx - PLATE_W / 2, cx + PLATE_W / 2 - FLANGE[0]):
             p = p.fuse(Part.makeBox(FLANGE[0], FLANGE[1], z1 - z0, V(x0, y0, z0)))
         p = p.removeSplitter()
-    return p.cut(Part.makeBox(SLOT_W, PLATE_T + 2, slot[1] - slot[0], V(cx - SLOT_W / 2, yc - PLATE_T / 2 - 1, slot[0])))
+    for f in faces:
+        y0 = yc - PLATE_T / 2 - 1.0 if f < 0 else yc + PLATE_T / 2 - GROOVE_D
+        p = p.cut(Part.makeBox(SLOT_W, GROOVE_D + 1.0, slot[1] - slot[0], V(cx - SLOT_W / 2, y0, slot[0])))
+    return p
+
+
+def stack_body(cx, ycs, slot):
+    """One stack's plates (widened to the post) and its post, full height, with the tie-rod holes and nut pockets;
+    -> (body, rods, post X)."""
+    side = POST_SIDE[round(cx, 1)]
+    px = cx + side * POST_DX
+    xa, xb = sorted((cx - side * PLATE_W / 2, px + side * POST_W / 2))
+    body = None
+    for j, yc in enumerate(ycs):
+        sd = -1 if j == 0 else (1 if j == len(ycs) - 1 else 0)
+        faces = tuple(f for f in (-1, 1) if not (f < 0 and j == 0) and not (f > 0 and j == len(ycs) - 1))
+        pl = plate(cx, yc, slot, sd, faces, (xa, xb))
+        body = pl if body is None else body.fuse(pl)
+    y0, y1 = ycs[0] - PLATE_T / 2, ycs[-1] + PLATE_T / 2
+    z0, z1 = FOOT_Z[1], CAP_Z[0]
+    body = body.fuse(Part.makeBox(POST_W, y1 - y0, z1 - z0, V(px - POST_W / 2, y0, z0))).removeSplitter()
+    rods = []
+    for y in (y0 + ROD_INSET, y1 - ROD_INSET):
+        body = body.cut(Part.makeCylinder(ROD_HOLE, z1 - z0 + 2, V(px, y, z0 - 1)))
+        for zb in (z0 - 1, z1 - NUT_POCKET[1]):
+            body = body.cut(Part.makeCylinder(NUT_POCKET[0], NUT_POCKET[1] + 1, V(px, y, zb)))
+        rods.append(Part.makeCylinder(ROD_R, z1 - z0 - 2 * NUT_POCKET[1] + 6, V(px, y, z0 + NUT_POCKET[1] - 3)))
+    return body, rods, px
+
+
+def sections(body):
+    zs = [FOOT_Z[1], *SPLIT_Z, CAP_Z[0]]
+    return [body.common(Part.makeBox(4000, 4000, b - a, V(-2000, -2000, a))).removeSplitter() for a, b in zip(zs, zs[1:])]
 
 
 def rail_ends(cx, ycs):
@@ -215,6 +266,53 @@ CLIP_L, CLIP_WALL, CLIP_GAP, CLIP_BACK = 12.0, 1.6, 0.4, 14.0   # the printed cl
 TUBES = ["Bowden Left", "Bowden slot 2", "Bowden slot 3", "Bowden slot 4", "Bowden Right"]
 CABLES = [f"O2S USB cable slot {i} " for i in range(1, 6)]
 TIES = [f"Zip tie, black (2.5 mm) slot {i} at " for i in range(1, 6)]
+
+
+# ---- the ARM HOLD (owner 2026-11-26: "I do not see what is keeping the arm in its docked (not active head) position"):
+# the dock lever (vt350#312, owner 2026-11-25: "a mechanical one set by which head is in use"; study
+# cad/studies/dock_lever.py, moved to lite-80's docks). Per tool: a PLUNGER in a block under the front dock bar, which
+# the parked head's hub housing pushes in; a sheathed pull cable from the block up the front, under the front top
+# 2040, back along the ceiling in its own lane (LANE_DX from the arm) to a housing stop and a small pulley over a TAB
+# on the arm, TAB_D in front of the hinge. Parked head: the wire holds the arm up. Head away: the arm drops.
+LEVER = json.load(open(os.path.join(DATA, "dock_lever.json")))
+LP = LEVER["params"]
+ROD_TIP_GAP = 0.3                             # the plunger's tip, modelled just off the parked head's face
+PLUNGER_R = 3.0
+LEVER_PULLEY = (6.0 - 0.6 - 0.3, 5.0)          # the ceiling pulley: the wire's centre runs at R 6, so the rim is R 5.4, less 0.3 for the groove the wire sits in (smoothing pulls the wire ~0.2 in); width
+TAB_W, TAB_H = 8.0, 10.0                      # the arm's tab: Y; Z (down from the wire's end)
+
+
+def lever(t):
+    """-> [(key, label, shape, role)] tool t's plunger, block, housing, wire, pulley and stop, and the tab (fused into
+    the arm by build())."""
+    r = LEVER["routes"][str(t + 1)]
+    xp, pz = r["plunger"]
+    bar_front, bar_back, bar_zlo = LP["BAR"]
+    bx, by, bz = LP["BLOCK"]
+    out = []
+    block = Part.makeBox(bx, by, bz, V(xp - bx / 2, bar_back - by, bar_zlo - bz))
+    block = block.cut(Part.makeCylinder(PLUNGER_R + 0.3, by + 2, V(xp, bar_back - by - 1, pz), V(0, 1, 0)))
+    out.append((f"lever_block{t}", f"Arm hold T{t}: plunger block under the dock bar (printed; holds the plunger, its "
+                f"spring and the housing's lower end) [lite-81, #312]", block, "printed"))
+    y_tip = LP["HEAD_FRONT"] - ROD_TIP_GAP
+    rod = Part.makeCylinder(PLUNGER_R, y_tip - (bar_back - by + 2.0), V(xp, bar_back - by + 2.0, pz), V(0, 1, 0))
+    out.append((f"lever_plunger{t}", f"Arm hold T{t}: plunger, 6 mm steel, ball tip on the parked head's hub housing "
+                f"(spring inside the block) [lite-81, #312]", rod, "brushed_steel"))
+    H = [V(*q) for q in r["housing"]]
+    hous, hl, how = sweep(H[1:], LP["HOUSING_R"], frenet_off=True)
+    out.append((f"lever_housing{t}", f"Arm hold T{t}: cable housing, 5 mm PTFE-lined, ~{hl:.0f} mm (block -> ceiling "
+                f"lane X {xp - LP['P_DX'] + LP['LANE_DX']:.1f}) [lite-81, #312]", hous, "rubber"))
+    wire, wl, _ = sweep([V(*q) for q in r["wire_up"]], LP["WIRE_R"])
+    out.append((f"lever_wire{t}", f"Arm hold T{t}: inner wire 1.2 mm, ceiling pulley to the arm's tab (arm up) "
+                f"[lite-81, #312]", wire, "brushed_steel"))
+    w0 = r["wire_up"][0]; xl = w0[0]
+    pc = V(xl, w0[1] + 14.0, LP["Z_LANE"] - 6.0)
+    pul = Part.makeCylinder(LEVER_PULLEY[0], LEVER_PULLEY[1], pc - V(LEVER_PULLEY[1] / 2, 0, 0), V(1, 0, 0))
+    out.append((f"lever_pulley{t}", f"Arm hold T{t}: ceiling pulley (printed, on a 3 mm pin) [lite-81, #312]", pul, "printed"))
+    end = r["wire_up"][-1]
+    tab = Part.makeBox(abs(xl - ARM_X[t]) + TAB_W / 2, TAB_W, TAB_H,
+                       V(min(xl, ARM_X[t]) - (TAB_W / 2 if xl < ARM_X[t] else 0), end[1] - TAB_W / 2, end[2] - LP['WIRE_R'] - TAB_H))
+    return out, tab
 
 
 def unit(v):
@@ -280,21 +378,46 @@ def resample(pts, step=6.0):
     return out
 
 
-def sweep(pts, r, t0=None, t1=None):
+SPINES = {}                                   # a pipe's box key -> (its spine points, r): see near_spine()
+SPINE_PAD = 0.2 + 3.0 + 0.5                   # the spline's tolerance + half the 6 mm sample step + a margin
+
+
+def _bkey(s):
+    b = s.BoundBox
+    return tuple(round(v, 2) for v in (b.XMin, b.YMin, b.ZMin, b.XMax, b.YMax, b.ZMax))
+
+
+def near_spine(s, box):
+    """False only if solid s is a pipe from sweep() whose every spine point is farther than r + SPINE_PAD outside box,
+    so the pipe can't reach it. A 695 mm diagonal housing's bounding box meets thousands of parts it never comes
+    near, and one boolean each took hours (dry run 14, 2026-11-26)."""
+    sp = SPINES.get(_bkey(s))
+    if sp is None: return True
+    pts, r = sp; m = r + SPINE_PAD
+    x0, y0, z0, x1, y1, z1 = box.XMin - m, box.YMin - m, box.ZMin - m, box.XMax + m, box.YMax + m, box.ZMax + m
+    return any(x0 <= x <= x1 and y0 <= y <= y1 and z0 <= z <= z1 for x, y, z in pts)
+
+
+def sweep(pts, r, t0=None, t1=None, frenet_off=False):
     """A round run of radius r along pts: a pipe along the smoothed points' spline; if OCC can't make that solid,
     a chain of cylinders and spheres along them. -> (shape, length, how)"""
     sm = resample(chaikin(pts))
     length = sum((b - a).Length for a, b in zip(sm[:-1], sm[1:]))
-    try:
-        c = Part.BSplineCurve(); c.approximate(Points=sm, DegMin=3, DegMax=3, Tolerance=0.2)
-        path = Part.Wire([c.toShape()])
-        e0 = path.Edges[0]
-        prof = Part.Wire([Part.makeCircle(r, e0.valueAt(e0.FirstParameter), e0.tangentAt(e0.FirstParameter))])
-        s = path.makePipeShell([prof], True, True)     # never Wire.makePipe: it segfaults on these (LESSONS.md)
-        if s.isValid() and s.Volume > 0.9 * math.pi * r * r * length:
-            return s, length, "pipe"
-    except Exception:
-        pass
+    spine = ([(q.x, q.y, q.z) for q in sm], r)
+    for frenet in ((True, False) if frenet_off else (True,)):   # Frenet fails (MakeSolid) on the dock lever's long
+        try:   # twisting housing; the plain mode makes it whole. ONLY there: on the runs a no-Frenet pipe overlapped the
+               # clips, sheave grooves and arm loops sized round the chain (dry run 16, 8 overlaps; LESSONS.md, 2026-11-26)
+            c = Part.BSplineCurve(); c.approximate(Points=sm, DegMin=3, DegMax=3, Tolerance=0.2)
+            path = Part.Wire([c.toShape()])
+            e0 = path.Edges[0]
+            prof = Part.Wire([Part.makeCircle(r, e0.valueAt(e0.FirstParameter), e0.tangentAt(e0.FirstParameter))])
+            s = path.makePipeShell([prof], True, frenet)   # never Wire.makePipe: it segfaults on these (LESSONS.md)
+            if s.isValid() and s.Volume > 0.9 * math.pi * r * r * length:
+                SPINES[_bkey(s)] = spine
+                return s, length, "pipe" if frenet else "pipe (no Frenet)"
+        except Exception:
+            # lint-allow-silent: the next mode, then the chain below, is the fallback; the caller logs which ("how")
+            pass
     segs = [Part.makeCylinder(r, (b - a).Length, a, unit(b - a)) for a, b in zip(sm[:-1], sm[1:]) if (b - a).Length > 1e-6]
     balls = [Part.makeSphere(r, q) for q in sm[1:-1]]
     return Part.makeCompound(segs + balls), length, "chain"
@@ -391,6 +514,9 @@ def build():
     for t, x in enumerate(ARM_X):
         s, L = arm(x, (hy, hz), DESIGN["loop_up"])
         s, cross = slot_arm(s, t, x, (hy, hz), DESIGN["loop_up"])
+        lev, tab = lever(t)
+        s = s.fuse(tab).removeSplitter()
+        info.setdefault("lever", []).extend(lev)
         info.setdefault("slot_at", []).append(cross)
         parts.append((f"arm{t}", f"Bowden arm T{t} (printed, raised; loop at the tip) [lite-81, #312]", s, "printed"))
         info.setdefault("arm_len", []).append(round(L, 2))
@@ -412,24 +538,30 @@ def build():
             parts.append((f"sheave{t}", f"Dancer sheave T{t} (printed, R {SHEAVE_R:.1f} x {SHEAVE_T:g}) [lite-81, #312]",
                           sheave(cx, y, zc), "printed"))
             parts.append((f"bearing{t}", f"Dancer bearing T{t}, 625-2RS (5 x 16 x 5) [lite-81, #312]", bearing(cx, y, zc), "bearing"))
-            parts.append((f"axle{t}", f"Dancer axle T{t}, 5 x {AXLE_L:g} (steel) [lite-81, #312]", axle(cx, y, zc), "brushed_steel"))
-        ycs = [y - AXLE_L / 2 for y in ys] + [ys[-1] + AXLE_L / 2]
+            parts.append((f"axle{t}", f"Dancer axle T{t}, 5 mm steel dowel pin x {AXLE_L:g} (m6, pressed into the 625) [lite-81, #312]", axle(cx, y, zc), "brushed_steel"))
+        ycs = [y - PITCH / 2 for y in ys] + [ys[-1] + PITCH / 2]
         info["plates"][cx] = ycs; info["slots"][cx] = slot
-        for j, yc in enumerate(ycs):
-            side = -1 if j == 0 else (1 if j == len(ycs) - 1 else 0)
-            what = "rail (flanged)" if side else "lane guide plate"
-            parts.append((f"plate{cx:g}_{j}", f"Dancer {what} X {cx:g} #{j + 1} (printed, Z {FOOT_Z[1]:g}..{CAP_Z[0]:g}, "
-                          f"slot Z {slot[0]:.0f}..{slot[1]:.0f}) [lite-81, #312]", plate(cx, yc, slot, side), "printed"))
+        body, rods, px = stack_body(cx, ycs, slot)
         foot, cap = rail_ends(cx, ycs)
-        parts.append((f"foot{cx:g}", f"Dancer rail foot X {cx:g} (printed; on the backbone, 2 x M5 through it) [lite-81, #312]",
-                      foot, "printed"))
-        parts.append((f"cap{cx:g}", f"Dancer rail cap X {cx:g} (printed; M5 up into the gantry's rear 2020) [lite-81, #312]",
-                      cap, "printed"))
+        secs = sections(body)
+        secs[0] = secs[0].fuse(foot).removeSplitter(); secs[-1] = secs[-1].fuse(cap).removeSplitter()
+        zs = [FOOT_Z[0], *SPLIT_Z, CAP_Z[1]]
+        info.setdefault("sections", {})[cx] = [(round(s_.BoundBox.XLength, 1), round(s_.BoundBox.YLength, 1),
+                                                round(s_.BoundBox.ZLength, 1)) for s_ in secs]
+        info.setdefault("post", {})[cx] = px
+        what = ("with its foot (on the backbone, 2 x M5)", "the middle: the axle grooves", "with its cap (M5 up into the gantry's rear 2020)")
+        for k, sec in enumerate(secs):
+            parts.append((f"stack{cx:g}_{k}", f"Dancer stack X {cx:g}, section {k + 1}/3, {what[k]} (printed standing, "
+                          f"Z {zs[k]:g}..{zs[k + 1]:g}; {len(ycs)} plates tied by a post at X {px:g}) [lite-81, #312]", sec, "printed"))
+        for i, r in enumerate(rods):
+            parts.append((f"rod{cx:g}_{i}", f"Dancer stack X {cx:g} tie rod {i + 1}, M4 threaded rod x "
+                          f"{r.BoundBox.ZLength:.0f} (2 nuts in pockets) [lite-81, #312]", r, "brushed_steel"))
         parts.append((f"bridge{cx:g}", f"Dancer leg guide bridge X {cx:g} (printed; M5 into the gantry 2020's front face) "
                       f"[lite-81, #312]", leg_bridge(cx, ys), "printed"))
         for side, lx in (("exit", cx - DANCER["RP"]), ("return", cx + DANCER["RP"])):
             parts.append((f"leg{cx:g}{side}", f"Dancer leg guide X {lx:.1f}, {side} legs, Z {Z_G:g} (printed) [lite-81, #312]",
                           leg_block(lx, ys), "printed"))
+    parts += info.pop("lever", [])
     return parts, info
 
 
@@ -449,10 +581,86 @@ def keep_of(shape, zones):
     return pieces
 
 
+FRAME_BAR = re.compile(r"^(2020|2040|4040)")              # the frame's extrusions (the e-box door's own frame is
+FRAME_GROUP = "VT Frame"                                   # outside it: its own group, never aluminium since lite-56)
+MATERIAL_TWIN = "4040 (1)"                                 # a frame bar that kept its material
+
+
+def restore_frame_material(p, leaves):
+    """lite-78's unlink() replaced five frame bars (App::Links) by solid copies with their label and colour but not their
+    ShapeMaterial, so they turned 'Default': no frame colour in renders (owner 2026-11-26: "lower left and upper right
+    look gray"), no density for the mass and FEM numbers. Copy the twin bar's material back; keep each bar's colour (a
+    material can repaint it, lite12_materials.py)."""
+    def in_frame(o):
+        return FRAME_BAR.match(o.Label) and any(FRAME_GROUP in g.Label for g in o.InListRecursive)
+    twin = [o for o in leaves if o.Label == MATERIAL_TWIN]
+    p.check(len(twin) == 1 and "Alumin" in twin[0].ShapeMaterial.Name, f"the material twin {MATERIAL_TWIN!r} is aluminium")
+    mat = twin[0].ShapeMaterial
+    fixed = []
+    for o in leaves:
+        if not in_frame(o) or not hasattr(o, "ShapeMaterial") or "Alumin" in (o.ShapeMaterial.Name or ""): continue
+        vo = getattr(o, "ViewObject", None)
+        app = list(vo.ShapeAppearance) if vo is not None and hasattr(vo, "ShapeAppearance") else None
+        o.ShapeMaterial = mat
+        if app is not None: vo.ShapeAppearance = app
+        fixed.append(o.Label)
+    p.log(f"frame material restored on {len(fixed)} bars: {fixed}")
+    left = [o.Label for o in leaves if in_frame(o) and hasattr(o, "ShapeMaterial") and "Alumin" not in (o.ShapeMaterial.Name or "")]
+    p.check(not left, f"every frame extrusion is aluminium ({len(left)} not: {left})")
+    return fixed
+
+
+FLAT = 0.01                                   # mm: a common this thin is two faces touching; a gap this small is touching
+SLOW = 20.0                                   # s: a pair slower than this is logged by name
+
+
+def solid_overlaps(p, m, items, skip_of):
+    """As lite78's overlaps (same result shape: ({(tag, leaf Label)}, pairs)), but solid by solid: a compound (a run
+    of 2-5 pieces, a stack of sections) is split and each solid meets a leaf only where their boxes do. One boolean
+    of a whole compound against a detailed part hung for 5 h in dry run 13 (2026-11-26) with no clue which pair; here
+    each pair is named in <log>.progress before it starts, and any pair over SLOW s is logged. Pieces of one run may
+    touch each other, so a sum can only over-count (a false hit, never a missed one)."""
+    prog = p.log_path + ".progress"
+    work, keys = [], set()                      # (tag, solid, leaf): only where the solid can reach the leaf
+    for tag, s, n in items:
+        solids = s.Solids or [s]
+        for o in m.leaves:
+            if o.Name in skip_of(n) or not m.boxes[o.Name].intersect(s.BoundBox): continue
+            ob = m.boxes[o.Name]
+            for x in solids:
+                if x.BoundBox.intersect(ob) and near_spine(x, ob):
+                    work.append((tag, x, o)); keys.add((tag, o.Name))
+    vol, slow = {}, []
+    t0 = time.time()
+    for i, (tag, x, o) in enumerate(work):
+        with open(prog, "w") as f:
+            f.write(f"{i + 1}/{len(work)} {tag} vs {o.Label} ({time.time() - t0:.0f} s in)\n")
+        t1 = time.time()
+        b = m.shapes[o.Name]
+        try:
+            c = x.common(b); v = c.Volume
+            cb = c.BoundBox
+            if v > TOL and min(cb.XLength, cb.YLength, cb.ZLength) < FLAT: v = 0.0   # a face in contact, not volume
+        except Exception as e:
+            try:                                 # OCC can't intersect them (e.g. "Null shape"): are they apart?
+                d = x.distToShape(b)[0]
+            except Exception:
+                # lint-allow-silent: no distance either; d = 0 counts it as an overlap below, logged
+                d = 0.0
+            p.log(f"  boolean failed: {tag} vs {o.Label}: {e}; {d:.2f} mm apart" + (" (clear)" if d > FLAT else ""))
+            v = 0.0 if d > FLAT else float("inf")
+        dt = time.time() - t1
+        if dt > SLOW: slow.append((tag, o.Label, round(dt))); p.log(f"  slow pair ({dt:.0f} s): {tag} vs {o.Label}")
+        vol[(tag, o.Label)] = vol.get((tag, o.Label), 0.0) + v
+    p.log(f"  {len(keys)} part pairs, {len(work)} solid booleans in {time.time() - t0:.0f} s; {len(slow)} over {SLOW:g} s")
+    return {k for k, v in vol.items() if v > TOL}, len(keys)
+
+
 def main(p):
     m = p.open(SRC); doc = m.doc
     parts, info = build()
     p.log(f"{len(parts)} new parts; arms {info['arm_len']} long; sheaves {info['sheaves']}")
+    restore_frame_material(p, m.leaves)
     by = {o.Label: o for o in m.leaves}
     def one(prefix):
         hit = [o for o in m.leaves if o.Label.startswith(prefix)]
@@ -473,11 +681,25 @@ def main(p):
         for t, (_, y, zc) in members:
             p.check(sl[0] + BEARING[1] <= zc <= sl[1] - BEARING[1], f"T{t} axle inside its slot (Z {zc:.1f} in {sl[0]:.1f}..{sl[1]:.1f})")
             gaps = [abs(yc - y) - PLATE_T / 2 - SHEAVE_T / 2 for yc in ycs]
-            p.check(min(gaps) >= 0.4, f"T{t} sheave clear of the plates (closest {min(gaps):.2f})")
+            p.check(min(gaps) >= PLATE_GAP - TOL, f"T{t} sheave clear of the plates (closest {min(gaps):.2f})")
             ends = [y - AXLE_L / 2, y + AXLE_L / 2]
-            p.check(all(min(abs(e - yc) for yc in ycs) <= PLATE_T / 2 + TOL for e in ends), f"T{t} axle ends in the plates")
+            # each end in its own groove: past the plate's face, short of the groove's bottom
+            depth = [min(abs(e - yc) for yc in ycs) for e in ends]
+            p.check(all(PLATE_T / 2 - GROOVE_D < d < PLATE_T / 2 for d in depth),
+                    f"T{t} axle ends each in their own groove (end to plate centre {[round(d, 2) for d in depth]}, "
+                    f"groove {PLATE_T / 2 - GROOVE_D:.1f}..{PLATE_T / 2:.1f})")
+        p.check(PLATE_T - 2 * GROOVE_D >= 0.8, f"X {cx:g}: the web between two grooves {PLATE_T - 2 * GROOVE_D:.1f} mm (>= 0.8)")
         low = lowest([t for t, _ in members])
         p.check(sl[0] + BEARING[1] <= low, f"X {cx:g}: the slots reach the lowest studied pulley height ({low:.1f})")
+    for cx, dims in info["sections"].items():
+        sl = info["slots"][cx]
+        p.check(all(max(x, y) <= PRINT_XY and z <= PRINT_Z for x, y, z in dims),
+                f"X {cx:g}: each section prints standing on the Neptune ({dims}; <= {PRINT_XY:g} square, {PRINT_Z:g} tall)")
+        p.check(SPLIT_Z[0] < sl[0] and sl[1] < SPLIT_Z[1],
+                f"X {cx:g}: the axle grooves (Z {sl[0]:.1f}..{sl[1]:.1f}) inside the middle section ({SPLIT_Z}): no seam in a groove")
+        px = info["post"][cx]
+        p.check(abs(px - cx) - POST_W / 2 - max(SHEAVE_R, DANCER["RP"] + 4.6) >= 2.0,
+                f"X {cx:g}: the post (X {px:g}) clear of the sheaves and the legs ({abs(px - cx) - POST_W / 2 - SHEAVE_R:.1f} >= 2)")
     p.check(all(s.isValid() and s.Volume > 0 for _, _, s, _ in parts), "every new part a valid solid")
     # ---- the bundles: new runs from the ceiling to the head, the old pieces above the roof / outside / in the head kept
     runs, routes = {}, {}
@@ -517,7 +739,7 @@ def main(p):
     items = [(lab, s, None) for _, lab, s, _ in parts]
     for t, (ts, cs) in runs.items():
         items += [(tubes[t].Label, ts, tubes[t].Name), (cables[t].Label, cs, cables[t].Name)]
-    hits, nc = l78.overlaps(p, m, items, lambda n: env | mine)
+    hits, nc = solid_overlaps(p, m, items, lambda n: env | mine)
     new_hits = sorted(h for h in hits if not (h[0] in {o.Label for o in tubes + cables} and (h[0], h[1]) in base))
     p.log(f"collision check: {nc} pairs, {len(hits)} overlaps, {len(new_hits)} new")
     shp = {lab: sh for lab, sh, _ in items}
@@ -531,19 +753,27 @@ def main(p):
     p.check(not new_hits, f"COLLISIONS: nothing new overlaps lite-80 ({len(new_hits)}: {new_hits[:8]})")
     # within the new: parts with each other, runs with the parts, runs with each other (a tube touches its own cable)
     news = [(k, s) for k, _, s, _ in parts] + [(f"tube{t}", r[0]) for t, r in runs.items()] + [(f"cable{t}", r[1]) for t, r in runs.items()]
-    inner = []
-    for a in range(len(news)):
+    bundled = lambda ka, kb: ka[:4] in ("tube", "cabl") and kb[:4] in ("tube", "cabl") and ka[-1] == kb[-1]
+    work = []                                    # (ka, kb, x, y): solid pairs that can meet; a tool's own tube and
+    for a in range(len(news)):                   # cable are bundled (they touch), so never computed
         for b in range(a + 1, len(news)):
             (ka, sa), (kb, sb) = news[a], news[b]
-            if not sa.BoundBox.intersect(sb.BoundBox):
-                continue
-            try:
-                v = sum(x.common(y).Volume for x in (sa.Solids or [sa]) for y in (sb.Solids or [sb])
-                        if x.BoundBox.intersect(y.BoundBox))
-            except Exception as e:
-                p.log("  inner check failed:", ka, kb, e); v = 0.0
-            if v > 0.5 and not (ka[:4] in ("tube", "cabl") and kb[:4] in ("tube", "cabl") and ka[-1] == kb[-1]):
-                inner.append((ka, kb, round(v, 1)))
+            if bundled(ka, kb) or not sa.BoundBox.intersect(sb.BoundBox): continue
+            work += [(ka, kb, x, y) for x in (sa.Solids or [sa]) for y in (sb.Solids or [sb])
+                     if x.BoundBox.intersect(y.BoundBox) and near_spine(x, y.BoundBox) and near_spine(y, x.BoundBox)]
+    vol, prog, t0 = {}, p.log_path + ".progress", time.time()
+    for i, (ka, kb, x, y) in enumerate(work):
+        with open(prog, "w") as f:
+            f.write(f"inner {i + 1}/{len(work)} {ka} vs {kb} ({time.time() - t0:.0f} s in)\n")
+        t1 = time.time()
+        try:
+            v = x.common(y).Volume
+        except Exception as e:
+            p.log("  inner check failed:", ka, kb, e); v = 0.0
+        if time.time() - t1 > SLOW: p.log(f"  slow inner pair ({time.time() - t1:.0f} s): {ka} vs {kb}")
+        vol[(ka, kb)] = vol.get((ka, kb), 0.0) + v
+    p.log(f"  inner: {len(work)} solid booleans in {time.time() - t0:.0f} s")
+    inner = [(ka, kb, round(v, 1)) for (ka, kb), v in vol.items() if v > 0.5]
     for x in inner: p.log("  inner overlap:", x)
     p.check(not inner, f"the new parts and runs don't overlap each other ({len(inner)}: {inner[:8]})")
     if p.errs: return p.finish([])

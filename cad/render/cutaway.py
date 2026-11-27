@@ -27,7 +27,7 @@ TUBES = ["Bowden Left", "Bowden slot 2", "Bowden slot 3", "Bowden slot 4", "Bowd
 
 def other_tool(label, tool):
     """Is this part one of the other tools' arm / dancer / bundle parts?"""
-    m = re.match(r"(Bowden arm|Dancer sheave|Dancer bearing|Dancer axle|Bundle split clip) T(\d)\b", label)
+    m = re.match(r"(Bowden arm|Dancer sheave|Dancer bearing|Dancer axle|Bundle split clip|Arm hold) T(\d)\b", label)
     if m:
         return int(m.group(2)) != tool
     m = re.match(r"O2S USB cable slot (\d) ", label)
@@ -54,7 +54,8 @@ VIEWS = [  # name, camera position, look-at (model mm), lens, exposure
     ("system_front", (-1250, -420, 880), (-330, 240, 440), 40, -0.3),  # T1's whole run: head, span, arm, rear, sheave
     ("system_rear", (-1250, 1000, 760), (-320, 320, 420), 35, 0.0),  # from behind-left: rails, sheave, arm, mounts
     ("head_close", (-640, -260, 760), (-330, 40, 600), 50, -0.6),    # the head, the lock, the split clip, the inlet
-    ("rear_mounts", (-900, 120, 330), (-245, 470, 220), 30, 0.8),    # into the back: rails, foot, cap, leg guides
+    ("rear_mounts", (-900, 120, 330), (-245, 470, 220), 30, 0.8),    # into the back: the stack sections, post, leg guides
+    ("arm_hold", (-700, -300, 820), (-330, 120, 600), 35, -0.3),     # the dock lever: plunger, housing up and back, tab
 ]
 
 

@@ -1,0 +1,517 @@
+{
+ "parts": [
+  [
+   "arm0",
+   "Bowden arm T0 (printed, raised; loop at the tip) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "arm1",
+   "Bowden arm T1 (printed, raised; loop at the tip) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "arm2",
+   "Bowden arm T2 (printed, raised; loop at the tip) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "arm3",
+   "Bowden arm T3 (printed, raised; loop at the tip) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "arm4",
+   "Bowden arm T4 (printed, raised; loop at the tip) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "shaft",
+   "Bowden arm hinge shaft, 5 mm (steel) [lite-81, #312]",
+   "brushed_steel"
+  ],
+  [
+   "bracket0",
+   "Bowden arm hinge bracket left (printed; under the rear top 4040) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "bracket1",
+   "Bowden arm hinge bracket right (printed; under the rear top 4040) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "sheave0",
+   "Dancer sheave T0 (printed, R 58.2 x 8) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "bearing0",
+   "Dancer bearing T0, 625-2RS (5 x 16 x 5) [lite-81, #312]",
+   "bearing"
+  ],
+  [
+   "axle0",
+   "Dancer axle T0, 5 mm steel dowel pin x 11.8 (m6, pressed into the 625) [lite-81, #312]",
+   "brushed_steel"
+  ],
+  [
+   "sheave1",
+   "Dancer sheave T1 (printed, R 58.2 x 8) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "bearing1",
+   "Dancer bearing T1, 625-2RS (5 x 16 x 5) [lite-81, #312]",
+   "bearing"
+  ],
+  [
+   "axle1",
+   "Dancer axle T1, 5 mm steel dowel pin x 11.8 (m6, pressed into the 625) [lite-81, #312]",
+   "brushed_steel"
+  ],
+  [
+   "stack-324.2_0",
+   "Dancer stack X -324.2, section 1/3, with its foot (on the backbone, 2 x M5) (printed standing, Z -2..155; 3 plates tied by a post at X -390.2) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "stack-324.2_1",
+   "Dancer stack X -324.2, section 2/3, the middle: the axle grooves (printed standing, Z 155..350; 3 plates tied by a post at X -390.2) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "stack-324.2_2",
+   "Dancer stack X -324.2, section 3/3, with its cap (M5 up into the gantry's rear 2020) (printed standing, Z 350..430; 3 plates tied by a post at X -390.2) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "rod-324.2_0",
+   "Dancer stack X -324.2 tie rod 1, M4 threaded rod x 408 (2 nuts in pockets) [lite-81, #312]",
+   "brushed_steel"
+  ],
+  [
+   "rod-324.2_1",
+   "Dancer stack X -324.2 tie rod 2, M4 threaded rod x 408 (2 nuts in pockets) [lite-81, #312]",
+   "brushed_steel"
+  ],
+  [
+   "bridge-324.2",
+   "Dancer leg guide bridge X -324.2 (printed; M5 into the gantry 2020's front face) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "leg-324.2exit",
+   "Dancer leg guide X -377.8, exit legs, Z 470 (printed) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "leg-324.2return",
+   "Dancer leg guide X -270.6, return legs, Z 470 (printed) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "sheave2",
+   "Dancer sheave T2 (printed, R 58.2 x 8) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "bearing2",
+   "Dancer bearing T2, 625-2RS (5 x 16 x 5) [lite-81, #312]",
+   "bearing"
+  ],
+  [
+   "axle2",
+   "Dancer axle T2, 5 mm steel dowel pin x 11.8 (m6, pressed into the 625) [lite-81, #312]",
+   "brushed_steel"
+  ],
+  [
+   "sheave3",
+   "Dancer sheave T3 (printed, R 58.2 x 8) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "bearing3",
+   "Dancer bearing T3, 625-2RS (5 x 16 x 5) [lite-81, #312]",
+   "bearing"
+  ],
+  [
+   "axle3",
+   "Dancer axle T3, 5 mm steel dowel pin x 11.8 (m6, pressed into the 625) [lite-81, #312]",
+   "brushed_steel"
+  ],
+  [
+   "sheave4",
+   "Dancer sheave T4 (printed, R 58.2 x 8) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "bearing4",
+   "Dancer bearing T4, 625-2RS (5 x 16 x 5) [lite-81, #312]",
+   "bearing"
+  ],
+  [
+   "axle4",
+   "Dancer axle T4, 5 mm steel dowel pin x 11.8 (m6, pressed into the 625) [lite-81, #312]",
+   "brushed_steel"
+  ],
+  [
+   "stack-167_0",
+   "Dancer stack X -167, section 1/3, with its foot (on the backbone, 2 x M5) (printed standing, Z -2..155; 4 plates tied by a post at X -101) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "stack-167_1",
+   "Dancer stack X -167, section 2/3, the middle: the axle grooves (printed standing, Z 155..350; 4 plates tied by a post at X -101) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "stack-167_2",
+   "Dancer stack X -167, section 3/3, with its cap (M5 up into the gantry's rear 2020) (printed standing, Z 350..430; 4 plates tied by a post at X -101) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "rod-167_0",
+   "Dancer stack X -167 tie rod 1, M4 threaded rod x 408 (2 nuts in pockets) [lite-81, #312]",
+   "brushed_steel"
+  ],
+  [
+   "rod-167_1",
+   "Dancer stack X -167 tie rod 2, M4 threaded rod x 408 (2 nuts in pockets) [lite-81, #312]",
+   "brushed_steel"
+  ],
+  [
+   "bridge-167",
+   "Dancer leg guide bridge X -167 (printed; M5 into the gantry 2020's front face) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "leg-167exit",
+   "Dancer leg guide X -220.6, exit legs, Z 470 (printed) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "leg-167return",
+   "Dancer leg guide X -113.4, return legs, Z 470 (printed) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "lever_block0",
+   "Arm hold T0: plunger block under the dock bar (printed; holds the plunger, its spring and the housing's lower end) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "lever_plunger0",
+   "Arm hold T0: plunger, 6 mm steel, ball tip on the parked head's hub housing (spring inside the block) [lite-81, #312]",
+   "brushed_steel"
+  ],
+  [
+   "lever_housing0",
+   "Arm hold T0: cable housing, 5 mm PTFE-lined, ~695 mm (block -> ceiling lane X -433.7) [lite-81, #312]",
+   "rubber"
+  ],
+  [
+   "lever_wire0",
+   "Arm hold T0: inner wire 1.2 mm, ceiling pulley to the arm's tab (arm up) [lite-81, #312]",
+   "brushed_steel"
+  ],
+  [
+   "lever_pulley0",
+   "Arm hold T0: ceiling pulley (printed, on a 3 mm pin) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "lever_block1",
+   "Arm hold T1: plunger block under the dock bar (printed; holds the plunger, its spring and the housing's lower end) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "lever_plunger1",
+   "Arm hold T1: plunger, 6 mm steel, ball tip on the parked head's hub housing (spring inside the block) [lite-81, #312]",
+   "brushed_steel"
+  ],
+  [
+   "lever_housing1",
+   "Arm hold T1: cable housing, 5 mm PTFE-lined, ~695 mm (block -> ceiling lane X -348.5) [lite-81, #312]",
+   "rubber"
+  ],
+  [
+   "lever_wire1",
+   "Arm hold T1: inner wire 1.2 mm, ceiling pulley to the arm's tab (arm up) [lite-81, #312]",
+   "brushed_steel"
+  ],
+  [
+   "lever_pulley1",
+   "Arm hold T1: ceiling pulley (printed, on a 3 mm pin) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "lever_block2",
+   "Arm hold T2: plunger block under the dock bar (printed; holds the plunger, its spring and the housing's lower end) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "lever_plunger2",
+   "Arm hold T2: plunger, 6 mm steel, ball tip on the parked head's hub housing (spring inside the block) [lite-81, #312]",
+   "brushed_steel"
+  ],
+  [
+   "lever_housing2",
+   "Arm hold T2: cable housing, 5 mm PTFE-lined, ~695 mm (block -> ceiling lane X -272.4) [lite-81, #312]",
+   "rubber"
+  ],
+  [
+   "lever_wire2",
+   "Arm hold T2: inner wire 1.2 mm, ceiling pulley to the arm's tab (arm up) [lite-81, #312]",
+   "brushed_steel"
+  ],
+  [
+   "lever_pulley2",
+   "Arm hold T2: ceiling pulley (printed, on a 3 mm pin) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "lever_block3",
+   "Arm hold T3: plunger block under the dock bar (printed; holds the plunger, its spring and the housing's lower end) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "lever_plunger3",
+   "Arm hold T3: plunger, 6 mm steel, ball tip on the parked head's hub housing (spring inside the block) [lite-81, #312]",
+   "brushed_steel"
+  ],
+  [
+   "lever_housing3",
+   "Arm hold T3: cable housing, 5 mm PTFE-lined, ~695 mm (block -> ceiling lane X -180.4) [lite-81, #312]",
+   "rubber"
+  ],
+  [
+   "lever_wire3",
+   "Arm hold T3: inner wire 1.2 mm, ceiling pulley to the arm's tab (arm up) [lite-81, #312]",
+   "brushed_steel"
+  ],
+  [
+   "lever_pulley3",
+   "Arm hold T3: ceiling pulley (printed, on a 3 mm pin) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "lever_block4",
+   "Arm hold T4: plunger block under the dock bar (printed; holds the plunger, its spring and the housing's lower end) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "lever_plunger4",
+   "Arm hold T4: plunger, 6 mm steel, ball tip on the parked head's hub housing (spring inside the block) [lite-81, #312]",
+   "brushed_steel"
+  ],
+  [
+   "lever_housing4",
+   "Arm hold T4: cable housing, 5 mm PTFE-lined, ~695 mm (block -> ceiling lane X -104.3) [lite-81, #312]",
+   "rubber"
+  ],
+  [
+   "lever_wire4",
+   "Arm hold T4: inner wire 1.2 mm, ceiling pulley to the arm's tab (arm up) [lite-81, #312]",
+   "brushed_steel"
+  ],
+  [
+   "lever_pulley4",
+   "Arm hold T4: ceiling pulley (printed, on a 3 mm pin) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "clip0",
+   "Bundle split clip T0: the PTFE leaves the O2S cable here for the Orbiter inlet (printed) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "clip1",
+   "Bundle split clip T1: the PTFE leaves the O2S cable here for the Orbiter inlet (printed) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "clip2",
+   "Bundle split clip T2: the PTFE leaves the O2S cable here for the Orbiter inlet (printed) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "clip3",
+   "Bundle split clip T3: the PTFE leaves the O2S cable here for the Orbiter inlet (printed) [lite-81, #312]",
+   "printed"
+  ],
+  [
+   "clip4",
+   "Bundle split clip T4: the PTFE leaves the O2S cable here for the Orbiter inlet (printed) [lite-81, #312]",
+   "printed"
+  ]
+ ],
+ "routes": {
+  "0": {
+   "split_z": 620.2,
+   "split_y": 61.1,
+   "branch_r": 51.7,
+   "clip_at": [
+    -409.5,
+    79.8,
+    625.7
+   ],
+   "n_pts": 90,
+   "cable_len": 1433,
+   "tube_len": 1489,
+   "how": [
+    "chain",
+    "chain"
+   ],
+   "tube_top": [
+    -409.7,
+    446.89,
+    679.0
+   ],
+   "cable_top": [
+    -415.84,
+    447.68,
+    679.0
+   ]
+  },
+  "1": {
+   "split_z": 620.5,
+   "split_y": 61.0,
+   "branch_r": 51.0,
+   "clip_at": [
+    -324.4,
+    79.6,
+    626.0
+   ],
+   "n_pts": 90,
+   "cable_len": 1320,
+   "tube_len": 1373,
+   "how": [
+    "chain",
+    "chain"
+   ],
+   "tube_top": [
+    -324.54,
+    446.89,
+    679.0
+   ],
+   "cable_top": [
+    -330.68,
+    447.68,
+    679.0
+   ]
+  },
+  "2": {
+   "split_z": 620.6,
+   "split_y": 60.9,
+   "branch_r": 52.0,
+   "clip_at": [
+    -248.2,
+    79.6,
+    626.1
+   ],
+   "n_pts": 90,
+   "cable_len": 1317,
+   "tube_len": 1374,
+   "how": [
+    "chain",
+    "chain"
+   ],
+   "tube_top": [
+    -248.42,
+    446.89,
+    679.0
+   ],
+   "cable_top": [
+    -242.28,
+    447.68,
+    679.0
+   ]
+  },
+  "3": {
+   "split_z": 623.3,
+   "split_y": 70.3,
+   "branch_r": 54.8,
+   "clip_at": [
+    -156.2,
+    89.1,
+    628.4
+   ],
+   "n_pts": 90,
+   "cable_len": 1335,
+   "tube_len": 1391,
+   "how": [
+    "chain",
+    "chain"
+   ],
+   "tube_top": [
+    -156.42,
+    446.89,
+    679.0
+   ],
+   "cable_top": [
+    -162.56,
+    447.68,
+    679.0
+   ]
+  },
+  "4": {
+   "split_z": 623.1,
+   "split_y": 70.4,
+   "branch_r": 53.7,
+   "clip_at": [
+    -80.1,
+    89.2,
+    628.1
+   ],
+   "n_pts": 90,
+   "cable_len": 1438,
+   "tube_len": 1489,
+   "how": [
+    "chain",
+    "chain"
+   ],
+   "tube_top": [
+    -80.3,
+    446.89,
+    679.0
+   ],
+   "cable_top": [
+    -74.16,
+    447.68,
+    679.0
+   ]
+  }
+ },
+ "sheaves": {
+  "0": [
+   -324.2,
+   446.0,
+   284.99
+  ],
+  "1": [
+   -324.2,
+   459.0,
+   320.53
+  ],
+  "2": [
+   -167.0,
+   446.0,
+   340.0
+  ],
+  "3": [
+   -167.0,
+   459.0,
+   317.13
+  ],
+  "4": [
+   -167.0,
+   472.0,
+   285.24
+  ]
+ },
+ "collisions": {
+  "base": 0,
+  "now": 0
+ }
+}

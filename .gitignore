@@ -17,3 +17,6 @@ cad/data/logs/flap_guide_raw.json
 # the reference pages' release assets, put in place by platform/pages/fetch_assets.py (notes/reference/assets.json)
 notes/reference/toolhead-turntable/frames/
 notes/reference/toolhead-viewer/*.glb
+
+# the collision checks name the pair they are on (lite-81 pass); live progress only
+cad/data/logs/*.progress

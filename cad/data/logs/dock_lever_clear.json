@@ -1,0 +1,120 @@
+{
+ "model": "/home/dan/Documents/VT350/preview/vt350-lite-81-preview.FCStd",
+ "result": {
+  "1": {
+   "face_y": -66.60563324912602,
+   "flat": true,
+   "on_detach": true,
+   "block": {
+    "parked": 3.0,
+    "large opening": 1.97,
+    "detached +X": 1.97,
+    "detached -X": 1.97
+   },
+   "near_block": [],
+   "near_cable": [
+    [
+     4.5,
+     "Roof felt liner, inner"
+    ],
+    [
+     5.0,
+     "Roof felt (pad 1)"
+    ]
+   ],
+   "ok": true
+  },
+  "2": {
+   "face_y": -66.60563324912607,
+   "flat": true,
+   "on_detach": true,
+   "block": {
+    "parked": 3.0,
+    "large opening": 1.97,
+    "detached +X": 1.97,
+    "detached -X": 1.97
+   },
+   "near_block": [],
+   "near_cable": [
+    [
+     4.5,
+     "Roof felt liner, inner"
+    ],
+    [
+     5.0,
+     "Roof felt (pad 1)"
+    ]
+   ],
+   "ok": true
+  },
+  "3": {
+   "face_y": -66.60563324912525,
+   "flat": true,
+   "on_detach": true,
+   "block": {
+    "parked": 3.0,
+    "large opening": 1.97,
+    "detached +X": 1.97,
+    "detached -X": 1.97
+   },
+   "near_block": [],
+   "near_cable": [
+    [
+     4.5,
+     "Roof felt liner, inner"
+    ],
+    [
+     5.0,
+     "Roof felt (pad 1)"
+    ]
+   ],
+   "ok": true
+  },
+  "4": {
+   "face_y": -66.60563324912593,
+   "flat": true,
+   "on_detach": true,
+   "block": {
+    "parked": 3.0,
+    "large opening": 1.97,
+    "detached +X": 1.97,
+    "detached -X": 1.97
+   },
+   "near_block": [],
+   "near_cable": [
+    [
+     4.5,
+     "Roof felt liner, inner"
+    ],
+    [
+     5.0,
+     "Roof felt (pad 1)"
+    ]
+   ],
+   "ok": true
+  },
+  "5": {
+   "face_y": -66.60563324911865,
+   "flat": true,
+   "on_detach": true,
+   "block": {
+    "parked": 3.0,
+    "large opening": 1.97,
+    "detached +X": 1.97,
+    "detached -X": 1.97
+   },
+   "near_block": [],
+   "near_cable": [
+    [
+     4.5,
+     "Roof felt liner, inner"
+    ],
+    [
+     5.0,
+     "Roof felt (pad 1)"
+    ]
+   ],
+   "ok": true
+  }
+ }
+}

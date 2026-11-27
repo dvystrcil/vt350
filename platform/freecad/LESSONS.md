@@ -465,3 +465,50 @@ it again with stdout kept: the crash trace names the OCC call.
   curve. Keep a part's solid simple.
 - **Check one part fast before the full pass.** A probe that imports the pass (`LITE81_AS_LIB=1`), builds one bundle
   and reports `common` volumes takes 45 s. A dry run takes ~40 min.
+
+## Replacing a Link by a solid copy: carry ShapeMaterial over too (2026-11-26, lite-81)
+
+lite-78's `unlink()` swapped five frame bars (App::Links made by `dupes.py`) for `Part::Feature` copies so they could be
+spliced longer. It copied the label and the colour (`ShapeAppearance`) but not `ShapeMaterial`, so the copies came out
+`Default`. Nothing failed: the pass's checks were all geometry. Three lites later the owner saw two frame bars render
+grey (the render's frame rule wants an aluminium material), and their density was gone from the mass numbers too.
+
+- When a pass replaces an object, copy everything that isn't geometry: `Label`, `ShapeMaterial`, the view's
+  `ShapeAppearance`/`Transparency`/`Visibility`, and its group.
+- Setting `ShapeMaterial` can repaint the part: save `ShapeAppearance` first and put it back (as `lite12_materials.py`).
+- A cheap guard: compare `part_index`'s `material` column before and after a pass (no label should turn `Default`).
+  lite-81 checks that every frame extrusion is aluminium.
+
+## makePipeShell: try Frenet off before giving up on a pipe (2026-11-26, lite-81)
+
+The dock lever's cable housing (#312) is a 700-point route that climbs and turns about 600 mm in 3D. On it,
+`Wire.makePipeShell([profile], True, True)` (Frenet on) throws `BRepOffsetAPI_MakePipeShell::MakeSolid`, and the
+pass fell back to a chain of 231 cylinders and spheres per housing. The same call with Frenet **off**
+(`makePipeShell([profile], True, False)`) makes one valid solid with the right volume. The pass's `sweep()` tries
+Frenet first and then, **for the housing only** (`frenet_off=True`), without it, before the chain.
+
+Not everywhere: with Frenet off for every run, the tubes and cables whose Frenet pipe failed became no-Frenet pipes
+instead of chains. Dry run 16 then found 8 overlaps (0.7-70 mm³) with the split clips, a sheave groove, an arm loop and a
+leg guide, all sized round the chain with 0.4-0.6 mm of clearance. Every overlap involved a no-Frenet pipe, and the tool
+whose runs were both chains had none. A fallback that changes a shape changes what the checks see: re-run every
+check, not only the one the fallback was for.
+
+Don't fuse the chain instead: `multiFuse` of those 231 pieces returned one valid solid of 4743 mm³ where the pipe is
+about 12300. It reported success and quietly lost most of the volume. Always check a fused result's volume against
+what it should be.
+
+## A long diagonal sweep's bounding box meets everything: filter on its spine (2026-11-26, lite-81)
+
+Dry run 13 of the lite-81 pass sat 5.5 h in its collision check with no output, and the parent process was at 10 cores. The
+dock lever's cable housings are 695 mm pipes running diagonally up and back, so each one's bounding box met thousands
+of parts it never comes near: 9346 pairs, each a full `common()`, some taking 60 s. Two fixes, both in the pass's
+`solid_overlaps()`:
+
+- Keep each pipe's spine (its points and radius) and skip a part whose box no spine point comes within r plus a margin
+  of (the spline's tolerance + half the sample step). That's conservative, and it cut 9346 pairs to 780.
+- Name each pair in `<log>.progress` before it starts, and log any pair over 20 s. A silent hour then becomes one line
+  naming the pair.
+
+Two more traps from the same runs: a common that is a zero-thickness sheet (a block screwed flush under a bar) can
+report a small non-zero volume, so treat a result under 0.01 mm thick as touching. And `common()` can throw "Null
+shape" on a pair that's 16 mm apart: fall back to `distToShape()` before calling it an overlap.
