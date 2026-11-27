@@ -56,6 +56,10 @@ VIEWS = [  # name, camera position, look-at (model mm), lens, exposure
     ("head_close", (-640, -260, 760), (-330, 40, 600), 50, -0.6),    # the head, the lock, the split clip, the inlet
     ("rear_mounts", (-900, 120, 330), (-245, 470, 220), 30, 0.8),    # into the back: the stack sections, post, leg guides
     ("arm_hold", (-700, -300, 820), (-330, 120, 600), 35, -0.3),     # the dock lever: plunger, housing up and back, tab
+    ("sheave_close", (-190, 170, 400), (-324, 459, 320), 45, 0.0),   # T1's spoked take-up wheel in its open-frame stack
+    ("belt_sleeves", (-430, 250, 540), (-290, 465, 440), 45, 0.0),  # the leg guides' sleeves past the XY belts
+    ("hold_top", (-560, 290, 560), (-345, 455, 658), 70, 0.3),       # its top end: housing stop, pulley, wire, arm's tab
+    ("hold_dock", (-480, -260, 390), (-329, -85, 474), 70, 0.0),     # its bottom end: block, plunger on the head's hub
 ]
 
 

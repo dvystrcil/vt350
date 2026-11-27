@@ -73,7 +73,8 @@ GROOVE_D, PLATE_GAP = 1.6, 0.4                # the plates' blind axle grooves: 
 # friction fit"). Its ends slide in BLIND grooves, one per axle end: dry run 10's shared through-slots let two
 # neighbours' axle ends meet as one sheave passed the other (owner, from the cutaway).
 AXLE_L = SHEAVE_T + 2 * (PLATE_GAP + GROOVE_D) - 0.2   # 11.8: 0.1 short of each groove's bottom
-PLATE_T, PLATE_W = PITCH - SHEAVE_T - 2 * PLATE_GAP, 24.0   # the plates: 4.2 thick (Y), 24 wide (X); web 1.0 between grooves
+PLATE_T, PLATE_W = PITCH - SHEAVE_T - 2 * PLATE_GAP, 18.0   # the plates: 4.2 thick (Y), 18 wide (X; was 24: owner
+                                              # 2026-11-27 "too much material"); web 1.0 between grooves
 SLOT_W = 5.4
 Z_TOP, Z_G = DANCER["z_top"], 470.0
 # The RAILS (owner 2026-11-26: "have the axle travel in a slotted rail held in place between the bottom and gantry
@@ -86,8 +87,30 @@ BELT_Y, BELT_Z0 = 466.5, 427.0                # the lower XY belt's rear run (Y 
 FLANGE = (3.0, 8.0)                           # rail flange: X thickness, Y depth (outward)
 GANTRY_2020 = dict(y=(480.0, 500.0), z=(430.0, 450.0), x=(-415.0, -75.0))
 M5 = 2.75                                     # M5 clearance hole radius
-LEG_BLOCK = (20.0, 6.0)                       # leg guide block: X width, Z height; holes 12 x 6.5
-HOLE = (12.0, 6.5)
+LEG_BLOCK = (20.0, 6.0)                       # leg guide block: X width, Z height; holes 12 x 5.9
+HOLE = (12.0, 5.9)                            # the bundle is 10.2 (X) x 5.1 (Y) in a leg: 0.4 a side in Y (was 6.5)
+# BELT SLEEVES (owner 2026-11-27: "the belts need protection from the cable touching them"): the legs pass both XY
+# belts' rear runs (Z 428.75..451.25, Y 463.8..465.5); plane Y 459's bundle is 2.25 mm in front of them, Y 472's 3.95
+# behind. Each leg guide hole carries on DOWN as a thin printed sleeve to below the lower belt, so a swinging leg
+# touches its sleeve, never a belt.
+SLEEVE_Z0, SLEEVE_WALL = 424.0, 0.8
+BELT_CLEAR = 0.8                              # a sleeve's least gap to a belt
+SLEEVE_NOTCH = [(-108.5, -100.0, 468.4, 478.0, 428.7, 438.3)]   # (x0, x1, y0, y1, z0, z1): the right rear idler's
+                                              # M5x40 bolt (X -108..-64, Y 468.9..477.4, Z 429.2..437.8) + 0.5; dry run 18
+# MOUNTING (owner 2026-11-27: "use the t-slots ... rather than drilling into the backbone which leaves no room for
+# lateral adjustment"; chose: hang from the gantry 2020): the cap's M5 into the 2020's bottom slot and the leg bridge's
+# M5 into its front slot sit in SLOTS +-ADJ along X, on drop-in T-nuts; the foot only rests on the backbone (no holes).
+ADJ = 6.0
+# OPEN FRAMES (owner 2026-11-27: "you are using too much material"): the plates are an 18 wide slotted rail joined to
+# the post by RUNGS; windows between the rungs, through the plates' widened part and the post's middle (between its
+# tie rods). Rungs at the foot, each side of each seam, and the cap, plus one mid-section each: every section is a frame.
+RUNG = 8.0
+WINDOWS = ((16.0, 80.0), (88.0, 147.0), (163.0, 250.0), (258.0, 342.0), (358.0, 410.0))
+# SPOKED SHEAVES (owner 2026-11-27: "hollow that out so it looks like it has spokes ... we can be creative"): a rim
+# under the groove, a hub round the 625, and SPOKES curved spokes tapering from hub to rim, like a cast handwheel;
+# the spokes thinner (Y) than the rim and hub.
+SPOKES, SPOKE_W, SPOKE_T, SPOKE_SWEEP = 6, (7.0, 4.5), 5.0, 28.0   # count; width at hub / rim; thickness; turn (deg)
+RIM_WALL, HUB_R = 2.5, 12.0                   # the rim's wall under the groove's bottom; the hub's outer radius
 # PRINTING (owner 2026-11-26: "these lanes might be hard to print in one piece ... how to plate them for the neptune"):
 # a plate is 410 tall; the Neptune 4 Pro takes 220 x 220 (cad/data/print-profile.json) and ~250 in Z. So each stack is
 # one COMB printed standing in three SECTIONS: its plates widened in their own planes (no sheave runs there) out to a
@@ -151,12 +174,35 @@ def arm(x, hinge, loop):
     return s, L
 
 
+def spoke(cx, y, zc, phi):
+    """One curved spoke in the sheave's plane (X, Z), centred on Y y: its centreline turns SPOKE_SWEEP deg from the hub
+    to the rim (eased, so it leaves the hub and meets the rim nearly radially), its width tapering SPOKE_W."""
+    r0, r1 = HUB_R - 1.0, GROOVE_IN - RIM_WALL + 1.0
+    n = 16
+    def at(r, side):
+        u = (r - r0) / (r1 - r0)
+        th = math.radians(phi + SPOKE_SWEEP * (3 * u * u - 2 * u ** 3))
+        w = SPOKE_W[0] + (SPOKE_W[1] - SPOKE_W[0]) * u
+        a = th + side * (w / 2) / r                     # the edge: half the width along the arc at this radius
+        return V(cx + r * math.cos(a), y - SPOKE_T / 2, zc + r * math.sin(a))
+    rs = [r0 + (r1 - r0) * i / n for i in range(n + 1)]
+    pts = [at(r, -1) for r in rs] + [at(r, 1) for r in reversed(rs)]
+    face = Part.Face(Part.makePolygon(pts + [pts[0]]))
+    return face.extrude(V(0, SPOKE_T, 0))
+
+
 def sheave(cx, y, zc):
-    disc = Part.makeCylinder(SHEAVE_R, SHEAVE_T, V(cx, y - SHEAVE_T / 2, zc), V(0, 1, 0))
-    groove = Part.makeCylinder(SHEAVE_R + 1, GROOVE_W, V(cx, y - GROOVE_W / 2, zc), V(0, 1, 0)).cut(
-        Part.makeCylinder(GROOVE_IN, GROOVE_W, V(cx, y - GROOVE_W / 2, zc), V(0, 1, 0)))
-    hub = Part.makeCylinder(BEARING[0], SHEAVE_T + 2, V(cx, y - SHEAVE_T / 2 - 1, zc), V(0, 1, 0))
-    return disc.cut(groove).cut(hub)
+    """The take-up wheel, spoked: a rim under the groove, a hub round the 625, SPOKES curved spokes."""
+    ax = V(0, 1, 0)
+    rim_in = GROOVE_IN - RIM_WALL
+    rim = Part.makeCylinder(SHEAVE_R, SHEAVE_T, V(cx, y - SHEAVE_T / 2, zc), ax).cut(
+        Part.makeCylinder(rim_in, SHEAVE_T + 2, V(cx, y - SHEAVE_T / 2 - 1, zc), ax))
+    groove = Part.makeCylinder(SHEAVE_R + 1, GROOVE_W, V(cx, y - GROOVE_W / 2, zc), ax).cut(
+        Part.makeCylinder(GROOVE_IN, GROOVE_W, V(cx, y - GROOVE_W / 2, zc), ax))
+    hub = Part.makeCylinder(HUB_R, SHEAVE_T, V(cx, y - SHEAVE_T / 2, zc), ax)
+    s = rim.cut(groove).fuse([hub] + [spoke(cx, y, zc, 90.0 + k * 360.0 / SPOKES) for k in range(SPOKES)])
+    s = s.cut(Part.makeCylinder(BEARING[0], SHEAVE_T + 2, V(cx, y - SHEAVE_T / 2 - 1, zc), ax))
+    return s.removeSplitter()
 
 
 def bearing(cx, y, zc):
@@ -201,6 +247,17 @@ def stack_body(cx, ycs, slot):
     y0, y1 = ycs[0] - PLATE_T / 2, ycs[-1] + PLATE_T / 2
     z0, z1 = FOOT_Z[1], CAP_Z[0]
     body = body.fuse(Part.makeBox(POST_W, y1 - y0, z1 - z0, V(px - POST_W / 2, y0, z0))).removeSplitter()
+    # windows between the rungs: through the plates' widened part (rail edge to post) and the post's middle
+    wx0, wx1 = sorted((cx + side * PLATE_W / 2, px - side * POST_W / 2))
+    py0, py1 = y0 + ROD_INSET + ROD_HOLE + 1.6, y1 - ROD_INSET - ROD_HOLE - 1.6
+    big = FLANGE[1] + 2.0
+    for a, b in WINDOWS:
+        body = body.cut(Part.makeBox(wx1 - wx0, y1 - y0 + 2 * big, b - a, V(wx0, y0 - big, a)))
+        body = body.cut(Part.makeBox(POST_W + 2.0, py1 - py0, b - a, V(px - POST_W / 2 - 1.0, py0, a)))
+        if b <= slot[0] - RUNG or a >= slot[1] + RUNG:   # outside the axle grooves the rail itself is a frame too:
+            bar = FLANGE[0] + 1.0                       # two side bars (the flanges' width + 1) and the rungs
+            body = body.cut(Part.makeBox(PLATE_W - 2 * bar, y1 - y0 + 2, b - a, V(cx - PLATE_W / 2 + bar, y0 - 1, a)))
+    body = body.removeSplitter()
     rods = []
     for y in (y0 + ROD_INSET, y1 - ROD_INSET):
         body = body.cut(Part.makeCylinder(ROD_HOLE, z1 - z0 + 2, V(px, y, z0 - 1)))
@@ -215,17 +272,27 @@ def sections(body):
     return [body.common(Part.makeBox(4000, 4000, b - a, V(-2000, -2000, a))).removeSplitter() for a, b in zip(zs, zs[1:])]
 
 
+def slot_x(x, y, z, d, length, r=M5):
+    """A stadium-shaped M5 slot, +-ADJ along X about (x, y, z), cut `length` along direction d (a unit V)."""
+    s = Part.makeCylinder(r, length, V(x - ADJ, y, z), d).fuse(Part.makeCylinder(r, length, V(x + ADJ, y, z), d))
+    if abs(d.z) > 0.5:                                              # along Z: the slot's width is in Y
+        mid = Part.makeBox(2 * ADJ, 2 * r, length, V(x - ADJ, y - r, z))
+    else:                                                           # along Y: the slot's width is in Z
+        mid = Part.makeBox(2 * ADJ, length, 2 * r, V(x - ADJ, y, z - r))
+    return s.fuse(mid)
+
+
 def rail_ends(cx, ycs):
-    """The foot (on the backbone, two M5 through it) and the cap (one M5 up into the gantry 2020's bottom slot)."""
+    """The foot (rests on the backbone: no holes) and the cap (M5 up into the gantry 2020's bottom slot, in a slot
+    +-ADJ along X: the stack hangs from the 2020 and slides along it to line up with its arm)."""
     yf, yb = ycs[0] - PLATE_T / 2 - FLANGE[1], ycs[-1] + PLATE_T / 2 + FLANGE[1]
     foot = Part.makeBox(PLATE_W, yb - yf, FOOT_Z[1] - FOOT_Z[0], V(cx - PLATE_W / 2, yf, FOOT_Z[0]))
-    for y in (yf + 4.0, yb - 4.0):
-        foot = foot.cut(Part.makeCylinder(M5, 20, V(cx, y, FOOT_Z[0] - 5)))
     ycap = sum(GANTRY_2020["y"]) / 2
+    w = PLATE_W + 2 * ADJ                         # the cap is wider than the rail: room for its slot
     cap = Part.makeBox(PLATE_W, GANTRY_2020["y"][1] - yf, BELT_Z0 - CAP_Z[0], V(cx - PLATE_W / 2, yf, CAP_Z[0])).fuse(
-        Part.makeBox(PLATE_W, GANTRY_2020["y"][1] - BELT_Y, CAP_Z[1] - CAP_Z[0], V(cx - PLATE_W / 2, BELT_Y, CAP_Z[0]))
+        Part.makeBox(w, GANTRY_2020["y"][1] - BELT_Y, CAP_Z[1] - CAP_Z[0], V(cx - w / 2, BELT_Y, CAP_Z[0]))
     ).removeSplitter()
-    cap = cap.cut(Part.makeCylinder(M5, 20, V(cx, ycap, CAP_Z[0] - 5)))
+    cap = cap.cut(slot_x(cx, ycap, CAP_Z[0] - 5, V(0, 0, 1), 20))
     return foot, cap
 
 
@@ -235,17 +302,25 @@ def leg_bridge(cx, ys):
     y0, y1 = min(ys) - 6.5, GANTRY_2020["y"][0]
     bar = Part.makeBox(2 * (rp - LEG_BLOCK[0] / 2), y1 - y0, LEG_BLOCK[1],
                        V(cx - rp + LEG_BLOCK[0] / 2, y0, Z_G - LEG_BLOCK[1] / 2))
-    tab = Part.makeBox(PLATE_W, 4.0, Z_G + LEG_BLOCK[1] / 2 - (CAP_Z[1] + 2.0), V(cx - PLATE_W / 2, y1 - 4.0, CAP_Z[1] + 2.0))
-    tab = tab.cut(Part.makeCylinder(M5, 10, V(cx, y1 - 6, sum(GANTRY_2020["z"]) / 2), V(0, 1, 0)))
+    w = PLATE_W + 2 * ADJ
+    tab = Part.makeBox(w, 4.0, Z_G + LEG_BLOCK[1] / 2 - (CAP_Z[1] + 2.0), V(cx - w / 2, y1 - 4.0, CAP_Z[1] + 2.0))
+    tab = tab.cut(slot_x(cx, y1 - 6, sum(GANTRY_2020["z"]) / 2, V(0, 1, 0), 10))
     return bar.fuse(tab).removeSplitter()
 
 
 def leg_block(x, ys):
+    """A leg guide at Z_G, one hole per plane, each hole carrying on down as a sleeve past the belts (to SLEEVE_Z0)."""
     y0, y1 = min(ys) - 6.5, max(ys) + 6.5
-    b = Part.makeBox(LEG_BLOCK[0], y1 - y0, LEG_BLOCK[1], V(x - LEG_BLOCK[0] / 2, y0, Z_G - LEG_BLOCK[1] / 2))
+    zb = Z_G - LEG_BLOCK[1] / 2
+    b = Part.makeBox(LEG_BLOCK[0], y1 - y0, LEG_BLOCK[1], V(x - LEG_BLOCK[0] / 2, y0, zb))
+    hx, hy = HOLE[0] + 2 * SLEEVE_WALL, HOLE[1] + 2 * SLEEVE_WALL
     for y in ys:
-        b = b.cut(Part.makeBox(HOLE[0], HOLE[1], LEG_BLOCK[1] + 2, V(x - HOLE[0] / 2, y - HOLE[1] / 2, Z_G - LEG_BLOCK[1] / 2 - 1)))
-    return b
+        b = b.fuse(Part.makeBox(hx, hy, zb - SLEEVE_Z0, V(x - hx / 2, y - hy / 2, SLEEVE_Z0)))
+    for y in ys:
+        b = b.cut(Part.makeBox(HOLE[0], HOLE[1], Z_G - SLEEVE_Z0 + LEG_BLOCK[1], V(x - HOLE[0] / 2, y - HOLE[1] / 2, SLEEVE_Z0 - 1)))
+    for n in SLEEVE_NOTCH:
+        b = b.cut(litelib.box(*n))
+    return b.removeSplitter()
 
 
 # ---- the bundles (each tool's PTFE tube + O2S cable) on the studied route
@@ -268,51 +343,9 @@ CABLES = [f"O2S USB cable slot {i} " for i in range(1, 6)]
 TIES = [f"Zip tie, black (2.5 mm) slot {i} at " for i in range(1, 6)]
 
 
-# ---- the ARM HOLD (owner 2026-11-26: "I do not see what is keeping the arm in its docked (not active head) position"):
-# the dock lever (vt350#312, owner 2026-11-25: "a mechanical one set by which head is in use"; study
-# cad/studies/dock_lever.py, moved to lite-80's docks). Per tool: a PLUNGER in a block under the front dock bar, which
-# the parked head's hub housing pushes in; a sheathed pull cable from the block up the front, under the front top
-# 2040, back along the ceiling in its own lane (LANE_DX from the arm) to a housing stop and a small pulley over a TAB
-# on the arm, TAB_D in front of the hinge. Parked head: the wire holds the arm up. Head away: the arm drops.
-LEVER = json.load(open(os.path.join(DATA, "dock_lever.json")))
-LP = LEVER["params"]
-ROD_TIP_GAP = 0.3                             # the plunger's tip, modelled just off the parked head's face
-PLUNGER_R = 3.0
-LEVER_PULLEY = (6.0 - 0.6 - 0.3, 5.0)          # the ceiling pulley: the wire's centre runs at R 6, so the rim is R 5.4, less 0.3 for the groove the wire sits in (smoothing pulls the wire ~0.2 in); width
-TAB_W, TAB_H = 8.0, 10.0                      # the arm's tab: Y; Z (down from the wire's end)
-
-
-def lever(t):
-    """-> [(key, label, shape, role)] tool t's plunger, block, housing, wire, pulley and stop, and the tab (fused into
-    the arm by build())."""
-    r = LEVER["routes"][str(t + 1)]
-    xp, pz = r["plunger"]
-    bar_front, bar_back, bar_zlo = LP["BAR"]
-    bx, by, bz = LP["BLOCK"]
-    out = []
-    block = Part.makeBox(bx, by, bz, V(xp - bx / 2, bar_back - by, bar_zlo - bz))
-    block = block.cut(Part.makeCylinder(PLUNGER_R + 0.3, by + 2, V(xp, bar_back - by - 1, pz), V(0, 1, 0)))
-    out.append((f"lever_block{t}", f"Arm hold T{t}: plunger block under the dock bar (printed; holds the plunger, its "
-                f"spring and the housing's lower end) [lite-81, #312]", block, "printed"))
-    y_tip = LP["HEAD_FRONT"] - ROD_TIP_GAP
-    rod = Part.makeCylinder(PLUNGER_R, y_tip - (bar_back - by + 2.0), V(xp, bar_back - by + 2.0, pz), V(0, 1, 0))
-    out.append((f"lever_plunger{t}", f"Arm hold T{t}: plunger, 6 mm steel, ball tip on the parked head's hub housing "
-                f"(spring inside the block) [lite-81, #312]", rod, "brushed_steel"))
-    H = [V(*q) for q in r["housing"]]
-    hous, hl, how = sweep(H[1:], LP["HOUSING_R"], frenet_off=True)
-    out.append((f"lever_housing{t}", f"Arm hold T{t}: cable housing, 5 mm PTFE-lined, ~{hl:.0f} mm (block -> ceiling "
-                f"lane X {xp - LP['P_DX'] + LP['LANE_DX']:.1f}) [lite-81, #312]", hous, "rubber"))
-    wire, wl, _ = sweep([V(*q) for q in r["wire_up"]], LP["WIRE_R"])
-    out.append((f"lever_wire{t}", f"Arm hold T{t}: inner wire 1.2 mm, ceiling pulley to the arm's tab (arm up) "
-                f"[lite-81, #312]", wire, "brushed_steel"))
-    w0 = r["wire_up"][0]; xl = w0[0]
-    pc = V(xl, w0[1] + 14.0, LP["Z_LANE"] - 6.0)
-    pul = Part.makeCylinder(LEVER_PULLEY[0], LEVER_PULLEY[1], pc - V(LEVER_PULLEY[1] / 2, 0, 0), V(1, 0, 0))
-    out.append((f"lever_pulley{t}", f"Arm hold T{t}: ceiling pulley (printed, on a 3 mm pin) [lite-81, #312]", pul, "printed"))
-    end = r["wire_up"][-1]
-    tab = Part.makeBox(abs(xl - ARM_X[t]) + TAB_W / 2, TAB_W, TAB_H,
-                       V(min(xl, ARM_X[t]) - (TAB_W / 2 if xl < ARM_X[t] else 0), end[1] - TAB_W / 2, end[2] - LP['WIRE_R'] - TAB_H))
-    return out, tab
+# ---- the ARM HOLD (what keeps a parked head's arm up) is NOT in lite-81 (owner 2026-11-27: "I cannot make a decision
+# yet on the arm lift mechanisms. lets tidy up the dancers first"; then: the arm hold to a later pass). The dock lever
+# study (cad/studies/dock_lever.py) is one candidate.
 
 
 def unit(v):
@@ -514,9 +547,6 @@ def build():
     for t, x in enumerate(ARM_X):
         s, L = arm(x, (hy, hz), DESIGN["loop_up"])
         s, cross = slot_arm(s, t, x, (hy, hz), DESIGN["loop_up"])
-        lev, tab = lever(t)
-        s = s.fuse(tab).removeSplitter()
-        info.setdefault("lever", []).extend(lev)
         info.setdefault("slot_at", []).append(cross)
         parts.append((f"arm{t}", f"Bowden arm T{t} (printed, raised; loop at the tip) [lite-81, #312]", s, "printed"))
         info.setdefault("arm_len", []).append(round(L, 2))
@@ -535,7 +565,7 @@ def build():
         for t, y in members:
             zc = parked_z(t)
             info["sheaves"][t] = (cx, y, zc)
-            parts.append((f"sheave{t}", f"Dancer sheave T{t} (printed, R {SHEAVE_R:.1f} x {SHEAVE_T:g}) [lite-81, #312]",
+            parts.append((f"sheave{t}", f"Dancer sheave T{t} (printed, R {SHEAVE_R:.1f} x {SHEAVE_T:g}, {SPOKES} curved spokes) [lite-81, #312]",
                           sheave(cx, y, zc), "printed"))
             parts.append((f"bearing{t}", f"Dancer bearing T{t}, 625-2RS (5 x 16 x 5) [lite-81, #312]", bearing(cx, y, zc), "bearing"))
             parts.append((f"axle{t}", f"Dancer axle T{t}, 5 mm steel dowel pin x {AXLE_L:g} (m6, pressed into the 625) [lite-81, #312]", axle(cx, y, zc), "brushed_steel"))
@@ -549,19 +579,18 @@ def build():
         info.setdefault("sections", {})[cx] = [(round(s_.BoundBox.XLength, 1), round(s_.BoundBox.YLength, 1),
                                                 round(s_.BoundBox.ZLength, 1)) for s_ in secs]
         info.setdefault("post", {})[cx] = px
-        what = ("with its foot (on the backbone, 2 x M5)", "the middle: the axle grooves", "with its cap (M5 up into the gantry's rear 2020)")
+        what = ("with its foot (rests on the backbone)", "the middle: the axle grooves", "with its cap (M5 + drop-in T-nut in the gantry 2020's bottom slot, +-6 along X)")
         for k, sec in enumerate(secs):
             parts.append((f"stack{cx:g}_{k}", f"Dancer stack X {cx:g}, section {k + 1}/3, {what[k]} (printed standing, "
                           f"Z {zs[k]:g}..{zs[k + 1]:g}; {len(ycs)} plates tied by a post at X {px:g}) [lite-81, #312]", sec, "printed"))
         for i, r in enumerate(rods):
             parts.append((f"rod{cx:g}_{i}", f"Dancer stack X {cx:g} tie rod {i + 1}, M4 threaded rod x "
                           f"{r.BoundBox.ZLength:.0f} (2 nuts in pockets) [lite-81, #312]", r, "brushed_steel"))
-        parts.append((f"bridge{cx:g}", f"Dancer leg guide bridge X {cx:g} (printed; M5 into the gantry 2020's front face) "
+        parts.append((f"bridge{cx:g}", f"Dancer leg guide bridge X {cx:g} (printed; M5 + drop-in T-nut in the gantry 2020's front slot, +-6 along X; sleeves past the belts) "
                       f"[lite-81, #312]", leg_bridge(cx, ys), "printed"))
         for side, lx in (("exit", cx - DANCER["RP"]), ("return", cx + DANCER["RP"])):
-            parts.append((f"leg{cx:g}{side}", f"Dancer leg guide X {lx:.1f}, {side} legs, Z {Z_G:g} (printed) [lite-81, #312]",
+            parts.append((f"leg{cx:g}{side}", f"Dancer leg guide X {lx:.1f}, {side} legs, Z {Z_G:g}, sleeves down to Z {SLEEVE_Z0:g} past the belts (printed) [lite-81, #312]",
                           leg_block(lx, ys), "printed"))
-    parts += info.pop("lever", [])
     return parts, info
 
 
@@ -701,6 +730,23 @@ def main(p):
         p.check(abs(px - cx) - POST_W / 2 - max(SHEAVE_R, DANCER["RP"] + 4.6) >= 2.0,
                 f"X {cx:g}: the post (X {px:g}) clear of the sheaves and the legs ({abs(px - cx) - POST_W / 2 - SHEAVE_R:.1f} >= 2)")
     p.check(all(s.isValid() and s.Volume > 0 for _, _, s, _ in parts), "every new part a valid solid")
+    split = [k for k, _, s, _ in parts if k.startswith(("sheave", "stack", "leg", "bridge")) and len(s.Solids) != 1]
+    p.check(not split, f"each sheave, stack section, leg guide and bridge is one piece ({split})")
+    # the belts: every leg guide's sleeves BELT_CLEAR or more from both belts' runs
+    belts = [o for o in m.leaves if o.Label.startswith("GT2 9mm belt")]
+    p.check(len(belts) == 2, f"the two XY belts found ({len(belts)})")
+    for k, lab, s, _ in parts:
+        if not k.startswith("leg"): continue
+        gaps = [round(s.distToShape(m.shapes[b.Name])[0], 2) for b in belts]
+        p.check(min(gaps) >= BELT_CLEAR, f"{lab.split(',')[0]}: its sleeves clear the belts ({gaps} >= {BELT_CLEAR:g})")
+    # printed volume: the owner's "too much material" (the first draft: 1.81 L printed, stacks 1.28 L, sheaves 0.32 L)
+    vol = {}
+    for k, lab, s, role in parts:
+        if role == "printed":
+            g = re.sub(r"[-\d].*", "", k); vol[g] = vol.get(g, 0.0) + s.Volume / 1000.0
+    total = sum(vol.values())
+    p.log(f"printed volume {total:.0f} cm3: " + ", ".join(f"{g} {v:.0f}" for g, v in sorted(vol.items(), key=lambda kv: -kv[1])))
+    p.check(total < 1810 / 2, f"printed volume {total:.0f} cm3, under half the first draft's 1810")
     # ---- the bundles: new runs from the ceiling to the head, the old pieces above the roof / outside / in the head kept
     runs, routes = {}, {}
     for t in range(5):

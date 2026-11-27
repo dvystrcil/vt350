@@ -252,6 +252,10 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
 - **A segfault in `freecadcmd` loses everything the script printed** (stdout is buffered): the run ends with no
   output at all. When a call might crash, write to a file of your own and flush before each risky call, so the log
   shows where it died. (A syntax error shows only as "Exception while processing file: ... [message]".)
+  - **`os._exit(0)` loses it too** (2026-11-27): it skips the flush, so a probe that ends that way (to dodge the
+    GUI's exit handler, as `litelib.Pass.run` does) prints nothing at all. Write results to a file and flush.
+  - **"Exception while processing file: <path> [Unknown file: <path>]"** means the script isn't there: check the
+    path (a heredoc that wrote it may have been blocked), not the code.
 - **Notch a panel round what the overlap check finds** (lite-59): build the plain slab, list the parts it overlaps
   (`common().Volume`), and cut each one's box + clearance through the panel. Then no part is missed or hard-coded,
   but gate every hit with a predicate ("only in the latch band", "only the cable arms"): an unexpected hit fails

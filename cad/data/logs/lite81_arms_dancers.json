@@ -42,7 +42,7 @@
   ],
   [
    "sheave0",
-   "Dancer sheave T0 (printed, R 58.2 x 8) [lite-81, #312]",
+   "Dancer sheave T0 (printed, R 58.2 x 8, 6 curved spokes) [lite-81, #312]",
    "printed"
   ],
   [
@@ -57,7 +57,7 @@
   ],
   [
    "sheave1",
-   "Dancer sheave T1 (printed, R 58.2 x 8) [lite-81, #312]",
+   "Dancer sheave T1 (printed, R 58.2 x 8, 6 curved spokes) [lite-81, #312]",
    "printed"
   ],
   [
@@ -72,7 +72,7 @@
   ],
   [
    "stack-324.2_0",
-   "Dancer stack X -324.2, section 1/3, with its foot (on the backbone, 2 x M5) (printed standing, Z -2..155; 3 plates tied by a post at X -390.2) [lite-81, #312]",
+   "Dancer stack X -324.2, section 1/3, with its foot (rests on the backbone) (printed standing, Z -2..155; 3 plates tied by a post at X -390.2) [lite-81, #312]",
    "printed"
   ],
   [
@@ -82,7 +82,7 @@
   ],
   [
    "stack-324.2_2",
-   "Dancer stack X -324.2, section 3/3, with its cap (M5 up into the gantry's rear 2020) (printed standing, Z 350..430; 3 plates tied by a post at X -390.2) [lite-81, #312]",
+   "Dancer stack X -324.2, section 3/3, with its cap (M5 + drop-in T-nut in the gantry 2020's bottom slot, +-6 along X) (printed standing, Z 350..430; 3 plates tied by a post at X -390.2) [lite-81, #312]",
    "printed"
   ],
   [
@@ -97,22 +97,22 @@
   ],
   [
    "bridge-324.2",
-   "Dancer leg guide bridge X -324.2 (printed; M5 into the gantry 2020's front face) [lite-81, #312]",
+   "Dancer leg guide bridge X -324.2 (printed; M5 + drop-in T-nut in the gantry 2020's front slot, +-6 along X; sleeves past the belts) [lite-81, #312]",
    "printed"
   ],
   [
    "leg-324.2exit",
-   "Dancer leg guide X -377.8, exit legs, Z 470 (printed) [lite-81, #312]",
+   "Dancer leg guide X -377.8, exit legs, Z 470, sleeves down to Z 424 past the belts (printed) [lite-81, #312]",
    "printed"
   ],
   [
    "leg-324.2return",
-   "Dancer leg guide X -270.6, return legs, Z 470 (printed) [lite-81, #312]",
+   "Dancer leg guide X -270.6, return legs, Z 470, sleeves down to Z 424 past the belts (printed) [lite-81, #312]",
    "printed"
   ],
   [
    "sheave2",
-   "Dancer sheave T2 (printed, R 58.2 x 8) [lite-81, #312]",
+   "Dancer sheave T2 (printed, R 58.2 x 8, 6 curved spokes) [lite-81, #312]",
    "printed"
   ],
   [
@@ -127,7 +127,7 @@
   ],
   [
    "sheave3",
-   "Dancer sheave T3 (printed, R 58.2 x 8) [lite-81, #312]",
+   "Dancer sheave T3 (printed, R 58.2 x 8, 6 curved spokes) [lite-81, #312]",
    "printed"
   ],
   [
@@ -142,7 +142,7 @@
   ],
   [
    "sheave4",
-   "Dancer sheave T4 (printed, R 58.2 x 8) [lite-81, #312]",
+   "Dancer sheave T4 (printed, R 58.2 x 8, 6 curved spokes) [lite-81, #312]",
    "printed"
   ],
   [
@@ -157,7 +157,7 @@
   ],
   [
    "stack-167_0",
-   "Dancer stack X -167, section 1/3, with its foot (on the backbone, 2 x M5) (printed standing, Z -2..155; 4 plates tied by a post at X -101) [lite-81, #312]",
+   "Dancer stack X -167, section 1/3, with its foot (rests on the backbone) (printed standing, Z -2..155; 4 plates tied by a post at X -101) [lite-81, #312]",
    "printed"
   ],
   [
@@ -167,7 +167,7 @@
   ],
   [
    "stack-167_2",
-   "Dancer stack X -167, section 3/3, with its cap (M5 up into the gantry's rear 2020) (printed standing, Z 350..430; 4 plates tied by a post at X -101) [lite-81, #312]",
+   "Dancer stack X -167, section 3/3, with its cap (M5 + drop-in T-nut in the gantry 2020's bottom slot, +-6 along X) (printed standing, Z 350..430; 4 plates tied by a post at X -101) [lite-81, #312]",
    "printed"
   ],
   [
@@ -182,142 +182,17 @@
   ],
   [
    "bridge-167",
-   "Dancer leg guide bridge X -167 (printed; M5 into the gantry 2020's front face) [lite-81, #312]",
+   "Dancer leg guide bridge X -167 (printed; M5 + drop-in T-nut in the gantry 2020's front slot, +-6 along X; sleeves past the belts) [lite-81, #312]",
    "printed"
   ],
   [
    "leg-167exit",
-   "Dancer leg guide X -220.6, exit legs, Z 470 (printed) [lite-81, #312]",
+   "Dancer leg guide X -220.6, exit legs, Z 470, sleeves down to Z 424 past the belts (printed) [lite-81, #312]",
    "printed"
   ],
   [
    "leg-167return",
-   "Dancer leg guide X -113.4, return legs, Z 470 (printed) [lite-81, #312]",
-   "printed"
-  ],
-  [
-   "lever_block0",
-   "Arm hold T0: plunger block under the dock bar (printed; holds the plunger, its spring and the housing's lower end) [lite-81, #312]",
-   "printed"
-  ],
-  [
-   "lever_plunger0",
-   "Arm hold T0: plunger, 6 mm steel, ball tip on the parked head's hub housing (spring inside the block) [lite-81, #312]",
-   "brushed_steel"
-  ],
-  [
-   "lever_housing0",
-   "Arm hold T0: cable housing, 5 mm PTFE-lined, ~695 mm (block -> ceiling lane X -433.7) [lite-81, #312]",
-   "rubber"
-  ],
-  [
-   "lever_wire0",
-   "Arm hold T0: inner wire 1.2 mm, ceiling pulley to the arm's tab (arm up) [lite-81, #312]",
-   "brushed_steel"
-  ],
-  [
-   "lever_pulley0",
-   "Arm hold T0: ceiling pulley (printed, on a 3 mm pin) [lite-81, #312]",
-   "printed"
-  ],
-  [
-   "lever_block1",
-   "Arm hold T1: plunger block under the dock bar (printed; holds the plunger, its spring and the housing's lower end) [lite-81, #312]",
-   "printed"
-  ],
-  [
-   "lever_plunger1",
-   "Arm hold T1: plunger, 6 mm steel, ball tip on the parked head's hub housing (spring inside the block) [lite-81, #312]",
-   "brushed_steel"
-  ],
-  [
-   "lever_housing1",
-   "Arm hold T1: cable housing, 5 mm PTFE-lined, ~695 mm (block -> ceiling lane X -348.5) [lite-81, #312]",
-   "rubber"
-  ],
-  [
-   "lever_wire1",
-   "Arm hold T1: inner wire 1.2 mm, ceiling pulley to the arm's tab (arm up) [lite-81, #312]",
-   "brushed_steel"
-  ],
-  [
-   "lever_pulley1",
-   "Arm hold T1: ceiling pulley (printed, on a 3 mm pin) [lite-81, #312]",
-   "printed"
-  ],
-  [
-   "lever_block2",
-   "Arm hold T2: plunger block under the dock bar (printed; holds the plunger, its spring and the housing's lower end) [lite-81, #312]",
-   "printed"
-  ],
-  [
-   "lever_plunger2",
-   "Arm hold T2: plunger, 6 mm steel, ball tip on the parked head's hub housing (spring inside the block) [lite-81, #312]",
-   "brushed_steel"
-  ],
-  [
-   "lever_housing2",
-   "Arm hold T2: cable housing, 5 mm PTFE-lined, ~695 mm (block -> ceiling lane X -272.4) [lite-81, #312]",
-   "rubber"
-  ],
-  [
-   "lever_wire2",
-   "Arm hold T2: inner wire 1.2 mm, ceiling pulley to the arm's tab (arm up) [lite-81, #312]",
-   "brushed_steel"
-  ],
-  [
-   "lever_pulley2",
-   "Arm hold T2: ceiling pulley (printed, on a 3 mm pin) [lite-81, #312]",
-   "printed"
-  ],
-  [
-   "lever_block3",
-   "Arm hold T3: plunger block under the dock bar (printed; holds the plunger, its spring and the housing's lower end) [lite-81, #312]",
-   "printed"
-  ],
-  [
-   "lever_plunger3",
-   "Arm hold T3: plunger, 6 mm steel, ball tip on the parked head's hub housing (spring inside the block) [lite-81, #312]",
-   "brushed_steel"
-  ],
-  [
-   "lever_housing3",
-   "Arm hold T3: cable housing, 5 mm PTFE-lined, ~695 mm (block -> ceiling lane X -180.4) [lite-81, #312]",
-   "rubber"
-  ],
-  [
-   "lever_wire3",
-   "Arm hold T3: inner wire 1.2 mm, ceiling pulley to the arm's tab (arm up) [lite-81, #312]",
-   "brushed_steel"
-  ],
-  [
-   "lever_pulley3",
-   "Arm hold T3: ceiling pulley (printed, on a 3 mm pin) [lite-81, #312]",
-   "printed"
-  ],
-  [
-   "lever_block4",
-   "Arm hold T4: plunger block under the dock bar (printed; holds the plunger, its spring and the housing's lower end) [lite-81, #312]",
-   "printed"
-  ],
-  [
-   "lever_plunger4",
-   "Arm hold T4: plunger, 6 mm steel, ball tip on the parked head's hub housing (spring inside the block) [lite-81, #312]",
-   "brushed_steel"
-  ],
-  [
-   "lever_housing4",
-   "Arm hold T4: cable housing, 5 mm PTFE-lined, ~695 mm (block -> ceiling lane X -104.3) [lite-81, #312]",
-   "rubber"
-  ],
-  [
-   "lever_wire4",
-   "Arm hold T4: inner wire 1.2 mm, ceiling pulley to the arm's tab (arm up) [lite-81, #312]",
-   "brushed_steel"
-  ],
-  [
-   "lever_pulley4",
-   "Arm hold T4: ceiling pulley (printed, on a 3 mm pin) [lite-81, #312]",
+   "Dancer leg guide X -113.4, return legs, Z 470, sleeves down to Z 424 past the belts (printed) [lite-81, #312]",
    "printed"
   ],
   [
