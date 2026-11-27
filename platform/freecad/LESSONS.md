@@ -252,6 +252,10 @@ Five copies of a part as separate Part::Features vs one part plus `App::Link`s t
 - **A segfault in `freecadcmd` loses everything the script printed** (stdout is buffered): the run ends with no
   output at all. When a call might crash, write to a file of your own and flush before each risky call, so the log
   shows where it died. (A syntax error shows only as "Exception while processing file: ... [message]".)
+  - **`os._exit(0)` loses it too** (2026-11-27): it skips the flush, so a probe that ends that way (to dodge the
+    GUI's exit handler, as `litelib.Pass.run` does) prints nothing at all. Write results to a file and flush.
+  - **"Exception while processing file: <path> [Unknown file: <path>]"** means the script isn't there: check the
+    path (a heredoc that wrote it may have been blocked), not the code.
 - **Notch a panel round what the overlap check finds** (lite-59): build the plain slab, list the parts it overlaps
   (`common().Volume`), and cut each one's box + clearance through the panel. Then no part is missed or hard-coded,
   but gate every hit with a predicate ("only in the latch band", "only the cable arms"): an unexpected hit fails
@@ -442,3 +446,73 @@ had read at the start, and assigned it back with `o.Shape = ...`. Assigning a sh
 new collisions with the gantry bars. Its box check passed because it compared against the *old* box. Fix: when a
 part is reshaped after a step has moved it, build the new shape from the moved one (or translate it by the move), and
 check its box against the box the plan expects, never "unchanged".
+
+## `Wire.makePipe` can segfault; sweep with `makePipeShell` (2026-11-25, lite-81)
+
+Sweeping a circle along a long approximated B-spline (a bowden route, ~400 points smoothed and fitted) with
+`path.makePipe(face)` crashed FreeCAD with SIGSEGV inside `BRepFill_Pipe::MakeShape`: the process dies, no exception,
+and a pass's `try` can't catch it (the log just stops after the last check). `path.makePipeShell([profile], True, True)`
+on the same path raises `Part.OCCError` instead, which a pass can catch and fall back from (lite-81 falls back to a
+chain of cylinders and spheres along the resampled points). If a headless run's log stops with no `FAILED` line, run
+it again with stdout kept: the crash trace names the OCC call.
+
+## A clip round two touching runs: fuse the bodies first, then cut every bore (2026-11-26, lite-81)
+
+- **Bore each sleeve for its own run, fuse the sleeves, and the walls sit inside the neighbour.** The PTFE tube and the
+  O2S cable touch, so the tube sleeve's 1.6 mm wall ran through the cable. Dry run 10 found 80–140 mm³ per clip.
+  Build it this way instead: fuse the outer cylinders into one body, fuse the bores, then `body.cut(bores)` once.
+- **Cutting the swept runs out of the clip fails silently.** `clip.cut(run_solid)` on the chain-of-cylinders runs left
+  two of the five clips unchanged, and dry run 11 still found the overlaps. Don't rely on a boolean with a sweep for a
+  part's shape.
+- **Many small spheres and cylinders fused into one part make OCC fail:** `multiFuse` then `cut` returned a Null shape
+  or an invalid solid on 3 of 5 tools. A straight 12 mm clip on a run with R > 50 sags only ~0.2 mm, so it needs no
+  curve. Keep a part's solid simple.
+- **Check one part fast before the full pass.** A probe that imports the pass (`LITE81_AS_LIB=1`), builds one bundle
+  and reports `common` volumes takes 45 s. A dry run takes ~40 min.
+
+## Replacing a Link by a solid copy: carry ShapeMaterial over too (2026-11-26, lite-81)
+
+lite-78's `unlink()` swapped five frame bars (App::Links made by `dupes.py`) for `Part::Feature` copies so they could be
+spliced longer. It copied the label and the colour (`ShapeAppearance`) but not `ShapeMaterial`, so the copies came out
+`Default`. Nothing failed: the pass's checks were all geometry. Three lites later the owner saw two frame bars render
+grey (the render's frame rule wants an aluminium material), and their density was gone from the mass numbers too.
+
+- When a pass replaces an object, copy everything that isn't geometry: `Label`, `ShapeMaterial`, the view's
+  `ShapeAppearance`/`Transparency`/`Visibility`, and its group.
+- Setting `ShapeMaterial` can repaint the part: save `ShapeAppearance` first and put it back (as `lite12_materials.py`).
+- A cheap guard: compare `part_index`'s `material` column before and after a pass (no label should turn `Default`).
+  lite-81 checks that every frame extrusion is aluminium.
+
+## makePipeShell: try Frenet off before giving up on a pipe (2026-11-26, lite-81)
+
+The dock lever's cable housing (#312) is a 700-point route that climbs and turns about 600 mm in 3D. On it,
+`Wire.makePipeShell([profile], True, True)` (Frenet on) throws `BRepOffsetAPI_MakePipeShell::MakeSolid`, and the
+pass fell back to a chain of 231 cylinders and spheres per housing. The same call with Frenet **off**
+(`makePipeShell([profile], True, False)`) makes one valid solid with the right volume. The pass's `sweep()` tries
+Frenet first and then, **for the housing only** (`frenet_off=True`), without it, before the chain.
+
+Not everywhere: with Frenet off for every run, the tubes and cables whose Frenet pipe failed became no-Frenet pipes
+instead of chains. Dry run 16 then found 8 overlaps (0.7-70 mm³) with the split clips, a sheave groove, an arm loop and a
+leg guide, all sized round the chain with 0.4-0.6 mm of clearance. Every overlap involved a no-Frenet pipe, and the tool
+whose runs were both chains had none. A fallback that changes a shape changes what the checks see: re-run every
+check, not only the one the fallback was for.
+
+Don't fuse the chain instead: `multiFuse` of those 231 pieces returned one valid solid of 4743 mm³ where the pipe is
+about 12300. It reported success and quietly lost most of the volume. Always check a fused result's volume against
+what it should be.
+
+## A long diagonal sweep's bounding box meets everything: filter on its spine (2026-11-26, lite-81)
+
+Dry run 13 of the lite-81 pass sat 5.5 h in its collision check with no output, and the parent process was at 10 cores. The
+dock lever's cable housings are 695 mm pipes running diagonally up and back, so each one's bounding box met thousands
+of parts it never comes near: 9346 pairs, each a full `common()`, some taking 60 s. Two fixes, both in the pass's
+`solid_overlaps()`:
+
+- Keep each pipe's spine (its points and radius) and skip a part whose box no spine point comes within r plus a margin
+  of (the spline's tolerance + half the sample step). That's conservative, and it cut 9346 pairs to 780.
+- Name each pair in `<log>.progress` before it starts, and log any pair over 20 s. A silent hour then becomes one line
+  naming the pair.
+
+Two more traps from the same runs: a common that is a zero-thickness sheet (a block screwed flush under a bar) can
+report a small non-zero volume, so treat a result under 0.01 mm thick as touching. And `common()` can throw "Null
+shape" on a pair that's 16 mm apart: fall back to `distToShape()` before calling it an overlap.
