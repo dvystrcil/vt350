@@ -101,6 +101,8 @@
     {"tag": "left_panel", "label": "^Left side panel \\(3 mm\\)", "hide": ["low_side", "dock_side", "bed_side"],
      "note": "low_side, dock_side and bed_side (vt350#291) look in from the left; the panel hides the interior. User 2026-11-15: if the panel blocks, hide it for the side shots."},
     {"tag": "bed_side_left_rail", "label": "^(2040 \\(3\\)001|MGN9-400mm Y rail \\(L\\)|MGN9 Y rail front extension \\(L\\)|GT2 9mm belt, (lower|upper))", "hide": ["bed_side"],
-     "note": "vt350#291: the frame's upper left side rail (2040 (3)001, X -520..-480, Z 420..440), the left Y rail on it and the belt runs cross bed_side's picture right above the nozzle and hide the carriage and the Beacon. User 2026-11-22: hide the bar."}
+     "note": "vt350#291: the frame's upper left side rail (2040 (3)001, X -520..-480, Z 420..440), the left Y rail on it and the belt runs cross bed_side's picture right above the nozzle and hide the carriage and the Beacon. User 2026-11-22: hide the bar."},
+    {"tag": "ebox_door", "label": "^E-box door: ", "hide": ["ebox_side"],
+     "note": "ebox_side looks in from the e-box's side: the whole door (its 2040 frame, panel, magnets, screws) is hidden so the e-box shows whole and nothing is clipped. Owner 2026-11-26: just take the e-box door off for that picture and make a note of it."}
   ]
 }

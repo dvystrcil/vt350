@@ -96,14 +96,14 @@ class Frames(unittest.TestCase):
         groups = set(ff["frames"][0]["groups"])
         self.assertEqual(groups, {"bed", "gantry", "belt", "carriage", "Left", "Right"})
 
-    def test_at_picks_the_frames_at_a_printer_xy(self):         # AC5: the T0 pickup at its park X / attach Y -85.96
+    def test_at_picks_the_frames_at_a_printer_xy(self):         # AC5: the T0 pickup at its park X / attach Y -88.96
         park_x = RIG["heads"]["Left"]["dock"][0]                     # T0's params_park_x, from toolchanger.cfg
         ff = rf.make_frames(RIG, rf.TIMELINE, fps=None, every=1)     # move ends: sampled frames miss exact points
-        at = rf.frames_at(ff, park_x, -85.96)
+        at = rf.frames_at(ff, park_x, -88.96)
         self.assertTrue(at)
         for f in at:
             self.assertAlmostEqual(f["pos"][0], park_x, places=3)
-            self.assertAlmostEqual(f["pos"][1], -85.96, places=3)
+            self.assertAlmostEqual(f["pos"][1], -88.96, places=3)
 
     def test_at_nowhere_is_refused(self):
         ff = rf.make_frames(RIG, rf.TIMELINE, fps=None, every=1)
