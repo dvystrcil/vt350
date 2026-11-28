@@ -1,0 +1,15 @@
+ok   the fixed leg's path (X -377.8, Z 219.2..350) is clear between the plates (0.00 mm3 in the way)
+ok   the rig is one valid solid (1)
+ok   the wheel at axle Z 219.2 clear of the rig (0.00 mm3)
+ok   the dowel at Z 219.2 clear in its grooves
+ok   the wheel at axle Z 287.7 clear of the rig (0.00 mm3)
+ok   the dowel at Z 287.7 clear in its grooves
+ok   the pin stops the wheel at axle Z 325.2, the dowel still 32.3 below the grooves' open top
+ok   the rig print-chamfered: 4 bed, 65 top, failed []
+ok   the rig prints standing: 146 x 70 x 205 tall
+ok   the wheel weighs ~41 g = 0.40 N (the dancer study's pick 0.4 N): no extra weight
+wrote /home/dan/Documents/VT350/prints/dancer-wear-rig/rig.stl (153.6 cm3)
+wrote /home/dan/Documents/VT350/prints/dancer-wear-rig/half1.stl (13.3 cm3)
+wrote /home/dan/Documents/VT350/prints/dancer-wear-rig/half2.stl (13.4 cm3)
+stroke 68.5 mm (axle Z [219.2, 287.7]); rig [145.6, 70.0, 205.0] mm
+dancer wear rig: OK
