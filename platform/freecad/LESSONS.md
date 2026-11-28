@@ -533,3 +533,18 @@ imports `platform/` from the main checkout (whatever branch that has out) and wr
 worktree's own `cad/data/logs/` keeps the old run's log, so reading it after the run shows the previous result: here
 the same timing to a tenth of a second gave it away, and the real run's one failure was only in the other checkout.
 Start every worktree run as `VT350_REPO=$PWD $APP freecadcmd $PWD/cad/passes/<pass>.py`.
+
+## Two 45-degree windows meeting at a wall can leave a floating corner: check with `floating.py` (2026-11-27, lite-81)
+
+A window with a 45-degree chevron top prints without support, but its top comes down to a corner (half its width
+below the peak) at each end. That corner must land on solid wall. In the dancer stacks, the plates' windows (chevrons
+in X) ended at the post, and the post had its own window there (a chevron in Y) between the tie rods. So in the middle
+plate's band the rung ended in a corner with air under it. Orca warned "It seems object rig_1 has floating regions",
+and the 45-degree support check didn't show it, because the faces were all at 45. Two overlapping chevrons are no fix
+either: their union leaves a V-notch tooth hanging from the ceiling. Give each band one window: there, the plates'
+chevron runs on through the post.
+
+`platform/freecad/floating.py` finds these in a mesh in plain python. A floating start is a vertex, edge or flat patch
+above the bed that is lower than everything it touches and has a downward face. Pits and hole floors don't count. Give
+it a shape's `tessellate(0.05)` or an STL (`stl_triangles`). The lite-81 pass checks every stack section with it, and
+the wear rig checks its STLs.

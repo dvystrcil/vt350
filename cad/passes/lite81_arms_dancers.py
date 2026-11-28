@@ -37,7 +37,7 @@ _REPO = os.environ.get("VT350_REPO", "/home/dan/Code/vt350")
 sys.path[:0] = [os.path.join(_REPO, "platform/freecad"), os.path.join(_REPO, "platform/render"),
                 os.path.join(_REPO, "cad/passes")]
 os.environ["LITE78_AS_LIB"] = "1"
-import litelib, linkgeo, printchamfer
+import litelib, linkgeo, printchamfer, floating
 import lite78_front17 as l78
 from litelib import MODELS
 CHAMFER = printchamfer.profile(os.path.join(_REPO, "cad/data/print-profile.json"))   # 0.5 bed, 1.0 top, 0.2 steps
@@ -361,8 +361,15 @@ def stack_body(cx, ycs, slot):
     py0, py1 = y0 + ROD_INSET + ROD_HOLE + 1.6, y1 - ROD_INSET - ROD_HOLE - 1.6
     big = FLANGE[1] + 2.0
     for a, b in WINDOWS:
-        body = body.cut(window(wx0, wx1, a, b, y0 - big, y1 + big, "x"))
-        body = body.cut(window(py0, py1, a, b, px - POST_W / 2 - 1.0, px + POST_W / 2 + 1.0, "y"))
+        assert y0 + PLATE_T < py0 < y0 + PITCH and y1 - PITCH < py1 < y1 - PLATE_T   # in the outer channels
+        for w0, w1 in ((y0 - big, py0), (py1, y1 + big)):   # outside the tie rods: the plates' windows end at the post
+            body = body.cut(window(wx0, wx1, a, b, w0, w1, "x"))
+        # between the tie rods (py0..py1, both edges in a channel, not in a plate) the plates' window runs on through
+        # the post as ONE chevron, from the rail edge to past the post's far face (one window per band: two
+        # overlapping chevrons would leave a V-notch tooth in the ceiling). Separate windows (a chevron in Y through the post, the plates'
+        # in X) left the middle plate's rung ending at the post's face in a corner 26 below its peak with the post's
+        # window under it: a floating region (owner's Orca on the wear rig: "rig_1 has floating regions")
+        body = body.cut(window(*sorted((cx + side * PLATE_W / 2, px + side * (POST_W / 2 + 1.0))), a, b, py0, py1, "x"))
         if b <= slot[0] - RUNG or a >= slot[1] + RUNG:   # outside the axle grooves the rail itself is a frame too:
             bar = FLANGE[0] + 1.0                       # two side bars (the flanges' width + 1) and the rungs
             body = body.cut(window(cx - PLATE_W / 2 + bar, cx + PLATE_W / 2 - bar, a, b, y0 - 1, y1 + 1, "x"))
@@ -691,6 +698,11 @@ def build():
         info.setdefault("sections", {})[cx] = [(round(s_.BoundBox.XLength, 1), round(s_.BoundBox.YLength, 1),
                                                 round(s_.BoundBox.ZLength, 1)) for s_ in secs]
         info.setdefault("post", {})[cx] = px
+        def floats(sec):                                 # printed standing, Z up, on its own bottom
+            pts, tris = sec.tessellate(0.05)
+            return floating.floating_starts([(v.x, v.y, v.z) for v in pts], tris, bed_z=sec.BoundBox.ZMin, tol=0.01)
+        info.setdefault("floating", {})[cx] = [[(round(z, 2), [round(c, 1) for c in box]) for z, box, n in floats(sec)]
+                                               for sec in secs]
         what = ("with its foot (rests on the backbone)", "the middle: the axle grooves", "with its cap (M5 + drop-in T-nut in the gantry 2020's bottom slot, +-6 along X)")
         for k, sec in enumerate(secs):
             parts.append((f"stack{cx:g}_{k}", f"Dancer stack X {cx:g}, section {k + 1}/3, {what[k]} (printed standing, "
@@ -834,6 +846,8 @@ def main(p):
         p.check(sl[0] + BEARING[1] <= low, f"X {cx:g}: the slots reach the lowest studied pulley height ({low:.1f})")
     for cx, dims in info["sections"].items():
         sl = info["slots"][cx]
+        fl = info["floating"][cx]
+        p.check(not any(fl), f"X {cx:g}: no section starts in mid-air printed standing (floating starts per section: {fl})")
         p.check(all(max(x, y) <= PRINT_XY and z <= PRINT_Z for x, y, z in dims),
                 f"X {cx:g}: each section prints standing on the Neptune ({dims}; <= {PRINT_XY:g} square, {PRINT_Z:g} tall)")
         top = max(s[2] for t, s in info["sheaves"].items() if abs(s[0] - cx) < 1e-6)
@@ -888,7 +902,10 @@ def main(p):
     p.log(f"printed volume {total:.0f} cm3: " + ", ".join(f"{g} {v:.0f}" for g, v in sorted(vol.items(), key=lambda kv: -kv[1])))
     # was < 1810 / 2 (905, owner "too much material"); the 45-degree chevron rungs cost ~180 cm3 for printing standing
     # with no support (owner 2026-11-27, from the elevation "dancer-stack-chevrons": "it looks right")
-    p.check(total < 1100, f"printed volume {total:.0f} cm3, under 1100 (905 + the chevron rungs; the first draft 1810)")
+    # and +~57 for running the plates' chevron through the post between the tie rods, so no rung corner floats
+    # (owner 2026-11-27: "Accept, limit 1150")
+    p.check(total < 1150, f"printed volume {total:.0f} cm3, under 1150 (905 + the chevron rungs + the post's band; "
+            f"the first draft 1810)")
     # ---- the bundles: new runs from the ceiling to the head, the old pieces above the roof / outside / in the head kept
     runs, routes = {}, {}
     for t in range(5):
