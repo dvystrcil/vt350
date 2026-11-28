@@ -182,6 +182,26 @@ def _moved(s, v):
     c = s.copy(False); c.Placement = FreeCAD.Placement(v, FreeCAD.Rotation()).multiply(s.Placement); return c
 
 
+_TRIS = {}
+
+
+def _xy_band(key, tb, s, x0, x1, y0, y1, deflection=0.05):
+    """(zmin, zmax) of the triangles of s's tessellation whose XY box meets [x0, x1] x [y0, y1], grown by the
+    deflection, or None. Each triangle is kept as its box, per worker, per shape."""
+    k = (repr(key), tuple(tb))
+    if k not in _TRIS:
+        pts, tris = s.tessellate(deflection)
+        bx = []
+        for i, j, m in tris:
+            a, b, c = pts[i], pts[j], pts[m]
+            bx.append((min(a.x, b.x, c.x), max(a.x, b.x, c.x), min(a.y, b.y, c.y), max(a.y, b.y, c.y),
+                       min(a.z, b.z, c.z), max(a.z, b.z, c.z)))
+        _TRIS[k] = bx
+    zs = [(b[4], b[5]) for b in _TRIS[k] if b[0] <= x1 and b[1] >= x0 and b[2] <= y1 and b[3] >= y0]
+    if not zs: return None
+    return min(z[0] for z in zs) - 2 * deflection, max(z[1] for z in zs) + 2 * deflection
+
+
 def _t_contact(a, b, direction, lo, hi, ta=(0.0, 0.0, 0.0), tb=(0.0, 0.0, 0.0), step=None, eps=None, tol=None):
     """#82: `a` moved by ta, then `direction` (-1 down, +1 up) * d along Z, against `b` moved by tb: contact.py's
     first_contact over d in [lo, hi], each probe a common() volume. -> {"kind": "contact"|"clear"|"start", ...}"""
@@ -192,7 +212,22 @@ def _t_contact(a, b, direction, lo, hi, ta=(0.0, 0.0, 0.0), tb=(0.0, 0.0, 0.0), 
     def probe(d):
         return _moved(sa, t + V(0, 0, direction * d)).common(sb).Volume
     kw = {k: v for k, v in (("step", step), ("eps", eps), ("tol", tol)) if v is not None}
-    return contact.first_contact(probe, lo, hi, **kw)
+    # Narrow the scan first (vt350#312), without a boolean (a common() with a big box can come back empty on a mesh-made
+    # solid, so it can't prove clear): b's material under a's footprint lies between the triangles of b's surface whose
+    # XY box meets that footprint, so their Z range is a safe band (contact.narrow); none of them means clear.
+    ab = _moved(sa, t).BoundBox
+    g = 0.5
+    try:
+        band = _xy_band(b, tb, sb, ab.XMin - g, ab.XMax + g, ab.YMin - g, ab.YMax + g)
+    except Exception:                                # no tessellation: scan the whole window, as before
+        band = (-1e9, 1e9)
+    w = contact.narrow((ab.XMin, ab.YMin, ab.ZMin, ab.XMax, ab.YMax, ab.ZMax), band, direction, lo, hi,
+                       step=kw.get("step", contact.STEP))
+    if w is None: return {"kind": "clear", "d": None}
+    r = contact.first_contact(probe, w[0], w[1], **kw)
+    if r["kind"] == "start" and w[0] > lo:          # not expected (the band is conservative): fall back to the full scan
+        r = contact.first_contact(probe, lo, hi, **kw)
+    return r
 
 
 def _t_zspan(s, pts, z0, z1):

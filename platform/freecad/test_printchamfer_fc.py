@@ -86,6 +86,20 @@ class PrintChamfer(unittest.TestCase):
         self.assertEqual(pc.sharp_edges(new, UP), [])
         self.assertEqual(pc.unchamfered(SHAPE, new, UP, **P), [])
 
+    def test_force_and_leave(self):
+        """the part's own exceptions: a 0.5 lead-in forced on a bore's top mouth (the rules leave bores sharp), and
+        one top edge left sharp (a seat): both listed, the rest as the rules say"""
+        p = Part.makeBox(20, 20, 5).cut(Part.makeCylinder(2, 7, V(10, 10, -1)))
+        mouth = lambda e: 0.5 if (isinstance(e.Curve, Part.Circle) and e.BoundBox.ZMin > 4.9) else None
+        seat = lambda e: e.BoundBox.ZMin > 4.9 and e.BoundBox.XMax < 0.1               # the top edge at X 0
+        new, info = pc.chamfer(p, UP, force=mouth, leave=seat, **P)
+        self.assertEqual((len(info["forced"]), len(info["left"])), (1, 1))
+        self.assertEqual((info["bottom"], info["top"]), (4, 4))        # the box's 4 + the mouth; 3 box tops
+        hole = [f for f in new.Faces if isinstance(f.Surface, Part.Cylinder) and abs(f.Surface.Radius - 2) < 1e-6]
+        self.assertTrue(hole and all(f.Area < 2 * 3.14159265 * 2 * 5 - 1.0 for f in hole))   # the mouth cut back
+        self.assertEqual(len(pc.sharp_edges(new, UP)), 1)              # the seat, and only it
+        self.assertEqual(pc.unchamfered(p, new, UP, force=mouth, leave=seat, **P), [])
+
     def test_unchamfered_finds_a_missed_edge(self):
         """unchamfered() names an edge that should have been chamfered and wasn't"""
         b = Part.makeBox(20, 10, 8)

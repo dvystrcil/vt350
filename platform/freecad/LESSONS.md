@@ -516,3 +516,61 @@ of parts it never comes near: 9346 pairs, each a full `common()`, some taking 60
 Two more traps from the same runs: a common that is a zero-thickness sheet (a block screwed flush under a bar) can
 report a small non-zero volume, so treat a result under 0.01 mm thick as touching. And `common()` can throw "Null
 shape" on a pair that's 16 mm apart: fall back to `distToShape()` before calling it an overlap.
+
+## A section drawing: `Shape.slice` gives the cut outlines, no GUI or TechDraw needed (2026-11-27, lite-81)
+
+The dancer's hatched section drawing (`cad/render/dancer_section_fc.py` then `dancer_section.py`) cuts each part with
+`shape.slice(normal, d)`. It returns the closed wires where the plane meets the solid: one per loop, holes as their
+own wires. A plane that misses the part returns `[]` and doesn't throw. Map each wire's `discretize(Deflection=0.02)`
+points to the plane's 2D axes, write them to JSON, and draw in plain python: an even-odd fill puts the holes back.
+That beats TechDraw's section view here because it runs headless under `freecadcmd`, needs no model file (the pass's
+own builders give the parts), and the drawing step can be tested in CI against a saved export.
+
+## Run a worktree's pass with `VT350_REPO=$PWD`, or it logs into the main checkout (2026-11-27, lite-81)
+
+A pass finds its repo through `VT350_REPO`, defaulting to `~/Code/vt350`. Run from a git worktree without it, the pass
+imports `platform/` from the main checkout (whatever branch that has out) and writes its log and JSON there. The
+worktree's own `cad/data/logs/` keeps the old run's log, so reading it after the run shows the previous result: here
+the same timing to a tenth of a second gave it away, and the real run's one failure was only in the other checkout.
+Start every worktree run as `VT350_REPO=$PWD $APP freecadcmd $PWD/cad/passes/<pass>.py`.
+
+## Two 45-degree windows meeting at a wall can leave a floating corner: check with `floating.py` (2026-11-27, lite-81)
+
+A window with a 45-degree chevron top prints without support, but its top comes down to a corner (half its width
+below the peak) at each end. That corner must land on solid wall. In the dancer stacks, the plates' windows (chevrons
+in X) ended at the post, and the post had its own window there (a chevron in Y) between the tie rods. So in the middle
+plate's band the rung ended in a corner with air under it. Orca warned "It seems object rig_1 has floating regions",
+and the 45-degree support check didn't show it, because the faces were all at 45. Two overlapping chevrons are no fix
+either: their union leaves a V-notch tooth hanging from the ceiling. Give each band one window: there, the plates'
+chevron runs on through the post.
+
+`platform/freecad/floating.py` finds these in a mesh in plain python. A floating start is a vertex, edge or flat patch
+above the bed that is lower than everything it touches and has a downward face. Pits and hole floors don't count. Give
+it a shape's `tessellate(0.05)` or an STL (`stl_triangles`). The lite-81 pass checks every stack section with it, and
+the wear rig checks its STLs.
+
+## A slow sweep: trace the pairs before guessing which part is slow (2026-11-28, lite-81)
+
+lite-81's Z sweep timed out (1 h step limit on the lane; the "bed down" search had taken 3.5 min on lite-80). I first
+blamed the new dancer sheave halves (spline spokes) and gave each a sweep stand-in. The next lane run timed out the
+same way. A trace (each `_t_contact` pair's start and end, with both parts' boxes and face counts, written to a file by
+the workers) found the real cost in 15 minutes: the bed against the Bowden tubes and O2S cables, whose boxes now cover
+the bed's travel (see "Narrow each contact scan" below). Trace first, then fix.
+
+The stand-in pattern itself stays, as a tool for a part whose booleans are truly slow: in the pass, beside the part, a
+plain envelope (here an annulus) with `StandInFor` (renders draw the real part) and `SweepStandIn = True`;
+`sweep_toolhead.plan` excludes the real part and keeps the envelope, so the Z sweep and clashlib check the envelope.
+The pass checks that the envelope holds the part whole (`part.cut(envelope).Volume < 1e-3`), so any contact it
+reports comes no later than the real part's. Don't use a prism `common()` as a pre-filter: on a mesh-made solid
+([a]_Duct-4010-right) it came back empty where the real probe found a contact.
+
+## Narrow each contact scan to where the fixed part's mesh really is (2026-11-28, #312)
+
+`contact.window` works from bounding boxes. A long flexible run (a Bowden tube or a USB cable, a ~1000-face swept
+pipe) that drops from the gantry down to the bed's level has a box covering the bed's whole Z travel, so every bed
+part got a 20–60 mm scan against it in 0.5 mm steps, and each probe (a `common()` with that pipe) took 4–6 s. lite-81's
+runs drop to the dancers (Z ~230; lite-80's stayed above Z 380), and the Z sweep no longer finished in an hour.
+`litelib._t_contact` now narrows the scan first (`contact.narrow`): the Z range of the fixed part's tessellation
+triangles whose XY box meets the moving part's footprint bounds where any contact can be. It's found without a
+boolean, because a `common()` with a big box can come back empty on a mesh-made solid and so can't prove "clear".
+On lite-80 the Z sweep's results are identical to main's.

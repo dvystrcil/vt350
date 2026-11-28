@@ -12,6 +12,12 @@
 #   new, info = pc.chamfer(shape, FreeCAD.Vector(0, 0, 1), bottom=0.5, top=1.0, step=0.2)
 #   new, info = pc.chamfer(shape, up, **pc.profile("cad/data/print-profile.json"))   # the same, from a printer's data
 #   left = pc.unchamfered(shape, new, up, 0.5, 1.0, 0.2)             # [] when every bed/top edge got its chamfer
+#   new, info = pc.chamfer(shape, up, ..., force=f, leave=g)        # the part's own exceptions, per edge (below)
+#
+# - The part's designer can override the rules for a bed or top edge: `force(edge)` -> a size for an edge the rules
+#   would skip or size otherwise (a bearing pocket's lead-in, a thin rim the owner wants chamfered anyway), or None;
+#   `leave(edge)` -> True to keep an edge sharp (a seat something runs on). Both see the edge before any rule but the
+#   convexity test; their edges are listed in info["forced"] / info["left"].
 #
 # - Bores are left sharp (owner: "bores do not need chaphers unless its for a flathead screw"): an edge on a hole's
 #   wall (is_bore) is skipped. A flat-head screw's countersink is part of the design, not added here.
@@ -94,13 +100,14 @@ def _planar_facing(face, up, sign):
 def _layers(x, step): return math.floor(x / step + 1e-6) * step
 
 
-def select(shape, up, bottom, top, step):
-    """{edge index (0-based): (size, kind)} and the reduced/skipped lists, for `shape` printed with `up` pointing up"""
+def select(shape, up, bottom, top, step, force=None, leave=None):
+    """{edge index (0-based): (size, kind)} and the reduced/skipped lists, for `shape` printed with `up` pointing up;
+    force / leave: the part's own exceptions (see the header); their edges in select.forced / select.left"""
     up = FreeCAD.Vector(up); up.normalize()
     lo = min(v.Point.dot(up) for v in shape.Vertexes)
     bed = [f for f in shape.Faces if _planar_facing(f, up, -1) and abs(f.CenterOfMass.dot(up) - lo) < PLANE_TOL]
     tops = [f for f in shape.Faces if _planar_facing(f, up, +1)]
-    want, reduced, skipped = {}, [], []
+    want, reduced, skipped, forced, left = {}, [], [], [], []
     for kind, faces, size in (("bottom", bed, bottom), ("top", tops, top)):
         for f in faces:
             for e in f.Edges:
@@ -109,23 +116,30 @@ def select(shape, up, bottom, top, step):
                 inf = _edge_info(shape, shape.Edges[i])
                 if inf is None: continue
                 f1, f2, n1, n2, convex, ang = inf
-                if not convex or ang < SHARP_DEG or is_bore(f1) or is_bore(f2): continue
+                if not convex: continue
+                m = shape.Edges[i].valueAt((shape.Edges[i].FirstParameter + shape.Edges[i].LastParameter) / 2)
+                where = tuple(round(c, 1) for c in m)
+                if leave and leave(shape.Edges[i]):
+                    left.append((kind, where)); want[i] = None; continue
+                fd = force(shape.Edges[i]) if force else None
+                if fd:
+                    forced.append((kind, where, fd)); want[i] = (fd, kind); continue
+                if ang < SHARP_DEG or is_bore(f1) or is_bore(f2): continue
                 cap = NARROW_FRAC * min(_width(f1), _width(f2))
                 if kind == "bottom": d = size if cap >= size - 1e-9 else 0.0       # one size, or none
                 else: d = round(_layers(min(size, cap), step), 3)
-                m = shape.Edges[i].valueAt((shape.Edges[i].FirstParameter + shape.Edges[i].LastParameter) / 2)
-                where = tuple(round(c, 1) for c in m)
                 if d < 1e-9 or (kind == "top" and d < step - 1e-9): skipped.append((kind, where, round(cap, 2))); continue
                 if d < size - 1e-9: reduced.append((kind, where, d))
                 want[i] = (d, kind)
-    return want, reduced, skipped, bed, tops
+    select.forced, select.left = forced, left
+    return {i: w for i, w in want.items() if w}, reduced, skipped, bed, tops
 
 
-def chamfer(shape, up, bottom, top, step):
-    """the chamfered copy of `shape` and info {bottom, top, reduced, skipped, removed_mm3}"""
+def chamfer(shape, up, bottom, top, step, force=None, leave=None):
+    """the chamfered copy of `shape` and info {bottom, top, reduced, skipped, forced, left, removed_mm3}"""
     if abs(_layers(top, step) - top) > 1e-6: raise ValueError(f"printchamfer: top {top} mm is not a whole number of {step} mm layers")
-    want, reduced, skipped, bed, tops = select(shape, up, bottom, top, step)
-    info = dict(bottom=sum(1 for d, k in want.values() if k == "bottom"), top=sum(1 for d, k in want.values() if k == "top"),
+    want, reduced, skipped, bed, tops = select(shape, up, bottom, top, step, force, leave)
+    info = dict(forced=select.forced, left=select.left, bottom=sum(1 for d, k in want.values() if k == "bottom"), top=sum(1 for d, k in want.values() if k == "top"),
                 reduced=reduced, skipped=skipped, bed_faces=len(bed), top_faces=len(tops), removed_mm3=0.0)
     if not want: return shape.copy(), info
     info["failed"] = []
@@ -183,11 +197,11 @@ def _mid(e):
     return tuple(round(c, 1) for c in e.valueAt((e.FirstParameter + e.LastParameter) / 2))
 
 
-def unchamfered(orig, new, up, bottom, top, step, skip=()):
+def unchamfered(orig, new, up, bottom, top, step, skip=(), force=None, leave=None):
     """edges of `orig` that select() wants chamfered and that `new` still has where they were (an edge on the same
     line, ends possibly trimmed by a neighbour's chamfer): their midpoints (rounded 0.1). `skip`: midpoints to leave
     out (the skipped and failed lists). [] = every bed and top edge got its chamfer."""
-    want = select(orig, up, bottom, top, step)[0]
+    want = select(orig, up, bottom, top, step, force, leave)[0]
     return [_mid(orig.Edges[i]) for i in want if _mid(orig.Edges[i]) not in skip and _on_line(orig.Edges[i], new) is not None]
 
 
