@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1048" height="1033" font-family="sans-serif" font-size="12"><rect width="100%" height="100%" fill="white"/>
+<defs><pattern id="h" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#999"/></pattern></defs>
+<text x="20" y="22" font-size="14" font-weight="bold">vt350#78 Option A: a finger on the left XY joint (rides with the gantry). Boxes from lite-81, Left head carried.</text>
+<text x="20" y="42">Lever tip = nozzle X -38.06. Throw 9.0 mm (AFC default 8.5 + 0.5; measure on the real cutter). Finger face X -445.1: lever touches at nozzle X -407.0, fully pressed at the travel limit -416.</text>
+<text x="20" y="78" fill="#b00">Clash: the slot 1 dock holds its head at nozzle X -409.7, lever tip X -447.8; this finger would press that lever 2.7 mm at pickup (a cut at the dock).</text>
+<text x="20" y="60">Cost: printing must stay right of nozzle X -406.0 (1 mm margin), so the left edge moves 10.0 mm in: 342.0 to 332.0 mm wide.</text>
+<text x="60" y="113" font-weight="bold">PLAN, looking down (back of the printer at the top)</text>
+<rect x="60" y="125" width="928.0" height="416.0" fill="none" stroke="#ccc"/>
+<rect x="98.4" y="142.5" width="152.1" height="164.2" fill="url(#h)" stroke="black" stroke-width="1.5"/>
+<rect x="163.0" y="145.8" width="1376.0" height="64.0" fill="none" stroke="#777"/>
+<rect x="204.2" y="240.7" width="185.1" height="40.4" fill="none" stroke="#1f77b4" stroke-dasharray="" opacity="1" stroke-width="1.5"/>
+<rect x="219.7" y="315.2" width="154.4" height="117.7" fill="none" stroke="#2ca02c" stroke-dasharray="" opacity="1"/>
+<rect x="215.7" y="344.3" width="162.1" height="103.4" fill="none" stroke="#2ca02c" stroke-dasharray="" opacity="1"/>
+<rect x="175.0" y="364.3" width="133.7" height="92.2" fill="#d62728" fill-opacity="0.35" stroke="#d62728" stroke-dasharray=""/>
+<rect x="233.0" y="240.7" width="185.1" height="40.4" fill="none" stroke="#1f77b4" stroke-dasharray="6,4" opacity="0.55" stroke-width="1.5"/>
+<rect x="248.5" y="315.2" width="154.4" height="117.7" fill="none" stroke="#2ca02c" stroke-dasharray="6,4" opacity="0.55"/>
+<rect x="244.5" y="344.3" width="162.1" height="103.4" fill="none" stroke="#2ca02c" stroke-dasharray="6,4" opacity="0.55"/>
+<rect x="203.8" y="364.3" width="133.7" height="92.2" fill="#d62728" fill-opacity="0.1925" stroke="#d62728" stroke-dasharray="6,4"/>
+<rect x="178.2" y="306.7" width="25.6" height="156.2" fill="#ff7f0e" stroke="black" opacity="0.9"/>
+<line x1="195.16800000000003" y1="125" x2="195.16800000000003" y2="541.0" stroke="#b00" stroke-dasharray="5,3"/><text x="192.16800000000003" y="535.0" fill="#b00" font-size="10" text-anchor="end">slot 1 docked lever tip -447.8</text>
+<line x1="284.0" y1="125" x2="284.0" y2="541.0" stroke="#888" stroke-dasharray="2,3"/><text x="287.0" y="139" fill="#666" font-size="10">print square edge -420</text>
+<text x="92.0" y="555.0" font-size="9" text-anchor="middle" fill="#666">-480</text>
+<text x="156.0" y="555.0" font-size="9" text-anchor="middle" fill="#666">-460</text>
+<text x="220.0" y="555.0" font-size="9" text-anchor="middle" fill="#666">-440</text>
+<text x="284.0" y="555.0" font-size="9" text-anchor="middle" fill="#666">-420</text>
+<text x="348.0" y="555.0" font-size="9" text-anchor="middle" fill="#666">-400</text>
+<text x="412.0" y="555.0" font-size="9" text-anchor="middle" fill="#666">-380</text>
+<text x="476.0" y="555.0" font-size="9" text-anchor="middle" fill="#666">-360</text>
+<text x="540.0" y="555.0" font-size="9" text-anchor="middle" fill="#666">-340</text>
+<text x="604.0" y="555.0" font-size="9" text-anchor="middle" fill="#666">-320</text>
+<text x="668.0" y="555.0" font-size="9" text-anchor="middle" fill="#666">-300</text>
+<text x="732.0" y="555.0" font-size="9" text-anchor="middle" fill="#666">-280</text>
+<text x="796.0" y="555.0" font-size="9" text-anchor="middle" fill="#666">-260</text>
+<text x="860.0" y="555.0" font-size="9" text-anchor="middle" fill="#666">-240</text>
+<text x="924.0" y="555.0" font-size="9" text-anchor="middle" fill="#666">-220</text>
+<text x="988.0" y="555.0" font-size="9" text-anchor="middle" fill="#666">-200</text>
+<text x="60" y="619.0" font-weight="bold">FRONT ELEVATION, looking from the front</text>
+<rect x="60" y="631.0" width="928.0" height="352.0" fill="none" stroke="#ccc"/>
+<rect x="98.4" y="747.8" width="152.1" height="118.4" fill="url(#h)" stroke="black" stroke-width="1.5"/>
+<rect x="163.0" y="775.0" width="1376.0" height="64.0" fill="none" stroke="#777"/>
+<rect x="204.2" y="756.9" width="185.1" height="198.9" fill="none" stroke="#1f77b4" stroke-dasharray="" opacity="1" stroke-width="1.5"/>
+<rect x="219.7" y="721.0" width="154.4" height="37.6" fill="none" stroke="#2ca02c" stroke-dasharray="" opacity="1"/>
+<rect x="215.7" y="729.6" width="162.1" height="24.6" fill="none" stroke="#2ca02c" stroke-dasharray="" opacity="1"/>
+<rect x="175.0" y="729.6" width="133.7" height="18.2" fill="#d62728" fill-opacity="0.35" stroke="#d62728" stroke-dasharray=""/>
+<rect x="233.0" y="756.9" width="185.1" height="198.9" fill="none" stroke="#1f77b4" stroke-dasharray="6,4" opacity="0.55" stroke-width="1.5"/>
+<rect x="248.5" y="721.0" width="154.4" height="37.6" fill="none" stroke="#2ca02c" stroke-dasharray="6,4" opacity="0.55"/>
+<rect x="244.5" y="729.6" width="162.1" height="24.6" fill="none" stroke="#2ca02c" stroke-dasharray="6,4" opacity="0.55"/>
+<rect x="203.8" y="729.6" width="133.7" height="18.2" fill="#d62728" fill-opacity="0.1925" stroke="#d62728" stroke-dasharray="6,4"/>
+<rect x="178.2" y="716.8" width="25.6" height="31.0" fill="#ff7f0e" stroke="black" opacity="0.9"/>
+<line x1="195.16800000000003" y1="631.0" x2="195.16800000000003" y2="983.0" stroke="#b00" stroke-dasharray="5,3"/><text x="192.16800000000003" y="977.0" fill="#b00" font-size="10" text-anchor="end">slot 1 docked lever tip -447.8</text>
+<line x1="284.0" y1="631.0" x2="284.0" y2="983.0" stroke="#888" stroke-dasharray="2,3"/><text x="287.0" y="645.0" fill="#666" font-size="10">print square edge -420</text>
+<text x="92.0" y="997.0" font-size="9" text-anchor="middle" fill="#666">-480</text>
+<text x="156.0" y="997.0" font-size="9" text-anchor="middle" fill="#666">-460</text>
+<text x="220.0" y="997.0" font-size="9" text-anchor="middle" fill="#666">-440</text>
+<text x="284.0" y="997.0" font-size="9" text-anchor="middle" fill="#666">-420</text>
+<text x="348.0" y="997.0" font-size="9" text-anchor="middle" fill="#666">-400</text>
+<text x="412.0" y="997.0" font-size="9" text-anchor="middle" fill="#666">-380</text>
+<text x="476.0" y="997.0" font-size="9" text-anchor="middle" fill="#666">-360</text>
+<text x="540.0" y="997.0" font-size="9" text-anchor="middle" fill="#666">-340</text>
+<text x="604.0" y="997.0" font-size="9" text-anchor="middle" fill="#666">-320</text>
+<text x="668.0" y="997.0" font-size="9" text-anchor="middle" fill="#666">-300</text>
+<text x="732.0" y="997.0" font-size="9" text-anchor="middle" fill="#666">-280</text>
+<text x="796.0" y="997.0" font-size="9" text-anchor="middle" fill="#666">-260</text>
+<text x="860.0" y="997.0" font-size="9" text-anchor="middle" fill="#666">-240</text>
+<text x="924.0" y="997.0" font-size="9" text-anchor="middle" fill="#666">-220</text>
+<text x="988.0" y="997.0" font-size="9" text-anchor="middle" fill="#666">-200</text>
+<text x="20" y="1013.0" font-size="11"><tspan fill="#d62728">red: Crossbow lever</tspan>   <tspan fill="#1f77b4">blue: carriage</tspan>   <tspan fill="#2ca02c">green: Crossbow body + adapter</tspan>   solid = at the travel limit -416, dashed = first touch -407.0   <tspan fill="#ff7f0e">orange: finger</tspan>   hatched: XY left joint (box only)</text>
+</svg>
