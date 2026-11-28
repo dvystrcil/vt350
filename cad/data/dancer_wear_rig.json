@@ -1,7 +1,7 @@
 {
  "cut_z": [
   155.0,
-  360.0
+  358.0
  ],
  "axle_travel_z": [
   219.2,
@@ -10,7 +10,7 @@
  "stroke": 68.5,
  "slot_z": [
   215.5,
-  360.0
+  358.0
  ],
  "slot_w": 5.4,
  "groove_d": 1.7,
@@ -27,7 +27,7 @@
  "rig_mm": [
   145.6,
   70.0,
-  205.0
+  203.0
  ],
  "wheel_g": 40.9,
  "out": "/home/dan/Documents/VT350/prints/dancer-wear-rig",

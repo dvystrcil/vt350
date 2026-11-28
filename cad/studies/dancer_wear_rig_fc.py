@@ -10,12 +10,12 @@
 #
 # The rig is a piece of the real stack, so the dowel slides on the surfaces it will slide on in the printer:
 #   - stack_body() for T0 and T1's stack (its three plates and the post: the same plates, axle grooves, slot width,
-#     windows and rungs), cut out of the middle section (Z 155..360), printed standing as the real sections are; the
+#     windows and rungs), cut out of the middle section (Z 155..358, the windows' tops peaked at 45 degrees as the real stack's), printed standing as the real sections are; the
 #     slots shortened to the travel the rig can give. The test wheel runs in the first channel (an outer plate on one
 #     side, the shared plate on the other, as T0's); the second channel can take a second wheel later (another
 #     material, another dowel);
 #   - a base flange under it (4 thick, 4 holes for wood screws or a clamp to the bench);
-#   - the fixed leg's anchor: a 4.2 hole through the plates' rung at Z 350, above the wheel's highest sweep: an M4
+#   - the fixed leg's anchor: a 4.2 teardrop hole through the plates' rung at Z 350, above the wheel's highest sweep: an M4
 #     screw (or any 4 mm pin) through it, the cord tied round it between the plates. The grooves run out of the top
 #     (as the real middle section's, owner 2026-11-27): the wheel drops in with the pin out, and the pin then stops
 #     it riding up out of them;
@@ -35,7 +35,7 @@ def log(*a):
     _log.write(" ".join(str(x) for x in a) + "\n"); _log.flush()
 
 
-CUT = (155.0, 360.0)            # the piece of the stack (real Z): the middle section's bottom, to past the rung 342..358
+CUT = (155.0, 358.0)            # the piece of the stack (real Z): the middle section's bottom, to the rung 342..358's top
 BASE_T, BASE_Y = 4.0, 35.0      # the base flange: thickness; half its depth in Y
 ANCHOR_Z, ANCHOR_R = 350.0, 2.1  # the fixed leg's pin: in the rung 342..358; an M4 (or 4 mm pin) through it
 CLEAR = 2.0                     # the wheel's sweep clear of the base and the pin
@@ -71,8 +71,13 @@ def main():
         for hy in (y0 + L.PITCH / 2 - BASE_Y + 7.0, y0 + L.PITCH / 2 + BASE_Y - 7.0):
             base = base.cut(Part.makeCylinder(2.75, BASE_T + 2, V(hx, hy, CUT[0] - 1), V(0, 0, 1)))
     rig = piece.fuse(base).removeSplitter()
+    # the pin's hole: a teardrop, its point up at 45 degrees, so it prints standing with no support (owner 2026-11-27)
     pin = Part.makeCylinder(ANCHOR_R, 200.0, V(cx - RP, y0 - 100.0, ANCHOR_Z), V(0, 1, 0))
-    rig = rig.cut(pin).removeSplitter()
+    k = ANCHOR_R / math.sqrt(2)
+    tip = Part.Face(Part.makePolygon([V(cx - RP - k, y0 - 100.0, ANCHOR_Z + k), V(cx - RP + k, y0 - 100.0, ANCHOR_Z + k),
+                                      V(cx - RP, y0 - 100.0, ANCHOR_Z + ANCHOR_R * math.sqrt(2)),
+                                      V(cx - RP - k, y0 - 100.0, ANCHOR_Z + k)])).extrude(V(0, 200.0, 0))
+    rig = rig.cut(pin.fuse(tip)).removeSplitter()
     # the leg's path, from the pin down between the plates to the wheel's side at its lowest: nothing in the way
     leg = Part.makeCylinder(2.55, ANCHOR_Z - ANCHOR_R - axle[0], V(cx - RP, y0, axle[0]), V(0, 0, 1))
     check(rig.common(leg).Volume < 0.01, f"the fixed leg's path (X {cx - RP:.1f}, Z {axle[0]:.1f}..{ANCHOR_Z:g}) is clear "
