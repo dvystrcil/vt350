@@ -548,3 +548,19 @@ chevron runs on through the post.
 above the bed that is lower than everything it touches and has a downward face. Pits and hole floors don't count. Give
 it a shape's `tessellate(0.05)` or an STL (`stl_triangles`). The lite-81 pass checks every stack section with it, and
 the wear rig checks its STLs.
+
+## Spline-spoked wheels stall the sweeps' booleans: give them a sweep stand-in (2026-11-28, lite-81)
+
+lite-81's dancer sheave halves (6 curved B-spline spokes, print chamfers) made every boolean against them slow. The
+Z sweep's "bed down" search, 3.5 minutes on lite-80, didn't finish in an hour on the lane (step timeout) or in hours
+on the laptop, and the toolhead sweep hit clashlib's 2 h timeout. Two fixes didn't need the model:
+- narrowing each pair's scan to the Z band of the fixed part's tessellation under the moving part's footprint gave
+  identical results on lite-80 but didn't rescue lite-81;
+- a prism boolean as a pre-filter is unsafe: a common() of a big box with a mesh-made solid ([a]_Duct-4010-right)
+  came back empty where the real probe found a contact.
+
+What works: in the pass, beside each such part, a plain envelope (here an annulus: outer R, the half's Y span, a hole
+smaller than its own) with `StandInFor` (renders draw the real part) and `SweepStandIn = True`.
+`sweep_toolhead.plan` excludes the real part and keeps the envelope, so the Z sweep and clashlib check the envelope.
+The pass checks the envelope holds the part whole (`part.cut(envelope).Volume < 1e-3`), so any contact it reports
+comes no later than the real part's.

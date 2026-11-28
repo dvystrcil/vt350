@@ -140,7 +140,11 @@ def plan(out):
     for h, d in HEADS.items():
         dock_copies += [o.Name for o in leaves if d["dock"] in P[o.Name] and ("Carriage" in P[o.Name] or "Carriage(Mirror)" in P[o.Name])]
     dock_copies = sorted(set(dock_copies))
-    exclude = sorted(set([o.Name for o in leaves if P[o.Name] & EXCLUDE_PATHS] + dock_copies))
+    # a part with a sweep stand-in (SweepStandIn, lite-81's sheave halves: their spline spokes stalled the booleans) is
+    # checked as that stand-in, an envelope around it: the real part is excluded, the stand-in stays in
+    swept = sorted({getattr(o, "StandInFor", "") for o in doc.Objects if getattr(o, "SweepStandIn", False)} - {""})
+    if swept: notes.append(f"{len(swept)} parts checked as their sweep stand-ins (SweepStandIn)")
+    exclude = sorted(set([o.Name for o in leaves if P[o.Name] & EXCLUDE_PATHS] + dock_copies + swept))
     bed = [o.Name for o in leaves if rides_with_bed(P[o.Name], o.Label)]
     gantry = [o.Name for o in leaves if P[o.Name] & GANTRY_PATHS or o.Label in GANTRY_LABELS]
     carriage = [o.Name for o in leaves if P[o.Name] & CARRIAGE_PATHS or o.Label in CARRIAGE_LABELS]

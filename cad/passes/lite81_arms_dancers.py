@@ -996,6 +996,27 @@ def main(p):
     for k, label, sh, role in parts:
         o = doc.addObject("Part::Feature", "AD81_" + k); grp.addObject(o)
         o.Placement = FreeCAD.Placement(); o.Shape = l78.to_local(o, sh); o.Label = label
+    # sweep stand-ins (owner 2026-11-28): the halves' spline spokes made each boolean of the Z and toolhead sweeps so
+    # slow that neither finished on lite-81. Each half gets a plain annulus around it (outer R, its Y span, a hole
+    # smaller than its own), hidden; sweep_toolhead.plan checks the annulus instead (SweepStandIn), renders draw the
+    # real half (StandInFor). An annulus holds the whole half, so a contact with it comes no later than with the half.
+    shapes = {k: sh for k, _, sh, _ in parts}
+    for t, (cx, y, zc) in info["sheaves"].items():
+        for ab in "ab":
+            real = doc.getObject("AD81_sheave" + str(t) + ab); hb = shapes["sheave" + str(t) + ab].BoundBox
+            ax = V(0, 1, 0)
+            ring = Part.makeCylinder(SHEAVE_R + 0.05, hb.YLength + 0.1, V(cx, hb.YMin - 0.05, zc), ax).cut(
+                Part.makeCylinder(LIP_R - 0.05, hb.YLength + 2, V(cx, hb.YMin - 1, zc), ax))
+            left = shapes["sheave" + str(t) + ab].cut(ring).Volume
+            p.check(left < 1e-3, f"T{t} half {ab}: its sweep annulus holds it whole ({left:.4f} mm3 outside)")
+            o = doc.addObject("Part::Feature", "AD81_sheave" + str(t) + ab + "_sweep"); grp.addObject(o)
+            o.Placement = FreeCAD.Placement(); o.Shape = l78.to_local(o, ring)
+            o.Label = f"Sweep stand-in for Dancer sheave T{t} half {'12'['ab'.index(ab)]}/2 (annulus R {SHEAVE_R:.1f}) [lite-81, #312]"
+            o.addProperty("App::PropertyString", "StandInFor", "StandIn", "the real part this stands in for")
+            o.StandInFor = real.Name
+            o.addProperty("App::PropertyBool", "SweepStandIn", "StandIn", "the sweeps check this instead of the real part")
+            o.SweepStandIn = True
+            o.Visibility = False
     for t, (ts, cs) in runs.items():
         tubes[t].Shape = l78.to_local(tubes[t], ts); cables[t].Shape = l78.to_local(cables[t], cs)
     for o in ties: doc.removeObject(o.Name)
