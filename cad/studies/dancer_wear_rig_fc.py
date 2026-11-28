@@ -115,8 +115,11 @@ def main():
     files = [("rig.stl", place(rig), "Rig: a piece of T0's stack + base (print standing)", "printed"),
              ("half1.stl", place(a, 90), "Sheave half 1 (print plate face down)", "printed"),
              ("half2.stl", place(b, -90), "Sheave half 2 (print plate face down)", "accent")]
+    import floating
     for f, s, lab, role in files:
         s.exportStl(os.path.join(OUT, f)); log("wrote", os.path.join(OUT, f), f"({s.Volume / 1000:.1f} cm3)")
+        fl = floating.floating_starts(*floating.stl_triangles(os.path.join(OUT, f)), tol=0.01)
+        check(not fl, f"{f} has no region starting in mid-air as it prints (the slicer's 'floating regions'): {fl}")
     json.dump([{"file": f, "label": lab, "role": r} for f, _, lab, r in files], open(os.path.join(OUT, "parts.json"), "w"))
     # the assembled rig at mid travel, for a render
     asm = os.path.join(OUT, "assembled"); os.makedirs(asm, exist_ok=True)
