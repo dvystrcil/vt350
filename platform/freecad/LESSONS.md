@@ -549,18 +549,28 @@ above the bed that is lower than everything it touches and has a downward face. 
 it a shape's `tessellate(0.05)` or an STL (`stl_triangles`). The lite-81 pass checks every stack section with it, and
 the wear rig checks its STLs.
 
-## Spline-spoked wheels stall the sweeps' booleans: give them a sweep stand-in (2026-11-28, lite-81)
+## A slow sweep: trace the pairs before guessing which part is slow (2026-11-28, lite-81)
 
-lite-81's dancer sheave halves (6 curved B-spline spokes, print chamfers) made every boolean against them slow. The
-Z sweep's "bed down" search, 3.5 minutes on lite-80, didn't finish in an hour on the lane (step timeout) or in hours
-on the laptop, and the toolhead sweep hit clashlib's 2 h timeout. Two fixes didn't need the model:
-- narrowing each pair's scan to the Z band of the fixed part's tessellation under the moving part's footprint gave
-  identical results on lite-80 but didn't rescue lite-81;
-- a prism boolean as a pre-filter is unsafe: a common() of a big box with a mesh-made solid ([a]_Duct-4010-right)
-  came back empty where the real probe found a contact.
+lite-81's Z sweep timed out (1 h step limit on the lane; the "bed down" search had taken 3.5 min on lite-80). I first
+blamed the new dancer sheave halves (spline spokes) and gave each a sweep stand-in. The next lane run timed out the
+same way. A trace (each `_t_contact` pair's start and end, with both parts' boxes and face counts, written to a file by
+the workers) found the real cost in 15 minutes: the bed against the Bowden tubes and O2S cables, whose boxes now cover
+the bed's travel (see "Narrow each contact scan" below). Trace first, then fix.
 
-What works: in the pass, beside each such part, a plain envelope (here an annulus: outer R, the half's Y span, a hole
-smaller than its own) with `StandInFor` (renders draw the real part) and `SweepStandIn = True`.
+The stand-in pattern itself stays, as a tool for a part whose booleans are truly slow: in the pass, beside the part, a
+plain envelope (here an annulus) with `StandInFor` (renders draw the real part) and `SweepStandIn = True`;
 `sweep_toolhead.plan` excludes the real part and keeps the envelope, so the Z sweep and clashlib check the envelope.
-The pass checks the envelope holds the part whole (`part.cut(envelope).Volume < 1e-3`), so any contact it reports
-comes no later than the real part's.
+The pass checks that the envelope holds the part whole (`part.cut(envelope).Volume < 1e-3`), so any contact it
+reports comes no later than the real part's. Don't use a prism `common()` as a pre-filter: on a mesh-made solid
+([a]_Duct-4010-right) it came back empty where the real probe found a contact.
+
+## Narrow each contact scan to where the fixed part's mesh really is (2026-11-28, #312)
+
+`contact.window` works from bounding boxes. A long flexible run (a Bowden tube or a USB cable, a ~1000-face swept
+pipe) that drops from the gantry down to the bed's level has a box covering the bed's whole Z travel, so every bed
+part got a 20–60 mm scan against it in 0.5 mm steps, and each probe (a `common()` with that pipe) took 4–6 s. lite-81's
+runs drop to the dancers (Z ~230; lite-80's stayed above Z 380), and the Z sweep no longer finished in an hour.
+`litelib._t_contact` now narrows the scan first (`contact.narrow`): the Z range of the fixed part's tessellation
+triangles whose XY box meets the moving part's footprint bounds where any contact can be. It's found without a
+boolean, because a `common()` with a big box can come back empty on a mesh-made solid and so can't prove "clear".
+On lite-80 the Z sweep's results are identical to main's.
