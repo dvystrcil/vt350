@@ -516,3 +516,14 @@ of parts it never comes near: 9346 pairs, each a full `common()`, some taking 60
 Two more traps from the same runs: a common that is a zero-thickness sheet (a block screwed flush under a bar) can
 report a small non-zero volume, so treat a result under 0.01 mm thick as touching. And `common()` can throw "Null
 shape" on a pair that's 16 mm apart: fall back to `distToShape()` before calling it an overlap.
+
+## Narrow each contact scan to where the fixed part's mesh really is (2026-11-28, #312)
+
+`contact.window` works from bounding boxes. A long flexible run (a Bowden tube or a USB cable, a ~1000-face swept
+pipe) that drops from the gantry down to the bed's level has a box covering the bed's whole Z travel, so every bed
+part got a 20–60 mm scan against it in 0.5 mm steps, and each probe (a `common()` with that pipe) took 4–6 s. lite-81's
+runs drop to the dancers (Z ~230; lite-80's stayed above Z 380), and the Z sweep no longer finished in an hour.
+`litelib._t_contact` now narrows the scan first (`contact.narrow`): the Z range of the fixed part's tessellation
+triangles whose XY box meets the moving part's footprint bounds where any contact can be. It's found without a
+boolean, because a `common()` with a big box can come back empty on a mesh-made solid and so can't prove "clear".
+On lite-80 the Z sweep's results are identical to main's.

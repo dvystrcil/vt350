@@ -309,5 +309,43 @@ class Lines(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "klipper_position_max_mm"): contact.parse(old)
 
 
+class Narrow(unittest.TestCase):
+    """narrow(): the moving box's swept prism met the fixed part's material in a Z band; only travel that brings the
+    box onto that band is worth scanning, on the full scan's own grid."""
+    A = (0.0, 0.0, 100.0, 10.0, 10.0, 110.0)          # the moving part's box at travel 0
+
+    def test_no_material_in_the_prism_is_clear(self):
+        self.assertIsNone(contact.narrow(self.A, None, -1, 0.0, 200.0))
+
+    def test_down_the_window_starts_on_the_grid_below_the_band(self):
+        # going down, the box's bottom (100 - d) reaches the band's top 40 at d = 60; less the margin, on the 0.5 grid
+        lo, hi = contact.narrow(self.A, (30.0, 40.0), -1, 0.0, 200.0)
+        self.assertLessEqual(lo, 60.0 - contact.MARGIN)
+        self.assertGreater(lo, 60.0 - contact.MARGIN - contact.STEP)
+        self.assertAlmostEqual(lo / contact.STEP, round(lo / contact.STEP))
+        self.assertGreaterEqual(hi, 110.0 - 30.0)       # the box's top passes the band's bottom at d = 80
+
+    def test_up_mirrors_down(self):
+        lo, hi = contact.narrow(self.A, (150.0, 160.0), +1, 3.0, 200.0)
+        self.assertLessEqual(lo, 40.0 - contact.MARGIN)            # top 110 + d reaches 150 at d = 40
+        self.assertAlmostEqual((lo - 3.0) / contact.STEP, round((lo - 3.0) / contact.STEP))   # lo's own grid
+        self.assertGreaterEqual(hi, 60.0)                          # bottom 100 + d passes 160 at d = 60
+
+    def test_the_window_never_grows(self):
+        lo, hi = contact.narrow(self.A, (-500.0, 500.0), -1, 5.0, 20.0)
+        self.assertEqual((lo, hi), (5.0, 20.0))
+
+    def test_a_band_outside_the_window_is_clear(self):
+        self.assertIsNone(contact.narrow(self.A, (-200.0, -150.0), -1, 0.0, 100.0))   # needs d >= 250
+
+    def test_narrowed_scan_finds_what_the_full_scan_finds(self):
+        # a slab that overlaps for travel 61.37..80: the full scan and the narrowed one report the same travel
+        probe = slab(61.37, 80.0)
+        full = fc(probe, 0.0, 200.0)
+        lo, hi = contact.narrow(self.A, (30.0, 40.0), -1, 0.0, 200.0)
+        part = fc(probe, lo, hi)
+        self.assertEqual(full, part)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

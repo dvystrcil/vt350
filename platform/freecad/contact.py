@@ -2,6 +2,8 @@
 #
 #   window(a_box, b_box, direction)       -> (lo, hi) travel that can bring moving a into fixed b, or None
 #   first_contact(probe, lo, hi)           -> the first travel in [lo, hi] where probe(d) (an overlap volume) > TOL
+#   narrow(a_box, band, direction, lo, hi) -> the part of [lo, hi] worth scanning, given where the fixed part's material
+#                                             sits inside the moving box's swept prism (None: it can't be touched)
 #   search(pairs, run, cap)                -> the first contact over many pairs, pruned by the best one so far
 #   line(key, value, why) / parse(log)     -> the log's "key=value (why)" limit lines, and reading them back
 #
@@ -9,7 +11,7 @@
 # zmin, xmax, ymax, zmax); they only bound where to look, a limit always comes from probe (a boolean common() volume
 # in z_sweep.py). The scan steps STEP mm from lo, then bisects the first overlapping step down to EPS. A part thinner
 # than STEP in Z could be stepped over; the thinnest in the bed's path are the 1.4 mm magnet sheet and ~1 mm washers.
-import re
+import math, re
 
 STEP = 0.5          # mm, scan step
 EPS = 0.005         # mm, bisection stops when the clear..overlapping bracket is this narrow
@@ -40,6 +42,23 @@ def window(a, b, direction, margin=MARGIN, cap=None):
         if lo >= cap: return None
         hi = min(hi, cap)
     return lo, hi
+
+
+def narrow(a, band, direction, lo, hi, step=STEP, margin=MARGIN):
+    """Moving box a (at travel 0) sweeps a prism over travel [lo, hi]; band is the (zmin, zmax) of the fixed part's
+    material inside that prism, or None if there is none. Travel that keeps a's box off the band can't overlap, so
+    -> (lo', hi') within [lo, hi]: lo' on the full scan's grid (lo + k * step) so first_contact probes the same
+    travels the full scan would from there, and its answer is the same; or None if the band is never reached.
+    (vt350#312: the dancer sheaves' spline spokes made each probe slow; lite-81's bed-down search ran past an hour.)"""
+    if band is None: return None
+    cz0, cz1 = band
+    if direction == -1: d0, d1 = a[2] - cz1, a[5] - cz0
+    elif direction == 1: d0, d1 = cz0 - a[5], cz1 - a[2]
+    else: raise ValueError(f"direction {direction!r} must be -1 or +1")
+    d0, d1 = d0 - margin, d1 + margin
+    if d1 < lo or d0 > hi: return None
+    k = max(0, math.floor((d0 - lo) / step))
+    return lo + k * step, max(lo + k * step, min(hi, d1))
 
 
 def first_contact(probe, lo, hi, step=STEP, eps=EPS, tol=TOL):
