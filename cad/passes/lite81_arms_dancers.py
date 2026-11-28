@@ -323,6 +323,24 @@ def plate(cx, yc, slot, side=0, faces=(-1, 1), xspan=None):
     return p
 
 
+def window(u0, u1, a, b, w0, w1, across):
+    """A stack window, Z a..b, u0..u1 wide across X ("x", cut through along Y from w0 to w1) or across Y ("y", cut
+    along X), shaped so the rungs between windows are chevrons at 45 degrees (owner 2026-11-27, at the wear rig: "The
+    crossbars need support ... can you make them angled at 45"): its top peaks at b in the middle, its bottom rises
+    the same 45 degrees to a + h, so every rung is a constant-thickness chevron that prints standing with no support,
+    the window keeps the old rectangle's area (the printed volume doesn't grow), and a split plane inside a rung still
+    crosses solid all the way across."""
+    h = (u1 - u0) / 2
+    assert b - a - h > 1.0, f"window Z {a:g}..{b:g} too short for 45-degree rungs {u1 - u0:.1f} wide"
+    m = (u0 + u1) / 2
+    pts = [(u0, a), (m, a + h), (u1, a), (u1, b - h), (m, b), (u0, b - h), (u0, a)]
+    if across == "x":
+        wire = Part.makePolygon([V(u, w0, z) for u, z in pts]); d = V(0, w1 - w0, 0)
+    else:
+        wire = Part.makePolygon([V(w0, u, z) for u, z in pts]); d = V(w1 - w0, 0, 0)
+    return Part.Face(wire).extrude(d)
+
+
 def stack_body(cx, ycs, slot):
     """One stack's plates (widened to the post) and its post, full height, with the tie-rod holes and nut pockets;
     -> (body, rods, post X)."""
@@ -343,11 +361,11 @@ def stack_body(cx, ycs, slot):
     py0, py1 = y0 + ROD_INSET + ROD_HOLE + 1.6, y1 - ROD_INSET - ROD_HOLE - 1.6
     big = FLANGE[1] + 2.0
     for a, b in WINDOWS:
-        body = body.cut(Part.makeBox(wx1 - wx0, y1 - y0 + 2 * big, b - a, V(wx0, y0 - big, a)))
-        body = body.cut(Part.makeBox(POST_W + 2.0, py1 - py0, b - a, V(px - POST_W / 2 - 1.0, py0, a)))
+        body = body.cut(window(wx0, wx1, a, b, y0 - big, y1 + big, "x"))
+        body = body.cut(window(py0, py1, a, b, px - POST_W / 2 - 1.0, px + POST_W / 2 + 1.0, "y"))
         if b <= slot[0] - RUNG or a >= slot[1] + RUNG:   # outside the axle grooves the rail itself is a frame too:
             bar = FLANGE[0] + 1.0                       # two side bars (the flanges' width + 1) and the rungs
-            body = body.cut(Part.makeBox(PLATE_W - 2 * bar, y1 - y0 + 2, b - a, V(cx - PLATE_W / 2 + bar, y0 - 1, a)))
+            body = body.cut(window(cx - PLATE_W / 2 + bar, cx + PLATE_W / 2 - bar, a, b, y0 - 1, y1 + 1, "x"))
     body = body.removeSplitter()
     rods = []
     for y in (y0 + ROD_INSET, y1 - ROD_INSET):
@@ -868,7 +886,9 @@ def main(p):
             g = re.sub(r"[-\d].*", "", k); vol[g] = vol.get(g, 0.0) + s.Volume / 1000.0
     total = sum(vol.values())
     p.log(f"printed volume {total:.0f} cm3: " + ", ".join(f"{g} {v:.0f}" for g, v in sorted(vol.items(), key=lambda kv: -kv[1])))
-    p.check(total < 1810 / 2, f"printed volume {total:.0f} cm3, under half the first draft's 1810")
+    # was < 1810 / 2 (905, owner "too much material"); the 45-degree chevron rungs cost ~180 cm3 for printing standing
+    # with no support (owner 2026-11-27, from the elevation "dancer-stack-chevrons": "it looks right")
+    p.check(total < 1100, f"printed volume {total:.0f} cm3, under 1100 (905 + the chevron rungs; the first draft 1810)")
     # ---- the bundles: new runs from the ceiling to the head, the old pieces above the roof / outside / in the head kept
     runs, routes = {}, {}
     for t in range(5):
