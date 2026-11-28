@@ -19,3 +19,7 @@ jobs:
         run: python3 cad/render/test_render_full.py 2>&1 | tee test-render-full.log
       - name: Confirm every render_full test ran
         run: grep -qE '^Ran [1-9][0-9]* tests' test-render-full.log && tail -1 test-render-full.log | grep -qx 'OK'
+      - name: Test the dancer section drawing (plain python, against a saved lite-81 export)
+        run: python3 cad/render/test_dancer_section.py 2>&1 | tee test-dancer-section.log
+      - name: Confirm every dancer section test ran
+        run: grep -qE '^Ran [1-9][0-9]* tests' test-dancer-section.log && tail -1 test-dancer-section.log | grep -qx 'OK'

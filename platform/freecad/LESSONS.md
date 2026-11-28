@@ -516,3 +516,12 @@ of parts it never comes near: 9346 pairs, each a full `common()`, some taking 60
 Two more traps from the same runs: a common that is a zero-thickness sheet (a block screwed flush under a bar) can
 report a small non-zero volume, so treat a result under 0.01 mm thick as touching. And `common()` can throw "Null
 shape" on a pair that's 16 mm apart: fall back to `distToShape()` before calling it an overlap.
+
+## A section drawing: `Shape.slice` gives the cut outlines, no GUI or TechDraw needed (2026-11-27, lite-81)
+
+The dancer's hatched section drawing (`cad/render/dancer_section_fc.py` then `dancer_section.py`) cuts each part with
+`shape.slice(normal, d)`. It returns the closed wires where the plane meets the solid: one per loop, holes as their
+own wires. A plane that misses the part returns `[]` and doesn't throw. Map each wire's `discretize(Deflection=0.02)`
+points to the plane's 2D axes, write them to JSON, and draw in plain python: an even-odd fill puts the holes back.
+That beats TechDraw's section view here because it runs headless under `freecadcmd`, needs no model file (the pass's
+own builders give the parts), and the drawing step can be tested in CI against a saved export.
