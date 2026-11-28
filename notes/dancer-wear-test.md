@@ -35,7 +35,7 @@ dowel. Wear on the plastic should be similar or worse in PETG. If PETG passes, o
 
 **Slice (Orca 2.5.2, slice-check):**
 - Each half: about 17 min and 15 g, with no support worth the name.
-- The rig: about 4 h 32 min and 177 g. Its crossbars are the stack's 45° chevrons (owner 2026-11-27: "The crossbars
+- The rig: about 4 h 32 min and 180 g. Its crossbars are the stack's 45° chevrons (owner 2026-11-27: "The crossbars
   need support ... can you make them angled at 45"), and its pin hole is a teardrop, so it prints standing with
   supports off, as the project does.
 - Orca's support check, which flags overhangs at 45° and flatter, still marks the slopes: 25 g, since they sit
