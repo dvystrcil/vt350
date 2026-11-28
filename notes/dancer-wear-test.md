@@ -26,8 +26,19 @@ it slides on in the printer:
 The STLs are written to `~/Documents/VT350/prints/dancer-wear-rig/` (not in git). The numbers are in
 `cad/data/dancer_wear_rig.json`.
 
-Print the rig and halves in the **same filament and settings as the real stack and sheaves**, annealed or not as the
-real parts will be. The test only means something for the material it was run in.
+**Print project:** `~/Documents/VT350/prints/dancer-wear-rig/dancer-wear-rig.3mf` (OrcaSlicer, the Neptune presets
+from `parts/slice/orca/`). Plate 1 is the rig, standing; plate 2 is both halves, plate face down.
+
+**Material: PETG** (owner 2026-11-27: "I will print with petg for this"), with the Neptune's PETG preset. The real
+stack and sheaves are PET-GF. Glass fibre is abrasive, so a clean result in PETG doesn't yet clear PET-GF for the
+dowel. Wear on the plastic should be similar or worse in PETG. If PETG passes, one more set in PET-GF settles it.
+
+**Slice (Orca 2.5.2, slice-check):**
+- Each half: about 17 min and 15 g, with no support worth the name.
+- The rig: about 4 h 37 min and 178 g, including about 30 g of support that Orca's 45° check adds under the frame's
+  rungs (the bridges across the window tops, about 30 mm). Your process prints with supports off, as the project
+  does. Try the bridges as they are: they're the same rungs the real stack sections will bridge. Only add supports
+  if one sags.
 
 ## Before
 
