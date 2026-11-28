@@ -9,7 +9,7 @@ What is still to buy, round by round in build order, for **2 heads** ('per head'
 | 1. Frame | #7, #8, #9 | 21 | - | 21 | 11 |
 | 2. Motion | #10, #11 | 14 | USD 179.97 | 13 | 5 |
 | 3. Electronics | #13 | 7 | - | 7 | 5 |
-| 4. Toolheads | #12 | 21 | USD 3.51 | 20 | 6 |
+| 4. Toolheads | #12 | 27 | USD 3.51 | 26 | 7 |
 | 5. Enclosure and calibration | #14, #15 | 4 | - | 4 | 17 |
 
 ## Round 1: Frame
@@ -115,7 +115,7 @@ To decide before buying this round:
 
 The toolchanger and the heads. Per-head rows are costed for every head; one head's worth is largely owned already.
 
-Stages #12. Priced cost: **USD 3.51**, plus 20 unpriced row(s).
+Stages #12. Priced cost: **USD 3.51**, plus 26 unpriced row(s).
 
 | Item | To buy | Unit price | Cost | Stage | Vendor |
 |---|---|---|---|---|---|
@@ -140,6 +140,12 @@ Stages #12. Priced cost: **USD 3.51**, plus 20 unpriced row(s).
 | TC Undertaker nozzle, 0.6 mm | 1 | - | - | #12 | - |
 | Neopixel LED PCB (RGBW preferred) | 6 | - | - | #12 | - |
 | 28 AWG wire, red / black / blue, ~400 mm each per head | 2 | - | - | #12 | - |
+| 625-2RS bearing (5 x 16 x 5), dancer sheaves | 6 | - | - | #12 | - |
+| M2x5 socket head cap screw (SHCS), dancer sheave halves | 18 | - | - | #12 | - |
+| M2 heat-set insert, short: M2 x 3 mm long, ~3.5 mm OD, dancer sheave halves | 18 | - | - | #12 | - |
+| M4 threaded rod, 408 mm, dancer stack tie rods | 4 | - | - | #12 | - |
+| M4 hex nut, dancer stack tie rods | 8 | - | - | #12 | - |
+| Steel rod 5 mm x 374 mm, Bowden arm hinge shaft | 1 | - | - | #12 | - |
 
 To decide before buying this round:
 
@@ -149,6 +155,7 @@ To decide before buying this round:
 - Crossbow CNC filament cutter (DW-Tas, aluminium) (#12)
 - O2S USB cable, ~3 m (#12)
 - PTFE bowden, OD 4.12 mm, ~0.6 m (#12)
+- M5 screw + drop-in T-nut (2020), dancer stack caps and leg guide bridges (#12)
 
 ## Round 5: Enclosure and calibration
 
