@@ -69,13 +69,17 @@ SHEAVE_R, SHEAVE_T = DANCER["RP"] + 4.6, 8.0   # 8 thick (was 10): room for groo
 GROOVE_W, GROOVE_IN = 5.6, DANCER["RP"] - 2.55 - 2.55 - 0.6   # groove bottom: the cable (inner, centre RP - 2.55) + 0.6
 BEARING = (8.0, 2.5, 5.0)                     # 625: OD/2, ID/2, width
 PITCH = 13.0                                  # the dancer study's plane pitch (Y 446 / 459 / 472)
-GROOVE_D, PLATE_GAP = 1.6, 0.4                # the plates' blind axle grooves: depth; sheave face to plate face
+GROOVE_D, PLATE_GAP = 1.7, 0.4                # the plates' axle grooves: depth (was 1.6: a stock 5 x 12 dowel, owner
+                                              # 2026-11-27); sheave face to plate face
 # The axle: a 5 mm steel dowel pin pressed into the 625's inner race (owner 2026-11-26: "a steel dowel for the axle ...
 # friction fit"). Its ends slide in BLIND grooves, one per axle end: dry run 10's shared through-slots let two
 # neighbours' axle ends meet as one sheave passed the other (owner, from the cutaway).
-AXLE_L = SHEAVE_T + 2 * (PLATE_GAP + GROOVE_D) - 0.2   # 11.8: 0.1 short of each groove's bottom
+AXLE_L = SHEAVE_T + 2 * (PLATE_GAP + GROOVE_D) - 0.2   # 12.0, a stock length: 0.1 short of each groove's bottom
+# The grooves are closed below and run out of the middle stack section's top face (SPLIT_Z[1]), so a finished wheel
+# drops in from above before the top section goes on and closes them (owner 2026-11-27, choosing between that, a
+# removable outer plate and entry notches); the axle's travel stays below the seam (checked).
 PLATE_T, PLATE_W = PITCH - SHEAVE_T - 2 * PLATE_GAP, 18.0   # the plates: 4.2 thick (Y), 18 wide (X; was 24: owner
-                                              # 2026-11-27 "too much material"); web 1.0 between grooves
+                                              # 2026-11-27 "too much material"); web 0.8 between grooves
 SLOT_W = 5.4
 Z_TOP, Z_G = DANCER["z_top"], 470.0
 # The RAILS (owner 2026-11-26: "have the axle travel in a slotted rail held in place between the bottom and gantry
@@ -648,7 +652,7 @@ def build():
         tools = [t for t, _ in members]
         ys = sorted(y for _, y in members)
         lo = lowest(tools)
-        slot = (lo - SLOT_W / 2 - 5.0, Z_TOP + SLOT_W / 2 + 1.0)
+        slot = (lo - SLOT_W / 2 - 5.0, SPLIT_Z[1])         # open at the middle section's top: the wheel drops in
         for t, y in members:
             zc = parked_z(t)
             info["sheaves"][t] = (cx, y, zc)
@@ -807,15 +811,17 @@ def main(p):
             p.check(all(PLATE_T / 2 - GROOVE_D < d < PLATE_T / 2 for d in depth),
                     f"T{t} axle ends each in their own groove (end to plate centre {[round(d, 2) for d in depth]}, "
                     f"groove {PLATE_T / 2 - GROOVE_D:.1f}..{PLATE_T / 2:.1f})")
-        p.check(PLATE_T - 2 * GROOVE_D >= 0.8, f"X {cx:g}: the web between two grooves {PLATE_T - 2 * GROOVE_D:.1f} mm (>= 0.8)")
+        p.check(PLATE_T - 2 * GROOVE_D >= 0.8 - TOL, f"X {cx:g}: the web between two grooves {PLATE_T - 2 * GROOVE_D:.1f} mm (>= 0.8)")
         low = lowest([t for t, _ in members])
         p.check(sl[0] + BEARING[1] <= low, f"X {cx:g}: the slots reach the lowest studied pulley height ({low:.1f})")
     for cx, dims in info["sections"].items():
         sl = info["slots"][cx]
         p.check(all(max(x, y) <= PRINT_XY and z <= PRINT_Z for x, y, z in dims),
                 f"X {cx:g}: each section prints standing on the Neptune ({dims}; <= {PRINT_XY:g} square, {PRINT_Z:g} tall)")
-        p.check(SPLIT_Z[0] < sl[0] and sl[1] < SPLIT_Z[1],
-                f"X {cx:g}: the axle grooves (Z {sl[0]:.1f}..{sl[1]:.1f}) inside the middle section ({SPLIT_Z}): no seam in a groove")
+        top = max(s[2] for t, s in info["sheaves"].items() if abs(s[0] - cx) < 1e-6)
+        p.check(SPLIT_Z[0] < sl[0] and abs(sl[1] - SPLIT_Z[1]) < TOL and max(Z_TOP, top) + BEARING[1] < SPLIT_Z[1] - 2.0,
+                f"X {cx:g}: the axle grooves (Z {sl[0]:.1f}..{sl[1]:.1f}) in the middle section ({SPLIT_Z}), open at its top "
+                f"for the wheels to drop in; the axle never rides past Z {max(Z_TOP, top) + BEARING[1]:.1f}: no seam under it")
         px = info["post"][cx]
         p.check(abs(px - cx) - POST_W / 2 - max(SHEAVE_R, DANCER["RP"] + 4.6) >= 2.0,
                 f"X {cx:g}: the post (X {px:g}) clear of the sheaves and the legs ({abs(px - cx) - POST_W / 2 - SHEAVE_R:.1f} >= 2)")
