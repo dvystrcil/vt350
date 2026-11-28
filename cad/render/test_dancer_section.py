@@ -60,7 +60,7 @@ class Drawing(unittest.TestCase):
     def test_chamfer_notes_from_the_profile(self):
         ch = FIX["chamfer"]
         self.assertTrue(any(f"{ch['bottom']:.1f} chamfers on it" in (t or "") for t in self.texts))
-        self.assertTrue(any(f"{ch['top']:.1f} inside" in (t or "") for t in self.texts))
+        self.assertTrue(any("The join" in (t or "") and "sharp" in (t or "") for t in self.texts))
 
     def test_text_on_the_sheet(self):
         for t in self.root.iter(NS + "text"):

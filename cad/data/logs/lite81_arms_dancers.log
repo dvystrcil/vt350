@@ -1,79 +1,79 @@
-[    3.8s] opened /home/dan/Documents/VT350/vt350-lite-80.FCStd
-[   33.2s] 44 new parts; arms [240.0, 240.0, 240.0, 240.0, 240.0] long; sheaves {0: (-324.2, 446.0, 284.99), 1: (-324.2, 459.0, 320.53), 2: (-167.0, 446.0, 340.0), 3: (-167.0, 459.0, 317.13), 4: (-167.0, 472.0, 285.24)}
-[   33.2s] ok   the material twin '4040 (1)' is aluminium
-[   33.2s] frame material restored on 5 bars: ['2040 (3)001', '2040 e-box outer side rail, top (lite-46)', '4040 (1)001', '4040 (1)002', '4040 (1)003']
-[   33.2s] ok   every frame extrusion is aluminium (0 not: [])
-[   33.2s] ok   the old route's 20 zip ties found (20)
-[   33.2s] ok   arms 240 long, hinge to loop ([240.0, 240.0, 240.0, 240.0, 240.0])
-[   33.2s] ok   T0 sheave Z 285.0: below the top of travel 340, its bottom above the floor 60
-[   33.2s] ok   T1 sheave Z 320.5: below the top of travel 340, its bottom above the floor 60
-[   33.2s] ok   T2 sheave Z 340.0: below the top of travel 340, its bottom above the floor 60
-[   33.2s] ok   T3 sheave Z 317.1: below the top of travel 340, its bottom above the floor 60
-[   33.2s] ok   T4 sheave Z 285.2: below the top of travel 340, its bottom above the floor 60
-[   33.2s] ok   T0 axle inside its slot (Z 285.0 in 162.5..343.7)
-[   33.2s] ok   T0 sheave clear of the plates (closest 0.40)
-[   33.2s] ok   T0 axle ends each in their own groove (end to plate centre [0.6, 0.6], groove 0.5..2.1)
-[   33.2s] ok   T1 axle inside its slot (Z 320.5 in 162.5..343.7)
-[   33.2s] ok   T1 sheave clear of the plates (closest 0.40)
-[   33.2s] ok   T1 axle ends each in their own groove (end to plate centre [0.6, 0.6], groove 0.5..2.1)
-[   33.2s] ok   X -324.2: the web between two grooves 1.0 mm (>= 0.8)
-[   33.2s] ok   X -324.2: the slots reach the lowest studied pulley height (170.2)
-[   33.2s] ok   T2 axle inside its slot (Z 340.0 in 162.7..343.7)
-[   33.2s] ok   T2 sheave clear of the plates (closest 0.40)
-[   33.2s] ok   T2 axle ends each in their own groove (end to plate centre [0.6, 0.6], groove 0.5..2.1)
-[   33.2s] ok   T3 axle inside its slot (Z 317.1 in 162.7..343.7)
-[   33.2s] ok   T3 sheave clear of the plates (closest 0.40)
-[   33.2s] ok   T3 axle ends each in their own groove (end to plate centre [0.6, 0.6], groove 0.5..2.1)
-[   33.2s] ok   T4 axle inside its slot (Z 285.2 in 162.7..343.7)
-[   33.2s] ok   T4 sheave clear of the plates (closest 0.40)
-[   33.2s] ok   T4 axle ends each in their own groove (end to plate centre [0.6, 0.6], groove 0.5..2.1)
-[   33.2s] ok   X -167: the web between two grooves 1.0 mm (>= 0.8)
-[   33.2s] ok   X -167: the slots reach the lowest studied pulley height (170.4)
-[   33.2s] ok   X -324.2: each section prints standing on the Neptune ([(80.0, 46.2, 157.0), (80.0, 46.2, 195.0), (86.0, 70.6, 80.0)]; <= 220 square, 250 tall)
-[   33.2s] ok   X -324.2: the axle grooves (Z 162.5..343.7) inside the middle section ((155.0, 350.0)): no seam in a groove
-[   33.2s] ok   X -324.2: the post (X -390.2) clear of the sheaves and the legs (2.8 >= 2)
-[   33.2s] ok   X -167: each section prints standing on the Neptune ([(80.0, 59.2, 157.0), (80.0, 59.2, 195.0), (86.0, 70.6, 80.0)]; <= 220 square, 250 tall)
-[   33.2s] ok   X -167: the axle grooves (Z 162.7..343.7) inside the middle section ((155.0, 350.0)): no seam in a groove
-[   33.2s] ok   X -167: the post (X -101) clear of the sheaves and the legs (2.8 >= 2)
-[   35.3s] ok   every new part a valid solid
-[   35.3s] ok   each sheave, stack section, leg guide and bridge is one piece ([])
-[   38.1s] ok   each sheave half's spokes flush with its print face (loops just above it, found/wanted: {'sheave0a': (11, 11), 'sheave0b': (8, 8), 'sheave1a': (11, 11), 'sheave1b': (8, 8), 'sheave2a': (11, 11), 'sheave2b': (8, 8), 'sheave3a': (11, 11), 'sheave3b': (8, 8), 'sheave4a': (11, 11), 'sheave4b': (8, 8)})
-[   38.1s]   sheave half 1 chamfers: 19 bed, 20 top; forced [('bottom', (0.0, -4.0, -58.2), 0.5), ('top', (0.0, 0.0, -8.1), 0.5)]; left sharp 1; reduced 7; skipped 0; 344 mm3 off
-[   38.1s]   sheave half 2 chamfers: 19 bed, 20 top; forced [('bottom', (0.0, 4.0, -58.2), 0.5), ('top', (0.0, 0.0, -8.1), 0.5)]; left sharp 1; reduced 7; skipped 0; 344 mm3 off
-[   38.1s] ok   the sheave halves print-chamfered: 0.5 on the plate face (and the rim's outer edge), 1.0 inside, a 0.5 lead-in at the 625's pocket, the groove's seat left sharp; none missed or failed ([([], []), ([], [])])
-[   38.1s] ok   the 625 clamped: 5 wide in 2 x 2.4 pockets, lips Ø14 on its outer ring
-[   38.1s] ok   the halves' screws: 1.35 of wall to the 625's pocket and the hub's edge (>= 1.2)
-[   38.1s] ok   the groove's 1.2 root chamfers clear the inner cable against a wall by 0.63 (>= 0.3)
-[   38.1s] ok   the two XY belts found (2)
-[   38.1s] ok   Dancer leg guide X -377.8: its sleeves clear the belts ([1.46, 0.98] >= 0.8)
-[   38.2s] ok   Dancer leg guide X -270.6: its sleeves clear the belts ([1.27, 1.17] >= 0.8)
-[   38.2s] ok   Dancer leg guide X -220.6: its sleeves clear the belts ([1.18, 1.26] >= 0.8)
-[   38.3s] ok   Dancer leg guide X -113.4: its sleeves clear the belts ([0.98, 1.46] >= 0.8)
-[   39.8s] printed volume 857 cm3: stack 536, sheave 131, arm 111, bridge 50, leg 25, bracket 4
-[   39.8s] ok   printed volume 857 cm3, under half the first draft's 1810
-[   41.4s] ok   T0: the new tube and cable sweep to valid solids, the tube's branch to the inlet no tighter than R 51 (51.7)
-[   41.4s] ok   T0: the studied route ends at this head's lock (0.01 off)
-[   41.8s]    T0: route 90 points, tube splits at Y 61.1 Z 620.2, branch R 51.7, clip at (-409.5, 79.8, 625.7) (('chain', 'chain')); new in-chamber tube ~1489 mm, cable ~1433 mm; kept 2 tube / 3 cable pieces
-[   43.0s] ok   T1: the new tube and cable sweep to valid solids, the tube's branch to the inlet no tighter than R 51 (51.0)
-[   43.0s] ok   T1: the studied route ends at this head's lock (0.00 off)
-[   43.4s]    T1: route 90 points, tube splits at Y 61.0 Z 620.5, branch R 51.0, clip at (-324.4, 79.6, 626.0) (('chain', 'chain')); new in-chamber tube ~1373 mm, cable ~1320 mm; kept 2 tube / 3 cable pieces
-[   44.6s] ok   T2: the new tube and cable sweep to valid solids, the tube's branch to the inlet no tighter than R 51 (52.0)
-[   44.6s] ok   T2: the studied route ends at this head's lock (0.00 off)
-[   45.0s]    T2: route 90 points, tube splits at Y 60.9 Z 620.6, branch R 52.0, clip at (-248.2, 79.6, 626.1) (('chain', 'chain')); new in-chamber tube ~1374 mm, cable ~1317 mm; kept 2 tube / 3 cable pieces
-[   46.2s] ok   T3: the new tube and cable sweep to valid solids, the tube's branch to the inlet no tighter than R 51 (54.8)
-[   46.2s] ok   T3: the studied route ends at this head's lock (0.00 off)
-[   46.7s]    T3: route 90 points, tube splits at Y 70.3 Z 623.3, branch R 54.8, clip at (-156.2, 89.1, 628.4) (('chain', 'chain')); new in-chamber tube ~1391 mm, cable ~1335 mm; kept 2 tube / 3 cable pieces
-[   47.9s] ok   T4: the new tube and cable sweep to valid solids, the tube's branch to the inlet no tighter than R 51 (53.7)
-[   47.9s] ok   T4: the studied route ends at this head's lock (0.00 off)
-[   48.3s]    T4: route 90 points, tube splits at Y 70.4 Z 623.1, branch R 53.7, clip at (-80.1, 89.2, 628.1) (('chain', 'chain')); new in-chamber tube ~1489 mm, cable ~1438 mm; kept 2 tube / 3 cable pieces
-[  325.8s] collision baseline (lite-80): 1059 pairs, 0 overlaps of the old runs: []
-[  411.5s]   538 part pairs, 857 solid booleans in 31 s; 0 over 20 s
-[  411.5s] collision check: 538 pairs, 0 overlaps, 0 new
-[  411.5s] ok   COLLISIONS: nothing new overlaps lite-80 (0: [])
-[  893.8s]   inner: 4097 solid booleans in 128 s
-[  893.8s] ok   every sheave's 625 clamped by both halves at the designed 4.71 mm3 (10 pairs)
-[  893.8s] ok   the new parts and runs don't overlap each other (0: [])
-[  908.4s] ok   the new runs in place, in their parts' frames ([])
-[  908.4s] verify: 0 problems
-[  908.4s] DRY RUN (headless): all checks passed, not saved
-[  908.6s] litepool: peak RSS: workers max 1973 MB, sum 3829 MB; parent 4522 MB
+[    3.3s] opened /home/dan/Documents/VT350/vt350-lite-80.FCStd
+[   26.3s] 44 new parts; arms [240.0, 240.0, 240.0, 240.0, 240.0] long; sheaves {0: (-324.2, 446.0, 284.99), 1: (-324.2, 459.0, 320.53), 2: (-167.0, 446.0, 340.0), 3: (-167.0, 459.0, 317.13), 4: (-167.0, 472.0, 285.24)}
+[   26.3s] ok   the material twin '4040 (1)' is aluminium
+[   26.3s] frame material restored on 5 bars: ['2040 (3)001', '2040 e-box outer side rail, top (lite-46)', '4040 (1)001', '4040 (1)002', '4040 (1)003']
+[   26.3s] ok   every frame extrusion is aluminium (0 not: [])
+[   26.3s] ok   the old route's 20 zip ties found (20)
+[   26.3s] ok   arms 240 long, hinge to loop ([240.0, 240.0, 240.0, 240.0, 240.0])
+[   26.3s] ok   T0 sheave Z 285.0: below the top of travel 340, its bottom above the floor 60
+[   26.3s] ok   T1 sheave Z 320.5: below the top of travel 340, its bottom above the floor 60
+[   26.3s] ok   T2 sheave Z 340.0: below the top of travel 340, its bottom above the floor 60
+[   26.3s] ok   T3 sheave Z 317.1: below the top of travel 340, its bottom above the floor 60
+[   26.3s] ok   T4 sheave Z 285.2: below the top of travel 340, its bottom above the floor 60
+[   26.3s] ok   T0 axle inside its slot (Z 285.0 in 162.5..343.7)
+[   26.3s] ok   T0 sheave clear of the plates (closest 0.40)
+[   26.3s] ok   T0 axle ends each in their own groove (end to plate centre [0.6, 0.6], groove 0.5..2.1)
+[   26.3s] ok   T1 axle inside its slot (Z 320.5 in 162.5..343.7)
+[   26.3s] ok   T1 sheave clear of the plates (closest 0.40)
+[   26.3s] ok   T1 axle ends each in their own groove (end to plate centre [0.6, 0.6], groove 0.5..2.1)
+[   26.3s] ok   X -324.2: the web between two grooves 1.0 mm (>= 0.8)
+[   26.3s] ok   X -324.2: the slots reach the lowest studied pulley height (170.2)
+[   26.3s] ok   T2 axle inside its slot (Z 340.0 in 162.7..343.7)
+[   26.3s] ok   T2 sheave clear of the plates (closest 0.40)
+[   26.3s] ok   T2 axle ends each in their own groove (end to plate centre [0.6, 0.6], groove 0.5..2.1)
+[   26.3s] ok   T3 axle inside its slot (Z 317.1 in 162.7..343.7)
+[   26.3s] ok   T3 sheave clear of the plates (closest 0.40)
+[   26.3s] ok   T3 axle ends each in their own groove (end to plate centre [0.6, 0.6], groove 0.5..2.1)
+[   26.3s] ok   T4 axle inside its slot (Z 285.2 in 162.7..343.7)
+[   26.3s] ok   T4 sheave clear of the plates (closest 0.40)
+[   26.3s] ok   T4 axle ends each in their own groove (end to plate centre [0.6, 0.6], groove 0.5..2.1)
+[   26.3s] ok   X -167: the web between two grooves 1.0 mm (>= 0.8)
+[   26.3s] ok   X -167: the slots reach the lowest studied pulley height (170.4)
+[   26.3s] ok   X -324.2: each section prints standing on the Neptune ([(80.0, 46.2, 157.0), (80.0, 46.2, 195.0), (86.0, 70.6, 80.0)]; <= 220 square, 250 tall)
+[   26.3s] ok   X -324.2: the axle grooves (Z 162.5..343.7) inside the middle section ((155.0, 350.0)): no seam in a groove
+[   26.3s] ok   X -324.2: the post (X -390.2) clear of the sheaves and the legs (2.8 >= 2)
+[   26.3s] ok   X -167: each section prints standing on the Neptune ([(80.0, 59.2, 157.0), (80.0, 59.2, 195.0), (86.0, 70.6, 80.0)]; <= 220 square, 250 tall)
+[   26.3s] ok   X -167: the axle grooves (Z 162.7..343.7) inside the middle section ((155.0, 350.0)): no seam in a groove
+[   26.3s] ok   X -167: the post (X -101) clear of the sheaves and the legs (2.8 >= 2)
+[   27.6s] ok   every new part a valid solid
+[   27.6s] ok   each sheave, stack section, leg guide and bridge is one piece ([])
+[   29.9s] ok   each sheave half's spokes flush with its print face (loops just above it, found/wanted: {'sheave0a': (11, 11), 'sheave0b': (8, 8), 'sheave1a': (11, 11), 'sheave1b': (8, 8), 'sheave2a': (11, 11), 'sheave2b': (8, 8), 'sheave3a': (11, 11), 'sheave3b': (8, 8), 'sheave4a': (11, 11), 'sheave4b': (8, 8)})
+[   29.9s]   sheave half 1 chamfers: 19 bed, 2 top; forced [('bottom', (0.0, -4.0, -58.2), 0.5), ('top', (0.0, 0.0, -8.1), 0.5)]; left sharp 28; reduced 1; skipped 0; 118 mm3 off
+[   29.9s]   sheave half 2 chamfers: 19 bed, 2 top; forced [('bottom', (0.0, 4.0, -58.2), 0.5), ('top', (0.0, 0.0, -8.1), 0.5)]; left sharp 28; reduced 1; skipped 0; 118 mm3 off
+[   29.9s] ok   the sheave halves print-chamfered: 0.5 on the plate face (and the rim's outer edge), the join sharp but for a 0.5 lead-in at the 625's pocket, the groove's seat sharp; none missed or failed ([([], []), ([], [])])
+[   29.9s] ok   the 625 clamped: 5 wide in 2 x 2.4 pockets, lips Ø14 on its outer ring
+[   29.9s] ok   the halves' screws: 1.35 of wall to the 625's pocket and the hub's edge (>= 1.2)
+[   29.9s] ok   the groove's 1.2 root chamfers clear the inner cable against a wall by 0.63 (>= 0.3)
+[   29.9s] ok   the two XY belts found (2)
+[   29.9s] ok   Dancer leg guide X -377.8: its sleeves clear the belts ([1.46, 0.98] >= 0.8)
+[   30.0s] ok   Dancer leg guide X -270.6: its sleeves clear the belts ([1.27, 1.17] >= 0.8)
+[   30.0s] ok   Dancer leg guide X -220.6: its sleeves clear the belts ([1.18, 1.26] >= 0.8)
+[   30.1s] ok   Dancer leg guide X -113.4: its sleeves clear the belts ([0.98, 1.46] >= 0.8)
+[   30.9s] printed volume 859 cm3: stack 536, sheave 133, arm 111, bridge 50, leg 25, bracket 4
+[   30.9s] ok   printed volume 859 cm3, under half the first draft's 1810
+[   32.3s] ok   T0: the new tube and cable sweep to valid solids, the tube's branch to the inlet no tighter than R 51 (51.7)
+[   32.3s] ok   T0: the studied route ends at this head's lock (0.01 off)
+[   32.7s]    T0: route 90 points, tube splits at Y 61.1 Z 620.2, branch R 51.7, clip at (-409.5, 79.8, 625.7) (('chain', 'chain')); new in-chamber tube ~1489 mm, cable ~1433 mm; kept 2 tube / 3 cable pieces
+[   33.9s] ok   T1: the new tube and cable sweep to valid solids, the tube's branch to the inlet no tighter than R 51 (51.0)
+[   33.9s] ok   T1: the studied route ends at this head's lock (0.00 off)
+[   34.3s]    T1: route 90 points, tube splits at Y 61.0 Z 620.5, branch R 51.0, clip at (-324.4, 79.6, 626.0) (('chain', 'chain')); new in-chamber tube ~1373 mm, cable ~1320 mm; kept 2 tube / 3 cable pieces
+[   35.4s] ok   T2: the new tube and cable sweep to valid solids, the tube's branch to the inlet no tighter than R 51 (52.0)
+[   35.4s] ok   T2: the studied route ends at this head's lock (0.00 off)
+[   35.8s]    T2: route 90 points, tube splits at Y 60.9 Z 620.6, branch R 52.0, clip at (-248.2, 79.6, 626.1) (('chain', 'chain')); new in-chamber tube ~1374 mm, cable ~1317 mm; kept 2 tube / 3 cable pieces
+[   37.0s] ok   T3: the new tube and cable sweep to valid solids, the tube's branch to the inlet no tighter than R 51 (54.8)
+[   37.0s] ok   T3: the studied route ends at this head's lock (0.00 off)
+[   37.4s]    T3: route 90 points, tube splits at Y 70.3 Z 623.3, branch R 54.8, clip at (-156.2, 89.1, 628.4) (('chain', 'chain')); new in-chamber tube ~1391 mm, cable ~1335 mm; kept 2 tube / 3 cable pieces
+[   38.7s] ok   T4: the new tube and cable sweep to valid solids, the tube's branch to the inlet no tighter than R 51 (53.7)
+[   38.7s] ok   T4: the studied route ends at this head's lock (0.00 off)
+[   39.2s]    T4: route 90 points, tube splits at Y 70.4 Z 623.1, branch R 53.7, clip at (-80.1, 89.2, 628.1) (('chain', 'chain')); new in-chamber tube ~1489 mm, cable ~1438 mm; kept 2 tube / 3 cable pieces
+[  298.3s] collision baseline (lite-80): 1059 pairs, 0 overlaps of the old runs: []
+[  382.3s]   538 part pairs, 857 solid booleans in 29 s; 0 over 20 s
+[  382.3s] collision check: 538 pairs, 0 overlaps, 0 new
+[  382.3s] ok   COLLISIONS: nothing new overlaps lite-80 (0: [])
+[  806.9s]   inner: 4097 solid booleans in 96 s
+[  806.9s] ok   every sheave's 625 clamped by both halves at the designed 4.71 mm3 (10 pairs)
+[  806.9s] ok   the new parts and runs don't overlap each other (0: [])
+[  821.2s] ok   the new runs in place, in their parts' frames ([])
+[  821.2s] verify: 0 problems
+[  821.2s] DRY RUN (headless): all checks passed, not saved
+[  821.4s] litepool: peak RSS: workers max 2008 MB, sum 4009 MB; parent 4457 MB

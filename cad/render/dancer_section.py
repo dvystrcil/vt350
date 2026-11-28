@@ -385,8 +385,8 @@ def drawing(d):
     if ch:                                        # notes under the legend
         y += 14
         text(S, lx, y, "Notes", 3.5, anchor="start", weight="bold")
-        notes = [f"1. Halves print plate face down: {ch['bottom']:.1f} chamfers on it,",
-                 f"   {ch['top']:.1f} inside (less, in {ch['step']:g} steps, where narrow).",
+        notes = [f"1. Halves print plate face down: {ch['bottom']:.1f} chamfers on it.",
+                 "   The join (the halves' clamped faces) sharp.",
                  f"2. {ch['bottom']:.1f} lead-in at the 625's pocket; bores sharp.",
                  "3. Groove seat sharp: the seam under the cable.",
                  f"4. 625 clamped: pockets 2 x {k.get('HALF_POCKET', 2.4):g} for its {k['BEARING'][2]:g}; lips Ø{2 * k.get('LIP_R', 7):g}.",

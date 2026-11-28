@@ -253,7 +253,9 @@ def _sheave_halves_at(cx=0.0, y=0.0, zc=0.0):
     inner faces (less, in whole layers, where a face is narrow), plus the part's own exceptions:
       - the rim's outer edge on the plate face: 0.5, though the 1.2 wall is narrower than the rules' minimum for it;
       - the 625 pocket's mouth at the split: a 0.5 lead-in (bores are otherwise sharp), keeping 1.9 of its 2.4 seat;
-      - the groove's seat left sharp: the seam where the halves meet under the cable, and the root chamfers' edges."""
+      - the groove's seat left sharp: the seam where the halves meet under the cable, and the root chamfers' edges;
+      - the split face's edges all sharp (owner, same day: "there is no reason to add a chamfer where the two halves
+        join"): the halves clamp face to face; only the pocket's lead-in is cut there."""
     ax = V(0, 1, 0)
     s, h = sheave(cx, y, zc), SHEAVE_T / 2
     halves = []
@@ -279,8 +281,9 @@ def _sheave_halves_at(cx=0.0, y=0.0, zc=0.0):
                                    and abs(e.BoundBox.Center.y - yy) < 0.01)
         force = lambda e: CHAMFER["bottom"] if circle(e, SHEAVE_R, outer) else (
             CHAMFER["bottom"] if circle(e, BORE_R, y) else None)
-        leave = lambda e: isinstance(e.Curve, Part.Circle) and (
-            GROOVE_IN - 0.05 <= e.Curve.Radius <= GROOVE_IN + GROOVE_ROOT + 0.05)
+        on_split = lambda e: abs(e.BoundBox.YMin - y) < 0.01 and abs(e.BoundBox.YMax - y) < 0.01
+        leave = lambda e: (isinstance(e.Curve, Part.Circle) and GROOVE_IN - 0.05 <= e.Curve.Radius <= GROOVE_IN + GROOVE_ROOT + 0.05) \
+            or (on_split(e) and not circle(e, BORE_R, y))
         c, info = printchamfer.chamfer(half, V(0, -sgn, 0), force=force, leave=leave, **CHAMFER)
         info["unchamfered"] = printchamfer.unchamfered(half, c, V(0, -sgn, 0), force=force, leave=leave,
                                                        skip=[w for _, w, *_ in info["skipped"]] +
@@ -834,8 +837,8 @@ def main(p):
               f"left sharp {len(ci['left'])}; reduced {len(ci['reduced'])}; skipped {len(ci['skipped'])}; "
               f"{ci['removed_mm3']:.0f} mm3 off")
     p.check(all(len(i["forced"]) == 2 and not i.get("failed") and not i["unchamfered"] for i in _HALVES["info"]),
-            "the sheave halves print-chamfered: 0.5 on the plate face (and the rim's outer edge), 1.0 inside, a 0.5 "
-            "lead-in at the 625's pocket, the groove's seat left sharp; none missed or failed "
+            "the sheave halves print-chamfered: 0.5 on the plate face (and the rim's outer edge), the join sharp but "
+            "for a 0.5 lead-in at the 625's pocket, the groove's seat sharp; none missed or failed "
             f"({[(i.get('failed'), i['unchamfered'][:3]) for i in _HALVES['info']]})")
     p.check(BEARING[2] - 2 * HALF_POCKET > 0 and LIP_R < BEARING[0] - 0.5,
             f"the 625 clamped: {BEARING[2]:g} wide in 2 x {HALF_POCKET:g} pockets, lips Ø{2 * LIP_R:g} on its outer ring")
