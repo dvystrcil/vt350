@@ -37,9 +37,10 @@ _REPO = os.environ.get("VT350_REPO", "/home/dan/Code/vt350")
 sys.path[:0] = [os.path.join(_REPO, "platform/freecad"), os.path.join(_REPO, "platform/render"),
                 os.path.join(_REPO, "cad/passes")]
 os.environ["LITE78_AS_LIB"] = "1"
-import litelib, linkgeo
+import litelib, linkgeo, printchamfer
 import lite78_front17 as l78
 from litelib import MODELS
+CHAMFER = printchamfer.profile(os.path.join(_REPO, "cad/data/print-profile.json"))   # 0.5 bed, 1.0 top, 0.2 steps
 V = FreeCAD.Vector
 SRC, DST = f"{MODELS}/vt350-lite-80.FCStd", f"{MODELS}/vt350-lite-81.FCStd"
 # LITE81_PREVIEW=<path>: a GUI run saves there instead, a preview for renders (not a model version; the same checks
@@ -205,9 +206,13 @@ def spoke(cx, y, zc, phi):
         a = th + side * (w / 2) / r                     # the edge: half the width along the arc at this radius
         return V(cx + r * math.cos(a), y - SHEAVE_T / 2, zc + r * math.sin(a))
     rs = [r0 + (r1 - r0) * i / n for i in range(n + 1)]
-    pts = [at(r, -1) for r in rs] + [at(r, 1) for r in reversed(rs)]
-    face = Part.Face(Part.makePolygon(pts + [pts[0]]))
-    return face.extrude(V(0, SPOKE_T, 0))
+    left, right = [at(r, -1) for r in rs], [at(r, 1) for r in reversed(rs)]
+    sides = []                                    # each side one smooth curve (not 16 facets): few edges to chamfer
+    for pts in (left, right):
+        c = Part.BSplineCurve(); c.interpolate(pts); sides.append(c.toShape())
+    wire = Part.Wire([sides[0], Part.LineSegment(left[-1], right[0]).toShape(), sides[1],
+                      Part.LineSegment(right[-1], left[0]).toShape()])
+    return Part.Face(wire).extrude(V(0, SPOKE_T, 0))
 
 
 def sheave(cx, y, zc):
@@ -225,9 +230,30 @@ def sheave(cx, y, zc):
     return s.removeSplitter()
 
 
+_HALVES = {}                                      # every sheave is the same pair: built and chamfered once
+
+
 def sheave_halves(cx, y, zc):
-    """The sheave split at its mid-plane Y y into (half 1 on -Y, half 2 on +Y); each with its 625 pocket and lip, half 1
-    with HALF_SCREWS counterbored clearance holes from its outer face, half 2 with blind insert holes from the split."""
+    """The sheave split at its mid-plane Y y into (half 1 on -Y, half 2 on +Y), print-chamfered: copies of the pair built
+    once at the origin (_sheave_halves_at), moved to (cx, y, zc)."""
+    if "pair" not in _HALVES:
+        _HALVES["pair"], _HALVES["info"] = _sheave_halves_at()
+    out = []
+    for h in _HALVES["pair"]:
+        h = h.copy(); h.translate(V(cx, y, zc)); out.append(h)
+    return tuple(out)
+
+
+def _sheave_halves_at(cx=0.0, y=0.0, zc=0.0):
+    """(halves, chamfer infos): the sheave split at its mid-plane into half 1 (-Y) and half 2 (+Y); each with its 625
+    pocket and lip, half 1 with HALF_SCREWS counterbored clearance holes from its outer face, half 2 with blind insert
+    holes from the split; then the print chamfers, each half printed outer face down (owner 2026-11-27: "a 0.5 chamfer
+    on the outer edge of the rim plate side and a 1.0mm chamfer on the inner edges ... if the edge which is part of the
+    bearing plate cannot tolerate a 1.0, then do 0.5"): the print profile's 0.5 on the plate (bed) face and 1.0 on the
+    inner faces (less, in whole layers, where a face is narrow), plus the part's own exceptions:
+      - the rim's outer edge on the plate face: 0.5, though the 1.2 wall is narrower than the rules' minimum for it;
+      - the 625 pocket's mouth at the split: a 0.5 lead-in (bores are otherwise sharp), keeping 1.9 of its 2.4 seat;
+      - the groove's seat left sharp: the seam where the halves meet under the cable, and the root chamfers' edges."""
     ax = V(0, 1, 0)
     s, h = sheave(cx, y, zc), SHEAVE_T / 2
     halves = []
@@ -246,7 +272,21 @@ def sheave_halves(cx, y, zc):
             else:
                 half = half.cut(Part.makeCylinder(M2_INSERT[0], M2_INSERT[1], V(px, y, pz), ax))
         halves.append(half.removeSplitter())
-    return tuple(halves)
+    out, infos = [], []
+    for sgn, half in zip((-1, 1), halves):
+        outer = y + sgn * h                         # the plate (bed) face's Y
+        circle = lambda e, r, yy: (isinstance(e.Curve, Part.Circle) and abs(e.Curve.Radius - r) < 0.01
+                                   and abs(e.BoundBox.Center.y - yy) < 0.01)
+        force = lambda e: CHAMFER["bottom"] if circle(e, SHEAVE_R, outer) else (
+            CHAMFER["bottom"] if circle(e, BORE_R, y) else None)
+        leave = lambda e: isinstance(e.Curve, Part.Circle) and (
+            GROOVE_IN - 0.05 <= e.Curve.Radius <= GROOVE_IN + GROOVE_ROOT + 0.05)
+        c, info = printchamfer.chamfer(half, V(0, -sgn, 0), force=force, leave=leave, **CHAMFER)
+        info["unchamfered"] = printchamfer.unchamfered(half, c, V(0, -sgn, 0), force=force, leave=leave,
+                                                       skip=[w for _, w, *_ in info["skipped"]] +
+                                                       [w for _, w in info.get("failed", [])], **CHAMFER)
+        out.append(c.removeSplitter()); infos.append(info)
+    return tuple(out), infos
 
 
 def bearing(cx, y, zc):
@@ -789,6 +829,14 @@ def main(p):
             loops[k] = (len(s.slice(V(0, 1, 0), face)), want[k[-1]])
     p.check(all(n == w for n, w in loops.values()),
             f"each sheave half's spokes flush with its print face (loops just above it, found/wanted: {loops})")
+    for n, ci in zip((1, 2), _HALVES["info"]):
+        p.log(f"  sheave half {n} chamfers: {ci['bottom']} bed, {ci['top']} top; forced {ci['forced']}; "
+              f"left sharp {len(ci['left'])}; reduced {len(ci['reduced'])}; skipped {len(ci['skipped'])}; "
+              f"{ci['removed_mm3']:.0f} mm3 off")
+    p.check(all(len(i["forced"]) == 2 and not i.get("failed") and not i["unchamfered"] for i in _HALVES["info"]),
+            "the sheave halves print-chamfered: 0.5 on the plate face (and the rim's outer edge), 1.0 inside, a 0.5 "
+            "lead-in at the 625's pocket, the groove's seat left sharp; none missed or failed "
+            f"({[(i.get('failed'), i['unchamfered'][:3]) for i in _HALVES['info']]})")
     p.check(BEARING[2] - 2 * HALF_POCKET > 0 and LIP_R < BEARING[0] - 0.5,
             f"the 625 clamped: {BEARING[2]:g} wide in 2 x {HALF_POCKET:g} pockets, lips Ø{2 * LIP_R:g} on its outer ring")
     hw = min(SCREW_R - max(M2_INSERT[0], M2_HEAD) - BORE_R, HUB_R - SCREW_R - max(M2_INSERT[0], M2_HEAD))

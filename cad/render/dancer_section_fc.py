@@ -57,7 +57,7 @@ def main():
            "k": {k: getattr(L, k) for k in ("SHEAVE_R", "SHEAVE_T", "GROOVE_W", "GROOVE_IN", "BEARING", "PITCH", "GROOVE_D",
                                             "PLATE_GAP", "AXLE_L", "PLATE_T", "PLATE_W", "SLOT_W", "FLANGE", "HUB_R",
                                             "RIM_WALL", "GROOVE_ROOT", "HALF_POCKET", "LIP_R", "SCREW_R", "SPOKES", "SPOKE_T", "SPOKE_W", "POST_W", "ROD_R", "ROD_HOLE")},
-           "RP": L.DANCER["RP"], "c_plane": y1 + C_OFF, "sections": {}}
+           "RP": L.DANCER["RP"], "c_plane": y1 + C_OFF, "chamfer": dict(L.CHAMFER), "sections": {}}
     for name, (n, d, m) in planes.items():
         cut = []
         for key, kind, s in parts:

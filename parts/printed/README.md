@@ -48,6 +48,11 @@ numbers are in [`cad/data/print-profile.json`](../../cad/data/print-profile.json
 - "First layer" and "top" follow the part's **print orientation**, so settle that first and write it in the pass and
   the part's README. A pass that builds a printed part makes and checks the chamfers with
   `platform/freecad/printchamfer.py` (`chamfer()`, then `unchamfered()`; reduced and skipped edges are logged).
+  A part's own exceptions go in as `force=` (a size for an edge the rules skip: a bearing pocket's lead-in, a thin rim
+  the owner wants chamfered) and `leave=` (an edge kept sharp: a seat something runs on), written down in the pass.
+  Example, the dancer sheave halves (lite-81, owner 2026-11-27): 0.5 on the plate face including the 1.2 rim's outer
+  edge, 1.0 inside, a 0.5 lead-in at the 625's pocket ("if the edge which is part of the bearing plate cannot tolerate
+  a 1.0, then do 0.5"), the groove's seat under the cable sharp.
 
 ## Licences (#63 AC1)
 

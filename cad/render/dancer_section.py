@@ -342,7 +342,7 @@ def drawing(d):
         horizontal=False)
     leader(vA, (yb - k["SHEAVE_T"] / 2 - k["PLATE_GAP"] / 2, z1 + 30), (-20, -12), f"gap {k['PLATE_GAP']}")
     root = f", root chamfers {k['GROOVE_ROOT']:g}" if k.get("GROOVE_ROOT") else ""
-    leader(vA, (yb, z1 - RP - 2.55), (26, -40),
+    leader(vA, (yb, z1 - RP - 2.55), (26, -6),
            f"cable groove {k['GROOVE_W']:g} wide, {R - k['GROOVE_IN']:.1f} deep{root}")
     z0 = min(zz for _, zz in d["sheaves"].values())
     leader(vA, (pl[0] + k["PLATE_T"] / 2 - k["GROOVE_D"] / 2, z0 - 3.5), (-16, -30),
@@ -381,6 +381,18 @@ def drawing(d):
     S.add(f"<rect x='{lx:.1f}' y='{y:.1f}' width='10' height='5' fill='white' stroke='{INK}' stroke-width='{THIN}'/>")
     text(S, lx + 13, y + 4, "axle, cut lengthwise (not hatched)", 3.0, anchor="start")
 
+    ch = d.get("chamfer")
+    if ch:                                        # notes under the legend
+        y += 14
+        text(S, lx, y, "Notes", 3.5, anchor="start", weight="bold")
+        notes = [f"1. Halves print plate face down: {ch['bottom']:.1f} chamfers on it,",
+                 f"   {ch['top']:.1f} inside (less, in {ch['step']:g} steps, where narrow).",
+                 f"2. {ch['bottom']:.1f} lead-in at the 625's pocket; bores sharp.",
+                 "3. Groove seat sharp: the seam under the cable.",
+                 f"4. 625 clamped: pockets 2 x {k.get('HALF_POCKET', 2.4):g} for its {k['BEARING'][2]:g}; lips Ø{2 * k.get('LIP_R', 7):g}.",
+                 "5. Halves: 3 x M2 x 5 cap screws, M2 inserts."]
+        for i, n in enumerate(notes):
+            text(S, lx, y + 6 + i * 5, n, 3.0, anchor="start")
     tw, th = 128.0, 34.0
     tx, ty = SHEET_W - MARGIN / 2 - tw, SHEET_H - MARGIN / 2 - th
     S.add(f"<rect x='{tx}' y='{ty}' width='{tw}' height='{th}' fill='white' stroke='{INK}' stroke-width='{THICK}'/>")
