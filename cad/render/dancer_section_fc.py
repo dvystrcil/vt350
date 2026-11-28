@@ -7,9 +7,11 @@
 #
 # The sections (2D axes in brackets):
 #   A  X = the stack's X, through every axle         (Y, Z)  the sheaves side by side in their channels
-#   B  Z = the tool's axle height                    (X, Y)  the rails, post and tie rods seen from above
-#   C  Y = the tool's sheave mid-plane               (X, Z)  the spokes, hub, 625 and axle; the cable's path
-import json, os, sys, traceback
+#   B  Z = each sheave's own axle height (stepped)  (X, Y)  the rails, post and tie rods seen from above; each
+#      sheave, its 625 and axle cut through their middle (the stack and rods at the drawn tool's axle)
+#   C  Y = 1 mm past the tool's sheave mid-plane (its split) into half 2  (X, Z)  the spokes, hub, 625, axle, the
+#      halves' insert holes; the cable's path
+import json, os, re, sys, traceback
 
 OUT = os.environ.get("SECTION_OUT", "dancer_section.json")
 _log = open(OUT + ".log", "w")                    # freecadcmd loses print() under os._exit (LESSONS.md)
@@ -43,22 +45,28 @@ def main():
     for t, y in members:
         zc = L.parked_z(t)
         sheaves[t] = (y, zc)
-        parts += [(f"sheave{t}", "printed", L.sheave(cx, y, zc)), (f"bearing{t}", "bearing", L.bearing(cx, y, zc)),
+        ha, hb = L.sheave_halves(cx, y, zc)
+        parts += [(f"sheave{t}a", "printed", ha), (f"sheave{t}b", "printed", hb), (f"bearing{t}", "bearing", L.bearing(cx, y, zc)),
                   (f"axle{t}", "shaft", L.axle(cx, y, zc))]
     y1, z1 = sheaves[tool]
+    C_OFF = 1.0                                   # C just inside half 2: on the split itself the halves' faces coincide
     planes = {"A": (V(1, 0, 0), cx, lambda p: (p.y, p.z)),
               "B": (V(0, 0, 1), z1, lambda p: (p.x, p.y)),
-              "C": (V(0, 1, 0), y1, lambda p: (p.x, p.z))}
+              "C": (V(0, 1, 0), y1 + C_OFF, lambda p: (p.x, p.z))}
     out = {"tool": tool, "cx": cx, "post_x": px, "plates": ycs, "slot": slot, "sheaves": {str(t): v for t, v in sheaves.items()},
            "k": {k: getattr(L, k) for k in ("SHEAVE_R", "SHEAVE_T", "GROOVE_W", "GROOVE_IN", "BEARING", "PITCH", "GROOVE_D",
                                             "PLATE_GAP", "AXLE_L", "PLATE_T", "PLATE_W", "SLOT_W", "FLANGE", "HUB_R",
-                                            "RIM_WALL", "SPOKES", "SPOKE_T", "SPOKE_W", "POST_W", "ROD_R", "ROD_HOLE")},
-           "RP": L.DANCER["RP"], "sections": {}}
+                                            "RIM_WALL", "GROOVE_ROOT", "HALF_POCKET", "LIP_R", "SCREW_R", "SPOKES", "SPOKE_T", "SPOKE_W", "POST_W", "ROD_R", "ROD_HOLE")},
+           "RP": L.DANCER["RP"], "c_plane": y1 + C_OFF, "sections": {}}
     for name, (n, d, m) in planes.items():
         cut = []
         for key, kind, s in parts:
+            dd = d
+            m_t = re.match(r"(sheave|bearing|axle)(\d+)[ab]?$", key)
+            if name == "B" and m_t:                   # the stepped section: each wheel at its own axle
+                dd = sheaves[int(m_t.group(2))][1]
             try:
-                wires = s.slice(n, d)
+                wires = s.slice(n, dd)
             except Exception as e:                    # a plane that misses the part
                 log(name, key, "no cut:", e); wires = []
             if wires:

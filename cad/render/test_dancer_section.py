@@ -46,14 +46,15 @@ class Drawing(unittest.TestCase):
         self.assertNotIn("url(#h_axle)", fills["A"])
 
     def test_touching_parts_hatch_differently(self):
-        self.assertNotEqual(D.hatch_of("stack")[1], D.hatch_of("sheave1")[1])
-        self.assertNotEqual(D.hatch_of("sheave0")[1], D.hatch_of("sheave1")[1])
+        self.assertNotEqual(D.hatch_of("stack")[1], D.hatch_of("sheave1a")[1])
+        self.assertNotEqual(D.hatch_of("sheave0a")[1], D.hatch_of("sheave1a")[1])
+        self.assertNotEqual(D.hatch_of("sheave1a")[1], D.hatch_of("sheave1b")[1])      # the two halves touch
         self.assertLess(D.hatch_of("rod0")[1][1], D.hatch_of("stack")[1][1])      # steel denser
 
     def test_key_dimensions_from_the_pass(self):
         k = FIX["k"]
         for label in (f"Ø{2 * k['SHEAVE_R']:.1f}", f"pitch {k['PITCH']:.0f}", f"axle {k['AXLE_L']}",
-                      f"groove {k['GROOVE_W']} × {k['GROOVE_D']} deep", f"gap {k['PLATE_GAP']}"):
+                      f"axle slot {k['SLOT_W']:g} wide, {k['GROOVE_D']:g} deep", f"gap {k['PLATE_GAP']}"):
             self.assertIn(label, self.texts)
 
     def test_text_on_the_sheet(self):

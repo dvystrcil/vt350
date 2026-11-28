@@ -31,8 +31,12 @@ CUT_LENGTHWISE = {"A": ("axle",), "B": ("axle",), "C": ()}      # shafts not hat
 
 
 def hatch_of(part):
+    """(pattern key, (angle, spacing)); a sheave's second half (sheaveNb) mirrors its first's angle: they touch"""
     for k, v in HATCH.items():
-        if part.startswith(k): return k if k in ("rod", "axle") else part, v
+        if part.startswith(k):
+            if k.startswith("sheave") and part.endswith("b"):
+                return part, (-v[0], v[1])
+            return k if k in ("rod", "axle") else part, v
     return part, (45, 2.0)
 
 
@@ -190,20 +194,36 @@ def leader(view, at, to, label):
     s = view.s; p = view.P(*at); q = (p[0] + to[0], p[1] + to[1])
     s.add(f"<line x1='{p[0]:.3f}' y1='{p[1]:.3f}' x2='{q[0]:.3f}' y2='{q[1]:.3f}' stroke='{INK}' stroke-width='{THIN}'/>")
     s.add(f"<circle cx='{p[0]:.3f}' cy='{p[1]:.3f}' r='0.45' fill='{INK}'/>")
-    end = q[0] + (14 if to[0] >= 0 else -14)
+    right = to[0] >= 0
+    end = q[0] + (4 if right else -4)
     s.add(f"<line x1='{q[0]:.3f}' y1='{q[1]:.3f}' x2='{end:.3f}' y2='{q[1]:.3f}' stroke='{INK}' stroke-width='{THIN}'/>")
-    text(s, (q[0] + end) / 2, q[1] - 0.8, label, 3.0)
+    text(s, end + (1 if right else -1), q[1] + 1.0, label, 3.0, anchor="start" if right else "end")
 
 
 def plane_mark(view, a, b, letter, look):
-    """a cutting-plane line from model a to b: thick ends, thin dash-dot between, arrows `look` (dx, dy, sheet)"""
-    s = view.s; pa, pb = view.P(*a), view.P(*b)
-    s.add(f"<line x1='{pa[0]:.3f}' y1='{pa[1]:.3f}' x2='{pb[0]:.3f}' y2='{pb[1]:.3f}' stroke='{INK}' "
-          f"stroke-width='{THIN}' stroke-dasharray='{CENTRE}'/>")
-    for p, q in ((pa, pb), (pb, pa)):
-        n = math.hypot(q[0] - p[0], q[1] - p[1]); ux, uy = (q[0] - p[0]) / n, (q[1] - p[1]) / n
-        e = (p[0] + ux * 6, p[1] + uy * 6)
-        s.add(f"<line x1='{p[0]:.3f}' y1='{p[1]:.3f}' x2='{e[0]:.3f}' y2='{e[1]:.3f}' stroke='{INK}' stroke-width='{THICK * 1.4}'/>")
+    plane_path(view, [a, b], letter, look)
+
+
+def plane_path(view, pts, letter, look):
+    """a cutting plane through model points pts (a stepped plane has bends): thin dash-dot along it, thick at both ends
+    and at every bend (ISO 128), arrows `look` (dx, dy, sheet) at the ends, each lettered"""
+    s = view.s; P = [view.P(*p) for p in pts]
+    d = "M" + " L".join(f"{x:.3f},{y:.3f}" for x, y in P)
+    s.add(f"<path d='{d}' fill='none' stroke='{INK}' stroke-width='{THIN}' stroke-dasharray='{CENTRE}'/>")
+
+    def unit(p, q):
+        n = math.hypot(q[0] - p[0], q[1] - p[1]) or 1.0
+        return (q[0] - p[0]) / n, (q[1] - p[1]) / n
+
+    def thick(p, q):
+        s.add(f"<line x1='{p[0]:.3f}' y1='{p[1]:.3f}' x2='{q[0]:.3f}' y2='{q[1]:.3f}' stroke='{INK}' "
+              f"stroke-width='{THICK * 1.4}'/>")
+    for i in range(1, len(P) - 1):                    # a bend: a short thick L along both legs
+        for j in (i - 1, i + 1):
+            ux, uy = unit(P[i], P[j]); thick(P[i], (P[i][0] + ux * 3, P[i][1] + uy * 3))
+    for p, q in ((P[0], P[1]), (P[-1], P[-2])):
+        ux, uy = unit(p, q)
+        thick(p, (p[0] + ux * 6, p[1] + uy * 6))
         t = (p[0] + look[0] * 7, p[1] + look[1] * 7)
         s.add(f"<line x1='{p[0]:.3f}' y1='{p[1]:.3f}' x2='{t[0]:.3f}' y2='{t[1]:.3f}' stroke='{INK}' stroke-width='{THIN}'/>")
         arrow(s, t, p, 2.5)
@@ -285,7 +305,9 @@ def drawing(d):
     break_line(vC, zc0, (vC.u0, vC.u1)); break_line(vC, zc1, (vC.u0, vC.u1))
     plane_mark(vC, (cx, zc1 - 1), (cx, zc0 + 1), "A", (1, 0))
     plane_mark(vC, (vC.u0 + 1, z1), (vC.u1 - 1, z1), "B", (0, -1))
-    title(vC, "C", f"sheave mid-plane, Y {y1:.1f} (tool T{t}); cable dash-dot-dot")
+    yc = d.get("c_plane", y1)
+    where = f"{yc - y1:g} past the split, in half 2" if abs(yc - y1) > 1e-6 else "the sheave's mid-plane"
+    title(vC, "C", f"Y {yc:.1f}, {where} (tool T{t}); cable dash-dot-dot")
 
     # --- B-B: plan at the axle's height
     vB.line((cx, vB.v0 + 1), (cx, vB.v1 - 1), THIN, CENTRE)
@@ -302,8 +324,9 @@ def drawing(d):
         leader(vB, (max(ru), (min(rv) + max(rv)) / 2), (10, 14),
                f"tie rod Ø{2 * k['ROD_R']:.0f} in Ø{2 * k['ROD_HOLE']:.1f}")
     plane_mark(vB, (cx, vB.v1 - 1), (cx, vB.v0 + 1), "A", (1, 0))
-    plane_mark(vB, (vB.u0 + 1, y1), (vB.u1 - 1, y1), "C", (0, -1))
-    title(vB, "B", f"plan at the axle, Z {z1:.1f}")
+    plane_mark(vB, (vB.u0 + 1, d.get("c_plane", y1)), (vB.u1 - 1, d.get("c_plane", y1)), "C", (0, -1))
+    steps = ", ".join(f"T{tt} Z {zz:.1f}" for tt, (yy, zz) in sorted(d["sheaves"].items(), key=lambda kv: kv[1][0]))
+    title(vB, "B", f"stepped: each sheave at its own axle ({steps})")
 
     # --- A-A: the sheaves side by side in their channels
     for tt, (yy, zz) in d["sheaves"].items():
@@ -318,16 +341,30 @@ def drawing(d):
     dim(vA, (yb + 6, z1 - k["BEARING"][0]), (yb + 6, z1 + k["BEARING"][0]), 20, f"Ø{2 * k['BEARING'][0]:.0f}",
         horizontal=False)
     leader(vA, (yb - k["SHEAVE_T"] / 2 - k["PLATE_GAP"] / 2, z1 + 30), (-20, -12), f"gap {k['PLATE_GAP']}")
-    leader(vA, (yb, z1 - RP - 2.55), (26, -40), f"groove {k['GROOVE_W']} × {k['GROOVE_D']} deep")
+    root = f", root chamfers {k['GROOVE_ROOT']:g}" if k.get("GROOVE_ROOT") else ""
+    leader(vA, (yb, z1 - RP - 2.55), (26, -40),
+           f"cable groove {k['GROOVE_W']:g} wide, {R - k['GROOVE_IN']:.1f} deep{root}")
+    z0 = min(zz for _, zz in d["sheaves"].values())
+    leader(vA, (pl[0] + k["PLATE_T"] / 2 - k["GROOVE_D"] / 2, z0 - 3.5), (-16, -30),
+           f"axle slot {k['SLOT_W']:g} wide, {k['GROOVE_D']:g} deep")
     break_line(vA, zc0, (vA.u0, vA.u1)); break_line(vA, zc1, (vA.u0, vA.u1))
-    plane_mark(vA, (vA.u0 + 1, z1), (vA.u1 - 1, z1), "B", (0, -1))
-    plane_mark(vA, (y1, zc1 - 1), (y1, zc0 + 1), "C", (-1, 0))
+    # B-B steps from one sheave's axle height to the next at the plate between them
+    path = [(vA.u0 + 1, None)]
+    for (ya, za), nxt in zip(sorted(d["sheaves"].values()), sorted(d["sheaves"].values())[1:] + [None]):
+        path[-1] = (path[-1][0], za)
+        if nxt:
+            ystep = min(pl, key=lambda yp: abs(yp - (ya + nxt[0]) / 2))
+            path += [(ystep, za), (ystep, None)]
+    path.append((vA.u1 - 1, path[-1][1]))
+    plane_path(vA, path, "B", (0, -1))
+    plane_mark(vA, (d.get("c_plane", y1), zc1 - 1), (d.get("c_plane", y1), zc0 + 1), "C", (-1, 0))
     title(vA, "A", f"through the axles, X {cx:.1f}")
 
     # --- legend + title block
     lx, ly = vA.x + vA.w() + 34, yC + 6
     text(S, lx, ly, "Cut faces", 3.5, anchor="start", weight="bold")
-    rows = [("stack", "stack (printed)"), ("sheave0", "sheave T0 (printed)"), ("sheave1", "sheave T1 (printed)"),
+    rows = [("stack", "stack (printed)"), ("sheave0a", "sheave T0, half 1 (printed)"), ("sheave0b", "sheave T0, half 2"),
+            ("sheave1a", "sheave T1, half 1 (printed)"), ("sheave1b", "sheave T1, half 2"),
             ("rod", "steel rod"), ("axle", "axle, cut across (steel)")]
     for i, (key, lab) in enumerate(rows):
         hk, (ang, gap) = hatch_of(key)

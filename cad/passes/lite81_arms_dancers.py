@@ -108,9 +108,27 @@ RUNG = 8.0
 WINDOWS = ((16.0, 80.0), (88.0, 147.0), (163.0, 250.0), (258.0, 342.0), (358.0, 410.0))
 # SPOKED SHEAVES (owner 2026-11-27: "hollow that out so it looks like it has spokes ... we can be creative"): a rim
 # under the groove, a hub round the 625, and SPOKES curved spokes tapering from hub to rim, like a cast handwheel;
-# the spokes thinner (Y) than the rim and hub.
-SPOKES, SPOKE_W, SPOKE_T, SPOKE_SWEEP = 6, (7.0, 4.5), 5.0, 28.0   # count; width at hub / rim; thickness; turn (deg)
-RIM_WALL, HUB_R = 2.5, 12.0                   # the rim's wall under the groove's bottom; the hub's outer radius
+# the spokes as thick (Y) as the rim and hub (owner 2026-11-27, from the section drawing: "the arms need to be flush
+# with the rim so it can print flat against the plate"; were 5 of 8, centred): with the sheave in two halves, each
+# half's spokes are then flush with both its print face and the split.
+SPOKES, SPOKE_W, SPOKE_T, SPOKE_SWEEP = 6, (7.0, 4.5), 8.0, 28.0   # count; width at hub / rim; thickness; turn (deg)
+RIM_WALL, HUB_R = 2.5, 15.0                   # the rim's wall under the groove's bottom; the hub's outer radius (was 12:
+                                              # room for the halves' screws round the 625)
+# TWO HALVES (owner 2026-11-27): printed flat, a one-piece sheave's far groove wall is a 10.3 mm ring over nothing, so
+# the sheave splits at its mid-plane into two mirror halves, each printed outer face down with nothing overhanging.
+# The 625 sits across the split and clamps between them ("a slight lip to fit the bearing so it will not be completely
+# friction fit but clamped between the two halves"): each half's pocket is HALF_POCKET deep, 0.1 under half the 625's
+# width (12 layers of 0.2), ending in a lip at the outer face that bears on the outer ring only. The bearing's OD
+# centres the halves on each other; HALF_SCREWS M2 x 5 cap screws (heads sunk in half 1's outer face) into M2 heat-set
+# inserts in half 2 pull them together, on the spokes' roots.
+HALF_POCKET, BORE_R, LIP_R = 2.4, BEARING[0] + 0.05, 7.0   # pocket depth per half; Ø16.1 slip fit; Ø14 lip
+HALF_SCREWS, SCREW_R = 3, 11.5                # M2 screws, on every other spoke's centreline at the hub
+M2_CLEAR, M2_HEAD, M2_HEAD_D, M2_INSERT = 1.1, 2.1, 2.2, (1.6, 3.2)   # radii / depths: clearance, counterbore r and
+                                              # depth, insert hole (r, depth)
+# the groove walls are only (SHEAVE_T - GROOVE_W) / 2 = 1.2 thick: a 45 deg chamfer where each meets the groove's bottom
+# doubles them at the root (owner 2026-11-27: "slight reverse chamfers to the inside of the rims so they have a bit more
+# strength"); kept clear of the bundle's inner cable even pushed against a wall (checked)
+GROOVE_ROOT = 1.2
 # PRINTING (owner 2026-11-26: "these lanes might be hard to print in one piece ... how to plate them for the neptune"):
 # a plate is 410 tall; the Neptune 4 Pro takes 220 x 220 (cad/data/print-profile.json) and ~250 in Z. So each stack is
 # one COMB printed standing in three SECTIONS: its plates widened in their own planes (no sheave runs there) out to a
@@ -175,8 +193,9 @@ def arm(x, hinge, loop):
 
 
 def spoke(cx, y, zc, phi):
-    """One curved spoke in the sheave's plane (X, Z), centred on Y y: its centreline turns SPOKE_SWEEP deg from the hub
-    to the rim (eased, so it leaves the hub and meets the rim nearly radially), its width tapering SPOKE_W."""
+    """One curved spoke in the sheave's plane (X, Z), from the sheave's -Y face, SPOKE_T thick: its centreline
+    turns SPOKE_SWEEP deg from the hub to the rim (eased, so it leaves the hub and meets the rim nearly radially), its
+    width tapering SPOKE_W."""
     r0, r1 = HUB_R - 1.0, GROOVE_IN - RIM_WALL + 1.0
     n = 16
     def at(r, side):
@@ -184,7 +203,7 @@ def spoke(cx, y, zc, phi):
         th = math.radians(phi + SPOKE_SWEEP * (3 * u * u - 2 * u ** 3))
         w = SPOKE_W[0] + (SPOKE_W[1] - SPOKE_W[0]) * u
         a = th + side * (w / 2) / r                     # the edge: half the width along the arc at this radius
-        return V(cx + r * math.cos(a), y - SPOKE_T / 2, zc + r * math.sin(a))
+        return V(cx + r * math.cos(a), y - SHEAVE_T / 2, zc + r * math.sin(a))
     rs = [r0 + (r1 - r0) * i / n for i in range(n + 1)]
     pts = [at(r, -1) for r in rs] + [at(r, 1) for r in reversed(rs)]
     face = Part.Face(Part.makePolygon(pts + [pts[0]]))
@@ -197,12 +216,37 @@ def sheave(cx, y, zc):
     rim_in = GROOVE_IN - RIM_WALL
     rim = Part.makeCylinder(SHEAVE_R, SHEAVE_T, V(cx, y - SHEAVE_T / 2, zc), ax).cut(
         Part.makeCylinder(rim_in, SHEAVE_T + 2, V(cx, y - SHEAVE_T / 2 - 1, zc), ax))
-    groove = Part.makeCylinder(SHEAVE_R + 1, GROOVE_W, V(cx, y - GROOVE_W / 2, zc), ax).cut(
-        Part.makeCylinder(GROOVE_IN, GROOVE_W, V(cx, y - GROOVE_W / 2, zc), ax))
+    g, h, c = GROOVE_IN, GROOVE_W / 2, GROOVE_ROOT  # the groove's section (radius, Y), its root corners chamfered
+    sec = [(g, -h + c), (g + c, -h), (SHEAVE_R + 1, -h), (SHEAVE_R + 1, h), (g + c, h), (g, h - c)]
+    pts = [V(cx + r, y + yy, zc) for r, yy in sec]
+    groove = Part.Face(Part.makePolygon(pts + [pts[0]])).revolve(V(cx, y, zc), ax, 360)
     hub = Part.makeCylinder(HUB_R, SHEAVE_T, V(cx, y - SHEAVE_T / 2, zc), ax)
     s = rim.cut(groove).fuse([hub] + [spoke(cx, y, zc, 90.0 + k * 360.0 / SPOKES) for k in range(SPOKES)])
-    s = s.cut(Part.makeCylinder(BEARING[0], SHEAVE_T + 2, V(cx, y - SHEAVE_T / 2 - 1, zc), ax))
     return s.removeSplitter()
+
+
+def sheave_halves(cx, y, zc):
+    """The sheave split at its mid-plane Y y into (half 1 on -Y, half 2 on +Y); each with its 625 pocket and lip, half 1
+    with HALF_SCREWS counterbored clearance holes from its outer face, half 2 with blind insert holes from the split."""
+    ax = V(0, 1, 0)
+    s, h = sheave(cx, y, zc), SHEAVE_T / 2
+    halves = []
+    for sgn in (-1, 1):
+        y0 = y - h - 1 if sgn < 0 else y
+        half = s.common(Part.makeBox(2 * SHEAVE_R + 4, h + 1, 2 * SHEAVE_R + 4, V(cx - SHEAVE_R - 2, y0, zc - SHEAVE_R - 2)))
+        pocket_y = y - HALF_POCKET if sgn < 0 else y
+        half = half.cut(Part.makeCylinder(BORE_R, HALF_POCKET, V(cx, pocket_y, zc), ax))
+        half = half.cut(Part.makeCylinder(LIP_R, SHEAVE_T + 2, V(cx, y - h - 1, zc), ax))
+        for k in range(HALF_SCREWS):
+            a = math.radians(90.0 + k * 2 * 360.0 / SPOKES)
+            px, pz = cx + SCREW_R * math.cos(a), zc + SCREW_R * math.sin(a)
+            if sgn < 0:
+                half = half.cut(Part.makeCylinder(M2_CLEAR, h + 2, V(px, y - h - 1, pz), ax))
+                half = half.cut(Part.makeCylinder(M2_HEAD, M2_HEAD_D + 1, V(px, y - h - 1, pz), ax))
+            else:
+                half = half.cut(Part.makeCylinder(M2_INSERT[0], M2_INSERT[1], V(px, y, pz), ax))
+        halves.append(half.removeSplitter())
+    return tuple(halves)
 
 
 def bearing(cx, y, zc):
@@ -565,8 +609,11 @@ def build():
         for t, y in members:
             zc = parked_z(t)
             info["sheaves"][t] = (cx, y, zc)
-            parts.append((f"sheave{t}", f"Dancer sheave T{t} (printed, R {SHEAVE_R:.1f} x {SHEAVE_T:g}, {SPOKES} curved spokes) [lite-81, #312]",
-                          sheave(cx, y, zc), "printed"))
+            for i, half in enumerate(sheave_halves(cx, y, zc)):
+                fix = (f"{HALF_SCREWS} M2 x 5 cap screws sunk in its face" if i == 0 else f"{HALF_SCREWS} M2 heat-set inserts")
+                parts.append((f"sheave{t}{'ab'[i]}", f"Dancer sheave T{t}, half {i + 1}/2 (printed outer face down, R "
+                              f"{SHEAVE_R:.1f} x {SHEAVE_T / 2:g}, {SPOKES} curved spokes; {fix}; clamps the 625) "
+                              f"[lite-81, #312]", half, "printed"))
             parts.append((f"bearing{t}", f"Dancer bearing T{t}, 625-2RS (5 x 16 x 5) [lite-81, #312]", bearing(cx, y, zc), "bearing"))
             parts.append((f"axle{t}", f"Dancer axle T{t}, 5 mm steel dowel pin x {AXLE_L:g} (m6, pressed into the 625) [lite-81, #312]", axle(cx, y, zc), "brushed_steel"))
         ycs = [y - PITCH / 2 for y in ys] + [ys[-1] + PITCH / 2]
@@ -732,6 +779,24 @@ def main(p):
     p.check(all(s.isValid() and s.Volume > 0 for _, _, s, _ in parts), "every new part a valid solid")
     split = [k for k, _, s, _ in parts if k.startswith(("sheave", "stack", "leg", "bridge")) and len(s.Solids) != 1]
     p.check(not split, f"each sheave, stack section, leg guide and bridge is one piece ({split})")
+    # each sheave prints flat on its -Y face: just above that face the rim, the spokes and the hub are one region (its
+    # outline, one window between each pair of spokes and the bearing bore), so no spoke starts in the air
+    # (half 1: also its screws' counterbores); the 625 clamps between the halves' lips
+    loops, want = {}, {"a": SPOKES + 2 + HALF_SCREWS, "b": SPOKES + 2}
+    for k, _, s, _ in parts:
+        if k.startswith("sheave"):
+            face = s.BoundBox.YMin + 0.05 if k.endswith("a") else s.BoundBox.YMax - 0.05
+            loops[k] = (len(s.slice(V(0, 1, 0), face)), want[k[-1]])
+    p.check(all(n == w for n, w in loops.values()),
+            f"each sheave half's spokes flush with its print face (loops just above it, found/wanted: {loops})")
+    p.check(BEARING[2] - 2 * HALF_POCKET > 0 and LIP_R < BEARING[0] - 0.5,
+            f"the 625 clamped: {BEARING[2]:g} wide in 2 x {HALF_POCKET:g} pockets, lips Ø{2 * LIP_R:g} on its outer ring")
+    hw = min(SCREW_R - max(M2_INSERT[0], M2_HEAD) - BORE_R, HUB_R - SCREW_R - max(M2_INSERT[0], M2_HEAD))
+    p.check(hw >= 1.2, f"the halves' screws: {hw:.2f} of wall to the 625's pocket and the hub's edge (>= 1.2)")
+    # the root chamfers clear the inner cable (Ø 2 x 2.55, centre RP - 2.55) pushed against either wall
+    u = DANCER["RP"] - 2.55 - GROOVE_IN
+    clear = (u + 2.55 - GROOVE_ROOT) / math.sqrt(2) - 2.55
+    p.check(clear >= 0.3, f"the groove's {GROOVE_ROOT:g} root chamfers clear the inner cable against a wall by {clear:.2f} (>= 0.3)")
     # the belts: every leg guide's sleeves BELT_CLEAR or more from both belts' runs
     belts = [o for o in m.leaves if o.Label.startswith("GT2 9mm belt")]
     p.check(len(belts) == 2, f"the two XY belts found ({len(belts)})")
@@ -819,7 +884,14 @@ def main(p):
         if time.time() - t1 > SLOW: p.log(f"  slow inner pair ({time.time() - t1:.0f} s): {ka} vs {kb}")
         vol[(ka, kb)] = vol.get((ka, kb), 0.0) + v
     p.log(f"  inner: {len(work)} solid booleans in {time.time() - t0:.0f} s")
-    inner = [(ka, kb, round(v, 1)) for (ka, kb), v in vol.items() if v > 0.5]
+    # a sheave half and its own 625 overlap by the designed clamp (the lip's ring x 0.1); exactly that is meant
+    crush = math.pi * (BEARING[0] ** 2 - LIP_R ** 2) * (BEARING[2] / 2 - HALF_POCKET)
+    clamp = lambda ka, kb, v: (re.fullmatch(r"sheave(\d+)[ab]", ka) and kb == f"bearing{ka[6:-1]}"
+                               and abs(v - crush) < 0.1 * crush)
+    clamped = [(ka, kb) for (ka, kb), v in vol.items() if clamp(ka, kb, v)]
+    p.check(len(clamped) == 2 * len(info["sheaves"]),
+            f"every sheave's 625 clamped by both halves at the designed {crush:.2f} mm3 ({len(clamped)} pairs)")
+    inner = [(ka, kb, round(v, 1)) for (ka, kb), v in vol.items() if v > 0.5 and not clamp(ka, kb, v)]
     for x in inner: p.log("  inner overlap:", x)
     p.check(not inner, f"the new parts and runs don't overlap each other ({len(inner)}: {inner[:8]})")
     if p.errs: return p.finish([])

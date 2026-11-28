@@ -525,3 +525,11 @@ own wires. A plane that misses the part returns `[]` and doesn't throw. Map each
 points to the plane's 2D axes, write them to JSON, and draw in plain python: an even-odd fill puts the holes back.
 That beats TechDraw's section view here because it runs headless under `freecadcmd`, needs no model file (the pass's
 own builders give the parts), and the drawing step can be tested in CI against a saved export.
+
+## Run a worktree's pass with `VT350_REPO=$PWD`, or it logs into the main checkout (2026-11-27, lite-81)
+
+A pass finds its repo through `VT350_REPO`, defaulting to `~/Code/vt350`. Run from a git worktree without it, the pass
+imports `platform/` from the main checkout (whatever branch that has out) and writes its log and JSON there. The
+worktree's own `cad/data/logs/` keeps the old run's log, so reading it after the run shows the previous result: here
+the same timing to a tenth of a second gave it away, and the real run's one failure was only in the other checkout.
+Start every worktree run as `VT350_REPO=$PWD $APP freecadcmd $PWD/cad/passes/<pass>.py`.
